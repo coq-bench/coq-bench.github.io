@@ -32,7 +32,7 @@
             <ul class="nav navbar-nav">
               <li><a href="../..">Unstable</a></li>
               <li><a href=".">8.4.5 / contrib:orb-stab 8.4.dev</a></li>
-              <li class="active"><a href="">2015-02-17 00:59:28</a></li>
+              <li class="active"><a href="">2015-02-18 21:56:09</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
               <li><a href="../../../../about.html">About</a></li>
@@ -48,16 +48,17 @@
               contrib:orb-stab
               <small>
                 8.4.dev
-                <span class="label label-danger">Error</span>
+                <span class="label label-warning">Error with dependencies</span>
               </small>
             </h1>
-            <p><em><script>document.write(moment("2015-02-17 00:59:28 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2015-02-17 00:59:28 UTC)</em><p>
+            <p><em><script>document.write(moment("2015-02-18 21:56:09 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2015-02-18 21:56:09 UTC)</em><p>
             <h2>Context</h2>
             <pre># Installed packages for system:
-base-bigarray  base  Bigarray library distributed with the OCaml compiler
-base-threads   base  Threads library distributed with the OCaml compiler
-base-unix      base  Unix library distributed with the OCaml compiler
-camlp5         6.12  Preprocessor-pretty-printer of OCaml
+base-bigarray   base  Bigarray library distributed with the OCaml compiler
+base-threads    base  Threads library distributed with the OCaml compiler
+base-unix       base  Unix library distributed with the OCaml compiler
+camlp5          6.12  Preprocessor-pretty-printer of OCaml
+coq            8.4.5  Formal proof management system
 </pre>
             <h2>Lint</h2>
             <dl class="dl-horizontal">
@@ -92,85 +93,37 @@ camlp5         6.12  Preprocessor-pretty-printer of OCaml
               <dt>Command</dt>
               <dd><code>ulimit -Sv 2000000; timeout 5m opam install -y --deps-only coq:contrib:orb-stab.8.4.dev</code></dd>
               <dt>Return code</dt>
-              <dd>0</dd>
+              <dd>31744</dd>
               <dt>Duration</dt>
-              <dd>2 s</dd>
+              <dd>5 m 0 s</dd>
+              <dt>Output</dt>
+              <dd><pre>The following actions will be performed:
+ - install   coq:contrib:algebra.8.4.dev           [required by coq:contrib:orb-stab]
+ - install   coq:contrib:lin-alg.8.4.dev           [required by coq:contrib:orb-stab]
+=== 2 to install ===
+=-=- Synchronizing package archives -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+[coq:contrib:algebra] Fetching https://gforge.inria.fr/git/coq-contribs/algebra.git#v8.4
+[coq:contrib:lin-alg] Fetching https://gforge.inria.fr/git/coq-contribs/lin-alg.git#v8.4
+=-=- Installing packages =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+Building coq:contrib:algebra.8.4.dev:
+  coq_makefile -f Make -o Makefile
+  make -j4
+  make install
+Installing coq:contrib:algebra.8.4.dev.
+Building coq:contrib:lin-alg.8.4.dev:
+  coq_makefile -f Make -o Makefile
+  make -j4
+  make install
+</pre></dd>
             </dl>
             <h2>Install</h2>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>ulimit -Sv 2000000; timeout 30m opam install -y --verbose coq:contrib:orb-stab.8.4.dev</code></dd>
+              <dd><code>true</code></dd>
               <dt>Return code</dt>
-              <dd>1024</dd>
+              <dd>0</dd>
               <dt>Duration</dt>
-              <dd>3 s</dd>
-              <dt>Output</dt>
-              <dd><pre>The following actions will be performed:
- - install   coq:contrib:orb-stab.8.4.dev
-=== 1 to install ===
-=-=- Synchronizing package archives -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
-[coq:contrib:orb-stab] Fetching https://gforge.inria.fr/git/coq-contribs/orb-stab.git#v8.4
-Initialized empty Git repository in /home/bench/.opam/packages.dev/coq:contrib:orb-stab.8.4.dev/.git/
-[master (root-commit) ffc435c] opam-git-init
-From https://gforge.inria.fr/git/coq-contribs/orb-stab
- * [new branch]      v8.4       -&gt; opam-ref
- * [new branch]      v8.4       -&gt; origin/v8.4
-COPYING
-COPYING.LESSER
-Make
-Makefile
-description
-orbstab.v
-HEAD is now at d515148 Updated dependencies
-=-=- Installing packages =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
-Building coq:contrib:orb-stab.8.4.dev:
-  coq_makefile -f Make -o Makefile
-  make -j4
-  make install
-&quot;coqdep&quot; -c -slash -R . OrbStab &quot;orbstab.v&quot; &gt; &quot;orbstab.v.d&quot; || ( RV=$?; rm -f &quot;orbstab.v.d&quot;; exit ${RV} )
-*** Warning: in file orbstab.v, library Group_util.v is required and has not been found in loadpath!
-*** Warning: in file orbstab.v, library Fpart2.v is required and has not been found in loadpath!
-*** Warning: in file orbstab.v, library Parts3.v is required and has not been found in loadpath!
-*** Warning: in file orbstab.v, library Fmap.v is required and has not been found in loadpath!
-*** Warning: in file orbstab.v, library seq_set_facts.v is required and has not been found in loadpath!
-*** Warning: in file orbstab.v, library has_n_elements.v is required and has not been found in loadpath!
-*** Warning: in file orbstab.v, library finite_subsets.v is required and has not been found in loadpath!
-&quot;coqc&quot;  -q  -R . OrbStab   orbstab
-File &quot;/home/bench/.opam/system/build/coq:contrib:orb-stab.8.4.dev/orbstab.v&quot;, line 21, characters 0-26:
-Error: Cannot find library Group_util in loadpath
-Makefile:198: recipe for target &#39;orbstab.vo&#39; failed
-make: *** [orbstab.vo] Error 1
-[ERROR] The compilation of coq:contrib:orb-stab.8.4.dev failed.
-Removing coq:contrib:orb-stab.8.4.dev.
-  rm -R /home/bench/.opam/system/lib/coq/user-contrib/orb-stab
-rm: cannot remove &#39;/home/bench/.opam/system/lib/coq/user-contrib/orb-stab&#39;: No such file or directory
-#=== ERROR while installing coq:contrib:orb-stab.8.4.dev ======================#
-# opam-version         1.2.0
-# os                   linux
-# command              make -j4
-# path                 /home/bench/.opam/system/build/coq:contrib:orb-stab.8.4.dev
-# compiler             system (4.02.1)
-# exit-code            2
-# env-file             /home/bench/.opam/system/build/coq:contrib:orb-stab.8.4.dev/coq:contrib:orb-stab-18530-d2c37b.env
-# stdout-file          /home/bench/.opam/system/build/coq:contrib:orb-stab.8.4.dev/coq:contrib:orb-stab-18530-d2c37b.out
-# stderr-file          /home/bench/.opam/system/build/coq:contrib:orb-stab.8.4.dev/coq:contrib:orb-stab-18530-d2c37b.err
-### stdout ###
-# &quot;coqdep&quot; -c -slash -R . OrbStab &quot;orbstab.v&quot; &gt; &quot;orbstab.v.d&quot; || ( RV=$?; rm -f &quot;orbstab.v.d&quot;; exit ${RV} )
-# &quot;coqc&quot;  -q  -R . OrbStab   orbstab
-# File &quot;/home/bench/.opam/system/build/coq:contrib:orb-stab.8.4.dev/orbstab.v&quot;, line 21, characters 0-26:
-# Error: Cannot find library Group_util in loadpath
-# Makefile:198: recipe for target &#39;orbstab.vo&#39; failed
-### stderr ###
-# *** Warning: in file orbstab.v, library Group_util.v is required and has not been found in loadpath!
-# *** Warning: in file orbstab.v, library Fpart2.v is required and has not been found in loadpath!
-# *** Warning: in file orbstab.v, library Parts3.v is required and has not been found in loadpath!
-# *** Warning: in file orbstab.v, library Fmap.v is required and has not been found in loadpath!
-# *** Warning: in file orbstab.v, library seq_set_facts.v is required and has not been found in loadpath!
-# *** Warning: in file orbstab.v, library has_n_elements.v is required and has not been found in loadpath!
-# *** Warning: in file orbstab.v, library finite_subsets.v is required and has not been found in loadpath!
-# make: *** [orbstab.vo] Error 1
-&#39;opam install -y --verbose coq:contrib:orb-stab.8.4.dev&#39; failed.
-</pre></dd>
+              <dd>0 s</dd>
             </dl>
             <h2>Installation size</h2>
             <p>No files were installed.</p>

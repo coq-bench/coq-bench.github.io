@@ -32,7 +32,7 @@
             <ul class="nav navbar-nav">
               <li><a href="../..">Unstable</a></li>
               <li><a href=".">8.5.dev / contrib:compcert dev</a></li>
-              <li class="active"><a href="">2015-02-14 06:40:37</a></li>
+              <li class="active"><a href="">2015-02-19 10:18:46</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
               <li><a href="../../../../about.html">About</a></li>
@@ -51,7 +51,7 @@
                 <span class="label label-danger">Error</span>
               </small>
             </h1>
-            <p><em><script>document.write(moment("2015-02-14 06:40:37 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2015-02-14 06:40:37 UTC)</em><p>
+            <p><em><script>document.write(moment("2015-02-19 10:18:46 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2015-02-19 10:18:46 UTC)</em><p>
             <h2>Context</h2>
             <pre># Installed packages for system:
 base-bigarray                                  base  Bigarray library distribute
@@ -144,7 +144,6 @@ coq:contrib:railroad-crossing                   dev  The Railroad Crossing Examp
 coq:contrib:ramsey                              dev  Ramsey Theory.
 coq:contrib:random                              dev  Interpretation of random pr
 coq:contrib:rational                            dev  A definition of rational nu
-coq:contrib:recursive-definition                dev  ML-like recursive definitio
 coq:contrib:reflexive-first-order               dev  Reflexive first-order proof
 coq:contrib:regexp                              dev  Regular Expression.
 coq:contrib:relation-algebra                    dev  Relation Algebra and KAT.
@@ -172,6 +171,7 @@ coq:contrib:zorns-lemma                         dev  Zorn&#39;s Lemma.
 coq:cunit                                       dev  Unit testing in Coq, at com
 coq:error-handlers                              dev  Simple and robust error han
 coq:function-ninjas                             dev  Write readable code using s
+coq:idetop                                  8.5.dev  IDE of the Coq formal proof
 coq:iterable                                    dev  Generic definition of itera
 coq:list-plus                                   dev  More functions on lists.
 coq:list-string                                 dev  Strings implemented as list
@@ -213,7 +213,7 @@ coq:monad                                       dev  A basic definition of monad
               <dt>Return code</dt>
               <dd>0</dd>
               <dt>Duration</dt>
-              <dd>2 s</dd>
+              <dd>3 s</dd>
             </dl>
             <h2>Install</h2>
             <dl class="dl-horizontal">
@@ -222,7 +222,7 @@ coq:monad                                       dev  A basic definition of monad
               <dt>Return code</dt>
               <dd>1024</dd>
               <dt>Duration</dt>
-              <dd>3 m 21 s</dd>
+              <dd>3 m 27 s</dd>
               <dt>Output</dt>
               <dd><pre>The following actions will be performed:
  - install   coq:contrib:compcert.dev
@@ -230,7 +230,7 @@ coq:monad                                       dev  A basic definition of monad
 =-=- Synchronizing package archives -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 [coq:contrib:compcert] Fetching https://gforge.inria.fr/git/coq-contribs/compcert.git#trunk
 Initialized empty Git repository in /home/bench/.opam/packages.dev/coq:contrib:compcert.dev/.git/
-[master (root-commit) 6b0e48a] opam-git-init
+[master (root-commit) 3f19c03] opam-git-init
 From https://gforge.inria.fr/git/coq-contribs/compcert
  * [new branch]      trunk      -&gt; opam-ref
  * [new branch]      trunk      -&gt; origin/trunk
@@ -1024,19 +1024,19 @@ COQC lib/Intv.v
 COQC lib/Maps.v
 COQC lib/Integers.v
 COQC lib/Iteration.v
+COQC flocq/Core/Fcore_defs.v
 COQC lib/Parmov.v
 COQC lib/UnionFind.v
+COQC lib/Postorder.v
 COQC lib/FSetAVLplus.v
 COQC lib/IntvSets.v
 COQC common/Errors.v
-COQC lib/Lattice.v
-COQC flocq/Core/Fcore_defs.v
-COQC lib/Postorder.v
-COQC common/Subtyping.v
 COQC lib/Ordered.v
+COQC lib/Lattice.v
 COQC flocq/Core/Fcore_float_prop.v
 COQC flocq/Core/Fcore_rnd.v
 COQC common/Switch.v
+COQC common/Subtyping.v
 COQC lib/Heaps.v
 COQC flocq/Calc/Fcalc_digits.v
 COQC flocq/Calc/Fcalc_bracket.v
@@ -1078,9 +1078,9 @@ COQC cfrontend/Initializers.v
 COQC common/Smallstep.v
 COQC ia32/Op.v
 Fatal error: out of memory.
+Makefile:201: recipe for target &#39;ia32/Op.vo&#39; failed
 make[1]: *** [ia32/Op.vo] Error 2
 make[1]: *** Waiting for unfinished jobs....
-Makefile:201: recipe for target &#39;ia32/Op.vo&#39; failed
 make[1]: Leaving directory &#39;/home/bench/.opam/system/build/coq:contrib:compcert.dev&#39;
 Makefile:129: recipe for target &#39;all&#39; failed
 make: *** [all] Error 2
@@ -1094,9 +1094,9 @@ Removing coq:contrib:compcert.dev.
 # path                 /home/bench/.opam/system/build/coq:contrib:compcert.dev
 # compiler             system (4.02.1)
 # exit-code            2
-# env-file             /home/bench/.opam/system/build/coq:contrib:compcert.dev/coq:contrib:compcert-23775-e7966f.env
-# stdout-file          /home/bench/.opam/system/build/coq:contrib:compcert.dev/coq:contrib:compcert-23775-e7966f.out
-# stderr-file          /home/bench/.opam/system/build/coq:contrib:compcert.dev/coq:contrib:compcert-23775-e7966f.err
+# env-file             /home/bench/.opam/system/build/coq:contrib:compcert.dev/coq:contrib:compcert-25776-e7966f.env
+# stdout-file          /home/bench/.opam/system/build/coq:contrib:compcert.dev/coq:contrib:compcert-25776-e7966f.out
+# stderr-file          /home/bench/.opam/system/build/coq:contrib:compcert.dev/coq:contrib:compcert-25776-e7966f.err
 ### stdout ###
 # ...[truncated]
 # COQC common/Globalenvs.v

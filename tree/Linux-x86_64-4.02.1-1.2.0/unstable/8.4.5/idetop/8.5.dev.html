@@ -32,7 +32,7 @@
             <ul class="nav navbar-nav">
               <li><a href="../..">Unstable</a></li>
               <li><a href=".">8.4.5 / idetop 8.5.dev</a></li>
-              <li class="active"><a href="">2015-02-14 02:22:54</a></li>
+              <li class="active"><a href="">2015-02-19 03:33:52</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
               <li><a href="../../../../about.html">About</a></li>
@@ -48,10 +48,10 @@
               idetop
               <small>
                 8.5.dev
-                <span class="label label-danger">Lint error</span>
+                <span class="label label-info">Not compatible with this Coq</span>
               </small>
             </h1>
-            <p><em><script>document.write(moment("2015-02-14 02:22:54 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2015-02-14 02:22:54 UTC)</em><p>
+            <p><em><script>document.write(moment("2015-02-19 03:33:52 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2015-02-19 03:33:52 UTC)</em><p>
             <h2>Context</h2>
             <pre># Installed packages for system:
 base-bigarray   base  Bigarray library distributed with the OCaml compiler
@@ -65,35 +65,36 @@ coq            8.4.5  Formal proof management system
               <dt>Command</dt>
               <dd><code>ruby lint.rb unstable ../unstable/packages/coq:idetop/coq:idetop.8.5.dev</code></dd>
               <dt>Return code</dt>
-              <dd>256</dd>
+              <dd>0</dd>
               <dt>Duration</dt>
               <dd>0 s</dd>
-              <dt>Output</dt>
-              <dd><pre>The build script should use the `%{jobs}%` variable to speedup building time. For example:
-build: [
-  [make &quot;-j%{jobs}%&quot;]
-  [make &quot;install&quot;]
-]
-</pre></dd>
             </dl>
             <h2>Dry install</h2>
             <p>Dry install with the current Coq version:</p>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>true</code></dd>
+              <dd><code>opam install -y --show-action coq:idetop.8.5.dev coq.8.4.5</code></dd>
               <dt>Return code</dt>
-              <dd>0</dd>
+              <dd>768</dd>
               <dt>Duration</dt>
               <dd>0 s</dd>
+              <dt>Output</dt>
+              <dd><pre>[NOTE] Package coq is already installed (current version is 8.4.5).
+The following dependencies couldn&#39;t be met:
+  - coq:idetop -&gt; coq = 8.5.dev
+Your request can&#39;t be satisfied:
+  - Conflicting version constraints for coq
+No solution found, exiting
+</pre></dd>
             </dl>
             <p>Dry install without Coq, to test if the problem was incompatibility with the current Coq version:</p>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>true</code></dd>
+              <dd><code>opam remove -y coq; opam install -y --show-action coq:idetop.8.5.dev</code></dd>
               <dt>Return code</dt>
               <dd>0</dd>
               <dt>Duration</dt>
-              <dd>0 s</dd>
+              <dd>4 s</dd>
             </dl>
             <h2>Install dependencies</h2>
             <dl class="dl-horizontal">
