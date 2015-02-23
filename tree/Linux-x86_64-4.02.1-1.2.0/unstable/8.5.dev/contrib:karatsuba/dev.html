@@ -44,10 +44,10 @@
               contrib:karatsuba
               <small>
                 dev
-                <span class="label label-success">12 s</span>
+                <span class="label label-danger">Error</span>
               </small>
             </h1>
-            <p><em><script>document.write(moment("2015-02-20 10:04:40 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2015-02-20 10:04:40 UTC)</em><p>
+            <p><em><script>document.write(moment("2015-02-22 02:38:27 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2015-02-22 02:38:27 UTC)</em><p>
             <h2>Context</h2>
             <pre># Installed packages for system:
 base-bigarray                           base  Bigarray library distributed with 
@@ -118,6 +118,7 @@ coq:contrib:zf                           dev  An axiomatisation of intuitionisti
 coq:contrib:zfc                          dev  An encoding of Zermelo-Fraenkel Se
 coq:contrib:zorns-lemma                  dev  Zorn&#39;s Lemma.
 coq:cunit                                dev  Unit testing in Coq, at compile ti
+coq:cybele                               dev  A Coq plugin for simpler proofs by
 coq:error-handlers                       dev  Simple and robust error handling f
 coq:function-ninjas                      dev  Write readable code using simple f
 coq:idetop                           8.5.dev  IDE of the Coq formal proof manage
@@ -163,91 +164,129 @@ coq:monad                                dev  A basic definition of monads.
               <dt>Return code</dt>
               <dd>0</dd>
               <dt>Duration</dt>
-              <dd>2 s</dd>
+              <dd>3 s</dd>
             </dl>
             <h2>Install</h2>
             <dl class="dl-horizontal">
               <dt>Command</dt>
               <dd><code>ulimit -Sv 2000000; timeout 30m opam install -y --verbose coq:contrib:karatsuba.dev</code></dd>
               <dt>Return code</dt>
-              <dd>0</dd>
+              <dd>1024</dd>
               <dt>Duration</dt>
-              <dd>12 s</dd>
+              <dd>4 s</dd>
+              <dt>Output</dt>
+              <dd><pre>The following actions will be performed:
+ - install   coq:contrib:karatsuba.dev
+=== 1 to install ===
+=-=- Synchronizing package archives -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+[coq:contrib:karatsuba] Fetching https://gforge.inria.fr/git/coq-contribs/karatsuba.git#trunk
+Initialized empty Git repository in /home/bench/.opam/packages.dev/coq:contrib:karatsuba.dev/.git/
+[master (root-commit) bdc2085] opam-git-init
+From https://gforge.inria.fr/git/coq-contribs/karatsuba
+ * [new branch]      trunk      -&gt; opam-ref
+ * [new branch]      trunk      -&gt; origin/trunk
+ArithEx/Compare.v
+Karatsuba/Karatsuba.v
+Karatsuba/Timing.v
+Karatsuba/Zmult.v
+Make
+Makefile
+NArithEx/BinPosEx.v
+NArithEx/Nminus.v
+NArithEx/Nshift.v
+NArithEx/Nsize.v
+NArithEx/Nsplit.v
+NArithEx/Pring.v
+NArithEx/Pshift.v
+NArithEx/Psize.v
+NArithEx/Psplit.v
+Order/Comparison.v
+Order/ComparisonDecOrd.v
+Order/DecidableOrder.v
+TacticEx/TacticEx.v
+common/Coercions.v
+common/Discharge.v
+common/utf8.v
+description
+HEAD is now at 1eb10a8 Applying &quot;Unset Standard Proposition Elimination Names&quot; for
+=-=- Installing packages =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+Building coq:contrib:karatsuba.dev:
+  coq_makefile -f Make -o Makefile
+  make -j4
+  make install
+&quot;coqdep&quot; -c -R &quot;.&quot; Karatsuba &quot;ArithEx/Compare.v&quot; &gt; &quot;ArithEx/Compare.v.d&quot; || ( RV=$?; rm -f &quot;ArithEx/Compare.v.d&quot;; exit ${RV} )
+&quot;coqdep&quot; -c -R &quot;.&quot; Karatsuba &quot;Karatsuba/Karatsuba.v&quot; &gt; &quot;Karatsuba/Karatsuba.v.d&quot; || ( RV=$?; rm -f &quot;Karatsuba/Karatsuba.v.d&quot;; exit ${RV} )
+&quot;coqdep&quot; -c -R &quot;.&quot; Karatsuba &quot;Karatsuba/Timing.v&quot; &gt; &quot;Karatsuba/Timing.v.d&quot; || ( RV=$?; rm -f &quot;Karatsuba/Timing.v.d&quot;; exit ${RV} )
+&quot;coqdep&quot; -c -R &quot;.&quot; Karatsuba &quot;Karatsuba/Zmult.v&quot; &gt; &quot;Karatsuba/Zmult.v.d&quot; || ( RV=$?; rm -f &quot;Karatsuba/Zmult.v.d&quot;; exit ${RV} )
+&quot;coqdep&quot; -c -R &quot;.&quot; Karatsuba &quot;NArithEx/BinPosEx.v&quot; &gt; &quot;NArithEx/BinPosEx.v.d&quot; || ( RV=$?; rm -f &quot;NArithEx/BinPosEx.v.d&quot;; exit ${RV} )
+&quot;coqdep&quot; -c -R &quot;.&quot; Karatsuba &quot;NArithEx/Nminus.v&quot; &gt; &quot;NArithEx/Nminus.v.d&quot; || ( RV=$?; rm -f &quot;NArithEx/Nminus.v.d&quot;; exit ${RV} )
+&quot;coqdep&quot; -c -R &quot;.&quot; Karatsuba &quot;NArithEx/Nshift.v&quot; &gt; &quot;NArithEx/Nshift.v.d&quot; || ( RV=$?; rm -f &quot;NArithEx/Nshift.v.d&quot;; exit ${RV} )
+&quot;coqdep&quot; -c -R &quot;.&quot; Karatsuba &quot;NArithEx/Nsize.v&quot; &gt; &quot;NArithEx/Nsize.v.d&quot; || ( RV=$?; rm -f &quot;NArithEx/Nsize.v.d&quot;; exit ${RV} )
+&quot;coqdep&quot; -c -R &quot;.&quot; Karatsuba &quot;NArithEx/Nsplit.v&quot; &gt; &quot;NArithEx/Nsplit.v.d&quot; || ( RV=$?; rm -f &quot;NArithEx/Nsplit.v.d&quot;; exit ${RV} )
+&quot;coqdep&quot; -c -R &quot;.&quot; Karatsuba &quot;NArithEx/Pring.v&quot; &gt; &quot;NArithEx/Pring.v.d&quot; || ( RV=$?; rm -f &quot;NArithEx/Pring.v.d&quot;; exit ${RV} )
+&quot;coqdep&quot; -c -R &quot;.&quot; Karatsuba &quot;NArithEx/Pshift.v&quot; &gt; &quot;NArithEx/Pshift.v.d&quot; || ( RV=$?; rm -f &quot;NArithEx/Pshift.v.d&quot;; exit ${RV} )
+&quot;coqdep&quot; -c -R &quot;.&quot; Karatsuba &quot;NArithEx/Psize.v&quot; &gt; &quot;NArithEx/Psize.v.d&quot; || ( RV=$?; rm -f &quot;NArithEx/Psize.v.d&quot;; exit ${RV} )
+&quot;coqdep&quot; -c -R &quot;.&quot; Karatsuba &quot;NArithEx/Psplit.v&quot; &gt; &quot;NArithEx/Psplit.v.d&quot; || ( RV=$?; rm -f &quot;NArithEx/Psplit.v.d&quot;; exit ${RV} )
+&quot;coqdep&quot; -c -R &quot;.&quot; Karatsuba &quot;Order/Comparison.v&quot; &gt; &quot;Order/Comparison.v.d&quot; || ( RV=$?; rm -f &quot;Order/Comparison.v.d&quot;; exit ${RV} )
+&quot;coqdep&quot; -c -R &quot;.&quot; Karatsuba &quot;Order/ComparisonDecOrd.v&quot; &gt; &quot;Order/ComparisonDecOrd.v.d&quot; || ( RV=$?; rm -f &quot;Order/ComparisonDecOrd.v.d&quot;; exit ${RV} )
+&quot;coqdep&quot; -c -R &quot;.&quot; Karatsuba &quot;Order/DecidableOrder.v&quot; &gt; &quot;Order/DecidableOrder.v.d&quot; || ( RV=$?; rm -f &quot;Order/DecidableOrder.v.d&quot;; exit ${RV} )
+&quot;coqdep&quot; -c -R &quot;.&quot; Karatsuba &quot;TacticEx/TacticEx.v&quot; &gt; &quot;TacticEx/TacticEx.v.d&quot; || ( RV=$?; rm -f &quot;TacticEx/TacticEx.v.d&quot;; exit ${RV} )
+&quot;coqdep&quot; -c -R &quot;.&quot; Karatsuba &quot;common/Coercions.v&quot; &gt; &quot;common/Coercions.v.d&quot; || ( RV=$?; rm -f &quot;common/Coercions.v.d&quot;; exit ${RV} )
+&quot;coqdep&quot; -c -R &quot;.&quot; Karatsuba &quot;common/Discharge.v&quot; &gt; &quot;common/Discharge.v.d&quot; || ( RV=$?; rm -f &quot;common/Discharge.v.d&quot;; exit ${RV} )
+&quot;coqdep&quot; -c -R &quot;.&quot; Karatsuba &quot;common/utf8.v&quot; &gt; &quot;common/utf8.v.d&quot; || ( RV=$?; rm -f &quot;common/utf8.v.d&quot;; exit ${RV} )
+&quot;coqc&quot;  -q  -R &quot;.&quot; Karatsuba   common/utf8
+&quot;coqc&quot;  -q  -R &quot;.&quot; Karatsuba   common/Discharge
+&quot;coqc&quot;  -q  -R &quot;.&quot; Karatsuba   common/Coercions
+&quot;coqc&quot;  -q  -R &quot;.&quot; Karatsuba   TacticEx/TacticEx
+Anomaly: Uncaught exception Unix.Unix_error(Unix.EEXIST, &quot;mkdir&quot;, &quot;./common/.coq-native&quot;).
+Please report.
+Makefile:251: recipe for target &#39;common/utf8.vo&#39; failed
+make: *** [common/utf8.vo] Error 1
+make: *** Waiting for unfinished jobs....
+[ERROR] The compilation of coq:contrib:karatsuba.dev failed.
+Removing coq:contrib:karatsuba.dev.
+  rm -R /home/bench/.opam/system/lib/coq/user-contrib/Karatsuba
+rm: cannot remove &#39;/home/bench/.opam/system/lib/coq/user-contrib/Karatsuba&#39;: No such file or directory
+#=== ERROR while installing coq:contrib:karatsuba.dev =========================#
+# opam-version         1.2.0
+# os                   linux
+# command              make -j4
+# path                 /home/bench/.opam/system/build/coq:contrib:karatsuba.dev
+# compiler             system (4.02.1)
+# exit-code            2
+# env-file             /home/bench/.opam/system/build/coq:contrib:karatsuba.dev/coq:contrib:karatsuba-2438-d2c37b.env
+# stdout-file          /home/bench/.opam/system/build/coq:contrib:karatsuba.dev/coq:contrib:karatsuba-2438-d2c37b.out
+# stderr-file          /home/bench/.opam/system/build/coq:contrib:karatsuba.dev/coq:contrib:karatsuba-2438-d2c37b.err
+### stdout ###
+# ...[truncated]
+# &quot;coqdep&quot; -c -R &quot;.&quot; Karatsuba &quot;Order/DecidableOrder.v&quot; &gt; &quot;Order/DecidableOrder.v.d&quot; || ( RV=$?; rm -f &quot;Order/DecidableOrder.v.d&quot;; exit ${RV} )
+# &quot;coqdep&quot; -c -R &quot;.&quot; Karatsuba &quot;TacticEx/TacticEx.v&quot; &gt; &quot;TacticEx/TacticEx.v.d&quot; || ( RV=$?; rm -f &quot;TacticEx/TacticEx.v.d&quot;; exit ${RV} )
+# &quot;coqdep&quot; -c -R &quot;.&quot; Karatsuba &quot;common/Coercions.v&quot; &gt; &quot;common/Coercions.v.d&quot; || ( RV=$?; rm -f &quot;common/Coercions.v.d&quot;; exit ${RV} )
+# &quot;coqdep&quot; -c -R &quot;.&quot; Karatsuba &quot;common/Discharge.v&quot; &gt; &quot;common/Discharge.v.d&quot; || ( RV=$?; rm -f &quot;common/Discharge.v.d&quot;; exit ${RV} )
+# &quot;coqdep&quot; -c -R &quot;.&quot; Karatsuba &quot;common/utf8.v&quot; &gt; &quot;common/utf8.v.d&quot; || ( RV=$?; rm -f &quot;common/utf8.v.d&quot;; exit ${RV} )
+# &quot;coqc&quot;  -q  -R &quot;.&quot; Karatsuba   common/utf8
+# &quot;coqc&quot;  -q  -R &quot;.&quot; Karatsuba   common/Discharge
+# &quot;coqc&quot;  -q  -R &quot;.&quot; Karatsuba   common/Coercions
+# &quot;coqc&quot;  -q  -R &quot;.&quot; Karatsuba   TacticEx/TacticEx
+# Makefile:251: recipe for target &#39;common/utf8.vo&#39; failed
+### stderr ###
+# Anomaly: Uncaught exception Unix.Unix_error(Unix.EEXIST, &quot;mkdir&quot;, &quot;./common/.coq-native&quot;).
+# Please report.
+# make: *** [common/utf8.vo] Error 1
+# make: *** Waiting for unfinished jobs....
+&#39;opam install -y --verbose coq:contrib:karatsuba.dev&#39; failed.
+</pre></dd>
             </dl>
             <h2>Installation size</h2>
-            <p>Total: 543 K</p>
-            <ul>
-              <li>100 K <code>lib/coq/user-contrib/Karatsuba/Order/DecidableOrder.vo</code></li>
-              <li>34 K <code>lib/coq/user-contrib/Karatsuba/Karatsuba/Timing.vo</code></li>
-              <li>33 K <code>lib/coq/user-contrib/Karatsuba/NArithEx/Psplit.vo</code></li>
-              <li>33 K <code>lib/coq/user-contrib/Karatsuba/Karatsuba/Karatsuba.vo</code></li>
-              <li>27 K <code>lib/coq/user-contrib/Karatsuba/Order/DecidableOrder.glob</code></li>
-              <li>24 K <code>lib/coq/user-contrib/Karatsuba/Karatsuba/Zmult.vo</code></li>
-              <li>24 K <code>lib/coq/user-contrib/Karatsuba/NArithEx/Nminus.vo</code></li>
-              <li>23 K <code>lib/coq/user-contrib/Karatsuba/NArithEx/Psize.vo</code></li>
-              <li>19 K <code>lib/coq/user-contrib/Karatsuba/NArithEx/Nsplit.vo</code></li>
-              <li>18 K <code>lib/coq/user-contrib/Karatsuba/NArithEx/Pring.vo</code></li>
-              <li>17 K <code>lib/coq/user-contrib/Karatsuba/NArithEx/Nsize.vo</code></li>
-              <li>14 K <code>lib/coq/user-contrib/Karatsuba/Karatsuba/Karatsuba.glob</code></li>
-              <li>14 K <code>lib/coq/user-contrib/Karatsuba/NArithEx/Nshift.vo</code></li>
-              <li>13 K <code>lib/coq/user-contrib/Karatsuba/NArithEx/Pshift.vo</code></li>
-              <li>11 K <code>lib/coq/user-contrib/Karatsuba/Order/ComparisonDecOrd.glob</code></li>
-              <li>11 K <code>lib/coq/user-contrib/Karatsuba/Order/ComparisonDecOrd.vo</code></li>
-              <li>10 K <code>lib/coq/user-contrib/Karatsuba/NArithEx/Psplit.glob</code></li>
-              <li>10 K <code>lib/coq/user-contrib/Karatsuba/NArithEx/BinPosEx.vo</code></li>
-              <li>9 K <code>lib/coq/user-contrib/Karatsuba/ArithEx/Compare.vo</code></li>
-              <li>7 K <code>lib/coq/user-contrib/Karatsuba/TacticEx/TacticEx.vo</code></li>
-              <li>7 K <code>lib/coq/user-contrib/Karatsuba/common/Discharge.vo</code></li>
-              <li>6 K <code>lib/coq/user-contrib/Karatsuba/NArithEx/Psize.glob</code></li>
-              <li>5 K <code>lib/coq/user-contrib/Karatsuba/common/utf8.vo</code></li>
-              <li>4 K <code>lib/coq/user-contrib/Karatsuba/Order/DecidableOrder.v</code></li>
-              <li>4 K <code>lib/coq/user-contrib/Karatsuba/NArithEx/Nsplit.glob</code></li>
-              <li>4 K <code>lib/coq/user-contrib/Karatsuba/ArithEx/Compare.glob</code></li>
-              <li>3 K <code>lib/coq/user-contrib/Karatsuba/TacticEx/TacticEx.glob</code></li>
-              <li>3 K <code>lib/coq/user-contrib/Karatsuba/Order/Comparison.vo</code></li>
-              <li>3 K <code>lib/coq/user-contrib/Karatsuba/NArithEx/Pshift.glob</code></li>
-              <li>2 K <code>lib/coq/user-contrib/Karatsuba/common/utf8.v</code></li>
-              <li>2 K <code>lib/coq/user-contrib/Karatsuba/Karatsuba/Zmult.glob</code></li>
-              <li>2 K <code>lib/coq/user-contrib/Karatsuba/Order/Comparison.glob</code></li>
-              <li>2 K <code>lib/coq/user-contrib/Karatsuba/NArithEx/Psplit.v</code></li>
-              <li>2 K <code>lib/coq/user-contrib/Karatsuba/Karatsuba/Karatsuba.v</code></li>
-              <li>2 K <code>lib/coq/user-contrib/Karatsuba/NArithEx/Nminus.glob</code></li>
-              <li>2 K <code>lib/coq/user-contrib/Karatsuba/NArithEx/Pring.glob</code></li>
-              <li>2 K <code>lib/coq/user-contrib/Karatsuba/common/utf8.glob</code></li>
-              <li>2 K <code>lib/coq/user-contrib/Karatsuba/NArithEx/Nshift.glob</code></li>
-              <li>2 K <code>lib/coq/user-contrib/Karatsuba/Order/ComparisonDecOrd.v</code></li>
-              <li>1 K <code>lib/coq/user-contrib/Karatsuba/common/Discharge.glob</code></li>
-              <li>1 K <code>lib/coq/user-contrib/Karatsuba/common/Discharge.v</code></li>
-              <li>1 K <code>lib/coq/user-contrib/Karatsuba/ArithEx/Compare.v</code></li>
-              <li>1 K <code>lib/coq/user-contrib/Karatsuba/NArithEx/BinPosEx.glob</code></li>
-              <li>1 K <code>lib/coq/user-contrib/Karatsuba/TacticEx/TacticEx.v</code></li>
-              <li>1 K <code>lib/coq/user-contrib/Karatsuba/NArithEx/Nsplit.v</code></li>
-              <li>1 K <code>lib/coq/user-contrib/Karatsuba/common/Coercions.vo</code></li>
-              <li>1 K <code>lib/coq/user-contrib/Karatsuba/Karatsuba/Timing.glob</code></li>
-              <li>1 K <code>lib/coq/user-contrib/Karatsuba/NArithEx/Pshift.v</code></li>
-              <li>1 K <code>lib/coq/user-contrib/Karatsuba/Karatsuba/Timing.v</code></li>
-              <li>1 K <code>lib/coq/user-contrib/Karatsuba/NArithEx/Psize.v</code></li>
-              <li>1 K <code>lib/coq/user-contrib/Karatsuba/Order/Comparison.v</code></li>
-              <li>1 K <code>lib/coq/user-contrib/Karatsuba/Karatsuba/Zmult.v</code></li>
-              <li>1 K <code>lib/coq/user-contrib/Karatsuba/NArithEx/Nminus.v</code></li>
-              <li>1 K <code>lib/coq/user-contrib/Karatsuba/NArithEx/Nshift.v</code></li>
-              <li>1 K <code>lib/coq/user-contrib/Karatsuba/NArithEx/Pring.v</code></li>
-              <li>1 K <code>lib/coq/user-contrib/Karatsuba/NArithEx/Nsize.glob</code></li>
-              <li>1 K <code>lib/coq/user-contrib/Karatsuba/NArithEx/BinPosEx.v</code></li>
-              <li>1 K <code>lib/coq/user-contrib/Karatsuba/common/Coercions.glob</code></li>
-              <li>1 K <code>lib/coq/user-contrib/Karatsuba/NArithEx/Nsize.v</code></li>
-              <li>1 K <code>lib/coq/user-contrib/Karatsuba/common/Coercions.v</code></li>
-              <li>1 K <code>lib/coq:contrib:karatsuba/opam.config</code></li>
-              <li>1 K <code>install/coq:contrib:karatsuba.install</code></li>
-            </ul>
+            <p>No files were installed.</p>
             <h2>Uninstall</h2>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>opam remove -y coq:contrib:karatsuba.dev</code></dd>
+              <dd><code>true</code></dd>
               <dt>Return code</dt>
               <dd>0</dd>
               <dt>Duration</dt>
-              <dd>2 s</dd>
+              <dd>0 s</dd>
               <dt>Missing removes</dt>
               <dd>
                 none
