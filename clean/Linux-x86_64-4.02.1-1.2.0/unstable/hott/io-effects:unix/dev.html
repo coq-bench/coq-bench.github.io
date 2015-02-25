@@ -47,7 +47,7 @@
                 <span class="label label-danger">Error</span>
               </small>
             </h1>
-            <p><em><script>document.write(moment("2015-02-21 21:18:39 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2015-02-21 21:18:39 UTC)</em><p>
+            <p><em><script>document.write(moment("2015-02-25 05:12:09 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2015-02-25 05:12:09 UTC)</em><p>
             <h2>Context</h2>
             <pre># Installed packages for system:
 base-bigarray           base  Bigarray library distributed with the OCaml compil
@@ -90,16 +90,16 @@ ocamlfind              1.5.5  A library manager for OCaml
             <h2>Install dependencies</h2>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>ulimit -Sv 2000000; timeout 5m opam install -y --deps-only coq:io-effects:unix.dev</code></dd>
+              <dd><code>ulimit -Sv 1000000; timeout 5m opam install -y --deps-only coq:io-effects:unix.dev</code></dd>
               <dt>Return code</dt>
               <dd>0</dd>
               <dt>Duration</dt>
-              <dd>26 s</dd>
+              <dd>29 s</dd>
             </dl>
             <h2>Install</h2>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>ulimit -Sv 2000000; timeout 30m opam install -y --verbose coq:io-effects:unix.dev</code></dd>
+              <dd><code>ulimit -Sv 4000000; timeout 60m opam install -y --verbose coq:io-effects:unix.dev</code></dd>
               <dt>Return code</dt>
               <dd>1024</dd>
               <dt>Duration</dt>
@@ -111,7 +111,7 @@ ocamlfind              1.5.5  A library manager for OCaml
 =-=- Synchronizing package archives -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 [coq:io-effects:unix] Fetching https://github.com/clarus/io-effects-unix
 Initialized empty Git repository in /home/bench/.opam/packages.dev/coq:io-effects:unix.dev/.git/
-[master (root-commit) c091933] opam-git-init
+[master (root-commit) 7c276da] opam-git-init
 warning: no common commits
 From https://github.com/clarus/io-effects-unix
  * [new ref]                    -&gt; opam-ref
@@ -133,14 +133,12 @@ Building coq:io-effects:unix.dev:
 &quot;coqdep&quot; -c -R &quot;.&quot; IoEffectsUnix &quot;All.v&quot; &gt; &quot;All.v.d&quot; || ( RV=$?; rm -f &quot;All.v.d&quot;; exit ${RV} )
 &quot;coqdep&quot; -c -R &quot;.&quot; IoEffectsUnix &quot;Extraction.v&quot; &gt; &quot;Extraction.v.d&quot; || ( RV=$?; rm -f &quot;Extraction.v.d&quot;; exit ${RV} )
 &quot;coqdep&quot; -c -R &quot;.&quot; IoEffectsUnix &quot;Unix.v&quot; &gt; &quot;Unix.v.d&quot; || ( RV=$?; rm -f &quot;Unix.v.d&quot;; exit ${RV} )
-*** Warning: in file Extraction.v, library FunctionNinjas.All.v is required and has not been found in the loadpath!
-*** Warning: in file Extraction.v, library FunctionNinjas.All.v is required and has not been found in the loadpath!
 &quot;coqc&quot;  -q  -R &quot;.&quot; IoEffectsUnix   Unix
 &quot;coqc&quot;  -q  -R &quot;.&quot; IoEffectsUnix   Extraction
-File &quot;./Extraction.v&quot;, line 8, characters 0-34:
-Error: Cannot find library FunctionNinjas.All in loadpath
-Makefile:234: recipe for target &#39;Extraction.vo&#39; failed
+File &quot;./Extraction.v&quot;, line 116, characters 4-13:
+Error: The constructor @C.Ret (in type C.t) expects 1 argument.
 make: *** [Extraction.vo] Error 1
+Makefile:234: recipe for target &#39;Extraction.vo&#39; failed
 [ERROR] The compilation of coq:io-effects:unix.dev failed.
 Removing coq:io-effects:unix.dev.
   rm -R /home/bench/.opam/system/lib/coq/user-contrib/IoEffectsUnix
@@ -152,9 +150,9 @@ rm: cannot remove &#39;/home/bench/.opam/system/lib/coq/user-contrib/IoEffectsUn
 # path                 /home/bench/.opam/system/build/coq:io-effects:unix.dev
 # compiler             system (4.02.1)
 # exit-code            2
-# env-file             /home/bench/.opam/system/build/coq:io-effects:unix.dev/coq:io-effects:unix-13766-d2c37b.env
-# stdout-file          /home/bench/.opam/system/build/coq:io-effects:unix.dev/coq:io-effects:unix-13766-d2c37b.out
-# stderr-file          /home/bench/.opam/system/build/coq:io-effects:unix.dev/coq:io-effects:unix-13766-d2c37b.err
+# env-file             /home/bench/.opam/system/build/coq:io-effects:unix.dev/coq:io-effects:unix-4763-d2c37b.env
+# stdout-file          /home/bench/.opam/system/build/coq:io-effects:unix.dev/coq:io-effects:unix-4763-d2c37b.out
+# stderr-file          /home/bench/.opam/system/build/coq:io-effects:unix.dev/coq:io-effects:unix-4763-d2c37b.err
 ### stdout ###
 # &quot;coqdep&quot; -c -R &quot;.&quot; IoEffectsUnix &quot;All.v&quot; &gt; &quot;All.v.d&quot; || ( RV=$?; rm -f &quot;All.v.d&quot;; exit ${RV} )
 # &quot;coqdep&quot; -c -R &quot;.&quot; IoEffectsUnix &quot;Extraction.v&quot; &gt; &quot;Extraction.v.d&quot; || ( RV=$?; rm -f &quot;Extraction.v.d&quot;; exit ${RV} )
@@ -163,10 +161,8 @@ rm: cannot remove &#39;/home/bench/.opam/system/lib/coq/user-contrib/IoEffectsUn
 # &quot;coqc&quot;  -q  -R &quot;.&quot; IoEffectsUnix   Extraction
 # Makefile:234: recipe for target &#39;Extraction.vo&#39; failed
 ### stderr ###
-# *** Warning: in file Extraction.v, library FunctionNinjas.All.v is required and has not been found in the loadpath!
-# *** Warning: in file Extraction.v, library FunctionNinjas.All.v is required and has not been found in the loadpath!
-# File &quot;./Extraction.v&quot;, line 8, characters 0-34:
-# Error: Cannot find library FunctionNinjas.All in loadpath
+# File &quot;./Extraction.v&quot;, line 116, characters 4-13:
+# Error: The constructor @C.Ret (in type C.t) expects 1 argument.
 # make: *** [Extraction.vo] Error 1
 &#39;opam install -y --verbose coq:io-effects:unix.dev&#39; failed.
 </pre></dd>
