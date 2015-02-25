@@ -47,7 +47,7 @@
                 <span class="label label-danger">Error</span>
               </small>
             </h1>
-            <p><em><script>document.write(moment("2015-02-22 02:38:27 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2015-02-22 02:38:27 UTC)</em><p>
+            <p><em><script>document.write(moment("2015-02-25 10:43:21 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2015-02-25 10:43:21 UTC)</em><p>
             <h2>Context</h2>
             <pre># Installed packages for system:
 base-bigarray                                  base  Bigarray library distribute
@@ -67,6 +67,7 @@ coq:contrib:area-method                         dev  The Chou, Gao and Zhang are
 coq:contrib:atbr                                dev  A tactic for deciding Kleen
 coq:contrib:automata                            dev  Beginning of formal languag
 coq:contrib:axiomatic-abp                       dev  Verification of an axiomati
+coq:contrib:bdds                                dev  BDD algorithms and proofs i
 coq:contrib:bertrand                            dev  Correctness of Knuth&#39;s algo
 coq:contrib:buchberger                          dev  Proof of Buchberger&#39;s algor
 coq:contrib:cantor                              dev  On Ordinal Notations.
@@ -78,6 +79,7 @@ coq:contrib:circuits                            dev  Some proofs of hardware (ad
 coq:contrib:classical-realizability             dev  Krivine&#39;s classical realiza
 coq:contrib:coalgebras                          dev  Coalgebras, bisimulation an
 coq:contrib:coinductive-examples                dev  Some simple examples about 
+coq:contrib:coinductive-reals                   dev  Real numbers as coinductive
 coq:contrib:concat                              dev  Constructive Category Theor
 coq:contrib:constructive-geometry               dev  Elements of Constructive Ge
 coq:contrib:continuations                       dev  A toolkit to reason with pr
@@ -105,6 +107,7 @@ coq:contrib:functions-in-zfc                    dev  Functions in classical ZFC.
 coq:contrib:fundamental-arithmetics             dev  Fundamental theorems of ari
 coq:contrib:gc                                  dev  Formal Verification of an I
 coq:contrib:generic-environments                dev  Generic_Environments.
+coq:contrib:goedel                              dev  The Gödel-Rosser 1st incomp
 coq:contrib:graph-basics                        dev  a Coq toolkit for graph the
 coq:contrib:group-theory                        dev  Elements of Group Theory.
 coq:contrib:groups                              dev  An exercise on groups.
@@ -123,6 +126,7 @@ coq:contrib:ipc                                 dev  Intuitionistic Propositiona
 coq:contrib:izf                                 dev  Intuitionistic Zermelo-Frae
 coq:contrib:jordan-curve-theorem                dev  Hypermaps, planarity and di
 coq:contrib:jprover                             dev  A theorem prover for first-
+coq:contrib:karatsuba                           dev  Karatsuba&#39;s Multiplication.
 coq:contrib:kildall                             dev  Application of the Generic 
 coq:contrib:lambda                              dev  Residual Theory in Lambda-C
 coq:contrib:lambek                              dev  A Coq Toolkit for Lambek Ca
@@ -186,7 +190,6 @@ coq:contrib:zf                                  dev  An axiomatisation of intuit
 coq:contrib:zfc                                 dev  An encoding of Zermelo-Frae
 coq:contrib:zorns-lemma                         dev  Zorn&#39;s Lemma.
 coq:cunit                                       dev  Unit testing in Coq, at com
-coq:cybele                                      dev  A Coq plugin for simpler pr
 coq:error-handlers                              dev  Simple and robust error han
 coq:function-ninjas                             dev  Write readable code using s
 coq:idetop                                  8.5.dev  IDE of the Coq formal proof
@@ -195,7 +198,6 @@ coq:iterable                                    dev  Generic definition of itera
 coq:list-plus                                   dev  More functions on lists.
 coq:list-string                                 dev  Strings implemented as list
 coq:moment                                      dev  Parse, manipulate and prett
-coq:monad                                       dev  A basic definition of monad
 </pre>
             <h2>Lint</h2>
             <dl class="dl-horizontal">
@@ -228,20 +230,20 @@ coq:monad                                       dev  A basic definition of monad
             <h2>Install dependencies</h2>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>ulimit -Sv 2000000; timeout 5m opam install -y --deps-only coq:hott.0.9.0</code></dd>
+              <dd><code>ulimit -Sv 1000000; timeout 5m opam install -y --deps-only coq:hott.0.9.0</code></dd>
               <dt>Return code</dt>
               <dd>0</dd>
               <dt>Duration</dt>
-              <dd>12 s</dd>
+              <dd>11 s</dd>
             </dl>
             <h2>Install</h2>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>ulimit -Sv 2000000; timeout 30m opam install -y --verbose coq:hott.0.9.0</code></dd>
+              <dd><code>ulimit -Sv 4000000; timeout 60m opam install -y --verbose coq:hott.0.9.0</code></dd>
               <dt>Return code</dt>
               <dd>1024</dd>
               <dt>Duration</dt>
-              <dd>1 m 48 s</dd>
+              <dd>54 s</dd>
               <dt>Output</dt>
               <dd><pre>The following actions will be performed:
  - install   coq:hott.0.9.0
@@ -249,7 +251,7 @@ coq:monad                                       dev  A basic definition of monad
 =-=- Synchronizing package archives -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 [coq:hott] Fetching https://github.com/HoTT/HoTT.git
 Initialized empty Git repository in /home/bench/.opam/packages.dev/coq:hott.0.9.0/.git/
-[master (root-commit) 12eda96] opam-git-init
+[master (root-commit) 16f867c] opam-git-init
 warning: no common commits
 From https://github.com/HoTT/HoTT
  * [new ref]                    -&gt; opam-ref
@@ -260,7 +262,7 @@ From https://github.com/HoTT/HoTT
 .mailmap
 .travis.yml
 CREDITS.txt
-INSTALL.txt
+INSTALL.md
 LICENSE.txt
 Makefile.am
 Makefile_targets.mk
@@ -672,7 +674,7 @@ theories/hit/epi.v
 theories/hit/iso.v
 theories/hit/quotient.v
 theories/hit/unique_choice.v
-HEAD is now at dbf560f Merge pull request #719 from JasonGross/equiv-groupoids
+HEAD is now at ff9ffcc Merge pull request #717 from spitters/install
 =-=- Installing packages =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 Copying ~/.opam/repo/unstable/packages/coq:hott/coq:hott.0.9.0/files/HoTT.install to ~/.opam/system/build/coq:hott.0.9.0/
 Building coq:hott.0.9.0:
@@ -741,17 +743,17 @@ checking whether your coqtop supports directory symlinks to the stdlib... yes
 configure: creating ./config.status
 config.status: creating Makefile
 config.status: creating hoq-config
+COQDEP contrib/Freudenthal.v
 COQDEP contrib/HoTTBookExercises.v
 COQDEP contrib/HoTTBook.v
-COQDEP contrib/Freudenthal.v
 COQDEP theories/categories/Utf8.v
 COQDEP theories/categories/Notations.v
 COQDEP theories/categories/Limits/Functors.v
 COQDEP theories/categories/Limits/Core.v
 COQDEP theories/categories/Limits.v
 COQDEP theories/categories/KanExtensions/Functors.v
-COQDEP theories/categories/KanExtensions.v
 COQDEP theories/categories/KanExtensions/Core.v
+COQDEP theories/categories/KanExtensions.v
 COQDEP theories/categories/UniversalProperties.v
 COQDEP theories/categories/DependentProduct.v
 COQDEP theories/categories/Grothendieck/ToCat.v
@@ -796,8 +798,8 @@ COQDEP theories/categories/Adjoint/Utf8.v
 COQDEP theories/categories/Adjoint/Notations.v
 COQDEP theories/categories/Adjoint/Pointwise.v
 COQDEP theories/categories/Adjoint/HomCoercions.v
-COQDEP theories/categories/Adjoint/Hom.v
 COQDEP theories/categories/Adjoint/Functorial/Laws.v
+COQDEP theories/categories/Adjoint/Hom.v
 COQDEP theories/categories/Adjoint/Functorial/Parts.v
 COQDEP theories/categories/Adjoint/Functorial/Core.v
 COQDEP theories/categories/Adjoint/Functorial.v
@@ -805,12 +807,12 @@ COQDEP theories/categories/Adjoint/UniversalMorphisms/Core.v
 COQDEP theories/categories/Adjoint/UniversalMorphisms.v
 COQDEP theories/categories/Adjoint/UnitCounitCoercions.v
 COQDEP theories/categories/Adjoint/Dual.v
-COQDEP theories/categories/Adjoint/Composition/IdentityLaws.v
 COQDEP theories/categories/Adjoint/Composition/AssociativityLaw.v
+COQDEP theories/categories/Adjoint/Composition/IdentityLaws.v
 COQDEP theories/categories/Adjoint/Composition/LawsTactic.v
 COQDEP theories/categories/Adjoint/Composition/Core.v
-COQDEP theories/categories/Adjoint/Composition.v
 COQDEP theories/categories/Adjoint/Identity.v
+COQDEP theories/categories/Adjoint/Composition.v
 COQDEP theories/categories/Adjoint/Paths.v
 COQDEP theories/categories/Adjoint/Core.v
 COQDEP theories/categories/Adjoint/UnitCounit.v
@@ -836,8 +838,8 @@ COQDEP theories/categories/NaturalTransformation/Sum.v
 COQDEP theories/categories/NaturalTransformation/Dual.v
 COQDEP theories/categories/Functor/Utf8.v
 COQDEP theories/categories/Functor/Notations.v
-COQDEP theories/categories/Functor/Pointwise/Core.v
 COQDEP theories/categories/Functor/Pointwise/Properties.v
+COQDEP theories/categories/Functor/Pointwise/Core.v
 COQDEP theories/categories/Functor/Prod/Functorial.v
 COQDEP theories/categories/NaturalTransformation/Prod.v
 COQDEP theories/categories/InitialTerminalCategory/Notations.v
@@ -865,10 +867,10 @@ COQDEP theories/categories/Functor/Composition/Functorial.v
 COQDEP theories/categories/ExponentialLaws/Tactics.v
 COQDEP theories/categories/ExponentialLaws/Law4/Law.v
 COQDEP theories/categories/ExponentialLaws/Law4/Functors.v
-COQDEP theories/categories/ExponentialLaws/Law3/Law.v
 COQDEP theories/categories/ExponentialLaws/Law4.v
-COQDEP theories/categories/ExponentialLaws/Law3.v
+COQDEP theories/categories/ExponentialLaws/Law3/Law.v
 COQDEP theories/categories/ExponentialLaws/Law3/Functors.v
+COQDEP theories/categories/ExponentialLaws/Law3.v
 COQDEP theories/categories/ExponentialLaws/Law2/Law.v
 COQDEP theories/categories/ExponentialLaws/Law2/Functors.v
 COQDEP theories/categories/ExponentialLaws/Law2.v
@@ -877,8 +879,8 @@ COQDEP theories/categories/ExponentialLaws/Law1/Functors.v
 COQDEP theories/categories/ExponentialLaws/Law1.v
 COQDEP theories/categories/ExponentialLaws/Law0.v
 COQDEP theories/categories/ExponentialLaws.v
-COQDEP theories/categories/FunctorCategory/Core.v
 COQDEP theories/categories/NaturalTransformation/Composition/Functorial.v
+COQDEP theories/categories/FunctorCategory/Core.v
 COQDEP theories/categories/FunctorCategory.v
 COQDEP theories/categories/NaturalTransformation/Composition/Laws.v
 COQDEP theories/categories/NaturalTransformation/Composition/Core.v
@@ -996,8 +998,8 @@ COQDEP theories/EquivGroupoids.v
 COQDEP theories/Types.v
 COQDEP theories/Types/Nat.v
 COQDEP theories/Types/Universe.v
-COQDEP theories/Types/Sum.v
 COQDEP theories/Types/Equiv.v
+COQDEP theories/Types/Sum.v
 COQDEP theories/Types/Bool.v
 COQDEP theories/Types/Empty.v
 COQDEP theories/Types/Record.v
@@ -1025,14 +1027,14 @@ COQDEP coq/theories/Init/Prelude.v
 COQDEP coq/theories/Init/Specif.v
 COQDEP coq/theories/Init/Tactics.v
 COQDEP coq/theories/Init/Peano.v
-COQDEP coq/theories/Init/Datatypes.v
 COQDEP coq/theories/Init/Logic_Type.v
+COQDEP coq/theories/Init/Datatypes.v
 COQDEP coq/theories/Init/Logic.v
 COQDEP coq/theories/Init/Notations.v
-*** Warning: in file coq/theories/Init/Datatypes.v, declared ML module nat_syntax_plugin has not been found!
-*** Warning: in file coq/theories/Init/Datatypes.v, declared ML module nat_syntax_plugin has not been found!
 CDPATH=&quot;${ZSH_VERSION+.}:&quot; &amp;&amp; cd . &amp;&amp; /bin/bash /home/bench/.opam/system/build/coq:hott.0.9.0/etc/missing --run aclocal-1.11 -I etc
 /home/bench/.opam/system/build/coq:hott.0.9.0/etc/missing: line 52: aclocal-1.11: command not found
+*** Warning: in file coq/theories/Init/Datatypes.v, declared ML module nat_syntax_plugin has not been found!
+*** Warning: in file coq/theories/Init/Datatypes.v, declared ML module nat_syntax_plugin has not been found!
 WARNING: `aclocal-1.11&#39; is missing on your system.  You should only need it if
          you modified `acinclude.m4&#39; or `configure.ac&#39;.  You might want
          to install the `Automake&#39; and `Perl&#39; packages.  Grab them from
@@ -1053,8 +1055,8 @@ WARNING: `aclocal-1.11&#39; is missing on your system.  You should only need it 
 *** Warning: in file coq/theories/Init/Notations.v, declared ML module tauto has not been found!
 CDPATH=&quot;${ZSH_VERSION+.}:&quot; &amp;&amp; cd . &amp;&amp; /bin/bash /home/bench/.opam/system/build/coq:hott.0.9.0/etc/missing --run autoconf
  cd . &amp;&amp; /bin/bash /home/bench/.opam/system/build/coq:hott.0.9.0/etc/missing --run automake-1.11 --foreign --ignore-deps
-/home/bench/.opam/system/build/coq:hott.0.9.0/etc/missing: line 52: autoconf: command not found
 /home/bench/.opam/system/build/coq:hott.0.9.0/etc/missing: line 52: automake-1.11: command not found
+/home/bench/.opam/system/build/coq:hott.0.9.0/etc/missing: line 52: autoconf: command not found
 WARNING: `automake-1.11&#39; is missing on your system.  You should only need it if
          you modified `Makefile.am&#39;, `acinclude.m4&#39; or `configure.ac&#39;.
          You might want to install the `Automake&#39; and `Perl&#39; packages.
@@ -1102,19 +1104,19 @@ COQTOP coq/theories/Init/Datatypes
 COQTOP coq/theories/Init/Logic_Type
 COQTOP coq/theories/Init/Specif
 COQTOP coq/theories/Init/Peano
-COQTOP coq/theories/Unicode/Utf8_core
 COQTOP coq/theories/Init/Prelude
+COQTOP coq/theories/Unicode/Utf8_core
 COQTOP coq/theories/Program/Tactics
 COQTOP coq/theories/Unicode/Utf8
 HOQC theories/Basics/Overture
-HOQC theories/Tactics/BinderApply
-HOQC theories/Basics/PathGroupoids
 HOQC theories/Basics/UniverseLevel
+HOQC theories/Basics/PathGroupoids
+HOQC theories/Tactics/BinderApply
 HOQC theories/FunextAxiom
 HOQC theories/categories/Category/Core
+HOQC theories/categories/Category/Sum
 HOQC theories/categories/Functor/Core
 HOQC theories/categories/Category/Strict
-HOQC theories/categories/Category/Sum
 HOQC theories/categories/Functor/Identity
 HOQC theories/categories/Functor/Composition/Core
 HOQC theories/categories/NaturalTransformation/Core
@@ -1122,13 +1124,13 @@ HOQC theories/categories/NaturalTransformation/Composition/Core
 HOQC theories/Basics/Contractible
 HOQC theories/Basics/Equivalences
 HOQC theories/Tactics/RewriteModuloAssociativity
-HOQC theories/Basics/Trunc
 HOQC theories/Basics/FunextVarieties
+HOQC theories/Basics/Trunc
 HOQC theories/Basics/Pointed
 HOQC theories/Basics/Decidable
 HOQC theories/Basics
-HOQC theories/Types/Unit
 HOQC theories/Types/Paths
+HOQC theories/Types/Unit
 HOQC theories/Types/Empty
 HOQC theories/Conjugation
 HOQC theories/Types/Prod
@@ -1140,7 +1142,7 @@ HOQC theories/categories/Category/Pi
 HOQC theories/Types/Sigma
 File &quot;./theories/Types/Sigma.v&quot;, line 294, characters 0-255:
 Anomaly: Uncaught exception Retyping.RetypeError(3). Please report.
-Makefile:761: recipe for target &#39;theories/Types/Sigma.vo&#39; failed
+Makefile:764: recipe for target &#39;theories/Types/Sigma.vo&#39; failed
 make: *** [theories/Types/Sigma.vo] Error 1
 [ERROR] The compilation of coq:hott.0.9.0 failed.
 Removing coq:hott.0.9.0.
@@ -1152,9 +1154,9 @@ Removing coq:hott.0.9.0.
 # path                 /home/bench/.opam/system/build/coq:hott.0.9.0
 # compiler             system (4.02.1)
 # exit-code            2
-# env-file             /home/bench/.opam/system/build/coq:hott.0.9.0/coq:hott-12789-e7966f.env
-# stdout-file          /home/bench/.opam/system/build/coq:hott.0.9.0/coq:hott-12789-e7966f.out
-# stderr-file          /home/bench/.opam/system/build/coq:hott.0.9.0/coq:hott-12789-e7966f.err
+# env-file             /home/bench/.opam/system/build/coq:hott.0.9.0/coq:hott-6905-e7966f.env
+# stdout-file          /home/bench/.opam/system/build/coq:hott.0.9.0/coq:hott-6905-e7966f.out
+# stderr-file          /home/bench/.opam/system/build/coq:hott.0.9.0/coq:hott-6905-e7966f.err
 ### stdout ###
 # ...[truncated]
 # HOQC theories/Types/Empty
@@ -1166,7 +1168,7 @@ Removing coq:hott.0.9.0.
 # HOQC theories/Tactics
 # HOQC theories/categories/Category/Pi
 # HOQC theories/Types/Sigma
-# Makefile:761: recipe for target &#39;theories/Types/Sigma.vo&#39; failed
+# Makefile:764: recipe for target &#39;theories/Types/Sigma.vo&#39; failed
 ### stderr ###
 # ...[truncated]
 #          you modified `Makefile.am&#39;, `acinclude.m4&#39; or `configure.ac&#39;.
