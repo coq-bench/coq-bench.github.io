@@ -47,7 +47,7 @@
                 <span class="label label-danger">Error</span>
               </small>
             </h1>
-            <p><em><script>document.write(moment("2015-02-22 08:07:47 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2015-02-22 08:07:47 UTC)</em><p>
+            <p><em><script>document.write(moment("2015-02-28 23:24:41 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2015-02-28 23:24:41 UTC)</em><p>
             <h2>Context</h2>
             <pre># Installed packages for system:
 base-bigarray                        base  Bigarray library distributed with the
@@ -78,7 +78,6 @@ coq:contrib:lambda                    dev  Residual Theory in Lambda-Calculus.
 coq:contrib:lambek                    dev  A Coq Toolkit for Lambek Calculus.
 coq:contrib:lazy-pcf                  dev  Subject Reduction for Lazy-PCF.
 coq:contrib:lc                        dev  Modules over monads and lambda-calcul
-coq:contrib:legacy-ring               dev  The former implementation of the ring
 coq:contrib:lesniewski-mereology      dev  KDTL.
 coq:contrib:ltl                       dev  Linear Temporal Logic.
 coq:contrib:maple-mode                dev  A Maple Mode for Coq.
@@ -120,6 +119,7 @@ coq:contrib:ruler-compass-geometry    dev  Ruler and compass geometry axiomatiza
 coq:contrib:schroeder                 dev  The Theorem of Schroeder-Bernstein.
 coq:contrib:shuffle                   dev  Gilbreath&#39;s card trick.
 coq:contrib:square-matrices           dev  From Fast Exponentiation to Square Ma
+coq:contrib:ssreflect                 dev  Ssreflect extension and the Mathemati
 coq:contrib:streams                   dev  Specification of Eratosthene Sieve.
 coq:contrib:string                    dev  Definition of strings in Coq.
 coq:contrib:subst                     dev  The confluence of Hardin-Lévy lambda-
@@ -136,7 +136,6 @@ coq:contrib:zf                        dev  An axiomatisation of intuitionistic Z
 coq:contrib:zfc                       dev  An encoding of Zermelo-Fraenkel Set T
 coq:contrib:zorns-lemma               dev  Zorn&#39;s Lemma.
 coq:cunit                             dev  Unit testing in Coq, at compile time.
-coq:cybele                            dev  A Coq plugin for simpler proofs by re
 coq:error-handlers                    dev  Simple and robust error handling func
 coq:function-ninjas                   dev  Write readable code using simple func
 coq:io-effects                        dev  A library for effects in Coq.
@@ -145,6 +144,7 @@ coq:list-plus                         dev  More functions on lists.
 coq:list-string                       dev  Strings implemented as lists.
 coq:moment                            dev  Parse, manipulate and pretty-print da
 coq:monad                             dev  A basic definition of monads.
+coq:unicoq                            dev  An enhanced unification algorithm for
 </pre>
             <h2>Lint</h2>
             <dl class="dl-horizontal">
@@ -177,7 +177,7 @@ coq:monad                             dev  A basic definition of monads.
             <h2>Install dependencies</h2>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>ulimit -Sv 2000000; timeout 5m opam install -y --deps-only coq:contrib:graphs.dev</code></dd>
+              <dd><code>ulimit -Sv 1000000; timeout 5m opam install -y --deps-only coq:contrib:graphs.dev</code></dd>
               <dt>Return code</dt>
               <dd>0</dd>
               <dt>Duration</dt>
@@ -186,7 +186,7 @@ coq:monad                             dev  A basic definition of monads.
             <h2>Install</h2>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>ulimit -Sv 2000000; timeout 30m opam install -y --verbose coq:contrib:graphs.dev</code></dd>
+              <dd><code>ulimit -Sv 4000000; timeout 120m opam install -y --verbose coq:contrib:graphs.dev</code></dd>
               <dt>Return code</dt>
               <dd>1024</dd>
               <dt>Duration</dt>
@@ -198,7 +198,7 @@ coq:monad                             dev  A basic definition of monads.
 =-=- Synchronizing package archives -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 [coq:contrib:graphs] Fetching https://gforge.inria.fr/git/coq-contribs/graphs.git#trunk
 Initialized empty Git repository in /home/bench/.opam/packages.dev/coq:contrib:graphs.dev/.git/
-[master (root-commit) 0ae7b0a] opam-git-init
+[master (root-commit) d501ead] opam-git-init
 From https://gforge.inria.fr/git/coq-contribs/graphs
  * [new branch]      trunk      -&gt; opam-ref
  * [new branch]      trunk      -&gt; origin/trunk
@@ -228,8 +228,10 @@ It follows makefile target declaration order and has a clearer semantic.
 Warning:
 Please now use &quot;-extra[-phony] result deps command&quot; instead of &quot;-custom command deps result&quot;.
 It follows makefile target declaration order and has a clearer semantic.
-Warning: in option -R, ../../Cachan/IntMap is not a subdirectory of the current directory
-Warning: install rule assumes that -R/-Q . _ is the only -R/-Q optionWarning: install rule assumes that -R/-Q . _ is the only -R/-Q optionWarning: -R/-Q options don&#39;t have a correct common prefix,
+Warning: in option -R/-Q, ../../Cachan/IntMap is not a subdirectory of the current directory
+Warning: install rule assumes that -R/-Q . _ is the only -R/-Q option
+Warning: install rule assumes that -R/-Q . _ is the only -R/-Q option
+Warning: -R/-Q options don&#39;t have a correct common prefix,
  install-doc will put anything in $INSTALLDEFAULTROOT
 &quot;coqdep&quot; -c -R &quot;../../Cachan/IntMap&quot; IntMap -R &quot;.&quot; Graphs &quot;cgraph.v&quot; &gt; &quot;cgraph.v.d&quot; || ( RV=$?; rm -f &quot;cgraph.v.d&quot;; exit ${RV} )
 &quot;coqdep&quot; -c -R &quot;../../Cachan/IntMap&quot; IntMap -R &quot;.&quot; Graphs &quot;zcgraph.v&quot; &gt; &quot;zcgraph.v.d&quot; || ( RV=$?; rm -f &quot;zcgraph.v.d&quot;; exit ${RV} )
@@ -256,9 +258,9 @@ rm: cannot remove &#39;/home/bench/.opam/system/lib/coq/user-contrib/Graphs&#39;
 # path                 /home/bench/.opam/system/build/coq:contrib:graphs.dev
 # compiler             system (4.02.1)
 # exit-code            2
-# env-file             /home/bench/.opam/system/build/coq:contrib:graphs.dev/coq:contrib:graphs-24025-d2c37b.env
-# stdout-file          /home/bench/.opam/system/build/coq:contrib:graphs.dev/coq:contrib:graphs-24025-d2c37b.out
-# stderr-file          /home/bench/.opam/system/build/coq:contrib:graphs.dev/coq:contrib:graphs-24025-d2c37b.err
+# env-file             /home/bench/.opam/system/build/coq:contrib:graphs.dev/coq:contrib:graphs-28533-d2c37b.env
+# stdout-file          /home/bench/.opam/system/build/coq:contrib:graphs.dev/coq:contrib:graphs-28533-d2c37b.out
+# stderr-file          /home/bench/.opam/system/build/coq:contrib:graphs.dev/coq:contrib:graphs-28533-d2c37b.err
 ### stdout ###
 # &quot;coqdep&quot; -c -R &quot;../../Cachan/IntMap&quot; IntMap -R &quot;.&quot; Graphs &quot;cgraph.v&quot; &gt; &quot;cgraph.v.d&quot; || ( RV=$?; rm -f &quot;cgraph.v.d&quot;; exit ${RV} )
 # &quot;coqdep&quot; -c -R &quot;../../Cachan/IntMap&quot; IntMap -R &quot;.&quot; Graphs &quot;zcgraph.v&quot; &gt; &quot;zcgraph.v.d&quot; || ( RV=$?; rm -f &quot;zcgraph.v.d&quot;; exit ${RV} )

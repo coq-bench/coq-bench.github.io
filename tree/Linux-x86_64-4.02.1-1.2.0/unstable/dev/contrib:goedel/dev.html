@@ -44,10 +44,10 @@
               contrib:goedel
               <small>
                 dev
-                <span class="label label-danger">Error</span>
+                <span class="label label-success">1 m 3 s</span>
               </small>
             </h1>
-            <p><em><script>document.write(moment("2015-02-22 08:07:47 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2015-02-22 08:07:47 UTC)</em><p>
+            <p><em><script>document.write(moment("2015-02-28 23:24:41 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2015-02-28 23:24:41 UTC)</em><p>
             <h2>Context</h2>
             <pre># Installed packages for system:
 base-bigarray                        base  Bigarray library distributed with the
@@ -79,7 +79,6 @@ coq:contrib:lambda                    dev  Residual Theory in Lambda-Calculus.
 coq:contrib:lambek                    dev  A Coq Toolkit for Lambek Calculus.
 coq:contrib:lazy-pcf                  dev  Subject Reduction for Lazy-PCF.
 coq:contrib:lc                        dev  Modules over monads and lambda-calcul
-coq:contrib:legacy-ring               dev  The former implementation of the ring
 coq:contrib:lesniewski-mereology      dev  KDTL.
 coq:contrib:ltl                       dev  Linear Temporal Logic.
 coq:contrib:maple-mode                dev  A Maple Mode for Coq.
@@ -121,6 +120,7 @@ coq:contrib:ruler-compass-geometry    dev  Ruler and compass geometry axiomatiza
 coq:contrib:schroeder                 dev  The Theorem of Schroeder-Bernstein.
 coq:contrib:shuffle                   dev  Gilbreath&#39;s card trick.
 coq:contrib:square-matrices           dev  From Fast Exponentiation to Square Ma
+coq:contrib:ssreflect                 dev  Ssreflect extension and the Mathemati
 coq:contrib:streams                   dev  Specification of Eratosthene Sieve.
 coq:contrib:string                    dev  Definition of strings in Coq.
 coq:contrib:subst                     dev  The confluence of Hardin-Lévy lambda-
@@ -137,7 +137,6 @@ coq:contrib:zf                        dev  An axiomatisation of intuitionistic Z
 coq:contrib:zfc                       dev  An encoding of Zermelo-Fraenkel Set T
 coq:contrib:zorns-lemma               dev  Zorn&#39;s Lemma.
 coq:cunit                             dev  Unit testing in Coq, at compile time.
-coq:cybele                            dev  A Coq plugin for simpler proofs by re
 coq:error-handlers                    dev  Simple and robust error handling func
 coq:function-ninjas                   dev  Write readable code using simple func
 coq:io-effects                        dev  A library for effects in Coq.
@@ -146,6 +145,7 @@ coq:list-plus                         dev  More functions on lists.
 coq:list-string                       dev  Strings implemented as lists.
 coq:moment                            dev  Parse, manipulate and pretty-print da
 coq:monad                             dev  A basic definition of monads.
+coq:unicoq                            dev  An enhanced unification algorithm for
 </pre>
             <h2>Lint</h2>
             <dl class="dl-horizontal">
@@ -178,258 +178,173 @@ coq:monad                             dev  A basic definition of monads.
             <h2>Install dependencies</h2>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>ulimit -Sv 2000000; timeout 5m opam install -y --deps-only coq:contrib:goedel.dev</code></dd>
+              <dd><code>ulimit -Sv 1000000; timeout 5m opam install -y --deps-only coq:contrib:goedel.dev</code></dd>
               <dt>Return code</dt>
               <dd>0</dd>
               <dt>Duration</dt>
-              <dd>2 s</dd>
+              <dd>3 s</dd>
             </dl>
             <h2>Install</h2>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>ulimit -Sv 2000000; timeout 30m opam install -y --verbose coq:contrib:goedel.dev</code></dd>
-              <dt>Return code</dt>
-              <dd>1024</dd>
-              <dt>Duration</dt>
-              <dd>7 s</dd>
-              <dt>Output</dt>
-              <dd><pre>The following actions will be performed:
- - install   coq:contrib:goedel.dev
-=== 1 to install ===
-=-=- Synchronizing package archives -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
-[coq:contrib:goedel] Fetching https://gforge.inria.fr/git/coq-contribs/goedel.git#trunk
-Initialized empty Git repository in /home/bench/.opam/packages.dev/coq:contrib:goedel.dev/.git/
-[master (root-commit) cec430f] opam-git-init
-From https://gforge.inria.fr/git/coq-contribs/goedel
- * [new branch]      trunk      -&gt; opam-ref
- * [new branch]      trunk      -&gt; origin/trunk
-Deduction.v
-LNN.v
-LNN2LNT.v
-LNT.v
-Languages.v
-ListExt.v
-Make
-Makefile
-NN.v
-NN2PA.v
-NNtheory.v
-PA.v
-PAconsistent.v
-PAtheory.v
-PRrepresentable.v
-cPair.v
-chRem.v
-checkPrf.v
-code.v
-codeFreeVar.v
-codeList.v
-codeNatToTerm.v
-codePA.v
-codeSubFormula.v
-codeSubTerm.v
-codeSysPrf.v
-description
-expressible.v
-extEqualNat.v
-fixPoint.v
-fol.v
-folLogic.v
-folLogic2.v
-folLogic3.v
-folProof.v
-folProp.v
-folReplace.v
-goedel1.v
-goedel2.v
-misc.v
-model.v
-prLogic.v
-primRec.v
-rosser.v
-rosserPA.v
-subAll.v
-subProp.v
-vector.v
-wConsistent.v
-wellFormed.v
-HEAD is now at c0ea31d Goedel: fix proof about the internals of Nat.eq_dec
-=-=- Installing packages =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
-Building coq:contrib:goedel.dev:
-  coq_makefile -f Make -o Makefile
-  make -j4
-  make install
-Warning: in option -R, ../../Eindhoven/Pocklington is not a subdirectory of the current directory
-Warning: install rule assumes that -R/-Q . _ is the only -R/-Q optionWarning: install rule assumes that -R/-Q . _ is the only -R/-Q optionWarning: -R/-Q options don&#39;t have a correct common prefix,
- install-doc will put anything in $INSTALLDEFAULTROOT
-&quot;coqdep&quot; -c -R &quot;../../Eindhoven/Pocklington&quot; Pocklington -R &quot;.&quot; Goedel &quot;checkPrf.v&quot; &gt; &quot;checkPrf.v.d&quot; || ( RV=$?; rm -f &quot;checkPrf.v.d&quot;; exit ${RV} )
-&quot;coqdep&quot; -c -R &quot;../../Eindhoven/Pocklington&quot; Pocklington -R &quot;.&quot; Goedel &quot;chRem.v&quot; &gt; &quot;chRem.v.d&quot; || ( RV=$?; rm -f &quot;chRem.v.d&quot;; exit ${RV} )
-&quot;coqdep&quot; -c -R &quot;../../Eindhoven/Pocklington&quot; Pocklington -R &quot;.&quot; Goedel &quot;codeFreeVar.v&quot; &gt; &quot;codeFreeVar.v.d&quot; || ( RV=$?; rm -f &quot;codeFreeVar.v.d&quot;; exit ${RV} )
-&quot;coqdep&quot; -c -R &quot;../../Eindhoven/Pocklington&quot; Pocklington -R &quot;.&quot; Goedel &quot;codeList.v&quot; &gt; &quot;codeList.v.d&quot; || ( RV=$?; rm -f &quot;codeList.v.d&quot;; exit ${RV} )
-*** Warning: cannot open ../../Eindhoven/Pocklington
-*** Warning: cannot open ../../Eindhoven/Pocklington
-*** Warning: cannot open ../../Eindhoven/Pocklington
-*** Warning: cannot open ../../Eindhoven/Pocklington
-&quot;coqdep&quot; -c -R &quot;../../Eindhoven/Pocklington&quot; Pocklington -R &quot;.&quot; Goedel &quot;codeNatToTerm.v&quot; &gt; &quot;codeNatToTerm.v.d&quot; || ( RV=$?; rm -f &quot;codeNatToTerm.v.d&quot;; exit ${RV} )
-&quot;coqdep&quot; -c -R &quot;../../Eindhoven/Pocklington&quot; Pocklington -R &quot;.&quot; Goedel &quot;codePA.v&quot; &gt; &quot;codePA.v.d&quot; || ( RV=$?; rm -f &quot;codePA.v.d&quot;; exit ${RV} )
-*** Warning: cannot open ../../Eindhoven/Pocklington
-*** Warning: cannot open ../../Eindhoven/Pocklington
-*** Warning: in file chRem.v, library gcd.v is required and has not been found in the loadpath!
-*** Warning: in file chRem.v, library divides.v is required and has not been found in the loadpath!
-*** Warning: in file chRem.v, library natZ.v is required and has not been found in the loadpath!
-*** Warning: in file chRem.v, library prime.v is required and has not been found in the loadpath!
-*** Warning: in file chRem.v, library modprime.v is required and has not been found in the loadpath!
-*** Warning: in file chRem.v, library gcd.v is required and has not been found in the loadpath!
-*** Warning: in file chRem.v, library divides.v is required and has not been found in the loadpath!
-*** Warning: in file chRem.v, library natZ.v is required and has not been found in the loadpath!
-*** Warning: in file chRem.v, library prime.v is required and has not been found in the loadpath!
-*** Warning: in file chRem.v, library modprime.v is required and has not been found in the loadpath!
-&quot;coqdep&quot; -c -R &quot;../../Eindhoven/Pocklington&quot; Pocklington -R &quot;.&quot; Goedel &quot;codeSubFormula.v&quot; &gt; &quot;codeSubFormula.v.d&quot; || ( RV=$?; rm -f &quot;codeSubFormula.v.d&quot;; exit ${RV} )
-*** Warning: cannot open ../../Eindhoven/Pocklington
-&quot;coqdep&quot; -c -R &quot;../../Eindhoven/Pocklington&quot; Pocklington -R &quot;.&quot; Goedel &quot;codeSubTerm.v&quot; &gt; &quot;codeSubTerm.v.d&quot; || ( RV=$?; rm -f &quot;codeSubTerm.v.d&quot;; exit ${RV} )
-*** Warning: cannot open ../../Eindhoven/Pocklington
-&quot;coqdep&quot; -c -R &quot;../../Eindhoven/Pocklington&quot; Pocklington -R &quot;.&quot; Goedel &quot;codeSysPrf.v&quot; &gt; &quot;codeSysPrf.v.d&quot; || ( RV=$?; rm -f &quot;codeSysPrf.v.d&quot;; exit ${RV} )
-&quot;coqdep&quot; -c -R &quot;../../Eindhoven/Pocklington&quot; Pocklington -R &quot;.&quot; Goedel &quot;code.v&quot; &gt; &quot;code.v.d&quot; || ( RV=$?; rm -f &quot;code.v.d&quot;; exit ${RV} )
-*** Warning: cannot open ../../Eindhoven/Pocklington
-*** Warning: cannot open ../../Eindhoven/Pocklington
-&quot;coqdep&quot; -c -R &quot;../../Eindhoven/Pocklington&quot; Pocklington -R &quot;.&quot; Goedel &quot;cPair.v&quot; &gt; &quot;cPair.v.d&quot; || ( RV=$?; rm -f &quot;cPair.v.d&quot;; exit ${RV} )
-*** Warning: cannot open ../../Eindhoven/Pocklington
-&quot;coqdep&quot; -c -R &quot;../../Eindhoven/Pocklington&quot; Pocklington -R &quot;.&quot; Goedel &quot;Deduction.v&quot; &gt; &quot;Deduction.v.d&quot; || ( RV=$?; rm -f &quot;Deduction.v.d&quot;; exit ${RV} )
-*** Warning: cannot open ../../Eindhoven/Pocklington
-&quot;coqdep&quot; -c -R &quot;../../Eindhoven/Pocklington&quot; Pocklington -R &quot;.&quot; Goedel &quot;expressible.v&quot; &gt; &quot;expressible.v.d&quot; || ( RV=$?; rm -f &quot;expressible.v.d&quot;; exit ${RV} )
-*** Warning: cannot open ../../Eindhoven/Pocklington
-&quot;coqdep&quot; -c -R &quot;../../Eindhoven/Pocklington&quot; Pocklington -R &quot;.&quot; Goedel &quot;extEqualNat.v&quot; &gt; &quot;extEqualNat.v.d&quot; || ( RV=$?; rm -f &quot;extEqualNat.v.d&quot;; exit ${RV} )
-*** Warning: cannot open ../../Eindhoven/Pocklington
-&quot;coqdep&quot; -c -R &quot;../../Eindhoven/Pocklington&quot; Pocklington -R &quot;.&quot; Goedel &quot;fixPoint.v&quot; &gt; &quot;fixPoint.v.d&quot; || ( RV=$?; rm -f &quot;fixPoint.v.d&quot;; exit ${RV} )
-*** Warning: cannot open ../../Eindhoven/Pocklington
-&quot;coqdep&quot; -c -R &quot;../../Eindhoven/Pocklington&quot; Pocklington -R &quot;.&quot; Goedel &quot;folLogic2.v&quot; &gt; &quot;folLogic2.v.d&quot; || ( RV=$?; rm -f &quot;folLogic2.v.d&quot;; exit ${RV} )
-*** Warning: cannot open ../../Eindhoven/Pocklington
-&quot;coqdep&quot; -c -R &quot;../../Eindhoven/Pocklington&quot; Pocklington -R &quot;.&quot; Goedel &quot;folLogic3.v&quot; &gt; &quot;folLogic3.v.d&quot; || ( RV=$?; rm -f &quot;folLogic3.v.d&quot;; exit ${RV} )
-*** Warning: cannot open ../../Eindhoven/Pocklington
-&quot;coqdep&quot; -c -R &quot;../../Eindhoven/Pocklington&quot; Pocklington -R &quot;.&quot; Goedel &quot;folLogic.v&quot; &gt; &quot;folLogic.v.d&quot; || ( RV=$?; rm -f &quot;folLogic.v.d&quot;; exit ${RV} )
-*** Warning: cannot open ../../Eindhoven/Pocklington
-&quot;coqdep&quot; -c -R &quot;../../Eindhoven/Pocklington&quot; Pocklington -R &quot;.&quot; Goedel &quot;folProof.v&quot; &gt; &quot;folProof.v.d&quot; || ( RV=$?; rm -f &quot;folProof.v.d&quot;; exit ${RV} )
-*** Warning: cannot open ../../Eindhoven/Pocklington
-&quot;coqdep&quot; -c -R &quot;../../Eindhoven/Pocklington&quot; Pocklington -R &quot;.&quot; Goedel &quot;folProp.v&quot; &gt; &quot;folProp.v.d&quot; || ( RV=$?; rm -f &quot;folProp.v.d&quot;; exit ${RV} )
-*** Warning: cannot open ../../Eindhoven/Pocklington
-&quot;coqdep&quot; -c -R &quot;../../Eindhoven/Pocklington&quot; Pocklington -R &quot;.&quot; Goedel &quot;folReplace.v&quot; &gt; &quot;folReplace.v.d&quot; || ( RV=$?; rm -f &quot;folReplace.v.d&quot;; exit ${RV} )
-*** Warning: cannot open ../../Eindhoven/Pocklington
-&quot;coqdep&quot; -c -R &quot;../../Eindhoven/Pocklington&quot; Pocklington -R &quot;.&quot; Goedel &quot;fol.v&quot; &gt; &quot;fol.v.d&quot; || ( RV=$?; rm -f &quot;fol.v.d&quot;; exit ${RV} )
-*** Warning: cannot open ../../Eindhoven/Pocklington
-&quot;coqdep&quot; -c -R &quot;../../Eindhoven/Pocklington&quot; Pocklington -R &quot;.&quot; Goedel &quot;goedel1.v&quot; &gt; &quot;goedel1.v.d&quot; || ( RV=$?; rm -f &quot;goedel1.v.d&quot;; exit ${RV} )
-*** Warning: cannot open ../../Eindhoven/Pocklington
-&quot;coqdep&quot; -c -R &quot;../../Eindhoven/Pocklington&quot; Pocklington -R &quot;.&quot; Goedel &quot;goedel2.v&quot; &gt; &quot;goedel2.v.d&quot; || ( RV=$?; rm -f &quot;goedel2.v.d&quot;; exit ${RV} )
-*** Warning: cannot open ../../Eindhoven/Pocklington
-&quot;coqdep&quot; -c -R &quot;../../Eindhoven/Pocklington&quot; Pocklington -R &quot;.&quot; Goedel &quot;Languages.v&quot; &gt; &quot;Languages.v.d&quot; || ( RV=$?; rm -f &quot;Languages.v.d&quot;; exit ${RV} )
-&quot;coqdep&quot; -c -R &quot;../../Eindhoven/Pocklington&quot; Pocklington -R &quot;.&quot; Goedel &quot;ListExt.v&quot; &gt; &quot;ListExt.v.d&quot; || ( RV=$?; rm -f &quot;ListExt.v.d&quot;; exit ${RV} )
-*** Warning: cannot open ../../Eindhoven/Pocklington
-*** Warning: cannot open ../../Eindhoven/Pocklington
-&quot;coqdep&quot; -c -R &quot;../../Eindhoven/Pocklington&quot; Pocklington -R &quot;.&quot; Goedel &quot;LNN2LNT.v&quot; &gt; &quot;LNN2LNT.v.d&quot; || ( RV=$?; rm -f &quot;LNN2LNT.v.d&quot;; exit ${RV} )
-&quot;coqdep&quot; -c -R &quot;../../Eindhoven/Pocklington&quot; Pocklington -R &quot;.&quot; Goedel &quot;LNN.v&quot; &gt; &quot;LNN.v.d&quot; || ( RV=$?; rm -f &quot;LNN.v.d&quot;; exit ${RV} )
-*** Warning: cannot open ../../Eindhoven/Pocklington
-*** Warning: cannot open ../../Eindhoven/Pocklington
-&quot;coqdep&quot; -c -R &quot;../../Eindhoven/Pocklington&quot; Pocklington -R &quot;.&quot; Goedel &quot;LNT.v&quot; &gt; &quot;LNT.v.d&quot; || ( RV=$?; rm -f &quot;LNT.v.d&quot;; exit ${RV} )
-&quot;coqdep&quot; -c -R &quot;../../Eindhoven/Pocklington&quot; Pocklington -R &quot;.&quot; Goedel &quot;misc.v&quot; &gt; &quot;misc.v.d&quot; || ( RV=$?; rm -f &quot;misc.v.d&quot;; exit ${RV} )
-*** Warning: cannot open ../../Eindhoven/Pocklington
-*** Warning: cannot open ../../Eindhoven/Pocklington
-&quot;coqdep&quot; -c -R &quot;../../Eindhoven/Pocklington&quot; Pocklington -R &quot;.&quot; Goedel &quot;model.v&quot; &gt; &quot;model.v.d&quot; || ( RV=$?; rm -f &quot;model.v.d&quot;; exit ${RV} )
-*** Warning: cannot open ../../Eindhoven/Pocklington
-&quot;coqdep&quot; -c -R &quot;../../Eindhoven/Pocklington&quot; Pocklington -R &quot;.&quot; Goedel &quot;NN2PA.v&quot; &gt; &quot;NN2PA.v.d&quot; || ( RV=$?; rm -f &quot;NN2PA.v.d&quot;; exit ${RV} )
-*** Warning: cannot open ../../Eindhoven/Pocklington
-&quot;coqdep&quot; -c -R &quot;../../Eindhoven/Pocklington&quot; Pocklington -R &quot;.&quot; Goedel &quot;NNtheory.v&quot; &gt; &quot;NNtheory.v.d&quot; || ( RV=$?; rm -f &quot;NNtheory.v.d&quot;; exit ${RV} )
-*** Warning: cannot open ../../Eindhoven/Pocklington
-&quot;coqdep&quot; -c -R &quot;../../Eindhoven/Pocklington&quot; Pocklington -R &quot;.&quot; Goedel &quot;NN.v&quot; &gt; &quot;NN.v.d&quot; || ( RV=$?; rm -f &quot;NN.v.d&quot;; exit ${RV} )
-*** Warning: cannot open ../../Eindhoven/Pocklington
-&quot;coqdep&quot; -c -R &quot;../../Eindhoven/Pocklington&quot; Pocklington -R &quot;.&quot; Goedel &quot;PAconsistent.v&quot; &gt; &quot;PAconsistent.v.d&quot; || ( RV=$?; rm -f &quot;PAconsistent.v.d&quot;; exit ${RV} )
-*** Warning: cannot open ../../Eindhoven/Pocklington
-&quot;coqdep&quot; -c -R &quot;../../Eindhoven/Pocklington&quot; Pocklington -R &quot;.&quot; Goedel &quot;PAtheory.v&quot; &gt; &quot;PAtheory.v.d&quot; || ( RV=$?; rm -f &quot;PAtheory.v.d&quot;; exit ${RV} )
-*** Warning: cannot open ../../Eindhoven/Pocklington
-&quot;coqdep&quot; -c -R &quot;../../Eindhoven/Pocklington&quot; Pocklington -R &quot;.&quot; Goedel &quot;PA.v&quot; &gt; &quot;PA.v.d&quot; || ( RV=$?; rm -f &quot;PA.v.d&quot;; exit ${RV} )
-*** Warning: cannot open ../../Eindhoven/Pocklington
-&quot;coqdep&quot; -c -R &quot;../../Eindhoven/Pocklington&quot; Pocklington -R &quot;.&quot; Goedel &quot;primRec.v&quot; &gt; &quot;primRec.v.d&quot; || ( RV=$?; rm -f &quot;primRec.v.d&quot;; exit ${RV} )
-*** Warning: cannot open ../../Eindhoven/Pocklington
-&quot;coqdep&quot; -c -R &quot;../../Eindhoven/Pocklington&quot; Pocklington -R &quot;.&quot; Goedel &quot;prLogic.v&quot; &gt; &quot;prLogic.v.d&quot; || ( RV=$?; rm -f &quot;prLogic.v.d&quot;; exit ${RV} )
-*** Warning: cannot open ../../Eindhoven/Pocklington
-&quot;coqdep&quot; -c -R &quot;../../Eindhoven/Pocklington&quot; Pocklington -R &quot;.&quot; Goedel &quot;PRrepresentable.v&quot; &gt; &quot;PRrepresentable.v.d&quot; || ( RV=$?; rm -f &quot;PRrepresentable.v.d&quot;; exit ${RV} )
-*** Warning: cannot open ../../Eindhoven/Pocklington
-&quot;coqdep&quot; -c -R &quot;../../Eindhoven/Pocklington&quot; Pocklington -R &quot;.&quot; Goedel &quot;rosserPA.v&quot; &gt; &quot;rosserPA.v.d&quot; || ( RV=$?; rm -f &quot;rosserPA.v.d&quot;; exit ${RV} )
-*** Warning: cannot open ../../Eindhoven/Pocklington
-&quot;coqdep&quot; -c -R &quot;../../Eindhoven/Pocklington&quot; Pocklington -R &quot;.&quot; Goedel &quot;rosser.v&quot; &gt; &quot;rosser.v.d&quot; || ( RV=$?; rm -f &quot;rosser.v.d&quot;; exit ${RV} )
-*** Warning: cannot open ../../Eindhoven/Pocklington
-&quot;coqdep&quot; -c -R &quot;../../Eindhoven/Pocklington&quot; Pocklington -R &quot;.&quot; Goedel &quot;subAll.v&quot; &gt; &quot;subAll.v.d&quot; || ( RV=$?; rm -f &quot;subAll.v.d&quot;; exit ${RV} )
-*** Warning: cannot open ../../Eindhoven/Pocklington
-&quot;coqdep&quot; -c -R &quot;../../Eindhoven/Pocklington&quot; Pocklington -R &quot;.&quot; Goedel &quot;subProp.v&quot; &gt; &quot;subProp.v.d&quot; || ( RV=$?; rm -f &quot;subProp.v.d&quot;; exit ${RV} )
-*** Warning: cannot open ../../Eindhoven/Pocklington
-&quot;coqdep&quot; -c -R &quot;../../Eindhoven/Pocklington&quot; Pocklington -R &quot;.&quot; Goedel &quot;wConsistent.v&quot; &gt; &quot;wConsistent.v.d&quot; || ( RV=$?; rm -f &quot;wConsistent.v.d&quot;; exit ${RV} )
-*** Warning: cannot open ../../Eindhoven/Pocklington
-&quot;coqdep&quot; -c -R &quot;../../Eindhoven/Pocklington&quot; Pocklington -R &quot;.&quot; Goedel &quot;wellFormed.v&quot; &gt; &quot;wellFormed.v.d&quot; || ( RV=$?; rm -f &quot;wellFormed.v.d&quot;; exit ${RV} )
-*** Warning: cannot open ../../Eindhoven/Pocklington
-&quot;coqc&quot;  -q  -R &quot;../../Eindhoven/Pocklington&quot; Pocklington -R &quot;.&quot; Goedel   extEqualNat
-&quot;coqc&quot;  -q  -R &quot;../../Eindhoven/Pocklington&quot; Pocklington -R &quot;.&quot; Goedel   misc
-&quot;coqc&quot;  -q  -R &quot;../../Eindhoven/Pocklington&quot; Pocklington -R &quot;.&quot; Goedel   ListExt
-&quot;coqc&quot;  -q  -R &quot;../../Eindhoven/Pocklington&quot; Pocklington -R &quot;.&quot; Goedel   chRem
-Warning: Cannot open ../../Eindhoven/Pocklington
-Warning: Cannot open ../../Eindhoven/Pocklington
-&quot;coqc&quot;  -q  -R &quot;../../Eindhoven/Pocklington&quot; Pocklington -R &quot;.&quot; Goedel   fol
-Warning: Cannot open ../../Eindhoven/Pocklington
-Warning: Cannot open ../../Eindhoven/Pocklington
-Warning: Cannot open ../../Eindhoven/Pocklington
-File &quot;./chRem.v&quot;, line 3, characters 0-19:
-Error: Cannot find library gcd in loadpath
-Makefile:279: recipe for target &#39;chRem.vo&#39; failed
-make: *** [chRem.vo] Error 1
-make: *** Waiting for unfinished jobs....
-[ERROR] The compilation of coq:contrib:goedel.dev failed.
-Removing coq:contrib:goedel.dev.
-  rm -R /home/bench/.opam/system/lib/coq/user-contrib/goedel
-rm: cannot remove &#39;/home/bench/.opam/system/lib/coq/user-contrib/goedel&#39;: No such file or directory
-#=== ERROR while installing coq:contrib:goedel.dev ============================#
-# opam-version         1.2.0
-# os                   linux
-# command              make -j4
-# path                 /home/bench/.opam/system/build/coq:contrib:goedel.dev
-# compiler             system (4.02.1)
-# exit-code            2
-# env-file             /home/bench/.opam/system/build/coq:contrib:goedel.dev/coq:contrib:goedel-25652-d2c37b.env
-# stdout-file          /home/bench/.opam/system/build/coq:contrib:goedel.dev/coq:contrib:goedel-25652-d2c37b.out
-# stderr-file          /home/bench/.opam/system/build/coq:contrib:goedel.dev/coq:contrib:goedel-25652-d2c37b.err
-### stdout ###
-# ...[truncated]
-# &quot;coqdep&quot; -c -R &quot;../../Eindhoven/Pocklington&quot; Pocklington -R &quot;.&quot; Goedel &quot;subAll.v&quot; &gt; &quot;subAll.v.d&quot; || ( RV=$?; rm -f &quot;subAll.v.d&quot;; exit ${RV} )
-# &quot;coqdep&quot; -c -R &quot;../../Eindhoven/Pocklington&quot; Pocklington -R &quot;.&quot; Goedel &quot;subProp.v&quot; &gt; &quot;subProp.v.d&quot; || ( RV=$?; rm -f &quot;subProp.v.d&quot;; exit ${RV} )
-# &quot;coqdep&quot; -c -R &quot;../../Eindhoven/Pocklington&quot; Pocklington -R &quot;.&quot; Goedel &quot;wConsistent.v&quot; &gt; &quot;wConsistent.v.d&quot; || ( RV=$?; rm -f &quot;wConsistent.v.d&quot;; exit ${RV} )
-# &quot;coqdep&quot; -c -R &quot;../../Eindhoven/Pocklington&quot; Pocklington -R &quot;.&quot; Goedel &quot;wellFormed.v&quot; &gt; &quot;wellFormed.v.d&quot; || ( RV=$?; rm -f &quot;wellFormed.v.d&quot;; exit ${RV} )
-# &quot;coqc&quot;  -q  -R &quot;../../Eindhoven/Pocklington&quot; Pocklington -R &quot;.&quot; Goedel   extEqualNat
-# &quot;coqc&quot;  -q  -R &quot;../../Eindhoven/Pocklington&quot; Pocklington -R &quot;.&quot; Goedel   misc
-# &quot;coqc&quot;  -q  -R &quot;../../Eindhoven/Pocklington&quot; Pocklington -R &quot;.&quot; Goedel   ListExt
-# &quot;coqc&quot;  -q  -R &quot;../../Eindhoven/Pocklington&quot; Pocklington -R &quot;.&quot; Goedel   chRem
-# &quot;coqc&quot;  -q  -R &quot;../../Eindhoven/Pocklington&quot; Pocklington -R &quot;.&quot; Goedel   fol
-# Makefile:279: recipe for target &#39;chRem.vo&#39; failed
-### stderr ###
-# ...[truncated]
-# *** Warning: cannot open ../../Eindhoven/Pocklington
-# Warning: Cannot open ../../Eindhoven/Pocklington
-# Warning: Cannot open ../../Eindhoven/Pocklington
-# Warning: Cannot open ../../Eindhoven/Pocklington
-# Warning: Cannot open ../../Eindhoven/Pocklington
-# Warning: Cannot open ../../Eindhoven/Pocklington
-# File &quot;./chRem.v&quot;, line 3, characters 0-19:
-# Error: Cannot find library gcd in loadpath
-# make: *** [chRem.vo] Error 1
-# make: *** Waiting for unfinished jobs....
-&#39;opam install -y --verbose coq:contrib:goedel.dev&#39; failed.
-</pre></dd>
-            </dl>
-            <h2>Installation size</h2>
-            <p>No files were installed.</p>
-            <h2>Uninstall</h2>
-            <dl class="dl-horizontal">
-              <dt>Command</dt>
-              <dd><code>true</code></dd>
+              <dd><code>ulimit -Sv 4000000; timeout 120m opam install -y --verbose coq:contrib:goedel.dev</code></dd>
               <dt>Return code</dt>
               <dd>0</dd>
               <dt>Duration</dt>
-              <dd>0 s</dd>
+              <dd>1 m 3 s</dd>
+            </dl>
+            <h2>Installation size</h2>
+            <p>Total: 11,800 K</p>
+            <ul>
+              <li>1,323 K <code>lib/coq/user-contrib/Goedel/codeSubFormula.glob</code></li>
+              <li>1,199 K <code>lib/coq/user-contrib/Goedel/PRrepresentable.glob</code></li>
+              <li>644 K <code>lib/coq/user-contrib/Goedel/checkPrf.glob</code></li>
+              <li>408 K <code>lib/coq/user-contrib/Goedel/subProp.glob</code></li>
+              <li>369 K <code>lib/coq/user-contrib/Goedel/codeSubFormula.vo</code></li>
+              <li>363 K <code>lib/coq/user-contrib/Goedel/codeSysPrf.glob</code></li>
+              <li>325 K <code>lib/coq/user-contrib/Goedel/PRrepresentable.vo</code></li>
+              <li>254 K <code>lib/coq/user-contrib/Goedel/checkPrf.vo</code></li>
+              <li>230 K <code>lib/coq/user-contrib/Goedel/subProp.vo</code></li>
+              <li>223 K <code>lib/coq/user-contrib/Goedel/rosserPA.glob</code></li>
+              <li>222 K <code>lib/coq/user-contrib/Goedel/subAll.glob</code></li>
+              <li>200 K <code>lib/coq/user-contrib/Goedel/codeSubFormula.v</code></li>
+              <li>191 K <code>lib/coq/user-contrib/Goedel/primRec.glob</code></li>
+              <li>188 K <code>lib/coq/user-contrib/Goedel/folProp.glob</code></li>
+              <li>187 K <code>lib/coq/user-contrib/Goedel/PRrepresentable.v</code></li>
+              <li>182 K <code>lib/coq/user-contrib/Goedel/wellFormed.glob</code></li>
+              <li>151 K <code>lib/coq/user-contrib/Goedel/codeSysPrf.vo</code></li>
+              <li>142 K <code>lib/coq/user-contrib/Goedel/chRem.glob</code></li>
+              <li>142 K <code>lib/coq/user-contrib/Goedel/primRec.vo</code></li>
+              <li>139 K <code>lib/coq/user-contrib/Goedel/codeFreeVar.glob</code></li>
+              <li>128 K <code>lib/coq/user-contrib/Goedel/codePA.glob</code></li>
+              <li>119 K <code>lib/coq/user-contrib/Goedel/rosserPA.vo</code></li>
+              <li>114 K <code>lib/coq/user-contrib/Goedel/checkPrf.v</code></li>
+              <li>112 K <code>lib/coq/user-contrib/Goedel/folLogic3.glob</code></li>
+              <li>111 K <code>lib/coq/user-contrib/Goedel/subAll.vo</code></li>
+              <li>107 K <code>lib/coq/user-contrib/Goedel/cPair.glob</code></li>
+              <li>107 K <code>lib/coq/user-contrib/Goedel/fol.glob</code></li>
+              <li>103 K <code>lib/coq/user-contrib/Goedel/rosser.glob</code></li>
+              <li>101 K <code>lib/coq/user-contrib/Goedel/folLogic3.vo</code></li>
+              <li>100 K <code>lib/coq/user-contrib/Goedel/folProp.vo</code></li>
+              <li>99 K <code>lib/coq/user-contrib/Goedel/LNN2LNT.vo</code></li>
+              <li>98 K <code>lib/coq/user-contrib/Goedel/fixPoint.glob</code></li>
+              <li>96 K <code>lib/coq/user-contrib/Goedel/model.glob</code></li>
+              <li>93 K <code>lib/coq/user-contrib/Goedel/chRem.vo</code></li>
+              <li>91 K <code>lib/coq/user-contrib/Goedel/codeList.glob</code></li>
+              <li>91 K <code>lib/coq/user-contrib/Goedel/model.vo</code></li>
+              <li>88 K <code>lib/coq/user-contrib/Goedel/LNN2LNT.glob</code></li>
+              <li>87 K <code>lib/coq/user-contrib/Goedel/code.vo</code></li>
+              <li>83 K <code>lib/coq/user-contrib/Goedel/fol.vo</code></li>
+              <li>81 K <code>lib/coq/user-contrib/Goedel/rosser.vo</code></li>
+              <li>80 K <code>lib/coq/user-contrib/Goedel/PAtheory.glob</code></li>
+              <li>74 K <code>lib/coq/user-contrib/Goedel/subProp.v</code></li>
+              <li>74 K <code>lib/coq/user-contrib/Goedel/codePA.vo</code></li>
+              <li>73 K <code>lib/coq/user-contrib/Goedel/codeSubTerm.glob</code></li>
+              <li>72 K <code>lib/coq/user-contrib/Goedel/wellFormed.vo</code></li>
+              <li>67 K <code>lib/coq/user-contrib/Goedel/cPair.vo</code></li>
+              <li>66 K <code>lib/coq/user-contrib/Goedel/PA.vo</code></li>
+              <li>63 K <code>lib/coq/user-contrib/Goedel/codeSysPrf.v</code></li>
+              <li>60 K <code>lib/coq/user-contrib/Goedel/folLogic.glob</code></li>
+              <li>58 K <code>lib/coq/user-contrib/Goedel/LNN.vo</code></li>
+              <li>57 K <code>lib/coq/user-contrib/Goedel/LNT.vo</code></li>
+              <li>56 K <code>lib/coq/user-contrib/Goedel/fixPoint.vo</code></li>
+              <li>55 K <code>lib/coq/user-contrib/Goedel/code.glob</code></li>
+              <li>54 K <code>lib/coq/user-contrib/Goedel/PAtheory.vo</code></li>
+              <li>53 K <code>lib/coq/user-contrib/Goedel/codeFreeVar.vo</code></li>
+              <li>49 K <code>lib/coq/user-contrib/Goedel/folLogic.vo</code></li>
+              <li>48 K <code>lib/coq/user-contrib/Goedel/primRec.v</code></li>
+              <li>48 K <code>lib/coq/user-contrib/Goedel/LNN.glob</code></li>
+              <li>48 K <code>lib/coq/user-contrib/Goedel/rosserPA.v</code></li>
+              <li>45 K <code>lib/coq/user-contrib/Goedel/folLogic2.glob</code></li>
+              <li>45 K <code>lib/coq/user-contrib/Goedel/goedel1.vo</code></li>
+              <li>44 K <code>lib/coq/user-contrib/Goedel/LNT.glob</code></li>
+              <li>43 K <code>lib/coq/user-contrib/Goedel/codeList.vo</code></li>
+              <li>43 K <code>lib/coq/user-contrib/Goedel/subAll.v</code></li>
+              <li>42 K <code>lib/coq/user-contrib/Goedel/goedel2.vo</code></li>
+              <li>40 K <code>lib/coq/user-contrib/Goedel/folReplace.glob</code></li>
+              <li>39 K <code>lib/coq/user-contrib/Goedel/codeSubTerm.vo</code></li>
+              <li>38 K <code>lib/coq/user-contrib/Goedel/expressible.vo</code></li>
+              <li>37 K <code>lib/coq/user-contrib/Goedel/NN.vo</code></li>
+              <li>37 K <code>lib/coq/user-contrib/Goedel/folProof.vo</code></li>
+              <li>37 K <code>lib/coq/user-contrib/Goedel/Languages.vo</code></li>
+              <li>36 K <code>lib/coq/user-contrib/Goedel/folLogic2.vo</code></li>
+              <li>36 K <code>lib/coq/user-contrib/Goedel/PA.glob</code></li>
+              <li>35 K <code>lib/coq/user-contrib/Goedel/goedel1.glob</code></li>
+              <li>34 K <code>lib/coq/user-contrib/Goedel/Deduction.vo</code></li>
+              <li>32 K <code>lib/coq/user-contrib/Goedel/NNtheory.vo</code></li>
+              <li>31 K <code>lib/coq/user-contrib/Goedel/PAconsistent.vo</code></li>
+              <li>30 K <code>lib/coq/user-contrib/Goedel/wellFormed.v</code></li>
+              <li>29 K <code>lib/coq/user-contrib/Goedel/folReplace.vo</code></li>
+              <li>28 K <code>lib/coq/user-contrib/Goedel/chRem.v</code></li>
+              <li>28 K <code>lib/coq/user-contrib/Goedel/folProp.v</code></li>
+              <li>27 K <code>lib/coq/user-contrib/Goedel/NN2PA.vo</code></li>
+              <li>26 K <code>lib/coq/user-contrib/Goedel/codePA.v</code></li>
+              <li>26 K <code>lib/coq/user-contrib/Goedel/NNtheory.glob</code></li>
+              <li>26 K <code>lib/coq/user-contrib/Goedel/wConsistent.vo</code></li>
+              <li>25 K <code>lib/coq/user-contrib/Goedel/NN.glob</code></li>
+              <li>24 K <code>lib/coq/user-contrib/Goedel/expressible.glob</code></li>
+              <li>24 K <code>lib/coq/user-contrib/Goedel/codeNatToTerm.vo</code></li>
+              <li>24 K <code>lib/coq/user-contrib/Goedel/goedel2.glob</code></li>
+              <li>23 K <code>lib/coq/user-contrib/Goedel/rosser.v</code></li>
+              <li>23 K <code>lib/coq/user-contrib/Goedel/codeFreeVar.v</code></li>
+              <li>22 K <code>lib/coq/user-contrib/Goedel/prLogic.vo</code></li>
+              <li>22 K <code>lib/coq/user-contrib/Goedel/LNN2LNT.v</code></li>
+              <li>21 K <code>lib/coq/user-contrib/Goedel/extEqualNat.vo</code></li>
+              <li>21 K <code>lib/coq/user-contrib/Goedel/cPair.v</code></li>
+              <li>20 K <code>lib/coq/user-contrib/Goedel/fol.v</code></li>
+              <li>20 K <code>lib/coq/user-contrib/Goedel/fixPoint.v</code></li>
+              <li>20 K <code>lib/coq/user-contrib/Goedel/folLogic3.v</code></li>
+              <li>19 K <code>lib/coq/user-contrib/Goedel/model.v</code></li>
+              <li>16 K <code>lib/coq/user-contrib/Goedel/codeList.v</code></li>
+              <li>16 K <code>lib/coq/user-contrib/Goedel/Deduction.glob</code></li>
+              <li>16 K <code>lib/coq/user-contrib/Goedel/Languages.glob</code></li>
+              <li>15 K <code>lib/coq/user-contrib/Goedel/PAtheory.v</code></li>
+              <li>15 K <code>lib/coq/user-contrib/Goedel/folProof.glob</code></li>
+              <li>14 K <code>lib/coq/user-contrib/Goedel/ListExt.vo</code></li>
+              <li>12 K <code>lib/coq/user-contrib/Goedel/folLogic.v</code></li>
+              <li>12 K <code>lib/coq/user-contrib/Goedel/codeSubTerm.v</code></li>
+              <li>11 K <code>lib/coq/user-contrib/Goedel/LNN.v</code></li>
+              <li>10 K <code>lib/coq/user-contrib/Goedel/code.v</code></li>
+              <li>10 K <code>lib/coq/user-contrib/Goedel/LNT.v</code></li>
+              <li>9 K <code>lib/coq/user-contrib/Goedel/PA.v</code></li>
+              <li>9 K <code>lib/coq/user-contrib/Goedel/PAconsistent.glob</code></li>
+              <li>8 K <code>lib/coq/user-contrib/Goedel/NN2PA.glob</code></li>
+              <li>8 K <code>lib/coq/user-contrib/Goedel/goedel1.v</code></li>
+              <li>7 K <code>lib/coq/user-contrib/Goedel/ListExt.glob</code></li>
+              <li>7 K <code>lib/coq/user-contrib/Goedel/NN.v</code></li>
+              <li>7 K <code>lib/coq/user-contrib/Goedel/goedel2.v</code></li>
+              <li>7 K <code>lib/coq/user-contrib/Goedel/folLogic2.v</code></li>
+              <li>6 K <code>lib/coq/user-contrib/Goedel/expressible.v</code></li>
+              <li>6 K <code>lib/coq/user-contrib/Goedel/wConsistent.glob</code></li>
+              <li>6 K <code>lib/coq/user-contrib/Goedel/folReplace.v</code></li>
+              <li>5 K <code>lib/coq/user-contrib/Goedel/NNtheory.v</code></li>
+              <li>4 K <code>lib/coq/user-contrib/Goedel/codeNatToTerm.glob</code></li>
+              <li>4 K <code>lib/coq/user-contrib/Goedel/Languages.v</code></li>
+              <li>4 K <code>lib/coq/user-contrib/Goedel/Deduction.v</code></li>
+              <li>3 K <code>lib/coq/user-contrib/Goedel/extEqualNat.glob</code></li>
+              <li>3 K <code>lib/coq/user-contrib/Goedel/misc.glob</code></li>
+              <li>2 K <code>lib/coq/user-contrib/Goedel/folProof.v</code></li>
+              <li>2 K <code>lib/coq/user-contrib/Goedel/PAconsistent.v</code></li>
+              <li>2 K <code>lib/coq/user-contrib/Goedel/NN2PA.v</code></li>
+              <li>2 K <code>lib/coq/user-contrib/Goedel/misc.vo</code></li>
+              <li>2 K <code>lib/coq/user-contrib/Goedel/prLogic.glob</code></li>
+              <li>2 K <code>lib/coq/user-contrib/Goedel/ListExt.v</code></li>
+              <li>1 K <code>lib/coq/user-contrib/Goedel/codeNatToTerm.v</code></li>
+              <li>1 K <code>lib/coq/user-contrib/Goedel/extEqualNat.v</code></li>
+              <li>1 K <code>lib/coq/user-contrib/Goedel/wConsistent.v</code></li>
+              <li>1 K <code>lib/coq/user-contrib/Goedel/misc.v</code></li>
+              <li>1 K <code>lib/coq/user-contrib/Goedel/prLogic.v</code></li>
+              <li>1 K <code>lib/coq:contrib:goedel/opam.config</code></li>
+              <li>1 K <code>install/coq:contrib:goedel.install</code></li>
+            </ul>
+            <h2>Uninstall</h2>
+            <dl class="dl-horizontal">
+              <dt>Command</dt>
+              <dd><code>opam remove -y coq:contrib:goedel.dev</code></dd>
+              <dt>Return code</dt>
+              <dd>0</dd>
+              <dt>Duration</dt>
+              <dd>2 s</dd>
               <dt>Missing removes</dt>
               <dd>
                 none

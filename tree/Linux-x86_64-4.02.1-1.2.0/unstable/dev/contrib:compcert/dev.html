@@ -47,7 +47,7 @@
                 <span class="label label-danger">Error</span>
               </small>
             </h1>
-            <p><em><script>document.write(moment("2015-02-22 08:07:47 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2015-02-22 08:07:47 UTC)</em><p>
+            <p><em><script>document.write(moment("2015-02-28 23:24:41 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2015-02-28 23:24:41 UTC)</em><p>
             <h2>Context</h2>
             <pre># Installed packages for system:
 base-bigarray                               base  Bigarray library distributed w
@@ -64,7 +64,6 @@ coq:contrib:counting                         dev  Counting: a Coq plugin for mea
 coq:contrib:cours-de-coq                     dev  Various examples of Coq proofs
 coq:contrib:ctltctl                          dev  Computation Tree Logic for Rea
 coq:contrib:demos                            dev  Demos of some Coq tools appear
-coq:contrib:dep-map                          dev  Dependent Maps.
 coq:contrib:descente-infinie                 dev  The Descente Infinie Tactic.
 coq:contrib:dictionaries                     dev  Dictionaries (with modules).
 coq:contrib:distributed-reference-counting   dev  A Construction of Distributed 
@@ -83,6 +82,7 @@ coq:contrib:functions-in-zfc                 dev  Functions in classical ZFC.
 coq:contrib:fundamental-arithmetics          dev  Fundamental theorems of arithm
 coq:contrib:gc                               dev  Formal Verification of an Incr
 coq:contrib:generic-environments             dev  Generic_Environments.
+coq:contrib:goedel                           dev  The Gödel-Rosser 1st incomplet
 coq:contrib:graph-basics                     dev  a Coq toolkit for graph theory
 coq:contrib:group-theory                     dev  Elements of Group Theory.
 coq:contrib:groups                           dev  An exercise on groups.
@@ -107,7 +107,6 @@ coq:contrib:lambda                           dev  Residual Theory in Lambda-Calc
 coq:contrib:lambek                           dev  A Coq Toolkit for Lambek Calcu
 coq:contrib:lazy-pcf                         dev  Subject Reduction for Lazy-PCF
 coq:contrib:lc                               dev  Modules over monads and lambda
-coq:contrib:legacy-ring                      dev  The former implementation of t
 coq:contrib:lesniewski-mereology             dev  KDTL.
 coq:contrib:ltl                              dev  Linear Temporal Logic.
 coq:contrib:maple-mode                       dev  A Maple Mode for Coq.
@@ -149,6 +148,7 @@ coq:contrib:ruler-compass-geometry           dev  Ruler and compass geometry axi
 coq:contrib:schroeder                        dev  The Theorem of Schroeder-Berns
 coq:contrib:shuffle                          dev  Gilbreath&#39;s card trick.
 coq:contrib:square-matrices                  dev  From Fast Exponentiation to Sq
+coq:contrib:ssreflect                        dev  Ssreflect extension and the Ma
 coq:contrib:streams                          dev  Specification of Eratosthene S
 coq:contrib:string                           dev  Definition of strings in Coq.
 coq:contrib:subst                            dev  The confluence of Hardin-Lévy 
@@ -165,7 +165,6 @@ coq:contrib:zf                               dev  An axiomatisation of intuition
 coq:contrib:zfc                              dev  An encoding of Zermelo-Fraenke
 coq:contrib:zorns-lemma                      dev  Zorn&#39;s Lemma.
 coq:cunit                                    dev  Unit testing in Coq, at compil
-coq:cybele                                   dev  A Coq plugin for simpler proof
 coq:error-handlers                           dev  Simple and robust error handli
 coq:function-ninjas                          dev  Write readable code using simp
 coq:io-effects                               dev  A library for effects in Coq.
@@ -174,6 +173,7 @@ coq:list-plus                                dev  More functions on lists.
 coq:list-string                              dev  Strings implemented as lists.
 coq:moment                                   dev  Parse, manipulate and pretty-p
 coq:monad                                    dev  A basic definition of monads.
+coq:unicoq                                   dev  An enhanced unification algori
 </pre>
             <h2>Lint</h2>
             <dl class="dl-horizontal">
@@ -206,7 +206,7 @@ coq:monad                                    dev  A basic definition of monads.
             <h2>Install dependencies</h2>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>ulimit -Sv 2000000; timeout 5m opam install -y --deps-only coq:contrib:compcert.dev</code></dd>
+              <dd><code>ulimit -Sv 1000000; timeout 5m opam install -y --deps-only coq:contrib:compcert.dev</code></dd>
               <dt>Return code</dt>
               <dd>0</dd>
               <dt>Duration</dt>
@@ -215,11 +215,11 @@ coq:monad                                    dev  A basic definition of monads.
             <h2>Install</h2>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>ulimit -Sv 2000000; timeout 30m opam install -y --verbose coq:contrib:compcert.dev</code></dd>
+              <dd><code>ulimit -Sv 4000000; timeout 120m opam install -y --verbose coq:contrib:compcert.dev</code></dd>
               <dt>Return code</dt>
               <dd>1024</dd>
               <dt>Duration</dt>
-              <dd>3 m 24 s</dd>
+              <dd>1 m 5 s</dd>
               <dt>Output</dt>
               <dd><pre>The following actions will be performed:
  - install   coq:contrib:compcert.dev
@@ -227,7 +227,7 @@ coq:monad                                    dev  A basic definition of monads.
 =-=- Synchronizing package archives -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 [coq:contrib:compcert] Fetching https://gforge.inria.fr/git/coq-contribs/compcert.git#trunk
 Initialized empty Git repository in /home/bench/.opam/packages.dev/coq:contrib:compcert.dev/.git/
-[master (root-commit) 09f982a] opam-git-init
+[master (root-commit) 6d60bd5] opam-git-init
 From https://gforge.inria.fr/git/coq-contribs/compcert
  * [new branch]      trunk      -&gt; opam-ref
  * [new branch]      trunk      -&gt; origin/trunk
@@ -999,8 +999,8 @@ CompCert configuration:
 If anything above looks wrong, please edit file ./Makefile.config to correct.
 make proof
 make[1]: Entering directory &#39;/home/bench/.opam/system/build/coq:contrib:compcert.dev&#39;
-COQC lib/Coqlib.v
 COQC lib/Axioms.v
+COQC lib/Coqlib.v
 ocamlopt -o tools/ndfun str.cmxa tools/ndfun.ml
 COQC flocq/Core/Fcore_Zaux.v
 File &quot;tools/ndfun.ml&quot;, line 12, characters 10-23:
@@ -1021,18 +1021,18 @@ COQC lib/Intv.v
 COQC lib/Maps.v
 COQC lib/Integers.v
 COQC lib/Iteration.v
-COQC flocq/Core/Fcore_defs.v
 COQC lib/Parmov.v
 COQC lib/UnionFind.v
-COQC lib/Postorder.v
 COQC lib/FSetAVLplus.v
 COQC lib/IntvSets.v
 COQC common/Errors.v
 COQC lib/Lattice.v
+COQC flocq/Core/Fcore_defs.v
+COQC lib/Postorder.v
+COQC common/Subtyping.v
 COQC flocq/Core/Fcore_float_prop.v
 COQC flocq/Core/Fcore_rnd.v
 COQC common/Switch.v
-COQC common/Subtyping.v
 COQC lib/Ordered.v
 COQC flocq/Calc/Fcalc_digits.v
 COQC flocq/Calc/Fcalc_bracket.v
@@ -1044,39 +1044,10 @@ COQC flocq/Calc/Fcalc_sqrt.v
 COQC flocq/Core/Fcore_ulp.v
 COQC flocq/Prop/Fprop_Sterbenz.v
 COQC flocq/Prop/Fprop_plus_error.v
-COQC flocq/Core/Fcore_rnd_ne.v
-COQC flocq/Core/Fcore_FIX.v
-COQC flocq/Core/Fcore_FLX.v
-COQC flocq/Core/Fcore_FLT.v
-COQC flocq/Core/Fcore_FTZ.v
-COQC flocq/Core/Fcore.v
-COQC flocq/Calc/Fcalc_round.v
-COQC flocq/Prop/Fprop_mult_error.v
-COQC flocq/Prop/Fprop_relative.v
-COQC flocq/Appli/Fappli_rnd_odd.v
-COQC flocq/Appli/Fappli_IEEE.v
-COQC flocq/Prop/Fprop_div_sqrt_error.v
-COQC backend/Kildall.v
-COQC flocq/Appli/Fappli_IEEE_bits.v
-COQC ia32/Archi.v
-COQC lib/Floats.v
-COQC common/AST.v
-COQC common/Values.v
-COQC backend/Registers.v
-COQC cfrontend/Ctypes.v
-COQC common/Memdata.v
-COQC common/Memtype.v
-COQC common/Memory.v
-COQC common/Globalenvs.v
-COQC cfrontend/Cop.v
-COQC cfrontend/Csyntax.v
-COQC common/Events.v
-COQC cfrontend/Initializers.v
-COQC common/Smallstep.v
-COQC ia32/Op.v
-Fatal error: out of memory.
-Makefile:201: recipe for target &#39;ia32/Op.vo&#39; failed
-make[1]: *** [ia32/Op.vo] Error 2
+File &quot;./flocq/Core/Fcore_ulp.v&quot;, line 1139, characters 0-10:
+Error: No such goal.
+make[1]: *** [flocq/Core/Fcore_ulp.vo] Error 1
+Makefile:201: recipe for target &#39;flocq/Core/Fcore_ulp.vo&#39; failed
 make[1]: *** Waiting for unfinished jobs....
 make[1]: Leaving directory &#39;/home/bench/.opam/system/build/coq:contrib:compcert.dev&#39;
 Makefile:129: recipe for target &#39;all&#39; failed
@@ -1091,31 +1062,31 @@ Removing coq:contrib:compcert.dev.
 # path                 /home/bench/.opam/system/build/coq:contrib:compcert.dev
 # compiler             system (4.02.1)
 # exit-code            2
-# env-file             /home/bench/.opam/system/build/coq:contrib:compcert.dev/coq:contrib:compcert-6460-e7966f.env
-# stdout-file          /home/bench/.opam/system/build/coq:contrib:compcert.dev/coq:contrib:compcert-6460-e7966f.out
-# stderr-file          /home/bench/.opam/system/build/coq:contrib:compcert.dev/coq:contrib:compcert-6460-e7966f.err
+# env-file             /home/bench/.opam/system/build/coq:contrib:compcert.dev/coq:contrib:compcert-18904-e7966f.env
+# stdout-file          /home/bench/.opam/system/build/coq:contrib:compcert.dev/coq:contrib:compcert-18904-e7966f.out
+# stderr-file          /home/bench/.opam/system/build/coq:contrib:compcert.dev/coq:contrib:compcert-18904-e7966f.err
 ### stdout ###
 # ...[truncated]
-# COQC common/Globalenvs.v
-# COQC cfrontend/Cop.v
-# COQC cfrontend/Csyntax.v
-# COQC common/Events.v
-# COQC cfrontend/Initializers.v
-# COQC common/Smallstep.v
-# COQC ia32/Op.v
-# Makefile:201: recipe for target &#39;ia32/Op.vo&#39; failed
+# COQC lib/Heaps.v
+# COQC flocq/Core/Fcore_generic_fmt.v
+# COQC flocq/Calc/Fcalc_div.v
+# COQC flocq/Calc/Fcalc_sqrt.v
+# COQC flocq/Core/Fcore_ulp.v
+# COQC flocq/Prop/Fprop_Sterbenz.v
+# COQC flocq/Prop/Fprop_plus_error.v
+# Makefile:201: recipe for target &#39;flocq/Core/Fcore_ulp.vo&#39; failed
 # make[1]: Leaving directory &#39;/home/bench/.opam/system/build/coq:contrib:compcert.dev&#39;
 # Makefile:129: recipe for target &#39;all&#39; failed
 ### stderr ###
 # ...[truncated]
-# File &quot;tools/ndfun.ml&quot;, line 12, characters 10-23:
 # Warning 3: deprecated: String.create
 # Use Bytes.create instead.
 # File &quot;tools/ndfun.ml&quot;, line 14, characters 4-52:
 # Warning 3: deprecated: String.set
 # Use Bytes.set instead.
-# Fatal error: out of memory.
-# make[1]: *** [ia32/Op.vo] Error 2
+# File &quot;./flocq/Core/Fcore_ulp.v&quot;, line 1139, characters 0-10:
+# Error: No such goal.
+# make[1]: *** [flocq/Core/Fcore_ulp.vo] Error 1
 # make[1]: *** Waiting for unfinished jobs....
 # make: *** [all] Error 2
 &#39;opam install -y --verbose coq:contrib:compcert.dev&#39; failed.

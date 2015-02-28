@@ -47,7 +47,7 @@
                 <span class="label label-danger">Error</span>
               </small>
             </h1>
-            <p><em><script>document.write(moment("2015-02-22 08:07:47 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2015-02-22 08:07:47 UTC)</em><p>
+            <p><em><script>document.write(moment("2015-02-28 23:24:41 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2015-02-28 23:24:41 UTC)</em><p>
             <h2>Context</h2>
             <pre># Installed packages for system:
 base-bigarray                        base  Bigarray library distributed with the
@@ -69,6 +69,7 @@ coq:contrib:functions-in-zfc          dev  Functions in classical ZFC.
 coq:contrib:fundamental-arithmetics   dev  Fundamental theorems of arithmetic.
 coq:contrib:gc                        dev  Formal Verification of an Incremental
 coq:contrib:generic-environments      dev  Generic_Environments.
+coq:contrib:goedel                    dev  The Gödel-Rosser 1st incompleteness t
 coq:contrib:graph-basics              dev  a Coq toolkit for graph theory.
 coq:contrib:group-theory              dev  Elements of Group Theory.
 coq:contrib:groups                    dev  An exercise on groups.
@@ -93,7 +94,6 @@ coq:contrib:lambda                    dev  Residual Theory in Lambda-Calculus.
 coq:contrib:lambek                    dev  A Coq Toolkit for Lambek Calculus.
 coq:contrib:lazy-pcf                  dev  Subject Reduction for Lazy-PCF.
 coq:contrib:lc                        dev  Modules over monads and lambda-calcul
-coq:contrib:legacy-ring               dev  The former implementation of the ring
 coq:contrib:lesniewski-mereology      dev  KDTL.
 coq:contrib:ltl                       dev  Linear Temporal Logic.
 coq:contrib:maple-mode                dev  A Maple Mode for Coq.
@@ -135,6 +135,7 @@ coq:contrib:ruler-compass-geometry    dev  Ruler and compass geometry axiomatiza
 coq:contrib:schroeder                 dev  The Theorem of Schroeder-Bernstein.
 coq:contrib:shuffle                   dev  Gilbreath&#39;s card trick.
 coq:contrib:square-matrices           dev  From Fast Exponentiation to Square Ma
+coq:contrib:ssreflect                 dev  Ssreflect extension and the Mathemati
 coq:contrib:streams                   dev  Specification of Eratosthene Sieve.
 coq:contrib:string                    dev  Definition of strings in Coq.
 coq:contrib:subst                     dev  The confluence of Hardin-Lévy lambda-
@@ -151,7 +152,6 @@ coq:contrib:zf                        dev  An axiomatisation of intuitionistic Z
 coq:contrib:zfc                       dev  An encoding of Zermelo-Fraenkel Set T
 coq:contrib:zorns-lemma               dev  Zorn&#39;s Lemma.
 coq:cunit                             dev  Unit testing in Coq, at compile time.
-coq:cybele                            dev  A Coq plugin for simpler proofs by re
 coq:error-handlers                    dev  Simple and robust error handling func
 coq:function-ninjas                   dev  Write readable code using simple func
 coq:io-effects                        dev  A library for effects in Coq.
@@ -160,6 +160,7 @@ coq:list-plus                         dev  More functions on lists.
 coq:list-string                       dev  Strings implemented as lists.
 coq:moment                            dev  Parse, manipulate and pretty-print da
 coq:monad                             dev  A basic definition of monads.
+coq:unicoq                            dev  An enhanced unification algorithm for
 </pre>
             <h2>Lint</h2>
             <dl class="dl-horizontal">
@@ -192,20 +193,20 @@ coq:monad                             dev  A basic definition of monads.
             <h2>Install dependencies</h2>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>ulimit -Sv 2000000; timeout 5m opam install -y --deps-only coq:contrib:ergo.dev</code></dd>
+              <dd><code>ulimit -Sv 1000000; timeout 5m opam install -y --deps-only coq:contrib:ergo.dev</code></dd>
               <dt>Return code</dt>
               <dd>0</dd>
               <dt>Duration</dt>
-              <dd>2 s</dd>
+              <dd>3 s</dd>
             </dl>
             <h2>Install</h2>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>ulimit -Sv 2000000; timeout 30m opam install -y --verbose coq:contrib:ergo.dev</code></dd>
+              <dd><code>ulimit -Sv 4000000; timeout 120m opam install -y --verbose coq:contrib:ergo.dev</code></dd>
               <dt>Return code</dt>
               <dd>1024</dd>
               <dt>Duration</dt>
-              <dd>8 s</dd>
+              <dd>7 s</dd>
               <dt>Output</dt>
               <dd><pre>The following actions will be performed:
  - install   coq:contrib:ergo.dev
@@ -213,7 +214,7 @@ coq:monad                             dev  A basic definition of monads.
 =-=- Synchronizing package archives -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 [coq:contrib:ergo] Fetching https://gforge.inria.fr/git/coq-contribs/ergo.git#trunk
 Initialized empty Git repository in /home/bench/.opam/packages.dev/coq:contrib:ergo.dev/.git/
-[master (root-commit) 89a7c47] opam-git-init
+[master (root-commit) e5160ab] opam-git-init
 From https://gforge.inria.fr/git/coq-contribs/ergo
  * [new branch]      trunk      -&gt; opam-ref
  * [new branch]      trunk      -&gt; origin/trunk
@@ -275,24 +276,24 @@ Building coq:contrib:ergo.dev:
   coq_makefile -f Make -o Makefile
   make -j4
   make install
-Warning: in option -R, ../Counting/theories is not a subdirectory of the current directory
+Warning: in option -R/-Q, ../Counting/theories is not a subdirectory of the current directory
 Warning: -R/-Q options don&#39;t have a correct common prefix,
  install-doc will put anything in $INSTALLDEFAULTROOT
 ocamldep.opt -slash -I &quot;../Counting/src&quot; -I &quot;../Nfix/src&quot; -I &quot;../Containers/src&quot; -I &quot;src&quot; &quot;src/ergo.mli&quot; &gt; &quot;src/ergo.mli.d&quot; || ( RV=$?; rm -f &quot;src/ergo.mli.d&quot;; exit ${RV} )
 &quot;coqdep&quot; -c -I &quot;../Counting/src&quot; -I &quot;../Nfix/src&quot; -I &quot;../Containers/src&quot; -I &quot;src&quot; &quot;src/ergo_plugin.mllib&quot; &gt; &quot;src/ergo_plugin.mllib.d&quot; || ( RV=$?; rm -f &quot;src/ergo_plugin.mllib.d&quot;; exit ${RV} )
 ocamldep.opt -slash -I &quot;../Counting/src&quot; -I &quot;../Nfix/src&quot; -I &quot;../Containers/src&quot; -I &quot;src&quot; &quot;src/arith.ml&quot; &gt; &quot;src/arith.ml.d&quot; || ( RV=$?; rm -f &quot;src/arith.ml.d&quot;; exit ${RV} )
 ocamldep.opt -slash -I &quot;../Counting/src&quot; -I &quot;../Nfix/src&quot; -I &quot;../Containers/src&quot; -I &quot;src&quot; &quot;src/ergo_plugin_mod.ml&quot; &gt; &quot;src/ergo_plugin_mod.ml.d&quot; || ( RV=$?; rm -f &quot;src/ergo_plugin_mod.ml.d&quot;; exit ${RV} )
+Bad -I option: ../Containers/src: No such file or directory
+Bad -I option: ../Nfix/src: No such file or directory
+Bad -I option: ../Counting/src: No such file or directory
 *** Warning: cannot open ../Counting/src
 *** Warning: cannot open ../Nfix/src
 *** Warning: cannot open ../Containers/src
 Bad -I option: ../Containers/src: No such file or directory
-Bad -I option: ../Containers/src: No such file or directory
-Bad -I option: ../Containers/src: No such file or directory
-Bad -I option: ../Nfix/src: No such file or directory
-Bad -I option: ../Nfix/src: No such file or directory
 Bad -I option: ../Nfix/src: No such file or directory
 Bad -I option: ../Counting/src: No such file or directory
-Bad -I option: ../Counting/src: No such file or directory
+Bad -I option: ../Containers/src: No such file or directory
+Bad -I option: ../Nfix/src: No such file or directory
 Bad -I option: ../Counting/src: No such file or directory
 &quot;coqdep&quot; -c -I &quot;../Counting/src&quot; -I &quot;../Nfix/src&quot; -I &quot;../Containers/src&quot; -I &quot;src&quot; &quot;src/ergo.ml4&quot; &gt; &quot;src/ergo.ml4.d&quot; || ( RV=$?; rm -f &quot;src/ergo.ml4.d&quot;; exit ${RV} )
 &quot;coqdep&quot; -c -R &quot;../Counting/theories&quot; Counting -R &quot;../Nfix/theories&quot; Nfix -R &quot;../Containers/theories&quot; Containers -R &quot;theories&quot; Ergo -R &quot;tests&quot; Tests -I &quot;../Counting/src&quot; -I &quot;../Nfix/src&quot; -I &quot;../Containers/src&quot; -I &quot;src&quot; &quot;theories/Adequation.v&quot; &gt; &quot;theories/Adequation.v.d&quot; || ( RV=$?; rm -f &quot;theories/Adequation.v.d&quot;; exit ${RV} )
@@ -303,12 +304,12 @@ Bad -I option: ../Counting/src: No such file or directory
 *** Warning: cannot open ../Counting/theories
 *** Warning: cannot open ../Nfix/theories
 *** Warning: cannot open ../Containers/theories
-*** Warning: cannot open ../Counting/src
-*** Warning: cannot open ../Nfix/src
-*** Warning: cannot open ../Containers/src
 *** Warning: cannot open ../Counting/theories
 *** Warning: cannot open ../Nfix/theories
 *** Warning: cannot open ../Containers/theories
+*** Warning: cannot open ../Counting/src
+*** Warning: cannot open ../Nfix/src
+*** Warning: cannot open ../Containers/src
 *** Warning: cannot open ../Counting/src
 *** Warning: cannot open ../Nfix/src
 *** Warning: cannot open ../Containers/src
@@ -321,19 +322,13 @@ Bad -I option: ../Counting/src: No such file or directory
 *** Warning: cannot open ../Nfix/src
 *** Warning: cannot open ../Containers/src
 &quot;coqdep&quot; -c -R &quot;../Counting/theories&quot; Counting -R &quot;../Nfix/theories&quot; Nfix -R &quot;../Containers/theories&quot; Containers -R &quot;theories&quot; Ergo -R &quot;tests&quot; Tests -I &quot;../Counting/src&quot; -I &quot;../Nfix/src&quot; -I &quot;../Containers/src&quot; -I &quot;src&quot; &quot;theories/CCX.v&quot; &gt; &quot;theories/CCX.v.d&quot; || ( RV=$?; rm -f &quot;theories/CCX.v.d&quot;; exit ${RV} )
+*** Warning: cannot open ../Counting/theories
+*** Warning: cannot open ../Nfix/theories
+*** Warning: cannot open ../Containers/theories
+*** Warning: cannot open ../Counting/src
+*** Warning: cannot open ../Nfix/src
+*** Warning: cannot open ../Containers/src
 &quot;coqdep&quot; -c -R &quot;../Counting/theories&quot; Counting -R &quot;../Nfix/theories&quot; Nfix -R &quot;../Containers/theories&quot; Containers -R &quot;theories&quot; Ergo -R &quot;tests&quot; Tests -I &quot;../Counting/src&quot; -I &quot;../Nfix/src&quot; -I &quot;../Containers/src&quot; -I &quot;src&quot; &quot;theories/CNFLazyCommon.v&quot; &gt; &quot;theories/CNFLazyCommon.v.d&quot; || ( RV=$?; rm -f &quot;theories/CNFLazyCommon.v.d&quot;; exit ${RV} )
-*** Warning: cannot open ../Counting/theories
-*** Warning: cannot open ../Nfix/theories
-*** Warning: cannot open ../Containers/theories
-*** Warning: cannot open ../Counting/src
-*** Warning: cannot open ../Nfix/src
-*** Warning: cannot open ../Counting/theories
-*** Warning: cannot open ../Containers/src
-*** Warning: cannot open ../Nfix/theories
-*** Warning: cannot open ../Containers/theories
-*** Warning: cannot open ../Counting/src
-*** Warning: cannot open ../Nfix/src
-*** Warning: cannot open ../Containers/src
 *** Warning: ergo.ml4 already found in src (discarding src/ergo.ml4)
 &quot;coqdep&quot; -c -R &quot;../Counting/theories&quot; Counting -R &quot;../Nfix/theories&quot; Nfix -R &quot;../Containers/theories&quot; Containers -R &quot;theories&quot; Ergo -R &quot;tests&quot; Tests -I &quot;../Counting/src&quot; -I &quot;../Nfix/src&quot; -I &quot;../Containers/src&quot; -I &quot;src&quot; &quot;theories/CNFLazyN.v&quot; &gt; &quot;theories/CNFLazyN.v.d&quot; || ( RV=$?; rm -f &quot;theories/CNFLazyN.v.d&quot;; exit ${RV} )
 *** Warning: cannot open ../Counting/theories
@@ -342,7 +337,6 @@ Bad -I option: ../Counting/src: No such file or directory
 *** Warning: cannot open ../Counting/src
 *** Warning: cannot open ../Nfix/src
 *** Warning: cannot open ../Containers/src
-&quot;coqdep&quot; -c -R &quot;../Counting/theories&quot; Counting -R &quot;../Nfix/theories&quot; Nfix -R &quot;../Containers/theories&quot; Containers -R &quot;theories&quot; Ergo -R &quot;tests&quot; Tests -I &quot;../Counting/src&quot; -I &quot;../Nfix/src&quot; -I &quot;../Containers/src&quot; -I &quot;src&quot; &quot;theories/CNFLazy.v&quot; &gt; &quot;theories/CNFLazy.v.d&quot; || ( RV=$?; rm -f &quot;theories/CNFLazy.v.d&quot;; exit ${RV} )
 *** Warning: cannot open ../Counting/theories
 *** Warning: cannot open ../Nfix/theories
 *** Warning: cannot open ../Containers/theories
@@ -351,11 +345,18 @@ Bad -I option: ../Counting/src: No such file or directory
 *** Warning: cannot open ../Containers/src
 *** Warning: in file theories/CCX.v, library Counting.v is required and has not been found in the loadpath!
 *** Warning: in file theories/CCX.v, library Sets.v is required and has not been found in the loadpath!
+*** Warning: in file theories/CCX.v, library Counting.v is required and has not been found in the loadpath!
+*** Warning: in file theories/CCX.v, library Sets.v is required and has not been found in the loadpath!
+&quot;coqdep&quot; -c -R &quot;../Counting/theories&quot; Counting -R &quot;../Nfix/theories&quot; Nfix -R &quot;../Containers/theories&quot; Containers -R &quot;theories&quot; Ergo -R &quot;tests&quot; Tests -I &quot;../Counting/src&quot; -I &quot;../Nfix/src&quot; -I &quot;../Containers/src&quot; -I &quot;src&quot; &quot;theories/CNFLazy.v&quot; &gt; &quot;theories/CNFLazy.v.d&quot; || ( RV=$?; rm -f &quot;theories/CNFLazy.v.d&quot;; exit ${RV} )
+*** Warning: cannot open ../Counting/theories
+*** Warning: cannot open ../Nfix/theories
+*** Warning: cannot open ../Containers/theories
+*** Warning: cannot open ../Counting/src
+*** Warning: cannot open ../Nfix/src
+*** Warning: cannot open ../Containers/src
 *** Warning: in file theories/CNFLazyCommon.v, library Sets.v is required and has not been found in the loadpath!
 *** Warning: in file theories/CNFLazyCommon.v, library Sets.v is required and has not been found in the loadpath!
 &quot;coqdep&quot; -c -R &quot;../Counting/theories&quot; Counting -R &quot;../Nfix/theories&quot; Nfix -R &quot;../Containers/theories&quot; Containers -R &quot;theories&quot; Ergo -R &quot;tests&quot; Tests -I &quot;../Counting/src&quot; -I &quot;../Nfix/src&quot; -I &quot;../Containers/src&quot; -I &quot;src&quot; &quot;theories/Cnf.v&quot; &gt; &quot;theories/Cnf.v.d&quot; || ( RV=$?; rm -f &quot;theories/Cnf.v.d&quot;; exit ${RV} )
-*** Warning: in file theories/CCX.v, library Counting.v is required and has not been found in the loadpath!
-*** Warning: in file theories/CCX.v, library Sets.v is required and has not been found in the loadpath!
 *** Warning: cannot open ../Counting/theories
 *** Warning: cannot open ../Nfix/theories
 *** Warning: cannot open ../Containers/theories
@@ -387,12 +388,8 @@ Bad -I option: ../Counting/src: No such file or directory
 *** Warning: cannot open ../Counting/src
 *** Warning: cannot open ../Nfix/src
 *** Warning: cannot open ../Containers/src
-*** Warning: in file theories/CPolynoms.v, library Maps.v is required and has not been found in the loadpath!
-*** Warning: in file theories/CPolynoms.v, library MapFacts.v is required and has not been found in the loadpath!
-*** Warning: in file theories/CPolynoms.v, library Containers.OrderedTypeEx.v is required and has not been found in the loadpath!
-*** Warning: in file theories/CPolynoms.v, library Maps.v is required and has not been found in the loadpath!
-*** Warning: in file theories/CPolynoms.v, library MapFacts.v is required and has not been found in the loadpath!
-*** Warning: in file theories/CPolynoms.v, library Containers.OrderedTypeEx.v is required and has not been found in the loadpath!
+*** Warning: in file theories/Cnf.v, library Sets.v is required and has not been found in the loadpath!
+*** Warning: in file theories/Cnf.v, library Sets.v is required and has not been found in the loadpath!
 &quot;coqdep&quot; -c -R &quot;../Counting/theories&quot; Counting -R &quot;../Nfix/theories&quot; Nfix -R &quot;../Containers/theories&quot; Containers -R &quot;theories&quot; Ergo -R &quot;tests&quot; Tests -I &quot;../Counting/src&quot; -I &quot;../Nfix/src&quot; -I &quot;../Containers/src&quot; -I &quot;src&quot; &quot;theories/DistrNeg.v&quot; &gt; &quot;theories/DistrNeg.v.d&quot; || ( RV=$?; rm -f &quot;theories/DistrNeg.v.d&quot;; exit ${RV} )
 *** Warning: cannot open ../Counting/theories
 *** Warning: cannot open ../Nfix/theories
@@ -400,8 +397,12 @@ Bad -I option: ../Counting/src: No such file or directory
 *** Warning: cannot open ../Counting/src
 *** Warning: cannot open ../Nfix/src
 *** Warning: cannot open ../Containers/src
-*** Warning: in file theories/Cnf.v, library Sets.v is required and has not been found in the loadpath!
-*** Warning: in file theories/Cnf.v, library Sets.v is required and has not been found in the loadpath!
+*** Warning: in file theories/CPolynoms.v, library Maps.v is required and has not been found in the loadpath!
+*** Warning: in file theories/CPolynoms.v, library MapFacts.v is required and has not been found in the loadpath!
+*** Warning: in file theories/CPolynoms.v, library Containers.OrderedTypeEx.v is required and has not been found in the loadpath!
+*** Warning: in file theories/CPolynoms.v, library Maps.v is required and has not been found in the loadpath!
+*** Warning: in file theories/CPolynoms.v, library MapFacts.v is required and has not been found in the loadpath!
+*** Warning: in file theories/CPolynoms.v, library Containers.OrderedTypeEx.v is required and has not been found in the loadpath!
 &quot;coqdep&quot; -c -R &quot;../Counting/theories&quot; Counting -R &quot;../Nfix/theories&quot; Nfix -R &quot;../Containers/theories&quot; Containers -R &quot;theories&quot; Ergo -R &quot;tests&quot; Tests -I &quot;../Counting/src&quot; -I &quot;../Nfix/src&quot; -I &quot;../Containers/src&quot; -I &quot;src&quot; &quot;theories/DoubleNegUtils.v&quot; &gt; &quot;theories/DoubleNegUtils.v.d&quot; || ( RV=$?; rm -f &quot;theories/DoubleNegUtils.v.d&quot;; exit ${RV} )
 *** Warning: cannot open ../Counting/theories
 *** Warning: cannot open ../Nfix/theories
@@ -466,13 +467,13 @@ Bad -I option: ../Counting/src: No such file or directory
 *** Warning: cannot open ../Nfix/src
 *** Warning: cannot open ../Containers/src
 &quot;coqdep&quot; -c -R &quot;../Counting/theories&quot; Counting -R &quot;../Nfix/theories&quot; Nfix -R &quot;../Containers/theories&quot; Containers -R &quot;theories&quot; Ergo -R &quot;tests&quot; Tests -I &quot;../Counting/src&quot; -I &quot;../Nfix/src&quot; -I &quot;../Containers/src&quot; -I &quot;src&quot; &quot;theories/Lexico.v&quot; &gt; &quot;theories/Lexico.v.d&quot; || ( RV=$?; rm -f &quot;theories/Lexico.v.d&quot;; exit ${RV} )
+&quot;coqdep&quot; -c -R &quot;../Counting/theories&quot; Counting -R &quot;../Nfix/theories&quot; Nfix -R &quot;../Containers/theories&quot; Containers -R &quot;theories&quot; Ergo -R &quot;tests&quot; Tests -I &quot;../Counting/src&quot; -I &quot;../Nfix/src&quot; -I &quot;../Containers/src&quot; -I &quot;src&quot; &quot;theories/Literal.v&quot; &gt; &quot;theories/Literal.v.d&quot; || ( RV=$?; rm -f &quot;theories/Literal.v.d&quot;; exit ${RV} )
 *** Warning: cannot open ../Counting/theories
 *** Warning: cannot open ../Nfix/theories
 *** Warning: cannot open ../Containers/theories
 *** Warning: cannot open ../Counting/src
 *** Warning: cannot open ../Nfix/src
 *** Warning: cannot open ../Containers/src
-&quot;coqdep&quot; -c -R &quot;../Counting/theories&quot; Counting -R &quot;../Nfix/theories&quot; Nfix -R &quot;../Containers/theories&quot; Containers -R &quot;theories&quot; Ergo -R &quot;tests&quot; Tests -I &quot;../Counting/src&quot; -I &quot;../Nfix/src&quot; -I &quot;../Containers/src&quot; -I &quot;src&quot; &quot;theories/Literal.v&quot; &gt; &quot;theories/Literal.v.d&quot; || ( RV=$?; rm -f &quot;theories/Literal.v.d&quot;; exit ${RV} )
 *** Warning: cannot open ../Counting/theories
 *** Warning: cannot open ../Nfix/theories
 *** Warning: cannot open ../Containers/theories
@@ -501,6 +502,10 @@ Bad -I option: ../Counting/src: No such file or directory
 *** Warning: cannot open ../Counting/src
 *** Warning: cannot open ../Nfix/src
 *** Warning: cannot open ../Containers/src
+*** Warning: in file theories/LLazy.v, library Containers.OrderedType.v is required and has not been found in the loadpath!
+*** Warning: in file theories/LLazy.v, library Generate.v is required and has not been found in the loadpath!
+*** Warning: in file theories/LLazy.v, library Containers.OrderedType.v is required and has not been found in the loadpath!
+*** Warning: in file theories/LLazy.v, library Generate.v is required and has not been found in the loadpath!
 &quot;coqdep&quot; -c -R &quot;../Counting/theories&quot; Counting -R &quot;../Nfix/theories&quot; Nfix -R &quot;../Containers/theories&quot; Containers -R &quot;theories&quot; Ergo -R &quot;tests&quot; Tests -I &quot;../Counting/src&quot; -I &quot;../Nfix/src&quot; -I &quot;../Containers/src&quot; -I &quot;src&quot; &quot;theories/Rational.v&quot; &gt; &quot;theories/Rational.v.d&quot; || ( RV=$?; rm -f &quot;theories/Rational.v.d&quot;; exit ${RV} )
 *** Warning: cannot open ../Counting/theories
 *** Warning: cannot open ../Nfix/theories
@@ -513,20 +518,16 @@ Bad -I option: ../Counting/src: No such file or directory
 *** Warning: in file theories/Literal.v, library Sets.v is required and has not been found in the loadpath!
 *** Warning: in file theories/Literal.v, library SetListInstance.v is required and has not been found in the loadpath!
 &quot;coqdep&quot; -c -R &quot;../Counting/theories&quot; Counting -R &quot;../Nfix/theories&quot; Nfix -R &quot;../Containers/theories&quot; Containers -R &quot;theories&quot; Ergo -R &quot;tests&quot; Tests -I &quot;../Counting/src&quot; -I &quot;../Nfix/src&quot; -I &quot;../Containers/src&quot; -I &quot;src&quot; &quot;theories/SatCaml.v&quot; &gt; &quot;theories/SatCaml.v.d&quot; || ( RV=$?; rm -f &quot;theories/SatCaml.v.d&quot;; exit ${RV} )
+&quot;coqdep&quot; -c -R &quot;../Counting/theories&quot; Counting -R &quot;../Nfix/theories&quot; Nfix -R &quot;../Containers/theories&quot; Containers -R &quot;theories&quot; Ergo -R &quot;tests&quot; Tests -I &quot;../Counting/src&quot; -I &quot;../Nfix/src&quot; -I &quot;../Containers/src&quot; -I &quot;src&quot; &quot;theories/Sat.v&quot; &gt; &quot;theories/Sat.v.d&quot; || ( RV=$?; rm -f &quot;theories/Sat.v.d&quot;; exit ${RV} )
+*** Warning: cannot open ../Counting/theories
+*** Warning: cannot open ../Nfix/theories
+*** Warning: cannot open ../Containers/theories
 *** Warning: cannot open ../Counting/theories
 *** Warning: cannot open ../Nfix/theories
 *** Warning: cannot open ../Containers/theories
 *** Warning: cannot open ../Counting/src
 *** Warning: cannot open ../Nfix/src
 *** Warning: cannot open ../Containers/src
-*** Warning: in file theories/LLazy.v, library Containers.OrderedType.v is required and has not been found in the loadpath!
-*** Warning: in file theories/LLazy.v, library Generate.v is required and has not been found in the loadpath!
-*** Warning: in file theories/LLazy.v, library Containers.OrderedType.v is required and has not been found in the loadpath!
-*** Warning: in file theories/LLazy.v, library Generate.v is required and has not been found in the loadpath!
-&quot;coqdep&quot; -c -R &quot;../Counting/theories&quot; Counting -R &quot;../Nfix/theories&quot; Nfix -R &quot;../Containers/theories&quot; Containers -R &quot;theories&quot; Ergo -R &quot;tests&quot; Tests -I &quot;../Counting/src&quot; -I &quot;../Nfix/src&quot; -I &quot;../Containers/src&quot; -I &quot;src&quot; &quot;theories/Sat.v&quot; &gt; &quot;theories/Sat.v.d&quot; || ( RV=$?; rm -f &quot;theories/Sat.v.d&quot;; exit ${RV} )
-*** Warning: cannot open ../Counting/theories
-*** Warning: cannot open ../Nfix/theories
-*** Warning: cannot open ../Containers/theories
 *** Warning: cannot open ../Counting/src
 *** Warning: cannot open ../Nfix/src
 *** Warning: cannot open ../Containers/src
@@ -550,22 +551,22 @@ Bad -I option: ../Counting/src: No such file or directory
 *** Warning: cannot open ../Counting/src
 *** Warning: cannot open ../Nfix/src
 *** Warning: cannot open ../Containers/src
+*** Warning: in file theories/Sat.v, library SetProperties.v is required and has not been found in the loadpath!
+*** Warning: in file theories/Sat.v, library SetEqProperties.v is required and has not been found in the loadpath!
+*** Warning: in file theories/Sat.v, declared ML module omega_plugin has not been found!
 *** Warning: in file theories/SatCaml.v, library Sets.v is required and has not been found in the loadpath!
 *** Warning: in file theories/SatCaml.v, library Sets.v is required and has not been found in the loadpath!
+*** Warning: in file theories/Sat.v, library SetProperties.v is required and has not been found in the loadpath!
+*** Warning: in file theories/Sat.v, library SetEqProperties.v is required and has not been found in the loadpath!
+*** Warning: in file theories/Sat.v, declared ML module omega_plugin has not been found!
 &quot;coqdep&quot; -c -R &quot;../Counting/theories&quot; Counting -R &quot;../Nfix/theories&quot; Nfix -R &quot;../Containers/theories&quot; Containers -R &quot;theories&quot; Ergo -R &quot;tests&quot; Tests -I &quot;../Counting/src&quot; -I &quot;../Nfix/src&quot; -I &quot;../Containers/src&quot; -I &quot;src&quot; &quot;theories/TacticLazy.v&quot; &gt; &quot;theories/TacticLazy.v.d&quot; || ( RV=$?; rm -f &quot;theories/TacticLazy.v.d&quot;; exit ${RV} )
+&quot;coqdep&quot; -c -R &quot;../Counting/theories&quot; Counting -R &quot;../Nfix/theories&quot; Nfix -R &quot;../Containers/theories&quot; Containers -R &quot;theories&quot; Ergo -R &quot;tests&quot; Tests -I &quot;../Counting/src&quot; -I &quot;../Nfix/src&quot; -I &quot;../Containers/src&quot; -I &quot;src&quot; &quot;theories/TermUtils.v&quot; &gt; &quot;theories/TermUtils.v.d&quot; || ( RV=$?; rm -f &quot;theories/TermUtils.v.d&quot;; exit ${RV} )
 *** Warning: cannot open ../Counting/theories
 *** Warning: cannot open ../Nfix/theories
 *** Warning: cannot open ../Containers/theories
 *** Warning: cannot open ../Counting/src
 *** Warning: cannot open ../Nfix/src
 *** Warning: cannot open ../Containers/src
-*** Warning: in file theories/Sat.v, library SetProperties.v is required and has not been found in the loadpath!
-*** Warning: in file theories/Sat.v, library SetEqProperties.v is required and has not been found in the loadpath!
-*** Warning: in file theories/Sat.v, declared ML module omega_plugin has not been found!
-*** Warning: in file theories/Sat.v, library SetProperties.v is required and has not been found in the loadpath!
-*** Warning: in file theories/Sat.v, library SetEqProperties.v is required and has not been found in the loadpath!
-*** Warning: in file theories/Sat.v, declared ML module omega_plugin has not been found!
-&quot;coqdep&quot; -c -R &quot;../Counting/theories&quot; Counting -R &quot;../Nfix/theories&quot; Nfix -R &quot;../Containers/theories&quot; Containers -R &quot;theories&quot; Ergo -R &quot;tests&quot; Tests -I &quot;../Counting/src&quot; -I &quot;../Nfix/src&quot; -I &quot;../Containers/src&quot; -I &quot;src&quot; &quot;theories/TermUtils.v&quot; &gt; &quot;theories/TermUtils.v.d&quot; || ( RV=$?; rm -f &quot;theories/TermUtils.v.d&quot;; exit ${RV} )
 *** Warning: cannot open ../Counting/theories
 *** Warning: cannot open ../Nfix/theories
 *** Warning: cannot open ../Containers/theories
@@ -604,13 +605,13 @@ Bad -I option: ../Counting/src: No such file or directory
 *** Warning: in file theories/TermUtils.v, library Nfix.v is required and has not been found in the loadpath!
 *** Warning: in file theories/TermUtils.v, library Generate.v is required and has not been found in the loadpath!
 &quot;coqdep&quot; -c -R &quot;../Counting/theories&quot; Counting -R &quot;../Nfix/theories&quot; Nfix -R &quot;../Containers/theories&quot; Containers -R &quot;theories&quot; Ergo -R &quot;tests&quot; Tests -I &quot;../Counting/src&quot; -I &quot;../Nfix/src&quot; -I &quot;../Containers/src&quot; -I &quot;src&quot; &quot;theories/Uf.v&quot; &gt; &quot;theories/Uf.v.d&quot; || ( RV=$?; rm -f &quot;theories/Uf.v.d&quot;; exit ${RV} )
+&quot;coqdep&quot; -c -R &quot;../Counting/theories&quot; Counting -R &quot;../Nfix/theories&quot; Nfix -R &quot;../Containers/theories&quot; Containers -R &quot;theories&quot; Ergo -R &quot;tests&quot; Tests -I &quot;../Counting/src&quot; -I &quot;../Nfix/src&quot; -I &quot;../Containers/src&quot; -I &quot;src&quot; &quot;theories/Use.v&quot; &gt; &quot;theories/Use.v.d&quot; || ( RV=$?; rm -f &quot;theories/Use.v.d&quot;; exit ${RV} )
 *** Warning: cannot open ../Counting/theories
 *** Warning: cannot open ../Nfix/theories
 *** Warning: cannot open ../Containers/theories
 *** Warning: cannot open ../Counting/src
 *** Warning: cannot open ../Nfix/src
 *** Warning: cannot open ../Containers/src
-&quot;coqdep&quot; -c -R &quot;../Counting/theories&quot; Counting -R &quot;../Nfix/theories&quot; Nfix -R &quot;../Containers/theories&quot; Containers -R &quot;theories&quot; Ergo -R &quot;tests&quot; Tests -I &quot;../Counting/src&quot; -I &quot;../Nfix/src&quot; -I &quot;../Containers/src&quot; -I &quot;src&quot; &quot;theories/Use.v&quot; &gt; &quot;theories/Use.v.d&quot; || ( RV=$?; rm -f &quot;theories/Use.v.d&quot;; exit ${RV} )
 *** Warning: cannot open ../Counting/theories
 *** Warning: cannot open ../Nfix/theories
 *** Warning: cannot open ../Containers/theories
@@ -635,26 +636,26 @@ Bad -I option: ../Counting/src: No such file or directory
 *** Warning: cannot open ../Counting/src
 *** Warning: cannot open ../Nfix/src
 *** Warning: cannot open ../Containers/src
+*** Warning: in file theories/Use.v, library Maps.v is required and has not been found in the loadpath!
+*** Warning: in file theories/Use.v, library Sets.v is required and has not been found in the loadpath!
+*** Warning: in file theories/Use.v, library SetProperties.v is required and has not been found in the loadpath!
 *** Warning: in file theories/Uf.v, library Sets.v is required and has not been found in the loadpath!
 *** Warning: in file theories/Uf.v, library Maps.v is required and has not been found in the loadpath!
+*** Warning: in file theories/Use.v, library Maps.v is required and has not been found in the loadpath!
+*** Warning: in file theories/Use.v, library Sets.v is required and has not been found in the loadpath!
+*** Warning: in file theories/Use.v, library SetProperties.v is required and has not been found in the loadpath!
 *** Warning: in file theories/Uf.v, library SetEqProperties.v is required and has not been found in the loadpath!
 *** Warning: in file theories/Uf.v, library Sets.v is required and has not been found in the loadpath!
 *** Warning: in file theories/Uf.v, library Maps.v is required and has not been found in the loadpath!
-*** Warning: in file theories/Uf.v, library SetEqProperties.v is required and has not been found in the loadpath!
 &quot;coqdep&quot; -c -R &quot;../Counting/theories&quot; Counting -R &quot;../Nfix/theories&quot; Nfix -R &quot;../Containers/theories&quot; Containers -R &quot;theories&quot; Ergo -R &quot;tests&quot; Tests -I &quot;../Counting/src&quot; -I &quot;../Nfix/src&quot; -I &quot;../Containers/src&quot; -I &quot;src&quot; &quot;tests/EinsteinEasy2.v&quot; &gt; &quot;tests/EinsteinEasy2.v.d&quot; || ( RV=$?; rm -f &quot;tests/EinsteinEasy2.v.d&quot;; exit ${RV} )
+*** Warning: in file theories/Uf.v, library SetEqProperties.v is required and has not been found in the loadpath!
+&quot;coqdep&quot; -c -R &quot;../Counting/theories&quot; Counting -R &quot;../Nfix/theories&quot; Nfix -R &quot;../Containers/theories&quot; Containers -R &quot;theories&quot; Ergo -R &quot;tests&quot; Tests -I &quot;../Counting/src&quot; -I &quot;../Nfix/src&quot; -I &quot;../Containers/src&quot; -I &quot;src&quot; &quot;tests/EinsteinEasy.v&quot; &gt; &quot;tests/EinsteinEasy.v.d&quot; || ( RV=$?; rm -f &quot;tests/EinsteinEasy.v.d&quot;; exit ${RV} )
 *** Warning: cannot open ../Counting/theories
 *** Warning: cannot open ../Nfix/theories
 *** Warning: cannot open ../Containers/theories
 *** Warning: cannot open ../Counting/src
 *** Warning: cannot open ../Nfix/src
 *** Warning: cannot open ../Containers/src
-*** Warning: in file theories/Use.v, library Maps.v is required and has not been found in the loadpath!
-*** Warning: in file theories/Use.v, library Sets.v is required and has not been found in the loadpath!
-*** Warning: in file theories/Use.v, library SetProperties.v is required and has not been found in the loadpath!
-*** Warning: in file theories/Use.v, library Maps.v is required and has not been found in the loadpath!
-*** Warning: in file theories/Use.v, library Sets.v is required and has not been found in the loadpath!
-*** Warning: in file theories/Use.v, library SetProperties.v is required and has not been found in the loadpath!
-&quot;coqdep&quot; -c -R &quot;../Counting/theories&quot; Counting -R &quot;../Nfix/theories&quot; Nfix -R &quot;../Containers/theories&quot; Containers -R &quot;theories&quot; Ergo -R &quot;tests&quot; Tests -I &quot;../Counting/src&quot; -I &quot;../Nfix/src&quot; -I &quot;../Containers/src&quot; -I &quot;src&quot; &quot;tests/EinsteinEasy.v&quot; &gt; &quot;tests/EinsteinEasy.v.d&quot; || ( RV=$?; rm -f &quot;tests/EinsteinEasy.v.d&quot;; exit ${RV} )
 *** Warning: cannot open ../Counting/theories
 *** Warning: cannot open ../Nfix/theories
 *** Warning: cannot open ../Containers/theories
@@ -670,8 +671,6 @@ Bad -I option: ../Counting/src: No such file or directory
 *** Warning: cannot open ../Counting/src
 *** Warning: cannot open ../Nfix/src
 *** Warning: cannot open ../Containers/src
-*** Warning: in file tests/Demo.v, library Counting.v is required and has not been found in the loadpath!
-*** Warning: in file tests/Demo.v, library Counting.v is required and has not been found in the loadpath!
 &quot;coqdep&quot; -c -R &quot;../Counting/theories&quot; Counting -R &quot;../Nfix/theories&quot; Nfix -R &quot;../Containers/theories&quot; Containers -R &quot;theories&quot; Ergo -R &quot;tests&quot; Tests -I &quot;../Counting/src&quot; -I &quot;../Nfix/src&quot; -I &quot;../Containers/src&quot; -I &quot;src&quot; &quot;tests/GeneratorsNG.v&quot; &gt; &quot;tests/GeneratorsNG.v.d&quot; || ( RV=$?; rm -f &quot;tests/GeneratorsNG.v.d&quot;; exit ${RV} )
 *** Warning: cannot open ../Counting/theories
 *** Warning: cannot open ../Nfix/theories
@@ -686,6 +685,8 @@ Bad -I option: ../Counting/src: No such file or directory
 *** Warning: cannot open ../Counting/src
 *** Warning: cannot open ../Nfix/src
 *** Warning: cannot open ../Containers/src
+*** Warning: in file tests/Demo.v, library Counting.v is required and has not been found in the loadpath!
+*** Warning: in file tests/Demo.v, library Counting.v is required and has not been found in the loadpath!
 &quot;coqdep&quot; -c -R &quot;../Counting/theories&quot; Counting -R &quot;../Nfix/theories&quot; Nfix -R &quot;../Containers/theories&quot; Containers -R &quot;theories&quot; Ergo -R &quot;tests&quot; Tests -I &quot;../Counting/src&quot; -I &quot;../Nfix/src&quot; -I &quot;../Containers/src&quot; -I &quot;src&quot; &quot;tests/TestErgo.v&quot; &gt; &quot;tests/TestErgo.v.d&quot; || ( RV=$?; rm -f &quot;tests/TestErgo.v.d&quot;; exit ${RV} )
 *** Warning: cannot open ../Counting/theories
 *** Warning: cannot open ../Nfix/theories
@@ -705,11 +706,11 @@ Bad -I option: ../Counting/src: No such file or directory
 Bad -I option: ../Containers/src: No such file or directory
 Bad -I option: ../Nfix/src: No such file or directory
 Bad -I option: ../Counting/src: No such file or directory
-ocamlc.opt -c -rectypes -thread  -I &quot;../Counting/src&quot; -I &quot;../Nfix/src&quot; -I &quot;../Containers/src&quot; -I &quot;src&quot; -I &quot;/home/bench/.opam/system/lib/coq/kernel&quot; -I &quot;/home/bench/.opam/system/lib/coq/lib&quot; -I &quot;/home/bench/.opam/system/lib/coq/library&quot; -I &quot;/home/bench/.opam/system/lib/coq/parsing&quot; -I &quot;/home/bench/.opam/system/lib/coq/pretyping&quot; -I &quot;/home/bench/.opam/system/lib/coq/interp&quot; -I &quot;/home/bench/.opam/system/lib/coq/printing&quot; -I &quot;/home/bench/.opam/system/lib/coq/intf&quot; -I &quot;/home/bench/.opam/system/lib/coq/proofs&quot; -I &quot;/home/bench/.opam/system/lib/coq/tactics&quot; -I &quot;/home/bench/.opam/system/lib/coq/tools&quot; -I &quot;/home/bench/.opam/system/lib/coq/toplevel&quot; -I &quot;/home/bench/.opam/system/lib/coq/stm&quot; -I &quot;/home/bench/.opam/system/lib/coq/grammar&quot; -I &quot;/home/bench/.opam/system/lib/coq/config&quot; -I &quot;/home/bench/.opam/system/lib/coq//plugins/btauto&quot; -I &quot;/home/bench/.opam/system/lib/coq//plugins/cc&quot; -I &quot;/home/bench/.opam/system/lib/coq//plugins/decl_mode&quot; -I &quot;/home/bench/.opam/system/lib/coq//plugins/derive&quot; -I &quot;/home/bench/.opam/system/lib/coq//plugins/extraction&quot; -I &quot;/home/bench/.opam/system/lib/coq//plugins/firstorder&quot; -I &quot;/home/bench/.opam/system/lib/coq//plugins/fourier&quot; -I &quot;/home/bench/.opam/system/lib/coq//plugins/funind&quot; -I &quot;/home/bench/.opam/system/lib/coq//plugins/micromega&quot; -I &quot;/home/bench/.opam/system/lib/coq//plugins/nsatz&quot; -I &quot;/home/bench/.opam/system/lib/coq//plugins/omega&quot; -I &quot;/home/bench/.opam/system/lib/coq//plugins/quote&quot; -I &quot;/home/bench/.opam/system/lib/coq//plugins/romega&quot; -I &quot;/home/bench/.opam/system/lib/coq//plugins/rtauto&quot; -I &quot;/home/bench/.opam/system/lib/coq//plugins/setoid_ring&quot; -I &quot;/home/bench/.opam/system/lib/coq//plugins/syntax&quot; -I &quot;/home/bench/.opam/system/lib/coq//plugins/xml&quot; -I /home/bench/.opam/system/lib/camlp5 src/arith.ml
-ocamlc.opt -c -rectypes -thread  -I &quot;../Counting/src&quot; -I &quot;../Nfix/src&quot; -I &quot;../Containers/src&quot; -I &quot;src&quot; -I &quot;/home/bench/.opam/system/lib/coq/kernel&quot; -I &quot;/home/bench/.opam/system/lib/coq/lib&quot; -I &quot;/home/bench/.opam/system/lib/coq/library&quot; -I &quot;/home/bench/.opam/system/lib/coq/parsing&quot; -I &quot;/home/bench/.opam/system/lib/coq/pretyping&quot; -I &quot;/home/bench/.opam/system/lib/coq/interp&quot; -I &quot;/home/bench/.opam/system/lib/coq/printing&quot; -I &quot;/home/bench/.opam/system/lib/coq/intf&quot; -I &quot;/home/bench/.opam/system/lib/coq/proofs&quot; -I &quot;/home/bench/.opam/system/lib/coq/tactics&quot; -I &quot;/home/bench/.opam/system/lib/coq/tools&quot; -I &quot;/home/bench/.opam/system/lib/coq/toplevel&quot; -I &quot;/home/bench/.opam/system/lib/coq/stm&quot; -I &quot;/home/bench/.opam/system/lib/coq/grammar&quot; -I &quot;/home/bench/.opam/system/lib/coq/config&quot; -I &quot;/home/bench/.opam/system/lib/coq//plugins/btauto&quot; -I &quot;/home/bench/.opam/system/lib/coq//plugins/cc&quot; -I &quot;/home/bench/.opam/system/lib/coq//plugins/decl_mode&quot; -I &quot;/home/bench/.opam/system/lib/coq//plugins/derive&quot; -I &quot;/home/bench/.opam/system/lib/coq//plugins/extraction&quot; -I &quot;/home/bench/.opam/system/lib/coq//plugins/firstorder&quot; -I &quot;/home/bench/.opam/system/lib/coq//plugins/fourier&quot; -I &quot;/home/bench/.opam/system/lib/coq//plugins/funind&quot; -I &quot;/home/bench/.opam/system/lib/coq//plugins/micromega&quot; -I &quot;/home/bench/.opam/system/lib/coq//plugins/nsatz&quot; -I &quot;/home/bench/.opam/system/lib/coq//plugins/omega&quot; -I &quot;/home/bench/.opam/system/lib/coq//plugins/quote&quot; -I &quot;/home/bench/.opam/system/lib/coq//plugins/romega&quot; -I &quot;/home/bench/.opam/system/lib/coq//plugins/rtauto&quot; -I &quot;/home/bench/.opam/system/lib/coq//plugins/setoid_ring&quot; -I &quot;/home/bench/.opam/system/lib/coq//plugins/syntax&quot; -I &quot;/home/bench/.opam/system/lib/coq//plugins/xml&quot; -I /home/bench/.opam/system/lib/camlp5 src/ergo.mli
-ocamlc.opt -c -rectypes -thread  -I &quot;../Counting/src&quot; -I &quot;../Nfix/src&quot; -I &quot;../Containers/src&quot; -I &quot;src&quot; -I &quot;/home/bench/.opam/system/lib/coq/kernel&quot; -I &quot;/home/bench/.opam/system/lib/coq/lib&quot; -I &quot;/home/bench/.opam/system/lib/coq/library&quot; -I &quot;/home/bench/.opam/system/lib/coq/parsing&quot; -I &quot;/home/bench/.opam/system/lib/coq/pretyping&quot; -I &quot;/home/bench/.opam/system/lib/coq/interp&quot; -I &quot;/home/bench/.opam/system/lib/coq/printing&quot; -I &quot;/home/bench/.opam/system/lib/coq/intf&quot; -I &quot;/home/bench/.opam/system/lib/coq/proofs&quot; -I &quot;/home/bench/.opam/system/lib/coq/tactics&quot; -I &quot;/home/bench/.opam/system/lib/coq/tools&quot; -I &quot;/home/bench/.opam/system/lib/coq/toplevel&quot; -I &quot;/home/bench/.opam/system/lib/coq/stm&quot; -I &quot;/home/bench/.opam/system/lib/coq/grammar&quot; -I &quot;/home/bench/.opam/system/lib/coq/config&quot; -I &quot;/home/bench/.opam/system/lib/coq//plugins/btauto&quot; -I &quot;/home/bench/.opam/system/lib/coq//plugins/cc&quot; -I &quot;/home/bench/.opam/system/lib/coq//plugins/decl_mode&quot; -I &quot;/home/bench/.opam/system/lib/coq//plugins/derive&quot; -I &quot;/home/bench/.opam/system/lib/coq//plugins/extraction&quot; -I &quot;/home/bench/.opam/system/lib/coq//plugins/firstorder&quot; -I &quot;/home/bench/.opam/system/lib/coq//plugins/fourier&quot; -I &quot;/home/bench/.opam/system/lib/coq//plugins/funind&quot; -I &quot;/home/bench/.opam/system/lib/coq//plugins/micromega&quot; -I &quot;/home/bench/.opam/system/lib/coq//plugins/nsatz&quot; -I &quot;/home/bench/.opam/system/lib/coq//plugins/omega&quot; -I &quot;/home/bench/.opam/system/lib/coq//plugins/quote&quot; -I &quot;/home/bench/.opam/system/lib/coq//plugins/romega&quot; -I &quot;/home/bench/.opam/system/lib/coq//plugins/rtauto&quot; -I &quot;/home/bench/.opam/system/lib/coq//plugins/setoid_ring&quot; -I &quot;/home/bench/.opam/system/lib/coq//plugins/syntax&quot; -I &quot;/home/bench/.opam/system/lib/coq//plugins/xml&quot; -I /home/bench/.opam/system/lib/camlp5 src/ergo_plugin_mod.ml
-ocamlopt.opt -c -rectypes -thread  -I &quot;../Counting/src&quot; -I &quot;../Nfix/src&quot; -I &quot;../Containers/src&quot; -I &quot;src&quot; -I &quot;/home/bench/.opam/system/lib/coq/kernel&quot; -I &quot;/home/bench/.opam/system/lib/coq/lib&quot; -I &quot;/home/bench/.opam/system/lib/coq/library&quot; -I &quot;/home/bench/.opam/system/lib/coq/parsing&quot; -I &quot;/home/bench/.opam/system/lib/coq/pretyping&quot; -I &quot;/home/bench/.opam/system/lib/coq/interp&quot; -I &quot;/home/bench/.opam/system/lib/coq/printing&quot; -I &quot;/home/bench/.opam/system/lib/coq/intf&quot; -I &quot;/home/bench/.opam/system/lib/coq/proofs&quot; -I &quot;/home/bench/.opam/system/lib/coq/tactics&quot; -I &quot;/home/bench/.opam/system/lib/coq/tools&quot; -I &quot;/home/bench/.opam/system/lib/coq/toplevel&quot; -I &quot;/home/bench/.opam/system/lib/coq/stm&quot; -I &quot;/home/bench/.opam/system/lib/coq/grammar&quot; -I &quot;/home/bench/.opam/system/lib/coq/config&quot; -I &quot;/home/bench/.opam/system/lib/coq//plugins/btauto&quot; -I &quot;/home/bench/.opam/system/lib/coq//plugins/cc&quot; -I &quot;/home/bench/.opam/system/lib/coq//plugins/decl_mode&quot; -I &quot;/home/bench/.opam/system/lib/coq//plugins/derive&quot; -I &quot;/home/bench/.opam/system/lib/coq//plugins/extraction&quot; -I &quot;/home/bench/.opam/system/lib/coq//plugins/firstorder&quot; -I &quot;/home/bench/.opam/system/lib/coq//plugins/fourier&quot; -I &quot;/home/bench/.opam/system/lib/coq//plugins/funind&quot; -I &quot;/home/bench/.opam/system/lib/coq//plugins/micromega&quot; -I &quot;/home/bench/.opam/system/lib/coq//plugins/nsatz&quot; -I &quot;/home/bench/.opam/system/lib/coq//plugins/omega&quot; -I &quot;/home/bench/.opam/system/lib/coq//plugins/quote&quot; -I &quot;/home/bench/.opam/system/lib/coq//plugins/romega&quot; -I &quot;/home/bench/.opam/system/lib/coq//plugins/rtauto&quot; -I &quot;/home/bench/.opam/system/lib/coq//plugins/setoid_ring&quot; -I &quot;/home/bench/.opam/system/lib/coq//plugins/syntax&quot; -I &quot;/home/bench/.opam/system/lib/coq//plugins/xml&quot; -I /home/bench/.opam/system/lib/camlp5 src/arith.ml
-ocamlopt.opt -c -rectypes -thread  -I &quot;../Counting/src&quot; -I &quot;../Nfix/src&quot; -I &quot;../Containers/src&quot; -I &quot;src&quot; -I &quot;/home/bench/.opam/system/lib/coq/kernel&quot; -I &quot;/home/bench/.opam/system/lib/coq/lib&quot; -I &quot;/home/bench/.opam/system/lib/coq/library&quot; -I &quot;/home/bench/.opam/system/lib/coq/parsing&quot; -I &quot;/home/bench/.opam/system/lib/coq/pretyping&quot; -I &quot;/home/bench/.opam/system/lib/coq/interp&quot; -I &quot;/home/bench/.opam/system/lib/coq/printing&quot; -I &quot;/home/bench/.opam/system/lib/coq/intf&quot; -I &quot;/home/bench/.opam/system/lib/coq/proofs&quot; -I &quot;/home/bench/.opam/system/lib/coq/tactics&quot; -I &quot;/home/bench/.opam/system/lib/coq/tools&quot; -I &quot;/home/bench/.opam/system/lib/coq/toplevel&quot; -I &quot;/home/bench/.opam/system/lib/coq/stm&quot; -I &quot;/home/bench/.opam/system/lib/coq/grammar&quot; -I &quot;/home/bench/.opam/system/lib/coq/config&quot; -I &quot;/home/bench/.opam/system/lib/coq//plugins/btauto&quot; -I &quot;/home/bench/.opam/system/lib/coq//plugins/cc&quot; -I &quot;/home/bench/.opam/system/lib/coq//plugins/decl_mode&quot; -I &quot;/home/bench/.opam/system/lib/coq//plugins/derive&quot; -I &quot;/home/bench/.opam/system/lib/coq//plugins/extraction&quot; -I &quot;/home/bench/.opam/system/lib/coq//plugins/firstorder&quot; -I &quot;/home/bench/.opam/system/lib/coq//plugins/fourier&quot; -I &quot;/home/bench/.opam/system/lib/coq//plugins/funind&quot; -I &quot;/home/bench/.opam/system/lib/coq//plugins/micromega&quot; -I &quot;/home/bench/.opam/system/lib/coq//plugins/nsatz&quot; -I &quot;/home/bench/.opam/system/lib/coq//plugins/omega&quot; -I &quot;/home/bench/.opam/system/lib/coq//plugins/quote&quot; -I &quot;/home/bench/.opam/system/lib/coq//plugins/romega&quot; -I &quot;/home/bench/.opam/system/lib/coq//plugins/rtauto&quot; -I &quot;/home/bench/.opam/system/lib/coq//plugins/setoid_ring&quot; -I &quot;/home/bench/.opam/system/lib/coq//plugins/syntax&quot; -I &quot;/home/bench/.opam/system/lib/coq//plugins/xml&quot; -I /home/bench/.opam/system/lib/camlp5 src/ergo_plugin_mod.ml
+ocamlc.opt -c -rectypes -thread  -I &quot;../Counting/src&quot; -I &quot;../Nfix/src&quot; -I &quot;../Containers/src&quot; -I &quot;src&quot; -I &quot;/home/bench/.opam/system/lib/coq/kernel&quot; -I &quot;/home/bench/.opam/system/lib/coq/lib&quot; -I &quot;/home/bench/.opam/system/lib/coq/library&quot; -I &quot;/home/bench/.opam/system/lib/coq/parsing&quot; -I &quot;/home/bench/.opam/system/lib/coq/engine&quot; -I &quot;/home/bench/.opam/system/lib/coq/pretyping&quot; -I &quot;/home/bench/.opam/system/lib/coq/interp&quot; -I &quot;/home/bench/.opam/system/lib/coq/printing&quot; -I &quot;/home/bench/.opam/system/lib/coq/intf&quot; -I &quot;/home/bench/.opam/system/lib/coq/proofs&quot; -I &quot;/home/bench/.opam/system/lib/coq/tactics&quot; -I &quot;/home/bench/.opam/system/lib/coq/tools&quot; -I &quot;/home/bench/.opam/system/lib/coq/toplevel&quot; -I &quot;/home/bench/.opam/system/lib/coq/stm&quot; -I &quot;/home/bench/.opam/system/lib/coq/grammar&quot; -I &quot;/home/bench/.opam/system/lib/coq/config&quot; -I &quot;/home/bench/.opam/system/lib/coq//plugins/btauto&quot; -I &quot;/home/bench/.opam/system/lib/coq//plugins/cc&quot; -I &quot;/home/bench/.opam/system/lib/coq//plugins/decl_mode&quot; -I &quot;/home/bench/.opam/system/lib/coq//plugins/derive&quot; -I &quot;/home/bench/.opam/system/lib/coq//plugins/extraction&quot; -I &quot;/home/bench/.opam/system/lib/coq//plugins/firstorder&quot; -I &quot;/home/bench/.opam/system/lib/coq//plugins/fourier&quot; -I &quot;/home/bench/.opam/system/lib/coq//plugins/funind&quot; -I &quot;/home/bench/.opam/system/lib/coq//plugins/micromega&quot; -I &quot;/home/bench/.opam/system/lib/coq//plugins/nsatz&quot; -I &quot;/home/bench/.opam/system/lib/coq//plugins/omega&quot; -I &quot;/home/bench/.opam/system/lib/coq//plugins/quote&quot; -I &quot;/home/bench/.opam/system/lib/coq//plugins/romega&quot; -I &quot;/home/bench/.opam/system/lib/coq//plugins/rtauto&quot; -I &quot;/home/bench/.opam/system/lib/coq//plugins/setoid_ring&quot; -I &quot;/home/bench/.opam/system/lib/coq//plugins/syntax&quot; -I &quot;/home/bench/.opam/system/lib/coq//plugins/xml&quot; -I /home/bench/.opam/system/lib/camlp5 src/arith.ml
+ocamlc.opt -c -rectypes -thread  -I &quot;../Counting/src&quot; -I &quot;../Nfix/src&quot; -I &quot;../Containers/src&quot; -I &quot;src&quot; -I &quot;/home/bench/.opam/system/lib/coq/kernel&quot; -I &quot;/home/bench/.opam/system/lib/coq/lib&quot; -I &quot;/home/bench/.opam/system/lib/coq/library&quot; -I &quot;/home/bench/.opam/system/lib/coq/parsing&quot; -I &quot;/home/bench/.opam/system/lib/coq/engine&quot; -I &quot;/home/bench/.opam/system/lib/coq/pretyping&quot; -I &quot;/home/bench/.opam/system/lib/coq/interp&quot; -I &quot;/home/bench/.opam/system/lib/coq/printing&quot; -I &quot;/home/bench/.opam/system/lib/coq/intf&quot; -I &quot;/home/bench/.opam/system/lib/coq/proofs&quot; -I &quot;/home/bench/.opam/system/lib/coq/tactics&quot; -I &quot;/home/bench/.opam/system/lib/coq/tools&quot; -I &quot;/home/bench/.opam/system/lib/coq/toplevel&quot; -I &quot;/home/bench/.opam/system/lib/coq/stm&quot; -I &quot;/home/bench/.opam/system/lib/coq/grammar&quot; -I &quot;/home/bench/.opam/system/lib/coq/config&quot; -I &quot;/home/bench/.opam/system/lib/coq//plugins/btauto&quot; -I &quot;/home/bench/.opam/system/lib/coq//plugins/cc&quot; -I &quot;/home/bench/.opam/system/lib/coq//plugins/decl_mode&quot; -I &quot;/home/bench/.opam/system/lib/coq//plugins/derive&quot; -I &quot;/home/bench/.opam/system/lib/coq//plugins/extraction&quot; -I &quot;/home/bench/.opam/system/lib/coq//plugins/firstorder&quot; -I &quot;/home/bench/.opam/system/lib/coq//plugins/fourier&quot; -I &quot;/home/bench/.opam/system/lib/coq//plugins/funind&quot; -I &quot;/home/bench/.opam/system/lib/coq//plugins/micromega&quot; -I &quot;/home/bench/.opam/system/lib/coq//plugins/nsatz&quot; -I &quot;/home/bench/.opam/system/lib/coq//plugins/omega&quot; -I &quot;/home/bench/.opam/system/lib/coq//plugins/quote&quot; -I &quot;/home/bench/.opam/system/lib/coq//plugins/romega&quot; -I &quot;/home/bench/.opam/system/lib/coq//plugins/rtauto&quot; -I &quot;/home/bench/.opam/system/lib/coq//plugins/setoid_ring&quot; -I &quot;/home/bench/.opam/system/lib/coq//plugins/syntax&quot; -I &quot;/home/bench/.opam/system/lib/coq//plugins/xml&quot; -I /home/bench/.opam/system/lib/camlp5 src/ergo.mli
+ocamlc.opt -c -rectypes -thread  -I &quot;../Counting/src&quot; -I &quot;../Nfix/src&quot; -I &quot;../Containers/src&quot; -I &quot;src&quot; -I &quot;/home/bench/.opam/system/lib/coq/kernel&quot; -I &quot;/home/bench/.opam/system/lib/coq/lib&quot; -I &quot;/home/bench/.opam/system/lib/coq/library&quot; -I &quot;/home/bench/.opam/system/lib/coq/parsing&quot; -I &quot;/home/bench/.opam/system/lib/coq/engine&quot; -I &quot;/home/bench/.opam/system/lib/coq/pretyping&quot; -I &quot;/home/bench/.opam/system/lib/coq/interp&quot; -I &quot;/home/bench/.opam/system/lib/coq/printing&quot; -I &quot;/home/bench/.opam/system/lib/coq/intf&quot; -I &quot;/home/bench/.opam/system/lib/coq/proofs&quot; -I &quot;/home/bench/.opam/system/lib/coq/tactics&quot; -I &quot;/home/bench/.opam/system/lib/coq/tools&quot; -I &quot;/home/bench/.opam/system/lib/coq/toplevel&quot; -I &quot;/home/bench/.opam/system/lib/coq/stm&quot; -I &quot;/home/bench/.opam/system/lib/coq/grammar&quot; -I &quot;/home/bench/.opam/system/lib/coq/config&quot; -I &quot;/home/bench/.opam/system/lib/coq//plugins/btauto&quot; -I &quot;/home/bench/.opam/system/lib/coq//plugins/cc&quot; -I &quot;/home/bench/.opam/system/lib/coq//plugins/decl_mode&quot; -I &quot;/home/bench/.opam/system/lib/coq//plugins/derive&quot; -I &quot;/home/bench/.opam/system/lib/coq//plugins/extraction&quot; -I &quot;/home/bench/.opam/system/lib/coq//plugins/firstorder&quot; -I &quot;/home/bench/.opam/system/lib/coq//plugins/fourier&quot; -I &quot;/home/bench/.opam/system/lib/coq//plugins/funind&quot; -I &quot;/home/bench/.opam/system/lib/coq//plugins/micromega&quot; -I &quot;/home/bench/.opam/system/lib/coq//plugins/nsatz&quot; -I &quot;/home/bench/.opam/system/lib/coq//plugins/omega&quot; -I &quot;/home/bench/.opam/system/lib/coq//plugins/quote&quot; -I &quot;/home/bench/.opam/system/lib/coq//plugins/romega&quot; -I &quot;/home/bench/.opam/system/lib/coq//plugins/rtauto&quot; -I &quot;/home/bench/.opam/system/lib/coq//plugins/setoid_ring&quot; -I &quot;/home/bench/.opam/system/lib/coq//plugins/syntax&quot; -I &quot;/home/bench/.opam/system/lib/coq//plugins/xml&quot; -I /home/bench/.opam/system/lib/camlp5 src/ergo_plugin_mod.ml
+ocamlopt.opt -c -rectypes -thread  -I &quot;../Counting/src&quot; -I &quot;../Nfix/src&quot; -I &quot;../Containers/src&quot; -I &quot;src&quot; -I &quot;/home/bench/.opam/system/lib/coq/kernel&quot; -I &quot;/home/bench/.opam/system/lib/coq/lib&quot; -I &quot;/home/bench/.opam/system/lib/coq/library&quot; -I &quot;/home/bench/.opam/system/lib/coq/parsing&quot; -I &quot;/home/bench/.opam/system/lib/coq/engine&quot; -I &quot;/home/bench/.opam/system/lib/coq/pretyping&quot; -I &quot;/home/bench/.opam/system/lib/coq/interp&quot; -I &quot;/home/bench/.opam/system/lib/coq/printing&quot; -I &quot;/home/bench/.opam/system/lib/coq/intf&quot; -I &quot;/home/bench/.opam/system/lib/coq/proofs&quot; -I &quot;/home/bench/.opam/system/lib/coq/tactics&quot; -I &quot;/home/bench/.opam/system/lib/coq/tools&quot; -I &quot;/home/bench/.opam/system/lib/coq/toplevel&quot; -I &quot;/home/bench/.opam/system/lib/coq/stm&quot; -I &quot;/home/bench/.opam/system/lib/coq/grammar&quot; -I &quot;/home/bench/.opam/system/lib/coq/config&quot; -I &quot;/home/bench/.opam/system/lib/coq//plugins/btauto&quot; -I &quot;/home/bench/.opam/system/lib/coq//plugins/cc&quot; -I &quot;/home/bench/.opam/system/lib/coq//plugins/decl_mode&quot; -I &quot;/home/bench/.opam/system/lib/coq//plugins/derive&quot; -I &quot;/home/bench/.opam/system/lib/coq//plugins/extraction&quot; -I &quot;/home/bench/.opam/system/lib/coq//plugins/firstorder&quot; -I &quot;/home/bench/.opam/system/lib/coq//plugins/fourier&quot; -I &quot;/home/bench/.opam/system/lib/coq//plugins/funind&quot; -I &quot;/home/bench/.opam/system/lib/coq//plugins/micromega&quot; -I &quot;/home/bench/.opam/system/lib/coq//plugins/nsatz&quot; -I &quot;/home/bench/.opam/system/lib/coq//plugins/omega&quot; -I &quot;/home/bench/.opam/system/lib/coq//plugins/quote&quot; -I &quot;/home/bench/.opam/system/lib/coq//plugins/romega&quot; -I &quot;/home/bench/.opam/system/lib/coq//plugins/rtauto&quot; -I &quot;/home/bench/.opam/system/lib/coq//plugins/setoid_ring&quot; -I &quot;/home/bench/.opam/system/lib/coq//plugins/syntax&quot; -I &quot;/home/bench/.opam/system/lib/coq//plugins/xml&quot; -I /home/bench/.opam/system/lib/camlp5 src/arith.ml
+ocamlopt.opt -c -rectypes -thread  -I &quot;../Counting/src&quot; -I &quot;../Nfix/src&quot; -I &quot;../Containers/src&quot; -I &quot;src&quot; -I &quot;/home/bench/.opam/system/lib/coq/kernel&quot; -I &quot;/home/bench/.opam/system/lib/coq/lib&quot; -I &quot;/home/bench/.opam/system/lib/coq/library&quot; -I &quot;/home/bench/.opam/system/lib/coq/parsing&quot; -I &quot;/home/bench/.opam/system/lib/coq/engine&quot; -I &quot;/home/bench/.opam/system/lib/coq/pretyping&quot; -I &quot;/home/bench/.opam/system/lib/coq/interp&quot; -I &quot;/home/bench/.opam/system/lib/coq/printing&quot; -I &quot;/home/bench/.opam/system/lib/coq/intf&quot; -I &quot;/home/bench/.opam/system/lib/coq/proofs&quot; -I &quot;/home/bench/.opam/system/lib/coq/tactics&quot; -I &quot;/home/bench/.opam/system/lib/coq/tools&quot; -I &quot;/home/bench/.opam/system/lib/coq/toplevel&quot; -I &quot;/home/bench/.opam/system/lib/coq/stm&quot; -I &quot;/home/bench/.opam/system/lib/coq/grammar&quot; -I &quot;/home/bench/.opam/system/lib/coq/config&quot; -I &quot;/home/bench/.opam/system/lib/coq//plugins/btauto&quot; -I &quot;/home/bench/.opam/system/lib/coq//plugins/cc&quot; -I &quot;/home/bench/.opam/system/lib/coq//plugins/decl_mode&quot; -I &quot;/home/bench/.opam/system/lib/coq//plugins/derive&quot; -I &quot;/home/bench/.opam/system/lib/coq//plugins/extraction&quot; -I &quot;/home/bench/.opam/system/lib/coq//plugins/firstorder&quot; -I &quot;/home/bench/.opam/system/lib/coq//plugins/fourier&quot; -I &quot;/home/bench/.opam/system/lib/coq//plugins/funind&quot; -I &quot;/home/bench/.opam/system/lib/coq//plugins/micromega&quot; -I &quot;/home/bench/.opam/system/lib/coq//plugins/nsatz&quot; -I &quot;/home/bench/.opam/system/lib/coq//plugins/omega&quot; -I &quot;/home/bench/.opam/system/lib/coq//plugins/quote&quot; -I &quot;/home/bench/.opam/system/lib/coq//plugins/romega&quot; -I &quot;/home/bench/.opam/system/lib/coq//plugins/rtauto&quot; -I &quot;/home/bench/.opam/system/lib/coq//plugins/setoid_ring&quot; -I &quot;/home/bench/.opam/system/lib/coq//plugins/syntax&quot; -I &quot;/home/bench/.opam/system/lib/coq//plugins/xml&quot; -I /home/bench/.opam/system/lib/camlp5 src/ergo_plugin_mod.ml
 &quot;coqc&quot;  -q  -R &quot;../Counting/theories&quot; Counting -R &quot;../Nfix/theories&quot; Nfix -R &quot;../Containers/theories&quot; Containers -R &quot;theories&quot; Ergo -R &quot;tests&quot; Tests -I &quot;../Counting/src&quot; -I &quot;../Nfix/src&quot; -I &quot;../Containers/src&quot; -I &quot;src&quot;   theories/Term
 &quot;coqc&quot;  -q  -R &quot;../Counting/theories&quot; Counting -R &quot;../Nfix/theories&quot; Nfix -R &quot;../Containers/theories&quot; Containers -R &quot;theories&quot; Ergo -R &quot;tests&quot; Tests -I &quot;../Counting/src&quot; -I &quot;../Nfix/src&quot; -I &quot;../Containers/src&quot; -I &quot;src&quot;   tests/Generators
 &quot;coqc&quot;  -q  -R &quot;../Counting/theories&quot; Counting -R &quot;../Nfix/theories&quot; Nfix -R &quot;../Containers/theories&quot; Containers -R &quot;theories&quot; Ergo -R &quot;tests&quot; Tests -I &quot;../Counting/src&quot; -I &quot;../Nfix/src&quot; -I &quot;../Containers/src&quot; -I &quot;src&quot;   tests/GeneratorsNG
@@ -840,7 +841,7 @@ Finished transaction in 0. secs (0.u,0.s) (successful)
        ((~ occ 2 0 \/ ~ occ 1 0) /\ (~ occ 2 0 \/ ~ occ 0 0)) /\
        (~ occ 1 0 \/ ~ occ 0 0)
      : Prop
-Finished transaction in 0.008 secs (0.u,0.009s) (successful)
+Finished transaction in 0.003 secs (0.004u,0.s) (successful)
      = ((occ 10 9 \/
          occ 10 8 \/
          occ 10 7 \/
@@ -1357,7 +1358,7 @@ Finished transaction in 0.008 secs (0.u,0.009s) (successful)
        ((~ occ 2 0 \/ ~ occ 1 0) /\ (~ occ 2 0 \/ ~ occ 0 0)) /\
        (~ occ 1 0 \/ ~ occ 0 0)
      : Prop
-Finished transaction in 0.036 secs (0.017u,0.018s) (successful)
+Finished transaction in 0.016 secs (0.013u,0.002s) (successful)
      = occ 1 0 /\ occ 0 0 -&gt; occ 1 0 /\ occ 0 0
      : Prop
 Finished transaction in 0. secs (0.u,0.s) (successful)
@@ -1440,7 +1441,7 @@ Finished transaction in 0. secs (0.u,0.s) (successful)
        (occ 3 0 /\ occ 2 0 \/ occ 3 0 /\ occ 1 0 \/ occ 3 0 /\ occ 0 0) \/
        (occ 2 0 /\ occ 1 0 \/ occ 2 0 /\ occ 0 0) \/ occ 1 0 /\ occ 0 0
      : Prop
-Finished transaction in 0.005 secs (0.004u,0.001s) (successful)
+Finished transaction in 0.002 secs (0.004u,0.s) (successful)
      = (occ 10 9 \/
         occ 10 8 \/
         occ 10 7 \/
@@ -1867,7 +1868,7 @@ Finished transaction in 0.005 secs (0.004u,0.001s) (successful)
        (occ 3 0 /\ occ 2 0 \/ occ 3 0 /\ occ 1 0 \/ occ 3 0 /\ occ 0 0) \/
        (occ 2 0 /\ occ 1 0 \/ occ 2 0 /\ occ 0 0) \/ occ 1 0 /\ occ 0 0
      : Prop
-Finished transaction in 0.027 secs (0.008u,0.018s) (successful)
+Finished transaction in 0.011 secs (0.004u,0.006s) (successful)
      = forall x x0 x1 x2 x3 x4 x5 x6 x7 x8 x9 x10 : Prop,
        x
        :: x0
@@ -1963,7 +1964,7 @@ Finished transaction in 0. secs (0.u,0.s) (successful)
        ((~ x17 \/ ~ x11) /\ (~ x17 \/ ~ x5) /\ (~ x17 \/ ~ x)) /\
        ((~ x11 \/ ~ x5) /\ (~ x11 \/ ~ x)) /\ (~ x5 \/ ~ x) -&gt; False
      : Prop
-Finished transaction in 0.046 secs (0.004u,0.041s) (successful)
+Finished transaction in 0.02 secs (0.016u,0.003s) (successful)
      = forall
          x x0 x1 x2 x3 x4 x5 x6 x7 x8 x9 x10 x11 x12 x13 x14 x15 x16 x17 x18
           x19 x20 x21 x22 x23 x24 x25 x26 x27 x28 x29 x30 x31 x32 x33 x34 x35
@@ -2355,7 +2356,7 @@ Finished transaction in 0.046 secs (0.004u,0.041s) (successful)
        ((~ x29 \/ ~ x19) /\ (~ x29 \/ ~ x9) /\ (~ x29 \/ ~ x)) /\
        ((~ x19 \/ ~ x9) /\ (~ x19 \/ ~ x)) /\ (~ x9 \/ ~ x) -&gt; False
      : Prop
-Finished transaction in 0.315 secs (0.227u,0.085s) (successful)
+Finished transaction in 0.219 secs (0.202u,0.016s) (successful)
      = (x 2 &lt;-&gt; x 1) \/ (x 1 &lt;-&gt; x 0) \/ (x 0 &lt;-&gt; x 2)
      : Prop
 Finished transaction in 0. secs (0.u,0.s) (successful)
@@ -2394,7 +2395,7 @@ Finished transaction in 0. secs (0.u,0.s) (successful)
        (x 4 &lt;-&gt; x 3) \/
        (x 3 &lt;-&gt; x 2) \/ (x 2 &lt;-&gt; x 1) \/ (x 1 &lt;-&gt; x 0) \/ (x 0 &lt;-&gt; x 20)
      : Prop
-Finished transaction in 0.001 secs (0.u,0.002s) (successful)
+Finished transaction in 0. secs (0.u,0.s) (successful)
      = (x 100 &lt;-&gt; x 99) \/
        (x 99 &lt;-&gt; x 98) \/
        (x 98 &lt;-&gt; x 97) \/
@@ -2440,7 +2441,7 @@ Finished transaction in 0.001 secs (0.u,0.002s) (successful)
        (x 58 &lt;-&gt; x 57) \/
        (x 57 &lt;-&gt; x 56) \/ (x 56 &lt;-&gt; x 55) \/ (.. &lt;-&gt; ..) \/ (..) \/ .. \/ ..
      : Prop
-Finished transaction in 0.006 secs (0.u,0.006s) (successful)
+Finished transaction in 0.005 secs (0.u,0.003s) (successful)
      = ((x 2 \/ x 1) /\ (~ x 2 \/ ~ x 1)) /\
        ((x 1 \/ x 0) /\ (~ x 1 \/ ~ x 0)) /\ (x 0 \/ x 2) /\ (~ x 0 \/ ~ x 2)
      : Prop
@@ -2450,7 +2451,7 @@ Finished transaction in 0. secs (0.u,0.s) (successful)
        ((x 2 \/ x 1) /\ (~ x 2 \/ ~ x 1)) /\
        ((x 1 \/ x 0) /\ (~ x 1 \/ ~ x 0)) /\ (x 0 \/ x 4) /\ (~ x 0 \/ ~ x 4)
      : Prop
-Finished transaction in 0. secs (0.003u,0.s) (successful)
+Finished transaction in 0. secs (0.u,0.s) (successful)
      = ((x 12 \/ x 11) /\ (~ x 12 \/ ~ x 11)) /\
        ((x 11 \/ x 10) /\ (~ x 11 \/ ~ x 10)) /\
        ((x 10 \/ x 9) /\ (~ x 10 \/ ~ x 9)) /\
@@ -2465,7 +2466,7 @@ Finished transaction in 0. secs (0.003u,0.s) (successful)
        ((x 1 \/ x 0) /\ (~ x 1 \/ ~ x 0)) /\
        (x 0 \/ x 12) /\ (~ x 0 \/ ~ x 12)
      : Prop
-Finished transaction in 0.001 secs (0.u,0.s) (successful)
+Finished transaction in 0.001 secs (0.u,0.001s) (successful)
      = ((x 20 \/ x 19) /\ (~ x 20 \/ ~ x 19)) /\
        ((x 19 \/ x 18) /\ (~ x 19 \/ ~ x 18)) /\
        ((x 18 \/ x 17) /\ (~ x 18 \/ ~ x 17)) /\
@@ -2488,7 +2489,7 @@ Finished transaction in 0.001 secs (0.u,0.s) (successful)
        ((x 1 \/ x 0) /\ (~ x 1 \/ ~ x 0)) /\
        (x 0 \/ x 20) /\ (~ x 0 \/ ~ x 20)
      : Prop
-Finished transaction in 0.002 secs (0.u,0.001s) (successful)
+Finished transaction in 0.001 secs (0.003u,0.s) (successful)
      = ((x 100 \/ x 99) /\ (~ x 100 \/ ~ x 99)) /\
        ((x 99 \/ x 98) /\ (~ x 99 \/ ~ x 98)) /\
        ((x 98 \/ x 97) /\ (~ x 98 \/ ~ x 97)) /\
@@ -2535,7 +2536,7 @@ Finished transaction in 0.002 secs (0.u,0.001s) (successful)
        ((.. \/ ..) /\ (.. \/ ..)) /\
        ((..) /\ (..)) /\ (.. /\ ..) /\ (..) /\ .. /\ ..
      : Prop
-Finished transaction in 0.016 secs (0.008u,0.007s) (successful)
+Finished transaction in 0.015 secs (0.004u,0.01s) (successful)
      = (a 0 &lt;-&gt; a 1) &lt;-&gt; (a 1 &lt;-&gt; a 0)
      : Prop
 Finished transaction in 0. secs (0.u,0.s) (successful)
@@ -2579,7 +2580,7 @@ Finished transaction in 0. secs (0.u,0.s) (successful)
                          (a 12 &lt;-&gt;
                           (a 11 &lt;-&gt; (a 10 &lt;-&gt; (a 9 &lt;-&gt; (a 8 &lt;-&gt; (..))))))))))))))))))))))))
      : Prop
-Finished transaction in 0.001 secs (0.u,0.002s) (successful)
+Finished transaction in 0.001 secs (0.u,0.s) (successful)
      = (~ a 0 \/ ~ a 1) \/ a 0 /\ a 1
      : Prop
 Finished transaction in 0. secs (0.u,0.s) (successful)
@@ -2607,10 +2608,10 @@ Finished transaction in 0. secs (0.u,0.s) (successful)
               a 23) /\ a 24) /\ a 25) /\ a 26) /\ a 27) /\ 
          a 28) /\ a 29) /\ a 30
      : Prop
-Finished transaction in 0.001 secs (0.003u,0.s) (successful)
+Finished transaction in 0.001 secs (0.u,0.001s) (successful)
      = a 1 /\ (a 1 -&gt; a 1 -&gt; a 0) /\ True -&gt; a 0
      : Prop
-Finished transaction in 0. secs (0.u,0.s) (successful)
+Finished transaction in 0.001 secs (0.u,0.001s) (successful)
      = a 2 /\ (a 2 -&gt; a 2 -&gt; a 1) /\ (a 1 -&gt; a 1 -&gt; a 0) /\ True -&gt; a 0
      : Prop
 Finished transaction in 0. secs (0.u,0.s) (successful)
@@ -2626,7 +2627,7 @@ Finished transaction in 0. secs (0.u,0.s) (successful)
        (a 2 -&gt; a 2 -&gt; a 1) /\ (a 1 -&gt; a 1 -&gt; a 0) /\ True -&gt; 
        a 0
      : Prop
-Finished transaction in 0. secs (0.003u,0.s) (successful)
+Finished transaction in 0. secs (0.u,0.s) (successful)
      = a 30 /\
        (a 30 -&gt; a 30 -&gt; a 29) /\
        (a 29 -&gt; a 29 -&gt; a 28) /\
@@ -2659,8 +2660,7 @@ Finished transaction in 0. secs (0.003u,0.s) (successful)
        (a 2 -&gt; a 2 -&gt; a 1) /\ (a 1 -&gt; a 1 -&gt; a 0) /\ True -&gt; 
        a 0
      : Prop
-Finished transaction in 0.059 secs (0.047u,0.009s) (successful)
-&quot;coqc&quot;  -q  -R &quot;../Counting/theories&quot; Counting -R &quot;../Nfix/theories&quot; Nfix -R &quot;../Containers/theories&quot; Containers -R &quot;theories&quot; Ergo -R &quot;tests&quot; Tests -I &quot;../Counting/src&quot; -I &quot;../Nfix/src&quot; -I &quot;../Containers/src&quot; -I &quot;src&quot;   theories/Index
+Finished transaction in 0.059 secs (0.05u,0.009s) (successful)
      = forall x x0 x1 : Prop,
        ~ ((x1 &lt;-&gt; x0) \/ (x0 &lt;-&gt; x) \/ (x &lt;-&gt; x1)) -&gt; False
      : Prop
@@ -2684,7 +2684,7 @@ Finished transaction in 0. secs (0.u,0.s) (successful)
         (x3 &lt;-&gt; x2) \/
         (x2 &lt;-&gt; x1) \/ (x1 &lt;-&gt; x0) \/ (x0 &lt;-&gt; x) \/ (x &lt;-&gt; x11)) -&gt; False
      : Prop
-Finished transaction in 0. secs (0.u,0.s) (successful)
+Finished transaction in 0. secs (0.002u,0.s) (successful)
      = forall
          x x0 x1 x2 x3 x4 x5 x6 x7 x8 x9 x10 x11 x12 x13 x14 x15 x16 x17 x18
           x19 : Prop,
@@ -2708,7 +2708,7 @@ Finished transaction in 0. secs (0.u,0.s) (successful)
         (x3 &lt;-&gt; x2) \/
         (x2 &lt;-&gt; x1) \/ (x1 &lt;-&gt; x0) \/ (x0 &lt;-&gt; x) \/ (x &lt;-&gt; x19)) -&gt; False
      : Prop
-Finished transaction in 0.001 secs (0.003u,0.s) (successful)
+Finished transaction in 0.001 secs (0.u,0.s) (successful)
      = forall
          x x0 x1 x2 x3 x4 x5 x6 x7 x8 x9 x10 x11 x12 x13 x14 x15 x16 x17 x18
           x19 x20 x21 x22 x23 x24 x25 x26 x27 x28 x29 x30 x31 x32 x33 x34 x35
@@ -2759,7 +2759,8 @@ Finished transaction in 0.001 secs (0.003u,0.s) (successful)
         (x60 &lt;-&gt; x59) \/ (x59 &lt;-&gt; x58) \/ (x58 &lt;-&gt; x57) \/ (..) \/ .. \/ ..) -&gt;
        False
      : Prop
-Finished transaction in 0.02 secs (0.021u,0.s) (successful)
+Finished transaction in 0.019 secs (0.02u,0.s) (successful)
+&quot;coqc&quot;  -q  -R &quot;../Counting/theories&quot; Counting -R &quot;../Nfix/theories&quot; Nfix -R &quot;../Containers/theories&quot; Containers -R &quot;theories&quot; Ergo -R &quot;tests&quot; Tests -I &quot;../Counting/src&quot; -I &quot;../Nfix/src&quot; -I &quot;../Containers/src&quot; -I &quot;src&quot;   theories/Index
 &quot;coqc&quot;  -q  -R &quot;../Counting/theories&quot; Counting -R &quot;../Nfix/theories&quot; Nfix -R &quot;../Containers/theories&quot; Containers -R &quot;theories&quot; Ergo -R &quot;tests&quot; Tests -I &quot;../Counting/src&quot; -I &quot;../Nfix/src&quot; -I &quot;../Containers/src&quot; -I &quot;src&quot;   theories/DoubleNegUtils
 &quot;coqc&quot;  -q  -R &quot;../Counting/theories&quot; Counting -R &quot;../Nfix/theories&quot; Nfix -R &quot;../Containers/theories&quot; Containers -R &quot;theories&quot; Ergo -R &quot;tests&quot; Tests -I &quot;../Counting/src&quot; -I &quot;../Nfix/src&quot; -I &quot;../Containers/src&quot; -I &quot;src&quot;   theories/Rational
      = 2
@@ -2779,7 +2780,7 @@ Finished transaction in 0. secs (0.u,0.s) (successful)
 Finished transaction in 0. secs (0.u,0.s) (successful)
      = natbool natx
      : bool
-Finished transaction in 0. secs (0.u,0.s) (successful)
+Finished transaction in 0. secs (0.003u,0.s) (successful)
      = natnat (natnat (natnat (natnat (natnat natx))))
      : [|type_of vtypes variables f5x|]
 Finished transaction in 0. secs (0.u,0.s) (successful)
@@ -2833,9 +2834,9 @@ rm: cannot remove &#39;/home/bench/.opam/system/lib/coq/user-contrib/ergo&#39;: 
 # path                 /home/bench/.opam/system/build/coq:contrib:ergo.dev
 # compiler             system (4.02.1)
 # exit-code            2
-# env-file             /home/bench/.opam/system/build/coq:contrib:ergo.dev/coq:contrib:ergo-17223-d2c37b.env
-# stdout-file          /home/bench/.opam/system/build/coq:contrib:ergo.dev/coq:contrib:ergo-17223-d2c37b.out
-# stderr-file          /home/bench/.opam/system/build/coq:contrib:ergo.dev/coq:contrib:ergo-17223-d2c37b.err
+# env-file             /home/bench/.opam/system/build/coq:contrib:ergo.dev/coq:contrib:ergo-26945-d2c37b.env
+# stdout-file          /home/bench/.opam/system/build/coq:contrib:ergo.dev/coq:contrib:ergo-26945-d2c37b.out
+# stderr-file          /home/bench/.opam/system/build/coq:contrib:ergo.dev/coq:contrib:ergo-26945-d2c37b.err
 ### stdout ###
 # ...[truncated]
 #      : bool

@@ -47,7 +47,7 @@
                 <span class="label label-danger">Error</span>
               </small>
             </h1>
-            <p><em><script>document.write(moment("2015-02-22 08:07:47 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2015-02-22 08:07:47 UTC)</em><p>
+            <p><em><script>document.write(moment("2015-02-28 23:24:41 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2015-02-28 23:24:41 UTC)</em><p>
             <h2>Context</h2>
             <pre># Installed packages for system:
 base-bigarray              base  Bigarray library distributed with the OCaml com
@@ -62,7 +62,6 @@ coq:contrib:zf              dev  An axiomatisation of intuitionistic Zermelo-Fra
 coq:contrib:zfc             dev  An encoding of Zermelo-Fraenkel Set Theory in C
 coq:contrib:zorns-lemma     dev  Zorn&#39;s Lemma.
 coq:cunit                   dev  Unit testing in Coq, at compile time.
-coq:cybele                  dev  A Coq plugin for simpler proofs by reflection o
 coq:error-handlers          dev  Simple and robust error handling functions.
 coq:function-ninjas         dev  Write readable code using simple functional com
 coq:io-effects              dev  A library for effects in Coq.
@@ -71,6 +70,7 @@ coq:list-plus               dev  More functions on lists.
 coq:list-string             dev  Strings implemented as lists.
 coq:moment                  dev  Parse, manipulate and pretty-print dates in Coq
 coq:monad                   dev  A basic definition of monads.
+coq:unicoq                  dev  An enhanced unification algorithm for Coq.
 </pre>
             <h2>Lint</h2>
             <dl class="dl-horizontal">
@@ -103,16 +103,16 @@ coq:monad                   dev  A basic definition of monads.
             <h2>Install dependencies</h2>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>ulimit -Sv 2000000; timeout 5m opam install -y --deps-only coq:contrib:tree-automata.dev</code></dd>
+              <dd><code>ulimit -Sv 1000000; timeout 5m opam install -y --deps-only coq:contrib:tree-automata.dev</code></dd>
               <dt>Return code</dt>
               <dd>0</dd>
               <dt>Duration</dt>
-              <dd>2 s</dd>
+              <dd>3 s</dd>
             </dl>
             <h2>Install</h2>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>ulimit -Sv 2000000; timeout 30m opam install -y --verbose coq:contrib:tree-automata.dev</code></dd>
+              <dd><code>ulimit -Sv 4000000; timeout 120m opam install -y --verbose coq:contrib:tree-automata.dev</code></dd>
               <dt>Return code</dt>
               <dd>1024</dd>
               <dt>Duration</dt>
@@ -124,7 +124,7 @@ coq:monad                   dev  A basic definition of monads.
 =-=- Synchronizing package archives -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 [coq:contrib:tree-automata] Fetching https://gforge.inria.fr/git/coq-contribs/tree-automata.git#trunk
 Initialized empty Git repository in /home/bench/.opam/packages.dev/coq:contrib:tree-automata.dev/.git/
-[master (root-commit) 321a06b] opam-git-init
+[master (root-commit) b48a15f] opam-git-init
 From https://gforge.inria.fr/git/coq-contribs/tree-automata
  * [new branch]      trunk      -&gt; opam-ref
  * [new branch]      trunk      -&gt; origin/trunk
@@ -157,8 +157,10 @@ Building coq:contrib:tree-automata.dev:
   coq_makefile -f Make -o Makefile
   make -j4
   make install
-Warning: in option -R, ../../Cachan/IntMap is not a subdirectory of the current directory
-Warning: install rule assumes that -R/-Q . _ is the only -R/-Q optionWarning: install rule assumes that -R/-Q . _ is the only -R/-Q optionWarning: -R/-Q options don&#39;t have a correct common prefix,
+Warning: in option -R/-Q, ../../Cachan/IntMap is not a subdirectory of the current directory
+Warning: install rule assumes that -R/-Q . _ is the only -R/-Q option
+Warning: install rule assumes that -R/-Q . _ is the only -R/-Q option
+Warning: -R/-Q options don&#39;t have a correct common prefix,
  install-doc will put anything in $INSTALLDEFAULTROOT
 &quot;coqdep&quot; -c -R &quot;../../Cachan/IntMap&quot; IntMap -R &quot;.&quot; TreeAutomata &quot;auto.v&quot; &gt; &quot;auto.v.d&quot; || ( RV=$?; rm -f &quot;auto.v.d&quot;; exit ${RV} )
 &quot;coqdep&quot; -c -R &quot;../../Cachan/IntMap&quot; IntMap -R &quot;.&quot; TreeAutomata &quot;bases.v&quot; &gt; &quot;bases.v.d&quot; || ( RV=$?; rm -f &quot;bases.v.d&quot;; exit ${RV} )
@@ -168,8 +170,8 @@ Warning: install rule assumes that -R/-Q . _ is the only -R/-Q optionWarning: in
 *** Warning: cannot open ../../Cachan/IntMap
 *** Warning: cannot open ../../Cachan/IntMap
 *** Warning: cannot open ../../Cachan/IntMap
-*** Warning: in file auto.v, library Allmaps.v is required and has not been found in the loadpath!
 *** Warning: in file coacc_test.v, library Allmaps.v is required and has not been found in the loadpath!
+*** Warning: in file auto.v, library Allmaps.v is required and has not been found in the loadpath!
 *** Warning: in file auto.v, library Allmaps.v is required and has not been found in the loadpath!
 &quot;coqdep&quot; -c -R &quot;../../Cachan/IntMap&quot; IntMap -R &quot;.&quot; TreeAutomata &quot;empty_test.v&quot; &gt; &quot;empty_test.v.d&quot; || ( RV=$?; rm -f &quot;empty_test.v.d&quot;; exit ${RV} )
 *** Warning: in file coacc_test.v, library Allmaps.v is required and has not been found in the loadpath!
@@ -187,10 +189,10 @@ Warning: install rule assumes that -R/-Q . _ is the only -R/-Q optionWarning: in
 *** Warning: in file empty_test.v, library Allmaps.v is required and has not been found in the loadpath!
 *** Warning: in file inter_correct.v, library Allmaps.v is required and has not been found in the loadpath!
 *** Warning: in file empty_test.v, library Allmaps.v is required and has not been found in the loadpath!
-*** Warning: in file inter_correct.v, library Allmaps.v is required and has not been found in the loadpath!
 &quot;coqdep&quot; -c -R &quot;../../Cachan/IntMap&quot; IntMap -R &quot;.&quot; TreeAutomata &quot;non_coacc_kill_correct.v&quot; &gt; &quot;non_coacc_kill_correct.v.d&quot; || ( RV=$?; rm -f &quot;non_coacc_kill_correct.v.d&quot;; exit ${RV} )
-&quot;coqdep&quot; -c -R &quot;../../Cachan/IntMap&quot; IntMap -R &quot;.&quot; TreeAutomata &quot;non_coacc_kill.v&quot; &gt; &quot;non_coacc_kill.v.d&quot; || ( RV=$?; rm -f &quot;non_coacc_kill.v.d&quot;; exit ${RV} )
+*** Warning: in file inter_correct.v, library Allmaps.v is required and has not been found in the loadpath!
 *** Warning: cannot open ../../Cachan/IntMap
+&quot;coqdep&quot; -c -R &quot;../../Cachan/IntMap&quot; IntMap -R &quot;.&quot; TreeAutomata &quot;non_coacc_kill.v&quot; &gt; &quot;non_coacc_kill.v.d&quot; || ( RV=$?; rm -f &quot;non_coacc_kill.v.d&quot;; exit ${RV} )
 *** Warning: cannot open ../../Cachan/IntMap
 *** Warning: in file lattice_fixpoint.v, library Allmaps.v is required and has not been found in the loadpath!
 *** Warning: in file inter.v, library Allmaps.v is required and has not been found in the loadpath!
@@ -206,11 +208,11 @@ Warning: install rule assumes that -R/-Q . _ is the only -R/-Q optionWarning: in
 *** Warning: cannot open ../../Cachan/IntMap
 *** Warning: in file non_coacc_kill.v, library Allmaps.v is required and has not been found in the loadpath!
 *** Warning: in file non_coacc_kill.v, library Allmaps.v is required and has not been found in the loadpath!
-*** Warning: in file pl_path.v, library Allmaps.v is required and has not been found in the loadpath!
 &quot;coqdep&quot; -c -R &quot;../../Cachan/IntMap&quot; IntMap -R &quot;.&quot; TreeAutomata &quot;signature.v&quot; &gt; &quot;signature.v.d&quot; || ( RV=$?; rm -f &quot;signature.v.d&quot;; exit ${RV} )
+*** Warning: cannot open ../../Cachan/IntMap
+*** Warning: in file pl_path.v, library Allmaps.v is required and has not been found in the loadpath!
 *** Warning: in file pl_path.v, library Allmaps.v is required and has not been found in the loadpath!
 &quot;coqdep&quot; -c -R &quot;../../Cachan/IntMap&quot; IntMap -R &quot;.&quot; TreeAutomata &quot;states_kill_correct.v&quot; &gt; &quot;states_kill_correct.v.d&quot; || ( RV=$?; rm -f &quot;states_kill_correct.v.d&quot;; exit ${RV} )
-*** Warning: cannot open ../../Cachan/IntMap
 *** Warning: cannot open ../../Cachan/IntMap
 *** Warning: in file refcorrect.v, library Allmaps.v is required and has not been found in the loadpath!
 *** Warning: in file refcorrect.v, library Allmaps.v is required and has not been found in the loadpath!
@@ -220,15 +222,15 @@ Warning: install rule assumes that -R/-Q . _ is the only -R/-Q optionWarning: in
 *** Warning: in file semantics.v, library Allmaps.v is required and has not been found in the loadpath!
 &quot;coqdep&quot; -c -R &quot;../../Cachan/IntMap&quot; IntMap -R &quot;.&quot; TreeAutomata &quot;union_correct.v&quot; &gt; &quot;union_correct.v.d&quot; || ( RV=$?; rm -f &quot;union_correct.v.d&quot;; exit ${RV} )
 *** Warning: cannot open ../../Cachan/IntMap
+*** Warning: in file states_kill_correct.v, library Allmaps.v is required and has not been found in the loadpath!
+*** Warning: in file states_kill_correct.v, library Allmaps.v is required and has not been found in the loadpath!
 *** Warning: in file signature.v, library Allmaps.v is required and has not been found in the loadpath!
-*** Warning: in file states_kill_correct.v, library Allmaps.v is required and has not been found in the loadpath!
-*** Warning: in file states_kill_correct.v, library Allmaps.v is required and has not been found in the loadpath!
 &quot;coqdep&quot; -c -R &quot;../../Cachan/IntMap&quot; IntMap -R &quot;.&quot; TreeAutomata &quot;union.v&quot; &gt; &quot;union.v.d&quot; || ( RV=$?; rm -f &quot;union.v.d&quot;; exit ${RV} )
-*** Warning: in file signature.v, library Allmaps.v is required and has not been found in the loadpath!
 *** Warning: cannot open ../../Cachan/IntMap
-*** Warning: in file states_kill_empty.v, library Allmaps.v is required and has not been found in the loadpath!
+*** Warning: in file signature.v, library Allmaps.v is required and has not been found in the loadpath!
 *** Warning: in file states_kill_empty.v, library Allmaps.v is required and has not been found in the loadpath!
 *** Warning: in file union_correct.v, library Allmaps.v is required and has not been found in the loadpath!
+*** Warning: in file states_kill_empty.v, library Allmaps.v is required and has not been found in the loadpath!
 *** Warning: in file union_correct.v, library Allmaps.v is required and has not been found in the loadpath!
 *** Warning: in file union.v, library Allmaps.v is required and has not been found in the loadpath!
 *** Warning: in file union.v, library Allmaps.v is required and has not been found in the loadpath!
@@ -249,9 +251,9 @@ rm: cannot remove &#39;/home/bench/.opam/system/lib/coq/user-contrib/TreeAutomat
 # path                 /home/bench/.opam/system/build/coq:contrib:tree-automata.dev
 # compiler             system (4.02.1)
 # exit-code            2
-# env-file             /home/bench/.opam/system/build/coq:contrib:tree-automata.dev/coq:contrib:tree-automata-22650-d2c37b.env
-# stdout-file          /home/bench/.opam/system/build/coq:contrib:tree-automata.dev/coq:contrib:tree-automata-22650-d2c37b.out
-# stderr-file          /home/bench/.opam/system/build/coq:contrib:tree-automata.dev/coq:contrib:tree-automata-22650-d2c37b.err
+# env-file             /home/bench/.opam/system/build/coq:contrib:tree-automata.dev/coq:contrib:tree-automata-13349-d2c37b.env
+# stdout-file          /home/bench/.opam/system/build/coq:contrib:tree-automata.dev/coq:contrib:tree-automata-13349-d2c37b.out
+# stderr-file          /home/bench/.opam/system/build/coq:contrib:tree-automata.dev/coq:contrib:tree-automata-13349-d2c37b.err
 ### stdout ###
 # ...[truncated]
 # &quot;coqdep&quot; -c -R &quot;../../Cachan/IntMap&quot; IntMap -R &quot;.&quot; TreeAutomata &quot;pl_path.v&quot; &gt; &quot;pl_path.v.d&quot; || ( RV=$?; rm -f &quot;pl_path.v.d&quot;; exit ${RV} )
@@ -267,8 +269,8 @@ rm: cannot remove &#39;/home/bench/.opam/system/lib/coq/user-contrib/TreeAutomat
 ### stderr ###
 # ...[truncated]
 # *** Warning: in file states_kill_empty.v, library Allmaps.v is required and has not been found in the loadpath!
-# *** Warning: in file states_kill_empty.v, library Allmaps.v is required and has not been found in the loadpath!
 # *** Warning: in file union_correct.v, library Allmaps.v is required and has not been found in the loadpath!
+# *** Warning: in file states_kill_empty.v, library Allmaps.v is required and has not been found in the loadpath!
 # *** Warning: in file union_correct.v, library Allmaps.v is required and has not been found in the loadpath!
 # *** Warning: in file union.v, library Allmaps.v is required and has not been found in the loadpath!
 # *** Warning: in file union.v, library Allmaps.v is required and has not been found in the loadpath!

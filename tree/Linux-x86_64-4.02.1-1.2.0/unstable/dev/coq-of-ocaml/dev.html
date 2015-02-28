@@ -44,10 +44,10 @@
               coq-of-ocaml
               <small>
                 dev
-                <span class="label label-success">54 s</span>
+                <span class="label label-success">50 s</span>
               </small>
             </h1>
-            <p><em><script>document.write(moment("2015-02-22 08:07:47 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2015-02-22 08:07:47 UTC)</em><p>
+            <p><em><script>document.write(moment("2015-02-28 23:24:41 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2015-02-28 23:24:41 UTC)</em><p>
             <h2>Context</h2>
             <pre># Installed packages for system:
 base-bigarray                                 base  Bigarray library distributed
@@ -70,6 +70,7 @@ coq:contrib:area-method                        dev  The Chou, Gao and Zhang area
 coq:contrib:atbr                               dev  A tactic for deciding Kleene
 coq:contrib:automata                           dev  Beginning of formal language
 coq:contrib:axiomatic-abp                      dev  Verification of an axiomatis
+coq:contrib:bdds                               dev  BDD algorithms and proofs in
 coq:contrib:bertrand                           dev  Correctness of Knuth&#39;s algor
 coq:contrib:buchberger                         dev  Proof of Buchberger&#39;s algori
 coq:contrib:cantor                             dev  On Ordinal Notations.
@@ -81,6 +82,7 @@ coq:contrib:circuits                           dev  Some proofs of hardware (add
 coq:contrib:classical-realizability            dev  Krivine&#39;s classical realizab
 coq:contrib:coalgebras                         dev  Coalgebras, bisimulation and
 coq:contrib:coinductive-examples               dev  Some simple examples about c
+coq:contrib:coinductive-reals                  dev  Real numbers as coinductive 
 coq:contrib:concat                             dev  Constructive Category Theory
 coq:contrib:constructive-geometry              dev  Elements of Constructive Geo
 coq:contrib:continuations                      dev  A toolkit to reason with pro
@@ -90,7 +92,6 @@ coq:contrib:counting                           dev  Counting: a Coq plugin for m
 coq:contrib:cours-de-coq                       dev  Various examples of Coq proo
 coq:contrib:ctltctl                            dev  Computation Tree Logic for R
 coq:contrib:demos                              dev  Demos of some Coq tools appe
-coq:contrib:dep-map                            dev  Dependent Maps.
 coq:contrib:descente-infinie                   dev  The Descente Infinie Tactic.
 coq:contrib:dictionaries                       dev  Dictionaries (with modules).
 coq:contrib:distributed-reference-counting     dev  A Construction of Distribute
@@ -109,6 +110,7 @@ coq:contrib:functions-in-zfc                   dev  Functions in classical ZFC.
 coq:contrib:fundamental-arithmetics            dev  Fundamental theorems of arit
 coq:contrib:gc                                 dev  Formal Verification of an In
 coq:contrib:generic-environments               dev  Generic_Environments.
+coq:contrib:goedel                             dev  The Gödel-Rosser 1st incompl
 coq:contrib:graph-basics                       dev  a Coq toolkit for graph theo
 coq:contrib:group-theory                       dev  Elements of Group Theory.
 coq:contrib:groups                             dev  An exercise on groups.
@@ -133,7 +135,6 @@ coq:contrib:lambda                             dev  Residual Theory in Lambda-Ca
 coq:contrib:lambek                             dev  A Coq Toolkit for Lambek Cal
 coq:contrib:lazy-pcf                           dev  Subject Reduction for Lazy-P
 coq:contrib:lc                                 dev  Modules over monads and lamb
-coq:contrib:legacy-ring                        dev  The former implementation of
 coq:contrib:lesniewski-mereology               dev  KDTL.
 coq:contrib:ltl                                dev  Linear Temporal Logic.
 coq:contrib:maple-mode                         dev  A Maple Mode for Coq.
@@ -175,6 +176,7 @@ coq:contrib:ruler-compass-geometry             dev  Ruler and compass geometry a
 coq:contrib:schroeder                          dev  The Theorem of Schroeder-Ber
 coq:contrib:shuffle                            dev  Gilbreath&#39;s card trick.
 coq:contrib:square-matrices                    dev  From Fast Exponentiation to 
+coq:contrib:ssreflect                          dev  Ssreflect extension and the 
 coq:contrib:streams                            dev  Specification of Eratosthene
 coq:contrib:string                             dev  Definition of strings in Coq
 coq:contrib:subst                              dev  The confluence of Hardin-Lév
@@ -191,7 +193,6 @@ coq:contrib:zf                                 dev  An axiomatisation of intuiti
 coq:contrib:zfc                                dev  An encoding of Zermelo-Fraen
 coq:contrib:zorns-lemma                        dev  Zorn&#39;s Lemma.
 coq:cunit                                      dev  Unit testing in Coq, at comp
-coq:cybele                                     dev  A Coq plugin for simpler pro
 coq:error-handlers                             dev  Simple and robust error hand
 coq:function-ninjas                            dev  Write readable code using si
 coq:io-effects                                 dev  A library for effects in Coq
@@ -201,6 +202,7 @@ coq:list-plus                                  dev  More functions on lists.
 coq:list-string                                dev  Strings implemented as lists
 coq:moment                                     dev  Parse, manipulate and pretty
 coq:monad                                      dev  A basic definition of monads
+coq:unicoq                                     dev  An enhanced unification algo
 lwt                                          2.4.7  A cooperative threads librar
 ocamlfind                                    1.5.5  A library manager for OCaml
 ppx_tools                                   0.99.2  Tools for authors of ppx rew
@@ -236,7 +238,7 @@ ppx_tools                                   0.99.2  Tools for authors of ppx rew
             <h2>Install dependencies</h2>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>ulimit -Sv 2000000; timeout 5m opam install -y --deps-only coq:coq-of-ocaml.dev</code></dd>
+              <dd><code>ulimit -Sv 1000000; timeout 5m opam install -y --deps-only coq:coq-of-ocaml.dev</code></dd>
               <dt>Return code</dt>
               <dd>0</dd>
               <dt>Duration</dt>
@@ -245,11 +247,11 @@ ppx_tools                                   0.99.2  Tools for authors of ppx rew
             <h2>Install</h2>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>ulimit -Sv 2000000; timeout 30m opam install -y --verbose coq:coq-of-ocaml.dev</code></dd>
+              <dd><code>ulimit -Sv 4000000; timeout 120m opam install -y --verbose coq:coq-of-ocaml.dev</code></dd>
               <dt>Return code</dt>
               <dd>0</dd>
               <dt>Duration</dt>
-              <dd>54 s</dd>
+              <dd>50 s</dd>
             </dl>
             <h2>Installation size</h2>
             <p>Total: 13,601 K</p>
