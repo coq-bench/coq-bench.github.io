@@ -44,10 +44,10 @@
               coqide
               <small>
                 8.5.dev
-                <span class="label label-danger">Uninstallation error</span>
+                <span class="label label-warning">Error with dependencies</span>
               </small>
             </h1>
-            <p><em><script>document.write(moment("2015-02-28 11:27:36 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2015-02-28 11:27:36 UTC)</em><p>
+            <p><em><script>document.write(moment("2015-03-01 17:46:13 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2015-03-01 17:46:13 UTC)</em><p>
             <h2>Context</h2>
             <pre># Installed packages for system:
 base-bigarray     base  Bigarray library distributed with the OCaml compiler
@@ -71,11 +71,41 @@ coq            8.5.dev  Formal proof management system.
               <dt>Command</dt>
               <dd><code>opam install -y --show-action coq:coqide.8.5.dev coq.8.5.dev</code></dd>
               <dt>Return code</dt>
-              <dd>0</dd>
+              <dd>768</dd>
               <dt>Duration</dt>
-              <dd>2 s</dd>
+              <dd>1 s</dd>
+              <dt>Output</dt>
+              <dd><pre>[NOTE] Package coq is already installed (current version is 8.5.dev).
+The following dependencies couldn&#39;t be met:
+  - coq:coqide -&gt; coq:idetop
+Your request can&#39;t be satisfied:
+  - No package named coq:idetop found.
+No solution found, exiting
+</pre></dd>
             </dl>
             <p>Dry install without Coq, to test if the problem was incompatibility with the current Coq version:</p>
+            <dl class="dl-horizontal">
+              <dt>Command</dt>
+              <dd><code>opam remove -y coq; opam install -y --show-action coq:coqide.8.5.dev</code></dd>
+              <dt>Return code</dt>
+              <dd>768</dd>
+              <dt>Duration</dt>
+              <dd>3 s</dd>
+              <dt>Output</dt>
+              <dd><pre>The following actions will be performed:
+ - remove    coq.8.5.dev
+=== 1 to remove ===
+=-=- Removing Packages =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+Removing coq.8.5.dev.
+[WARNING] Directory /home/bench/.opam/system/lib/coq is not empty, not removing
+The following dependencies couldn&#39;t be met:
+  - coq:coqide -&gt; coq:idetop
+Your request can&#39;t be satisfied:
+  - No package named coq:idetop found.
+No solution found, exiting
+</pre></dd>
+            </dl>
+            <h2>Install dependencies</h2>
             <dl class="dl-horizontal">
               <dt>Command</dt>
               <dd><code>true</code></dd>
@@ -84,135 +114,28 @@ coq            8.5.dev  Formal proof management system.
               <dt>Duration</dt>
               <dd>0 s</dd>
             </dl>
-            <h2>Install dependencies</h2>
-            <dl class="dl-horizontal">
-              <dt>Command</dt>
-              <dd><code>ulimit -Sv 1000000; timeout 5m opam install -y --deps-only coq:coqide.8.5.dev</code></dd>
-              <dt>Return code</dt>
-              <dd>0</dd>
-              <dt>Duration</dt>
-              <dd>37 s</dd>
-            </dl>
             <h2>Install</h2>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>ulimit -Sv 4000000; timeout 120m opam install -y --verbose coq:coqide.8.5.dev</code></dd>
+              <dd><code>true</code></dd>
               <dt>Return code</dt>
               <dd>0</dd>
               <dt>Duration</dt>
-              <dd>32 s</dd>
+              <dd>0 s</dd>
             </dl>
             <h2>Installation size</h2>
-            <p>Total: 8,360 K</p>
-            <ul>
-              <li>3,955 K <code>bin/coqide</code></li>
-              <li>3,259 K <code>lib/coq/ide/ide.a</code></li>
-              <li>648 K <code>lib/coq/ide/ide.cma</code></li>
-              <li>70 K <code>share/coq/coq.png</code></li>
-              <li>66 K <code>lib/coq/ide/ide.cmxa</code></li>
-              <li>55 K <code>lib/coq/ide/utils/config_file.cmi</code></li>
-              <li>55 K <code>lib/coq/ide/utils/configwin_keys.cmi</code></li>
-              <li>29 K <code>lib/coq/ide/wg_ScriptView.cmi</code></li>
-              <li>21 K <code>lib/coq/ide/utils/configwin_ihm.cmi</code></li>
-              <li>14 K <code>lib/coq/ide/utils/configwin_types.cmi</code></li>
-              <li>14 K <code>lib/coq/ide/wg_Notebook.cmi</code></li>
-              <li>12 K <code>lib/coq/ide/utils/configwin.cmi</code></li>
-              <li>12 K <code>lib/coq/ide/wg_Detachable.cmi</code></li>
-              <li>11 K <code>lib/coq/ide/coqOps.cmi</code></li>
-              <li>10 K <code>lib/coq/ide/ideutils.cmi</code></li>
-              <li>10 K <code>lib/coq/ide/wg_MessageView.cmi</code></li>
-              <li>10 K <code>lib/coq/ide/wg_Segment.cmi</code></li>
-              <li>9 K <code>share/coq/coq-ssreflect.lang</code></li>
-              <li>8 K <code>share/coq/coq.lang</code></li>
-              <li>7 K <code>lib/coq/ide/nanoPG.cmi</code></li>
-              <li>6 K <code>lib/coq/ide/coq.cmi</code></li>
-              <li>6 K <code>lib/coq/ide/session.cmi</code></li>
-              <li>5 K <code>lib/coq/ide/wg_Completion.cmi</code></li>
-              <li>5 K <code>lib/coq/ide/preferences.cmi</code></li>
-              <li>4 K <code>lib/coq/ide/fileOps.cmi</code></li>
-              <li>4 K <code>lib/coq/ide/wg_ProofView.cmi</code></li>
-              <li>4 K <code>lib/coq/ide/project_file.cmi</code></li>
-              <li>3 K <code>lib/coq/ide/utils/okey.cmi</code></li>
-              <li>3 K <code>lib/coq/ide/document.cmi</code></li>
-              <li>3 K <code>lib/coq/ide/wg_Command.cmi</code></li>
-              <li>3 K <code>lib/coq/ide/xmlprotocol.cmi</code></li>
-              <li>3 K <code>lib/coq/ide/gtk_parsing.cmi</code></li>
-              <li>3 K <code>lib/coq/ide/tags.cmi</code></li>
-              <li>2 K <code>lib/coq/ide/wg_Find.cmi</code></li>
-              <li>2 K <code>doc/FAQ-CoqIde</code></li>
-              <li>2 K <code>lib/coq/ide/coq_lex.cmi</code></li>
-              <li>1 K <code>lib/coq/ide/config_lexer.cmi</code></li>
-              <li>1 K <code>lib/coq/ide/coqide_ui.cmi</code></li>
-              <li>1 K <code>lib/coq/ide/utils/editable_cells.cmi</code></li>
-              <li>1 K <code>share/coq/coq_style.xml</code></li>
-              <li>1 K <code>lib/coq/ide/sentence.cmi</code></li>
-              <li>1 K <code>lib/coq/ide/minilib.cmi</code></li>
-              <li>1 K <code>lib/coq/ide/coqide.cmi</code></li>
-              <li>1 K <code>lib/coq/ide/utils/configwin_messages.cmi</code></li>
-              <li>1 K <code>lib/coq/ide/utf8_convert.cmi</code></li>
-              <li>1 K <code>lib/coq/ide/coq_commands.cmi</code></li>
-              <li>1 K <code>install/coq:coqide.install</code></li>
-              <li>1 K <code>lib/coq:coqide/opam.config</code></li>
-            </ul>
+            <p>No files were installed.</p>
             <h2>Uninstall</h2>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>opam remove -y coq:coqide.8.5.dev</code></dd>
+              <dd><code>true</code></dd>
               <dt>Return code</dt>
               <dd>0</dd>
               <dt>Duration</dt>
-              <dd>3 s</dd>
+              <dd>0 s</dd>
               <dt>Missing removes</dt>
               <dd>
-                <ul>
-                  <li><code>/home/bench/.opam/system/share/coq/coq.lang</code></li>
-                  <li><code>/home/bench/.opam/system/share/coq/coq-ssreflect.lang</code></li>
-                  <li><code>/home/bench/.opam/system/share/coq/coq.png</code></li>
-                  <li><code>/home/bench/.opam/system/share/coq/coq_style.xml</code></li>
-                  <li><code>/home/bench/.opam/system/doc/FAQ-CoqIde</code></li>
-                  <li><code>/home/bench/.opam/system/lib/coq/ide</code></li>
-                  <li><code>/home/bench/.opam/system/lib/coq/ide/wg_MessageView.cmi</code></li>
-                  <li><code>/home/bench/.opam/system/lib/coq/ide/preferences.cmi</code></li>
-                  <li><code>/home/bench/.opam/system/lib/coq/ide/wg_Completion.cmi</code></li>
-                  <li><code>/home/bench/.opam/system/lib/coq/ide/ide.a</code></li>
-                  <li><code>/home/bench/.opam/system/lib/coq/ide/config_lexer.cmi</code></li>
-                  <li><code>/home/bench/.opam/system/lib/coq/ide/sentence.cmi</code></li>
-                  <li><code>/home/bench/.opam/system/lib/coq/ide/wg_ScriptView.cmi</code></li>
-                  <li><code>/home/bench/.opam/system/lib/coq/ide/utf8_convert.cmi</code></li>
-                  <li><code>/home/bench/.opam/system/lib/coq/ide/xmlprotocol.cmi</code></li>
-                  <li><code>/home/bench/.opam/system/lib/coq/ide/wg_Find.cmi</code></li>
-                  <li><code>/home/bench/.opam/system/lib/coq/ide/wg_Command.cmi</code></li>
-                  <li><code>/home/bench/.opam/system/lib/coq/ide/tags.cmi</code></li>
-                  <li><code>/home/bench/.opam/system/lib/coq/ide/ide.cma</code></li>
-                  <li><code>/home/bench/.opam/system/lib/coq/ide/session.cmi</code></li>
-                  <li><code>/home/bench/.opam/system/lib/coq/ide/coq.cmi</code></li>
-                  <li><code>/home/bench/.opam/system/lib/coq/ide/ide.cmxa</code></li>
-                  <li><code>/home/bench/.opam/system/lib/coq/ide/coqide_ui.cmi</code></li>
-                  <li><code>/home/bench/.opam/system/lib/coq/ide/gtk_parsing.cmi</code></li>
-                  <li><code>/home/bench/.opam/system/lib/coq/ide/document.cmi</code></li>
-                  <li><code>/home/bench/.opam/system/lib/coq/ide/coq_commands.cmi</code></li>
-                  <li><code>/home/bench/.opam/system/lib/coq/ide/wg_Segment.cmi</code></li>
-                  <li><code>/home/bench/.opam/system/lib/coq/ide/coq_lex.cmi</code></li>
-                  <li><code>/home/bench/.opam/system/lib/coq/ide/coqOps.cmi</code></li>
-                  <li><code>/home/bench/.opam/system/lib/coq/ide/utils</code></li>
-                  <li><code>/home/bench/.opam/system/lib/coq/ide/utils/configwin.cmi</code></li>
-                  <li><code>/home/bench/.opam/system/lib/coq/ide/utils/editable_cells.cmi</code></li>
-                  <li><code>/home/bench/.opam/system/lib/coq/ide/utils/okey.cmi</code></li>
-                  <li><code>/home/bench/.opam/system/lib/coq/ide/utils/configwin_types.cmi</code></li>
-                  <li><code>/home/bench/.opam/system/lib/coq/ide/utils/configwin_messages.cmi</code></li>
-                  <li><code>/home/bench/.opam/system/lib/coq/ide/utils/configwin_keys.cmi</code></li>
-                  <li><code>/home/bench/.opam/system/lib/coq/ide/utils/configwin_ihm.cmi</code></li>
-                  <li><code>/home/bench/.opam/system/lib/coq/ide/utils/config_file.cmi</code></li>
-                  <li><code>/home/bench/.opam/system/lib/coq/ide/minilib.cmi</code></li>
-                  <li><code>/home/bench/.opam/system/lib/coq/ide/ideutils.cmi</code></li>
-                  <li><code>/home/bench/.opam/system/lib/coq/ide/wg_ProofView.cmi</code></li>
-                  <li><code>/home/bench/.opam/system/lib/coq/ide/nanoPG.cmi</code></li>
-                  <li><code>/home/bench/.opam/system/lib/coq/ide/wg_Detachable.cmi</code></li>
-                  <li><code>/home/bench/.opam/system/lib/coq/ide/wg_Notebook.cmi</code></li>
-                  <li><code>/home/bench/.opam/system/lib/coq/ide/project_file.cmi</code></li>
-                  <li><code>/home/bench/.opam/system/lib/coq/ide/fileOps.cmi</code></li>
-                  <li><code>/home/bench/.opam/system/lib/coq/ide/coqide.cmi</code></li>
-                </ul>
+                none
               </dd>
               <dt>Wrong removes</dt>
               <dd>
