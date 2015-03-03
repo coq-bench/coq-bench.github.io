@@ -44,29 +44,24 @@
               concurrency:proxy
               <small>
                 1.0.0
-                <span class="label label-success">3 s</span>
+                <span class="label label-warning">Error with dependencies</span>
               </small>
             </h1>
-            <p><em><script>document.write(moment("2015-03-02 10:11:59 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2015-03-02 10:11:59 UTC)</em><p>
+            <p><em><script>document.write(moment("2015-03-03 16:33:51 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2015-03-03 16:33:51 UTC)</em><p>
             <h2>Context</h2>
             <pre># Installed packages for system:
-base-bigarray                base  Bigarray library distributed with the OCaml c
-base-threads                 base  Threads library distributed with the OCaml co
-base-unix                    base  Unix library distributed with the OCaml compi
-camlp5                       6.12  Preprocessor-pretty-printer of OCaml
-coq                           dev  Formal proof management system.
-coq:concurrency:system      1.0.0  Experimental library to write concurrent appl
-coq:error-handlers          1.0.0  More functions on lists.
-coq:function-ninjas         1.0.0  Write readable code using simple functional c
-coq:io-effects              1.0.0  A library for effects in Coq.
-coq:io-effects:unix:ocaml   1.0.0  Unix effects for Coq programs extracted in OC
-coq:iterable                1.0.0  Generic definition of iterators.
-coq:list-plus               1.0.0  More functions on lists.
-coq:list-string             2.0.0  Strings implemented as lists.
-coq:moment                  1.0.0  Parse, manipulate and pretty-print dates in C
-lwt                         2.4.7  A cooperative threads library for OCaml
-ocamlfind                   1.5.5  A library manager for OCaml
-ppx_tools                  0.99.2  Tools for authors of ppx rewriters and other 
+base-bigarray            base  Bigarray library distributed with the OCaml compi
+base-threads             base  Threads library distributed with the OCaml compil
+base-unix                base  Unix library distributed with the OCaml compiler
+camlp5                   6.12  Preprocessor-pretty-printer of OCaml
+coq                       dev  Formal proof management system.
+coq:concurrency:system  1.0.0  Experimental library to write concurrent applicat
+coq:error-handlers      1.0.0  More functions on lists.
+coq:function-ninjas     1.0.0  Write readable code using simple functional combi
+coq:iterable            1.0.0  Generic definition of iterators.
+coq:list-plus           1.0.0  More functions on lists.
+coq:list-string         2.0.0  Strings implemented as lists.
+coq:moment              1.0.0  Parse, manipulate and pretty-print dates in Coq.
 </pre>
             <h2>Lint</h2>
             <dl class="dl-horizontal">
@@ -101,35 +96,92 @@ ppx_tools                  0.99.2  Tools for authors of ppx rewriters and other
               <dt>Command</dt>
               <dd><code>ulimit -Sv 1000000; timeout 5m opam install -y --deps-only coq:concurrency:proxy.1.0.0</code></dd>
               <dt>Return code</dt>
-              <dd>0</dd>
+              <dd>1024</dd>
               <dt>Duration</dt>
-              <dd>6 s</dd>
+              <dd>11 s</dd>
+              <dt>Output</dt>
+              <dd><pre>The following actions will be performed:
+ - install   ocamlfind.1.5.5                       [required by lwt, base64]
+ - install   ppx_tools.0.99.2                      [required by lwt]
+ - install   base64.1.0.0                          [required by coq:concurrency:proxy]
+ - install   lwt.2.4.7                             [required by coq:concurrency:proxy]
+=== 4 to install ===
+=-=- Synchronizing package archives -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+[default] Downloading https://opam.ocaml.org/archives/base64.1.0.0+opam.tar.gz
+=-=- Installing packages =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+Building ocamlfind.1.5.5:
+  ./configure -bindir /home/bench/.opam/system/bin -sitelib /home/bench/.opam/system/lib -mandir /home/bench/.opam/system/man -config /home/bench/.opam/system/lib/findlib.conf -no-topfind
+  make all
+  make opt
+  make install
+Installing ocamlfind.1.5.5.
+Building base64.1.0.0:
+  ocaml setup.ml -configure --prefix /home/bench/.opam/system
+  ocaml setup.ml -build
+  ocaml setup.ml -install
+Building ppx_tools.0.99.2:
+  make all
+  make install
+[ERROR] The compilation of ppx_tools.0.99.2 failed.
+Removing ppx_tools.0.99.2.
+  ocamlfind remove ppx_tools
+Installing base64.1.0.0.
+#=== ERROR while installing ppx_tools.0.99.2 ==================================#
+# opam-version         1.2.0
+# os                   linux
+# command              make install
+# path                 /home/bench/.opam/system/build/ppx_tools.0.99.2
+# compiler             system (4.02.1)
+# exit-code            2
+# env-file             /home/bench/.opam/system/build/ppx_tools.0.99.2/ppx_tools-2731-a00279.env
+# stdout-file          /home/bench/.opam/system/build/ppx_tools.0.99.2/ppx_tools-2731-a00279.out
+# stderr-file          /home/bench/.opam/system/build/ppx_tools.0.99.2/ppx_tools-2731-a00279.err
+### stdout ###
+# ...[truncated]
+# ocamlc -w +A-4-17-44-45 -I +compiler-libs -safe-string -c ppx_metaquot.ml
+# ocamlc -w +A-4-17-44-45 -I +compiler-libs -safe-string -o ppx_metaquot ocamlcommon.cma ppx_tools.cma ast_lifter.cmo ppx_metaquot.cmo
+# ocamlc -w +A-4-17-44-45 -I +compiler-libs -safe-string -c rewriter.ml
+# ocamlc -w +A-4-17-44-45 -I +compiler-libs -safe-string -o rewriter ocamlcommon.cma rewriter.cmo
+# ocamlopt -w +A-4-17-44-45 -I +compiler-libs -safe-string -c ast_convenience.ml
+# ocamlopt -w +A-4-17-44-45 -I +compiler-libs -safe-string -c ast_mapper_class.ml
+# ocamlopt -a -o ppx_tools.cmxa ast_convenience.cmx ast_mapper_class.cmx
+# ocamlopt -shared -o ppx_tools.cmxs -linkall ppx_tools.cmxa
+# ocamlfind install ppx_tools META genlifter dumpast ppx_metaquot rewriter ppx_tools.cma ppx_tools.cmxa ppx_tools.a ppx_tools.cmxs ast_convenience.cmi ast_convenience.cmx ast_mapper_class.cmi ast_mapper_class.cmx
+# Makefile:83: recipe for target &#39;install&#39; failed
+### stderr ###
+# ocamlfind: Package ppx_tools is already installed
+#  - (file /home/bench/.opam/system/lib/ppx_tools/META already exists)
+# make: *** [install] Error 2
+=-=- Error report -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+These actions have been completed successfully
+ - install   base64.1.0.0
+ - install   ocamlfind.1.5.5
+The following failed
+ - install   ppx_tools.0.99.2
+Due to the errors, the following have been cancelled
+ - install   lwt.2.4.7
+The former state can be restored with opam switch import &quot;/home/bench/.opam/system/backup/state-20150203163331.export&quot;
+</pre></dd>
             </dl>
             <h2>Install</h2>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>ulimit -Sv 4000000; timeout 120m opam install -y --verbose coq:concurrency:proxy.1.0.0</code></dd>
+              <dd><code>true</code></dd>
               <dt>Return code</dt>
               <dd>0</dd>
               <dt>Duration</dt>
-              <dd>3 s</dd>
+              <dd>0 s</dd>
             </dl>
             <h2>Installation size</h2>
-            <p>Total: 1,947 K</p>
-            <ul>
-              <li>1,508 K <code>bin/coqConcurrencyProxy.native</code></li>
-              <li>438 K <code>bin/coqConcurrencyProxy.byte</code></li>
-              <li>1 K <code>install/coq:concurrency:proxy.install</code></li>
-              <li>1 K <code>lib/coq:concurrency:proxy/opam.config</code></li>
-            </ul>
+            <p>No files were installed.</p>
             <h2>Uninstall</h2>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>opam remove -y coq:concurrency:proxy.1.0.0</code></dd>
+              <dd><code>true</code></dd>
               <dt>Return code</dt>
               <dd>0</dd>
               <dt>Duration</dt>
-              <dd>2 s</dd>
+              <dd>0 s</dd>
               <dt>Missing removes</dt>
               <dd>
                 none
