@@ -44,10 +44,10 @@
               io-effects:unix
               <small>
                 1.0.0
-                <span class="label label-success">6 s</span>
+                <span class="label label-danger">Error</span>
               </small>
             </h1>
-            <p><em><script>document.write(moment("2015-03-02 14:55:01 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2015-03-02 14:55:01 UTC)</em><p>
+            <p><em><script>document.write(moment("2015-03-03 21:19:12 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2015-03-03 21:19:12 UTC)</em><p>
             <h2>Context</h2>
             <pre># Installed packages for system:
 base-bigarray           base  Bigarray library distributed with the OCaml compil
@@ -91,34 +91,49 @@ coq                    8.4.5  Formal proof management system
               <dt>Return code</dt>
               <dd>0</dd>
               <dt>Duration</dt>
-              <dd>35 s</dd>
+              <dd>38 s</dd>
             </dl>
             <h2>Install</h2>
             <dl class="dl-horizontal">
               <dt>Command</dt>
               <dd><code>ulimit -Sv 4000000; timeout 120m opam install -y --verbose coq:io-effects:unix.1.0.0</code></dd>
               <dt>Return code</dt>
-              <dd>0</dd>
+              <dd>1024</dd>
               <dt>Duration</dt>
-              <dd>6 s</dd>
+              <dd>3 s</dd>
+              <dt>Output</dt>
+              <dd><pre>The following actions will be performed:
+ - install   coq:io-effects:unix.1.0.0
+=== 1 to install ===
+=-=- Synchronizing package archives -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+[coq:io-effects:unix.1.0.0] Downloading https://github.com/clarus/io-effects-unix/archive/1.0.0.tar.gz
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100   122    0   122    0     0    330      0 --:--:-- --:--:-- --:--:--   330
+  0     0    0   123    0     0    265      0 --:--:-- --:--:-- --:--:--   265
+  0     0    0   862    0     0   1017      0 --:--:-- --:--:-- --:--:--  1017  0     0    0  3530    0     0   4165      0 --:--:-- --:--:-- --:--:-- 2605k
+200
+[ERROR] Wrong checksum for /home/bench/.opam/packages.dev/coq:io-effects:unix.1.0.0/1.0.0.tar.gz:
+  - 54d12331833ec2737331593094791165 [expected result]
+  - 231d1615e8de9cd33a314b0bbd6032ee [actual result]
+This is surely due to outdated package descriptions and should be fixed by running `opam update`.
+In case an update does not fix that problem, you can use the `--no-checksums` command-line option
+to /bypass checking for invalid checksums.
+[ERROR] https://github.com/clarus/io-effects-unix/archive/1.0.0.tar.gz is not available
+[ERROR] Could not download archives of coq:io-effects:unix.1.0.0
+&#39;opam install -y --verbose coq:io-effects:unix.1.0.0&#39; failed.
+</pre></dd>
             </dl>
             <h2>Installation size</h2>
-            <p>Total: 69 K</p>
-            <ul>
-              <li>28 K <code>lib/coq/user-contrib/IoEffectsUnix/Unix.vo</code></li>
-              <li>24 K <code>lib/coq/user-contrib/IoEffectsUnix/Extraction.vo</code></li>
-              <li>16 K <code>lib/coq/user-contrib/IoEffectsUnix/All.vo</code></li>
-              <li>1 K <code>lib/coq:io-effects:unix/opam.config</code></li>
-              <li>1 K <code>install/coq:io-effects:unix.install</code></li>
-            </ul>
+            <p>No files were installed.</p>
             <h2>Uninstall</h2>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>opam remove -y coq:io-effects:unix.1.0.0</code></dd>
+              <dd><code>true</code></dd>
               <dt>Return code</dt>
               <dd>0</dd>
               <dt>Duration</dt>
-              <dd>2 s</dd>
+              <dd>0 s</dd>
               <dt>Missing removes</dt>
               <dd>
                 none
