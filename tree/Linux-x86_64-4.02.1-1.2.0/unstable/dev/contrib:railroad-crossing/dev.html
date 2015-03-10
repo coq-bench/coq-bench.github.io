@@ -44,56 +44,29 @@
               contrib:railroad-crossing
               <small>
                 dev
-                <span class="label label-success">7 s</span>
+                <span class="label label-danger">Error</span>
               </small>
             </h1>
-            <p><em><script>document.write(moment("2015-03-08 23:55:25 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2015-03-08 23:55:25 UTC)</em><p>
+            <p><em><script>document.write(moment("2015-03-10 01:35:00 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2015-03-10 01:35:00 UTC)</em><p>
             <h2>Context</h2>
             <pre># Installed packages for system:
-base-bigarray                         base  Bigarray library distributed with th
-base-threads                          base  Threads library distributed with the
-base-unix                             base  Unix library distributed with the OC
-camlp5                                6.12  Preprocessor-pretty-printer of OCaml
-coq                                    dev  Formal proof management system.
-coq:contrib:ramsey                     dev  Ramsey Theory.
-coq:contrib:random                     dev  Interpretation of random programs.
-coq:contrib:rational                   dev  A definition of rational numbers.
-coq:contrib:reflexive-first-order      dev  Reflexive first-order proof interpre
-coq:contrib:regexp                     dev  Regular Expression.
-coq:contrib:relation-algebra           dev  Relation Algebra and KAT.
-coq:contrib:rem                        dev  Rem Theorem in Baire space.
-coq:contrib:rsa                        dev  Correctness of RSA algorithm.
-coq:contrib:ruler-compass-geometry     dev  Ruler and compass geometry axiomatiz
-coq:contrib:schroeder                  dev  The Theorem of Schroeder-Bernstein.
-coq:contrib:shuffle                    dev  Gilbreath&#39;s card trick.
-coq:contrib:square-matrices            dev  From Fast Exponentiation to Square M
-coq:contrib:ssreflect                  dev  Ssreflect extension and the Mathemat
-coq:contrib:streams                    dev  Specification of Eratosthene Sieve.
-coq:contrib:subst                      dev  The confluence of Hardin-Lévy lambd
-coq:contrib:sudoku                     dev  A certified Sudoku solver.
-coq:contrib:sum-of-two-square          dev  Numbers equal to the sum of two squa
-coq:contrib:tait                       dev  A normalization proof a la Tait for 
-coq:contrib:tarski-geometry            dev  Tarski&#39;s geometry.
-coq:contrib:three-gap                  dev  A Proof of the Three Gap Theorem (St
-coq:contrib:tortoise-hare-algorithm    dev  Tortoise and the hare algorithm.
-coq:contrib:tree-diameter              dev  Diameter of a binary tree.
-coq:contrib:weak-up-to                 dev  New Up-to Techniques for Weak Bisimu
-coq:contrib:zchinese                   dev  A proof of the Chinese Remainder Lem
-coq:contrib:zf                         dev  An axiomatisation of intuitionistic 
-coq:contrib:zfc                        dev  An encoding of Zermelo-Fraenkel Set 
-coq:contrib:zorns-lemma                dev  Zorn&#39;s Lemma.
-coq:cunit                              dev  Unit testing in Coq, at compile time
-coq:cybele                             dev  A Coq plugin for simpler proofs by r
-coq:error-handlers                     dev  Simple and robust error handling fun
-coq:function-ninjas                    dev  Write readable code using simple fun
-coq:io                                 dev  A library for effects in Coq.
-coq:io-effects                       1.0.0  A library for effects in Coq.
-coq:iterable                           dev  Generic definition of iterators.
-coq:list-plus                          dev  More functions on lists.
-coq:list-string                        dev  Strings implemented as lists.
-coq:moment                             dev  Parse, manipulate and pretty-print d
-coq:monad                              dev  A basic definition of monads.
-coq:unicoq                             dev  An enhanced unification algorithm fo
+base-bigarray         base  Bigarray library distributed with the OCaml compiler
+base-threads          base  Threads library distributed with the OCaml compiler
+base-unix             base  Unix library distributed with the OCaml compiler
+camlp5                6.12  Preprocessor-pretty-printer of OCaml
+coq                    dev  Formal proof management system.
+coq:cunit              dev  Unit testing in Coq, at compile time.
+coq:cybele             dev  A Coq plugin for simpler proofs by reflection or OCa
+coq:error-handlers     dev  Simple and robust error handling functions.
+coq:function-ninjas    dev  Write readable code using simple functional combinat
+coq:io                 dev  A library for effects in Coq.
+coq:io-effects       1.0.0  A library for effects in Coq.
+coq:iterable           dev  Generic definition of iterators.
+coq:list-plus          dev  More functions on lists.
+coq:list-string        dev  Strings implemented as lists.
+coq:moment             dev  Parse, manipulate and pretty-print dates in Coq.
+coq:monad              dev  A basic definition of monads.
+coq:unicoq             dev  An enhanced unification algorithm for Coq.
 </pre>
             <h2>Lint</h2>
             <dl class="dl-horizontal">
@@ -137,30 +110,32 @@ coq:unicoq                             dev  An enhanced unification algorithm fo
               <dt>Command</dt>
               <dd><code>ulimit -Sv 4000000; timeout 120m opam install -y --verbose coq:contrib:railroad-crossing.dev</code></dd>
               <dt>Return code</dt>
-              <dd>0</dd>
+              <dd>1024</dd>
               <dt>Duration</dt>
-              <dd>7 s</dd>
+              <dd>2 s</dd>
+              <dt>Output</dt>
+              <dd><pre>The following actions will be performed:
+ - install   coq:contrib:railroad-crossing.dev
+=== 1 to install ===
+=-=- Synchronizing package archives -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+[coq:contrib:railroad-crossing] Fetching https://gforge.inria.fr/git/coq-contribs/railroad-crossing.git#trunk
+Initialized empty Git repository in /home/bench/.opam/packages.dev/coq:contrib:railroad-crossing.dev/.git/
+[master (root-commit) 88a5872] opam-git-init
+fatal: unable to access &#39;https://gforge.inria.fr/git/coq-contribs/railroad-crossing.git/&#39;: server certificate verification failed. CAfile: /etc/ssl/certs/ca-certificates.crt CRLfile: none
+[ERROR] Could not download archives of coq:contrib:railroad-crossing.dev
+&#39;opam install -y --verbose coq:contrib:railroad-crossing.dev&#39; failed.
+</pre></dd>
             </dl>
             <h2>Installation size</h2>
-            <p>Total: 1,044 K</p>
-            <ul>
-              <li>511 K <code>lib/coq/user-contrib/RailroadCrossing/railroad_crossing.glob</code></li>
-              <li>456 K <code>lib/coq/user-contrib/RailroadCrossing/railroad_crossing.vo</code></li>
-              <li>52 K <code>lib/coq/user-contrib/RailroadCrossing/railroad_crossing.v</code></li>
-              <li>20 K <code>lib/coq/user-contrib/RailroadCrossing/time_clocks.vo</code></li>
-              <li>1 K <code>lib/coq/user-contrib/RailroadCrossing/time_clocks.v</code></li>
-              <li>1 K <code>lib/coq/user-contrib/RailroadCrossing/time_clocks.glob</code></li>
-              <li>1 K <code>lib/coq:contrib:railroad-crossing/opam.config</code></li>
-              <li>1 K <code>install/coq:contrib:railroad-crossing.install</code></li>
-            </ul>
+            <p>No files were installed.</p>
             <h2>Uninstall</h2>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>opam remove -y coq:contrib:railroad-crossing.dev</code></dd>
+              <dd><code>true</code></dd>
               <dt>Return code</dt>
               <dd>0</dd>
               <dt>Duration</dt>
-              <dd>2 s</dd>
+              <dd>0 s</dd>
               <dt>Missing removes</dt>
               <dd>
                 none
