@@ -47,7 +47,7 @@
                 <span class="label label-danger">Error</span>
               </small>
             </h1>
-            <p><em><script>document.write(moment("2015-03-16 15:43:13 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2015-03-16 15:43:13 UTC)</em><p>
+            <p><em><script>document.write(moment("2015-03-18 03:08:32 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2015-03-18 03:08:32 UTC)</em><p>
             <h2>Context</h2>
             <pre># Installed packages for system:
 base-bigarray           base  Bigarray library distributed with the OCaml compil
@@ -103,7 +103,7 @@ ocamlfind              1.5.5  A library manager for OCaml
               <dt>Return code</dt>
               <dd>1024</dd>
               <dt>Duration</dt>
-              <dd>11 m 34 s</dd>
+              <dd>10 m 24 s</dd>
               <dt>Output</dt>
               <dd><pre>The following actions will be performed:
  - install   coq:contrib:compcert.dev
@@ -111,7 +111,7 @@ ocamlfind              1.5.5  A library manager for OCaml
 =-=- Synchronizing package archives -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 [coq:contrib:compcert] Fetching https://gforge.inria.fr/git/coq-contribs/compcert.git#trunk
 Initialized empty Git repository in /home/bench/.opam/packages.dev/coq:contrib:compcert.dev/.git/
-[master (root-commit) 8fa5caa] opam-git-init
+[master (root-commit) d838677] opam-git-init
 From https://gforge.inria.fr/git/coq-contribs/compcert
  * [new branch]      trunk      -&gt; opam-ref
  * [new branch]      trunk      -&gt; origin/trunk
@@ -883,8 +883,8 @@ CompCert configuration:
 If anything above looks wrong, please edit file ./Makefile.config to correct.
 make proof
 make[1]: Entering directory &#39;/home/bench/.opam/system/build/coq:contrib:compcert.dev&#39;
-COQC lib/Coqlib.v
 COQC lib/Axioms.v
+COQC lib/Coqlib.v
 ocamlopt -o tools/ndfun str.cmxa tools/ndfun.ml
 COQC flocq/Core/Fcore_Zaux.v
 File &quot;tools/ndfun.ml&quot;, line 12, characters 10-23:
@@ -934,8 +934,8 @@ COQC flocq/Core/Fcore_FLX.v
 COQC flocq/Core/Fcore_FLT.v
 COQC flocq/Core/Fcore_FTZ.v
 COQC flocq/Core/Fcore.v
-COQC flocq/Calc/Fcalc_round.v
 COQC flocq/Prop/Fprop_relative.v
+COQC flocq/Calc/Fcalc_round.v
 COQC flocq/Prop/Fprop_mult_error.v
 COQC flocq/Appli/Fappli_rnd_odd.v
 COQC flocq/Prop/Fprop_div_sqrt_error.v
@@ -959,8 +959,8 @@ COQC cfrontend/Initializers.v
 COQC common/Smallstep.v
 COQC ia32/Op.v
 COQC common/Behaviors.v
-COQC cfrontend/Csem.v
 COQC backend/Cminor.v
+COQC cfrontend/Csem.v
 COQC cfrontend/Clight.v
 COQC common/Determinism.v
 COQC cfrontend/Cstrategy.v
@@ -1012,7 +1012,6 @@ COQC backend/RTLtyping.v
 COQC backend/Constprop.v
 COQC backend/CSE.v
 COQC backend/Deadcode.v
-COQC backend/Allocation.v
 COQC backend/Tunneling.v
 COQC backend/Linear.v
 COQC backend/Selection.v
@@ -1022,6 +1021,7 @@ COQC backend/Tailcallproof.v
 COQC backend/Constpropproof.v
 COQC backend/CSEproof.v
 COQC backend/Deadcodeproof.v
+COQC backend/Allocation.v
 COQC backend/Tunnelingproof.v
 COQC backend/Lineartyping.v
 COQC backend/Linearize.v
@@ -1031,12 +1031,12 @@ COQC backend/Selectionproof.v
 COQC ia32/standard/Stacklayout.v
 COQC backend/Linearizeproof.v
 COQC backend/CleanupLabelsproof.v
-COQC backend/Allocproof.v
 COQC backend/Mach.v
 COQC ia32/Asm.v
 COQC backend/Stacking.v
 COQC backend/Stackingproof.v
 COQC ia32/Asmgen.v
+COQC backend/Allocproof.v
 COQC backend/Asmgenproof0.v
 COQC ia32/Asmgenproof1.v
 COQC ia32/Asmgenproof.v
@@ -1166,14 +1166,16 @@ ocamlbuild -j 2 -no-hygiene -no-links -I lib -I common -I ia32/standard -I ia32 
 /usr/local/bin/ocamlc.opt -c -I cparser -I lib -I driver -I extraction -I common -I ia32 -I cfrontend -I exportclight -I backend -I ia32/standard -I flocq/Core -I flocq/Calc -I flocq/Appli -I flocq/Prop -o cparser/Ceval.cmi cparser/Ceval.mli
 /usr/local/bin/ocamlc.opt -c -I driver -I cparser -I lib -I extraction -I common -I ia32 -I cfrontend -I exportclight -I backend -I ia32/standard -I flocq/Core -I flocq/Calc -I flocq/Appli -I flocq/Prop -o driver/Clflags.cmo driver/Clflags.ml
 /usr/local/bin/ocamlc.opt -c -I cparser -I lib -I driver -I extraction -I common -I ia32 -I cfrontend -I exportclight -I backend -I ia32/standard -I flocq/Core -I flocq/Calc -I flocq/Appli -I flocq/Prop -o cparser/Cprint.cmi cparser/Cprint.mli
+/usr/local/bin/ocamlc.opt -c -I cparser -I lib -I driver -I extraction -I common -I ia32 -I cfrontend -I exportclight -I backend -I ia32/standard -I flocq/Core -I flocq/Calc -I flocq/Appli -I flocq/Prop -o cparser/Cutil.cmi cparser/Cutil.mli
+/usr/local/bin/ocamlc.opt -c -I extraction -I cparser -I lib -I driver -I common -I ia32 -I cfrontend -I exportclight -I backend -I ia32/standard -I flocq/Core -I flocq/Calc -I flocq/Appli -I flocq/Prop -o extraction/Initializers.cmi extraction/Initializers.mli
 + /usr/local/bin/ocamlc.opt -c -I lib -I cparser -I driver -I extraction -I common -I ia32 -I cfrontend -I exportclight -I backend -I ia32/standard -I flocq/Core -I flocq/Calc -I flocq/Appli -I flocq/Prop -o lib/Camlcoq.cmo lib/Camlcoq.ml
 File &quot;lib/Camlcoq.ml&quot;, line 60, characters 12-19:
 Error: Unbound value Pos.sub
 Command exited with code 2.
 Makefile:149: recipe for target &#39;ccomp&#39; failed
 make[1]: Leaving directory &#39;/home/bench/.opam/system/build/coq:contrib:compcert.dev&#39;
-Makefile:129: recipe for target &#39;all&#39; failed
 make[1]: *** [ccomp] Error 10
+Makefile:129: recipe for target &#39;all&#39; failed
 make: *** [all] Error 2
 [ERROR] The compilation of coq:contrib:compcert.dev failed.
 Removing coq:contrib:compcert.dev.
@@ -1185,14 +1187,14 @@ Removing coq:contrib:compcert.dev.
 # path                 /home/bench/.opam/system/build/coq:contrib:compcert.dev
 # compiler             system (4.02.1)
 # exit-code            2
-# env-file             /home/bench/.opam/system/build/coq:contrib:compcert.dev/coq:contrib:compcert-4932-e7966f.env
-# stdout-file          /home/bench/.opam/system/build/coq:contrib:compcert.dev/coq:contrib:compcert-4932-e7966f.out
-# stderr-file          /home/bench/.opam/system/build/coq:contrib:compcert.dev/coq:contrib:compcert-4932-e7966f.err
+# env-file             /home/bench/.opam/system/build/coq:contrib:compcert.dev/coq:contrib:compcert-19194-e7966f.env
+# stdout-file          /home/bench/.opam/system/build/coq:contrib:compcert.dev/coq:contrib:compcert-19194-e7966f.out
+# stderr-file          /home/bench/.opam/system/build/coq:contrib:compcert.dev/coq:contrib:compcert-19194-e7966f.err
 ### stdout ###
 # ...[truncated]
-# /usr/local/bin/ocamlc.opt -c -I cparser -I lib -I driver -I extraction -I common -I ia32 -I cfrontend -I exportclight -I backend -I ia32/standard -I flocq/Core -I flocq/Calc -I flocq/Appli -I flocq/Prop -o cparser/Ceval.cmi cparser/Ceval.mli
-# /usr/local/bin/ocamlc.opt -c -I driver -I cparser -I lib -I extraction -I common -I ia32 -I cfrontend -I exportclight -I backend -I ia32/standard -I flocq/Core -I flocq/Calc -I flocq/Appli -I flocq/Prop -o driver/Clflags.cmo driver/Clflags.ml
 # /usr/local/bin/ocamlc.opt -c -I cparser -I lib -I driver -I extraction -I common -I ia32 -I cfrontend -I exportclight -I backend -I ia32/standard -I flocq/Core -I flocq/Calc -I flocq/Appli -I flocq/Prop -o cparser/Cprint.cmi cparser/Cprint.mli
+# /usr/local/bin/ocamlc.opt -c -I cparser -I lib -I driver -I extraction -I common -I ia32 -I cfrontend -I exportclight -I backend -I ia32/standard -I flocq/Core -I flocq/Calc -I flocq/Appli -I flocq/Prop -o cparser/Cutil.cmi cparser/Cutil.mli
+# /usr/local/bin/ocamlc.opt -c -I extraction -I cparser -I lib -I driver -I common -I ia32 -I cfrontend -I exportclight -I backend -I ia32/standard -I flocq/Core -I flocq/Calc -I flocq/Appli -I flocq/Prop -o extraction/Initializers.cmi extraction/Initializers.mli
 # + /usr/local/bin/ocamlc.opt -c -I lib -I cparser -I driver -I extraction -I common -I ia32 -I cfrontend -I exportclight -I backend -I ia32/standard -I flocq/Core -I flocq/Calc -I flocq/Appli -I flocq/Prop -o lib/Camlcoq.cmo lib/Camlcoq.ml
 # File &quot;lib/Camlcoq.ml&quot;, line 60, characters 12-19:
 # Error: Unbound value Pos.sub
