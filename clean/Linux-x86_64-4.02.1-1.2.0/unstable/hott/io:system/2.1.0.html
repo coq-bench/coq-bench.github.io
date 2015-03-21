@@ -44,10 +44,10 @@
               io:system
               <small>
                 2.1.0
-                <span class="label label-success">8 s</span>
+                <span class="label label-danger">Error</span>
               </small>
             </h1>
-            <p><em><script>document.write(moment("2015-03-19 15:03:31 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2015-03-19 15:03:31 UTC)</em><p>
+            <p><em><script>document.write(moment("2015-03-21 15:55:09 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2015-03-21 15:55:09 UTC)</em><p>
             <h2>Context</h2>
             <pre># Installed packages for system:
 base-bigarray           base  Bigarray library distributed with the OCaml compil
@@ -94,34 +94,77 @@ ocamlfind              1.5.5  A library manager for OCaml
               <dt>Return code</dt>
               <dd>0</dd>
               <dt>Duration</dt>
-              <dd>28 s</dd>
+              <dd>33 s</dd>
             </dl>
             <h2>Install</h2>
             <dl class="dl-horizontal">
               <dt>Command</dt>
               <dd><code>ulimit -Sv 4000000; timeout 120m opam install -y --verbose coq:io:system.2.1.0</code></dd>
               <dt>Return code</dt>
-              <dd>0</dd>
+              <dd>1024</dd>
               <dt>Duration</dt>
-              <dd>8 s</dd>
+              <dd>5 s</dd>
+              <dt>Output</dt>
+              <dd><pre>The following actions will be performed:
+ - install   coq:io:system.2.1.0
+=== 1 to install ===
+=-=- Synchronizing package archives -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+[coq:io:system.2.1.0] Downloading https://github.com/clarus/io-system/archive/2.1.0.tar.gz
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100   123    0   123    0     0    331      0 --:--:-- --:--:-- --:--:--   332
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0  0     0    0  3979    0     0   5348      0 --:--:-- --:--:-- --:--:-- 27825
+200
+=-=- Installing packages =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+Building coq:io:system.2.1.0:
+  ./configure.sh
+  make -j4
+  make install
+&quot;coqdep&quot; -c -R &quot;src&quot; Io.System &quot;src/All.v&quot; &gt; &quot;src/All.v.d&quot; || ( RV=$?; rm -f &quot;src/All.v.d&quot;; exit ${RV} )
+&quot;coqdep&quot; -c -R &quot;src&quot; Io.System &quot;src/Extraction.v&quot; &gt; &quot;src/Extraction.v.d&quot; || ( RV=$?; rm -f &quot;src/Extraction.v.d&quot;; exit ${RV} )
+&quot;coqdep&quot; -c -R &quot;src&quot; Io.System &quot;src/System.v&quot; &gt; &quot;src/System.v.d&quot; || ( RV=$?; rm -f &quot;src/System.v.d&quot;; exit ${RV} )
+&quot;coqc&quot;  -q  -R &quot;src&quot; Io.System   src/System
+File &quot;./src/System.v&quot;, line 31, characters 21-30:
+Error: The reference Effects.t was not found in the current environment.
+make: *** [src/System.vo] Error 1
+Makefile:236: recipe for target &#39;src/System.vo&#39; failed
+[ERROR] The compilation of coq:io:system.2.1.0 failed.
+Removing coq:io:system.2.1.0.
+  rm -R /home/bench/.opam/system/lib/coq/user-contrib/Io/System
+rm: cannot remove &#39;/home/bench/.opam/system/lib/coq/user-contrib/Io/System&#39;: No such file or directory
+#=== ERROR while installing coq:io:system.2.1.0 ===============================#
+# opam-version         1.2.0
+# os                   linux
+# command              make -j4
+# path                 /home/bench/.opam/system/build/coq:io:system.2.1.0
+# compiler             system (4.02.1)
+# exit-code            2
+# env-file             /home/bench/.opam/system/build/coq:io:system.2.1.0/coq:io:system-9873-c61e7b.env
+# stdout-file          /home/bench/.opam/system/build/coq:io:system.2.1.0/coq:io:system-9873-c61e7b.out
+# stderr-file          /home/bench/.opam/system/build/coq:io:system.2.1.0/coq:io:system-9873-c61e7b.err
+### stdout ###
+# &quot;coqdep&quot; -c -R &quot;src&quot; Io.System &quot;src/All.v&quot; &gt; &quot;src/All.v.d&quot; || ( RV=$?; rm -f &quot;src/All.v.d&quot;; exit ${RV} )
+# &quot;coqdep&quot; -c -R &quot;src&quot; Io.System &quot;src/Extraction.v&quot; &gt; &quot;src/Extraction.v.d&quot; || ( RV=$?; rm -f &quot;src/Extraction.v.d&quot;; exit ${RV} )
+# &quot;coqdep&quot; -c -R &quot;src&quot; Io.System &quot;src/System.v&quot; &gt; &quot;src/System.v.d&quot; || ( RV=$?; rm -f &quot;src/System.v.d&quot;; exit ${RV} )
+# &quot;coqc&quot;  -q  -R &quot;src&quot; Io.System   src/System
+# Makefile:236: recipe for target &#39;src/System.vo&#39; failed
+### stderr ###
+# File &quot;./src/System.v&quot;, line 31, characters 21-30:
+# Error: The reference Effects.t was not found in the current environment.
+# make: *** [src/System.vo] Error 1
+&#39;opam install -y --verbose coq:io:system.2.1.0&#39; failed.
+</pre></dd>
             </dl>
             <h2>Installation size</h2>
-            <p>Total: 104 K</p>
-            <ul>
-              <li>40 K <code>lib/coq/user-contrib/Io/System/Extraction.vo</code></li>
-              <li>37 K <code>lib/coq/user-contrib/Io/System/System.vo</code></li>
-              <li>26 K <code>lib/coq/user-contrib/Io/System/All.vo</code></li>
-              <li>1 K <code>lib/coq:io:system/opam.config</code></li>
-              <li>1 K <code>install/coq:io:system.install</code></li>
-            </ul>
+            <p>No files were installed.</p>
             <h2>Uninstall</h2>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>opam remove -y coq:io:system.2.1.0</code></dd>
+              <dd><code>true</code></dd>
               <dt>Return code</dt>
               <dd>0</dd>
               <dt>Duration</dt>
-              <dd>2 s</dd>
+              <dd>0 s</dd>
               <dt>Missing removes</dt>
               <dd>
                 none
