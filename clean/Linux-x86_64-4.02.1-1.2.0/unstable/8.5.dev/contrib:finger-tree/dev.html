@@ -47,7 +47,7 @@
                 <span class="label label-danger">Error</span>
               </small>
             </h1>
-            <p><em><script>document.write(moment("2015-03-21 09:24:48 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2015-03-21 09:24:48 UTC)</em><p>
+            <p><em><script>document.write(moment("2015-03-22 21:59:06 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2015-03-22 21:59:06 UTC)</em><p>
             <h2>Context</h2>
             <pre># Installed packages for system:
 base-bigarray     base  Bigarray library distributed with the OCaml compiler
@@ -108,7 +108,7 @@ coq            8.5.dev  Formal proof management system.
 =-=- Synchronizing package archives -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 [coq:contrib:finger-tree] Fetching https://gforge.inria.fr/git/coq-contribs/finger-tree.git#trunk
 Initialized empty Git repository in /home/bench/.opam/packages.dev/coq:contrib:finger-tree.dev/.git/
-[master (root-commit) 93e2b64] opam-git-init
+[master (root-commit) 45ca820] opam-git-init
 From https://gforge.inria.fr/git/coq-contribs/finger-tree
  * [new branch]      trunk      -&gt; opam-ref
  * [new branch]      trunk      -&gt; origin/trunk
@@ -187,11 +187,22 @@ nothing is done to handle dependencies with them.
 &quot;coqc&quot;  -q  -R &quot;.&quot; FingerTree   Reduce
 &quot;coqc&quot;  -q  -R &quot;.&quot; FingerTree   OrderedType
 cd extraction/ml/; rm -f *.ml *.mli *.cm* *.o;   &quot;coqc&quot; -q -opt -R ../.. FingerTree Extract.v
+cd &quot;./extraction&quot; &amp;&amp; make all
+make[1]: Entering directory &#39;/home/bench/.opam/system/build/coq:contrib:finger-tree.dev/extraction&#39;
 File &quot;./Extract.v&quot;, line 2, characters 0-52:
 Error: Cannot find library FingerTree.DependentFingerTreeModule in loadpath
 Makefile:189: recipe for target &#39;extraction/ml/Extract.vo&#39; failed
 make: *** [extraction/ml/Extract.vo] Error 1
 make: *** Waiting for unfinished jobs....
+cd ml ; make all
+make[2]: Entering directory &#39;/home/bench/.opam/system/build/coq:contrib:finger-tree.dev/extraction/ml&#39;
+make[2]: *** No rule to make target &#39;Datatypes.mli&#39;, needed by &#39;depend&#39;.  Stop.
+make[2]: Leaving directory &#39;/home/bench/.opam/system/build/coq:contrib:finger-tree.dev/extraction/ml&#39;
+Makefile:95: recipe for target &#39;ml&#39; failed
+make[1]: *** [ml] Error 2
+make[1]: Leaving directory &#39;/home/bench/.opam/system/build/coq:contrib:finger-tree.dev/extraction&#39;
+Makefile:198: recipe for target &#39;extraction&#39; failed
+make: *** [extraction] Error 2
 [ERROR] The compilation of coq:contrib:finger-tree.dev failed.
 Removing coq:contrib:finger-tree.dev.
   rm -R /home/bench/.opam/system/lib/coq/user-contrib/finger-tree
@@ -203,24 +214,23 @@ rm: cannot remove &#39;/home/bench/.opam/system/lib/coq/user-contrib/finger-tree
 # path                 /home/bench/.opam/system/build/coq:contrib:finger-tree.dev
 # compiler             system (4.02.1)
 # exit-code            2
-# env-file             /home/bench/.opam/system/build/coq:contrib:finger-tree.dev/coq:contrib:finger-tree-2206-d2c37b.env
-# stdout-file          /home/bench/.opam/system/build/coq:contrib:finger-tree.dev/coq:contrib:finger-tree-2206-d2c37b.out
-# stderr-file          /home/bench/.opam/system/build/coq:contrib:finger-tree.dev/coq:contrib:finger-tree-2206-d2c37b.err
+# env-file             /home/bench/.opam/system/build/coq:contrib:finger-tree.dev/coq:contrib:finger-tree-28236-d2c37b.env
+# stdout-file          /home/bench/.opam/system/build/coq:contrib:finger-tree.dev/coq:contrib:finger-tree-28236-d2c37b.out
+# stderr-file          /home/bench/.opam/system/build/coq:contrib:finger-tree.dev/coq:contrib:finger-tree-28236-d2c37b.err
 ### stdout ###
 # ...[truncated]
-# &quot;coqdep&quot; -c -R &quot;.&quot; FingerTree &quot;DependentFingerTreeModule.v&quot; &gt; &quot;DependentFingerTreeModule.v.d&quot; || ( RV=$?; rm -f &quot;DependentFingerTreeModule.v.d&quot;; exit ${RV} )
-# &quot;coqdep&quot; -c -R &quot;.&quot; FingerTree &quot;FingerTreeModule.v&quot; &gt; &quot;FingerTreeModule.v.d&quot; || ( RV=$?; rm -f &quot;FingerTreeModule.v.d&quot;; exit ${RV} )
-# &quot;coqdep&quot; -c -R &quot;.&quot; FingerTree &quot;RopeModule.v&quot; &gt; &quot;RopeModule.v.d&quot; || ( RV=$?; rm -f &quot;RopeModule.v.d&quot;; exit ${RV} )
-# &quot;coqc&quot;  -q  -R &quot;.&quot; FingerTree   Modules
-# &quot;coqc&quot;  -q  -R &quot;.&quot; FingerTree   StringInterface
-# &quot;coqc&quot;  -q  -R &quot;.&quot; FingerTree   Monoid
-# &quot;coqc&quot;  -q  -R &quot;.&quot; FingerTree   Reduce
-# &quot;coqc&quot;  -q  -R &quot;.&quot; FingerTree   OrderedType
 # cd extraction/ml/; rm -f *.ml *.mli *.cm* *.o;   &quot;coqc&quot; -q -opt -R ../.. FingerTree Extract.v
+# cd &quot;./extraction&quot; &amp;&amp; make all
+# make[1]: Entering directory &#39;/home/bench/.opam/system/build/coq:contrib:finger-tree.dev/extraction&#39;
 # Makefile:189: recipe for target &#39;extraction/ml/Extract.vo&#39; failed
+# cd ml ; make all
+# make[2]: Entering directory &#39;/home/bench/.opam/system/build/coq:contrib:finger-tree.dev/extraction/ml&#39;
+# make[2]: Leaving directory &#39;/home/bench/.opam/system/build/coq:contrib:finger-tree.dev/extraction/ml&#39;
+# Makefile:95: recipe for target &#39;ml&#39; failed
+# make[1]: Leaving directory &#39;/home/bench/.opam/system/build/coq:contrib:finger-tree.dev/extraction&#39;
+# Makefile:198: recipe for target &#39;extraction&#39; failed
 ### stderr ###
-# Warning:
-# Please now use &quot;-extra[-phony] result deps command&quot; instead of &quot;-custom command deps result&quot;.
+# ...[truncated]
 # It follows makefile target declaration order and has a clearer semantic.
 # Warning: Targets for subdirectories are very fragile. For example,
 # nothing is done to handle dependencies with them.
@@ -228,6 +238,9 @@ rm: cannot remove &#39;/home/bench/.opam/system/lib/coq/user-contrib/finger-tree
 # Error: Cannot find library FingerTree.DependentFingerTreeModule in loadpath
 # make: *** [extraction/ml/Extract.vo] Error 1
 # make: *** Waiting for unfinished jobs....
+# make[2]: *** No rule to make target &#39;Datatypes.mli&#39;, needed by &#39;depend&#39;.  Stop.
+# make[1]: *** [ml] Error 2
+# make: *** [extraction] Error 2
 &#39;opam install -y --verbose coq:contrib:finger-tree.dev&#39; failed.
 </pre></dd>
             </dl>
