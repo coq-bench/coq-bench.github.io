@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Coq bench</title>
+    <link rel="shortcut icon" type="image/png" href="../../../../../favicon.png" />
+    <link href="../../../../../bootstrap.min.css" rel="stylesheet">
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+    <script src="../../../../../moment.min.js"></script>
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="container">
+      <div class="navbar navbar-default" role="navigation">
+        <div class="container-fluid">
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="../../../../.."><i class="fa fa-lg fa-flag-checkered"></i> Coq bench</a>
+          </div>
+          <div id="navbar" class="collapse navbar-collapse">
+            <ul class="nav navbar-nav">
+              <li><a href="../..">clean / unstable</a></li>
+              <li class="active"><a href="">8.4.5 / opam-website - 1.0.0</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="article">
+        <div class="row">
+          <div class="col-md-12">
+            <a href="../..">« Up</a>
+            <h1>
+              opam-website
+              <small>
+                1.0.0
+                <span class="label label-danger">Error</span>
+              </small>
+            </h1>
+            <p><em><script>document.write(moment("2015-03-24 00:20:29 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2015-03-24 00:20:29 UTC)</em><p>
+            <h2>Context</h2>
+            <pre># Installed packages for system:
+base-bigarray   base  Bigarray library distributed with the OCaml compiler
+base-threads    base  Threads library distributed with the OCaml compiler
+base-unix       base  Unix library distributed with the OCaml compiler
+camlp5          6.12  Preprocessor-pretty-printer of OCaml
+coq            8.4.5  Formal proof management system.
+</pre>
+            <h2>Lint</h2>
+            <dl class="dl-horizontal">
+              <dt>Command</dt>
+              <dd><code>ruby lint.rb stable ../stable/packages/coq:opam-website/coq:opam-website.1.0.0</code></dd>
+              <dt>Return code</dt>
+              <dd>0</dd>
+              <dt>Duration</dt>
+              <dd>0 s</dd>
+            </dl>
+            <h2>Dry install</h2>
+            <p>Dry install with the current Coq version:</p>
+            <dl class="dl-horizontal">
+              <dt>Command</dt>
+              <dd><code>opam install -y --show-action coq:opam-website.1.0.0 coq.8.4.5</code></dd>
+              <dt>Return code</dt>
+              <dd>0</dd>
+              <dt>Duration</dt>
+              <dd>2 s</dd>
+            </dl>
+            <p>Dry install without Coq, to test if the problem was incompatibility with the current Coq version:</p>
+            <dl class="dl-horizontal">
+              <dt>Command</dt>
+              <dd><code>true</code></dd>
+              <dt>Return code</dt>
+              <dd>0</dd>
+              <dt>Duration</dt>
+              <dd>0 s</dd>
+            </dl>
+            <h2>Install dependencies</h2>
+            <dl class="dl-horizontal">
+              <dt>Command</dt>
+              <dd><code>ulimit -Sv 1000000; timeout 5m opam install -y --deps-only coq:opam-website.1.0.0</code></dd>
+              <dt>Return code</dt>
+              <dd>0</dd>
+              <dt>Duration</dt>
+              <dd>6 s</dd>
+            </dl>
+            <h2>Install</h2>
+            <dl class="dl-horizontal">
+              <dt>Command</dt>
+              <dd><code>ulimit -Sv 4000000; timeout 120m opam install -y --verbose coq:opam-website.1.0.0</code></dd>
+              <dt>Return code</dt>
+              <dd>1024</dd>
+              <dt>Duration</dt>
+              <dd>4 s</dd>
+              <dt>Output</dt>
+              <dd><pre>The following actions will be performed:
+ - install   coq:opam-website.1.0.0
+=== 1 to install ===
+=-=- Synchronizing package archives -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+[coq:opam-website.1.0.0] Downloading https://github.com/clarus/coq-opam-website/archive/1.0.0.tar.gz
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100   130    0   130    0     0    345      0 --:--:-- --:--:-- --:--:--   345
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0  0     0    0  5926    0     0   7526      0 --:--:-- --:--:-- --:--:-- 31860
+200
+=-=- Installing packages =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+Building coq:opam-website.1.0.0:
+  ./configure.sh
+  make -j4
+  sh -c cd extraction &amp;&amp; make
+&quot;coqdep&quot; -c -slash -R . OpamWebsite &quot;src/Api.v&quot; &gt; &quot;src/Api.v.d&quot; || ( RV=$?; rm -f &quot;src/Api.v.d&quot;; exit ${RV} )
+&quot;coqdep&quot; -c -slash -R . OpamWebsite &quot;src/Extract.v&quot; &gt; &quot;src/Extract.v.d&quot; || ( RV=$?; rm -f &quot;src/Extract.v.d&quot;; exit ${RV} )
+&quot;coqdep&quot; -c -slash -R . OpamWebsite &quot;src/Main.v&quot; &gt; &quot;src/Main.v.d&quot; || ( RV=$?; rm -f &quot;src/Main.v.d&quot;; exit ${RV} )
+&quot;coqdep&quot; -c -slash -R . OpamWebsite &quot;src/Model.v&quot; &gt; &quot;src/Model.v.d&quot; || ( RV=$?; rm -f &quot;src/Model.v.d&quot;; exit ${RV} )
+*** Warning: in file src/Main.v, library Io.System.All.v is required and has not been found in loadpath!
+*** Warning: in file src/Main.v, library ListString.All.v is required and has not been found in loadpath!
+*** Warning: in file src/Model.v, library ListString.All.v is required and has not been found in loadpath!
+&quot;coqdep&quot; -c -slash -R . OpamWebsite &quot;src/Spec.v&quot; &gt; &quot;src/Spec.v.d&quot; || ( RV=$?; rm -f &quot;src/Spec.v.d&quot;; exit ${RV} )
+*** Warning: in file src/Api.v, library ListString.All.v is required and has not been found in loadpath!
+*** Warning: in file src/Api.v, library Io.System.All.v is required and has not been found in loadpath!
+&quot;coqdep&quot; -c -slash -R . OpamWebsite &quot;src/View.v&quot; &gt; &quot;src/View.v.d&quot; || ( RV=$?; rm -f &quot;src/View.v.d&quot;; exit ${RV} )
+*** Warning: in file src/Extract.v, library Io.System.All.v is required and has not been found in loadpath!
+*** Warning: in file src/Spec.v, library ListString.All.v is required and has not been found in loadpath!
+*** Warning: in file src/View.v, library ListPlus.All.v is required and has not been found in loadpath!
+*** Warning: in file src/View.v, library ListString.All.v is required and has not been found in loadpath!
+&quot;coqc&quot;  -q  -R . OpamWebsite   src/Model
+&quot;coqc&quot;  -q  -R . OpamWebsite   src/Api
+File &quot;/home/bench/.opam/system/build/coq:opam-website.1.0.0/src/Model.v&quot;, line 1, characters 0-30:
+Error: Cannot find library ListString.All in loadpath
+Makefile:203: recipe for target &#39;src/Model.vo&#39; failed
+make: *** [src/Model.vo] Error 1
+make: *** Waiting for unfinished jobs....
+File &quot;/home/bench/.opam/system/build/coq:opam-website.1.0.0/src/Api.v&quot;, line 5, characters 0-30:
+Error: Cannot find library ListString.All in loadpath
+Makefile:203: recipe for target &#39;src/Api.vo&#39; failed
+make: *** [src/Api.vo] Error 1
+[ERROR] The compilation of coq:opam-website.1.0.0 failed.
+Removing coq:opam-website.1.0.0.
+  Nothing to do.
+#=== ERROR while installing coq:opam-website.1.0.0 ============================#
+# opam-version         1.2.0
+# os                   linux
+# command              make -j4
+# path                 /home/bench/.opam/system/build/coq:opam-website.1.0.0
+# compiler             system (4.02.1)
+# exit-code            2
+# env-file             /home/bench/.opam/system/build/coq:opam-website.1.0.0/coq:opam-website-28278-c61e7b.env
+# stdout-file          /home/bench/.opam/system/build/coq:opam-website.1.0.0/coq:opam-website-28278-c61e7b.out
+# stderr-file          /home/bench/.opam/system/build/coq:opam-website.1.0.0/coq:opam-website-28278-c61e7b.err
+### stdout ###
+# ...[truncated]
+# &quot;coqdep&quot; -c -slash -R . OpamWebsite &quot;src/Spec.v&quot; &gt; &quot;src/Spec.v.d&quot; || ( RV=$?; rm -f &quot;src/Spec.v.d&quot;; exit ${RV} )
+# &quot;coqdep&quot; -c -slash -R . OpamWebsite &quot;src/View.v&quot; &gt; &quot;src/View.v.d&quot; || ( RV=$?; rm -f &quot;src/View.v.d&quot;; exit ${RV} )
+# &quot;coqc&quot;  -q  -R . OpamWebsite   src/Model
+# &quot;coqc&quot;  -q  -R . OpamWebsite   src/Api
+# File &quot;/home/bench/.opam/system/build/coq:opam-website.1.0.0/src/Model.v&quot;, line 1, characters 0-30:
+# Error: Cannot find library ListString.All in loadpath
+# Makefile:203: recipe for target &#39;src/Model.vo&#39; failed
+# File &quot;/home/bench/.opam/system/build/coq:opam-website.1.0.0/src/Api.v&quot;, line 5, characters 0-30:
+# Error: Cannot find library ListString.All in loadpath
+# Makefile:203: recipe for target &#39;src/Api.vo&#39; failed
+### stderr ###
+# ...[truncated]
+# *** Warning: in file src/Model.v, library ListString.All.v is required and has not been found in loadpath!
+# *** Warning: in file src/Api.v, library ListString.All.v is required and has not been found in loadpath!
+# *** Warning: in file src/Api.v, library Io.System.All.v is required and has not been found in loadpath!
+# *** Warning: in file src/Extract.v, library Io.System.All.v is required and has not been found in loadpath!
+# *** Warning: in file src/Spec.v, library ListString.All.v is required and has not been found in loadpath!
+# *** Warning: in file src/View.v, library ListPlus.All.v is required and has not been found in loadpath!
+# *** Warning: in file src/View.v, library ListString.All.v is required and has not been found in loadpath!
+# make: *** [src/Model.vo] Error 1
+# make: *** Waiting for unfinished jobs....
+# make: *** [src/Api.vo] Error 1
+&#39;opam install -y --verbose coq:opam-website.1.0.0&#39; failed.
+</pre></dd>
+            </dl>
+            <h2>Installation size</h2>
+            <p>No files were installed.</p>
+            <h2>Uninstall</h2>
+            <dl class="dl-horizontal">
+              <dt>Command</dt>
+              <dd><code>true</code></dd>
+              <dt>Return code</dt>
+              <dd>0</dd>
+              <dt>Duration</dt>
+              <dd>0 s</dd>
+              <dt>Missing removes</dt>
+              <dd>
+                none
+              </dd>
+              <dt>Wrong removes</dt>
+              <dd>
+                none
+              </dd>
+            </dl>
+          </div>
+        </div>
+      </div>
+      <hr/>
+      <div class="footer">
+        <p class="text-center">
+          <small>Sources are on <a href="https://github.com/coq-bench">GitHub</a>. © Guillaume Claret.</small>
+        </p>
+      </div>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="../../../../../bootstrap.min.js"></script>
+  </body>
+</html>
