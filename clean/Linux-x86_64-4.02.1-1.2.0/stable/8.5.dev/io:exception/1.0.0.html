@@ -31,7 +31,7 @@
           <div id="navbar" class="collapse navbar-collapse">
             <ul class="nav navbar-nav">
               <li><a href="../..">clean / stable</a></li>
-              <li class="active"><a href="">8.5.dev / list-plus - 1.1.0</a></li>
+              <li class="active"><a href="">8.5.dev / io:exception - 1.0.0</a></li>
             </ul>
           </div>
         </div>
@@ -41,10 +41,10 @@
           <div class="col-md-12">
             <a href="../..">« Up</a>
             <h1>
-              list-plus
+              io:exception
               <small>
-                1.1.0
-                <span class="label label-success">4 s</span>
+                1.0.0
+                <span class="label label-danger">Error</span>
               </small>
             </h1>
             <p><em><script>document.write(moment("2015-03-25 07:34:33 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2015-03-25 07:34:33 UTC)</em><p>
@@ -59,7 +59,7 @@ coq            8.5.dev  Formal proof management system.
             <h2>Lint</h2>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>ruby lint.rb stable ../stable/packages/coq:list-plus/coq:list-plus.1.1.0</code></dd>
+              <dd><code>ruby lint.rb stable ../stable/packages/coq:io:exception/coq:io:exception.1.0.0</code></dd>
               <dt>Return code</dt>
               <dd>0</dd>
               <dt>Duration</dt>
@@ -69,7 +69,7 @@ coq            8.5.dev  Formal proof management system.
             <p>Dry install with the current Coq version:</p>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>opam install -y --show-action coq:list-plus.1.1.0 coq.8.5.dev</code></dd>
+              <dd><code>opam install -y --show-action coq:io:exception.1.0.0 coq.8.5.dev</code></dd>
               <dt>Return code</dt>
               <dd>0</dd>
               <dt>Duration</dt>
@@ -87,38 +87,77 @@ coq            8.5.dev  Formal proof management system.
             <h2>Install dependencies</h2>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>ulimit -Sv 1000000; timeout 5m opam install -y --deps-only coq:list-plus.1.1.0</code></dd>
+              <dd><code>ulimit -Sv 1000000; timeout 5m opam install -y --deps-only coq:io:exception.1.0.0</code></dd>
               <dt>Return code</dt>
               <dd>0</dd>
               <dt>Duration</dt>
-              <dd>2 s</dd>
+              <dd>5 s</dd>
             </dl>
             <h2>Install</h2>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>ulimit -Sv 4000000; timeout 120m opam install -y --verbose coq:list-plus.1.1.0</code></dd>
+              <dd><code>ulimit -Sv 4000000; timeout 120m opam install -y --verbose coq:io:exception.1.0.0</code></dd>
               <dt>Return code</dt>
-              <dd>0</dd>
+              <dd>1024</dd>
               <dt>Duration</dt>
-              <dd>4 s</dd>
+              <dd>9 s</dd>
+              <dt>Output</dt>
+              <dd><pre>The following actions will be performed:
+ - install   coq:io:exception.1.0.0
+=== 1 to install ===
+=-=- Synchronizing package archives -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+[coq:io:exception.1.0.0] Downloading https://github.com/clarus/io-exception/archive/1.0.0.tar.gz
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0  0     0    0     0    0     0      0      0 --:--:--  0:00:01 --:--:--     0  0     0    0     0    0     0      0      0 --:--:--  0:00:02 --:--:--     0  0     0    0     0    0     0      0      0 --:--:--  0:00:03 --:--:--     0  0     0    0     0    0     0      0      0 --:--:--  0:00:04 --:--:--     0  0     0    0     0    0     0      0      0 --:--:--  0:00:05 --:--:--     0100   126    0   126    0     0     21      0 --:--:--  0:00:05 --:--:--    29
+ 45  1875   45   856    0     0    138      0  0:00:13  0:00:06  0:00:07   138100  1875  100  1875    0     0    302      0  0:00:06  0:00:06 --:--:--  995k
+200
+=-=- Installing packages =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+Building coq:io:exception.1.0.0:
+  ./configure.sh
+  make -j4
+  make install
+&quot;coqdep&quot; -c -R &quot;src&quot; Io &quot;src/Exception.v&quot; &gt; &quot;src/Exception.v.d&quot; || ( RV=$?; rm -f &quot;src/Exception.v.d&quot;; exit ${RV} )
+&quot;coqc&quot;  -q  -R &quot;src&quot; Io   src/Exception
+File &quot;./src/Exception.v&quot;, line 38, characters 4-13:
+Error: The constructor @C.Ret (in type C.t) expects 1 argument.
+Makefile:238: recipe for target &#39;src/Exception.vo&#39; failed
+make: *** [src/Exception.vo] Error 1
+[ERROR] The compilation of coq:io:exception.1.0.0 failed.
+Removing coq:io:exception.1.0.0.
+  rm -R /home/bench/.opam/system/lib/coq/user-contrib/Io/Exception.vo
+rm: cannot remove &#39;/home/bench/.opam/system/lib/coq/user-contrib/Io/Exception.vo&#39;: No such file or directory
+#=== ERROR while installing coq:io:exception.1.0.0 ============================#
+# opam-version         1.2.0
+# os                   linux
+# command              make -j4
+# path                 /home/bench/.opam/system/build/coq:io:exception.1.0.0
+# compiler             system (4.02.1)
+# exit-code            2
+# env-file             /home/bench/.opam/system/build/coq:io:exception.1.0.0/coq:io:exception-5489-c61e7b.env
+# stdout-file          /home/bench/.opam/system/build/coq:io:exception.1.0.0/coq:io:exception-5489-c61e7b.out
+# stderr-file          /home/bench/.opam/system/build/coq:io:exception.1.0.0/coq:io:exception-5489-c61e7b.err
+### stdout ###
+# &quot;coqdep&quot; -c -R &quot;src&quot; Io &quot;src/Exception.v&quot; &gt; &quot;src/Exception.v.d&quot; || ( RV=$?; rm -f &quot;src/Exception.v.d&quot;; exit ${RV} )
+# &quot;coqc&quot;  -q  -R &quot;src&quot; Io   src/Exception
+# Makefile:238: recipe for target &#39;src/Exception.vo&#39; failed
+### stderr ###
+# File &quot;./src/Exception.v&quot;, line 38, characters 4-13:
+# Error: The constructor @C.Ret (in type C.t) expects 1 argument.
+# make: *** [src/Exception.vo] Error 1
+&#39;opam install -y --verbose coq:io:exception.1.0.0&#39; failed.
+</pre></dd>
             </dl>
             <h2>Installation size</h2>
-            <p>Total: 31 K</p>
-            <ul>
-              <li>15 K <code>lib/coq/user-contrib/ListPlus/Sort.vo</code></li>
-              <li>10 K <code>lib/coq/user-contrib/ListPlus/List.vo</code></li>
-              <li>6 K <code>lib/coq/user-contrib/ListPlus/All.vo</code></li>
-              <li>1 K <code>lib/coq:list-plus/opam.config</code></li>
-              <li>1 K <code>install/coq:list-plus.install</code></li>
-            </ul>
+            <p>No files were installed.</p>
             <h2>Uninstall</h2>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>opam remove -y coq:list-plus.1.1.0</code></dd>
+              <dd><code>true</code></dd>
               <dt>Return code</dt>
               <dd>0</dd>
               <dt>Duration</dt>
-              <dd>2 s</dd>
+              <dd>0 s</dd>
               <dt>Missing removes</dt>
               <dd>
                 none

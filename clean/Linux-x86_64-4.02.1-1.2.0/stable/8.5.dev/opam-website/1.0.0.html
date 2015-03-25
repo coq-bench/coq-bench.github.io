@@ -31,7 +31,7 @@
           <div id="navbar" class="collapse navbar-collapse">
             <ul class="nav navbar-nav">
               <li><a href="../..">clean / stable</a></li>
-              <li class="active"><a href="">8.5.dev / list-plus - 1.1.0</a></li>
+              <li class="active"><a href="">8.5.dev / opam-website - 1.0.0</a></li>
             </ul>
           </div>
         </div>
@@ -41,10 +41,10 @@
           <div class="col-md-12">
             <a href="../..">« Up</a>
             <h1>
-              list-plus
+              opam-website
               <small>
-                1.1.0
-                <span class="label label-success">4 s</span>
+                1.0.0
+                <span class="label label-warning">Error with dependencies</span>
               </small>
             </h1>
             <p><em><script>document.write(moment("2015-03-25 07:34:33 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2015-03-25 07:34:33 UTC)</em><p>
@@ -59,7 +59,7 @@ coq            8.5.dev  Formal proof management system.
             <h2>Lint</h2>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>ruby lint.rb stable ../stable/packages/coq:list-plus/coq:list-plus.1.1.0</code></dd>
+              <dd><code>ruby lint.rb stable ../stable/packages/coq:opam-website/coq:opam-website.1.0.0</code></dd>
               <dt>Return code</dt>
               <dd>0</dd>
               <dt>Duration</dt>
@@ -69,11 +69,11 @@ coq            8.5.dev  Formal proof management system.
             <p>Dry install with the current Coq version:</p>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>opam install -y --show-action coq:list-plus.1.1.0 coq.8.5.dev</code></dd>
+              <dd><code>opam install -y --show-action coq:opam-website.1.0.0 coq.8.5.dev</code></dd>
               <dt>Return code</dt>
               <dd>0</dd>
               <dt>Duration</dt>
-              <dd>2 s</dd>
+              <dd>3 s</dd>
             </dl>
             <p>Dry install without Coq, to test if the problem was incompatibility with the current Coq version:</p>
             <dl class="dl-horizontal">
@@ -87,38 +87,93 @@ coq            8.5.dev  Formal proof management system.
             <h2>Install dependencies</h2>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>ulimit -Sv 1000000; timeout 5m opam install -y --deps-only coq:list-plus.1.1.0</code></dd>
+              <dd><code>ulimit -Sv 1000000; timeout 5m opam install -y --deps-only coq:opam-website.1.0.0</code></dd>
               <dt>Return code</dt>
-              <dd>0</dd>
+              <dd>1024</dd>
               <dt>Duration</dt>
-              <dd>2 s</dd>
+              <dd>15 s</dd>
+              <dt>Output</dt>
+              <dd><pre>The following actions will be performed:
+ - install   coq:function-ninjas.1.0.0             [required by coq:io:exception]
+ - install   coq:io.3.0.0                          [required by coq:opam-website]
+ - install   coq:io:list.1.0.0                     [required by coq:io:exception]
+ - install   coq:io:exception.1.0.0                [required by coq:opam-website]
+=== 4 to install ===
+=-=- Synchronizing package archives -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+[coq:function-ninjas.1.0.0] Downloading https://github.com/clarus/coq-function-ninjas/archive/1.0.0.tar.gz
+[coq:io.3.0.0] Downloading https://github.com/clarus/io/archive/3.0.0.tar.gz
+[coq:io:exception.1.0.0] Downloading https://github.com/clarus/io-exception/archive/1.0.0.tar.gz
+[coq:io:list.1.0.0] Downloading https://github.com/clarus/io-list/archive/1.0.0.tar.gz
+=-=- Installing packages =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+Building coq:function-ninjas.1.0.0:
+  ./configure.sh
+  make -j4
+  make install
+Building coq:io.3.0.0:
+  ./configure.sh
+  make -j4
+  make install
+Installing coq:function-ninjas.1.0.0.
+Installing coq:io.3.0.0.
+Building coq:io:list.1.0.0:
+  ./configure.sh
+  make -j4
+  make install
+Installing coq:io:list.1.0.0.
+Building coq:io:exception.1.0.0:
+  ./configure.sh
+  make -j4
+  make install
+[ERROR] The compilation of coq:io:exception.1.0.0 failed.
+Removing coq:io:exception.1.0.0.
+  rm -R /home/bench/.opam/system/lib/coq/user-contrib/Io/Exception.vo
+#=== ERROR while installing coq:io:exception.1.0.0 ============================#
+# opam-version         1.2.0
+# os                   linux
+# command              make -j4
+# path                 /home/bench/.opam/system/build/coq:io:exception.1.0.0
+# compiler             system (4.02.1)
+# exit-code            2
+# env-file             /home/bench/.opam/system/build/coq:io:exception.1.0.0/coq:io:exception-8720-d0f245.env
+# stdout-file          /home/bench/.opam/system/build/coq:io:exception.1.0.0/coq:io:exception-8720-d0f245.out
+# stderr-file          /home/bench/.opam/system/build/coq:io:exception.1.0.0/coq:io:exception-8720-d0f245.err
+### stdout ###
+# &quot;coqdep&quot; -c -R &quot;src&quot; Io &quot;src/Exception.v&quot; &gt; &quot;src/Exception.v.d&quot; || ( RV=$?; rm -f &quot;src/Exception.v.d&quot;; exit ${RV} )
+# &quot;coqc&quot;  -q  -R &quot;src&quot; Io   src/Exception
+# Makefile:238: recipe for target &#39;src/Exception.vo&#39; failed
+### stderr ###
+# File &quot;./src/Exception.v&quot;, line 38, characters 4-13:
+# Error: The constructor @C.Ret (in type C.t) expects 1 argument.
+# make: *** [src/Exception.vo] Error 1
+=-=- Error report -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+These actions have been completed successfully
+ - install   coq:io.3.0.0
+ - install   coq:function-ninjas.1.0.0
+ - install   coq:io:list.1.0.0
+The following failed
+ - install   coq:io:exception.1.0.0
+The former state can be restored with opam switch import &quot;/home/bench/.opam/system/backup/state-20150225072130.export&quot;
+</pre></dd>
             </dl>
             <h2>Install</h2>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>ulimit -Sv 4000000; timeout 120m opam install -y --verbose coq:list-plus.1.1.0</code></dd>
+              <dd><code>true</code></dd>
               <dt>Return code</dt>
               <dd>0</dd>
               <dt>Duration</dt>
-              <dd>4 s</dd>
+              <dd>0 s</dd>
             </dl>
             <h2>Installation size</h2>
-            <p>Total: 31 K</p>
-            <ul>
-              <li>15 K <code>lib/coq/user-contrib/ListPlus/Sort.vo</code></li>
-              <li>10 K <code>lib/coq/user-contrib/ListPlus/List.vo</code></li>
-              <li>6 K <code>lib/coq/user-contrib/ListPlus/All.vo</code></li>
-              <li>1 K <code>lib/coq:list-plus/opam.config</code></li>
-              <li>1 K <code>install/coq:list-plus.install</code></li>
-            </ul>
+            <p>No files were installed.</p>
             <h2>Uninstall</h2>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>opam remove -y coq:list-plus.1.1.0</code></dd>
+              <dd><code>true</code></dd>
               <dt>Return code</dt>
               <dd>0</dd>
               <dt>Duration</dt>
-              <dd>2 s</dd>
+              <dd>0 s</dd>
               <dt>Missing removes</dt>
               <dd>
                 none
