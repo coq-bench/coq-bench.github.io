@@ -44,10 +44,10 @@
               io
               <small>
                 dev
-                <span class="label label-danger">Error</span>
+                <span class="label label-success">4 s</span>
               </small>
             </h1>
-            <p><em><script>document.write(moment("2015-03-23 11:10:32 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2015-03-23 11:10:32 UTC)</em><p>
+            <p><em><script>document.write(moment("2015-03-25 02:16:09 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2015-03-25 02:16:09 UTC)</em><p>
             <h2>Context</h2>
             <pre># Installed packages for system:
 base-bigarray  base  Bigarray library distributed with the OCaml compiler
@@ -101,87 +101,28 @@ coq:unicoq      dev  An enhanced unification algorithm for Coq.
               <dt>Command</dt>
               <dd><code>ulimit -Sv 4000000; timeout 120m opam install -y --verbose coq:io.dev</code></dd>
               <dt>Return code</dt>
-              <dd>1024</dd>
+              <dd>0</dd>
               <dt>Duration</dt>
               <dd>4 s</dd>
-              <dt>Output</dt>
-              <dd><pre>The following actions will be performed:
- - install   coq:io.dev
-=== 1 to install ===
-=-=- Synchronizing package archives -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
-[coq:io] Fetching https://github.com/clarus/io
-Initialized empty Git repository in /home/bench/.opam/packages.dev/coq:io.dev/.git/
-[master (root-commit) 9b1ef59] opam-git-init
-warning: no common commits
-From https://github.com/clarus/io
- * [new ref]                    -&gt; opam-ref
- * [new tag]         1.0.0      -&gt; 1.0.0
- * [new tag]         2.0.0      -&gt; 2.0.0
- * [new tag]         2.1.0      -&gt; 2.1.0
-.gitignore
-LICENSE
-Make
-README.md
-configure.sh
-src/All.v
-src/C.v
-src/Effect.v
-src/Run.v
-HEAD is now at 4f0d4fd Generic run
-=-=- Installing packages =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
-Building coq:io.dev:
-  ./configure.sh
-  make -j4
-  make install
-&quot;coqdep&quot; -c -R &quot;src&quot; Io &quot;src/All.v&quot; &gt; &quot;src/All.v.d&quot; || ( RV=$?; rm -f &quot;src/All.v.d&quot;; exit ${RV} )
-&quot;coqdep&quot; -c -R &quot;src&quot; Io &quot;src/C.v&quot; &gt; &quot;src/C.v.d&quot; || ( RV=$?; rm -f &quot;src/C.v.d&quot;; exit ${RV} )
-&quot;coqdep&quot; -c -R &quot;src&quot; Io &quot;src/Effect.v&quot; &gt; &quot;src/Effect.v.d&quot; || ( RV=$?; rm -f &quot;src/Effect.v.d&quot;; exit ${RV} )
-&quot;coqdep&quot; -c -R &quot;src&quot; Io &quot;src/Run.v&quot; &gt; &quot;src/Run.v.d&quot; || ( RV=$?; rm -f &quot;src/Run.v.d&quot;; exit ${RV} )
-&quot;coqc&quot;  -q  -R &quot;src&quot; Io   src/Effect
-&quot;coqc&quot;  -q  -R &quot;src&quot; Io   src/C
-File &quot;./src/C.v&quot;, line 21, characters 4-13:
-Error: The constructor @Ret (in type t) expects 1 argument.
-Makefile:238: recipe for target &#39;src/C.vo&#39; failed
-make: *** [src/C.vo] Error 1
-[ERROR] The compilation of coq:io.dev failed.
-Removing coq:io.dev.
-  rm -R /home/bench/.opam/system/lib/coq/user-contrib/Io
-rm: cannot remove &#39;/home/bench/.opam/system/lib/coq/user-contrib/Io&#39;: No such file or directory
-#=== ERROR while installing coq:io.dev ========================================#
-# opam-version         1.2.0
-# os                   linux
-# command              make -j4
-# path                 /home/bench/.opam/system/build/coq:io.dev
-# compiler             system (4.02.1)
-# exit-code            2
-# env-file             /home/bench/.opam/system/build/coq:io.dev/coq:io-25350-d2c37b.env
-# stdout-file          /home/bench/.opam/system/build/coq:io.dev/coq:io-25350-d2c37b.out
-# stderr-file          /home/bench/.opam/system/build/coq:io.dev/coq:io-25350-d2c37b.err
-### stdout ###
-# &quot;coqdep&quot; -c -R &quot;src&quot; Io &quot;src/All.v&quot; &gt; &quot;src/All.v.d&quot; || ( RV=$?; rm -f &quot;src/All.v.d&quot;; exit ${RV} )
-# &quot;coqdep&quot; -c -R &quot;src&quot; Io &quot;src/C.v&quot; &gt; &quot;src/C.v.d&quot; || ( RV=$?; rm -f &quot;src/C.v.d&quot;; exit ${RV} )
-# &quot;coqdep&quot; -c -R &quot;src&quot; Io &quot;src/Effect.v&quot; &gt; &quot;src/Effect.v.d&quot; || ( RV=$?; rm -f &quot;src/Effect.v.d&quot;; exit ${RV} )
-# &quot;coqdep&quot; -c -R &quot;src&quot; Io &quot;src/Run.v&quot; &gt; &quot;src/Run.v.d&quot; || ( RV=$?; rm -f &quot;src/Run.v.d&quot;; exit ${RV} )
-# &quot;coqc&quot;  -q  -R &quot;src&quot; Io   src/Effect
-# &quot;coqc&quot;  -q  -R &quot;src&quot; Io   src/C
-# Makefile:238: recipe for target &#39;src/C.vo&#39; failed
-### stderr ###
-# File &quot;./src/C.v&quot;, line 21, characters 4-13:
-# Error: The constructor @Ret (in type t) expects 1 argument.
-# make: *** [src/C.vo] Error 1
-&#39;opam install -y --verbose coq:io.dev&#39; failed.
-</pre></dd>
             </dl>
             <h2>Installation size</h2>
-            <p>No files were installed.</p>
+            <p>Total: 22 K</p>
+            <ul>
+              <li>11 K <code>lib/coq/user-contrib/Io/C.vo</code></li>
+              <li>8 K <code>lib/coq/user-contrib/Io/Spec.vo</code></li>
+              <li>2 K <code>lib/coq/user-contrib/Io/Effect.vo</code></li>
+              <li>1 K <code>lib/coq/user-contrib/Io/All.vo</code></li>
+              <li>1 K <code>lib/coq:io/opam.config</code></li>
+              <li>1 K <code>install/coq:io.install</code></li>
+            </ul>
             <h2>Uninstall</h2>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>true</code></dd>
+              <dd><code>opam remove -y coq:io.dev</code></dd>
               <dt>Return code</dt>
               <dd>0</dd>
               <dt>Duration</dt>
-              <dd>0 s</dd>
+              <dd>3 s</dd>
               <dt>Missing removes</dt>
               <dd>
                 none

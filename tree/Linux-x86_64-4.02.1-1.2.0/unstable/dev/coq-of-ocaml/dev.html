@@ -47,7 +47,7 @@
                 <span class="label label-danger">Error</span>
               </small>
             </h1>
-            <p><em><script>document.write(moment("2015-03-23 11:10:32 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2015-03-23 11:10:32 UTC)</em><p>
+            <p><em><script>document.write(moment("2015-03-25 02:16:09 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2015-03-25 02:16:09 UTC)</em><p>
             <h2>Context</h2>
             <pre># Installed packages for system:
 base-bigarray                                 base  Bigarray library distributed
@@ -175,6 +175,7 @@ coq:contrib:shuffle                            dev  Gilbreath&#39;s card trick.
 coq:contrib:square-matrices                    dev  From Fast Exponentiation to 
 coq:contrib:ssreflect                          dev  Ssreflect extension and the 
 coq:contrib:streams                            dev  Specification of Eratosthene
+coq:contrib:string                             dev  Definition of strings in Coq
 coq:contrib:subst                              dev  The confluence of Hardin-Lé
 coq:contrib:sudoku                             dev  A certified Sudoku solver.
 coq:contrib:sum-of-two-square                  dev  Numbers equal to the sum of 
@@ -192,7 +193,10 @@ coq:cunit                                      dev  Unit testing in Coq, at comp
 coq:cybele                                     dev  A Coq plugin for simpler pro
 coq:error-handlers                             dev  Simple and robust error hand
 coq:function-ninjas                            dev  Write readable code using si
-coq:io                                       2.1.0  A library for effects in Coq
+coq:io                                         dev  A library for effects in Coq
+coq:io:hello-world                             dev  A Hello World program in Coq
+coq:io:list                                    dev  Generic functions on lists w
+coq:io:system                                  dev  System effects for Coq.
 coq:io:system:ocaml                            dev  Coq system effects for extra
 coq:iterable                                   dev  Generic definition of iterat
 coq:list-plus                                  dev  More functions on lists.
@@ -239,7 +243,7 @@ ppx_tools                                   0.99.2  Tools for authors of ppx rew
               <dt>Return code</dt>
               <dd>0</dd>
               <dt>Duration</dt>
-              <dd>11 s</dd>
+              <dd>10 s</dd>
             </dl>
             <h2>Install</h2>
             <dl class="dl-horizontal">
@@ -248,7 +252,7 @@ ppx_tools                                   0.99.2  Tools for authors of ppx rew
               <dt>Return code</dt>
               <dd>1024</dd>
               <dt>Duration</dt>
-              <dd>17 s</dd>
+              <dd>18 s</dd>
               <dt>Output</dt>
               <dd><pre>The following actions will be performed:
  - install   coq:coq-of-ocaml.dev
@@ -256,7 +260,7 @@ ppx_tools                                   0.99.2  Tools for authors of ppx rew
 =-=- Synchronizing package archives -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 [coq:coq-of-ocaml] Fetching https://github.com/clarus/coq-of-ocaml
 Initialized empty Git repository in /home/bench/.opam/packages.dev/coq:coq-of-ocaml.dev/.git/
-[master (root-commit) 13d3994] opam-git-init
+[master (root-commit) bb4b3ec] opam-git-init
 warning: no common commits
 From https://github.com/clarus/coq-of-ocaml
  * [new ref]                    -&gt; opam-ref
@@ -521,10 +525,11 @@ Basics.v.erb -&gt; Basics.v
 &quot;coqc&quot;  -q  -R &quot;.&quot; CoqOfOCaml   Effect
 &quot;coqc&quot;  -q  -R &quot;.&quot; CoqOfOCaml   Basics
 &quot;coqc&quot;  -q  -R &quot;.&quot; CoqOfOCaml   List
-File &quot;./List.v&quot;, line 524, characters 2-7:
-Error: The reference admit was not found in the current environment.
+File &quot;./List.v&quot;, line 525, characters 0-8:
+Error: Attempt to save a proof with given up goals. If this is really what
+you want to do, use Admitted in place of Qed. (in proof stable_sort)
+Makefile:240: recipe for target &#39;List.vo&#39; failed
 make: *** [List.vo] Error 1
-Makefile:237: recipe for target &#39;List.vo&#39; failed
 [ERROR] The compilation of coq:coq-of-ocaml.dev failed.
 Removing coq:coq-of-ocaml.dev.
   rm -R /home/bench/.opam/system/lib/coq/user-contrib/CoqOfOCaml
@@ -536,9 +541,9 @@ rm: cannot remove &#39;/home/bench/.opam/system/lib/coq/user-contrib/CoqOfOCaml&
 # path                 /home/bench/.opam/system/build/coq:coq-of-ocaml.dev
 # compiler             system (4.02.1)
 # exit-code            2
-# env-file             /home/bench/.opam/system/build/coq:coq-of-ocaml.dev/coq:coq-of-ocaml-27655-d2c37b.env
-# stdout-file          /home/bench/.opam/system/build/coq:coq-of-ocaml.dev/coq:coq-of-ocaml-27655-d2c37b.out
-# stderr-file          /home/bench/.opam/system/build/coq:coq-of-ocaml.dev/coq:coq-of-ocaml-27655-d2c37b.err
+# env-file             /home/bench/.opam/system/build/coq:coq-of-ocaml.dev/coq:coq-of-ocaml-23619-d2c37b.env
+# stdout-file          /home/bench/.opam/system/build/coq:coq-of-ocaml.dev/coq:coq-of-ocaml-23619-d2c37b.out
+# stderr-file          /home/bench/.opam/system/build/coq:coq-of-ocaml.dev/coq:coq-of-ocaml-23619-d2c37b.err
 ### stdout ###
 # ...[truncated]
 # &quot;coqdep&quot; -c -R &quot;.&quot; CoqOfOCaml &quot;Basics.v&quot; &gt; &quot;Basics.v.d&quot; || ( RV=$?; rm -f &quot;Basics.v.d&quot;; exit ${RV} )
@@ -550,10 +555,11 @@ rm: cannot remove &#39;/home/bench/.opam/system/lib/coq/user-contrib/CoqOfOCaml&
 # &quot;coqc&quot;  -q  -R &quot;.&quot; CoqOfOCaml   Effect
 # &quot;coqc&quot;  -q  -R &quot;.&quot; CoqOfOCaml   Basics
 # &quot;coqc&quot;  -q  -R &quot;.&quot; CoqOfOCaml   List
-# Makefile:237: recipe for target &#39;List.vo&#39; failed
+# Makefile:240: recipe for target &#39;List.vo&#39; failed
 ### stderr ###
-# File &quot;./List.v&quot;, line 524, characters 2-7:
-# Error: The reference admit was not found in the current environment.
+# File &quot;./List.v&quot;, line 525, characters 0-8:
+# Error: Attempt to save a proof with given up goals. If this is really what
+# you want to do, use Admitted in place of Qed. (in proof stable_sort)
 # make: *** [List.vo] Error 1
 &#39;opam install -y --verbose coq:coq-of-ocaml.dev&#39; failed.
 </pre></dd>
