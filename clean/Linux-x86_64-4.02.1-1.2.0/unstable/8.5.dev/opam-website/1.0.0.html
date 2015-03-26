@@ -47,7 +47,7 @@
                 <span class="label label-warning">Error with dependencies</span>
               </small>
             </h1>
-            <p><em><script>document.write(moment("2015-03-24 10:19:38 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2015-03-24 10:19:38 UTC)</em><p>
+            <p><em><script>document.write(moment("2015-03-26 02:23:23 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2015-03-26 02:23:23 UTC)</em><p>
             <h2>Context</h2>
             <pre># Installed packages for system:
 base-bigarray     base  Bigarray library distributed with the OCaml compiler
@@ -91,19 +91,35 @@ coq            8.5.dev  Formal proof management system.
               <dt>Return code</dt>
               <dd>1024</dd>
               <dt>Duration</dt>
-              <dd>7 s</dd>
+              <dd>44 s</dd>
               <dt>Output</dt>
               <dd><pre>The following actions will be performed:
+ - install   ocamlfind.1.5.5                       [required by coq:io:system:ocaml]
+ - install   coq:list-plus.dev                     [required by coq:list-string]
+ - install   coq:error-handlers.dev                [required by coq:list-string]
  - install   coq:io.dev                            [required by coq:opam-website]
- - install   coq:function-ninjas.dev               [required by coq:io:exception]
+ - install   coq:function-ninjas.dev               [required by coq:io:system, coq:io:exception]
+ - install   ppx_tools.0.99.2                      [required by lwt]
+ - install   coq:list-string.dev                   [required by coq:opam-website]
  - install   coq:io:list.dev                       [required by coq:io:exception]
+ - install   lwt.2.4.8                             [required by coq:io:system:ocaml]
  - install   coq:io:exception.dev                  [required by coq:opam-website]
-=== 4 to install ===
+ - install   coq:io:system:ocaml.dev               [required by coq:io:system]
+ - install   coq:io:system.dev                     [required by coq:opam-website]
+=== 12 to install ===
 =-=- Synchronizing package archives -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+[coq:error-handlers] Fetching https://github.com/clarus/coq-error-handlers
 [coq:function-ninjas] Fetching https://github.com/clarus/coq-function-ninjas
 [coq:io] Fetching https://github.com/clarus/io
 [coq:io:exception] Fetching https://github.com/clarus/io-exception
 [coq:io:list] Fetching https://github.com/clarus/io-list
+[coq:io:system] Fetching https://github.com/clarus/io-system
+[coq:io:system:ocaml] Fetching https://github.com/clarus/io-system-ocaml
+[coq:list-plus] Fetching https://github.com/clarus/coq-list-plus
+[coq:list-string] Fetching https://github.com/clarus/coq-list-string
+[default] Downloading https://opam.ocaml.org/archives/lwt.2.4.8+opam.tar.gz
+[default] Downloading https://opam.ocaml.org/archives/ocamlfind.1.5.5+opam.tar.gz
+[default] Downloading https://opam.ocaml.org/archives/ppx_tools.0.99.2+opam.tar.gz
 =-=- Installing packages =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 Building coq:io.dev:
   ./configure.sh
@@ -113,9 +129,29 @@ Building coq:function-ninjas.dev:
   ./configure.sh
   make -j4
   make install
+Building coq:error-handlers.dev:
+  ./configure.sh
+  make -j4
+  make install
+Building coq:list-plus.dev:
+  ./configure.sh
+  make -j4
+  make install
+Installing coq:error-handlers.dev.
 Installing coq:function-ninjas.dev.
+Building ocamlfind.1.5.5:
+  ./configure -bindir /home/bench/.opam/system/bin -sitelib /home/bench/.opam/system/lib -mandir /home/bench/.opam/system/man -config /home/bench/.opam/system/lib/findlib.conf -no-topfind
+  make all
+  make opt
+  make install
 Installing coq:io.dev.
 Building coq:io:list.dev:
+  ./configure.sh
+  make -j4
+  make install
+Installing coq:list-plus.dev.
+Building coq:list-string.dev:
+  ruby pp.rb
   ./configure.sh
   make -j4
   make install
@@ -127,6 +163,26 @@ Building coq:io:exception.dev:
 [ERROR] The compilation of coq:io:exception.dev failed.
 Removing coq:io:exception.dev.
   rm -R /home/bench/.opam/system/lib/coq/user-contrib/Io/Exception.vo
+Installing ocamlfind.1.5.5.
+Building ppx_tools.0.99.2:
+  make all
+  make install
+Installing ppx_tools.0.99.2.
+Building lwt.2.4.8:
+  ./configure --prefix /home/bench/.opam/system --disable-libev --disable-camlp4 --disable-react --disable-ssl --enable-unix --enable-preemptive --disable-glib --enable-ppx
+  make build
+  make install
+Installing coq:list-string.dev.
+Installing lwt.2.4.8.
+Building coq:io:system:ocaml.dev:
+  make -j4
+  make install
+Installing coq:io:system:ocaml.dev.
+Building coq:io:system.dev:
+  ./configure.sh
+  make -j4
+  make install
+Installing coq:io:system.dev.
 #=== ERROR while installing coq:io:exception.dev ==============================#
 # opam-version         1.2.0
 # os                   linux
@@ -134,25 +190,39 @@ Removing coq:io:exception.dev.
 # path                 /home/bench/.opam/system/build/coq:io:exception.dev
 # compiler             system (4.02.1)
 # exit-code            2
-# env-file             /home/bench/.opam/system/build/coq:io:exception.dev/coq:io:exception-27649-d8a4ae.env
-# stdout-file          /home/bench/.opam/system/build/coq:io:exception.dev/coq:io:exception-27649-d8a4ae.out
-# stderr-file          /home/bench/.opam/system/build/coq:io:exception.dev/coq:io:exception-27649-d8a4ae.err
+# env-file             /home/bench/.opam/system/build/coq:io:exception.dev/coq:io:exception-11653-b76d46.env
+# stdout-file          /home/bench/.opam/system/build/coq:io:exception.dev/coq:io:exception-11653-b76d46.out
+# stderr-file          /home/bench/.opam/system/build/coq:io:exception.dev/coq:io:exception-11653-b76d46.err
 ### stdout ###
 # &quot;coqdep&quot; -c -R &quot;src&quot; Io &quot;src/Exception.v&quot; &gt; &quot;src/Exception.v.d&quot; || ( RV=$?; rm -f &quot;src/Exception.v.d&quot;; exit ${RV} )
 # &quot;coqc&quot;  -q  -R &quot;src&quot; Io   src/Exception
 # Makefile:238: recipe for target &#39;src/Exception.vo&#39; failed
 ### stderr ###
-# File &quot;./src/Exception.v&quot;, line 38, characters 4-13:
-# Error: The constructor @C.Ret (in type C.t) expects 1 argument.
+# File &quot;./src/Exception.v&quot;, line 35, characters 0-880:
+# Error: Illegal application: 
+# The term &quot;sum&quot; of type &quot;Type -&gt; Type -&gt; Type&quot;
+# cannot be applied to the terms
+#  &quot;T&quot; : &quot;Type&quot;
+#  &quot;list Exc&quot; : &quot;Type&quot;
+# The 1st term has type &quot;Type@{Io.C.1}&quot; which should be coercible to
+#  &quot;Type@{Coq.Init.Datatypes.19}&quot;.
 # make: *** [src/Exception.vo] Error 1
 =-=- Error report -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 These actions have been completed successfully
+ - install   coq:io:system:ocaml.dev
+ - install   coq:list-string.dev
  - install   coq:function-ninjas.dev
  - install   coq:io:list.dev
+ - install   lwt.2.4.8
  - install   coq:io.dev
+ - install   coq:io:system.dev
+ - install   coq:error-handlers.dev
+ - install   coq:list-plus.dev
+ - install   ocamlfind.1.5.5
+ - install   ppx_tools.0.99.2
 The following failed
  - install   coq:io:exception.dev
-The former state can be restored with opam switch import &quot;/home/bench/.opam/system/backup/state-20150224074536.export&quot;
+The former state can be restored with opam switch import &quot;/home/bench/.opam/system/backup/state-20150225234818.export&quot;
 </pre></dd>
             </dl>
             <h2>Install</h2>
