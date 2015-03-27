@@ -31,7 +31,7 @@
           <div id="navbar" class="collapse navbar-collapse">
             <ul class="nav navbar-nav">
               <li><a href="../..">clean / unstable</a></li>
-              <li class="active"><a href="">dev / contrib:tree-diameter - dev</a></li>
+              <li class="active"><a href="">dev / io:run - dev</a></li>
             </ul>
           </div>
         </div>
@@ -41,10 +41,10 @@
           <div class="col-md-12">
             <a href="../..">« Up</a>
             <h1>
-              contrib:tree-diameter
+              io:run
               <small>
                 dev
-                <span class="label label-success">7 s</span>
+                <span class="label label-danger">Error</span>
               </small>
             </h1>
             <p><em><script>document.write(moment("2015-03-27 23:35:42 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2015-03-27 23:35:42 UTC)</em><p>
@@ -59,7 +59,7 @@ coq             dev  Formal proof management system.
             <h2>Lint</h2>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>ruby lint.rb unstable ../unstable/packages/coq:contrib:tree-diameter/coq:contrib:tree-diameter.dev</code></dd>
+              <dd><code>ruby lint.rb unstable ../unstable/packages/coq:io:run/coq:io:run.dev</code></dd>
               <dt>Return code</dt>
               <dd>0</dd>
               <dt>Duration</dt>
@@ -69,7 +69,7 @@ coq             dev  Formal proof management system.
             <p>Dry install with the current Coq version:</p>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>opam install -y --show-action coq:contrib:tree-diameter.dev coq.dev</code></dd>
+              <dd><code>opam install -y --show-action coq:io:run.dev coq.dev</code></dd>
               <dt>Return code</dt>
               <dd>0</dd>
               <dt>Duration</dt>
@@ -87,38 +87,96 @@ coq             dev  Formal proof management system.
             <h2>Install dependencies</h2>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>ulimit -Sv 1000000; timeout 5m opam install -y --deps-only coq:contrib:tree-diameter.dev</code></dd>
+              <dd><code>ulimit -Sv 1000000; timeout 5m opam install -y --deps-only coq:io:run.dev</code></dd>
               <dt>Return code</dt>
               <dd>0</dd>
               <dt>Duration</dt>
-              <dd>3 s</dd>
+              <dd>5 s</dd>
             </dl>
             <h2>Install</h2>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>ulimit -Sv 4000000; timeout 120m opam install -y --verbose coq:contrib:tree-diameter.dev</code></dd>
+              <dd><code>ulimit -Sv 4000000; timeout 120m opam install -y --verbose coq:io:run.dev</code></dd>
               <dt>Return code</dt>
-              <dd>0</dd>
+              <dd>1024</dd>
               <dt>Duration</dt>
-              <dd>7 s</dd>
+              <dd>4 s</dd>
+              <dt>Output</dt>
+              <dd><pre>The following actions will be performed:
+ - install   coq:io:run.dev
+=== 1 to install ===
+=-=- Synchronizing package archives -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+[coq:io:run] Fetching https://github.com/clarus/io-run
+Initialized empty Git repository in /home/bench/.opam/packages.dev/coq:io:run.dev/.git/
+[master (root-commit) ee3f234] opam-git-init
+warning: no common commits
+From https://github.com/clarus/io-run
+ * [new ref]                    -&gt; opam-ref
+.gitignore
+LICENSE
+Make
+README.md
+configure.sh
+src/Run.v
+HEAD is now at df8bf45 Generalized version of the function exception
+=-=- Installing packages =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+Building coq:io:run.dev:
+  ./configure.sh
+  make -j4
+  make install
+&quot;coqdep&quot; -c -R &quot;src&quot; Io &quot;src/Run.v&quot; &gt; &quot;src/Run.v.d&quot; || ( RV=$?; rm -f &quot;src/Run.v.d&quot;; exit ${RV} )
+&quot;coqc&quot;  -q  -R &quot;src&quot; Io   src/Run
+File &quot;./src/Run.v&quot;, line 18, characters 0-992:
+Error: Illegal application: 
+The term &quot;sum&quot; of type &quot;Type -&gt; Type -&gt; Type&quot;
+cannot be applied to the terms
+ &quot;T&quot; : &quot;Type&quot;
+ &quot;Exc&quot; : &quot;Type&quot;
+The 1st term has type &quot;Type@{Io.C.1}&quot; which should be coercible to
+ &quot;Type@{Coq.Init.Datatypes.19}&quot;.
+Makefile:238: recipe for target &#39;src/Run.vo&#39; failed
+make: *** [src/Run.vo] Error 1
+[ERROR] The compilation of coq:io:run.dev failed.
+Removing coq:io:run.dev.
+  rm -R /home/bench/.opam/system/lib/coq/user-contrib/Io/Run.vo
+rm: cannot remove &#39;/home/bench/.opam/system/lib/coq/user-contrib/Io/Run.vo&#39;: No such file or directory
+#=== ERROR while installing coq:io:run.dev ====================================#
+# opam-version         1.2.0
+# os                   linux
+# command              make -j4
+# path                 /home/bench/.opam/system/build/coq:io:run.dev
+# compiler             system (4.02.1)
+# exit-code            2
+# env-file             /home/bench/.opam/system/build/coq:io:run.dev/coq:io:run-16397-d2c37b.env
+# stdout-file          /home/bench/.opam/system/build/coq:io:run.dev/coq:io:run-16397-d2c37b.out
+# stderr-file          /home/bench/.opam/system/build/coq:io:run.dev/coq:io:run-16397-d2c37b.err
+### stdout ###
+# &quot;coqdep&quot; -c -R &quot;src&quot; Io &quot;src/Run.v&quot; &gt; &quot;src/Run.v.d&quot; || ( RV=$?; rm -f &quot;src/Run.v.d&quot;; exit ${RV} )
+# &quot;coqc&quot;  -q  -R &quot;src&quot; Io   src/Run
+# Makefile:238: recipe for target &#39;src/Run.vo&#39; failed
+### stderr ###
+# File &quot;./src/Run.v&quot;, line 18, characters 0-992:
+# Error: Illegal application: 
+# The term &quot;sum&quot; of type &quot;Type -&gt; Type -&gt; Type&quot;
+# cannot be applied to the terms
+#  &quot;T&quot; : &quot;Type&quot;
+#  &quot;Exc&quot; : &quot;Type&quot;
+# The 1st term has type &quot;Type@{Io.C.1}&quot; which should be coercible to
+#  &quot;Type@{Coq.Init.Datatypes.19}&quot;.
+# make: *** [src/Run.vo] Error 1
+&#39;opam install -y --verbose coq:io:run.dev&#39; failed.
+</pre></dd>
             </dl>
             <h2>Installation size</h2>
-            <p>Total: 333 K</p>
-            <ul>
-              <li>223 K <code>lib/coq/user-contrib/TreeDiameter/TreeDiameter.vo</code></li>
-              <li>90 K <code>lib/coq/user-contrib/TreeDiameter/TreeDiameter.glob</code></li>
-              <li>19 K <code>lib/coq/user-contrib/TreeDiameter/TreeDiameter.v</code></li>
-              <li>1 K <code>lib/coq:contrib:tree-diameter/opam.config</code></li>
-              <li>1 K <code>install/coq:contrib:tree-diameter.install</code></li>
-            </ul>
+            <p>No files were installed.</p>
             <h2>Uninstall</h2>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>opam remove -y coq:contrib:tree-diameter.dev</code></dd>
+              <dd><code>true</code></dd>
               <dt>Return code</dt>
               <dd>0</dd>
               <dt>Duration</dt>
-              <dd>2 s</dd>
+              <dd>0 s</dd>
               <dt>Missing removes</dt>
               <dd>
                 none
