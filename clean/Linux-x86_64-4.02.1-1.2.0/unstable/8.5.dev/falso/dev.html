@@ -47,7 +47,7 @@
                 <span class="label label-danger">Error</span>
               </small>
             </h1>
-            <p><em><script>document.write(moment("2015-03-26 02:23:23 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2015-03-26 02:23:23 UTC)</em><p>
+            <p><em><script>document.write(moment("2015-03-27 19:26:12 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2015-03-27 19:26:12 UTC)</em><p>
             <h2>Context</h2>
             <pre># Installed packages for system:
 base-bigarray     base  Bigarray library distributed with the OCaml compiler
@@ -73,7 +73,7 @@ coq            8.5.dev  Formal proof management system.
               <dt>Return code</dt>
               <dd>0</dd>
               <dt>Duration</dt>
-              <dd>3 s</dd>
+              <dd>2 s</dd>
             </dl>
             <p>Dry install without Coq, to test if the problem was incompatibility with the current Coq version:</p>
             <dl class="dl-horizontal">
@@ -108,7 +108,7 @@ coq            8.5.dev  Formal proof management system.
 =-=- Synchronizing package archives -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 [coq:falso] Fetching https://github.com/clarus/falso
 Initialized empty Git repository in /home/bench/.opam/packages.dev/coq:falso.dev/.git/
-[master (root-commit) 186b3b8] opam-git-init
+[master (root-commit) 2ad260e] opam-git-init
 warning: no common commits
 From https://github.com/clarus/falso
  * [new ref]                    -&gt; opam-ref
@@ -127,9 +127,10 @@ Building coq:falso.dev:
   make install
 &quot;coqdep&quot; -c -R &quot;.&quot; Falso &quot;All.v&quot; &gt; &quot;All.v.d&quot; || ( RV=$?; rm -f &quot;All.v.d&quot;; exit ${RV} )
 &quot;coqc&quot;  -q  -R &quot;.&quot; Falso   All
-can not compile 
 File &quot;./All.v&quot;, line 270, characters 2-65:
-Error: Cannot compile code for virtual machine as it uses inductive t which has more than 245 constructors
+Error: In environment
+H : is_256 (C_256 0) = true
+Unable to unify &quot;false&quot; with &quot;true&quot;.
 Makefile:236: recipe for target &#39;All.vo&#39; failed
 make: *** [All.vo] Error 1
 [ERROR] The compilation of coq:falso.dev failed.
@@ -143,17 +144,18 @@ rm: cannot remove &#39;/home/bench/.opam/system/lib/coq/user-contrib/Falso&#39;:
 # path                 /home/bench/.opam/system/build/coq:falso.dev
 # compiler             system (4.02.1)
 # exit-code            2
-# env-file             /home/bench/.opam/system/build/coq:falso.dev/coq:falso-14697-d2c37b.env
-# stdout-file          /home/bench/.opam/system/build/coq:falso.dev/coq:falso-14697-d2c37b.out
-# stderr-file          /home/bench/.opam/system/build/coq:falso.dev/coq:falso-14697-d2c37b.err
+# env-file             /home/bench/.opam/system/build/coq:falso.dev/coq:falso-30390-d2c37b.env
+# stdout-file          /home/bench/.opam/system/build/coq:falso.dev/coq:falso-30390-d2c37b.out
+# stderr-file          /home/bench/.opam/system/build/coq:falso.dev/coq:falso-30390-d2c37b.err
 ### stdout ###
 # &quot;coqdep&quot; -c -R &quot;.&quot; Falso &quot;All.v&quot; &gt; &quot;All.v.d&quot; || ( RV=$?; rm -f &quot;All.v.d&quot;; exit ${RV} )
 # &quot;coqc&quot;  -q  -R &quot;.&quot; Falso   All
-# can not compile 
 # Makefile:236: recipe for target &#39;All.vo&#39; failed
 ### stderr ###
 # File &quot;./All.v&quot;, line 270, characters 2-65:
-# Error: Cannot compile code for virtual machine as it uses inductive t which has more than 245 constructors
+# Error: In environment
+# H : is_256 (C_256 0) = true
+# Unable to unify &quot;false&quot; with &quot;true&quot;.
 # make: *** [All.vo] Error 1
 &#39;opam install -y --verbose coq:falso.dev&#39; failed.
 </pre></dd>
