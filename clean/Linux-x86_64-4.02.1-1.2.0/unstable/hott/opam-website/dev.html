@@ -47,7 +47,7 @@
                 <span class="label label-warning">Error with dependencies</span>
               </small>
             </h1>
-            <p><em><script>document.write(moment("2015-03-26 09:05:47 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2015-03-26 09:05:47 UTC)</em><p>
+            <p><em><script>document.write(moment("2015-03-28 02:46:13 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2015-03-28 02:46:13 UTC)</em><p>
             <h2>Context</h2>
             <pre># Installed packages for system:
 base-bigarray           base  Bigarray library distributed with the OCaml compil
@@ -74,42 +74,11 @@ ocamlfind              1.5.5  A library manager for OCaml
               <dt>Command</dt>
               <dd><code>opam install -y --show-action coq:opam-website.dev coq.hott</code></dd>
               <dt>Return code</dt>
-              <dd>768</dd>
+              <dd>0</dd>
               <dt>Duration</dt>
-              <dd>1 s</dd>
-              <dt>Output</dt>
-              <dd><pre>[NOTE] Package coq is already installed (current version is hott).
-The following dependencies couldn&#39;t be met:
-  - coq:opam-website -&gt; coq:exception
-Your request can&#39;t be satisfied:
-  - No package named coq:exception found.
-No solution found, exiting
-</pre></dd>
+              <dd>2 s</dd>
             </dl>
             <p>Dry install without Coq, to test if the problem was incompatibility with the current Coq version:</p>
-            <dl class="dl-horizontal">
-              <dt>Command</dt>
-              <dd><code>opam remove -y coq; opam install -y --show-action coq:opam-website.dev</code></dd>
-              <dt>Return code</dt>
-              <dd>768</dd>
-              <dt>Duration</dt>
-              <dd>3 s</dd>
-              <dt>Output</dt>
-              <dd><pre>The following actions will be performed:
- - remove    coq.hott
-=== 1 to remove ===
-=-=- Removing Packages =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
-Removing coq.hott.
-[WARNING] Directory /home/bench/.opam/system/lib/coq is not empty, not removing
-[WARNING] Directory /home/bench/.opam/system/share/coq is not empty, not removing
-The following dependencies couldn&#39;t be met:
-  - coq:opam-website -&gt; coq:exception
-Your request can&#39;t be satisfied:
-  - No package named coq:exception found.
-No solution found, exiting
-</pre></dd>
-            </dl>
-            <h2>Install dependencies</h2>
             <dl class="dl-horizontal">
               <dt>Command</dt>
               <dd><code>true</code></dd>
@@ -117,6 +86,142 @@ No solution found, exiting
               <dd>0</dd>
               <dt>Duration</dt>
               <dd>0 s</dd>
+            </dl>
+            <h2>Install dependencies</h2>
+            <dl class="dl-horizontal">
+              <dt>Command</dt>
+              <dd><code>ulimit -Sv 1000000; timeout 5m opam install -y --deps-only coq:opam-website.dev</code></dd>
+              <dt>Return code</dt>
+              <dd>1024</dd>
+              <dt>Duration</dt>
+              <dd>41 s</dd>
+              <dt>Output</dt>
+              <dd><pre>The following actions will be performed:
+ - install   ppx_tools.0.99.2                      [required by lwt]
+ - install   coq:list-plus.dev                     [required by coq:list-string]
+ - install   coq:error-handlers.dev                [required by coq:list-string]
+ - install   coq:io.dev                            [required by coq:opam-website]
+ - install   coq:function-ninjas.dev               [required by coq:io:system, coq:io:exception]
+ - install   lwt.2.4.8                             [required by coq:io:system:ocaml]
+ - install   coq:list-string.dev                   [required by coq:opam-website]
+ - install   coq:io:list.dev                       [required by coq:io:exception]
+ - install   coq:io:run.dev                        [required by coq:io:exception]
+ - install   coq:io:system:ocaml.dev               [required by coq:io:system]
+ - install   coq:io:exception.dev                  [required by coq:opam-website]
+ - install   coq:io:system.dev                     [required by coq:opam-website]
+=== 12 to install ===
+=-=- Synchronizing package archives -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+[coq:error-handlers] Fetching https://github.com/clarus/coq-error-handlers
+[coq:function-ninjas] Fetching https://github.com/clarus/coq-function-ninjas
+[coq:io] Fetching https://github.com/clarus/io
+[coq:io:exception] Fetching https://github.com/clarus/io-exception
+[coq:io:list] Fetching https://github.com/clarus/io-list
+[coq:io:run] Fetching https://github.com/clarus/io-run
+[coq:io:system] Fetching https://github.com/clarus/io-system
+[coq:io:system:ocaml] Fetching https://github.com/clarus/io-system-ocaml
+[coq:list-plus] Fetching https://github.com/clarus/coq-list-plus
+[coq:list-string] Fetching https://github.com/clarus/coq-list-string
+[default] Downloading https://opam.ocaml.org/archives/lwt.2.4.8+opam.tar.gz
+[default] Downloading https://opam.ocaml.org/archives/ppx_tools.0.99.2+opam.tar.gz
+=-=- Installing packages =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+Building coq:io.dev:
+  ./configure.sh
+  make -j4
+  make install
+Building coq:error-handlers.dev:
+  ./configure.sh
+  make -j4
+  make install
+Building coq:function-ninjas.dev:
+  ./configure.sh
+  make -j4
+  make install
+Building coq:list-plus.dev:
+  ./configure.sh
+  make -j4
+  make install
+Installing coq:function-ninjas.dev.
+Building ppx_tools.0.99.2:
+  make all
+  make install
+Installing coq:error-handlers.dev.
+Installing coq:io.dev.
+Building coq:io:list.dev:
+  ./configure.sh
+  make -j4
+  make install
+Building coq:io:run.dev:
+  ./configure.sh
+  make -j4
+  make install
+[ERROR] The compilation of coq:io:run.dev failed.
+Removing coq:io:run.dev.
+  rm -R /home/bench/.opam/system/lib/coq/user-contrib/Io/Run.vo
+Installing coq:list-plus.dev.
+Building coq:list-string.dev:
+  ruby pp.rb
+  ./configure.sh
+  make -j4
+  make install
+Installing coq:io:list.dev.
+Installing ppx_tools.0.99.2.
+Building lwt.2.4.8:
+  ./configure --prefix /home/bench/.opam/system --disable-libev --enable-camlp4 --disable-react --disable-ssl --enable-unix --enable-preemptive --enable-glib --enable-ppx
+  make build
+  make install
+Installing coq:list-string.dev.
+Installing lwt.2.4.8.
+Building coq:io:system:ocaml.dev:
+  make -j4
+  make install
+Installing coq:io:system:ocaml.dev.
+Building coq:io:system.dev:
+  ./configure.sh
+  make -j4
+  make install
+Installing coq:io:system.dev.
+#=== ERROR while installing coq:io:run.dev ====================================#
+# opam-version         1.2.0
+# os                   linux
+# command              make -j4
+# path                 /home/bench/.opam/system/build/coq:io:run.dev
+# compiler             system (4.02.1)
+# exit-code            2
+# env-file             /home/bench/.opam/system/build/coq:io:run.dev/coq:io:run-17550-60459a.env
+# stdout-file          /home/bench/.opam/system/build/coq:io:run.dev/coq:io:run-17550-60459a.out
+# stderr-file          /home/bench/.opam/system/build/coq:io:run.dev/coq:io:run-17550-60459a.err
+### stdout ###
+# &quot;coqdep&quot; -c -R &quot;src&quot; Io &quot;src/Run.v&quot; &gt; &quot;src/Run.v.d&quot; || ( RV=$?; rm -f &quot;src/Run.v.d&quot;; exit ${RV} )
+# &quot;coqc&quot;  -q  -R &quot;src&quot; Io   src/Run
+# Makefile:234: recipe for target &#39;src/Run.vo&#39; failed
+### stderr ###
+# File &quot;./src/Run.v&quot;, line 18, characters 0-992:
+# Error: Illegal application: 
+# The term &quot;sum&quot; of type &quot;Type -&gt; Type -&gt; Type&quot;
+# cannot be applied to the terms
+#  &quot;T&quot; : &quot;Type&quot;
+#  &quot;Exc&quot; : &quot;Type&quot;
+# The 1st term has type &quot;Type@{Io.C.1}&quot; which should be coercible to
+#  &quot;Type@{Coq.Init.Datatypes.19}&quot;.
+# make: *** [src/Run.vo] Error 1
+=-=- Error report -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+These actions have been completed successfully
+ - install   coq:io:system:ocaml.dev
+ - install   coq:list-string.dev
+ - install   coq:function-ninjas.dev
+ - install   coq:io:list.dev
+ - install   lwt.2.4.8
+ - install   coq:io.dev
+ - install   coq:io:system.dev
+ - install   coq:error-handlers.dev
+ - install   coq:list-plus.dev
+ - install   ppx_tools.0.99.2
+The following failed
+ - install   coq:io:run.dev
+Due to the errors, the following have been cancelled
+ - install   coq:io:exception.dev
+The former state can be restored with opam switch import &quot;/home/bench/.opam/system/backup/state-20150227234620.export&quot;
+</pre></dd>
             </dl>
             <h2>Install</h2>
             <dl class="dl-horizontal">
