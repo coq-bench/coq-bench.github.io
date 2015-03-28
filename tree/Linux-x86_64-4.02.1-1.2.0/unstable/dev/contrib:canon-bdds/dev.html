@@ -47,7 +47,7 @@
                 <span class="label label-danger">Error</span>
               </small>
             </h1>
-            <p><em><script>document.write(moment("2015-03-26 18:38:43 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2015-03-26 18:38:43 UTC)</em><p>
+            <p><em><script>document.write(moment("2015-03-28 12:25:36 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2015-03-28 12:25:36 UTC)</em><p>
             <h2>Context</h2>
             <pre># Installed packages for system:
 base-bigarray                               base  Bigarray library distributed w
@@ -59,6 +59,7 @@ coq:contrib:cantor                           dev  On Ordinal Notations.
 coq:contrib:cats-in-zfc                      dev  Category theory in ZFC.
 coq:contrib:ccs                              dev  Equivalence notions on labelle
 coq:contrib:checker                          dev  The Mutilated Checkerboard.
+coq:contrib:chinese                          dev  A proof of the Chinese Remaind
 coq:contrib:circuits                         dev  Some proofs of hardware (adder
 coq:contrib:coalgebras                       dev  Coalgebras, bisimulation and l
 coq:contrib:coinductive-examples             dev  Some simple examples about co-
@@ -92,6 +93,7 @@ coq:contrib:gc                               dev  Formal Verification of an Incr
 coq:contrib:generic-environments             dev  Generic_Environments.
 coq:contrib:goedel                           dev  The Gödel-Rosser 1st incomple
 coq:contrib:graph-basics                     dev  a Coq toolkit for graph theory
+coq:contrib:graphs                           dev  Satisfiability of inequality c
 coq:contrib:group-theory                     dev  Elements of Group Theory.
 coq:contrib:groups                           dev  An exercise on groups.
 coq:contrib:hedges                           dev  Some properties of hedges used
@@ -153,6 +155,7 @@ coq:contrib:rem                              dev  Rem Theorem in Baire space.
 coq:contrib:rsa                              dev  Correctness of RSA algorithm.
 coq:contrib:ruler-compass-geometry           dev  Ruler and compass geometry axi
 coq:contrib:schroeder                        dev  The Theorem of Schroeder-Berns
+coq:contrib:semantics                        dev  A survey of semantics styles, 
 coq:contrib:shuffle                          dev  Gilbreath&#39;s card trick.
 coq:contrib:square-matrices                  dev  From Fast Exponentiation to Sq
 coq:contrib:ssreflect                        dev  Ssreflect extension and the Ma
@@ -229,7 +232,7 @@ coq:unicoq                                   dev  An enhanced unification algori
               <dt>Return code</dt>
               <dd>1024</dd>
               <dt>Duration</dt>
-              <dd>6 s</dd>
+              <dd>14 s</dd>
               <dt>Output</dt>
               <dd><pre>The following actions will be performed:
  - install   coq:contrib:canon-bdds.dev
@@ -237,7 +240,7 @@ coq:unicoq                                   dev  An enhanced unification algori
 =-=- Synchronizing package archives -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 [coq:contrib:canon-bdds] Fetching https://gforge.inria.fr/git/coq-contribs/canon-bdds.git#trunk
 Initialized empty Git repository in /home/bench/.opam/packages.dev/coq:contrib:canon-bdds.dev/.git/
-[master (root-commit) 7d84b34] opam-git-init
+[master (root-commit) c9c996f] opam-git-init
 From https://gforge.inria.fr/git/coq-contribs/canon-bdds
  * [new branch]      trunk      -&gt; opam-ref
  * [new branch]      trunk      -&gt; origin/trunk
@@ -275,23 +278,12 @@ rauzy/algorithmes_2_et_3/Prelude_Implicants.v
 rauzy/algorithmes_2_et_3/Prelude_Paths.v
 rauzy/algorithmes_2_et_3/Prelude_Primes.v
 rauzy/algorithmes_2_et_3/Primes.v
-HEAD is now at 6f49521 Revert &quot;Regenerating Makefiles.&quot; We will be able to do so when we have access
+HEAD is now at b9cbaff Fixing extraction in Makefile.
 =-=- Installing packages =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 Building coq:contrib:canon-bdds.dev:
   coq_makefile -f Make -o Makefile
   make -j4
   make install
-Warning:
-Please now use &quot;-extra[-phony] result deps command&quot; instead of &quot;-custom command deps result&quot;.
-It follows makefile target declaration order and has a clearer semantic.
-Warning:
-Please now use &quot;-extra[-phony] result deps command&quot; instead of &quot;-custom command deps result&quot;.
-It follows makefile target declaration order and has a clearer semantic.
-Warning:
-Please now use &quot;-extra[-phony] result deps command&quot; instead of &quot;-custom command deps result&quot;.
-It follows makefile target declaration order and has a clearer semantic.
-Warning: Targets for subdirectories are very fragile. For example,
-nothing is done to handle dependencies with them.
 &quot;coqdep&quot; -c -R &quot;.&quot; CanonBDDs &quot;canonicite/Canonicity_BDT.v&quot; &gt; &quot;canonicite/Canonicity_BDT.v.d&quot; || ( RV=$?; rm -f &quot;canonicite/Canonicity_BDT.v.d&quot;; exit ${RV} )
 &quot;coqdep&quot; -c -R &quot;.&quot; CanonBDDs &quot;canonicite/Complete_induction.v&quot; &gt; &quot;canonicite/Complete_induction.v.d&quot; || ( RV=$?; rm -f &quot;canonicite/Complete_induction.v.d&quot;; exit ${RV} )
 &quot;coqdep&quot; -c -R &quot;.&quot; CanonBDDs &quot;canonicite/Boolean_functions.v&quot; &gt; &quot;canonicite/Boolean_functions.v.d&quot; || ( RV=$?; rm -f &quot;canonicite/Boolean_functions.v.d&quot;; exit ${RV} )
@@ -318,13 +310,46 @@ nothing is done to handle dependencies with them.
 &quot;coqc&quot;  -q  -R &quot;.&quot; CanonBDDs   canonicite/Prelude0
 &quot;coqc&quot;  -q  -R &quot;.&quot; CanonBDDs   canonicite/Order
 &quot;coqc&quot;  -q  -R &quot;.&quot; CanonBDDs   canonicite/Complete_induction
-cd &quot;./rauzy/algorithme1/extraction&quot; &amp;&amp; make all
-make[1]: *** No rule to make target &#39;suresnes.cmi&#39;, needed by &#39;suresnes&#39;.  Stop.
+&quot;coqc&quot;  -q  -R &quot;.&quot; CanonBDDs   canonicite/Finite_sets
+&quot;coqc&quot;  -q  -R &quot;.&quot; CanonBDDs   rauzy/algorithme1/Boolean_functions
+&quot;coqc&quot;  -q  -R &quot;.&quot; CanonBDDs   canonicite/Vars
+&quot;coqc&quot;  -q  -R &quot;.&quot; CanonBDDs   rauzy/algorithme1/BDTs
+&quot;coqc&quot;  -q  -R &quot;.&quot; CanonBDDs   canonicite/Boolean_functions
+&quot;coqc&quot;  -q  -R &quot;.&quot; CanonBDDs   rauzy/algorithme1/Inductions
+&quot;coqc&quot;  -q  -R &quot;.&quot; CanonBDDs   rauzy/algorithmes_2_et_3/Prelude_Paths
+&quot;coqc&quot;  -q  -R &quot;.&quot; CanonBDDs   canonicite/BDTs
+&quot;coqc&quot;  -q  -R &quot;.&quot; CanonBDDs   rauzy/algorithme1/Formula_to_BDT
+&quot;coqc&quot;  -q  -R &quot;.&quot; CanonBDDs   rauzy/algorithmes_2_et_3/Prelude_Implicants
+&quot;coqc&quot;  -q  -R &quot;.&quot; CanonBDDs   canonicite/Canonicity_BDT
+&quot;coqc&quot;  -q  -R &quot;.&quot; CanonBDDs   rauzy/algorithme1/Canonicity
+coqtop -q  -R &quot;.&quot; CanonBDDs   -silent -batch -load-vernac-source rauzy/algorithme1/extract.v
+&quot;coqc&quot;  -q  -R &quot;.&quot; CanonBDDs   rauzy/algorithmes_2_et_3/Monotony
+Fetching opaque proofs from disk for CanonBDDs.rauzy.algorithme1.Formula_to_BDT
+Fetching opaque proofs from disk for CanonBDDs.rauzy.algorithme1.Inductions
+Fetching opaque proofs from disk for CanonBDDs.rauzy.algorithme1.BDTs
+Fetching opaque proofs from disk for CanonBDDs.rauzy.algorithme1.Prelude_BDT
+cd ./rauzy/algorithme1/extraction ; make all
 make[1]: Entering directory &#39;/home/bench/.opam/system/build/coq:contrib:canon-bdds.dev/rauzy/algorithme1/extraction&#39;
+ocamlopt -c suresnes.mli
+ocamlyacc parser.mly
+ocamlopt -c suresnes.ml	 
+ocamllex lexer.mll
+22 states, 358 transitions, table size 1564 bytes
+ocamlopt -c parser.ml	 
+ocamlopt -c main.ml	 
+File &quot;parser.ml&quot;, line 1:
+Error: Could not find the .cmi file for interface parser.mli.
+Makefile:34: recipe for target &#39;parser.cmx&#39; failed
+make[1]: *** [parser.cmx] Error 2
+make[1]: *** Waiting for unfinished jobs....
+File &quot;main.ml&quot;, line 12, characters 18-25:
+Error: Unbound module Lexer
+make[1]: *** [main.cmx] Error 2
+Makefile:34: recipe for target &#39;main.cmx&#39; failed
 make[1]: Leaving directory &#39;/home/bench/.opam/system/build/coq:contrib:canon-bdds.dev/rauzy/algorithme1/extraction&#39;
-Makefile:250: recipe for target &#39;rauzy/algorithme1/extraction&#39; failed
-make: *** [rauzy/algorithme1/extraction] Error 2
+make: *** [rauzy/algorithme1/extraction/suresnes] Error 2
 make: *** Waiting for unfinished jobs....
+Makefile:237: recipe for target &#39;rauzy/algorithme1/extraction/suresnes&#39; failed
 [ERROR] The compilation of coq:contrib:canon-bdds.dev failed.
 Removing coq:contrib:canon-bdds.dev.
   rm -R /home/bench/.opam/system/lib/coq/user-contrib/canon-bdds
@@ -336,32 +361,30 @@ rm: cannot remove &#39;/home/bench/.opam/system/lib/coq/user-contrib/canon-bdds&
 # path                 /home/bench/.opam/system/build/coq:contrib:canon-bdds.dev
 # compiler             system (4.02.1)
 # exit-code            2
-# env-file             /home/bench/.opam/system/build/coq:contrib:canon-bdds.dev/coq:contrib:canon-bdds-12855-d2c37b.env
-# stdout-file          /home/bench/.opam/system/build/coq:contrib:canon-bdds.dev/coq:contrib:canon-bdds-12855-d2c37b.out
-# stderr-file          /home/bench/.opam/system/build/coq:contrib:canon-bdds.dev/coq:contrib:canon-bdds-12855-d2c37b.err
+# env-file             /home/bench/.opam/system/build/coq:contrib:canon-bdds.dev/coq:contrib:canon-bdds-5074-d2c37b.env
+# stdout-file          /home/bench/.opam/system/build/coq:contrib:canon-bdds.dev/coq:contrib:canon-bdds-5074-d2c37b.out
+# stderr-file          /home/bench/.opam/system/build/coq:contrib:canon-bdds.dev/coq:contrib:canon-bdds-5074-d2c37b.err
 ### stdout ###
 # ...[truncated]
-# &quot;coqdep&quot; -c -R &quot;.&quot; CanonBDDs &quot;rauzy/algorithmes_2_et_3/Operator_W.v&quot; &gt; &quot;rauzy/algorithmes_2_et_3/Operator_W.v.d&quot; || ( RV=$?; rm -f &quot;rauzy/algorithmes_2_et_3/Operator_W.v.d&quot;; exit ${RV} )
-# &quot;coqc&quot;  -q  -R &quot;.&quot; CanonBDDs   rauzy/algorithme1/Prelude_BDT
-# &quot;coqc&quot;  -q  -R &quot;.&quot; CanonBDDs   canonicite/Prelude1
-# &quot;coqc&quot;  -q  -R &quot;.&quot; CanonBDDs   canonicite/Prelude0
-# &quot;coqc&quot;  -q  -R &quot;.&quot; CanonBDDs   canonicite/Order
-# &quot;coqc&quot;  -q  -R &quot;.&quot; CanonBDDs   canonicite/Complete_induction
-# cd &quot;./rauzy/algorithme1/extraction&quot; &amp;&amp; make all
-# make[1]: Entering directory &#39;/home/bench/.opam/system/build/coq:contrib:canon-bdds.dev/rauzy/algorithme1/extraction&#39;
+# ocamlyacc parser.mly
+# ocamlopt -c suresnes.ml	 
+# ocamllex lexer.mll
+# 22 states, 358 transitions, table size 1564 bytes
+# ocamlopt -c parser.ml	 
+# ocamlopt -c main.ml	 
+# Makefile:34: recipe for target &#39;parser.cmx&#39; failed
+# Makefile:34: recipe for target &#39;main.cmx&#39; failed
 # make[1]: Leaving directory &#39;/home/bench/.opam/system/build/coq:contrib:canon-bdds.dev/rauzy/algorithme1/extraction&#39;
-# Makefile:250: recipe for target &#39;rauzy/algorithme1/extraction&#39; failed
+# Makefile:237: recipe for target &#39;rauzy/algorithme1/extraction/suresnes&#39; failed
 ### stderr ###
-# ...[truncated]
-# Please now use &quot;-extra[-phony] result deps command&quot; instead of &quot;-custom command deps result&quot;.
-# It follows makefile target declaration order and has a clearer semantic.
-# Warning:
-# Please now use &quot;-extra[-phony] result deps command&quot; instead of &quot;-custom command deps result&quot;.
-# It follows makefile target declaration order and has a clearer semantic.
-# Warning: Targets for subdirectories are very fragile. For example,
-# nothing is done to handle dependencies with them.
-# make[1]: *** No rule to make target &#39;suresnes.cmi&#39;, needed by &#39;suresnes&#39;.  Stop.
-# make: *** [rauzy/algorithme1/extraction] Error 2
+# File &quot;parser.ml&quot;, line 1:
+# Error: Could not find the .cmi file for interface parser.mli.
+# make[1]: *** [parser.cmx] Error 2
+# make[1]: *** Waiting for unfinished jobs....
+# File &quot;main.ml&quot;, line 12, characters 18-25:
+# Error: Unbound module Lexer
+# make[1]: *** [main.cmx] Error 2
+# make: *** [rauzy/algorithme1/extraction/suresnes] Error 2
 # make: *** Waiting for unfinished jobs....
 &#39;opam install -y --verbose coq:contrib:canon-bdds.dev&#39; failed.
 </pre></dd>
