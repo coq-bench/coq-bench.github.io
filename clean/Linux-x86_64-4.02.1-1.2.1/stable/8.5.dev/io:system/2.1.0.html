@@ -31,7 +31,7 @@
           <div id="navbar" class="collapse navbar-collapse">
             <ul class="nav navbar-nav">
               <li><a href="../..">clean / stable</a></li>
-              <li class="active"><a href="">8.5.dev / moment - 1.0.0</a></li>
+              <li class="active"><a href="">8.5.dev / io:system - 2.1.0</a></li>
             </ul>
           </div>
         </div>
@@ -41,9 +41,9 @@
           <div class="col-md-12">
             <a href="../..">« Up</a>
             <h1>
-              moment
+              io:system
               <small>
-                1.0.0
+                2.1.0
                 <span class="label label-warning">Error with dependencies</span>
               </small>
             </h1>
@@ -59,7 +59,7 @@ coq            8.5.dev  Formal proof management system.
             <h2>Lint</h2>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>ruby lint.rb stable ../stable/packages/coq:moment/coq:moment.1.0.0</code></dd>
+              <dd><code>ruby lint.rb stable ../stable/packages/coq:io:system/coq:io:system.2.1.0</code></dd>
               <dt>Return code</dt>
               <dd>0</dd>
               <dt>Duration</dt>
@@ -69,7 +69,7 @@ coq            8.5.dev  Formal proof management system.
             <p>Dry install with the current Coq version:</p>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>opam install -y --show-action coq:moment.1.0.0 coq.8.5.dev</code></dd>
+              <dd><code>opam install -y --show-action coq:io:system.2.1.0 coq.8.5.dev</code></dd>
               <dt>Return code</dt>
               <dd>0</dd>
               <dt>Duration</dt>
@@ -87,49 +87,88 @@ coq            8.5.dev  Formal proof management system.
             <h2>Install dependencies</h2>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>ulimit -Sv 1000000; timeout 5m opam install -y --deps-only coq:moment.1.0.0</code></dd>
+              <dd><code>ulimit -Sv 1000000; timeout 5m opam install -y --deps-only coq:io:system.2.1.0</code></dd>
               <dt>Return code</dt>
               <dd>1024</dd>
               <dt>Duration</dt>
-              <dd>17 s</dd>
+              <dd>36 s</dd>
               <dt>Output</dt>
               <dd><pre>The following actions will be performed:
-  - install coq:list-plus       1.1.0
-  - install coq:error-handlers  1.0.0
-  - install coq:function-ninjas 1.0.0
-  - install coq:list-string     2.1.0
-===== 4 to install =====
+  - install coq:list-plus       1.1.0 
+  - install coq:error-handlers  1.0.0 
+  - install coq:io              2.1.0 
+  - install ocamlfind           1.5.5 
+  - install coq:function-ninjas 1.0.0 
+  - install coq:list-string     2.1.0 
+  - install ppx_tools           0.99.2
+  - install lwt                 2.4.8 
+  - install coq:io:system:ocaml 2.2.0 
+===== 9 to install =====
 =-=- Gathering sources =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 [coq:error-handlers: http] Command started
 [coq:function-ninjas: http] Command started
-[coq:list-plus: http] Command started
-[coq:function-ninjas: http] Command started
+[coq:io: http] Command started
 [coq:error-handlers: http] Command started
-[coq:function-ninjas.1.0.0] https://github.com/clarus/coq-function-ninjas/archive/1.0.0.tar.gz downloaded
-[coq:list-string: http] Command started
+[coq:function-ninjas: http] Command started
+[coq:io: http] Command started
 [coq:error-handlers.1.0.0] https://github.com/clarus/coq-error-handlers/archive/1.0.0.tar.gz downloaded
+[coq:io:system:ocaml: http] Command started
+[coq:function-ninjas.1.0.0] https://github.com/clarus/coq-function-ninjas/archive/1.0.0.tar.gz downloaded
 [coq:list-plus: http] Command started
-[coq:list-plus.1.1.0] https://github.com/clarus/coq-list-plus/archive/1.1.0.tar.gz downloaded
+[coq:io.2.1.0] https://github.com/clarus/io/archive/2.1.0.tar.gz downloaded
 [coq:list-string: http] Command started
+[coq:io:system:ocaml: http] Command started
+[coq:io:system:ocaml.2.2.0] https://github.com/clarus/io-system-ocaml/archive/2.2.0.tar.gz downloaded
+[lwt: from default] Command started
+[coq:list-plus: http] Command started
+[coq:list-string: http] Command started
+[coq:list-plus.1.1.0] https://github.com/clarus/coq-list-plus/archive/1.1.0.tar.gz downloaded
+[ocamlfind: from default] Command started
 [coq:list-string.2.1.0] https://github.com/clarus/coq-list-string/archive/2.1.0.tar.gz downloaded
+[ppx_tools: from default] Command started
+[ppx_tools: from default] Command started
+[default] https://opam.ocaml.org/archives/ppx_tools.0.99.2+opam.tar.gz downloaded
+[ocamlfind: from default] Command started
+[default] https://opam.ocaml.org/archives/ocamlfind.1.5.5+opam.tar.gz downloaded
+[lwt: from default] Command started
+[default] https://opam.ocaml.org/archives/lwt.2.4.8+opam.tar.gz downloaded
 =-=- Processing actions -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 [coq:error-handlers: ./configure.sh] Command started
 [coq:function-ninjas: ./configure.sh] Command started
+[coq:io: ./configure.sh] Command started
 [coq:list-plus: ./configure.sh] Command started
 [coq:error-handlers: make] Command started
 [coq:function-ninjas: make] Command started
+[coq:io: make] Command started
 [coq:list-plus: make] Command started
 [coq:function-ninjas: make install] Command started
 [coq:error-handlers: make install] Command started
 -&gt; installed coq:function-ninjas.1.0.0
+[ocamlfind: ./configure] Command started
 -&gt; installed coq:error-handlers.1.0.0
+[ocamlfind: make all] Command started
+[coq:io: make install] Command started
 [coq:list-plus: make install] Command started
+-&gt; installed coq:io.2.1.0
 -&gt; installed coq:list-plus.1.1.0
 [coq:list-string: ruby pp.rb] Command started
 [coq:list-string: ./configure.sh] Command started
 [coq:list-string: make] Command started
+[ocamlfind: make opt] Command started
 [ERROR] The compilation of coq:list-string failed at &quot;make -j4&quot;.
 [coq:list-string: rm] Command started
+[ocamlfind: make install] Command started
+-&gt; installed ocamlfind.1.5.5
+[ppx_tools: make all] Command started
+[ppx_tools: make install] Command started
+-&gt; installed ppx_tools.0.99.2
+[lwt: ./configure] Command started
+[lwt: make build] Command started
+[lwt: make install] Command started
+-&gt; installed lwt.2.4.8
+[coq:io:system:ocaml: make] Command started
+[coq:io:system:ocaml: make install] Command started
+-&gt; installed coq:io:system:ocaml.2.2.0
 #=== ERROR while installing coq:list-string.2.1.0 =============================#
 # opam-version         1.2.1
 # os                   linux
@@ -137,9 +176,9 @@ coq            8.5.dev  Formal proof management system.
 # path                 /home/bench/.opam/system/build/coq:list-string.2.1.0
 # compiler             system (4.02.1)
 # exit-code            2
-# env-file             /home/bench/.opam/system/build/coq:list-string.2.1.0/coq:list-string-31677-03b1a4.env
-# stdout-file          /home/bench/.opam/system/build/coq:list-string.2.1.0/coq:list-string-31677-03b1a4.out
-# stderr-file          /home/bench/.opam/system/build/coq:list-string.2.1.0/coq:list-string-31677-03b1a4.err
+# env-file             /home/bench/.opam/system/build/coq:list-string.2.1.0/coq:list-string-11151-90b366.env
+# stdout-file          /home/bench/.opam/system/build/coq:list-string.2.1.0/coq:list-string-11151-90b366.out
+# stderr-file          /home/bench/.opam/system/build/coq:list-string.2.1.0/coq:list-string-11151-90b366.err
 ### stdout ###
 # [...]
 # &quot;coqdep&quot; -c -R &quot;src&quot; ListString &quot;src/Trim.v&quot; &gt; &quot;src/Trim.v.d&quot; || ( RV=$?; rm -f &quot;src/Trim.v.d&quot;; exit ${RV} )
@@ -162,11 +201,16 @@ coq            8.5.dev  Formal proof management system.
 The following actions failed
   - install coq:list-string 2.1.0
 The following changes have been performed
-  - install coq:error-handlers  1.0.0
-  - install coq:function-ninjas 1.0.0
-  - install coq:list-plus       1.1.0
+  - install coq:error-handlers  1.0.0 
+  - install coq:function-ninjas 1.0.0 
+  - install coq:io              2.1.0 
+  - install coq:io:system:ocaml 2.2.0 
+  - install coq:list-plus       1.1.0 
+  - install lwt                 2.4.8 
+  - install ocamlfind           1.5.5 
+  - install ppx_tools           0.99.2
 The former state can be restored with:
-    opam switch import &quot;~/.opam/system/backup/state-20150231194551.export&quot;
+    opam switch import &quot;~/.opam/system/backup/state-20150231195003.export&quot;
 </pre></dd>
             </dl>
             <h2>Install</h2>

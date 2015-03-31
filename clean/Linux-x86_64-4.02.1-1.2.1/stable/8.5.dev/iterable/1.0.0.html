@@ -44,10 +44,10 @@
               iterable
               <small>
                 1.0.0
-                <span class="label label-success">9 s</span>
+                <span class="label label-danger">Error</span>
               </small>
             </h1>
-            <p><em><script>document.write(moment("2015-02-23 14:26:29 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2015-02-23 14:26:29 UTC)</em><p>
+            <p><em><script>document.write(moment("2015-03-31 19:56:39 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2015-03-31 19:56:39 UTC)</em><p>
             <h2>Context</h2>
             <pre># Installed packages for system:
 base-bigarray     base  Bigarray library distributed with the OCaml compiler
@@ -73,7 +73,7 @@ coq            8.5.dev  Formal proof management system.
               <dt>Return code</dt>
               <dd>0</dd>
               <dt>Duration</dt>
-              <dd>1 s</dd>
+              <dd>2 s</dd>
             </dl>
             <p>Dry install without Coq, to test if the problem was incompatibility with the current Coq version:</p>
             <dl class="dl-horizontal">
@@ -87,7 +87,7 @@ coq            8.5.dev  Formal proof management system.
             <h2>Install dependencies</h2>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>ulimit -Sv 2000000; timeout 5m opam install -y --deps-only coq:iterable.1.0.0</code></dd>
+              <dd><code>ulimit -Sv 1000000; timeout 5m opam install -y --deps-only coq:iterable.1.0.0</code></dd>
               <dt>Return code</dt>
               <dd>0</dd>
               <dt>Duration</dt>
@@ -96,29 +96,72 @@ coq            8.5.dev  Formal proof management system.
             <h2>Install</h2>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>ulimit -Sv 2000000; timeout 30m opam install -y --verbose coq:iterable.1.0.0</code></dd>
+              <dd><code>ulimit -Sv 4000000; timeout 120m opam install -y --verbose coq:iterable.1.0.0</code></dd>
               <dt>Return code</dt>
-              <dd>0</dd>
+              <dd>1024</dd>
               <dt>Duration</dt>
-              <dd>9 s</dd>
+              <dd>3 s</dd>
+              <dt>Output</dt>
+              <dd><pre>The following actions will be performed:
+  - install coq:iterable 1.0.0
+=-=- Gathering sources =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+[coq:iterable: from stable] Repo archive not found[coq:iterable: http] Command started
+[coq:iterable: http] Command started
+[coq:iterable.1.0.0] https://github.com/clarus/coq-iterable/archive/1.0.0.tar.gz downloaded
+=-=- Processing actions -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+[coq:iterable: ./configure.sh] Command started
++ ./configure.sh  (CWD=/home/bench/.opam/system/build/coq:iterable.1.0.0)
+[coq:iterable: make] Command started
++ make &quot;-j4&quot; (CWD=/home/bench/.opam/system/build/coq:iterable.1.0.0)
+- &quot;coqdep&quot; -c -R &quot;.&quot; Iterable &quot;All.v&quot; &gt; &quot;All.v.d&quot; || ( RV=$?; rm -f &quot;All.v.d&quot;; exit ${RV} )
+- &quot;coqc&quot;  -q  -R &quot;.&quot; Iterable   All
+- Makefile:236: recipe for target &#39;All.vo&#39; failed
+- File &quot;./All.v&quot;, line 4, characters 0-34:
+- Error: Cannot load FunctionNinjas.All: no physical path bound to
+- FunctionNinjas
+- 
+- make: *** [All.vo] Error 1
+[ERROR] The compilation of coq:iterable failed at &quot;make -j4&quot;.
+[coq:iterable: rm] Command started
++ rm &quot;-R&quot; &quot;/home/bench/.opam/system/lib/coq/user-contrib/Iterable&quot; (CWD=/home/bench/.opam/system/build/coq:iterable.1.0.0)
+- rm: cannot remove &#39;/home/bench/.opam/system/lib/coq/user-contrib/Iterable&#39;: No such file or directory
+#=== ERROR while installing coq:iterable.1.0.0 ================================#
+# opam-version         1.2.1
+# os                   linux
+# command              make -j4
+# path                 /home/bench/.opam/system/build/coq:iterable.1.0.0
+# compiler             system (4.02.1)
+# exit-code            2
+# env-file             /home/bench/.opam/system/build/coq:iterable.1.0.0/coq:iterable-1827-c61e7b.env
+# stdout-file          /home/bench/.opam/system/build/coq:iterable.1.0.0/coq:iterable-1827-c61e7b.out
+# stderr-file          /home/bench/.opam/system/build/coq:iterable.1.0.0/coq:iterable-1827-c61e7b.err
+### stdout ###
+# &quot;coqdep&quot; -c -R &quot;.&quot; Iterable &quot;All.v&quot; &gt; &quot;All.v.d&quot; || ( RV=$?; rm -f &quot;All.v.d&quot;; exit ${RV} )
+# &quot;coqc&quot;  -q  -R &quot;.&quot; Iterable   All
+# Makefile:236: recipe for target &#39;All.vo&#39; failed
+### stderr ###
+# File &quot;./All.v&quot;, line 4, characters 0-34:
+# Error: Cannot load FunctionNinjas.All: no physical path bound to
+# FunctionNinjas
+# 
+# make: *** [All.vo] Error 1
+=-=- Error report -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+The following actions failed
+  - install coq:iterable 1.0.0
+No changes have been performed
+&#39;opam install -y --verbose coq:iterable.1.0.0&#39; failed.
+</pre></dd>
             </dl>
             <h2>Installation size</h2>
-            <p>Total: 34 K</p>
-            <ul>
-              <li>28 K <code>lib/coq/user-contrib/Iterable/All.vo</code></li>
-              <li>4 K <code>lib/coq/user-contrib/Iterable/All.glob</code></li>
-              <li>1 K <code>lib/coq/user-contrib/Iterable/All.v</code></li>
-              <li>1 K <code>install/coq:iterable.install</code></li>
-              <li>0 K <code>lib/coq:iterable/opam.config</code></li>
-            </ul>
+            <p>No files were installed.</p>
             <h2>Uninstall</h2>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>opam remove -y coq:iterable.1.0.0</code></dd>
+              <dd><code>true</code></dd>
               <dt>Return code</dt>
               <dd>0</dd>
               <dt>Duration</dt>
-              <dd>1 s</dd>
+              <dd>0 s</dd>
               <dt>Missing removes</dt>
               <dd>
                 none
