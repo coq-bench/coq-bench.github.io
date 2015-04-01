@@ -47,7 +47,7 @@
                 <span class="label label-danger">Error</span>
               </small>
             </h1>
-            <p><em><script>document.write(moment("2015-04-01 03:52:43 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2015-04-01 03:52:43 UTC)</em><p>
+            <p><em><script>document.write(moment("2015-04-01 23:26:59 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2015-04-01 23:26:59 UTC)</em><p>
             <h2>Context</h2>
             <pre># Installed packages for system:
 base-bigarray   base  Bigarray library distributed with the OCaml compiler
@@ -81,7 +81,7 @@ coq            8.4.5  Formal proof management system.
             <h2>Install dependencies</h2>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>ulimit -Sv 1000000; timeout 5m opam install -y --deps-only coq:contrib:finger-tree.8.4.dev</code></dd>
+              <dd><code>opam list; ulimit -Sv 1000000; timeout 5m opam install -y --deps-only coq:contrib:finger-tree.8.4.dev</code></dd>
               <dt>Return code</dt>
               <dd>0</dd>
               <dt>Duration</dt>
@@ -90,13 +90,19 @@ coq            8.4.5  Formal proof management system.
             <h2>Install</h2>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>ulimit -Sv 4000000; timeout 120m opam install -y --verbose coq:contrib:finger-tree.8.4.dev</code></dd>
+              <dd><code>opam list; ulimit -Sv 4000000; timeout 120m opam install -y -v coq:contrib:finger-tree.8.4.dev</code></dd>
               <dt>Return code</dt>
               <dd>1024</dd>
               <dt>Duration</dt>
-              <dd>1 m 43 s</dd>
+              <dd>1 m 45 s</dd>
               <dt>Output</dt>
-              <dd><pre>The following actions will be performed:
+              <dd><pre># Installed packages for system:
+base-bigarray   base  Bigarray library distributed with the OCaml compiler
+base-threads    base  Threads library distributed with the OCaml compiler
+base-unix       base  Unix library distributed with the OCaml compiler
+camlp5          6.12  Preprocessor-pretty-printer of OCaml
+coq            8.4.5  Formal proof management system.
+The following actions will be performed:
   - install coq:contrib:finger-tree 8.4.dev
 =-=- Gathering sources =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 [coq:contrib:finger-tree: from unstable] Repo archive not found[coq:contrib:finger-tree: git] Command started
@@ -135,7 +141,7 @@ coq            8.4.5  Formal proof management system.
 - coqc  -q  -R . FingerTree   Notations
 - coqc  -q  -R . FingerTree   Digit
 - coqc  -q  -R . FingerTree   DependentFingerTree
-- Finished transaction in 25. secs (24.927716u,0.016021s)
+- Finished transaction in 26. secs (25.489821u,0.02408s)
 - coqc  -q  -R . FingerTree   FingerTree
 - coqc  -q  -R . FingerTree   Sequence
 - coqc  -q  -R . FingerTree   OrderedType
@@ -179,14 +185,6 @@ coq            8.4.5  Formal proof management system.
 - Having invalid logical axiom in the environment when extracting
 - may lead to incorrect or non-terminating ML terms.
 - 
-- cd extraction ; make all
-- make[1]: Entering directory &#39;/home/bench/.opam/system/build/coq:contrib:finger-tree.8.4.dev/extraction&#39;
-- cd ml ; make all
-- make[2]: Entering directory &#39;/home/bench/.opam/system/build/coq:contrib:finger-tree.8.4.dev/extraction/ml&#39;
-- make[2]: Leaving directory &#39;/home/bench/.opam/system/build/coq:contrib:finger-tree.8.4.dev/extraction/ml&#39;
-- Makefile:95: recipe for target &#39;ml&#39; failed
-- make[1]: Leaving directory &#39;/home/bench/.opam/system/build/coq:contrib:finger-tree.8.4.dev/extraction&#39;
-- Makefile:168: recipe for target &#39;extraction&#39; failed
 - Warning: The extraction is currently set to bypass opacity,
 - the following opaque constant bodies have been accessed :
 -  List.destruct_list List.exists_last List.nth_in_or_default.
@@ -196,6 +194,14 @@ coq            8.4.5  Formal proof management system.
 - Having invalid logical axiom in the environment when extracting
 - may lead to incorrect or non-terminating ML terms.
 - 
+- cd extraction ; make all
+- make[1]: Entering directory &#39;/home/bench/.opam/system/build/coq:contrib:finger-tree.8.4.dev/extraction&#39;
+- cd ml ; make all
+- make[2]: Entering directory &#39;/home/bench/.opam/system/build/coq:contrib:finger-tree.8.4.dev/extraction/ml&#39;
+- make[2]: Leaving directory &#39;/home/bench/.opam/system/build/coq:contrib:finger-tree.8.4.dev/extraction/ml&#39;
+- Makefile:95: recipe for target &#39;ml&#39; failed
+- make[1]: Leaving directory &#39;/home/bench/.opam/system/build/coq:contrib:finger-tree.8.4.dev/extraction&#39;
+- Makefile:168: recipe for target &#39;extraction&#39; failed
 - make[2]: *** No rule to make target &#39;Datatypes.mli&#39;, needed by &#39;depend&#39;.  Stop.
 - make[1]: *** [ml] Error 2
 - make: *** [extraction] Error 2
@@ -210,9 +216,9 @@ coq            8.4.5  Formal proof management system.
 # path                 /home/bench/.opam/system/build/coq:contrib:finger-tree.8.4.dev
 # compiler             system (4.02.1)
 # exit-code            2
-# env-file             /home/bench/.opam/system/build/coq:contrib:finger-tree.8.4.dev/coq:contrib:finger-tree-19974-c61e7b.env
-# stdout-file          /home/bench/.opam/system/build/coq:contrib:finger-tree.8.4.dev/coq:contrib:finger-tree-19974-c61e7b.out
-# stderr-file          /home/bench/.opam/system/build/coq:contrib:finger-tree.8.4.dev/coq:contrib:finger-tree-19974-c61e7b.err
+# env-file             /home/bench/.opam/system/build/coq:contrib:finger-tree.8.4.dev/coq:contrib:finger-tree-32457-c61e7b.env
+# stdout-file          /home/bench/.opam/system/build/coq:contrib:finger-tree.8.4.dev/coq:contrib:finger-tree-32457-c61e7b.out
+# stderr-file          /home/bench/.opam/system/build/coq:contrib:finger-tree.8.4.dev/coq:contrib:finger-tree-32457-c61e7b.err
 ### stdout ###
 # [...]
 # coqc  -q  -R . FingerTree   RopeModule
@@ -241,7 +247,7 @@ coq            8.4.5  Formal proof management system.
 The following actions failed
   - install coq:contrib:finger-tree 8.4.dev
 No changes have been performed
-&#39;opam install -y --verbose coq:contrib:finger-tree.8.4.dev&#39; failed.
+&#39;opam install -y -v coq:contrib:finger-tree.8.4.dev&#39; failed.
 </pre></dd>
             </dl>
             <h2>Installation size</h2>

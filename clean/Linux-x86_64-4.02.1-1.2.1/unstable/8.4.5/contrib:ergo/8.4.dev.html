@@ -47,7 +47,7 @@
                 <span class="label label-danger">Error</span>
               </small>
             </h1>
-            <p><em><script>document.write(moment("2015-04-01 03:52:43 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2015-04-01 03:52:43 UTC)</em><p>
+            <p><em><script>document.write(moment("2015-04-01 23:26:59 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2015-04-01 23:26:59 UTC)</em><p>
             <h2>Context</h2>
             <pre># Installed packages for system:
 base-bigarray   base  Bigarray library distributed with the OCaml compiler
@@ -81,22 +81,31 @@ coq            8.4.5  Formal proof management system.
             <h2>Install dependencies</h2>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>ulimit -Sv 1000000; timeout 5m opam install -y --deps-only coq:contrib:ergo.8.4.dev</code></dd>
+              <dd><code>opam list; ulimit -Sv 1000000; timeout 5m opam install -y --deps-only coq:contrib:ergo.8.4.dev</code></dd>
               <dt>Return code</dt>
               <dd>0</dd>
               <dt>Duration</dt>
-              <dd>1 m 0 s</dd>
+              <dd>58 s</dd>
             </dl>
             <h2>Install</h2>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>ulimit -Sv 4000000; timeout 120m opam install -y --verbose coq:contrib:ergo.8.4.dev</code></dd>
+              <dd><code>opam list; ulimit -Sv 4000000; timeout 120m opam install -y -v coq:contrib:ergo.8.4.dev</code></dd>
               <dt>Return code</dt>
               <dd>1024</dd>
               <dt>Duration</dt>
-              <dd>19 s</dd>
+              <dd>18 s</dd>
               <dt>Output</dt>
-              <dd><pre>The following actions will be performed:
+              <dd><pre># Installed packages for system:
+base-bigarray              base  Bigarray library distributed with the OCaml com
+base-threads               base  Threads library distributed with the OCaml comp
+base-unix                  base  Unix library distributed with the OCaml compile
+camlp5                     6.12  Preprocessor-pretty-printer of OCaml
+coq                       8.4.5  Formal proof management system.
+coq:contrib:containers  8.4.dev  Containers: a typeclass-based library of finite
+coq:contrib:counting    8.4.dev  Counting: a Coq plugin for measuring definition
+coq:contrib:nfix        8.4.dev  Nfix: a Coq extension for fixpoints on nested i
+The following actions will be performed:
   - install coq:contrib:ergo 8.4.dev
 =-=- Gathering sources =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 [coq:contrib:ergo: from unstable] Repo archive not found[coq:contrib:ergo: git] Command started
@@ -171,13 +180,13 @@ coq            8.4.5  Formal proof management system.
 - coqc  -q  -I tests -I src -R theories Ergo   theories/Term
 -      = 2
 -      : nat
-- Finished transaction in 0. secs (0.000604u,0.00037s)
+- Finished transaction in 0. secs (0.000552u,0.000411s)
 -      = 0
 -      : nat
-- Finished transaction in 0. secs (5.4e-05u,3.29999999999e-05s)
+- Finished transaction in 0. secs (5e-05u,3.7e-05s)
 -      = natx
 -      : nat
-- Finished transaction in 0. secs (5.59999999999e-05u,3.5e-05s)
+- Finished transaction in 0. secs (0.u,0.s)
 -      = true
 -      : bool
 - Finished transaction in 0. secs (0.u,0.s)
@@ -186,16 +195,16 @@ coq            8.4.5  Formal proof management system.
 - Finished transaction in 0. secs (0.u,0.s)
 -      = natbool natx
 -      : bool
-- Finished transaction in 0. secs (0.u,0.s)
+- Finished transaction in 0. secs (7e-05u,0.s)
 -      = natnat (natnat (natnat (natnat (natnat natx))))
 -      : [|type_of vtypes variables f5x|]
-- Finished transaction in 0. secs (0.002134u,0.s)
+- Finished transaction in 0. secs (0.u,0.s)
 -      = 2
 -      : nat
-- Finished transaction in 0. secs (0.u,0.s)
+- Finished transaction in 0. secs (7.7e-05u,5.7e-05s)
 -      = 0
 -      : nat
-- Finished transaction in 0. secs (5.3e-05u,3.19999999999e-05s)
+- Finished transaction in 0. secs (0.u,0.s)
 -      = natx
 -      : nat
 - Finished transaction in 0. secs (0.u,0.s)
@@ -210,7 +219,7 @@ coq            8.4.5  Formal proof management system.
 - Finished transaction in 0. secs (0.u,0.s)
 -      = natnat (natnat (natnat (natnat (natnat natx))))
 -      : [|type_of vtypes variables f5x|]
-- Finished transaction in 0. secs (0.u,0.s)
+- Finished transaction in 0. secs (0.001412u,0.s)
 - coqc  -q  -I tests -I src -R theories Ergo   theories/Ergo
 - ainterp_is_finterp
 -      : forall (vm : varmaps) (reifs : list (abstraction vm)) (f : fform),
@@ -234,14 +243,14 @@ coq            8.4.5  Formal proof management system.
 - coqc  -q  -I tests -I src -R theories Ergo   tests/Generators
 -      = (occ 1 0 /\ occ 0 0) /\ (~ occ 1 0 \/ ~ occ 0 0)
 -      : Prop
-- Finished transaction in 0. secs (9.5e-05u,0.000106s)
+- Finished transaction in 0. secs (7.8e-05u,0.000123s)
 -      = ((occ 2 1 \/ occ 2 0) /\ (occ 1 1 \/ occ 1 0) /\ (occ 0 1 \/ occ 0 0)) /\
 -        (((~ occ 2 1 \/ ~ occ 1 1) /\ (~ occ 2 1 \/ ~ occ 0 1)) /\
 -         (~ occ 1 1 \/ ~ occ 0 1)) /\
 -        ((~ occ 2 0 \/ ~ occ 1 0) /\ (~ occ 2 0 \/ ~ occ 0 0)) /\
 -        (~ occ 1 0 \/ ~ occ 0 0)
 -      : Prop
-- Finished transaction in 0. secs (0.000183u,0.000203s)
+- Finished transaction in 0. secs (0.002596u,0.s)
 -      = ((occ 6 5 \/ occ 6 4 \/ occ 6 3 \/ occ 6 2 \/ occ 6 1 \/ occ 6 0) /\
 -         (occ 5 5 \/ occ 5 4 \/ occ 5 3 \/ occ 5 2 \/ occ 5 1 \/ occ 5 0) /\
 -         (occ 4 5 \/ occ 4 4 \/ occ 4 3 \/ occ 4 2 \/ occ 4 1 \/ occ 4 0) /\
@@ -346,7 +355,7 @@ coq            8.4.5  Formal proof management system.
 -        ((~ occ 2 0 \/ ~ occ 1 0) /\ (~ occ 2 0 \/ ~ occ 0 0)) /\
 -        (~ occ 1 0 \/ ~ occ 0 0)
 -      : Prop
-- Finished transaction in 0. secs (0.0086u,0.000484s)
+- Finished transaction in 0. secs (0.0086u,0.s)
 -      = ((occ 10 9 \/
 -          occ 10 8 \/
 -          occ 10 7 \/
@@ -863,15 +872,15 @@ coq            8.4.5  Formal proof management system.
 -        ((~ occ 2 0 \/ ~ occ 1 0) /\ (~ occ 2 0 \/ ~ occ 0 0)) /\
 -        (~ occ 1 0 \/ ~ occ 0 0)
 -      : Prop
-- Finished transaction in 0. secs (0.038263u,0.002694s)
+- Finished transaction in 0. secs (0.036793u,0.002677s)
 -      = occ 1 0 /\ occ 0 0 -&gt; occ 1 0 /\ occ 0 0
 -      : Prop
-- Finished transaction in 0. secs (0.0001u,5.2e-05s)
+- Finished transaction in 0. secs (0.u,0.s)
 -      = (occ 2 1 \/ occ 2 0) /\ (occ 1 1 \/ occ 1 0) /\ (occ 0 1 \/ occ 0 0) -&gt;
 -        ((occ 2 1 /\ occ 1 1 \/ occ 2 1 /\ occ 0 1) \/ occ 1 1 /\ occ 0 1) \/
 -        (occ 2 0 /\ occ 1 0 \/ occ 2 0 /\ occ 0 0) \/ occ 1 0 /\ occ 0 0
 -      : Prop
-- Finished transaction in 0. secs (0.u,0.s)
+- Finished transaction in 0. secs (0.000205u,7.2e-05s)
 -      = (occ 6 5 \/ occ 6 4 \/ occ 6 3 \/ occ 6 2 \/ occ 6 1 \/ occ 6 0) /\
 -        (occ 5 5 \/ occ 5 4 \/ occ 5 3 \/ occ 5 2 \/ occ 5 1 \/ occ 5 0) /\
 -        (occ 4 5 \/ occ 4 4 \/ occ 4 3 \/ occ 4 2 \/ occ 4 1 \/ occ 4 0) /\
@@ -946,7 +955,7 @@ coq            8.4.5  Formal proof management system.
 -        (occ 3 0 /\ occ 2 0 \/ occ 3 0 /\ occ 1 0 \/ occ 3 0 /\ occ 0 0) \/
 -        (occ 2 0 /\ occ 1 0 \/ occ 2 0 /\ occ 0 0) \/ occ 1 0 /\ occ 0 0
 -      : Prop
-- Finished transaction in 0. secs (0.006314u,0.s)
+- Finished transaction in 0. secs (0.00739u,0.s)
 -      = (occ 10 9 \/
 -         occ 10 8 \/
 -         occ 10 7 \/
@@ -1373,14 +1382,14 @@ coq            8.4.5  Formal proof management system.
 -        (occ 3 0 /\ occ 2 0 \/ occ 3 0 /\ occ 1 0 \/ occ 3 0 /\ occ 0 0) \/
 -        (occ 2 0 /\ occ 1 0 \/ occ 2 0 /\ occ 0 0) \/ occ 1 0 /\ occ 0 0
 -      : Prop
-- Finished transaction in 0. secs (0.033346u,0.s)
+- Finished transaction in 0. secs (0.032465u,0.s)
 -      = (x 2 &lt;-&gt; x 1) \/ (x 1 &lt;-&gt; x 0) \/ (x 0 &lt;-&gt; x 2)
 -      : Prop
-- Finished transaction in 0. secs (0.001482u,0.s)
+- Finished transaction in 0. secs (0.000134u,7.3e-05s)
 -      = (x 4 &lt;-&gt; x 3) \/
 -        (x 3 &lt;-&gt; x 2) \/ (x 2 &lt;-&gt; x 1) \/ (x 1 &lt;-&gt; x 0) \/ (x 0 &lt;-&gt; x 4)
 -      : Prop
-- Finished transaction in 0. secs (0.u,0.s)
+- Finished transaction in 0. secs (0.000138u,7.5e-05s)
 -      = (x 12 &lt;-&gt; x 11) \/
 -        (x 11 &lt;-&gt; x 10) \/
 -        (x 10 &lt;-&gt; x 9) \/
@@ -1392,7 +1401,7 @@ coq            8.4.5  Formal proof management system.
 -        (x 4 &lt;-&gt; x 3) \/
 -        (x 3 &lt;-&gt; x 2) \/ (x 2 &lt;-&gt; x 1) \/ (x 1 &lt;-&gt; x 0) \/ (x 0 &lt;-&gt; x 12)
 -      : Prop
-- Finished transaction in 0. secs (0.000915u,0.s)
+- Finished transaction in 0. secs (0.000518u,0.00028s)
 -      = (x 20 &lt;-&gt; x 19) \/
 -        (x 19 &lt;-&gt; x 18) \/
 -        (x 18 &lt;-&gt; x 17) \/
@@ -1412,7 +1421,7 @@ coq            8.4.5  Formal proof management system.
 -        (x 4 &lt;-&gt; x 3) \/
 -        (x 3 &lt;-&gt; x 2) \/ (x 2 &lt;-&gt; x 1) \/ (x 1 &lt;-&gt; x 0) \/ (x 0 &lt;-&gt; x 20)
 -      : Prop
-- Finished transaction in 0. secs (0.000596u,0.s)
+- Finished transaction in 0. secs (0.000443u,0.000239s)
 -      = (x 100 &lt;-&gt; x 99) \/
 -        (x 99 &lt;-&gt; x 98) \/
 -        (x 98 &lt;-&gt; x 97) \/
@@ -1458,17 +1467,17 @@ coq            8.4.5  Formal proof management system.
 -        (x 58 &lt;-&gt; x 57) \/
 -        (x 57 &lt;-&gt; x 56) \/ (x 56 &lt;-&gt; x 55) \/ (.. &lt;-&gt; ..) \/ (..) \/ .. \/ ..
 -      : Prop
-- Finished transaction in 0. secs (0.016339u,0.s)
+- Finished transaction in 0. secs (0.015927u,0.s)
 -      = ((x 2 \/ x 1) /\ (~ x 2 \/ ~ x 1)) /\
 -        ((x 1 \/ x 0) /\ (~ x 1 \/ ~ x 0)) /\ (x 0 \/ x 2) /\ (~ x 0 \/ ~ x 2)
 -      : Prop
-- Finished transaction in 0. secs (0.u,0.s)
+- Finished transaction in 0. secs (0.000188u,0.s)
 -      = ((x 4 \/ x 3) /\ (~ x 4 \/ ~ x 3)) /\
 -        ((x 3 \/ x 2) /\ (~ x 3 \/ ~ x 2)) /\
 -        ((x 2 \/ x 1) /\ (~ x 2 \/ ~ x 1)) /\
 -        ((x 1 \/ x 0) /\ (~ x 1 \/ ~ x 0)) /\ (x 0 \/ x 4) /\ (~ x 0 \/ ~ x 4)
 -      : Prop
-- Finished transaction in 0. secs (0.00044u,0.s)
+- Finished transaction in 0. secs (0.001631u,0.s)
 -      = ((x 12 \/ x 11) /\ (~ x 12 \/ ~ x 11)) /\
 -        ((x 11 \/ x 10) /\ (~ x 11 \/ ~ x 10)) /\
 -        ((x 10 \/ x 9) /\ (~ x 10 \/ ~ x 9)) /\
@@ -1483,7 +1492,7 @@ coq            8.4.5  Formal proof management system.
 -        ((x 1 \/ x 0) /\ (~ x 1 \/ ~ x 0)) /\
 -        (x 0 \/ x 12) /\ (~ x 0 \/ ~ x 12)
 -      : Prop
-- Finished transaction in 0. secs (0.00184u,0.s)
+- Finished transaction in 0. secs (0.001286u,0.s)
 -      = ((x 20 \/ x 19) /\ (~ x 20 \/ ~ x 19)) /\
 -        ((x 19 \/ x 18) /\ (~ x 19 \/ ~ x 18)) /\
 -        ((x 18 \/ x 17) /\ (~ x 18 \/ ~ x 17)) /\
@@ -1506,7 +1515,7 @@ coq            8.4.5  Formal proof management system.
 -        ((x 1 \/ x 0) /\ (~ x 1 \/ ~ x 0)) /\
 -        (x 0 \/ x 20) /\ (~ x 0 \/ ~ x 20)
 -      : Prop
-- Finished transaction in 0. secs (0.u,0.003212s)
+- Finished transaction in 0. secs (0.003234u,0.s)
 -      = ((x 100 \/ x 99) /\ (~ x 100 \/ ~ x 99)) /\
 -        ((x 99 \/ x 98) /\ (~ x 99 \/ ~ x 98)) /\
 -        ((x 98 \/ x 97) /\ (~ x 98 \/ ~ x 97)) /\
@@ -1553,13 +1562,13 @@ coq            8.4.5  Formal proof management system.
 -        ((.. \/ ..) /\ (.. \/ ..)) /\
 -        ((..) /\ (..)) /\ (.. /\ ..) /\ (..) /\ .. /\ ..
 -      : Prop
-- Finished transaction in 0. secs (0.034413u,0.s)
+- Finished transaction in 0. secs (0.033948u,0.s)
 -      = (a 0 &lt;-&gt; a 1) &lt;-&gt; (a 1 &lt;-&gt; a 0)
 -      : Prop
-- Finished transaction in 0. secs (0.u,0.s)
+- Finished transaction in 0. secs (0.000105u,0.s)
 -      = ((a 0 &lt;-&gt; a 1) &lt;-&gt; a 2) &lt;-&gt; (a 2 &lt;-&gt; (a 1 &lt;-&gt; a 0))
 -      : Prop
-- Finished transaction in 0. secs (0.000327u,0.s)
+- Finished transaction in 0. secs (0.001417u,0.s)
 -      = ((((((((((a 0 &lt;-&gt; a 1) &lt;-&gt; a 2) &lt;-&gt; a 3) &lt;-&gt; a 4) &lt;-&gt; a 5) &lt;-&gt; a 6) &lt;-&gt;
 -            a 7) &lt;-&gt; a 8) &lt;-&gt; a 9) &lt;-&gt; a 10) &lt;-&gt;
 -        (a 10 &lt;-&gt;
@@ -1568,7 +1577,7 @@ coq            8.4.5  Formal proof management system.
 -           (a 7 &lt;-&gt;
 -            (a 6 &lt;-&gt; (a 5 &lt;-&gt; (a 4 &lt;-&gt; (a 3 &lt;-&gt; (a 2 &lt;-&gt; (a 1 &lt;-&gt; a 0))))))))))
 -      : Prop
-- Finished transaction in 0. secs (0.000389u,0.s)
+- Finished transaction in 0. secs (0.u,0.s)
 -      = ((((((((((((((((((((((((..) &lt;-&gt; a 8) &lt;-&gt; a 9) &lt;-&gt; a 10) &lt;-&gt; a 11) &lt;-&gt;
 -                           a 12) &lt;-&gt; a 13) &lt;-&gt; a 14) &lt;-&gt; 
 -                        a 15) &lt;-&gt; a 16) &lt;-&gt; a 17) &lt;-&gt; 
@@ -1597,7 +1606,7 @@ coq            8.4.5  Formal proof management system.
 -                          (a 12 &lt;-&gt;
 -                           (a 11 &lt;-&gt; (a 10 &lt;-&gt; (a 9 &lt;-&gt; (a 8 &lt;-&gt; (..))))))))))))))))))))))))
 -      : Prop
-- Finished transaction in 0. secs (0.00125u,0.000577s)
+- Finished transaction in 0. secs (0.001819u,0.s)
 -      = (~ a 0 \/ ~ a 1) \/ a 0 /\ a 1
 -      : Prop
 - Finished transaction in 0. secs (0.u,0.s)
@@ -1610,7 +1619,7 @@ coq            8.4.5  Formal proof management system.
 -        (((((((((a 0 /\ a 1) /\ a 2) /\ a 3) /\ a 4) /\ a 5) /\ a 6) /\ a 7) /\
 -          a 8) /\ a 9) /\ a 10
 -      : Prop
-- Finished transaction in 0. secs (0.00031u,0.s)
+- Finished transaction in 0. secs (0.001057u,0.s)
 -      = ((((((((((((((((((((((((..) \/ ~ ..) \/ ~ a 9) \/ ~ a 10) \/ ~ a 11) \/
 -                           ~ a 12) \/ ~ a 13) \/ ~ a 14) \/ 
 -                        ~ a 15) \/ ~ a 16) \/ ~ a 17) \/ 
@@ -1625,10 +1634,10 @@ coq            8.4.5  Formal proof management system.
 -               a 23) /\ a 24) /\ a 25) /\ a 26) /\ a 27) /\ 
 -          a 28) /\ a 29) /\ a 30
 -      : Prop
-- Finished transaction in 0. secs (0.002489u,0.s)
+- Finished transaction in 0. secs (0.002721u,0.s)
 -      = a 1 /\ (a 1 -&gt; a 1 -&gt; a 0) /\ True -&gt; a 0
 -      : Prop
-- Finished transaction in 0. secs (0.u,0.s)
+- Finished transaction in 0. secs (0.000924u,0.s)
 -      = a 2 /\ (a 2 -&gt; a 2 -&gt; a 1) /\ (a 1 -&gt; a 1 -&gt; a 0) /\ True -&gt; a 0
 -      : Prop
 - Finished transaction in 0. secs (0.u,0.s)
@@ -1644,7 +1653,7 @@ coq            8.4.5  Formal proof management system.
 -        (a 2 -&gt; a 2 -&gt; a 1) /\ (a 1 -&gt; a 1 -&gt; a 0) /\ True -&gt; 
 -        a 0
 -      : Prop
-- Finished transaction in 0. secs (0.00075u,7e-05s)
+- Finished transaction in 0. secs (0.00111u,0.s)
 -      = a 30 /\
 -        (a 30 -&gt; a 30 -&gt; a 29) /\
 -        (a 29 -&gt; a 29 -&gt; a 28) /\
@@ -1677,7 +1686,7 @@ coq            8.4.5  Formal proof management system.
 -        (a 2 -&gt; a 2 -&gt; a 1) /\ (a 1 -&gt; a 1 -&gt; a 0) /\ True -&gt; 
 -        a 0
 -      : Prop
-- Finished transaction in 0. secs (0.001375u,0.s)
+- Finished transaction in 0. secs (0.002764u,0.s)
 - coqc  -q  -I tests -I src -R theories Ergo   tests/GeneratorsNG
 -      = forall x x0 x1 x2 x3 x4 x5 x6 x7 x8 x9 x10 : Prop,
 -        x
@@ -1689,13 +1698,13 @@ coq            8.4.5  Formal proof management system.
 -      : Prop
 -      = forall x x0 : Prop, (x0 /\ x) /\ (~ x0 \/ ~ x) -&gt; False
 -      : Prop
-- Finished transaction in 0. secs (0.000119u,8e-05s)
+- Finished transaction in 0. secs (9.7e-05u,0.000104s)
 -      = forall x x0 x1 x2 x3 x4 : Prop,
 -        ((x4 \/ x3) /\ (x2 \/ x1) /\ (x0 \/ x)) /\
 -        (((~ x4 \/ ~ x2) /\ (~ x4 \/ ~ x0)) /\ (~ x2 \/ ~ x0)) /\
 -        ((~ x3 \/ ~ x1) /\ (~ x3 \/ ~ x)) /\ (~ x1 \/ ~ x) -&gt; False
 -      : Prop
-- Finished transaction in 0. secs (0.000324u,0.000216s)
+- Finished transaction in 0. secs (0.00026u,0.000277s)
 -      = forall
 -          x x0 x1 x2 x3 x4 x5 x6 x7 x8 x9 x10 x11 x12 x13 x14 x15 x16 x17 x18
 -           x19 x20 x21 x22 x23 x24 x25 x26 x27 x28 x29 x30 x31 x32 x33 x34 x35
@@ -1774,7 +1783,7 @@ coq            8.4.5  Formal proof management system.
 -        ((~ x17 \/ ~ x11) /\ (~ x17 \/ ~ x5) /\ (~ x17 \/ ~ x)) /\
 -        ((~ x11 \/ ~ x5) /\ (~ x11 \/ ~ x)) /\ (~ x5 \/ ~ x) -&gt; False
 -      : Prop
-- Finished transaction in 0. secs (0.028186u,0.s)
+- Finished transaction in 0. secs (0.027769u,8e-05s)
 -      = forall
 -          x x0 x1 x2 x3 x4 x5 x6 x7 x8 x9 x10 x11 x12 x13 x14 x15 x16 x17 x18
 -           x19 x20 x21 x22 x23 x24 x25 x26 x27 x28 x29 x30 x31 x32 x33 x34 x35
@@ -2166,17 +2175,17 @@ coq            8.4.5  Formal proof management system.
 -        ((~ x29 \/ ~ x19) /\ (~ x29 \/ ~ x9) /\ (~ x29 \/ ~ x)) /\
 -        ((~ x19 \/ ~ x9) /\ (~ x19 \/ ~ x)) /\ (~ x9 \/ ~ x) -&gt; False
 -      : Prop
-- Finished transaction in 1. secs (0.260985u,0.s)
+- Finished transaction in 0. secs (0.261373u,0.s)
 -      = forall x x0 x1 : Prop,
 -        ~ ((x1 &lt;-&gt; x0) \/ (x0 &lt;-&gt; x) \/ (x &lt;-&gt; x1)) -&gt; False
 -      : Prop
-- Finished transaction in 0. secs (0.000169u,6.4e-05s)
+- Finished transaction in 0. secs (0.000172u,6.1e-05s)
 -      = forall x x0 x1 x2 x3 : Prop,
 -        ~
 -        ((x3 &lt;-&gt; x2) \/ (x2 &lt;-&gt; x1) \/ (x1 &lt;-&gt; x0) \/ (x0 &lt;-&gt; x) \/ (x &lt;-&gt; x3)) -&gt;
 -        False
 -      : Prop
-- Finished transaction in 0. secs (0.000175u,6.6e-05s)
+- Finished transaction in 0. secs (0.00018u,6.4e-05s)
 -      = forall x x0 x1 x2 x3 x4 x5 x6 x7 x8 x9 x10 x11 : Prop,
 -        ~
 -        ((x11 &lt;-&gt; x10) \/
@@ -2190,7 +2199,7 @@ coq            8.4.5  Formal proof management system.
 -         (x3 &lt;-&gt; x2) \/
 -         (x2 &lt;-&gt; x1) \/ (x1 &lt;-&gt; x0) \/ (x0 &lt;-&gt; x) \/ (x &lt;-&gt; x11)) -&gt; False
 -      : Prop
-- Finished transaction in 0. secs (0.002266u,0.s)
+- Finished transaction in 0. secs (0.001186u,0.000423s)
 -      = forall
 -          x x0 x1 x2 x3 x4 x5 x6 x7 x8 x9 x10 x11 x12 x13 x14 x15 x16 x17 x18
 -           x19 : Prop,
@@ -2214,7 +2223,7 @@ coq            8.4.5  Formal proof management system.
 -         (x3 &lt;-&gt; x2) \/
 -         (x2 &lt;-&gt; x1) \/ (x1 &lt;-&gt; x0) \/ (x0 &lt;-&gt; x) \/ (x &lt;-&gt; x19)) -&gt; False
 -      : Prop
-- Finished transaction in 0. secs (0.001352u,0.s)
+- Finished transaction in 0. secs (0.001208u,0.s)
 -      = forall
 -          x x0 x1 x2 x3 x4 x5 x6 x7 x8 x9 x10 x11 x12 x13 x14 x15 x16 x17 x18
 -           x19 x20 x21 x22 x23 x24 x25 x26 x27 x28 x29 x30 x31 x32 x33 x34 x35
@@ -2265,7 +2274,7 @@ coq            8.4.5  Formal proof management system.
 -         (x60 &lt;-&gt; x59) \/ (x59 &lt;-&gt; x58) \/ (x58 &lt;-&gt; x57) \/ (..) \/ .. \/ ..) -&gt;
 -        False
 -      : Prop
-- Finished transaction in 0. secs (0.030593u,0.s)
+- Finished transaction in 0. secs (0.030887u,0.s)
 - coqc  -q  -I tests -I src -R theories Ergo   tests/GeneratorsEq
 - coqc  -q  -I tests -I src -R theories Ergo   theories/Literal
 - coqc  -q  -I tests -I src -R theories Ergo   theories/Index
@@ -2289,9 +2298,9 @@ coq            8.4.5  Formal proof management system.
 # path                 /home/bench/.opam/system/build/coq:contrib:ergo.8.4.dev
 # compiler             system (4.02.1)
 # exit-code            2
-# env-file             /home/bench/.opam/system/build/coq:contrib:ergo.8.4.dev/coq:contrib:ergo-23466-d2d111.env
-# stdout-file          /home/bench/.opam/system/build/coq:contrib:ergo.8.4.dev/coq:contrib:ergo-23466-d2d111.out
-# stderr-file          /home/bench/.opam/system/build/coq:contrib:ergo.8.4.dev/coq:contrib:ergo-23466-d2d111.err
+# env-file             /home/bench/.opam/system/build/coq:contrib:ergo.8.4.dev/coq:contrib:ergo-3829-d2d111.env
+# stdout-file          /home/bench/.opam/system/build/coq:contrib:ergo.8.4.dev/coq:contrib:ergo-3829-d2d111.out
+# stderr-file          /home/bench/.opam/system/build/coq:contrib:ergo.8.4.dev/coq:contrib:ergo-3829-d2d111.err
 ### stdout ###
 # [...]
 # coqc  -q  -I tests -I src -R theories Ergo   tests/GeneratorsEq
@@ -2312,7 +2321,7 @@ coq            8.4.5  Formal proof management system.
 The following actions failed
   - install coq:contrib:ergo 8.4.dev
 No changes have been performed
-&#39;opam install -y --verbose coq:contrib:ergo.8.4.dev&#39; failed.
+&#39;opam install -y -v coq:contrib:ergo.8.4.dev&#39; failed.
 </pre></dd>
             </dl>
             <h2>Installation size</h2>
