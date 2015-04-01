@@ -47,14 +47,14 @@
                 <span class="label label-danger">Error</span>
               </small>
             </h1>
-            <p><em><script>document.write(moment("2015-02-22 17:13:59 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2015-02-22 17:13:59 UTC)</em><p>
+            <p><em><script>document.write(moment("2015-04-01 03:52:43 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2015-04-01 03:52:43 UTC)</em><p>
             <h2>Context</h2>
             <pre># Installed packages for system:
 base-bigarray   base  Bigarray library distributed with the OCaml compiler
 base-threads    base  Threads library distributed with the OCaml compiler
 base-unix       base  Unix library distributed with the OCaml compiler
 camlp5          6.12  Preprocessor-pretty-printer of OCaml
-coq            8.4.5  Formal proof management system
+coq            8.4.5  Formal proof management system.
 </pre>
             <h2>Lint</h2>
             <dl class="dl-horizontal">
@@ -73,7 +73,7 @@ coq            8.4.5  Formal proof management system
               <dt>Return code</dt>
               <dd>0</dd>
               <dt>Duration</dt>
-              <dd>3 s</dd>
+              <dd>2 s</dd>
             </dl>
             <p>Dry install without Coq, to test if the problem was incompatibility with the current Coq version:</p>
             <dl class="dl-horizontal">
@@ -87,7 +87,7 @@ coq            8.4.5  Formal proof management system
             <h2>Install dependencies</h2>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>ulimit -Sv 2000000; timeout 5m opam install -y --deps-only coq:contrib:founify.8.4.dev</code></dd>
+              <dd><code>ulimit -Sv 1000000; timeout 5m opam install -y --deps-only coq:contrib:founify.8.4.dev</code></dd>
               <dt>Return code</dt>
               <dd>0</dd>
               <dt>Duration</dt>
@@ -96,7 +96,7 @@ coq            8.4.5  Formal proof management system
             <h2>Install</h2>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>ulimit -Sv 2000000; timeout 30m opam install -y --verbose coq:contrib:founify.8.4.dev</code></dd>
+              <dd><code>ulimit -Sv 4000000; timeout 120m opam install -y --verbose coq:contrib:founify.8.4.dev</code></dd>
               <dt>Return code</dt>
               <dd>1024</dd>
               <dt>Duration</dt>
@@ -106,26 +106,17 @@ coq            8.4.5  Formal proof management system
   - install coq:contrib:founify 8.4.dev
 =-=- Gathering sources =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 [coq:contrib:founify: from unstable] Repo archive not found[coq:contrib:founify: git] Command started
-+ git &quot;init&quot;
-- Initialized empty Git repository in /home/bench/.opam/packages.dev/coq:contrib:founify.8.4.dev/.git/
-[coq:contrib:founify: git] Command started
-+ git &quot;remote&quot; &quot;add&quot; &quot;origin&quot; &quot;https://gforge.inria.fr/git/coq-contribs/founify.git&quot;
-[coq:contrib:founify: git] Command started
-+ git &quot;commit&quot; &quot;--allow-empty&quot; &quot;-m&quot; &quot;opam-git-init&quot;
-- [master (root-commit) 91b4a5b] opam-git-init
 [coq:contrib:founify: git] Command started
 [coq:contrib:founify: git] Command started
-+ git &quot;fetch&quot; &quot;-q&quot; &quot;origin&quot; &quot;+v8.4:refs/remotes/opam-ref&quot;
 [coq:contrib:founify: git] Command started
-+ git &quot;reset&quot; &quot;--hard&quot; &quot;refs/remotes/opam-ref&quot; &quot;--&quot;
-- HEAD is now at ac5da97 bench.log file removed
+[coq:contrib:founify: git] Command started
+[coq:contrib:founify: git] Command started
 [coq:contrib:founify] https://gforge.inria.fr/git/coq-contribs/founify.git#v8.4 updated
 =-=- Processing actions -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
-+ cp &quot;-PR&quot; &quot;/home/bench/.opam/packages.dev/coq:contrib:founify.8.4.dev&quot; &quot;/home/bench/.opam/system/build/coq:contrib:founify.8.4.dev&quot;
 [coq:contrib:founify: coq_makefile Make] Command started
-+ coq_makefile &quot;-f&quot; &quot;Make&quot; &quot;-o&quot; &quot;Makefile&quot;
++ coq_makefile &quot;-f&quot; &quot;Make&quot; &quot;-o&quot; &quot;Makefile&quot; (CWD=/home/bench/.opam/system/build/coq:contrib:founify.8.4.dev)
 [coq:contrib:founify: make] Command started
-+ make 
++ make  (CWD=/home/bench/.opam/system/build/coq:contrib:founify.8.4.dev)
 - &quot;coqdep&quot; -c -slash -R . FOUnify &quot;term_unif.v&quot; &gt; &quot;term_unif.v.d&quot; || ( RV=$?; rm -f &quot;term_unif.v.d&quot;; exit ${RV} )
 - &quot;coqdep&quot; -c -slash -R . FOUnify &quot;nat_term_eq_quasiterm.v&quot; &gt; &quot;nat_term_eq_quasiterm.v.d&quot; || ( RV=$?; rm -f &quot;nat_term_eq_quasiterm.v.d&quot;; exit ${RV} )
 - &quot;coqdep&quot; -c -slash -R . FOUnify &quot;nat_complements.v&quot; &gt; &quot;nat_complements.v.d&quot; || ( RV=$?; rm -f &quot;nat_complements.v.d&quot;; exit ${RV} )
@@ -153,12 +144,12 @@ coq            8.4.5  Formal proof management system
 - sh: 1: /usr/local/bin/camlp5o: not found
 - File &quot;unif.mli&quot;, line 1:
 - Error: Error while running external preprocessor
-- Command line: /usr/local/bin/camlp5o &#39;unif.mli&#39; &gt; /tmp/ocamlppd04da0
+- Command line: /usr/local/bin/camlp5o &#39;unif.mli&#39; &gt; /tmp/ocamlpp35bb48
 - 
 - make: *** [unif] Error 2
 [ERROR] The compilation of coq:contrib:founify failed at &quot;make&quot;.
 [coq:contrib:founify: rm] Command started
-+ rm &quot;-R&quot; &quot;/home/bench/.opam/system/lib/coq/user-contrib/FOUnify&quot;
++ rm &quot;-R&quot; &quot;/home/bench/.opam/system/lib/coq/user-contrib/FOUnify&quot; (CWD=/home/bench/.opam/system/build/coq:contrib:founify.8.4.dev)
 - rm: cannot remove &#39;/home/bench/.opam/system/lib/coq/user-contrib/FOUnify&#39;: No such file or directory
 #=== ERROR while installing coq:contrib:founify.8.4.dev =======================#
 # opam-version         1.2.1
@@ -167,12 +158,12 @@ coq            8.4.5  Formal proof management system
 # path                 /home/bench/.opam/system/build/coq:contrib:founify.8.4.dev
 # compiler             system (4.02.1)
 # exit-code            2
-# env-file             /home/bench/.opam/system/build/coq:contrib:founify.8.4.dev/coq:contrib:founify-14489-d2d111.env
-# stdout-file          /home/bench/.opam/system/build/coq:contrib:founify.8.4.dev/coq:contrib:founify-14489-d2d111.out
-# stderr-file          /home/bench/.opam/system/build/coq:contrib:founify.8.4.dev/coq:contrib:founify-14489-d2d111.err
+# env-file             /home/bench/.opam/system/build/coq:contrib:founify.8.4.dev/coq:contrib:founify-18491-d2d111.env
+# stdout-file          /home/bench/.opam/system/build/coq:contrib:founify.8.4.dev/coq:contrib:founify-18491-d2d111.out
+# stderr-file          /home/bench/.opam/system/build/coq:contrib:founify.8.4.dev/coq:contrib:founify-18491-d2d111.err
 ### stdout ###
-# &quot;coqdep&quot; -c -slash -R . FOUnify &quot;listv_is_in_lv.v&quot; &gt; &quot;listv_is_in_lv.v.d&quot; || ( RV=$?; rm -f &quot;listv_is_in_lv.v.d&quot;; exit ${RV} )
 # [...]
+# &quot;coqdep&quot; -c -slash -R . FOUnify &quot;listv_is_in_lv.v&quot; &gt; &quot;listv_is_in_lv.v.d&quot; || ( RV=$?; rm -f &quot;listv_is_in_lv.v.d&quot;; exit ${RV} )
 # &quot;coqdep&quot; -c -slash -R . FOUnify &quot;is_in_quasiterm_term_subst.v&quot; &gt; &quot;is_in_quasiterm_term_subst.v.d&quot; || ( RV=$?; rm -f &quot;is_in_quasiterm_term_subst.v.d&quot;; exit ${RV} )
 # &quot;coqc&quot;  -q  -R . FOUnify   nat_complements
 # &quot;coqc&quot;  -q  -R . FOUnify   nat_term_eq_quasiterm
@@ -191,7 +182,7 @@ coq            8.4.5  Formal proof management system
 # sh: 1: /usr/local/bin/camlp5o: not found
 # File &quot;unif.mli&quot;, line 1:
 # Error: Error while running external preprocessor
-# Command line: /usr/local/bin/camlp5o &#39;unif.mli&#39; &gt; /tmp/ocamlppd04da0
+# Command line: /usr/local/bin/camlp5o &#39;unif.mli&#39; &gt; /tmp/ocamlpp35bb48
 # 
 # make: *** [unif] Error 2
 =-=- Error report -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=

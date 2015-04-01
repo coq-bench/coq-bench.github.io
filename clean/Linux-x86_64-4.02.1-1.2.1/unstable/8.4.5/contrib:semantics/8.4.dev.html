@@ -47,14 +47,14 @@
                 <span class="label label-danger">Error</span>
               </small>
             </h1>
-            <p><em><script>document.write(moment("2015-02-22 17:13:59 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2015-02-22 17:13:59 UTC)</em><p>
+            <p><em><script>document.write(moment("2015-04-01 03:52:43 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2015-04-01 03:52:43 UTC)</em><p>
             <h2>Context</h2>
             <pre># Installed packages for system:
 base-bigarray   base  Bigarray library distributed with the OCaml compiler
 base-threads    base  Threads library distributed with the OCaml compiler
 base-unix       base  Unix library distributed with the OCaml compiler
 camlp5          6.12  Preprocessor-pretty-printer of OCaml
-coq            8.4.5  Formal proof management system
+coq            8.4.5  Formal proof management system.
 </pre>
             <h2>Lint</h2>
             <dl class="dl-horizontal">
@@ -87,7 +87,7 @@ coq            8.4.5  Formal proof management system
             <h2>Install dependencies</h2>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>ulimit -Sv 2000000; timeout 5m opam install -y --deps-only coq:contrib:semantics.8.4.dev</code></dd>
+              <dd><code>ulimit -Sv 1000000; timeout 5m opam install -y --deps-only coq:contrib:semantics.8.4.dev</code></dd>
               <dt>Return code</dt>
               <dd>0</dd>
               <dt>Duration</dt>
@@ -96,7 +96,7 @@ coq            8.4.5  Formal proof management system
             <h2>Install</h2>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>ulimit -Sv 2000000; timeout 30m opam install -y --verbose coq:contrib:semantics.8.4.dev</code></dd>
+              <dd><code>ulimit -Sv 4000000; timeout 120m opam install -y --verbose coq:contrib:semantics.8.4.dev</code></dd>
               <dt>Return code</dt>
               <dd>1024</dd>
               <dt>Duration</dt>
@@ -106,26 +106,17 @@ coq            8.4.5  Formal proof management system
   - install coq:contrib:semantics 8.4.dev
 =-=- Gathering sources =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 [coq:contrib:semantics: from unstable] Repo archive not found[coq:contrib:semantics: git] Command started
-+ git &quot;init&quot;
-- Initialized empty Git repository in /home/bench/.opam/packages.dev/coq:contrib:semantics.8.4.dev/.git/
-[coq:contrib:semantics: git] Command started
-+ git &quot;remote&quot; &quot;add&quot; &quot;origin&quot; &quot;https://gforge.inria.fr/git/coq-contribs/semantics.git&quot;
-[coq:contrib:semantics: git] Command started
-+ git &quot;commit&quot; &quot;--allow-empty&quot; &quot;-m&quot; &quot;opam-git-init&quot;
-- [master (root-commit) fcfc5a9] opam-git-init
 [coq:contrib:semantics: git] Command started
 [coq:contrib:semantics: git] Command started
-+ git &quot;fetch&quot; &quot;-q&quot; &quot;origin&quot; &quot;+v8.4:refs/remotes/opam-ref&quot;
 [coq:contrib:semantics: git] Command started
-+ git &quot;reset&quot; &quot;--hard&quot; &quot;refs/remotes/opam-ref&quot; &quot;--&quot;
-- HEAD is now at a71bb59 bench.log file removed
+[coq:contrib:semantics: git] Command started
+[coq:contrib:semantics: git] Command started
 [coq:contrib:semantics] https://gforge.inria.fr/git/coq-contribs/semantics.git#v8.4 updated
 =-=- Processing actions -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
-+ cp &quot;-PR&quot; &quot;/home/bench/.opam/packages.dev/coq:contrib:semantics.8.4.dev&quot; &quot;/home/bench/.opam/system/build/coq:contrib:semantics.8.4.dev&quot;
 [coq:contrib:semantics: coq_makefile Make] Command started
-+ coq_makefile &quot;-f&quot; &quot;Make&quot; &quot;-o&quot; &quot;Makefile&quot;
++ coq_makefile &quot;-f&quot; &quot;Make&quot; &quot;-o&quot; &quot;Makefile&quot; (CWD=/home/bench/.opam/system/build/coq:contrib:semantics.8.4.dev)
 [coq:contrib:semantics: make] Command started
-+ make 
++ make  (CWD=/home/bench/.opam/system/build/coq:contrib:semantics.8.4.dev)
 - ocamldep -slash  &quot;str_little.ml&quot; &gt; &quot;str_little.ml.d&quot; || ( RV=$?; rm -f &quot;str_little.ml.d&quot;; exit ${RV} )
 - &quot;coqdep&quot; -c -slash -R . Semantics &quot;abstract_i.v&quot; &gt; &quot;abstract_i.v.d&quot; || ( RV=$?; rm -f &quot;abstract_i.v.d&quot;; exit ${RV} )
 - &quot;coqdep&quot; -c -slash -R . Semantics &quot;axiom.v&quot; &gt; &quot;axiom.v.d&quot; || ( RV=$?; rm -f &quot;axiom.v.d&quot;; exit ${RV} )
@@ -207,7 +198,7 @@ coq            8.4.5  Formal proof management system
 - make: *** [str_little.cmo] Error 2
 [ERROR] The compilation of coq:contrib:semantics failed at &quot;make&quot;.
 [coq:contrib:semantics: rm] Command started
-+ rm &quot;-R&quot; &quot;/home/bench/.opam/system/lib/coq/user-contrib/semantics&quot;
++ rm &quot;-R&quot; &quot;/home/bench/.opam/system/lib/coq/user-contrib/semantics&quot; (CWD=/home/bench/.opam/system/build/coq:contrib:semantics.8.4.dev)
 - rm: cannot remove &#39;/home/bench/.opam/system/lib/coq/user-contrib/semantics&#39;: No such file or directory
 #=== ERROR while installing coq:contrib:semantics.8.4.dev =====================#
 # opam-version         1.2.1
@@ -216,9 +207,9 @@ coq            8.4.5  Formal proof management system
 # path                 /home/bench/.opam/system/build/coq:contrib:semantics.8.4.dev
 # compiler             system (4.02.1)
 # exit-code            2
-# env-file             /home/bench/.opam/system/build/coq:contrib:semantics.8.4.dev/coq:contrib:semantics-9074-d2d111.env
-# stdout-file          /home/bench/.opam/system/build/coq:contrib:semantics.8.4.dev/coq:contrib:semantics-9074-d2d111.out
-# stderr-file          /home/bench/.opam/system/build/coq:contrib:semantics.8.4.dev/coq:contrib:semantics-9074-d2d111.err
+# env-file             /home/bench/.opam/system/build/coq:contrib:semantics.8.4.dev/coq:contrib:semantics-10335-d2d111.env
+# stdout-file          /home/bench/.opam/system/build/coq:contrib:semantics.8.4.dev/coq:contrib:semantics-10335-d2d111.out
+# stderr-file          /home/bench/.opam/system/build/coq:contrib:semantics.8.4.dev/coq:contrib:semantics-10335-d2d111.err
 ### stdout ###
 # 1 subgoal
 # [...]

@@ -47,14 +47,14 @@
                 <span class="label label-danger">Error</span>
               </small>
             </h1>
-            <p><em><script>document.write(moment("2015-02-22 17:13:59 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2015-02-22 17:13:59 UTC)</em><p>
+            <p><em><script>document.write(moment("2015-04-01 03:52:43 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2015-04-01 03:52:43 UTC)</em><p>
             <h2>Context</h2>
             <pre># Installed packages for system:
 base-bigarray   base  Bigarray library distributed with the OCaml compiler
 base-threads    base  Threads library distributed with the OCaml compiler
 base-unix       base  Unix library distributed with the OCaml compiler
 camlp5          6.12  Preprocessor-pretty-printer of OCaml
-coq            8.4.5  Formal proof management system
+coq            8.4.5  Formal proof management system.
 </pre>
             <h2>Lint</h2>
             <dl class="dl-horizontal">
@@ -87,7 +87,7 @@ coq            8.4.5  Formal proof management system
             <h2>Install dependencies</h2>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>ulimit -Sv 2000000; timeout 5m opam install -y --deps-only coq:contrib:corn.8.4.dev</code></dd>
+              <dd><code>ulimit -Sv 1000000; timeout 5m opam install -y --deps-only coq:contrib:corn.8.4.dev</code></dd>
               <dt>Return code</dt>
               <dd>0</dd>
               <dt>Duration</dt>
@@ -96,7 +96,7 @@ coq            8.4.5  Formal proof management system
             <h2>Install</h2>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>ulimit -Sv 2000000; timeout 30m opam install -y --verbose coq:contrib:corn.8.4.dev</code></dd>
+              <dd><code>ulimit -Sv 4000000; timeout 120m opam install -y --verbose coq:contrib:corn.8.4.dev</code></dd>
               <dt>Return code</dt>
               <dd>1024</dd>
               <dt>Duration</dt>
@@ -106,26 +106,17 @@ coq            8.4.5  Formal proof management system
   - install coq:contrib:corn 8.4.dev
 =-=- Gathering sources =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 [coq:contrib:corn: from unstable] Repo archive not found[coq:contrib:corn: git] Command started
-+ git &quot;init&quot;
-- Initialized empty Git repository in /home/bench/.opam/packages.dev/coq:contrib:corn.8.4.dev/.git/
-[coq:contrib:corn: git] Command started
-+ git &quot;remote&quot; &quot;add&quot; &quot;origin&quot; &quot;https://gforge.inria.fr/git/coq-contribs/corn.git&quot;
-[coq:contrib:corn: git] Command started
-+ git &quot;commit&quot; &quot;--allow-empty&quot; &quot;-m&quot; &quot;opam-git-init&quot;
-- [master (root-commit) 7de763b] opam-git-init
 [coq:contrib:corn: git] Command started
 [coq:contrib:corn: git] Command started
-+ git &quot;fetch&quot; &quot;-q&quot; &quot;origin&quot; &quot;+v8.4:refs/remotes/opam-ref&quot;
 [coq:contrib:corn: git] Command started
-+ git &quot;reset&quot; &quot;--hard&quot; &quot;refs/remotes/opam-ref&quot; &quot;--&quot;
-- HEAD is now at 57beaee Dependencies are handled by OPAM
+[coq:contrib:corn: git] Command started
+[coq:contrib:corn: git] Command started
 [coq:contrib:corn] https://gforge.inria.fr/git/coq-contribs/corn.git#v8.4 updated
 =-=- Processing actions -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
-+ cp &quot;-PR&quot; &quot;/home/bench/.opam/packages.dev/coq:contrib:corn.8.4.dev&quot; &quot;/home/bench/.opam/system/build/coq:contrib:corn.8.4.dev&quot;
 [coq:contrib:corn: coq_makefile Make] Command started
-+ coq_makefile &quot;-f&quot; &quot;Make&quot; &quot;-o&quot; &quot;Makefile&quot;
++ coq_makefile &quot;-f&quot; &quot;Make&quot; &quot;-o&quot; &quot;Makefile&quot; (CWD=/home/bench/.opam/system/build/coq:contrib:corn.8.4.dev)
 [coq:contrib:corn: make] Command started
-+ make &quot;-j4&quot;
++ make &quot;-j4&quot; (CWD=/home/bench/.opam/system/build/coq:contrib:corn.8.4.dev)
 - &quot;coqdep&quot; -c -slash -R . CoRN &quot;algebra/COrdCauchy.v&quot; &gt; &quot;algebra/COrdCauchy.v.d&quot; || ( RV=$?; rm -f &quot;algebra/COrdCauchy.v.d&quot;; exit ${RV} )
 - &quot;coqdep&quot; -c -slash -R . CoRN &quot;algebra/OperationClasses.v&quot; &gt; &quot;algebra/OperationClasses.v.d&quot; || ( RV=$?; rm -f &quot;algebra/OperationClasses.v.d&quot;; exit ${RV} )
 - &quot;coqdep&quot; -c -slash -R . CoRN &quot;algebra/COrdFields2.v&quot; &gt; &quot;algebra/COrdFields2.v.d&quot; || ( RV=$?; rm -f &quot;algebra/COrdFields2.v.d&quot;; exit ${RV} )
@@ -287,14 +278,32 @@ coq            8.4.5  Formal proof management system
 - &quot;coqdep&quot; -c -slash -R . CoRN &quot;tactics/CornTac.v&quot; &gt; &quot;tactics/CornTac.v.d&quot; || ( RV=$?; rm -f &quot;tactics/CornTac.v.d&quot;; exit ${RV} )
 - &quot;coqdep&quot; -c -slash -R . CoRN &quot;tactics/FieldReflection.v&quot; &gt; &quot;tactics/FieldReflection.v.d&quot; || ( RV=$?; rm -f &quot;tactics/FieldReflection.v.d&quot;; exit ${RV} )
 - &quot;coqdep&quot; -c -slash -R . CoRN &quot;tactics/Qauto.v&quot; &gt; &quot;tactics/Qauto.v.d&quot; || ( RV=$?; rm -f &quot;tactics/Qauto.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -slash -R . CoRN &quot;tactics/DiffTactics3.v&quot; &gt; &quot;tactics/DiffTactics3.v.d&quot; || ( RV=$?; rm -f &quot;tactics/DiffTactics3.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -slash -R . CoRN &quot;tactics/AlgReflection.v&quot; &gt; &quot;tactics/AlgReflection.v.d&quot; || ( RV=$?; rm -f &quot;tactics/AlgReflection.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -slash -R . CoRN &quot;order/TotalOrder.v&quot; &gt; &quot;order/TotalOrder.v.d&quot; || ( RV=$?; rm -f &quot;order/TotalOrder.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -slash -R . CoRN &quot;order/PartialOrder.v&quot; &gt; &quot;order/PartialOrder.v.d&quot; || ( RV=$?; rm -f &quot;order/PartialOrder.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -slash -R . CoRN &quot;order/SemiLattice.v&quot; &gt; &quot;order/SemiLattice.v.d&quot; || ( RV=$?; rm -f &quot;order/SemiLattice.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -slash -R . CoRN &quot;order/Lattice.v&quot; &gt; &quot;order/Lattice.v.d&quot; || ( RV=$?; rm -f &quot;order/Lattice.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -slash -R . CoRN &quot;metrics/CMetricSpaces.v&quot; &gt; &quot;metrics/CMetricSpaces.v.d&quot; || ( RV=$?; rm -f &quot;metrics/CMetricSpaces.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -slash -R . CoRN &quot;metrics/Equiv.v&quot; &gt; &quot;metrics/Equiv.v.d&quot; || ( RV=$?; rm -f &quot;metrics/Equiv.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -slash -R . CoRN &quot;metrics/LipExt.v&quot; &gt; &quot;metrics/LipExt.v.d&quot; || ( RV=$?; rm -f &quot;metrics/LipExt.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -slash -R . CoRN &quot;metrics/CPseudoMSpaces.v&quot; &gt; &quot;metrics/CPseudoMSpaces.v.d&quot; || ( RV=$?; rm -f &quot;metrics/CPseudoMSpaces.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -slash -R . CoRN &quot;metrics/ContFunctions.v&quot; &gt; &quot;metrics/ContFunctions.v.d&quot; || ( RV=$?; rm -f &quot;metrics/ContFunctions.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -slash -R . CoRN &quot;metrics/IR_CPMSpace.v&quot; &gt; &quot;metrics/IR_CPMSpace.v.d&quot; || ( RV=$?; rm -f &quot;metrics/IR_CPMSpace.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -slash -R . CoRN &quot;metrics/Prod_Sub.v&quot; &gt; &quot;metrics/Prod_Sub.v.d&quot; || ( RV=$?; rm -f &quot;metrics/Prod_Sub.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -slash -R . CoRN &quot;metrics/CPMSTheory.v&quot; &gt; &quot;metrics/CPMSTheory.v.d&quot; || ( RV=$?; rm -f &quot;metrics/CPMSTheory.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -slash -R . CoRN &quot;ode/Picard.v&quot; &gt; &quot;ode/Picard.v.d&quot; || ( RV=$?; rm -f &quot;ode/Picard.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -slash -R . CoRN &quot;ode/SimpleIntegration.v&quot; &gt; &quot;ode/SimpleIntegration.v.d&quot; || ( RV=$?; rm -f &quot;ode/SimpleIntegration.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -slash -R . CoRN &quot;ode/AbstractIntegration.v&quot; &gt; &quot;ode/AbstractIntegration.v.d&quot; || ( RV=$?; rm -f &quot;ode/AbstractIntegration.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -slash -R . CoRN &quot;ode/metric.v&quot; &gt; &quot;ode/metric.v.d&quot; || ( RV=$?; rm -f &quot;ode/metric.v.d&quot;; exit ${RV} )
 - *** Warning: in file algebra/CPoly_ApZero.v, library ne_list.v is required and has not been found in loadpath!
 - *** Warning: in file algebra/RSetoid.v, library abstract_algebra.v is required and has not been found in loadpath!
-- *** Warning: in file classes/Qposclasses.v, library abstract_algebra.v is required and has not been found in loadpath!
-- *** Warning: in file classes/Qposclasses.v, library additional_operations.v is required and has not been found in loadpath!
-- *** Warning: in file classes/Qposclasses.v, library stdlib_rationals.v is required and has not been found in loadpath!
 - *** Warning: in file classes/Qclasses.v, library abstract_algebra.v is required and has not been found in loadpath!
 - *** Warning: in file classes/Qclasses.v, library minmax.v is required and has not been found in loadpath!
 - *** Warning: in file classes/Qclasses.v, library stdlib_rationals.v is required and has not been found in loadpath!
+- *** Warning: in file classes/Qposclasses.v, library abstract_algebra.v is required and has not been found in loadpath!
+- *** Warning: in file classes/Qposclasses.v, library additional_operations.v is required and has not been found in loadpath!
+- *** Warning: in file classes/Qposclasses.v, library stdlib_rationals.v is required and has not been found in loadpath!
 - *** Warning: in file reals/fast/CRAlternatingSum.v, library abstract_algebra.v is required and has not been found in loadpath!
 - *** Warning: in file reals/fast/CRAlternatingSum.v, library interfaces.orders.v is required and has not been found in loadpath!
 - *** Warning: in file reals/fast/CRAlternatingSum.v, library theory.series.v is required and has not been found in loadpath!
@@ -313,12 +322,9 @@ coq            8.4.5  Formal proof management system
 - *** Warning: in file reals/fast/CRArith.v, library abstract_algebra.v is required and has not been found in loadpath!
 - *** Warning: in file reals/fast/CRArith.v, library interfaces.orders.v is required and has not been found in loadpath!
 - *** Warning: in file reals/fast/CRsin.v, library abstract_algebra.v is required and has not been found in loadpath!
-- *** Warning: in file reals/fast/CRarctan.v, library abstract_algebra.v is required and has not been found in loadpath!
 - *** Warning: in file reals/fast/CRexp.v, library theory.int_pow.v is required and has not been found in loadpath!
 - *** Warning: in file reals/fast/CRexp.v, library abstract_algebra.v is required and has not been found in loadpath!
-- *** Warning: in file reals/faster/ARarctan_small.v, library abstract_algebra.v is required and has not been found in loadpath!
-- *** Warning: in file reals/faster/ARarctan_small.v, library nat_pow.v is required and has not been found in loadpath!
-- *** Warning: in file reals/faster/ARarctan_small.v, library int_pow.v is required and has not been found in loadpath!
+- *** Warning: in file reals/fast/CRarctan.v, library abstract_algebra.v is required and has not been found in loadpath!
 - *** Warning: in file reals/faster/ARbigQ.v, library stdlib_rationals.v is required and has not been found in loadpath!
 - *** Warning: in file reals/faster/ARbigQ.v, library stdlib_binary_integers.v is required and has not been found in loadpath!
 - *** Warning: in file reals/faster/ARbigQ.v, library field_of_fractions.v is required and has not been found in loadpath!
@@ -329,24 +335,25 @@ coq            8.4.5  Formal proof management system
 - *** Warning: in file reals/faster/ARsin.v, library minmax.v is required and has not been found in loadpath!
 - *** Warning: in file reals/faster/ARsin.v, library nat_pow.v is required and has not been found in loadpath!
 - *** Warning: in file reals/faster/ARsin.v, library int_pow.v is required and has not been found in loadpath!
-- *** Warning: in file reals/faster/ARpi.v, library abstract_algebra.v is required and has not been found in loadpath!
 - *** Warning: in file reals/faster/ARroot.v, library abstract_algebra.v is required and has not been found in loadpath!
 - *** Warning: in file reals/faster/ARroot.v, library theory.shiftl.v is required and has not been found in loadpath!
 - *** Warning: in file reals/faster/ARroot.v, library theory.nat_pow.v is required and has not been found in loadpath!
 - *** Warning: in file reals/faster/ARroot.v, library theory.int_pow.v is required and has not been found in loadpath!
+- *** Warning: in file reals/faster/ARpi.v, library abstract_algebra.v is required and has not been found in loadpath!
+- *** Warning: in file reals/faster/ARarctan_small.v, library abstract_algebra.v is required and has not been found in loadpath!
+- *** Warning: in file reals/faster/ARarctan_small.v, library nat_pow.v is required and has not been found in loadpath!
+- *** Warning: in file reals/faster/ARarctan_small.v, library int_pow.v is required and has not been found in loadpath!
+- *** Warning: in file reals/faster/ARexp.v, library workaround_tactics.v is required and has not been found in loadpath!
+- *** Warning: in file reals/faster/ARexp.v, library abstract_algebra.v is required and has not been found in loadpath!
+- *** Warning: in file reals/faster/ARexp.v, library minmax.v is required and has not been found in loadpath!
+- *** Warning: in file reals/faster/ARexp.v, library nat_pow.v is required and has not been found in loadpath!
+- *** Warning: in file reals/faster/ARexp.v, library int_pow.v is required and has not been found in loadpath!
 - *** Warning: in file reals/faster/ARbigD.v, library theory.int_pow.v is required and has not been found in loadpath!
 - *** Warning: in file reals/faster/ARbigD.v, library theory.nat_pow.v is required and has not been found in loadpath!
 - *** Warning: in file reals/faster/ARbigD.v, library stdlib_rationals.v is required and has not been found in loadpath!
 - *** Warning: in file reals/faster/ARbigD.v, library stdlib_binary_integers.v is required and has not been found in loadpath!
 - *** Warning: in file reals/faster/ARbigD.v, library fast_integers.v is required and has not been found in loadpath!
 - *** Warning: in file reals/faster/ARbigD.v, library dyadics.v is required and has not been found in loadpath!
-- *** Warning: in file reals/faster/ARexp.v, library workaround_tactics.v is required and has not been found in loadpath!
-- *** Warning: in file reals/faster/ARexp.v, library abstract_algebra.v is required and has not been found in loadpath!
-- *** Warning: in file reals/faster/ARexp.v, library minmax.v is required and has not been found in loadpath!
-- *** Warning: in file reals/faster/ARexp.v, library nat_pow.v is required and has not been found in loadpath!
-- *** Warning: in file reals/faster/ARexp.v, library int_pow.v is required and has not been found in loadpath!
-- *** Warning: in file reals/faster/ARcos.v, library workaround_tactics.v is required and has not been found in loadpath!
-- *** Warning: in file reals/faster/ARcos.v, library abstract_algebra.v is required and has not been found in loadpath!
 - *** Warning: in file reals/faster/ARQ.v, library theory.int_pow.v is required and has not been found in loadpath!
 - *** Warning: in file reals/faster/ARQ.v, library theory.nat_pow.v is required and has not been found in loadpath!
 - *** Warning: in file reals/faster/ARQ.v, library stdlib_rationals.v is required and has not been found in loadpath!
@@ -355,6 +362,8 @@ coq            8.4.5  Formal proof management system
 - *** Warning: in file reals/faster/ARArith.v, library stdlib_binary_naturals.v is required and has not been found in loadpath!
 - *** Warning: in file reals/faster/ARArith.v, library minmax.v is required and has not been found in loadpath!
 - *** Warning: in file reals/faster/ARArith.v, library positive_semiring_elements.v is required and has not been found in loadpath!
+- *** Warning: in file reals/faster/ARcos.v, library workaround_tactics.v is required and has not been found in loadpath!
+- *** Warning: in file reals/faster/ARcos.v, library abstract_algebra.v is required and has not been found in loadpath!
 - *** Warning: in file reals/faster/ApproximateRationals.v, library implementations.stdlib_rationals.v is required and has not been found in loadpath!
 - *** Warning: in file reals/faster/ApproximateRationals.v, library positive_semiring_elements.v is required and has not been found in loadpath!
 - *** Warning: in file reals/faster/ApproximateRationals.v, library workaround_tactics.v is required and has not been found in loadpath!
@@ -377,24 +386,6 @@ coq            8.4.5  Formal proof management system
 - *** Warning: in file metric2/Limit.v, library orders.naturals.v is required and has not been found in loadpath!
 - *** Warning: in file metric2/MetricMorphisms.v, library theory.jections.v is required and has not been found in loadpath!
 - *** Warning: in file metric2/MetricMorphisms.v, library abstract_algebra.v is required and has not been found in loadpath!
-- &quot;coqdep&quot; -c -slash -R . CoRN &quot;tactics/DiffTactics3.v&quot; &gt; &quot;tactics/DiffTactics3.v.d&quot; || ( RV=$?; rm -f &quot;tactics/DiffTactics3.v.d&quot;; exit ${RV} )
-- &quot;coqdep&quot; -c -slash -R . CoRN &quot;tactics/AlgReflection.v&quot; &gt; &quot;tactics/AlgReflection.v.d&quot; || ( RV=$?; rm -f &quot;tactics/AlgReflection.v.d&quot;; exit ${RV} )
-- &quot;coqdep&quot; -c -slash -R . CoRN &quot;order/TotalOrder.v&quot; &gt; &quot;order/TotalOrder.v.d&quot; || ( RV=$?; rm -f &quot;order/TotalOrder.v.d&quot;; exit ${RV} )
-- &quot;coqdep&quot; -c -slash -R . CoRN &quot;order/PartialOrder.v&quot; &gt; &quot;order/PartialOrder.v.d&quot; || ( RV=$?; rm -f &quot;order/PartialOrder.v.d&quot;; exit ${RV} )
-- &quot;coqdep&quot; -c -slash -R . CoRN &quot;order/SemiLattice.v&quot; &gt; &quot;order/SemiLattice.v.d&quot; || ( RV=$?; rm -f &quot;order/SemiLattice.v.d&quot;; exit ${RV} )
-- &quot;coqdep&quot; -c -slash -R . CoRN &quot;order/Lattice.v&quot; &gt; &quot;order/Lattice.v.d&quot; || ( RV=$?; rm -f &quot;order/Lattice.v.d&quot;; exit ${RV} )
-- &quot;coqdep&quot; -c -slash -R . CoRN &quot;metrics/CMetricSpaces.v&quot; &gt; &quot;metrics/CMetricSpaces.v.d&quot; || ( RV=$?; rm -f &quot;metrics/CMetricSpaces.v.d&quot;; exit ${RV} )
-- &quot;coqdep&quot; -c -slash -R . CoRN &quot;metrics/Equiv.v&quot; &gt; &quot;metrics/Equiv.v.d&quot; || ( RV=$?; rm -f &quot;metrics/Equiv.v.d&quot;; exit ${RV} )
-- &quot;coqdep&quot; -c -slash -R . CoRN &quot;metrics/LipExt.v&quot; &gt; &quot;metrics/LipExt.v.d&quot; || ( RV=$?; rm -f &quot;metrics/LipExt.v.d&quot;; exit ${RV} )
-- &quot;coqdep&quot; -c -slash -R . CoRN &quot;metrics/CPseudoMSpaces.v&quot; &gt; &quot;metrics/CPseudoMSpaces.v.d&quot; || ( RV=$?; rm -f &quot;metrics/CPseudoMSpaces.v.d&quot;; exit ${RV} )
-- &quot;coqdep&quot; -c -slash -R . CoRN &quot;metrics/ContFunctions.v&quot; &gt; &quot;metrics/ContFunctions.v.d&quot; || ( RV=$?; rm -f &quot;metrics/ContFunctions.v.d&quot;; exit ${RV} )
-- &quot;coqdep&quot; -c -slash -R . CoRN &quot;metrics/IR_CPMSpace.v&quot; &gt; &quot;metrics/IR_CPMSpace.v.d&quot; || ( RV=$?; rm -f &quot;metrics/IR_CPMSpace.v.d&quot;; exit ${RV} )
-- &quot;coqdep&quot; -c -slash -R . CoRN &quot;metrics/Prod_Sub.v&quot; &gt; &quot;metrics/Prod_Sub.v.d&quot; || ( RV=$?; rm -f &quot;metrics/Prod_Sub.v.d&quot;; exit ${RV} )
-- &quot;coqdep&quot; -c -slash -R . CoRN &quot;metrics/CPMSTheory.v&quot; &gt; &quot;metrics/CPMSTheory.v.d&quot; || ( RV=$?; rm -f &quot;metrics/CPMSTheory.v.d&quot;; exit ${RV} )
-- &quot;coqdep&quot; -c -slash -R . CoRN &quot;ode/Picard.v&quot; &gt; &quot;ode/Picard.v.d&quot; || ( RV=$?; rm -f &quot;ode/Picard.v.d&quot;; exit ${RV} )
-- &quot;coqdep&quot; -c -slash -R . CoRN &quot;ode/SimpleIntegration.v&quot; &gt; &quot;ode/SimpleIntegration.v.d&quot; || ( RV=$?; rm -f &quot;ode/SimpleIntegration.v.d&quot;; exit ${RV} )
-- &quot;coqdep&quot; -c -slash -R . CoRN &quot;ode/AbstractIntegration.v&quot; &gt; &quot;ode/AbstractIntegration.v.d&quot; || ( RV=$?; rm -f &quot;ode/AbstractIntegration.v.d&quot;; exit ${RV} )
-- &quot;coqdep&quot; -c -slash -R . CoRN &quot;ode/metric.v&quot; &gt; &quot;ode/metric.v.d&quot; || ( RV=$?; rm -f &quot;ode/metric.v.d&quot;; exit ${RV} )
 - &quot;coqdep&quot; -c -slash -R . CoRN &quot;ode/FromMetric2.v&quot; &gt; &quot;ode/FromMetric2.v.d&quot; || ( RV=$?; rm -f &quot;ode/FromMetric2.v.d&quot;; exit ${RV} )
 - &quot;coqdep&quot; -c -slash -R . CoRN &quot;ode/BanachFixpoint.v&quot; &gt; &quot;ode/BanachFixpoint.v.d&quot; || ( RV=$?; rm -f &quot;ode/BanachFixpoint.v.d&quot;; exit ${RV} )
 - &quot;coqdep&quot; -c -slash -R . CoRN &quot;fta/KeyLemma.v&quot; &gt; &quot;fta/KeyLemma.v.d&quot; || ( RV=$?; rm -f &quot;fta/KeyLemma.v.d&quot;; exit ${RV} )
@@ -548,6 +539,14 @@ coq            8.4.5  Formal proof management system
 - *** Warning: in file ode/metric.v, library nat_pow.v is required and has not been found in loadpath!
 - *** Warning: in file ode/metric.v, library interfaces.naturals.v is required and has not been found in loadpath!
 - *** Warning: in file ode/metric.v, library interfaces.orders.v is required and has not been found in loadpath!
+- *** Warning: in file ode/FromMetric2.v, library abstract_algebra.v is required and has not been found in loadpath!
+- *** Warning: in file ode/FromMetric2.v, library stdlib_rationals.v is required and has not been found in loadpath!
+- *** Warning: in file ode/FromMetric2.v, library orders.orders.v is required and has not been found in loadpath!
+- *** Warning: in file ode/FromMetric2.v, library orders.semirings.v is required and has not been found in loadpath!
+- *** Warning: in file ode/FromMetric2.v, library orders.rings.v is required and has not been found in loadpath!
+- *** Warning: in file ode/FromMetric2.v, library theory.rings.v is required and has not been found in loadpath!
+- *** Warning: in file ode/FromMetric2.v, library abs.v is required and has not been found in loadpath!
+- *** Warning: in file ode/FromMetric2.v, library minmax.v is required and has not been found in loadpath!
 - *** Warning: in file ode/BanachFixpoint.v, library stdlib_rationals.v is required and has not been found in loadpath!
 - *** Warning: in file ode/BanachFixpoint.v, library abstract_algebra.v is required and has not been found in loadpath!
 - *** Warning: in file ode/BanachFixpoint.v, library QType_rationals.v is required and has not been found in loadpath!
@@ -559,14 +558,6 @@ coq            8.4.5  Formal proof management system
 - *** Warning: in file ode/BanachFixpoint.v, library nat_pow.v is required and has not been found in loadpath!
 - *** Warning: in file ode/BanachFixpoint.v, library interfaces.naturals.v is required and has not been found in loadpath!
 - *** Warning: in file ode/BanachFixpoint.v, library interfaces.orders.v is required and has not been found in loadpath!
-- *** Warning: in file ode/FromMetric2.v, library abstract_algebra.v is required and has not been found in loadpath!
-- *** Warning: in file ode/FromMetric2.v, library stdlib_rationals.v is required and has not been found in loadpath!
-- *** Warning: in file ode/FromMetric2.v, library orders.orders.v is required and has not been found in loadpath!
-- *** Warning: in file ode/FromMetric2.v, library orders.semirings.v is required and has not been found in loadpath!
-- *** Warning: in file ode/FromMetric2.v, library orders.rings.v is required and has not been found in loadpath!
-- *** Warning: in file ode/FromMetric2.v, library theory.rings.v is required and has not been found in loadpath!
-- *** Warning: in file ode/FromMetric2.v, library abs.v is required and has not been found in loadpath!
-- *** Warning: in file ode/FromMetric2.v, library minmax.v is required and has not been found in loadpath!
 - *** Warning: in file model/metric2/CRmetric.v, library canonical_names.v is required and has not been found in loadpath!
 - *** Warning: in file model/metric2/CRmetric.v, library stdlib_rationals.v is required and has not been found in loadpath!
 - *** Warning: in file model/structures/Qinf.v, library interfaces.abstract_algebra.v is required and has not been found in loadpath!
@@ -583,7 +574,6 @@ coq            8.4.5  Formal proof management system
 - &quot;coqc&quot;  -q  -R . CoRN   tactics/DiffTactics1
 - &quot;coqc&quot;  -q  -R . CoRN   util/Container
 - &quot;coqc&quot;  -q  -R . CoRN   reals/fast/LazyNat
-- &quot;coqc&quot;  -q  -R . CoRN   logic/PropDecid
 - File &quot;/home/bench/.opam/system/build/coq:contrib:corn.8.4.dev/util/Container.v&quot;, line 1, characters 0-31:
 - Error: Cannot find library canonical_names in loadpath
 - Makefile:506: recipe for target &#39;util/Container.vo&#39; failed
@@ -591,7 +581,7 @@ coq            8.4.5  Formal proof management system
 - make: *** Waiting for unfinished jobs....
 [ERROR] The compilation of coq:contrib:corn failed at &quot;make -j4&quot;.
 [coq:contrib:corn: rm] Command started
-+ rm &quot;-R&quot; &quot;/home/bench/.opam/system/lib/coq/user-contrib/corn&quot;
++ rm &quot;-R&quot; &quot;/home/bench/.opam/system/lib/coq/user-contrib/corn&quot; (CWD=/home/bench/.opam/system/build/coq:contrib:corn.8.4.dev)
 - rm: cannot remove &#39;/home/bench/.opam/system/lib/coq/user-contrib/corn&#39;: No such file or directory
 #=== ERROR while installing coq:contrib:corn.8.4.dev ==========================#
 # opam-version         1.2.1
@@ -600,24 +590,24 @@ coq            8.4.5  Formal proof management system
 # path                 /home/bench/.opam/system/build/coq:contrib:corn.8.4.dev
 # compiler             system (4.02.1)
 # exit-code            2
-# env-file             /home/bench/.opam/system/build/coq:contrib:corn.8.4.dev/coq:contrib:corn-23191-d2d111.env
-# stdout-file          /home/bench/.opam/system/build/coq:contrib:corn.8.4.dev/coq:contrib:corn-23191-d2d111.out
-# stderr-file          /home/bench/.opam/system/build/coq:contrib:corn.8.4.dev/coq:contrib:corn-23191-d2d111.err
+# env-file             /home/bench/.opam/system/build/coq:contrib:corn.8.4.dev/coq:contrib:corn-27525-d2d111.env
+# stdout-file          /home/bench/.opam/system/build/coq:contrib:corn.8.4.dev/coq:contrib:corn-27525-d2d111.out
+# stderr-file          /home/bench/.opam/system/build/coq:contrib:corn.8.4.dev/coq:contrib:corn-27525-d2d111.err
 ### stdout ###
-# &quot;coqc&quot;  -q  -R . CoRN   stdlib_omissions/P
 # [...]
+# &quot;coqc&quot;  -q  -R . CoRN   stdlib_omissions/Pair
+# &quot;coqc&quot;  -q  -R . CoRN   stdlib_omissions/P
 # &quot;coqc&quot;  -q  -R . CoRN   tactics/CornTac
 # &quot;coqc&quot;  -q  -R . CoRN   tactics/Step
 # &quot;coqc&quot;  -q  -R . CoRN   tactics/DiffTactics1
 # &quot;coqc&quot;  -q  -R . CoRN   util/Container
 # &quot;coqc&quot;  -q  -R . CoRN   reals/fast/LazyNat
-# &quot;coqc&quot;  -q  -R . CoRN   logic/PropDecid
 # File &quot;/home/bench/.opam/system/build/coq:contrib:corn.8.4.dev/util/Container.v&quot;, line 1, characters 0-31:
 # Error: Cannot find library canonical_names in loadpath
 # Makefile:506: recipe for target &#39;util/Container.vo&#39; failed
 ### stderr ###
-# *** Warning: in file util/Qdlog.v, library abstract_algebra.v is required and has not been found in loadpath!
 # [...]
+# *** Warning: in file util/Qdlog.v, library abstract_algebra.v is required and has not been found in loadpath!
 # *** Warning: in file util/Qdlog.v, library additional_operations.v is required and has not been found in loadpath!
 # *** Warning: in file util/Qdlog.v, library interfaces.orders.v is required and has not been found in loadpath!
 # *** Warning: in file util/Qdlog.v, library int_pow.v is required and has not been found in loadpath!
