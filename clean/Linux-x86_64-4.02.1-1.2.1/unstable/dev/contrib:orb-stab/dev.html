@@ -47,7 +47,7 @@
                 <span class="label label-danger">Error</span>
               </small>
             </h1>
-            <p><em><script>document.write(moment("2015-02-22 22:34:10 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2015-02-22 22:34:10 UTC)</em><p>
+            <p><em><script>document.write(moment("2015-04-02 12:53:11 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2015-04-02 12:53:11 UTC)</em><p>
             <h2>Context</h2>
             <pre># Installed packages for system:
 base-bigarray  base  Bigarray library distributed with the OCaml compiler
@@ -62,8 +62,6 @@ coq             dev  Formal proof management system.
               <dd><code>ruby lint.rb unstable ../unstable/packages/coq:contrib:orb-stab/coq:contrib:orb-stab.dev</code></dd>
               <dt>Return code</dt>
               <dd>0</dd>
-              <dt>Duration</dt>
-              <dd>0 s</dd>
             </dl>
             <h2>Dry install</h2>
             <p>Dry install with the current Coq version:</p>
@@ -72,8 +70,6 @@ coq             dev  Formal proof management system.
               <dd><code>opam install -y --show-action coq:contrib:orb-stab.dev coq.dev</code></dd>
               <dt>Return code</dt>
               <dd>0</dd>
-              <dt>Duration</dt>
-              <dd>2 s</dd>
             </dl>
             <p>Dry install without Coq, to test if the problem was incompatibility with the current Coq version:</p>
             <dl class="dl-horizontal">
@@ -81,13 +77,11 @@ coq             dev  Formal proof management system.
               <dd><code>true</code></dd>
               <dt>Return code</dt>
               <dd>0</dd>
-              <dt>Duration</dt>
-              <dd>0 s</dd>
             </dl>
             <h2>Install dependencies</h2>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>ulimit -Sv 2000000; timeout 5m opam install -y --deps-only coq:contrib:orb-stab.dev</code></dd>
+              <dd><code>opam list; ulimit -Sv 1000000; timeout 5m opam install -y --deps-only coq:contrib:orb-stab.dev</code></dd>
               <dt>Return code</dt>
               <dd>0</dd>
               <dt>Duration</dt>
@@ -96,66 +90,56 @@ coq             dev  Formal proof management system.
             <h2>Install</h2>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>ulimit -Sv 2000000; timeout 30m opam install -y --verbose coq:contrib:orb-stab.dev</code></dd>
+              <dd><code>opam list; ulimit -Sv 4000000; timeout 120m opam install -y -v coq:contrib:orb-stab.dev</code></dd>
               <dt>Return code</dt>
               <dd>1024</dd>
               <dt>Duration</dt>
               <dd>3 s</dd>
               <dt>Output</dt>
-              <dd><pre>The following actions will be performed:
+              <dd><pre># Installed packages for system:
+base-bigarray  base  Bigarray library distributed with the OCaml compiler
+base-threads   base  Threads library distributed with the OCaml compiler
+base-unix      base  Unix library distributed with the OCaml compiler
+camlp5         6.12  Preprocessor-pretty-printer of OCaml
+coq             dev  Formal proof management system.
+The following actions will be performed:
   - install coq:contrib:orb-stab dev
 =-=- Gathering sources =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 [coq:contrib:orb-stab: from unstable] Repo archive not found[coq:contrib:orb-stab: git] Command started
-+ git &quot;init&quot;
-- Initialized empty Git repository in /home/bench/.opam/packages.dev/coq:contrib:orb-stab.dev/.git/
-[coq:contrib:orb-stab: git] Command started
-+ git &quot;remote&quot; &quot;add&quot; &quot;origin&quot; &quot;https://gforge.inria.fr/git/coq-contribs/orb-stab.git&quot;
-[coq:contrib:orb-stab: git] Command started
-+ git &quot;commit&quot; &quot;--allow-empty&quot; &quot;-m&quot; &quot;opam-git-init&quot;
-- [master (root-commit) 4339557] opam-git-init
 [coq:contrib:orb-stab: git] Command started
 [coq:contrib:orb-stab: git] Command started
-+ git &quot;fetch&quot; &quot;-q&quot; &quot;origin&quot; &quot;+trunk:refs/remotes/opam-ref&quot;
 [coq:contrib:orb-stab: git] Command started
-+ git &quot;reset&quot; &quot;--hard&quot; &quot;refs/remotes/opam-ref&quot; &quot;--&quot;
-- HEAD is now at 19f68b7 Revert &quot;Regenerating Makefiles.&quot; We will be able to do so when we have access
+[coq:contrib:orb-stab: git] Command started
+[coq:contrib:orb-stab: git] Command started
 [coq:contrib:orb-stab] https://gforge.inria.fr/git/coq-contribs/orb-stab.git#trunk updated
 =-=- Processing actions -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
-+ cp &quot;-PR&quot; &quot;/home/bench/.opam/packages.dev/coq:contrib:orb-stab.dev&quot; &quot;/home/bench/.opam/system/build/coq:contrib:orb-stab.dev&quot;
 [coq:contrib:orb-stab: coq_makefile Make] Command started
-+ coq_makefile &quot;-f&quot; &quot;Make&quot; &quot;-o&quot; &quot;Makefile&quot;
-- Warning: in option -R, ../../Nijmegen/LinAlg is not a subdirectory of the current directory
-- Warning: install rule assumes that -R/-Q . _ is the only -R/-Q optionWarning: install rule assumes that -R/-Q . _ is the only -R/-Q optionWarning: -R/-Q options don&#39;t have a correct common prefix,
--  install-doc will put anything in $INSTALLDEFAULTROOT
++ coq_makefile &quot;-f&quot; &quot;Make&quot; &quot;-o&quot; &quot;Makefile&quot; (CWD=/home/bench/.opam/system/build/coq:contrib:orb-stab.dev)
 [coq:contrib:orb-stab: make] Command started
-+ make &quot;-j4&quot;
-- &quot;coqdep&quot; -c -R &quot;../../Nijmegen/LinAlg&quot; LinAlg -R &quot;../../Sophia-Antipolis/Algebra&quot; Algebra -R &quot;.&quot; OrbStab &quot;orbstab.v&quot; &gt; &quot;orbstab.v.d&quot; || ( RV=$?; rm -f &quot;orbstab.v.d&quot;; exit ${RV} )
-- &quot;coqc&quot;  -q  -R &quot;../../Nijmegen/LinAlg&quot; LinAlg -R &quot;../../Sophia-Antipolis/Algebra&quot; Algebra -R &quot;.&quot; OrbStab   orbstab
++ make &quot;-j4&quot; (CWD=/home/bench/.opam/system/build/coq:contrib:orb-stab.dev)
+- &quot;coqdep&quot; -c -R &quot;.&quot; OrbStab &quot;orbstab.v&quot; &gt; &quot;orbstab.v.d&quot; || ( RV=$?; rm -f &quot;orbstab.v.d&quot;; exit ${RV} )
+- &quot;coqc&quot;  -q  -R &quot;.&quot; OrbStab   orbstab
 - Makefile:236: recipe for target &#39;orbstab.vo&#39; failed
-- *** Warning: cannot open ../../Nijmegen/LinAlg
-- *** Warning: cannot open ../../Sophia-Antipolis/Algebra
-- *** Warning: in file orbstab.v, library Group_util.v is required and has not been found in the loadpath!
-- *** Warning: in file orbstab.v, library Fpart2.v is required and has not been found in the loadpath!
-- *** Warning: in file orbstab.v, library Parts3.v is required and has not been found in the loadpath!
-- *** Warning: in file orbstab.v, library Fmap.v is required and has not been found in the loadpath!
-- *** Warning: in file orbstab.v, library seq_set_facts.v is required and has not been found in the loadpath!
-- *** Warning: in file orbstab.v, library has_n_elements.v is required and has not been found in the loadpath!
-- *** Warning: in file orbstab.v, library finite_subsets.v is required and has not been found in the loadpath!
-- *** Warning: in file orbstab.v, library Group_util.v is required and has not been found in the loadpath!
-- *** Warning: in file orbstab.v, library Fpart2.v is required and has not been found in the loadpath!
-- *** Warning: in file orbstab.v, library Parts3.v is required and has not been found in the loadpath!
-- *** Warning: in file orbstab.v, library Fmap.v is required and has not been found in the loadpath!
-- *** Warning: in file orbstab.v, library seq_set_facts.v is required and has not been found in the loadpath!
-- *** Warning: in file orbstab.v, library has_n_elements.v is required and has not been found in the loadpath!
-- *** Warning: in file orbstab.v, library finite_subsets.v is required and has not been found in the loadpath!
-- Warning: Cannot open ../../Nijmegen/LinAlg
-- Warning: Cannot open ../../Sophia-Antipolis/Algebra
-- File &quot;./orbstab.v&quot;, line 21, characters 0-26:
-- Error: Cannot find library Group_util in loadpath
+- *** Warning: in file orbstab.v, library Algebra.Group_util.v is required and has not been found in the loadpath!
+- *** Warning: in file orbstab.v, library Algebra.Fpart2.v is required and has not been found in the loadpath!
+- *** Warning: in file orbstab.v, library Algebra.Parts3.v is required and has not been found in the loadpath!
+- *** Warning: in file orbstab.v, library Algebra.Fmap.v is required and has not been found in the loadpath!
+- *** Warning: in file orbstab.v, library LinAlg.seq_set_facts.v is required and has not been found in the loadpath!
+- *** Warning: in file orbstab.v, library LinAlg.has_n_elements.v is required and has not been found in the loadpath!
+- *** Warning: in file orbstab.v, library LinAlg.finite_subsets.v is required and has not been found in the loadpath!
+- *** Warning: in file orbstab.v, library Algebra.Group_util.v is required and has not been found in the loadpath!
+- *** Warning: in file orbstab.v, library Algebra.Fpart2.v is required and has not been found in the loadpath!
+- *** Warning: in file orbstab.v, library Algebra.Parts3.v is required and has not been found in the loadpath!
+- *** Warning: in file orbstab.v, library Algebra.Fmap.v is required and has not been found in the loadpath!
+- *** Warning: in file orbstab.v, library LinAlg.seq_set_facts.v is required and has not been found in the loadpath!
+- *** Warning: in file orbstab.v, library LinAlg.has_n_elements.v is required and has not been found in the loadpath!
+- *** Warning: in file orbstab.v, library LinAlg.finite_subsets.v is required and has not been found in the loadpath!
+- File &quot;./orbstab.v&quot;, line 21, characters 0-39:
+- Error: Cannot find library Algebra.Group_util in loadpath
 - make: *** [orbstab.vo] Error 1
 [ERROR] The compilation of coq:contrib:orb-stab failed at &quot;make -j4&quot;.
 [coq:contrib:orb-stab: rm] Command started
-+ rm &quot;-R&quot; &quot;/home/bench/.opam/system/lib/coq/user-contrib/orb-stab&quot;
++ rm &quot;-R&quot; &quot;/home/bench/.opam/system/lib/coq/user-contrib/orb-stab&quot; (CWD=/home/bench/.opam/system/build/coq:contrib:orb-stab.dev)
 - rm: cannot remove &#39;/home/bench/.opam/system/lib/coq/user-contrib/orb-stab&#39;: No such file or directory
 #=== ERROR while installing coq:contrib:orb-stab.dev ==========================#
 # opam-version         1.2.1
@@ -164,30 +148,30 @@ coq             dev  Formal proof management system.
 # path                 /home/bench/.opam/system/build/coq:contrib:orb-stab.dev
 # compiler             system (4.02.1)
 # exit-code            2
-# env-file             /home/bench/.opam/system/build/coq:contrib:orb-stab.dev/coq:contrib:orb-stab-30968-d2d111.env
-# stdout-file          /home/bench/.opam/system/build/coq:contrib:orb-stab.dev/coq:contrib:orb-stab-30968-d2d111.out
-# stderr-file          /home/bench/.opam/system/build/coq:contrib:orb-stab.dev/coq:contrib:orb-stab-30968-d2d111.err
+# env-file             /home/bench/.opam/system/build/coq:contrib:orb-stab.dev/coq:contrib:orb-stab-25846-d2d111.env
+# stdout-file          /home/bench/.opam/system/build/coq:contrib:orb-stab.dev/coq:contrib:orb-stab-25846-d2d111.out
+# stderr-file          /home/bench/.opam/system/build/coq:contrib:orb-stab.dev/coq:contrib:orb-stab-25846-d2d111.err
 ### stdout ###
-# &quot;coqdep&quot; -c -R &quot;../../Nijmegen/LinAlg&quot; LinAlg -R &quot;../../Sophia-Antipolis/Algebra&quot; Algebra -R &quot;.&quot; OrbStab &quot;orbstab.v&quot; &gt; &quot;orbstab.v.d&quot; || ( RV=$?; rm -f &quot;orbstab.v.d&quot;; exit ${RV} )
-# &quot;coqc&quot;  -q  -R &quot;../../Nijmegen/LinAlg&quot; LinAlg -R &quot;../../Sophia-Antipolis/Algebra&quot; Algebra -R &quot;.&quot; OrbStab   orbstab
+# &quot;coqdep&quot; -c -R &quot;.&quot; OrbStab &quot;orbstab.v&quot; &gt; &quot;orbstab.v.d&quot; || ( RV=$?; rm -f &quot;orbstab.v.d&quot;; exit ${RV} )
+# &quot;coqc&quot;  -q  -R &quot;.&quot; OrbStab   orbstab
 # Makefile:236: recipe for target &#39;orbstab.vo&#39; failed
 ### stderr ###
-# *** Warning: in file orbstab.v, library Parts3.v is required and has not been found in the loadpath!
 # [...]
-# *** Warning: in file orbstab.v, library Fmap.v is required and has not been found in the loadpath!
-# *** Warning: in file orbstab.v, library seq_set_facts.v is required and has not been found in the loadpath!
-# *** Warning: in file orbstab.v, library has_n_elements.v is required and has not been found in the loadpath!
-# *** Warning: in file orbstab.v, library finite_subsets.v is required and has not been found in the loadpath!
-# Warning: Cannot open ../../Nijmegen/LinAlg
-# Warning: Cannot open ../../Sophia-Antipolis/Algebra
-# File &quot;./orbstab.v&quot;, line 21, characters 0-26:
-# Error: Cannot find library Group_util in loadpath
+# *** Warning: in file orbstab.v, library Algebra.Group_util.v is required and has not been found in the loadpath!
+# *** Warning: in file orbstab.v, library Algebra.Fpart2.v is required and has not been found in the loadpath!
+# *** Warning: in file orbstab.v, library Algebra.Parts3.v is required and has not been found in the loadpath!
+# *** Warning: in file orbstab.v, library Algebra.Fmap.v is required and has not been found in the loadpath!
+# *** Warning: in file orbstab.v, library LinAlg.seq_set_facts.v is required and has not been found in the loadpath!
+# *** Warning: in file orbstab.v, library LinAlg.has_n_elements.v is required and has not been found in the loadpath!
+# *** Warning: in file orbstab.v, library LinAlg.finite_subsets.v is required and has not been found in the loadpath!
+# File &quot;./orbstab.v&quot;, line 21, characters 0-39:
+# Error: Cannot find library Algebra.Group_util in loadpath
 # make: *** [orbstab.vo] Error 1
 =-=- Error report -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 The following actions failed
   - install coq:contrib:orb-stab dev
 No changes have been performed
-&#39;opam install -y --verbose coq:contrib:orb-stab.dev&#39; failed.
+&#39;opam install -y -v coq:contrib:orb-stab.dev&#39; failed.
 </pre></dd>
             </dl>
             <h2>Installation size</h2>
@@ -198,8 +182,6 @@ No changes have been performed
               <dd><code>true</code></dd>
               <dt>Return code</dt>
               <dd>0</dd>
-              <dt>Duration</dt>
-              <dd>0 s</dd>
               <dt>Missing removes</dt>
               <dd>
                 none

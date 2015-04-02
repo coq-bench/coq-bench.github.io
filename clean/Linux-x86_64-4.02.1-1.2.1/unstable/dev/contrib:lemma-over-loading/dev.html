@@ -47,7 +47,7 @@
                 <span class="label label-danger">Error</span>
               </small>
             </h1>
-            <p><em><script>document.write(moment("2015-02-22 22:34:10 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2015-02-22 22:34:10 UTC)</em><p>
+            <p><em><script>document.write(moment("2015-04-02 12:53:11 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2015-04-02 12:53:11 UTC)</em><p>
             <h2>Context</h2>
             <pre># Installed packages for system:
 base-bigarray  base  Bigarray library distributed with the OCaml compiler
@@ -62,8 +62,6 @@ coq             dev  Formal proof management system.
               <dd><code>ruby lint.rb unstable ../unstable/packages/coq:contrib:lemma-over-loading/coq:contrib:lemma-over-loading.dev</code></dd>
               <dt>Return code</dt>
               <dd>0</dd>
-              <dt>Duration</dt>
-              <dd>0 s</dd>
             </dl>
             <h2>Dry install</h2>
             <p>Dry install with the current Coq version:</p>
@@ -72,8 +70,6 @@ coq             dev  Formal proof management system.
               <dd><code>opam install -y --show-action coq:contrib:lemma-over-loading.dev coq.dev</code></dd>
               <dt>Return code</dt>
               <dd>0</dd>
-              <dt>Duration</dt>
-              <dd>2 s</dd>
             </dl>
             <p>Dry install without Coq, to test if the problem was incompatibility with the current Coq version:</p>
             <dl class="dl-horizontal">
@@ -81,13 +77,11 @@ coq             dev  Formal proof management system.
               <dd><code>true</code></dd>
               <dt>Return code</dt>
               <dd>0</dd>
-              <dt>Duration</dt>
-              <dd>0 s</dd>
             </dl>
             <h2>Install dependencies</h2>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>ulimit -Sv 2000000; timeout 5m opam install -y --deps-only coq:contrib:lemma-over-loading.dev</code></dd>
+              <dd><code>opam list; ulimit -Sv 1000000; timeout 5m opam install -y --deps-only coq:contrib:lemma-over-loading.dev</code></dd>
               <dt>Return code</dt>
               <dd>0</dd>
               <dt>Duration</dt>
@@ -96,39 +90,38 @@ coq             dev  Formal proof management system.
             <h2>Install</h2>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>ulimit -Sv 2000000; timeout 30m opam install -y --verbose coq:contrib:lemma-over-loading.dev</code></dd>
+              <dd><code>opam list; ulimit -Sv 4000000; timeout 120m opam install -y -v coq:contrib:lemma-over-loading.dev</code></dd>
               <dt>Return code</dt>
               <dd>1024</dd>
               <dt>Duration</dt>
-              <dd>3 s</dd>
+              <dd>4 s</dd>
               <dt>Output</dt>
-              <dd><pre>The following actions will be performed:
+              <dd><pre># Installed packages for system:
+base-bigarray  base  Bigarray library distributed with the OCaml compiler
+base-threads   base  Threads library distributed with the OCaml compiler
+base-unix      base  Unix library distributed with the OCaml compiler
+camlp5         6.12  Preprocessor-pretty-printer of OCaml
+coq             dev  Formal proof management system.
+The following actions will be performed:
   - install coq:contrib:lemma-over-loading dev
 =-=- Gathering sources =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 [coq:contrib:lemma-over-loading: from unstable] Repo archive not found[coq:contrib:lemma-over-loading: git] Command started
-+ git &quot;init&quot;
-- Initialized empty Git repository in /home/bench/.opam/packages.dev/coq:contrib:lemma-over-loading.dev/.git/
-[coq:contrib:lemma-over-loading: git] Command started
-+ git &quot;remote&quot; &quot;add&quot; &quot;origin&quot; &quot;https://gforge.inria.fr/git/coq-contribs/lemma-over-loading.git&quot;
-[coq:contrib:lemma-over-loading: git] Command started
-+ git &quot;commit&quot; &quot;--allow-empty&quot; &quot;-m&quot; &quot;opam-git-init&quot;
-- [master (root-commit) 82edae0] opam-git-init
 [coq:contrib:lemma-over-loading: git] Command started
 [coq:contrib:lemma-over-loading: git] Command started
-+ git &quot;fetch&quot; &quot;-q&quot; &quot;origin&quot; &quot;+trunk:refs/remotes/opam-ref&quot;
 [coq:contrib:lemma-over-loading: git] Command started
-+ git &quot;reset&quot; &quot;--hard&quot; &quot;refs/remotes/opam-ref&quot; &quot;--&quot;
-- HEAD is now at ad20082 -thread in LemmaOverloading
+[coq:contrib:lemma-over-loading: git] Command started
+[coq:contrib:lemma-over-loading: git] Command started
 [coq:contrib:lemma-over-loading] https://gforge.inria.fr/git/coq-contribs/lemma-over-loading.git#trunk updated
 =-=- Processing actions -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
-+ cp &quot;-PR&quot; &quot;/home/bench/.opam/packages.dev/coq:contrib:lemma-over-loading.dev&quot; &quot;/home/bench/.opam/system/build/coq:contrib:lemma-over-loading.dev&quot;
 [coq:contrib:lemma-over-loading: coq_makefile Make] Command started
-+ coq_makefile &quot;-f&quot; &quot;Make&quot; &quot;-o&quot; &quot;Makefile&quot;
-- Warning: in option -R, ../../Saclay/Ssreflect/theories is not a subdirectory of the current directory
-- Warning: install rule assumes that -R/-Q . _ is the only -R/-Q optionWarning: install rule assumes that -R/-Q . _ is the only -R/-Q optionWarning: -R/-Q options don&#39;t have a correct common prefix,
++ coq_makefile &quot;-f&quot; &quot;Make&quot; &quot;-o&quot; &quot;Makefile&quot; (CWD=/home/bench/.opam/system/build/coq:contrib:lemma-over-loading.dev)
+- Warning: in option -R/-Q, ../../Saclay/Ssreflect/theories is not a subdirectory of the current directory
+- Warning: install rule assumes that -R/-Q . _ is the only -R/-Q option
+- Warning: install rule assumes that -R/-Q . _ is the only -R/-Q option
+- Warning: -R/-Q options don&#39;t have a correct common prefix,
 -  install-doc will put anything in $INSTALLDEFAULTROOT
 [coq:contrib:lemma-over-loading: make] Command started
-+ make &quot;-j4&quot;
++ make &quot;-j4&quot; (CWD=/home/bench/.opam/system/build/coq:contrib:lemma-over-loading.dev)
 - &quot;coqdep&quot; -c -R &quot;../../Saclay/Ssreflect/theories&quot; Ssreflect -R &quot;.&quot; LemmaOverloading -I &quot;../../Saclay/Ssreflect/src&quot; &quot;prelude.v&quot; &gt; &quot;prelude.v.d&quot; || ( RV=$?; rm -f &quot;prelude.v.d&quot;; exit ${RV} )
 - &quot;coqdep&quot; -c -R &quot;../../Saclay/Ssreflect/theories&quot; Ssreflect -R &quot;.&quot; LemmaOverloading -I &quot;../../Saclay/Ssreflect/src&quot; &quot;rels.v&quot; &gt; &quot;rels.v.d&quot; || ( RV=$?; rm -f &quot;rels.v.d&quot;; exit ${RV} )
 - &quot;coqdep&quot; -c -R &quot;../../Saclay/Ssreflect/theories&quot; Ssreflect -R &quot;.&quot; LemmaOverloading -I &quot;../../Saclay/Ssreflect/src&quot; &quot;ordtype.v&quot; &gt; &quot;ordtype.v.d&quot; || ( RV=$?; rm -f &quot;ordtype.v.d&quot;; exit ${RV} )
@@ -160,44 +153,33 @@ coq             dev  Formal proof management system.
 - &quot;coqc&quot;  -q  -R &quot;../../Saclay/Ssreflect/theories&quot; Ssreflect -R &quot;.&quot; LemmaOverloading -I &quot;../../Saclay/Ssreflect/src&quot;   ordtype
 - &quot;coqc&quot;  -q  -R &quot;../../Saclay/Ssreflect/theories&quot; Ssreflect -R &quot;.&quot; LemmaOverloading -I &quot;../../Saclay/Ssreflect/src&quot;   rels
 - &quot;coqc&quot;  -q  -R &quot;../../Saclay/Ssreflect/theories&quot; Ssreflect -R &quot;.&quot; LemmaOverloading -I &quot;../../Saclay/Ssreflect/src&quot;   prefix
-- Makefile:262: recipe for target &#39;prefix.vo&#39; failed
-- Makefile:262: recipe for target &#39;ordtype.vo&#39; failed
-- Makefile:262: recipe for target &#39;rels.vo&#39; failed
+- Makefile:266: recipe for target &#39;ordtype.vo&#39; failed
+- Makefile:266: recipe for target &#39;prefix.vo&#39; failed
+- Makefile:266: recipe for target &#39;rels.vo&#39; failed
 - *** Warning: cannot open ../../Saclay/Ssreflect/theories
-- *** Warning: cannot open ../../Saclay/Ssreflect/theories
-- *** Warning: cannot open ../../Saclay/Ssreflect/src
-- *** Warning: cannot open ../../Saclay/Ssreflect/theories
-- *** Warning: cannot open ../../Saclay/Ssreflect/src
 - *** Warning: cannot open ../../Saclay/Ssreflect/src
 - *** Warning: cannot open ../../Saclay/Ssreflect/theories
 - *** Warning: cannot open ../../Saclay/Ssreflect/src
-- *** Warning: in file rels.v, library ssreflect.v is required and has not been found in the loadpath!
-- *** Warning: in file rels.v, library ssrfun.v is required and has not been found in the loadpath!
-- *** Warning: in file rels.v, library ssrbool.v is required and has not been found in the loadpath!
-- *** Warning: in file rels.v, library eqtype.v is required and has not been found in the loadpath!
-- *** Warning: in file rels.v, library seq.v is required and has not been found in the loadpath!
-- *** Warning: in file prelude.v, library ssreflect.v is required and has not been found in the loadpath!
-- *** Warning: in file prelude.v, library ssrbool.v is required and has not been found in the loadpath!
-- *** Warning: in file prelude.v, library ssrnat.v is required and has not been found in the loadpath!
-- *** Warning: in file prelude.v, library eqtype.v is required and has not been found in the loadpath!
-- *** Warning: in file prelude.v, library ssrfun.v is required and has not been found in the loadpath!
-- *** Warning: in file prelude.v, library seq.v is required and has not been found in the loadpath!
-- *** Warning: in file ordtype.v, library ssreflect.v is required and has not been found in the loadpath!
-- *** Warning: in file ordtype.v, library ssrbool.v is required and has not been found in the loadpath!
-- *** Warning: in file ordtype.v, library ssrnat.v is required and has not been found in the loadpath!
-- *** Warning: in file ordtype.v, library eqtype.v is required and has not been found in the loadpath!
-- *** Warning: in file ordtype.v, library ssrfun.v is required and has not been found in the loadpath!
-- *** Warning: in file ordtype.v, library seq.v is required and has not been found in the loadpath!
-- *** Warning: in file ordtype.v, library path.v is required and has not been found in the loadpath!
+- *** Warning: cannot open ../../Saclay/Ssreflect/theories
+- *** Warning: cannot open ../../Saclay/Ssreflect/theories
+- *** Warning: cannot open ../../Saclay/Ssreflect/src
+- *** Warning: cannot open ../../Saclay/Ssreflect/src
 - *** Warning: in file finmap.v, library ssreflect.v is required and has not been found in the loadpath!
-- *** Warning: in file ordtype.v, library fintype.v is required and has not been found in the loadpath!
+- *** Warning: in file ordtype.v, library ssreflect.v is required and has not been found in the loadpath!
 - *** Warning: in file finmap.v, library ssrbool.v is required and has not been found in the loadpath!
+- *** Warning: in file ordtype.v, library ssrbool.v is required and has not been found in the loadpath!
 - *** Warning: in file finmap.v, library ssrnat.v is required and has not been found in the loadpath!
+- *** Warning: in file ordtype.v, library ssrnat.v is required and has not been found in the loadpath!
 - *** Warning: in file finmap.v, library eqtype.v is required and has not been found in the loadpath!
+- *** Warning: in file ordtype.v, library eqtype.v is required and has not been found in the loadpath!
 - *** Warning: in file finmap.v, library ssrfun.v is required and has not been found in the loadpath!
+- *** Warning: in file ordtype.v, library ssrfun.v is required and has not been found in the loadpath!
 - *** Warning: in file finmap.v, library seq.v is required and has not been found in the loadpath!
+- *** Warning: in file ordtype.v, library seq.v is required and has not been found in the loadpath!
 - *** Warning: in file finmap.v, library path.v is required and has not been found in the loadpath!
+- *** Warning: in file ordtype.v, library path.v is required and has not been found in the loadpath!
 - *** Warning: in file finmap.v, library fintype.v is required and has not been found in the loadpath!
+- *** Warning: in file ordtype.v, library fintype.v is required and has not been found in the loadpath!
 - *** Warning: in file ordtype.v, library ssreflect.v is required and has not been found in the loadpath!
 - *** Warning: in file ordtype.v, library ssrbool.v is required and has not been found in the loadpath!
 - *** Warning: in file ordtype.v, library ssrnat.v is required and has not been found in the loadpath!
@@ -206,17 +188,6 @@ coq             dev  Formal proof management system.
 - *** Warning: in file ordtype.v, library seq.v is required and has not been found in the loadpath!
 - *** Warning: in file ordtype.v, library path.v is required and has not been found in the loadpath!
 - *** Warning: in file ordtype.v, library fintype.v is required and has not been found in the loadpath!
-- *** Warning: in file prelude.v, library ssreflect.v is required and has not been found in the loadpath!
-- *** Warning: in file prelude.v, library ssrbool.v is required and has not been found in the loadpath!
-- *** Warning: in file prelude.v, library ssrnat.v is required and has not been found in the loadpath!
-- *** Warning: in file prelude.v, library eqtype.v is required and has not been found in the loadpath!
-- *** Warning: in file prelude.v, library ssrfun.v is required and has not been found in the loadpath!
-- *** Warning: in file prelude.v, library seq.v is required and has not been found in the loadpath!
-- *** Warning: in file rels.v, library ssreflect.v is required and has not been found in the loadpath!
-- *** Warning: in file rels.v, library ssrfun.v is required and has not been found in the loadpath!
-- *** Warning: in file rels.v, library ssrbool.v is required and has not been found in the loadpath!
-- *** Warning: in file rels.v, library eqtype.v is required and has not been found in the loadpath!
-- *** Warning: in file rels.v, library seq.v is required and has not been found in the loadpath!
 - *** Warning: in file finmap.v, library ssreflect.v is required and has not been found in the loadpath!
 - *** Warning: in file finmap.v, library ssrbool.v is required and has not been found in the loadpath!
 - *** Warning: in file finmap.v, library ssrnat.v is required and has not been found in the loadpath!
@@ -229,25 +200,38 @@ coq             dev  Formal proof management system.
 - *** Warning: cannot open ../../Saclay/Ssreflect/src
 - *** Warning: cannot open ../../Saclay/Ssreflect/theories
 - *** Warning: cannot open ../../Saclay/Ssreflect/src
+- *** Warning: in file prelude.v, library ssreflect.v is required and has not been found in the loadpath!
+- *** Warning: in file prelude.v, library ssrbool.v is required and has not been found in the loadpath!
+- *** Warning: in file prelude.v, library ssrnat.v is required and has not been found in the loadpath!
+- *** Warning: in file prelude.v, library eqtype.v is required and has not been found in the loadpath!
+- *** Warning: in file prelude.v, library ssrfun.v is required and has not been found in the loadpath!
+- *** Warning: in file prelude.v, library seq.v is required and has not been found in the loadpath!
+- *** Warning: in file prelude.v, library ssreflect.v is required and has not been found in the loadpath!
+- *** Warning: in file prelude.v, library ssrbool.v is required and has not been found in the loadpath!
+- *** Warning: in file prelude.v, library ssrnat.v is required and has not been found in the loadpath!
+- *** Warning: in file prelude.v, library eqtype.v is required and has not been found in the loadpath!
+- *** Warning: in file prelude.v, library ssrfun.v is required and has not been found in the loadpath!
+- *** Warning: in file prelude.v, library seq.v is required and has not been found in the loadpath!
+- *** Warning: in file rels.v, library ssreflect.v is required and has not been found in the loadpath!
+- *** Warning: in file rels.v, library ssrfun.v is required and has not been found in the loadpath!
+- *** Warning: in file rels.v, library ssrbool.v is required and has not been found in the loadpath!
+- *** Warning: in file rels.v, library eqtype.v is required and has not been found in the loadpath!
+- *** Warning: in file rels.v, library seq.v is required and has not been found in the loadpath!
+- *** Warning: in file rels.v, library ssreflect.v is required and has not been found in the loadpath!
+- *** Warning: in file rels.v, library ssrfun.v is required and has not been found in the loadpath!
+- *** Warning: in file rels.v, library ssrbool.v is required and has not been found in the loadpath!
+- *** Warning: in file rels.v, library eqtype.v is required and has not been found in the loadpath!
+- *** Warning: in file rels.v, library seq.v is required and has not been found in the loadpath!
 - *** Warning: cannot open ../../Saclay/Ssreflect/theories
 - *** Warning: cannot open ../../Saclay/Ssreflect/src
 - *** Warning: cannot open ../../Saclay/Ssreflect/theories
 - *** Warning: cannot open ../../Saclay/Ssreflect/src
-- *** Warning: in file hprop.v, library ssreflect.v is required and has not been found in the loadpath!
-- *** Warning: in file hprop.v, library ssrfun.v is required and has not been found in the loadpath!
-- *** Warning: in file hprop.v, library ssrnat.v is required and has not been found in the loadpath!
 - *** Warning: in file heaps.v, library ssreflect.v is required and has not been found in the loadpath!
-- *** Warning: in file hprop.v, library eqtype.v is required and has not been found in the loadpath!
 - *** Warning: in file heaps.v, library ssrfun.v is required and has not been found in the loadpath!
-- *** Warning: in file hprop.v, library seq.v is required and has not been found in the loadpath!
 - *** Warning: in file heaps.v, library ssrnat.v is required and has not been found in the loadpath!
-- *** Warning: in file hprop.v, library fintype.v is required and has not been found in the loadpath!
 - *** Warning: in file heaps.v, library div.v is required and has not been found in the loadpath!
-- *** Warning: in file hprop.v, library finfun.v is required and has not been found in the loadpath!
 - *** Warning: in file heaps.v, library ssrbool.v is required and has not been found in the loadpath!
-- *** Warning: in file hprop.v, library finset.v is required and has not been found in the loadpath!
 - *** Warning: in file heaps.v, library seq.v is required and has not been found in the loadpath!
-- *** Warning: in file hprop.v, library path.v is required and has not been found in the loadpath!
 - *** Warning: in file heaps.v, library path.v is required and has not been found in the loadpath!
 - *** Warning: in file heaps.v, library eqtype.v is required and has not been found in the loadpath!
 - *** Warning: in file hprop.v, library ssreflect.v is required and has not been found in the loadpath!
@@ -259,12 +243,33 @@ coq             dev  Formal proof management system.
 - *** Warning: in file hprop.v, library finfun.v is required and has not been found in the loadpath!
 - *** Warning: in file hprop.v, library finset.v is required and has not been found in the loadpath!
 - *** Warning: in file hprop.v, library path.v is required and has not been found in the loadpath!
+- *** Warning: in file hprop.v, library ssreflect.v is required and has not been found in the loadpath!
+- *** Warning: in file hprop.v, library ssrfun.v is required and has not been found in the loadpath!
+- *** Warning: in file hprop.v, library ssrnat.v is required and has not been found in the loadpath!
+- *** Warning: in file hprop.v, library eqtype.v is required and has not been found in the loadpath!
+- *** Warning: in file hprop.v, library seq.v is required and has not been found in the loadpath!
+- *** Warning: in file hprop.v, library fintype.v is required and has not been found in the loadpath!
+- *** Warning: in file hprop.v, library finfun.v is required and has not been found in the loadpath!
+- *** Warning: in file hprop.v, library finset.v is required and has not been found in the loadpath!
+- *** Warning: in file hprop.v, library path.v is required and has not been found in the loadpath!
+- *** Warning: in file heaps.v, library ssreflect.v is required and has not been found in the loadpath!
+- *** Warning: in file heaps.v, library ssrfun.v is required and has not been found in the loadpath!
+- *** Warning: in file heaps.v, library ssrnat.v is required and has not been found in the loadpath!
+- *** Warning: in file heaps.v, library div.v is required and has not been found in the loadpath!
+- *** Warning: in file heaps.v, library ssrbool.v is required and has not been found in the loadpath!
+- *** Warning: in file heaps.v, library seq.v is required and has not been found in the loadpath!
+- *** Warning: in file heaps.v, library path.v is required and has not been found in the loadpath!
+- *** Warning: in file heaps.v, library eqtype.v is required and has not been found in the loadpath!
+- *** Warning: cannot open ../../Saclay/Ssreflect/theories
+- *** Warning: cannot open ../../Saclay/Ssreflect/src
+- *** Warning: cannot open ../../Saclay/Ssreflect/theories
 - *** Warning: in file domains.v, library ssreflect.v is required and has not been found in the loadpath!
 - *** Warning: in file domains.v, library ssrbool.v is required and has not been found in the loadpath!
 - *** Warning: in file domains.v, library ssrfun.v is required and has not been found in the loadpath!
 - *** Warning: in file domains.v, library ssrnat.v is required and has not been found in the loadpath!
 - *** Warning: in file domains.v, library eqtype.v is required and has not been found in the loadpath!
 - *** Warning: in file domains.v, library seq.v is required and has not been found in the loadpath!
+- *** Warning: cannot open ../../Saclay/Ssreflect/src
 - *** Warning: in file stmod.v, library ssreflect.v is required and has not been found in the loadpath!
 - *** Warning: in file stmod.v, library ssrbool.v is required and has not been found in the loadpath!
 - *** Warning: in file stmod.v, library ssrfun.v is required and has not been found in the loadpath!
@@ -277,27 +282,15 @@ coq             dev  Formal proof management system.
 - *** Warning: in file stmod.v, library ssrnat.v is required and has not been found in the loadpath!
 - *** Warning: in file stmod.v, library eqtype.v is required and has not been found in the loadpath!
 - *** Warning: in file stmod.v, library seq.v is required and has not been found in the loadpath!
-- *** Warning: cannot open ../../Saclay/Ssreflect/theories
-- *** Warning: in file heaps.v, library ssreflect.v is required and has not been found in the loadpath!
-- *** Warning: in file heaps.v, library ssrfun.v is required and has not been found in the loadpath!
-- *** Warning: in file heaps.v, library ssrnat.v is required and has not been found in the loadpath!
-- *** Warning: in file heaps.v, library div.v is required and has not been found in the loadpath!
-- *** Warning: in file heaps.v, library ssrbool.v is required and has not been found in the loadpath!
 - *** Warning: in file domains.v, library ssreflect.v is required and has not been found in the loadpath!
-- *** Warning: in file heaps.v, library seq.v is required and has not been found in the loadpath!
 - *** Warning: in file domains.v, library ssrbool.v is required and has not been found in the loadpath!
-- *** Warning: cannot open ../../Saclay/Ssreflect/src
 - *** Warning: in file domains.v, library ssrfun.v is required and has not been found in the loadpath!
 - *** Warning: in file domains.v, library ssrnat.v is required and has not been found in the loadpath!
 - *** Warning: in file domains.v, library eqtype.v is required and has not been found in the loadpath!
 - *** Warning: in file domains.v, library seq.v is required and has not been found in the loadpath!
-- *** Warning: in file heaps.v, library path.v is required and has not been found in the loadpath!
-- *** Warning: in file heaps.v, library eqtype.v is required and has not been found in the loadpath!
-- *** Warning: cannot open ../../Saclay/Ssreflect/theories
-- *** Warning: cannot open ../../Saclay/Ssreflect/theories
 - *** Warning: cannot open ../../Saclay/Ssreflect/theories
 - *** Warning: cannot open ../../Saclay/Ssreflect/src
-- *** Warning: cannot open ../../Saclay/Ssreflect/src
+- *** Warning: cannot open ../../Saclay/Ssreflect/theories
 - *** Warning: cannot open ../../Saclay/Ssreflect/src
 - *** Warning: in file stsep.v, library ssreflect.v is required and has not been found in the loadpath!
 - *** Warning: in file stsep.v, library ssrbool.v is required and has not been found in the loadpath!
@@ -311,6 +304,20 @@ coq             dev  Formal proof management system.
 - *** Warning: in file stsep.v, library ssrfun.v is required and has not been found in the loadpath!
 - *** Warning: in file stsep.v, library seq.v is required and has not been found in the loadpath!
 - *** Warning: in file stsep.v, library eqtype.v is required and has not been found in the loadpath!
+- *** Warning: in file stlog.v, library ssreflect.v is required and has not been found in the loadpath!
+- *** Warning: in file stlog.v, library ssrbool.v is required and has not been found in the loadpath!
+- *** Warning: in file stlog.v, library ssrnat.v is required and has not been found in the loadpath!
+- *** Warning: in file stlog.v, library eqtype.v is required and has not been found in the loadpath!
+- *** Warning: in file stlog.v, library seq.v is required and has not been found in the loadpath!
+- *** Warning: in file stlog.v, library ssrfun.v is required and has not been found in the loadpath!
+- *** Warning: cannot open ../../Saclay/Ssreflect/theories
+- *** Warning: cannot open ../../Saclay/Ssreflect/src
+- *** Warning: in file stlog.v, library ssreflect.v is required and has not been found in the loadpath!
+- *** Warning: in file stlog.v, library ssrbool.v is required and has not been found in the loadpath!
+- *** Warning: in file stlog.v, library ssrnat.v is required and has not been found in the loadpath!
+- *** Warning: in file stlog.v, library eqtype.v is required and has not been found in the loadpath!
+- *** Warning: in file stlog.v, library seq.v is required and has not been found in the loadpath!
+- *** Warning: in file stlog.v, library ssrfun.v is required and has not been found in the loadpath!
 - *** Warning: cannot open ../../Saclay/Ssreflect/theories
 - *** Warning: cannot open ../../Saclay/Ssreflect/src
 - *** Warning: in file noalias.v, library ssreflect.v is required and has not been found in the loadpath!
@@ -325,64 +332,60 @@ coq             dev  Formal proof management system.
 - *** Warning: in file noalias.v, library ssrnat.v is required and has not been found in the loadpath!
 - *** Warning: in file noalias.v, library seq.v is required and has not been found in the loadpath!
 - *** Warning: in file noalias.v, library eqtype.v is required and has not been found in the loadpath!
-- *** Warning: cannot open ../../Saclay/Ssreflect/theories
-- *** Warning: cannot open ../../Saclay/Ssreflect/src
 - *** Warning: in file auto.v, library ssreflect.v is required and has not been found in the loadpath!
 - *** Warning: in file auto.v, library ssrfun.v is required and has not been found in the loadpath!
 - *** Warning: in file auto.v, library ssrbool.v is required and has not been found in the loadpath!
 - *** Warning: in file auto.v, library ssrnat.v is required and has not been found in the loadpath!
 - *** Warning: in file auto.v, library seq.v is required and has not been found in the loadpath!
 - *** Warning: in file auto.v, library eqtype.v is required and has not been found in the loadpath!
-- *** Warning: in file stlog.v, library ssreflect.v is required and has not been found in the loadpath!
-- *** Warning: in file stlog.v, library ssrbool.v is required and has not been found in the loadpath!
-- *** Warning: in file stlog.v, library ssrnat.v is required and has not been found in the loadpath!
-- *** Warning: in file stlog.v, library eqtype.v is required and has not been found in the loadpath!
-- *** Warning: in file stlog.v, library seq.v is required and has not been found in the loadpath!
-- *** Warning: in file stlog.v, library ssrfun.v is required and has not been found in the loadpath!
 - *** Warning: in file auto.v, library ssreflect.v is required and has not been found in the loadpath!
 - *** Warning: in file auto.v, library ssrfun.v is required and has not been found in the loadpath!
 - *** Warning: in file auto.v, library ssrbool.v is required and has not been found in the loadpath!
 - *** Warning: in file auto.v, library ssrnat.v is required and has not been found in the loadpath!
 - *** Warning: in file auto.v, library seq.v is required and has not been found in the loadpath!
 - *** Warning: in file auto.v, library eqtype.v is required and has not been found in the loadpath!
-- *** Warning: in file stlog.v, library ssreflect.v is required and has not been found in the loadpath!
-- *** Warning: in file stlog.v, library ssrbool.v is required and has not been found in the loadpath!
-- *** Warning: in file stlog.v, library ssrnat.v is required and has not been found in the loadpath!
-- *** Warning: in file stlog.v, library eqtype.v is required and has not been found in the loadpath!
-- *** Warning: in file stlog.v, library seq.v is required and has not been found in the loadpath!
-- *** Warning: in file stlog.v, library ssrfun.v is required and has not been found in the loadpath!
 - *** Warning: cannot open ../../Saclay/Ssreflect/theories
 - *** Warning: cannot open ../../Saclay/Ssreflect/src
 - *** Warning: cannot open ../../Saclay/Ssreflect/theories
 - *** Warning: cannot open ../../Saclay/Ssreflect/src
 - *** Warning: in file noaliasCTC.v, library ssreflect.v is required and has not been found in the loadpath!
+- *** Warning: in file noaliasBT.v, library ssreflect.v is required and has not been found in the loadpath!
 - *** Warning: in file noaliasCTC.v, library ssrfun.v is required and has not been found in the loadpath!
+- *** Warning: in file noaliasBT.v, library ssrfun.v is required and has not been found in the loadpath!
 - *** Warning: in file noaliasCTC.v, library ssrbool.v is required and has not been found in the loadpath!
+- *** Warning: in file noaliasBT.v, library ssrbool.v is required and has not been found in the loadpath!
 - *** Warning: in file noaliasCTC.v, library ssrnat.v is required and has not been found in the loadpath!
+- *** Warning: in file noaliasBT.v, library ssrnat.v is required and has not been found in the loadpath!
 - *** Warning: in file noaliasCTC.v, library seq.v is required and has not been found in the loadpath!
+- *** Warning: in file noaliasBT.v, library seq.v is required and has not been found in the loadpath!
 - *** Warning: in file noaliasCTC.v, library eqtype.v is required and has not been found in the loadpath!
+- *** Warning: in file noaliasBT.v, library eqtype.v is required and has not been found in the loadpath!
+- *** Warning: in file noaliasBT.v, library ssreflect.v is required and has not been found in the loadpath!
 - *** Warning: in file noaliasCTC.v, library ssreflect.v is required and has not been found in the loadpath!
+- *** Warning: in file noaliasBT.v, library ssrfun.v is required and has not been found in the loadpath!
 - *** Warning: in file noaliasCTC.v, library ssrfun.v is required and has not been found in the loadpath!
+- *** Warning: in file noaliasBT.v, library ssrbool.v is required and has not been found in the loadpath!
 - *** Warning: in file noaliasCTC.v, library ssrbool.v is required and has not been found in the loadpath!
+- *** Warning: in file noaliasBT.v, library ssrnat.v is required and has not been found in the loadpath!
 - *** Warning: in file noaliasCTC.v, library ssrnat.v is required and has not been found in the loadpath!
+- *** Warning: in file noaliasBT.v, library seq.v is required and has not been found in the loadpath!
 - *** Warning: in file noaliasCTC.v, library seq.v is required and has not been found in the loadpath!
+- *** Warning: in file noaliasBT.v, library eqtype.v is required and has not been found in the loadpath!
 - *** Warning: in file noaliasCTC.v, library eqtype.v is required and has not been found in the loadpath!
 - *** Warning: cannot open ../../Saclay/Ssreflect/theories
 - *** Warning: cannot open ../../Saclay/Ssreflect/src
-- *** Warning: in file noaliasBT.v, library ssreflect.v is required and has not been found in the loadpath!
-- *** Warning: in file noaliasBT.v, library ssrfun.v is required and has not been found in the loadpath!
-- *** Warning: in file noaliasBT.v, library ssrbool.v is required and has not been found in the loadpath!
-- *** Warning: in file noaliasBT.v, library ssrnat.v is required and has not been found in the loadpath!
-- *** Warning: in file noaliasBT.v, library seq.v is required and has not been found in the loadpath!
-- *** Warning: in file noaliasBT.v, library eqtype.v is required and has not been found in the loadpath!
-- *** Warning: in file noaliasBT.v, library ssreflect.v is required and has not been found in the loadpath!
-- *** Warning: in file noaliasBT.v, library ssrfun.v is required and has not been found in the loadpath!
-- *** Warning: in file noaliasBT.v, library ssrbool.v is required and has not been found in the loadpath!
-- *** Warning: in file noaliasBT.v, library ssrnat.v is required and has not been found in the loadpath!
-- *** Warning: in file noaliasBT.v, library seq.v is required and has not been found in the loadpath!
-- *** Warning: in file noaliasBT.v, library eqtype.v is required and has not been found in the loadpath!
 - *** Warning: cannot open ../../Saclay/Ssreflect/theories
 - *** Warning: cannot open ../../Saclay/Ssreflect/src
+- *** Warning: in file prefix.v, library ssreflect.v is required and has not been found in the loadpath!
+- *** Warning: in file prefix.v, library ssrfun.v is required and has not been found in the loadpath!
+- *** Warning: in file prefix.v, library ssrbool.v is required and has not been found in the loadpath!
+- *** Warning: in file prefix.v, library ssrnat.v is required and has not been found in the loadpath!
+- *** Warning: in file prefix.v, library seq.v is required and has not been found in the loadpath!
+- *** Warning: in file prefix.v, library ssreflect.v is required and has not been found in the loadpath!
+- *** Warning: in file prefix.v, library ssrfun.v is required and has not been found in the loadpath!
+- *** Warning: in file prefix.v, library ssrbool.v is required and has not been found in the loadpath!
+- *** Warning: in file prefix.v, library ssrnat.v is required and has not been found in the loadpath!
+- *** Warning: in file prefix.v, library seq.v is required and has not been found in the loadpath!
 - *** Warning: in file perms.v, library ssreflect.v is required and has not been found in the loadpath!
 - *** Warning: in file perms.v, library ssrfun.v is required and has not been found in the loadpath!
 - *** Warning: in file perms.v, library ssrbool.v is required and has not been found in the loadpath!
@@ -397,41 +400,31 @@ coq             dev  Formal proof management system.
 - *** Warning: in file perms.v, library path.v is required and has not been found in the loadpath!
 - *** Warning: cannot open ../../Saclay/Ssreflect/theories
 - *** Warning: cannot open ../../Saclay/Ssreflect/src
-- *** Warning: in file prefix.v, library ssreflect.v is required and has not been found in the loadpath!
-- *** Warning: in file prefix.v, library ssrfun.v is required and has not been found in the loadpath!
-- *** Warning: in file prefix.v, library ssrbool.v is required and has not been found in the loadpath!
-- *** Warning: in file prefix.v, library ssrnat.v is required and has not been found in the loadpath!
-- *** Warning: in file prefix.v, library seq.v is required and has not been found in the loadpath!
-- *** Warning: in file prefix.v, library ssreflect.v is required and has not been found in the loadpath!
-- *** Warning: in file prefix.v, library ssrfun.v is required and has not been found in the loadpath!
-- *** Warning: in file prefix.v, library ssrbool.v is required and has not been found in the loadpath!
-- *** Warning: in file prefix.v, library ssrnat.v is required and has not been found in the loadpath!
-- *** Warning: in file prefix.v, library seq.v is required and has not been found in the loadpath!
 - *** Warning: cannot open ../../Saclay/Ssreflect/theories
 - *** Warning: cannot open ../../Saclay/Ssreflect/src
 - *** Warning: in file xfind.v, library ssreflect.v is required and has not been found in the loadpath!
-- *** Warning: in file xfind.v, library ssrfun.v is required and has not been found in the loadpath!
-- *** Warning: in file xfind.v, library ssrbool.v is required and has not been found in the loadpath!
-- *** Warning: in file xfind.v, library ssrnat.v is required and has not been found in the loadpath!
-- *** Warning: in file xfind.v, library seq.v is required and has not been found in the loadpath!
-- *** Warning: in file xfind.v, library ssreflect.v is required and has not been found in the loadpath!
-- *** Warning: in file xfind.v, library ssrfun.v is required and has not been found in the loadpath!
-- *** Warning: in file xfind.v, library ssrbool.v is required and has not been found in the loadpath!
-- *** Warning: in file xfind.v, library ssrnat.v is required and has not been found in the loadpath!
-- *** Warning: in file xfind.v, library seq.v is required and has not been found in the loadpath!
-- *** Warning: cannot open ../../Saclay/Ssreflect/theories
-- *** Warning: cannot open ../../Saclay/Ssreflect/src
 - *** Warning: in file xfindCTC.v, library ssreflect.v is required and has not been found in the loadpath!
+- *** Warning: in file xfind.v, library ssrfun.v is required and has not been found in the loadpath!
 - *** Warning: in file xfindCTC.v, library ssrfun.v is required and has not been found in the loadpath!
+- *** Warning: in file xfind.v, library ssrbool.v is required and has not been found in the loadpath!
 - *** Warning: in file xfindCTC.v, library ssrbool.v is required and has not been found in the loadpath!
+- *** Warning: in file xfind.v, library ssrnat.v is required and has not been found in the loadpath!
 - *** Warning: in file xfindCTC.v, library ssrnat.v is required and has not been found in the loadpath!
+- *** Warning: in file xfind.v, library seq.v is required and has not been found in the loadpath!
 - *** Warning: in file xfindCTC.v, library seq.v is required and has not been found in the loadpath!
 - *** Warning: in file xfindCTC.v, library ssreflect.v is required and has not been found in the loadpath!
 - *** Warning: in file xfindCTC.v, library ssrfun.v is required and has not been found in the loadpath!
 - *** Warning: in file xfindCTC.v, library ssrbool.v is required and has not been found in the loadpath!
 - *** Warning: in file xfindCTC.v, library ssrnat.v is required and has not been found in the loadpath!
 - *** Warning: in file xfindCTC.v, library seq.v is required and has not been found in the loadpath!
+- *** Warning: in file xfind.v, library ssreflect.v is required and has not been found in the loadpath!
+- *** Warning: in file xfind.v, library ssrfun.v is required and has not been found in the loadpath!
+- *** Warning: in file xfind.v, library ssrbool.v is required and has not been found in the loadpath!
+- *** Warning: in file xfind.v, library ssrnat.v is required and has not been found in the loadpath!
+- *** Warning: in file xfind.v, library seq.v is required and has not been found in the loadpath!
 - *** Warning: cannot open ../../Saclay/Ssreflect/theories
+- *** Warning: cannot open ../../Saclay/Ssreflect/theories
+- *** Warning: cannot open ../../Saclay/Ssreflect/src
 - *** Warning: cannot open ../../Saclay/Ssreflect/src
 - *** Warning: in file terms.v, library ssreflect.v is required and has not been found in the loadpath!
 - *** Warning: in file terms.v, library ssrbool.v is required and has not been found in the loadpath!
@@ -447,8 +440,6 @@ coq             dev  Formal proof management system.
 - *** Warning: in file terms.v, library eqtype.v is required and has not been found in the loadpath!
 - *** Warning: in file terms.v, library seq.v is required and has not been found in the loadpath!
 - *** Warning: in file terms.v, library path.v is required and has not been found in the loadpath!
-- *** Warning: cannot open ../../Saclay/Ssreflect/theories
-- *** Warning: cannot open ../../Saclay/Ssreflect/src
 - *** Warning: in file cancel.v, library ssreflect.v is required and has not been found in the loadpath!
 - *** Warning: in file cancel.v, library ssrfun.v is required and has not been found in the loadpath!
 - *** Warning: in file cancel.v, library ssrbool.v is required and has not been found in the loadpath!
@@ -462,21 +453,43 @@ coq             dev  Formal proof management system.
 - *** Warning: in file cancel.v, library seq.v is required and has not been found in the loadpath!
 - *** Warning: in file cancel.v, library eqtype.v is required and has not been found in the loadpath!
 - *** Warning: cannot open ../../Saclay/Ssreflect/theories
-- *** Warning: cannot open ../../Saclay/Ssreflect/src
-- *** Warning: in file cancel2.v, library ssreflect.v is required and has not been found in the loadpath!
-- *** Warning: in file cancel2.v, library ssrfun.v is required and has not been found in the loadpath!
-- *** Warning: in file cancel2.v, library ssrbool.v is required and has not been found in the loadpath!
-- *** Warning: in file cancel2.v, library ssrnat.v is required and has not been found in the loadpath!
-- *** Warning: in file cancel2.v, library seq.v is required and has not been found in the loadpath!
-- *** Warning: in file cancel2.v, library eqtype.v is required and has not been found in the loadpath!
-- *** Warning: in file cancel2.v, library ssreflect.v is required and has not been found in the loadpath!
-- *** Warning: in file cancel2.v, library ssrfun.v is required and has not been found in the loadpath!
-- *** Warning: in file cancel2.v, library ssrbool.v is required and has not been found in the loadpath!
-- *** Warning: in file cancel2.v, library ssrnat.v is required and has not been found in the loadpath!
-- *** Warning: in file cancel2.v, library seq.v is required and has not been found in the loadpath!
-- *** Warning: in file cancel2.v, library eqtype.v is required and has not been found in the loadpath!
 - *** Warning: cannot open ../../Saclay/Ssreflect/theories
 - *** Warning: cannot open ../../Saclay/Ssreflect/src
+- *** Warning: cannot open ../../Saclay/Ssreflect/src
+- *** Warning: in file cancelCTC.v, library ssreflect.v is required and has not been found in the loadpath!
+- *** Warning: in file stlogR.v, library ssreflect.v is required and has not been found in the loadpath!
+- *** Warning: in file cancelCTC.v, library ssrfun.v is required and has not been found in the loadpath!
+- *** Warning: in file stlogR.v, library ssrbool.v is required and has not been found in the loadpath!
+- *** Warning: in file cancelCTC.v, library ssrbool.v is required and has not been found in the loadpath!
+- *** Warning: in file stlogR.v, library ssrnat.v is required and has not been found in the loadpath!
+- *** Warning: in file cancelCTC.v, library ssrnat.v is required and has not been found in the loadpath!
+- *** Warning: in file stlogR.v, library eqtype.v is required and has not been found in the loadpath!
+- *** Warning: in file cancelCTC.v, library seq.v is required and has not been found in the loadpath!
+- *** Warning: in file stlogR.v, library seq.v is required and has not been found in the loadpath!
+- *** Warning: in file cancelCTC.v, library eqtype.v is required and has not been found in the loadpath!
+- *** Warning: in file stlogR.v, library ssrfun.v is required and has not been found in the loadpath!
+- *** Warning: in file cancelCTC.v, library ssreflect.v is required and has not been found in the loadpath!
+- *** Warning: in file cancelCTC.v, library ssrfun.v is required and has not been found in the loadpath!
+- *** Warning: in file cancelCTC.v, library ssrbool.v is required and has not been found in the loadpath!
+- *** Warning: in file cancelCTC.v, library ssrnat.v is required and has not been found in the loadpath!
+- *** Warning: in file cancelCTC.v, library seq.v is required and has not been found in the loadpath!
+- *** Warning: in file cancelCTC.v, library eqtype.v is required and has not been found in the loadpath!
+- *** Warning: in file stlogR.v, library ssreflect.v is required and has not been found in the loadpath!
+- *** Warning: in file stlogR.v, library ssrbool.v is required and has not been found in the loadpath!
+- *** Warning: in file stlogR.v, library ssrnat.v is required and has not been found in the loadpath!
+- *** Warning: in file stlogR.v, library eqtype.v is required and has not been found in the loadpath!
+- *** Warning: in file stlogR.v, library seq.v is required and has not been found in the loadpath!
+- *** Warning: in file stlogR.v, library ssrfun.v is required and has not been found in the loadpath!
+- *** Warning: cannot open ../../Saclay/Ssreflect/theories
+- *** Warning: cannot open ../../Saclay/Ssreflect/src
+- *** Warning: cannot open ../../Saclay/Ssreflect/theories
+- *** Warning: cannot open ../../Saclay/Ssreflect/src
+- *** Warning: in file cancel2.v, library ssreflect.v is required and has not been found in the loadpath!
+- *** Warning: in file cancel2.v, library ssrfun.v is required and has not been found in the loadpath!
+- *** Warning: in file cancel2.v, library ssrbool.v is required and has not been found in the loadpath!
+- *** Warning: in file cancel2.v, library ssrnat.v is required and has not been found in the loadpath!
+- *** Warning: in file cancel2.v, library seq.v is required and has not been found in the loadpath!
+- *** Warning: in file cancel2.v, library eqtype.v is required and has not been found in the loadpath!
 - *** Warning: in file cancelD.v, library ssreflect.v is required and has not been found in the loadpath!
 - *** Warning: in file cancelD.v, library ssrbool.v is required and has not been found in the loadpath!
 - *** Warning: in file cancelD.v, library ssrnat.v is required and has not been found in the loadpath!
@@ -491,47 +504,27 @@ coq             dev  Formal proof management system.
 - *** Warning: in file cancelD.v, library eqtype.v is required and has not been found in the loadpath!
 - *** Warning: in file cancelD.v, library seq.v is required and has not been found in the loadpath!
 - *** Warning: in file cancelD.v, library path.v is required and has not been found in the loadpath!
+- *** Warning: in file cancel2.v, library ssreflect.v is required and has not been found in the loadpath!
+- *** Warning: in file cancel2.v, library ssrfun.v is required and has not been found in the loadpath!
+- *** Warning: in file cancel2.v, library ssrbool.v is required and has not been found in the loadpath!
+- *** Warning: in file cancel2.v, library ssrnat.v is required and has not been found in the loadpath!
+- *** Warning: in file cancel2.v, library seq.v is required and has not been found in the loadpath!
+- *** Warning: in file cancel2.v, library eqtype.v is required and has not been found in the loadpath!
 - *** Warning: cannot open ../../Saclay/Ssreflect/theories
 - *** Warning: cannot open ../../Saclay/Ssreflect/src
-- *** Warning: in file cancelCTC.v, library ssreflect.v is required and has not been found in the loadpath!
-- *** Warning: in file cancelCTC.v, library ssrfun.v is required and has not been found in the loadpath!
-- *** Warning: in file cancelCTC.v, library ssrbool.v is required and has not been found in the loadpath!
-- *** Warning: in file cancelCTC.v, library ssrnat.v is required and has not been found in the loadpath!
-- *** Warning: in file cancelCTC.v, library seq.v is required and has not been found in the loadpath!
-- *** Warning: in file cancelCTC.v, library eqtype.v is required and has not been found in the loadpath!
-- *** Warning: in file cancelCTC.v, library ssreflect.v is required and has not been found in the loadpath!
-- *** Warning: in file cancelCTC.v, library ssrfun.v is required and has not been found in the loadpath!
-- *** Warning: in file cancelCTC.v, library ssrbool.v is required and has not been found in the loadpath!
-- *** Warning: in file cancelCTC.v, library ssrnat.v is required and has not been found in the loadpath!
-- *** Warning: in file cancelCTC.v, library seq.v is required and has not been found in the loadpath!
-- *** Warning: in file cancelCTC.v, library eqtype.v is required and has not been found in the loadpath!
 - *** Warning: cannot open ../../Saclay/Ssreflect/theories
 - *** Warning: cannot open ../../Saclay/Ssreflect/src
-- *** Warning: in file stlogR.v, library ssreflect.v is required and has not been found in the loadpath!
-- *** Warning: in file stlogR.v, library ssrbool.v is required and has not been found in the loadpath!
-- *** Warning: in file stlogR.v, library ssrnat.v is required and has not been found in the loadpath!
-- *** Warning: in file stlogR.v, library eqtype.v is required and has not been found in the loadpath!
-- *** Warning: in file stlogR.v, library seq.v is required and has not been found in the loadpath!
-- *** Warning: in file stlogR.v, library ssrfun.v is required and has not been found in the loadpath!
-- *** Warning: in file stlogR.v, library ssreflect.v is required and has not been found in the loadpath!
-- *** Warning: in file stlogR.v, library ssrbool.v is required and has not been found in the loadpath!
-- *** Warning: in file stlogR.v, library ssrnat.v is required and has not been found in the loadpath!
-- *** Warning: in file stlogR.v, library eqtype.v is required and has not been found in the loadpath!
-- *** Warning: in file stlogR.v, library seq.v is required and has not been found in the loadpath!
-- *** Warning: in file stlogR.v, library ssrfun.v is required and has not been found in the loadpath!
-- *** Warning: cannot open ../../Saclay/Ssreflect/theories
-- *** Warning: cannot open ../../Saclay/Ssreflect/src
+- *** Warning: in file stlogCTC.v, library ssreflect.v is required and has not been found in the loadpath!
 - *** Warning: in file llistR.v, library ssreflect.v is required and has not been found in the loadpath!
+- *** Warning: in file stlogCTC.v, library ssrbool.v is required and has not been found in the loadpath!
 - *** Warning: in file llistR.v, library ssrbool.v is required and has not been found in the loadpath!
+- *** Warning: in file stlogCTC.v, library ssrnat.v is required and has not been found in the loadpath!
 - *** Warning: in file llistR.v, library ssrnat.v is required and has not been found in the loadpath!
+- *** Warning: in file stlogCTC.v, library eqtype.v is required and has not been found in the loadpath!
 - *** Warning: in file llistR.v, library eqtype.v is required and has not been found in the loadpath!
+- *** Warning: in file stlogCTC.v, library seq.v is required and has not been found in the loadpath!
 - *** Warning: in file llistR.v, library seq.v is required and has not been found in the loadpath!
-- *** Warning: in file llistR.v, library ssrfun.v is required and has not been found in the loadpath!
-- *** Warning: in file llistR.v, library ssreflect.v is required and has not been found in the loadpath!
-- *** Warning: in file llistR.v, library ssrbool.v is required and has not been found in the loadpath!
-- *** Warning: in file llistR.v, library ssrnat.v is required and has not been found in the loadpath!
-- *** Warning: in file llistR.v, library eqtype.v is required and has not been found in the loadpath!
-- *** Warning: in file llistR.v, library seq.v is required and has not been found in the loadpath!
+- *** Warning: in file stlogCTC.v, library ssrfun.v is required and has not been found in the loadpath!
 - *** Warning: in file llistR.v, library ssrfun.v is required and has not been found in the loadpath!
 - *** Warning: in file stlogCTC.v, library ssreflect.v is required and has not been found in the loadpath!
 - *** Warning: in file stlogCTC.v, library ssrbool.v is required and has not been found in the loadpath!
@@ -539,24 +532,12 @@ coq             dev  Formal proof management system.
 - *** Warning: in file stlogCTC.v, library eqtype.v is required and has not been found in the loadpath!
 - *** Warning: in file stlogCTC.v, library seq.v is required and has not been found in the loadpath!
 - *** Warning: in file stlogCTC.v, library ssrfun.v is required and has not been found in the loadpath!
-- *** Warning: in file stlogCTC.v, library ssreflect.v is required and has not been found in the loadpath!
-- *** Warning: in file stlogCTC.v, library ssrbool.v is required and has not been found in the loadpath!
-- *** Warning: in file stlogCTC.v, library ssrnat.v is required and has not been found in the loadpath!
-- *** Warning: in file stlogCTC.v, library eqtype.v is required and has not been found in the loadpath!
-- *** Warning: in file stlogCTC.v, library seq.v is required and has not been found in the loadpath!
-- *** Warning: in file stlogCTC.v, library ssrfun.v is required and has not been found in the loadpath!
-- *** Warning: in file indom.v, library ssreflect.v is required and has not been found in the loadpath!
-- *** Warning: in file indom.v, library ssrfun.v is required and has not been found in the loadpath!
-- *** Warning: in file indom.v, library ssrbool.v is required and has not been found in the loadpath!
-- *** Warning: in file indom.v, library ssrnat.v is required and has not been found in the loadpath!
-- *** Warning: in file indom.v, library seq.v is required and has not been found in the loadpath!
-- *** Warning: in file indom.v, library eqtype.v is required and has not been found in the loadpath!
-- *** Warning: in file indom.v, library ssreflect.v is required and has not been found in the loadpath!
-- *** Warning: in file indom.v, library ssrfun.v is required and has not been found in the loadpath!
-- *** Warning: in file indom.v, library ssrbool.v is required and has not been found in the loadpath!
-- *** Warning: in file indom.v, library ssrnat.v is required and has not been found in the loadpath!
-- *** Warning: in file indom.v, library seq.v is required and has not been found in the loadpath!
-- *** Warning: in file indom.v, library eqtype.v is required and has not been found in the loadpath!
+- *** Warning: in file llistR.v, library ssreflect.v is required and has not been found in the loadpath!
+- *** Warning: in file llistR.v, library ssrbool.v is required and has not been found in the loadpath!
+- *** Warning: in file llistR.v, library ssrnat.v is required and has not been found in the loadpath!
+- *** Warning: in file llistR.v, library eqtype.v is required and has not been found in the loadpath!
+- *** Warning: in file llistR.v, library seq.v is required and has not been found in the loadpath!
+- *** Warning: in file llistR.v, library ssrfun.v is required and has not been found in the loadpath!
 - *** Warning: in file indomCTC.v, library ssreflect.v is required and has not been found in the loadpath!
 - *** Warning: in file indomCTC.v, library ssrfun.v is required and has not been found in the loadpath!
 - *** Warning: in file indomCTC.v, library ssrbool.v is required and has not been found in the loadpath!
@@ -567,24 +548,36 @@ coq             dev  Formal proof management system.
 - *** Warning: in file indomCTC.v, library ssrfun.v is required and has not been found in the loadpath!
 - *** Warning: in file indomCTC.v, library ssrbool.v is required and has not been found in the loadpath!
 - *** Warning: in file indomCTC.v, library ssrnat.v is required and has not been found in the loadpath!
+- *** Warning: in file indom.v, library ssreflect.v is required and has not been found in the loadpath!
 - *** Warning: in file indomCTC.v, library seq.v is required and has not been found in the loadpath!
+- *** Warning: in file indom.v, library ssrfun.v is required and has not been found in the loadpath!
 - *** Warning: in file indomCTC.v, library eqtype.v is required and has not been found in the loadpath!
+- *** Warning: in file indom.v, library ssrbool.v is required and has not been found in the loadpath!
+- *** Warning: in file indom.v, library ssrnat.v is required and has not been found in the loadpath!
+- *** Warning: in file indom.v, library seq.v is required and has not been found in the loadpath!
+- *** Warning: in file indom.v, library eqtype.v is required and has not been found in the loadpath!
+- *** Warning: in file indom.v, library ssreflect.v is required and has not been found in the loadpath!
+- *** Warning: in file indom.v, library ssrfun.v is required and has not been found in the loadpath!
+- *** Warning: in file indom.v, library ssrbool.v is required and has not been found in the loadpath!
+- *** Warning: in file indom.v, library ssrnat.v is required and has not been found in the loadpath!
+- *** Warning: in file indom.v, library seq.v is required and has not been found in the loadpath!
+- *** Warning: in file indom.v, library eqtype.v is required and has not been found in the loadpath!
 - Warning: Cannot open ../../Saclay/Ssreflect/theories
 - Warning: Cannot open ../../Saclay/Ssreflect/theories
 - Warning: Cannot open ../../Saclay/Ssreflect/theories
-- File &quot;./prefix.v&quot;, line 18, characters 0-51:
-- Error: Cannot find library ssreflect in loadpath
 - File &quot;./ordtype.v&quot;, line 18, characters 0-71:
 - Error: Cannot find library ssreflect in loadpath
 - File &quot;./rels.v&quot;, line 18, characters 0-68:
 - Error: Cannot find library ssreflect in loadpath
-- make: *** [prefix.vo] Error 1
-- make: *** Waiting for unfinished jobs....
+- File &quot;./prefix.v&quot;, line 18, characters 0-51:
+- Error: Cannot find library ssreflect in loadpath
 - make: *** [ordtype.vo] Error 1
+- make: *** Waiting for unfinished jobs....
+- make: *** [prefix.vo] Error 1
 - make: *** [rels.vo] Error 1
 [ERROR] The compilation of coq:contrib:lemma-over-loading failed at &quot;make -j4&quot;.
 [coq:contrib:lemma-over-loading: rm] Command started
-+ rm &quot;-R&quot; &quot;/home/bench/.opam/system/lib/coq/user-contrib/lemma-over-loading&quot;
++ rm &quot;-R&quot; &quot;/home/bench/.opam/system/lib/coq/user-contrib/lemma-over-loading&quot; (CWD=/home/bench/.opam/system/build/coq:contrib:lemma-over-loading.dev)
 - rm: cannot remove &#39;/home/bench/.opam/system/lib/coq/user-contrib/lemma-over-loading&#39;: No such file or directory
 #=== ERROR while installing coq:contrib:lemma-over-loading.dev ================#
 # opam-version         1.2.1
@@ -593,38 +586,38 @@ coq             dev  Formal proof management system.
 # path                 /home/bench/.opam/system/build/coq:contrib:lemma-over-loading.dev
 # compiler             system (4.02.1)
 # exit-code            2
-# env-file             /home/bench/.opam/system/build/coq:contrib:lemma-over-loading.dev/coq:contrib:lemma-over-loading-9870-d2d111.env
-# stdout-file          /home/bench/.opam/system/build/coq:contrib:lemma-over-loading.dev/coq:contrib:lemma-over-loading-9870-d2d111.out
-# stderr-file          /home/bench/.opam/system/build/coq:contrib:lemma-over-loading.dev/coq:contrib:lemma-over-loading-9870-d2d111.err
+# env-file             /home/bench/.opam/system/build/coq:contrib:lemma-over-loading.dev/coq:contrib:lemma-over-loading-6637-d2d111.env
+# stdout-file          /home/bench/.opam/system/build/coq:contrib:lemma-over-loading.dev/coq:contrib:lemma-over-loading-6637-d2d111.out
+# stderr-file          /home/bench/.opam/system/build/coq:contrib:lemma-over-loading.dev/coq:contrib:lemma-over-loading-6637-d2d111.err
 ### stdout ###
-# &quot;coqdep&quot; -c -R &quot;../../Saclay/Ssreflect/theories&quot; Ssreflect -R &quot;.&quot; LemmaOverloading -I &quot;../../Saclay/Ssreflect/src&quot; &quot;llistR.v&quot; &gt; &quot;llistR.v.d&quot; || ( RV=$?; rm -f &quot;llistR.v.d&quot;; exit ${RV} )
 # [...]
+# &quot;coqdep&quot; -c -R &quot;../../Saclay/Ssreflect/theories&quot; Ssreflect -R &quot;.&quot; LemmaOverloading -I &quot;../../Saclay/Ssreflect/src&quot; &quot;llistR.v&quot; &gt; &quot;llistR.v.d&quot; || ( RV=$?; rm -f &quot;llistR.v.d&quot;; exit ${RV} )
 # &quot;coqdep&quot; -c -R &quot;../../Saclay/Ssreflect/theories&quot; Ssreflect -R &quot;.&quot; LemmaOverloading -I &quot;../../Saclay/Ssreflect/src&quot; &quot;stlogCTC.v&quot; &gt; &quot;stlogCTC.v.d&quot; || ( RV=$?; rm -f &quot;stlogCTC.v.d&quot;; exit ${RV} )
 # &quot;coqdep&quot; -c -R &quot;../../Saclay/Ssreflect/theories&quot; Ssreflect -R &quot;.&quot; LemmaOverloading -I &quot;../../Saclay/Ssreflect/src&quot; &quot;indom.v&quot; &gt; &quot;indom.v.d&quot; || ( RV=$?; rm -f &quot;indom.v.d&quot;; exit ${RV} )
 # &quot;coqdep&quot; -c -R &quot;../../Saclay/Ssreflect/theories&quot; Ssreflect -R &quot;.&quot; LemmaOverloading -I &quot;../../Saclay/Ssreflect/src&quot; &quot;indomCTC.v&quot; &gt; &quot;indomCTC.v.d&quot; || ( RV=$?; rm -f &quot;indomCTC.v.d&quot;; exit ${RV} )
 # &quot;coqc&quot;  -q  -R &quot;../../Saclay/Ssreflect/theories&quot; Ssreflect -R &quot;.&quot; LemmaOverloading -I &quot;../../Saclay/Ssreflect/src&quot;   ordtype
 # &quot;coqc&quot;  -q  -R &quot;../../Saclay/Ssreflect/theories&quot; Ssreflect -R &quot;.&quot; LemmaOverloading -I &quot;../../Saclay/Ssreflect/src&quot;   rels
 # &quot;coqc&quot;  -q  -R &quot;../../Saclay/Ssreflect/theories&quot; Ssreflect -R &quot;.&quot; LemmaOverloading -I &quot;../../Saclay/Ssreflect/src&quot;   prefix
-# Makefile:262: recipe for target &#39;prefix.vo&#39; failed
-# Makefile:262: recipe for target &#39;ordtype.vo&#39; failed
-# Makefile:262: recipe for target &#39;rels.vo&#39; failed
+# Makefile:266: recipe for target &#39;ordtype.vo&#39; failed
+# Makefile:266: recipe for target &#39;prefix.vo&#39; failed
+# Makefile:266: recipe for target &#39;rels.vo&#39; failed
 ### stderr ###
-# File &quot;./prefix.v&quot;, line 18, characters 0-51:
 # [...]
-# Error: Cannot find library ssreflect in loadpath
 # File &quot;./ordtype.v&quot;, line 18, characters 0-71:
 # Error: Cannot find library ssreflect in loadpath
 # File &quot;./rels.v&quot;, line 18, characters 0-68:
 # Error: Cannot find library ssreflect in loadpath
-# make: *** [prefix.vo] Error 1
-# make: *** Waiting for unfinished jobs....
+# File &quot;./prefix.v&quot;, line 18, characters 0-51:
+# Error: Cannot find library ssreflect in loadpath
 # make: *** [ordtype.vo] Error 1
+# make: *** Waiting for unfinished jobs....
+# make: *** [prefix.vo] Error 1
 # make: *** [rels.vo] Error 1
 =-=- Error report -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 The following actions failed
   - install coq:contrib:lemma-over-loading dev
 No changes have been performed
-&#39;opam install -y --verbose coq:contrib:lemma-over-loading.dev&#39; failed.
+&#39;opam install -y -v coq:contrib:lemma-over-loading.dev&#39; failed.
 </pre></dd>
             </dl>
             <h2>Installation size</h2>
@@ -635,8 +628,6 @@ No changes have been performed
               <dd><code>true</code></dd>
               <dt>Return code</dt>
               <dd>0</dd>
-              <dt>Duration</dt>
-              <dd>0 s</dd>
               <dt>Missing removes</dt>
               <dd>
                 none

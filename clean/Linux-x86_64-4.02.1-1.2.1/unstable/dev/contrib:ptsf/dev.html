@@ -47,7 +47,7 @@
                 <span class="label label-danger">Error</span>
               </small>
             </h1>
-            <p><em><script>document.write(moment("2015-02-22 22:34:10 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2015-02-22 22:34:10 UTC)</em><p>
+            <p><em><script>document.write(moment("2015-04-02 12:53:11 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2015-04-02 12:53:11 UTC)</em><p>
             <h2>Context</h2>
             <pre># Installed packages for system:
 base-bigarray  base  Bigarray library distributed with the OCaml compiler
@@ -62,8 +62,6 @@ coq             dev  Formal proof management system.
               <dd><code>ruby lint.rb unstable ../unstable/packages/coq:contrib:ptsf/coq:contrib:ptsf.dev</code></dd>
               <dt>Return code</dt>
               <dd>0</dd>
-              <dt>Duration</dt>
-              <dd>0 s</dd>
             </dl>
             <h2>Dry install</h2>
             <p>Dry install with the current Coq version:</p>
@@ -72,8 +70,6 @@ coq             dev  Formal proof management system.
               <dd><code>opam install -y --show-action coq:contrib:ptsf.dev coq.dev</code></dd>
               <dt>Return code</dt>
               <dd>0</dd>
-              <dt>Duration</dt>
-              <dd>2 s</dd>
             </dl>
             <p>Dry install without Coq, to test if the problem was incompatibility with the current Coq version:</p>
             <dl class="dl-horizontal">
@@ -81,13 +77,11 @@ coq             dev  Formal proof management system.
               <dd><code>true</code></dd>
               <dt>Return code</dt>
               <dd>0</dd>
-              <dt>Duration</dt>
-              <dd>0 s</dd>
             </dl>
             <h2>Install dependencies</h2>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>ulimit -Sv 2000000; timeout 5m opam install -y --deps-only coq:contrib:ptsf.dev</code></dd>
+              <dd><code>opam list; ulimit -Sv 1000000; timeout 5m opam install -y --deps-only coq:contrib:ptsf.dev</code></dd>
               <dt>Return code</dt>
               <dd>0</dd>
               <dt>Duration</dt>
@@ -96,66 +90,69 @@ coq             dev  Formal proof management system.
             <h2>Install</h2>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>ulimit -Sv 2000000; timeout 30m opam install -y --verbose coq:contrib:ptsf.dev</code></dd>
+              <dd><code>opam list; ulimit -Sv 4000000; timeout 120m opam install -y -v coq:contrib:ptsf.dev</code></dd>
               <dt>Return code</dt>
               <dd>1024</dd>
               <dt>Duration</dt>
               <dd>3 s</dd>
               <dt>Output</dt>
-              <dd><pre>The following actions will be performed:
+              <dd><pre># Installed packages for system:
+base-bigarray  base  Bigarray library distributed with the OCaml compiler
+base-threads   base  Threads library distributed with the OCaml compiler
+base-unix      base  Unix library distributed with the OCaml compiler
+camlp5         6.12  Preprocessor-pretty-printer of OCaml
+coq             dev  Formal proof management system.
+The following actions will be performed:
   - install coq:contrib:ptsf dev
 =-=- Gathering sources =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 [coq:contrib:ptsf: from unstable] Repo archive not found[coq:contrib:ptsf: git] Command started
-+ git &quot;init&quot;
-- Initialized empty Git repository in /home/bench/.opam/packages.dev/coq:contrib:ptsf.dev/.git/
-[coq:contrib:ptsf: git] Command started
-+ git &quot;remote&quot; &quot;add&quot; &quot;origin&quot; &quot;https://gforge.inria.fr/git/coq-contribs/ptsf.git&quot;
-[coq:contrib:ptsf: git] Command started
-+ git &quot;commit&quot; &quot;--allow-empty&quot; &quot;-m&quot; &quot;opam-git-init&quot;
-- [master (root-commit) 3e02af3] opam-git-init
 [coq:contrib:ptsf: git] Command started
 [coq:contrib:ptsf: git] Command started
-+ git &quot;fetch&quot; &quot;-q&quot; &quot;origin&quot; &quot;+trunk:refs/remotes/opam-ref&quot;
 [coq:contrib:ptsf: git] Command started
-+ git &quot;reset&quot; &quot;--hard&quot; &quot;refs/remotes/opam-ref&quot; &quot;--&quot;
-- HEAD is now at af19f2f Fixing PTSF
+[coq:contrib:ptsf: git] Command started
+[coq:contrib:ptsf: git] Command started
 [coq:contrib:ptsf] https://gforge.inria.fr/git/coq-contribs/ptsf.git#trunk updated
 =-=- Processing actions -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
-+ cp &quot;-PR&quot; &quot;/home/bench/.opam/packages.dev/coq:contrib:ptsf.dev&quot; &quot;/home/bench/.opam/system/build/coq:contrib:ptsf.dev&quot;
 [coq:contrib:ptsf: coq_makefile Make] Command started
-+ coq_makefile &quot;-f&quot; &quot;Make&quot; &quot;-o&quot; &quot;Makefile&quot;
-- Warning: install rule assumes that -R/-Q . _ is the only -R/-Q optionWarning: install rule assumes that -R/-Q . _ is the only -R/-Q optionWarning: -R/-Q options don&#39;t have a correct common prefix,
++ coq_makefile &quot;-f&quot; &quot;Make&quot; &quot;-o&quot; &quot;Makefile&quot; (CWD=/home/bench/.opam/system/build/coq:contrib:ptsf.dev)
+- Warning: install rule assumes that -R/-Q . _ is the only -R/-Q option
+- Warning: install rule assumes that -R/-Q . _ is the only -R/-Q option
+- Warning: -R/-Q options don&#39;t have a correct common prefix,
 -  install-doc will put anything in $INSTALLDEFAULTROOT
 [coq:contrib:ptsf: make] Command started
-+ make &quot;-j4&quot;
++ make &quot;-j4&quot; (CWD=/home/bench/.opam/system/build/coq:contrib:ptsf.dev)
 - &quot;coqdep&quot; -c -R &quot;.&quot; PTSF -R &quot;../../Paris/PTSATR/&quot; PTSATR &quot;f_env.v&quot; &gt; &quot;f_env.v.d&quot; || ( RV=$?; rm -f &quot;f_env.v.d&quot;; exit ${RV} )
 - &quot;coqdep&quot; -c -R &quot;.&quot; PTSF -R &quot;../../Paris/PTSATR/&quot; PTSATR &quot;f_equivalence.v&quot; &gt; &quot;f_equivalence.v.d&quot; || ( RV=$?; rm -f &quot;f_equivalence.v.d&quot;; exit ${RV} )
 - &quot;coqdep&quot; -c -R &quot;.&quot; PTSF -R &quot;../../Paris/PTSATR/&quot; PTSATR &quot;f_term.v&quot; &gt; &quot;f_term.v.d&quot; || ( RV=$?; rm -f &quot;f_term.v.d&quot;; exit ${RV} )
 - &quot;coqdep&quot; -c -R &quot;.&quot; PTSF -R &quot;../../Paris/PTSATR/&quot; PTSATR &quot;f_typ2.v&quot; &gt; &quot;f_typ2.v.d&quot; || ( RV=$?; rm -f &quot;f_typ2.v.d&quot;; exit ${RV} )
 - &quot;coqdep&quot; -c -R &quot;.&quot; PTSF -R &quot;../../Paris/PTSATR/&quot; PTSATR &quot;f_typ.v&quot; &gt; &quot;f_typ.v.d&quot; || ( RV=$?; rm -f &quot;f_typ.v.d&quot;; exit ${RV} )
 - &quot;coqc&quot;  -q  -R &quot;.&quot; PTSF -R &quot;../../Paris/PTSATR/&quot; PTSATR   f_term
-- Makefile:238: recipe for target &#39;f_term.vo&#39; failed
+- Makefile:242: recipe for target &#39;f_term.vo&#39; failed
 - *** Warning: cannot open ../../Paris/PTSATR/
 - *** Warning: cannot open ../../Paris/PTSATR/
 - *** Warning: cannot open ../../Paris/PTSATR/
-- *** Warning: cannot open ../../Paris/PTSATR/
-- *** Warning: in file f_env.v, library base.v is required and has not been found in the loadpath!
-- *** Warning: in file f_typ2.v, library ut_term.v is required and has not been found in the loadpath!
-- *** Warning: in file f_typ2.v, library ut_red.v is required and has not been found in the loadpath!
-- *** Warning: in file f_typ2.v, library ut_env.v is required and has not been found in the loadpath!
-- *** Warning: in file f_typ2.v, library ut_typ.v is required and has not been found in the loadpath!
-- *** Warning: in file f_typ2.v, library ut_sr.v is required and has not been found in the loadpath!
-- *** Warning: in file f_typ2.v, library base.v is required and has not been found in the loadpath!
-- *** Warning: in file f_env.v, library base.v is required and has not been found in the loadpath!
-- *** Warning: in file f_typ2.v, library ut_term.v is required and has not been found in the loadpath!
-- *** Warning: in file f_typ2.v, library ut_red.v is required and has not been found in the loadpath!
-- *** Warning: in file f_typ2.v, library ut_env.v is required and has not been found in the loadpath!
-- *** Warning: in file f_typ2.v, library ut_typ.v is required and has not been found in the loadpath!
-- *** Warning: in file f_typ2.v, library ut_sr.v is required and has not been found in the loadpath!
-- *** Warning: in file f_typ2.v, library base.v is required and has not been found in the loadpath!
 - *** Warning: cannot open ../../Paris/PTSATR/
 - *** Warning: in file f_equivalence.v, library base.v is required and has not been found in the loadpath!
-- *** Warning: in file f_term.v, library base.v is required and has not been found in the loadpath!
+- *** Warning: in file f_typ2.v, library ut_term.v is required and has not been found in the loadpath!
+- *** Warning: in file f_typ2.v, library ut_red.v is required and has not been found in the loadpath!
+- *** Warning: in file f_equivalence.v, library ut_term.v is required and has not been found in the loadpath!
+- *** Warning: in file f_typ2.v, library ut_env.v is required and has not been found in the loadpath!
+- *** Warning: in file f_equivalence.v, library ut_red.v is required and has not been found in the loadpath!
+- *** Warning: in file f_typ2.v, library ut_typ.v is required and has not been found in the loadpath!
+- *** Warning: in file f_equivalence.v, library ut_env.v is required and has not been found in the loadpath!
+- *** Warning: in file f_typ2.v, library ut_sr.v is required and has not been found in the loadpath!
+- *** Warning: in file f_equivalence.v, library ut_typ.v is required and has not been found in the loadpath!
+- *** Warning: in file f_typ2.v, library base.v is required and has not been found in the loadpath!
+- *** Warning: in file f_equivalence.v, library ut_sr.v is required and has not been found in the loadpath!
+- *** Warning: in file f_equivalence.v, library ut_typ_eq.v is required and has not been found in the loadpath!
+- *** Warning: in file f_equivalence.v, library final_result.v is required and has not been found in the loadpath!
+- *** Warning: in file f_equivalence.v, library term.v is required and has not been found in the loadpath!
+- *** Warning: in file f_equivalence.v, library red.v is required and has not been found in the loadpath!
+- *** Warning: in file f_equivalence.v, library env.v is required and has not been found in the loadpath!
+- *** Warning: in file f_equivalence.v, library typ_annot.v is required and has not been found in the loadpath!
+- *** Warning: in file f_equivalence.v, library glue.v is required and has not been found in the loadpath!
+- *** Warning: in file f_equivalence.v, library strip.v is required and has not been found in the loadpath!
+- *** Warning: in file f_equivalence.v, library base.v is required and has not been found in the loadpath!
 - *** Warning: in file f_equivalence.v, library ut_term.v is required and has not been found in the loadpath!
 - *** Warning: in file f_equivalence.v, library ut_red.v is required and has not been found in the loadpath!
 - *** Warning: in file f_equivalence.v, library ut_env.v is required and has not been found in the loadpath!
@@ -169,21 +166,17 @@ coq             dev  Formal proof management system.
 - *** Warning: in file f_equivalence.v, library typ_annot.v is required and has not been found in the loadpath!
 - *** Warning: in file f_equivalence.v, library glue.v is required and has not been found in the loadpath!
 - *** Warning: in file f_equivalence.v, library strip.v is required and has not been found in the loadpath!
-- *** Warning: in file f_equivalence.v, library base.v is required and has not been found in the loadpath!
+- *** Warning: in file f_typ2.v, library ut_term.v is required and has not been found in the loadpath!
+- *** Warning: in file f_typ2.v, library ut_red.v is required and has not been found in the loadpath!
+- *** Warning: in file f_typ2.v, library ut_env.v is required and has not been found in the loadpath!
+- *** Warning: in file f_typ2.v, library ut_typ.v is required and has not been found in the loadpath!
+- *** Warning: in file f_typ2.v, library ut_sr.v is required and has not been found in the loadpath!
+- *** Warning: in file f_typ2.v, library base.v is required and has not been found in the loadpath!
+- *** Warning: cannot open ../../Paris/PTSATR/
+- *** Warning: in file f_env.v, library base.v is required and has not been found in the loadpath!
 - *** Warning: in file f_term.v, library base.v is required and has not been found in the loadpath!
-- *** Warning: in file f_equivalence.v, library ut_term.v is required and has not been found in the loadpath!
-- *** Warning: in file f_equivalence.v, library ut_red.v is required and has not been found in the loadpath!
-- *** Warning: in file f_equivalence.v, library ut_env.v is required and has not been found in the loadpath!
-- *** Warning: in file f_equivalence.v, library ut_typ.v is required and has not been found in the loadpath!
-- *** Warning: in file f_equivalence.v, library ut_sr.v is required and has not been found in the loadpath!
-- *** Warning: in file f_equivalence.v, library ut_typ_eq.v is required and has not been found in the loadpath!
-- *** Warning: in file f_equivalence.v, library final_result.v is required and has not been found in the loadpath!
-- *** Warning: in file f_equivalence.v, library term.v is required and has not been found in the loadpath!
-- *** Warning: in file f_equivalence.v, library red.v is required and has not been found in the loadpath!
-- *** Warning: in file f_equivalence.v, library env.v is required and has not been found in the loadpath!
-- *** Warning: in file f_equivalence.v, library typ_annot.v is required and has not been found in the loadpath!
-- *** Warning: in file f_equivalence.v, library glue.v is required and has not been found in the loadpath!
-- *** Warning: in file f_equivalence.v, library strip.v is required and has not been found in the loadpath!
+- *** Warning: in file f_env.v, library base.v is required and has not been found in the loadpath!
+- *** Warning: in file f_term.v, library base.v is required and has not been found in the loadpath!
 - *** Warning: in file f_typ.v, library base.v is required and has not been found in the loadpath!
 - *** Warning: in file f_typ.v, library base.v is required and has not been found in the loadpath!
 - Warning: Cannot open ../../Paris/PTSATR/
@@ -192,7 +185,7 @@ coq             dev  Formal proof management system.
 - make: *** [f_term.vo] Error 1
 [ERROR] The compilation of coq:contrib:ptsf failed at &quot;make -j4&quot;.
 [coq:contrib:ptsf: rm] Command started
-+ rm &quot;-R&quot; &quot;/home/bench/.opam/system/lib/coq/user-contrib/ptsf&quot;
++ rm &quot;-R&quot; &quot;/home/bench/.opam/system/lib/coq/user-contrib/ptsf&quot; (CWD=/home/bench/.opam/system/build/coq:contrib:ptsf.dev)
 - rm: cannot remove &#39;/home/bench/.opam/system/lib/coq/user-contrib/ptsf&#39;: No such file or directory
 #=== ERROR while installing coq:contrib:ptsf.dev ==============================#
 # opam-version         1.2.1
@@ -201,9 +194,9 @@ coq             dev  Formal proof management system.
 # path                 /home/bench/.opam/system/build/coq:contrib:ptsf.dev
 # compiler             system (4.02.1)
 # exit-code            2
-# env-file             /home/bench/.opam/system/build/coq:contrib:ptsf.dev/coq:contrib:ptsf-19803-d2d111.env
-# stdout-file          /home/bench/.opam/system/build/coq:contrib:ptsf.dev/coq:contrib:ptsf-19803-d2d111.out
-# stderr-file          /home/bench/.opam/system/build/coq:contrib:ptsf.dev/coq:contrib:ptsf-19803-d2d111.err
+# env-file             /home/bench/.opam/system/build/coq:contrib:ptsf.dev/coq:contrib:ptsf-13720-d2d111.env
+# stdout-file          /home/bench/.opam/system/build/coq:contrib:ptsf.dev/coq:contrib:ptsf-13720-d2d111.out
+# stderr-file          /home/bench/.opam/system/build/coq:contrib:ptsf.dev/coq:contrib:ptsf-13720-d2d111.err
 ### stdout ###
 # &quot;coqdep&quot; -c -R &quot;.&quot; PTSF -R &quot;../../Paris/PTSATR/&quot; PTSATR &quot;f_env.v&quot; &gt; &quot;f_env.v.d&quot; || ( RV=$?; rm -f &quot;f_env.v.d&quot;; exit ${RV} )
 # &quot;coqdep&quot; -c -R &quot;.&quot; PTSF -R &quot;../../Paris/PTSATR/&quot; PTSATR &quot;f_equivalence.v&quot; &gt; &quot;f_equivalence.v.d&quot; || ( RV=$?; rm -f &quot;f_equivalence.v.d&quot;; exit ${RV} )
@@ -211,13 +204,13 @@ coq             dev  Formal proof management system.
 # &quot;coqdep&quot; -c -R &quot;.&quot; PTSF -R &quot;../../Paris/PTSATR/&quot; PTSATR &quot;f_typ2.v&quot; &gt; &quot;f_typ2.v.d&quot; || ( RV=$?; rm -f &quot;f_typ2.v.d&quot;; exit ${RV} )
 # &quot;coqdep&quot; -c -R &quot;.&quot; PTSF -R &quot;../../Paris/PTSATR/&quot; PTSATR &quot;f_typ.v&quot; &gt; &quot;f_typ.v.d&quot; || ( RV=$?; rm -f &quot;f_typ.v.d&quot;; exit ${RV} )
 # &quot;coqc&quot;  -q  -R &quot;.&quot; PTSF -R &quot;../../Paris/PTSATR/&quot; PTSATR   f_term
-# Makefile:238: recipe for target &#39;f_term.vo&#39; failed
+# Makefile:242: recipe for target &#39;f_term.vo&#39; failed
 ### stderr ###
-# *** Warning: in file f_equivalence.v, library env.v is required and has not been found in the loadpath!
 # [...]
-# *** Warning: in file f_equivalence.v, library typ_annot.v is required and has not been found in the loadpath!
-# *** Warning: in file f_equivalence.v, library glue.v is required and has not been found in the loadpath!
-# *** Warning: in file f_equivalence.v, library strip.v is required and has not been found in the loadpath!
+# *** Warning: in file f_env.v, library base.v is required and has not been found in the loadpath!
+# *** Warning: in file f_term.v, library base.v is required and has not been found in the loadpath!
+# *** Warning: in file f_env.v, library base.v is required and has not been found in the loadpath!
+# *** Warning: in file f_term.v, library base.v is required and has not been found in the loadpath!
 # *** Warning: in file f_typ.v, library base.v is required and has not been found in the loadpath!
 # *** Warning: in file f_typ.v, library base.v is required and has not been found in the loadpath!
 # Warning: Cannot open ../../Paris/PTSATR/
@@ -228,7 +221,7 @@ coq             dev  Formal proof management system.
 The following actions failed
   - install coq:contrib:ptsf dev
 No changes have been performed
-&#39;opam install -y --verbose coq:contrib:ptsf.dev&#39; failed.
+&#39;opam install -y -v coq:contrib:ptsf.dev&#39; failed.
 </pre></dd>
             </dl>
             <h2>Installation size</h2>
@@ -239,8 +232,6 @@ No changes have been performed
               <dd><code>true</code></dd>
               <dt>Return code</dt>
               <dd>0</dd>
-              <dt>Duration</dt>
-              <dd>0 s</dd>
               <dt>Missing removes</dt>
               <dd>
                 none

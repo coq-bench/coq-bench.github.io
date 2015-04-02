@@ -47,7 +47,7 @@
                 <span class="label label-danger">Error</span>
               </small>
             </h1>
-            <p><em><script>document.write(moment("2015-02-22 22:34:10 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2015-02-22 22:34:10 UTC)</em><p>
+            <p><em><script>document.write(moment("2015-04-02 12:53:11 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2015-04-02 12:53:11 UTC)</em><p>
             <h2>Context</h2>
             <pre># Installed packages for system:
 base-bigarray  base  Bigarray library distributed with the OCaml compiler
@@ -62,8 +62,6 @@ coq             dev  Formal proof management system.
               <dd><code>ruby lint.rb unstable ../unstable/packages/coq:contrib:lin-alg/coq:contrib:lin-alg.dev</code></dd>
               <dt>Return code</dt>
               <dd>0</dd>
-              <dt>Duration</dt>
-              <dd>0 s</dd>
             </dl>
             <h2>Dry install</h2>
             <p>Dry install with the current Coq version:</p>
@@ -72,8 +70,6 @@ coq             dev  Formal proof management system.
               <dd><code>opam install -y --show-action coq:contrib:lin-alg.dev coq.dev</code></dd>
               <dt>Return code</dt>
               <dd>0</dd>
-              <dt>Duration</dt>
-              <dd>2 s</dd>
             </dl>
             <p>Dry install without Coq, to test if the problem was incompatibility with the current Coq version:</p>
             <dl class="dl-horizontal">
@@ -81,13 +77,11 @@ coq             dev  Formal proof management system.
               <dd><code>true</code></dd>
               <dt>Return code</dt>
               <dd>0</dd>
-              <dt>Duration</dt>
-              <dd>0 s</dd>
             </dl>
             <h2>Install dependencies</h2>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>ulimit -Sv 2000000; timeout 5m opam install -y --deps-only coq:contrib:lin-alg.dev</code></dd>
+              <dd><code>opam list; ulimit -Sv 1000000; timeout 5m opam install -y --deps-only coq:contrib:lin-alg.dev</code></dd>
               <dt>Return code</dt>
               <dd>0</dd>
               <dt>Duration</dt>
@@ -96,267 +90,192 @@ coq             dev  Formal proof management system.
             <h2>Install</h2>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>ulimit -Sv 2000000; timeout 30m opam install -y --verbose coq:contrib:lin-alg.dev</code></dd>
+              <dd><code>opam list; ulimit -Sv 4000000; timeout 120m opam install -y -v coq:contrib:lin-alg.dev</code></dd>
               <dt>Return code</dt>
               <dd>1024</dd>
               <dt>Duration</dt>
-              <dd>3 s</dd>
+              <dd>4 s</dd>
               <dt>Output</dt>
-              <dd><pre>The following actions will be performed:
+              <dd><pre># Installed packages for system:
+base-bigarray  base  Bigarray library distributed with the OCaml compiler
+base-threads   base  Threads library distributed with the OCaml compiler
+base-unix      base  Unix library distributed with the OCaml compiler
+camlp5         6.12  Preprocessor-pretty-printer of OCaml
+coq             dev  Formal proof management system.
+The following actions will be performed:
   - install coq:contrib:lin-alg dev
 =-=- Gathering sources =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 [coq:contrib:lin-alg: from unstable] Repo archive not found[coq:contrib:lin-alg: git] Command started
-+ git &quot;init&quot;
-- Initialized empty Git repository in /home/bench/.opam/packages.dev/coq:contrib:lin-alg.dev/.git/
-[coq:contrib:lin-alg: git] Command started
-+ git &quot;remote&quot; &quot;add&quot; &quot;origin&quot; &quot;https://gforge.inria.fr/git/coq-contribs/lin-alg.git&quot;
-[coq:contrib:lin-alg: git] Command started
-+ git &quot;commit&quot; &quot;--allow-empty&quot; &quot;-m&quot; &quot;opam-git-init&quot;
-- [master (root-commit) c7659f6] opam-git-init
 [coq:contrib:lin-alg: git] Command started
 [coq:contrib:lin-alg: git] Command started
-+ git &quot;fetch&quot; &quot;-q&quot; &quot;origin&quot; &quot;+trunk:refs/remotes/opam-ref&quot;
 [coq:contrib:lin-alg: git] Command started
-+ git &quot;reset&quot; &quot;--hard&quot; &quot;refs/remotes/opam-ref&quot; &quot;--&quot;
-- HEAD is now at a0463da Fix LinAlg
+[coq:contrib:lin-alg: git] Command started
+[coq:contrib:lin-alg: git] Command started
 [coq:contrib:lin-alg] https://gforge.inria.fr/git/coq-contribs/lin-alg.git#trunk updated
 =-=- Processing actions -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
-+ cp &quot;-PR&quot; &quot;/home/bench/.opam/packages.dev/coq:contrib:lin-alg.dev&quot; &quot;/home/bench/.opam/system/build/coq:contrib:lin-alg.dev&quot;
 [coq:contrib:lin-alg: coq_makefile Make] Command started
-+ coq_makefile &quot;-f&quot; &quot;Make&quot; &quot;-o&quot; &quot;Makefile&quot;
-- Warning: in option -R, ../../Sophia-Antipolis/Algebra/ is not a subdirectory of the current directory
-- Warning: install rule assumes that -R/-Q . _ is the only -R/-Q optionWarning: install rule assumes that -R/-Q . _ is the only -R/-Q optionWarning: -R/-Q options don&#39;t have a correct common prefix,
--  install-doc will put anything in $INSTALLDEFAULTROOT
++ coq_makefile &quot;-f&quot; &quot;Make&quot; &quot;-o&quot; &quot;Makefile&quot; (CWD=/home/bench/.opam/system/build/coq:contrib:lin-alg.dev)
 [coq:contrib:lin-alg: make] Command started
-+ make &quot;-j4&quot;
-- &quot;coqdep&quot; -c -R &quot;../../Sophia-Antipolis/Algebra/&quot; Algebra -R &quot;.&quot; LinAlg &quot;first_page.v&quot; &gt; &quot;first_page.v.d&quot; || ( RV=$?; rm -f &quot;first_page.v.d&quot;; exit ${RV} )
-- &quot;coqdep&quot; -c -R &quot;../../Sophia-Antipolis/Algebra/&quot; Algebra -R &quot;.&quot; LinAlg &quot;support/equal_syntax.v&quot; &gt; &quot;support/equal_syntax.v.d&quot; || ( RV=$?; rm -f &quot;support/equal_syntax.v.d&quot;; exit ${RV} )
-- &quot;coqdep&quot; -c -R &quot;../../Sophia-Antipolis/Algebra/&quot; Algebra -R &quot;.&quot; LinAlg &quot;support/more_syntax.v&quot; &gt; &quot;support/more_syntax.v.d&quot; || ( RV=$?; rm -f &quot;support/more_syntax.v.d&quot;; exit ${RV} )
-- &quot;coqdep&quot; -c -R &quot;../../Sophia-Antipolis/Algebra/&quot; Algebra -R &quot;.&quot; LinAlg &quot;LinAlg/vecspaces_verybasic.v&quot; &gt; &quot;LinAlg/vecspaces_verybasic.v.d&quot; || ( RV=$?; rm -f &quot;LinAlg/vecspaces_verybasic.v.d&quot;; exit ${RV} )
-- &quot;coqdep&quot; -c -R &quot;../../Sophia-Antipolis/Algebra/&quot; Algebra -R &quot;.&quot; LinAlg &quot;support/finite.v&quot; &gt; &quot;support/finite.v.d&quot; || ( RV=$?; rm -f &quot;support/finite.v.d&quot;; exit ${RV} )
-- &quot;coqdep&quot; -c -R &quot;../../Sophia-Antipolis/Algebra/&quot; Algebra -R &quot;.&quot; LinAlg &quot;examples/vecspace_Fn.v&quot; &gt; &quot;examples/vecspace_Fn.v.d&quot; || ( RV=$?; rm -f &quot;examples/vecspace_Fn.v.d&quot;; exit ${RV} )
-- &quot;coqdep&quot; -c -R &quot;../../Sophia-Antipolis/Algebra/&quot; Algebra -R &quot;.&quot; LinAlg &quot;support/Map2.v&quot; &gt; &quot;support/Map2.v.d&quot; || ( RV=$?; rm -f &quot;support/Map2.v.d&quot;; exit ${RV} )
-- &quot;coqdep&quot; -c -R &quot;../../Sophia-Antipolis/Algebra/&quot; Algebra -R &quot;.&quot; LinAlg &quot;examples/vecspace_functionspace.v&quot; &gt; &quot;examples/vecspace_functionspace.v.d&quot; || ( RV=$?; rm -f &quot;examples/vecspace_functionspace.v.d&quot;; exit ${RV} )
-- &quot;coqdep&quot; -c -R &quot;../../Sophia-Antipolis/Algebra/&quot; Algebra -R &quot;.&quot; LinAlg &quot;examples/Matrices.v&quot; &gt; &quot;examples/Matrices.v.d&quot; || ( RV=$?; rm -f &quot;examples/Matrices.v.d&quot;; exit ${RV} )
-- &quot;coqdep&quot; -c -R &quot;../../Sophia-Antipolis/Algebra/&quot; Algebra -R &quot;.&quot; LinAlg &quot;examples/vecspace_Mmn.v&quot; &gt; &quot;examples/vecspace_Mmn.v.d&quot; || ( RV=$?; rm -f &quot;examples/vecspace_Mmn.v.d&quot;; exit ${RV} )
-- &quot;coqdep&quot; -c -R &quot;../../Sophia-Antipolis/Algebra/&quot; Algebra -R &quot;.&quot; LinAlg &quot;LinAlg/alt_build_vecsp.v&quot; &gt; &quot;LinAlg/alt_build_vecsp.v.d&quot; || ( RV=$?; rm -f &quot;LinAlg/alt_build_vecsp.v.d&quot;; exit ${RV} )
-- &quot;coqdep&quot; -c -R &quot;../../Sophia-Antipolis/Algebra/&quot; Algebra -R &quot;.&quot; LinAlg &quot;examples/infinite_sequences.v&quot; &gt; &quot;examples/infinite_sequences.v.d&quot; || ( RV=$?; rm -f &quot;examples/infinite_sequences.v.d&quot;; exit ${RV} )
-- &quot;coqdep&quot; -c -R &quot;../../Sophia-Antipolis/Algebra/&quot; Algebra -R &quot;.&quot; LinAlg &quot;support/algebra_omissions.v&quot; &gt; &quot;support/algebra_omissions.v.d&quot; || ( RV=$?; rm -f &quot;support/algebra_omissions.v.d&quot;; exit ${RV} )
-- &quot;coqdep&quot; -c -R &quot;../../Sophia-Antipolis/Algebra/&quot; Algebra -R &quot;.&quot; LinAlg &quot;support/arb_intersections.v&quot; &gt; &quot;support/arb_intersections.v.d&quot; || ( RV=$?; rm -f &quot;support/arb_intersections.v.d&quot;; exit ${RV} )
-- &quot;coqdep&quot; -c -R &quot;../../Sophia-Antipolis/Algebra/&quot; Algebra -R &quot;.&quot; LinAlg &quot;LinAlg/subspaces.v&quot; &gt; &quot;LinAlg/subspaces.v.d&quot; || ( RV=$?; rm -f &quot;LinAlg/subspaces.v.d&quot;; exit ${RV} )
-- &quot;coqdep&quot; -c -R &quot;../../Sophia-Antipolis/Algebra/&quot; Algebra -R &quot;.&quot; LinAlg &quot;examples/antisymmetric_matrices.v&quot; &gt; &quot;examples/antisymmetric_matrices.v.d&quot; || ( RV=$?; rm -f &quot;examples/antisymmetric_matrices.v.d&quot;; exit ${RV} )
-- &quot;coqdep&quot; -c -R &quot;../../Sophia-Antipolis/Algebra/&quot; Algebra -R &quot;.&quot; LinAlg &quot;examples/symmetric_matrices.v&quot; &gt; &quot;examples/symmetric_matrices.v.d&quot; || ( RV=$?; rm -f &quot;examples/symmetric_matrices.v.d&quot;; exit ${RV} )
-- &quot;coqdep&quot; -c -R &quot;../../Sophia-Antipolis/Algebra/&quot; Algebra -R &quot;.&quot; LinAlg &quot;examples/up_lo_triang_mat.v&quot; &gt; &quot;examples/up_lo_triang_mat.v.d&quot; || ( RV=$?; rm -f &quot;examples/up_lo_triang_mat.v.d&quot;; exit ${RV} )
-- &quot;coqdep&quot; -c -R &quot;../../Sophia-Antipolis/Algebra/&quot; Algebra -R &quot;.&quot; LinAlg &quot;support/seq_set.v&quot; &gt; &quot;support/seq_set.v.d&quot; || ( RV=$?; rm -f &quot;support/seq_set.v.d&quot;; exit ${RV} )
-- &quot;coqdep&quot; -c -R &quot;../../Sophia-Antipolis/Algebra/&quot; Algebra -R &quot;.&quot; LinAlg &quot;support/seq_set_seq.v&quot; &gt; &quot;support/seq_set_seq.v.d&quot; || ( RV=$?; rm -f &quot;support/seq_set_seq.v.d&quot;; exit ${RV} )
-- &quot;coqdep&quot; -c -R &quot;../../Sophia-Antipolis/Algebra/&quot; Algebra -R &quot;.&quot; LinAlg &quot;support/empty.v&quot; &gt; &quot;support/empty.v.d&quot; || ( RV=$?; rm -f &quot;support/empty.v.d&quot;; exit ${RV} )
-- &quot;coqdep&quot; -c -R &quot;../../Sophia-Antipolis/Algebra/&quot; Algebra -R &quot;.&quot; LinAlg &quot;support/conshdtl.v&quot; &gt; &quot;support/conshdtl.v.d&quot; || ( RV=$?; rm -f &quot;support/conshdtl.v.d&quot;; exit ${RV} )
-- &quot;coqdep&quot; -c -R &quot;../../Sophia-Antipolis/Algebra/&quot; Algebra -R &quot;.&quot; LinAlg &quot;support/concat.v&quot; &gt; &quot;support/concat.v.d&quot; || ( RV=$?; rm -f &quot;support/concat.v.d&quot;; exit ${RV} )
-- &quot;coqdep&quot; -c -R &quot;../../Sophia-Antipolis/Algebra/&quot; Algebra -R &quot;.&quot; LinAlg &quot;support/const.v&quot; &gt; &quot;support/const.v.d&quot; || ( RV=$?; rm -f &quot;support/const.v.d&quot;; exit ${RV} )
-- &quot;coqdep&quot; -c -R &quot;../../Sophia-Antipolis/Algebra/&quot; Algebra -R &quot;.&quot; LinAlg &quot;support/omit.v&quot; &gt; &quot;support/omit.v.d&quot; || ( RV=$?; rm -f &quot;support/omit.v.d&quot;; exit ${RV} )
-- &quot;coqdep&quot; -c -R &quot;../../Sophia-Antipolis/Algebra/&quot; Algebra -R &quot;.&quot; LinAlg &quot;support/pointwise.v&quot; &gt; &quot;support/pointwise.v.d&quot; || ( RV=$?; rm -f &quot;support/pointwise.v.d&quot;; exit ${RV} )
-- &quot;coqdep&quot; -c -R &quot;../../Sophia-Antipolis/Algebra/&quot; Algebra -R &quot;.&quot; LinAlg &quot;support/modify_seq.v&quot; &gt; &quot;support/modify_seq.v.d&quot; || ( RV=$?; rm -f &quot;support/modify_seq.v.d&quot;; exit ${RV} )
-- &quot;coqdep&quot; -c -R &quot;../../Sophia-Antipolis/Algebra/&quot; Algebra -R &quot;.&quot; LinAlg &quot;support/mult_by_scalars.v&quot; &gt; &quot;support/mult_by_scalars.v.d&quot; || ( RV=$?; rm -f &quot;support/mult_by_scalars.v.d&quot;; exit ${RV} )
-- &quot;coqdep&quot; -c -R &quot;../../Sophia-Antipolis/Algebra/&quot; Algebra -R &quot;.&quot; LinAlg &quot;support/Map_embed.v&quot; &gt; &quot;support/Map_embed.v.d&quot; || ( RV=$?; rm -f &quot;support/Map_embed.v.d&quot;; exit ${RV} )
-- &quot;coqdep&quot; -c -R &quot;../../Sophia-Antipolis/Algebra/&quot; Algebra -R &quot;.&quot; LinAlg &quot;support/subseqs.v&quot; &gt; &quot;support/subseqs.v.d&quot; || ( RV=$?; rm -f &quot;support/subseqs.v.d&quot;; exit ${RV} )
-- &quot;coqdep&quot; -c -R &quot;../../Sophia-Antipolis/Algebra/&quot; Algebra -R &quot;.&quot; LinAlg &quot;support/sums.v&quot; &gt; &quot;support/sums.v.d&quot; || ( RV=$?; rm -f &quot;support/sums.v.d&quot;; exit ${RV} )
-- &quot;coqdep&quot; -c -R &quot;../../Sophia-Antipolis/Algebra/&quot; Algebra -R &quot;.&quot; LinAlg &quot;support/sums2.v&quot; &gt; &quot;support/sums2.v.d&quot; || ( RV=$?; rm -f &quot;support/sums2.v.d&quot;; exit ${RV} )
-- &quot;coqdep&quot; -c -R &quot;../../Sophia-Antipolis/Algebra/&quot; Algebra -R &quot;.&quot; LinAlg &quot;support/distinct.v&quot; &gt; &quot;support/distinct.v.d&quot; || ( RV=$?; rm -f &quot;support/distinct.v.d&quot;; exit ${RV} )
-- &quot;coqdep&quot; -c -R &quot;../../Sophia-Antipolis/Algebra/&quot; Algebra -R &quot;.&quot; LinAlg &quot;support/cast_seq_lengths.v&quot; &gt; &quot;support/cast_seq_lengths.v.d&quot; || ( RV=$?; rm -f &quot;support/cast_seq_lengths.v.d&quot;; exit ${RV} )
-- &quot;coqdep&quot; -c -R &quot;../../Sophia-Antipolis/Algebra/&quot; Algebra -R &quot;.&quot; LinAlg &quot;support/seq_equality.v&quot; &gt; &quot;support/seq_equality.v.d&quot; || ( RV=$?; rm -f &quot;support/seq_equality.v.d&quot;; exit ${RV} )
-- &quot;coqdep&quot; -c -R &quot;../../Sophia-Antipolis/Algebra/&quot; Algebra -R &quot;.&quot; LinAlg &quot;support/concat_facts.v&quot; &gt; &quot;support/concat_facts.v.d&quot; || ( RV=$?; rm -f &quot;support/concat_facts.v.d&quot;; exit ${RV} )
-- &quot;coqdep&quot; -c -R &quot;../../Sophia-Antipolis/Algebra/&quot; Algebra -R &quot;.&quot; LinAlg &quot;support/seq_equality_facts.v&quot; &gt; &quot;support/seq_equality_facts.v.d&quot; || ( RV=$?; rm -f &quot;support/seq_equality_facts.v.d&quot;; exit ${RV} )
-- &quot;coqdep&quot; -c -R &quot;../../Sophia-Antipolis/Algebra/&quot; Algebra -R &quot;.&quot; LinAlg &quot;support/distribution_lemmas.v&quot; &gt; &quot;support/distribution_lemmas.v.d&quot; || ( RV=$?; rm -f &quot;support/distribution_lemmas.v.d&quot;; exit ${RV} )
-- &quot;coqdep&quot; -c -R &quot;../../Sophia-Antipolis/Algebra/&quot; Algebra -R &quot;.&quot; LinAlg &quot;support/seq_set_facts.v&quot; &gt; &quot;support/seq_set_facts.v.d&quot; || ( RV=$?; rm -f &quot;support/seq_set_facts.v.d&quot;; exit ${RV} )
-- &quot;coqdep&quot; -c -R &quot;../../Sophia-Antipolis/Algebra/&quot; Algebra -R &quot;.&quot; LinAlg &quot;support/omit_facts.v&quot; &gt; &quot;support/omit_facts.v.d&quot; || ( RV=$?; rm -f &quot;support/omit_facts.v.d&quot;; exit ${RV} )
-- &quot;coqdep&quot; -c -R &quot;../../Sophia-Antipolis/Algebra/&quot; Algebra -R &quot;.&quot; LinAlg &quot;support/distinct_facts.v&quot; &gt; &quot;support/distinct_facts.v.d&quot; || ( RV=$?; rm -f &quot;support/distinct_facts.v.d&quot;; exit ${RV} )
-- &quot;coqdep&quot; -c -R &quot;../../Sophia-Antipolis/Algebra/&quot; Algebra -R &quot;.&quot; LinAlg &quot;support/cast_between_subsets.v&quot; &gt; &quot;support/cast_between_subsets.v.d&quot; || ( RV=$?; rm -f &quot;support/cast_between_subsets.v.d&quot;; exit ${RV} )
-- &quot;coqdep&quot; -c -R &quot;../../Sophia-Antipolis/Algebra/&quot; Algebra -R &quot;.&quot; LinAlg &quot;LinAlg/lin_combinations.v&quot; &gt; &quot;LinAlg/lin_combinations.v.d&quot; || ( RV=$?; rm -f &quot;LinAlg/lin_combinations.v.d&quot;; exit ${RV} )
-- &quot;coqdep&quot; -c -R &quot;../../Sophia-Antipolis/Algebra/&quot; Algebra -R &quot;.&quot; LinAlg &quot;LinAlg/spans.v&quot; &gt; &quot;LinAlg/spans.v.d&quot; || ( RV=$?; rm -f &quot;LinAlg/spans.v.d&quot;; exit ${RV} )
-- &quot;coqdep&quot; -c -R &quot;../../Sophia-Antipolis/Algebra/&quot; Algebra -R &quot;.&quot; LinAlg &quot;LinAlg/algebraic_span_facts.v&quot; &gt; &quot;LinAlg/algebraic_span_facts.v.d&quot; || ( RV=$?; rm -f &quot;LinAlg/algebraic_span_facts.v.d&quot;; exit ${RV} )
-- &quot;coqdep&quot; -c -R &quot;../../Sophia-Antipolis/Algebra/&quot; Algebra -R &quot;.&quot; LinAlg &quot;LinAlg/lin_comb_facts.v&quot; &gt; &quot;LinAlg/lin_comb_facts.v.d&quot; || ( RV=$?; rm -f &quot;LinAlg/lin_comb_facts.v.d&quot;; exit ${RV} )
-- &quot;coqdep&quot; -c -R &quot;../../Sophia-Antipolis/Algebra/&quot; Algebra -R &quot;.&quot; LinAlg &quot;LinAlg/direct_sum.v&quot; &gt; &quot;LinAlg/direct_sum.v.d&quot; || ( RV=$?; rm -f &quot;LinAlg/direct_sum.v.d&quot;; exit ${RV} )
-- &quot;coqdep&quot; -c -R &quot;../../Sophia-Antipolis/Algebra/&quot; Algebra -R &quot;.&quot; LinAlg &quot;LinAlg/lin_dependence.v&quot; &gt; &quot;LinAlg/lin_dependence.v.d&quot; || ( RV=$?; rm -f &quot;LinAlg/lin_dependence.v.d&quot;; exit ${RV} )
-- &quot;coqdep&quot; -c -R &quot;../../Sophia-Antipolis/Algebra/&quot; Algebra -R &quot;.&quot; LinAlg &quot;LinAlg/lin_dep_facts.v&quot; &gt; &quot;LinAlg/lin_dep_facts.v.d&quot; || ( RV=$?; rm -f &quot;LinAlg/lin_dep_facts.v.d&quot;; exit ${RV} )
-- &quot;coqdep&quot; -c -R &quot;../../Sophia-Antipolis/Algebra/&quot; Algebra -R &quot;.&quot; LinAlg &quot;support/random_facts.v&quot; &gt; &quot;support/random_facts.v.d&quot; || ( RV=$?; rm -f &quot;support/random_facts.v.d&quot;; exit ${RV} )
-- &quot;coqdep&quot; -c -R &quot;../../Sophia-Antipolis/Algebra/&quot; Algebra -R &quot;.&quot; LinAlg &quot;support/finite_subsets.v&quot; &gt; &quot;support/finite_subsets.v.d&quot; || ( RV=$?; rm -f &quot;support/finite_subsets.v.d&quot;; exit ${RV} )
-- &quot;coqdep&quot; -c -R &quot;../../Sophia-Antipolis/Algebra/&quot; Algebra -R &quot;.&quot; LinAlg &quot;support/has_n_elements.v&quot; &gt; &quot;support/has_n_elements.v.d&quot; || ( RV=$?; rm -f &quot;support/has_n_elements.v.d&quot;; exit ${RV} )
-- &quot;coqdep&quot; -c -R &quot;../../Sophia-Antipolis/Algebra/&quot; Algebra -R &quot;.&quot; LinAlg &quot;support/counting_elements.v&quot; &gt; &quot;support/counting_elements.v.d&quot; || ( RV=$?; rm -f &quot;support/counting_elements.v.d&quot;; exit ${RV} )
-- &quot;coqdep&quot; -c -R &quot;../../Sophia-Antipolis/Algebra/&quot; Algebra -R &quot;.&quot; LinAlg &quot;LinAlg/bases.v&quot; &gt; &quot;LinAlg/bases.v.d&quot; || ( RV=$?; rm -f &quot;LinAlg/bases.v.d&quot;; exit ${RV} )
-- &quot;coqdep&quot; -c -R &quot;../../Sophia-Antipolis/Algebra/&quot; Algebra -R &quot;.&quot; LinAlg &quot;LinAlg/bases_from_generating_sets.v&quot; &gt; &quot;LinAlg/bases_from_generating_sets.v.d&quot; || ( RV=$?; rm -f &quot;LinAlg/bases_from_generating_sets.v.d&quot;; exit ${RV} )
-- &quot;coqdep&quot; -c -R &quot;../../Sophia-Antipolis/Algebra/&quot; Algebra -R &quot;.&quot; LinAlg &quot;LinAlg/replacement_theorem.v&quot; &gt; &quot;LinAlg/replacement_theorem.v.d&quot; || ( RV=$?; rm -f &quot;LinAlg/replacement_theorem.v.d&quot;; exit ${RV} )
-- &quot;coqdep&quot; -c -R &quot;../../Sophia-Antipolis/Algebra/&quot; Algebra -R &quot;.&quot; LinAlg &quot;LinAlg/replacement_corollaries.v&quot; &gt; &quot;LinAlg/replacement_corollaries.v.d&quot; || ( RV=$?; rm -f &quot;LinAlg/replacement_corollaries.v.d&quot;; exit ${RV} )
-- &quot;coqdep&quot; -c -R &quot;../../Sophia-Antipolis/Algebra/&quot; Algebra -R &quot;.&quot; LinAlg &quot;LinAlg/bases_finite_dim.v&quot; &gt; &quot;LinAlg/bases_finite_dim.v.d&quot; || ( RV=$?; rm -f &quot;LinAlg/bases_finite_dim.v.d&quot;; exit ${RV} )
-- &quot;coqdep&quot; -c -R &quot;../../Sophia-Antipolis/Algebra/&quot; Algebra -R &quot;.&quot; LinAlg &quot;LinAlg/maxlinindepsubsets.v&quot; &gt; &quot;LinAlg/maxlinindepsubsets.v.d&quot; || ( RV=$?; rm -f &quot;LinAlg/maxlinindepsubsets.v.d&quot;; exit ${RV} )
-- &quot;coqdep&quot; -c -R &quot;../../Sophia-Antipolis/Algebra/&quot; Algebra -R &quot;.&quot; LinAlg &quot;LinAlg/subspace_dim.v&quot; &gt; &quot;LinAlg/subspace_dim.v.d&quot; || ( RV=$?; rm -f &quot;LinAlg/subspace_dim.v.d&quot;; exit ${RV} )
-- &quot;coqdep&quot; -c -R &quot;../../Sophia-Antipolis/Algebra/&quot; Algebra -R &quot;.&quot; LinAlg &quot;LinAlg/subspace_bases.v&quot; &gt; &quot;LinAlg/subspace_bases.v.d&quot; || ( RV=$?; rm -f &quot;LinAlg/subspace_bases.v.d&quot;; exit ${RV} )
-- &quot;coqdep&quot; -c -R &quot;../../Sophia-Antipolis/Algebra/&quot; Algebra -R &quot;.&quot; LinAlg &quot;LinAlg/Linear_Algebra_by_Friedberg_Insel_Spence.v&quot; &gt; &quot;LinAlg/Linear_Algebra_by_Friedberg_Insel_Spence.v.d&quot; || ( RV=$?; rm -f &quot;LinAlg/Linear_Algebra_by_Friedberg_Insel_Spence.v.d&quot;; exit ${RV} )
-- &quot;coqdep&quot; -c -R &quot;../../Sophia-Antipolis/Algebra/&quot; Algebra -R &quot;.&quot; LinAlg &quot;LinAlg/Lin_trafos.v&quot; &gt; &quot;LinAlg/Lin_trafos.v.d&quot; || ( RV=$?; rm -f &quot;LinAlg/Lin_trafos.v.d&quot;; exit ${RV} )
-- &quot;coqdep&quot; -c -R &quot;../../Sophia-Antipolis/Algebra/&quot; Algebra -R &quot;.&quot; LinAlg &quot;examples/trivial_spaces.v&quot; &gt; &quot;examples/trivial_spaces.v.d&quot; || ( RV=$?; rm -f &quot;examples/trivial_spaces.v.d&quot;; exit ${RV} )
-- &quot;coqdep&quot; -c -R &quot;../../Sophia-Antipolis/Algebra/&quot; Algebra -R &quot;.&quot; LinAlg &quot;examples/Matrix_multiplication.v&quot; &gt; &quot;examples/Matrix_multiplication.v.d&quot; || ( RV=$?; rm -f &quot;examples/Matrix_multiplication.v.d&quot;; exit ${RV} )
-- &quot;coqdep&quot; -c -R &quot;../../Sophia-Antipolis/Algebra/&quot; Algebra -R &quot;.&quot; LinAlg &quot;extras/ring_module.v&quot; &gt; &quot;extras/ring_module.v.d&quot; || ( RV=$?; rm -f &quot;extras/ring_module.v.d&quot;; exit ${RV} )
-- &quot;coqdep&quot; -c -R &quot;../../Sophia-Antipolis/Algebra/&quot; Algebra -R &quot;.&quot; LinAlg &quot;extras/Inter_intersection.v&quot; &gt; &quot;extras/Inter_intersection.v.d&quot; || ( RV=$?; rm -f &quot;extras/Inter_intersection.v.d&quot;; exit ${RV} )
-- &quot;coqdep&quot; -c -R &quot;../../Sophia-Antipolis/Algebra/&quot; Algebra -R &quot;.&quot; LinAlg &quot;extras/finite_misc.v&quot; &gt; &quot;extras/finite_misc.v.d&quot; || ( RV=$?; rm -f &quot;extras/finite_misc.v.d&quot;; exit ${RV} )
-- &quot;coqdep&quot; -c -R &quot;../../Sophia-Antipolis/Algebra/&quot; Algebra -R &quot;.&quot; LinAlg &quot;extras/restrict.v&quot; &gt; &quot;extras/restrict.v.d&quot; || ( RV=$?; rm -f &quot;extras/restrict.v.d&quot;; exit ${RV} )
-- &quot;coqdep&quot; -c -R &quot;../../Sophia-Antipolis/Algebra/&quot; Algebra -R &quot;.&quot; LinAlg &quot;extras/Matrix_related_defs.v&quot; &gt; &quot;extras/Matrix_related_defs.v.d&quot; || ( RV=$?; rm -f &quot;extras/Matrix_related_defs.v.d&quot;; exit ${RV} )
-- &quot;coqdep&quot; -c -R &quot;../../Sophia-Antipolis/Algebra/&quot; Algebra -R &quot;.&quot; LinAlg &quot;extras/before_after.v&quot; &gt; &quot;extras/before_after.v.d&quot; || ( RV=$?; rm -f &quot;extras/before_after.v.d&quot;; exit ${RV} )
-- &quot;coqdep&quot; -c -R &quot;../../Sophia-Antipolis/Algebra/&quot; Algebra -R &quot;.&quot; LinAlg &quot;extras/matrix_algebra.v&quot; &gt; &quot;extras/matrix_algebra.v.d&quot; || ( RV=$?; rm -f &quot;extras/matrix_algebra.v.d&quot;; exit ${RV} )
-- &quot;coqdep&quot; -c -R &quot;../../Sophia-Antipolis/Algebra/&quot; Algebra -R &quot;.&quot; LinAlg &quot;extras/Equality_structures.v&quot; &gt; &quot;extras/Equality_structures.v.d&quot; || ( RV=$?; rm -f &quot;extras/Equality_structures.v.d&quot;; exit ${RV} )
-- &quot;coqc&quot;  -q  -R &quot;../../Sophia-Antipolis/Algebra/&quot; Algebra -R &quot;.&quot; LinAlg   support/equal_syntax
-- &quot;coqc&quot;  -q  -R &quot;../../Sophia-Antipolis/Algebra/&quot; Algebra -R &quot;.&quot; LinAlg   support/more_syntax
-- &quot;coqc&quot;  -q  -R &quot;../../Sophia-Antipolis/Algebra/&quot; Algebra -R &quot;.&quot; LinAlg   support/algebra_omissions
-- &quot;coqc&quot;  -q  -R &quot;../../Sophia-Antipolis/Algebra/&quot; Algebra -R &quot;.&quot; LinAlg   support/arb_intersections
-- Makefile:306: recipe for target &#39;support/more_syntax.vo&#39; failed
-- Makefile:306: recipe for target &#39;support/algebra_omissions.vo&#39; failed
-- Makefile:306: recipe for target &#39;support/equal_syntax.vo&#39; failed
-- Makefile:306: recipe for target &#39;support/arb_intersections.vo&#39; failed
-- *** Warning: cannot open ../../Sophia-Antipolis/Algebra/
-- *** Warning: cannot open ../../Sophia-Antipolis/Algebra/
-- *** Warning: cannot open ../../Sophia-Antipolis/Algebra/
-- *** Warning: cannot open ../../Sophia-Antipolis/Algebra/
-- *** Warning: in file support/equal_syntax.v, library Sets.v is required and has not been found in the loadpath!
-- *** Warning: in file support/equal_syntax.v, library Sets.v is required and has not been found in the loadpath!
-- *** Warning: cannot open ../../Sophia-Antipolis/Algebra/
-- *** Warning: cannot open ../../Sophia-Antipolis/Algebra/
-- *** Warning: in file support/more_syntax.v, library Module_cat.v is required and has not been found in the loadpath!
-- *** Warning: in file support/more_syntax.v, library Module_cat.v is required and has not been found in the loadpath!
-- *** Warning: in file LinAlg/vecspaces_verybasic.v, library Field_facts.v is required and has not been found in the loadpath!
-- *** Warning: in file LinAlg/vecspaces_verybasic.v, library Module_facts.v is required and has not been found in the loadpath!
-- *** Warning: in file LinAlg/vecspaces_verybasic.v, library Field_facts.v is required and has not been found in the loadpath!
-- *** Warning: in file LinAlg/vecspaces_verybasic.v, library Module_facts.v is required and has not been found in the loadpath!
-- *** Warning: cannot open ../../Sophia-Antipolis/Algebra/
-- *** Warning: cannot open ../../Sophia-Antipolis/Algebra/
-- *** Warning: cannot open ../../Sophia-Antipolis/Algebra/
-- *** Warning: cannot open ../../Sophia-Antipolis/Algebra/
-- *** Warning: in file support/Map2.v, library Cartesian.v is required and has not been found in the loadpath!
-- *** Warning: in file support/Map2.v, library Cartesian.v is required and has not been found in the loadpath!
-- *** Warning: cannot open ../../Sophia-Antipolis/Algebra/
-- *** Warning: cannot open ../../Sophia-Antipolis/Algebra/
-- *** Warning: cannot open ../../Sophia-Antipolis/Algebra/
-- *** Warning: cannot open ../../Sophia-Antipolis/Algebra/
-- *** Warning: cannot open ../../Sophia-Antipolis/Algebra/
-- *** Warning: cannot open ../../Sophia-Antipolis/Algebra/
-- *** Warning: in file support/algebra_omissions.v, library Group_facts.v is required and has not been found in the loadpath!
-- *** Warning: in file support/algebra_omissions.v, library Group_facts.v is required and has not been found in the loadpath!
-- *** Warning: in file support/arb_intersections.v, library Parts2.v is required and has not been found in the loadpath!
-- *** Warning: in file LinAlg/subspaces.v, library Sub_module.v is required and has not been found in the loadpath!
-- *** Warning: in file LinAlg/subspaces.v, library Singleton.v is required and has not been found in the loadpath!
-- *** Warning: in file support/arb_intersections.v, library Parts2.v is required and has not been found in the loadpath!
-- *** Warning: in file LinAlg/subspaces.v, library Sub_module.v is required and has not been found in the loadpath!
-- *** Warning: in file LinAlg/subspaces.v, library Singleton.v is required and has not been found in the loadpath!
-- *** Warning: cannot open ../../Sophia-Antipolis/Algebra/
-- *** Warning: cannot open ../../Sophia-Antipolis/Algebra/
-- *** Warning: cannot open ../../Sophia-Antipolis/Algebra/
-- *** Warning: cannot open ../../Sophia-Antipolis/Algebra/
-- *** Warning: cannot open ../../Sophia-Antipolis/Algebra/
-- *** Warning: cannot open ../../Sophia-Antipolis/Algebra/
-- *** Warning: in file support/seq_set.v, library Parts.v is required and has not been found in the loadpath!
-- *** Warning: in file support/seq_set.v, library Parts.v is required and has not been found in the loadpath!
-- *** Warning: cannot open ../../Sophia-Antipolis/Algebra/
-- *** Warning: cannot open ../../Sophia-Antipolis/Algebra/
-- *** Warning: in file support/conshdtl.v, library Parts.v is required and has not been found in the loadpath!
-- *** Warning: in file support/conshdtl.v, library Parts.v is required and has not been found in the loadpath!
-- *** Warning: cannot open ../../Sophia-Antipolis/Algebra/
-- *** Warning: cannot open ../../Sophia-Antipolis/Algebra/
-- *** Warning: cannot open ../../Sophia-Antipolis/Algebra/
-- *** Warning: cannot open ../../Sophia-Antipolis/Algebra/
-- *** Warning: in file support/pointwise.v, library Cartesian.v is required and has not been found in the loadpath!
-- *** Warning: in file support/pointwise.v, library Cartesian.v is required and has not been found in the loadpath!
-- *** Warning: cannot open ../../Sophia-Antipolis/Algebra/
-- *** Warning: cannot open ../../Sophia-Antipolis/Algebra/
-- *** Warning: cannot open ../../Sophia-Antipolis/Algebra/
-- *** Warning: cannot open ../../Sophia-Antipolis/Algebra/
-- *** Warning: cannot open ../../Sophia-Antipolis/Algebra/
-- *** Warning: cannot open ../../Sophia-Antipolis/Algebra/
-- *** Warning: in file support/sums.v, library Sub_monoid.v is required and has not been found in the loadpath!
-- *** Warning: in file support/sums.v, library Sub_monoid.v is required and has not been found in the loadpath!
-- *** Warning: cannot open ../../Sophia-Antipolis/Algebra/
-- *** Warning: in file support/sums2.v, library Abelian_group_facts.v is required and has not been found in the loadpath!
-- *** Warning: in file support/sums2.v, library Abelian_group_facts.v is required and has not been found in the loadpath!
-- *** Warning: cannot open ../../Sophia-Antipolis/Algebra/
-- *** Warning: in file support/distinct.v, library Parts.v is required and has not been found in the loadpath!
-- *** Warning: in file support/distinct.v, library Parts.v is required and has not been found in the loadpath!
-- *** Warning: cannot open ../../Sophia-Antipolis/Algebra/
-- *** Warning: cannot open ../../Sophia-Antipolis/Algebra/
-- *** Warning: cannot open ../../Sophia-Antipolis/Algebra/
-- *** Warning: cannot open ../../Sophia-Antipolis/Algebra/
-- *** Warning: cannot open ../../Sophia-Antipolis/Algebra/
-- *** Warning: cannot open ../../Sophia-Antipolis/Algebra/
-- *** Warning: in file support/seq_set_facts.v, library Singleton.v is required and has not been found in the loadpath!
-- *** Warning: in file support/seq_set_facts.v, library Singleton.v is required and has not been found in the loadpath!
-- *** Warning: cannot open ../../Sophia-Antipolis/Algebra/
-- *** Warning: cannot open ../../Sophia-Antipolis/Algebra/
-- *** Warning: cannot open ../../Sophia-Antipolis/Algebra/
-- *** Warning: cannot open ../../Sophia-Antipolis/Algebra/
-- *** Warning: cannot open ../../Sophia-Antipolis/Algebra/
-- *** Warning: cannot open ../../Sophia-Antipolis/Algebra/
-- *** Warning: in file LinAlg/algebraic_span_facts.v, library Inter.v is required and has not been found in the loadpath!
-- *** Warning: in file LinAlg/algebraic_span_facts.v, library Inter.v is required and has not been found in the loadpath!
-- *** Warning: cannot open ../../Sophia-Antipolis/Algebra/
-- *** Warning: cannot open ../../Sophia-Antipolis/Algebra/
-- *** Warning: cannot open ../../Sophia-Antipolis/Algebra/
-- *** Warning: cannot open ../../Sophia-Antipolis/Algebra/
-- *** Warning: cannot open ../../Sophia-Antipolis/Algebra/
-- *** Warning: cannot open ../../Sophia-Antipolis/Algebra/
-- *** Warning: in file support/finite_subsets.v, library Diff.v is required and has not been found in the loadpath!
-- *** Warning: in file support/finite_subsets.v, library Singleton.v is required and has not been found in the loadpath!
-- *** Warning: in file support/finite_subsets.v, library Diff.v is required and has not been found in the loadpath!
-- *** Warning: in file support/finite_subsets.v, library Singleton.v is required and has not been found in the loadpath!
-- *** Warning: cannot open ../../Sophia-Antipolis/Algebra/
-- *** Warning: cannot open ../../Sophia-Antipolis/Algebra/
-- *** Warning: in file support/counting_elements.v, library Diff.v is required and has not been found in the loadpath!
-- *** Warning: in file support/counting_elements.v, library Singleton.v is required and has not been found in the loadpath!
-- *** Warning: in file support/counting_elements.v, library Diff.v is required and has not been found in the loadpath!
-- *** Warning: in file support/counting_elements.v, library Singleton.v is required and has not been found in the loadpath!
-- *** Warning: cannot open ../../Sophia-Antipolis/Algebra/
-- *** Warning: cannot open ../../Sophia-Antipolis/Algebra/
-- *** Warning: cannot open ../../Sophia-Antipolis/Algebra/
-- *** Warning: cannot open ../../Sophia-Antipolis/Algebra/
-- *** Warning: cannot open ../../Sophia-Antipolis/Algebra/
-- *** Warning: cannot open ../../Sophia-Antipolis/Algebra/
-- *** Warning: cannot open ../../Sophia-Antipolis/Algebra/
-- *** Warning: cannot open ../../Sophia-Antipolis/Algebra/
-- *** Warning: cannot open ../../Sophia-Antipolis/Algebra/
-- *** Warning: cannot open ../../Sophia-Antipolis/Algebra/
-- *** Warning: in file examples/trivial_spaces.v, library Singleton.v is required and has not been found in the loadpath!
-- *** Warning: in file examples/trivial_spaces.v, library Singleton.v is required and has not been found in the loadpath!
-- *** Warning: cannot open ../../Sophia-Antipolis/Algebra/
-- *** Warning: cannot open ../../Sophia-Antipolis/Algebra/
-- *** Warning: in file examples/Matrix_multiplication.v, library Cfield_facts.v is required and has not been found in the loadpath!
-- *** Warning: in file examples/Matrix_multiplication.v, library Cfield_facts.v is required and has not been found in the loadpath!
-- *** Warning: cannot open ../../Sophia-Antipolis/Algebra/
-- *** Warning: in file extras/ring_module.v, library Ring_facts.v is required and has not been found in the loadpath!
-- *** Warning: in file extras/ring_module.v, library Endo_set.v is required and has not been found in the loadpath!
-- *** Warning: in file extras/ring_module.v, library Ring_facts.v is required and has not been found in the loadpath!
-- *** Warning: in file extras/ring_module.v, library Endo_set.v is required and has not been found in the loadpath!
-- *** Warning: cannot open ../../Sophia-Antipolis/Algebra/
-- *** Warning: in file extras/Inter_intersection.v, library Inter.v is required and has not been found in the loadpath!
-- *** Warning: in file extras/Inter_intersection.v, library Inter.v is required and has not been found in the loadpath!
-- *** Warning: cannot open ../../Sophia-Antipolis/Algebra/
-- *** Warning: cannot open ../../Sophia-Antipolis/Algebra/
-- *** Warning: cannot open ../../Sophia-Antipolis/Algebra/
-- *** Warning: in file extras/matrix_algebra.v, library Cfield_facts.v is required and has not been found in the loadpath!
-- *** Warning: in file extras/matrix_algebra.v, library Cfield_facts.v is required and has not been found in the loadpath!
-- Warning: Cannot open ../../Sophia-Antipolis/Algebra/
-- Warning: Cannot open ../../Sophia-Antipolis/Algebra/
-- Warning: Cannot open ../../Sophia-Antipolis/Algebra/
-- Warning: Cannot open ../../Sophia-Antipolis/Algebra/
-- File &quot;./support/more_syntax.v&quot;, line 18, characters 0-26:
-- Error: Cannot find library Module_cat in loadpath
-- File &quot;./support/algebra_omissions.v&quot;, line 23, characters 0-27:
-- Error: Cannot find library Group_facts in loadpath
-- File &quot;./support/equal_syntax.v&quot;, line 22, characters 0-20:
-- Error: Cannot find library Sets in loadpath
-- File &quot;./support/arb_intersections.v&quot;, line 29, characters 0-22:
-- Error: Cannot find library Parts2 in loadpath
++ make &quot;-j4&quot; (CWD=/home/bench/.opam/system/build/coq:contrib:lin-alg.dev)
+- &quot;coqdep&quot; -c -R &quot;.&quot; LinAlg &quot;first_page.v&quot; &gt; &quot;first_page.v.d&quot; || ( RV=$?; rm -f &quot;first_page.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; LinAlg &quot;support/equal_syntax.v&quot; &gt; &quot;support/equal_syntax.v.d&quot; || ( RV=$?; rm -f &quot;support/equal_syntax.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; LinAlg &quot;support/more_syntax.v&quot; &gt; &quot;support/more_syntax.v.d&quot; || ( RV=$?; rm -f &quot;support/more_syntax.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; LinAlg &quot;LinAlg/vecspaces_verybasic.v&quot; &gt; &quot;LinAlg/vecspaces_verybasic.v.d&quot; || ( RV=$?; rm -f &quot;LinAlg/vecspaces_verybasic.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; LinAlg &quot;support/finite.v&quot; &gt; &quot;support/finite.v.d&quot; || ( RV=$?; rm -f &quot;support/finite.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; LinAlg &quot;examples/vecspace_Fn.v&quot; &gt; &quot;examples/vecspace_Fn.v.d&quot; || ( RV=$?; rm -f &quot;examples/vecspace_Fn.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; LinAlg &quot;support/Map2.v&quot; &gt; &quot;support/Map2.v.d&quot; || ( RV=$?; rm -f &quot;support/Map2.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; LinAlg &quot;examples/vecspace_functionspace.v&quot; &gt; &quot;examples/vecspace_functionspace.v.d&quot; || ( RV=$?; rm -f &quot;examples/vecspace_functionspace.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; LinAlg &quot;examples/Matrices.v&quot; &gt; &quot;examples/Matrices.v.d&quot; || ( RV=$?; rm -f &quot;examples/Matrices.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; LinAlg &quot;examples/vecspace_Mmn.v&quot; &gt; &quot;examples/vecspace_Mmn.v.d&quot; || ( RV=$?; rm -f &quot;examples/vecspace_Mmn.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; LinAlg &quot;LinAlg/alt_build_vecsp.v&quot; &gt; &quot;LinAlg/alt_build_vecsp.v.d&quot; || ( RV=$?; rm -f &quot;LinAlg/alt_build_vecsp.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; LinAlg &quot;examples/infinite_sequences.v&quot; &gt; &quot;examples/infinite_sequences.v.d&quot; || ( RV=$?; rm -f &quot;examples/infinite_sequences.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; LinAlg &quot;support/algebra_omissions.v&quot; &gt; &quot;support/algebra_omissions.v.d&quot; || ( RV=$?; rm -f &quot;support/algebra_omissions.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; LinAlg &quot;support/arb_intersections.v&quot; &gt; &quot;support/arb_intersections.v.d&quot; || ( RV=$?; rm -f &quot;support/arb_intersections.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; LinAlg &quot;LinAlg/subspaces.v&quot; &gt; &quot;LinAlg/subspaces.v.d&quot; || ( RV=$?; rm -f &quot;LinAlg/subspaces.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; LinAlg &quot;examples/antisymmetric_matrices.v&quot; &gt; &quot;examples/antisymmetric_matrices.v.d&quot; || ( RV=$?; rm -f &quot;examples/antisymmetric_matrices.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; LinAlg &quot;examples/symmetric_matrices.v&quot; &gt; &quot;examples/symmetric_matrices.v.d&quot; || ( RV=$?; rm -f &quot;examples/symmetric_matrices.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; LinAlg &quot;examples/up_lo_triang_mat.v&quot; &gt; &quot;examples/up_lo_triang_mat.v.d&quot; || ( RV=$?; rm -f &quot;examples/up_lo_triang_mat.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; LinAlg &quot;support/seq_set.v&quot; &gt; &quot;support/seq_set.v.d&quot; || ( RV=$?; rm -f &quot;support/seq_set.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; LinAlg &quot;support/seq_set_seq.v&quot; &gt; &quot;support/seq_set_seq.v.d&quot; || ( RV=$?; rm -f &quot;support/seq_set_seq.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; LinAlg &quot;support/empty.v&quot; &gt; &quot;support/empty.v.d&quot; || ( RV=$?; rm -f &quot;support/empty.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; LinAlg &quot;support/conshdtl.v&quot; &gt; &quot;support/conshdtl.v.d&quot; || ( RV=$?; rm -f &quot;support/conshdtl.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; LinAlg &quot;support/concat.v&quot; &gt; &quot;support/concat.v.d&quot; || ( RV=$?; rm -f &quot;support/concat.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; LinAlg &quot;support/const.v&quot; &gt; &quot;support/const.v.d&quot; || ( RV=$?; rm -f &quot;support/const.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; LinAlg &quot;support/omit.v&quot; &gt; &quot;support/omit.v.d&quot; || ( RV=$?; rm -f &quot;support/omit.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; LinAlg &quot;support/pointwise.v&quot; &gt; &quot;support/pointwise.v.d&quot; || ( RV=$?; rm -f &quot;support/pointwise.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; LinAlg &quot;support/modify_seq.v&quot; &gt; &quot;support/modify_seq.v.d&quot; || ( RV=$?; rm -f &quot;support/modify_seq.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; LinAlg &quot;support/mult_by_scalars.v&quot; &gt; &quot;support/mult_by_scalars.v.d&quot; || ( RV=$?; rm -f &quot;support/mult_by_scalars.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; LinAlg &quot;support/Map_embed.v&quot; &gt; &quot;support/Map_embed.v.d&quot; || ( RV=$?; rm -f &quot;support/Map_embed.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; LinAlg &quot;support/subseqs.v&quot; &gt; &quot;support/subseqs.v.d&quot; || ( RV=$?; rm -f &quot;support/subseqs.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; LinAlg &quot;support/sums.v&quot; &gt; &quot;support/sums.v.d&quot; || ( RV=$?; rm -f &quot;support/sums.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; LinAlg &quot;support/sums2.v&quot; &gt; &quot;support/sums2.v.d&quot; || ( RV=$?; rm -f &quot;support/sums2.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; LinAlg &quot;support/distinct.v&quot; &gt; &quot;support/distinct.v.d&quot; || ( RV=$?; rm -f &quot;support/distinct.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; LinAlg &quot;support/cast_seq_lengths.v&quot; &gt; &quot;support/cast_seq_lengths.v.d&quot; || ( RV=$?; rm -f &quot;support/cast_seq_lengths.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; LinAlg &quot;support/seq_equality.v&quot; &gt; &quot;support/seq_equality.v.d&quot; || ( RV=$?; rm -f &quot;support/seq_equality.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; LinAlg &quot;support/concat_facts.v&quot; &gt; &quot;support/concat_facts.v.d&quot; || ( RV=$?; rm -f &quot;support/concat_facts.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; LinAlg &quot;support/seq_equality_facts.v&quot; &gt; &quot;support/seq_equality_facts.v.d&quot; || ( RV=$?; rm -f &quot;support/seq_equality_facts.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; LinAlg &quot;support/distribution_lemmas.v&quot; &gt; &quot;support/distribution_lemmas.v.d&quot; || ( RV=$?; rm -f &quot;support/distribution_lemmas.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; LinAlg &quot;support/seq_set_facts.v&quot; &gt; &quot;support/seq_set_facts.v.d&quot; || ( RV=$?; rm -f &quot;support/seq_set_facts.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; LinAlg &quot;support/omit_facts.v&quot; &gt; &quot;support/omit_facts.v.d&quot; || ( RV=$?; rm -f &quot;support/omit_facts.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; LinAlg &quot;support/distinct_facts.v&quot; &gt; &quot;support/distinct_facts.v.d&quot; || ( RV=$?; rm -f &quot;support/distinct_facts.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; LinAlg &quot;support/cast_between_subsets.v&quot; &gt; &quot;support/cast_between_subsets.v.d&quot; || ( RV=$?; rm -f &quot;support/cast_between_subsets.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; LinAlg &quot;LinAlg/lin_combinations.v&quot; &gt; &quot;LinAlg/lin_combinations.v.d&quot; || ( RV=$?; rm -f &quot;LinAlg/lin_combinations.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; LinAlg &quot;LinAlg/spans.v&quot; &gt; &quot;LinAlg/spans.v.d&quot; || ( RV=$?; rm -f &quot;LinAlg/spans.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; LinAlg &quot;LinAlg/algebraic_span_facts.v&quot; &gt; &quot;LinAlg/algebraic_span_facts.v.d&quot; || ( RV=$?; rm -f &quot;LinAlg/algebraic_span_facts.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; LinAlg &quot;LinAlg/lin_comb_facts.v&quot; &gt; &quot;LinAlg/lin_comb_facts.v.d&quot; || ( RV=$?; rm -f &quot;LinAlg/lin_comb_facts.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; LinAlg &quot;LinAlg/direct_sum.v&quot; &gt; &quot;LinAlg/direct_sum.v.d&quot; || ( RV=$?; rm -f &quot;LinAlg/direct_sum.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; LinAlg &quot;LinAlg/lin_dependence.v&quot; &gt; &quot;LinAlg/lin_dependence.v.d&quot; || ( RV=$?; rm -f &quot;LinAlg/lin_dependence.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; LinAlg &quot;LinAlg/lin_dep_facts.v&quot; &gt; &quot;LinAlg/lin_dep_facts.v.d&quot; || ( RV=$?; rm -f &quot;LinAlg/lin_dep_facts.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; LinAlg &quot;support/random_facts.v&quot; &gt; &quot;support/random_facts.v.d&quot; || ( RV=$?; rm -f &quot;support/random_facts.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; LinAlg &quot;support/finite_subsets.v&quot; &gt; &quot;support/finite_subsets.v.d&quot; || ( RV=$?; rm -f &quot;support/finite_subsets.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; LinAlg &quot;support/has_n_elements.v&quot; &gt; &quot;support/has_n_elements.v.d&quot; || ( RV=$?; rm -f &quot;support/has_n_elements.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; LinAlg &quot;support/counting_elements.v&quot; &gt; &quot;support/counting_elements.v.d&quot; || ( RV=$?; rm -f &quot;support/counting_elements.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; LinAlg &quot;LinAlg/bases.v&quot; &gt; &quot;LinAlg/bases.v.d&quot; || ( RV=$?; rm -f &quot;LinAlg/bases.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; LinAlg &quot;LinAlg/bases_from_generating_sets.v&quot; &gt; &quot;LinAlg/bases_from_generating_sets.v.d&quot; || ( RV=$?; rm -f &quot;LinAlg/bases_from_generating_sets.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; LinAlg &quot;LinAlg/replacement_theorem.v&quot; &gt; &quot;LinAlg/replacement_theorem.v.d&quot; || ( RV=$?; rm -f &quot;LinAlg/replacement_theorem.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; LinAlg &quot;LinAlg/replacement_corollaries.v&quot; &gt; &quot;LinAlg/replacement_corollaries.v.d&quot; || ( RV=$?; rm -f &quot;LinAlg/replacement_corollaries.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; LinAlg &quot;LinAlg/bases_finite_dim.v&quot; &gt; &quot;LinAlg/bases_finite_dim.v.d&quot; || ( RV=$?; rm -f &quot;LinAlg/bases_finite_dim.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; LinAlg &quot;LinAlg/maxlinindepsubsets.v&quot; &gt; &quot;LinAlg/maxlinindepsubsets.v.d&quot; || ( RV=$?; rm -f &quot;LinAlg/maxlinindepsubsets.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; LinAlg &quot;LinAlg/subspace_dim.v&quot; &gt; &quot;LinAlg/subspace_dim.v.d&quot; || ( RV=$?; rm -f &quot;LinAlg/subspace_dim.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; LinAlg &quot;LinAlg/subspace_bases.v&quot; &gt; &quot;LinAlg/subspace_bases.v.d&quot; || ( RV=$?; rm -f &quot;LinAlg/subspace_bases.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; LinAlg &quot;LinAlg/Linear_Algebra_by_Friedberg_Insel_Spence.v&quot; &gt; &quot;LinAlg/Linear_Algebra_by_Friedberg_Insel_Spence.v.d&quot; || ( RV=$?; rm -f &quot;LinAlg/Linear_Algebra_by_Friedberg_Insel_Spence.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; LinAlg &quot;LinAlg/Lin_trafos.v&quot; &gt; &quot;LinAlg/Lin_trafos.v.d&quot; || ( RV=$?; rm -f &quot;LinAlg/Lin_trafos.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; LinAlg &quot;examples/trivial_spaces.v&quot; &gt; &quot;examples/trivial_spaces.v.d&quot; || ( RV=$?; rm -f &quot;examples/trivial_spaces.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; LinAlg &quot;examples/Matrix_multiplication.v&quot; &gt; &quot;examples/Matrix_multiplication.v.d&quot; || ( RV=$?; rm -f &quot;examples/Matrix_multiplication.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; LinAlg &quot;extras/ring_module.v&quot; &gt; &quot;extras/ring_module.v.d&quot; || ( RV=$?; rm -f &quot;extras/ring_module.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; LinAlg &quot;extras/Inter_intersection.v&quot; &gt; &quot;extras/Inter_intersection.v.d&quot; || ( RV=$?; rm -f &quot;extras/Inter_intersection.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; LinAlg &quot;extras/finite_misc.v&quot; &gt; &quot;extras/finite_misc.v.d&quot; || ( RV=$?; rm -f &quot;extras/finite_misc.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; LinAlg &quot;extras/restrict.v&quot; &gt; &quot;extras/restrict.v.d&quot; || ( RV=$?; rm -f &quot;extras/restrict.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; LinAlg &quot;extras/Matrix_related_defs.v&quot; &gt; &quot;extras/Matrix_related_defs.v.d&quot; || ( RV=$?; rm -f &quot;extras/Matrix_related_defs.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; LinAlg &quot;extras/before_after.v&quot; &gt; &quot;extras/before_after.v.d&quot; || ( RV=$?; rm -f &quot;extras/before_after.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; LinAlg &quot;extras/matrix_algebra.v&quot; &gt; &quot;extras/matrix_algebra.v.d&quot; || ( RV=$?; rm -f &quot;extras/matrix_algebra.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; LinAlg &quot;extras/Equality_structures.v&quot; &gt; &quot;extras/Equality_structures.v.d&quot; || ( RV=$?; rm -f &quot;extras/Equality_structures.v.d&quot;; exit ${RV} )
+- &quot;coqc&quot;  -q  -R &quot;.&quot; LinAlg   support/equal_syntax
+- &quot;coqc&quot;  -q  -R &quot;.&quot; LinAlg   support/more_syntax
+- &quot;coqc&quot;  -q  -R &quot;.&quot; LinAlg   support/algebra_omissions
+- &quot;coqc&quot;  -q  -R &quot;.&quot; LinAlg   support/arb_intersections
+- Makefile:308: recipe for target &#39;support/more_syntax.vo&#39; failed
+- Makefile:308: recipe for target &#39;support/arb_intersections.vo&#39; failed
+- Makefile:308: recipe for target &#39;support/equal_syntax.vo&#39; failed
+- Makefile:308: recipe for target &#39;support/algebra_omissions.vo&#39; failed
+- *** Warning: in file support/equal_syntax.v, library Algebra.Sets.v is required and has not been found in the loadpath!
+- *** Warning: in file support/equal_syntax.v, library Algebra.Sets.v is required and has not been found in the loadpath!
+- *** Warning: in file support/more_syntax.v, library Algebra.Module_cat.v is required and has not been found in the loadpath!
+- *** Warning: in file LinAlg/vecspaces_verybasic.v, library Algebra.Field_facts.v is required and has not been found in the loadpath!
+- *** Warning: in file LinAlg/vecspaces_verybasic.v, library Algebra.Module_facts.v is required and has not been found in the loadpath!
+- *** Warning: in file support/more_syntax.v, library Algebra.Module_cat.v is required and has not been found in the loadpath!
+- *** Warning: in file LinAlg/vecspaces_verybasic.v, library Algebra.Field_facts.v is required and has not been found in the loadpath!
+- *** Warning: in file LinAlg/vecspaces_verybasic.v, library Algebra.Module_facts.v is required and has not been found in the loadpath!
+- *** Warning: in file support/Map2.v, library Algebra.Cartesian.v is required and has not been found in the loadpath!
+- *** Warning: in file support/Map2.v, library Algebra.Cartesian.v is required and has not been found in the loadpath!
+- *** Warning: in file support/algebra_omissions.v, library Algebra.Group_facts.v is required and has not been found in the loadpath!
+- *** Warning: in file support/algebra_omissions.v, library Algebra.Group_facts.v is required and has not been found in the loadpath!
+- *** Warning: in file support/arb_intersections.v, library Algebra.Parts2.v is required and has not been found in the loadpath!
+- *** Warning: in file support/arb_intersections.v, library Algebra.Parts2.v is required and has not been found in the loadpath!
+- *** Warning: in file LinAlg/subspaces.v, library Algebra.Sub_module.v is required and has not been found in the loadpath!
+- *** Warning: in file LinAlg/subspaces.v, library Algebra.Singleton.v is required and has not been found in the loadpath!
+- *** Warning: in file LinAlg/subspaces.v, library Algebra.Sub_module.v is required and has not been found in the loadpath!
+- *** Warning: in file LinAlg/subspaces.v, library Algebra.Singleton.v is required and has not been found in the loadpath!
+- *** Warning: in file support/seq_set.v, library Algebra.Parts.v is required and has not been found in the loadpath!
+- *** Warning: in file support/seq_set.v, library Algebra.Parts.v is required and has not been found in the loadpath!
+- *** Warning: in file support/conshdtl.v, library Algebra.Parts.v is required and has not been found in the loadpath!
+- *** Warning: in file support/conshdtl.v, library Algebra.Parts.v is required and has not been found in the loadpath!
+- *** Warning: in file support/pointwise.v, library Algebra.Cartesian.v is required and has not been found in the loadpath!
+- *** Warning: in file support/pointwise.v, library Algebra.Cartesian.v is required and has not been found in the loadpath!
+- *** Warning: in file support/sums2.v, library Algebra.Abelian_group_facts.v is required and has not been found in the loadpath!
+- *** Warning: in file support/sums.v, library Algebra.Sub_monoid.v is required and has not been found in the loadpath!
+- *** Warning: in file support/sums.v, library Algebra.Sub_monoid.v is required and has not been found in the loadpath!
+- *** Warning: in file support/sums2.v, library Algebra.Abelian_group_facts.v is required and has not been found in the loadpath!
+- *** Warning: in file support/distinct.v, library Algebra.Parts.v is required and has not been found in the loadpath!
+- *** Warning: in file support/distinct.v, library Algebra.Parts.v is required and has not been found in the loadpath!
+- *** Warning: in file support/seq_set_facts.v, library Algebra.Union.v is required and has not been found in the loadpath!
+- *** Warning: in file support/seq_set_facts.v, library Algebra.Singleton.v is required and has not been found in the loadpath!
+- *** Warning: in file support/seq_set_facts.v, library Algebra.Union.v is required and has not been found in the loadpath!
+- *** Warning: in file support/seq_set_facts.v, library Algebra.Singleton.v is required and has not been found in the loadpath!
+- *** Warning: in file LinAlg/algebraic_span_facts.v, library Algebra.Inter.v is required and has not been found in the loadpath!
+- *** Warning: in file LinAlg/algebraic_span_facts.v, library Algebra.Inter.v is required and has not been found in the loadpath!
+- *** Warning: in file LinAlg/lin_dependence.v, library Algebra.Union.v is required and has not been found in the loadpath!
+- *** Warning: in file LinAlg/lin_dependence.v, library Algebra.Union.v is required and has not been found in the loadpath!
+- *** Warning: in file support/finite_subsets.v, library Algebra.Diff.v is required and has not been found in the loadpath!
+- *** Warning: in file support/finite_subsets.v, library Algebra.Singleton.v is required and has not been found in the loadpath!
+- *** Warning: in file support/finite_subsets.v, library Algebra.Diff.v is required and has not been found in the loadpath!
+- *** Warning: in file support/finite_subsets.v, library Algebra.Singleton.v is required and has not been found in the loadpath!
+- *** Warning: in file support/counting_elements.v, library Algebra.Diff.v is required and has not been found in the loadpath!
+- *** Warning: in file support/counting_elements.v, library Algebra.Singleton.v is required and has not been found in the loadpath!
+- *** Warning: in file support/counting_elements.v, library Algebra.Union.v is required and has not been found in the loadpath!
+- *** Warning: in file support/counting_elements.v, library Algebra.Diff.v is required and has not been found in the loadpath!
+- *** Warning: in file support/counting_elements.v, library Algebra.Singleton.v is required and has not been found in the loadpath!
+- *** Warning: in file support/counting_elements.v, library Algebra.Union.v is required and has not been found in the loadpath!
+- *** Warning: in file examples/trivial_spaces.v, library Algebra.Singleton.v is required and has not been found in the loadpath!
+- *** Warning: in file examples/trivial_spaces.v, library Algebra.Singleton.v is required and has not been found in the loadpath!
+- *** Warning: in file examples/Matrix_multiplication.v, library Algebra.Cfield_facts.v is required and has not been found in the loadpath!
+- *** Warning: in file examples/Matrix_multiplication.v, library Algebra.Cfield_facts.v is required and has not been found in the loadpath!
+- *** Warning: in file extras/ring_module.v, library Algebra.Ring_facts.v is required and has not been found in the loadpath!
+- *** Warning: in file extras/ring_module.v, library Algebra.Endo_set.v is required and has not been found in the loadpath!
+- *** Warning: in file extras/ring_module.v, library Algebra.Ring_facts.v is required and has not been found in the loadpath!
+- *** Warning: in file extras/ring_module.v, library Algebra.Endo_set.v is required and has not been found in the loadpath!
+- *** Warning: in file extras/Inter_intersection.v, library Algebra.Inter.v is required and has not been found in the loadpath!
+- *** Warning: in file extras/Inter_intersection.v, library Algebra.Inter.v is required and has not been found in the loadpath!
+- *** Warning: in file extras/matrix_algebra.v, library Algebra.Algebra.v is required and has not been found in the loadpath!
+- *** Warning: in file extras/matrix_algebra.v, library Algebra.Cfield_facts.v is required and has not been found in the loadpath!
+- *** Warning: in file extras/matrix_algebra.v, library Algebra.Algebra.v is required and has not been found in the loadpath!
+- *** Warning: in file extras/matrix_algebra.v, library Algebra.Cfield_facts.v is required and has not been found in the loadpath!
+- File &quot;./support/more_syntax.v&quot;, line 18, characters 0-39:
+- Error: Cannot find library Algebra.Module_cat in loadpath
+- File &quot;./support/arb_intersections.v&quot;, line 29, characters 0-35:
+- Error: Cannot find library Algebra.Parts2 in loadpath
 - make: *** [support/more_syntax.vo] Error 1
 - make: *** Waiting for unfinished jobs....
-- make: *** [support/algebra_omissions.vo] Error 1
-- make: *** [support/equal_syntax.vo] Error 1
 - make: *** [support/arb_intersections.vo] Error 1
+- File &quot;./support/equal_syntax.v&quot;, line 22, characters 0-33:
+- Error: Cannot find library Algebra.Sets in loadpath
+- File &quot;./support/algebra_omissions.v&quot;, line 23, characters 0-40:
+- Error: Cannot find library Algebra.Group_facts in loadpath
+- make: *** [support/equal_syntax.vo] Error 1
+- make: *** [support/algebra_omissions.vo] Error 1
 [ERROR] The compilation of coq:contrib:lin-alg failed at &quot;make -j4&quot;.
 [coq:contrib:lin-alg: rm] Command started
-+ rm &quot;-R&quot; &quot;/home/bench/.opam/system/lib/coq/user-contrib/lin-alg&quot;
++ rm &quot;-R&quot; &quot;/home/bench/.opam/system/lib/coq/user-contrib/lin-alg&quot; (CWD=/home/bench/.opam/system/build/coq:contrib:lin-alg.dev)
 - rm: cannot remove &#39;/home/bench/.opam/system/lib/coq/user-contrib/lin-alg&#39;: No such file or directory
 #=== ERROR while installing coq:contrib:lin-alg.dev ===========================#
 # opam-version         1.2.1
@@ -365,38 +284,38 @@ coq             dev  Formal proof management system.
 # path                 /home/bench/.opam/system/build/coq:contrib:lin-alg.dev
 # compiler             system (4.02.1)
 # exit-code            2
-# env-file             /home/bench/.opam/system/build/coq:contrib:lin-alg.dev/coq:contrib:lin-alg-9133-d2d111.env
-# stdout-file          /home/bench/.opam/system/build/coq:contrib:lin-alg.dev/coq:contrib:lin-alg-9133-d2d111.out
-# stderr-file          /home/bench/.opam/system/build/coq:contrib:lin-alg.dev/coq:contrib:lin-alg-9133-d2d111.err
+# env-file             /home/bench/.opam/system/build/coq:contrib:lin-alg.dev/coq:contrib:lin-alg-5612-d2d111.env
+# stdout-file          /home/bench/.opam/system/build/coq:contrib:lin-alg.dev/coq:contrib:lin-alg-5612-d2d111.out
+# stderr-file          /home/bench/.opam/system/build/coq:contrib:lin-alg.dev/coq:contrib:lin-alg-5612-d2d111.err
 ### stdout ###
-# &quot;coqdep&quot; -c -R &quot;../../Sophia-Antipolis/Algebra/&quot; Algebra -R &quot;.&quot; LinAlg &quot;extras/matrix_algebra.v&quot; &gt; &quot;extras/matrix_algebra.v.d&quot; || ( RV=$?; rm -f &quot;extras/matrix_algebra.v.d&quot;; exit ${RV} )
 # [...]
-# &quot;coqdep&quot; -c -R &quot;../../Sophia-Antipolis/Algebra/&quot; Algebra -R &quot;.&quot; LinAlg &quot;extras/Equality_structures.v&quot; &gt; &quot;extras/Equality_structures.v.d&quot; || ( RV=$?; rm -f &quot;extras/Equality_structures.v.d&quot;; exit ${RV} )
-# &quot;coqc&quot;  -q  -R &quot;../../Sophia-Antipolis/Algebra/&quot; Algebra -R &quot;.&quot; LinAlg   support/equal_syntax
-# &quot;coqc&quot;  -q  -R &quot;../../Sophia-Antipolis/Algebra/&quot; Algebra -R &quot;.&quot; LinAlg   support/more_syntax
-# &quot;coqc&quot;  -q  -R &quot;../../Sophia-Antipolis/Algebra/&quot; Algebra -R &quot;.&quot; LinAlg   support/algebra_omissions
-# &quot;coqc&quot;  -q  -R &quot;../../Sophia-Antipolis/Algebra/&quot; Algebra -R &quot;.&quot; LinAlg   support/arb_intersections
-# Makefile:306: recipe for target &#39;support/more_syntax.vo&#39; failed
-# Makefile:306: recipe for target &#39;support/algebra_omissions.vo&#39; failed
-# Makefile:306: recipe for target &#39;support/equal_syntax.vo&#39; failed
-# Makefile:306: recipe for target &#39;support/arb_intersections.vo&#39; failed
+# &quot;coqdep&quot; -c -R &quot;.&quot; LinAlg &quot;extras/matrix_algebra.v&quot; &gt; &quot;extras/matrix_algebra.v.d&quot; || ( RV=$?; rm -f &quot;extras/matrix_algebra.v.d&quot;; exit ${RV} )
+# &quot;coqdep&quot; -c -R &quot;.&quot; LinAlg &quot;extras/Equality_structures.v&quot; &gt; &quot;extras/Equality_structures.v.d&quot; || ( RV=$?; rm -f &quot;extras/Equality_structures.v.d&quot;; exit ${RV} )
+# &quot;coqc&quot;  -q  -R &quot;.&quot; LinAlg   support/equal_syntax
+# &quot;coqc&quot;  -q  -R &quot;.&quot; LinAlg   support/more_syntax
+# &quot;coqc&quot;  -q  -R &quot;.&quot; LinAlg   support/algebra_omissions
+# &quot;coqc&quot;  -q  -R &quot;.&quot; LinAlg   support/arb_intersections
+# Makefile:308: recipe for target &#39;support/more_syntax.vo&#39; failed
+# Makefile:308: recipe for target &#39;support/arb_intersections.vo&#39; failed
+# Makefile:308: recipe for target &#39;support/equal_syntax.vo&#39; failed
+# Makefile:308: recipe for target &#39;support/algebra_omissions.vo&#39; failed
 ### stderr ###
-# Error: Cannot find library Group_facts in loadpath
 # [...]
-# File &quot;./support/equal_syntax.v&quot;, line 22, characters 0-20:
-# Error: Cannot find library Sets in loadpath
-# File &quot;./support/arb_intersections.v&quot;, line 29, characters 0-22:
-# Error: Cannot find library Parts2 in loadpath
+# Error: Cannot find library Algebra.Parts2 in loadpath
 # make: *** [support/more_syntax.vo] Error 1
 # make: *** Waiting for unfinished jobs....
-# make: *** [support/algebra_omissions.vo] Error 1
-# make: *** [support/equal_syntax.vo] Error 1
 # make: *** [support/arb_intersections.vo] Error 1
+# File &quot;./support/equal_syntax.v&quot;, line 22, characters 0-33:
+# Error: Cannot find library Algebra.Sets in loadpath
+# File &quot;./support/algebra_omissions.v&quot;, line 23, characters 0-40:
+# Error: Cannot find library Algebra.Group_facts in loadpath
+# make: *** [support/equal_syntax.vo] Error 1
+# make: *** [support/algebra_omissions.vo] Error 1
 =-=- Error report -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 The following actions failed
   - install coq:contrib:lin-alg dev
 No changes have been performed
-&#39;opam install -y --verbose coq:contrib:lin-alg.dev&#39; failed.
+&#39;opam install -y -v coq:contrib:lin-alg.dev&#39; failed.
 </pre></dd>
             </dl>
             <h2>Installation size</h2>
@@ -407,8 +326,6 @@ No changes have been performed
               <dd><code>true</code></dd>
               <dt>Return code</dt>
               <dd>0</dd>
-              <dt>Duration</dt>
-              <dd>0 s</dd>
               <dt>Missing removes</dt>
               <dd>
                 none
