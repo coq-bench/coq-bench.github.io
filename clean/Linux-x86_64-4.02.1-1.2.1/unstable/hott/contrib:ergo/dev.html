@@ -47,7 +47,7 @@
                 <span class="label label-danger">Error</span>
               </small>
             </h1>
-            <p><em><script>document.write(moment("2015-02-23 01:16:38 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2015-02-23 01:16:38 UTC)</em><p>
+            <p><em><script>document.write(moment("2015-04-02 15:58:07 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2015-04-02 15:58:07 UTC)</em><p>
             <h2>Context</h2>
             <pre># Installed packages for system:
 base-bigarray           base  Bigarray library distributed with the OCaml compil
@@ -65,8 +65,6 @@ ocamlfind              1.5.5  A library manager for OCaml
               <dd><code>ruby lint.rb unstable ../unstable/packages/coq:contrib:ergo/coq:contrib:ergo.dev</code></dd>
               <dt>Return code</dt>
               <dd>0</dd>
-              <dt>Duration</dt>
-              <dd>0 s</dd>
             </dl>
             <h2>Dry install</h2>
             <p>Dry install with the current Coq version:</p>
@@ -75,8 +73,6 @@ ocamlfind              1.5.5  A library manager for OCaml
               <dd><code>opam install -y --show-action coq:contrib:ergo.dev coq.hott</code></dd>
               <dt>Return code</dt>
               <dd>0</dd>
-              <dt>Duration</dt>
-              <dd>2 s</dd>
             </dl>
             <p>Dry install without Coq, to test if the problem was incompatibility with the current Coq version:</p>
             <dl class="dl-horizontal">
@@ -84,13 +80,11 @@ ocamlfind              1.5.5  A library manager for OCaml
               <dd><code>true</code></dd>
               <dt>Return code</dt>
               <dd>0</dd>
-              <dt>Duration</dt>
-              <dd>0 s</dd>
             </dl>
             <h2>Install dependencies</h2>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>ulimit -Sv 2000000; timeout 5m opam install -y --deps-only coq:contrib:ergo.dev</code></dd>
+              <dd><code>opam list; ulimit -Sv 1000000; timeout 5m opam install -y --deps-only coq:contrib:ergo.dev</code></dd>
               <dt>Return code</dt>
               <dd>0</dd>
               <dt>Duration</dt>
@@ -99,39 +93,39 @@ ocamlfind              1.5.5  A library manager for OCaml
             <h2>Install</h2>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>ulimit -Sv 2000000; timeout 30m opam install -y --verbose coq:contrib:ergo.dev</code></dd>
+              <dd><code>opam list; ulimit -Sv 4000000; timeout 120m opam install -y -v coq:contrib:ergo.dev</code></dd>
               <dt>Return code</dt>
               <dd>1024</dd>
               <dt>Duration</dt>
               <dd>5 s</dd>
               <dt>Output</dt>
-              <dd><pre>The following actions will be performed:
+              <dd><pre># Installed packages for system:
+base-bigarray           base  Bigarray library distributed with the OCaml compil
+base-threads            base  Threads library distributed with the OCaml compile
+base-unix               base  Unix library distributed with the OCaml compiler
+camlp4         4.02.1+system  Camlp4 is a system for writing extensible parsers 
+camlp5                  6.12  Preprocessor-pretty-printer of OCaml
+coq                     hott  HoTT/Coq stable branch
+lablgtk               2.18.3  OCaml interface to GTK+
+ocamlfind              1.5.5  A library manager for OCaml
+The following actions will be performed:
   - install coq:contrib:ergo dev
 =-=- Gathering sources =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 [coq:contrib:ergo: from unstable] Repo archive not found[coq:contrib:ergo: git] Command started
-+ git &quot;init&quot;
-- Initialized empty Git repository in /home/bench/.opam/packages.dev/coq:contrib:ergo.dev/.git/
-[coq:contrib:ergo: git] Command started
-+ git &quot;remote&quot; &quot;add&quot; &quot;origin&quot; &quot;https://gforge.inria.fr/git/coq-contribs/ergo.git&quot;
-[coq:contrib:ergo: git] Command started
-+ git &quot;commit&quot; &quot;--allow-empty&quot; &quot;-m&quot; &quot;opam-git-init&quot;
-- [master (root-commit) d005ea5] opam-git-init
 [coq:contrib:ergo: git] Command started
 [coq:contrib:ergo: git] Command started
-+ git &quot;fetch&quot; &quot;-q&quot; &quot;origin&quot; &quot;+trunk:refs/remotes/opam-ref&quot;
 [coq:contrib:ergo: git] Command started
-+ git &quot;reset&quot; &quot;--hard&quot; &quot;refs/remotes/opam-ref&quot; &quot;--&quot;
-- HEAD is now at cc96672 Fix a few Require inside modules in AACTactics and Ergo.
+[coq:contrib:ergo: git] Command started
+[coq:contrib:ergo: git] Command started
 [coq:contrib:ergo] https://gforge.inria.fr/git/coq-contribs/ergo.git#trunk updated
 =-=- Processing actions -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
-+ cp &quot;-PR&quot; &quot;/home/bench/.opam/packages.dev/coq:contrib:ergo.dev&quot; &quot;/home/bench/.opam/system/build/coq:contrib:ergo.dev&quot;
 [coq:contrib:ergo: coq_makefile Make] Command started
-+ coq_makefile &quot;-f&quot; &quot;Make&quot; &quot;-o&quot; &quot;Makefile&quot;
++ coq_makefile &quot;-f&quot; &quot;Make&quot; &quot;-o&quot; &quot;Makefile&quot; (CWD=/home/bench/.opam/system/build/coq:contrib:ergo.dev)
 - Warning: in option -R, ../Counting/theories is not a subdirectory of the current directory
 - Warning: -R/-Q options don&#39;t have a correct common prefix,
 -  install-doc will put anything in $INSTALLDEFAULTROOT
 [coq:contrib:ergo: make] Command started
-+ make &quot;-j4&quot;
++ make &quot;-j4&quot; (CWD=/home/bench/.opam/system/build/coq:contrib:ergo.dev)
 - ocamldep -slash -I &quot;../Counting/src&quot; -I &quot;../Nfix/src&quot; -I &quot;../Containers/src&quot; -I &quot;src&quot; &quot;src/ergo.mli&quot; &gt; &quot;src/ergo.mli.d&quot; || ( RV=$?; rm -f &quot;src/ergo.mli.d&quot;; exit ${RV} )
 - &quot;coqdep&quot; -c -I &quot;../Counting/src&quot; -I &quot;../Nfix/src&quot; -I &quot;../Containers/src&quot; -I &quot;src&quot; &quot;src/ergo_plugin.mllib&quot; &gt; &quot;src/ergo_plugin.mllib.d&quot; || ( RV=$?; rm -f &quot;src/ergo_plugin.mllib.d&quot;; exit ${RV} )
 - ocamldep -slash -I &quot;../Counting/src&quot; -I &quot;../Nfix/src&quot; -I &quot;../Containers/src&quot; -I &quot;src&quot; &quot;src/arith.ml&quot; &gt; &quot;src/arith.ml.d&quot; || ( RV=$?; rm -f &quot;src/arith.ml.d&quot;; exit ${RV} )
@@ -299,7 +293,7 @@ ocamlfind              1.5.5  A library manager for OCaml
 -        ((~ occ 2 0 \/ ~ occ 1 0) /\ (~ occ 2 0 \/ ~ occ 0 0)) /\
 -        (~ occ 1 0 \/ ~ occ 0 0)
 -      : Prop
-- Finished transaction in 0.009 secs (0.004u,0.002s) (successful)
+- Finished transaction in 0.003 secs (0.u,0.004s) (successful)
 -      = ((occ 10 9 \/
 -          occ 10 8 \/
 -          occ 10 7 \/
@@ -816,10 +810,10 @@ ocamlfind              1.5.5  A library manager for OCaml
 -        ((~ occ 2 0 \/ ~ occ 1 0) /\ (~ occ 2 0 \/ ~ occ 0 0)) /\
 -        (~ occ 1 0 \/ ~ occ 0 0)
 -      : Prop
-- Finished transaction in 0.04 secs (0.012u,0.028s) (successful)
+- Finished transaction in 0.016 secs (0.015u,0.s) (successful)
 -      = occ 1 0 /\ occ 0 0 -&gt; occ 1 0 /\ occ 0 0
 -      : Prop
-- Finished transaction in 0. secs (0.u,0.s) (successful)
+- Finished transaction in 0. secs (0.002u,0.s) (successful)
 -      = (occ 2 1 \/ occ 2 0) /\ (occ 1 1 \/ occ 1 0) /\ (occ 0 1 \/ occ 0 0) -&gt;
 -        ((occ 2 1 /\ occ 1 1 \/ occ 2 1 /\ occ 0 1) \/ occ 1 1 /\ occ 0 1) \/
 -        (occ 2 0 /\ occ 1 0 \/ occ 2 0 /\ occ 0 0) \/ occ 1 0 /\ occ 0 0
@@ -899,7 +893,7 @@ ocamlfind              1.5.5  A library manager for OCaml
 -        (occ 3 0 /\ occ 2 0 \/ occ 3 0 /\ occ 1 0 \/ occ 3 0 /\ occ 0 0) \/
 -        (occ 2 0 /\ occ 1 0 \/ occ 2 0 /\ occ 0 0) \/ occ 1 0 /\ occ 0 0
 -      : Prop
-- Finished transaction in 0.005 secs (0.004u,0.001s) (successful)
+- Finished transaction in 0.003 secs (0.004u,0.s) (successful)
 -      = (occ 10 9 \/
 -         occ 10 8 \/
 -         occ 10 7 \/
@@ -1326,7 +1320,7 @@ ocamlfind              1.5.5  A library manager for OCaml
 -        (occ 3 0 /\ occ 2 0 \/ occ 3 0 /\ occ 1 0 \/ occ 3 0 /\ occ 0 0) \/
 -        (occ 2 0 /\ occ 1 0 \/ occ 2 0 /\ occ 0 0) \/ occ 1 0 /\ occ 0 0
 -      : Prop
-- Finished transaction in 0.028 secs (0.019u,0.006s) (successful)
+- Finished transaction in 0.013 secs (0.013u,0.s) (successful)
 -      = forall x x0 x1 x2 x3 x4 x5 x6 x7 x8 x9 x10 : Prop,
 -        x
 -        :: x0
@@ -1422,7 +1416,7 @@ ocamlfind              1.5.5  A library manager for OCaml
 -        ((~ x17 \/ ~ x11) /\ (~ x17 \/ ~ x5) /\ (~ x17 \/ ~ x)) /\
 -        ((~ x11 \/ ~ x5) /\ (~ x11 \/ ~ x)) /\ (~ x5 \/ ~ x) -&gt; False
 -      : Prop
-- Finished transaction in 0.048 secs (0.02u,0.027s) (successful)
+- Finished transaction in 0.02 secs (0.016u,0.004s) (successful)
 -      = forall
 -          x x0 x1 x2 x3 x4 x5 x6 x7 x8 x9 x10 x11 x12 x13 x14 x15 x16 x17 x18
 -           x19 x20 x21 x22 x23 x24 x25 x26 x27 x28 x29 x30 x31 x32 x33 x34 x35
@@ -1814,19 +1808,19 @@ ocamlfind              1.5.5  A library manager for OCaml
 -        ((~ x29 \/ ~ x19) /\ (~ x29 \/ ~ x9) /\ (~ x29 \/ ~ x)) /\
 -        ((~ x19 \/ ~ x9) /\ (~ x19 \/ ~ x)) /\ (~ x9 \/ ~ x) -&gt; False
 -      : Prop
-- Finished transaction in 0.317 secs (0.226u,0.09s) (successful)
+- Finished transaction in 0.215 secs (0.199u,0.016s) (successful)
 - coqdep: &quot;opendir&quot; failed on &quot;../Counting/src&quot;: No such file or directory
 - Bad -I option: ../Containers/src: No such file or directory
 - Bad -I option: ../Nfix/src: No such file or directory
 - Bad -I option: ../Counting/src: No such file or directory
 - Bad -I option: ../Containers/src: No such file or directory
 - Bad -I option: ../Nfix/src: No such file or directory
-- Bad -I option: ../Counting/src: No such file or directory
-- Bad -I option: ../Containers/src: No such file or directory
-- Bad -I option: ../Nfix/src: No such file or directory
-- Bad -I option: ../Counting/src: No such file or directory
 - coqdep: &quot;opendir&quot; failed on &quot;../Counting/src&quot;: No such file or directory
+- Bad -I option: ../Counting/src: No such file or directory
 - coqdep: &quot;opendir&quot; failed on &quot;../Counting/theories&quot;: No such file or directory
+- Bad -I option: ../Containers/src: No such file or directory
+- Bad -I option: ../Nfix/src: No such file or directory
+- Bad -I option: ../Counting/src: No such file or directory
 - coqdep: &quot;opendir&quot; failed on &quot;../Counting/theories&quot;: No such file or directory
 - coqdep: &quot;opendir&quot; failed on &quot;../Counting/theories&quot;: No such file or directory
 - coqdep: &quot;opendir&quot; failed on &quot;../Counting/theories&quot;: No such file or directory
@@ -1874,8 +1868,8 @@ ocamlfind              1.5.5  A library manager for OCaml
 - Warning: Cannot open ../Containers/theories
 - Warning: Cannot open ../Counting/theories
 - Warning: Cannot open ../Nfix/theories
-- Warning: Cannot open ../Counting/theories
 - Warning: Cannot open ../Containers/theories
+- Warning: Cannot open ../Counting/theories
 - Warning: Cannot open ../Nfix/theories
 - Warning: Cannot open ../Containers/theories
 - Warning: Cannot open ../Counting/theories
@@ -1969,7 +1963,7 @@ ocamlfind              1.5.5  A library manager for OCaml
 -        (x 58 &lt;-&gt; x 57) \/
 -        (x 57 &lt;-&gt; x 56) \/ (x 56 &lt;-&gt; x 55) \/ (.. &lt;-&gt; ..) \/ (..) \/ .. \/ ..
 -      : Prop
-- Finished transaction in 0.006 secs (0.003u,0.003s) (successful)
+- Finished transaction in 0.002 secs (0.u,0.003s) (successful)
 -      = ((x 2 \/ x 1) /\ (~ x 2 \/ ~ x 1)) /\
 -        ((x 1 \/ x 0) /\ (~ x 1 \/ ~ x 0)) /\ (x 0 \/ x 2) /\ (~ x 0 \/ ~ x 2)
 -      : Prop
@@ -1994,7 +1988,7 @@ ocamlfind              1.5.5  A library manager for OCaml
 -        ((x 1 \/ x 0) /\ (~ x 1 \/ ~ x 0)) /\
 -        (x 0 \/ x 12) /\ (~ x 0 \/ ~ x 12)
 -      : Prop
-- Finished transaction in 0.001 secs (0.u,0.002s) (successful)
+- Finished transaction in 0. secs (0.u,0.s) (successful)
 -      = ((x 20 \/ x 19) /\ (~ x 20 \/ ~ x 19)) /\
 -        ((x 19 \/ x 18) /\ (~ x 19 \/ ~ x 18)) /\
 -        ((x 18 \/ x 17) /\ (~ x 18 \/ ~ x 17)) /\
@@ -2017,7 +2011,7 @@ ocamlfind              1.5.5  A library manager for OCaml
 -        ((x 1 \/ x 0) /\ (~ x 1 \/ ~ x 0)) /\
 -        (x 0 \/ x 20) /\ (~ x 0 \/ ~ x 20)
 -      : Prop
-- Finished transaction in 0.002 secs (0.u,0.001s) (successful)
+- Finished transaction in 0.001 secs (0.u,0.s) (successful)
 -      = ((x 100 \/ x 99) /\ (~ x 100 \/ ~ x 99)) /\
 -        ((x 99 \/ x 98) /\ (~ x 99 \/ ~ x 98)) /\
 -        ((x 98 \/ x 97) /\ (~ x 98 \/ ~ x 97)) /\
@@ -2064,7 +2058,7 @@ ocamlfind              1.5.5  A library manager for OCaml
 -        ((.. \/ ..) /\ (.. \/ ..)) /\
 -        ((..) /\ (..)) /\ (.. /\ ..) /\ (..) /\ .. /\ ..
 -      : Prop
-- Finished transaction in 0.015 secs (0.012u,0.s) (successful)
+- Finished transaction in 0.008 secs (0.008u,0.s) (successful)
 -      = (a 0 &lt;-&gt; a 1) &lt;-&gt; (a 1 &lt;-&gt; a 0)
 -      : Prop
 - Finished transaction in 0. secs (0.u,0.s) (successful)
@@ -2079,7 +2073,7 @@ ocamlfind              1.5.5  A library manager for OCaml
 -           (a 7 &lt;-&gt;
 -            (a 6 &lt;-&gt; (a 5 &lt;-&gt; (a 4 &lt;-&gt; (a 3 &lt;-&gt; (a 2 &lt;-&gt; (a 1 &lt;-&gt; a 0))))))))))
 -      : Prop
-- Finished transaction in 0. secs (0.u,0.s) (successful)
+- Finished transaction in 0. secs (0.003u,0.s) (successful)
 -      = ((((((((((((((((((((((((..) &lt;-&gt; a 8) &lt;-&gt; a 9) &lt;-&gt; a 10) &lt;-&gt; a 11) &lt;-&gt;
 -                           a 12) &lt;-&gt; a 13) &lt;-&gt; a 14) &lt;-&gt; 
 -                        a 15) &lt;-&gt; a 16) &lt;-&gt; a 17) &lt;-&gt; 
@@ -2108,7 +2102,7 @@ ocamlfind              1.5.5  A library manager for OCaml
 -                          (a 12 &lt;-&gt;
 -                           (a 11 &lt;-&gt; (a 10 &lt;-&gt; (a 9 &lt;-&gt; (a 8 &lt;-&gt; (..))))))))))))))))))))))))
 -      : Prop
-- Finished transaction in 0.001 secs (0.u,0.001s) (successful)
+- Finished transaction in 0. secs (0.u,0.s) (successful)
 -      = (~ a 0 \/ ~ a 1) \/ a 0 /\ a 1
 -      : Prop
 - Finished transaction in 0. secs (0.u,0.s) (successful)
@@ -2121,7 +2115,7 @@ ocamlfind              1.5.5  A library manager for OCaml
 -        (((((((((a 0 /\ a 1) /\ a 2) /\ a 3) /\ a 4) /\ a 5) /\ a 6) /\ a 7) /\
 -          a 8) /\ a 9) /\ a 10
 -      : Prop
-- Finished transaction in 0. secs (0.u,0.001s) (successful)
+- Finished transaction in 0. secs (0.u,0.s) (successful)
 -      = ((((((((((((((((((((((((..) \/ ~ ..) \/ ~ a 9) \/ ~ a 10) \/ ~ a 11) \/
 -                           ~ a 12) \/ ~ a 13) \/ ~ a 14) \/ 
 -                        ~ a 15) \/ ~ a 16) \/ ~ a 17) \/ 
@@ -2136,7 +2130,7 @@ ocamlfind              1.5.5  A library manager for OCaml
 -               a 23) /\ a 24) /\ a 25) /\ a 26) /\ a 27) /\ 
 -          a 28) /\ a 29) /\ a 30
 -      : Prop
-- Finished transaction in 0.002 secs (0.u,0.001s) (successful)
+- Finished transaction in 0. secs (0.u,0.s) (successful)
 -      = a 1 /\ (a 1 -&gt; a 1 -&gt; a 0) /\ True -&gt; a 0
 -      : Prop
 - Finished transaction in 0. secs (0.u,0.s) (successful)
@@ -2188,7 +2182,7 @@ ocamlfind              1.5.5  A library manager for OCaml
 -        (a 2 -&gt; a 2 -&gt; a 1) /\ (a 1 -&gt; a 1 -&gt; a 0) /\ True -&gt; 
 -        a 0
 -      : Prop
-- Finished transaction in 0.04 secs (0.032u,0.008s) (successful)
+- Finished transaction in 0.032 secs (0.029u,0.002s) (successful)
 -      = forall x x0 x1 : Prop,
 -        ~ ((x1 &lt;-&gt; x0) \/ (x0 &lt;-&gt; x) \/ (x &lt;-&gt; x1)) -&gt; False
 -      : Prop
@@ -2287,10 +2281,10 @@ ocamlfind              1.5.5  A library manager for OCaml
 -         (x60 &lt;-&gt; x59) \/ (x59 &lt;-&gt; x58) \/ (x58 &lt;-&gt; x57) \/ (..) \/ .. \/ ..) -&gt;
 -        False
 -      : Prop
-- Finished transaction in 0.02 secs (0.022u,0.s) (successful)
+- Finished transaction in 0.018 secs (0.019u,0.s) (successful)
 [ERROR] The compilation of coq:contrib:ergo failed at &quot;make -j4&quot;.
 [coq:contrib:ergo: rm] Command started
-+ rm &quot;-R&quot; &quot;/home/bench/.opam/system/lib/coq/user-contrib/ergo&quot;
++ rm &quot;-R&quot; &quot;/home/bench/.opam/system/lib/coq/user-contrib/ergo&quot; (CWD=/home/bench/.opam/system/build/coq:contrib:ergo.dev)
 - rm: cannot remove &#39;/home/bench/.opam/system/lib/coq/user-contrib/ergo&#39;: No such file or directory
 #=== ERROR while installing coq:contrib:ergo.dev ==============================#
 # opam-version         1.2.1
@@ -2299,9 +2293,9 @@ ocamlfind              1.5.5  A library manager for OCaml
 # path                 /home/bench/.opam/system/build/coq:contrib:ergo.dev
 # compiler             system (4.02.1)
 # exit-code            2
-# env-file             /home/bench/.opam/system/build/coq:contrib:ergo.dev/coq:contrib:ergo-19485-d2d111.env
-# stdout-file          /home/bench/.opam/system/build/coq:contrib:ergo.dev/coq:contrib:ergo-19485-d2d111.out
-# stderr-file          /home/bench/.opam/system/build/coq:contrib:ergo.dev/coq:contrib:ergo-19485-d2d111.err
+# env-file             /home/bench/.opam/system/build/coq:contrib:ergo.dev/coq:contrib:ergo-18201-d2d111.env
+# stdout-file          /home/bench/.opam/system/build/coq:contrib:ergo.dev/coq:contrib:ergo-18201-d2d111.out
+# stderr-file          /home/bench/.opam/system/build/coq:contrib:ergo.dev/coq:contrib:ergo-18201-d2d111.err
 ### stdout ###
 # Finished transaction in 0.001 secs (0.u,0.s) (successful)
 # [...]
@@ -2313,10 +2307,10 @@ ocamlfind              1.5.5  A library manager for OCaml
 #         (x60 &lt;-&gt; x59) \/ (x59 &lt;-&gt; x58) \/ (x58 &lt;-&gt; x57) \/ (..) \/ .. \/ ..) -&gt;
 #        False
 #      : Prop
-# Finished transaction in 0.02 secs (0.022u,0.s) (successful)
+# Finished transaction in 0.018 secs (0.019u,0.s) (successful)
 ### stderr ###
-# Warning: Cannot open ../Containers/theories
 # [...]
+# Warning: Cannot open ../Counting/theories
 # Warning: Cannot open ../Nfix/theories
 # Warning: Cannot open ../Containers/theories
 # Warning: Cannot open ../Counting/theories
@@ -2330,7 +2324,7 @@ ocamlfind              1.5.5  A library manager for OCaml
 The following actions failed
   - install coq:contrib:ergo dev
 No changes have been performed
-&#39;opam install -y --verbose coq:contrib:ergo.dev&#39; failed.
+&#39;opam install -y -v coq:contrib:ergo.dev&#39; failed.
 </pre></dd>
             </dl>
             <h2>Installation size</h2>
@@ -2341,8 +2335,6 @@ No changes have been performed
               <dd><code>true</code></dd>
               <dt>Return code</dt>
               <dd>0</dd>
-              <dt>Duration</dt>
-              <dd>0 s</dd>
               <dt>Missing removes</dt>
               <dd>
                 none

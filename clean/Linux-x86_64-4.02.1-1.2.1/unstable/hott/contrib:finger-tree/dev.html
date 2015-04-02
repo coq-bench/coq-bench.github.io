@@ -47,7 +47,7 @@
                 <span class="label label-danger">Error</span>
               </small>
             </h1>
-            <p><em><script>document.write(moment("2015-02-23 01:16:38 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2015-02-23 01:16:38 UTC)</em><p>
+            <p><em><script>document.write(moment("2015-04-02 15:58:07 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2015-04-02 15:58:07 UTC)</em><p>
             <h2>Context</h2>
             <pre># Installed packages for system:
 base-bigarray           base  Bigarray library distributed with the OCaml compil
@@ -65,8 +65,6 @@ ocamlfind              1.5.5  A library manager for OCaml
               <dd><code>ruby lint.rb unstable ../unstable/packages/coq:contrib:finger-tree/coq:contrib:finger-tree.dev</code></dd>
               <dt>Return code</dt>
               <dd>0</dd>
-              <dt>Duration</dt>
-              <dd>0 s</dd>
             </dl>
             <h2>Dry install</h2>
             <p>Dry install with the current Coq version:</p>
@@ -75,8 +73,6 @@ ocamlfind              1.5.5  A library manager for OCaml
               <dd><code>opam install -y --show-action coq:contrib:finger-tree.dev coq.hott</code></dd>
               <dt>Return code</dt>
               <dd>0</dd>
-              <dt>Duration</dt>
-              <dd>2 s</dd>
             </dl>
             <p>Dry install without Coq, to test if the problem was incompatibility with the current Coq version:</p>
             <dl class="dl-horizontal">
@@ -84,13 +80,11 @@ ocamlfind              1.5.5  A library manager for OCaml
               <dd><code>true</code></dd>
               <dt>Return code</dt>
               <dd>0</dd>
-              <dt>Duration</dt>
-              <dd>0 s</dd>
             </dl>
             <h2>Install dependencies</h2>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>ulimit -Sv 2000000; timeout 5m opam install -y --deps-only coq:contrib:finger-tree.dev</code></dd>
+              <dd><code>opam list; ulimit -Sv 1000000; timeout 5m opam install -y --deps-only coq:contrib:finger-tree.dev</code></dd>
               <dt>Return code</dt>
               <dd>0</dd>
               <dt>Duration</dt>
@@ -99,39 +93,39 @@ ocamlfind              1.5.5  A library manager for OCaml
             <h2>Install</h2>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>ulimit -Sv 2000000; timeout 30m opam install -y --verbose coq:contrib:finger-tree.dev</code></dd>
+              <dd><code>opam list; ulimit -Sv 4000000; timeout 120m opam install -y -v coq:contrib:finger-tree.dev</code></dd>
               <dt>Return code</dt>
               <dd>1024</dd>
               <dt>Duration</dt>
               <dd>4 s</dd>
               <dt>Output</dt>
-              <dd><pre>The following actions will be performed:
+              <dd><pre># Installed packages for system:
+base-bigarray           base  Bigarray library distributed with the OCaml compil
+base-threads            base  Threads library distributed with the OCaml compile
+base-unix               base  Unix library distributed with the OCaml compiler
+camlp4         4.02.1+system  Camlp4 is a system for writing extensible parsers 
+camlp5                  6.12  Preprocessor-pretty-printer of OCaml
+coq                     hott  HoTT/Coq stable branch
+lablgtk               2.18.3  OCaml interface to GTK+
+ocamlfind              1.5.5  A library manager for OCaml
+The following actions will be performed:
   - install coq:contrib:finger-tree dev
 =-=- Gathering sources =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 [coq:contrib:finger-tree: from unstable] Repo archive not found[coq:contrib:finger-tree: git] Command started
-+ git &quot;init&quot;
-- Initialized empty Git repository in /home/bench/.opam/packages.dev/coq:contrib:finger-tree.dev/.git/
-[coq:contrib:finger-tree: git] Command started
-+ git &quot;remote&quot; &quot;add&quot; &quot;origin&quot; &quot;https://gforge.inria.fr/git/coq-contribs/finger-tree.git&quot;
-[coq:contrib:finger-tree: git] Command started
-+ git &quot;commit&quot; &quot;--allow-empty&quot; &quot;-m&quot; &quot;opam-git-init&quot;
-- [master (root-commit) a0fdcbc] opam-git-init
 [coq:contrib:finger-tree: git] Command started
 [coq:contrib:finger-tree: git] Command started
-+ git &quot;fetch&quot; &quot;-q&quot; &quot;origin&quot; &quot;+trunk:refs/remotes/opam-ref&quot;
 [coq:contrib:finger-tree: git] Command started
-+ git &quot;reset&quot; &quot;--hard&quot; &quot;refs/remotes/opam-ref&quot; &quot;--&quot;
-- HEAD is now at ffdd0d4 Fix contribs now that Require is no longer allowed inside modules.
+[coq:contrib:finger-tree: git] Command started
+[coq:contrib:finger-tree: git] Command started
 [coq:contrib:finger-tree] https://gforge.inria.fr/git/coq-contribs/finger-tree.git#trunk updated
 =-=- Processing actions -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
-+ cp &quot;-PR&quot; &quot;/home/bench/.opam/packages.dev/coq:contrib:finger-tree.dev&quot; &quot;/home/bench/.opam/system/build/coq:contrib:finger-tree.dev&quot;
 [coq:contrib:finger-tree: coq_makefile Make] Command started
-+ coq_makefile &quot;-f&quot; &quot;Make&quot; &quot;-o&quot; &quot;Makefile&quot;
++ coq_makefile &quot;-f&quot; &quot;Make&quot; &quot;-o&quot; &quot;Makefile&quot; (CWD=/home/bench/.opam/system/build/coq:contrib:finger-tree.dev)
 - Warning:
 - Please now use &quot;-extra[-phony] result deps command&quot; instead of &quot;-custom command deps result&quot;.
 - It follows makefile target declaration order and has a clearer semantic.
 [coq:contrib:finger-tree: make] Command started
-+ make &quot;-j4&quot;
++ make &quot;-j4&quot; (CWD=/home/bench/.opam/system/build/coq:contrib:finger-tree.dev)
 - &quot;coqdep&quot; -c -R &quot;.&quot; FingerTree &quot;StringInterface.v&quot; &gt; &quot;StringInterface.v.d&quot; || ( RV=$?; rm -f &quot;StringInterface.v.d&quot;; exit ${RV} )
 - &quot;coqdep&quot; -c -R &quot;.&quot; FingerTree &quot;Reduce.v&quot; &gt; &quot;Reduce.v.d&quot; || ( RV=$?; rm -f &quot;Reduce.v.d&quot;; exit ${RV} )
 - &quot;coqdep&quot; -c -R &quot;.&quot; FingerTree &quot;Monoid.v&quot; &gt; &quot;Monoid.v.d&quot; || ( RV=$?; rm -f &quot;Monoid.v.d&quot;; exit ${RV} )
@@ -163,7 +157,7 @@ ocamlfind              1.5.5  A library manager for OCaml
 - make: *** Waiting for unfinished jobs....
 [ERROR] The compilation of coq:contrib:finger-tree failed at &quot;make -j4&quot;.
 [coq:contrib:finger-tree: rm] Command started
-+ rm &quot;-R&quot; &quot;/home/bench/.opam/system/lib/coq/user-contrib/finger-tree&quot;
++ rm &quot;-R&quot; &quot;/home/bench/.opam/system/lib/coq/user-contrib/finger-tree&quot; (CWD=/home/bench/.opam/system/build/coq:contrib:finger-tree.dev)
 - rm: cannot remove &#39;/home/bench/.opam/system/lib/coq/user-contrib/finger-tree&#39;: No such file or directory
 #=== ERROR while installing coq:contrib:finger-tree.dev =======================#
 # opam-version         1.2.1
@@ -172,12 +166,12 @@ ocamlfind              1.5.5  A library manager for OCaml
 # path                 /home/bench/.opam/system/build/coq:contrib:finger-tree.dev
 # compiler             system (4.02.1)
 # exit-code            2
-# env-file             /home/bench/.opam/system/build/coq:contrib:finger-tree.dev/coq:contrib:finger-tree-11366-d2d111.env
-# stdout-file          /home/bench/.opam/system/build/coq:contrib:finger-tree.dev/coq:contrib:finger-tree-11366-d2d111.out
-# stderr-file          /home/bench/.opam/system/build/coq:contrib:finger-tree.dev/coq:contrib:finger-tree-11366-d2d111.err
+# env-file             /home/bench/.opam/system/build/coq:contrib:finger-tree.dev/coq:contrib:finger-tree-9218-d2d111.env
+# stdout-file          /home/bench/.opam/system/build/coq:contrib:finger-tree.dev/coq:contrib:finger-tree-9218-d2d111.out
+# stderr-file          /home/bench/.opam/system/build/coq:contrib:finger-tree.dev/coq:contrib:finger-tree-9218-d2d111.err
 ### stdout ###
-# &quot;coqdep&quot; -c -R &quot;.&quot; FingerTree &quot;DependentFingerTreeModule.v&quot; &gt; &quot;DependentFingerTreeModule.v.d&quot; || ( RV=$?; rm -f &quot;DependentFingerTreeModule.v.d&quot;; exit ${RV} )
 # [...]
+# &quot;coqdep&quot; -c -R &quot;.&quot; FingerTree &quot;DependentFingerTreeModule.v&quot; &gt; &quot;DependentFingerTreeModule.v.d&quot; || ( RV=$?; rm -f &quot;DependentFingerTreeModule.v.d&quot;; exit ${RV} )
 # &quot;coqdep&quot; -c -R &quot;.&quot; FingerTree &quot;FingerTreeModule.v&quot; &gt; &quot;FingerTreeModule.v.d&quot; || ( RV=$?; rm -f &quot;FingerTreeModule.v.d&quot;; exit ${RV} )
 # &quot;coqdep&quot; -c -R &quot;.&quot; FingerTree &quot;RopeModule.v&quot; &gt; &quot;RopeModule.v.d&quot; || ( RV=$?; rm -f &quot;RopeModule.v.d&quot;; exit ${RV} )
 # &quot;coqc&quot;  -q  -R &quot;.&quot; FingerTree   Modules
@@ -196,7 +190,7 @@ ocamlfind              1.5.5  A library manager for OCaml
 The following actions failed
   - install coq:contrib:finger-tree dev
 No changes have been performed
-&#39;opam install -y --verbose coq:contrib:finger-tree.dev&#39; failed.
+&#39;opam install -y -v coq:contrib:finger-tree.dev&#39; failed.
 </pre></dd>
             </dl>
             <h2>Installation size</h2>
@@ -207,8 +201,6 @@ No changes have been performed
               <dd><code>true</code></dd>
               <dt>Return code</dt>
               <dd>0</dd>
-              <dt>Duration</dt>
-              <dd>0 s</dd>
               <dt>Missing removes</dt>
               <dd>
                 none
