@@ -47,7 +47,7 @@
                 <span class="label label-danger">Error</span>
               </small>
             </h1>
-            <p><em><script>document.write(moment("2015-02-22 19:47:41 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2015-02-22 19:47:41 UTC)</em><p>
+            <p><em><script>document.write(moment("2015-04-02 09:12:53 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2015-04-02 09:12:53 UTC)</em><p>
             <h2>Context</h2>
             <pre># Installed packages for system:
 base-bigarray     base  Bigarray library distributed with the OCaml compiler
@@ -62,8 +62,6 @@ coq            8.5.dev  Formal proof management system.
               <dd><code>ruby lint.rb unstable ../unstable/packages/coq:contrib:canon-bdds/coq:contrib:canon-bdds.dev</code></dd>
               <dt>Return code</dt>
               <dd>0</dd>
-              <dt>Duration</dt>
-              <dd>0 s</dd>
             </dl>
             <h2>Dry install</h2>
             <p>Dry install with the current Coq version:</p>
@@ -72,8 +70,6 @@ coq            8.5.dev  Formal proof management system.
               <dd><code>opam install -y --show-action coq:contrib:canon-bdds.dev coq.8.5.dev</code></dd>
               <dt>Return code</dt>
               <dd>0</dd>
-              <dt>Duration</dt>
-              <dd>2 s</dd>
             </dl>
             <p>Dry install without Coq, to test if the problem was incompatibility with the current Coq version:</p>
             <dl class="dl-horizontal">
@@ -81,13 +77,11 @@ coq            8.5.dev  Formal proof management system.
               <dd><code>true</code></dd>
               <dt>Return code</dt>
               <dd>0</dd>
-              <dt>Duration</dt>
-              <dd>0 s</dd>
             </dl>
             <h2>Install dependencies</h2>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>ulimit -Sv 2000000; timeout 5m opam install -y --deps-only coq:contrib:canon-bdds.dev</code></dd>
+              <dd><code>opam list; ulimit -Sv 1000000; timeout 5m opam install -y --deps-only coq:contrib:canon-bdds.dev</code></dd>
               <dt>Return code</dt>
               <dd>0</dd>
               <dt>Duration</dt>
@@ -96,45 +90,33 @@ coq            8.5.dev  Formal proof management system.
             <h2>Install</h2>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>ulimit -Sv 2000000; timeout 30m opam install -y --verbose coq:contrib:canon-bdds.dev</code></dd>
+              <dd><code>opam list; ulimit -Sv 4000000; timeout 120m opam install -y -v coq:contrib:canon-bdds.dev</code></dd>
               <dt>Return code</dt>
               <dd>1024</dd>
               <dt>Duration</dt>
-              <dd>4 s</dd>
+              <dd>7 s</dd>
               <dt>Output</dt>
-              <dd><pre>The following actions will be performed:
+              <dd><pre># Installed packages for system:
+base-bigarray     base  Bigarray library distributed with the OCaml compiler
+base-threads      base  Threads library distributed with the OCaml compiler
+base-unix         base  Unix library distributed with the OCaml compiler
+camlp5            6.12  Preprocessor-pretty-printer of OCaml
+coq            8.5.dev  Formal proof management system.
+The following actions will be performed:
   - install coq:contrib:canon-bdds dev
 =-=- Gathering sources =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 [coq:contrib:canon-bdds: from unstable] Repo archive not found[coq:contrib:canon-bdds: git] Command started
-+ git &quot;init&quot;
-- Initialized empty Git repository in /home/bench/.opam/packages.dev/coq:contrib:canon-bdds.dev/.git/
-[coq:contrib:canon-bdds: git] Command started
-+ git &quot;remote&quot; &quot;add&quot; &quot;origin&quot; &quot;https://gforge.inria.fr/git/coq-contribs/canon-bdds.git&quot;
-[coq:contrib:canon-bdds: git] Command started
-+ git &quot;commit&quot; &quot;--allow-empty&quot; &quot;-m&quot; &quot;opam-git-init&quot;
-- [master (root-commit) 539acad] opam-git-init
 [coq:contrib:canon-bdds: git] Command started
 [coq:contrib:canon-bdds: git] Command started
-+ git &quot;fetch&quot; &quot;-q&quot; &quot;origin&quot; &quot;+trunk:refs/remotes/opam-ref&quot;
 [coq:contrib:canon-bdds: git] Command started
-+ git &quot;reset&quot; &quot;--hard&quot; &quot;refs/remotes/opam-ref&quot; &quot;--&quot;
-- HEAD is now at 6f49521 Revert &quot;Regenerating Makefiles.&quot; We will be able to do so when we have access
+[coq:contrib:canon-bdds: git] Command started
+[coq:contrib:canon-bdds: git] Command started
 [coq:contrib:canon-bdds] https://gforge.inria.fr/git/coq-contribs/canon-bdds.git#trunk updated
 =-=- Processing actions -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
-+ cp &quot;-PR&quot; &quot;/home/bench/.opam/packages.dev/coq:contrib:canon-bdds.dev&quot; &quot;/home/bench/.opam/system/build/coq:contrib:canon-bdds.dev&quot;
 [coq:contrib:canon-bdds: coq_makefile Make] Command started
-+ coq_makefile &quot;-f&quot; &quot;Make&quot; &quot;-o&quot; &quot;Makefile&quot;
-- Warning:
-- Please now use &quot;-extra[-phony] result deps command&quot; instead of &quot;-custom command deps result&quot;.
-- It follows makefile target declaration order and has a clearer semantic.
-- Warning:
-- Please now use &quot;-extra[-phony] result deps command&quot; instead of &quot;-custom command deps result&quot;.
-- It follows makefile target declaration order and has a clearer semantic.
-- Warning:
-- Please now use &quot;-extra[-phony] result deps command&quot; instead of &quot;-custom command deps result&quot;.
-- It follows makefile target declaration order and has a clearer semantic.
++ coq_makefile &quot;-f&quot; &quot;Make&quot; &quot;-o&quot; &quot;Makefile&quot; (CWD=/home/bench/.opam/system/build/coq:contrib:canon-bdds.dev)
 [coq:contrib:canon-bdds: make] Command started
-+ make &quot;-j4&quot;
++ make &quot;-j4&quot; (CWD=/home/bench/.opam/system/build/coq:contrib:canon-bdds.dev)
 - &quot;coqdep&quot; -c -R &quot;.&quot; CanonBDDs &quot;canonicite/Canonicity_BDT.v&quot; &gt; &quot;canonicite/Canonicity_BDT.v.d&quot; || ( RV=$?; rm -f &quot;canonicite/Canonicity_BDT.v.d&quot;; exit ${RV} )
 - &quot;coqdep&quot; -c -R &quot;.&quot; CanonBDDs &quot;canonicite/Complete_induction.v&quot; &gt; &quot;canonicite/Complete_induction.v.d&quot; || ( RV=$?; rm -f &quot;canonicite/Complete_induction.v.d&quot;; exit ${RV} )
 - &quot;coqdep&quot; -c -R &quot;.&quot; CanonBDDs &quot;canonicite/Boolean_functions.v&quot; &gt; &quot;canonicite/Boolean_functions.v.d&quot; || ( RV=$?; rm -f &quot;canonicite/Boolean_functions.v.d&quot;; exit ${RV} )
@@ -161,16 +143,53 @@ coq            8.5.dev  Formal proof management system.
 - &quot;coqc&quot;  -q  -R &quot;.&quot; CanonBDDs   canonicite/Prelude0
 - &quot;coqc&quot;  -q  -R &quot;.&quot; CanonBDDs   canonicite/Order
 - &quot;coqc&quot;  -q  -R &quot;.&quot; CanonBDDs   canonicite/Complete_induction
-- cd &quot;./rauzy/algorithme1/extraction&quot; &amp;&amp; make all
+- &quot;coqc&quot;  -q  -R &quot;.&quot; CanonBDDs   canonicite/Finite_sets
+- &quot;coqc&quot;  -q  -R &quot;.&quot; CanonBDDs   rauzy/algorithme1/Boolean_functions
+- &quot;coqc&quot;  -q  -R &quot;.&quot; CanonBDDs   canonicite/Vars
+- &quot;coqc&quot;  -q  -R &quot;.&quot; CanonBDDs   rauzy/algorithme1/BDTs
+- &quot;coqc&quot;  -q  -R &quot;.&quot; CanonBDDs   canonicite/Boolean_functions
+- &quot;coqc&quot;  -q  -R &quot;.&quot; CanonBDDs   rauzy/algorithme1/Inductions
+- &quot;coqc&quot;  -q  -R &quot;.&quot; CanonBDDs   rauzy/algorithmes_2_et_3/Prelude_Paths
+- &quot;coqc&quot;  -q  -R &quot;.&quot; CanonBDDs   canonicite/BDTs
+- &quot;coqc&quot;  -q  -R &quot;.&quot; CanonBDDs   rauzy/algorithme1/Formula_to_BDT
+- &quot;coqc&quot;  -q  -R &quot;.&quot; CanonBDDs   rauzy/algorithmes_2_et_3/Prelude_Implicants
+- &quot;coqc&quot;  -q  -R &quot;.&quot; CanonBDDs   rauzy/algorithme1/Canonicity
+- coqtop -q  -R &quot;.&quot; CanonBDDs   -silent -batch -load-vernac-source rauzy/algorithme1/extract.v
+- &quot;coqc&quot;  -q  -R &quot;.&quot; CanonBDDs   canonicite/Canonicity_BDT
+- &quot;coqc&quot;  -q  -R &quot;.&quot; CanonBDDs   rauzy/algorithmes_2_et_3/Monotony
+- Fetching opaque proofs from disk for CanonBDDs.rauzy.algorithme1.Formula_to_BDT
+- Fetching opaque proofs from disk for CanonBDDs.rauzy.algorithme1.Inductions
+- Fetching opaque proofs from disk for CanonBDDs.rauzy.algorithme1.BDTs
+- Fetching opaque proofs from disk for CanonBDDs.rauzy.algorithme1.Prelude_BDT
+- cd ./rauzy/algorithme1/extraction ; make all
 - make[1]: Entering directory &#39;/home/bench/.opam/system/build/coq:contrib:canon-bdds.dev/rauzy/algorithme1/extraction&#39;
+- ocamlopt -c suresnes.mli
+- ocamlyacc parser.mly
+- ocamlopt -c suresnes.ml	 
+- ocamllex lexer.mll
+- 22 states, 358 transitions, table size 1564 bytes
+- ocamlopt -c parser.ml	 
+- ocamlopt -c main.ml	 
+- ocamlopt -c parser.mli
+- ocamlopt -c lexer.ml	 
+- Makefile:34: recipe for target &#39;parser.cmx&#39; failed
+- Makefile:34: recipe for target &#39;main.cmx&#39; failed
+- &quot;coqc&quot;  -q  -R &quot;.&quot; CanonBDDs   rauzy/algorithmes_2_et_3/Operator_W
+- &quot;coqc&quot;  -q  -R &quot;.&quot; CanonBDDs   rauzy/algorithmes_2_et_3/Prelude_Primes
 - make[1]: Leaving directory &#39;/home/bench/.opam/system/build/coq:contrib:canon-bdds.dev/rauzy/algorithme1/extraction&#39;
-- Makefile:250: recipe for target &#39;rauzy/algorithme1/extraction&#39; failed
-- make[1]: *** No rule to make target &#39;suresnes.cmi&#39;, needed by &#39;suresnes&#39;.  Stop.
-- make: *** [rauzy/algorithme1/extraction] Error 2
+- Makefile:237: recipe for target &#39;rauzy/algorithme1/extraction/suresnes&#39; failed
+- File &quot;parser.ml&quot;, line 1:
+- Error: Could not find the .cmi file for interface parser.mli.
+- make[1]: *** [parser.cmx] Error 2
+- make[1]: *** Waiting for unfinished jobs....
+- File &quot;main.ml&quot;, line 12, characters 18-25:
+- Error: Unbound module Lexer
+- make[1]: *** [main.cmx] Error 2
+- make: *** [rauzy/algorithme1/extraction/suresnes] Error 2
 - make: *** Waiting for unfinished jobs....
 [ERROR] The compilation of coq:contrib:canon-bdds failed at &quot;make -j4&quot;.
 [coq:contrib:canon-bdds: rm] Command started
-+ rm &quot;-R&quot; &quot;/home/bench/.opam/system/lib/coq/user-contrib/canon-bdds&quot;
++ rm &quot;-R&quot; &quot;/home/bench/.opam/system/lib/coq/user-contrib/canon-bdds&quot; (CWD=/home/bench/.opam/system/build/coq:contrib:canon-bdds.dev)
 - rm: cannot remove &#39;/home/bench/.opam/system/lib/coq/user-contrib/canon-bdds&#39;: No such file or directory
 #=== ERROR while installing coq:contrib:canon-bdds.dev ========================#
 # opam-version         1.2.1
@@ -179,30 +198,36 @@ coq            8.5.dev  Formal proof management system.
 # path                 /home/bench/.opam/system/build/coq:contrib:canon-bdds.dev
 # compiler             system (4.02.1)
 # exit-code            2
-# env-file             /home/bench/.opam/system/build/coq:contrib:canon-bdds.dev/coq:contrib:canon-bdds-15930-d2d111.env
-# stdout-file          /home/bench/.opam/system/build/coq:contrib:canon-bdds.dev/coq:contrib:canon-bdds-15930-d2d111.out
-# stderr-file          /home/bench/.opam/system/build/coq:contrib:canon-bdds.dev/coq:contrib:canon-bdds-15930-d2d111.err
+# env-file             /home/bench/.opam/system/build/coq:contrib:canon-bdds.dev/coq:contrib:canon-bdds-12057-d2d111.env
+# stdout-file          /home/bench/.opam/system/build/coq:contrib:canon-bdds.dev/coq:contrib:canon-bdds-12057-d2d111.out
+# stderr-file          /home/bench/.opam/system/build/coq:contrib:canon-bdds.dev/coq:contrib:canon-bdds-12057-d2d111.err
 ### stdout ###
-# &quot;coqdep&quot; -c -R &quot;.&quot; CanonBDDs &quot;rauzy/algorithmes_2_et_3/Operator_W.v&quot; &gt; &quot;rauzy/algorithmes_2_et_3/Operator_W.v.d&quot; || ( RV=$?; rm -f &quot;rauzy/algorithmes_2_et_3/Operator_W.v.d&quot;; exit ${RV} )
 # [...]
-# &quot;coqc&quot;  -q  -R &quot;.&quot; CanonBDDs   rauzy/algorithme1/Prelude_BDT
-# &quot;coqc&quot;  -q  -R &quot;.&quot; CanonBDDs   canonicite/Prelude1
-# &quot;coqc&quot;  -q  -R &quot;.&quot; CanonBDDs   canonicite/Prelude0
-# &quot;coqc&quot;  -q  -R &quot;.&quot; CanonBDDs   canonicite/Order
-# &quot;coqc&quot;  -q  -R &quot;.&quot; CanonBDDs   canonicite/Complete_induction
-# cd &quot;./rauzy/algorithme1/extraction&quot; &amp;&amp; make all
-# make[1]: Entering directory &#39;/home/bench/.opam/system/build/coq:contrib:canon-bdds.dev/rauzy/algorithme1/extraction&#39;
+# ocamlopt -c parser.ml	 
+# ocamlopt -c main.ml	 
+# ocamlopt -c parser.mli
+# ocamlopt -c lexer.ml	 
+# Makefile:34: recipe for target &#39;parser.cmx&#39; failed
+# Makefile:34: recipe for target &#39;main.cmx&#39; failed
+# &quot;coqc&quot;  -q  -R &quot;.&quot; CanonBDDs   rauzy/algorithmes_2_et_3/Operator_W
+# &quot;coqc&quot;  -q  -R &quot;.&quot; CanonBDDs   rauzy/algorithmes_2_et_3/Prelude_Primes
 # make[1]: Leaving directory &#39;/home/bench/.opam/system/build/coq:contrib:canon-bdds.dev/rauzy/algorithme1/extraction&#39;
-# Makefile:250: recipe for target &#39;rauzy/algorithme1/extraction&#39; failed
+# Makefile:237: recipe for target &#39;rauzy/algorithme1/extraction/suresnes&#39; failed
 ### stderr ###
-# make[1]: *** No rule to make target &#39;suresnes.cmi&#39;, needed by &#39;suresnes&#39;.  Stop.
-# make: *** [rauzy/algorithme1/extraction] Error 2
+# File &quot;parser.ml&quot;, line 1:
+# Error: Could not find the .cmi file for interface parser.mli.
+# make[1]: *** [parser.cmx] Error 2
+# make[1]: *** Waiting for unfinished jobs....
+# File &quot;main.ml&quot;, line 12, characters 18-25:
+# Error: Unbound module Lexer
+# make[1]: *** [main.cmx] Error 2
+# make: *** [rauzy/algorithme1/extraction/suresnes] Error 2
 # make: *** Waiting for unfinished jobs....
 =-=- Error report -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 The following actions failed
   - install coq:contrib:canon-bdds dev
 No changes have been performed
-&#39;opam install -y --verbose coq:contrib:canon-bdds.dev&#39; failed.
+&#39;opam install -y -v coq:contrib:canon-bdds.dev&#39; failed.
 </pre></dd>
             </dl>
             <h2>Installation size</h2>
@@ -213,8 +238,6 @@ No changes have been performed
               <dd><code>true</code></dd>
               <dt>Return code</dt>
               <dd>0</dd>
-              <dt>Duration</dt>
-              <dd>0 s</dd>
               <dt>Missing removes</dt>
               <dd>
                 none

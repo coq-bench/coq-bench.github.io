@@ -44,10 +44,10 @@
               contrib:quicksort-complexity
               <small>
                 dev
-                <span class="label label-success">56 s</span>
+                <span class="label label-danger">Error</span>
               </small>
             </h1>
-            <p><em><script>document.write(moment("2015-02-22 19:47:41 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2015-02-22 19:47:41 UTC)</em><p>
+            <p><em><script>document.write(moment("2015-04-02 09:12:53 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2015-04-02 09:12:53 UTC)</em><p>
             <h2>Context</h2>
             <pre># Installed packages for system:
 base-bigarray     base  Bigarray library distributed with the OCaml compiler
@@ -62,8 +62,6 @@ coq            8.5.dev  Formal proof management system.
               <dd><code>ruby lint.rb unstable ../unstable/packages/coq:contrib:quicksort-complexity/coq:contrib:quicksort-complexity.dev</code></dd>
               <dt>Return code</dt>
               <dd>0</dd>
-              <dt>Duration</dt>
-              <dd>0 s</dd>
             </dl>
             <h2>Dry install</h2>
             <p>Dry install with the current Coq version:</p>
@@ -72,8 +70,6 @@ coq            8.5.dev  Formal proof management system.
               <dd><code>opam install -y --show-action coq:contrib:quicksort-complexity.dev coq.8.5.dev</code></dd>
               <dt>Return code</dt>
               <dd>0</dd>
-              <dt>Duration</dt>
-              <dd>2 s</dd>
             </dl>
             <p>Dry install without Coq, to test if the problem was incompatibility with the current Coq version:</p>
             <dl class="dl-horizontal">
@@ -81,13 +77,11 @@ coq            8.5.dev  Formal proof management system.
               <dd><code>true</code></dd>
               <dt>Return code</dt>
               <dd>0</dd>
-              <dt>Duration</dt>
-              <dd>0 s</dd>
             </dl>
             <h2>Install dependencies</h2>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>ulimit -Sv 2000000; timeout 5m opam install -y --deps-only coq:contrib:quicksort-complexity.dev</code></dd>
+              <dd><code>opam list; ulimit -Sv 1000000; timeout 5m opam install -y --deps-only coq:contrib:quicksort-complexity.dev</code></dd>
               <dt>Return code</dt>
               <dd>0</dd>
               <dt>Duration</dt>
@@ -96,134 +90,264 @@ coq            8.5.dev  Formal proof management system.
             <h2>Install</h2>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>ulimit -Sv 2000000; timeout 30m opam install -y --verbose coq:contrib:quicksort-complexity.dev</code></dd>
+              <dd><code>opam list; ulimit -Sv 4000000; timeout 120m opam install -y -v coq:contrib:quicksort-complexity.dev</code></dd>
               <dt>Return code</dt>
-              <dd>0</dd>
+              <dd>1024</dd>
               <dt>Duration</dt>
-              <dd>56 s</dd>
+              <dd>39 s</dd>
+              <dt>Output</dt>
+              <dd><pre># Installed packages for system:
+base-bigarray     base  Bigarray library distributed with the OCaml compiler
+base-threads      base  Threads library distributed with the OCaml compiler
+base-unix         base  Unix library distributed with the OCaml compiler
+camlp5            6.12  Preprocessor-pretty-printer of OCaml
+coq            8.5.dev  Formal proof management system.
+The following actions will be performed:
+  - install coq:contrib:quicksort-complexity dev
+=-=- Gathering sources =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+[coq:contrib:quicksort-complexity: from unstable] Repo archive not found[coq:contrib:quicksort-complexity: git] Command started
+[coq:contrib:quicksort-complexity: git] Command started
+[coq:contrib:quicksort-complexity: git] Command started
+[coq:contrib:quicksort-complexity: git] Command started
+[coq:contrib:quicksort-complexity: git] Command started
+[coq:contrib:quicksort-complexity: git] Command started
+[coq:contrib:quicksort-complexity] https://gforge.inria.fr/git/coq-contribs/quicksort-complexity.git#trunk updated
+=-=- Processing actions -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+[coq:contrib:quicksort-complexity: coq_makefile Make] Command started
++ coq_makefile &quot;-f&quot; &quot;Make&quot; &quot;-o&quot; &quot;Makefile&quot; (CWD=/home/bench/.opam/system/build/coq:contrib:quicksort-complexity.dev)
+[coq:contrib:quicksort-complexity: make] Command started
++ make &quot;-j4&quot; (CWD=/home/bench/.opam/system/build/coq:contrib:quicksort-complexity.dev)
+- &quot;coqdep&quot; -c -R &quot;.&quot; QuicksortComplexity &quot;arith_lems.v&quot; &gt; &quot;arith_lems.v.d&quot; || ( RV=$?; rm -f &quot;arith_lems.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; QuicksortComplexity &quot;expec.v&quot; &gt; &quot;expec.v.d&quot; || ( RV=$?; rm -f &quot;expec.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; QuicksortComplexity &quot;fix_measure_utils.v&quot; &gt; &quot;fix_measure_utils.v.d&quot; || ( RV=$?; rm -f &quot;fix_measure_utils.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; QuicksortComplexity &quot;harmonic.v&quot; &gt; &quot;harmonic.v.d&quot; || ( RV=$?; rm -f &quot;harmonic.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; QuicksortComplexity &quot;indices.v&quot; &gt; &quot;indices.v.d&quot; || ( RV=$?; rm -f &quot;indices.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; QuicksortComplexity &quot;insertion_sort.v&quot; &gt; &quot;insertion_sort.v.d&quot; || ( RV=$?; rm -f &quot;insertion_sort.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; QuicksortComplexity &quot;list_length_expec.v&quot; &gt; &quot;list_length_expec.v.d&quot; || ( RV=$?; rm -f &quot;list_length_expec.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; QuicksortComplexity &quot;list_utils.v&quot; &gt; &quot;list_utils.v.d&quot; || ( RV=$?; rm -f &quot;list_utils.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; QuicksortComplexity &quot;monads.v&quot; &gt; &quot;monads.v.d&quot; || ( RV=$?; rm -f &quot;monads.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; QuicksortComplexity &quot;monoid_expec.v&quot; &gt; &quot;monoid_expec.v.d&quot; || ( RV=$?; rm -f &quot;monoid_expec.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; QuicksortComplexity &quot;monoid_monad_trans.v&quot; &gt; &quot;monoid_monad_trans.v.d&quot; || ( RV=$?; rm -f &quot;monoid_monad_trans.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; QuicksortComplexity &quot;monoid_tree_monad.v&quot; &gt; &quot;monoid_tree_monad.v.d&quot; || ( RV=$?; rm -f &quot;monoid_tree_monad.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; QuicksortComplexity &quot;nat_below.v&quot; &gt; &quot;nat_below.v.d&quot; || ( RV=$?; rm -f &quot;nat_below.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; QuicksortComplexity &quot;nat_seqs.v&quot; &gt; &quot;nat_seqs.v.d&quot; || ( RV=$?; rm -f &quot;nat_seqs.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; QuicksortComplexity &quot;NDP.v&quot; &gt; &quot;NDP.v.d&quot; || ( RV=$?; rm -f &quot;NDP.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; QuicksortComplexity &quot;ne_list.v&quot; &gt; &quot;ne_list.v.d&quot; || ( RV=$?; rm -f &quot;ne_list.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; QuicksortComplexity &quot;ne_tree_monad.v&quot; &gt; &quot;ne_tree_monad.v.d&quot; || ( RV=$?; rm -f &quot;ne_tree_monad.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; QuicksortComplexity &quot;ne_tree.v&quot; &gt; &quot;ne_tree.v.d&quot; || ( RV=$?; rm -f &quot;ne_tree.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; QuicksortComplexity &quot;qs_case_split.v&quot; &gt; &quot;qs_case_split.v.d&quot; || ( RV=$?; rm -f &quot;qs_case_split.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; QuicksortComplexity &quot;qs_cases.v&quot; &gt; &quot;qs_cases.v.d&quot; || ( RV=$?; rm -f &quot;qs_cases.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; QuicksortComplexity &quot;qs_cmp_prob.v&quot; &gt; &quot;qs_cmp_prob.v.d&quot; || ( RV=$?; rm -f &quot;qs_cmp_prob.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; QuicksortComplexity &quot;qs_CM_U_expec_cost_eq.v&quot; &gt; &quot;qs_CM_U_expec_cost_eq.v.d&quot; || ( RV=$?; rm -f &quot;qs_CM_U_expec_cost_eq.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; QuicksortComplexity &quot;qs_correct.v&quot; &gt; &quot;qs_correct.v.d&quot; || ( RV=$?; rm -f &quot;qs_correct.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; QuicksortComplexity &quot;qs_definitions.v&quot; &gt; &quot;qs_definitions.v.d&quot; || ( RV=$?; rm -f &quot;qs_definitions.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; QuicksortComplexity &quot;qs_det_avg_complexity.v&quot; &gt; &quot;qs_det_avg_complexity.v.d&quot; || ( RV=$?; rm -f &quot;qs_det_avg_complexity.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; QuicksortComplexity &quot;qs_det_parts.v&quot; &gt; &quot;qs_det_parts.v.d&quot; || ( RV=$?; rm -f &quot;qs_det_parts.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; QuicksortComplexity &quot;qs_nondet_avg_complexity.v&quot; &gt; &quot;qs_nondet_avg_complexity.v.d&quot; || ( RV=$?; rm -f &quot;qs_nondet_avg_complexity.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; QuicksortComplexity &quot;qs_parts.v&quot; &gt; &quot;qs_parts.v.d&quot; || ( RV=$?; rm -f &quot;qs_parts.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; QuicksortComplexity &quot;qs_sound_cmps.v&quot; &gt; &quot;qs_sound_cmps.v.d&quot; || ( RV=$?; rm -f &quot;qs_sound_cmps.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; QuicksortComplexity &quot;qs_worst.v&quot; &gt; &quot;qs_worst.v.d&quot; || ( RV=$?; rm -f &quot;qs_worst.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; QuicksortComplexity &quot;skip_list.v&quot; &gt; &quot;skip_list.v.d&quot; || ( RV=$?; rm -f &quot;skip_list.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; QuicksortComplexity &quot;sort_order.v&quot; &gt; &quot;sort_order.v.d&quot; || ( RV=$?; rm -f &quot;sort_order.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; QuicksortComplexity &quot;sums_and_averages.v&quot; &gt; &quot;sums_and_averages.v.d&quot; || ( RV=$?; rm -f &quot;sums_and_averages.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; QuicksortComplexity &quot;util.v&quot; &gt; &quot;util.v.d&quot; || ( RV=$?; rm -f &quot;util.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; QuicksortComplexity &quot;U.v&quot; &gt; &quot;U.v.d&quot; || ( RV=$?; rm -f &quot;U.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; QuicksortComplexity &quot;vec.v&quot; &gt; &quot;vec.v.d&quot; || ( RV=$?; rm -f &quot;vec.v.d&quot;; exit ${RV} )
+- &quot;coqc&quot;  -q  -R &quot;.&quot; QuicksortComplexity   nat_below
+- &quot;coqc&quot;  -q  -R &quot;.&quot; QuicksortComplexity   util
+- &quot;coqc&quot;  -q  -R &quot;.&quot; QuicksortComplexity   skip_list
+- &quot;coqc&quot;  -q  -R &quot;.&quot; QuicksortComplexity   fix_measure_utils
+- &quot;coqc&quot;  -q  -R &quot;.&quot; QuicksortComplexity   list_utils
+- &quot;coqc&quot;  -q  -R &quot;.&quot; QuicksortComplexity   arith_lems
+- &quot;coqc&quot;  -q  -R &quot;.&quot; QuicksortComplexity   vec
+- &quot;coqc&quot;  -q  -R &quot;.&quot; QuicksortComplexity   monads
+- &quot;coqc&quot;  -q  -R &quot;.&quot; QuicksortComplexity   sort_order
+- &quot;coqc&quot;  -q  -R &quot;.&quot; QuicksortComplexity   monoid_monad_trans
+- &quot;coqc&quot;  -q  -R &quot;.&quot; QuicksortComplexity   nat_seqs
+- &quot;coqc&quot;  -q  -R &quot;.&quot; QuicksortComplexity   ne_list
+- &quot;coqc&quot;  -q  -R &quot;.&quot; QuicksortComplexity   insertion_sort
+- &quot;coqc&quot;  -q  -R &quot;.&quot; QuicksortComplexity   ne_tree
+-      = (30, 0 :: 1 :: 2 :: 3 :: 4 :: 5 :: 6 :: 7 :: 8 :: 9 :: nil)
+-      : nat * list nat
+- &quot;coqc&quot;  -q  -R &quot;.&quot; QuicksortComplexity   sums_and_averages
+- &quot;coqc&quot;  -q  -R &quot;.&quot; QuicksortComplexity   ne_tree_monad
+- &quot;coqc&quot;  -q  -R &quot;.&quot; QuicksortComplexity   qs_definitions
+- &quot;coqc&quot;  -q  -R &quot;.&quot; QuicksortComplexity   indices
+-      = (16, 0 :: 1 :: 2 :: 3 :: 4 :: 5 :: nil)
+-      : SimplyProfiled (list nat)
+-      = 0 :: 1 :: 2 :: 3 :: 4 :: 5 :: nil
+-      : IdMonad.M (list nat)
+- &quot;coqc&quot;  -q  -R &quot;.&quot; QuicksortComplexity   qs_worst
+- &quot;coqc&quot;  -q  -R &quot;.&quot; QuicksortComplexity   qs_det_parts
+- &quot;coqc&quot;  -q  -R &quot;.&quot; QuicksortComplexity   qs_correct
+- &quot;coqc&quot;  -q  -R &quot;.&quot; QuicksortComplexity   expec
+- &quot;coqc&quot;  -q  -R &quot;.&quot; QuicksortComplexity   monoid_tree_monad
+- &quot;coqc&quot;  -q  -R &quot;.&quot; QuicksortComplexity   harmonic
+- &quot;coqc&quot;  -q  -R &quot;.&quot; QuicksortComplexity   NDP
+- &quot;coqc&quot;  -q  -R &quot;.&quot; QuicksortComplexity   qs_det_avg_complexity
+- &quot;coqc&quot;  -q  -R &quot;.&quot; QuicksortComplexity   monoid_expec
+- &quot;coqc&quot;  -q  -R &quot;.&quot; QuicksortComplexity   list_length_expec
+- &quot;coqc&quot;  -q  -R &quot;.&quot; QuicksortComplexity   qs_parts
+- &quot;coqc&quot;  -q  -R &quot;.&quot; QuicksortComplexity   U
+- Fetching opaque proofs from disk for Coq.Numbers.Natural.Abstract.NOrder
+- Fetching opaque proofs from disk for Coq.Numbers.Natural.Abstract.NBase
+- Fetching opaque proofs from disk for Coq.Arith.PeanoNat
+- Fetching opaque proofs from disk for Coq.Classes.Morphisms
+- Fetching opaque proofs from disk for Coq.Init.Logic
+- Fetching opaque proofs from disk for Coq.Numbers.NatInt.NZOrder
+- Fetching opaque proofs from disk for Coq.Init.Peano
+- Fetching opaque proofs from disk for Coq.Structures.OrdersTac
+- Fetching opaque proofs from disk for Coq.Structures.OrdersFacts
+- Fetching opaque proofs from disk for Coq.Numbers.NatInt.NZBase
+- Fetching opaque proofs from disk for Coq.Arith.Lt
+- Fetching opaque proofs from disk for QuicksortComplexity.list_utils
+- Fetching opaque proofs from disk for Coq.Sorting.Permutation
+- Fetching opaque proofs from disk for Coq.Classes.RelationClasses
+- Fetching opaque proofs from disk for Coq.Lists.List
+- Fetching opaque proofs from disk for QuicksortComplexity.qs_definitions
+- Fetching opaque proofs from disk for Coq.Logic.Decidable
+- Fetching opaque proofs from disk for Coq.Arith.Compare_dec
+- Fetching opaque proofs from disk for Coq.ZArith.Znat
+- Fetching opaque proofs from disk for Coq.ZArith.BinInt
+- Fetching opaque proofs from disk for Coq.PArith.BinPos
+- Fetching opaque proofs from disk for Coq.NArith.Nnat
+- Fetching opaque proofs from disk for Coq.PArith.Pnat
+- Fetching opaque proofs from disk for Coq.Numbers.NatInt.NZAdd
+- Fetching opaque proofs from disk for Coq.Init.Datatypes
+- Fetching opaque proofs from disk for Coq.Numbers.Integer.Abstract.ZAdd
+- Fetching opaque proofs from disk for Coq.Numbers.Integer.Abstract.ZBase
+- Fetching opaque proofs from disk for Coq.Numbers.NatInt.NZMul
+- Fetching opaque proofs from disk for Coq.omega.OmegaLemmas
+- Fetching opaque proofs from disk for Coq.Numbers.NatInt.NZAddOrder
+- Fetching opaque proofs from disk for Coq.Numbers.NatInt.NZMulOrder
+- Fetching opaque proofs from disk for Coq.ZArith.auxiliary
+- Fetching opaque proofs from disk for Coq.Numbers.Integer.Abstract.ZAddOrder
+- Fetching opaque proofs from disk for QuicksortComplexity.monads
+- Fetching opaque proofs from disk for Coq.Arith.Gt
+- Fetching opaque proofs from disk for Coq.Arith.Le
+- Fetching opaque proofs from disk for Coq.Arith.Div2
+- Fetching opaque proofs from disk for Coq.Reals.RIneq
+- Fetching opaque proofs from disk for QuicksortComplexity.nat_seqs
+- Fetching opaque proofs from disk for QuicksortComplexity.sums_and_averages
+- Fetching opaque proofs from disk for Coq.setoid_ring.RealField
+- Fetching opaque proofs from disk for Coq.setoid_ring.Ring_theory
+- Fetching opaque proofs from disk for Coq.setoid_ring.Field_theory
+- Fetching opaque proofs from disk for Coq.setoid_ring.Ring_polynom
+- Fetching opaque proofs from disk for Coq.setoid_ring.BinList
+- Fetching opaque proofs from disk for Coq.setoid_ring.InitialRing
+- Fetching opaque proofs from disk for Coq.NArith.BinNat
+- Fetching opaque proofs from disk for Coq.Bool.Bool
+- Fetching opaque proofs from disk for Coq.Numbers.Natural.Abstract.NSub
+- Fetching opaque proofs from disk for Coq.Numbers.Natural.Abstract.NAdd
+- Fetching opaque proofs from disk for Coq.ZArith.Zbool
+- Fetching opaque proofs from disk for Coq.ZArith.Zorder
+- Fetching opaque proofs from disk for QuicksortComplexity.util
+- Fetching opaque proofs from disk for QuicksortComplexity.arith_lems
+- Fetching opaque proofs from disk for Coq.Program.Combinators
+- Fetching opaque proofs from disk for Coq.Arith.Factorial
+- Fetching opaque proofs from disk for Coq.Arith.Plus
+- Fetching opaque proofs from disk for Coq.Numbers.Natural.Abstract.NAddOrder
+- Fetching opaque proofs from disk for Coq.Classes.Equivalence
+- Fetching opaque proofs from disk for QuicksortComplexity.insertion_sort
+- Fetching opaque proofs from disk for QuicksortComplexity.vec
+- Fetching opaque proofs from disk for QuicksortComplexity.sort_order
+- Fetching opaque proofs from disk for QuicksortComplexity.qs_det_parts
+- Fetching opaque proofs from disk for QuicksortComplexity.fix_measure_utils
+- Fetching opaque proofs from disk for QuicksortComplexity.monoid_monad_trans
+- Fetching opaque proofs from disk for Coq.fourier.Fourier_util
+- Fetching opaque proofs from disk for QuicksortComplexity.harmonic
+- Fetching opaque proofs from disk for Coq.funind.Recdef
+- Fetching opaque proofs from disk for Coq.Numbers.Natural.Abstract.NDiv
+- Fetching opaque proofs from disk for Coq.Numbers.NatInt.NZDiv
+- Fetching opaque proofs from disk for Coq.Numbers.Natural.Abstract.NBits
+- Fetching opaque proofs from disk for Coq.Numbers.NatInt.NZLog
+- Fetching opaque proofs from disk for Coq.Numbers.NatInt.NZPow
+- Fetching opaque proofs from disk for Coq.Numbers.NatInt.NZParity
+- Fetching opaque proofs from disk for Coq.Numbers.Natural.Abstract.NPow
+- Fetching opaque proofs from disk for Coq.Numbers.Integer.Abstract.ZMul
+- Axioms:
+- up : R -&gt; Z
+- total_order_T : forall r1 r2 : R, {r1 &lt; r2} + {r1 = r2} + {r1 &gt; r2}
+- archimed : forall r : R, IZR (up r) &gt; r /\ IZR (up r) - r &lt;= 1
+- X : E
+- Rplus_opp_r : forall r : R, r + - r = 0
+- Rplus_lt_compat_l : forall r r1 r2 : R, r1 &lt; r2 -&gt; r + r1 &lt; r + r2
+- Rplus_comm : forall r1 r2 : R, r1 + r2 = r2 + r1
+- Rplus_assoc : forall r1 r2 r3 : R, r1 + r2 + r3 = r1 + (r2 + r3)
+- Rplus_0_l : forall r : R, 0 + r = r
+- Rplus : R -&gt; R -&gt; R
+- Ropp : R -&gt; R
+- Rmult_plus_distr_l : forall r1 r2 r3 : R, r1 * (r2 + r3) = r1 * r2 + r1 * r3
+- Rmult_lt_compat_l : forall r r1 r2 : R, 0 &lt; r -&gt; r1 &lt; r2 -&gt; r * r1 &lt; r * r2
+- Rmult_comm : forall r1 r2 : R, r1 * r2 = r2 * r1
+- Rmult_assoc : forall r1 r2 r3 : R, r1 * r2 * r3 = r1 * (r2 * r3)
+- Rmult_1_l : forall r : R, 1 * r = r
+- Rmult : R -&gt; R -&gt; R
+- Rlt_trans : forall r1 r2 r3 : R, r1 &lt; r2 -&gt; r2 &lt; r3 -&gt; r1 &lt; r3
+- Rlt_asym : forall r1 r2 : R, r1 &lt; r2 -&gt; ~ r2 &lt; r1
+- Rlt : R -&gt; R -&gt; Prop
+- Rinv_l : forall r : R, r &lt;&gt; 0 -&gt; / r * r = 1
+- Rinv : R -&gt; R
+- R1_neq_R0 : 1 &lt;&gt; 0
+- R1 : R
+- R0 : R
+- R : Set
+- &quot;coqc&quot;  -q  -R &quot;.&quot; QuicksortComplexity   qs_sound_cmps
+- &quot;coqc&quot;  -q  -R &quot;.&quot; QuicksortComplexity   qs_case_split
+- &quot;coqc&quot;  -q  -R &quot;.&quot; QuicksortComplexity   qs_CM_U_expec_cost_eq
+- &quot;coqc&quot;  -q  -R &quot;.&quot; QuicksortComplexity   qs_cases
+- &quot;coqc&quot;  -q  -R &quot;.&quot; QuicksortComplexity   qs_cmp_prob
+- &quot;coqc&quot;  -q  -R &quot;.&quot; QuicksortComplexity   qs_nondet_avg_complexity
+- Makefile:271: recipe for target &#39;qs_nondet_avg_complexity.vo&#39; failed
+- File &quot;./qs_nondet_avg_complexity.v&quot;, line 106, characters 0-4:
+- Error: Attempt to save a proof with shelved goals (in proof sumOver_ijs_bound)
+- make: *** [qs_nondet_avg_complexity.vo] Error 1
+[ERROR] The compilation of coq:contrib:quicksort-complexity failed at &quot;make
+        -j4&quot;.
+[coq:contrib:quicksort-complexity: rm] Command started
++ rm &quot;-R&quot; &quot;/home/bench/.opam/system/lib/coq/user-contrib/QuicksortComplexity&quot; (CWD=/home/bench/.opam/system/build/coq:contrib:quicksort-complexity.dev)
+- rm: cannot remove &#39;/home/bench/.opam/system/lib/coq/user-contrib/QuicksortComplexity&#39;: No such file or directory
+#=== ERROR while installing coq:contrib:quicksort-complexity.dev ==============#
+# opam-version         1.2.1
+# os                   linux
+# command              make -j4
+# path                 /home/bench/.opam/system/build/coq:contrib:quicksort-complexity.dev
+# compiler             system (4.02.1)
+# exit-code            2
+# env-file             /home/bench/.opam/system/build/coq:contrib:quicksort-complexity.dev/coq:contrib:quicksort-complexity-9143-d2d111.env
+# stdout-file          /home/bench/.opam/system/build/coq:contrib:quicksort-complexity.dev/coq:contrib:quicksort-complexity-9143-d2d111.out
+# stderr-file          /home/bench/.opam/system/build/coq:contrib:quicksort-complexity.dev/coq:contrib:quicksort-complexity-9143-d2d111.err
+### stdout ###
+# [...]
+# R1 : R
+# R0 : R
+# R : Set
+# &quot;coqc&quot;  -q  -R &quot;.&quot; QuicksortComplexity   qs_sound_cmps
+# &quot;coqc&quot;  -q  -R &quot;.&quot; QuicksortComplexity   qs_case_split
+# &quot;coqc&quot;  -q  -R &quot;.&quot; QuicksortComplexity   qs_CM_U_expec_cost_eq
+# &quot;coqc&quot;  -q  -R &quot;.&quot; QuicksortComplexity   qs_cases
+# &quot;coqc&quot;  -q  -R &quot;.&quot; QuicksortComplexity   qs_cmp_prob
+# &quot;coqc&quot;  -q  -R &quot;.&quot; QuicksortComplexity   qs_nondet_avg_complexity
+# Makefile:271: recipe for target &#39;qs_nondet_avg_complexity.vo&#39; failed
+### stderr ###
+# File &quot;./qs_nondet_avg_complexity.v&quot;, line 106, characters 0-4:
+# Error: Attempt to save a proof with shelved goals (in proof sumOver_ijs_bound)
+# make: *** [qs_nondet_avg_complexity.vo] Error 1
+=-=- Error report -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+The following actions failed
+  - install coq:contrib:quicksort-complexity dev
+No changes have been performed
+&#39;opam install -y -v coq:contrib:quicksort-complexity.dev&#39; failed.
+</pre></dd>
             </dl>
             <h2>Installation size</h2>
-            <p>Total: 4,483 K</p>
-            <ul>
-              <li>323 K <code>lib/coq/user-contrib/QuicksortComplexity/list_utils.vo</code></li>
-              <li>248 K <code>lib/coq/user-contrib/QuicksortComplexity/list_utils.glob</code></li>
-              <li>196 K <code>lib/coq/user-contrib/QuicksortComplexity/vec.vo</code></li>
-              <li>165 K <code>lib/coq/user-contrib/QuicksortComplexity/qs_definitions.vo</code></li>
-              <li>153 K <code>lib/coq/user-contrib/QuicksortComplexity/vec.glob</code></li>
-              <li>141 K <code>lib/coq/user-contrib/QuicksortComplexity/arith_lems.vo</code></li>
-              <li>125 K <code>lib/coq/user-contrib/QuicksortComplexity/qs_det_avg_complexity.glob</code></li>
-              <li>119 K <code>lib/coq/user-contrib/QuicksortComplexity/sums_and_averages.vo</code></li>
-              <li>109 K <code>lib/coq/user-contrib/QuicksortComplexity/qs_case_split.vo</code></li>
-              <li>95 K <code>lib/coq/user-contrib/QuicksortComplexity/monoid_monad_trans.vo</code></li>
-              <li>93 K <code>lib/coq/user-contrib/QuicksortComplexity/qs_det_avg_complexity.vo</code></li>
-              <li>87 K <code>lib/coq/user-contrib/QuicksortComplexity/sums_and_averages.glob</code></li>
-              <li>82 K <code>lib/coq/user-contrib/QuicksortComplexity/qs_cmp_prob.vo</code></li>
-              <li>76 K <code>lib/coq/user-contrib/QuicksortComplexity/indices.vo</code></li>
-              <li>73 K <code>lib/coq/user-contrib/QuicksortComplexity/qs_sound_cmps.vo</code></li>
-              <li>70 K <code>lib/coq/user-contrib/QuicksortComplexity/expec.vo</code></li>
-              <li>70 K <code>lib/coq/user-contrib/QuicksortComplexity/qs_worst.vo</code></li>
-              <li>69 K <code>lib/coq/user-contrib/QuicksortComplexity/util.vo</code></li>
-              <li>64 K <code>lib/coq/user-contrib/QuicksortComplexity/ne_tree_monad.vo</code></li>
-              <li>62 K <code>lib/coq/user-contrib/QuicksortComplexity/ne_tree.vo</code></li>
-              <li>62 K <code>lib/coq/user-contrib/QuicksortComplexity/qs_cases.vo</code></li>
-              <li>61 K <code>lib/coq/user-contrib/QuicksortComplexity/qs_definitions.glob</code></li>
-              <li>60 K <code>lib/coq/user-contrib/QuicksortComplexity/qs_parts.vo</code></li>
-              <li>58 K <code>lib/coq/user-contrib/QuicksortComplexity/insertion_sort.vo</code></li>
-              <li>58 K <code>lib/coq/user-contrib/QuicksortComplexity/qs_cases.glob</code></li>
-              <li>57 K <code>lib/coq/user-contrib/QuicksortComplexity/U.vo</code></li>
-              <li>56 K <code>lib/coq/user-contrib/QuicksortComplexity/qs_CM_U_expec_cost_eq.vo</code></li>
-              <li>55 K <code>lib/coq/user-contrib/QuicksortComplexity/monads.vo</code></li>
-              <li>55 K <code>lib/coq/user-contrib/QuicksortComplexity/nat_seqs.vo</code></li>
-              <li>55 K <code>lib/coq/user-contrib/QuicksortComplexity/monoid_expec.vo</code></li>
-              <li>52 K <code>lib/coq/user-contrib/QuicksortComplexity/indices.glob</code></li>
-              <li>51 K <code>lib/coq/user-contrib/QuicksortComplexity/qs_nondet_avg_complexity.vo</code></li>
-              <li>47 K <code>lib/coq/user-contrib/QuicksortComplexity/arith_lems.glob</code></li>
-              <li>47 K <code>lib/coq/user-contrib/QuicksortComplexity/qs_det_parts.vo</code></li>
-              <li>46 K <code>lib/coq/user-contrib/QuicksortComplexity/sort_order.vo</code></li>
-              <li>45 K <code>lib/coq/user-contrib/QuicksortComplexity/ne_list.vo</code></li>
-              <li>44 K <code>lib/coq/user-contrib/QuicksortComplexity/list_utils.v</code></li>
-              <li>39 K <code>lib/coq/user-contrib/QuicksortComplexity/qs_nondet_avg_complexity.glob</code></li>
-              <li>37 K <code>lib/coq/user-contrib/QuicksortComplexity/U.glob</code></li>
-              <li>36 K <code>lib/coq/user-contrib/QuicksortComplexity/monoid_tree_monad.vo</code></li>
-              <li>35 K <code>lib/coq/user-contrib/QuicksortComplexity/fix_measure_utils.vo</code></li>
-              <li>35 K <code>lib/coq/user-contrib/QuicksortComplexity/qs_case_split.glob</code></li>
-              <li>34 K <code>lib/coq/user-contrib/QuicksortComplexity/harmonic.vo</code></li>
-              <li>34 K <code>lib/coq/user-contrib/QuicksortComplexity/expec.glob</code></li>
-              <li>33 K <code>lib/coq/user-contrib/QuicksortComplexity/fix_measure_utils.glob</code></li>
-              <li>33 K <code>lib/coq/user-contrib/QuicksortComplexity/vec.v</code></li>
-              <li>33 K <code>lib/coq/user-contrib/QuicksortComplexity/nat_below.vo</code></li>
-              <li>33 K <code>lib/coq/user-contrib/QuicksortComplexity/monoid_expec.glob</code></li>
-              <li>32 K <code>lib/coq/user-contrib/QuicksortComplexity/list_length_expec.vo</code></li>
-              <li>32 K <code>lib/coq/user-contrib/QuicksortComplexity/insertion_sort.glob</code></li>
-              <li>31 K <code>lib/coq/user-contrib/QuicksortComplexity/monoid_monad_trans.glob</code></li>
-              <li>30 K <code>lib/coq/user-contrib/QuicksortComplexity/qs_correct.vo</code></li>
-              <li>30 K <code>lib/coq/user-contrib/QuicksortComplexity/ne_tree_monad.glob</code></li>
-              <li>29 K <code>lib/coq/user-contrib/QuicksortComplexity/NDP.vo</code></li>
-              <li>29 K <code>lib/coq/user-contrib/QuicksortComplexity/sort_order.glob</code></li>
-              <li>28 K <code>lib/coq/user-contrib/QuicksortComplexity/util.glob</code></li>
-              <li>27 K <code>lib/coq/user-contrib/QuicksortComplexity/qs_parts.glob</code></li>
-              <li>27 K <code>lib/coq/user-contrib/QuicksortComplexity/skip_list.vo</code></li>
-              <li>27 K <code>lib/coq/user-contrib/QuicksortComplexity/monads.glob</code></li>
-              <li>26 K <code>lib/coq/user-contrib/QuicksortComplexity/ne_tree.glob</code></li>
-              <li>25 K <code>lib/coq/user-contrib/QuicksortComplexity/qs_sound_cmps.glob</code></li>
-              <li>23 K <code>lib/coq/user-contrib/QuicksortComplexity/qs_CM_U_expec_cost_eq.glob</code></li>
-              <li>22 K <code>lib/coq/user-contrib/QuicksortComplexity/qs_worst.glob</code></li>
-              <li>18 K <code>lib/coq/user-contrib/QuicksortComplexity/qs_cmp_prob.glob</code></li>
-              <li>17 K <code>lib/coq/user-contrib/QuicksortComplexity/qs_det_parts.glob</code></li>
-              <li>15 K <code>lib/coq/user-contrib/QuicksortComplexity/sums_and_averages.v</code></li>
-              <li>15 K <code>lib/coq/user-contrib/QuicksortComplexity/list_length_expec.glob</code></li>
-              <li>15 K <code>lib/coq/user-contrib/QuicksortComplexity/nat_seqs.glob</code></li>
-              <li>14 K <code>lib/coq/user-contrib/QuicksortComplexity/qs_det_avg_complexity.v</code></li>
-              <li>14 K <code>lib/coq/user-contrib/QuicksortComplexity/ne_list.glob</code></li>
-              <li>13 K <code>lib/coq/user-contrib/QuicksortComplexity/qs_definitions.v</code></li>
-              <li>11 K <code>lib/coq/user-contrib/QuicksortComplexity/indices.v</code></li>
-              <li>10 K <code>lib/coq/user-contrib/QuicksortComplexity/arith_lems.v</code></li>
-              <li>10 K <code>lib/coq/user-contrib/QuicksortComplexity/nat_below.glob</code></li>
-              <li>9 K <code>lib/coq/user-contrib/QuicksortComplexity/qs_correct.glob</code></li>
-              <li>9 K <code>lib/coq/user-contrib/QuicksortComplexity/qs_cases.v</code></li>
-              <li>8 K <code>lib/coq/user-contrib/QuicksortComplexity/harmonic.glob</code></li>
-              <li>7 K <code>lib/coq/user-contrib/QuicksortComplexity/skip_list.glob</code></li>
-              <li>6 K <code>lib/coq/user-contrib/QuicksortComplexity/qs_nondet_avg_complexity.v</code></li>
-              <li>6 K <code>lib/coq/user-contrib/QuicksortComplexity/U.v</code></li>
-              <li>6 K <code>lib/coq/user-contrib/QuicksortComplexity/expec.v</code></li>
-              <li>6 K <code>lib/coq/user-contrib/QuicksortComplexity/qs_sound_cmps.v</code></li>
-              <li>6 K <code>lib/coq/user-contrib/QuicksortComplexity/ne_tree.v</code></li>
-              <li>6 K <code>lib/coq/user-contrib/QuicksortComplexity/qs_case_split.v</code></li>
-              <li>6 K <code>lib/coq/user-contrib/QuicksortComplexity/insertion_sort.v</code></li>
-              <li>6 K <code>lib/coq/user-contrib/QuicksortComplexity/ne_tree_monad.v</code></li>
-              <li>5 K <code>lib/coq/user-contrib/QuicksortComplexity/monoid_expec.v</code></li>
-              <li>5 K <code>lib/coq/user-contrib/QuicksortComplexity/monads.v</code></li>
-              <li>5 K <code>lib/coq/user-contrib/QuicksortComplexity/sort_order.v</code></li>
-              <li>5 K <code>lib/coq/user-contrib/QuicksortComplexity/util.v</code></li>
-              <li>5 K <code>lib/coq/user-contrib/QuicksortComplexity/qs_parts.v</code></li>
-              <li>5 K <code>lib/coq/user-contrib/QuicksortComplexity/fix_measure_utils.v</code></li>
-              <li>4 K <code>lib/coq/user-contrib/QuicksortComplexity/monoid_monad_trans.v</code></li>
-              <li>4 K <code>lib/coq/user-contrib/QuicksortComplexity/monoid_tree_monad.glob</code></li>
-              <li>4 K <code>lib/coq/user-contrib/QuicksortComplexity/qs_worst.v</code></li>
-              <li>3 K <code>lib/coq/user-contrib/QuicksortComplexity/qs_CM_U_expec_cost_eq.v</code></li>
-              <li>3 K <code>lib/coq/user-contrib/QuicksortComplexity/qs_cmp_prob.v</code></li>
-              <li>3 K <code>lib/coq/user-contrib/QuicksortComplexity/ne_list.v</code></li>
-              <li>3 K <code>lib/coq/user-contrib/QuicksortComplexity/NDP.glob</code></li>
-              <li>3 K <code>lib/coq/user-contrib/QuicksortComplexity/nat_seqs.v</code></li>
-              <li>3 K <code>lib/coq/user-contrib/QuicksortComplexity/qs_det_parts.v</code></li>
-              <li>2 K <code>lib/coq/user-contrib/QuicksortComplexity/list_length_expec.v</code></li>
-              <li>2 K <code>lib/coq/user-contrib/QuicksortComplexity/nat_below.v</code></li>
-              <li>2 K <code>lib/coq/user-contrib/QuicksortComplexity/skip_list.v</code></li>
-              <li>2 K <code>lib/coq/user-contrib/QuicksortComplexity/qs_correct.v</code></li>
-              <li>1 K <code>lib/coq/user-contrib/QuicksortComplexity/harmonic.v</code></li>
-              <li>1 K <code>lib/coq/user-contrib/QuicksortComplexity/monoid_tree_monad.v</code></li>
-              <li>1 K <code>lib/coq/user-contrib/QuicksortComplexity/NDP.v</code></li>
-              <li>1 K <code>install/coq:contrib:quicksort-complexity.install</code></li>
-              <li>0 K <code>lib/coq:contrib:quicksort-complexity/opam.config</code></li>
-            </ul>
+            <p>No files were installed.</p>
             <h2>Uninstall</h2>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>opam remove -y coq:contrib:quicksort-complexity.dev</code></dd>
+              <dd><code>true</code></dd>
               <dt>Return code</dt>
               <dd>0</dd>
-              <dt>Duration</dt>
-              <dd>2 s</dd>
               <dt>Missing removes</dt>
               <dd>
                 none
