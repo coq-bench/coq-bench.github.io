@@ -47,7 +47,7 @@
                 <span class="label label-danger">Error</span>
               </small>
             </h1>
-            <p><em><script>document.write(moment("2015-04-14 05:04:16 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2015-04-14 05:04:16 UTC)</em><p>
+            <p><em><script>document.write(moment("2015-04-15 12:14:43 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2015-04-15 12:14:43 UTC)</em><p>
             <h2>Context</h2>
             <pre># Installed packages for system:
 base-bigarray           base  Bigarray library distributed with the OCaml compil
@@ -148,10 +148,6 @@ The following actions will be performed:
 - &quot;coqc&quot;  -q  -R &quot;.&quot; FSets   demo_msets
 - &quot;coqc&quot;  -q  -R &quot;.&quot; FSets   demo
 - Makefile:251: recipe for target &#39;MSetFullAVL.vo&#39; failed
-- File &quot;./MSetFullAVL.v&quot;, line 71, characters 42-52:
-- Error: The reference II.leb_nle was not found in the current environment.
-- make: *** [MSetFullAVL.vo] Error 1
-- make: *** Waiting for unfinished jobs....
 - type &#39;x compare =
 - | LT
 - | EQ
@@ -1760,17 +1756,6 @@ The following actions will be performed:
 - module M = Make(Z_as_OT)
 - 
 - 
-- Inductive comparison : Set :=
--     Eq : comparison | Lt : comparison | Gt : comparison
-- CompSpec = 
-- fun (A : Type) (eq lt : A -&gt; A -&gt; Prop) (x y : A) =&gt;
-- CompareSpec (eq x y) (lt x y) (lt y x)
--      : forall A : Type,
--        (A -&gt; A -&gt; Prop) -&gt; (A -&gt; A -&gt; Prop) -&gt; A -&gt; A -&gt; comparison -&gt; Prop
-- 
-- CompSpec is not universe polymorphic
-- Argument A is implicit and maximally inserted
-- Argument scopes are [type_scope _ _ _ _ _]
 -      = true
 -      : bool
 -      = 0 :: 2 :: nil
@@ -1995,130 +1980,6 @@ The following actions will be performed:
 -                                                  270 :: 276 :: 282 :: ..
 -      : list M.elt
 - Finished transaction in 0.02 secs (0.02u,0.s) (successful)
-- type comparison =
-- | Eq
-- | Lt
-- | Gt
-- 
-- (** val compOpp : comparison -&gt; comparison **)
-- 
-- let compOpp = function
-- | Eq -&gt; Eq
-- | Lt -&gt; Gt
-- | Gt -&gt; Lt
-- 
-- type sumbool =
-- | Left
-- | Right
-- 
-- type positive =
-- | XI of positive
-- | XO of positive
-- | XH
-- 
-- type z =
-- | Z0
-- | Zpos of positive
-- | Zneg of positive
-- 
-- module Pos = 
--  struct 
--   (** val compare_cont : comparison -&gt; positive -&gt; positive -&gt; comparison **)
--   
--   let rec compare_cont r x y =
--     match x with
--     | XI p -&gt;
--       (match y with
--        | XI q -&gt; compare_cont r p q
--        | XO q -&gt; compare_cont Gt p q
--        | XH -&gt; Gt)
--     | XO p -&gt;
--       (match y with
--        | XI q -&gt; compare_cont Lt p q
--        | XO q -&gt; compare_cont r p q
--        | XH -&gt; Gt)
--     | XH -&gt;
--       (match y with
--        | XH -&gt; r
--        | _ -&gt; Lt)
--   
--   (** val compare : positive -&gt; positive -&gt; comparison **)
--   
--   let compare =
--     compare_cont Eq
--   
--   (** val eq_dec : positive -&gt; positive -&gt; sumbool **)
--   
--   let rec eq_dec p y0 =
--     match p with
--     | XI p0 -&gt;
--       (match y0 with
--        | XI p1 -&gt; eq_dec p0 p1
--        | _ -&gt; Right)
--     | XO p0 -&gt;
--       (match y0 with
--        | XO p1 -&gt; eq_dec p0 p1
--        | _ -&gt; Right)
--     | XH -&gt;
--       (match y0 with
--        | XH -&gt; Left
--        | _ -&gt; Right)
--  end
-- 
-- module Z = 
--  struct 
--   (** val compare : z -&gt; z -&gt; comparison **)
--   
--   let compare x y =
--     match x with
--     | Z0 -&gt;
--       (match y with
--        | Z0 -&gt; Eq
--        | Zpos y&#39; -&gt; Lt
--        | Zneg y&#39; -&gt; Gt)
--     | Zpos x&#39; -&gt;
--       (match y with
--        | Zpos y&#39; -&gt; Pos.compare x&#39; y&#39;
--        | _ -&gt; Gt)
--     | Zneg x&#39; -&gt;
--       (match y with
--        | Zneg y&#39; -&gt; compOpp (Pos.compare x&#39; y&#39;)
--        | _ -&gt; Lt)
--   
--   (** val eq_dec : z -&gt; z -&gt; sumbool **)
--   
--   let eq_dec x y =
--     match x with
--     | Z0 -&gt;
--       (match y with
--        | Z0 -&gt; Left
--        | _ -&gt; Right)
--     | Zpos x0 -&gt;
--       (match y with
--        | Zpos p0 -&gt; Pos.eq_dec x0 p0
--        | _ -&gt; Right)
--     | Zneg x0 -&gt;
--       (match y with
--        | Zneg p0 -&gt; Pos.eq_dec x0 p0
--        | _ -&gt; Right)
--  end
-- 
-- module Z_as_OT = 
--  struct 
--   type t = z
--   
--   (** val compare : z -&gt; z -&gt; comparison **)
--   
--   let compare =
--     Z.compare
--   
--   (** val eq_dec : z -&gt; z -&gt; sumbool **)
--   
--   let eq_dec =
--     Z.eq_dec
--  end
-- 
-- 
 -      = 0
 -        :: 2
 -           :: 3
@@ -2276,6 +2137,145 @@ The following actions will be performed:
 -                                                  88 :: 
 -                                                  90 :: 92 :: 94 :: ..
 -      : list Z
+- Inductive comparison : Set :=
+-     Eq : comparison | Lt : comparison | Gt : comparison
+- CompSpec = 
+- fun (A : Type) (eq lt : A -&gt; A -&gt; Prop) (x y : A) =&gt;
+- CompareSpec (eq x y) (lt x y) (lt y x)
+-      : forall A : Type,
+-        (A -&gt; A -&gt; Prop) -&gt; (A -&gt; A -&gt; Prop) -&gt; A -&gt; A -&gt; comparison -&gt; Prop
+- 
+- CompSpec is not universe polymorphic
+- Argument A is implicit and maximally inserted
+- Argument scopes are [type_scope _ _ _ _ _]
+- type comparison =
+- | Eq
+- | Lt
+- | Gt
+- 
+- (** val compOpp : comparison -&gt; comparison **)
+- 
+- let compOpp = function
+- | Eq -&gt; Eq
+- | Lt -&gt; Gt
+- | Gt -&gt; Lt
+- 
+- type sumbool =
+- | Left
+- | Right
+- 
+- type positive =
+- | XI of positive
+- | XO of positive
+- | XH
+- 
+- type z =
+- | Z0
+- | Zpos of positive
+- | Zneg of positive
+- 
+- module Pos = 
+-  struct 
+-   (** val compare_cont : comparison -&gt; positive -&gt; positive -&gt; comparison **)
+-   
+-   let rec compare_cont r x y =
+-     match x with
+-     | XI p -&gt;
+-       (match y with
+-        | XI q -&gt; compare_cont r p q
+-        | XO q -&gt; compare_cont Gt p q
+-        | XH -&gt; Gt)
+-     | XO p -&gt;
+-       (match y with
+-        | XI q -&gt; compare_cont Lt p q
+-        | XO q -&gt; compare_cont r p q
+-        | XH -&gt; Gt)
+-     | XH -&gt;
+-       (match y with
+-        | XH -&gt; r
+-        | _ -&gt; Lt)
+-   
+-   (** val compare : positive -&gt; positive -&gt; comparison **)
+-   
+-   let compare =
+-     compare_cont Eq
+-   
+-   (** val eq_dec : positive -&gt; positive -&gt; sumbool **)
+-   
+-   let rec eq_dec p y0 =
+-     match p with
+-     | XI p0 -&gt;
+-       (match y0 with
+-        | XI p1 -&gt; eq_dec p0 p1
+-        | _ -&gt; Right)
+-     | XO p0 -&gt;
+-       (match y0 with
+-        | XO p1 -&gt; eq_dec p0 p1
+-        | _ -&gt; Right)
+-     | XH -&gt;
+-       (match y0 with
+-        | XH -&gt; Left
+-        | _ -&gt; Right)
+-  end
+- 
+- module Z = 
+-  struct 
+-   (** val compare : z -&gt; z -&gt; comparison **)
+-   
+-   let compare x y =
+-     match x with
+-     | Z0 -&gt;
+-       (match y with
+-        | Z0 -&gt; Eq
+-        | Zpos y&#39; -&gt; Lt
+-        | Zneg y&#39; -&gt; Gt)
+-     | Zpos x&#39; -&gt;
+-       (match y with
+-        | Zpos y&#39; -&gt; Pos.compare x&#39; y&#39;
+-        | _ -&gt; Gt)
+-     | Zneg x&#39; -&gt;
+-       (match y with
+-        | Zneg y&#39; -&gt; compOpp (Pos.compare x&#39; y&#39;)
+-        | _ -&gt; Lt)
+-   
+-   (** val eq_dec : z -&gt; z -&gt; sumbool **)
+-   
+-   let eq_dec x y =
+-     match x with
+-     | Z0 -&gt;
+-       (match y with
+-        | Z0 -&gt; Left
+-        | _ -&gt; Right)
+-     | Zpos x0 -&gt;
+-       (match y with
+-        | Zpos p0 -&gt; Pos.eq_dec x0 p0
+-        | _ -&gt; Right)
+-     | Zneg x0 -&gt;
+-       (match y with
+-        | Zneg p0 -&gt; Pos.eq_dec x0 p0
+-        | _ -&gt; Right)
+-  end
+- 
+- module Z_as_OT = 
+-  struct 
+-   type t = z
+-   
+-   (** val compare : z -&gt; z -&gt; comparison **)
+-   
+-   let compare =
+-     Z.compare
+-   
+-   (** val eq_dec : z -&gt; z -&gt; sumbool **)
+-   
+-   let eq_dec =
+-     Z.eq_dec
+-  end
+- 
+- 
+- File &quot;./MSetFullAVL.v&quot;, line 71, characters 42-52:
+- Error: The reference II.leb_nle was not found in the current environment.
+- make: *** [MSetFullAVL.vo] Error 1
+- make: *** Waiting for unfinished jobs....
 - M.add
 -      : M.elt -&gt; M.t -&gt; M.t
 -      = true
@@ -2303,6 +2303,85 @@ The following actions will be performed:
 -                        (@add_ok (Node 1 Leaf 4 Leaf) 2
 -                           (@add_ok Leaf 4 empty_ok))) |}
 -      : M.t
+-      = 0
+-        :: 6
+-           :: 12
+-              :: 18
+-                 :: 24
+-                    :: 30
+-                       :: 36
+-                          :: 42
+-                             :: 48
+-                                :: 54
+-                                   :: 60
+-                                      :: 66
+-                                         :: 72
+-                                            :: 78
+-                                               :: 84
+-                                                  :: 
+-                                                  90
+-                                                  :: 
+-                                                  96
+-                                                  :: 
+-                                                  102
+-                                                  :: 
+-                                                  108
+-                                                  :: 
+-                                                  114
+-                                                  :: 
+-                                                  120
+-                                                  :: 
+-                                                  126
+-                                                  :: 
+-                                                  132
+-                                                  :: 
+-                                                  138
+-                                                  :: 
+-                                                  144
+-                                                  :: 
+-                                                  150
+-                                                  :: 
+-                                                  156
+-                                                  :: 
+-                                                  162
+-                                                  :: 
+-                                                  168
+-                                                  :: 
+-                                                  174
+-                                                  :: 
+-                                                  180
+-                                                  :: 
+-                                                  186
+-                                                  :: 
+-                                                  192
+-                                                  :: 
+-                                                  198
+-                                                  :: 
+-                                                  204
+-                                                  :: 
+-                                                  210
+-                                                  :: 
+-                                                  216
+-                                                  :: 
+-                                                  222
+-                                                  :: 
+-                                                  228
+-                                                  :: 
+-                                                  234
+-                                                  :: 
+-                                                  240
+-                                                  :: 
+-                                                  246
+-                                                  :: 
+-                                                  252
+-                                                  :: 
+-                                                  258
+-                                                  :: 
+-                                                  264
+-                                                  :: 
+-                                                  270 :: 276 :: 282 :: ..
+-      : list M.elt
+- Finished transaction in 0.276 secs (0.278u,0.s) (successful)
 -      = R.Node 2 R.Leaf 0 (R.Node 1 R.Leaf 2 R.Leaf)
 -      : R.tree
 -      = 0 :: 2 :: nil
@@ -2312,6 +2391,85 @@ The following actions will be performed:
 -      = R.Node 3 (R.Node 1 R.Leaf 0 R.Leaf) 2
 -          (R.Node 2 (R.Node 1 R.Leaf 3 R.Leaf) 4 R.Leaf)
 -      : R.tree
+-      = 0
+-        :: 6
+-           :: 12
+-              :: 18
+-                 :: 24
+-                    :: 30
+-                       :: 36
+-                          :: 42
+-                             :: 48
+-                                :: 54
+-                                   :: 60
+-                                      :: 66
+-                                         :: 72
+-                                            :: 78
+-                                               :: 84
+-                                                  :: 
+-                                                  90
+-                                                  :: 
+-                                                  96
+-                                                  :: 
+-                                                  102
+-                                                  :: 
+-                                                  108
+-                                                  :: 
+-                                                  114
+-                                                  :: 
+-                                                  120
+-                                                  :: 
+-                                                  126
+-                                                  :: 
+-                                                  132
+-                                                  :: 
+-                                                  138
+-                                                  :: 
+-                                                  144
+-                                                  :: 
+-                                                  150
+-                                                  :: 
+-                                                  156
+-                                                  :: 
+-                                                  162
+-                                                  :: 
+-                                                  168
+-                                                  :: 
+-                                                  174
+-                                                  :: 
+-                                                  180
+-                                                  :: 
+-                                                  186
+-                                                  :: 
+-                                                  192
+-                                                  :: 
+-                                                  198
+-                                                  :: 
+-                                                  204
+-                                                  :: 
+-                                                  210
+-                                                  :: 
+-                                                  216
+-                                                  :: 
+-                                                  222
+-                                                  :: 
+-                                                  228
+-                                                  :: 
+-                                                  234
+-                                                  :: 
+-                                                  240
+-                                                  :: 
+-                                                  246
+-                                                  :: 
+-                                                  252
+-                                                  :: 
+-                                                  258
+-                                                  :: 
+-                                                  264
+-                                                  :: 
+-                                                  270 :: 276 :: 282 :: ..
+-      : list M.elt
+- Finished transaction in 0.034 secs (0.036u,0.s) (successful)
 -      = (0 :: 2 :: 3 :: nil) :: (0 :: 2 :: 4 :: nil) :: nil
 -      : list (list M.elt)
 -      = 0
@@ -2391,337 +2549,179 @@ The following actions will be performed:
 -                                                  88 :: 
 -                                                  90 :: 92 :: 94 :: ..
 -      : list Z
--      = 0
--        :: 6
--           :: 12
--              :: 18
--                 :: 24
--                    :: 30
--                       :: 36
--                          :: 42
--                             :: 48
--                                :: 54
--                                   :: 60
--                                      :: 66
--                                         :: 72
--                                            :: 78
--                                               :: 84
--                                                  :: 
--                                                  90
--                                                  :: 
--                                                  96
--                                                  :: 
--                                                  102
--                                                  :: 
--                                                  108
--                                                  :: 
--                                                  114
--                                                  :: 
--                                                  120
--                                                  :: 
--                                                  126
--                                                  :: 
--                                                  132
--                                                  :: 
--                                                  138
--                                                  :: 
--                                                  144
--                                                  :: 
--                                                  150
--                                                  :: 
--                                                  156
--                                                  :: 
--                                                  162
--                                                  :: 
--                                                  168
--                                                  :: 
--                                                  174
--                                                  :: 
--                                                  180
--                                                  :: 
--                                                  186
--                                                  :: 
--                                                  192
--                                                  :: 
--                                                  198
--                                                  :: 
--                                                  204
--                                                  :: 
--                                                  210
--                                                  :: 
--                                                  216
--                                                  :: 
--                                                  222
--                                                  :: 
--                                                  228
--                                                  :: 
--                                                  234
--                                                  :: 
--                                                  240
--                                                  :: 
--                                                  246
--                                                  :: 
--                                                  252
--                                                  :: 
--                                                  258
--                                                  :: 
--                                                  264
--                                                  :: 
--                                                  270 :: 276 :: 282 :: ..
--      : list M.elt
-- Finished transaction in 0.218 secs (0.219u,0.s) (successful)
--      = 0
--        :: 6
--           :: 12
--              :: 18
--                 :: 24
--                    :: 30
--                       :: 36
--                          :: 42
--                             :: 48
--                                :: 54
--                                   :: 60
--                                      :: 66
--                                         :: 72
--                                            :: 78
--                                               :: 84
--                                                  :: 
--                                                  90
--                                                  :: 
--                                                  96
--                                                  :: 
--                                                  102
--                                                  :: 
--                                                  108
--                                                  :: 
--                                                  114
--                                                  :: 
--                                                  120
--                                                  :: 
--                                                  126
--                                                  :: 
--                                                  132
--                                                  :: 
--                                                  138
--                                                  :: 
--                                                  144
--                                                  :: 
--                                                  150
--                                                  :: 
--                                                  156
--                                                  :: 
--                                                  162
--                                                  :: 
--                                                  168
--                                                  :: 
--                                                  174
--                                                  :: 
--                                                  180
--                                                  :: 
--                                                  186
--                                                  :: 
--                                                  192
--                                                  :: 
--                                                  198
--                                                  :: 
--                                                  204
--                                                  :: 
--                                                  210
--                                                  :: 
--                                                  216
--                                                  :: 
--                                                  222
--                                                  :: 
--                                                  228
--                                                  :: 
--                                                  234
--                                                  :: 
--                                                  240
--                                                  :: 
--                                                  246
--                                                  :: 
--                                                  252
--                                                  :: 
--                                                  258
--                                                  :: 
--                                                  264
--                                                  :: 
--                                                  270 :: 276 :: 282 :: ..
--      : list M.elt
-- Finished transaction in 0.021 secs (0.021u,0.s) (successful)
--      = 0
--        :: 6
--           :: 12
--              :: 18
--                 :: 24
--                    :: 30
--                       :: 36
--                          :: 42
--                             :: 48
--                                :: 54
--                                   :: 60
--                                      :: 66
--                                         :: 72
--                                            :: 78
--                                               :: 84
--                                                  :: 
--                                                  90
--                                                  :: 
--                                                  96
--                                                  :: 
--                                                  102
--                                                  :: 
--                                                  108
--                                                  :: 
--                                                  114
--                                                  :: 
--                                                  120
--                                                  :: 
--                                                  126
--                                                  :: 
--                                                  132
--                                                  :: 
--                                                  138
--                                                  :: 
--                                                  144
--                                                  :: 
--                                                  150
--                                                  :: 
--                                                  156
--                                                  :: 
--                                                  162
--                                                  :: 
--                                                  168
--                                                  :: 
--                                                  174
--                                                  :: 
--                                                  180
--                                                  :: 
--                                                  186
--                                                  :: 
--                                                  192
--                                                  :: 
--                                                  198
--                                                  :: 
--                                                  204
--                                                  :: 
--                                                  210
--                                                  :: 
--                                                  216
--                                                  :: 
--                                                  222
--                                                  :: 
--                                                  228
--                                                  :: 
--                                                  234
--                                                  :: 
--                                                  240
--                                                  :: 
--                                                  246
--                                                  :: 
--                                                  252
--                                                  :: 
--                                                  258
--                                                  :: 
--                                                  264
--                                                  :: 
--                                                  270 :: 276 :: 282 :: ..
--      : list M.elt
-- Finished transaction in 0.204 secs (0.204u,0.s) (successful)
--      = 0
--        :: 6
--           :: 12
--              :: 18
--                 :: 24
--                    :: 30
--                       :: 36
--                          :: 42
--                             :: 48
--                                :: 54
--                                   :: 60
--                                      :: 66
--                                         :: 72
--                                            :: 78
--                                               :: 84
--                                                  :: 
--                                                  90
--                                                  :: 
--                                                  96
--                                                  :: 
--                                                  102
--                                                  :: 
--                                                  108
--                                                  :: 
--                                                  114
--                                                  :: 
--                                                  120
--                                                  :: 
--                                                  126
--                                                  :: 
--                                                  132
--                                                  :: 
--                                                  138
--                                                  :: 
--                                                  144
--                                                  :: 
--                                                  150
--                                                  :: 
--                                                  156
--                                                  :: 
--                                                  162
--                                                  :: 
--                                                  168
--                                                  :: 
--                                                  174
--                                                  :: 
--                                                  180
--                                                  :: 
--                                                  186
--                                                  :: 
--                                                  192
--                                                  :: 
--                                                  198
--                                                  :: 
--                                                  204
--                                                  :: 
--                                                  210
--                                                  :: 
--                                                  216
--                                                  :: 
--                                                  222
--                                                  :: 
--                                                  228
--                                                  :: 
--                                                  234
--                                                  :: 
--                                                  240
--                                                  :: 
--                                                  246
--                                                  :: 
--                                                  252
--                                                  :: 
--                                                  258
--                                                  :: 
--                                                  264
--                                                  :: 
--                                                  270 :: 276 :: 282 :: ..
--      : list M.elt
-- Finished transaction in 0.023 secs (0.024u,0.s) (successful)
 -      = 10000%nat
 -      : nat
-- Finished transaction in 0.521 secs (0.52u,0.s) (successful)
+- Finished transaction in 0.534 secs (0.533u,0.s) (successful)
+-      = 0
+-        :: 6
+-           :: 12
+-              :: 18
+-                 :: 24
+-                    :: 30
+-                       :: 36
+-                          :: 42
+-                             :: 48
+-                                :: 54
+-                                   :: 60
+-                                      :: 66
+-                                         :: 72
+-                                            :: 78
+-                                               :: 84
+-                                                  :: 
+-                                                  90
+-                                                  :: 
+-                                                  96
+-                                                  :: 
+-                                                  102
+-                                                  :: 
+-                                                  108
+-                                                  :: 
+-                                                  114
+-                                                  :: 
+-                                                  120
+-                                                  :: 
+-                                                  126
+-                                                  :: 
+-                                                  132
+-                                                  :: 
+-                                                  138
+-                                                  :: 
+-                                                  144
+-                                                  :: 
+-                                                  150
+-                                                  :: 
+-                                                  156
+-                                                  :: 
+-                                                  162
+-                                                  :: 
+-                                                  168
+-                                                  :: 
+-                                                  174
+-                                                  :: 
+-                                                  180
+-                                                  :: 
+-                                                  186
+-                                                  :: 
+-                                                  192
+-                                                  :: 
+-                                                  198
+-                                                  :: 
+-                                                  204
+-                                                  :: 
+-                                                  210
+-                                                  :: 
+-                                                  216
+-                                                  :: 
+-                                                  222
+-                                                  :: 
+-                                                  228
+-                                                  :: 
+-                                                  234
+-                                                  :: 
+-                                                  240
+-                                                  :: 
+-                                                  246
+-                                                  :: 
+-                                                  252
+-                                                  :: 
+-                                                  258
+-                                                  :: 
+-                                                  264
+-                                                  :: 
+-                                                  270 :: 276 :: 282 :: ..
+-      : list M.elt
+- Finished transaction in 0.202 secs (0.196u,0.005s) (successful)
+-      = 0
+-        :: 6
+-           :: 12
+-              :: 18
+-                 :: 24
+-                    :: 30
+-                       :: 36
+-                          :: 42
+-                             :: 48
+-                                :: 54
+-                                   :: 60
+-                                      :: 66
+-                                         :: 72
+-                                            :: 78
+-                                               :: 84
+-                                                  :: 
+-                                                  90
+-                                                  :: 
+-                                                  96
+-                                                  :: 
+-                                                  102
+-                                                  :: 
+-                                                  108
+-                                                  :: 
+-                                                  114
+-                                                  :: 
+-                                                  120
+-                                                  :: 
+-                                                  126
+-                                                  :: 
+-                                                  132
+-                                                  :: 
+-                                                  138
+-                                                  :: 
+-                                                  144
+-                                                  :: 
+-                                                  150
+-                                                  :: 
+-                                                  156
+-                                                  :: 
+-                                                  162
+-                                                  :: 
+-                                                  168
+-                                                  :: 
+-                                                  174
+-                                                  :: 
+-                                                  180
+-                                                  :: 
+-                                                  186
+-                                                  :: 
+-                                                  192
+-                                                  :: 
+-                                                  198
+-                                                  :: 
+-                                                  204
+-                                                  :: 
+-                                                  210
+-                                                  :: 
+-                                                  216
+-                                                  :: 
+-                                                  222
+-                                                  :: 
+-                                                  228
+-                                                  :: 
+-                                                  234
+-                                                  :: 
+-                                                  240
+-                                                  :: 
+-                                                  246
+-                                                  :: 
+-                                                  252
+-                                                  :: 
+-                                                  258
+-                                                  :: 
+-                                                  264
+-                                                  :: 
+-                                                  270 :: 276 :: 282 :: ..
+-      : list M.elt
+- Finished transaction in 0.022 secs (0.023u,0.s) (successful)
 -      = 10000%nat
 -      : nat
-- Finished transaction in 0.428 secs (0.425u,0.002s) (successful)
+- Finished transaction in 0.441 secs (0.44u,0.s) (successful)
 -      = 3334%nat
 -      : nat
-- Finished transaction in 0.041 secs (0.041u,0.s) (successful)
+- Finished transaction in 0.042 secs (0.043u,0.s) (successful)
 -      = 16666%nat
 -      : nat
-- Finished transaction in 0.076 secs (0.076u,0.s) (successful)
+- Finished transaction in 0.069 secs (0.069u,0.s) (successful)
 -      = 20000%nat
 -      : nat
-- Finished transaction in 0.112 secs (0.113u,0.s) (successful)
+- Finished transaction in 0.111 secs (0.113u,0.s) (successful)
 -      = 0
 -        :: 6
 -           :: 12
@@ -2800,7 +2800,7 @@ The following actions will be performed:
 -                                                  :: 
 -                                                  270 :: 276 :: 282 :: ..
 -      : list M.elt
-- Finished transaction in 0.973 secs (0.976u,0.s) (successful)
+- Finished transaction in 0.977 secs (0.967u,0.006s) (successful)
 -      = 0
 -        :: 6
 -           :: 12
@@ -2879,86 +2879,7 @@ The following actions will be performed:
 -                                                  :: 
 -                                                  270 :: 276 :: 282 :: ..
 -      : list M.elt
-- Finished transaction in 0.928 secs (0.922u,0.003s) (successful)
--      = 0
--        :: 6
--           :: 12
--              :: 18
--                 :: 24
--                    :: 30
--                       :: 36
--                          :: 42
--                             :: 48
--                                :: 54
--                                   :: 60
--                                      :: 66
--                                         :: 72
--                                            :: 78
--                                               :: 84
--                                                  :: 
--                                                  90
--                                                  :: 
--                                                  96
--                                                  :: 
--                                                  102
--                                                  :: 
--                                                  108
--                                                  :: 
--                                                  114
--                                                  :: 
--                                                  120
--                                                  :: 
--                                                  126
--                                                  :: 
--                                                  132
--                                                  :: 
--                                                  138
--                                                  :: 
--                                                  144
--                                                  :: 
--                                                  150
--                                                  :: 
--                                                  156
--                                                  :: 
--                                                  162
--                                                  :: 
--                                                  168
--                                                  :: 
--                                                  174
--                                                  :: 
--                                                  180
--                                                  :: 
--                                                  186
--                                                  :: 
--                                                  192
--                                                  :: 
--                                                  198
--                                                  :: 
--                                                  204
--                                                  :: 
--                                                  210
--                                                  :: 
--                                                  216
--                                                  :: 
--                                                  222
--                                                  :: 
--                                                  228
--                                                  :: 
--                                                  234
--                                                  :: 
--                                                  240
--                                                  :: 
--                                                  246
--                                                  :: 
--                                                  252
--                                                  :: 
--                                                  258
--                                                  :: 
--                                                  264
--                                                  :: 
--                                                  270 :: 276 :: 282 :: ..
--      : list M.elt
-- Finished transaction in 0.096 secs (0.097u,0.s) (successful)
+- Finished transaction in 0.095 secs (0.096u,0.s) (successful)
 - MF.add_iff
 -      : forall (s : M.t) (x y : M.elt),
 -        M.In y (M.add x s) &lt;-&gt; x = y \/ M.In y s
@@ -3065,7 +2986,112 @@ The following actions will be performed:
 -                                                  :: 
 -                                                  270 :: 276 :: 282 :: ..
 -      : list M.elt
-- Finished transaction in 0.092 secs (0.092u,0.s) (successful)
+- Finished transaction in 0.95 secs (0.944u,0.005s) (successful)
+- F.add
+-      : forall elt : Type, F.key -&gt; elt -&gt; F.t elt -&gt; F.t elt
+-      = Some (0 :: nil)
+-      : option (list Z)
+-      = true
+-      : bool
+-      = F.Raw.Node (F.Raw.Leaf nat) 1 1%nat
+-          (F.Raw.Node (F.Raw.Node (F.Raw.Leaf nat) 2 2%nat (F.Raw.Leaf nat) 1)
+-             3 0%nat (F.Raw.Leaf nat) 2) 3
+-      : F.Raw.tree nat
+-      = (1, 1%nat) :: (2, 2%nat) :: (3, 0%nat) :: nil
+-      : list (F.key * nat)
+- F.map2
+-      : forall elt elt&#39; elt&#39;&#39; : Type,
+-        (option elt -&gt; option elt&#39; -&gt; option elt&#39;&#39;) -&gt;
+-        F.t elt -&gt; F.t elt&#39; -&gt; F.t elt&#39;&#39;
+- F.equal
+-      : forall elt : Type, (elt -&gt; elt -&gt; bool) -&gt; F.t elt -&gt; F.t elt -&gt; bool
+- Inductive tree : Type :=
+-     Leaf : R.tree | Node : Int.Z_as_Int.t -&gt; R.tree -&gt; Z -&gt; R.tree -&gt; R.tree
+- 
+- For Node: Argument scopes are [_ _ Z_scope _]
+-      = Z
+-      : Set
+-      = 2 :: 3 :: 1 :: nil
+-      : list W.elt
+-      = 0
+-        :: 6
+-           :: 12
+-              :: 18
+-                 :: 24
+-                    :: 30
+-                       :: 36
+-                          :: 42
+-                             :: 48
+-                                :: 54
+-                                   :: 60
+-                                      :: 66
+-                                         :: 72
+-                                            :: 78
+-                                               :: 84
+-                                                  :: 
+-                                                  90
+-                                                  :: 
+-                                                  96
+-                                                  :: 
+-                                                  102
+-                                                  :: 
+-                                                  108
+-                                                  :: 
+-                                                  114
+-                                                  :: 
+-                                                  120
+-                                                  :: 
+-                                                  126
+-                                                  :: 
+-                                                  132
+-                                                  :: 
+-                                                  138
+-                                                  :: 
+-                                                  144
+-                                                  :: 
+-                                                  150
+-                                                  :: 
+-                                                  156
+-                                                  :: 
+-                                                  162
+-                                                  :: 
+-                                                  168
+-                                                  :: 
+-                                                  174
+-                                                  :: 
+-                                                  180
+-                                                  :: 
+-                                                  186
+-                                                  :: 
+-                                                  192
+-                                                  :: 
+-                                                  198
+-                                                  :: 
+-                                                  204
+-                                                  :: 
+-                                                  210
+-                                                  :: 
+-                                                  216
+-                                                  :: 
+-                                                  222
+-                                                  :: 
+-                                                  228
+-                                                  :: 
+-                                                  234
+-                                                  :: 
+-                                                  240
+-                                                  :: 
+-                                                  246
+-                                                  :: 
+-                                                  252
+-                                                  :: 
+-                                                  258
+-                                                  :: 
+-                                                  264
+-                                                  :: 
+-                                                  270 :: 276 :: 282 :: ..
+-      : list M.elt
+- Finished transaction in 0.104 secs (0.104u,0.s) (successful)
 - MF.add_1
 -      : forall (s : M.t) (x y : M.elt), x = y -&gt; M.In y (M.add x s)
 - MF.add_iff
@@ -3104,32 +3130,6 @@ The following actions will be performed:
 -      : Set
 -      = 2 :: 3 :: 1 :: nil
 -      : list W.elt
-- F.add
--      : forall elt : Type, F.key -&gt; elt -&gt; F.t elt -&gt; F.t elt
--      = Some (0 :: nil)
--      : option (list Z)
--      = true
--      : bool
--      = F.Raw.Node (F.Raw.Leaf nat) 1 1%nat
--          (F.Raw.Node (F.Raw.Node (F.Raw.Leaf nat) 2 2%nat (F.Raw.Leaf nat) 1)
--             3 0%nat (F.Raw.Leaf nat) 2) 3
--      : F.Raw.tree nat
--      = (1, 1%nat) :: (2, 2%nat) :: (3, 0%nat) :: nil
--      : list (F.key * nat)
-- F.map2
--      : forall elt elt&#39; elt&#39;&#39; : Type,
--        (option elt -&gt; option elt&#39; -&gt; option elt&#39;&#39;) -&gt;
--        F.t elt -&gt; F.t elt&#39; -&gt; F.t elt&#39;&#39;
-- F.equal
--      : forall elt : Type, (elt -&gt; elt -&gt; bool) -&gt; F.t elt -&gt; F.t elt -&gt; bool
-- Inductive tree : Type :=
--     Leaf : R.tree | Node : Int.Z_as_Int.t -&gt; R.tree -&gt; Z -&gt; R.tree -&gt; R.tree
-- 
-- For Node: Argument scopes are [_ _ Z_scope _]
--      = Z
--      : Set
--      = 2 :: 3 :: 1 :: nil
--      : list W.elt
 [ERROR] The compilation of coq:contrib:fsets failed at &quot;make -j4&quot;.
 [coq:contrib:fsets: rm] Command started
 + rm &quot;-R&quot; &quot;/home/bench/.opam/system/lib/coq/user-contrib/FSets&quot; (CWD=/home/bench/.opam/system/build/coq:contrib:fsets.dev)
@@ -3141,13 +3141,13 @@ The following actions will be performed:
 # path                 /home/bench/.opam/system/build/coq:contrib:fsets.dev
 # compiler             system (4.02.1)
 # exit-code            2
-# env-file             /home/bench/.opam/system/build/coq:contrib:fsets.dev/coq:contrib:fsets-29648-d2d111.env
-# stdout-file          /home/bench/.opam/system/build/coq:contrib:fsets.dev/coq:contrib:fsets-29648-d2d111.out
-# stderr-file          /home/bench/.opam/system/build/coq:contrib:fsets.dev/coq:contrib:fsets-29648-d2d111.err
+# env-file             /home/bench/.opam/system/build/coq:contrib:fsets.dev/coq:contrib:fsets-13223-d2d111.env
+# stdout-file          /home/bench/.opam/system/build/coq:contrib:fsets.dev/coq:contrib:fsets-13223-d2d111.out
+# stderr-file          /home/bench/.opam/system/build/coq:contrib:fsets.dev/coq:contrib:fsets-13223-d2d111.err
 ### stdout ###
+# MP.union_inter_cardinal
 # [...]
-# F.equal
-#      : forall elt : Type, (elt -&gt; elt -&gt; bool) -&gt; F.t elt -&gt; F.t elt -&gt; bool
+#        (M.cardinal s + M.cardinal s&#39;)%nat
 # Inductive tree : Type :=
 #     Leaf : R.tree | Node : Int.Z_as_Int.t -&gt; R.tree -&gt; Z -&gt; R.tree -&gt; R.tree
 # 
