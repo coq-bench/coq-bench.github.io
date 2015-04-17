@@ -44,10 +44,10 @@
               io:system
               <small>
                 2.2.0
-                <span class="label label-success">7 s</span>
+                <span class="label label-danger">Error</span>
               </small>
             </h1>
-            <p><em><script>document.write(moment("2015-04-16 02:42:06 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2015-04-16 02:42:06 UTC)</em><p>
+            <p><em><script>document.write(moment("2015-04-17 10:17:49 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2015-04-17 10:17:49 UTC)</em><p>
             <h2>Context</h2>
             <pre># Installed packages for system:
 base-bigarray   base  Bigarray library distributed with the OCaml compiler
@@ -85,30 +85,90 @@ coq            8.4.5  Formal proof management system.
               <dt>Return code</dt>
               <dd>0</dd>
               <dt>Duration</dt>
-              <dd>31 s</dd>
+              <dd>32 s</dd>
             </dl>
             <h2>Install</h2>
             <dl class="dl-horizontal">
               <dt>Command</dt>
               <dd><code>opam list; ulimit -Sv 4000000; timeout 120m opam install -y -v coq:io:system.2.2.0</code></dd>
               <dt>Return code</dt>
-              <dd>0</dd>
+              <dd>1024</dd>
               <dt>Duration</dt>
-              <dd>7 s</dd>
+              <dd>6 s</dd>
+              <dt>Output</dt>
+              <dd><pre># Installed packages for system:
+base-bigarray          base  Bigarray library distributed with the OCaml compile
+base-threads           base  Threads library distributed with the OCaml compiler
+base-unix              base  Unix library distributed with the OCaml compiler
+camlp5                 6.12  Preprocessor-pretty-printer of OCaml
+coq                   8.4.5  Formal proof management system.
+coq:error-handlers      dev  Simple and robust error handling functions.
+coq:function-ninjas     dev  Write readable code using simple functional combina
+coq:io                  dev  A library for effects in Coq.
+coq:io:system:ocaml     dev  Coq system effects for extraction to OCaml.
+coq:list-plus           dev  More functions on lists.
+coq:list-string         dev  Strings implemented as lists.
+lwt                   2.4.8  A cooperative threads library for OCaml
+ocamlfind             1.5.5  A library manager for OCaml
+ppx_tools            0.99.2  Tools for authors of ppx rewriters and other syntac
+The following actions will be performed:
+  - install coq:io:system 2.2.0
+=-=- Gathering sources =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+[coq:io:system: from stable] Repo archive not found[coq:io:system: http] Command started
+[coq:io:system: http] Command started
+[coq:io:system.2.2.0] https://github.com/clarus/io-system/archive/2.2.0.tar.gz downloaded
+=-=- Processing actions -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+[coq:io:system: ./configure.sh] Command started
++ ./configure.sh  (CWD=/home/bench/.opam/system/build/coq:io:system.2.2.0)
+[coq:io:system: make] Command started
++ make &quot;-j4&quot; (CWD=/home/bench/.opam/system/build/coq:io:system.2.2.0)
+- &quot;coqdep&quot; -c -slash -R src Io.System &quot;src/All.v&quot; &gt; &quot;src/All.v.d&quot; || ( RV=$?; rm -f &quot;src/All.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -slash -R src Io.System &quot;src/Extraction.v&quot; &gt; &quot;src/Extraction.v.d&quot; || ( RV=$?; rm -f &quot;src/Extraction.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -slash -R src Io.System &quot;src/System.v&quot; &gt; &quot;src/System.v.d&quot; || ( RV=$?; rm -f &quot;src/System.v.d&quot;; exit ${RV} )
+- &quot;coqc&quot;  -q  -R src Io.System   src/System
+- &quot;coqc&quot;  -q  -R src Io.System   src/Extraction
+- File &quot;/home/bench/.opam/system/build/coq:io:system.2.2.0/src/Extraction.v&quot;, line 167, characters 39-40:
+- Error: The reference y was not found in the current environment.
+- Makefile:201: recipe for target &#39;src/Extraction.vo&#39; failed
+- make: *** [src/Extraction.vo] Error 1
+[ERROR] The compilation of coq:io:system failed at &quot;make -j4&quot;.
+[coq:io:system: rm] Command started
++ rm &quot;-R&quot; &quot;/home/bench/.opam/system/lib/coq/user-contrib/Io/System&quot; (CWD=/home/bench/.opam/system/build/coq:io:system.2.2.0)
+- rm: cannot remove &#39;/home/bench/.opam/system/lib/coq/user-contrib/Io/System&#39;: No such file or directory
+#=== ERROR while installing coq:io:system.2.2.0 ===============================#
+# opam-version         1.2.1
+# os                   linux
+# command              make -j4
+# path                 /home/bench/.opam/system/build/coq:io:system.2.2.0
+# compiler             system (4.02.1)
+# exit-code            2
+# env-file             /home/bench/.opam/system/build/coq:io:system.2.2.0/coq:io:system-7008-c61e7b.env
+# stdout-file          /home/bench/.opam/system/build/coq:io:system.2.2.0/coq:io:system-7008-c61e7b.out
+# stderr-file          /home/bench/.opam/system/build/coq:io:system.2.2.0/coq:io:system-7008-c61e7b.err
+### stdout ###
+# &quot;coqdep&quot; -c -slash -R src Io.System &quot;src/All.v&quot; &gt; &quot;src/All.v.d&quot; || ( RV=$?; rm -f &quot;src/All.v.d&quot;; exit ${RV} )
+# &quot;coqdep&quot; -c -slash -R src Io.System &quot;src/Extraction.v&quot; &gt; &quot;src/Extraction.v.d&quot; || ( RV=$?; rm -f &quot;src/Extraction.v.d&quot;; exit ${RV} )
+# &quot;coqdep&quot; -c -slash -R src Io.System &quot;src/System.v&quot; &gt; &quot;src/System.v.d&quot; || ( RV=$?; rm -f &quot;src/System.v.d&quot;; exit ${RV} )
+# &quot;coqc&quot;  -q  -R src Io.System   src/System
+# &quot;coqc&quot;  -q  -R src Io.System   src/Extraction
+# File &quot;/home/bench/.opam/system/build/coq:io:system.2.2.0/src/Extraction.v&quot;, line 167, characters 39-40:
+# Error: The reference y was not found in the current environment.
+# Makefile:201: recipe for target &#39;src/Extraction.vo&#39; failed
+### stderr ###
+# make: *** [src/Extraction.vo] Error 1
+=-=- Error report -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+The following actions failed
+  - install coq:io:system 2.2.0
+No changes have been performed
+&#39;opam install -y -v coq:io:system.2.2.0&#39; failed.
+</pre></dd>
             </dl>
             <h2>Installation size</h2>
-            <p>Total: 83 K</p>
-            <ul>
-              <li>34 K <code>lib/coq/user-contrib/Io/System/Extraction.vo</code></li>
-              <li>29 K <code>lib/coq/user-contrib/Io/System/System.vo</code></li>
-              <li>19 K <code>lib/coq/user-contrib/Io/System/All.vo</code></li>
-              <li>1 K <code>install/coq:io:system.install</code></li>
-              <li>0 K <code>lib/coq:io:system/opam.config</code></li>
-            </ul>
+            <p>No files were installed.</p>
             <h2>Uninstall</h2>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>opam remove -y coq:io:system.2.2.0</code></dd>
+              <dd><code>true</code></dd>
               <dt>Return code</dt>
               <dd>0</dd>
               <dt>Missing removes</dt>
