@@ -44,10 +44,10 @@
               io:run
               <small>
                 dev
-                <span class="label label-success">4 s</span>
+                <span class="label label-danger">Error</span>
               </small>
             </h1>
-            <p><em><script>document.write(moment("2015-04-16 09:58:57 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2015-04-16 09:58:57 UTC)</em><p>
+            <p><em><script>document.write(moment("2015-04-17 17:48:14 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2015-04-17 17:48:14 UTC)</em><p>
             <h2>Context</h2>
             <pre># Installed packages for system:
 base-bigarray     base  Bigarray library distributed with the OCaml compiler
@@ -92,21 +92,74 @@ coq            8.4.dev  Formal proof management system.
               <dt>Command</dt>
               <dd><code>opam list; ulimit -Sv 4000000; timeout 120m opam install -y -v coq:io:run.dev</code></dd>
               <dt>Return code</dt>
-              <dd>0</dd>
+              <dd>1024</dd>
               <dt>Duration</dt>
-              <dd>4 s</dd>
+              <dd>3 s</dd>
+              <dt>Output</dt>
+              <dd><pre># Installed packages for system:
+base-bigarray           base  Bigarray library distributed with the OCaml compil
+base-threads            base  Threads library distributed with the OCaml compile
+base-unix               base  Unix library distributed with the OCaml compiler
+camlp5                  6.12  Preprocessor-pretty-printer of OCaml
+coq                  8.4.dev  Formal proof management system.
+coq:function-ninjas      dev  Write readable code using simple functional combin
+coq:io                   dev  A library for effects in Coq.
+The following actions will be performed:
+  - install coq:io:run dev
+=-=- Gathering sources =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+[coq:io:run: from unstable] Repo archive not found[coq:io:run: git] Command started
+[coq:io:run: git] Command started
+[coq:io:run: git] Command started
+[coq:io:run: git] Command started
+[coq:io:run: git] Command started
+[coq:io:run: git] Command started
+[coq:io:run] https://github.com/clarus/io-run updated
+=-=- Processing actions -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+[coq:io:run: ./configure.sh] Command started
++ ./configure.sh  (CWD=/home/bench/.opam/system/build/coq:io:run.dev)
+[coq:io:run: make] Command started
++ make &quot;-j4&quot; (CWD=/home/bench/.opam/system/build/coq:io:run.dev)
+- &quot;coqdep&quot; -c -slash -R src Io &quot;src/Run.v&quot; &gt; &quot;src/Run.v.d&quot; || ( RV=$?; rm -f &quot;src/Run.v.d&quot;; exit ${RV} )
+- &quot;coqc&quot;  -q  -R src Io   src/Run
+- File &quot;/home/bench/.opam/system/build/coq:io:run.dev/src/Run.v&quot;, line 15, characters 4-11:
+- Error: Unknown constructor: C.First.
+- Makefile:199: recipe for target &#39;src/Run.vo&#39; failed
+- make: *** [src/Run.vo] Error 1
+[ERROR] The compilation of coq:io:run failed at &quot;make -j4&quot;.
+[coq:io:run: rm] Command started
++ rm &quot;-R&quot; &quot;/home/bench/.opam/system/lib/coq/user-contrib/Io/Run.vo&quot; (CWD=/home/bench/.opam/system/build/coq:io:run.dev)
+- rm: cannot remove &#39;/home/bench/.opam/system/lib/coq/user-contrib/Io/Run.vo&#39;: No such file or directory
+#=== ERROR while installing coq:io:run.dev ====================================#
+# opam-version         1.2.1
+# os                   linux
+# command              make -j4
+# path                 /home/bench/.opam/system/build/coq:io:run.dev
+# compiler             system (4.02.1)
+# exit-code            2
+# env-file             /home/bench/.opam/system/build/coq:io:run.dev/coq:io:run-14166-d2d111.env
+# stdout-file          /home/bench/.opam/system/build/coq:io:run.dev/coq:io:run-14166-d2d111.out
+# stderr-file          /home/bench/.opam/system/build/coq:io:run.dev/coq:io:run-14166-d2d111.err
+### stdout ###
+# &quot;coqdep&quot; -c -slash -R src Io &quot;src/Run.v&quot; &gt; &quot;src/Run.v.d&quot; || ( RV=$?; rm -f &quot;src/Run.v.d&quot;; exit ${RV} )
+# &quot;coqc&quot;  -q  -R src Io   src/Run
+# File &quot;/home/bench/.opam/system/build/coq:io:run.dev/src/Run.v&quot;, line 15, characters 4-11:
+# Error: Unknown constructor: C.First.
+# Makefile:199: recipe for target &#39;src/Run.vo&#39; failed
+### stderr ###
+# make: *** [src/Run.vo] Error 1
+=-=- Error report -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+The following actions failed
+  - install coq:io:run dev
+No changes have been performed
+&#39;opam install -y -v coq:io:run.dev&#39; failed.
+</pre></dd>
             </dl>
             <h2>Installation size</h2>
-            <p>Total: 13 K</p>
-            <ul>
-              <li>13 K <code>lib/coq/user-contrib/Io/Run.vo</code></li>
-              <li>1 K <code>install/coq:io:run.install</code></li>
-              <li>0 K <code>lib/coq:io:run/opam.config</code></li>
-            </ul>
+            <p>No files were installed.</p>
             <h2>Uninstall</h2>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>opam remove -y coq:io:run.dev</code></dd>
+              <dd><code>true</code></dd>
               <dt>Return code</dt>
               <dd>0</dd>
               <dt>Missing removes</dt>
