@@ -44,10 +44,10 @@
               contrib:paradoxes
               <small>
                 dev
-                <span class="label label-success">6 s</span>
+                <span class="label label-danger">Error</span>
               </small>
             </h1>
-            <p><em><script>document.write(moment("2015-04-16 19:39:59 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2015-04-16 19:39:59 UTC)</em><p>
+            <p><em><script>document.write(moment("2015-04-18 03:22:57 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2015-04-18 03:22:57 UTC)</em><p>
             <h2>Context</h2>
             <pre># Installed packages for system:
 base-bigarray           base  Bigarray library distributed with the OCaml compil
@@ -88,48 +88,101 @@ ocamlfind              1.5.5  A library manager for OCaml
               <dt>Return code</dt>
               <dd>0</dd>
               <dt>Duration</dt>
-              <dd>2 s</dd>
+              <dd>3 s</dd>
             </dl>
             <h2>Install</h2>
             <dl class="dl-horizontal">
               <dt>Command</dt>
               <dd><code>opam list; ulimit -Sv 4000000; timeout 120m opam install -y -v coq:contrib:paradoxes.dev</code></dd>
               <dt>Return code</dt>
-              <dd>0</dd>
+              <dd>1024</dd>
               <dt>Duration</dt>
               <dd>6 s</dd>
+              <dt>Output</dt>
+              <dd><pre># Installed packages for system:
+base-bigarray           base  Bigarray library distributed with the OCaml compil
+base-threads            base  Threads library distributed with the OCaml compile
+base-unix               base  Unix library distributed with the OCaml compiler
+camlp4         4.02.1+system  Camlp4 is a system for writing extensible parsers 
+camlp5                  6.12  Preprocessor-pretty-printer of OCaml
+coq                     hott  HoTT/Coq stable branch
+lablgtk               2.18.3  OCaml interface to GTK+
+ocamlfind              1.5.5  A library manager for OCaml
+The following actions will be performed:
+  - install coq:contrib:paradoxes dev
+=-=- Gathering sources =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+[coq:contrib:paradoxes: from unstable] Repo archive not found[coq:contrib:paradoxes: git] Command started
+[coq:contrib:paradoxes: git] Command started
+[coq:contrib:paradoxes: git] Command started
+[coq:contrib:paradoxes: git] Command started
+[coq:contrib:paradoxes: git] Command started
+[coq:contrib:paradoxes: git] Command started
+[coq:contrib:paradoxes] https://gforge.inria.fr/git/coq-contribs/paradoxes.git#trunk updated
+=-=- Processing actions -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+[coq:contrib:paradoxes: coq_makefile Make] Command started
++ coq_makefile &quot;-f&quot; &quot;Make&quot; &quot;-o&quot; &quot;Makefile&quot; (CWD=/home/bench/.opam/system/build/coq:contrib:paradoxes.dev)
+[coq:contrib:paradoxes: make] Command started
++ make &quot;-j4&quot; (CWD=/home/bench/.opam/system/build/coq:contrib:paradoxes.dev)
+- &quot;coqdep&quot; -c -R &quot;.&quot; Paradoxes &quot;BuraliForti.v&quot; &gt; &quot;BuraliForti.v.d&quot; || ( RV=$?; rm -f &quot;BuraliForti.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; Paradoxes &quot;Logics.v&quot; &gt; &quot;Logics.v.d&quot; || ( RV=$?; rm -f &quot;Logics.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; Paradoxes &quot;Reynolds1.v&quot; &gt; &quot;Reynolds1.v.d&quot; || ( RV=$?; rm -f &quot;Reynolds1.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; Paradoxes &quot;Log_Rel1.v&quot; &gt; &quot;Log_Rel1.v.d&quot; || ( RV=$?; rm -f &quot;Log_Rel1.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; Paradoxes &quot;Log_Rel.v&quot; &gt; &quot;Log_Rel.v.d&quot; || ( RV=$?; rm -f &quot;Log_Rel.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; Paradoxes &quot;diaconescu.v&quot; &gt; &quot;diaconescu.v.d&quot; || ( RV=$?; rm -f &quot;diaconescu.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; Paradoxes &quot;BuraliForti_ex.v&quot; &gt; &quot;BuraliForti_ex.v.d&quot; || ( RV=$?; rm -f &quot;BuraliForti_ex.v.d&quot;; exit ${RV} )
+- &quot;coqc&quot;  -q  -R &quot;.&quot; Paradoxes   BuraliForti_ex
+- &quot;coqc&quot;  -q  -R &quot;.&quot; Paradoxes   diaconescu
+- &quot;coqc&quot;  -q  -R &quot;.&quot; Paradoxes   Log_Rel
+- &quot;coqc&quot;  -q  -R &quot;.&quot; Paradoxes   Log_Rel1
+- Makefile:253: recipe for target &#39;Log_Rel1.vo&#39; failed
+- Anomaly: Uncaught exception Unix.Unix_error(Unix.EEXIST, &quot;mkdir&quot;, &quot;./.coq-native&quot;).
+- Please report.
+- make: *** [Log_Rel1.vo] Error 1
+- make: *** Waiting for unfinished jobs....
+[ERROR] The compilation of coq:contrib:paradoxes failed at &quot;make -j4&quot;.
+[coq:contrib:paradoxes: rm] Command started
++ rm &quot;-R&quot; &quot;/home/bench/.opam/system/lib/coq/user-contrib/Paradoxes&quot; (CWD=/home/bench/.opam/system/build/coq:contrib:paradoxes.dev)
+- rm: cannot remove &#39;/home/bench/.opam/system/lib/coq/user-contrib/Paradoxes&#39;: No such file or directory
+#=== ERROR while installing coq:contrib:paradoxes.dev =========================#
+# opam-version         1.2.1
+# os                   linux
+# command              make -j4
+# path                 /home/bench/.opam/system/build/coq:contrib:paradoxes.dev
+# compiler             system (4.02.1)
+# exit-code            2
+# env-file             /home/bench/.opam/system/build/coq:contrib:paradoxes.dev/coq:contrib:paradoxes-17409-d2d111.env
+# stdout-file          /home/bench/.opam/system/build/coq:contrib:paradoxes.dev/coq:contrib:paradoxes-17409-d2d111.out
+# stderr-file          /home/bench/.opam/system/build/coq:contrib:paradoxes.dev/coq:contrib:paradoxes-17409-d2d111.err
+### stdout ###
+# [...]
+# &quot;coqdep&quot; -c -R &quot;.&quot; Paradoxes &quot;Reynolds1.v&quot; &gt; &quot;Reynolds1.v.d&quot; || ( RV=$?; rm -f &quot;Reynolds1.v.d&quot;; exit ${RV} )
+# &quot;coqdep&quot; -c -R &quot;.&quot; Paradoxes &quot;Log_Rel1.v&quot; &gt; &quot;Log_Rel1.v.d&quot; || ( RV=$?; rm -f &quot;Log_Rel1.v.d&quot;; exit ${RV} )
+# &quot;coqdep&quot; -c -R &quot;.&quot; Paradoxes &quot;Log_Rel.v&quot; &gt; &quot;Log_Rel.v.d&quot; || ( RV=$?; rm -f &quot;Log_Rel.v.d&quot;; exit ${RV} )
+# &quot;coqdep&quot; -c -R &quot;.&quot; Paradoxes &quot;diaconescu.v&quot; &gt; &quot;diaconescu.v.d&quot; || ( RV=$?; rm -f &quot;diaconescu.v.d&quot;; exit ${RV} )
+# &quot;coqdep&quot; -c -R &quot;.&quot; Paradoxes &quot;BuraliForti_ex.v&quot; &gt; &quot;BuraliForti_ex.v.d&quot; || ( RV=$?; rm -f &quot;BuraliForti_ex.v.d&quot;; exit ${RV} )
+# &quot;coqc&quot;  -q  -R &quot;.&quot; Paradoxes   BuraliForti_ex
+# &quot;coqc&quot;  -q  -R &quot;.&quot; Paradoxes   diaconescu
+# &quot;coqc&quot;  -q  -R &quot;.&quot; Paradoxes   Log_Rel
+# &quot;coqc&quot;  -q  -R &quot;.&quot; Paradoxes   Log_Rel1
+# Makefile:253: recipe for target &#39;Log_Rel1.vo&#39; failed
+### stderr ###
+# Anomaly: Uncaught exception Unix.Unix_error(Unix.EEXIST, &quot;mkdir&quot;, &quot;./.coq-native&quot;).
+# Please report.
+# make: *** [Log_Rel1.vo] Error 1
+# make: *** Waiting for unfinished jobs....
+=-=- Error report -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+The following actions failed
+  - install coq:contrib:paradoxes dev
+No changes have been performed
+&#39;opam install -y -v coq:contrib:paradoxes.dev&#39; failed.
+</pre></dd>
             </dl>
             <h2>Installation size</h2>
-            <p>Total: 270 K</p>
-            <ul>
-              <li>45 K <code>lib/coq/user-contrib/Paradoxes/BuraliForti_ex.vo</code></li>
-              <li>33 K <code>lib/coq/user-contrib/Paradoxes/BuraliForti_ex.glob</code></li>
-              <li>30 K <code>lib/coq/user-contrib/Paradoxes/Reynolds1.glob</code></li>
-              <li>20 K <code>lib/coq/user-contrib/Paradoxes/BuraliForti.vo</code></li>
-              <li>17 K <code>lib/coq/user-contrib/Paradoxes/Reynolds1.vo</code></li>
-              <li>16 K <code>lib/coq/user-contrib/Paradoxes/BuraliForti.glob</code></li>
-              <li>13 K <code>lib/coq/user-contrib/Paradoxes/BuraliForti_ex.v</code></li>
-              <li>12 K <code>lib/coq/user-contrib/Paradoxes/diaconescu.vo</code></li>
-              <li>10 K <code>lib/coq/user-contrib/Paradoxes/Reynolds1.v</code></li>
-              <li>10 K <code>lib/coq/user-contrib/Paradoxes/diaconescu.glob</code></li>
-              <li>8 K <code>lib/coq/user-contrib/Paradoxes/Log_Rel1.vo</code></li>
-              <li>8 K <code>lib/coq/user-contrib/Paradoxes/Log_Rel.vo</code></li>
-              <li>7 K <code>lib/coq/user-contrib/Paradoxes/BuraliForti.v</code></li>
-              <li>5 K <code>lib/coq/user-contrib/Paradoxes/Log_Rel1.glob</code></li>
-              <li>5 K <code>lib/coq/user-contrib/Paradoxes/Logics.vo</code></li>
-              <li>5 K <code>lib/coq/user-contrib/Paradoxes/diaconescu.v</code></li>
-              <li>4 K <code>lib/coq/user-contrib/Paradoxes/Log_Rel.glob</code></li>
-              <li>4 K <code>lib/coq/user-contrib/Paradoxes/Logics.glob</code></li>
-              <li>4 K <code>lib/coq/user-contrib/Paradoxes/Log_Rel.v</code></li>
-              <li>3 K <code>lib/coq/user-contrib/Paradoxes/Log_Rel1.v</code></li>
-              <li>3 K <code>lib/coq/user-contrib/Paradoxes/Logics.v</code></li>
-              <li>1 K <code>install/coq:contrib:paradoxes.install</code></li>
-              <li>0 K <code>lib/coq:contrib:paradoxes/opam.config</code></li>
-            </ul>
+            <p>No files were installed.</p>
             <h2>Uninstall</h2>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>opam remove -y coq:contrib:paradoxes.dev</code></dd>
+              <dd><code>true</code></dd>
               <dt>Return code</dt>
               <dd>0</dd>
               <dt>Missing removes</dt>
