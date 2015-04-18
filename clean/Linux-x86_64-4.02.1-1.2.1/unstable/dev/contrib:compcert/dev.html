@@ -47,7 +47,7 @@
                 <span class="label label-danger">Error</span>
               </small>
             </h1>
-            <p><em><script>document.write(moment("2015-04-16 16:29:25 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2015-04-16 16:29:25 UTC)</em><p>
+            <p><em><script>document.write(moment("2015-04-18 00:14:13 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2015-04-18 00:14:13 UTC)</em><p>
             <h2>Context</h2>
             <pre># Installed packages for system:
 base-bigarray  base  Bigarray library distributed with the OCaml compiler
@@ -85,7 +85,7 @@ coq             dev  Formal proof management system.
               <dt>Return code</dt>
               <dd>0</dd>
               <dt>Duration</dt>
-              <dd>2 s</dd>
+              <dd>3 s</dd>
             </dl>
             <h2>Install</h2>
             <dl class="dl-horizontal">
@@ -94,7 +94,7 @@ coq             dev  Formal proof management system.
               <dt>Return code</dt>
               <dd>1024</dd>
               <dt>Duration</dt>
-              <dd>7 m 9 s</dd>
+              <dd>6 m 42 s</dd>
               <dt>Output</dt>
               <dd><pre># Installed packages for system:
 base-bigarray  base  Bigarray library distributed with the OCaml compiler
@@ -159,6 +159,8 @@ The following actions will be performed:
 - COQC flocq/Core/Fcore_digits.v
 - COQC lib/Intv.v
 - COQC lib/Maps.v
+- COQC lib/Integers.v
+- COQC lib/Iteration.v
 - princ_type := forall P : Z -&gt; list Z -&gt; Type,
 -               (forall (hi : Z) (_x : lo &lt; hi),
 -                zlt lo hi = left _x -&gt;
@@ -170,7 +172,6 @@ The following actions will be performed:
 - TITI R_elements_rec_0 y y0 y1 (elements_rec (y - 1))
 -        (y2 (elements_rec (y - 1)) eq_refl)
 - TITI R_elements_rec_1 y y0 y1
-- COQC lib/Integers.v
 - princ_type := forall P : Z -&gt; A -&gt; Type,
 -               (forall (hi : Z) (_x : lo &lt; hi),
 -                zlt lo hi = left _x -&gt;
@@ -181,13 +182,11 @@ The following actions will be performed:
 -               forall hi : Z, P hi (fold_rec hi)
 - TITI R_fold_rec_0 y y0 y1 (fold_rec (y - 1)) (y2 (fold_rec (y - 1)) eq_refl)
 - TITI R_fold_rec_1 y y0 y1
-- COQC lib/Iteration.v
 - COQC flocq/Core/Fcore_defs.v
 - COQC lib/Parmov.v
 - COQC lib/UnionFind.v
 - COQC lib/FSetAVLplus.v
 - COQC lib/IntvSets.v
-- COQC common/Errors.v
 - princ_type := forall P : moves -&gt; reg -&gt; option (moves * reg * moves) -&gt; Type,
 -               (forall (m : moves) (r : reg), m = nil -&gt; P nil r None) -&gt;
 -               (forall (m : moves) (r s d : reg) (tl : list (reg * reg)),
@@ -215,6 +214,7 @@ The following actions will be performed:
 -        (y7 (split_move y3 y0) eq_refl) y8
 - TITI R_split_move_3 y y0 y1 y2 y3 y4 y5 y6 (split_move y3 y0)
 -        (y7 (split_move y3 y0) eq_refl) y8 y9 y10 y11
+- COQC common/Errors.v
 - princ_type := forall (r : reg) (P : moves -&gt; bool -&gt; Type),
 -               (forall m : moves, m = nil -&gt; P nil false) -&gt;
 -               (forall (m : moves) (s d : reg),
@@ -258,7 +258,6 @@ The following actions will be performed:
 - TITI R_replace_last_source_1 x y y0 y1 y2
 - TITI R_replace_last_source_2 x y y0 y1 y2 y3 (replace_last_source x y1)
 -        (y4 (replace_last_source x y1) eq_refl)
-- COQC lib/Lattice.v
 - princ_type := forall P : state -&gt; moves -&gt; Type,
 -               (forall st : state,
 -                final_state st = true -&gt;
@@ -272,13 +271,13 @@ The following actions will be performed:
 - TITI R_parmove_aux_0 y y0 y1 y2 y3 y4
 - TITI R_parmove_aux_1 y y0 (parmove_aux (parmove_step y))
 -        (y1 (parmove_aux (parmove_step y)) eq_refl)
+- COQC lib/Lattice.v
 - COQC flocq/Core/Fcore_float_prop.v
 - COQC flocq/Core/Fcore_rnd.v
 - COQC lib/Postorder.v
 - COQC common/Subtyping.v
 - COQC flocq/Core/Fcore_generic_fmt.v
 - COQC flocq/Calc/Fcalc_digits.v
-- COQC flocq/Calc/Fcalc_bracket.v
 - princ_type := forall P : typenv -&gt; res typenv -&gt; Type,
 -               (forall e e&#39; : typenv,
 -                solve_rec {| te_typ := te_typ e; te_sub := nil |} false
@@ -295,6 +294,7 @@ The following actions will be performed:
 - TITI R_solve_constraints_1 y y0 y1 (solve_constraints y0)
 -        (y2 (solve_constraints y0) eq_refl)
 - TITI R_solve_constraints_2 y y0 y1
+- COQC flocq/Calc/Fcalc_bracket.v
 - COQC flocq/Calc/Fcalc_ops.v
 - COQC common/Switch.v
 - COQC lib/Ordered.v
@@ -310,8 +310,8 @@ The following actions will be performed:
 - COQC flocq/Core/Fcore_FLT.v
 - COQC flocq/Core/Fcore_FTZ.v
 - COQC flocq/Core/Fcore.v
-- COQC flocq/Calc/Fcalc_round.v
 - COQC flocq/Prop/Fprop_relative.v
+- COQC flocq/Calc/Fcalc_round.v
 - COQC flocq/Prop/Fprop_mult_error.v
 - COQC flocq/Appli/Fappli_rnd_odd.v
 - COQC flocq/Prop/Fprop_div_sqrt_error.v
@@ -322,8 +322,8 @@ The following actions will be performed:
 - COQC backend/Kildall.v
 - COQC common/AST.v
 - COQC backend/Registers.v
-- COQC common/Values.v
 - COQC cfrontend/Ctypes.v
+- COQC common/Values.v
 - COQC common/Memdata.v
 - COQC common/Memtype.v
 - COQC common/Memory.v
@@ -354,13 +354,12 @@ The following actions will be performed:
 - COQC common/Smallstep.v
 - COQC ia32/Op.v
 - COQC common/Behaviors.v
-- COQC backend/Cminor.v
 - COQC cfrontend/Csem.v
+- COQC backend/Cminor.v
 - COQC cfrontend/Clight.v
 - COQC common/Determinism.v
 - COQC cfrontend/Cstrategy.v
 - COQC cfrontend/Initializersproof.v
-- COQC cfrontend/Csharpminor.v
 - COQC cfrontend/SimplExpr.v
 - princ_type := forall P : expr -&gt; option val -&gt; Type,
 -               (forall (a : expr) (n : int) (_x : type),
@@ -423,17 +422,25 @@ The following actions will be performed:
 - TITI R_makeif_3 x x0 x1 y
 - COQC cfrontend/ClightBigstep.v
 - COQC cfrontend/SimplLocals.v
+- COQC cfrontend/Csharpminor.v
+- COQC cfrontend/SimplExprspec.v
+- COQC cfrontend/SimplLocalsproof.v
 - COQC cfrontend/Cshmgen.v
 - COQC cfrontend/Cminorgen.v
 - COQC backend/CminorSel.v
 - COQC backend/RTL.v
 - COQC ia32/Machregs.v
 - COQC cfrontend/Cexec.v
-- COQC cfrontend/SimplExprspec.v
-- COQC cfrontend/SimplLocalsproof.v
 - COQC cfrontend/Cshmgenproof.v
 - COQC cfrontend/Cminorgenproof.v
 - COQC ia32/SelectOp.v
+- COQC backend/RTLgen.v
+- COQC backend/Locations.v
+- COQC backend/Inlining.v
+- COQC backend/Renumber.v
+- COQC backend/Liveness.v
+- COQC backend/ValueDomain.v
+- COQC backend/CSEdomain.v
 - princ_type := forall (w : world) (e : env)
 -                 (P : mem -&gt;
 -                      list (ident * type) -&gt; list val -&gt; option mem -&gt; Type),
@@ -533,16 +540,7 @@ The following actions will be performed:
 -        y13
 - TITI R_sem_bind_parameters_5 x x0 y y0 y1 y2 y3 y4 y5 y6 y7 y8 y9
 - TITI R_sem_bind_parameters_6 x x0 y y0 y1 y2 y3 y4 y5 y6
-- COQC backend/RTLgen.v
-- COQC backend/Locations.v
-- COQC backend/Inlining.v
-- COQC backend/Renumber.v
-- COQC backend/Liveness.v
-- COQC backend/ValueDomain.v
-- COQC backend/CSEdomain.v
 - COQC cfrontend/SimplExprproof.v
-- COQC backend/RTLgenspec.v
-- COQC ia32/standard/Conventions1.v
 - princ_type := forall (lo : Z)
 -                 (P : Z -&gt; ZMap.t acontent -&gt; ZMap.t acontent -&gt; Type),
 -               (forall (hi : Z) (c : ZMap.t acontent) (_x : lo &lt;= hi),
@@ -572,8 +570,15 @@ The following actions will be performed:
 - TITI R_inval_before_0 x y y0 y1 y2 (inval_before x (y + 1) (inval_if x y y0))
 -        (y3 (inval_before x (y + 1) (inval_if x y y0)) eq_refl)
 - TITI R_inval_before_1 x y y0 y1 y2
+- COQC backend/SelectDiv.v
+- COQC backend/SelectLong.v
+- COQC ia32/SelectOpproof.v
+- COQC backend/RTLgenspec.v
+- COQC ia32/standard/Conventions1.v
 - COQC backend/Inliningspec.v
 - COQC backend/Renumberproof.v
+- COQC ia32/ValueAOp.v
+- COQC ia32/ConstpropOp.v
 - COQC ia32/CombineOp.v
 - princ_type := forall (x : valnum)
 -                 (P : option (condition * list valnum) -&gt; Type),
@@ -701,7 +706,6 @@ The following actions will be performed:
 - TITI R_combine_compimm_eq_0_0 x y y0 y1
 - TITI R_combine_compimm_eq_0_1 x y y0 y1
 - TITI R_combine_compimm_eq_0_2 x y y0 y1
-- COQC backend/SelectDiv.v
 - princ_type := forall (x : valnum)
 -                 (P : option (condition * list valnum) -&gt; Type),
 -               (forall (c : condition) (ys : list CSEdomain.valnum),
@@ -984,6 +988,7 @@ The following actions will be performed:
 - TITI R_combine_cond_10 y y0 y1 y2 y3 y4 y5 y6 y7 y8
 - TITI R_combine_cond_11 y y0 y1 y2 y3 y4 y5 y6 y7 y8
 - TITI R_combine_cond_12 y y0 y1 y2 y3 y4 y5
+- COQC backend/NeedDomain.v
 - princ_type := forall
 -                 P : addressing -&gt;
 -                     list valnum -&gt; option (addressing * list valnum) -&gt; Type,
@@ -1381,15 +1386,6 @@ The following actions will be performed:
 - TITI R_combine_op_8 y y0 y1 y2 y3 y4 y5 y6 y7
 - TITI R_combine_op_9 y y0 y1 y2 y3 y4 y5
 - TITI R_combine_op_10 y y0 y1 y2 y3 y4 y5
-- COQC backend/SelectLong.v
-- COQC ia32/SelectOpproof.v
-- COQC backend/RTLgenproof.v
-- COQC backend/Conventions.v
-- COQC ia32/ValueAOp.v
-- COQC ia32/ConstpropOp.v
-- COQC ia32/CombineOpproof.v
-- COQC backend/NeedDomain.v
-- COQC backend/LTL.v
 - COQC backend/Selection.v
 - princ_type := forall P : expr -&gt; condexpr -&gt; Type,
 -               (forall (e : expr) (c : condition) (el : exprlist),
@@ -1472,18 +1468,21 @@ The following actions will be performed:
 - TITI R_condexpr_of_expr_3 y y0 y1 y2
 - COQC backend/SelectDivproof.v
 - COQC backend/SelectLongproof.v
-- COQC backend/Tailcall.v
+- COQC backend/RTLgenproof.v
+- COQC backend/Conventions.v
 - COQC backend/Inliningproof.v
 - COQC backend/RTLtyping.v
 - COQC backend/ValueAnalysis.v
 - COQC ia32/ConstpropOpproof.v
+- COQC ia32/CombineOpproof.v
 - COQC ia32/NeedOp.v
-- COQC backend/Allocation.v
-- COQC backend/Tunneling.v
-- COQC backend/Linear.v
+- COQC backend/LTL.v
 - COQC backend/Selectionproof.v
-- COQC backend/Tailcallproof.v
+- COQC backend/Tailcall.v
 - COQC backend/Constprop.v
+- COQC backend/CSE.v
+- COQC backend/Deadcode.v
+- COQC backend/Allocation.v
 - princ_type := forall (ae : AE.t)
 -                 (P : external_function -&gt;
 -                      list reg -&gt; external_function * list reg -&gt; Type),
@@ -1601,7 +1600,145 @@ The following actions will be performed:
 - TITI R_builtin_strength_reduction_3 x y y0 y1 y2 y3 y4 y5 y6 y7 y8
 - TITI R_builtin_strength_reduction_4 x y y0 y1 y2 y3 y4 y5 y6 y7 y8
 - TITI R_builtin_strength_reduction_5 x y y0 y1 y2 y3 y4 y5
-- COQC backend/CSE.v
+- princ_type := forall (app : VA.t)
+-                 (P : external_function -&gt;
+-                      list reg -&gt; reg -&gt; NE.t -&gt; nmem -&gt; NA.t -&gt; Type),
+-               (forall (ef : external_function) (args : list reg) 
+-                  (res : reg) (ne : NE.t) (nm : nmem) 
+-                  (chunk : memory_chunk),
+-                ef = EF_vload chunk -&gt;
+-                forall a1 : reg,
+-                args = a1 :: nil -&gt;
+-                P (EF_vload chunk) (a1 :: nil) res ne nm
+-                  (add_needs_all args (kill res ne),
+-                  nmem_add nm (aaddr app a1) (size_chunk chunk))) -&gt;
+-               (forall (ef : external_function) (args : list reg) 
+-                  (res : reg) (ne : NE.t) (nm : nmem) 
+-                  (chunk : memory_chunk) (id : ident) 
+-                  (ofs : int),
+-                ef = EF_vload_global chunk id ofs -&gt;
+-                args = nil -&gt;
+-                P (EF_vload_global chunk id ofs) nil res ne nm
+-                  (add_needs_all args (kill res ne),
+-                  nmem_add nm (Gl id ofs) (size_chunk chunk))) -&gt;
+-               (forall (ef : external_function) (args : list reg) 
+-                  (res : reg) (ne : NE.t) (nm : nmem) 
+-                  (chunk : memory_chunk),
+-                ef = EF_vstore chunk -&gt;
+-                forall a1 a2 : reg,
+-                args = a1 :: a2 :: nil -&gt;
+-                P (EF_vstore chunk) (a1 :: a2 :: nil) res ne nm
+-                  (add_need_all a1
+-                     (add_need a2 (store_argument chunk) (kill res ne)), nm)) -&gt;
+-               (forall (ef : external_function) (args : list reg) 
+-                  (res : reg) (ne : NE.t) (nm : nmem) 
+-                  (chunk : memory_chunk) (id : ident) 
+-                  (ofs : int),
+-                ef = EF_vstore_global chunk id ofs -&gt;
+-                forall a1 : reg,
+-                args = a1 :: nil -&gt;
+-                P (EF_vstore_global chunk id ofs) (a1 :: nil) res ne nm
+-                  (add_need a1 (store_argument chunk) (kill res ne), nm)) -&gt;
+-               (forall (ef : external_function) (args : list reg) 
+-                  (res : reg) (ne : NE.t) (nm : nmem) 
+-                  (sz al : Z),
+-                ef = EF_memcpy sz al -&gt;
+-                forall dst src : reg,
+-                args = dst :: src :: nil -&gt;
+-                nmem_contains nm (aaddr app dst) sz = true -&gt;
+-                P (EF_memcpy sz al) (dst :: src :: nil) res ne nm
+-                  (add_needs_all args (kill res ne),
+-                  nmem_add (nmem_remove nm (aaddr app dst) sz) 
+-                    (aaddr app src) sz)) -&gt;
+-               (forall (ef : external_function) (args : list reg) 
+-                  (res : reg) (ne : NE.t) (nm : nmem) 
+-                  (sz al : Z),
+-                ef = EF_memcpy sz al -&gt;
+-                forall dst src : reg,
+-                args = dst :: src :: nil -&gt;
+-                nmem_contains nm (aaddr app dst) sz = false -&gt;
+-                P (EF_memcpy sz al) (dst :: src :: nil) res ne nm (ne, nm)) -&gt;
+-               (forall (ef : external_function) (args : list reg) 
+-                  (res : reg) (ne : NE.t) (nm : nmem) 
+-                  (txt : ident) (targs : list annot_arg),
+-                ef = EF_annot txt targs -&gt;
+-                forall _x : list reg,
+-                args = _x -&gt;
+-                P (EF_annot txt targs) _x res ne nm
+-                  (add_needs_all args (kill res ne), nm)) -&gt;
+-               (forall (ef : external_function) (args : list reg) 
+-                  (res : reg) (ne : NE.t) (nm : nmem) 
+-                  (txt : ident) (targ : typ),
+-                ef = EF_annot_val txt targ -&gt;
+-                forall _x : list reg,
+-                args = _x -&gt;
+-                P (EF_annot_val txt targ) _x res ne nm
+-                  (add_needs_all args (kill res ne), nm)) -&gt;
+-               (forall (ef : external_function) (args : list reg) 
+-                  (res : reg) (ne : NE.t) (nm : nmem) 
+-                  (_x : external_function),
+-                ef = _x -&gt;
+-                forall _x0 : list reg,
+-                args = _x0 -&gt;
+-                match _x with
+-                | EF_external _ _ =&gt; True
+-                | EF_builtin _ _ =&gt; True
+-                | EF_vload _ =&gt;
+-                    match _x0 with
+-                    | nil =&gt; True
+-                    | _ :: nil =&gt; False
+-                    | _ :: _ :: _ =&gt; True
+-                    end
+-                | EF_vstore _ =&gt;
+-                    match _x0 with
+-                    | nil =&gt; True
+-                    | _ :: nil =&gt; True
+-                    | _ :: _ :: nil =&gt; False
+-                    | _ :: _ :: _ :: _ =&gt; True
+-                    end
+-                | EF_vload_global _ _ _ =&gt;
+-                    match _x0 with
+-                    | nil =&gt; False
+-                    | _ :: _ =&gt; True
+-                    end
+-                | EF_vstore_global _ _ _ =&gt;
+-                    match _x0 with
+-                    | nil =&gt; True
+-                    | _ :: nil =&gt; False
+-                    | _ :: _ :: _ =&gt; True
+-                    end
+-                | EF_malloc =&gt; True
+-                | EF_free =&gt; True
+-                | EF_memcpy _ _ =&gt;
+-                    match _x0 with
+-                    | nil =&gt; True
+-                    | _ :: nil =&gt; True
+-                    | _ :: _ :: nil =&gt; False
+-                    | _ :: _ :: _ :: _ =&gt; True
+-                    end
+-                | EF_annot _ _ =&gt; False
+-                | EF_annot_val _ _ =&gt; False
+-                | EF_inline_asm _ =&gt; True
+-                end -&gt;
+-                P _x _x0 res ne nm
+-                  (add_needs_all args (kill res ne), nmem_all)) -&gt;
+-               forall (ef : external_function) (args : list reg) 
+-                 (res : reg) (ne : NE.t) (nm : nmem),
+-               P ef args res ne nm (transfer_builtin app ef args res ne nm)
+- TITI R_transfer_builtin_0 x y y0 y1 y2 y3 y4 y5 y6 y7
+- TITI R_transfer_builtin_1 x y y0 y1 y2 y3 y4 y5 y6 y7 y8
+- TITI R_transfer_builtin_2 x y y0 y1 y2 y3 y4 y5 y6 y7 y8
+- TITI R_transfer_builtin_3 x y y0 y1 y2 y3 y4 y5 y6 y7 y8 y9
+- TITI R_transfer_builtin_4 x y y0 y1 y2 y3 y4 y5 y6 y7 y8 y9 y10
+- TITI R_transfer_builtin_5 x y y0 y1 y2 y3 y4 y5 y6 y7 y8 y9 y10
+- TITI R_transfer_builtin_6 x y y0 y1 y2 y3 y4 y5 y6 y7 y8
+- TITI R_transfer_builtin_7 x y y0 y1 y2 y3 y4 y5 y6 y7 y8
+- TITI R_transfer_builtin_8 x y y0 y1 y2 y3 y4 y5 y6 y7 y8
+- COQC backend/Tunneling.v
+- COQC backend/Linear.v
+- COQC backend/Tailcallproof.v
+- COQC backend/Constpropproof.v
+- COQC backend/CSEproof.v
 - princ_type := forall
 -                 P : list reg -&gt;
 -                     list typ -&gt; list loc -&gt; eqs -&gt; option eqs -&gt; Type,
@@ -1995,153 +2132,16 @@ The following actions will be performed:
 - TITI R_compat_entry_4 y y0 y1 y2 y3 y4 y5 y6 y7 y8 y9 y10
 -        (compat_entry y4 y6 y9 y2) (y11 (compat_entry y4 y6 y9 y2) eq_refl)
 - TITI R_compat_entry_5 y y0 y1 y2 y3 y4 y5 y6 y7 y8 y9
-- COQC backend/Deadcode.v
+- COQC backend/Deadcodeproof.v
 - COQC backend/Tunnelingproof.v
 - COQC backend/Lineartyping.v
-- princ_type := forall (app : VA.t)
--                 (P : external_function -&gt;
--                      list reg -&gt; reg -&gt; NE.t -&gt; nmem -&gt; NA.t -&gt; Type),
--               (forall (ef : external_function) (args : list reg) 
--                  (res : reg) (ne : NE.t) (nm : nmem) 
--                  (chunk : memory_chunk),
--                ef = EF_vload chunk -&gt;
--                forall a1 : reg,
--                args = a1 :: nil -&gt;
--                P (EF_vload chunk) (a1 :: nil) res ne nm
--                  (add_needs_all args (kill res ne),
--                  nmem_add nm (aaddr app a1) (size_chunk chunk))) -&gt;
--               (forall (ef : external_function) (args : list reg) 
--                  (res : reg) (ne : NE.t) (nm : nmem) 
--                  (chunk : memory_chunk) (id : ident) 
--                  (ofs : int),
--                ef = EF_vload_global chunk id ofs -&gt;
--                args = nil -&gt;
--                P (EF_vload_global chunk id ofs) nil res ne nm
--                  (add_needs_all args (kill res ne),
--                  nmem_add nm (Gl id ofs) (size_chunk chunk))) -&gt;
--               (forall (ef : external_function) (args : list reg) 
--                  (res : reg) (ne : NE.t) (nm : nmem) 
--                  (chunk : memory_chunk),
--                ef = EF_vstore chunk -&gt;
--                forall a1 a2 : reg,
--                args = a1 :: a2 :: nil -&gt;
--                P (EF_vstore chunk) (a1 :: a2 :: nil) res ne nm
--                  (add_need_all a1
--                     (add_need a2 (store_argument chunk) (kill res ne)), nm)) -&gt;
--               (forall (ef : external_function) (args : list reg) 
--                  (res : reg) (ne : NE.t) (nm : nmem) 
--                  (chunk : memory_chunk) (id : ident) 
--                  (ofs : int),
--                ef = EF_vstore_global chunk id ofs -&gt;
--                forall a1 : reg,
--                args = a1 :: nil -&gt;
--                P (EF_vstore_global chunk id ofs) (a1 :: nil) res ne nm
--                  (add_need a1 (store_argument chunk) (kill res ne), nm)) -&gt;
--               (forall (ef : external_function) (args : list reg) 
--                  (res : reg) (ne : NE.t) (nm : nmem) 
--                  (sz al : Z),
--                ef = EF_memcpy sz al -&gt;
--                forall dst src : reg,
--                args = dst :: src :: nil -&gt;
--                nmem_contains nm (aaddr app dst) sz = true -&gt;
--                P (EF_memcpy sz al) (dst :: src :: nil) res ne nm
--                  (add_needs_all args (kill res ne),
--                  nmem_add (nmem_remove nm (aaddr app dst) sz) 
--                    (aaddr app src) sz)) -&gt;
--               (forall (ef : external_function) (args : list reg) 
--                  (res : reg) (ne : NE.t) (nm : nmem) 
--                  (sz al : Z),
--                ef = EF_memcpy sz al -&gt;
--                forall dst src : reg,
--                args = dst :: src :: nil -&gt;
--                nmem_contains nm (aaddr app dst) sz = false -&gt;
--                P (EF_memcpy sz al) (dst :: src :: nil) res ne nm (ne, nm)) -&gt;
--               (forall (ef : external_function) (args : list reg) 
--                  (res : reg) (ne : NE.t) (nm : nmem) 
--                  (txt : ident) (targs : list annot_arg),
--                ef = EF_annot txt targs -&gt;
--                forall _x : list reg,
--                args = _x -&gt;
--                P (EF_annot txt targs) _x res ne nm
--                  (add_needs_all args (kill res ne), nm)) -&gt;
--               (forall (ef : external_function) (args : list reg) 
--                  (res : reg) (ne : NE.t) (nm : nmem) 
--                  (txt : ident) (targ : typ),
--                ef = EF_annot_val txt targ -&gt;
--                forall _x : list reg,
--                args = _x -&gt;
--                P (EF_annot_val txt targ) _x res ne nm
--                  (add_needs_all args (kill res ne), nm)) -&gt;
--               (forall (ef : external_function) (args : list reg) 
--                  (res : reg) (ne : NE.t) (nm : nmem) 
--                  (_x : external_function),
--                ef = _x -&gt;
--                forall _x0 : list reg,
--                args = _x0 -&gt;
--                match _x with
--                | EF_external _ _ =&gt; True
--                | EF_builtin _ _ =&gt; True
--                | EF_vload _ =&gt;
--                    match _x0 with
--                    | nil =&gt; True
--                    | _ :: nil =&gt; False
--                    | _ :: _ :: _ =&gt; True
--                    end
--                | EF_vstore _ =&gt;
--                    match _x0 with
--                    | nil =&gt; True
--                    | _ :: nil =&gt; True
--                    | _ :: _ :: nil =&gt; False
--                    | _ :: _ :: _ :: _ =&gt; True
--                    end
--                | EF_vload_global _ _ _ =&gt;
--                    match _x0 with
--                    | nil =&gt; False
--                    | _ :: _ =&gt; True
--                    end
--                | EF_vstore_global _ _ _ =&gt;
--                    match _x0 with
--                    | nil =&gt; True
--                    | _ :: nil =&gt; False
--                    | _ :: _ :: _ =&gt; True
--                    end
--                | EF_malloc =&gt; True
--                | EF_free =&gt; True
--                | EF_memcpy _ _ =&gt;
--                    match _x0 with
--                    | nil =&gt; True
--                    | _ :: nil =&gt; True
--                    | _ :: _ :: nil =&gt; False
--                    | _ :: _ :: _ :: _ =&gt; True
--                    end
--                | EF_annot _ _ =&gt; False
--                | EF_annot_val _ _ =&gt; False
--                | EF_inline_asm _ =&gt; True
--                end -&gt;
--                P _x _x0 res ne nm
--                  (add_needs_all args (kill res ne), nmem_all)) -&gt;
--               forall (ef : external_function) (args : list reg) 
--                 (res : reg) (ne : NE.t) (nm : nmem),
--               P ef args res ne nm (transfer_builtin app ef args res ne nm)
-- TITI R_transfer_builtin_0 x y y0 y1 y2 y3 y4 y5 y6 y7
-- TITI R_transfer_builtin_1 x y y0 y1 y2 y3 y4 y5 y6 y7 y8
-- TITI R_transfer_builtin_2 x y y0 y1 y2 y3 y4 y5 y6 y7 y8
-- TITI R_transfer_builtin_3 x y y0 y1 y2 y3 y4 y5 y6 y7 y8 y9
-- TITI R_transfer_builtin_4 x y y0 y1 y2 y3 y4 y5 y6 y7 y8 y9 y10
-- TITI R_transfer_builtin_5 x y y0 y1 y2 y3 y4 y5 y6 y7 y8 y9 y10
-- TITI R_transfer_builtin_6 x y y0 y1 y2 y3 y4 y5 y6 y7 y8
-- TITI R_transfer_builtin_7 x y y0 y1 y2 y3 y4 y5 y6 y7 y8
-- TITI R_transfer_builtin_8 x y y0 y1 y2 y3 y4 y5 y6 y7 y8
 - COQC backend/Linearize.v
 - COQC backend/CleanupLabels.v
 - COQC backend/Bounds.v
-- COQC backend/Constpropproof.v
-- COQC backend/CSEproof.v
-- COQC backend/Deadcodeproof.v
 - COQC backend/Allocproof.v
+- COQC ia32/standard/Stacklayout.v
 - COQC backend/Linearizeproof.v
 - COQC backend/CleanupLabelsproof.v
-- COQC ia32/standard/Stacklayout.v
 - COQC backend/Mach.v
 - COQC ia32/Asm.v
 - COQC backend/Stacking.v
@@ -2276,6 +2276,7 @@ The following actions will be performed:
 - /usr/local/bin/ocamlc.opt -c -I cparser -I lib -I driver -I extraction -I common -I ia32 -I cfrontend -I exportclight -I backend -I ia32/standard -I flocq/Core -I flocq/Calc -I flocq/Appli -I flocq/Prop -o cparser/Ceval.cmi cparser/Ceval.mli
 - /usr/local/bin/ocamlc.opt -c -I driver -I cparser -I lib -I extraction -I common -I ia32 -I cfrontend -I exportclight -I backend -I ia32/standard -I flocq/Core -I flocq/Calc -I flocq/Appli -I flocq/Prop -o driver/Clflags.cmo driver/Clflags.ml
 - /usr/local/bin/ocamlc.opt -c -I cparser -I lib -I driver -I extraction -I common -I ia32 -I cfrontend -I exportclight -I backend -I ia32/standard -I flocq/Core -I flocq/Calc -I flocq/Appli -I flocq/Prop -o cparser/Cprint.cmi cparser/Cprint.mli
+- /usr/local/bin/ocamlc.opt -c -I cparser -I lib -I driver -I extraction -I common -I ia32 -I cfrontend -I exportclight -I backend -I ia32/standard -I flocq/Core -I flocq/Calc -I flocq/Appli -I flocq/Prop -o cparser/Cutil.cmi cparser/Cutil.mli
 - + /usr/local/bin/ocamlc.opt -c -I lib -I cparser -I driver -I extraction -I common -I ia32 -I cfrontend -I exportclight -I backend -I ia32/standard -I flocq/Core -I flocq/Calc -I flocq/Appli -I flocq/Prop -o lib/Camlcoq.cmo lib/Camlcoq.ml
 - File &quot;lib/Camlcoq.ml&quot;, line 60, characters 12-19:
 - Error: Unbound value Pos.sub
@@ -2293,14 +2294,14 @@ The following actions will be performed:
 # path                 /home/bench/.opam/system/build/coq:contrib:compcert.dev
 # compiler             system (4.02.1)
 # exit-code            2
-# env-file             /home/bench/.opam/system/build/coq:contrib:compcert.dev/coq:contrib:compcert-23257-ad8886.env
-# stdout-file          /home/bench/.opam/system/build/coq:contrib:compcert.dev/coq:contrib:compcert-23257-ad8886.out
-# stderr-file          /home/bench/.opam/system/build/coq:contrib:compcert.dev/coq:contrib:compcert-23257-ad8886.err
+# env-file             /home/bench/.opam/system/build/coq:contrib:compcert.dev/coq:contrib:compcert-28433-ad8886.env
+# stdout-file          /home/bench/.opam/system/build/coq:contrib:compcert.dev/coq:contrib:compcert-28433-ad8886.out
+# stderr-file          /home/bench/.opam/system/build/coq:contrib:compcert.dev/coq:contrib:compcert-28433-ad8886.err
 ### stdout ###
 # [...]
-# /usr/local/bin/ocamlc.opt -c -I cparser -I lib -I driver -I extraction -I common -I ia32 -I cfrontend -I exportclight -I backend -I ia32/standard -I flocq/Core -I flocq/Calc -I flocq/Appli -I flocq/Prop -o cparser/Ceval.cmi cparser/Ceval.mli
 # /usr/local/bin/ocamlc.opt -c -I driver -I cparser -I lib -I extraction -I common -I ia32 -I cfrontend -I exportclight -I backend -I ia32/standard -I flocq/Core -I flocq/Calc -I flocq/Appli -I flocq/Prop -o driver/Clflags.cmo driver/Clflags.ml
 # /usr/local/bin/ocamlc.opt -c -I cparser -I lib -I driver -I extraction -I common -I ia32 -I cfrontend -I exportclight -I backend -I ia32/standard -I flocq/Core -I flocq/Calc -I flocq/Appli -I flocq/Prop -o cparser/Cprint.cmi cparser/Cprint.mli
+# /usr/local/bin/ocamlc.opt -c -I cparser -I lib -I driver -I extraction -I common -I ia32 -I cfrontend -I exportclight -I backend -I ia32/standard -I flocq/Core -I flocq/Calc -I flocq/Appli -I flocq/Prop -o cparser/Cutil.cmi cparser/Cutil.mli
 # + /usr/local/bin/ocamlc.opt -c -I lib -I cparser -I driver -I extraction -I common -I ia32 -I cfrontend -I exportclight -I backend -I ia32/standard -I flocq/Core -I flocq/Calc -I flocq/Appli -I flocq/Prop -o lib/Camlcoq.cmo lib/Camlcoq.ml
 # File &quot;lib/Camlcoq.ml&quot;, line 60, characters 12-19:
 # Error: Unbound value Pos.sub
