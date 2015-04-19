@@ -44,10 +44,10 @@
               contrib:legacy-field
               <small>
                 dev
-                <span class="label label-success">8 s</span>
+                <span class="label label-warning">Error with dependencies</span>
               </small>
             </h1>
-            <p><em><script>document.write(moment("2015-04-18 00:14:13 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2015-04-18 00:14:13 UTC)</em><p>
+            <p><em><script>document.write(moment("2015-04-19 06:10:19 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2015-04-19 06:10:19 UTC)</em><p>
             <h2>Context</h2>
             <pre># Installed packages for system:
 base-bigarray  base  Bigarray library distributed with the OCaml compiler
@@ -83,53 +83,81 @@ coq             dev  Formal proof management system.
               <dt>Command</dt>
               <dd><code>opam list; ulimit -Sv 1000000; timeout 5m opam install -y --deps-only coq:contrib:legacy-field.dev</code></dd>
               <dt>Return code</dt>
-              <dd>0</dd>
+              <dd>1024</dd>
               <dt>Duration</dt>
-              <dd>7 s</dd>
+              <dd>4 s</dd>
+              <dt>Output</dt>
+              <dd><pre># Installed packages for system:
+base-bigarray  base  Bigarray library distributed with the OCaml compiler
+base-threads   base  Threads library distributed with the OCaml compiler
+base-unix      base  Unix library distributed with the OCaml compiler
+camlp5         6.12  Preprocessor-pretty-printer of OCaml
+coq             dev  Formal proof management system.
+The following actions will be performed:
+  - install coq:contrib:legacy-ring dev
+=-=- Gathering sources =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+[coq:contrib:legacy-ring: git] Command started
+[coq:contrib:legacy-ring: git] Command started
+[coq:contrib:legacy-ring: git] Command started
+[coq:contrib:legacy-ring: git] Command started
+[coq:contrib:legacy-ring: git] Command started
+[coq:contrib:legacy-ring: git] Command started
+[coq:contrib:legacy-ring] https://gforge.inria.fr/git/coq-contribs/legacy-ring.git#trunk updated
+=-=- Processing actions -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+[coq:contrib:legacy-ring: coq_makefile Make] Command started
+[coq:contrib:legacy-ring: make] Command started
+[ERROR] The compilation of coq:contrib:legacy-ring failed at &quot;make -j4&quot;.
+[coq:contrib:legacy-ring: rm] Command started
+#=== ERROR while installing coq:contrib:legacy-ring.dev =======================#
+# opam-version         1.2.1
+# os                   linux
+# command              make -j4
+# path                 /home/bench/.opam/system/build/coq:contrib:legacy-ring.dev
+# compiler             system (4.02.1)
+# exit-code            2
+# env-file             /home/bench/.opam/system/build/coq:contrib:legacy-ring.dev/coq:contrib:legacy-ring-8776-d2d111.env
+# stdout-file          /home/bench/.opam/system/build/coq:contrib:legacy-ring.dev/coq:contrib:legacy-ring-8776-d2d111.out
+# stderr-file          /home/bench/.opam/system/build/coq:contrib:legacy-ring.dev/coq:contrib:legacy-ring-8776-d2d111.err
+### stdout ###
+# [...]
+# &quot;coqdep&quot; -c -R &quot;.&quot; LegacyRing -I &quot;.&quot; &quot;Setoid_ring.v&quot; &gt; &quot;Setoid_ring.v.d&quot; || ( RV=$?; rm -f &quot;Setoid_ring.v.d&quot;; exit ${RV} )
+# &quot;coqdep&quot; -c -R &quot;.&quot; LegacyRing -I &quot;.&quot; &quot;Ring_equiv.v&quot; &gt; &quot;Ring_equiv.v.d&quot; || ( RV=$?; rm -f &quot;Ring_equiv.v.d&quot;; exit ${RV} )
+# &quot;coqc&quot;  -q  -R &quot;.&quot; LegacyRing -I &quot;.&quot;   Setoid_ring_theory
+# &quot;coqc&quot;  -q  -R &quot;.&quot; LegacyRing -I &quot;.&quot;   LegacyRing_theory
+# ocamlc.opt -c -rectypes -thread  -I &quot;.&quot; -I &quot;/home/bench/.opam/system/lib/coq/kernel&quot; -I &quot;/home/bench/.opam/system/lib/coq/lib&quot; -I &quot;/home/bench/.opam/system/lib/coq/library&quot; -I &quot;/home/bench/.opam/system/lib/coq/parsing&quot; -I &quot;/home/bench/.opam/system/lib/coq/engine&quot; -I &quot;/home/bench/.opam/system/lib/coq/pretyping&quot; -I &quot;/home/bench/.opam/system/lib/coq/interp&quot; -I &quot;/home/bench/.opam/system/lib/coq/printing&quot; -I &quot;/home/bench/.opam/system/lib/coq/intf&quot; -I &quot;/home/bench/.opam/system/lib/coq/proofs&quot; -I &quot;/home/bench/.opam/system/lib/coq/tactics&quot; -I &quot;/home/bench/.opam/system/lib/coq/tools&quot; -I &quot;/home/bench/.opam/system/lib/coq/toplevel&quot; -I &quot;/home/bench/.opam/system/lib/coq/stm&quot; -I &quot;/home/bench/.opam/system/lib/coq/grammar&quot; -I &quot;/home/bench/.opam/system/lib/coq/config&quot; -I &quot;/home/bench/.opam/system/lib/coq//plugins/btauto&quot; -I &quot;/home/bench/.opam/system/lib/coq//plugins/cc&quot; -I &quot;/home/bench/.opam/system/lib/coq//plugins/decl_mode&quot; -I &quot;/home/bench/.opam/system/lib/coq//plugins/derive&quot; -I &quot;/home/bench/.opam/system/lib/coq//plugins/extraction&quot; -I &quot;/home/bench/.opam/system/lib/coq//plugins/firstorder&quot; -I &quot;/home/bench/.opam/system/lib/coq//plugins/fourier&quot; -I &quot;/home/bench/.opam/system/lib/coq//plugins/funind&quot; -I &quot;/home/bench/.opam/system/lib/coq//plugins/micromega&quot; -I &quot;/home/bench/.opam/system/lib/coq//plugins/nsatz&quot; -I &quot;/home/bench/.opam/system/lib/coq//plugins/omega&quot; -I &quot;/home/bench/.opam/system/lib/coq//plugins/quote&quot; -I &quot;/home/bench/.opam/system/lib/coq//plugins/romega&quot; -I &quot;/home/bench/.opam/system/lib/coq//plugins/rtauto&quot; -I &quot;/home/bench/.opam/system/lib/coq//plugins/setoid_ring&quot; -I &quot;/home/bench/.opam/system/lib/coq//plugins/syntax&quot; -I &quot;/home/bench/.opam/system/lib/coq//plugins/xml&quot; -I /home/bench/.opam/system/lib/camlp5 ring.ml
+# ocamlopt.opt -c -rectypes -thread  -I &quot;.&quot; -I &quot;/home/bench/.opam/system/lib/coq/kernel&quot; -I &quot;/home/bench/.opam/system/lib/coq/lib&quot; -I &quot;/home/bench/.opam/system/lib/coq/library&quot; -I &quot;/home/bench/.opam/system/lib/coq/parsing&quot; -I &quot;/home/bench/.opam/system/lib/coq/engine&quot; -I &quot;/home/bench/.opam/system/lib/coq/pretyping&quot; -I &quot;/home/bench/.opam/system/lib/coq/interp&quot; -I &quot;/home/bench/.opam/system/lib/coq/printing&quot; -I &quot;/home/bench/.opam/system/lib/coq/intf&quot; -I &quot;/home/bench/.opam/system/lib/coq/proofs&quot; -I &quot;/home/bench/.opam/system/lib/coq/tactics&quot; -I &quot;/home/bench/.opam/system/lib/coq/tools&quot; -I &quot;/home/bench/.opam/system/lib/coq/toplevel&quot; -I &quot;/home/bench/.opam/system/lib/coq/stm&quot; -I &quot;/home/bench/.opam/system/lib/coq/grammar&quot; -I &quot;/home/bench/.opam/system/lib/coq/config&quot; -I &quot;/home/bench/.opam/system/lib/coq//plugins/btauto&quot; -I &quot;/home/bench/.opam/system/lib/coq//plugins/cc&quot; -I &quot;/home/bench/.opam/system/lib/coq//plugins/decl_mode&quot; -I &quot;/home/bench/.opam/system/lib/coq//plugins/derive&quot; -I &quot;/home/bench/.opam/system/lib/coq//plugins/extraction&quot; -I &quot;/home/bench/.opam/system/lib/coq//plugins/firstorder&quot; -I &quot;/home/bench/.opam/system/lib/coq//plugins/fourier&quot; -I &quot;/home/bench/.opam/system/lib/coq//plugins/funind&quot; -I &quot;/home/bench/.opam/system/lib/coq//plugins/micromega&quot; -I &quot;/home/bench/.opam/system/lib/coq//plugins/nsatz&quot; -I &quot;/home/bench/.opam/system/lib/coq//plugins/omega&quot; -I &quot;/home/bench/.opam/system/lib/coq//plugins/quote&quot; -I &quot;/home/bench/.opam/system/lib/coq//plugins/romega&quot; -I &quot;/home/bench/.opam/system/lib/coq//plugins/rtauto&quot; -I &quot;/home/bench/.opam/system/lib/coq//plugins/setoid_ring&quot; -I &quot;/home/bench/.opam/system/lib/coq//plugins/syntax&quot; -I &quot;/home/bench/.opam/system/lib/coq//plugins/xml&quot; -I /home/bench/.opam/system/lib/camlp5 ring.ml
+# ocamlc.opt -c -rectypes -thread  -I &quot;.&quot; -I &quot;/home/bench/.opam/system/lib/coq/kernel&quot; -I &quot;/home/bench/.opam/system/lib/coq/lib&quot; -I &quot;/home/bench/.opam/system/lib/coq/library&quot; -I &quot;/home/bench/.opam/system/lib/coq/parsing&quot; -I &quot;/home/bench/.opam/system/lib/coq/engine&quot; -I &quot;/home/bench/.opam/system/lib/coq/pretyping&quot; -I &quot;/home/bench/.opam/system/lib/coq/interp&quot; -I &quot;/home/bench/.opam/system/lib/coq/printing&quot; -I &quot;/home/bench/.opam/system/lib/coq/intf&quot; -I &quot;/home/bench/.opam/system/lib/coq/proofs&quot; -I &quot;/home/bench/.opam/system/lib/coq/tactics&quot; -I &quot;/home/bench/.opam/system/lib/coq/tools&quot; -I &quot;/home/bench/.opam/system/lib/coq/toplevel&quot; -I &quot;/home/bench/.opam/system/lib/coq/stm&quot; -I &quot;/home/bench/.opam/system/lib/coq/grammar&quot; -I &quot;/home/bench/.opam/system/lib/coq/config&quot; -I &quot;/home/bench/.opam/system/lib/coq//plugins/btauto&quot; -I &quot;/home/bench/.opam/system/lib/coq//plugins/cc&quot; -I &quot;/home/bench/.opam/system/lib/coq//plugins/decl_mode&quot; -I &quot;/home/bench/.opam/system/lib/coq//plugins/derive&quot; -I &quot;/home/bench/.opam/system/lib/coq//plugins/extraction&quot; -I &quot;/home/bench/.opam/system/lib/coq//plugins/firstorder&quot; -I &quot;/home/bench/.opam/system/lib/coq//plugins/fourier&quot; -I &quot;/home/bench/.opam/system/lib/coq//plugins/funind&quot; -I &quot;/home/bench/.opam/system/lib/coq//plugins/micromega&quot; -I &quot;/home/bench/.opam/system/lib/coq//plugins/nsatz&quot; -I &quot;/home/bench/.opam/system/lib/coq//plugins/omega&quot; -I &quot;/home/bench/.opam/system/lib/coq//plugins/quote&quot; -I &quot;/home/bench/.opam/system/lib/coq//plugins/romega&quot; -I &quot;/home/bench/.opam/system/lib/coq//plugins/rtauto&quot; -I &quot;/home/bench/.opam/system/lib/coq//plugins/setoid_ring&quot; -I &quot;/home/bench/.opam/system/lib/coq//plugins/syntax&quot; -I &quot;/home/bench/.opam/system/lib/coq//plugins/xml&quot; -I /home/bench/.opam/system/lib/camlp5 -pp &#39;/home/bench/.opam/system/bin/camlp5o -I /usr/local/lib/ocaml/ -I /usr/local/lib/ocaml/threads/ -I &quot;/home/bench/.opam/system/lib/coq/kernel&quot; -I &quot;/home/bench/.opam/system/lib/coq/lib&quot; -I &quot;/home/bench/.opam/system/lib/coq/library&quot; -I &quot;/home/bench/.opam/system/lib/coq/parsing&quot; -I &quot;/home/bench/.opam/system/lib/coq/engine&quot; -I &quot;/home/bench/.opam/system/lib/coq/pretyping&quot; -I &quot;/home/bench/.opam/system/lib/coq/interp&quot; -I &quot;/home/bench/.opam/system/lib/coq/printing&quot; -I &quot;/home/bench/.opam/system/lib/coq/intf&quot; -I &quot;/home/bench/.opam/system/lib/coq/proofs&quot; -I &quot;/home/bench/.opam/system/lib/coq/tactics&quot; -I &quot;/home/bench/.opam/system/lib/coq/tools&quot; -I &quot;/home/bench/.opam/system/lib/coq/toplevel&quot; -I &quot;/home/bench/.opam/system/lib/coq/stm&quot; -I &quot;/home/bench/.opam/system/lib/coq/grammar&quot; -I &quot;/home/bench/.opam/system/lib/coq/config&quot; -I &quot;/home/bench/.opam/system/lib/coq//plugins/btauto&quot; -I &quot;/home/bench/.opam/system/lib/coq//plugins/cc&quot; -I &quot;/home/bench/.opam/system/lib/coq//plugins/decl_mode&quot; -I &quot;/home/bench/.opam/system/lib/coq//plugins/derive&quot; -I &quot;/home/bench/.opam/system/lib/coq//plugins/extraction&quot; -I &quot;/home/bench/.opam/system/lib/coq//plugins/firstorder&quot; -I &quot;/home/bench/.opam/system/lib/coq//plugins/fourier&quot; -I &quot;/home/bench/.opam/system/lib/coq//plugins/funind&quot; -I &quot;/home/bench/.opam/system/lib/coq//plugins/micromega&quot; -I &quot;/home/bench/.opam/system/lib/coq//plugins/nsatz&quot; -I &quot;/home/bench/.opam/system/lib/coq//plugins/omega&quot; -I &quot;/home/bench/.opam/system/lib/coq//plugins/quote&quot; -I &quot;/home/bench/.opam/system/lib/coq//plugins/romega&quot; -I &quot;/home/bench/.opam/system/lib/coq//plugins/rtauto&quot; -I &quot;/home/bench/.opam/system/lib/coq//plugins/setoid_ring&quot; -I &quot;/home/bench/.opam/system/lib/coq//plugins/syntax&quot; -I &quot;/home/bench/.opam/system/lib/coq//plugins/xml&quot; compat5.cmo pa_extend.cmo q_MLast.cmo pa_macro.cmo unix.cma threads.cma grammar.cma -loc loc -impl&#39; -impl g_ring.ml4
+# ocamlopt.opt -c -rectypes -thread  -I &quot;.&quot; -I &quot;/home/bench/.opam/system/lib/coq/kernel&quot; -I &quot;/home/bench/.opam/system/lib/coq/lib&quot; -I &quot;/home/bench/.opam/system/lib/coq/library&quot; -I &quot;/home/bench/.opam/system/lib/coq/parsing&quot; -I &quot;/home/bench/.opam/system/lib/coq/engine&quot; -I &quot;/home/bench/.opam/system/lib/coq/pretyping&quot; -I &quot;/home/bench/.opam/system/lib/coq/interp&quot; -I &quot;/home/bench/.opam/system/lib/coq/printing&quot; -I &quot;/home/bench/.opam/system/lib/coq/intf&quot; -I &quot;/home/bench/.opam/system/lib/coq/proofs&quot; -I &quot;/home/bench/.opam/system/lib/coq/tactics&quot; -I &quot;/home/bench/.opam/system/lib/coq/tools&quot; -I &quot;/home/bench/.opam/system/lib/coq/toplevel&quot; -I &quot;/home/bench/.opam/system/lib/coq/stm&quot; -I &quot;/home/bench/.opam/system/lib/coq/grammar&quot; -I &quot;/home/bench/.opam/system/lib/coq/config&quot; -I &quot;/home/bench/.opam/system/lib/coq//plugins/btauto&quot; -I &quot;/home/bench/.opam/system/lib/coq//plugins/cc&quot; -I &quot;/home/bench/.opam/system/lib/coq//plugins/decl_mode&quot; -I &quot;/home/bench/.opam/system/lib/coq//plugins/derive&quot; -I &quot;/home/bench/.opam/system/lib/coq//plugins/extraction&quot; -I &quot;/home/bench/.opam/system/lib/coq//plugins/firstorder&quot; -I &quot;/home/bench/.opam/system/lib/coq//plugins/fourier&quot; -I &quot;/home/bench/.opam/system/lib/coq//plugins/funind&quot; -I &quot;/home/bench/.opam/system/lib/coq//plugins/micromega&quot; -I &quot;/home/bench/.opam/system/lib/coq//plugins/nsatz&quot; -I &quot;/home/bench/.opam/system/lib/coq//plugins/omega&quot; -I &quot;/home/bench/.opam/system/lib/coq//plugins/quote&quot; -I &quot;/home/bench/.opam/system/lib/coq//plugins/romega&quot; -I &quot;/home/bench/.opam/system/lib/coq//plugins/rtauto&quot; -I &quot;/home/bench/.opam/system/lib/coq//plugins/setoid_ring&quot; -I &quot;/home/bench/.opam/system/lib/coq//plugins/syntax&quot; -I &quot;/home/bench/.opam/system/lib/coq//plugins/xml&quot; -I /home/bench/.opam/system/lib/camlp5 -pp &#39;/home/bench/.opam/system/bin/camlp5o -I /usr/local/lib/ocaml/ -I /usr/local/lib/ocaml/threads/ -I &quot;/home/bench/.opam/system/lib/coq/kernel&quot; -I &quot;/home/bench/.opam/system/lib/coq/lib&quot; -I &quot;/home/bench/.opam/system/lib/coq/library&quot; -I &quot;/home/bench/.opam/system/lib/coq/parsing&quot; -I &quot;/home/bench/.opam/system/lib/coq/engine&quot; -I &quot;/home/bench/.opam/system/lib/coq/pretyping&quot; -I &quot;/home/bench/.opam/system/lib/coq/interp&quot; -I &quot;/home/bench/.opam/system/lib/coq/printing&quot; -I &quot;/home/bench/.opam/system/lib/coq/intf&quot; -I &quot;/home/bench/.opam/system/lib/coq/proofs&quot; -I &quot;/home/bench/.opam/system/lib/coq/tactics&quot; -I &quot;/home/bench/.opam/system/lib/coq/tools&quot; -I &quot;/home/bench/.opam/system/lib/coq/toplevel&quot; -I &quot;/home/bench/.opam/system/lib/coq/stm&quot; -I &quot;/home/bench/.opam/system/lib/coq/grammar&quot; -I &quot;/home/bench/.opam/system/lib/coq/config&quot; -I &quot;/home/bench/.opam/system/lib/coq//plugins/btauto&quot; -I &quot;/home/bench/.opam/system/lib/coq//plugins/cc&quot; -I &quot;/home/bench/.opam/system/lib/coq//plugins/decl_mode&quot; -I &quot;/home/bench/.opam/system/lib/coq//plugins/derive&quot; -I &quot;/home/bench/.opam/system/lib/coq//plugins/extraction&quot; -I &quot;/home/bench/.opam/system/lib/coq//plugins/firstorder&quot; -I &quot;/home/bench/.opam/system/lib/coq//plugins/fourier&quot; -I &quot;/home/bench/.opam/system/lib/coq//plugins/funind&quot; -I &quot;/home/bench/.opam/system/lib/coq//plugins/micromega&quot; -I &quot;/home/bench/.opam/system/lib/coq//plugins/nsatz&quot; -I &quot;/home/bench/.opam/system/lib/coq//plugins/omega&quot; -I &quot;/home/bench/.opam/system/lib/coq//plugins/quote&quot; -I &quot;/home/bench/.opam/system/lib/coq//plugins/romega&quot; -I &quot;/home/bench/.opam/system/lib/coq//plugins/rtauto&quot; -I &quot;/home/bench/.opam/system/lib/coq//plugins/setoid_ring&quot; -I &quot;/home/bench/.opam/system/lib/coq//plugins/syntax&quot; -I &quot;/home/bench/.opam/system/lib/coq//plugins/xml&quot; compat5.cmo pa_extend.cmo q_MLast.cmo pa_macro.cmo unix.cma threads.cma grammar.cma -loc loc -impl&#39; -impl g_ring.ml4
+# ocamlc.opt -rectypes -thread  -I &quot;.&quot; -I &quot;/home/bench/.opam/system/lib/coq/kernel&quot; -I &quot;/home/bench/.opam/system/lib/coq/lib&quot; -I &quot;/home/bench/.opam/system/lib/coq/library&quot; -I &quot;/home/bench/.opam/system/lib/coq/parsing&quot; -I &quot;/home/bench/.opam/system/lib/coq/engine&quot; -I &quot;/home/bench/.opam/system/lib/coq/pretyping&quot; -I &quot;/home/bench/.opam/system/lib/coq/interp&quot; -I &quot;/home/bench/.opam/system/lib/coq/printing&quot; -I &quot;/home/bench/.opam/system/lib/coq/intf&quot; -I &quot;/home/bench/.opam/system/lib/coq/proofs&quot; -I &quot;/home/bench/.opam/system/lib/coq/tactics&quot; -I &quot;/home/bench/.opam/system/lib/coq/tools&quot; -I &quot;/home/bench/.opam/system/lib/coq/toplevel&quot; -I &quot;/home/bench/.opam/system/lib/coq/stm&quot; -I &quot;/home/bench/.opam/system/lib/coq/grammar&quot; -I &quot;/home/bench/.opam/system/lib/coq/config&quot; -I &quot;/home/bench/.opam/system/lib/coq//plugins/btauto&quot; -I &quot;/home/bench/.opam/system/lib/coq//plugins/cc&quot; -I &quot;/home/bench/.opam/system/lib/coq//plugins/decl_mode&quot; -I &quot;/home/bench/.opam/system/lib/coq//plugins/derive&quot; -I &quot;/home/bench/.opam/system/lib/coq//plugins/extraction&quot; -I &quot;/home/bench/.opam/system/lib/coq//plugins/firstorder&quot; -I &quot;/home/bench/.opam/system/lib/coq//plugins/fourier&quot; -I &quot;/home/bench/.opam/system/lib/coq//plugins/funind&quot; -I &quot;/home/bench/.opam/system/lib/coq//plugins/micromega&quot; -I &quot;/home/bench/.opam/system/lib/coq//plugins/nsatz&quot; -I &quot;/home/bench/.opam/system/lib/coq//plugins/omega&quot; -I &quot;/home/bench/.opam/system/lib/coq//plugins/quote&quot; -I &quot;/home/bench/.opam/system/lib/coq//plugins/romega&quot; -I &quot;/home/bench/.opam/system/lib/coq//plugins/rtauto&quot; -I &quot;/home/bench/.opam/system/lib/coq//plugins/setoid_ring&quot; -I &quot;/home/bench/.opam/system/lib/coq//plugins/syntax&quot; -I &quot;/home/bench/.opam/system/lib/coq//plugins/xml&quot; -I /home/bench/.opam/system/lib/camlp5 -a -o legacy_ring_plugin.cma ring.cmo g_ring.cmo
+# Makefile:347: recipe for target &#39;legacy_ring_plugin.cma&#39; failed
+### stderr ###
+# *** Warning: legacy_ring_plugin.mllib already found in . (discarding ./legacy_ring_plugin.mllib)
+# File &quot;_none_&quot;, line 1:
+# Error: Files g_ring.cmo and ring.cmo
+#        make inconsistent assumptions over interface Ring
+# make: *** [legacy_ring_plugin.cma] Error 2
+# make: *** Waiting for unfinished jobs....
+=-=- Error report -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+The following actions failed
+  - install coq:contrib:legacy-ring dev
+No changes have been performed
+</pre></dd>
             </dl>
             <h2>Install</h2>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>opam list; ulimit -Sv 4000000; timeout 120m opam install -y -v coq:contrib:legacy-field.dev</code></dd>
+              <dd><code>true</code></dd>
               <dt>Return code</dt>
               <dd>0</dd>
               <dt>Duration</dt>
-              <dd>8 s</dd>
+              <dd>0 s</dd>
             </dl>
             <h2>Installation size</h2>
-            <p>Total: 620 K</p>
-            <ul>
-              <li>215 K <code>lib/coq/user-contrib/LegacyField/LegacyField_Theory.vo</code></li>
-              <li>93 K <code>lib/coq/user-contrib/LegacyField/legacy_field_plugin.cmxs</code></li>
-              <li>88 K <code>lib/coq/user-contrib/LegacyField/LegacyField_Theory.glob</code></li>
-              <li>38 K <code>lib/coq/user-contrib/LegacyField/LegacyField_Tactic.vo</code></li>
-              <li>25 K <code>lib/coq/user-contrib/LegacyField/legacy_field_plugin.cma</code></li>
-              <li>22 K <code>lib/coq/user-contrib/LegacyField/LegacyRfield.vo</code></li>
-              <li>21 K <code>lib/coq/user-contrib/LegacyField/LegacyQfield.vo</code></li>
-              <li>19 K <code>lib/coq/user-contrib/LegacyField/LegacyField_Theory.v</code></li>
-              <li>19 K <code>lib/coq/user-contrib/LegacyField/test_field.vo</code></li>
-              <li>12 K <code>lib/coq/user-contrib/LegacyField/field.cmi</code></li>
-              <li>12 K <code>lib/coq/user-contrib/LegacyField/LegacyField_Tactic.glob</code></li>
-              <li>12 K <code>lib/coq/user-contrib/LegacyField/LegacyField_Tactic.v</code></li>
-              <li>9 K <code>lib/coq/user-contrib/LegacyField/LegacyField_Compl.vo</code></li>
-              <li>8 K <code>lib/coq/user-contrib/LegacyField/test_field.glob</code></li>
-              <li>6 K <code>lib/coq/user-contrib/LegacyField/LegacyField.vo</code></li>
-              <li>3 K <code>lib/coq/user-contrib/LegacyField/LegacyField_Compl.glob</code></li>
-              <li>2 K <code>lib/coq/user-contrib/LegacyField/LegacyRfield.glob</code></li>
-              <li>2 K <code>lib/coq/user-contrib/LegacyField/LegacyQfield.glob</code></li>
-              <li>1 K <code>lib/coq/user-contrib/LegacyField/test_field.v</code></li>
-              <li>1 K <code>lib/coq/user-contrib/LegacyField/LegacyField_Compl.v</code></li>
-              <li>1 K <code>lib/coq/user-contrib/LegacyField/LegacyRfield.v</code></li>
-              <li>1 K <code>lib/coq/user-contrib/LegacyField/LegacyQfield.v</code></li>
-              <li>1 K <code>lib/coq/user-contrib/LegacyField/LegacyField.v</code></li>
-              <li>1 K <code>lib/coq/user-contrib/LegacyField/LegacyField.glob</code></li>
-              <li>1 K <code>install/coq:contrib:legacy-field.install</code></li>
-              <li>0 K <code>lib/coq:contrib:legacy-field/opam.config</code></li>
-            </ul>
+            <p>No files were installed.</p>
             <h2>Uninstall</h2>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>opam remove -y coq:contrib:legacy-field.dev</code></dd>
+              <dd><code>true</code></dd>
               <dt>Return code</dt>
               <dd>0</dd>
               <dt>Missing removes</dt>

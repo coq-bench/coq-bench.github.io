@@ -47,7 +47,7 @@
                 <span class="label label-danger">Error</span>
               </small>
             </h1>
-            <p><em><script>document.write(moment("2015-04-18 00:14:13 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2015-04-18 00:14:13 UTC)</em><p>
+            <p><em><script>document.write(moment("2015-04-19 06:10:19 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2015-04-19 06:10:19 UTC)</em><p>
             <h2>Context</h2>
             <pre># Installed packages for system:
 base-bigarray  base  Bigarray library distributed with the OCaml compiler
@@ -85,7 +85,7 @@ coq             dev  Formal proof management system.
               <dt>Return code</dt>
               <dd>0</dd>
               <dt>Duration</dt>
-              <dd>3 s</dd>
+              <dd>2 s</dd>
             </dl>
             <h2>Install</h2>
             <dl class="dl-horizontal">
@@ -160,7 +160,6 @@ The following actions will be performed:
 - COQC lib/Intv.v
 - COQC lib/Maps.v
 - COQC lib/Integers.v
-- COQC lib/Iteration.v
 - princ_type := forall P : Z -&gt; list Z -&gt; Type,
 -               (forall (hi : Z) (_x : lo &lt; hi),
 -                zlt lo hi = left _x -&gt;
@@ -172,6 +171,7 @@ The following actions will be performed:
 - TITI R_elements_rec_0 y y0 y1 (elements_rec (y - 1))
 -        (y2 (elements_rec (y - 1)) eq_refl)
 - TITI R_elements_rec_1 y y0 y1
+- COQC lib/Iteration.v
 - princ_type := forall P : Z -&gt; A -&gt; Type,
 -               (forall (hi : Z) (_x : lo &lt; hi),
 -                zlt lo hi = left _x -&gt;
@@ -187,6 +187,7 @@ The following actions will be performed:
 - COQC lib/UnionFind.v
 - COQC lib/FSetAVLplus.v
 - COQC lib/IntvSets.v
+- COQC common/Errors.v
 - princ_type := forall P : moves -&gt; reg -&gt; option (moves * reg * moves) -&gt; Type,
 -               (forall (m : moves) (r : reg), m = nil -&gt; P nil r None) -&gt;
 -               (forall (m : moves) (r s d : reg) (tl : list (reg * reg)),
@@ -214,7 +215,6 @@ The following actions will be performed:
 -        (y7 (split_move y3 y0) eq_refl) y8
 - TITI R_split_move_3 y y0 y1 y2 y3 y4 y5 y6 (split_move y3 y0)
 -        (y7 (split_move y3 y0) eq_refl) y8 y9 y10 y11
-- COQC common/Errors.v
 - princ_type := forall (r : reg) (P : moves -&gt; bool -&gt; Type),
 -               (forall m : moves, m = nil -&gt; P nil false) -&gt;
 -               (forall (m : moves) (s d : reg),
@@ -258,6 +258,7 @@ The following actions will be performed:
 - TITI R_replace_last_source_1 x y y0 y1 y2
 - TITI R_replace_last_source_2 x y y0 y1 y2 y3 (replace_last_source x y1)
 -        (y4 (replace_last_source x y1) eq_refl)
+- COQC lib/Lattice.v
 - princ_type := forall P : state -&gt; moves -&gt; Type,
 -               (forall st : state,
 -                final_state st = true -&gt;
@@ -271,13 +272,13 @@ The following actions will be performed:
 - TITI R_parmove_aux_0 y y0 y1 y2 y3 y4
 - TITI R_parmove_aux_1 y y0 (parmove_aux (parmove_step y))
 -        (y1 (parmove_aux (parmove_step y)) eq_refl)
-- COQC lib/Lattice.v
 - COQC flocq/Core/Fcore_float_prop.v
 - COQC flocq/Core/Fcore_rnd.v
 - COQC lib/Postorder.v
 - COQC common/Subtyping.v
-- COQC flocq/Core/Fcore_generic_fmt.v
+- COQC lib/Ordered.v
 - COQC flocq/Calc/Fcalc_digits.v
+- COQC flocq/Calc/Fcalc_bracket.v
 - princ_type := forall P : typenv -&gt; res typenv -&gt; Type,
 -               (forall e e&#39; : typenv,
 -                solve_rec {| te_typ := te_typ e; te_sub := nil |} false
@@ -294,25 +295,24 @@ The following actions will be performed:
 - TITI R_solve_constraints_1 y y0 y1 (solve_constraints y0)
 -        (y2 (solve_constraints y0) eq_refl)
 - TITI R_solve_constraints_2 y y0 y1
-- COQC flocq/Calc/Fcalc_bracket.v
 - COQC flocq/Calc/Fcalc_ops.v
 - COQC common/Switch.v
-- COQC lib/Ordered.v
-- COQC flocq/Core/Fcore_ulp.v
+- COQC lib/Heaps.v
+- COQC flocq/Core/Fcore_generic_fmt.v
 - COQC flocq/Calc/Fcalc_div.v
 - COQC flocq/Calc/Fcalc_sqrt.v
+- COQC flocq/Core/Fcore_ulp.v
 - COQC flocq/Prop/Fprop_Sterbenz.v
 - COQC flocq/Prop/Fprop_plus_error.v
-- COQC lib/Heaps.v
 - COQC flocq/Core/Fcore_rnd_ne.v
 - COQC flocq/Core/Fcore_FIX.v
 - COQC flocq/Core/Fcore_FLX.v
 - COQC flocq/Core/Fcore_FLT.v
 - COQC flocq/Core/Fcore_FTZ.v
 - COQC flocq/Core/Fcore.v
-- COQC flocq/Prop/Fprop_relative.v
 - COQC flocq/Calc/Fcalc_round.v
 - COQC flocq/Prop/Fprop_mult_error.v
+- COQC flocq/Prop/Fprop_relative.v
 - COQC flocq/Appli/Fappli_rnd_odd.v
 - COQC flocq/Prop/Fprop_div_sqrt_error.v
 - COQC flocq/Appli/Fappli_IEEE.v
@@ -321,9 +321,9 @@ The following actions will be performed:
 - COQC lib/Floats.v
 - COQC backend/Kildall.v
 - COQC common/AST.v
+- COQC common/Values.v
 - COQC backend/Registers.v
 - COQC cfrontend/Ctypes.v
-- COQC common/Values.v
 - COQC common/Memdata.v
 - COQC common/Memtype.v
 - COQC common/Memory.v
@@ -438,9 +438,6 @@ The following actions will be performed:
 - COQC backend/Locations.v
 - COQC backend/Inlining.v
 - COQC backend/Renumber.v
-- COQC backend/Liveness.v
-- COQC backend/ValueDomain.v
-- COQC backend/CSEdomain.v
 - princ_type := forall (w : world) (e : env)
 -                 (P : mem -&gt;
 -                      list (ident * type) -&gt; list val -&gt; option mem -&gt; Type),
@@ -540,7 +537,12 @@ The following actions will be performed:
 -        y13
 - TITI R_sem_bind_parameters_5 x x0 y y0 y1 y2 y3 y4 y5 y6 y7 y8 y9
 - TITI R_sem_bind_parameters_6 x x0 y y0 y1 y2 y3 y4 y5 y6
+- COQC backend/Liveness.v
+- COQC backend/ValueDomain.v
+- COQC backend/CSEdomain.v
 - COQC cfrontend/SimplExprproof.v
+- COQC backend/SelectDiv.v
+- COQC backend/SelectLong.v
 - princ_type := forall (lo : Z)
 -                 (P : Z -&gt; ZMap.t acontent -&gt; ZMap.t acontent -&gt; Type),
 -               (forall (hi : Z) (c : ZMap.t acontent) (_x : lo &lt;= hi),
@@ -570,8 +572,6 @@ The following actions will be performed:
 - TITI R_inval_before_0 x y y0 y1 y2 (inval_before x (y + 1) (inval_if x y y0))
 -        (y3 (inval_before x (y + 1) (inval_if x y y0)) eq_refl)
 - TITI R_inval_before_1 x y y0 y1 y2
-- COQC backend/SelectDiv.v
-- COQC backend/SelectLong.v
 - COQC ia32/SelectOpproof.v
 - COQC backend/RTLgenspec.v
 - COQC ia32/standard/Conventions1.v
@@ -988,7 +988,6 @@ The following actions will be performed:
 - TITI R_combine_cond_10 y y0 y1 y2 y3 y4 y5 y6 y7 y8
 - TITI R_combine_cond_11 y y0 y1 y2 y3 y4 y5 y6 y7 y8
 - TITI R_combine_cond_12 y y0 y1 y2 y3 y4 y5
-- COQC backend/NeedDomain.v
 - princ_type := forall
 -                 P : addressing -&gt;
 -                     list valnum -&gt; option (addressing * list valnum) -&gt; Type,
@@ -1386,6 +1385,7 @@ The following actions will be performed:
 - TITI R_combine_op_8 y y0 y1 y2 y3 y4 y5 y6 y7
 - TITI R_combine_op_9 y y0 y1 y2 y3 y4 y5
 - TITI R_combine_op_10 y y0 y1 y2 y3 y4 y5
+- COQC backend/NeedDomain.v
 - COQC backend/Selection.v
 - princ_type := forall P : expr -&gt; condexpr -&gt; Type,
 -               (forall (e : expr) (c : condition) (el : exprlist),
@@ -1471,18 +1471,17 @@ The following actions will be performed:
 - COQC backend/RTLgenproof.v
 - COQC backend/Conventions.v
 - COQC backend/Inliningproof.v
-- COQC backend/RTLtyping.v
 - COQC backend/ValueAnalysis.v
 - COQC ia32/ConstpropOpproof.v
+- COQC backend/CSE.v
 - COQC ia32/CombineOpproof.v
 - COQC ia32/NeedOp.v
 - COQC backend/LTL.v
 - COQC backend/Selectionproof.v
 - COQC backend/Tailcall.v
+- COQC backend/RTLtyping.v
 - COQC backend/Constprop.v
-- COQC backend/CSE.v
-- COQC backend/Deadcode.v
-- COQC backend/Allocation.v
+- COQC backend/CSEproof.v
 - princ_type := forall (ae : AE.t)
 -                 (P : external_function -&gt;
 -                      list reg -&gt; external_function * list reg -&gt; Type),
@@ -1600,6 +1599,8 @@ The following actions will be performed:
 - TITI R_builtin_strength_reduction_3 x y y0 y1 y2 y3 y4 y5 y6 y7 y8
 - TITI R_builtin_strength_reduction_4 x y y0 y1 y2 y3 y4 y5 y6 y7 y8
 - TITI R_builtin_strength_reduction_5 x y y0 y1 y2 y3 y4 y5
+- COQC backend/Deadcode.v
+- COQC backend/Tunneling.v
 - princ_type := forall (app : VA.t)
 -                 (P : external_function -&gt;
 -                      list reg -&gt; reg -&gt; NE.t -&gt; nmem -&gt; NA.t -&gt; Type),
@@ -1734,11 +1735,15 @@ The following actions will be performed:
 - TITI R_transfer_builtin_6 x y y0 y1 y2 y3 y4 y5 y6 y7 y8
 - TITI R_transfer_builtin_7 x y y0 y1 y2 y3 y4 y5 y6 y7 y8
 - TITI R_transfer_builtin_8 x y y0 y1 y2 y3 y4 y5 y6 y7 y8
-- COQC backend/Tunneling.v
 - COQC backend/Linear.v
 - COQC backend/Tailcallproof.v
 - COQC backend/Constpropproof.v
-- COQC backend/CSEproof.v
+- COQC backend/Deadcodeproof.v
+- COQC backend/Allocation.v
+- COQC backend/Tunnelingproof.v
+- COQC backend/Lineartyping.v
+- COQC backend/Linearize.v
+- COQC backend/CleanupLabels.v
 - princ_type := forall
 -                 P : list reg -&gt;
 -                     list typ -&gt; list loc -&gt; eqs -&gt; option eqs -&gt; Type,
@@ -2132,18 +2137,13 @@ The following actions will be performed:
 - TITI R_compat_entry_4 y y0 y1 y2 y3 y4 y5 y6 y7 y8 y9 y10
 -        (compat_entry y4 y6 y9 y2) (y11 (compat_entry y4 y6 y9 y2) eq_refl)
 - TITI R_compat_entry_5 y y0 y1 y2 y3 y4 y5 y6 y7 y8 y9
-- COQC backend/Deadcodeproof.v
-- COQC backend/Tunnelingproof.v
-- COQC backend/Lineartyping.v
-- COQC backend/Linearize.v
-- COQC backend/CleanupLabels.v
 - COQC backend/Bounds.v
-- COQC backend/Allocproof.v
-- COQC ia32/standard/Stacklayout.v
 - COQC backend/Linearizeproof.v
 - COQC backend/CleanupLabelsproof.v
+- COQC ia32/standard/Stacklayout.v
 - COQC backend/Mach.v
 - COQC ia32/Asm.v
+- COQC backend/Allocproof.v
 - COQC backend/Stacking.v
 - COQC backend/Stackingproof.v
 - COQC ia32/Asmgen.v
@@ -2276,7 +2276,6 @@ The following actions will be performed:
 - /usr/local/bin/ocamlc.opt -c -I cparser -I lib -I driver -I extraction -I common -I ia32 -I cfrontend -I exportclight -I backend -I ia32/standard -I flocq/Core -I flocq/Calc -I flocq/Appli -I flocq/Prop -o cparser/Ceval.cmi cparser/Ceval.mli
 - /usr/local/bin/ocamlc.opt -c -I driver -I cparser -I lib -I extraction -I common -I ia32 -I cfrontend -I exportclight -I backend -I ia32/standard -I flocq/Core -I flocq/Calc -I flocq/Appli -I flocq/Prop -o driver/Clflags.cmo driver/Clflags.ml
 - /usr/local/bin/ocamlc.opt -c -I cparser -I lib -I driver -I extraction -I common -I ia32 -I cfrontend -I exportclight -I backend -I ia32/standard -I flocq/Core -I flocq/Calc -I flocq/Appli -I flocq/Prop -o cparser/Cprint.cmi cparser/Cprint.mli
-- /usr/local/bin/ocamlc.opt -c -I cparser -I lib -I driver -I extraction -I common -I ia32 -I cfrontend -I exportclight -I backend -I ia32/standard -I flocq/Core -I flocq/Calc -I flocq/Appli -I flocq/Prop -o cparser/Cutil.cmi cparser/Cutil.mli
 - + /usr/local/bin/ocamlc.opt -c -I lib -I cparser -I driver -I extraction -I common -I ia32 -I cfrontend -I exportclight -I backend -I ia32/standard -I flocq/Core -I flocq/Calc -I flocq/Appli -I flocq/Prop -o lib/Camlcoq.cmo lib/Camlcoq.ml
 - File &quot;lib/Camlcoq.ml&quot;, line 60, characters 12-19:
 - Error: Unbound value Pos.sub
@@ -2294,14 +2293,14 @@ The following actions will be performed:
 # path                 /home/bench/.opam/system/build/coq:contrib:compcert.dev
 # compiler             system (4.02.1)
 # exit-code            2
-# env-file             /home/bench/.opam/system/build/coq:contrib:compcert.dev/coq:contrib:compcert-28433-ad8886.env
-# stdout-file          /home/bench/.opam/system/build/coq:contrib:compcert.dev/coq:contrib:compcert-28433-ad8886.out
-# stderr-file          /home/bench/.opam/system/build/coq:contrib:compcert.dev/coq:contrib:compcert-28433-ad8886.err
+# env-file             /home/bench/.opam/system/build/coq:contrib:compcert.dev/coq:contrib:compcert-29773-ad8886.env
+# stdout-file          /home/bench/.opam/system/build/coq:contrib:compcert.dev/coq:contrib:compcert-29773-ad8886.out
+# stderr-file          /home/bench/.opam/system/build/coq:contrib:compcert.dev/coq:contrib:compcert-29773-ad8886.err
 ### stdout ###
 # [...]
+# /usr/local/bin/ocamlc.opt -c -I cparser -I lib -I driver -I extraction -I common -I ia32 -I cfrontend -I exportclight -I backend -I ia32/standard -I flocq/Core -I flocq/Calc -I flocq/Appli -I flocq/Prop -o cparser/Ceval.cmi cparser/Ceval.mli
 # /usr/local/bin/ocamlc.opt -c -I driver -I cparser -I lib -I extraction -I common -I ia32 -I cfrontend -I exportclight -I backend -I ia32/standard -I flocq/Core -I flocq/Calc -I flocq/Appli -I flocq/Prop -o driver/Clflags.cmo driver/Clflags.ml
 # /usr/local/bin/ocamlc.opt -c -I cparser -I lib -I driver -I extraction -I common -I ia32 -I cfrontend -I exportclight -I backend -I ia32/standard -I flocq/Core -I flocq/Calc -I flocq/Appli -I flocq/Prop -o cparser/Cprint.cmi cparser/Cprint.mli
-# /usr/local/bin/ocamlc.opt -c -I cparser -I lib -I driver -I extraction -I common -I ia32 -I cfrontend -I exportclight -I backend -I ia32/standard -I flocq/Core -I flocq/Calc -I flocq/Appli -I flocq/Prop -o cparser/Cutil.cmi cparser/Cutil.mli
 # + /usr/local/bin/ocamlc.opt -c -I lib -I cparser -I driver -I extraction -I common -I ia32 -I cfrontend -I exportclight -I backend -I ia32/standard -I flocq/Core -I flocq/Calc -I flocq/Appli -I flocq/Prop -o lib/Camlcoq.cmo lib/Camlcoq.ml
 # File &quot;lib/Camlcoq.ml&quot;, line 60, characters 12-19:
 # Error: Unbound value Pos.sub
