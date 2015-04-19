@@ -47,7 +47,7 @@
                 <span class="label label-danger">Error</span>
               </small>
             </h1>
-            <p><em><script>document.write(moment("2015-04-17 20:36:46 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2015-04-17 20:36:46 UTC)</em><p>
+            <p><em><script>document.write(moment("2015-04-19 02:32:57 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2015-04-19 02:32:57 UTC)</em><p>
             <h2>Context</h2>
             <pre># Installed packages for system:
 base-bigarray     base  Bigarray library distributed with the OCaml compiler
@@ -85,7 +85,7 @@ coq            8.5.dev  Formal proof management system.
               <dt>Return code</dt>
               <dd>0</dd>
               <dt>Duration</dt>
-              <dd>2 s</dd>
+              <dd>3 s</dd>
             </dl>
             <h2>Install</h2>
             <dl class="dl-horizontal">
@@ -153,7 +153,6 @@ The following actions will be performed:
 - &quot;coqc&quot;  -q  -R &quot;.&quot; CanonBDDs   canonicite/BDTs
 - &quot;coqc&quot;  -q  -R &quot;.&quot; CanonBDDs   rauzy/algorithme1/Formula_to_BDT
 - &quot;coqc&quot;  -q  -R &quot;.&quot; CanonBDDs   rauzy/algorithmes_2_et_3/Prelude_Implicants
-- &quot;coqc&quot;  -q  -R &quot;.&quot; CanonBDDs   canonicite/Canonicity_BDT
 - &quot;coqc&quot;  -q  -R &quot;.&quot; CanonBDDs   rauzy/algorithme1/Canonicity
 - coqtop -q  -R &quot;.&quot; CanonBDDs   -silent -batch -load-vernac-source rauzy/algorithme1/extract.v
 - &quot;coqc&quot;  -q  -R &quot;.&quot; CanonBDDs   rauzy/algorithmes_2_et_3/Monotony
@@ -161,25 +160,30 @@ The following actions will be performed:
 - Fetching opaque proofs from disk for CanonBDDs.rauzy.algorithme1.Inductions
 - Fetching opaque proofs from disk for CanonBDDs.rauzy.algorithme1.BDTs
 - Fetching opaque proofs from disk for CanonBDDs.rauzy.algorithme1.Prelude_BDT
+- &quot;coqc&quot;  -q  -R &quot;.&quot; CanonBDDs   canonicite/Canonicity_BDT
 - cd ./rauzy/algorithme1/extraction ; make all
 - make[1]: Entering directory &#39;/home/bench/.opam/system/build/coq:contrib:canon-bdds.dev/rauzy/algorithme1/extraction&#39;
-- ocamlopt -c suresnes.mli
+- ocamldep main.ml &gt; main.ml.d
 - ocamlyacc parser.mly
-- ocamlopt -c suresnes.ml	 
 - ocamllex lexer.mll
+- Makefile:47: suresnes.ml.d: No such file or directory
+- Makefile:47: lexer.ml.d: No such file or directory
+- Makefile:47: parser.ml.d: No such file or directory
+- Makefile:47: main.ml.d: No such file or directory
 - 22 states, 358 transitions, table size 1564 bytes
-- ocamlopt -c parser.ml	 
-- ocamlopt -c main.ml	 
+- ocamldep suresnes.ml &gt; suresnes.ml.d
+- ocamldep parser.ml &gt; parser.ml.d
+- ocamldep lexer.ml &gt; lexer.ml.d
+- ocamlopt -c suresnes.mli
+- ocamlopt -c parser.mli
+- ocamlopt -c suresnes.ml
 - &quot;coqc&quot;  -q  -R &quot;.&quot; CanonBDDs   rauzy/algorithmes_2_et_3/Operator_W
 - &quot;coqc&quot;  -q  -R &quot;.&quot; CanonBDDs   rauzy/algorithmes_2_et_3/Prelude_Primes
-- Makefile:34: recipe for target &#39;parser.cmx&#39; failed
+- ocamlopt -c parser.ml
+- ocamlopt -c main.ml
 - Makefile:34: recipe for target &#39;main.cmx&#39; failed
 - make[1]: Leaving directory &#39;/home/bench/.opam/system/build/coq:contrib:canon-bdds.dev/rauzy/algorithme1/extraction&#39;
 - Makefile:237: recipe for target &#39;rauzy/algorithme1/extraction/suresnes&#39; failed
-- File &quot;parser.ml&quot;, line 1:
-- Error: Could not find the .cmi file for interface parser.mli.
-- make[1]: *** [parser.cmx] Error 2
-- make[1]: *** Waiting for unfinished jobs....
 - File &quot;main.ml&quot;, line 12, characters 18-25:
 - Error: Unbound module Lexer
 - make[1]: *** [main.cmx] Error 2
@@ -196,26 +200,26 @@ The following actions will be performed:
 # path                 /home/bench/.opam/system/build/coq:contrib:canon-bdds.dev
 # compiler             system (4.02.1)
 # exit-code            2
-# env-file             /home/bench/.opam/system/build/coq:contrib:canon-bdds.dev/coq:contrib:canon-bdds-11467-d2d111.env
-# stdout-file          /home/bench/.opam/system/build/coq:contrib:canon-bdds.dev/coq:contrib:canon-bdds-11467-d2d111.out
-# stderr-file          /home/bench/.opam/system/build/coq:contrib:canon-bdds.dev/coq:contrib:canon-bdds-11467-d2d111.err
+# env-file             /home/bench/.opam/system/build/coq:contrib:canon-bdds.dev/coq:contrib:canon-bdds-28446-d2d111.env
+# stdout-file          /home/bench/.opam/system/build/coq:contrib:canon-bdds.dev/coq:contrib:canon-bdds-28446-d2d111.out
+# stderr-file          /home/bench/.opam/system/build/coq:contrib:canon-bdds.dev/coq:contrib:canon-bdds-28446-d2d111.err
 ### stdout ###
 # [...]
-# ocamllex lexer.mll
-# 22 states, 358 transitions, table size 1564 bytes
-# ocamlopt -c parser.ml	 
-# ocamlopt -c main.ml	 
+# ocamlopt -c suresnes.mli
+# ocamlopt -c parser.mli
+# ocamlopt -c suresnes.ml
 # &quot;coqc&quot;  -q  -R &quot;.&quot; CanonBDDs   rauzy/algorithmes_2_et_3/Operator_W
 # &quot;coqc&quot;  -q  -R &quot;.&quot; CanonBDDs   rauzy/algorithmes_2_et_3/Prelude_Primes
-# Makefile:34: recipe for target &#39;parser.cmx&#39; failed
+# ocamlopt -c parser.ml
+# ocamlopt -c main.ml
 # Makefile:34: recipe for target &#39;main.cmx&#39; failed
 # make[1]: Leaving directory &#39;/home/bench/.opam/system/build/coq:contrib:canon-bdds.dev/rauzy/algorithme1/extraction&#39;
 # Makefile:237: recipe for target &#39;rauzy/algorithme1/extraction/suresnes&#39; failed
 ### stderr ###
-# File &quot;parser.ml&quot;, line 1:
-# Error: Could not find the .cmi file for interface parser.mli.
-# make[1]: *** [parser.cmx] Error 2
-# make[1]: *** Waiting for unfinished jobs....
+# Makefile:47: suresnes.ml.d: No such file or directory
+# Makefile:47: lexer.ml.d: No such file or directory
+# Makefile:47: parser.ml.d: No such file or directory
+# Makefile:47: main.ml.d: No such file or directory
 # File &quot;main.ml&quot;, line 12, characters 18-25:
 # Error: Unbound module Lexer
 # make[1]: *** [main.cmx] Error 2
