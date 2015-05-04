@@ -44,10 +44,10 @@
               contrib:graph-basics
               <small>
                 8.4.dev
-                <span class="label label-danger">Lint error</span>
+                <span class="label label-success">14 s</span>
               </small>
             </h1>
-            <p><em><script>document.write(moment("2015-05-02 23:35:53 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2015-05-02 23:35:53 UTC)</em><p>
+            <p><em><script>document.write(moment("2015-05-04 02:02:04 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2015-05-04 02:02:04 UTC)</em><p>
             <h2>Context</h2>
             <pre># Installed packages for system:
 base-bigarray   base  Bigarray library distributed with the OCaml compiler
@@ -61,16 +61,13 @@ coq            8.4.5  Formal proof management system.
               <dt>Command</dt>
               <dd><code>ruby lint.rb unstable ../unstable/packages/coq:contrib:graph-basics/coq:contrib:graph-basics.8.4.dev</code></dd>
               <dt>Return code</dt>
-              <dd>256</dd>
-              <dt>Output</dt>
-              <dd><pre>The first line of the description should end by a dot (.) to ensure uniformity.
-</pre></dd>
+              <dd>0</dd>
             </dl>
             <h2>Dry install</h2>
             <p>Dry install with the current Coq version:</p>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>true</code></dd>
+              <dd><code>opam install -y --show-action coq:contrib:graph-basics.8.4.dev coq.8.4.5</code></dd>
               <dt>Return code</dt>
               <dd>0</dd>
             </dl>
@@ -84,27 +81,44 @@ coq            8.4.5  Formal proof management system.
             <h2>Install dependencies</h2>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>true</code></dd>
+              <dd><code>opam list; ulimit -Sv 1000000; timeout 5m opam install -y --deps-only coq:contrib:graph-basics.8.4.dev</code></dd>
               <dt>Return code</dt>
               <dd>0</dd>
               <dt>Duration</dt>
-              <dd>0 s</dd>
+              <dd>3 s</dd>
             </dl>
             <h2>Install</h2>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>true</code></dd>
+              <dd><code>opam list; ulimit -Sv 4000000; timeout 120m opam install -y -v coq:contrib:graph-basics.8.4.dev</code></dd>
               <dt>Return code</dt>
               <dd>0</dd>
               <dt>Duration</dt>
-              <dd>0 s</dd>
+              <dd>14 s</dd>
             </dl>
             <h2>Installation size</h2>
-            <p>No files were installed.</p>
+            <p>Total: 580 K</p>
+            <ul>
+              <li>106 K <code>lib/coq/user-contrib/GraphBasics/Paths.vo</code></li>
+              <li>56 K <code>lib/coq/user-contrib/GraphBasics/Sets.vo</code></li>
+              <li>54 K <code>lib/coq/user-contrib/GraphBasics/Graphs.vo</code></li>
+              <li>51 K <code>lib/coq/user-contrib/GraphBasics/Connected.vo</code></li>
+              <li>43 K <code>lib/coq/user-contrib/GraphBasics/Edges.vo</code></li>
+              <li>41 K <code>lib/coq/user-contrib/GraphBasics/Arcs.vo</code></li>
+              <li>39 K <code>lib/coq/user-contrib/GraphBasics/Degrees.vo</code></li>
+              <li>38 K <code>lib/coq/user-contrib/GraphBasics/Vertices.vo</code></li>
+              <li>37 K <code>lib/coq/user-contrib/GraphBasics/Acyclic.vo</code></li>
+              <li>36 K <code>lib/coq/user-contrib/GraphBasics/Dipaths.vo</code></li>
+              <li>29 K <code>lib/coq/user-contrib/GraphBasics/Digraphs.vo</code></li>
+              <li>26 K <code>lib/coq/user-contrib/GraphBasics/Trees.vo</code></li>
+              <li>18 K <code>lib/coq/user-contrib/GraphBasics/Enumerated.vo</code></li>
+              <li>1 K <code>install/coq:contrib:graph-basics.install</code></li>
+              <li>0 K <code>lib/coq:contrib:graph-basics/opam.config</code></li>
+            </ul>
             <h2>Uninstall</h2>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>true</code></dd>
+              <dd><code>opam remove -y coq:contrib:graph-basics.8.4.dev</code></dd>
               <dt>Return code</dt>
               <dd>0</dd>
               <dt>Missing removes</dt>
