@@ -44,10 +44,10 @@
               contrib:ptsatr
               <small>
                 dev
-                <span class="label label-danger">Lint error</span>
+                <span class="label label-danger">Error</span>
               </small>
             </h1>
-            <p><em><script>document.write(moment("2015-05-03 08:49:30 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2015-05-03 08:49:30 UTC)</em><p>
+            <p><em><script>document.write(moment("2015-05-05 01:21:05 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2015-05-05 01:21:05 UTC)</em><p>
             <h2>Context</h2>
             <pre># Installed packages for system:
 base-bigarray  base  Bigarray library distributed with the OCaml compiler
@@ -61,16 +61,13 @@ coq             dev  Formal proof management system.
               <dt>Command</dt>
               <dd><code>ruby lint.rb unstable ../unstable/packages/coq:contrib:ptsatr/coq:contrib:ptsatr.dev</code></dd>
               <dt>Return code</dt>
-              <dd>256</dd>
-              <dt>Output</dt>
-              <dd><pre>The first line of the description should end by a dot (.) to ensure uniformity.
-</pre></dd>
+              <dd>0</dd>
             </dl>
             <h2>Dry install</h2>
             <p>Dry install with the current Coq version:</p>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>true</code></dd>
+              <dd><code>opam install -y --show-action coq:contrib:ptsatr.dev coq.dev</code></dd>
               <dt>Return code</dt>
               <dd>0</dd>
             </dl>
@@ -84,20 +81,111 @@ coq             dev  Formal proof management system.
             <h2>Install dependencies</h2>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>true</code></dd>
+              <dd><code>opam list; ulimit -Sv 1000000; timeout 5m opam install -y --deps-only coq:contrib:ptsatr.dev</code></dd>
               <dt>Return code</dt>
               <dd>0</dd>
               <dt>Duration</dt>
-              <dd>0 s</dd>
+              <dd>3 s</dd>
             </dl>
             <h2>Install</h2>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>true</code></dd>
+              <dd><code>opam list; ulimit -Sv 4000000; timeout 120m opam install -y -v coq:contrib:ptsatr.dev</code></dd>
               <dt>Return code</dt>
-              <dd>0</dd>
+              <dd>1024</dd>
               <dt>Duration</dt>
-              <dd>0 s</dd>
+              <dd>5 s</dd>
+              <dt>Output</dt>
+              <dd><pre># Installed packages for system:
+base-bigarray  base  Bigarray library distributed with the OCaml compiler
+base-threads   base  Threads library distributed with the OCaml compiler
+base-unix      base  Unix library distributed with the OCaml compiler
+camlp5         6.12  Preprocessor-pretty-printer of OCaml
+coq             dev  Formal proof management system.
+The following actions will be performed:
+  - install coq:contrib:ptsatr dev
+=-=- Gathering sources =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+[coq:contrib:ptsatr: from unstable] Repo archive not found[coq:contrib:ptsatr: git] Command started
+[coq:contrib:ptsatr: git] Command started
+[coq:contrib:ptsatr: git] Command started
+[coq:contrib:ptsatr: git] Command started
+[coq:contrib:ptsatr: git] Command started
+[coq:contrib:ptsatr: git] Command started
+[coq:contrib:ptsatr] https://gforge.inria.fr/git/coq-contribs/ptsatr.git#trunk updated
+=-=- Processing actions -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+[coq:contrib:ptsatr: coq_makefile Make] Command started
++ coq_makefile &quot;-f&quot; &quot;Make&quot; &quot;-o&quot; &quot;Makefile&quot; (CWD=/home/bench/.opam/system/build/coq:contrib:ptsatr.dev)
+[coq:contrib:ptsatr: make] Command started
++ make &quot;-j4&quot; (CWD=/home/bench/.opam/system/build/coq:contrib:ptsatr.dev)
+- &quot;coqdep&quot; -c -R &quot;.&quot; PTSATR &quot;base.v&quot; &gt; &quot;base.v.d&quot; || ( RV=$?; rm -f &quot;base.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; PTSATR &quot;ut_term.v&quot; &gt; &quot;ut_term.v.d&quot; || ( RV=$?; rm -f &quot;ut_term.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; PTSATR &quot;ut_env.v&quot; &gt; &quot;ut_env.v.d&quot; || ( RV=$?; rm -f &quot;ut_env.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; PTSATR &quot;ut_red.v&quot; &gt; &quot;ut_red.v.d&quot; || ( RV=$?; rm -f &quot;ut_red.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; PTSATR &quot;ut_typ.v&quot; &gt; &quot;ut_typ.v.d&quot; || ( RV=$?; rm -f &quot;ut_typ.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; PTSATR &quot;ut_sr.v&quot; &gt; &quot;ut_sr.v.d&quot; || ( RV=$?; rm -f &quot;ut_sr.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; PTSATR &quot;ut_typ_eq.v&quot; &gt; &quot;ut_typ_eq.v.d&quot; || ( RV=$?; rm -f &quot;ut_typ_eq.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; PTSATR &quot;ut_strengh.v&quot; &gt; &quot;ut_strengh.v.d&quot; || ( RV=$?; rm -f &quot;ut_strengh.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; PTSATR &quot;term.v&quot; &gt; &quot;term.v.d&quot; || ( RV=$?; rm -f &quot;term.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; PTSATR &quot;env.v&quot; &gt; &quot;env.v.d&quot; || ( RV=$?; rm -f &quot;env.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; PTSATR &quot;red.v&quot; &gt; &quot;red.v.d&quot; || ( RV=$?; rm -f &quot;red.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; PTSATR &quot;strip.v&quot; &gt; &quot;strip.v.d&quot; || ( RV=$?; rm -f &quot;strip.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; PTSATR &quot;typ_annot.v&quot; &gt; &quot;typ_annot.v.d&quot; || ( RV=$?; rm -f &quot;typ_annot.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; PTSATR &quot;glue.v&quot; &gt; &quot;glue.v.d&quot; || ( RV=$?; rm -f &quot;glue.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; PTSATR &quot;final_result.v&quot; &gt; &quot;final_result.v.d&quot; || ( RV=$?; rm -f &quot;final_result.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; PTSATR &quot;counter_ex.v&quot; &gt; &quot;counter_ex.v.d&quot; || ( RV=$?; rm -f &quot;counter_ex.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; PTSATR &quot;ut_typ_eq_inj.v&quot; &gt; &quot;ut_typ_eq_inj.v.d&quot; || ( RV=$?; rm -f &quot;ut_typ_eq_inj.v.d&quot;; exit ${RV} )
+- &quot;coqc&quot;  -q  -R &quot;.&quot; PTSATR   base
+- &quot;coqc&quot;  -q  -R &quot;.&quot; PTSATR   ut_term
+- &quot;coqc&quot;  -q  -R &quot;.&quot; PTSATR   term
+- Makefile:251: recipe for target &#39;ut_term.vo&#39; failed
+- Makefile:251: recipe for target &#39;term.vo&#39; failed
+- File &quot;./ut_term.v&quot;, line 313, characters 28-30:
+- Error: No such hypothesis: e0
+- make: *** [ut_term.vo] Error 1
+- make: *** Waiting for unfinished jobs....
+- File &quot;./term.v&quot;, line 344, characters 28-30:
+- Error: No such hypothesis: e0
+- make: *** [term.vo] Error 1
+[ERROR] The compilation of coq:contrib:ptsatr failed at &quot;make -j4&quot;.
+[coq:contrib:ptsatr: rm] Command started
++ rm &quot;-R&quot; &quot;/home/bench/.opam/system/lib/coq/user-contrib/PTSATR&quot; (CWD=/home/bench/.opam/system/build/coq:contrib:ptsatr.dev)
+- rm: cannot remove &#39;/home/bench/.opam/system/lib/coq/user-contrib/PTSATR&#39;: No such file or directory
+#=== ERROR while installing coq:contrib:ptsatr.dev ============================#
+# opam-version         1.2.1
+# os                   linux
+# command              make -j4
+# path                 /home/bench/.opam/system/build/coq:contrib:ptsatr.dev
+# compiler             system (4.02.1)
+# exit-code            2
+# env-file             /home/bench/.opam/system/build/coq:contrib:ptsatr.dev/coq:contrib:ptsatr-15617-d2d111.env
+# stdout-file          /home/bench/.opam/system/build/coq:contrib:ptsatr.dev/coq:contrib:ptsatr-15617-d2d111.out
+# stderr-file          /home/bench/.opam/system/build/coq:contrib:ptsatr.dev/coq:contrib:ptsatr-15617-d2d111.err
+### stdout ###
+# [...]
+# &quot;coqdep&quot; -c -R &quot;.&quot; PTSATR &quot;typ_annot.v&quot; &gt; &quot;typ_annot.v.d&quot; || ( RV=$?; rm -f &quot;typ_annot.v.d&quot;; exit ${RV} )
+# &quot;coqdep&quot; -c -R &quot;.&quot; PTSATR &quot;glue.v&quot; &gt; &quot;glue.v.d&quot; || ( RV=$?; rm -f &quot;glue.v.d&quot;; exit ${RV} )
+# &quot;coqdep&quot; -c -R &quot;.&quot; PTSATR &quot;final_result.v&quot; &gt; &quot;final_result.v.d&quot; || ( RV=$?; rm -f &quot;final_result.v.d&quot;; exit ${RV} )
+# &quot;coqdep&quot; -c -R &quot;.&quot; PTSATR &quot;counter_ex.v&quot; &gt; &quot;counter_ex.v.d&quot; || ( RV=$?; rm -f &quot;counter_ex.v.d&quot;; exit ${RV} )
+# &quot;coqdep&quot; -c -R &quot;.&quot; PTSATR &quot;ut_typ_eq_inj.v&quot; &gt; &quot;ut_typ_eq_inj.v.d&quot; || ( RV=$?; rm -f &quot;ut_typ_eq_inj.v.d&quot;; exit ${RV} )
+# &quot;coqc&quot;  -q  -R &quot;.&quot; PTSATR   base
+# &quot;coqc&quot;  -q  -R &quot;.&quot; PTSATR   ut_term
+# &quot;coqc&quot;  -q  -R &quot;.&quot; PTSATR   term
+# Makefile:251: recipe for target &#39;ut_term.vo&#39; failed
+# Makefile:251: recipe for target &#39;term.vo&#39; failed
+### stderr ###
+# File &quot;./ut_term.v&quot;, line 313, characters 28-30:
+# Error: No such hypothesis: e0
+# make: *** [ut_term.vo] Error 1
+# make: *** Waiting for unfinished jobs....
+# File &quot;./term.v&quot;, line 344, characters 28-30:
+# Error: No such hypothesis: e0
+# make: *** [term.vo] Error 1
+=-=- Error report -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+The following actions failed
+  - install coq:contrib:ptsatr dev
+No changes have been performed
+&#39;opam install -y -v coq:contrib:ptsatr.dev&#39; failed.
+</pre></dd>
             </dl>
             <h2>Installation size</h2>
             <p>No files were installed.</p>
