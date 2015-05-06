@@ -47,7 +47,7 @@
                 <span class="label label-danger">Error</span>
               </small>
             </h1>
-            <p><em><script>document.write(moment("2015-05-04 21:40:06 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2015-05-04 21:40:06 UTC)</em><p>
+            <p><em><script>document.write(moment("2015-05-06 17:30:06 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2015-05-06 17:30:06 UTC)</em><p>
             <h2>Context</h2>
             <pre># Installed packages for system:
 base-bigarray     base  Bigarray library distributed with the OCaml compiler
@@ -94,7 +94,7 @@ coq            8.5.dev  Formal proof management system.
               <dt>Return code</dt>
               <dd>1024</dd>
               <dt>Duration</dt>
-              <dd>7 s</dd>
+              <dd>19 s</dd>
               <dt>Output</dt>
               <dd><pre># Installed packages for system:
 base-bigarray     base  Bigarray library distributed with the OCaml compiler
@@ -150,10 +150,20 @@ The following actions will be performed:
 - &quot;coqc&quot;  -q  -R &quot;.&quot; CFGV   eq_rel
 - &quot;coqc&quot;  -q  -R &quot;.&quot; CFGV   tactics
 - &quot;coqc&quot;  -q  -R &quot;.&quot; CFGV   UsefulTypes
-- Makefile:261: recipe for target &#39;UsefulTypes.vo&#39; failed
-- File &quot;./UsefulTypes.v&quot;, line 727, characters 2-3:
-- Error: Wrong bullet - : Current bullet - is not finished.
-- make: *** [UsefulTypes.vo] Error 1
+- &quot;coqc&quot;  -q  -R &quot;.&quot; CFGV   bin_rels
+- &quot;coqc&quot;  -q  -R &quot;.&quot; CFGV   list
+- &quot;coqc&quot;  -q  -R &quot;.&quot; CFGV   variables
+- &quot;coqc&quot;  -q  -R &quot;.&quot; CFGV   AssociationList
+- &quot;coqc&quot;  -q  -R &quot;.&quot; CFGV   FinSetList
+- Makefile:261: recipe for target &#39;AssociationList.vo&#39; failed
+- File &quot;./AssociationList.v&quot;, line 102, characters 15-48:
+- Error: Not an inductive product.
+- make: *** [AssociationList.vo] Error 1
+- make: *** Waiting for unfinished jobs....
+- Makefile:261: recipe for target &#39;variables.vo&#39; failed
+- File &quot;./variables.v&quot;, line 624, characters 2-15:
+- Error: Omega can&#39;t solve this system
+- make: *** [variables.vo] Error 1
 [ERROR] The compilation of coq:contrib:cfgv failed at &quot;make -j4&quot;.
 [coq:contrib:cfgv: rm] Command started
 + rm &quot;-R&quot; &quot;/home/bench/.opam/system/lib/coq/user-contrib/CFGV&quot; (CWD=/home/bench/.opam/system/build/coq:contrib:cfgv.dev)
@@ -165,25 +175,29 @@ The following actions will be performed:
 # path                 /home/bench/.opam/system/build/coq:contrib:cfgv.dev
 # compiler             system (4.02.1)
 # exit-code            2
-# env-file             /home/bench/.opam/system/build/coq:contrib:cfgv.dev/coq:contrib:cfgv-10872-d2d111.env
-# stdout-file          /home/bench/.opam/system/build/coq:contrib:cfgv.dev/coq:contrib:cfgv-10872-d2d111.out
-# stderr-file          /home/bench/.opam/system/build/coq:contrib:cfgv.dev/coq:contrib:cfgv-10872-d2d111.err
+# env-file             /home/bench/.opam/system/build/coq:contrib:cfgv.dev/coq:contrib:cfgv-11705-d2d111.env
+# stdout-file          /home/bench/.opam/system/build/coq:contrib:cfgv.dev/coq:contrib:cfgv-11705-d2d111.out
+# stderr-file          /home/bench/.opam/system/build/coq:contrib:cfgv.dev/coq:contrib:cfgv-11705-d2d111.err
 ### stdout ###
 # [...]
-# &quot;coqdep&quot; -c -R &quot;.&quot; CFGV &quot;universe.v&quot; &gt; &quot;universe.v.d&quot; || ( RV=$?; rm -f &quot;universe.v.d&quot;; exit ${RV} )
-# &quot;coqdep&quot; -c -R &quot;.&quot; CFGV &quot;UsefulTypes.v&quot; &gt; &quot;UsefulTypes.v.d&quot; || ( RV=$?; rm -f &quot;UsefulTypes.v.d&quot;; exit ${RV} )
-# &quot;coqdep&quot; -c -R &quot;.&quot; CFGV &quot;variables.v&quot; &gt; &quot;variables.v.d&quot; || ( RV=$?; rm -f &quot;variables.v.d&quot;; exit ${RV} )
-# &quot;coqc&quot;  -q  -R &quot;.&quot; CFGV   universe
-# &quot;coqc&quot;  -q  -R &quot;.&quot; CFGV   LibTactics
-# &quot;coqc&quot;  -q  -R &quot;.&quot; CFGV   substOld
 # &quot;coqc&quot;  -q  -R &quot;.&quot; CFGV   eq_rel
 # &quot;coqc&quot;  -q  -R &quot;.&quot; CFGV   tactics
 # &quot;coqc&quot;  -q  -R &quot;.&quot; CFGV   UsefulTypes
-# Makefile:261: recipe for target &#39;UsefulTypes.vo&#39; failed
+# &quot;coqc&quot;  -q  -R &quot;.&quot; CFGV   bin_rels
+# &quot;coqc&quot;  -q  -R &quot;.&quot; CFGV   list
+# &quot;coqc&quot;  -q  -R &quot;.&quot; CFGV   variables
+# &quot;coqc&quot;  -q  -R &quot;.&quot; CFGV   AssociationList
+# &quot;coqc&quot;  -q  -R &quot;.&quot; CFGV   FinSetList
+# Makefile:261: recipe for target &#39;AssociationList.vo&#39; failed
+# Makefile:261: recipe for target &#39;variables.vo&#39; failed
 ### stderr ###
-# File &quot;./UsefulTypes.v&quot;, line 727, characters 2-3:
-# Error: Wrong bullet - : Current bullet - is not finished.
-# make: *** [UsefulTypes.vo] Error 1
+# File &quot;./AssociationList.v&quot;, line 102, characters 15-48:
+# Error: Not an inductive product.
+# make: *** [AssociationList.vo] Error 1
+# make: *** Waiting for unfinished jobs....
+# File &quot;./variables.v&quot;, line 624, characters 2-15:
+# Error: Omega can&#39;t solve this system
+# make: *** [variables.vo] Error 1
 =-=- Error report -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 The following actions failed
   - install coq:contrib:cfgv dev

@@ -44,10 +44,10 @@
               contrib:lc
               <small>
                 dev
-                <span class="label label-success">6 s</span>
+                <span class="label label-danger">Error</span>
               </small>
             </h1>
-            <p><em><script>document.write(moment("2015-05-04 21:40:06 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2015-05-04 21:40:06 UTC)</em><p>
+            <p><em><script>document.write(moment("2015-05-06 17:30:06 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2015-05-06 17:30:06 UTC)</em><p>
             <h2>Context</h2>
             <pre># Installed packages for system:
 base-bigarray     base  Bigarray library distributed with the OCaml compiler
@@ -85,51 +85,97 @@ coq            8.5.dev  Formal proof management system.
               <dt>Return code</dt>
               <dd>0</dd>
               <dt>Duration</dt>
-              <dd>2 s</dd>
+              <dd>3 s</dd>
             </dl>
             <h2>Install</h2>
             <dl class="dl-horizontal">
               <dt>Command</dt>
               <dd><code>opam list; ulimit -Sv 4000000; timeout 120m opam install -y -v coq:contrib:lc.dev</code></dd>
               <dt>Return code</dt>
-              <dd>0</dd>
+              <dd>1024</dd>
               <dt>Duration</dt>
-              <dd>6 s</dd>
+              <dd>4 s</dd>
+              <dt>Output</dt>
+              <dd><pre># Installed packages for system:
+base-bigarray     base  Bigarray library distributed with the OCaml compiler
+base-threads      base  Threads library distributed with the OCaml compiler
+base-unix         base  Unix library distributed with the OCaml compiler
+camlp5            6.12  Preprocessor-pretty-printer of OCaml
+coq            8.5.dev  Formal proof management system.
+The following actions will be performed:
+  - install coq:contrib:lc dev
+=-=- Gathering sources =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+[coq:contrib:lc: from unstable] Repo archive not found[coq:contrib:lc: git] Command started
+[coq:contrib:lc: git] Command started
+[coq:contrib:lc: git] Command started
+[coq:contrib:lc: git] Command started
+[coq:contrib:lc: git] Command started
+[coq:contrib:lc: git] Command started
+[coq:contrib:lc] https://gforge.inria.fr/git/coq-contribs/lc.git#trunk updated
+=-=- Processing actions -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+[coq:contrib:lc: coq_makefile Make] Command started
++ coq_makefile &quot;-f&quot; &quot;Make&quot; &quot;-o&quot; &quot;Makefile&quot; (CWD=/home/bench/.opam/system/build/coq:contrib:lc.dev)
+[coq:contrib:lc: make] Command started
++ make &quot;-j4&quot; (CWD=/home/bench/.opam/system/build/coq:contrib:lc.dev)
+- &quot;coqdep&quot; -c -R &quot;.&quot; lc &quot;Derived_Mod.v&quot; &gt; &quot;Derived_Mod.v.d&quot; || ( RV=$?; rm -f &quot;Derived_Mod.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; lc &quot;Extensionality.v&quot; &gt; &quot;Extensionality.v.d&quot; || ( RV=$?; rm -f &quot;Extensionality.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; lc &quot;Lc.v&quot; &gt; &quot;Lc.v.d&quot; || ( RV=$?; rm -f &quot;Lc.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; lc &quot;Misc.v&quot; &gt; &quot;Misc.v.d&quot; || ( RV=$?; rm -f &quot;Misc.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; lc &quot;Mod.v&quot; &gt; &quot;Mod.v.d&quot; || ( RV=$?; rm -f &quot;Mod.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; lc &quot;Monad.v&quot; &gt; &quot;Monad.v.d&quot; || ( RV=$?; rm -f &quot;Monad.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; lc &quot;Quot.v&quot; &gt; &quot;Quot.v.d&quot; || ( RV=$?; rm -f &quot;Quot.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; lc &quot;Slc.v&quot; &gt; &quot;Slc.v.d&quot; || ( RV=$?; rm -f &quot;Slc.v.d&quot;; exit ${RV} )
+- &quot;coqc&quot;  -q  -R &quot;.&quot; lc   Misc
+- &quot;coqc&quot;  -q  -R &quot;.&quot; lc   Extensionality
+- Makefile:242: recipe for target &#39;Misc.vo&#39; failed
+- Anomaly: Uncaught exception Unix.Unix_error(Unix.EEXIST, &quot;mkdir&quot;, &quot;./.coq-native&quot;).
+- Please report.
+- make: *** [Misc.vo] Error 1
+- make: *** Waiting for unfinished jobs....
+[ERROR] The compilation of coq:contrib:lc failed at &quot;make -j4&quot;.
+[coq:contrib:lc: rm] Command started
++ rm &quot;-R&quot; &quot;/home/bench/.opam/system/lib/coq/user-contrib/lc&quot; (CWD=/home/bench/.opam/system/build/coq:contrib:lc.dev)
+- rm: cannot remove &#39;/home/bench/.opam/system/lib/coq/user-contrib/lc&#39;: No such file or directory
+#=== ERROR while installing coq:contrib:lc.dev ================================#
+# opam-version         1.2.1
+# os                   linux
+# command              make -j4
+# path                 /home/bench/.opam/system/build/coq:contrib:lc.dev
+# compiler             system (4.02.1)
+# exit-code            2
+# env-file             /home/bench/.opam/system/build/coq:contrib:lc.dev/coq:contrib:lc-1824-d2d111.env
+# stdout-file          /home/bench/.opam/system/build/coq:contrib:lc.dev/coq:contrib:lc-1824-d2d111.out
+# stderr-file          /home/bench/.opam/system/build/coq:contrib:lc.dev/coq:contrib:lc-1824-d2d111.err
+### stdout ###
+# [...]
+# &quot;coqdep&quot; -c -R &quot;.&quot; lc &quot;Extensionality.v&quot; &gt; &quot;Extensionality.v.d&quot; || ( RV=$?; rm -f &quot;Extensionality.v.d&quot;; exit ${RV} )
+# &quot;coqdep&quot; -c -R &quot;.&quot; lc &quot;Lc.v&quot; &gt; &quot;Lc.v.d&quot; || ( RV=$?; rm -f &quot;Lc.v.d&quot;; exit ${RV} )
+# &quot;coqdep&quot; -c -R &quot;.&quot; lc &quot;Misc.v&quot; &gt; &quot;Misc.v.d&quot; || ( RV=$?; rm -f &quot;Misc.v.d&quot;; exit ${RV} )
+# &quot;coqdep&quot; -c -R &quot;.&quot; lc &quot;Mod.v&quot; &gt; &quot;Mod.v.d&quot; || ( RV=$?; rm -f &quot;Mod.v.d&quot;; exit ${RV} )
+# &quot;coqdep&quot; -c -R &quot;.&quot; lc &quot;Monad.v&quot; &gt; &quot;Monad.v.d&quot; || ( RV=$?; rm -f &quot;Monad.v.d&quot;; exit ${RV} )
+# &quot;coqdep&quot; -c -R &quot;.&quot; lc &quot;Quot.v&quot; &gt; &quot;Quot.v.d&quot; || ( RV=$?; rm -f &quot;Quot.v.d&quot;; exit ${RV} )
+# &quot;coqdep&quot; -c -R &quot;.&quot; lc &quot;Slc.v&quot; &gt; &quot;Slc.v.d&quot; || ( RV=$?; rm -f &quot;Slc.v.d&quot;; exit ${RV} )
+# &quot;coqc&quot;  -q  -R &quot;.&quot; lc   Misc
+# &quot;coqc&quot;  -q  -R &quot;.&quot; lc   Extensionality
+# Makefile:242: recipe for target &#39;Misc.vo&#39; failed
+### stderr ###
+# Anomaly: Uncaught exception Unix.Unix_error(Unix.EEXIST, &quot;mkdir&quot;, &quot;./.coq-native&quot;).
+# Please report.
+# make: *** [Misc.vo] Error 1
+# make: *** Waiting for unfinished jobs....
+=-=- Error report -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+The following actions failed
+  - install coq:contrib:lc dev
+No changes have been performed
+&#39;opam install -y -v coq:contrib:lc.dev&#39; failed.
+</pre></dd>
             </dl>
             <h2>Installation size</h2>
-            <p>Total: 348 K</p>
-            <ul>
-              <li>55 K <code>lib/coq/user-contrib/lc/Slc.vo</code></li>
-              <li>36 K <code>lib/coq/user-contrib/lc/Lc.vo</code></li>
-              <li>30 K <code>lib/coq/user-contrib/lc/Lc.glob</code></li>
-              <li>29 K <code>lib/coq/user-contrib/lc/Monad.vo</code></li>
-              <li>26 K <code>lib/coq/user-contrib/lc/Slc.glob</code></li>
-              <li>26 K <code>lib/coq/user-contrib/lc/Quot.glob</code></li>
-              <li>25 K <code>lib/coq/user-contrib/lc/Quot.vo</code></li>
-              <li>22 K <code>lib/coq/user-contrib/lc/Mod.vo</code></li>
-              <li>19 K <code>lib/coq/user-contrib/lc/Monad.glob</code></li>
-              <li>18 K <code>lib/coq/user-contrib/lc/Derived_Mod.vo</code></li>
-              <li>11 K <code>lib/coq/user-contrib/lc/Mod.glob</code></li>
-              <li>8 K <code>lib/coq/user-contrib/lc/Slc.v</code></li>
-              <li>8 K <code>lib/coq/user-contrib/lc/Lc.v</code></li>
-              <li>7 K <code>lib/coq/user-contrib/lc/Derived_Mod.glob</code></li>
-              <li>5 K <code>lib/coq/user-contrib/lc/Quot.v</code></li>
-              <li>4 K <code>lib/coq/user-contrib/lc/Monad.v</code></li>
-              <li>3 K <code>lib/coq/user-contrib/lc/Mod.v</code></li>
-              <li>2 K <code>lib/coq/user-contrib/lc/Misc.vo</code></li>
-              <li>1 K <code>lib/coq/user-contrib/lc/Derived_Mod.v</code></li>
-              <li>1 K <code>lib/coq/user-contrib/lc/Extensionality.vo</code></li>
-              <li>1 K <code>lib/coq/user-contrib/lc/Misc.glob</code></li>
-              <li>1 K <code>lib/coq/user-contrib/lc/Extensionality.glob</code></li>
-              <li>1 K <code>lib/coq/user-contrib/lc/Misc.v</code></li>
-              <li>1 K <code>lib/coq/user-contrib/lc/Extensionality.v</code></li>
-              <li>1 K <code>install/coq:contrib:lc.install</code></li>
-              <li>0 K <code>lib/coq:contrib:lc/opam.config</code></li>
-            </ul>
+            <p>No files were installed.</p>
             <h2>Uninstall</h2>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>opam remove -y coq:contrib:lc.dev</code></dd>
+              <dd><code>true</code></dd>
               <dt>Return code</dt>
               <dd>0</dd>
               <dt>Missing removes</dt>
