@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Coq bench</title>
+    <link rel="shortcut icon" type="image/png" href="../../../../../favicon.png" />
+    <link href="../../../../../bootstrap.min.css" rel="stylesheet">
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+    <script src="../../../../../moment.min.js"></script>
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="container">
+      <div class="navbar navbar-default" role="navigation">
+        <div class="container-fluid">
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="../../../../.."><i class="fa fa-lg fa-flag-checkered"></i> Coq bench</a>
+          </div>
+          <div id="navbar" class="collapse navbar-collapse">
+            <ul class="nav navbar-nav">
+              <li><a href="../..">clean / unstable</a></li>
+              <li class="active"><a href="">8.4.6 / fiat - dev</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="article">
+        <div class="row">
+          <div class="col-md-12">
+            <a href="../..">« Up</a>
+            <h1>
+              fiat
+              <small>
+                dev
+                <span class="label label-success">5 m 50 s</span>
+              </small>
+            </h1>
+            <p><em><script>document.write(moment("2015-05-08 11:41:39 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2015-05-08 11:41:39 UTC)</em><p>
+            <h2>Context</h2>
+            <pre># Installed packages for system:
+base-bigarray   base  Bigarray library distributed with the OCaml compiler
+base-threads    base  Threads library distributed with the OCaml compiler
+base-unix       base  Unix library distributed with the OCaml compiler
+camlp5          6.12  Preprocessor-pretty-printer of OCaml
+coq            8.4.6  Formal proof management system.
+</pre>
+            <h2>Lint</h2>
+            <dl class="dl-horizontal">
+              <dt>Command</dt>
+              <dd><code>ruby lint.rb unstable ../unstable/packages/coq:fiat/coq:fiat.dev</code></dd>
+              <dt>Return code</dt>
+              <dd>0</dd>
+            </dl>
+            <h2>Dry install</h2>
+            <p>Dry install with the current Coq version:</p>
+            <dl class="dl-horizontal">
+              <dt>Command</dt>
+              <dd><code>opam install -y --show-action coq:fiat.dev coq.8.4.6</code></dd>
+              <dt>Return code</dt>
+              <dd>0</dd>
+            </dl>
+            <p>Dry install without Coq, to test if the problem was incompatibility with the current Coq version:</p>
+            <dl class="dl-horizontal">
+              <dt>Command</dt>
+              <dd><code>true</code></dd>
+              <dt>Return code</dt>
+              <dd>0</dd>
+            </dl>
+            <h2>Install dependencies</h2>
+            <dl class="dl-horizontal">
+              <dt>Command</dt>
+              <dd><code>opam list; ulimit -Sv 1000000; timeout 5m opam install -y --deps-only coq:fiat.dev</code></dd>
+              <dt>Return code</dt>
+              <dd>0</dd>
+              <dt>Duration</dt>
+              <dd>2 s</dd>
+            </dl>
+            <h2>Install</h2>
+            <dl class="dl-horizontal">
+              <dt>Command</dt>
+              <dd><code>opam list; ulimit -Sv 4000000; timeout 120m opam install -y -v coq:fiat.dev</code></dd>
+              <dt>Return code</dt>
+              <dd>0</dd>
+              <dt>Duration</dt>
+              <dd>5 m 50 s</dd>
+            </dl>
+            <h2>Installation size</h2>
+            <p>Total: 32,383 K</p>
+            <ul>
+              <li>5,610 K <code>lib/coq/user-contrib/Fiat/QueryStructure/Implementation/DataStructures/Bags/BagsOfTuples.vo</code></li>
+              <li>2,505 K <code>lib/coq/user-contrib/Fiat/QueryStructure/Implementation/DataStructures/Bags/TrieBags.vo</code></li>
+              <li>2,471 K <code>lib/coq/user-contrib/Fiat/Parsers/Refinement/SharpenedExpressionParen.vo</code></li>
+              <li>2,415 K <code>lib/coq/user-contrib/Fiat/Parsers/MinimalParseOfParse.vo</code></li>
+              <li>1,837 K <code>lib/coq/user-contrib/Fiat/QueryStructure/Automation/IndexSelection.vo</code></li>
+              <li>1,223 K <code>lib/coq/user-contrib/Fiat/QueryStructure/Implementation/DataStructures/BagADT/BagImplementation.vo</code></li>
+              <li>1,156 K <code>lib/coq/user-contrib/Fiat/QueryStructure/Implementation/Operations/BagADT/Refinements.vo</code></li>
+              <li>1,063 K <code>lib/coq/user-contrib/Fiat/Parsers/Refinement/SharpenedABStar.vo</code></li>
+              <li>905 K <code>lib/coq/user-contrib/Fiat/Parsers/Refinement/SharpenedAtMostOneNonTerminal.vo</code></li>
+              <li>742 K <code>lib/coq/user-contrib/Fiat/QueryStructure/Implementation/DataStructures/Bags/TreeBags.vo</code></li>
+              <li>563 K <code>lib/coq/user-contrib/Fiat/Common/FMapExtensions.vo</code></li>
+              <li>553 K <code>lib/coq/user-contrib/Fiat/Parsers/BooleanRecognizerCorrect.vo</code></li>
+              <li>523 K <code>lib/coq/user-contrib/Fiat/Common/StringBound.vo</code></li>
+              <li>471 K <code>lib/coq/user-contrib/Fiat/QueryStructure/Implementation/Operations/General/MutateRefinements.vo</code></li>
+              <li>466 K <code>lib/coq/user-contrib/Fiat/QueryStructure/Automation/AutoDB.vo</code></li>
+              <li>382 K <code>lib/coq/user-contrib/Fiat/Common.vo</code></li>
+              <li>350 K <code>lib/coq/user-contrib/Fiat/QueryStructure/Implementation/Operations/General/QueryRefinements.vo</code></li>
+              <li>324 K <code>lib/coq/user-contrib/Fiat/QueryStructure/Implementation/Operations/General/InsertRefinements.vo</code></li>
+              <li>320 K <code>lib/coq/user-contrib/Fiat/Parsers/SplitterFromParserADT.vo</code></li>
+              <li>309 K <code>lib/coq/user-contrib/Fiat/Parsers/Refinement/IndexedAndAtMostOneNonTerminalReflective.vo</code></li>
+              <li>307 K <code>lib/coq/user-contrib/Fiat/QueryStructure/Implementation/Constraints/ConstraintChecksRefinements.vo</code></li>
+              <li>286 K <code>lib/coq/user-contrib/Fiat/QueryStructure/Automation/QSImplementation.vo</code></li>
+              <li>266 K <code>lib/coq/user-contrib/Fiat/Common/Wf.vo</code></li>
+              <li>206 K <code>lib/coq/user-contrib/Fiat/Common/IterateBoundedIndex.vo</code></li>
+              <li>202 K <code>lib/coq/user-contrib/Fiat/Common/Equality.vo</code></li>
+              <li>198 K <code>lib/coq/user-contrib/Fiat/Parsers/BooleanRecognizerOptimized.vo</code></li>
+              <li>163 K <code>lib/coq/user-contrib/Fiat/QueryStructure/Implementation/Operations/General/DeleteRefinements.vo</code></li>
+              <li>156 K <code>lib/coq/user-contrib/Fiat/Computation/Refinements/General.vo</code></li>
+              <li>146 K <code>lib/coq/user-contrib/Fiat/Parsers/Refinement/IndexedAndAtMostOneNonTerminal.vo</code></li>
+              <li>134 K <code>lib/coq/user-contrib/Fiat/Common/ilist.vo</code></li>
+              <li>128 K <code>lib/coq/user-contrib/Fiat/ADTRefinement/GeneralBuildADTRefinements.vo</code></li>
+              <li>115 K <code>lib/coq/user-contrib/Fiat/Common/List/ListFacts.vo</code></li>
+              <li>114 K <code>lib/coq/user-contrib/Fiat/Parsers/ContextFreeGrammarProperties.vo</code></li>
+              <li>109 K <code>lib/coq/user-contrib/Fiat/Common/ilist2.vo</code></li>
+              <li>107 K <code>lib/coq/user-contrib/Fiat/ADTRefinement/BuildADTRefinements/HoneRepresentation.vo</code></li>
+              <li>104 K <code>lib/coq/user-contrib/Fiat/Common/i2list.vo</code></li>
+              <li>96 K <code>lib/coq/user-contrib/Fiat/QueryStructure/Implementation/Operations/List/ListInsertRefinements.vo</code></li>
+              <li>95 K <code>lib/coq/user-contrib/Fiat/QueryStructure/Implementation/DataStructures/Bags/BagsInterface.vo</code></li>
+              <li>95 K <code>lib/coq/user-contrib/Fiat/Computation/SetoidMorphisms.vo</code></li>
+              <li>95 K <code>lib/coq/user-contrib/Fiat/Common/List/ListMorphisms.vo</code></li>
+              <li>93 K <code>lib/coq/user-contrib/Fiat/QueryStructure/Implementation/Operations/List/ListQueryRefinements.vo</code></li>
+              <li>92 K <code>lib/coq/user-contrib/Fiat/Common/Monad.vo</code></li>
+              <li>92 K <code>lib/coq/user-contrib/Fiat/Parsers/Refinement/FixedLengthLemmas.vo</code></li>
+              <li>87 K <code>lib/coq/user-contrib/Fiat/Parsers/StringLike/ForallChars.vo</code></li>
+              <li>84 K <code>lib/coq/user-contrib/Fiat/QueryStructure/Specification/Representation/QueryStructure.vo</code></li>
+              <li>82 K <code>lib/coq/user-contrib/Fiat/QueryStructure/Implementation/DataStructures/BagADT/QueryStructureImplementation.vo</code></li>
+              <li>81 K <code>lib/coq/user-contrib/Fiat/Parsers/FoldGrammar.vo</code></li>
+              <li>73 K <code>lib/coq/user-contrib/Fiat/QueryStructure/Specification/Operations/FlattenCompList.vo</code></li>
+              <li>70 K <code>lib/coq/user-contrib/Fiat/Common/List/PermutationFacts.vo</code></li>
+              <li>69 K <code>lib/coq/user-contrib/Fiat/Parsers/BooleanRecognizerEquality.vo</code></li>
+              <li>68 K <code>lib/coq/user-contrib/Fiat/Parsers/MinimalParse.vo</code></li>
+              <li>64 K <code>lib/coq/user-contrib/Fiat/Parsers/ParserFromParserADT.vo</code></li>
+              <li>63 K <code>lib/coq/user-contrib/Fiat/QueryStructure/Automation/SearchTerms/FindPrefixSearchTerms.vo</code></li>
+              <li>60 K <code>lib/coq/user-contrib/Fiat/Parsers/ContextFreeGrammarEquality.vo</code></li>
+              <li>60 K <code>lib/coq/user-contrib/Fiat/QueryStructure/Automation/SearchTerms/InclusionSearchTerms.vo</code></li>
+              <li>59 K <code>lib/coq/user-contrib/Fiat/Parsers/StringLike/Properties.vo</code></li>
+              <li>59 K <code>lib/coq/user-contrib/Fiat/Common/DecideableEnsembles.vo</code></li>
+              <li>58 K <code>lib/coq/user-contrib/Fiat/QueryStructure/Implementation/Operations/General/QueryStructureRefinements.vo</code></li>
+              <li>58 K <code>lib/coq/user-contrib/Fiat/ADTRefinement/GeneralRefinements.vo</code></li>
+              <li>58 K <code>lib/coq/user-contrib/Fiat/Common/i2list2.vo</code></li>
+              <li>58 K <code>lib/coq/user-contrib/Fiat/Parsers/Refinement/Tactics.vo</code></li>
+              <li>58 K <code>lib/coq/user-contrib/Fiat/QueryStructure/Implementation/DataStructures/Bags/CountingListBags.vo</code></li>
+              <li>56 K <code>lib/coq/user-contrib/Fiat/Parsers/ParserImplementationOptimized.vo</code></li>
+              <li>55 K <code>lib/coq/user-contrib/Fiat/QueryStructure/Implementation/DataStructures/Bags/BagsTactics.vo</code></li>
+              <li>55 K <code>lib/coq/user-contrib/Fiat/Computation/LogicLemmas.vo</code></li>
+              <li>54 K <code>lib/coq/user-contrib/Fiat/QueryStructure/Automation/SearchTerms/RangeSearchTerms.vo</code></li>
+              <li>53 K <code>lib/coq/user-contrib/Fiat/ADTRefinement/SetoidMorphisms.vo</code></li>
+              <li>52 K <code>lib/coq/user-contrib/Fiat/Common/Ensembles/EnsembleListEquivalence.vo</code></li>
+              <li>52 K <code>lib/coq/user-contrib/Fiat/Parsers/Grammars/ExpressionNumPlusParen.vo</code></li>
+              <li>50 K <code>lib/coq/user-contrib/Fiat/Parsers/WellFoundedParseProperties.vo</code></li>
+              <li>49 K <code>lib/coq/user-contrib/Fiat/Parsers/StringLike/String.vo</code></li>
+              <li>48 K <code>lib/coq/user-contrib/Fiat/Parsers/ParserImplementation.vo</code></li>
+              <li>47 K <code>lib/coq/user-contrib/Fiat/Parsers/ContextFreeGrammarTransferProperties.vo</code></li>
+              <li>47 K <code>lib/coq/user-contrib/Fiat/Parsers/ContextFreeGrammarTransfer.vo</code></li>
+              <li>47 K <code>lib/coq/user-contrib/Fiat/QueryStructure/Implementation/DataStructures/BagADT/IndexSearchTerms.vo</code></li>
+              <li>45 K <code>lib/coq/user-contrib/Fiat/Parsers/ContextFreeGrammar.vo</code></li>
+              <li>45 K <code>lib/coq/user-contrib/Fiat/Parsers/Grammars/ExpressionNumPlus.vo</code></li>
+              <li>45 K <code>lib/coq/user-contrib/Fiat/Common/SetEqProperties.vo</code></li>
+              <li>44 K <code>lib/coq/user-contrib/Fiat/Parsers/StringLike/Core.vo</code></li>
+              <li>44 K <code>lib/coq/user-contrib/Fiat/Common/Ensembles/Morphisms.vo</code></li>
+              <li>43 K <code>lib/coq/user-contrib/Fiat/QueryStructure/Specification/Representation/QueryStructureSchema.vo</code></li>
+              <li>43 K <code>lib/coq/user-contrib/Fiat/Parsers/BooleanRecognizer.vo</code></li>
+              <li>42 K <code>lib/coq/user-contrib/Fiat/Parsers/BaseTypes.vo</code></li>
+              <li>42 K <code>lib/coq/user-contrib/Fiat/Common/Le.vo</code></li>
+              <li>42 K <code>lib/coq/user-contrib/Fiat/Common/String_as_OT.vo</code></li>
+              <li>41 K <code>lib/coq/user-contrib/Fiat/QueryStructure/Automation/Common.vo</code></li>
+              <li>40 K <code>lib/coq/user-contrib/Fiat/QueryStructure/Specification/SearchTerms/ListPrefix.vo</code></li>
+              <li>39 K <code>lib/coq/user-contrib/Fiat/Parsers/ParserInterface.vo</code></li>
+              <li>39 K <code>lib/coq/user-contrib/Fiat/Parsers/CorrectnessBaseTypes.vo</code></li>
+              <li>37 K <code>lib/coq/user-contrib/Fiat/Parsers/Grammars/ExpressionParen.vo</code></li>
+              <li>37 K <code>lib/coq/user-contrib/Fiat/ADTRefinement/Refinements/ADTRepInv.vo</code></li>
+              <li>36 K <code>lib/coq/user-contrib/Fiat/ADTRefinement/Refinements/ADTCache.vo</code></li>
+              <li>35 K <code>lib/coq/user-contrib/Fiat/QueryStructure/Automation/General/DeleteAutomation.vo</code></li>
+              <li>35 K <code>lib/coq/user-contrib/Fiat/QueryStructure/Specification/SearchTerms/ListInclusion.vo</code></li>
+              <li>35 K <code>lib/coq/user-contrib/Fiat/Computation/Monad.vo</code></li>
+              <li>35 K <code>lib/coq/user-contrib/Fiat/ADTRefinement/Refinements/RefineHideADT.vo</code></li>
+              <li>34 K <code>lib/coq/user-contrib/Fiat/ADTNotation/BuildADT.vo</code></li>
+              <li>34 K <code>lib/coq/user-contrib/Fiat/Common/List/UpperBound.vo</code></li>
+              <li>34 K <code>lib/coq/user-contrib/Fiat/Common/Ensembles/IndexedEnsembles.vo</code></li>
+              <li>33 K <code>lib/coq/user-contrib/Fiat/Common/List/Operations.vo</code></li>
+              <li>33 K <code>lib/coq/user-contrib/Fiat/QueryStructure/Automation/Constraints/FunctionalDependencyAutomation.vo</code></li>
+              <li>33 K <code>lib/coq/user-contrib/Fiat/QueryStructure/Automation/General/InsertAutomation.vo</code></li>
+              <li>33 K <code>lib/coq/user-contrib/Fiat/QueryStructure/Implementation/Operations/General/EmptyRefinements.vo</code></li>
+              <li>33 K <code>lib/coq/user-contrib/Fiat/QueryStructure/Implementation/DataStructures/Bags/ListBags.vo</code></li>
+              <li>32 K <code>lib/coq/user-contrib/Fiat/ADTRefinement/BuildADTRefinements/SimplifyRep.vo</code></li>
+              <li>32 K <code>lib/coq/user-contrib/Fiat/QueryStructure/Specification/Operations/Mutate.vo</code></li>
+              <li>31 K <code>lib/coq/user-contrib/Fiat/QueryStructure/Specification/Operations/Insert.vo</code></li>
+              <li>31 K <code>lib/coq/user-contrib/Fiat/QueryStructure/Specification/Operations/Empty.vo</code></li>
+              <li>31 K <code>lib/coq/user-contrib/Fiat/ADTRefinement/Core.vo</code></li>
+              <li>31 K <code>lib/coq/user-contrib/Fiat/Common/List/FlattenList.vo</code></li>
+              <li>30 K <code>lib/coq/user-contrib/Fiat/ADTNotation/BuildComputationalADT.vo</code></li>
+              <li>30 K <code>lib/coq/user-contrib/Fiat/QueryStructure/Specification/Representation/Relation.vo</code></li>
+              <li>30 K <code>lib/coq/user-contrib/Fiat/Common/Ensembles/CombinatorLaws.vo</code></li>
+              <li>29 K <code>lib/coq/user-contrib/Fiat/QueryStructure/Implementation/DataStructures/BagADT/BagADT.vo</code></li>
+              <li>29 K <code>lib/coq/user-contrib/Fiat/ADTRefinement/Refinements/DelegateMethods.vo</code></li>
+              <li>29 K <code>lib/coq/user-contrib/Fiat/Computation/Core.vo</code></li>
+              <li>29 K <code>lib/coq/user-contrib/Fiat/ADTRefinement/BuildADTSetoidMorphisms.vo</code></li>
+              <li>29 K <code>lib/coq/user-contrib/Fiat/Parsers/Splitters/BruteForce.vo</code></li>
+              <li>29 K <code>lib/coq/user-contrib/Fiat/QueryStructure/Specification/Operations/Query.vo</code></li>
+              <li>28 K <code>lib/coq/user-contrib/Fiat/ADTRefinement/Refinements/SimplifyRep.vo</code></li>
+              <li>28 K <code>lib/coq/user-contrib/Fiat/Parsers/ParserADTSpecification.vo</code></li>
+              <li>28 K <code>lib/coq/user-contrib/Fiat/Parsers/Splitters/RDPList.vo</code></li>
+              <li>28 K <code>lib/coq/user-contrib/Fiat/QueryStructure/Implementation/DataStructures/Bags/BagsProperties.vo</code></li>
+              <li>28 K <code>lib/coq/user-contrib/Fiat/Computation/ApplyMonad.vo</code></li>
+              <li>28 K <code>lib/coq/user-contrib/Fiat/QueryStructure/Automation/General/QueryStructureAutomation.vo</code></li>
+              <li>27 K <code>lib/coq/user-contrib/Fiat/ADTRefinement/Refinements/HoneRepresentation.vo</code></li>
+              <li>27 K <code>lib/coq/user-contrib/Fiat/ADT/ComputationalADT.vo</code></li>
+              <li>26 K <code>lib/coq/user-contrib/Fiat/QueryStructure/Specification/SearchTerms/InRange.vo</code></li>
+              <li>26 K <code>lib/coq/user-contrib/Fiat/Parsers/WellFoundedParse.vo</code></li>
+              <li>26 K <code>lib/coq/user-contrib/Fiat/QueryStructure/Specification/Representation/Schema.vo</code></li>
+              <li>24 K <code>lib/coq/user-contrib/Fiat/QueryStructure/Specification/Representation/Tuple.vo</code></li>
+              <li>24 K <code>lib/coq/user-contrib/Fiat/Parsers/Grammars/ABStar.vo</code></li>
+              <li>24 K <code>lib/coq/user-contrib/Fiat/Common/NatFacts.vo</code></li>
+              <li>23 K <code>lib/coq/user-contrib/Fiat/ADTRefinement/BuildADTRefinements/AddCache.vo</code></li>
+              <li>23 K <code>lib/coq/user-contrib/Fiat/ADTNotation/BuildADTSig.vo</code></li>
+              <li>23 K <code>lib/coq/user-contrib/Fiat/QueryStructure/Specification/Operations/Update.vo</code></li>
+              <li>22 K <code>lib/coq/user-contrib/Fiat/QueryStructure/Automation/General/QueryAutomation.vo</code></li>
+              <li>22 K <code>lib/coq/user-contrib/Fiat/QueryStructure/Automation/Constraints/TrivialConstraintAutomation.vo</code></li>
+              <li>22 K <code>lib/coq/user-contrib/Fiat/Common/BoolFacts.vo</code></li>
+              <li>22 K <code>lib/coq/user-contrib/Fiat/QueryStructure/Automation/Constraints/ForeignKeyAutomation.vo</code></li>
+              <li>22 K <code>lib/coq/user-contrib/Fiat/ADT/Core.vo</code></li>
+              <li>22 K <code>lib/coq/user-contrib/Fiat/QueryStructure/Implementation/DataStructures/Bags/Bags.vo</code></li>
+              <li>22 K <code>lib/coq/user-contrib/Fiat/QueryStructure/Implementation/BagImplementation.vo</code></li>
+              <li>21 K <code>lib/coq/user-contrib/Fiat/QueryStructure/Specification/Constraints/tupleAgree.vo</code></li>
+              <li>21 K <code>lib/coq/user-contrib/Fiat/QueryStructure/Specification/Representation/Heading.vo</code></li>
+              <li>21 K <code>lib/coq/user-contrib/Fiat/Common/Ensembles/Cardinal.vo</code></li>
+              <li>20 K <code>lib/coq/user-contrib/Fiat/Parsers/ContextFreeGrammarNotations.vo</code></li>
+              <li>20 K <code>lib/coq/user-contrib/Fiat/ADTNotation/BuildADTReplaceMethods.vo</code></li>
+              <li>20 K <code>lib/coq/user-contrib/Fiat/QueryStructure/Specification/Representation/QueryStructureNotations.vo</code></li>
+              <li>20 K <code>lib/coq/user-contrib/Fiat/Parsers/ExtrOcamlParsers.vo</code></li>
+              <li>20 K <code>lib/coq/user-contrib/Fiat/ADT/ADTSig.vo</code></li>
+              <li>20 K <code>lib/coq/user-contrib/Fiat/QueryStructure/Implementation/Operations.vo</code></li>
+              <li>20 K <code>lib/coq/user-contrib/Fiat/QueryStructure/Implementation/Constraints/ConstraintChecksUnfoldings.vo</code></li>
+              <li>20 K <code>lib/coq/user-contrib/Fiat/QueryStructure/Implementation/ListImplementation.vo</code></li>
+              <li>19 K <code>lib/coq/user-contrib/Fiat/QueryStructure/Specification/Operations/Delete.vo</code></li>
+              <li>19 K <code>lib/coq/user-contrib/Fiat/Parsers/Grammars/Trivial.vo</code></li>
+              <li>18 K <code>lib/coq/user-contrib/Fiat/Common/Ensembles/Tactics.vo</code></li>
+              <li>18 K <code>lib/coq/user-contrib/Fiat/Parsers/BooleanRecognizerFull.vo</code></li>
+              <li>17 K <code>lib/coq/user-contrib/Fiat/Common/SetoidInstances.vo</code></li>
+              <li>17 K <code>lib/coq/user-contrib/Fiat/ADT/ADTHide.vo</code></li>
+              <li>17 K <code>lib/coq/user-contrib/Fiat/Common/Ensembles/Equivalence.vo</code></li>
+              <li>16 K <code>lib/coq/user-contrib/Fiat/ADTRefinement/BuildADTRefinements.vo</code></li>
+              <li>16 K <code>lib/coq/user-contrib/Fiat/QueryStructure/Implementation/DataStructures/Bags/NatCompare_Facts.vo</code></li>
+              <li>16 K <code>lib/coq/user-contrib/Fiat/Common/SetEq.vo</code></li>
+              <li>16 K <code>lib/coq/user-contrib/Fiat/Parsers/BooleanRecognizerTests.vo</code></li>
+              <li>15 K <code>lib/coq/user-contrib/Fiat/ADTRefinement.vo</code></li>
+              <li>15 K <code>lib/coq/user-contrib/Fiat/Parsers/Specification.vo</code></li>
+              <li>15 K <code>lib/coq/user-contrib/Fiat/ADTRefinement/Refinements.vo</code></li>
+              <li>15 K <code>lib/coq/user-contrib/Fiat/ADTNotation.vo</code></li>
+              <li>15 K <code>lib/coq/user-contrib/Fiat/Computation/Refinements/Tactics.vo</code></li>
+              <li>14 K <code>lib/coq/user-contrib/Fiat/Common/Ensembles.vo</code></li>
+              <li>14 K <code>lib/coq/user-contrib/Fiat/QueryStructure/Implementation/DataStructures/Bags/CacheableFunctions.vo</code></li>
+              <li>14 K <code>lib/coq/user-contrib/Fiat/QueryStructure/Implementation/DataStructures/Bags/CachingBags.vo</code></li>
+              <li>14 K <code>lib/coq/user-contrib/Fiat/ADT.vo</code></li>
+              <li>14 K <code>lib/coq/user-contrib/Fiat/Computation.vo</code></li>
+              <li>14 K <code>lib/coq/user-contrib/Fiat/Parsers/StringLike.vo</code></li>
+              <li>14 K <code>lib/coq/user-contrib/Fiat/Common/UIP.vo</code></li>
+              <li>10 K <code>lib/coq/user-contrib/Fiat/Common/Match.vo</code></li>
+              <li>6 K <code>lib/coq/user-contrib/Fiat/Common/LogicFacts.vo</code></li>
+              <li>4 K <code>lib/coq/user-contrib/Fiat/Common/LogicMorphisms.vo</code></li>
+              <li>3 K <code>lib/coq/user-contrib/Fiat/QueryStructure/Specification/Representation/Notations.vo</code></li>
+              <li>2 K <code>lib/coq/user-contrib/Fiat/Common/Ensembles/Notations.vo</code></li>
+              <li>1 K <code>lib/coq/user-contrib/Fiat/Common/ReservedNotations.vo</code></li>
+              <li>1 K <code>lib/coq/user-contrib/Fiat/Computation/Notations.vo</code></li>
+              <li>1 K <code>install/coq:fiat.install</code></li>
+              <li>0 K <code>lib/coq:fiat/opam.config</code></li>
+            </ul>
+            <h2>Uninstall</h2>
+            <dl class="dl-horizontal">
+              <dt>Command</dt>
+              <dd><code>opam remove -y coq:fiat.dev</code></dd>
+              <dt>Return code</dt>
+              <dd>0</dd>
+              <dt>Missing removes</dt>
+              <dd>
+                none
+              </dd>
+              <dt>Wrong removes</dt>
+              <dd>
+                none
+              </dd>
+            </dl>
+          </div>
+        </div>
+      </div>
+      <hr/>
+      <div class="footer">
+        <p class="text-center">
+          <small>Sources are on <a href="https://github.com/coq-bench">GitHub</a>. © Guillaume Claret.</small>
+        </p>
+      </div>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="../../../../../bootstrap.min.js"></script>
+  </body>
+</html>
