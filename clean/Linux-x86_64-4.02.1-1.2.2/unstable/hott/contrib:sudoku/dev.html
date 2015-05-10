@@ -44,10 +44,10 @@
               contrib:sudoku
               <small>
                 dev
-                <span class="label label-success">47 s</span>
+                <span class="label label-danger">Error</span>
               </small>
             </h1>
-            <p><em><script>document.write(moment("2015-05-09 05:17:45 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2015-05-09 05:17:45 UTC)</em><p>
+            <p><em><script>document.write(moment("2015-05-10 22:41:33 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2015-05-10 22:41:33 UTC)</em><p>
             <h2>Context</h2>
             <pre># Installed packages for system:
 base-bigarray           base  Bigarray library distributed with the OCaml compil
@@ -95,47 +95,98 @@ ocamlfind              1.5.5  A library manager for OCaml
               <dt>Command</dt>
               <dd><code>opam list; ulimit -Sv 4000000; timeout 120m opam install -y -v coq:contrib:sudoku.dev</code></dd>
               <dt>Return code</dt>
-              <dd>0</dd>
+              <dd>1024</dd>
               <dt>Duration</dt>
-              <dd>47 s</dd>
+              <dd>15 s</dd>
+              <dt>Output</dt>
+              <dd><pre># Installed packages for system:
+base-bigarray           base  Bigarray library distributed with the OCaml compil
+base-threads            base  Threads library distributed with the OCaml compile
+base-unix               base  Unix library distributed with the OCaml compiler
+camlp4         4.02.1+system  Camlp4 is a system for writing extensible parsers 
+camlp5                  6.12  Preprocessor-pretty-printer of OCaml
+coq                     hott  HoTT/Coq stable branch
+lablgtk               2.18.3  OCaml interface to GTK+
+ocamlfind              1.5.5  A library manager for OCaml
+The following actions will be performed:
+  - install coq:contrib:sudoku dev
+=-=- Gathering sources =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+[coq:contrib:sudoku: git] Command started
+[coq:contrib:sudoku: git] Command started
+[coq:contrib:sudoku: git] Command started
+[coq:contrib:sudoku: git] Command started
+[coq:contrib:sudoku: git] Command started
+[coq:contrib:sudoku: git] Command started
+[coq:contrib:sudoku] https://gforge.inria.fr/git/coq-contribs/sudoku.git#trunk updated
+=-=- Processing actions -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+[coq:contrib:sudoku: coq_makefile Make] Command started
++ coq_makefile &quot;-f&quot; &quot;Make&quot; &quot;-o&quot; &quot;Makefile&quot; (CWD=/home/bench/.opam/system/build/coq:contrib:sudoku.dev)
+[coq:contrib:sudoku: make] Command started
++ make &quot;-j4&quot; (CWD=/home/bench/.opam/system/build/coq:contrib:sudoku.dev)
+- &quot;coqdep&quot; -c -R &quot;.&quot; Sudoku &quot;Div.v&quot; &gt; &quot;Div.v.d&quot; || ( RV=$?; rm -f &quot;Div.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; Sudoku &quot;ListAux.v&quot; &gt; &quot;ListAux.v.d&quot; || ( RV=$?; rm -f &quot;ListAux.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; Sudoku &quot;ListOp.v&quot; &gt; &quot;ListOp.v.d&quot; || ( RV=$?; rm -f &quot;ListOp.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; Sudoku &quot;OrderedList.v&quot; &gt; &quot;OrderedList.v.d&quot; || ( RV=$?; rm -f &quot;OrderedList.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; Sudoku &quot;Permutation.v&quot; &gt; &quot;Permutation.v.d&quot; || ( RV=$?; rm -f &quot;Permutation.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; Sudoku &quot;Sudoku.v&quot; &gt; &quot;Sudoku.v.d&quot; || ( RV=$?; rm -f &quot;Sudoku.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; Sudoku &quot;Tactic.v&quot; &gt; &quot;Tactic.v.d&quot; || ( RV=$?; rm -f &quot;Tactic.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; Sudoku &quot;Test.v&quot; &gt; &quot;Test.v.d&quot; || ( RV=$?; rm -f &quot;Test.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; Sudoku &quot;UList.v&quot; &gt; &quot;UList.v.d&quot; || ( RV=$?; rm -f &quot;UList.v.d&quot;; exit ${RV} )
+- &quot;coqc&quot;  -q  -R &quot;.&quot; Sudoku   Tactic
+- &quot;coqc&quot;  -q  -R &quot;.&quot; Sudoku   ListAux
+- &quot;coqc&quot;  -q  -R &quot;.&quot; Sudoku   Div
+- &quot;coqc&quot;  -q  -R &quot;.&quot; Sudoku   Permutation
+- &quot;coqc&quot;  -q  -R &quot;.&quot; Sudoku   UList
+- &quot;coqc&quot;  -q  -R &quot;.&quot; Sudoku   OrderedList
+- &quot;coqc&quot;  -q  -R &quot;.&quot; Sudoku   ListOp
+- &quot;coqc&quot;  -q  -R &quot;.&quot; Sudoku   Sudoku
+- Makefile:240: recipe for target &#39;Sudoku.vo&#39; failed
+- File &quot;./Sudoku.v&quot;, line 2064, characters 0-10:
+- Error: No product even after head-reduction.
+- make: *** [Sudoku.vo] Error 1
+[ERROR] The compilation of coq:contrib:sudoku failed at &quot;make -j4&quot;.
+[coq:contrib:sudoku: rm] Command started
++ rm &quot;-R&quot; &quot;/home/bench/.opam/system/lib/coq/user-contrib/Sudoku&quot; (CWD=/home/bench/.opam/system/build/coq:contrib:sudoku.dev)
+- rm: cannot remove &#39;/home/bench/.opam/system/lib/coq/user-contrib/Sudoku&#39;: No such file or directory
+#=== ERROR while installing coq:contrib:sudoku.dev ============================#
+# opam-version         1.2.2
+# os                   linux
+# command              make -j4
+# path                 /home/bench/.opam/system/build/coq:contrib:sudoku.dev
+# compiler             system (4.02.1)
+# exit-code            2
+# env-file             /home/bench/.opam/system/build/coq:contrib:sudoku.dev/coq:contrib:sudoku-27252-d2d111.env
+# stdout-file          /home/bench/.opam/system/build/coq:contrib:sudoku.dev/coq:contrib:sudoku-27252-d2d111.out
+# stderr-file          /home/bench/.opam/system/build/coq:contrib:sudoku.dev/coq:contrib:sudoku-27252-d2d111.err
+### stdout ###
+# [...]
+# &quot;coqdep&quot; -c -R &quot;.&quot; Sudoku &quot;UList.v&quot; &gt; &quot;UList.v.d&quot; || ( RV=$?; rm -f &quot;UList.v.d&quot;; exit ${RV} )
+# &quot;coqc&quot;  -q  -R &quot;.&quot; Sudoku   Tactic
+# &quot;coqc&quot;  -q  -R &quot;.&quot; Sudoku   ListAux
+# &quot;coqc&quot;  -q  -R &quot;.&quot; Sudoku   Div
+# &quot;coqc&quot;  -q  -R &quot;.&quot; Sudoku   Permutation
+# &quot;coqc&quot;  -q  -R &quot;.&quot; Sudoku   UList
+# &quot;coqc&quot;  -q  -R &quot;.&quot; Sudoku   OrderedList
+# &quot;coqc&quot;  -q  -R &quot;.&quot; Sudoku   ListOp
+# &quot;coqc&quot;  -q  -R &quot;.&quot; Sudoku   Sudoku
+# Makefile:240: recipe for target &#39;Sudoku.vo&#39; failed
+### stderr ###
+# File &quot;./Sudoku.v&quot;, line 2064, characters 0-10:
+# Error: No product even after head-reduction.
+# make: *** [Sudoku.vo] Error 1
+=-=- Error report -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+The following actions failed
+  - install coq:contrib:sudoku dev
+No changes have been performed
+&#39;opam install -y -v coq:contrib:sudoku.dev&#39; failed.
+</pre></dd>
             </dl>
             <h2>Installation size</h2>
-            <p>Total: 1,818 K</p>
-            <ul>
-              <li>399 K <code>lib/coq/user-contrib/Sudoku/Sudoku.vo</code></li>
-              <li>389 K <code>lib/coq/user-contrib/Sudoku/Sudoku.glob</code></li>
-              <li>171 K <code>lib/coq/user-contrib/Sudoku/Permutation.vo</code></li>
-              <li>111 K <code>lib/coq/user-contrib/Sudoku/OrderedList.vo</code></li>
-              <li>109 K <code>lib/coq/user-contrib/Sudoku/Sudoku.v</code></li>
-              <li>87 K <code>lib/coq/user-contrib/Sudoku/ListAux.vo</code></li>
-              <li>70 K <code>lib/coq/user-contrib/Sudoku/UList.vo</code></li>
-              <li>55 K <code>lib/coq/user-contrib/Sudoku/OrderedList.glob</code></li>
-              <li>54 K <code>lib/coq/user-contrib/Sudoku/Permutation.glob</code></li>
-              <li>49 K <code>lib/coq/user-contrib/Sudoku/ListOp.vo</code></li>
-              <li>42 K <code>lib/coq/user-contrib/Sudoku/Test.vo</code></li>
-              <li>37 K <code>lib/coq/user-contrib/Sudoku/ListAux.glob</code></li>
-              <li>36 K <code>lib/coq/user-contrib/Sudoku/Div.vo</code></li>
-              <li>31 K <code>lib/coq/user-contrib/Sudoku/UList.glob</code></li>
-              <li>27 K <code>lib/coq/user-contrib/Sudoku/Div.glob</code></li>
-              <li>23 K <code>lib/coq/user-contrib/Sudoku/Test.glob</code></li>
-              <li>21 K <code>lib/coq/user-contrib/Sudoku/OrderedList.v</code></li>
-              <li>20 K <code>lib/coq/user-contrib/Sudoku/ListOp.glob</code></li>
-              <li>18 K <code>lib/coq/user-contrib/Sudoku/Permutation.v</code></li>
-              <li>13 K <code>lib/coq/user-contrib/Sudoku/ListAux.v</code></li>
-              <li>11 K <code>lib/coq/user-contrib/Sudoku/UList.v</code></li>
-              <li>9 K <code>lib/coq/user-contrib/Sudoku/ListOp.v</code></li>
-              <li>8 K <code>lib/coq/user-contrib/Sudoku/Div.v</code></li>
-              <li>6 K <code>lib/coq/user-contrib/Sudoku/Tactic.vo</code></li>
-              <li>5 K <code>lib/coq/user-contrib/Sudoku/Test.v</code></li>
-              <li>4 K <code>lib/coq/user-contrib/Sudoku/Tactic.v</code></li>
-              <li>1 K <code>lib/coq/user-contrib/Sudoku/Tactic.glob</code></li>
-              <li>1 K <code>install/coq:contrib:sudoku.install</code></li>
-              <li>0 K <code>lib/coq:contrib:sudoku/opam.config</code></li>
-            </ul>
+            <p>No files were installed.</p>
             <h2>Uninstall</h2>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>opam remove -y coq:contrib:sudoku.dev</code></dd>
+              <dd><code>true</code></dd>
               <dt>Return code</dt>
               <dd>0</dd>
               <dt>Missing removes</dt>

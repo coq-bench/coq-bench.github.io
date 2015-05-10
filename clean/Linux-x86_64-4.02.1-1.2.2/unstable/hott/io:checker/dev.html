@@ -47,7 +47,7 @@
                 <span class="label label-danger">Error</span>
               </small>
             </h1>
-            <p><em><script>document.write(moment("2015-05-09 05:17:45 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2015-05-09 05:17:45 UTC)</em><p>
+            <p><em><script>document.write(moment("2015-05-10 22:41:33 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2015-05-10 22:41:33 UTC)</em><p>
             <h2>Context</h2>
             <pre># Installed packages for system:
 base-bigarray           base  Bigarray library distributed with the OCaml compil
@@ -88,7 +88,7 @@ ocamlfind              1.5.5  A library manager for OCaml
               <dt>Return code</dt>
               <dd>0</dd>
               <dt>Duration</dt>
-              <dd>32 s</dd>
+              <dd>35 s</dd>
             </dl>
             <h2>Install</h2>
             <dl class="dl-horizontal">
@@ -97,7 +97,7 @@ ocamlfind              1.5.5  A library manager for OCaml
               <dt>Return code</dt>
               <dd>1024</dd>
               <dt>Duration</dt>
-              <dd>4 s</dd>
+              <dd>6 s</dd>
               <dt>Output</dt>
               <dd><pre># Installed packages for system:
 base-bigarray                 base  Bigarray library distributed with the OCaml 
@@ -151,10 +151,19 @@ The following actions will be performed:
 - &quot;coqc&quot;  -q  -R &quot;src&quot; Io.Checker   src/Model
 - &quot;coqc&quot;  -q  -R &quot;src&quot; Io.Checker   src/Choose
 - &quot;coqc&quot;  -q  -R &quot;src&quot; Io.Checker   src/NoDeps
-- Makefile:249: recipe for target &#39;src/Model.vo&#39; failed
-- Anomaly: Uncaught exception Unix.Unix_error(Unix.EEXIST, &quot;mkdir&quot;, &quot;./src/.coq-native&quot;).
-- Please report.
-- make: *** [src/Model.vo] Error 1
+- &quot;coqc&quot;  -q  -R &quot;src&quot; Io.Checker   src/Semantics
+- &quot;coqc&quot;  -q  -R &quot;src&quot; Io.Checker   src/DeadLockFree
+- &quot;coqc&quot;  -q  -R &quot;src&quot; Io.Checker   src/Compile
+- Makefile:249: recipe for target &#39;src/Compile.vo&#39; failed
+- File &quot;./src/Compile.v&quot;, line 5, characters 0-353:
+- Error: Illegal application: 
+- The term &quot;Choose.t&quot; of type &quot;Effect.t -&gt; Type -&gt; Type&quot;
+- cannot be applied to the terms
+-  &quot;E&quot; : &quot;Effect.t&quot;
+-  &quot;T&quot; : &quot;Type&quot;
+- The 2nd term has type &quot;Type@{Io.C.1}&quot; which should be coercible to
+-  &quot;Type@{Io.Checker.Choose.1}&quot;.
+- make: *** [src/Compile.vo] Error 1
 - make: *** Waiting for unfinished jobs....
 [ERROR] The compilation of coq:io:checker failed at &quot;make -j4&quot;.
 #=== ERROR while installing coq:io:checker.dev ================================#
@@ -164,25 +173,32 @@ The following actions will be performed:
 # path                 /home/bench/.opam/system/build/coq:io:checker.dev
 # compiler             system (4.02.1)
 # exit-code            2
-# env-file             /home/bench/.opam/system/build/coq:io:checker.dev/coq:io:checker-10482-d2d111.env
-# stdout-file          /home/bench/.opam/system/build/coq:io:checker.dev/coq:io:checker-10482-d2d111.out
-# stderr-file          /home/bench/.opam/system/build/coq:io:checker.dev/coq:io:checker-10482-d2d111.err
+# env-file             /home/bench/.opam/system/build/coq:io:checker.dev/coq:io:checker-21899-d2d111.env
+# stdout-file          /home/bench/.opam/system/build/coq:io:checker.dev/coq:io:checker-21899-d2d111.out
+# stderr-file          /home/bench/.opam/system/build/coq:io:checker.dev/coq:io:checker-21899-d2d111.err
 ### stdout ###
 # [...]
-# &quot;coqdep&quot; -c -R &quot;src&quot; Io.Checker &quot;src/Examples/Alcool.v&quot; &gt; &quot;src/Examples/Alcool.v.d&quot; || ( RV=$?; rm -f &quot;src/Examples/Alcool.v.d&quot;; exit ${RV} )
-# &quot;coqdep&quot; -c -R &quot;src&quot; Io.Checker &quot;src/Examples/Lock.v&quot; &gt; &quot;src/Examples/Lock.v.d&quot; || ( RV=$?; rm -f &quot;src/Examples/Lock.v.d&quot;; exit ${RV} )
-# &quot;coqdep&quot; -c -R &quot;src&quot; Io.Checker &quot;src/Examples/Locks.v&quot; &gt; &quot;src/Examples/Locks.v.d&quot; || ( RV=$?; rm -f &quot;src/Examples/Locks.v.d&quot;; exit ${RV} )
 # &quot;coqdep&quot; -c -R &quot;src&quot; Io.Checker &quot;src/Examples/Message.v&quot; &gt; &quot;src/Examples/Message.v.d&quot; || ( RV=$?; rm -f &quot;src/Examples/Message.v.d&quot;; exit ${RV} )
 # &quot;coqdep&quot; -c -R &quot;src&quot; Io.Checker &quot;src/Examples/Philosophers.v&quot; &gt; &quot;src/Examples/Philosophers.v.d&quot; || ( RV=$?; rm -f &quot;src/Examples/Philosophers.v.d&quot;; exit ${RV} )
 # &quot;coqdep&quot; -c -R &quot;src&quot; Io.Checker &quot;src/Examples/Semaphore.v&quot; &gt; &quot;src/Examples/Semaphore.v.d&quot; || ( RV=$?; rm -f &quot;src/Examples/Semaphore.v.d&quot;; exit ${RV} )
 # &quot;coqc&quot;  -q  -R &quot;src&quot; Io.Checker   src/Model
 # &quot;coqc&quot;  -q  -R &quot;src&quot; Io.Checker   src/Choose
 # &quot;coqc&quot;  -q  -R &quot;src&quot; Io.Checker   src/NoDeps
-# Makefile:249: recipe for target &#39;src/Model.vo&#39; failed
+# &quot;coqc&quot;  -q  -R &quot;src&quot; Io.Checker   src/Semantics
+# &quot;coqc&quot;  -q  -R &quot;src&quot; Io.Checker   src/DeadLockFree
+# &quot;coqc&quot;  -q  -R &quot;src&quot; Io.Checker   src/Compile
+# Makefile:249: recipe for target &#39;src/Compile.vo&#39; failed
 ### stderr ###
-# Anomaly: Uncaught exception Unix.Unix_error(Unix.EEXIST, &quot;mkdir&quot;, &quot;./src/.coq-native&quot;).
-# Please report.
-# make: *** [src/Model.vo] Error 1
+# [...]
+# File &quot;./src/Compile.v&quot;, line 5, characters 0-353:
+# Error: Illegal application: 
+# The term &quot;Choose.t&quot; of type &quot;Effect.t -&gt; Type -&gt; Type&quot;
+# cannot be applied to the terms
+#  &quot;E&quot; : &quot;Effect.t&quot;
+#  &quot;T&quot; : &quot;Type&quot;
+# The 2nd term has type &quot;Type@{Io.C.1}&quot; which should be coercible to
+#  &quot;Type@{Io.Checker.Choose.1}&quot;.
+# make: *** [src/Compile.vo] Error 1
 # make: *** Waiting for unfinished jobs....
 =-=- Error report -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 The following actions failed
