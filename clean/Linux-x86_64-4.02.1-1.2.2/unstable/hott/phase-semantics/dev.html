@@ -31,7 +31,7 @@
           <div id="navbar" class="collapse navbar-collapse">
             <ul class="nav navbar-nav">
               <li><a href="../..">clean / unstable</a></li>
-              <li class="active"><a href="">hott / contrib:presburger - 8.4.dev</a></li>
+              <li class="active"><a href="">hott / phase-semantics - dev</a></li>
             </ul>
           </div>
         </div>
@@ -41,10 +41,10 @@
           <div class="col-md-12">
             <a href="../..">« Up</a>
             <h1>
-              contrib:presburger
+              phase-semantics
               <small>
-                8.4.dev
-                <span class="label label-info">Not compatible with this Coq</span>
+                dev
+                <span class="label label-warning">Error with dependencies</span>
               </small>
             </h1>
             <p><em><script>document.write(moment("2015-05-12 17:21:05 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2015-05-12 17:21:05 UTC)</em><p>
@@ -62,7 +62,7 @@ ocamlfind              1.5.5  A library manager for OCaml
             <h2>Lint</h2>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>ruby lint.rb unstable ../unstable/packages/coq:contrib:presburger/coq:contrib:presburger.8.4.dev</code></dd>
+              <dd><code>ruby lint.rb unstable ../unstable/packages/coq:phase-semantics/coq:phase-semantics.dev</code></dd>
               <dt>Return code</dt>
               <dd>0</dd>
             </dl>
@@ -70,33 +70,83 @@ ocamlfind              1.5.5  A library manager for OCaml
             <p>Dry install with the current Coq version:</p>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>opam install -y --show-action coq:contrib:presburger.8.4.dev coq.hott</code></dd>
+              <dd><code>opam install -y --show-action coq:phase-semantics.dev coq.hott</code></dd>
               <dt>Return code</dt>
-              <dd>768</dd>
-              <dt>Output</dt>
-              <dd><pre>[NOTE] Package coq is already installed (current version is hott).
-The following dependencies couldn&#39;t be met:
-  - coq:contrib:presburger -&gt; coq &lt; 8.5
-Your request can&#39;t be satisfied:
-  - Conflicting version constraints for coq
-No solution found, exiting
-</pre></dd>
+              <dd>0</dd>
             </dl>
             <p>Dry install without Coq, to test if the problem was incompatibility with the current Coq version:</p>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>opam remove -y coq; opam install -y --show-action coq:contrib:presburger.8.4.dev</code></dd>
+              <dd><code>true</code></dd>
               <dt>Return code</dt>
               <dd>0</dd>
             </dl>
             <h2>Install dependencies</h2>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>true</code></dd>
+              <dd><code>opam list; ulimit -Sv 1000000; timeout 5m opam install -y --deps-only coq:phase-semantics.dev</code></dd>
               <dt>Return code</dt>
-              <dd>0</dd>
+              <dd>1024</dd>
               <dt>Duration</dt>
-              <dd>0 s</dd>
+              <dd>18 s</dd>
+              <dt>Output</dt>
+              <dd><pre># Installed packages for system:
+base-bigarray           base  Bigarray library distributed with the OCaml compil
+base-threads            base  Threads library distributed with the OCaml compile
+base-unix               base  Unix library distributed with the OCaml compiler
+camlp4         4.02.1+system  Camlp4 is a system for writing extensible parsers 
+camlp5                  6.12  Preprocessor-pretty-printer of OCaml
+coq                     hott  HoTT/Coq stable branch
+lablgtk               2.18.3  OCaml interface to GTK+
+ocamlfind              1.5.5  A library manager for OCaml
+The following actions will be performed:
+  - install coq:contrib:aac-tactics dev
+=-=- Gathering sources =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+[coq:contrib:aac-tactics: git] Command started
+[coq:contrib:aac-tactics: git] Command started
+[coq:contrib:aac-tactics: git] Command started
+[coq:contrib:aac-tactics: git] Command started
+[coq:contrib:aac-tactics: git] Command started
+[coq:contrib:aac-tactics: git] Command started
+[coq:contrib:aac-tactics] https://gforge.inria.fr/git/coq-contribs/aac-tactics.git#trunk updated
+=-=- Processing actions -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+[coq:contrib:aac-tactics: coq_makefile Make] Command started
+[coq:contrib:aac-tactics: make] Command started
+[ERROR] The compilation of coq:contrib:aac-tactics failed at &quot;make -j4&quot;.
+[coq:contrib:aac-tactics: rm] Command started
+#=== ERROR while installing coq:contrib:aac-tactics.dev =======================#
+# opam-version         1.2.2
+# os                   linux
+# command              make -j4
+# path                 /home/bench/.opam/system/build/coq:contrib:aac-tactics.dev
+# compiler             system (4.02.1)
+# exit-code            2
+# env-file             /home/bench/.opam/system/build/coq:contrib:aac-tactics.dev/coq:contrib:aac-tactics-28961-d2d111.env
+# stdout-file          /home/bench/.opam/system/build/coq:contrib:aac-tactics.dev/coq:contrib:aac-tactics-28961-d2d111.out
+# stderr-file          /home/bench/.opam/system/build/coq:contrib:aac-tactics.dev/coq:contrib:aac-tactics-28961-d2d111.err
+### stdout ###
+# [...]
+# occurence 1: transitivity through 
+# (Z.abs a + - (Z.abs b + 0))
+# 
+# occurence 2: transitivity through 
+# (Z.abs a + - Z.abs (b + 0))
+# 
+# occurence 3: transitivity through 
+# (- Z.abs b + Z.abs (a + 0))
+# 
+# 
+### stderr ###
+# *** Warning: rewrite.ml4 already found in . (discarding ./rewrite.ml4)
+# File &quot;./Caveats.v&quot;, line 100, characters 4-27:
+# Error: Tactic failure: No matching occurence modulo AC found.
+# make: *** [Caveats.vo] Error 1
+# make: *** Waiting for unfinished jobs....
+=-=- Error report -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+The following actions failed
+  - install coq:contrib:aac-tactics dev
+No changes have been performed
+</pre></dd>
             </dl>
             <h2>Install</h2>
             <dl class="dl-horizontal">
