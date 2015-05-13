@@ -47,7 +47,7 @@
                 <span class="label label-danger">Error</span>
               </small>
             </h1>
-            <p><em><script>document.write(moment("2015-05-11 14:55:41 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2015-05-11 14:55:41 UTC)</em><p>
+            <p><em><script>document.write(moment("2015-05-13 10:04:22 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2015-05-13 10:04:22 UTC)</em><p>
             <h2>Context</h2>
             <pre># Installed packages for system:
 base-bigarray   base  Bigarray library distributed with the OCaml compiler
@@ -85,7 +85,7 @@ coq            8.4.5  Formal proof management system.
               <dt>Return code</dt>
               <dd>0</dd>
               <dt>Duration</dt>
-              <dd>38 s</dd>
+              <dd>42 s</dd>
             </dl>
             <h2>Install</h2>
             <dl class="dl-horizontal">
@@ -94,7 +94,7 @@ coq            8.4.5  Formal proof management system.
               <dt>Return code</dt>
               <dd>1024</dd>
               <dt>Duration</dt>
-              <dd>4 s</dd>
+              <dd>6 s</dd>
               <dt>Output</dt>
               <dd><pre># Installed packages for system:
 base-bigarray          base  Bigarray library distributed with the OCaml compile
@@ -104,8 +104,8 @@ camlp5                 6.12  Preprocessor-pretty-printer of OCaml
 coq                   8.4.5  Formal proof management system.
 coq:error-handlers      dev  Simple and robust error handling functions.
 coq:function-ninjas     dev  Write readable code using simple functional combina
-coq:io                  dev  A library for effects in Coq.
-coq:io:system           dev  System effects for Coq.
+coq:io                3.0.0  A library for effects in Coq.
+coq:io:system         2.2.0  System effects for Coq.
 coq:io:system:ocaml     dev  Coq system effects for extraction to OCaml.
 coq:list-plus           dev  More functions on lists.
 coq:list-string         dev  Strings implemented as lists.
@@ -125,29 +125,55 @@ The following actions will be performed:
 + make &quot;-j4&quot; (CWD=/home/bench/.opam/system/build/coq:io:hello-world.1.0.0)
 - &quot;coqdep&quot; -c -slash -R src HelloWorld &quot;src/Main.v&quot; &gt; &quot;src/Main.v.d&quot; || ( RV=$?; rm -f &quot;src/Main.v.d&quot;; exit ${RV} )
 - &quot;coqc&quot;  -q  -R src HelloWorld   src/Main
-- File &quot;/home/bench/.opam/system/build/coq:io:hello-world.1.0.0/src/Main.v&quot;, line 32, characters 19-33:
-- Error: The reference Extraction.run was not found in the current environment.
-- Makefile:199: recipe for target &#39;src/Main.vo&#39; failed
-- make: *** [src/Main.vo] Error 1
-[ERROR] The compilation of coq:io:hello-world failed at &quot;make -j4&quot;.
+[coq:io:hello-world: sh cd extraction &amp;&amp; make] Command started
++ sh &quot;-c&quot; &quot;cd extraction &amp;&amp; make&quot; (CWD=/home/bench/.opam/system/build/coq:io:hello-world.1.0.0)
+- ocamlbuild main.native -use-ocamlfind -package io-system
+- ocamlfind ocamldep -package io-system -modules main.ml &gt; main.ml.depends
+- ocamlfind ocamldep -package io-system -modules main.mli &gt; main.mli.depends
+- ocamlfind ocamlc -c -package io-system -o main.cmi main.mli
+- + ocamlfind ocamlc -c -package io-system -o main.cmi main.mli
+- File &quot;main.mli&quot;, line 1014, characters 20-43:
+- Error: Unbound module IoSystem.Sum
+- Command exited with code 2.
+- Hint: Recursive traversal of subdirectories was not enabled for this build,
+-   as the working directory does not look like an ocamlbuild project (no
+-   &#39;_tags&#39; or &#39;myocamlbuild.ml&#39; file). If you have modules in subdirectories,
+-   you should add the option &quot;-r&quot; or create an empty &#39;_tags&#39; file.
+-   
+-   To enable recursive traversal for some subdirectories only, you can use the
+-   following &#39;_tags&#39; file:
+-   
+-       true: -traverse
+-       &lt;dir1&gt; or &lt;dir2&gt;: traverse
+-       
+- Makefile:2: recipe for target &#39;build&#39; failed
+- make: *** [build] Error 10
+[ERROR] The compilation of coq:io:hello-world failed at &quot;sh -c cd extraction &amp;&amp;
+        make&quot;.
 #=== ERROR while installing coq:io:hello-world.1.0.0 ==========================#
 # opam-version         1.2.2
 # os                   linux
-# command              make -j4
+# command              sh -c cd extraction &amp;&amp; make
 # path                 /home/bench/.opam/system/build/coq:io:hello-world.1.0.0
 # compiler             system (4.02.1)
 # exit-code            2
-# env-file             /home/bench/.opam/system/build/coq:io:hello-world.1.0.0/coq:io:hello-world-12000-ad8886.env
-# stdout-file          /home/bench/.opam/system/build/coq:io:hello-world.1.0.0/coq:io:hello-world-12000-ad8886.out
-# stderr-file          /home/bench/.opam/system/build/coq:io:hello-world.1.0.0/coq:io:hello-world-12000-ad8886.err
+# env-file             /home/bench/.opam/system/build/coq:io:hello-world.1.0.0/coq:io:hello-world-3207-d8a4ae.env
+# stdout-file          /home/bench/.opam/system/build/coq:io:hello-world.1.0.0/coq:io:hello-world-3207-d8a4ae.out
+# stderr-file          /home/bench/.opam/system/build/coq:io:hello-world.1.0.0/coq:io:hello-world-3207-d8a4ae.err
 ### stdout ###
-# &quot;coqdep&quot; -c -slash -R src HelloWorld &quot;src/Main.v&quot; &gt; &quot;src/Main.v.d&quot; || ( RV=$?; rm -f &quot;src/Main.v.d&quot;; exit ${RV} )
-# &quot;coqc&quot;  -q  -R src HelloWorld   src/Main
-# File &quot;/home/bench/.opam/system/build/coq:io:hello-world.1.0.0/src/Main.v&quot;, line 32, characters 19-33:
-# Error: The reference Extraction.run was not found in the current environment.
-# Makefile:199: recipe for target &#39;src/Main.vo&#39; failed
+# Hint: Recursive traversal of subdirectories was not enabled for this build,
+# [...]
+#   you should add the option &quot;-r&quot; or create an empty &#39;_tags&#39; file.
+#   
+#   To enable recursive traversal for some subdirectories only, you can use the
+#   following &#39;_tags&#39; file:
+#   
+#       true: -traverse
+#       &lt;dir1&gt; or &lt;dir2&gt;: traverse
+#       
+# Makefile:2: recipe for target &#39;build&#39; failed
 ### stderr ###
-# make: *** [src/Main.vo] Error 1
+# make: *** [build] Error 10
 =-=- Error report -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 The following actions failed
   - install coq:io:hello-world 1.0.0
