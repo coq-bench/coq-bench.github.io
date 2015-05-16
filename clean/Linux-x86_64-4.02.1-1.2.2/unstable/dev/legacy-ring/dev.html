@@ -44,10 +44,10 @@
               legacy-ring
               <small>
                 dev
-                <span class="label label-success">6 s</span>
+                <span class="label label-danger">Error</span>
               </small>
             </h1>
-            <p><em><script>document.write(moment("2015-05-15 04:45:15 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2015-05-15 04:45:15 UTC)</em><p>
+            <p><em><script>document.write(moment("2015-05-16 19:47:23 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2015-05-16 19:47:23 UTC)</em><p>
             <h2>Context</h2>
             <pre># Installed packages for system:
 base-bigarray  base  Bigarray library distributed with the OCaml compiler
@@ -92,57 +92,112 @@ coq             dev  Formal proof management system.
               <dt>Command</dt>
               <dd><code>opam list; ulimit -Sv 4000000; timeout 120m opam install -y -v coq:legacy-ring.dev</code></dd>
               <dt>Return code</dt>
-              <dd>0</dd>
+              <dd>1024</dd>
               <dt>Duration</dt>
-              <dd>6 s</dd>
+              <dd>3 s</dd>
+              <dt>Output</dt>
+              <dd><pre># Installed packages for system:
+base-bigarray  base  Bigarray library distributed with the OCaml compiler
+base-threads   base  Threads library distributed with the OCaml compiler
+base-unix      base  Unix library distributed with the OCaml compiler
+camlp5         6.12  Preprocessor-pretty-printer of OCaml
+coq             dev  Formal proof management system.
+The following actions will be performed:
+  - install coq:legacy-ring dev
+=-=- Gathering sources =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+[coq:legacy-ring: git] Command started
+[coq:legacy-ring: git] Command started
+[coq:legacy-ring: git] Command started
+[coq:legacy-ring: git] Command started
+[coq:legacy-ring: git] Command started
+[coq:legacy-ring: git] Command started
+[coq:legacy-ring] https://gforge.inria.fr/git/coq-contribs/legacy-ring.git#trunk updated
+=-=- Processing actions -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+[coq:legacy-ring: coq_makefile Make] Command started
++ coq_makefile &quot;-f&quot; &quot;Make&quot; &quot;-o&quot; &quot;Makefile&quot; (CWD=/home/bench/.opam/system/build/coq:legacy-ring.dev)
+[coq:legacy-ring: make] Command started
++ make &quot;-j4&quot; (CWD=/home/bench/.opam/system/build/coq:legacy-ring.dev)
+- &quot;coqdep&quot; -c -I &quot;.&quot; &quot;legacy_ring_plugin.mllib&quot; &gt; &quot;legacy_ring_plugin.mllib.d&quot; || ( RV=$?; rm -f &quot;legacy_ring_plugin.mllib.d&quot;; exit ${RV} )
+- ocamldep.opt -slash -I &quot;.&quot; &quot;ring.ml&quot; &gt; &quot;ring.ml.d&quot; || ( RV=$?; rm -f &quot;ring.ml.d&quot;; exit ${RV} )
+- ocamldep.opt -slash -I &quot;.&quot; -pp &#39;/home/bench/.opam/system/bin/camlp5o -I /usr/local/lib/ocaml/ -I /usr/local/lib/ocaml/threads/ -I &quot;/home/bench/.opam/system/lib/coq/kernel&quot; -I &quot;/home/bench/.opam/system/lib/coq/lib&quot; -I &quot;/home/bench/.opam/system/lib/coq/library&quot; -I &quot;/home/bench/.opam/system/lib/coq/parsing&quot; -I &quot;/home/bench/.opam/system/lib/coq/engine&quot; -I &quot;/home/bench/.opam/system/lib/coq/pretyping&quot; -I &quot;/home/bench/.opam/system/lib/coq/interp&quot; -I &quot;/home/bench/.opam/system/lib/coq/printing&quot; -I &quot;/home/bench/.opam/system/lib/coq/intf&quot; -I &quot;/home/bench/.opam/system/lib/coq/proofs&quot; -I &quot;/home/bench/.opam/system/lib/coq/tactics&quot; -I &quot;/home/bench/.opam/system/lib/coq/tools&quot; -I &quot;/home/bench/.opam/system/lib/coq/toplevel&quot; -I &quot;/home/bench/.opam/system/lib/coq/stm&quot; -I &quot;/home/bench/.opam/system/lib/coq/grammar&quot; -I &quot;/home/bench/.opam/system/lib/coq/config&quot; -I &quot;/home/bench/.opam/system/lib/coq//plugins/btauto&quot; -I &quot;/home/bench/.opam/system/lib/coq//plugins/cc&quot; -I &quot;/home/bench/.opam/system/lib/coq//plugins/decl_mode&quot; -I &quot;/home/bench/.opam/system/lib/coq//plugins/derive&quot; -I &quot;/home/bench/.opam/system/lib/coq//plugins/extraction&quot; -I &quot;/home/bench/.opam/system/lib/coq//plugins/firstorder&quot; -I &quot;/home/bench/.opam/system/lib/coq//plugins/fourier&quot; -I &quot;/home/bench/.opam/system/lib/coq//plugins/funind&quot; -I &quot;/home/bench/.opam/system/lib/coq//plugins/micromega&quot; -I &quot;/home/bench/.opam/system/lib/coq//plugins/nsatz&quot; -I &quot;/home/bench/.opam/system/lib/coq//plugins/omega&quot; -I &quot;/home/bench/.opam/system/lib/coq//plugins/quote&quot; -I &quot;/home/bench/.opam/system/lib/coq//plugins/romega&quot; -I &quot;/home/bench/.opam/system/lib/coq//plugins/rtauto&quot; -I &quot;/home/bench/.opam/system/lib/coq//plugins/setoid_ring&quot; -I &quot;/home/bench/.opam/system/lib/coq//plugins/syntax&quot; -I &quot;/home/bench/.opam/system/lib/coq//plugins/xml&quot; compat5.cmo pa_extend.cmo q_MLast.cmo pa_macro.cmo unix.cma threads.cma grammar.cma -loc loc -impl&#39; -impl &quot;g_ring.ml4&quot; &gt; &quot;g_ring.ml4.d&quot; || ( RV=$?; rm -f &quot;g_ring.ml4.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; LegacyRing -I &quot;.&quot; &quot;LegacyArithRing.v&quot; &gt; &quot;LegacyArithRing.v.d&quot; || ( RV=$?; rm -f &quot;LegacyArithRing.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; LegacyRing -I &quot;.&quot; &quot;LegacyNArithRing.v&quot; &gt; &quot;LegacyNArithRing.v.d&quot; || ( RV=$?; rm -f &quot;LegacyNArithRing.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; LegacyRing -I &quot;.&quot; &quot;LegacyRing_theory.v&quot; &gt; &quot;LegacyRing_theory.v.d&quot; || ( RV=$?; rm -f &quot;LegacyRing_theory.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; LegacyRing -I &quot;.&quot; &quot;LegacyRing.v&quot; &gt; &quot;LegacyRing.v.d&quot; || ( RV=$?; rm -f &quot;LegacyRing.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; LegacyRing -I &quot;.&quot; &quot;LegacyZArithRing.v&quot; &gt; &quot;LegacyZArithRing.v.d&quot; || ( RV=$?; rm -f &quot;LegacyZArithRing.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; LegacyRing -I &quot;.&quot; &quot;Ring_abstract.v&quot; &gt; &quot;Ring_abstract.v.d&quot; || ( RV=$?; rm -f &quot;Ring_abstract.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; LegacyRing -I &quot;.&quot; &quot;Ring_normalize.v&quot; &gt; &quot;Ring_normalize.v.d&quot; || ( RV=$?; rm -f &quot;Ring_normalize.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; LegacyRing -I &quot;.&quot; &quot;Setoid_ring_normalize.v&quot; &gt; &quot;Setoid_ring_normalize.v.d&quot; || ( RV=$?; rm -f &quot;Setoid_ring_normalize.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; LegacyRing -I &quot;.&quot; &quot;Setoid_ring_theory.v&quot; &gt; &quot;Setoid_ring_theory.v.d&quot; || ( RV=$?; rm -f &quot;Setoid_ring_theory.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; LegacyRing -I &quot;.&quot; &quot;Setoid_ring.v&quot; &gt; &quot;Setoid_ring.v.d&quot; || ( RV=$?; rm -f &quot;Setoid_ring.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; LegacyRing -I &quot;.&quot; &quot;Ring_equiv.v&quot; &gt; &quot;Ring_equiv.v.d&quot; || ( RV=$?; rm -f &quot;Ring_equiv.v.d&quot;; exit ${RV} )
+- &quot;coqc&quot;  -q  -R &quot;.&quot; LegacyRing -I &quot;.&quot;   Setoid_ring_theory
+- &quot;coqc&quot;  -q  -R &quot;.&quot; LegacyRing -I &quot;.&quot;   LegacyRing_theory
+- ocamlc.opt -c -rectypes -thread  -I &quot;.&quot; -I &quot;/home/bench/.opam/system/lib/coq/kernel&quot; -I &quot;/home/bench/.opam/system/lib/coq/lib&quot; -I &quot;/home/bench/.opam/system/lib/coq/library&quot; -I &quot;/home/bench/.opam/system/lib/coq/parsing&quot; -I &quot;/home/bench/.opam/system/lib/coq/engine&quot; -I &quot;/home/bench/.opam/system/lib/coq/pretyping&quot; -I &quot;/home/bench/.opam/system/lib/coq/interp&quot; -I &quot;/home/bench/.opam/system/lib/coq/printing&quot; -I &quot;/home/bench/.opam/system/lib/coq/intf&quot; -I &quot;/home/bench/.opam/system/lib/coq/proofs&quot; -I &quot;/home/bench/.opam/system/lib/coq/tactics&quot; -I &quot;/home/bench/.opam/system/lib/coq/tools&quot; -I &quot;/home/bench/.opam/system/lib/coq/toplevel&quot; -I &quot;/home/bench/.opam/system/lib/coq/stm&quot; -I &quot;/home/bench/.opam/system/lib/coq/grammar&quot; -I &quot;/home/bench/.opam/system/lib/coq/config&quot; -I &quot;/home/bench/.opam/system/lib/coq//plugins/btauto&quot; -I &quot;/home/bench/.opam/system/lib/coq//plugins/cc&quot; -I &quot;/home/bench/.opam/system/lib/coq//plugins/decl_mode&quot; -I &quot;/home/bench/.opam/system/lib/coq//plugins/derive&quot; -I &quot;/home/bench/.opam/system/lib/coq//plugins/extraction&quot; -I &quot;/home/bench/.opam/system/lib/coq//plugins/firstorder&quot; -I &quot;/home/bench/.opam/system/lib/coq//plugins/fourier&quot; -I &quot;/home/bench/.opam/system/lib/coq//plugins/funind&quot; -I &quot;/home/bench/.opam/system/lib/coq//plugins/micromega&quot; -I &quot;/home/bench/.opam/system/lib/coq//plugins/nsatz&quot; -I &quot;/home/bench/.opam/system/lib/coq//plugins/omega&quot; -I &quot;/home/bench/.opam/system/lib/coq//plugins/quote&quot; -I &quot;/home/bench/.opam/system/lib/coq//plugins/romega&quot; -I &quot;/home/bench/.opam/system/lib/coq//plugins/rtauto&quot; -I &quot;/home/bench/.opam/system/lib/coq//plugins/setoid_ring&quot; -I &quot;/home/bench/.opam/system/lib/coq//plugins/syntax&quot; -I &quot;/home/bench/.opam/system/lib/coq//plugins/xml&quot; -I /home/bench/.opam/system/lib/camlp5 ring.ml
+- ocamlopt.opt -c -rectypes -thread  -I &quot;.&quot; -I &quot;/home/bench/.opam/system/lib/coq/kernel&quot; -I &quot;/home/bench/.opam/system/lib/coq/lib&quot; -I &quot;/home/bench/.opam/system/lib/coq/library&quot; -I &quot;/home/bench/.opam/system/lib/coq/parsing&quot; -I &quot;/home/bench/.opam/system/lib/coq/engine&quot; -I &quot;/home/bench/.opam/system/lib/coq/pretyping&quot; -I &quot;/home/bench/.opam/system/lib/coq/interp&quot; -I &quot;/home/bench/.opam/system/lib/coq/printing&quot; -I &quot;/home/bench/.opam/system/lib/coq/intf&quot; -I &quot;/home/bench/.opam/system/lib/coq/proofs&quot; -I &quot;/home/bench/.opam/system/lib/coq/tactics&quot; -I &quot;/home/bench/.opam/system/lib/coq/tools&quot; -I &quot;/home/bench/.opam/system/lib/coq/toplevel&quot; -I &quot;/home/bench/.opam/system/lib/coq/stm&quot; -I &quot;/home/bench/.opam/system/lib/coq/grammar&quot; -I &quot;/home/bench/.opam/system/lib/coq/config&quot; -I &quot;/home/bench/.opam/system/lib/coq//plugins/btauto&quot; -I &quot;/home/bench/.opam/system/lib/coq//plugins/cc&quot; -I &quot;/home/bench/.opam/system/lib/coq//plugins/decl_mode&quot; -I &quot;/home/bench/.opam/system/lib/coq//plugins/derive&quot; -I &quot;/home/bench/.opam/system/lib/coq//plugins/extraction&quot; -I &quot;/home/bench/.opam/system/lib/coq//plugins/firstorder&quot; -I &quot;/home/bench/.opam/system/lib/coq//plugins/fourier&quot; -I &quot;/home/bench/.opam/system/lib/coq//plugins/funind&quot; -I &quot;/home/bench/.opam/system/lib/coq//plugins/micromega&quot; -I &quot;/home/bench/.opam/system/lib/coq//plugins/nsatz&quot; -I &quot;/home/bench/.opam/system/lib/coq//plugins/omega&quot; -I &quot;/home/bench/.opam/system/lib/coq//plugins/quote&quot; -I &quot;/home/bench/.opam/system/lib/coq//plugins/romega&quot; -I &quot;/home/bench/.opam/system/lib/coq//plugins/rtauto&quot; -I &quot;/home/bench/.opam/system/lib/coq//plugins/setoid_ring&quot; -I &quot;/home/bench/.opam/system/lib/coq//plugins/syntax&quot; -I &quot;/home/bench/.opam/system/lib/coq//plugins/xml&quot; -I /home/bench/.opam/system/lib/camlp5 ring.ml
+- Makefile:362: recipe for target &#39;ring.cmx&#39; failed
+- Makefile:359: recipe for target &#39;ring.cmo&#39; failed
+- *** Warning: legacy_ring_plugin.mllib already found in . (discarding ./legacy_ring_plugin.mllib)
+- File &quot;ring.ml&quot;, line 292, characters 24-56:
+- File &quot;ring.ml&quot;, line 292, characters 24-56:
+- Error: This expression has type Evd.evar_map * Term.types
+-        but an expression was expected of type Term.constr = Constr.t
+- Error: This expression has type Evd.evar_map * Term.types
+-        but an expression was expected of type Term.constr = Constr.t
+- make: *** [ring.cmx] Error 2
+- make: *** Waiting for unfinished jobs....
+- make: *** [ring.cmo] Error 2
+[ERROR] The compilation of coq:legacy-ring failed at &quot;make -j4&quot;.
+[coq:legacy-ring: rm] Command started
++ rm &quot;-R&quot; &quot;/home/bench/.opam/system/lib/coq/user-contrib/LegacyRing&quot; (CWD=/home/bench/.opam/system/build/coq:legacy-ring.dev)
+- rm: cannot remove &#39;/home/bench/.opam/system/lib/coq/user-contrib/LegacyRing&#39;: No such file or directory
+#=== ERROR while installing coq:legacy-ring.dev ===============================#
+# opam-version         1.2.2
+# os                   linux
+# command              make -j4
+# path                 /home/bench/.opam/system/build/coq:legacy-ring.dev
+# compiler             system (4.02.1)
+# exit-code            2
+# env-file             /home/bench/.opam/system/build/coq:legacy-ring.dev/coq:legacy-ring-10502-d2d111.env
+# stdout-file          /home/bench/.opam/system/build/coq:legacy-ring.dev/coq:legacy-ring-10502-d2d111.out
+# stderr-file          /home/bench/.opam/system/build/coq:legacy-ring.dev/coq:legacy-ring-10502-d2d111.err
+### stdout ###
+# [...]
+# &quot;coqdep&quot; -c -R &quot;.&quot; LegacyRing -I &quot;.&quot; &quot;Setoid_ring_normalize.v&quot; &gt; &quot;Setoid_ring_normalize.v.d&quot; || ( RV=$?; rm -f &quot;Setoid_ring_normalize.v.d&quot;; exit ${RV} )
+# &quot;coqdep&quot; -c -R &quot;.&quot; LegacyRing -I &quot;.&quot; &quot;Setoid_ring_theory.v&quot; &gt; &quot;Setoid_ring_theory.v.d&quot; || ( RV=$?; rm -f &quot;Setoid_ring_theory.v.d&quot;; exit ${RV} )
+# &quot;coqdep&quot; -c -R &quot;.&quot; LegacyRing -I &quot;.&quot; &quot;Setoid_ring.v&quot; &gt; &quot;Setoid_ring.v.d&quot; || ( RV=$?; rm -f &quot;Setoid_ring.v.d&quot;; exit ${RV} )
+# &quot;coqdep&quot; -c -R &quot;.&quot; LegacyRing -I &quot;.&quot; &quot;Ring_equiv.v&quot; &gt; &quot;Ring_equiv.v.d&quot; || ( RV=$?; rm -f &quot;Ring_equiv.v.d&quot;; exit ${RV} )
+# &quot;coqc&quot;  -q  -R &quot;.&quot; LegacyRing -I &quot;.&quot;   Setoid_ring_theory
+# &quot;coqc&quot;  -q  -R &quot;.&quot; LegacyRing -I &quot;.&quot;   LegacyRing_theory
+# ocamlc.opt -c -rectypes -thread  -I &quot;.&quot; -I &quot;/home/bench/.opam/system/lib/coq/kernel&quot; -I &quot;/home/bench/.opam/system/lib/coq/lib&quot; -I &quot;/home/bench/.opam/system/lib/coq/library&quot; -I &quot;/home/bench/.opam/system/lib/coq/parsing&quot; -I &quot;/home/bench/.opam/system/lib/coq/engine&quot; -I &quot;/home/bench/.opam/system/lib/coq/pretyping&quot; -I &quot;/home/bench/.opam/system/lib/coq/interp&quot; -I &quot;/home/bench/.opam/system/lib/coq/printing&quot; -I &quot;/home/bench/.opam/system/lib/coq/intf&quot; -I &quot;/home/bench/.opam/system/lib/coq/proofs&quot; -I &quot;/home/bench/.opam/system/lib/coq/tactics&quot; -I &quot;/home/bench/.opam/system/lib/coq/tools&quot; -I &quot;/home/bench/.opam/system/lib/coq/toplevel&quot; -I &quot;/home/bench/.opam/system/lib/coq/stm&quot; -I &quot;/home/bench/.opam/system/lib/coq/grammar&quot; -I &quot;/home/bench/.opam/system/lib/coq/config&quot; -I &quot;/home/bench/.opam/system/lib/coq//plugins/btauto&quot; -I &quot;/home/bench/.opam/system/lib/coq//plugins/cc&quot; -I &quot;/home/bench/.opam/system/lib/coq//plugins/decl_mode&quot; -I &quot;/home/bench/.opam/system/lib/coq//plugins/derive&quot; -I &quot;/home/bench/.opam/system/lib/coq//plugins/extraction&quot; -I &quot;/home/bench/.opam/system/lib/coq//plugins/firstorder&quot; -I &quot;/home/bench/.opam/system/lib/coq//plugins/fourier&quot; -I &quot;/home/bench/.opam/system/lib/coq//plugins/funind&quot; -I &quot;/home/bench/.opam/system/lib/coq//plugins/micromega&quot; -I &quot;/home/bench/.opam/system/lib/coq//plugins/nsatz&quot; -I &quot;/home/bench/.opam/system/lib/coq//plugins/omega&quot; -I &quot;/home/bench/.opam/system/lib/coq//plugins/quote&quot; -I &quot;/home/bench/.opam/system/lib/coq//plugins/romega&quot; -I &quot;/home/bench/.opam/system/lib/coq//plugins/rtauto&quot; -I &quot;/home/bench/.opam/system/lib/coq//plugins/setoid_ring&quot; -I &quot;/home/bench/.opam/system/lib/coq//plugins/syntax&quot; -I &quot;/home/bench/.opam/system/lib/coq//plugins/xml&quot; -I /home/bench/.opam/system/lib/camlp5 ring.ml
+# ocamlopt.opt -c -rectypes -thread  -I &quot;.&quot; -I &quot;/home/bench/.opam/system/lib/coq/kernel&quot; -I &quot;/home/bench/.opam/system/lib/coq/lib&quot; -I &quot;/home/bench/.opam/system/lib/coq/library&quot; -I &quot;/home/bench/.opam/system/lib/coq/parsing&quot; -I &quot;/home/bench/.opam/system/lib/coq/engine&quot; -I &quot;/home/bench/.opam/system/lib/coq/pretyping&quot; -I &quot;/home/bench/.opam/system/lib/coq/interp&quot; -I &quot;/home/bench/.opam/system/lib/coq/printing&quot; -I &quot;/home/bench/.opam/system/lib/coq/intf&quot; -I &quot;/home/bench/.opam/system/lib/coq/proofs&quot; -I &quot;/home/bench/.opam/system/lib/coq/tactics&quot; -I &quot;/home/bench/.opam/system/lib/coq/tools&quot; -I &quot;/home/bench/.opam/system/lib/coq/toplevel&quot; -I &quot;/home/bench/.opam/system/lib/coq/stm&quot; -I &quot;/home/bench/.opam/system/lib/coq/grammar&quot; -I &quot;/home/bench/.opam/system/lib/coq/config&quot; -I &quot;/home/bench/.opam/system/lib/coq//plugins/btauto&quot; -I &quot;/home/bench/.opam/system/lib/coq//plugins/cc&quot; -I &quot;/home/bench/.opam/system/lib/coq//plugins/decl_mode&quot; -I &quot;/home/bench/.opam/system/lib/coq//plugins/derive&quot; -I &quot;/home/bench/.opam/system/lib/coq//plugins/extraction&quot; -I &quot;/home/bench/.opam/system/lib/coq//plugins/firstorder&quot; -I &quot;/home/bench/.opam/system/lib/coq//plugins/fourier&quot; -I &quot;/home/bench/.opam/system/lib/coq//plugins/funind&quot; -I &quot;/home/bench/.opam/system/lib/coq//plugins/micromega&quot; -I &quot;/home/bench/.opam/system/lib/coq//plugins/nsatz&quot; -I &quot;/home/bench/.opam/system/lib/coq//plugins/omega&quot; -I &quot;/home/bench/.opam/system/lib/coq//plugins/quote&quot; -I &quot;/home/bench/.opam/system/lib/coq//plugins/romega&quot; -I &quot;/home/bench/.opam/system/lib/coq//plugins/rtauto&quot; -I &quot;/home/bench/.opam/system/lib/coq//plugins/setoid_ring&quot; -I &quot;/home/bench/.opam/system/lib/coq//plugins/syntax&quot; -I &quot;/home/bench/.opam/system/lib/coq//plugins/xml&quot; -I /home/bench/.opam/system/lib/camlp5 ring.ml
+# Makefile:362: recipe for target &#39;ring.cmx&#39; failed
+# Makefile:359: recipe for target &#39;ring.cmo&#39; failed
+### stderr ###
+# [...]
+# *** Warning: legacy_ring_plugin.mllib already found in . (discarding ./legacy_ring_plugin.mllib)
+# File &quot;ring.ml&quot;, line 292, characters 24-56:
+# File &quot;ring.ml&quot;, line 292, characters 24-56:
+# Error: This expression has type Evd.evar_map * Term.types
+#        but an expression was expected of type Term.constr = Constr.t
+# Error: This expression has type Evd.evar_map * Term.types
+#        but an expression was expected of type Term.constr = Constr.t
+# make: *** [ring.cmx] Error 2
+# make: *** Waiting for unfinished jobs....
+# make: *** [ring.cmo] Error 2
+=-=- Error report -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+The following actions failed
+  - install coq:legacy-ring dev
+No changes have been performed
+&#39;opam install -y -v coq:legacy-ring.dev&#39; failed.
+</pre></dd>
             </dl>
             <h2>Installation size</h2>
-            <p>Total: 1,524 K</p>
-            <ul>
-              <li>229 K <code>lib/coq/user-contrib/LegacyRing/legacy_ring_plugin.cmxs</code></li>
-              <li>205 K <code>lib/coq/user-contrib/LegacyRing/Setoid_ring_normalize.glob</code></li>
-              <li>131 K <code>lib/coq/user-contrib/LegacyRing/Setoid_ring_normalize.vo</code></li>
-              <li>105 K <code>lib/coq/user-contrib/LegacyRing/Ring_normalize.glob</code></li>
-              <li>101 K <code>lib/coq/user-contrib/LegacyRing/Ring_normalize.vo</code></li>
-              <li>80 K <code>lib/coq/user-contrib/LegacyRing/Ring_abstract.glob</code></li>
-              <li>77 K <code>lib/coq/user-contrib/LegacyRing/legacy_ring_plugin.cma</code></li>
-              <li>76 K <code>lib/coq/user-contrib/LegacyRing/Setoid_ring_theory.glob</code></li>
-              <li>74 K <code>lib/coq/user-contrib/LegacyRing/Setoid_ring_theory.vo</code></li>
-              <li>69 K <code>lib/coq/user-contrib/LegacyRing/Ring_abstract.vo</code></li>
-              <li>57 K <code>lib/coq/user-contrib/LegacyRing/LegacyRing_theory.glob</code></li>
-              <li>52 K <code>lib/coq/user-contrib/LegacyRing/LegacyRing_theory.vo</code></li>
-              <li>35 K <code>lib/coq/user-contrib/LegacyRing/Setoid_ring_normalize.v</code></li>
-              <li>25 K <code>lib/coq/user-contrib/LegacyRing/Ring_normalize.v</code></li>
-              <li>25 K <code>lib/coq/user-contrib/LegacyRing/LegacyNArithRing.vo</code></li>
-              <li>25 K <code>lib/coq/user-contrib/LegacyRing/ring.cmi</code></li>
-              <li>24 K <code>lib/coq/user-contrib/LegacyRing/LegacyArithRing.vo</code></li>
-              <li>21 K <code>lib/coq/user-contrib/LegacyRing/LegacyZArithRing.vo</code></li>
-              <li>18 K <code>lib/coq/user-contrib/LegacyRing/Ring_abstract.v</code></li>
-              <li>17 K <code>lib/coq/user-contrib/LegacyRing/Ring_equiv.vo</code></li>
-              <li>14 K <code>lib/coq/user-contrib/LegacyRing/LegacyRing.vo</code></li>
-              <li>10 K <code>lib/coq/user-contrib/LegacyRing/Setoid_ring_theory.v</code></li>
-              <li>9 K <code>lib/coq/user-contrib/LegacyRing/LegacyRing_theory.v</code></li>
-              <li>8 K <code>lib/coq/user-contrib/LegacyRing/Ring_equiv.glob</code></li>
-              <li>4 K <code>lib/coq/user-contrib/LegacyRing/g_ring.cmi</code></li>
-              <li>2 K <code>lib/coq/user-contrib/LegacyRing/LegacyArithRing.glob</code></li>
-              <li>2 K <code>lib/coq/user-contrib/LegacyRing/LegacyNArithRing.glob</code></li>
-              <li>2 K <code>lib/coq/user-contrib/LegacyRing/LegacyArithRing.v</code></li>
-              <li>1 K <code>lib/coq/user-contrib/LegacyRing/LegacyZArithRing.glob</code></li>
-              <li>1 K <code>lib/coq/user-contrib/LegacyRing/Setoid_ring.vo</code></li>
-              <li>1 K <code>lib/coq/user-contrib/LegacyRing/Ring_equiv.v</code></li>
-              <li>1 K <code>lib/coq/user-contrib/LegacyRing/LegacyRing.v</code></li>
-              <li>1 K <code>lib/coq/user-contrib/LegacyRing/LegacyNArithRing.v</code></li>
-              <li>1 K <code>lib/coq/user-contrib/LegacyRing/LegacyZArithRing.v</code></li>
-              <li>1 K <code>lib/coq/user-contrib/LegacyRing/LegacyRing.glob</code></li>
-              <li>1 K <code>lib/coq/user-contrib/LegacyRing/Setoid_ring.v</code></li>
-              <li>1 K <code>lib/coq/user-contrib/LegacyRing/Setoid_ring.glob</code></li>
-              <li>1 K <code>install/coq:legacy-ring.install</code></li>
-              <li>0 K <code>lib/coq:legacy-ring/opam.config</code></li>
-            </ul>
+            <p>No files were installed.</p>
             <h2>Uninstall</h2>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>opam remove -y coq:legacy-ring.dev</code></dd>
+              <dd><code>true</code></dd>
               <dt>Return code</dt>
               <dd>0</dd>
               <dt>Missing removes</dt>
