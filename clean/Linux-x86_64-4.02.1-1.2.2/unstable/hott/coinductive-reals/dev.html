@@ -47,7 +47,7 @@
                 <span class="label label-warning">Error with dependencies</span>
               </small>
             </h1>
-            <p><em><script>document.write(moment("2015-06-11 11:16:29 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2015-06-11 11:16:29 UTC)</em><p>
+            <p><em><script>document.write(moment("2015-06-13 08:40:41 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2015-06-13 08:40:41 UTC)</em><p>
             <h2>Context</h2>
             <pre># Installed packages for system:
 base-bigarray           base  Bigarray library distributed with the OCaml compil
@@ -86,9 +86,9 @@ ocamlfind              1.5.5  A library manager for OCaml
               <dt>Command</dt>
               <dd><code>opam list; ulimit -Sv 1000000; timeout 5m opam install -y --deps-only coq:coinductive-reals.dev</code></dd>
               <dt>Return code</dt>
-              <dd>31744</dd>
+              <dd>1024</dd>
               <dt>Duration</dt>
-              <dd>5 m 0 s</dd>
+              <dd>25 s</dd>
               <dt>Output</dt>
               <dd><pre># Installed packages for system:
 base-bigarray           base  Bigarray library distributed with the OCaml compil
@@ -112,6 +112,38 @@ The following actions will be performed:
 =-=- Processing actions -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 [coq:qarith-stern-brocot: coq_makefile Make] Command started
 [coq:qarith-stern-brocot: make] Command started
+[ERROR] The compilation of coq:qarith-stern-brocot failed at &quot;make -j4&quot;.
+[coq:qarith-stern-brocot: rm] Command started
+#=== ERROR while installing coq:qarith-stern-brocot.dev =======================#
+# opam-version         1.2.2
+# os                   linux
+# command              make -j4
+# path                 /home/bench/.opam/system/build/coq:qarith-stern-brocot.dev
+# compiler             system (4.02.1)
+# exit-code            2
+# env-file             /home/bench/.opam/system/build/coq:qarith-stern-brocot.dev/coq:qarith-stern-brocot-2093-d2d111.env
+# stdout-file          /home/bench/.opam/system/build/coq:qarith-stern-brocot.dev/coq:qarith-stern-brocot-2093-d2d111.out
+# stderr-file          /home/bench/.opam/system/build/coq:qarith-stern-brocot.dev/coq:qarith-stern-brocot-2093-d2d111.err
+### stdout ###
+# [...]
+# &quot;coqc&quot;  -q  -R &quot;.&quot; QArithSternBrocot   Qhomographic_sign
+# &quot;coqc&quot;  -q  -R &quot;.&quot; QArithSternBrocot   general_Q
+# &quot;coqc&quot;  -q  -R &quot;.&quot; QArithSternBrocot   Qhomographic_Qpositive_to_Qpositive
+# &quot;coqc&quot;  -q  -R &quot;.&quot; QArithSternBrocot   Qsyntax
+# &quot;coqc&quot;  -q  -R &quot;.&quot; QArithSternBrocot   Q_ordered_field_properties
+# &quot;coqc&quot;  -q  -R &quot;.&quot; QArithSternBrocot   Qhomographic_sign_properties
+# &quot;coqc&quot;  -q  -R &quot;.&quot; QArithSternBrocot   Qquadratic_sign
+# &quot;coqc&quot;  -q  -R &quot;.&quot; QArithSternBrocot   Q_to_R
+# &quot;coqc&quot;  -q  -R &quot;.&quot; QArithSternBrocot   Qmax_min
+# Makefile:272: recipe for target &#39;Q_to_R.vo&#39; failed
+### stderr ###
+# Fatal error: out of memory.
+# make: *** [Q_to_R.vo] Error 2
+# make: *** Waiting for unfinished jobs....
+=-=- Error report -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+The following actions failed
+  - install coq:qarith-stern-brocot dev
+No changes have been performed
 </pre></dd>
             </dl>
             <h2>Install</h2>
