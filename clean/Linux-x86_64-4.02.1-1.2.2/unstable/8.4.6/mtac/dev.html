@@ -31,7 +31,7 @@
           <div id="navbar" class="collapse navbar-collapse">
             <ul class="nav navbar-nav">
               <li><a href="../..">clean / unstable</a></li>
-              <li class="active"><a href="">8.4.6 / pautomata - dev</a></li>
+              <li class="active"><a href="">8.4.6 / mtac - dev</a></li>
             </ul>
           </div>
         </div>
@@ -41,10 +41,10 @@
           <div class="col-md-12">
             <a href="../..">« Up</a>
             <h1>
-              pautomata
+              mtac
               <small>
                 dev
-                <span class="label label-info">Not compatible with this Coq</span>
+                <span class="label label-danger">Lint error</span>
               </small>
             </h1>
             <p><em><script>document.write(moment("2015-06-14 12:01:46 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2015-06-14 12:01:46 UTC)</em><p>
@@ -59,30 +59,25 @@ coq            8.4.6  Formal proof management system.
             <h2>Lint</h2>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>ruby lint.rb unstable ../unstable/packages/coq:pautomata/coq:pautomata.dev</code></dd>
+              <dd><code>ruby lint.rb unstable ../unstable/packages/coq:mtac/coq:mtac.dev</code></dd>
               <dt>Return code</dt>
-              <dd>0</dd>
+              <dd>256</dd>
+              <dt>Output</dt>
+              <dd><pre>The first line of the description should end by a dot (.) to ensure uniformity.
+</pre></dd>
             </dl>
             <h2>Dry install</h2>
             <p>Dry install with the current Coq version:</p>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>opam install -y --show-action coq:pautomata.dev coq.8.4.6</code></dd>
+              <dd><code>true</code></dd>
               <dt>Return code</dt>
-              <dd>768</dd>
-              <dt>Output</dt>
-              <dd><pre>[NOTE] Package coq is already installed (current version is 8.4.6).
-The following dependencies couldn&#39;t be met:
-  - coq:pautomata -&gt; coq &gt;= 8.5
-Your request can&#39;t be satisfied:
-  - Conflicting version constraints for coq
-No solution found, exiting
-</pre></dd>
+              <dd>0</dd>
             </dl>
             <p>Dry install without Coq, to test if the problem was incompatibility with the current Coq version:</p>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>opam remove -y coq; opam install -y --show-action coq:pautomata.dev</code></dd>
+              <dd><code>true</code></dd>
               <dt>Return code</dt>
               <dd>0</dd>
             </dl>
