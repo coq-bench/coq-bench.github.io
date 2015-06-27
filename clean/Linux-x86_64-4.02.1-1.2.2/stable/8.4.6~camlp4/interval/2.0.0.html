@@ -44,10 +44,10 @@
               interval
               <small>
                 2.0.0
-                <span class="label label-warning">Error with dependencies</span>
+                <span class="label label-info">Not compatible with this Coq</span>
               </small>
             </h1>
-            <p><em><script>document.write(moment("2015-06-26 19:45:27 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2015-06-26 19:45:27 UTC)</em><p>
+            <p><em><script>document.write(moment("2015-06-27 20:37:25 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2015-06-27 20:37:25 UTC)</em><p>
             <h2>Context</h2>
             <pre># Installed packages for system:
 base-bigarray          base  Bigarray library distributed with the OCaml compile
@@ -69,53 +69,31 @@ coq            8.4.6~camlp4  Formal proof management system.
               <dt>Command</dt>
               <dd><code>opam install -y --show-action coq:interval.2.0.0 coq.8.4.6~camlp4</code></dd>
               <dt>Return code</dt>
-              <dd>0</dd>
+              <dd>768</dd>
+              <dt>Output</dt>
+              <dd><pre>[NOTE] Package coq is already installed (current version is 8.4.6~camlp4).
+The following dependencies couldn&#39;t be met:
+  - coq:interval -&gt; coq:ssreflect &gt;= 1.5.0 -&gt; coq != 8.4.6~camlp4
+Your request can&#39;t be satisfied:
+  - Conflicting version constraints for coq
+No solution found, exiting
+</pre></dd>
             </dl>
             <p>Dry install without Coq, to test if the problem was incompatibility with the current Coq version:</p>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>true</code></dd>
+              <dd><code>opam remove -y coq; opam install -y --show-action coq:interval.2.0.0</code></dd>
               <dt>Return code</dt>
               <dd>0</dd>
             </dl>
             <h2>Install dependencies</h2>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>opam list; ulimit -Sv 1000000; timeout 5m opam install -y --deps-only coq:interval.2.0.0</code></dd>
+              <dd><code>true</code></dd>
               <dt>Return code</dt>
-              <dd>16896</dd>
+              <dd>0</dd>
               <dt>Duration</dt>
-              <dd>2 s</dd>
-              <dt>Output</dt>
-              <dd><pre># Installed packages for system:
-base-bigarray          base  Bigarray library distributed with the OCaml compile
-base-threads           base  Threads library distributed with the OCaml compiler
-base-unix              base  Unix library distributed with the OCaml compiler
-camlp4          4.02+system  Camlp4 is a system for writing extensible parsers f
-coq            8.4.6~camlp4  Formal proof management system.
-The following actions will be performed:
-  - install coq:ssreflect 1.5.0
-  - install coq:flocq     2.4.0
-  - install coq:math-comp 1.5.0
-===== 3 to install =====
-=-=- Gathering sources =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
-[coq:flocq: http] Command started
-[coq:math-comp: http] Command started
-[coq:ssreflect: http] Command started
-[coq:ssreflect: http] Command started
-[coq:ssreflect.1.5.0] http://ssr.msr-inria.inria.fr/FTP/ssreflect-1.5.tar.gz downloaded
-[coq:math-comp: http] Command started
-[coq:math-comp.1.5.0] http://ssr.msr-inria.inria.fr/FTP/mathcomp-1.5.tar.gz downloaded
-[coq:flocq: http] Command started
-[ERROR] Bad checksum for
-        /home/bench/.opam/packages.dev/coq:flocq.2.4.0/flocq-2.4.0.tar.gz:
-          - 36cee0fb33acf8d292d76a28a22062d5 [expected result]
-          - bf2bc3762b98b2f2d146708ae9addca2 [actual result]
-        This may be fixed by running `opam update`.
-[ERROR] The sources of the following couldn&#39;t be obtained, aborting:
-          - coq:flocq.2.4.0
-        (This may be fixed by running &#39;opam update&#39;)
-</pre></dd>
+              <dd>0 s</dd>
             </dl>
             <h2>Install</h2>
             <dl class="dl-horizontal">
