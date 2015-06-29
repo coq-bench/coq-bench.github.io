@@ -41,7 +41,7 @@
                 <span class="label label-danger">Error</span>
               </small>
             </h1>
-            <p><em><script>document.write(moment("2015-06-29 15:55:30 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2015-06-29 15:55:30 UTC)</em><p>
+            <p><em><script>document.write(moment("2015-06-29 17:59:42 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2015-06-29 17:59:42 UTC)</em><p>
             <h2>Context</h2>
             <pre># Installed packages for system:
 base-bigarray   base  Bigarray library distributed with the OCaml compiler
@@ -79,7 +79,7 @@ coq            8.4.5  Formal proof management system.
               <dt>Return code</dt>
               <dd>0</dd>
               <dt>Duration</dt>
-              <dd>37 s</dd>
+              <dd>2 s</dd>
             </dl>
             <h2>Install</h2>
             <dl class="dl-horizontal">
@@ -88,24 +88,14 @@ coq            8.4.5  Formal proof management system.
               <dt>Return code</dt>
               <dd>1024</dd>
               <dt>Duration</dt>
-              <dd>4 s</dd>
+              <dd>3 s</dd>
               <dt>Output</dt>
               <dd><pre># Installed packages for system:
-base-bigarray          base  Bigarray library distributed with the OCaml compile
-base-threads           base  Threads library distributed with the OCaml compiler
-base-unix              base  Unix library distributed with the OCaml compiler
-camlp5                 6.13  Preprocessor-pretty-printer of OCaml
-coq                   8.4.5  Formal proof management system.
-coq:error-handlers    1.0.0  Simple and robust error handling functions.
-coq:function-ninjas   1.0.0  Write readable code using simple functional combina
-coq:io                3.1.0  A library for effects in Coq.
-coq:io:system         2.3.0  System effects for Coq.
-coq:io:system:ocaml   2.3.0  Extraction to OCaml of system effects.
-coq:list-plus         1.1.0  More functions on lists.
-coq:list-string       2.1.0  Strings implemented as lists.
-lwt                   2.4.8  A cooperative threads library for OCaml
-ocamlfind             1.5.5  A library manager for OCaml
-ppx_tools            0.99.2  Tools for authors of ppx rewriters and other syntac
+base-bigarray   base  Bigarray library distributed with the OCaml compiler
+base-threads    base  Threads library distributed with the OCaml compiler
+base-unix       base  Unix library distributed with the OCaml compiler
+camlp5          6.13  Preprocessor-pretty-printer of OCaml
+coq            8.4.5  Formal proof management system.
 The following actions will be performed:
   - install coq:io:hello-world 1.0.0
 =-=- Gathering sources =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
@@ -120,9 +110,12 @@ The following actions will be performed:
 + make &quot;-j4&quot; (CWD=/home/bench/.opam/system/build/coq:io:hello-world.1.0.0)
 - &quot;coqdep&quot; -c -slash -R src HelloWorld &quot;src/Main.v&quot; &gt; &quot;src/Main.v.d&quot; || ( RV=$?; rm -f &quot;src/Main.v.d&quot;; exit ${RV} )
 - &quot;coqc&quot;  -q  -R src HelloWorld   src/Main
-- File &quot;/home/bench/.opam/system/build/coq:io:hello-world.1.0.0/src/Main.v&quot;, line 32, characters 19-33:
-- Error: The reference Extraction.run was not found in the current environment.
+- File &quot;/home/bench/.opam/system/build/coq:io:hello-world.1.0.0/src/Main.v&quot;, line 2, characters 0-22:
+- Error: Cannot find library Io.All in loadpath
 - Makefile:199: recipe for target &#39;src/Main.vo&#39; failed
+- *** Warning: in file src/Main.v, library Io.All.v is required and has not been found in loadpath!
+- *** Warning: in file src/Main.v, library Io.System.All.v is required and has not been found in loadpath!
+- *** Warning: in file src/Main.v, library ListString.All.v is required and has not been found in loadpath!
 - make: *** [src/Main.vo] Error 1
 [ERROR] The compilation of coq:io:hello-world failed at &quot;make -j4&quot;.
 #=== ERROR while installing coq:io:hello-world.1.0.0 ==========================#
@@ -132,16 +125,19 @@ The following actions will be performed:
 # path                 /home/bench/.opam/system/build/coq:io:hello-world.1.0.0
 # compiler             system (4.02.2)
 # exit-code            2
-# env-file             /home/bench/.opam/system/build/coq:io:hello-world.1.0.0/coq:io:hello-world-27365-a71bb4.env
-# stdout-file          /home/bench/.opam/system/build/coq:io:hello-world.1.0.0/coq:io:hello-world-27365-a71bb4.out
-# stderr-file          /home/bench/.opam/system/build/coq:io:hello-world.1.0.0/coq:io:hello-world-27365-a71bb4.err
+# env-file             /home/bench/.opam/system/build/coq:io:hello-world.1.0.0/coq:io:hello-world-25678-a71bb4.env
+# stdout-file          /home/bench/.opam/system/build/coq:io:hello-world.1.0.0/coq:io:hello-world-25678-a71bb4.out
+# stderr-file          /home/bench/.opam/system/build/coq:io:hello-world.1.0.0/coq:io:hello-world-25678-a71bb4.err
 ### stdout ###
 # &quot;coqdep&quot; -c -slash -R src HelloWorld &quot;src/Main.v&quot; &gt; &quot;src/Main.v.d&quot; || ( RV=$?; rm -f &quot;src/Main.v.d&quot;; exit ${RV} )
 # &quot;coqc&quot;  -q  -R src HelloWorld   src/Main
-# File &quot;/home/bench/.opam/system/build/coq:io:hello-world.1.0.0/src/Main.v&quot;, line 32, characters 19-33:
-# Error: The reference Extraction.run was not found in the current environment.
+# File &quot;/home/bench/.opam/system/build/coq:io:hello-world.1.0.0/src/Main.v&quot;, line 2, characters 0-22:
+# Error: Cannot find library Io.All in loadpath
 # Makefile:199: recipe for target &#39;src/Main.vo&#39; failed
 ### stderr ###
+# *** Warning: in file src/Main.v, library Io.All.v is required and has not been found in loadpath!
+# *** Warning: in file src/Main.v, library Io.System.All.v is required and has not been found in loadpath!
+# *** Warning: in file src/Main.v, library ListString.All.v is required and has not been found in loadpath!
 # make: *** [src/Main.vo] Error 1
 =-=- Error report -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 The following actions failed
