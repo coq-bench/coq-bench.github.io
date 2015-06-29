@@ -38,10 +38,10 @@
               io:hello-world
               <small>
                 1.0.0
-                <span class="label label-info">Not compatible with this Coq</span>
+                <span class="label label-danger">Error</span>
               </small>
             </h1>
-            <p><em><script>document.write(moment("2015-06-29 14:07:26 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2015-06-29 14:07:26 UTC)</em><p>
+            <p><em><script>document.write(moment("2015-06-29 16:13:05 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2015-06-29 16:13:05 UTC)</em><p>
             <h2>Context</h2>
             <pre># Installed packages for system:
 base-bigarray     base  Bigarray library distributed with the OCaml compiler
@@ -63,40 +63,88 @@ coq            8.3.dev  Formal proof management system.
               <dt>Command</dt>
               <dd><code>opam install -y --show-action coq:io:hello-world.1.0.0 coq.8.3.dev</code></dd>
               <dt>Return code</dt>
-              <dd>768</dd>
-              <dt>Output</dt>
-              <dd><pre>[NOTE] Package coq is already installed (current version is 8.3.dev).
-The following dependencies couldn&#39;t be met:
-  - coq:io:hello-world -&gt; coq &gt;= 8.4pl4
-Your request can&#39;t be satisfied:
-  - Conflicting version constraints for coq
-No solution found, exiting
-</pre></dd>
+              <dd>0</dd>
             </dl>
             <p>Dry install without Coq, to test if the problem was incompatibility with the current Coq version:</p>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>opam remove -y coq; opam install -y --show-action coq:io:hello-world.1.0.0</code></dd>
+              <dd><code>true</code></dd>
               <dt>Return code</dt>
               <dd>0</dd>
             </dl>
             <h2>Install dependencies</h2>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>true</code></dd>
+              <dd><code>opam list; ulimit -Sv 4000000; timeout 5m opam install -y --deps-only coq:io:hello-world.1.0.0</code></dd>
               <dt>Return code</dt>
               <dd>0</dd>
               <dt>Duration</dt>
-              <dd>0 s</dd>
+              <dd>1 s</dd>
             </dl>
             <h2>Install</h2>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>true</code></dd>
+              <dd><code>opam list; ulimit -Sv 4000000; timeout 5m opam install -y -v coq:io:hello-world.1.0.0</code></dd>
               <dt>Return code</dt>
-              <dd>0</dd>
+              <dd>1024</dd>
               <dt>Duration</dt>
-              <dd>0 s</dd>
+              <dd>4 s</dd>
+              <dt>Output</dt>
+              <dd><pre># Installed packages for system:
+base-bigarray     base  Bigarray library distributed with the OCaml compiler
+base-threads      base  Threads library distributed with the OCaml compiler
+base-unix         base  Unix library distributed with the OCaml compiler
+camlp5            6.13  Preprocessor-pretty-printer of OCaml
+coq            8.3.dev  Formal proof management system.
+The following actions will be performed:
+  - install coq:io:hello-world 1.0.0
+=-=- Gathering sources =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+[coq:io:hello-world: from released] Command started
+[coq:io:hello-world: http] Command started
+[coq:io:hello-world: http] Command started
+[coq:io:hello-world.1.0.0] https://github.com/coq-io/hello-world/archive/1.0.0.tar.gz downloaded
+=-=- Processing actions -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+[coq:io:hello-world: ./configure.sh] Command started
++ ./configure.sh  (CWD=/home/bench/.opam/system/build/coq:io:hello-world.1.0.0)
+[coq:io:hello-world: make] Command started
++ make &quot;-j4&quot; (CWD=/home/bench/.opam/system/build/coq:io:hello-world.1.0.0)
+- coqdep -c -slash -R src HelloWorld &quot;src/Main.v&quot; &gt; &quot;src/Main.v.d&quot; || ( RV=$?; rm -f &quot;src/Main.v.d&quot;; exit ${RV} )
+- coqc  -q  -R src HelloWorld   src/Main
+- File &quot;/home/bench/.opam/system/build/coq:io:hello-world.1.0.0/src/Main.v&quot;, line 2, characters 0-22:
+- Error: Cannot find library Io.All in loadpath
+- Makefile:145: recipe for target &#39;src/Main.vo&#39; failed
+- *** Warning: in file src/Main.v, library Io.All.v is required and has not been found in loadpath!
+- *** Warning: in file src/Main.v, library Io.System.All.v is required and has not been found in loadpath!
+- *** Warning: in file src/Main.v, library ListString.All.v is required and has not been found in loadpath!
+- make: *** [src/Main.vo] Error 1
+[ERROR] The compilation of coq:io:hello-world failed at &quot;make -j4&quot;.
+#=== ERROR while installing coq:io:hello-world.1.0.0 ==========================#
+# opam-version         1.2.2
+# os                   linux
+# command              make -j4
+# path                 /home/bench/.opam/system/build/coq:io:hello-world.1.0.0
+# compiler             system (4.02.2)
+# exit-code            2
+# env-file             /home/bench/.opam/system/build/coq:io:hello-world.1.0.0/coq:io:hello-world-30470-a71bb4.env
+# stdout-file          /home/bench/.opam/system/build/coq:io:hello-world.1.0.0/coq:io:hello-world-30470-a71bb4.out
+# stderr-file          /home/bench/.opam/system/build/coq:io:hello-world.1.0.0/coq:io:hello-world-30470-a71bb4.err
+### stdout ###
+# coqdep -c -slash -R src HelloWorld &quot;src/Main.v&quot; &gt; &quot;src/Main.v.d&quot; || ( RV=$?; rm -f &quot;src/Main.v.d&quot;; exit ${RV} )
+# coqc  -q  -R src HelloWorld   src/Main
+# File &quot;/home/bench/.opam/system/build/coq:io:hello-world.1.0.0/src/Main.v&quot;, line 2, characters 0-22:
+# Error: Cannot find library Io.All in loadpath
+# Makefile:145: recipe for target &#39;src/Main.vo&#39; failed
+### stderr ###
+# *** Warning: in file src/Main.v, library Io.All.v is required and has not been found in loadpath!
+# *** Warning: in file src/Main.v, library Io.System.All.v is required and has not been found in loadpath!
+# *** Warning: in file src/Main.v, library ListString.All.v is required and has not been found in loadpath!
+# make: *** [src/Main.vo] Error 1
+=-=- Error report -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+The following actions failed
+  - install coq:io:hello-world 1.0.0
+No changes have been performed
+&#39;opam install -y -v coq:io:hello-world.1.0.0&#39; failed.
+</pre></dd>
             </dl>
             <h2>Installation size</h2>
             <p>No files were installed.</p>
