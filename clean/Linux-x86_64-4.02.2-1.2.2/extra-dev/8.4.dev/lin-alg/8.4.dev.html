@@ -38,10 +38,10 @@
               lin-alg
               <small>
                 8.4.dev
-                <span class="label label-danger">Lint error</span>
+                <span class="label label-danger">Error</span>
               </small>
             </h1>
-            <p><em><script>document.write(moment("2015-06-30 02:08:40 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2015-06-30 02:08:40 UTC)</em><p>
+            <p><em><script>document.write(moment("2015-06-30 20:26:55 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2015-06-30 20:26:55 UTC)</em><p>
             <h2>Context</h2>
             <pre># Installed packages for system:
 base-bigarray     base  Bigarray library distributed with the OCaml compiler
@@ -55,16 +55,13 @@ coq            8.4.dev  Formal proof management system.
               <dt>Command</dt>
               <dd><code>ruby lint.rb extra-dev opam-coq-archive/extra-dev/packages/coq:lin-alg/coq:lin-alg.8.4.dev</code></dd>
               <dt>Return code</dt>
-              <dd>256</dd>
-              <dt>Output</dt>
-              <dd><pre>The first line of the description should end by a dot (.) to ensure uniformity.
-</pre></dd>
+              <dd>0</dd>
             </dl>
             <h2>Dry install</h2>
             <p>Dry install with the current Coq version:</p>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>true</code></dd>
+              <dd><code>opam install -y --show-action coq:lin-alg.8.4.dev coq.8.4.dev</code></dd>
               <dt>Return code</dt>
               <dd>0</dd>
             </dl>
@@ -78,20 +75,43 @@ coq            8.4.dev  Formal proof management system.
             <h2>Install dependencies</h2>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>true</code></dd>
+              <dd><code>opam list; ulimit -Sv 4000000; timeout 5m opam install -y --deps-only coq:lin-alg.8.4.dev</code></dd>
               <dt>Return code</dt>
               <dd>0</dd>
               <dt>Duration</dt>
-              <dd>0 s</dd>
+              <dd>17 s</dd>
             </dl>
             <h2>Install</h2>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>true</code></dd>
+              <dd><code>opam list; ulimit -Sv 4000000; timeout 5m opam install -y coq:lin-alg.8.4.dev</code></dd>
               <dt>Return code</dt>
-              <dd>0</dd>
+              <dd>31744</dd>
               <dt>Duration</dt>
-              <dd>0 s</dd>
+              <dd>5 m 0 s</dd>
+              <dt>Output</dt>
+              <dd><pre># Installed packages for system:
+base-bigarray     base  Bigarray library distributed with the OCaml compiler
+base-threads      base  Threads library distributed with the OCaml compiler
+base-unix         base  Unix library distributed with the OCaml compiler
+camlp5            6.13  Preprocessor-pretty-printer of OCaml
+coq            8.4.dev  Formal proof management system.
+coq:algebra    8.4.dev  Basics notions of algebra.
+The following actions will be performed:
+  - install coq:lin-alg 8.4.dev
+=-=- Gathering sources =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+[coq:lin-alg: from extra-dev] Command started
+[coq:lin-alg: git] Command started
+[coq:lin-alg: git] Command started
+[coq:lin-alg: git] Command started
+[coq:lin-alg: git] Command started
+[coq:lin-alg: git] Command started
+[coq:lin-alg: git] Command started
+[coq:lin-alg] https://gforge.inria.fr/git/coq-contribs/lin-alg.git#v8.4 updated
+=-=- Processing actions -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+[coq:lin-alg: coq_makefile Make] Command started
+[coq:lin-alg: make] Command started
+</pre></dd>
             </dl>
             <h2>Installation size</h2>
             <p>No files were installed.</p>
