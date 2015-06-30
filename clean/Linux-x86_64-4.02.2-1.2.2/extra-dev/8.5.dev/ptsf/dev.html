@@ -38,10 +38,10 @@
               ptsf
               <small>
                 dev
-                <span class="label label-danger">Lint error</span>
+                <span class="label label-success">15 s</span>
               </small>
             </h1>
-            <p><em><script>document.write(moment("2015-06-30 03:12:36 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2015-06-30 03:12:36 UTC)</em><p>
+            <p><em><script>document.write(moment("2015-06-30 23:26:45 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2015-06-30 23:26:45 UTC)</em><p>
             <h2>Context</h2>
             <pre># Installed packages for system:
 base-bigarray     base  Bigarray library distributed with the OCaml compiler
@@ -55,16 +55,13 @@ coq            8.5.dev  Formal proof management system.
               <dt>Command</dt>
               <dd><code>ruby lint.rb extra-dev opam-coq-archive/extra-dev/packages/coq:ptsf/coq:ptsf.dev</code></dd>
               <dt>Return code</dt>
-              <dd>256</dd>
-              <dt>Output</dt>
-              <dd><pre>The first line of the description should end by a dot (.) to ensure uniformity.
-</pre></dd>
+              <dd>0</dd>
             </dl>
             <h2>Dry install</h2>
             <p>Dry install with the current Coq version:</p>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>true</code></dd>
+              <dd><code>opam install -y --show-action coq:ptsf.dev coq.8.5.dev</code></dd>
               <dt>Return code</dt>
               <dd>0</dd>
             </dl>
@@ -78,27 +75,46 @@ coq            8.5.dev  Formal proof management system.
             <h2>Install dependencies</h2>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>true</code></dd>
+              <dd><code>opam list; ulimit -Sv 4000000; timeout 5m opam install -y --deps-only coq:ptsf.dev</code></dd>
               <dt>Return code</dt>
               <dd>0</dd>
               <dt>Duration</dt>
-              <dd>0 s</dd>
+              <dd>21 s</dd>
             </dl>
             <h2>Install</h2>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>true</code></dd>
+              <dd><code>opam list; ulimit -Sv 4000000; timeout 5m opam install -y coq:ptsf.dev</code></dd>
               <dt>Return code</dt>
               <dd>0</dd>
               <dt>Duration</dt>
-              <dd>0 s</dd>
+              <dd>15 s</dd>
             </dl>
             <h2>Installation size</h2>
-            <p>No files were installed.</p>
+            <p>Total: 3,269 K</p>
+            <ul>
+              <li>1,170 K <code>lib/coq/user-contrib/PTSF/f_equivalence.vo</code></li>
+              <li>808 K <code>lib/coq/user-contrib/PTSF/f_typ2.vo</code></li>
+              <li>342 K <code>lib/coq/user-contrib/PTSF/f_typ.vo</code></li>
+              <li>208 K <code>lib/coq/user-contrib/PTSF/f_typ2.glob</code></li>
+              <li>156 K <code>lib/coq/user-contrib/PTSF/f_term.vo</code></li>
+              <li>150 K <code>lib/coq/user-contrib/PTSF/f_term.glob</code></li>
+              <li>125 K <code>lib/coq/user-contrib/PTSF/f_typ.glob</code></li>
+              <li>99 K <code>lib/coq/user-contrib/PTSF/f_env.vo</code></li>
+              <li>73 K <code>lib/coq/user-contrib/PTSF/f_equivalence.glob</code></li>
+              <li>41 K <code>lib/coq/user-contrib/PTSF/f_typ2.v</code></li>
+              <li>26 K <code>lib/coq/user-contrib/PTSF/f_env.glob</code></li>
+              <li>21 K <code>lib/coq/user-contrib/PTSF/f_term.v</code></li>
+              <li>19 K <code>lib/coq/user-contrib/PTSF/f_typ.v</code></li>
+              <li>16 K <code>lib/coq/user-contrib/PTSF/f_equivalence.v</code></li>
+              <li>7 K <code>lib/coq/user-contrib/PTSF/f_env.v</code></li>
+              <li>1 K <code>install/coq:ptsf.install</code></li>
+              <li>0 K <code>lib/coq:ptsf/opam.config</code></li>
+            </ul>
             <h2>Uninstall</h2>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>true</code></dd>
+              <dd><code>opam remove -y coq:ptsf.dev</code></dd>
               <dt>Return code</dt>
               <dd>0</dd>
               <dt>Missing removes</dt>
