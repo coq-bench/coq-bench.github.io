@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Coq bench</title>
+    <link rel="shortcut icon" type="image/png" href="../../../../../favicon.png" />
+    <link href="../../../../../bootstrap.min.css" rel="stylesheet">
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+    <script src="../../../../../moment.min.js"></script>
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="container">
+      <div class="navbar navbar-default" role="navigation">
+        <div class="container-fluid">
+          <div class="navbar-header">
+            <a class="navbar-brand" href="../../../../.."><i class="fa fa-lg fa-flag-checkered"></i> Coq bench</a>
+          </div>
+          <div id="navbar" class="collapse navbar-collapse">
+            <ul class="nav navbar-nav">
+              <li><a href="../..">clean / extra-dev</a></li>
+              <li class="active"><a href="">8.5.dev / smtcoq - dev</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="article">
+        <div class="row">
+          <div class="col-md-12">
+            <a href="../..">« Up</a>
+            <h1>
+              smtcoq
+              <small>
+                dev
+                <span class="label label-danger">Error</span>
+              </small>
+            </h1>
+            <p><em><script>document.write(moment("2015-06-30 03:12:36 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2015-06-30 03:12:36 UTC)</em><p>
+            <h2>Context</h2>
+            <pre># Installed packages for system:
+base-bigarray     base  Bigarray library distributed with the OCaml compiler
+base-threads      base  Threads library distributed with the OCaml compiler
+base-unix         base  Unix library distributed with the OCaml compiler
+camlp5            6.13  Preprocessor-pretty-printer of OCaml
+coq            8.5.dev  Formal proof management system.
+</pre>
+            <h2>Lint</h2>
+            <dl class="dl-horizontal">
+              <dt>Command</dt>
+              <dd><code>ruby lint.rb extra-dev opam-coq-archive/extra-dev/packages/coq:smtcoq/coq:smtcoq.dev</code></dd>
+              <dt>Return code</dt>
+              <dd>0</dd>
+            </dl>
+            <h2>Dry install</h2>
+            <p>Dry install with the current Coq version:</p>
+            <dl class="dl-horizontal">
+              <dt>Command</dt>
+              <dd><code>opam install -y --show-action coq:smtcoq.dev coq.8.5.dev</code></dd>
+              <dt>Return code</dt>
+              <dd>0</dd>
+            </dl>
+            <p>Dry install without Coq, to test if the problem was incompatibility with the current Coq version:</p>
+            <dl class="dl-horizontal">
+              <dt>Command</dt>
+              <dd><code>true</code></dd>
+              <dt>Return code</dt>
+              <dd>0</dd>
+            </dl>
+            <h2>Install dependencies</h2>
+            <dl class="dl-horizontal">
+              <dt>Command</dt>
+              <dd><code>opam list; ulimit -Sv 4000000; timeout 5m opam install -y --deps-only coq:smtcoq.dev</code></dd>
+              <dt>Return code</dt>
+              <dd>0</dd>
+              <dt>Duration</dt>
+              <dd>2 s</dd>
+            </dl>
+            <h2>Install</h2>
+            <dl class="dl-horizontal">
+              <dt>Command</dt>
+              <dd><code>opam list; ulimit -Sv 4000000; timeout 5m opam install -y -v coq:smtcoq.dev</code></dd>
+              <dt>Return code</dt>
+              <dd>1024</dd>
+              <dt>Duration</dt>
+              <dd>6 s</dd>
+              <dt>Output</dt>
+              <dd><pre># Installed packages for system:
+base-bigarray     base  Bigarray library distributed with the OCaml compiler
+base-threads      base  Threads library distributed with the OCaml compiler
+base-unix         base  Unix library distributed with the OCaml compiler
+camlp5            6.13  Preprocessor-pretty-printer of OCaml
+coq            8.5.dev  Formal proof management system.
+The following actions will be performed:
+  - install coq:smtcoq dev
+=-=- Gathering sources =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+[coq:smtcoq: from extra-dev] Command started
+[coq:smtcoq: git] Command started
+[coq:smtcoq: git] Command started
+[coq:smtcoq: git] Command started
+[coq:smtcoq: git] Command started
+[coq:smtcoq: git] Command started
+[coq:smtcoq: git] Command started
+[coq:smtcoq] https://github.com/smtcoq/smtcoq updated
+=-=- Processing actions -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+[coq:smtcoq: sh] Command started
++ sh &quot;-c&quot; &quot;cd src &amp;&amp; ./configure.sh -standard&quot; (CWD=/home/bench/.opam/system/build/coq:smtcoq.dev)
+[coq:smtcoq: sh cd src &amp;&amp; make -j1] Command started
++ sh &quot;-c&quot; &quot;cd src &amp;&amp; make -j1&quot; (CWD=/home/bench/.opam/system/build/coq:smtcoq.dev)
+- ocamldep.opt -slash -I versions/standard -I zchaff -I verit -I trace -I lia -I euf -I cnf &quot;trace/smtAtom.mli&quot; &gt; &quot;trace/smtAtom.mli.d&quot; || ( RV=$?; rm -f &quot;trace/smtAtom.mli.d&quot;; exit ${RV} )
+- ocamldep.opt -slash -I versions/standard -I zchaff -I verit -I trace -I lia -I euf -I cnf &quot;trace/smtForm.mli&quot; &gt; &quot;trace/smtForm.mli.d&quot; || ( RV=$?; rm -f &quot;trace/smtForm.mli.d&quot;; exit ${RV} )
+- ocamldep.opt -slash -I versions/standard -I zchaff -I verit -I trace -I lia -I euf -I cnf &quot;verit/veritSyntax.mli&quot; &gt; &quot;verit/veritSyntax.mli.d&quot; || ( RV=$?; rm -f &quot;verit/veritSyntax.mli.d&quot;; exit ${RV} )
+- ocamldep.opt -slash -I versions/standard -I zchaff -I verit -I trace -I lia -I euf -I cnf &quot;versions/standard/structures.ml&quot; &gt; &quot;versions/standard/structures.ml.d&quot; || ( RV=$?; rm -f &quot;versions/standard/structures.ml.d&quot;; exit ${RV} )
+- ocamldep.opt -slash -I versions/standard -I zchaff -I verit -I trace -I lia -I euf -I cnf &quot;trace/coqTerms.ml&quot; &gt; &quot;trace/coqTerms.ml.d&quot; || ( RV=$?; rm -f &quot;trace/coqTerms.ml.d&quot;; exit ${RV} )
+- ocamldep.opt -slash -I versions/standard -I zchaff -I verit -I trace -I lia -I euf -I cnf &quot;trace/satAtom.ml&quot; &gt; &quot;trace/satAtom.ml.d&quot; || ( RV=$?; rm -f &quot;trace/satAtom.ml.d&quot;; exit ${RV} )
+- ocamldep.opt -slash -I versions/standard -I zchaff -I verit -I trace -I lia -I euf -I cnf &quot;trace/smtAtom.ml&quot; &gt; &quot;trace/smtAtom.ml.d&quot; || ( RV=$?; rm -f &quot;trace/smtAtom.ml.d&quot;; exit ${RV} )
+- ocamldep.opt -slash -I versions/standard -I zchaff -I verit -I trace -I lia -I euf -I cnf &quot;trace/smtCertif.ml&quot; &gt; &quot;trace/smtCertif.ml.d&quot; || ( RV=$?; rm -f &quot;trace/smtCertif.ml.d&quot;; exit ${RV} )
+- ocamldep.opt -slash -I versions/standard -I zchaff -I verit -I trace -I lia -I euf -I cnf &quot;trace/smtCnf.ml&quot; &gt; &quot;trace/smtCnf.ml.d&quot; || ( RV=$?; rm -f &quot;trace/smtCnf.ml.d&quot;; exit ${RV} )
+- ocamldep.opt -slash -I versions/standard -I zchaff -I verit -I trace -I lia -I euf -I cnf &quot;trace/smtForm.ml&quot; &gt; &quot;trace/smtForm.ml.d&quot; || ( RV=$?; rm -f &quot;trace/smtForm.ml.d&quot;; exit ${RV} )
+- ocamldep.opt -slash -I versions/standard -I zchaff -I verit -I trace -I lia -I euf -I cnf &quot;trace/smtMisc.ml&quot; &gt; &quot;trace/smtMisc.ml.d&quot; || ( RV=$?; rm -f &quot;trace/smtMisc.ml.d&quot;; exit ${RV} )
+- ocamldep.opt -slash -I versions/standard -I zchaff -I verit -I trace -I lia -I euf -I cnf &quot;trace/smtTrace.ml&quot; &gt; &quot;trace/smtTrace.ml.d&quot; || ( RV=$?; rm -f &quot;trace/smtTrace.ml.d&quot;; exit ${RV} )
+- ocamldep.opt -slash -I versions/standard -I zchaff -I verit -I trace -I lia -I euf -I cnf &quot;verit/smtlib2_ast.ml&quot; &gt; &quot;verit/smtlib2_ast.ml.d&quot; || ( RV=$?; rm -f &quot;verit/smtlib2_ast.ml.d&quot;; exit ${RV} )
+- ocamldep.opt -slash -I versions/standard -I zchaff -I verit -I trace -I lia -I euf -I cnf &quot;verit/smtlib2_genConstr.ml&quot; &gt; &quot;verit/smtlib2_genConstr.ml.d&quot; || ( RV=$?; rm -f &quot;verit/smtlib2_genConstr.ml.d&quot;; exit ${RV} )
+- /usr/local/bin/ocamllex verit/smtlib2_lex.mll
+- 163 states, 13562 transitions, table size 55226 bytes
+- ocamldep.opt -slash -I versions/standard -I zchaff -I verit -I trace -I lia -I euf -I cnf &quot;verit/smtlib2_lex.ml&quot; &gt; &quot;verit/smtlib2_lex.ml.d&quot; || ( RV=$?; rm -f &quot;verit/smtlib2_lex.ml.d&quot;; exit ${RV} )
+- /usr/local/bin/ocamlyacc verit/smtlib2_parse.mly
+- ocamldep.opt -slash -I versions/standard -I zchaff -I verit -I trace -I lia -I euf -I cnf &quot;verit/smtlib2_parse.ml&quot; &gt; &quot;verit/smtlib2_parse.ml.d&quot; || ( RV=$?; rm -f &quot;verit/smtlib2_parse.ml.d&quot;; exit ${RV} )
+- ocamldep.opt -slash -I versions/standard -I zchaff -I verit -I trace -I lia -I euf -I cnf &quot;verit/smtlib2_util.ml&quot; &gt; &quot;verit/smtlib2_util.ml.d&quot; || ( RV=$?; rm -f &quot;verit/smtlib2_util.ml.d&quot;; exit ${RV} )
+- /usr/local/bin/ocamlyacc verit/veritParser.mly
+- ocamldep.opt -slash -I versions/standard -I zchaff -I verit -I trace -I lia -I euf -I cnf &quot;verit/veritParser.ml&quot; &gt; &quot;verit/veritParser.ml.d&quot; || ( RV=$?; rm -f &quot;verit/veritParser.ml.d&quot;; exit ${RV} )
+- /usr/local/bin/ocamllex verit/veritLexer.mll
+- 64 states, 2533 transitions, table size 10516 bytes
+- ocamldep.opt -slash -I versions/standard -I zchaff -I verit -I trace -I lia -I euf -I cnf &quot;verit/veritLexer.ml&quot; &gt; &quot;verit/veritLexer.ml.d&quot; || ( RV=$?; rm -f &quot;verit/veritLexer.ml.d&quot;; exit ${RV} )
+- ocamldep.opt -slash -I versions/standard -I zchaff -I verit -I trace -I lia -I euf -I cnf &quot;verit/verit.ml&quot; &gt; &quot;verit/verit.ml.d&quot; || ( RV=$?; rm -f &quot;verit/verit.ml.d&quot;; exit ${RV} )
+- ocamldep.opt -slash -I versions/standard -I zchaff -I verit -I trace -I lia -I euf -I cnf &quot;verit/veritSyntax.ml&quot; &gt; &quot;verit/veritSyntax.ml.d&quot; || ( RV=$?; rm -f &quot;verit/veritSyntax.ml.d&quot;; exit ${RV} )
+- ocamldep.opt -slash -I versions/standard -I zchaff -I verit -I trace -I lia -I euf -I cnf &quot;zchaff/cnfParser.ml&quot; &gt; &quot;zchaff/cnfParser.ml.d&quot; || ( RV=$?; rm -f &quot;zchaff/cnfParser.ml.d&quot;; exit ${RV} )
+- ocamldep.opt -slash -I versions/standard -I zchaff -I verit -I trace -I lia -I euf -I cnf &quot;zchaff/satParser.ml&quot; &gt; &quot;zchaff/satParser.ml.d&quot; || ( RV=$?; rm -f &quot;zchaff/satParser.ml.d&quot;; exit ${RV} )
+- ocamldep.opt -slash -I versions/standard -I zchaff -I verit -I trace -I lia -I euf -I cnf &quot;zchaff/zchaff.ml&quot; &gt; &quot;zchaff/zchaff.ml.d&quot; || ( RV=$?; rm -f &quot;zchaff/zchaff.ml.d&quot;; exit ${RV} )
+- ocamldep.opt -slash -I versions/standard -I zchaff -I verit -I trace -I lia -I euf -I cnf &quot;zchaff/zchaffParser.ml&quot; &gt; &quot;zchaff/zchaffParser.ml.d&quot; || ( RV=$?; rm -f &quot;zchaff/zchaffParser.ml.d&quot;; exit ${RV} )
+- ocamldep.opt -slash -I versions/standard -I zchaff -I verit -I trace -I lia -I euf -I cnf &quot;lia/lia.ml&quot; &gt; &quot;lia/lia.ml.d&quot; || ( RV=$?; rm -f &quot;lia/lia.ml.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -slash -I versions/standard -I zchaff -I verit -I trace -I lia -I euf -I cnf &quot;trace/smt_tactic.ml4&quot; &gt; &quot;trace/smt_tactic.ml4.d&quot; || ( RV=$?; rm -f &quot;trace/smt_tactic.ml4.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -slash -I versions/standard -I zchaff -I verit -I trace -I lia -I euf -I cnf -R . SMTCoq &quot;versions/standard/Int63/Int63.v&quot; &gt; &quot;versions/standard/Int63/Int63.v.d&quot; || ( RV=$?; rm -f &quot;versions/standard/Int63/Int63.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -slash -I versions/standard -I zchaff -I verit -I trace -I lia -I euf -I cnf -R . SMTCoq &quot;versions/standard/Int63/Int63Lib.v&quot; &gt; &quot;versions/standard/Int63/Int63Lib.v.d&quot; || ( RV=$?; rm -f &quot;versions/standard/Int63/Int63Lib.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -slash -I versions/standard -I zchaff -I verit -I trace -I lia -I euf -I cnf -R . SMTCoq &quot;versions/standard/Int63/Cyclic63.v&quot; &gt; &quot;versions/standard/Int63/Cyclic63.v.d&quot; || ( RV=$?; rm -f &quot;versions/standard/Int63/Cyclic63.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -slash -I versions/standard -I zchaff -I verit -I trace -I lia -I euf -I cnf -R . SMTCoq &quot;versions/standard/Int63/Ring63.v&quot; &gt; &quot;versions/standard/Int63/Ring63.v.d&quot; || ( RV=$?; rm -f &quot;versions/standard/Int63/Ring63.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -slash -I versions/standard -I zchaff -I verit -I trace -I lia -I euf -I cnf -R . SMTCoq &quot;versions/standard/Int63/Int63Native.v&quot; &gt; &quot;versions/standard/Int63/Int63Native.v.d&quot; || ( RV=$?; rm -f &quot;versions/standard/Int63/Int63Native.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -slash -I versions/standard -I zchaff -I verit -I trace -I lia -I euf -I cnf -R . SMTCoq &quot;versions/standard/Int63/Int63Op.v&quot; &gt; &quot;versions/standard/Int63/Int63Op.v.d&quot; || ( RV=$?; rm -f &quot;versions/standard/Int63/Int63Op.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -slash -I versions/standard -I zchaff -I verit -I trace -I lia -I euf -I cnf -R . SMTCoq &quot;versions/standard/Int63/Int63Axioms.v&quot; &gt; &quot;versions/standard/Int63/Int63Axioms.v.d&quot; || ( RV=$?; rm -f &quot;versions/standard/Int63/Int63Axioms.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -slash -I versions/standard -I zchaff -I verit -I trace -I lia -I euf -I cnf -R . SMTCoq &quot;versions/standard/Int63/Int63Properties.v&quot; &gt; &quot;versions/standard/Int63/Int63Properties.v.d&quot; || ( RV=$?; rm -f &quot;versions/standard/Int63/Int63Properties.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -slash -I versions/standard -I zchaff -I verit -I trace -I lia -I euf -I cnf -R . SMTCoq &quot;versions/standard/Array/PArray.v&quot; &gt; &quot;versions/standard/Array/PArray.v.d&quot; || ( RV=$?; rm -f &quot;versions/standard/Array/PArray.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -slash -I versions/standard -I zchaff -I verit -I trace -I lia -I euf -I cnf -R . SMTCoq &quot;cnf/Cnf.v&quot; &gt; &quot;cnf/Cnf.v.d&quot; || ( RV=$?; rm -f &quot;cnf/Cnf.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -slash -I versions/standard -I zchaff -I verit -I trace -I lia -I euf -I cnf -R . SMTCoq &quot;euf/Euf.v&quot; &gt; &quot;euf/Euf.v.d&quot; || ( RV=$?; rm -f &quot;euf/Euf.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -slash -I versions/standard -I zchaff -I verit -I trace -I lia -I euf -I cnf -R . SMTCoq &quot;lia/Lia.v&quot; &gt; &quot;lia/Lia.v.d&quot; || ( RV=$?; rm -f &quot;lia/Lia.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -slash -I versions/standard -I zchaff -I verit -I trace -I lia -I euf -I cnf -R . SMTCoq &quot;spl/Syntactic.v&quot; &gt; &quot;spl/Syntactic.v.d&quot; || ( RV=$?; rm -f &quot;spl/Syntactic.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -slash -I versions/standard -I zchaff -I verit -I trace -I lia -I euf -I cnf -R . SMTCoq &quot;spl/Arithmetic.v&quot; &gt; &quot;spl/Arithmetic.v.d&quot; || ( RV=$?; rm -f &quot;spl/Arithmetic.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -slash -I versions/standard -I zchaff -I verit -I trace -I lia -I euf -I cnf -R . SMTCoq &quot;spl/Operators.v&quot; &gt; &quot;spl/Operators.v.d&quot; || ( RV=$?; rm -f &quot;spl/Operators.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -slash -I versions/standard -I zchaff -I verit -I trace -I lia -I euf -I cnf -R . SMTCoq &quot;Misc.v&quot; &gt; &quot;Misc.v.d&quot; || ( RV=$?; rm -f &quot;Misc.v.d&quot;; exit ${RV} )
+- 1 shift/reduce conflict.
+- warning: option -slash has no effect and is deprecated.
+- *** Warning: smt_tactic.ml4 already found in trace (discarding trace/smt_tactic.ml4)
+- warning: option -slash has no effect and is deprecated.
+- warning: option -slash has no effect and is deprecated.
+- warning: option -slash has no effect and is deprecated.
+- warning: option -slash has no effect and is deprecated.
+- warning: option -slash has no effect and is deprecated.
+- warning: option -slash has no effect and is deprecated.
+- warning: option -slash has no effect and is deprecated.
+- warning: option -slash has no effect and is deprecated.
+- warning: option -slash has no effect and is deprecated.
+- warning: option -slash has no effect and is deprecated.
+- warning: option -slash has no effect and is deprecated.
+- warning: option -slash has no effect and is deprecated.
+- warning: option -slash has no effect and is deprecated.
+- warning: option -slash has no effect and is deprecated.
+- warning: option -slash has no effect and is deprecated.
+- &quot;coqdep&quot; -c -slash -I versions/standard -I zchaff -I verit -I trace -I lia -I euf -I cnf -R . SMTCoq &quot;SMTCoq.v&quot; &gt; &quot;SMTCoq.v.d&quot; || ( RV=$?; rm -f &quot;SMTCoq.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -slash -I versions/standard -I zchaff -I verit -I trace -I lia -I euf -I cnf -R . SMTCoq &quot;SMT_terms.v&quot; &gt; &quot;SMT_terms.v.d&quot; || ( RV=$?; rm -f &quot;SMT_terms.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -slash -I versions/standard -I zchaff -I verit -I trace -I lia -I euf -I cnf -R . SMTCoq &quot;State.v&quot; &gt; &quot;State.v.d&quot; || ( RV=$?; rm -f &quot;State.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -slash -I versions/standard -I zchaff -I verit -I trace -I lia -I euf -I cnf -R . SMTCoq &quot;Trace.v&quot; &gt; &quot;Trace.v.d&quot; || ( RV=$?; rm -f &quot;Trace.v.d&quot;; exit ${RV} )
+- ocamlopt.opt -c -rectypes  -I versions/standard -I zchaff -I verit -I trace -I lia -I euf -I cnf -I &quot;/home/bench/.opam/system/lib/coq/kernel&quot; -I &quot;/home/bench/.opam/system/lib/coq/lib&quot; -I &quot;/home/bench/.opam/system/lib/coq/library&quot; -I &quot;/home/bench/.opam/system/lib/coq/parsing&quot; -I &quot;/home/bench/.opam/system/lib/coq/pretyping&quot; -I &quot;/home/bench/.opam/system/lib/coq/interp&quot; -I &quot;/home/bench/.opam/system/lib/coq/proofs&quot; -I &quot;/home/bench/.opam/system/lib/coq/tactics&quot; -I &quot;/home/bench/.opam/system/lib/coq/tools&quot; -I &quot;/home/bench/.opam/system/lib/coq/toplevel&quot; -I &quot;/home/bench/.opam/system/lib/coq/plugins/&quot;cc -I &quot;/home/bench/.opam/system/lib/coq/plugins/&quot;decl_mode -I &quot;/home/bench/.opam/system/lib/coq/plugins/&quot;extraction -I &quot;/home/bench/.opam/system/lib/coq/plugins/&quot;field -I &quot;/home/bench/.opam/system/lib/coq/plugins/&quot;firstorder -I &quot;/home/bench/.opam/system/lib/coq/plugins/&quot;fourier -I &quot;/home/bench/.opam/system/lib/coq/plugins/&quot;funind -I &quot;/home/bench/.opam/system/lib/coq/plugins/&quot;micromega -I &quot;/home/bench/.opam/system/lib/coq/plugins/&quot;nsatz -I &quot;/home/bench/.opam/system/lib/coq/plugins/&quot;omega -I &quot;/home/bench/.opam/system/lib/coq/plugins/&quot;quote -I &quot;/home/bench/.opam/system/lib/coq/plugins/&quot;ring -I &quot;/home/bench/.opam/system/lib/coq/plugins/&quot;romega -I &quot;/home/bench/.opam/system/lib/coq/plugins/&quot;rtauto -I &quot;/home/bench/.opam/system/lib/coq/plugins/&quot;setoid_ring -I &quot;/home/bench/.opam/system/lib/coq/plugins/&quot;subtac -I &quot;/home/bench/.opam/system/lib/coq/plugins/&quot;subtac/test -I &quot;/home/bench/.opam/system/lib/coq/plugins/&quot;syntax -I &quot;/home/bench/.opam/system/lib/coq/plugins/&quot;xml -I /home/bench/.opam/system/lib/camlp5 versions/standard/structures.ml
+- Makefile:388: recipe for target &#39;versions/standard/structures.cmx&#39; failed
+- warning: option -slash has no effect and is deprecated.
+- warning: option -slash has no effect and is deprecated.
+- warning: option -slash has no effect and is deprecated.
+- warning: option -slash has no effect and is deprecated.
+- warning: option -slash has no effect and is deprecated.
+- File &quot;versions/standard/structures.ml&quot;, line 67, characters 16-30:
+- Error: Unbound value Util.dummy_loc
+- make: *** [versions/standard/structures.cmx] Error 2
+[ERROR] The compilation of coq:smtcoq failed at &quot;sh -c cd src &amp;&amp; make -j1&quot;.
+[coq:smtcoq: rm] Command started
++ rm &quot;-R&quot; &quot;/home/bench/.opam/system/lib/coq/user-contrib/SMTCoq&quot; (CWD=/home/bench/.opam/system/build/coq:smtcoq.dev)
+- rm: cannot remove &#39;/home/bench/.opam/system/lib/coq/user-contrib/SMTCoq&#39;: No such file or directory
+#=== ERROR while installing coq:smtcoq.dev ====================================#
+# opam-version         1.2.2
+# os                   linux
+# command              sh -c cd src &amp;&amp; make -j1
+# path                 /home/bench/.opam/system/build/coq:smtcoq.dev
+# compiler             system (4.02.2)
+# exit-code            2
+# env-file             /home/bench/.opam/system/build/coq:smtcoq.dev/coq:smtcoq-29156-d8a4ae.env
+# stdout-file          /home/bench/.opam/system/build/coq:smtcoq.dev/coq:smtcoq-29156-d8a4ae.out
+# stderr-file          /home/bench/.opam/system/build/coq:smtcoq.dev/coq:smtcoq-29156-d8a4ae.err
+### stdout ###
+# [...]
+# &quot;coqdep&quot; -c -slash -I versions/standard -I zchaff -I verit -I trace -I lia -I euf -I cnf -R . SMTCoq &quot;spl/Syntactic.v&quot; &gt; &quot;spl/Syntactic.v.d&quot; || ( RV=$?; rm -f &quot;spl/Syntactic.v.d&quot;; exit ${RV} )
+# &quot;coqdep&quot; -c -slash -I versions/standard -I zchaff -I verit -I trace -I lia -I euf -I cnf -R . SMTCoq &quot;spl/Arithmetic.v&quot; &gt; &quot;spl/Arithmetic.v.d&quot; || ( RV=$?; rm -f &quot;spl/Arithmetic.v.d&quot;; exit ${RV} )
+# &quot;coqdep&quot; -c -slash -I versions/standard -I zchaff -I verit -I trace -I lia -I euf -I cnf -R . SMTCoq &quot;spl/Operators.v&quot; &gt; &quot;spl/Operators.v.d&quot; || ( RV=$?; rm -f &quot;spl/Operators.v.d&quot;; exit ${RV} )
+# &quot;coqdep&quot; -c -slash -I versions/standard -I zchaff -I verit -I trace -I lia -I euf -I cnf -R . SMTCoq &quot;Misc.v&quot; &gt; &quot;Misc.v.d&quot; || ( RV=$?; rm -f &quot;Misc.v.d&quot;; exit ${RV} )
+# &quot;coqdep&quot; -c -slash -I versions/standard -I zchaff -I verit -I trace -I lia -I euf -I cnf -R . SMTCoq &quot;SMTCoq.v&quot; &gt; &quot;SMTCoq.v.d&quot; || ( RV=$?; rm -f &quot;SMTCoq.v.d&quot;; exit ${RV} )
+# &quot;coqdep&quot; -c -slash -I versions/standard -I zchaff -I verit -I trace -I lia -I euf -I cnf -R . SMTCoq &quot;SMT_terms.v&quot; &gt; &quot;SMT_terms.v.d&quot; || ( RV=$?; rm -f &quot;SMT_terms.v.d&quot;; exit ${RV} )
+# &quot;coqdep&quot; -c -slash -I versions/standard -I zchaff -I verit -I trace -I lia -I euf -I cnf -R . SMTCoq &quot;State.v&quot; &gt; &quot;State.v.d&quot; || ( RV=$?; rm -f &quot;State.v.d&quot;; exit ${RV} )
+# &quot;coqdep&quot; -c -slash -I versions/standard -I zchaff -I verit -I trace -I lia -I euf -I cnf -R . SMTCoq &quot;Trace.v&quot; &gt; &quot;Trace.v.d&quot; || ( RV=$?; rm -f &quot;Trace.v.d&quot;; exit ${RV} )
+# ocamlopt.opt -c -rectypes  -I versions/standard -I zchaff -I verit -I trace -I lia -I euf -I cnf -I &quot;/home/bench/.opam/system/lib/coq/kernel&quot; -I &quot;/home/bench/.opam/system/lib/coq/lib&quot; -I &quot;/home/bench/.opam/system/lib/coq/library&quot; -I &quot;/home/bench/.opam/system/lib/coq/parsing&quot; -I &quot;/home/bench/.opam/system/lib/coq/pretyping&quot; -I &quot;/home/bench/.opam/system/lib/coq/interp&quot; -I &quot;/home/bench/.opam/system/lib/coq/proofs&quot; -I &quot;/home/bench/.opam/system/lib/coq/tactics&quot; -I &quot;/home/bench/.opam/system/lib/coq/tools&quot; -I &quot;/home/bench/.opam/system/lib/coq/toplevel&quot; -I &quot;/home/bench/.opam/system/lib/coq/plugins/&quot;cc -I &quot;/home/bench/.opam/system/lib/coq/plugins/&quot;decl_mode -I &quot;/home/bench/.opam/system/lib/coq/plugins/&quot;extraction -I &quot;/home/bench/.opam/system/lib/coq/plugins/&quot;field -I &quot;/home/bench/.opam/system/lib/coq/plugins/&quot;firstorder -I &quot;/home/bench/.opam/system/lib/coq/plugins/&quot;fourier -I &quot;/home/bench/.opam/system/lib/coq/plugins/&quot;funind -I &quot;/home/bench/.opam/system/lib/coq/plugins/&quot;micromega -I &quot;/home/bench/.opam/system/lib/coq/plugins/&quot;nsatz -I &quot;/home/bench/.opam/system/lib/coq/plugins/&quot;omega -I &quot;/home/bench/.opam/system/lib/coq/plugins/&quot;quote -I &quot;/home/bench/.opam/system/lib/coq/plugins/&quot;ring -I &quot;/home/bench/.opam/system/lib/coq/plugins/&quot;romega -I &quot;/home/bench/.opam/system/lib/coq/plugins/&quot;rtauto -I &quot;/home/bench/.opam/system/lib/coq/plugins/&quot;setoid_ring -I &quot;/home/bench/.opam/system/lib/coq/plugins/&quot;subtac -I &quot;/home/bench/.opam/system/lib/coq/plugins/&quot;subtac/test -I &quot;/home/bench/.opam/system/lib/coq/plugins/&quot;syntax -I &quot;/home/bench/.opam/system/lib/coq/plugins/&quot;xml -I /home/bench/.opam/system/lib/camlp5 versions/standard/structures.ml
+# Makefile:388: recipe for target &#39;versions/standard/structures.cmx&#39; failed
+### stderr ###
+# [...]
+# warning: option -slash has no effect and is deprecated.
+# warning: option -slash has no effect and is deprecated.
+# warning: option -slash has no effect and is deprecated.
+# warning: option -slash has no effect and is deprecated.
+# warning: option -slash has no effect and is deprecated.
+# warning: option -slash has no effect and is deprecated.
+# warning: option -slash has no effect and is deprecated.
+# File &quot;versions/standard/structures.ml&quot;, line 67, characters 16-30:
+# Error: Unbound value Util.dummy_loc
+# make: *** [versions/standard/structures.cmx] Error 2
+=-=- Error report -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+The following actions failed
+  - install coq:smtcoq dev
+No changes have been performed
+&#39;opam install -y -v coq:smtcoq.dev&#39; failed.
+</pre></dd>
+            </dl>
+            <h2>Installation size</h2>
+            <p>No files were installed.</p>
+            <h2>Uninstall</h2>
+            <dl class="dl-horizontal">
+              <dt>Command</dt>
+              <dd><code>true</code></dd>
+              <dt>Return code</dt>
+              <dd>0</dd>
+              <dt>Missing removes</dt>
+              <dd>
+                none
+              </dd>
+              <dt>Wrong removes</dt>
+              <dd>
+                none
+              </dd>
+            </dl>
+          </div>
+        </div>
+      </div>
+      <hr/>
+      <div class="footer">
+        <p class="text-center">
+          <small>Sources are on <a href="https://github.com/coq-bench">GitHub</a>. © Guillaume Claret.</small>
+        </p>
+      </div>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="../../../../../bootstrap.min.js"></script>
+  </body>
+</html>
