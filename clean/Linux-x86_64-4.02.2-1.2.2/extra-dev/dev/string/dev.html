@@ -38,10 +38,10 @@
               string
               <small>
                 dev
-                <span class="label label-success">6 s</span>
+                <span class="label label-danger">Error</span>
               </small>
             </h1>
-            <p><em><script>document.write(moment("2015-07-05 07:48:01 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2015-07-05 07:48:01 UTC)</em><p>
+            <p><em><script>document.write(moment("2015-07-05 23:01:39 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2015-07-05 23:01:39 UTC)</em><p>
             <h2>Context</h2>
             <pre># Installed packages for system:
 base-bigarray  base  Bigarray library distributed with the OCaml compiler
@@ -86,38 +86,78 @@ coq             dev  Formal proof management system.
               <dt>Command</dt>
               <dd><code>opam list; ulimit -Sv 4000000; timeout 5m opam install -y coq:string.dev</code></dd>
               <dt>Return code</dt>
-              <dd>0</dd>
+              <dd>1024</dd>
               <dt>Duration</dt>
-              <dd>6 s</dd>
+              <dd>4 s</dd>
+              <dt>Output</dt>
+              <dd><pre># Installed packages for system:
+base-bigarray  base  Bigarray library distributed with the OCaml compiler
+base-threads   base  Threads library distributed with the OCaml compiler
+base-unix      base  Unix library distributed with the OCaml compiler
+camlp5         6.13  Preprocessor-pretty-printer of OCaml
+coq             dev  Formal proof management system.
+The following actions will be performed:
+  - install coq:string dev
+=-=- Gathering sources =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+[coq:string: from extra-dev] Command started
+[coq:string: git] Command started
+[coq:string: git] Command started
+[coq:string: git] Command started
+[coq:string: git] Command started
+[coq:string: git] Command started
+[coq:string: git] Command started
+[coq:string] https://gforge.inria.fr/git/coq-contribs/string.git#trunk updated
+=-=- Processing actions -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+[coq:string: coq_makefile Make] Command started
+[coq:string: make] Command started
+[ERROR] The compilation of coq:string failed at &quot;make -j4&quot;.
+[coq:string: rm] Command started
+#=== ERROR while installing coq:string.dev ====================================#
+# opam-version         1.2.2
+# os                   linux
+# command              make -j4
+# path                 /home/bench/.opam/system/build/coq:string.dev
+# compiler             system (4.02.2)
+# exit-code            2
+# env-file             /home/bench/.opam/system/build/coq:string.dev/coq:string-31723-d8a4ae.env
+# stdout-file          /home/bench/.opam/system/build/coq:string.dev/coq:string-31723-d8a4ae.out
+# stderr-file          /home/bench/.opam/system/build/coq:string.dev/coq:string-31723-d8a4ae.err
+### stdout ###
+# Makefile:318: recipe for target &#39;g_local_string_syntax.cmo&#39; failed
+# [...]
+#               with
+#               | eq_refl =&gt; eq_refl
+#               end in (_ = y) return (if y then False else True)
+#             with
+#             | eq_refl =&gt; I
+#             end return False
+#           with
+#           end)
+#      : {zero = one} + {zero &lt;&gt; one}
+### stderr ###
+# [...]
+# Use (&amp;&amp;) instead.
+# File &quot;g_local_ascii_syntax.ml4&quot;, line 47, characters 9-79:
+# Warning 3: deprecated: Pervasives.&amp;
+# Use (&amp;&amp;) instead.
+# File &quot;g_local_ascii_syntax.ml4&quot;, line 47, characters 31-79:
+# Warning 3: deprecated: Pervasives.&amp;
+# Use (&amp;&amp;) instead.
+# File &quot;g_local_ascii_syntax.ml4&quot;, line 47, characters 48-79:
+# Warning 3: deprecated: Pervasives.&amp;
+# Use (&amp;&amp;) instead.
+=-=- Error report -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+The following actions failed
+  - install coq:string dev
+No changes have been performed
+</pre></dd>
             </dl>
             <h2>Installation size</h2>
-            <p>Total: 276 K</p>
-            <ul>
-              <li>66 K <code>lib/coq/user-contrib/String/Ascii.vo</code></li>
-              <li>61 K <code>lib/coq/user-contrib/String/String.vo</code></li>
-              <li>24 K <code>lib/coq/user-contrib/String/g_local_ascii_syntax.cmxs</code></li>
-              <li>22 K <code>lib/coq/user-contrib/String/g_local_string_syntax.cmxs</code></li>
-              <li>18 K <code>lib/coq/user-contrib/String/String_syntax.vo</code></li>
-              <li>18 K <code>lib/coq/user-contrib/String/Ascii_syntax.vo</code></li>
-              <li>18 K <code>lib/coq/user-contrib/String/String.glob</code></li>
-              <li>11 K <code>lib/coq/user-contrib/String/String.v</code></li>
-              <li>8 K <code>lib/coq/user-contrib/String/Ascii.glob</code></li>
-              <li>5 K <code>lib/coq/user-contrib/String/g_local_ascii_syntax.cmo</code></li>
-              <li>4 K <code>lib/coq/user-contrib/String/g_local_string_syntax.cmo</code></li>
-              <li>4 K <code>lib/coq/user-contrib/String/g_local_ascii_syntax.cmi</code></li>
-              <li>3 K <code>lib/coq/user-contrib/String/Ascii.v</code></li>
-              <li>3 K <code>lib/coq/user-contrib/String/g_local_string_syntax.cmi</code></li>
-              <li>1 K <code>lib/coq/user-contrib/String/Ascii_syntax.v</code></li>
-              <li>1 K <code>lib/coq/user-contrib/String/String_syntax.v</code></li>
-              <li>1 K <code>lib/coq/user-contrib/String/Ascii_syntax.glob</code></li>
-              <li>1 K <code>lib/coq/user-contrib/String/String_syntax.glob</code></li>
-              <li>1 K <code>install/coq:string.install</code></li>
-              <li>0 K <code>lib/coq:string/opam.config</code></li>
-            </ul>
+            <p>No files were installed.</p>
             <h2>Uninstall</h2>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>opam remove -y coq:string.dev</code></dd>
+              <dd><code>true</code></dd>
               <dt>Return code</dt>
               <dd>0</dd>
               <dt>Missing removes</dt>
