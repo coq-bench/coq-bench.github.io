@@ -25,7 +25,7 @@
           <div id="navbar" class="collapse navbar-collapse">
             <ul class="nav navbar-nav">
               <li><a href="../..">clean / released</a></li>
-              <li class="active"><a href="">8.4.6 / ext-lib - 1.0.0~beta2</a></li>
+              <li class="active"><a href="">8.4.6 / geocoq - 1.0.1</a></li>
             </ul>
           </div>
         </div>
@@ -35,10 +35,10 @@
           <div class="col-md-12">
             <a href="../..">« Up</a>
             <h1>
-              ext-lib
+              geocoq
               <small>
-                1.0.0~beta2
-                <span class="label label-danger">Lint error</span>
+                1.0.1
+                <span class="label label-danger">Error</span>
               </small>
             </h1>
             <p><em><script>document.write(moment("2015-07-17 16:08:52 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2015-07-17 16:08:52 UTC)</em><p>
@@ -53,18 +53,15 @@ coq            8.4.6  Formal proof management system.
             <h2>Lint</h2>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>ruby lint.rb released opam-coq-archive/released/packages/coq:ext-lib/coq:ext-lib.1.0.0~beta2</code></dd>
+              <dd><code>ruby lint.rb released opam-coq-archive/released/packages/coq:geocoq/coq:geocoq.1.0.1</code></dd>
               <dt>Return code</dt>
-              <dd>256</dd>
-              <dt>Output</dt>
-              <dd><pre>Wrong released version name &quot;1.0.0~beta2&quot;, expected three numbers separated by dots.
-</pre></dd>
+              <dd>0</dd>
             </dl>
             <h2>Dry install</h2>
             <p>Dry install with the current Coq version:</p>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>true</code></dd>
+              <dd><code>opam install -y --show-action coq:geocoq.1.0.1 coq.8.4.6</code></dd>
               <dt>Return code</dt>
               <dd>0</dd>
             </dl>
@@ -78,20 +75,38 @@ coq            8.4.6  Formal proof management system.
             <h2>Install dependencies</h2>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>true</code></dd>
+              <dd><code>opam list; ulimit -Sv 4000000; timeout 5m opam install -y --deps-only coq:geocoq.1.0.1</code></dd>
               <dt>Return code</dt>
               <dd>0</dd>
               <dt>Duration</dt>
-              <dd>0 s</dd>
+              <dd>2 s</dd>
             </dl>
             <h2>Install</h2>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>true</code></dd>
+              <dd><code>opam list; ulimit -Sv 4000000; timeout 5m opam install -y coq:geocoq.1.0.1</code></dd>
               <dt>Return code</dt>
-              <dd>0</dd>
+              <dd>31744</dd>
               <dt>Duration</dt>
-              <dd>0 s</dd>
+              <dd>5 m 0 s</dd>
+              <dt>Output</dt>
+              <dd><pre># Installed packages for system:
+base-bigarray   base  Bigarray library distributed with the OCaml compiler
+base-threads    base  Threads library distributed with the OCaml compiler
+base-unix       base  Unix library distributed with the OCaml compiler
+camlp5          6.13  Preprocessor-pretty-printer of OCaml
+coq            8.4.6  Formal proof management system.
+The following actions will be performed:
+  - install coq:geocoq 1.0.1
+=-=- Gathering sources =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+[coq:geocoq: from released] Command started
+[coq:geocoq: http] Command started
+[coq:geocoq: http] Command started
+[coq:geocoq.1.0.1] https://github.com/GeoCoq/GeoCoq/archive/1.0.1.tar.gz downloaded
+=-=- Processing actions -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+[coq:geocoq: ./configure.sh] Command started
+[coq:geocoq: make] Command started
+</pre></dd>
             </dl>
             <h2>Installation size</h2>
             <p>No files were installed.</p>
