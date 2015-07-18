@@ -38,10 +38,10 @@
               concurrency:system
               <small>
                 1.0.0
-                <span class="label label-warning">Error with dependencies</span>
+                <span class="label label-success">10 s</span>
               </small>
             </h1>
-            <p><em><script>document.write(moment("2015-07-13 14:58:39 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2015-07-13 14:58:39 UTC)</em><p>
+            <p><em><script>document.write(moment("2015-07-18 05:24:31 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2015-07-18 05:24:31 UTC)</em><p>
             <h2>Context</h2>
             <pre># Installed packages for system:
 base-bigarray     base  Bigarray library distributed with the OCaml compiler
@@ -63,53 +63,49 @@ coq            8.4.dev  Formal proof management system.
               <dt>Command</dt>
               <dd><code>opam install -y --show-action coq:concurrency:system.1.0.0 coq.8.4.dev</code></dd>
               <dt>Return code</dt>
-              <dd>512</dd>
-              <dt>Output</dt>
-              <dd><pre>/bin/sh: 1: Cannot fork
-Fatal error: exception End_of_file
-</pre></dd>
+              <dd>0</dd>
             </dl>
             <p>Dry install without Coq, to test if the problem was incompatibility with the current Coq version:</p>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>opam remove -y coq; opam install -y --show-action coq:concurrency:system.1.0.0</code></dd>
+              <dd><code>true</code></dd>
               <dt>Return code</dt>
-              <dd>256</dd>
-              <dt>Output</dt>
-              <dd><pre>Fatal error:
-# opam-version    1.2.2
-# os              unix
-opam: &quot;fork&quot; failed: Cannot allocate memory
-Fatal error:
-# opam-version    1.2.2
-# os              unix
-opam: &quot;fork&quot; failed: Cannot allocate memory
-</pre></dd>
+              <dd>0</dd>
             </dl>
             <h2>Install dependencies</h2>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>true</code></dd>
+              <dd><code>opam list; ulimit -Sv 4000000; timeout 5m opam install -y --deps-only coq:concurrency:system.1.0.0</code></dd>
               <dt>Return code</dt>
               <dd>0</dd>
               <dt>Duration</dt>
-              <dd>0 s</dd>
+              <dd>9 s</dd>
             </dl>
             <h2>Install</h2>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>true</code></dd>
+              <dd><code>opam list; ulimit -Sv 4000000; timeout 5m opam install -y coq:concurrency:system.1.0.0</code></dd>
               <dt>Return code</dt>
               <dd>0</dd>
               <dt>Duration</dt>
-              <dd>0 s</dd>
+              <dd>10 s</dd>
             </dl>
             <h2>Installation size</h2>
-            <p>No files were installed.</p>
+            <p>Total: 283 K</p>
+            <ul>
+              <li>71 K <code>lib/coq/user-contrib/Concurrency/Events.vo</code></li>
+              <li>69 K <code>lib/coq/user-contrib/Concurrency/Extraction.vo</code></li>
+              <li>51 K <code>lib/coq/user-contrib/Concurrency/Run.vo</code></li>
+              <li>33 K <code>lib/coq/user-contrib/Concurrency/Test.vo</code></li>
+              <li>33 K <code>lib/coq/user-contrib/Concurrency/Computation.vo</code></li>
+              <li>23 K <code>lib/coq/user-contrib/Concurrency/StdLib.vo</code></li>
+              <li>1 K <code>install/coq:concurrency:system.install</code></li>
+              <li>0 K <code>lib/coq:concurrency:system/opam.config</code></li>
+            </ul>
             <h2>Uninstall</h2>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>true</code></dd>
+              <dd><code>opam remove -y coq:concurrency:system.1.0.0</code></dd>
               <dt>Return code</dt>
               <dd>0</dd>
               <dt>Missing removes</dt>

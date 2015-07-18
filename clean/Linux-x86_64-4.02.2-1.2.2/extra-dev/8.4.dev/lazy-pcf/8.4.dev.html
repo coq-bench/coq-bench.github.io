@@ -38,10 +38,10 @@
               lazy-pcf
               <small>
                 8.4.dev
-                <span class="label label-warning">Error with dependencies</span>
+                <span class="label label-success">4 s</span>
               </small>
             </h1>
-            <p><em><script>document.write(moment("2015-07-13 14:58:39 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2015-07-13 14:58:39 UTC)</em><p>
+            <p><em><script>document.write(moment("2015-07-18 05:24:31 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2015-07-18 05:24:31 UTC)</em><p>
             <h2>Context</h2>
             <pre># Installed packages for system:
 base-bigarray     base  Bigarray library distributed with the OCaml compiler
@@ -63,66 +63,58 @@ coq            8.4.dev  Formal proof management system.
               <dt>Command</dt>
               <dd><code>opam install -y --show-action coq:lazy-pcf.8.4.dev coq.8.4.dev</code></dd>
               <dt>Return code</dt>
-              <dd>16896</dd>
-              <dt>Output</dt>
-              <dd><pre>[NOTE] Package coq is already installed (current version is 8.4.dev).
-[WARNING] External solver failed:
-# opam-version         1.2.2
-# os                   linux
-# command              aspcud /home/bench/.opam/log/solver-in-5051-ccabea /home/bench/.opam/log/solver-out-5051-42bb52 -count(removed),-notuptodate(request),-sum(request,version-lag),-count(down),-notuptodate(changed),-count(changed),-notuptodate(solution),-sum(solution,version-lag)
-# path                 /home/bench/run
-# exit-code            1
-# env-file             /home/bench/.opam/log/log-5051-9b8556.env
-# stdout-file          /home/bench/.opam/log/log-5051-9b8556.out
-# stderr-file          /home/bench/.opam/log/log-5051-9b8556.err
-### stderr ###
-# error: could not fork /usr/bin/cudf2lp (Cannot allocate memory)
-[ERROR] External solver failure, please fix your installation and check
-        /home/bench/.opam/config and variable $OPAMEXTERNALSOLVER.
-        You may also retry with option --use-internal-solver
-</pre></dd>
+              <dd>0</dd>
             </dl>
             <p>Dry install without Coq, to test if the problem was incompatibility with the current Coq version:</p>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>opam remove -y coq; opam install -y --show-action coq:lazy-pcf.8.4.dev</code></dd>
+              <dd><code>true</code></dd>
               <dt>Return code</dt>
-              <dd>256</dd>
-              <dt>Output</dt>
-              <dd><pre>Fatal error:
-# opam-version    1.2.2
-# os              unix
-opam: &quot;fork&quot; failed: Cannot allocate memory
-Fatal error:
-# opam-version    1.2.2
-# os              unix
-opam: &quot;fork&quot; failed: Cannot allocate memory
-</pre></dd>
+              <dd>0</dd>
             </dl>
             <h2>Install dependencies</h2>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>true</code></dd>
+              <dd><code>opam list; ulimit -Sv 4000000; timeout 5m opam install -y --deps-only coq:lazy-pcf.8.4.dev</code></dd>
               <dt>Return code</dt>
               <dd>0</dd>
               <dt>Duration</dt>
-              <dd>0 s</dd>
+              <dd>2 s</dd>
             </dl>
             <h2>Install</h2>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>true</code></dd>
+              <dd><code>opam list; ulimit -Sv 4000000; timeout 5m opam install -y coq:lazy-pcf.8.4.dev</code></dd>
               <dt>Return code</dt>
               <dd>0</dd>
               <dt>Duration</dt>
-              <dd>0 s</dd>
+              <dd>4 s</dd>
             </dl>
             <h2>Installation size</h2>
-            <p>No files were installed.</p>
+            <p>Total: 324 K</p>
+            <ul>
+              <li>51 K <code>lib/coq/user-contrib/lazyPCF/SubjRed/ApTypes.vo</code></li>
+              <li>44 K <code>lib/coq/user-contrib/lazyPCF/OpSem/OSrules.vo</code></li>
+              <li>40 K <code>lib/coq/user-contrib/lazyPCF/OpSem/rename.vo</code></li>
+              <li>29 K <code>lib/coq/user-contrib/lazyPCF/OpSem/typecheck.vo</code></li>
+              <li>27 K <code>lib/coq/user-contrib/lazyPCF/SubjRed/TypeThms.vo</code></li>
+              <li>25 K <code>lib/coq/user-contrib/lazyPCF/OpSem/freevars.vo</code></li>
+              <li>19 K <code>lib/coq/user-contrib/lazyPCF/SubjRed/subjrnf.vo</code></li>
+              <li>16 K <code>lib/coq/user-contrib/lazyPCF/SubjRed/mapsto.vo</code></li>
+              <li>12 K <code>lib/coq/user-contrib/lazyPCF/OpSem/syntax.vo</code></li>
+              <li>10 K <code>lib/coq/user-contrib/lazyPCF/SubjRed/envprops.vo</code></li>
+              <li>10 K <code>lib/coq/user-contrib/lazyPCF/OpSem/utils.vo</code></li>
+              <li>9 K <code>lib/coq/user-contrib/lazyPCF/SubjRed/valid.vo</code></li>
+              <li>8 K <code>lib/coq/user-contrib/lazyPCF/SubjRed/NF.vo</code></li>
+              <li>8 K <code>lib/coq/user-contrib/lazyPCF/OpSem/environments.vo</code></li>
+              <li>8 K <code>lib/coq/user-contrib/lazyPCF/SubjRed/NFprops.vo</code></li>
+              <li>1 K <code>install/coq:lazy-pcf.install</code></li>
+              <li>0 K <code>lib/coq:lazy-pcf/opam.config</code></li>
+            </ul>
             <h2>Uninstall</h2>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>true</code></dd>
+              <dd><code>opam remove -y coq:lazy-pcf.8.4.dev</code></dd>
               <dt>Return code</dt>
               <dd>0</dd>
               <dt>Missing removes</dt>
