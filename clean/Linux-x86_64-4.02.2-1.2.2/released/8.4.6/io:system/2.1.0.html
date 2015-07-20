@@ -38,10 +38,10 @@
               io:system
               <small>
                 2.1.0
-                <span class="label label-success">6 s</span>
+                <span class="label label-warning">Error with dependencies</span>
               </small>
             </h1>
-            <p><em><script>document.write(moment("2015-07-18 14:40:58 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2015-07-18 14:40:58 UTC)</em><p>
+            <p><em><script>document.write(moment("2015-07-20 11:32:05 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2015-07-20 11:32:05 UTC)</em><p>
             <h2>Context</h2>
             <pre># Installed packages for system:
 base-bigarray   base  Bigarray library distributed with the OCaml compiler
@@ -77,32 +77,155 @@ coq            8.4.6  Formal proof management system.
               <dt>Command</dt>
               <dd><code>opam list; ulimit -Sv 4000000; timeout 5m opam install -y --deps-only coq:io:system.2.1.0</code></dd>
               <dt>Return code</dt>
-              <dd>0</dd>
+              <dd>1024</dd>
               <dt>Duration</dt>
               <dd>40 s</dd>
+              <dt>Output</dt>
+              <dd><pre># Installed packages for system:
+base-bigarray   base  Bigarray library distributed with the OCaml compiler
+base-threads    base  Threads library distributed with the OCaml compiler
+base-unix       base  Unix library distributed with the OCaml compiler
+camlp5          6.13  Preprocessor-pretty-printer of OCaml
+coq            8.4.6  Formal proof management system.
+The following actions will be performed:
+  - install coq:list-plus       1.1.0 
+  - install coq:error-handlers  1.1.0 
+  - install coq:io              2.1.0 
+  - install coq:function-ninjas 1.0.0 
+  - install ocamlfind           1.5.5 
+  - install coq:list-string     2.1.0 
+  - install ppx_tools           0.99.2
+  - install lwt                 2.5.0 
+  - install coq:io:system:ocaml 2.3.0 
+===== 9 to install =====
+=-=- Gathering sources =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+[coq:error-handlers: from released] Command started
+[coq:function-ninjas: from released] Command started
+[coq:io: from released] Command started
+[coq:error-handlers: http] Command started
+[coq:function-ninjas: http] Command started
+[coq:io: http] Command started
+[coq:function-ninjas: http] Command started
+[coq:function-ninjas.1.0.0] https://github.com/clarus/coq-function-ninjas/archive/1.0.0.tar.gz downloaded
+[coq:io:system:ocaml: from released] Command started
+[coq:io: http] Command started
+[coq:io.2.1.0] https://github.com/coq-io/io/archive/2.1.0.tar.gz downloaded
+[coq:list-plus: from released] Command started
+[coq:error-handlers: http] Command started
+[coq:error-handlers.1.1.0] https://github.com/clarus/coq-error-handlers/archive/1.1.0.tar.gz downloaded
+[coq:list-string: from released] Command started
+[coq:io:system:ocaml: http] Command started
+[coq:list-plus: http] Command started
+[coq:list-string: http] Command started
+[coq:list-plus: http] Command started
+[coq:io:system:ocaml: http] Command started
+[coq:list-plus.1.1.0] https://github.com/clarus/coq-list-plus/archive/1.1.0.tar.gz downloaded
+[lwt: from default] Command started
+[coq:list-string: http] Command started
+[coq:io:system:ocaml.2.3.0] https://github.com/coq-io/system-ocaml/archive/2.3.0.tar.gz downloaded
+[ocamlfind: from default] Command started
+[coq:list-string.2.1.0] https://github.com/clarus/coq-list-string/archive/2.1.0.tar.gz downloaded
+[ppx_tools: from default] Command started
+[ppx_tools: from default] Command started
+[default] https://opam.ocaml.org/archives/ppx_tools.0.99.2+opam.tar.gz downloaded
+[ocamlfind: from default] Command started
+[default] https://opam.ocaml.org/archives/ocamlfind.1.5.5+opam.tar.gz downloaded
+[lwt: from default] Command started
+[default] https://opam.ocaml.org/archives/lwt.2.5.0+opam.tar.gz downloaded
+=-=- Processing actions -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+[coq:error-handlers: ./configure.sh] Command started
+[coq:function-ninjas: ./configure.sh] Command started
+[coq:io: ./configure.sh] Command started
+[coq:list-plus: ./configure.sh] Command started
+[coq:error-handlers: make] Command started
+[coq:function-ninjas: make] Command started
+[coq:io: make] Command started
+[coq:list-plus: make] Command started
+[coq:function-ninjas: make install] Command started
+[coq:error-handlers: make install] Command started
+-&gt; installed coq:function-ninjas.1.0.0
+[ocamlfind: ./configure] Command started
+-&gt; installed coq:error-handlers.1.1.0
+[coq:list-plus: make install] Command started
+-&gt; installed coq:list-plus.1.1.0
+[coq:list-string: ruby pp.rb] Command started
+[coq:io: make install] Command started
+[ocamlfind: make all] Command started
+[coq:list-string: ./configure.sh] Command started
+-&gt; installed coq:io.2.1.0
+[coq:list-string: make] Command started
+[ocamlfind: make opt] Command started
+[ERROR] The compilation of coq:list-string failed at &quot;make -j4&quot;.
+[coq:list-string: rm] Command started
+[ocamlfind: make install] Command started
+-&gt; installed ocamlfind.1.5.5
+[ppx_tools: make all] Command started
+[ppx_tools: make install] Command started
+-&gt; installed ppx_tools.0.99.2
+[lwt: ./configure] Command started
+[lwt: make build] Command started
+[lwt: make install] Command started
+-&gt; installed lwt.2.5.0
+[coq:io:system:ocaml: make] Command started
+[coq:io:system:ocaml: make install] Command started
+-&gt; installed coq:io:system:ocaml.2.3.0
+#=== ERROR while installing coq:list-string.2.1.0 =============================#
+# opam-version         1.2.2
+# os                   linux
+# command              make -j4
+# path                 /home/bench/.opam/system/build/coq:list-string.2.1.0
+# compiler             system (4.02.2)
+# exit-code            2
+# env-file             /home/bench/.opam/system/build/coq:list-string.2.1.0/coq:list-string-25097-9e78df.env
+# stdout-file          /home/bench/.opam/system/build/coq:list-string.2.1.0/coq:list-string-25097-9e78df.out
+# stderr-file          /home/bench/.opam/system/build/coq:list-string.2.1.0/coq:list-string-25097-9e78df.err
+### stdout ###
+# [...]
+# &quot;coqc&quot;  -q  -R src ListString   src/LString
+# &quot;coqc&quot;  -q  -R src ListString   src/Char
+# &quot;coqc&quot;  -q  -R src ListString   src/Conversion
+# &quot;coqc&quot;  -q  -R src ListString   src/Case
+# &quot;coqc&quot;  -q  -R src ListString   src/Comparison
+# &quot;coqc&quot;  -q  -R src ListString   src/Trim
+# &quot;coqc&quot;  -q  -R src ListString   src/Etc
+# File &quot;/home/bench/.opam/system/build/coq:list-string.2.1.0/src/Conversion.v&quot;, line 6, characters 0-33:
+# Error: Cannot find library ErrorHandlers.All in loadpath
+# Makefile:208: recipe for target &#39;src/Conversion.vo&#39; failed
+### stderr ###
+# *** Warning: in file src/Conversion.v, library ErrorHandlers.All.v is required and has not been found in loadpath!
+# make: *** [src/Conversion.vo] Error 1
+# make: *** Waiting for unfinished jobs....
+=-=- Error report -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+The following actions failed
+  - install coq:list-string 2.1.0
+The following changes have been performed
+  - install coq:error-handlers  1.1.0 
+  - install coq:function-ninjas 1.0.0 
+  - install coq:io              2.1.0 
+  - install coq:io:system:ocaml 2.3.0 
+  - install coq:list-plus       1.1.0 
+  - install lwt                 2.5.0 
+  - install ocamlfind           1.5.5 
+  - install ppx_tools           0.99.2
+The former state can be restored with:
+    opam switch import &quot;~/.opam/system/backup/state-20150620101427.export&quot;
+</pre></dd>
             </dl>
             <h2>Install</h2>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>opam list; ulimit -Sv 4000000; timeout 5m opam install -y coq:io:system.2.1.0</code></dd>
+              <dd><code>true</code></dd>
               <dt>Return code</dt>
               <dd>0</dd>
               <dt>Duration</dt>
-              <dd>6 s</dd>
+              <dd>0 s</dd>
             </dl>
             <h2>Installation size</h2>
-            <p>Total: 73 K</p>
-            <ul>
-              <li>28 K <code>lib/coq/user-contrib/Io/System/System.vo</code></li>
-              <li>28 K <code>lib/coq/user-contrib/Io/System/Extraction.vo</code></li>
-              <li>16 K <code>lib/coq/user-contrib/Io/System/All.vo</code></li>
-              <li>1 K <code>install/coq:io:system.install</code></li>
-              <li>0 K <code>lib/coq:io:system/opam.config</code></li>
-            </ul>
+            <p>No files were installed.</p>
             <h2>Uninstall</h2>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>opam remove -y coq:io:system.2.1.0</code></dd>
+              <dd><code>true</code></dd>
               <dt>Return code</dt>
               <dd>0</dd>
               <dt>Missing removes</dt>
