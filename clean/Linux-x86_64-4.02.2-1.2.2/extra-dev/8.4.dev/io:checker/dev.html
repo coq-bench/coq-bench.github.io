@@ -38,10 +38,10 @@
               io:checker
               <small>
                 dev
-                <span class="label label-success">14 s</span>
+                <span class="label label-danger">Error</span>
               </small>
             </h1>
-            <p><em><script>document.write(moment("2015-07-18 05:24:31 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2015-07-18 05:24:31 UTC)</em><p>
+            <p><em><script>document.write(moment("2015-07-21 20:50:04 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2015-07-21 20:50:04 UTC)</em><p>
             <h2>Context</h2>
             <pre># Installed packages for system:
 base-bigarray     base  Bigarray library distributed with the OCaml compiler
@@ -79,27 +79,95 @@ coq            8.4.dev  Formal proof management system.
               <dt>Return code</dt>
               <dd>0</dd>
               <dt>Duration</dt>
-              <dd>41 s</dd>
+              <dd>50 s</dd>
             </dl>
             <h2>Install</h2>
             <dl class="dl-horizontal">
               <dt>Command</dt>
               <dd><code>opam list; ulimit -Sv 4000000; timeout 5m opam install -y coq:io:checker.dev</code></dd>
               <dt>Return code</dt>
-              <dd>0</dd>
+              <dd>1024</dd>
               <dt>Duration</dt>
-              <dd>14 s</dd>
+              <dd>15 s</dd>
+              <dt>Output</dt>
+              <dd><pre># Installed packages for system:
+base-bigarray                    base  Bigarray library distributed with the OCa
+base-threads                     base  Threads library distributed with the OCam
+base-unix                        base  Unix library distributed with the OCaml c
+camlp5                           6.13  Preprocessor-pretty-printer of OCaml
+coq                           8.4.dev  Formal proof management system.
+coq:error-handlers                dev  Simple and robust error handling function
+coq:extraction:big-int            dev  Interface to native OCaml big integers.
+coq:extraction:big-int:ocaml      dev  Interface to native OCaml big integers.
+coq:extraction:loop               dev  Interface to the infinite integer.
+coq:extraction:lwt                dev  Interface to the native OCaml Lwt library
+coq:extraction:lwt:ocaml          dev  Interface to the native OCaml Lwt library
+coq:extraction:string             dev  Interface to native strings.
+coq:extraction:string:ocaml       dev  Interface to the OCaml strings for the Co
+coq:extraction:sys                dev  Interface to the native OCaml Sys library
+coq:extraction:sys:ocaml          dev  Interface to the native OCaml Sys library
+coq:function-ninjas               dev  Write readable code using simple function
+coq:io                            dev  A library for effects in Coq.
+coq:io:system                     dev  System effects for Coq.
+coq:io:system:ocaml             2.3.0  Extraction to OCaml of system effects.
+coq:list-plus                     dev  More functions on lists.
+coq:list-string                   dev  Strings implemented as lists.
+lwt                             2.5.0  A cooperative threads library for OCaml
+ocamlfind                       1.5.5  A library manager for OCaml
+ppx_tools                      0.99.2  Tools for authors of ppx rewriters and ot
+The following actions will be performed:
+  - install coq:io:checker dev
+=-=- Gathering sources =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+[coq:io:checker: from extra-dev] Command started
+[coq:io:checker: git] Command started
+[coq:io:checker: git] Command started
+[coq:io:checker: git] Command started
+[coq:io:checker: git] Command started
+[coq:io:checker: git] Command started
+[coq:io:checker: git] Command started
+[coq:io:checker] https://github.com/coq-io/checker updated
+=-=- Processing actions -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+[coq:io:checker: ./configure.sh] Command started
+[coq:io:checker: make] Command started
+[coq:io:checker: sh cd extraction &amp;&amp; make] Command started
+[ERROR] The compilation of coq:io:checker failed at &quot;sh -c cd extraction &amp;&amp;
+        make&quot;.
+#=== ERROR while installing coq:io:checker.dev ================================#
+# opam-version         1.2.2
+# os                   linux
+# command              sh -c cd extraction &amp;&amp; make
+# path                 /home/bench/.opam/system/build/coq:io:checker.dev
+# compiler             system (4.02.2)
+# exit-code            2
+# env-file             /home/bench/.opam/system/build/coq:io:checker.dev/coq:io:checker-30916-a71bb4.env
+# stdout-file          /home/bench/.opam/system/build/coq:io:checker.dev/coq:io:checker-30916-a71bb4.out
+# stderr-file          /home/bench/.opam/system/build/coq:io:checker.dev/coq:io:checker-30916-a71bb4.err
+### stdout ###
+# Hint: Recursive traversal of subdirectories was not enabled for this build,
+# [...]
+#   you should add the option &quot;-r&quot; or create an empty &#39;_tags&#39; file.
+#   
+#   To enable recursive traversal for some subdirectories only, you can use the
+#   following &#39;_tags&#39; file:
+#   
+#       true: -traverse
+#       &lt;dir1&gt; or &lt;dir2&gt;: traverse
+#       
+# Makefile:2: recipe for target &#39;build&#39; failed
+### stderr ###
+# make: *** [build] Error 10
+=-=- Error report -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+The following actions failed
+  - install coq:io:checker dev
+No changes have been performed
+</pre></dd>
             </dl>
             <h2>Installation size</h2>
-            <p>Total: 1 K</p>
-            <ul>
-              <li>1 K <code>install/coq:io:checker.install</code></li>
-              <li>0 K <code>lib/coq:io:checker/opam.config</code></li>
-            </ul>
+            <p>No files were installed.</p>
             <h2>Uninstall</h2>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>opam remove -y coq:io:checker.dev</code></dd>
+              <dd><code>true</code></dd>
               <dt>Return code</dt>
               <dd>0</dd>
               <dt>Missing removes</dt>
