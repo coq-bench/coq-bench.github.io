@@ -38,10 +38,10 @@
               plouffe
               <small>
                 1.1.0
-                <span class="label label-warning">Error with dependencies</span>
+                <span class="label label-info">Not compatible with this Coq</span>
               </small>
             </h1>
-            <p><em><script>document.write(moment("2015-07-22 03:00:52 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2015-07-22 03:00:52 UTC)</em><p>
+            <p><em><script>document.write(moment("2015-07-22 20:58:36 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2015-07-22 20:58:36 UTC)</em><p>
             <h2>Context</h2>
             <pre># Installed packages for system:
 base-bigarray  base  Bigarray library distributed with the OCaml compiler
@@ -63,51 +63,31 @@ coq             dev  Formal proof management system.
               <dt>Command</dt>
               <dd><code>opam install -y --show-action coq:plouffe.1.1.0 coq.dev</code></dd>
               <dt>Return code</dt>
-              <dd>0</dd>
+              <dd>768</dd>
+              <dt>Output</dt>
+              <dd><pre>[NOTE] Package coq is already installed (current version is dev).
+The following dependencies couldn&#39;t be met:
+  - coq:plouffe -&gt; coq:coquelicot &gt;= 2.1.0 -&gt; coq:ssreflect &gt;= 1.5.0 -&gt; coq &lt; 8.5
+Your request can&#39;t be satisfied:
+  - Conflicting version constraints for coq
+No solution found, exiting
+</pre></dd>
             </dl>
             <p>Dry install without Coq, to test if the problem was incompatibility with the current Coq version:</p>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>true</code></dd>
+              <dd><code>opam remove -y coq; opam install -y --show-action coq:plouffe.1.1.0</code></dd>
               <dt>Return code</dt>
               <dd>0</dd>
             </dl>
             <h2>Install dependencies</h2>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>opam list; ulimit -Sv 4000000; timeout 5m opam install -y --deps-only coq:plouffe.1.1.0</code></dd>
+              <dd><code>true</code></dd>
               <dt>Return code</dt>
-              <dd>31744</dd>
+              <dd>0</dd>
               <dt>Duration</dt>
-              <dd>5 m 0 s</dd>
-              <dt>Output</dt>
-              <dd><pre># Installed packages for system:
-base-bigarray  base  Bigarray library distributed with the OCaml compiler
-base-threads   base  Threads library distributed with the OCaml compiler
-base-unix      base  Unix library distributed with the OCaml compiler
-camlp5         6.13  Preprocessor-pretty-printer of OCaml
-coq             dev  Formal proof management system.
-The following actions will be performed:
-  - install coq:ssreflect  dev  
-  - install coq:coquelicot 2.1.0
-===== 2 to install =====
-=-=- Gathering sources =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
-[coq:coquelicot: from released] Command started
-[coq:ssreflect: from extra-dev] Command started
-[coq:ssreflect: git] Command started
-[coq:coquelicot: http] Command started
-[coq:ssreflect: git] Command started
-[coq:ssreflect: git] Command started
-[coq:ssreflect: git] Command started
-[coq:ssreflect: git] Command started
-[coq:ssreflect: git] Command started
-[coq:ssreflect] https://gforge.inria.fr/git/coq-contribs/ssreflect.git#trunk updated
-[coq:coquelicot: http] Command started
-[coq:coquelicot.2.1.0] https://gforge.inria.fr/frs/download.php/file/34663/coquelicot-2.1.0.tar.gz downloaded
-=-=- Processing actions -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
-[coq:ssreflect: coq_makefile Make] Command started
-[coq:ssreflect: make] Command started
-</pre></dd>
+              <dd>0 s</dd>
             </dl>
             <h2>Install</h2>
             <dl class="dl-horizontal">

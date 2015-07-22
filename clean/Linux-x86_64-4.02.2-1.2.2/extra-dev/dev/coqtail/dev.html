@@ -41,7 +41,7 @@
                 <span class="label label-danger">Error</span>
               </small>
             </h1>
-            <p><em><script>document.write(moment("2015-07-22 03:00:52 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2015-07-22 03:00:52 UTC)</em><p>
+            <p><em><script>document.write(moment("2015-07-22 20:58:36 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2015-07-22 20:58:36 UTC)</em><p>
             <h2>Context</h2>
             <pre># Installed packages for system:
 base-bigarray  base  Bigarray library distributed with the OCaml compiler
@@ -86,9 +86,9 @@ coq             dev  Formal proof management system.
               <dt>Command</dt>
               <dd><code>opam list; ulimit -Sv 4000000; timeout 5m opam install -y coq:coqtail.dev</code></dd>
               <dt>Return code</dt>
-              <dd>16896</dd>
+              <dd>1024</dd>
               <dt>Duration</dt>
-              <dd>3 s</dd>
+              <dd>10 s</dd>
               <dt>Output</dt>
               <dd><pre># Installed packages for system:
 base-bigarray  base  Bigarray library distributed with the OCaml compiler
@@ -106,9 +106,49 @@ The following actions will be performed:
 [coq:coqtail: git] Command started
 [coq:coqtail: git] Command started
 [coq:coqtail: git] Command started
-[ERROR] The sources of the following couldn&#39;t be obtained, aborting:
-          - coq:coqtail.dev
-        (This may be fixed by running &#39;opam update&#39;)
+[coq:coqtail] git://git.code.sf.net/p/coqtail/git updated
+=-=- Processing actions -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+[coq:coqtail: sh] Command started
+[coq:coqtail: sh] Command started
+[coq:coqtail: sh cd src &amp;&amp; make -j4] Command started
+[ERROR] The compilation of coq:coqtail failed at &quot;sh -c cd src &amp;&amp; make -j4&quot;.
+[coq:coqtail: rm] Command started
+#=== ERROR while installing coq:coqtail.dev ===================================#
+# opam-version         1.2.2
+# os                   linux
+# command              sh -c cd src &amp;&amp; make -j4
+# path                 /home/bench/.opam/system/build/coq:coqtail.dev
+# compiler             system (4.02.2)
+# exit-code            2
+# env-file             /home/bench/.opam/system/build/coq:coqtail.dev/coq:coqtail-20120-a71bb4.env
+# stdout-file          /home/bench/.opam/system/build/coq:coqtail.dev/coq:coqtail-20120-a71bb4.out
+# stderr-file          /home/bench/.opam/system/build/coq:coqtail.dev/coq:coqtail-20120-a71bb4.err
+### stdout ###
+# [...]
+# &quot;coqdep&quot; -c -R &quot;.&quot; Coqtail &quot;Reals/Finite_Calculus/Definitions.v&quot; &gt; &quot;Reals/Finite_Calculus/Definitions.v.d&quot; || ( RV=$?; rm -f &quot;Reals/Finite_Calculus/Definitions.v.d&quot;; exit ${RV} )
+# &quot;coqdep&quot; -c -R &quot;.&quot; Coqtail &quot;Subseq/Subseq.v&quot; &gt; &quot;Subseq/Subseq.v.d&quot; || ( RV=$?; rm -f &quot;Subseq/Subseq.v.d&quot;; exit ${RV} )
+# &quot;coqc&quot;  -q  -R &quot;.&quot; Coqtail   Subseq/Subseq
+# &quot;coqc&quot;  -q  -R &quot;.&quot; Coqtail   Reals/Rsequence/Rsequence_def
+# &quot;coqc&quot;  -q  -R &quot;.&quot; Coqtail   Reals/Ranalysis/Rfunction_def
+# &quot;coqc&quot;  -q  -R &quot;.&quot; Coqtail   mytheories/MyNeq
+# &quot;coqc&quot;  -q  -R &quot;.&quot; Coqtail   Tactics/Ass_handling
+# &quot;coqc&quot;  -q  -R &quot;.&quot; Coqtail   mytheories/myReals/MyRbasic_fun
+# Makefile:382: recipe for target &#39;Subseq/Subseq.vo&#39; failed
+# Makefile:382: recipe for target &#39;Reals/Rsequence/Rsequence_def.vo&#39; failed
+### stderr ###
+# *** Warning: in file Reals/Dequa/Dequa_examples.v, library LegacyField_Theory is required and has not been found in the loadpath!
+# *** Warning: in file Reals/Dequa/Dequa_examples.v, library LegacyField_Theory is required and has not been found in the loadpath!
+# File &quot;./Subseq/Subseq.v&quot;, line 35, characters 0-5:
+# Error: The reference omega was not found in the current environment.
+# make: *** [Subseq/Subseq.vo] Error 1
+# make: *** Waiting for unfinished jobs....
+# File &quot;./Reals/Rsequence/Rsequence_def.v&quot;, line 79, characters 7-16:
+# Error: The constructor exist (in type sig) expects 3 arguments.
+# make: *** [Reals/Rsequence/Rsequence_def.vo] Error 1
+=-=- Error report -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+The following actions failed
+  - install coq:coqtail dev
+No changes have been performed
 </pre></dd>
             </dl>
             <h2>Installation size</h2>
