@@ -38,10 +38,10 @@
               ext-lib
               <small>
                 1.0.0~beta2
-                <span class="label label-danger">Lint error</span>
+                <span class="label label-info">Not compatible with this Coq</span>
               </small>
             </h1>
-            <p><em><script>document.write(moment("2015-09-16 06:02:38 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2015-09-16 06:02:38 UTC)</em><p>
+            <p><em><script>document.write(moment("2015-09-16 17:06:05 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2015-09-16 17:06:05 UTC)</em><p>
             <h2>Context</h2>
             <pre># Installed packages for system:
 base-bigarray          base  Bigarray library distributed with the OCaml compile
@@ -55,23 +55,28 @@ coq            8.4.6~camlp4  Formal proof management system.
               <dt>Command</dt>
               <dd><code>ruby lint.rb released opam-coq-archive/released/packages/coq:ext-lib/coq:ext-lib.1.0.0~beta2</code></dd>
               <dt>Return code</dt>
-              <dd>256</dd>
-              <dt>Output</dt>
-              <dd><pre>Wrong released version name &quot;1.0.0~beta2&quot;, expected three numbers separated by dots.
-</pre></dd>
+              <dd>0</dd>
             </dl>
             <h2>Dry install</h2>
             <p>Dry install with the current Coq version:</p>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>true</code></dd>
+              <dd><code>opam install -y --show-action coq:ext-lib.1.0.0~beta2 coq.8.4.6~camlp4</code></dd>
               <dt>Return code</dt>
-              <dd>0</dd>
+              <dd>768</dd>
+              <dt>Output</dt>
+              <dd><pre>[NOTE] Package coq is already installed (current version is 8.4.6~camlp4).
+The following dependencies couldn&#39;t be met:
+  - coq:ext-lib -&gt; coq &gt;= 8.5~beta2
+Your request can&#39;t be satisfied:
+  - Conflicting version constraints for coq
+No solution found, exiting
+</pre></dd>
             </dl>
             <p>Dry install without Coq, to test if the problem was incompatibility with the current Coq version:</p>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>true</code></dd>
+              <dd><code>opam remove -y coq; opam install -y --show-action coq:ext-lib.1.0.0~beta2</code></dd>
               <dt>Return code</dt>
               <dd>0</dd>
             </dl>
