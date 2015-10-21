@@ -38,17 +38,18 @@
               graphs
               <small>
                 dev
-                <span class="label label-success">8 s</span>
+                <span class="label label-danger">Error</span>
               </small>
             </h1>
-            <p><em><script>document.write(moment("2015-07-22 20:58:36 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2015-07-22 20:58:36 UTC)</em><p>
+            <p><em><script>document.write(moment("2015-10-21 11:02:34 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2015-10-21 11:02:34 UTC)</em><p>
             <h2>Context</h2>
             <pre># Installed packages for system:
-base-bigarray  base  Bigarray library distributed with the OCaml compiler
-base-threads   base  Threads library distributed with the OCaml compiler
-base-unix      base  Unix library distributed with the OCaml compiler
-camlp5         6.13  Preprocessor-pretty-printer of OCaml
-coq             dev  Formal proof management system.
+base-bigarray   base  Bigarray library distributed with the OCaml compiler
+base-threads    base  Threads library distributed with the OCaml compiler
+base-unix       base  Unix library distributed with the OCaml compiler
+camlp5          6.14  Preprocessor-pretty-printer of OCaml
+coq              dev  Formal proof management system.
+ocamlfind      1.5.5  A library manager for OCaml
 </pre>
             <h2>Lint</h2>
             <dl class="dl-horizontal">
@@ -75,37 +76,83 @@ coq             dev  Formal proof management system.
             <h2>Install dependencies</h2>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>opam list; ulimit -Sv 4000000; timeout 5m opam install -y --deps-only coq:graphs.dev</code></dd>
+              <dd><code>opam list; ulimit -Sv 4000000; timeout 60m opam install -y --deps-only coq:graphs.dev</code></dd>
               <dt>Return code</dt>
               <dd>0</dd>
               <dt>Duration</dt>
-              <dd>13 s</dd>
+              <dd>15 s</dd>
             </dl>
             <h2>Install</h2>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>opam list; ulimit -Sv 4000000; timeout 5m opam install -y coq:graphs.dev</code></dd>
+              <dd><code>opam list; ulimit -Sv 4000000; timeout 60m opam install -y coq:graphs.dev</code></dd>
               <dt>Return code</dt>
-              <dd>0</dd>
+              <dd>1024</dd>
               <dt>Duration</dt>
-              <dd>8 s</dd>
+              <dd>10 s</dd>
+              <dt>Output</dt>
+              <dd><pre># Installed packages for system:
+base-bigarray   base  Bigarray library distributed with the OCaml compiler
+base-threads    base  Threads library distributed with the OCaml compiler
+base-unix       base  Unix library distributed with the OCaml compiler
+camlp5          6.14  Preprocessor-pretty-printer of OCaml
+coq              dev  Formal proof management system.
+coq:int-map      dev  Maps indexed by binary integers : IntMap.
+ocamlfind      1.5.5  A library manager for OCaml
+The following actions will be performed:
+  - install coq:graphs dev
+=-=- Gathering sources =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+[coq:graphs: from extra-dev] Command started
+[coq:graphs: git] Command started
+[coq:graphs: git] Command started
+[coq:graphs: git] Command started
+[coq:graphs: git] Command started
+[coq:graphs: git] Command started
+[coq:graphs: git] Command started
+[coq:graphs] https://gforge.inria.fr/git/coq-contribs/graphs.git#trunk updated
+=-=- Processing actions -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+[coq:graphs: coq_makefile Make] Command started
+[coq:graphs: make] Command started
+[ERROR] The compilation of coq:graphs failed at &quot;make -j4&quot;.
+[coq:graphs: rm] Command started
+#=== ERROR while installing coq:graphs.dev ====================================#
+# opam-version         1.2.2
+# os                   linux
+# command              make -j4
+# path                 /home/bench/.opam/system/build/coq:graphs.dev
+# compiler             system (4.02.2)
+# exit-code            2
+# env-file             /home/bench/.opam/system/build/coq:graphs.dev/coq:graphs-7375-d8a4ae.env
+# stdout-file          /home/bench/.opam/system/build/coq:graphs.dev/coq:graphs-7375-d8a4ae.out
+# stderr-file          /home/bench/.opam/system/build/coq:graphs.dev/coq:graphs-7375-d8a4ae.err
+### stdout ###
+# &quot;coqdep&quot; -c -R &quot;.&quot; Graphs &quot;cgraph.v&quot; &gt; &quot;cgraph.v.d&quot; || ( RV=$?; rm -f &quot;cgraph.v.d&quot;; exit ${RV} )
+# &quot;coqdep&quot; -c -R &quot;.&quot; Graphs &quot;zcgraph.v&quot; &gt; &quot;zcgraph.v.d&quot; || ( RV=$?; rm -f &quot;zcgraph.v.d&quot;; exit ${RV} )
+# &quot;coqc&quot;  -q  -R &quot;.&quot; Graphs   cgraph
+# &quot;coqc&quot;  -q  -R &quot;.&quot; Graphs   zcgraph
+# coqtop -R &quot;.&quot; Graphs -q  -R &quot;.&quot; Graphs   -silent -batch -load-vernac-source extract.v
+# /home/bench/.opam/system/bin/ocamlfind opt -rectypes -thread -o checker unix.cmxa checker.mli checker.ml -pp &#39;/home/bench/.opam/system/bin/camlp5o -I /usr/local/lib/ocaml -I /usr/local/lib/ocaml/threads/ -I &quot;/home/bench/.opam/system/lib/coq/kernel&quot; -I &quot;/home/bench/.opam/system/lib/coq/lib&quot; -I &quot;/home/bench/.opam/system/lib/coq/library&quot; -I &quot;/home/bench/.opam/system/lib/coq/parsing&quot; -I &quot;/home/bench/.opam/system/lib/coq/engine&quot; -I &quot;/home/bench/.opam/system/lib/coq/pretyping&quot; -I &quot;/home/bench/.opam/system/lib/coq/interp&quot; -I &quot;/home/bench/.opam/system/lib/coq/printing&quot; -I &quot;/home/bench/.opam/system/lib/coq/intf&quot; -I &quot;/home/bench/.opam/system/lib/coq/proofs&quot; -I &quot;/home/bench/.opam/system/lib/coq/tactics&quot; -I &quot;/home/bench/.opam/system/lib/coq/tools&quot; -I &quot;/home/bench/.opam/system/lib/coq/toplevel&quot; -I &quot;/home/bench/.opam/system/lib/coq/stm&quot; -I &quot;/home/bench/.opam/system/lib/coq/grammar&quot; -I &quot;/home/bench/.opam/system/lib/coq/config&quot; -I &quot;/home/bench/.opam/system/lib/coq//plugins/btauto&quot; -I &quot;/home/bench/.opam/system/lib/coq//plugins/cc&quot; -I &quot;/home/bench/.opam/system/lib/coq//plugins/decl_mode&quot; -I &quot;/home/bench/.opam/system/lib/coq//plugins/derive&quot; -I &quot;/home/bench/.opam/system/lib/coq//plugins/extraction&quot; -I &quot;/home/bench/.opam/system/lib/coq//plugins/firstorder&quot; -I &quot;/home/bench/.opam/system/lib/coq//plugins/fourier&quot; -I &quot;/home/bench/.opam/system/lib/coq//plugins/funind&quot; -I &quot;/home/bench/.opam/system/lib/coq//plugins/micromega&quot; -I &quot;/home/bench/.opam/system/lib/coq//plugins/nsatz&quot; -I &quot;/home/bench/.opam/system/lib/coq//plugins/omega&quot; -I &quot;/home/bench/.opam/system/lib/coq//plugins/quote&quot; -I &quot;/home/bench/.opam/system/lib/coq//plugins/romega&quot; -I &quot;/home/bench/.opam/system/lib/coq//plugins/rtauto&quot; -I &quot;/home/bench/.opam/system/lib/coq//plugins/setoid_ring&quot; -I &quot;/home/bench/.opam/system/lib/coq//plugins/syntax&quot; -I &quot;/home/bench/.opam/system/lib/coq//plugins/xml&quot; compat5.cmo pa_extend.cmo q_MLast.cmo pa_macro.cmo unix.cma threads.cma grammar.cma -loc loc -impl&#39; main.ml
+# Makefile:225: recipe for target &#39;checker&#39; failed
+### stderr ###
+# File &quot;checker.mli&quot;, line 10, characters 1-4:
+# Parse error: [implem] expected after [str_item_semi] (in [implem])
+# File &quot;checker.mli&quot;, line 1:
+# Error: Error while running external preprocessor
+# Command line: /home/bench/.opam/system/bin/camlp5o -I /usr/local/lib/ocaml -I /usr/local/lib/ocaml/threads/ -I &quot;/home/bench/.opam/system/lib/coq/kernel&quot; -I &quot;/home/bench/.opam/system/lib/coq/lib&quot; -I &quot;/home/bench/.opam/system/lib/coq/library&quot; -I &quot;/home/bench/.opam/system/lib/coq/parsing&quot; -I &quot;/home/bench/.opam/system/lib/coq/engine&quot; -I &quot;/home/bench/.opam/system/lib/coq/pretyping&quot; -I &quot;/home/bench/.opam/system/lib/coq/interp&quot; -I &quot;/home/bench/.opam/system/lib/coq/printing&quot; -I &quot;/home/bench/.opam/system/lib/coq/intf&quot; -I &quot;/home/bench/.opam/system/lib/coq/proofs&quot; -I &quot;/home/bench/.opam/system/lib/coq/tactics&quot; -I &quot;/home/bench/.opam/system/lib/coq/tools&quot; -I &quot;/home/bench/.opam/system/lib/coq/toplevel&quot; -I &quot;/home/bench/.opam/system/lib/coq/stm&quot; -I &quot;/home/bench/.opam/system/lib/coq/grammar&quot; -I &quot;/home/bench/.opam/system/lib/coq/config&quot; -I &quot;/home/bench/.opam/system/lib/coq//plugins/btauto&quot; -I &quot;/home/bench/.opam/system/lib/coq//plugins/cc&quot; -I &quot;/home/bench/.opam/system/lib/coq//plugins/decl_mode&quot; -I &quot;/home/bench/.opam/system/lib/coq//plugins/derive&quot; -I &quot;/home/bench/.opam/system/lib/coq//plugins/extraction&quot; -I &quot;/home/bench/.opam/system/lib/coq//plugins/firstorder&quot; -I &quot;/home/bench/.opam/system/lib/coq//plugins/fourier&quot; -I &quot;/home/bench/.opam/system/lib/coq//plugins/funind&quot; -I &quot;/home/bench/.opam/system/lib/coq//plugins/micromega&quot; -I &quot;/home/bench/.opam/system/lib/coq//plugins/nsatz&quot; -I &quot;/home/bench/.opam/system/lib/coq//plugins/omega&quot; -I &quot;/home/bench/.opam/system/lib/coq//plugins/quote&quot; -I &quot;/home/bench/.opam/system/lib/coq//plugins/romega&quot; -I &quot;/home/bench/.opam/system/lib/coq//plugins/rtauto&quot; -I &quot;/home/bench/.opam/system/lib/coq//plugins/setoid_ring&quot; -I &quot;/home/bench/.opam/system/lib/coq//plugins/syntax&quot; -I &quot;/home/bench/.opam/system/lib/coq//plugins/xml&quot; compat5.cmo pa_extend.cmo q_MLast.cmo pa_macro.cmo unix.cma threads.cma grammar.cma -loc loc -impl &#39;checker.mli&#39; &gt; /tmp/ocamlppa9e655
+# 
+# make: *** [checker] Error 2
+=-=- Error report -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+The following actions failed
+  - install coq:graphs dev
+No changes have been performed
+</pre></dd>
             </dl>
             <h2>Installation size</h2>
-            <p>Total: 1,205 K</p>
-            <ul>
-              <li>480 K <code>lib/coq/user-contrib/Graphs/cgraph.glob</code></li>
-              <li>419 K <code>lib/coq/user-contrib/Graphs/cgraph.vo</code></li>
-              <li>118 K <code>lib/coq/user-contrib/Graphs/cgraph.v</code></li>
-              <li>96 K <code>lib/coq/user-contrib/Graphs/zcgraph.glob</code></li>
-              <li>70 K <code>lib/coq/user-contrib/Graphs/zcgraph.vo</code></li>
-              <li>20 K <code>lib/coq/user-contrib/Graphs/zcgraph.v</code></li>
-              <li>1 K <code>install/coq:graphs.install</code></li>
-              <li>0 K <code>lib/coq:graphs/opam.config</code></li>
-            </ul>
+            <p>No files were installed.</p>
             <h2>Uninstall</h2>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>opam remove -y coq:graphs.dev</code></dd>
+              <dd><code>true</code></dd>
               <dt>Return code</dt>
               <dd>0</dd>
               <dt>Missing removes</dt>
