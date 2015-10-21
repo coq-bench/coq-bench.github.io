@@ -41,13 +41,13 @@
                 <span class="label label-danger">Error</span>
               </small>
             </h1>
-            <p><em><script>document.write(moment("2015-07-22 18:16:05 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2015-07-22 18:16:05 UTC)</em><p>
+            <p><em><script>document.write(moment("2015-10-21 07:32:30 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2015-10-21 07:32:30 UTC)</em><p>
             <h2>Context</h2>
             <pre># Installed packages for system:
 base-bigarray     base  Bigarray library distributed with the OCaml compiler
 base-threads      base  Threads library distributed with the OCaml compiler
 base-unix         base  Unix library distributed with the OCaml compiler
-camlp5            6.13  Preprocessor-pretty-printer of OCaml
+camlp5            6.14  Preprocessor-pretty-printer of OCaml
 coq            8.5.dev  Formal proof management system.
 </pre>
             <h2>Lint</h2>
@@ -75,7 +75,7 @@ coq            8.5.dev  Formal proof management system.
             <h2>Install dependencies</h2>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>opam list; ulimit -Sv 4000000; timeout 5m opam install -y --deps-only coq:math-classes.contrib.dev</code></dd>
+              <dd><code>opam list; ulimit -Sv 4000000; timeout 60m opam install -y --deps-only coq:math-classes.contrib.dev</code></dd>
               <dt>Return code</dt>
               <dd>0</dd>
               <dt>Duration</dt>
@@ -84,17 +84,17 @@ coq            8.5.dev  Formal proof management system.
             <h2>Install</h2>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>opam list; ulimit -Sv 4000000; timeout 5m opam install -y coq:math-classes.contrib.dev</code></dd>
+              <dd><code>opam list; ulimit -Sv 4000000; timeout 60m opam install -y coq:math-classes.contrib.dev</code></dd>
               <dt>Return code</dt>
               <dd>1024</dd>
               <dt>Duration</dt>
-              <dd>23 s</dd>
+              <dd>1 m 3 s</dd>
               <dt>Output</dt>
               <dd><pre># Installed packages for system:
 base-bigarray     base  Bigarray library distributed with the OCaml compiler
 base-threads      base  Threads library distributed with the OCaml compiler
 base-unix         base  Unix library distributed with the OCaml compiler
-camlp5            6.13  Preprocessor-pretty-printer of OCaml
+camlp5            6.14  Preprocessor-pretty-printer of OCaml
 coq            8.5.dev  Formal proof management system.
 The following actions will be performed:
   - install coq:math-classes contrib.dev
@@ -119,27 +119,25 @@ The following actions will be performed:
 # path                 /home/bench/.opam/system/build/coq:math-classes.contrib.dev
 # compiler             system (4.02.2)
 # exit-code            2
-# env-file             /home/bench/.opam/system/build/coq:math-classes.contrib.dev/coq:math-classes-9416-d8a4ae.env
-# stdout-file          /home/bench/.opam/system/build/coq:math-classes.contrib.dev/coq:math-classes-9416-d8a4ae.out
-# stderr-file          /home/bench/.opam/system/build/coq:math-classes.contrib.dev/coq:math-classes-9416-d8a4ae.err
+# env-file             /home/bench/.opam/system/build/coq:math-classes.contrib.dev/coq:math-classes-4771-d8a4ae.env
+# stdout-file          /home/bench/.opam/system/build/coq:math-classes.contrib.dev/coq:math-classes-4771-d8a4ae.out
+# stderr-file          /home/bench/.opam/system/build/coq:math-classes.contrib.dev/coq:math-classes-4771-d8a4ae.err
 ### stdout ###
 # [...]
-# &quot;coqc&quot;  -q  -R &quot;.&quot; MathClasses   categories/dual
-# &quot;coqc&quot;  -q  -R &quot;.&quot; MathClasses   theory/hom_functor
-# &quot;coqc&quot;  -q  -R &quot;.&quot; MathClasses   theory/adjunctions
-# &quot;coqc&quot;  -q  -R &quot;.&quot; MathClasses   theory/functors
-# &quot;coqc&quot;  -q  -R &quot;.&quot; MathClasses   categories/varieties
-# &quot;coqc&quot;  -q  -R &quot;.&quot; MathClasses   orders/maps
-# &quot;coqc&quot;  -q  -R &quot;.&quot; MathClasses   theory/monads
-# &quot;coqc&quot;  -q  -R &quot;.&quot; MathClasses   categories/product
-# &quot;coqc&quot;  -q  -R &quot;.&quot; MathClasses   varieties/closed_terms
-# Makefile:369: recipe for target &#39;categories/product.vo&#39; failed
+# &quot;coqc&quot;  -q  -R &quot;.&quot; MathClasses   orders/nat_int
+# &quot;coqc&quot;  -q  -R &quot;.&quot; MathClasses   implementations/natpair_integers
+# &quot;coqc&quot;  -q  -R &quot;.&quot; MathClasses   orders/naturals
+# &quot;coqc&quot;  -q  -R &quot;.&quot; MathClasses   theory/nat_distance
+# &quot;coqc&quot;  -q  -R &quot;.&quot; MathClasses   theory/integers
+# &quot;coqc&quot;  -q  -R &quot;.&quot; MathClasses   theory/int_abs
+# &quot;coqc&quot;  -q  -R &quot;.&quot; MathClasses   interfaces/rationals
+# &quot;coqc&quot;  -q  -R &quot;.&quot; MathClasses   theory/int_to_nat
+# &quot;coqc&quot;  -q  -R &quot;.&quot; MathClasses   implementations/modular_ring
+# Makefile:369: recipe for target &#39;implementations/modular_ring.vo&#39; failed
 ### stderr ###
-# File &quot;./categories/product.v&quot;, line 134, characters 95-98:
-# Error: Illegal application (Non-functional construction): 
-# The expression &quot;a&quot; of type &quot;X ⟶ Y&quot; cannot be applied to the term
-#  &quot;i&quot; : &quot;I&quot;
-# make: *** [categories/product.vo] Error 1
+# File &quot;./implementations/modular_ring.v&quot;, line 16, characters 14-25:
+# Error: Not the right number of missing arguments (expected 1).
+# make: *** [implementations/modular_ring.vo] Error 1
 # make: *** Waiting for unfinished jobs....
 =-=- Error report -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 The following actions failed

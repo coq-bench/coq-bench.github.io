@@ -38,16 +38,16 @@
               mtac
               <small>
                 dev
-                <span class="label label-success">8 s</span>
+                <span class="label label-danger">Error</span>
               </small>
             </h1>
-            <p><em><script>document.write(moment("2015-07-22 18:16:05 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2015-07-22 18:16:05 UTC)</em><p>
+            <p><em><script>document.write(moment("2015-10-21 07:32:30 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2015-10-21 07:32:30 UTC)</em><p>
             <h2>Context</h2>
             <pre># Installed packages for system:
 base-bigarray     base  Bigarray library distributed with the OCaml compiler
 base-threads      base  Threads library distributed with the OCaml compiler
 base-unix         base  Unix library distributed with the OCaml compiler
-camlp5            6.13  Preprocessor-pretty-printer of OCaml
+camlp5            6.14  Preprocessor-pretty-printer of OCaml
 coq            8.5.dev  Formal proof management system.
 </pre>
             <h2>Lint</h2>
@@ -75,7 +75,7 @@ coq            8.5.dev  Formal proof management system.
             <h2>Install dependencies</h2>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>opam list; ulimit -Sv 4000000; timeout 5m opam install -y --deps-only coq:mtac.dev</code></dd>
+              <dd><code>opam list; ulimit -Sv 4000000; timeout 60m opam install -y --deps-only coq:mtac.dev</code></dd>
               <dt>Return code</dt>
               <dd>0</dd>
               <dt>Duration</dt>
@@ -84,29 +84,80 @@ coq            8.5.dev  Formal proof management system.
             <h2>Install</h2>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>opam list; ulimit -Sv 4000000; timeout 5m opam install -y coq:mtac.dev</code></dd>
+              <dd><code>opam list; ulimit -Sv 4000000; timeout 60m opam install -y coq:mtac.dev</code></dd>
               <dt>Return code</dt>
-              <dd>0</dd>
+              <dd>1024</dd>
               <dt>Duration</dt>
-              <dd>8 s</dd>
+              <dd>10 s</dd>
+              <dt>Output</dt>
+              <dd><pre># Installed packages for system:
+base-bigarray     base  Bigarray library distributed with the OCaml compiler
+base-threads      base  Threads library distributed with the OCaml compiler
+base-unix         base  Unix library distributed with the OCaml compiler
+camlp5            6.14  Preprocessor-pretty-printer of OCaml
+coq            8.5.dev  Formal proof management system.
+The following actions will be performed:
+  - install coq:mtac dev
+=-=- Gathering sources =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+[coq:mtac: from extra-dev] Command started
+[coq:mtac: git] Command started
+[coq:mtac: git] Command started
+[coq:mtac: git] Command started
+[coq:mtac: git] Command started
+[coq:mtac: git] Command started
+[coq:mtac: git] Command started
+[coq:mtac] https://github.com/beta-ziliani/mtac-plugin.git updated
+=-=- Processing actions -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+[coq:mtac: ./configure.sh] Command started
+[coq:mtac: make] Command started
+[ERROR] The compilation of coq:mtac failed at &quot;make -j4&quot;.
+[coq:mtac: rm] Command started
+#=== ERROR while installing coq:mtac.dev ======================================#
+# opam-version         1.2.2
+# os                   linux
+# command              make -j4
+# path                 /home/bench/.opam/system/build/coq:mtac.dev
+# compiler             system (4.02.2)
+# exit-code            2
+# env-file             /home/bench/.opam/system/build/coq:mtac.dev/coq:mtac-21726-d8a4ae.env
+# stdout-file          /home/bench/.opam/system/build/coq:mtac.dev/coq:mtac-21726-d8a4ae.out
+# stderr-file          /home/bench/.opam/system/build/coq:mtac.dev/coq:mtac-21726-d8a4ae.err
+### stdout ###
+# [...]
+# &quot;world&quot;%string
+#      : string
+# &quot;&quot;%string
+#      : string
+# &quot;dummy&quot;%string
+#      : string
+# Finished transaction in 0.507 secs (0.507u,0.s) (successful)
+# Finished transaction in 0.026 secs (0.026u,0.s) (successful)
+# Finished transaction in 1.987 secs (1.987u,0.s) (successful)
+# Finished transaction in 0.498 secs (0.498u,0.s) (successful)
+### stderr ###
+# [...]
+# Warning 26: unused variable ind.
+# File &quot;src/run.ml&quot;, line 860, characters 18-28:
+# Warning 26: unused variable coq_constr.
+# File &quot;./theories/Mtactics.v&quot;, line 161, characters 15-19:
+# Error: Found type &quot;Prop&quot; where &quot;Type&quot; was expected.
+# make: *** [theories/Mtactics.vo] Error 1
+# make: *** Waiting for unfinished jobs....
+# File &quot;./tutorial/mtac_tutorial.v&quot;, line 457, characters 15-19:
+# Error: Found type &quot;Prop&quot; where &quot;Type&quot; was expected.
+# make: *** [tutorial/mtac_tutorial.vo] Error 1
+=-=- Error report -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+The following actions failed
+  - install coq:mtac dev
+No changes have been performed
+</pre></dd>
             </dl>
             <h2>Installation size</h2>
-            <p>Total: 500 K</p>
-            <ul>
-              <li>196 K <code>lib/coq/user-contrib/Mtac/mtac.cmxs</code></li>
-              <li>101 K <code>lib/coq/user-contrib/Mtac/Mtac.vo</code></li>
-              <li>95 K <code>lib/coq/user-contrib/Mtac/Mtactics.vo</code></li>
-              <li>55 K <code>lib/coq/user-contrib/Mtac/mtac.cma</code></li>
-              <li>42 K <code>lib/coq/user-contrib/Mtac/Hash.vo</code></li>
-              <li>5 K <code>lib/coq/user-contrib/Mtac/run.cmi</code></li>
-              <li>4 K <code>lib/coq/user-contrib/Mtac/mtac.cmi</code></li>
-              <li>1 K <code>install/coq:mtac.install</code></li>
-              <li>0 K <code>lib/coq:mtac/opam.config</code></li>
-            </ul>
+            <p>No files were installed.</p>
             <h2>Uninstall</h2>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>opam remove -y coq:mtac.dev</code></dd>
+              <dd><code>true</code></dd>
               <dt>Return code</dt>
               <dd>0</dd>
               <dt>Missing removes</dt>
