@@ -38,10 +38,10 @@
               mathcomp:odd_order
               <small>
                 dev
-                <span class="label label-danger">Lint error</span>
+                <span class="label label-danger">Error</span>
               </small>
             </h1>
-            <p><em><script>document.write(moment("2015-10-21 07:32:30 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2015-10-21 07:32:30 UTC)</em><p>
+            <p><em><script>document.write(moment("2015-10-22 13:49:07 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2015-10-22 13:49:07 UTC)</em><p>
             <h2>Context</h2>
             <pre># Installed packages for system:
 base-bigarray     base  Bigarray library distributed with the OCaml compiler
@@ -55,16 +55,13 @@ coq            8.5.dev  Formal proof management system.
               <dt>Command</dt>
               <dd><code>ruby lint.rb extra-dev opam-coq-archive/extra-dev/packages/coq:mathcomp:odd_order/coq:mathcomp:odd_order.dev</code></dd>
               <dt>Return code</dt>
-              <dd>256</dd>
-              <dt>Output</dt>
-              <dd><pre>Wrong name &quot;coq:mathcomp:odd_order&quot;, expected only small caps (a-z), digits (0-9), dashes or colons (-, :).
-</pre></dd>
+              <dd>0</dd>
             </dl>
             <h2>Dry install</h2>
             <p>Dry install with the current Coq version:</p>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>true</code></dd>
+              <dd><code>opam install -y --show-action coq:mathcomp:odd_order.dev coq.8.5.dev</code></dd>
               <dt>Return code</dt>
               <dd>0</dd>
             </dl>
@@ -78,20 +75,89 @@ coq            8.5.dev  Formal proof management system.
             <h2>Install dependencies</h2>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>true</code></dd>
+              <dd><code>opam list; ulimit -Sv 4000000; timeout 60m opam install -y --deps-only coq:mathcomp:odd_order.dev</code></dd>
               <dt>Return code</dt>
               <dd>0</dd>
               <dt>Duration</dt>
-              <dd>0 s</dd>
+              <dd>27 m 34 s</dd>
             </dl>
             <h2>Install</h2>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>true</code></dd>
+              <dd><code>opam list; ulimit -Sv 4000000; timeout 60m opam install -y coq:mathcomp:odd_order.dev</code></dd>
               <dt>Return code</dt>
-              <dd>0</dd>
+              <dd>1024</dd>
               <dt>Duration</dt>
-              <dd>0 s</dd>
+              <dd>34 m 35 s</dd>
+              <dt>Output</dt>
+              <dd><pre># Installed packages for system:
+base-bigarray              base  Bigarray library distributed with the OCaml com
+base-threads               base  Threads library distributed with the OCaml comp
+base-unix                  base  Unix library distributed with the OCaml compile
+camlp5                     6.14  Preprocessor-pretty-printer of OCaml
+coq                     8.5.dev  Formal proof management system.
+coq:mathcomp:algebra        dev  Mathematical Components Library on Algebra
+coq:mathcomp:basic          dev  Mathematical Components Library, basic restults
+coq:mathcomp:character      dev  Mathematical Components Library on character th
+coq:mathcomp:field          dev  Mathematical Components Library on Fields
+coq:mathcomp:fingroup       dev  Mathematical Components Library on finite group
+coq:mathcomp:solvable       dev  Mathematical Components Library on finite group
+coq:mathcomp:ssreflect      dev  Small Scale Reflection
+The following actions will be performed:
+  - install coq:mathcomp:odd_order dev
+=-=- Gathering sources =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+[coq:mathcomp:odd_order: from extra-dev] Command started
+[coq:mathcomp:odd_order: git] Command started
+[coq:mathcomp:odd_order: git] Command started
+[coq:mathcomp:odd_order: git] Command started
+[coq:mathcomp:odd_order: git] Command started
+[coq:mathcomp:odd_order: git] Command started
+[coq:mathcomp:odd_order: git] Command started
+[coq:mathcomp:odd_order] https://github.com/math-comp/math-comp.git updated
+=-=- Processing actions -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+[coq:mathcomp:odd_order: make 4] Command started
+[ERROR] The compilation of coq:mathcomp:odd_order failed at &quot;make -C
+        mathcomp/odd_order -j 4&quot;.
+[coq:mathcomp:odd_order: sh] Command started
+#=== ERROR while installing coq:mathcomp:odd_order.dev ========================#
+# opam-version         1.2.2
+# os                   linux
+# command              make -C mathcomp/odd_order -j 4
+# path                 /home/bench/.opam/system/build/coq:mathcomp:odd_order.dev
+# compiler             system (4.02.2)
+# exit-code            2
+# env-file             /home/bench/.opam/system/build/coq:mathcomp:odd_order.dev/coq:mathcomp:odd_order-1167-ad8886.env
+# stdout-file          /home/bench/.opam/system/build/coq:mathcomp:odd_order.dev/coq:mathcomp:odd_order-1167-ad8886.out
+# stderr-file          /home/bench/.opam/system/build/coq:mathcomp:odd_order.dev/coq:mathcomp:odd_order-1167-ad8886.err
+### stdout ###
+# [...]
+# &quot;coqc&quot;  -q  -R &quot;.&quot; mathcomp.odd_order   PFsection9
+# &quot;coqc&quot;  -q  -R &quot;.&quot; mathcomp.odd_order   PFsection10
+# &quot;coqc&quot;  -q  -R &quot;.&quot; mathcomp.odd_order   PFsection11
+# &quot;coqc&quot;  -q  -R &quot;.&quot; mathcomp.odd_order   PFsection12
+# &quot;coqc&quot;  -q  -R &quot;.&quot; mathcomp.odd_order   PFsection13
+# &quot;coqc&quot;  -q  -R &quot;.&quot; mathcomp.odd_order   PFsection14
+# &quot;coqc&quot;  -q  -R &quot;.&quot; mathcomp.odd_order   stripped_odd_order_theorem
+# Makefile.coq:275: recipe for target &#39;stripped_odd_order_theorem.vo&#39; failed
+# Makefile:32: recipe for target &#39;all&#39; failed
+# make: Leaving directory &#39;/home/bench/.opam/system/build/coq:mathcomp:odd_order.dev/mathcomp/odd_order&#39;
+### stderr ###
+# [...]
+# *** Warning: in file stripped_odd_order_theorem.v, library action is required and has not been found in the loadpath!
+# *** Warning: in file stripped_odd_order_theorem.v, library gfunctor is required and has not been found in the loadpath!
+# *** Warning: in file stripped_odd_order_theorem.v, library gproduct is required and has not been found in the loadpath!
+# *** Warning: in file stripped_odd_order_theorem.v, library commutator is required and has not been found in the loadpath!
+# *** Warning: in file stripped_odd_order_theorem.v, library gseries is required and has not been found in the loadpath!
+# *** Warning: in file stripped_odd_order_theorem.v, library nilpotent is required and has not been found in the loadpath!
+# File &quot;./stripped_odd_order_theorem.v&quot;, line 3, characters 16-25:
+# Error: Unable to locate library ssreflect.
+# make[1]: *** [stripped_odd_order_theorem.vo] Error 1
+# make: *** [all] Error 2
+=-=- Error report -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+The following actions failed
+  - install coq:mathcomp:odd_order dev
+No changes have been performed
+</pre></dd>
             </dl>
             <h2>Installation size</h2>
             <p>No files were installed.</p>
