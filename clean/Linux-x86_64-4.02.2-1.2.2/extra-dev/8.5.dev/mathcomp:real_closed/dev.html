@@ -38,10 +38,10 @@
               mathcomp:real_closed
               <small>
                 dev
-                <span class="label label-danger">Error</span>
+                <span class="label label-warning">Error with dependencies</span>
               </small>
             </h1>
-            <p><em><script>document.write(moment("2015-11-05 18:13:36 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2015-11-05 18:13:36 UTC)</em><p>
+            <p><em><script>document.write(moment("2015-11-06 19:31:59 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2015-11-06 19:31:59 UTC)</em><p>
             <h2>Context</h2>
             <pre># Installed packages for system:
 base-bigarray     base  Bigarray library distributed with the OCaml compiler
@@ -77,81 +77,95 @@ coq            8.5.dev  Formal proof management system.
               <dt>Command</dt>
               <dd><code>opam list; ulimit -Sv 4000000; timeout 60m opam install -y --deps-only coq:mathcomp:real_closed.dev</code></dd>
               <dt>Return code</dt>
-              <dd>0</dd>
+              <dd>1024</dd>
               <dt>Duration</dt>
-              <dd>6 m 35 s</dd>
+              <dd>1 m 8 s</dd>
+              <dt>Output</dt>
+              <dd><pre># Installed packages for system:
+base-bigarray     base  Bigarray library distributed with the OCaml compiler
+base-threads      base  Threads library distributed with the OCaml compiler
+base-unix         base  Unix library distributed with the OCaml compiler
+camlp5            6.14  Preprocessor-pretty-printer of OCaml
+coq            8.5.dev  Formal proof management system.
+The following actions will be performed:
+  - install coq:mathcomp:ssreflect dev
+  - install coq:mathcomp:basic     dev
+  - install coq:mathcomp:fingroup  dev
+  - install coq:mathcomp:algebra   dev
+===== 4 to install =====
+=-=- Gathering sources =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+[coq:mathcomp:algebra: from extra-dev] Command started
+[coq:mathcomp:basic: from extra-dev] Command started
+[coq:mathcomp:fingroup: from extra-dev] Command started
+[coq:mathcomp:algebra: git] Command started
+[coq:mathcomp:basic: git] Command started
+[coq:mathcomp:fingroup: git] Command started
+[coq:mathcomp:algebra: git] Command started
+[coq:mathcomp:algebra: git] Command started
+[coq:mathcomp:basic: git] Command started
+[coq:mathcomp:fingroup: git] Command started
+[coq:mathcomp:algebra: git] Command started
+[coq:mathcomp:basic: git] Command started
+[coq:mathcomp:fingroup: git] Command started
+[coq:mathcomp:algebra: git] Command started
+[coq:mathcomp:basic: git] Command started
+[coq:mathcomp:fingroup: git] Command started
+[coq:mathcomp:basic: git] Command started
+[coq:mathcomp:fingroup: git] Command started
+[coq:mathcomp:basic: git] Command started
+[coq:mathcomp:fingroup: git] Command started
+[coq:mathcomp:basic] https://github.com/math-comp/math-comp.git updated
+[coq:mathcomp:ssreflect: from extra-dev] Command started
+[coq:mathcomp:fingroup] https://github.com/math-comp/math-comp.git updated
+[coq:mathcomp:ssreflect: git] Command started
+[coq:mathcomp:ssreflect: git] Command started
+[coq:mathcomp:ssreflect: git] Command started
+[coq:mathcomp:ssreflect: git] Command started
+[coq:mathcomp:ssreflect: git] Command started
+[coq:mathcomp:algebra: git] Command started
+[coq:mathcomp:algebra] https://github.com/math-comp/math-comp.git updated
+[coq:mathcomp:ssreflect: git] Command started
+[coq:mathcomp:ssreflect] https://github.com/math-comp/math-comp.git updated
+=-=- Processing actions -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+[coq:mathcomp:ssreflect: make 4] Command started
+[coq:mathcomp:ssreflect: make install] Command started
+-&gt; installed coq:mathcomp:ssreflect.dev
+[coq:mathcomp:basic: make 4] Command started
+[ERROR] The compilation of coq:mathcomp:basic failed at &quot;make -C mathcomp/basic
+        -j 4&quot;.
+[coq:mathcomp:basic: sh] Command started
+#=== ERROR while installing coq:mathcomp:basic.dev ============================#
+# opam-version         1.2.2
+# os                   linux
+# command              make -C mathcomp/basic -j 4
+# path                 /home/bench/.opam/system/build/coq:mathcomp:basic.dev
+# compiler             system (4.02.2)
+# exit-code            2
+# env-file             /home/bench/.opam/system/build/coq:mathcomp:basic.dev/coq:mathcomp:basic-17951-f0f09f.env
+# stdout-file          /home/bench/.opam/system/build/coq:mathcomp:basic.dev/coq:mathcomp:basic-17951-f0f09f.out
+# stderr-file          /home/bench/.opam/system/build/coq:mathcomp:basic.dev/coq:mathcomp:basic-17951-f0f09f.err
+### stderr ###
+# make: *** mathcomp/basic: No such file or directory.  Stop.
+=-=- Error report -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+The following actions were aborted
+  - install coq:mathcomp:algebra  dev
+  - install coq:mathcomp:fingroup dev
+The following actions failed
+  - install coq:mathcomp:basic dev
+The following changes have been performed
+  - install coq:mathcomp:ssreflect dev
+The former state can be restored with:
+    opam switch import &quot;~/.opam/system/backup/state-20151006164405.export&quot;
+</pre></dd>
             </dl>
             <h2>Install</h2>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>opam list; ulimit -Sv 4000000; timeout 60m opam install -y coq:mathcomp:real_closed.dev</code></dd>
+              <dd><code>true</code></dd>
               <dt>Return code</dt>
-              <dd>1024</dd>
+              <dd>0</dd>
               <dt>Duration</dt>
-              <dd>38 s</dd>
-              <dt>Output</dt>
-              <dd><pre># Installed packages for system:
-base-bigarray              base  Bigarray library distributed with the OCaml com
-base-threads               base  Threads library distributed with the OCaml comp
-base-unix                  base  Unix library distributed with the OCaml compile
-camlp5                     6.14  Preprocessor-pretty-printer of OCaml
-coq                     8.5.dev  Formal proof management system.
-coq:mathcomp:algebra        dev  Mathematical Components Library on Algebra
-coq:mathcomp:basic          dev  Mathematical Components Library, basic restults
-coq:mathcomp:fingroup       dev  Mathematical Components Library on finite group
-coq:mathcomp:ssreflect      dev  Small Scale Reflection
-The following actions will be performed:
-  - install coq:mathcomp:real_closed dev
-=-=- Gathering sources =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
-[coq:mathcomp:real_closed: from extra-dev] Command started
-[coq:mathcomp:real_closed: git] Command started
-[coq:mathcomp:real_closed: git] Command started
-[coq:mathcomp:real_closed: git] Command started
-[coq:mathcomp:real_closed: git] Command started
-[coq:mathcomp:real_closed: git] Command started
-[coq:mathcomp:real_closed: git] Command started
-[coq:mathcomp:real_closed] https://github.com/math-comp/math-comp.git updated
-=-=- Processing actions -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
-[coq:mathcomp:real_closed: make 4] Command started
-[ERROR] The compilation of coq:mathcomp:real_closed failed at &quot;make -C
-        mathcomp/real_closed -j 4&quot;.
-[coq:mathcomp:real_closed: sh] Command started
-#=== ERROR while installing coq:mathcomp:real_closed.dev ======================#
-# opam-version         1.2.2
-# os                   linux
-# command              make -C mathcomp/real_closed -j 4
-# path                 /home/bench/.opam/system/build/coq:mathcomp:real_closed.dev
-# compiler             system (4.02.2)
-# exit-code            2
-# env-file             /home/bench/.opam/system/build/coq:mathcomp:real_closed.dev/coq:mathcomp:real_closed-2896-ad8886.env
-# stdout-file          /home/bench/.opam/system/build/coq:mathcomp:real_closed.dev/coq:mathcomp:real_closed-2896-ad8886.out
-# stderr-file          /home/bench/.opam/system/build/coq:mathcomp:real_closed.dev/coq:mathcomp:real_closed-2896-ad8886.err
-### stdout ###
-# [...]
-# /home/bench/.opam/system/bin///coqdep -c -R &quot;.&quot; mathcomp.real_closed &quot;realalg.v&quot; &gt; &quot;realalg.v.d&quot; || ( RV=$?; rm -f &quot;realalg.v.d&quot;; exit ${RV} )
-# /home/bench/.opam/system/bin///coqdep -c -R &quot;.&quot; mathcomp.real_closed &quot;mxtens.v&quot; &gt; &quot;mxtens.v.d&quot; || ( RV=$?; rm -f &quot;mxtens.v.d&quot;; exit ${RV} )
-# &quot;coqc&quot;  -q  -R &quot;.&quot; mathcomp.real_closed   mxtens
-# &quot;coqc&quot;  -q  -R &quot;.&quot; mathcomp.real_closed   polyorder
-# &quot;coqc&quot;  -q  -R &quot;.&quot; mathcomp.real_closed   bigenough
-# &quot;coqc&quot;  -q  -R &quot;.&quot; mathcomp.real_closed   cauchyreals
-# &quot;coqc&quot;  -q  -R &quot;.&quot; mathcomp.real_closed   realalg
-# Makefile.coq:252: recipe for target &#39;realalg.vo&#39; failed
-# Makefile:32: recipe for target &#39;all&#39; failed
-# make: Leaving directory &#39;/home/bench/.opam/system/build/coq:mathcomp:real_closed.dev/mathcomp/real_closed&#39;
-### stderr ###
-# *** Warning: in file complex.v, library mathcomp.closed_field is required and has not been found in the loadpath!
-# *** Warning: in file complex.v, library mathcomp.closed_field is required and has not been found in the loadpath!
-# *** Warning: in file realalg.v, library mathcomp.separable is required and has not been found in the loadpath!
-# *** Warning: in file realalg.v, library mathcomp.separable is required and has not been found in the loadpath!
-# File &quot;./realalg.v&quot;, line 11, characters 27-36:
-# Error: Unable to locate library separable with prefix mathcomp.
-# make[1]: *** [realalg.vo] Error 1
-# make: *** [all] Error 2
-=-=- Error report -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
-The following actions failed
-  - install coq:mathcomp:real_closed dev
-No changes have been performed
-</pre></dd>
+              <dd>0 s</dd>
             </dl>
             <h2>Installation size</h2>
             <p>No files were installed.</p>
