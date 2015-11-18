@@ -38,16 +38,16 @@
               concurrency:pluto
               <small>
                 1.0.0
-                <span class="label label-success">9 s</span>
+                <span class="label label-danger">Error</span>
               </small>
             </h1>
-            <p><em><script>document.write(moment("2015-07-22 15:14:39 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2015-07-22 15:14:39 UTC)</em><p>
+            <p><em><script>document.write(moment("2015-11-18 16:18:19 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2015-11-18 16:18:19 UTC)</em><p>
             <h2>Context</h2>
             <pre># Installed packages for system:
 base-bigarray     base  Bigarray library distributed with the OCaml compiler
 base-threads      base  Threads library distributed with the OCaml compiler
 base-unix         base  Unix library distributed with the OCaml compiler
-camlp5            6.13  Preprocessor-pretty-printer of OCaml
+camlp5            6.14  Preprocessor-pretty-printer of OCaml
 coq            8.4.dev  Formal proof management system.
 </pre>
             <h2>Lint</h2>
@@ -75,33 +75,88 @@ coq            8.4.dev  Formal proof management system.
             <h2>Install dependencies</h2>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>opam list; ulimit -Sv 4000000; timeout 5m opam install -y --deps-only coq:concurrency:pluto.1.0.0</code></dd>
+              <dd><code>opam list; ulimit -Sv 4000000; timeout 60m opam install -y --deps-only coq:concurrency:pluto.1.0.0</code></dd>
               <dt>Return code</dt>
               <dd>0</dd>
               <dt>Duration</dt>
-              <dd>36 s</dd>
+              <dd>26 s</dd>
             </dl>
             <h2>Install</h2>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>opam list; ulimit -Sv 4000000; timeout 5m opam install -y coq:concurrency:pluto.1.0.0</code></dd>
+              <dd><code>opam list; ulimit -Sv 4000000; timeout 60m opam install -y coq:concurrency:pluto.1.0.0</code></dd>
               <dt>Return code</dt>
-              <dd>0</dd>
+              <dd>1024</dd>
               <dt>Duration</dt>
-              <dd>9 s</dd>
+              <dd>7 s</dd>
+              <dt>Output</dt>
+              <dd><pre># Installed packages for system:
+base-bigarray              base  Bigarray library distributed with the OCaml com
+base-threads               base  Threads library distributed with the OCaml comp
+base-unix                  base  Unix library distributed with the OCaml compile
+base64                    1.0.0  Base64 encoding and decoding library
+camlp5                     6.14  Preprocessor-pretty-printer of OCaml
+coq                     8.4.dev  Formal proof management system.
+coq:concurrency:proxy       dev  A proxy to interface concurrent Coq program wit
+coq:concurrency:system      dev  Experimental library to write concurrent applic
+coq:cunit                   dev  Convenience functions for unit testing in Coq.
+coq:error-handlers          dev  Simple and robust error handling functions.
+coq:function-ninjas         dev  Simple functional combinators.
+coq:iterable                dev  Generic definition of iterators.
+coq:list-plus               dev  More functions on lists.
+coq:list-string             dev  Strings implemented as lists.
+coq:moment                  dev  Parse, manipulate and pretty-print dates in Coq
+lwt                       2.5.0  A cooperative threads library for OCaml
+ocamlfind                 1.5.6  A library manager for OCaml
+ppx_tools                0.99.3  Tools for authors of ppx rewriters and other sy
+timeout: warning: timer_create: Resource temporarily unavailable
+The following actions will be performed:
+  - install coq:concurrency:pluto 1.0.0
+=-=- Gathering sources =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+[coq:concurrency:pluto: from released] Command started
+[coq:concurrency:pluto: http] Command started
+[coq:concurrency:pluto: http] Command started
+[coq:concurrency:pluto.1.0.0] https://github.com/coq-concurrency/pluto/archive/1.0.0.tar.gz downloaded
+=-=- Processing actions -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+[coq:concurrency:pluto: ./configure.sh] Command started
+[coq:concurrency:pluto: make] Command started
+[ERROR] The compilation of coq:concurrency:pluto failed at &quot;make -j8&quot;.
+#=== ERROR while installing coq:concurrency:pluto.1.0.0 =======================#
+# opam-version         1.2.2
+# os                   linux
+# command              make -j8
+# path                 /home/bench/.opam/system/build/coq:concurrency:pluto.1.0.0
+# compiler             system (4.02.2)
+# exit-code            2
+# env-file             /home/bench/.opam/system/build/coq:concurrency:pluto.1.0.0/coq:concurrency:pluto-10074-ad8886.env
+# stdout-file          /home/bench/.opam/system/build/coq:concurrency:pluto.1.0.0/coq:concurrency:pluto-10074-ad8886.out
+# stderr-file          /home/bench/.opam/system/build/coq:concurrency:pluto.1.0.0/coq:concurrency:pluto-10074-ad8886.err
+### stdout ###
+# [...]
+# &quot;coqc&quot;  -q  -R . Pluto   Request
+# &quot;coqc&quot;  -q  -R . Pluto   Url
+# &quot;coqc&quot;  -q  -R . Pluto   Answer
+# &quot;coqc&quot;  -q  -R . Pluto   Pluto
+# File &quot;/home/bench/.opam/system/build/coq:concurrency:pluto.1.0.0/Pluto.v&quot;, line 87, characters 28-37:
+# Error: Illegal application (Non-functional construction): 
+# The expression &quot;C.Exit&quot; of type &quot;C.t ?100 ?101&quot;
+# cannot be applied to the term
+#  &quot;tt&quot; : &quot;unit&quot;
+# Makefile:203: recipe for target &#39;Pluto.vo&#39; failed
+### stderr ###
+# make: *** [Pluto.vo] Error 1
+=-=- Error report -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+The following actions failed
+  - install coq:concurrency:pluto 1.0.0
+No changes have been performed
+</pre></dd>
             </dl>
             <h2>Installation size</h2>
-            <p>Total: 1,747 K</p>
-            <ul>
-              <li>1,336 K <code>bin/pluto.native</code></li>
-              <li>411 K <code>bin/pluto.byte</code></li>
-              <li>1 K <code>install/coq:concurrency:pluto.install</code></li>
-              <li>0 K <code>lib/coq:concurrency:pluto/opam.config</code></li>
-            </ul>
+            <p>No files were installed.</p>
             <h2>Uninstall</h2>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>opam remove -y coq:concurrency:pluto.1.0.0</code></dd>
+              <dd><code>true</code></dd>
               <dt>Return code</dt>
               <dd>0</dd>
               <dt>Missing removes</dt>
