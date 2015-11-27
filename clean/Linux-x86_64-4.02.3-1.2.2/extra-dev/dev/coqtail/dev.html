@@ -41,7 +41,7 @@
                 <span class="label label-danger">Error</span>
               </small>
             </h1>
-            <p><em><script>document.write(moment("2015-11-23 04:27:01 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2015-11-23 04:27:01 UTC)</em><p>
+            <p><em><script>document.write(moment("2015-11-27 04:06:17 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2015-11-27 04:06:17 UTC)</em><p>
             <h2>Context</h2>
             <pre># Installed packages for system:
 base-bigarray   base  Bigarray library distributed with the OCaml compiler
@@ -76,7 +76,7 @@ ocamlfind      1.5.6  A library manager for OCaml
             <h2>Install dependencies</h2>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>opam list; ulimit -Sv 1000000; timeout 30m opam install -y --deps-only coq-coqtail.dev</code></dd>
+              <dd><code>opam list; ulimit -Sv 4000000; timeout 30m opam install -y --deps-only coq-coqtail.dev</code></dd>
               <dt>Return code</dt>
               <dd>0</dd>
               <dt>Duration</dt>
@@ -85,11 +85,11 @@ ocamlfind      1.5.6  A library manager for OCaml
             <h2>Install</h2>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>opam list; ulimit -Sv 1000000; timeout 30m opam install -y coq-coqtail.dev</code></dd>
+              <dd><code>opam list; ulimit -Sv 4000000; timeout 30m opam install -y coq-coqtail.dev</code></dd>
               <dt>Return code</dt>
               <dd>1024</dd>
               <dt>Duration</dt>
-              <dd>11 s</dd>
+              <dd>13 s</dd>
               <dt>Output</dt>
               <dd><pre># Installed packages for system:
 base-bigarray   base  Bigarray library distributed with the OCaml compiler
@@ -111,43 +111,38 @@ The following actions will be performed:
 =-=- Processing actions -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 [coq-coqtail: sh] Command started
 [coq-coqtail: sh] Command started
-[coq-coqtail: sh cd src &amp;&amp; make -j8] Command started
-[ERROR] The compilation of coq-coqtail failed at &quot;sh -c cd src &amp;&amp; make -j8&quot;.
+[coq-coqtail: sh cd src &amp;&amp; make -j4] Command started
+[ERROR] The compilation of coq-coqtail failed at &quot;sh -c cd src &amp;&amp; make -j4&quot;.
 [coq-coqtail: rm] Command started
 #=== ERROR while installing coq-coqtail.dev ===================================#
 # opam-version         1.2.2
 # os                   linux
-# command              sh -c cd src &amp;&amp; make -j8
+# command              sh -c cd src &amp;&amp; make -j4
 # path                 /home/bench/.opam/system/build/coq-coqtail.dev
 # compiler             system (4.02.3)
 # exit-code            2
-# env-file             /home/bench/.opam/system/build/coq-coqtail.dev/coq-coqtail-9356-ad8886.env
-# stdout-file          /home/bench/.opam/system/build/coq-coqtail.dev/coq-coqtail-9356-ad8886.out
-# stderr-file          /home/bench/.opam/system/build/coq-coqtail.dev/coq-coqtail-9356-ad8886.err
+# env-file             /home/bench/.opam/system/build/coq-coqtail.dev/coq-coqtail-2432-ad8886.env
+# stdout-file          /home/bench/.opam/system/build/coq-coqtail.dev/coq-coqtail-2432-ad8886.out
+# stderr-file          /home/bench/.opam/system/build/coq-coqtail.dev/coq-coqtail-2432-ad8886.err
 ### stdout ###
 # [...]
-# &quot;coqc&quot;  -q  -R &quot;.&quot; Coqtail   Reals/Rtactic
-# &quot;coqc&quot;  -q  -R &quot;.&quot; Coqtail   mytheories/MyNat
-# &quot;coqc&quot;  -q  -R &quot;.&quot; Coqtail   mytheories/myReals/MyINR
-# &quot;coqc&quot;  -q  -R &quot;.&quot; Coqtail   Fresh/Inhabited/Monad
-# &quot;coqc&quot;  -q  -R &quot;.&quot; Coqtail   Sets/My_Sets_facts
-# &quot;coqc&quot;  -q  -R &quot;.&quot; Coqtail   Monad/Option
-# Makefile:381: recipe for target &#39;Monad/Option.vo&#39; failed
-# Makefile:381: recipe for target &#39;Reals/Rtactic.vo&#39; failed
+# &quot;coqdep&quot; -c -R &quot;.&quot; Coqtail &quot;Complex/Cderiv.v&quot; &gt; &quot;Complex/Cderiv.v.d&quot; || ( RV=$?; rm -f &quot;Complex/Cderiv.v.d&quot;; exit ${RV} )
+# &quot;coqdep&quot; -c -R &quot;.&quot; Coqtail &quot;Complex/CFsequence_facts.v&quot; &gt; &quot;Complex/CFsequence_facts.v.d&quot; || ( RV=$?; rm -f &quot;Complex/CFsequence_facts.v.d&quot;; exit ${RV} )
+# &quot;coqdep&quot; -c -R &quot;.&quot; Coqtail &quot;Complex/Csequence.v&quot; &gt; &quot;Complex/Csequence.v.d&quot; || ( RV=$?; rm -f &quot;Complex/Csequence.v.d&quot;; exit ${RV} )
+# &quot;coqc&quot;  -q  -R &quot;.&quot; Coqtail   Complex/Cdefinitions
+# &quot;coqc&quot;  -q  -R &quot;.&quot; Coqtail   mytheories/myReals/MyRbasic_fun
+# &quot;coqc&quot;  -q  -R &quot;.&quot; Coqtail   mytheories/MyNeq
+# &quot;coqc&quot;  -q  -R &quot;.&quot; Coqtail   mytheories/myReals/MyRfunctions
+# &quot;coqc&quot;  -q  -R &quot;.&quot; Coqtail   Reals/Rsequence/Rsequence_def
+# &quot;coqc&quot;  -q  -R &quot;.&quot; Coqtail   Reals/Ranalysis/Rfunction_def
 # Makefile:381: recipe for target &#39;Reals/Rsequence/Rsequence_def.vo&#39; failed
-# Makefile:381: recipe for target &#39;mytheories/myReals/MyRfunctions.vo&#39; failed
 ### stderr ###
-# [...]
-# (cannot unify &quot;option Type&quot; and &quot;x -&gt; option x&quot;).
-# make: *** [Monad/Option.vo] Error 1
-# make: *** Waiting for unfinished jobs....
-# Fatal error: out of memory.
-# make: *** [Reals/Rtactic.vo] Error 2
+# *** Warning: in file Reals/Dequa/Dequa_examples.v, library LegacyField_Theory is required and has not been found in the loadpath!
+# *** Warning: in file Reals/Dequa/Dequa_examples.v, library LegacyField_Theory is required and has not been found in the loadpath!
 # File &quot;./Reals/Rsequence/Rsequence_def.v&quot;, line 79, characters 7-16:
 # Error: The constructor exist (in type sig) expects 3 arguments.
 # make: *** [Reals/Rsequence/Rsequence_def.vo] Error 1
-# Fatal error: out of memory.
-# make: *** [mytheories/myReals/MyRfunctions.vo] Error 2
+# make: *** Waiting for unfinished jobs....
 =-=- Error report -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 The following actions failed
   - install coq-coqtail dev

@@ -38,10 +38,10 @@
               ergo
               <small>
                 dev
-                <span class="label label-warning">Error with dependencies</span>
+                <span class="label label-danger">Error</span>
               </small>
             </h1>
-            <p><em><script>document.write(moment("2015-11-23 04:27:01 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2015-11-23 04:27:01 UTC)</em><p>
+            <p><em><script>document.write(moment("2015-11-27 04:06:17 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2015-11-27 04:06:17 UTC)</em><p>
             <h2>Context</h2>
             <pre># Installed packages for system:
 base-bigarray   base  Bigarray library distributed with the OCaml compiler
@@ -76,111 +76,85 @@ ocamlfind      1.5.6  A library manager for OCaml
             <h2>Install dependencies</h2>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>opam list; ulimit -Sv 1000000; timeout 30m opam install -y --deps-only coq-ergo.dev</code></dd>
+              <dd><code>opam list; ulimit -Sv 4000000; timeout 30m opam install -y --deps-only coq-ergo.dev</code></dd>
               <dt>Return code</dt>
-              <dd>1024</dd>
+              <dd>0</dd>
               <dt>Duration</dt>
-              <dd>40 s</dd>
-              <dt>Output</dt>
-              <dd><pre># Installed packages for system:
-base-bigarray   base  Bigarray library distributed with the OCaml compiler
-base-threads    base  Threads library distributed with the OCaml compiler
-base-unix       base  Unix library distributed with the OCaml compiler
-camlp5          6.14  Preprocessor-pretty-printer of OCaml
-coq              dev  Formal proof management system.
-ocamlfind      1.5.6  A library manager for OCaml
-The following actions will be performed:
-  - install coq-containers dev
-  - install coq-counting   dev
-  - install coq-nfix       dev
-===== 3 to install =====
-=-=- Gathering sources =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
-[coq-containers: git] Command started
-[coq-counting: git] Command started
-[coq-nfix: git] Command started
-[coq-containers: git] Command started
-[coq-counting: git] Command started
-[coq-nfix: git] Command started
-[coq-containers: git] Command started
-[coq-counting: git] Command started
-[coq-nfix: git] Command started
-[coq-containers: git] Command started
-[coq-counting: git] Command started
-[coq-nfix: git] Command started
-[coq-containers: git] Command started
-[coq-counting: git] Command started
-[coq-nfix: git] Command started
-[coq-counting: git] Command started
-[coq-nfix: git] Command started
-[coq-counting] https://gforge.inria.fr/git/coq-contribs/counting.git#trunk updated
-[coq-nfix] https://gforge.inria.fr/git/coq-contribs/nfix.git#trunk updated
-[coq-containers: git] Command started
-[coq-containers] https://gforge.inria.fr/git/coq-contribs/containers.git#trunk updated
-=-=- Processing actions -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
-[coq-containers: coq_makefile Make] Command started
-[coq-counting: coq_makefile Make] Command started
-[coq-nfix: coq_makefile Make] Command started
-[coq-containers: make] Command started
-[coq-counting: make] Command started
-[coq-nfix: make] Command started
-[coq-counting: make install] Command started
--&gt; installed coq-counting.dev
-[coq-nfix: make install] Command started
--&gt; installed coq-nfix.dev
-[ERROR] The compilation of coq-containers failed at &quot;make -j8&quot;.
-[coq-containers: rm] Command started
-#=== ERROR while installing coq-containers.dev ================================#
-# opam-version         1.2.2
-# os                   linux
-# command              make -j8
-# path                 /home/bench/.opam/system/build/coq-containers.dev
-# compiler             system (4.02.3)
-# exit-code            2
-# env-file             /home/bench/.opam/system/build/coq-containers.dev/coq-containers-2028-ad6566.env
-# stdout-file          /home/bench/.opam/system/build/coq-containers.dev/coq-containers-2028-ad6566.out
-# stderr-file          /home/bench/.opam/system/build/coq-containers.dev/coq-containers-2028-ad6566.err
-### stdout ###
-# [...]
-# &quot;coqc&quot;  -q  -R &quot;theories&quot; Containers -I &quot;src&quot;   theories/MapList
-# &quot;coqc&quot;  -q  -R &quot;theories&quot; Containers -I &quot;src&quot;   theories/CMapPositive
-# &quot;coqc&quot;  -q  -R &quot;theories&quot; Containers -I &quot;src&quot;   theories/MapPositive
-# &quot;coqc&quot;  -q  -R &quot;theories&quot; Containers -I &quot;src&quot;   theories/SetProperties
-# &quot;coqc&quot;  -q  -R &quot;theories&quot; Containers -I &quot;src&quot;   theories/MapPositiveInstance
-# &quot;coqc&quot;  -q  -R &quot;theories&quot; Containers -I &quot;src&quot;   theories/SetAVL
-# &quot;coqc&quot;  -q  -R &quot;theories&quot; Containers -I &quot;src&quot;   theories/SetListInstance
-# &quot;coqc&quot;  -q  -R &quot;theories&quot; Containers -I &quot;src&quot;   theories/CMapPositiveInstance
-# &quot;coqc&quot;  -q  -R &quot;theories&quot; Containers -I &quot;src&quot;   theories/SetEqProperties
-# Makefile:461: recipe for target &#39;theories/SetAVL.vo&#39; failed
-### stderr ###
-# [...]
-# Warning 10: this expression should have type unit.
-# File &quot;src/generate.ml4&quot;, line 1289, characters 4-25:
-# Warning 10: this expression should have type unit.
-# File &quot;src/generate.ml4&quot;, line 1323, characters 4-26:
-# Warning 10: this expression should have type unit.
-# File &quot;src/generate.ml4&quot;, line 1488, characters 4-31:
-# Warning 10: this expression should have type unit.
-# Fatal error: out of memory.
-# make: *** [theories/SetAVL.vo] Error 2
-# make: *** Waiting for unfinished jobs....
-=-=- Error report -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
-The following actions failed
-  - install coq-containers dev
-The following changes have been performed
-  - install coq-counting dev
-  - install coq-nfix     dev
-The former state can be restored with:
-    opam switch import &quot;~/.opam/system/backup/state-20151023031953.export&quot;
-</pre></dd>
+              <dd>1 m 22 s</dd>
             </dl>
             <h2>Install</h2>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>true</code></dd>
+              <dd><code>opam list; ulimit -Sv 4000000; timeout 30m opam install -y coq-ergo.dev</code></dd>
               <dt>Return code</dt>
-              <dd>0</dd>
+              <dd>1024</dd>
               <dt>Duration</dt>
-              <dd>0 s</dd>
+              <dd>22 s</dd>
+              <dt>Output</dt>
+              <dd><pre># Installed packages for system:
+base-bigarray    base  Bigarray library distributed with the OCaml compiler
+base-threads     base  Threads library distributed with the OCaml compiler
+base-unix        base  Unix library distributed with the OCaml compiler
+camlp5           6.14  Preprocessor-pretty-printer of OCaml
+coq               dev  Formal proof management system.
+coq-containers    dev  Containers: a typeclass-based library of finite sets/maps
+coq-counting      dev  Counting: a Coq plugin for measuring definitions/proofs.
+coq-nfix          dev  Nfix: a Coq extension for fixpoints on nested inductives.
+ocamlfind       1.5.6  A library manager for OCaml
+The following actions will be performed:
+  - install coq-ergo dev
+=-=- Gathering sources =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+[coq-ergo: git] Command started
+[coq-ergo: git] Command started
+[coq-ergo: git] Command started
+[coq-ergo: git] Command started
+[coq-ergo: git] Command started
+[coq-ergo: git] Command started
+[coq-ergo] https://gforge.inria.fr/git/coq-contribs/ergo.git#trunk updated
+=-=- Processing actions -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+[coq-ergo: coq_makefile Make] Command started
+[coq-ergo: make] Command started
+[ERROR] The compilation of coq-ergo failed at &quot;make -j4&quot;.
+[coq-ergo: rm] Command started
+#=== ERROR while installing coq-ergo.dev ======================================#
+# opam-version         1.2.2
+# os                   linux
+# command              make -j4
+# path                 /home/bench/.opam/system/build/coq-ergo.dev
+# compiler             system (4.02.3)
+# exit-code            2
+# env-file             /home/bench/.opam/system/build/coq-ergo.dev/coq-ergo-27654-d2d111.env
+# stdout-file          /home/bench/.opam/system/build/coq-ergo.dev/coq-ergo-27654-d2d111.out
+# stderr-file          /home/bench/.opam/system/build/coq-ergo.dev/coq-ergo-27654-d2d111.err
+### stdout ###
+# [...]
+# &quot;coqc&quot;  -q  -R &quot;theories&quot; Ergo -R &quot;tests&quot; Tests -I &quot;/home/bench/.opam/system/lib/coq//user-contrib/Counting&quot; -I &quot;/home/bench/.opam/system/lib/coq//user-contrib/Nfix&quot; -I &quot;/home/bench/.opam/system/lib/coq//user-contrib/Containers&quot; -I &quot;src&quot;   theories/Semantics
+# &quot;coqc&quot;  -q  -R &quot;theories&quot; Ergo -R &quot;tests&quot; Tests -I &quot;/home/bench/.opam/system/lib/coq//user-contrib/Counting&quot; -I &quot;/home/bench/.opam/system/lib/coq//user-contrib/Nfix&quot; -I &quot;/home/bench/.opam/system/lib/coq//user-contrib/Containers&quot; -I &quot;src&quot;   theories/Cnf
+# &quot;coqc&quot;  -q  -R &quot;theories&quot; Ergo -R &quot;tests&quot; Tests -I &quot;/home/bench/.opam/system/lib/coq//user-contrib/Counting&quot; -I &quot;/home/bench/.opam/system/lib/coq//user-contrib/Nfix&quot; -I &quot;/home/bench/.opam/system/lib/coq//user-contrib/Containers&quot; -I &quot;src&quot;   theories/Env
+# &quot;coqc&quot;  -q  -R &quot;theories&quot; Ergo -R &quot;tests&quot; Tests -I &quot;/home/bench/.opam/system/lib/coq//user-contrib/Counting&quot; -I &quot;/home/bench/.opam/system/lib/coq//user-contrib/Nfix&quot; -I &quot;/home/bench/.opam/system/lib/coq//user-contrib/Containers&quot; -I &quot;src&quot;   theories/Adequation
+# &quot;coqc&quot;  -q  -R &quot;theories&quot; Ergo -R &quot;tests&quot; Tests -I &quot;/home/bench/.opam/system/lib/coq//user-contrib/Counting&quot; -I &quot;/home/bench/.opam/system/lib/coq//user-contrib/Nfix&quot; -I &quot;/home/bench/.opam/system/lib/coq//user-contrib/Containers&quot; -I &quot;src&quot;   theories/Sat
+# &quot;coqc&quot;  -q  -R &quot;theories&quot; Ergo -R &quot;tests&quot; Tests -I &quot;/home/bench/.opam/system/lib/coq//user-contrib/Counting&quot; -I &quot;/home/bench/.opam/system/lib/coq//user-contrib/Nfix&quot; -I &quot;/home/bench/.opam/system/lib/coq//user-contrib/Containers&quot; -I &quot;src&quot;   theories/ModelsRingExt
+# &quot;coqc&quot;  -q  -R &quot;theories&quot; Ergo -R &quot;tests&quot; Tests -I &quot;/home/bench/.opam/system/lib/coq//user-contrib/Counting&quot; -I &quot;/home/bench/.opam/system/lib/coq//user-contrib/Nfix&quot; -I &quot;/home/bench/.opam/system/lib/coq//user-contrib/Containers&quot; -I &quot;src&quot;   theories/LLazy
+# &quot;coqc&quot;  -q  -R &quot;theories&quot; Ergo -R &quot;tests&quot; Tests -I &quot;/home/bench/.opam/system/lib/coq//user-contrib/Counting&quot; -I &quot;/home/bench/.opam/system/lib/coq//user-contrib/Nfix&quot; -I &quot;/home/bench/.opam/system/lib/coq//user-contrib/Containers&quot; -I &quot;src&quot;   theories/SatCaml
+# &quot;coqc&quot;  -q  -R &quot;theories&quot; Ergo -R &quot;tests&quot; Tests -I &quot;/home/bench/.opam/system/lib/coq//user-contrib/Counting&quot; -I &quot;/home/bench/.opam/system/lib/coq//user-contrib/Nfix&quot; -I &quot;/home/bench/.opam/system/lib/coq//user-contrib/Containers&quot; -I &quot;src&quot;   theories/Dpll
+# Makefile:480: recipe for target &#39;theories/SatCaml.vo&#39; failed
+### stderr ###
+# [...]
+# *** Warning: in file theories/Sat.v, declared ML module omega_plugin has not been found!
+# *** Warning: in file theories/Sat.v, declared ML module omega_plugin has not been found!
+# *** Warning: in file tests/AltDemo.v, library Counting is required and has not been found in the loadpath!
+# *** Warning: in file tests/AltDemo.v, library Counting is required and has not been found in the loadpath!
+# *** Warning: in file tests/Demo.v, library Counting is required and has not been found in the loadpath!
+# *** Warning: in file tests/Demo.v, library Counting is required and has not been found in the loadpath!
+# File &quot;./theories/SatCaml.v&quot;, line 174, characters 22-26:
+# Error: The reference Cred was not found in the current environment.
+# make: *** [theories/SatCaml.vo] Error 1
+# make: *** Waiting for unfinished jobs....
+=-=- Error report -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+The following actions failed
+  - install coq-ergo dev
+No changes have been performed
+</pre></dd>
             </dl>
             <h2>Installation size</h2>
             <p>No files were installed.</p>
