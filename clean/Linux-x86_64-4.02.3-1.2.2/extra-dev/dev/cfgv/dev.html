@@ -41,7 +41,7 @@
                 <span class="label label-danger">Error</span>
               </small>
             </h1>
-            <p><em><script>document.write(moment("2015-12-07 06:23:46 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2015-12-07 06:23:46 UTC)</em><p>
+            <p><em><script>document.write(moment("2015-12-08 18:54:31 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2015-12-08 18:54:31 UTC)</em><p>
             <h2>Context</h2>
             <pre># Installed packages for system:
 base-bigarray   base  Bigarray library distributed with the OCaml compiler
@@ -87,9 +87,9 @@ ocamlfind      1.5.6  A library manager for OCaml
               <dt>Command</dt>
               <dd><code>opam list; ulimit -Sv 4000000; timeout 30m opam install -y coq-cfgv.dev</code></dd>
               <dt>Return code</dt>
-              <dd>16896</dd>
+              <dd>1024</dd>
               <dt>Duration</dt>
-              <dd>3 s</dd>
+              <dd>1 m 18 s</dd>
               <dt>Output</dt>
               <dd><pre># Installed packages for system:
 base-bigarray   base  Bigarray library distributed with the OCaml compiler
@@ -107,9 +107,44 @@ The following actions will be performed:
 [coq-cfgv: git] Command started
 [coq-cfgv: git] Command started
 [coq-cfgv: git] Command started
-[ERROR] The sources of the following couldn&#39;t be obtained, aborting:
-          - coq-cfgv.dev
-        (This may be fixed by running &#39;opam update&#39;)
+[coq-cfgv] https://gforge.inria.fr/git/coq-contribs/cfgv.git#trunk updated
+=-=- Processing actions -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+[coq-cfgv: coq_makefile Make] Command started
+[coq-cfgv: make] Command started
+[ERROR] The compilation of coq-cfgv failed at &quot;make -j4&quot;.
+[coq-cfgv: rm] Command started
+#=== ERROR while installing coq-cfgv.dev ======================================#
+# opam-version         1.2.2
+# os                   linux
+# command              make -j4
+# path                 /home/bench/.opam/system/build/coq-cfgv.dev
+# compiler             system (4.02.3)
+# exit-code            2
+# env-file             /home/bench/.opam/system/build/coq-cfgv.dev/coq-cfgv-10079-d2d111.env
+# stdout-file          /home/bench/.opam/system/build/coq-cfgv.dev/coq-cfgv-10079-d2d111.out
+# stderr-file          /home/bench/.opam/system/build/coq-cfgv.dev/coq-cfgv-10079-d2d111.err
+### stdout ###
+# [...]
+# &quot;coqc&quot;  -q  -R &quot;.&quot; CFGV   SubstAux
+# &quot;coqc&quot;  -q  -R &quot;.&quot; CFGV   LetrecFEx
+# &quot;coqc&quot;  -q  -R &quot;.&quot; CFGV   LetrecEx
+# &quot;coqc&quot;  -q  -R &quot;.&quot; CFGV   SwapProps
+# &quot;coqc&quot;  -q  -R &quot;.&quot; CFGV   AlphaEquality
+# &quot;coqc&quot;  -q  -R &quot;.&quot; CFGV   AlphaEqProps
+# &quot;coqc&quot;  -q  -R &quot;.&quot; CFGV   SubstAuxAlphaEq
+# &quot;coqc&quot;  -q  -R &quot;.&quot; CFGV   AlphaRen
+# &quot;coqc&quot;  -q  -R &quot;.&quot; CFGV   AlphaDecider
+# Makefile:267: recipe for target &#39;AlphaDecider.vo&#39; failed
+### stderr ###
+# File &quot;./AlphaDecider.v&quot;, line 313, characters 23-31:
+# In nested Ltac calls to &quot;notAlpha&quot;, last call failed.
+# Error: No matching clauses for match.
+# make: *** [AlphaDecider.vo] Error 1
+# make: *** Waiting for unfinished jobs....
+=-=- Error report -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+The following actions failed
+  - install coq-cfgv dev
+No changes have been performed
 </pre></dd>
             </dl>
             <h2>Installation size</h2>

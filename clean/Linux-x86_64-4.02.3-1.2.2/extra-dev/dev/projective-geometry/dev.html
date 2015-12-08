@@ -41,7 +41,7 @@
                 <span class="label label-danger">Error</span>
               </small>
             </h1>
-            <p><em><script>document.write(moment("2015-12-07 06:23:46 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2015-12-07 06:23:46 UTC)</em><p>
+            <p><em><script>document.write(moment("2015-12-08 18:54:31 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2015-12-08 18:54:31 UTC)</em><p>
             <h2>Context</h2>
             <pre># Installed packages for system:
 base-bigarray   base  Bigarray library distributed with the OCaml compiler
@@ -87,9 +87,9 @@ ocamlfind      1.5.6  A library manager for OCaml
               <dt>Command</dt>
               <dd><code>opam list; ulimit -Sv 4000000; timeout 30m opam install -y coq-projective-geometry.dev</code></dd>
               <dt>Return code</dt>
-              <dd>16896</dd>
+              <dd>1024</dd>
               <dt>Duration</dt>
-              <dd>3 s</dd>
+              <dd>1 m 44 s</dd>
               <dt>Output</dt>
               <dd><pre># Installed packages for system:
 base-bigarray   base  Bigarray library distributed with the OCaml compiler
@@ -107,9 +107,43 @@ The following actions will be performed:
 [coq-projective-geometry: git] Command started
 [coq-projective-geometry: git] Command started
 [coq-projective-geometry: git] Command started
-[ERROR] The sources of the following couldn&#39;t be obtained, aborting:
-          - coq-projective-geometry.dev
-        (This may be fixed by running &#39;opam update&#39;)
+[coq-projective-geometry] https://gforge.inria.fr/git/coq-contribs/projective-geometry.git#trunk updated
+=-=- Processing actions -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+[coq-projective-geometry: coq_makefile Make] Command started
+[coq-projective-geometry: make] Command started
+[ERROR] The compilation of coq-projective-geometry failed at &quot;make -j4&quot;.
+[coq-projective-geometry: rm] Command started
+#=== ERROR while installing coq-projective-geometry.dev =======================#
+# opam-version         1.2.2
+# os                   linux
+# command              make -j4
+# path                 /home/bench/.opam/system/build/coq-projective-geometry.dev
+# compiler             system (4.02.3)
+# exit-code            2
+# env-file             /home/bench/.opam/system/build/coq-projective-geometry.dev/coq-projective-geometry-16207-d2d111.env
+# stdout-file          /home/bench/.opam/system/build/coq-projective-geometry.dev/coq-projective-geometry-16207-d2d111.out
+# stderr-file          /home/bench/.opam/system/build/coq-projective-geometry.dev/coq-projective-geometry-16207-d2d111.err
+### stdout ###
+# [...]
+# &quot;coqc&quot;  -q  -R &quot;.&quot; ProjectiveGeometry   Plane/projective_plane_axioms
+# &quot;coqc&quot;  -q  -R &quot;.&quot; ProjectiveGeometry   field_variable_isolation_tactic
+# &quot;coqc&quot;  -q  -R &quot;.&quot; ProjectiveGeometry   Plane/basic_facts_plane
+# &quot;coqc&quot;  -q  -R &quot;.&quot; ProjectiveGeometry   Plane/fano_plane_desargues
+# &quot;coqc&quot;  -q  -R &quot;.&quot; ProjectiveGeometry   Plane/fano_plane
+# &quot;coqc&quot;  -q  -R &quot;.&quot; ProjectiveGeometry   Plane/pg25
+# &quot;coqc&quot;  -q  -R &quot;.&quot; ProjectiveGeometry   Plane/moulton
+# &quot;coqc&quot;  -q  -R &quot;.&quot; ProjectiveGeometry   Space/matroids_axioms
+# &quot;coqc&quot;  -q  -R &quot;.&quot; ProjectiveGeometry   Space/basic_facts
+# Makefile:288: recipe for target &#39;Plane/moulton.vo&#39; failed
+### stderr ###
+# File &quot;./Plane/moulton.v&quot;, line 1186, characters 8-10:
+# Error: The reference b0 was not found in the current environment.
+# make: *** [Plane/moulton.vo] Error 1
+# make: *** Waiting for unfinished jobs....
+=-=- Error report -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+The following actions failed
+  - install coq-projective-geometry dev
+No changes have been performed
 </pre></dd>
             </dl>
             <h2>Installation size</h2>
