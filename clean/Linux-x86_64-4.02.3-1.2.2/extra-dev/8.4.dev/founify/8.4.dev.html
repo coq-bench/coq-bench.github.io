@@ -41,7 +41,7 @@
                 <span class="label label-danger">Error</span>
               </small>
             </h1>
-            <p><em><script>document.write(moment("2015-12-07 02:41:06 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2015-12-07 02:41:06 UTC)</em><p>
+            <p><em><script>document.write(moment("2015-12-08 12:56:12 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2015-12-08 12:56:12 UTC)</em><p>
             <h2>Context</h2>
             <pre># Installed packages for system:
 base-bigarray     base  Bigarray library distributed with the OCaml compiler
@@ -86,9 +86,9 @@ coq            8.4.dev  Formal proof management system.
               <dt>Command</dt>
               <dd><code>opam list; ulimit -Sv 4000000; timeout 30m opam install -y coq-founify.8.4.dev</code></dd>
               <dt>Return code</dt>
-              <dd>16896</dd>
+              <dd>1024</dd>
               <dt>Duration</dt>
-              <dd>3 s</dd>
+              <dd>9 s</dd>
               <dt>Output</dt>
               <dd><pre># Installed packages for system:
 base-bigarray     base  Bigarray library distributed with the OCaml compiler
@@ -105,9 +105,50 @@ The following actions will be performed:
 [coq-founify: git] Command started
 [coq-founify: git] Command started
 [coq-founify: git] Command started
-[ERROR] The sources of the following couldn&#39;t be obtained, aborting:
-          - coq-founify.8.4.dev
-        (This may be fixed by running &#39;opam update&#39;)
+[coq-founify] https://gforge.inria.fr/git/coq-contribs/founify.git#v8.4 updated
+=-=- Processing actions -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+[coq-founify: coq_makefile Make] Command started
+[coq-founify: make] Command started
+[ERROR] The compilation of coq-founify failed at &quot;make&quot;.
+[coq-founify: rm] Command started
+#=== ERROR while installing coq-founify.8.4.dev ===============================#
+# opam-version         1.2.2
+# os                   linux
+# command              make
+# path                 /home/bench/.opam/system/build/coq-founify.8.4.dev
+# compiler             system (4.02.3)
+# exit-code            2
+# env-file             /home/bench/.opam/system/build/coq-founify.8.4.dev/coq-founify-3826-d2d111.env
+# stdout-file          /home/bench/.opam/system/build/coq-founify.8.4.dev/coq-founify-3826-d2d111.out
+# stderr-file          /home/bench/.opam/system/build/coq-founify.8.4.dev/coq-founify-3826-d2d111.err
+### stdout ###
+# [...]
+# &quot;coqdep&quot; -c -slash -R . FOUnify &quot;listv_is_in_lv.v&quot; &gt; &quot;listv_is_in_lv.v.d&quot; || ( RV=$?; rm -f &quot;listv_is_in_lv.v.d&quot;; exit ${RV} )
+# &quot;coqdep&quot; -c -slash -R . FOUnify &quot;is_in_quasiterm_term_subst.v&quot; &gt; &quot;is_in_quasiterm_term_subst.v.d&quot; || ( RV=$?; rm -f &quot;is_in_quasiterm_term_subst.v.d&quot;; exit ${RV} )
+# &quot;coqc&quot;  -q  -R . FOUnify   nat_complements
+# &quot;coqc&quot;  -q  -R . FOUnify   nat_term_eq_quasiterm
+# &quot;coqc&quot;  -q  -R . FOUnify   is_in_quasiterm_term_subst
+# &quot;coqc&quot;  -q  -R . FOUnify   listv_is_in_lv
+# &quot;coqc&quot;  -q  -R . FOUnify   term_unif
+# coqtop -q  -R . FOUnify   -silent -batch -load-vernac-source extract.v
+# ocamlopt -rectypes -pp &#39;/usr/local/bin/camlp5o&#39; -o unif unif.mli unif.ml main.ml
+# Makefile:195: recipe for target &#39;unif&#39; failed
+### stderr ###
+# the following opaque constant bodies have been accessed :
+# [...]
+#  sig_elem_subst sig_elem_subst0 sym_Unification two_succes unif_proof
+#  nat_term_eq_quasiterm.var_eq_decS.
+# 
+# sh: 1: /usr/local/bin/camlp5o: not found
+# File &quot;unif.mli&quot;, line 1:
+# Error: Error while running external preprocessor
+# Command line: /usr/local/bin/camlp5o &#39;unif.mli&#39; &gt; /tmp/ocamlppc4d963
+# 
+# make: *** [unif] Error 2
+=-=- Error report -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+The following actions failed
+  - install coq-founify 8.4.dev
+No changes have been performed
 </pre></dd>
             </dl>
             <h2>Installation size</h2>
