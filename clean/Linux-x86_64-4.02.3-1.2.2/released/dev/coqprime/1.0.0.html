@@ -41,7 +41,7 @@
                 <span class="label label-danger">Error</span>
               </small>
             </h1>
-            <p><em><script>document.write(moment("2016-02-01 18:00:02 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2016-02-01 18:00:02 UTC)</em><p>
+            <p><em><script>document.write(moment("2016-02-03 18:57:15 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2016-02-03 18:57:15 UTC)</em><p>
             <h2>Context</h2>
             <pre># Installed packages for system:
 base-bigarray   base  Bigarray library distributed with the OCaml compiler
@@ -80,16 +80,16 @@ ocamlfind      1.5.6  A library manager for OCaml
               <dt>Return code</dt>
               <dd>0</dd>
               <dt>Duration</dt>
-              <dd>11 s</dd>
+              <dd>12 s</dd>
             </dl>
             <h2>Install</h2>
             <dl class="dl-horizontal">
               <dt>Command</dt>
               <dd><code>opam list; ulimit -Sv 4000000; timeout 90m opam install -y coq-coqprime.1.0.0</code></dd>
               <dt>Return code</dt>
-              <dd>16896</dd>
+              <dd>1024</dd>
               <dt>Duration</dt>
-              <dd>21 s</dd>
+              <dd>25 s</dd>
               <dt>Output</dt>
               <dd><pre># Installed packages for system:
 base-bigarray   base  Bigarray library distributed with the OCaml compiler
@@ -102,11 +102,45 @@ The following actions will be performed:
   - install coq-coqprime 1.0.0
 =-=- Gathering sources =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 [coq-coqprime: http] Command started
-[ERROR] curl: code 500 while downloading
-        https://gforge.inria.fr/frs/download.php/file/35203/coqprime_8.5.zip
-[ERROR] The sources of the following couldn&#39;t be obtained, aborting:
-          - coq-coqprime.1.0.0
-        (This may be fixed by running &#39;opam update&#39;)
+[coq-coqprime: http] Command started
+[coq-coqprime.1.0.0] https://gforge.inria.fr/frs/download.php/file/35520/coqprime_8.5b.zip downloaded
+=-=- Processing actions -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+[coq-coqprime: ./configure.sh] Command started
+[coq-coqprime: make] Command started
+[ERROR] The compilation of coq-coqprime failed at &quot;make -j6&quot;.
+[coq-coqprime: rm] Command started
+#=== ERROR while installing coq-coqprime.1.0.0 ================================#
+# opam-version         1.2.2
+# os                   linux
+# command              make -j6
+# path                 /home/bench/.opam/system/build/coq-coqprime.1.0.0
+# compiler             system (4.02.3)
+# exit-code            2
+# env-file             /home/bench/.opam/system/build/coq-coqprime.1.0.0/coq-coqprime-3702-c61e7b.env
+# stdout-file          /home/bench/.opam/system/build/coq-coqprime.1.0.0/coq-coqprime-3702-c61e7b.out
+# stderr-file          /home/bench/.opam/system/build/coq-coqprime.1.0.0/coq-coqprime-3702-c61e7b.err
+### stdout ###
+# [...]
+# &quot;coqc&quot;  -q  -R &quot;Tactic&quot; Coqprime -R &quot;N&quot; Coqprime -R &quot;List&quot; Coqprime -R &quot;Z&quot; Coqprime -R &quot;PrimalityTest&quot; Coqprime -R &quot;elliptic&quot; Coqprime -R &quot;num&quot; Coqprime -R &quot;examples&quot; Coqprime   Z/ZCAux
+#      = 1740564225 :: 343969132 :: 6812243 :: nil
+#      : number
+#      = 0 :: 1 :: nil
+#      : number
+#      = 31415926535897932384626433%Z
+#      : Z
+# &quot;coqc&quot;  -q  -R &quot;Tactic&quot; Coqprime -R &quot;N&quot; Coqprime -R &quot;List&quot; Coqprime -R &quot;Z&quot; Coqprime -R &quot;PrimalityTest&quot; Coqprime -R &quot;elliptic&quot; Coqprime -R &quot;num&quot; Coqprime -R &quot;examples&quot; Coqprime   List/Permutation
+# &quot;coqc&quot;  -q  -R &quot;Tactic&quot; Coqprime -R &quot;N&quot; Coqprime -R &quot;List&quot; Coqprime -R &quot;Z&quot; Coqprime -R &quot;PrimalityTest&quot; Coqprime -R &quot;elliptic&quot; Coqprime -R &quot;num&quot; Coqprime -R &quot;examples&quot; Coqprime   Z/Pmod
+# Makefile:345: recipe for target &#39;num/montgomery.vo&#39; failed
+### stderr ###
+# File &quot;./num/montgomery.v&quot;, line 225, characters 22-24:
+# Error: Unexpected name (no introduction patterns were expected in the
+# branch).
+# make: *** [num/montgomery.vo] Error 1
+# make: *** Waiting for unfinished jobs....
+=-=- Error report -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+The following actions failed
+  - install coq-coqprime 1.0.0
+No changes have been performed
 </pre></dd>
             </dl>
             <h2>Installation size</h2>
