@@ -38,10 +38,10 @@
               mathcomp-character
               <small>
                 1.6
-                <span class="label label-danger">Lint error</span>
+                <span class="label label-warning">Error with dependencies</span>
               </small>
             </h1>
-            <p><em><script>document.write(moment("2016-02-09 05:08:46 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2016-02-09 05:08:46 UTC)</em><p>
+            <p><em><script>document.write(moment("2016-02-12 07:50:06 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2016-02-12 07:50:06 UTC)</em><p>
             <h2>Context</h2>
             <pre># Installed packages for system:
 base-bigarray     base  Bigarray library distributed with the OCaml compiler
@@ -55,16 +55,13 @@ coq            8.4.dev  Formal proof management system.
               <dt>Command</dt>
               <dd><code>ruby lint.rb released opam-coq-archive/released/packages/coq-mathcomp-character/coq-mathcomp-character.1.6</code></dd>
               <dt>Return code</dt>
-              <dd>256</dd>
-              <dt>Output</dt>
-              <dd><pre>Wrong released version name &quot;1.6&quot;, expected three numbers separated by dots or a name containing the word &quot;beta&quot;.
-</pre></dd>
+              <dd>0</dd>
             </dl>
             <h2>Dry install</h2>
             <p>Dry install with the current Coq version:</p>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>true</code></dd>
+              <dd><code>opam install -y --show-action coq-mathcomp-character.1.6 coq.8.4.dev</code></dd>
               <dt>Return code</dt>
               <dd>0</dd>
             </dl>
@@ -78,11 +75,56 @@ coq            8.4.dev  Formal proof management system.
             <h2>Install dependencies</h2>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>true</code></dd>
+              <dd><code>opam list; ulimit -Sv 4000000; timeout 90m opam install -y --deps-only coq-mathcomp-character.1.6</code></dd>
               <dt>Return code</dt>
-              <dd>0</dd>
+              <dd>31744</dd>
               <dt>Duration</dt>
-              <dd>0 s</dd>
+              <dd>1 h 30 m</dd>
+              <dt>Output</dt>
+              <dd><pre># Installed packages for system:
+base-bigarray     base  Bigarray library distributed with the OCaml compiler
+base-threads      base  Threads library distributed with the OCaml compiler
+base-unix         base  Unix library distributed with the OCaml compiler
+camlp5            6.14  Preprocessor-pretty-printer of OCaml
+coq            8.4.dev  Formal proof management system.
+The following actions will be performed:
+  - install coq-mathcomp-ssreflect 1.6
+  - install coq-mathcomp-fingroup  1.6
+  - install coq-mathcomp-algebra   1.6
+  - install coq-mathcomp-solvable  1.6
+  - install coq-mathcomp-field     1.6
+===== 5 to install =====
+=-=- Gathering sources =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+[coq-mathcomp-algebra: http] Command started
+[coq-mathcomp-field: http] Command started
+[coq-mathcomp-fingroup: http] Command started
+[coq-mathcomp-fingroup: http] Command started
+[coq-mathcomp-fingroup.1.6] http://github.com/math-comp/math-comp/archive/mathcomp-1.6.tar.gz downloaded
+[coq-mathcomp-solvable: http] Command started
+[coq-mathcomp-field: http] Command started
+[coq-mathcomp-field.1.6] http://github.com/math-comp/math-comp/archive/mathcomp-1.6.tar.gz downloaded
+[coq-mathcomp-ssreflect: http] Command started
+[coq-mathcomp-algebra: http] Command started
+[coq-mathcomp-algebra.1.6] http://github.com/math-comp/math-comp/archive/mathcomp-1.6.tar.gz downloaded
+[coq-mathcomp-solvable: http] Command started
+[coq-mathcomp-solvable.1.6] http://github.com/math-comp/math-comp/archive/mathcomp-1.6.tar.gz downloaded
+[coq-mathcomp-ssreflect: http] Command started
+[coq-mathcomp-ssreflect.1.6] http://github.com/math-comp/math-comp/archive/mathcomp-1.6.tar.gz downloaded
+=-=- Processing actions -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+[coq-mathcomp-ssreflect: make 6] Command started
+[coq-mathcomp-ssreflect: make install] Command started
+-&gt; installed coq-mathcomp-ssreflect.1.6
+[coq-mathcomp-fingroup: make 6] Command started
+[coq-mathcomp-fingroup: make install] Command started
+-&gt; installed coq-mathcomp-fingroup.1.6
+[coq-mathcomp-algebra: make 6] Command started
+[coq-mathcomp-algebra: make install] Command started
+-&gt; installed coq-mathcomp-algebra.1.6
+[coq-mathcomp-solvable: make 6] Command started
+[coq-mathcomp-solvable: make install] Command started
+-&gt; installed coq-mathcomp-solvable.1.6
+[coq-mathcomp-field: make 6] Command started
+</pre></dd>
             </dl>
             <h2>Install</h2>
             <dl class="dl-horizontal">
