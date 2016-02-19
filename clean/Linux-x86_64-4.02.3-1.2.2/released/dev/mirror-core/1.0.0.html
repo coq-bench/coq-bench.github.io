@@ -25,7 +25,7 @@
           <div id="navbar" class="collapse navbar-collapse">
             <ul class="nav navbar-nav">
               <li><a href="../..">clean / released</a></li>
-              <li class="active"><a href="">dev / cunit - 1.0.0</a></li>
+              <li class="active"><a href="">dev / mirror-core - 1.0.0</a></li>
             </ul>
           </div>
         </div>
@@ -35,10 +35,10 @@
           <div class="col-md-12">
             <a href="../..">« Up</a>
             <h1>
-              cunit
+              mirror-core
               <small>
                 1.0.0
-                <span class="label label-success">15 s</span>
+                <span class="label label-info">Not compatible with this Coq</span>
               </small>
             </h1>
             <p><em><script>document.write(moment("2016-02-19 23:53:52 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2016-02-19 23:53:52 UTC)</em><p>
@@ -54,7 +54,7 @@ ocamlfind      1.5.6  A library manager for OCaml
             <h2>Lint</h2>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>ruby lint.rb released opam-coq-archive/released/packages/coq-cunit/coq-cunit.1.0.0</code></dd>
+              <dd><code>ruby lint.rb released opam-coq-archive/released/packages/coq-mirror-core/coq-mirror-core.1.0.0</code></dd>
               <dt>Return code</dt>
               <dd>0</dd>
             </dl>
@@ -62,46 +62,49 @@ ocamlfind      1.5.6  A library manager for OCaml
             <p>Dry install with the current Coq version:</p>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>opam install -y --show-action coq-cunit.1.0.0 coq.dev</code></dd>
+              <dd><code>opam install -y --show-action coq-mirror-core.1.0.0 coq.dev</code></dd>
               <dt>Return code</dt>
-              <dd>0</dd>
+              <dd>768</dd>
+              <dt>Output</dt>
+              <dd><pre>[NOTE] Package coq is already installed (current version is dev).
+The following dependencies couldn&#39;t be met:
+  - coq-mirror-core -&gt; coq &lt;= 8.5.0
+Your request can&#39;t be satisfied:
+  - Conflicting version constraints for coq
+No solution found, exiting
+</pre></dd>
             </dl>
             <p>Dry install without Coq, to test if the problem was incompatibility with the current Coq version:</p>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>true</code></dd>
+              <dd><code>opam remove -y coq; opam install -y --show-action coq-mirror-core.1.0.0</code></dd>
               <dt>Return code</dt>
               <dd>0</dd>
             </dl>
             <h2>Install dependencies</h2>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>opam list; ulimit -Sv 4000000; timeout 90m opam install -y --deps-only coq-cunit.1.0.0</code></dd>
+              <dd><code>true</code></dd>
               <dt>Return code</dt>
               <dd>0</dd>
               <dt>Duration</dt>
-              <dd>12 s</dd>
+              <dd>0 s</dd>
             </dl>
             <h2>Install</h2>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>opam list; ulimit -Sv 4000000; timeout 90m opam install -y coq-cunit.1.0.0</code></dd>
+              <dd><code>true</code></dd>
               <dt>Return code</dt>
               <dd>0</dd>
               <dt>Duration</dt>
-              <dd>15 s</dd>
+              <dd>0 s</dd>
             </dl>
             <h2>Installation size</h2>
-            <p>Total: 15 K</p>
-            <ul>
-              <li>15 K <code>lib/coq/user-contrib/CUnit/All.vo</code></li>
-              <li>1 K <code>install/coq-cunit.install</code></li>
-              <li>0 K <code>lib/coq-cunit/opam.config</code></li>
-            </ul>
+            <p>No files were installed.</p>
             <h2>Uninstall</h2>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>opam remove -y coq-cunit.1.0.0</code></dd>
+              <dd><code>true</code></dd>
               <dt>Return code</dt>
               <dd>0</dd>
               <dt>Missing removes</dt>
