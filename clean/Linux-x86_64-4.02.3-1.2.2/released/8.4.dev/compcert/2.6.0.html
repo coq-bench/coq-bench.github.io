@@ -41,7 +41,7 @@
                 <span class="label label-danger">Error</span>
               </small>
             </h1>
-            <p><em><script>document.write(moment("2016-03-01 02:54:15 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2016-03-01 02:54:15 UTC)</em><p>
+            <p><em><script>document.write(moment("2016-03-04 05:52:54 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2016-03-04 05:52:54 UTC)</em><p>
             <h2>Context</h2>
             <pre># Installed packages for system:
 base-bigarray     base  Bigarray library distributed with the OCaml compiler
@@ -79,7 +79,7 @@ coq            8.4.dev  Formal proof management system.
               <dt>Return code</dt>
               <dd>0</dd>
               <dt>Duration</dt>
-              <dd>1 m 3 s</dd>
+              <dd>3 m 16 s</dd>
             </dl>
             <h2>Install</h2>
             <dl class="dl-horizontal">
@@ -96,10 +96,13 @@ base-ocamlbuild      base  OCamlbuild binary and libraries distributed with the
 base-threads         base  Threads library distributed with the OCaml compiler
 base-unix            base  Unix library distributed with the OCaml compiler
 camlp5               6.14  Preprocessor-pretty-printer of OCaml
+conf-m4                 1  Virtual package relying on m4
+conf-ncurses            1  Virtual package relying on ncurses
+conf-pkg-config       1.0  Virtual package relying on pkg-config installation.
 coq               8.4.dev  Formal proof management system.
 menhir           20151112  LR(1) parser generator
 ocamlbuild              0  Build system distributed with the OCaml compiler sinc
-ocamlfind           1.5.6  A library manager for OCaml
+ocamlfind           1.6.1  A library manager for OCaml
 The following actions will be performed:
   - install coq-compcert 2.6.0
 =-=- Gathering sources =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
@@ -159,8 +162,8 @@ The following actions will be performed:
 - COQC flocq/Core/Fcore_Raux.v
 - COQC flocq/Core/Fcore_digits.v
 - COQC lib/Intv.v
-- COQC lib/Maps.v
 - COQC lib/Integers.v
+- COQC lib/Maps.v
 - COQC lib/Iteration.v
 - COQC lib/Parmov.v
 - COQC lib/UnionFind.v
@@ -175,11 +178,11 @@ The following actions will be performed:
 - COQC common/Unityping.v
 - COQC flocq/Core/Fcore_float_prop.v
 - COQC flocq/Core/Fcore_rnd.v
-- COQC flocq/Calc/Fcalc_digits.v
 - COQC flocq/Calc/Fcalc_bracket.v
+- COQC flocq/Calc/Fcalc_digits.v
 - COQC flocq/Calc/Fcalc_ops.v
-- COQC flocq/Core/Fcore_generic_fmt.v
 - COQC lib/Ordered.v
+- COQC flocq/Core/Fcore_generic_fmt.v
 - COQC lib/Heaps.v
 - COQC flocq/Calc/Fcalc_div.v
 - COQC flocq/Calc/Fcalc_sqrt.v
@@ -188,8 +191,8 @@ The following actions will be performed:
 - COQC flocq/Core/Fcore_rnd_ne.v
 - COQC flocq/Core/Fcore_FIX.v
 - COQC flocq/Core/Fcore_FLX.v
-- COQC flocq/Core/Fcore_FLT.v
 - COQC flocq/Core/Fcore_FTZ.v
+- COQC flocq/Core/Fcore_FLT.v
 - COQC flocq/Core/Fcore.v
 - COQC flocq/Prop/Fprop_plus_error.v
 - COQC flocq/Appli/Fappli_double_round.v
@@ -199,8 +202,8 @@ The following actions will be performed:
 - COQC flocq/Prop/Fprop_mult_error.v
 - COQC flocq/Appli/Fappli_IEEE.v
 - COQC flocq/Prop/Fprop_div_sqrt_error.v
-- COQC flocq/Appli/Fappli_IEEE_bits.v
 - COQC lib/Fappli_IEEE_extra.v
+- COQC flocq/Appli/Fappli_IEEE_bits.v
 - COQC ia32/Archi.v
 - COQC backend/Kildall.v
 - COQC lib/Floats.v
@@ -208,12 +211,12 @@ The following actions will be performed:
 - COQC common/Values.v
 - COQC cfrontend/Ctypes.v
 - COQC common/Memdata.v
-- COQC common/Switch.v
 - COQC backend/Registers.v
+- COQC common/Switch.v
 - COQC common/Memtype.v
 - COQC common/Memory.v
-- COQC common/Globalenvs.v
 - COQC cfrontend/Cop.v
+- COQC common/Globalenvs.v
 - COQC common/Events.v
 - COQC cfrontend/Csyntax.v
 - COQC cfrontend/Initializers.v
@@ -244,10 +247,16 @@ The following actions will be performed:
 - COQC backend/RTL.v
 - COQC cfrontend/Cexec.v
 - COQC cfrontend/Cshmgen.v
-- COQC cfrontend/Cminorgen.v
 - Identifier &#39;check&#39; now a keyword
+- COQC cfrontend/Cminorgen.v
 - COQC ia32/SelectOp.v
 - COQC backend/Locations.v
+- COQC backend/Inlining.v
+- COQC backend/Renumber.v
+- COQC backend/Liveness.v
+- COQC backend/ValueDomain.v
+- COQC backend/CSEdomain.v
+- COQC backend/Unusedglob.v
 - COQC cfrontend/SimplExprproof.v
 - COQC cfrontend/Cshmgenproof.v
 - COQC cfrontend/Cminorgenproof.v
@@ -255,59 +264,53 @@ The following actions will be performed:
 - COQC backend/SelectLong.v
 - COQC ia32/SelectOpproof.v
 - COQC backend/RTLgen.v
-- Identifier &#39;do&#39; now a keyword
 - COQC ia32/Conventions1.v
-- COQC backend/Inlining.v
-- COQC backend/Renumber.v
-- COQC backend/Liveness.v
-- COQC backend/ValueDomain.v
-- COQC backend/CSEdomain.v
-- COQC backend/Unusedglob.v
+- Identifier &#39;do&#39; now a keyword
+- COQC backend/Inliningspec.v
+- COQC backend/Renumberproof.v
+- COQC ia32/ValueAOp.v
+- COQC ia32/ConstpropOp.v
+- COQC ia32/CombineOp.v
+- COQC backend/NeedDomain.v
+- COQC backend/Unusedglobproof.v
 - COQC backend/Selection.v
 - COQC backend/SelectDivproof.v
 - COQC backend/SelectLongproof.v
 - COQC backend/RTLgenspec.v
 - COQC backend/Conventions.v
-- COQC backend/Inliningspec.v
-- COQC backend/Renumberproof.v
-- COQC backend/RTLtyping.v
-- COQC ia32/CombineOp.v
-- COQC backend/Unusedglobproof.v
-- COQC backend/LTL.v
-- COQC backend/RTLgenproof.v
-- COQC backend/Tailcall.v
-- COQC ia32/ValueAOp.v
-- COQC ia32/ConstpropOp.v
+- COQC backend/ValueAnalysis.v
+- COQC ia32/ConstpropOpproof.v
 - COQC ia32/CombineOpproof.v
-- COQC backend/NeedDomain.v
-- COQC backend/Allocation.v
+- COQC ia32/NeedOp.v
+- COQC backend/LTL.v
+- COQC backend/Tailcall.v
+- COQC backend/Inliningproof.v
+- COQC backend/RTLtyping.v
+- COQC backend/Constprop.v
+- COQC backend/CSE.v
+- COQC backend/Deadcode.v
 - COQC backend/Tunneling.v
 - COQC backend/Linear.v
 - COQC backend/Selectionproof.v
+- COQC backend/RTLgenproof.v
 - COQC backend/Tailcallproof.v
-- COQC backend/Inliningproof.v
-- COQC backend/ValueAnalysis.v
-- COQC ia32/ConstpropOpproof.v
-- COQC ia32/NeedOp.v
-- COQC backend/Allocproof.v
+- COQC backend/Constpropproof.v
+- COQC backend/CSEproof.v
+- COQC backend/Deadcodeproof.v
+- COQC backend/Allocation.v
 - COQC backend/Tunnelingproof.v
 - COQC backend/Lineartyping.v
 - COQC backend/Linearize.v
 - COQC backend/CleanupLabels.v
 - COQC backend/Debugvar.v
 - COQC backend/Bounds.v
-- COQC backend/Constprop.v
-- COQC backend/CSE.v
-- COQC backend/Deadcode.v
 - COQC backend/Linearizeproof.v
 - COQC backend/CleanupLabelsproof.v
-- COQC backend/Debugvarproof.v
+- COQC backend/Allocproof.v
 - COQC ia32/Stacklayout.v
-- COQC backend/Constpropproof.v
-- COQC backend/CSEproof.v
-- COQC backend/Deadcodeproof.v
-- COQC backend/Mach.v
+- COQC backend/Debugvarproof.v
 - COQC ia32/Asm.v
+- COQC backend/Mach.v
 - COQC backend/Stacking.v
 - COQC ia32/Asmgen.v
 - COQC backend/Stackingproof.v
