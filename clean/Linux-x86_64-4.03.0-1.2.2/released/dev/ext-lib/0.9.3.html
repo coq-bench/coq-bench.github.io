@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Coq bench</title>
+    <link rel="shortcut icon" type="image/png" href="../../../../../favicon.png" />
+    <link href="../../../../../bootstrap.min.css" rel="stylesheet">
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+    <script src="../../../../../moment.min.js"></script>
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="container">
+      <div class="navbar navbar-default" role="navigation">
+        <div class="container-fluid">
+          <div class="navbar-header">
+            <a class="navbar-brand" href="../../../../.."><i class="fa fa-lg fa-flag-checkered"></i> Coq bench</a>
+          </div>
+          <div id="navbar" class="collapse navbar-collapse">
+            <ul class="nav navbar-nav">
+              <li><a href="../..">clean / released</a></li>
+              <li class="active"><a href="">dev / ext-lib - 0.9.3</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="article">
+        <div class="row">
+          <div class="col-md-12">
+            <a href="../..">« Up</a>
+            <h1>
+              ext-lib
+              <small>
+                0.9.3
+                <span class="label label-danger">Error</span>
+              </small>
+            </h1>
+            <p><em><script>document.write(moment("2016-05-11 23:07:06 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2016-05-11 23:07:06 UTC)</em><p>
+            <h2>Context</h2>
+            <pre># Installed packages for system:
+base-bigarray     base  Bigarray library distributed with the OCaml compiler
+base-threads      base  Threads library distributed with the OCaml compiler
+base-unix         base  Unix library distributed with the OCaml compiler
+camlp5            6.16  Preprocessor-pretty-printer of OCaml
+conf-m4              1  Virtual package relying on m4
+conf-ncurses         1  Virtual package relying on ncurses
+conf-pkg-config    1.0  Virtual package relying on pkg-config installation.
+coq                dev  Formal proof management system.
+ocamlfind        1.6.2  A library manager for OCaml
+</pre>
+            <h2>Lint</h2>
+            <dl class="dl-horizontal">
+              <dt>Command</dt>
+              <dd><code>ruby lint.rb released opam-coq-archive/released/packages/coq-ext-lib/coq-ext-lib.0.9.3</code></dd>
+              <dt>Return code</dt>
+              <dd>0</dd>
+            </dl>
+            <h2>Dry install</h2>
+            <p>Dry install with the current Coq version:</p>
+            <dl class="dl-horizontal">
+              <dt>Command</dt>
+              <dd><code>opam install -y --show-action coq-ext-lib.0.9.3 coq.dev</code></dd>
+              <dt>Return code</dt>
+              <dd>0</dd>
+            </dl>
+            <p>Dry install without Coq, to test if the problem was incompatibility with the current Coq version:</p>
+            <dl class="dl-horizontal">
+              <dt>Command</dt>
+              <dd><code>true</code></dd>
+              <dt>Return code</dt>
+              <dd>0</dd>
+            </dl>
+            <h2>Install dependencies</h2>
+            <dl class="dl-horizontal">
+              <dt>Command</dt>
+              <dd><code>opam list; ulimit -Sv 4000000; timeout 90m opam install -y --deps-only coq-ext-lib.0.9.3</code></dd>
+              <dt>Return code</dt>
+              <dd>0</dd>
+              <dt>Duration</dt>
+              <dd>10 s</dd>
+            </dl>
+            <h2>Install</h2>
+            <dl class="dl-horizontal">
+              <dt>Command</dt>
+              <dd><code>opam list; ulimit -Sv 4000000; timeout 90m opam install -y -v coq-ext-lib.0.9.3</code></dd>
+              <dt>Return code</dt>
+              <dd>1024</dd>
+              <dt>Duration</dt>
+              <dd>21 s</dd>
+              <dt>Output</dt>
+              <dd><pre># Installed packages for system:
+base-bigarray     base  Bigarray library distributed with the OCaml compiler
+base-threads      base  Threads library distributed with the OCaml compiler
+base-unix         base  Unix library distributed with the OCaml compiler
+camlp5            6.16  Preprocessor-pretty-printer of OCaml
+conf-m4              1  Virtual package relying on m4
+conf-ncurses         1  Virtual package relying on ncurses
+conf-pkg-config    1.0  Virtual package relying on pkg-config installation.
+coq                dev  Formal proof management system.
+ocamlfind        1.6.2  A library manager for OCaml
+The following actions will be performed:
+  - install coq-ext-lib 0.9.3
+=-=- Gathering sources =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+[coq-ext-lib: http] Command started
+[coq-ext-lib: http] Command started
+[coq-ext-lib.0.9.3] https://github.com/coq-ext-lib/coq-ext-lib/archive/v0.9.3.tar.gz downloaded
+=-=- Processing actions -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+[coq-ext-lib: make] Command started
++ make &quot;-j6&quot; (CWD=/home/bench/.opam/system/build/coq-ext-lib.0.9.3)
+- coq_makefile -f _CoqProject -o Makefile.coq
+- make -f Makefile.coq
+- make[1]: Entering directory &#39;/home/bench/.opam/system/build/coq-ext-lib.0.9.3&#39;
+- &quot;coqdep&quot; -c -Q &quot;theories&quot; ExtLib &quot;theories/Data/Set/TwoThreeTrees.v&quot; &gt; &quot;theories/Data/Set/TwoThreeTrees.v.d&quot; || ( RV=$?; rm -f &quot;theories/Data/Set/TwoThreeTrees.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -Q &quot;theories&quot; ExtLib &quot;theories/Data/Set/SetMap.v&quot; &gt; &quot;theories/Data/Set/SetMap.v.d&quot; || ( RV=$?; rm -f &quot;theories/Data/Set/SetMap.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -Q &quot;theories&quot; ExtLib &quot;theories/Data/Set/ListSet.v&quot; &gt; &quot;theories/Data/Set/ListSet.v.d&quot; || ( RV=$?; rm -f &quot;theories/Data/Set/ListSet.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -Q &quot;theories&quot; ExtLib &quot;theories/Data/Monads/WriterMonad.v&quot; &gt; &quot;theories/Data/Monads/WriterMonad.v.d&quot; || ( RV=$?; rm -f &quot;theories/Data/Monads/WriterMonad.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -Q &quot;theories&quot; ExtLib &quot;theories/Data/Monads/StateMonad.v&quot; &gt; &quot;theories/Data/Monads/StateMonad.v.d&quot; || ( RV=$?; rm -f &quot;theories/Data/Monads/StateMonad.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -Q &quot;theories&quot; ExtLib &quot;theories/Data/Monads/ReaderMonad.v&quot; &gt; &quot;theories/Data/Monads/ReaderMonad.v.d&quot; || ( RV=$?; rm -f &quot;theories/Data/Monads/ReaderMonad.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -Q &quot;theories&quot; ExtLib &quot;theories/Data/Monads/ReaderMonadLaws.v&quot; &gt; &quot;theories/Data/Monads/ReaderMonadLaws.v.d&quot; || ( RV=$?; rm -f &quot;theories/Data/Monads/ReaderMonadLaws.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -Q &quot;theories&quot; ExtLib &quot;theories/Data/Monads/OptionMonad.v&quot; &gt; &quot;theories/Data/Monads/OptionMonad.v.d&quot; || ( RV=$?; rm -f &quot;theories/Data/Monads/OptionMonad.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -Q &quot;theories&quot; ExtLib &quot;theories/Data/Monads/OptionMonadLaws.v&quot; &gt; &quot;theories/Data/Monads/OptionMonadLaws.v.d&quot; || ( RV=$?; rm -f &quot;theories/Data/Monads/OptionMonadLaws.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -Q &quot;theories&quot; ExtLib &quot;theories/Data/Monads/ListMonad.v&quot; &gt; &quot;theories/Data/Monads/ListMonad.v.d&quot; || ( RV=$?; rm -f &quot;theories/Data/Monads/ListMonad.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -Q &quot;theories&quot; ExtLib &quot;theories/Data/Monads/IdentityMonad.v&quot; &gt; &quot;theories/Data/Monads/IdentityMonad.v.d&quot; || ( RV=$?; rm -f &quot;theories/Data/Monads/IdentityMonad.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -Q &quot;theories&quot; ExtLib &quot;theories/Data/Monads/IdentityMonadLaws.v&quot; &gt; &quot;theories/Data/Monads/IdentityMonadLaws.v.d&quot; || ( RV=$?; rm -f &quot;theories/Data/Monads/IdentityMonadLaws.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -Q &quot;theories&quot; ExtLib &quot;theories/Data/Monads/FuelMonad.v&quot; &gt; &quot;theories/Data/Monads/FuelMonad.v.d&quot; || ( RV=$?; rm -f &quot;theories/Data/Monads/FuelMonad.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -Q &quot;theories&quot; ExtLib &quot;theories/Data/Monads/FuelMonadLaws.v&quot; &gt; &quot;theories/Data/Monads/FuelMonadLaws.v.d&quot; || ( RV=$?; rm -f &quot;theories/Data/Monads/FuelMonadLaws.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -Q &quot;theories&quot; ExtLib &quot;theories/Data/Monads/EitherMonad.v&quot; &gt; &quot;theories/Data/Monads/EitherMonad.v.d&quot; || ( RV=$?; rm -f &quot;theories/Data/Monads/EitherMonad.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -Q &quot;theories&quot; ExtLib &quot;theories/Data/Monads/ContMonad.v&quot; &gt; &quot;theories/Data/Monads/ContMonad.v.d&quot; || ( RV=$?; rm -f &quot;theories/Data/Monads/ContMonad.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -Q &quot;theories&quot; ExtLib &quot;theories/Data/Map/FMapTwoThreeK.v&quot; &gt; &quot;theories/Data/Map/FMapTwoThreeK.v.d&quot; || ( RV=$?; rm -f &quot;theories/Data/Map/FMapTwoThreeK.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -Q &quot;theories&quot; ExtLib &quot;theories/Data/Map/FMapPositive.v&quot; &gt; &quot;theories/Data/Map/FMapPositive.v.d&quot; || ( RV=$?; rm -f &quot;theories/Data/Map/FMapPositive.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -Q &quot;theories&quot; ExtLib &quot;theories/Data/Map/FMapAList.v&quot; &gt; &quot;theories/Data/Map/FMapAList.v.d&quot; || ( RV=$?; rm -f &quot;theories/Data/Map/FMapAList.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -Q &quot;theories&quot; ExtLib &quot;theories/Data/Graph/Graph.v&quot; &gt; &quot;theories/Data/Graph/Graph.v.d&quot; || ( RV=$?; rm -f &quot;theories/Data/Graph/Graph.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -Q &quot;theories&quot; ExtLib &quot;theories/Data/Graph/GraphAlgos.v&quot; &gt; &quot;theories/Data/Graph/GraphAlgos.v.d&quot; || ( RV=$?; rm -f &quot;theories/Data/Graph/GraphAlgos.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -Q &quot;theories&quot; ExtLib &quot;theories/Data/Graph/GraphAdjList.v&quot; &gt; &quot;theories/Data/Graph/GraphAdjList.v.d&quot; || ( RV=$?; rm -f &quot;theories/Data/Graph/GraphAdjList.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -Q &quot;theories&quot; ExtLib &quot;theories/Data/Graph/BuildGraph.v&quot; &gt; &quot;theories/Data/Graph/BuildGraph.v.d&quot; || ( RV=$?; rm -f &quot;theories/Data/Graph/BuildGraph.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -Q &quot;theories&quot; ExtLib &quot;theories/Tactics/TypeTac.v&quot; &gt; &quot;theories/Tactics/TypeTac.v.d&quot; || ( RV=$?; rm -f &quot;theories/Tactics/TypeTac.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -Q &quot;theories&quot; ExtLib &quot;theories/Tactics/Reify.v&quot; &gt; &quot;theories/Tactics/Reify.v.d&quot; || ( RV=$?; rm -f &quot;theories/Tactics/Reify.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -Q &quot;theories&quot; ExtLib &quot;theories/Tactics/Parametric.v&quot; &gt; &quot;theories/Tactics/Parametric.v.d&quot; || ( RV=$?; rm -f &quot;theories/Tactics/Parametric.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -Q &quot;theories&quot; ExtLib &quot;theories/Tactics/MonadTac.v&quot; &gt; &quot;theories/Tactics/MonadTac.v.d&quot; || ( RV=$?; rm -f &quot;theories/Tactics/MonadTac.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -Q &quot;theories&quot; ExtLib &quot;theories/Tactics/Injection.v&quot; &gt; &quot;theories/Tactics/Injection.v.d&quot; || ( RV=$?; rm -f &quot;theories/Tactics/Injection.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -Q &quot;theories&quot; ExtLib &quot;theories/Tactics/Forward.v&quot; &gt; &quot;theories/Tactics/Forward.v.d&quot; || ( RV=$?; rm -f &quot;theories/Tactics/Forward.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -Q &quot;theories&quot; ExtLib &quot;theories/Tactics/Equality.v&quot; &gt; &quot;theories/Tactics/Equality.v.d&quot; || ( RV=$?; rm -f &quot;theories/Tactics/Equality.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -Q &quot;theories&quot; ExtLib &quot;theories/Tactics/EqDep.v&quot; &gt; &quot;theories/Tactics/EqDep.v.d&quot; || ( RV=$?; rm -f &quot;theories/Tactics/EqDep.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -Q &quot;theories&quot; ExtLib &quot;theories/Tactics/Consider.v&quot; &gt; &quot;theories/Tactics/Consider.v.d&quot; || ( RV=$?; rm -f &quot;theories/Tactics/Consider.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -Q &quot;theories&quot; ExtLib &quot;theories/Tactics/Cases.v&quot; &gt; &quot;theories/Tactics/Cases.v.d&quot; || ( RV=$?; rm -f &quot;theories/Tactics/Cases.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -Q &quot;theories&quot; ExtLib &quot;theories/Tactics/BoolTac.v&quot; &gt; &quot;theories/Tactics/BoolTac.v.d&quot; || ( RV=$?; rm -f &quot;theories/Tactics/BoolTac.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -Q &quot;theories&quot; ExtLib &quot;theories/Relations/TransitiveClosure.v&quot; &gt; &quot;theories/Relations/TransitiveClosure.v.d&quot; || ( RV=$?; rm -f &quot;theories/Relations/TransitiveClosure.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -Q &quot;theories&quot; ExtLib &quot;theories/Relations/Compose.v&quot; &gt; &quot;theories/Relations/Compose.v.d&quot; || ( RV=$?; rm -f &quot;theories/Relations/Compose.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -Q &quot;theories&quot; ExtLib &quot;theories/Recur/Relation.v&quot; &gt; &quot;theories/Recur/Relation.v.d&quot; || ( RV=$?; rm -f &quot;theories/Recur/Relation.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -Q &quot;theories&quot; ExtLib &quot;theories/Recur/Measure.v&quot; &gt; &quot;theories/Recur/Measure.v.d&quot; || ( RV=$?; rm -f &quot;theories/Recur/Measure.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -Q &quot;theories&quot; ExtLib &quot;theories/Recur/GenRec.v&quot; &gt; &quot;theories/Recur/GenRec.v.d&quot; || ( RV=$?; rm -f &quot;theories/Recur/GenRec.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -Q &quot;theories&quot; ExtLib &quot;theories/Recur/Facts.v&quot; &gt; &quot;theories/Recur/Facts.v.d&quot; || ( RV=$?; rm -f &quot;theories/Recur/Facts.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -Q &quot;theories&quot; ExtLib &quot;theories/Programming/With.v&quot; &gt; &quot;theories/Programming/With.v.d&quot; || ( RV=$?; rm -f &quot;theories/Programming/With.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -Q &quot;theories&quot; ExtLib &quot;theories/Programming/Show.v&quot; &gt; &quot;theories/Programming/Show.v.d&quot; || ( RV=$?; rm -f &quot;theories/Programming/Show.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -Q &quot;theories&quot; ExtLib &quot;theories/Programming/Le.v&quot; &gt; &quot;theories/Programming/Le.v.d&quot; || ( RV=$?; rm -f &quot;theories/Programming/Le.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -Q &quot;theories&quot; ExtLib &quot;theories/Programming/Injection.v&quot; &gt; &quot;theories/Programming/Injection.v.d&quot; || ( RV=$?; rm -f &quot;theories/Programming/Injection.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -Q &quot;theories&quot; ExtLib &quot;theories/Programming/Extras.v&quot; &gt; &quot;theories/Programming/Extras.v.d&quot; || ( RV=$?; rm -f &quot;theories/Programming/Extras.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -Q &quot;theories&quot; ExtLib &quot;theories/Programming/Eqv.v&quot; &gt; &quot;theories/Programming/Eqv.v.d&quot; || ( RV=$?; rm -f &quot;theories/Programming/Eqv.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -Q &quot;theories&quot; ExtLib &quot;theories/Generic/Ind.v&quot; &gt; &quot;theories/Generic/Ind.v.d&quot; || ( RV=$?; rm -f &quot;theories/Generic/Ind.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -Q &quot;theories&quot; ExtLib &quot;theories/Generic/Func.v&quot; &gt; &quot;theories/Generic/Func.v.d&quot; || ( RV=$?; rm -f &quot;theories/Generic/Func.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -Q &quot;theories&quot; ExtLib &quot;theories/Generic/DerivingData.v&quot; &gt; &quot;theories/Generic/DerivingData.v.d&quot; || ( RV=$?; rm -f &quot;theories/Generic/DerivingData.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -Q &quot;theories&quot; ExtLib &quot;theories/Generic/Data.v&quot; &gt; &quot;theories/Generic/Data.v.d&quot; || ( RV=$?; rm -f &quot;theories/Generic/Data.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -Q &quot;theories&quot; ExtLib &quot;theories/Data/PPair.v&quot; &gt; &quot;theories/Data/PPair.v.d&quot; || ( RV=$?; rm -f &quot;theories/Data/PPair.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -Q &quot;theories&quot; ExtLib &quot;theories/Data/PList.v&quot; &gt; &quot;theories/Data/PList.v.d&quot; || ( RV=$?; rm -f &quot;theories/Data/PList.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -Q &quot;theories&quot; ExtLib &quot;theories/Data/POption.v&quot; &gt; &quot;theories/Data/POption.v.d&quot; || ( RV=$?; rm -f &quot;theories/Data/POption.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -Q &quot;theories&quot; ExtLib &quot;theories/Data/Z.v&quot; &gt; &quot;theories/Data/Z.v.d&quot; || ( RV=$?; rm -f &quot;theories/Data/Z.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -Q &quot;theories&quot; ExtLib &quot;theories/Data/Vector.v&quot; &gt; &quot;theories/Data/Vector.v.d&quot; || ( RV=$?; rm -f &quot;theories/Data/Vector.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -Q &quot;theories&quot; ExtLib &quot;theories/Data/Unit.v&quot; &gt; &quot;theories/Data/Unit.v.d&quot; || ( RV=$?; rm -f &quot;theories/Data/Unit.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -Q &quot;theories&quot; ExtLib &quot;theories/Data/Tuple.v&quot; &gt; &quot;theories/Data/Tuple.v.d&quot; || ( RV=$?; rm -f &quot;theories/Data/Tuple.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -Q &quot;theories&quot; ExtLib &quot;theories/Data/Sum.v&quot; &gt; &quot;theories/Data/Sum.v.d&quot; || ( RV=$?; rm -f &quot;theories/Data/Sum.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -Q &quot;theories&quot; ExtLib &quot;theories/Data/SumN.v&quot; &gt; &quot;theories/Data/SumN.v.d&quot; || ( RV=$?; rm -f &quot;theories/Data/SumN.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -Q &quot;theories&quot; ExtLib &quot;theories/Data/String.v&quot; &gt; &quot;theories/Data/String.v.d&quot; || ( RV=$?; rm -f &quot;theories/Data/String.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -Q &quot;theories&quot; ExtLib &quot;theories/Data/Stream.v&quot; &gt; &quot;theories/Data/Stream.v.d&quot; || ( RV=$?; rm -f &quot;theories/Data/Stream.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -Q &quot;theories&quot; ExtLib &quot;theories/Data/SigT.v&quot; &gt; &quot;theories/Data/SigT.v.d&quot; || ( RV=$?; rm -f &quot;theories/Data/SigT.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -Q &quot;theories&quot; ExtLib &quot;theories/Data/Prop.v&quot; &gt; &quot;theories/Data/Prop.v.d&quot; || ( RV=$?; rm -f &quot;theories/Data/Prop.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -Q &quot;theories&quot; ExtLib &quot;theories/Data/PreFun.v&quot; &gt; &quot;theories/Data/PreFun.v.d&quot; || ( RV=$?; rm -f &quot;theories/Data/PreFun.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -Q &quot;theories&quot; ExtLib &quot;theories/Data/Positive.v&quot; &gt; &quot;theories/Data/Positive.v.d&quot; || ( RV=$?; rm -f &quot;theories/Data/Positive.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -Q &quot;theories&quot; ExtLib &quot;theories/Data/Pair.v&quot; &gt; &quot;theories/Data/Pair.v.d&quot; || ( RV=$?; rm -f &quot;theories/Data/Pair.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -Q &quot;theories&quot; ExtLib &quot;theories/Data/Option.v&quot; &gt; &quot;theories/Data/Option.v.d&quot; || ( RV=$?; rm -f &quot;theories/Data/Option.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -Q &quot;theories&quot; ExtLib &quot;theories/Data/N.v&quot; &gt; &quot;theories/Data/N.v.d&quot; || ( RV=$?; rm -f &quot;theories/Data/N.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -Q &quot;theories&quot; ExtLib &quot;theories/Data/Nat.v&quot; &gt; &quot;theories/Data/Nat.v.d&quot; || ( RV=$?; rm -f &quot;theories/Data/Nat.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -Q &quot;theories&quot; ExtLib &quot;theories/Data/Member.v&quot; &gt; &quot;theories/Data/Member.v.d&quot; || ( RV=$?; rm -f &quot;theories/Data/Member.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -Q &quot;theories&quot; ExtLib &quot;theories/Data/List.v&quot; &gt; &quot;theories/Data/List.v.d&quot; || ( RV=$?; rm -f &quot;theories/Data/List.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -Q &quot;theories&quot; ExtLib &quot;theories/Data/ListNth.v&quot; &gt; &quot;theories/Data/ListNth.v.d&quot; || ( RV=$?; rm -f &quot;theories/Data/ListNth.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -Q &quot;theories&quot; ExtLib &quot;theories/Data/ListFirstnSkipn.v&quot; &gt; &quot;theories/Data/ListFirstnSkipn.v.d&quot; || ( RV=$?; rm -f &quot;theories/Data/ListFirstnSkipn.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -Q &quot;theories&quot; ExtLib &quot;theories/Data/Lazy.v&quot; &gt; &quot;theories/Data/Lazy.v.d&quot; || ( RV=$?; rm -f &quot;theories/Data/Lazy.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -Q &quot;theories&quot; ExtLib &quot;theories/Data/LazyList.v&quot; &gt; &quot;theories/Data/LazyList.v.d&quot; || ( RV=$?; rm -f &quot;theories/Data/LazyList.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -Q &quot;theories&quot; ExtLib &quot;theories/Data/HList.v&quot; &gt; &quot;theories/Data/HList.v.d&quot; || ( RV=$?; rm -f &quot;theories/Data/HList.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -Q &quot;theories&quot; ExtLib &quot;theories/Data/Fun.v&quot; &gt; &quot;theories/Data/Fun.v.d&quot; || ( RV=$?; rm -f &quot;theories/Data/Fun.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -Q &quot;theories&quot; ExtLib &quot;theories/Data/Fin.v&quot; &gt; &quot;theories/Data/Fin.v.d&quot; || ( RV=$?; rm -f &quot;theories/Data/Fin.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -Q &quot;theories&quot; ExtLib &quot;theories/Data/Eq/UIP_trans.v&quot; &gt; &quot;theories/Data/Eq/UIP_trans.v.d&quot; || ( RV=$?; rm -f &quot;theories/Data/Eq/UIP_trans.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -Q &quot;theories&quot; ExtLib &quot;theories/Data/Eq.v&quot; &gt; &quot;theories/Data/Eq.v.d&quot; || ( RV=$?; rm -f &quot;theories/Data/Eq.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -Q &quot;theories&quot; ExtLib &quot;theories/Data/Checked.v&quot; &gt; &quot;theories/Data/Checked.v.d&quot; || ( RV=$?; rm -f &quot;theories/Data/Checked.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -Q &quot;theories&quot; ExtLib &quot;theories/Data/Char.v&quot; &gt; &quot;theories/Data/Char.v.d&quot; || ( RV=$?; rm -f &quot;theories/Data/Char.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -Q &quot;theories&quot; ExtLib &quot;theories/Data/Bool.v&quot; &gt; &quot;theories/Data/Bool.v.d&quot; || ( RV=$?; rm -f &quot;theories/Data/Bool.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -Q &quot;theories&quot; ExtLib &quot;theories/Structures/Traversable.v&quot; &gt; &quot;theories/Structures/Traversable.v.d&quot; || ( RV=$?; rm -f &quot;theories/Structures/Traversable.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -Q &quot;theories&quot; ExtLib &quot;theories/Structures/Sets.v&quot; &gt; &quot;theories/Structures/Sets.v.d&quot; || ( RV=$?; rm -f &quot;theories/Structures/Sets.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -Q &quot;theories&quot; ExtLib &quot;theories/Structures/Reducible.v&quot; &gt; &quot;theories/Structures/Reducible.v.d&quot; || ( RV=$?; rm -f &quot;theories/Structures/Reducible.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -Q &quot;theories&quot; ExtLib &quot;theories/Structures/Proper.v&quot; &gt; &quot;theories/Structures/Proper.v.d&quot; || ( RV=$?; rm -f &quot;theories/Structures/Proper.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -Q &quot;theories&quot; ExtLib &quot;theories/Structures/Monoid.v&quot; &gt; &quot;theories/Structures/Monoid.v.d&quot; || ( RV=$?; rm -f &quot;theories/Structures/Monoid.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -Q &quot;theories&quot; ExtLib &quot;theories/Structures/MonadZero.v&quot; &gt; &quot;theories/Structures/MonadZero.v.d&quot; || ( RV=$?; rm -f &quot;theories/Structures/MonadZero.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -Q &quot;theories&quot; ExtLib &quot;theories/Structures/MonadWriter.v&quot; &gt; &quot;theories/Structures/MonadWriter.v.d&quot; || ( RV=$?; rm -f &quot;theories/Structures/MonadWriter.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -Q &quot;theories&quot; ExtLib &quot;theories/Structures/Monad.v&quot; &gt; &quot;theories/Structures/Monad.v.d&quot; || ( RV=$?; rm -f &quot;theories/Structures/Monad.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -Q &quot;theories&quot; ExtLib &quot;theories/Structures/MonadTrans.v&quot; &gt; &quot;theories/Structures/MonadTrans.v.d&quot; || ( RV=$?; rm -f &quot;theories/Structures/MonadTrans.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -Q &quot;theories&quot; ExtLib &quot;theories/Structures/Monads.v&quot; &gt; &quot;theories/Structures/Monads.v.d&quot; || ( RV=$?; rm -f &quot;theories/Structures/Monads.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -Q &quot;theories&quot; ExtLib &quot;theories/Structures/MonadState.v&quot; &gt; &quot;theories/Structures/MonadState.v.d&quot; || ( RV=$?; rm -f &quot;theories/Structures/MonadState.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -Q &quot;theories&quot; ExtLib &quot;theories/Structures/MonadReader.v&quot; &gt; &quot;theories/Structures/MonadReader.v.d&quot; || ( RV=$?; rm -f &quot;theories/Structures/MonadReader.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -Q &quot;theories&quot; ExtLib &quot;theories/Structures/MonadPlus.v&quot; &gt; &quot;theories/Structures/MonadPlus.v.d&quot; || ( RV=$?; rm -f &quot;theories/Structures/MonadPlus.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -Q &quot;theories&quot; ExtLib &quot;theories/Structures/MonadLaws.v&quot; &gt; &quot;theories/Structures/MonadLaws.v.d&quot; || ( RV=$?; rm -f &quot;theories/Structures/MonadLaws.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -Q &quot;theories&quot; ExtLib &quot;theories/Structures/MonadFix.v&quot; &gt; &quot;theories/Structures/MonadFix.v.d&quot; || ( RV=$?; rm -f &quot;theories/Structures/MonadFix.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -Q &quot;theories&quot; ExtLib &quot;theories/Structures/MonadExc.v&quot; &gt; &quot;theories/Structures/MonadExc.v.d&quot; || ( RV=$?; rm -f &quot;theories/Structures/MonadExc.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -Q &quot;theories&quot; ExtLib &quot;theories/Structures/MonadCont.v&quot; &gt; &quot;theories/Structures/MonadCont.v.d&quot; || ( RV=$?; rm -f &quot;theories/Structures/MonadCont.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -Q &quot;theories&quot; ExtLib &quot;theories/Structures/Maps.v&quot; &gt; &quot;theories/Structures/Maps.v.d&quot; || ( RV=$?; rm -f &quot;theories/Structures/Maps.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -Q &quot;theories&quot; ExtLib &quot;theories/Structures/Identity.v&quot; &gt; &quot;theories/Structures/Identity.v.d&quot; || ( RV=$?; rm -f &quot;theories/Structures/Identity.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -Q &quot;theories&quot; ExtLib &quot;theories/Structures/Functor.v&quot; &gt; &quot;theories/Structures/Functor.v.d&quot; || ( RV=$?; rm -f &quot;theories/Structures/Functor.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -Q &quot;theories&quot; ExtLib &quot;theories/Structures/FunctorLaws.v&quot; &gt; &quot;theories/Structures/FunctorLaws.v.d&quot; || ( RV=$?; rm -f &quot;theories/Structures/FunctorLaws.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -Q &quot;theories&quot; ExtLib &quot;theories/Structures/Foldable.v&quot; &gt; &quot;theories/Structures/Foldable.v.d&quot; || ( RV=$?; rm -f &quot;theories/Structures/Foldable.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -Q &quot;theories&quot; ExtLib &quot;theories/Structures/EqDep.v&quot; &gt; &quot;theories/Structures/EqDep.v.d&quot; || ( RV=$?; rm -f &quot;theories/Structures/EqDep.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -Q &quot;theories&quot; ExtLib &quot;theories/Structures/CoMonad.v&quot; &gt; &quot;theories/Structures/CoMonad.v.d&quot; || ( RV=$?; rm -f &quot;theories/Structures/CoMonad.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -Q &quot;theories&quot; ExtLib &quot;theories/Structures/CoFunctor.v&quot; &gt; &quot;theories/Structures/CoFunctor.v.d&quot; || ( RV=$?; rm -f &quot;theories/Structures/CoFunctor.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -Q &quot;theories&quot; ExtLib &quot;theories/Structures/BinOps.v&quot; &gt; &quot;theories/Structures/BinOps.v.d&quot; || ( RV=$?; rm -f &quot;theories/Structures/BinOps.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -Q &quot;theories&quot; ExtLib &quot;theories/Structures/Applicative.v&quot; &gt; &quot;theories/Structures/Applicative.v.d&quot; || ( RV=$?; rm -f &quot;theories/Structures/Applicative.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -Q &quot;theories&quot; ExtLib &quot;theories/Core/Type.v&quot; &gt; &quot;theories/Core/Type.v.d&quot; || ( RV=$?; rm -f &quot;theories/Core/Type.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -Q &quot;theories&quot; ExtLib &quot;theories/Core/RelDec.v&quot; &gt; &quot;theories/Core/RelDec.v.d&quot; || ( RV=$?; rm -f &quot;theories/Core/RelDec.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -Q &quot;theories&quot; ExtLib &quot;theories/Core/EquivDec.v&quot; &gt; &quot;theories/Core/EquivDec.v.d&quot; || ( RV=$?; rm -f &quot;theories/Core/EquivDec.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -Q &quot;theories&quot; ExtLib &quot;theories/Core/CmpDec.v&quot; &gt; &quot;theories/Core/CmpDec.v.d&quot; || ( RV=$?; rm -f &quot;theories/Core/CmpDec.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -Q &quot;theories&quot; ExtLib &quot;theories/Core/Any.v&quot; &gt; &quot;theories/Core/Any.v.d&quot; || ( RV=$?; rm -f &quot;theories/Core/Any.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -Q &quot;theories&quot; ExtLib &quot;theories/Tactics.v&quot; &gt; &quot;theories/Tactics.v.d&quot; || ( RV=$?; rm -f &quot;theories/Tactics.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -Q &quot;theories&quot; ExtLib &quot;theories/ExtLib.v&quot; &gt; &quot;theories/ExtLib.v.d&quot; || ( RV=$?; rm -f &quot;theories/ExtLib.v.d&quot;; exit ${RV} )
+- &quot;coqc&quot;  -q  -Q &quot;theories&quot; ExtLib   theories/Core/RelDec
+- &quot;coqc&quot;  -q  -Q &quot;theories&quot; ExtLib   theories/Tactics/Injection
+- &quot;coqc&quot;  -q  -Q &quot;theories&quot; ExtLib   theories/Tactics/Forward
+- &quot;coqc&quot;  -q  -Q &quot;theories&quot; ExtLib   theories/Core/Any
+- &quot;coqc&quot;  -q  -Q &quot;theories&quot; ExtLib   theories/Core/EquivDec
+- &quot;coqc&quot;  -q  -Q &quot;theories&quot; ExtLib   theories/Structures/Proper
+- &quot;coqc&quot;  -q  -Q &quot;theories&quot; ExtLib   theories/Structures/Applicative
+- &quot;coqc&quot;  -q  -Q &quot;theories&quot; ExtLib   theories/Structures/BinOps
+- &quot;coqc&quot;  -q  -Q &quot;theories&quot; ExtLib   theories/Structures/CoMonad
+- &quot;coqc&quot;  -q  -Q &quot;theories&quot; ExtLib   theories/Structures/Functor
+- &quot;coqc&quot;  -q  -Q &quot;theories&quot; ExtLib   theories/Data/Checked
+- &quot;coqc&quot;  -q  -Q &quot;theories&quot; ExtLib   theories/Data/Eq/UIP_trans
+- &quot;coqc&quot;  -q  -Q &quot;theories&quot; ExtLib   theories/Data/ListNth
+- &quot;coqc&quot;  -q  -Q &quot;theories&quot; ExtLib   theories/Data/LazyList
+- &quot;coqc&quot;  -q  -Q &quot;theories&quot; ExtLib   theories/Data/ListFirstnSkipn
+- &quot;coqc&quot;  -q  -Q &quot;theories&quot; ExtLib   theories/Data/Positive
+- &quot;coqc&quot;  -q  -Q &quot;theories&quot; ExtLib   theories/Data/Stream
+- &quot;coqc&quot;  -q  -Q &quot;theories&quot; ExtLib   theories/Data/Z
+- &quot;coqc&quot;  -q  -Q &quot;theories&quot; ExtLib   theories/Data/POption
+- &quot;coqc&quot;  -q  -Q &quot;theories&quot; ExtLib   theories/Data/PPair
+- &quot;coqc&quot;  -q  -Q &quot;theories&quot; ExtLib   theories/Programming/Injection
+- &quot;coqc&quot;  -q  -Q &quot;theories&quot; ExtLib   theories/Programming/Eqv
+- &quot;coqc&quot;  -q  -Q &quot;theories&quot; ExtLib   theories/Programming/Le
+- &quot;coqc&quot;  -q  -Q &quot;theories&quot; ExtLib   theories/Programming/With
+- &quot;coqc&quot;  -q  -Q &quot;theories&quot; ExtLib   theories/Recur/Facts
+- &quot;coqc&quot;  -q  -Q &quot;theories&quot; ExtLib   theories/Recur/GenRec
+- &quot;coqc&quot;  -q  -Q &quot;theories&quot; ExtLib   theories/Recur/Measure
+- &quot;coqc&quot;  -q  -Q &quot;theories&quot; ExtLib   theories/Relations/TransitiveClosure
+- &quot;coqc&quot;  -q  -Q &quot;theories&quot; ExtLib   theories/Relations/Compose
+- &quot;coqc&quot;  -q  -Q &quot;theories&quot; ExtLib   theories/Tactics/BoolTac
+- &quot;coqc&quot;  -q  -Q &quot;theories&quot; ExtLib   theories/Tactics/Parametric
+- &quot;coqc&quot;  -q  -Q &quot;theories&quot; ExtLib   theories/Tactics/Reify
+- &quot;coqc&quot;  -q  -Q &quot;theories&quot; ExtLib   theories/Data/Graph/Graph
+- &quot;coqc&quot;  -q  -Q &quot;theories&quot; ExtLib   theories/ExtLib
+- &quot;coqc&quot;  -q  -Q &quot;theories&quot; ExtLib   theories/Tactics/Consider
+- &quot;coqc&quot;  -q  -Q &quot;theories&quot; ExtLib   theories/Core/Type
+- &quot;coqc&quot;  -q  -Q &quot;theories&quot; ExtLib   theories/Structures/CoFunctor
+- &quot;coqc&quot;  -q  -Q &quot;theories&quot; ExtLib   theories/Structures/Monad
+- &quot;coqc&quot;  -q  -Q &quot;theories&quot; ExtLib   theories/Structures/Traversable
+- &quot;coqc&quot;  -q  -Q &quot;theories&quot; ExtLib   theories/Data/Bool
+- &quot;coqc&quot;  -q  -Q &quot;theories&quot; ExtLib   theories/Data/Eq
+- &quot;coqc&quot;  -q  -Q &quot;theories&quot; ExtLib   theories/Data/Pair
+- Makefile.coq:377: recipe for target &#39;theories/Core/Type.vo&#39; failed
+- make[1]: Leaving directory &#39;/home/bench/.opam/system/build/coq-ext-lib.0.9.3&#39;
+- Makefile:4: recipe for target &#39;theories&#39; failed
+- File &quot;./theories/Core/Type.v&quot;, line 78, characters 51-56:
+- Error: Universe {ExtLib.Core.Type.85} is unbound.
+- make[1]: *** [theories/Core/Type.vo] Error 1
+- make[1]: *** Waiting for unfinished jobs....
+- make: *** [theories] Error 2
+[ERROR] The compilation of coq-ext-lib failed at &quot;make -j6&quot;.
+[coq-ext-lib: rm] Command started
++ rm &quot;-R&quot; &quot;/home/bench/.opam/system/lib/coq/user-contrib/ExtLib&quot; (CWD=/home/bench/.opam/system/build/coq-ext-lib.0.9.3)
+- rm: cannot remove &#39;/home/bench/.opam/system/lib/coq/user-contrib/ExtLib&#39;: No such file or directory
+#=== ERROR while installing coq-ext-lib.0.9.3 =================================#
+# opam-version         1.2.2
+# os                   linux
+# command              make -j6
+# path                 /home/bench/.opam/system/build/coq-ext-lib.0.9.3
+# compiler             system (4.03.0)
+# exit-code            2
+# env-file             /home/bench/.opam/system/build/coq-ext-lib.0.9.3/coq-ext-lib-22158-e7966f.env
+# stdout-file          /home/bench/.opam/system/build/coq-ext-lib.0.9.3/coq-ext-lib-22158-e7966f.out
+# stderr-file          /home/bench/.opam/system/build/coq-ext-lib.0.9.3/coq-ext-lib-22158-e7966f.err
+### stdout ###
+# [...]
+# &quot;coqc&quot;  -q  -Q &quot;theories&quot; ExtLib   theories/Core/Type
+# &quot;coqc&quot;  -q  -Q &quot;theories&quot; ExtLib   theories/Structures/CoFunctor
+# &quot;coqc&quot;  -q  -Q &quot;theories&quot; ExtLib   theories/Structures/Monad
+# &quot;coqc&quot;  -q  -Q &quot;theories&quot; ExtLib   theories/Structures/Traversable
+# &quot;coqc&quot;  -q  -Q &quot;theories&quot; ExtLib   theories/Data/Bool
+# &quot;coqc&quot;  -q  -Q &quot;theories&quot; ExtLib   theories/Data/Eq
+# &quot;coqc&quot;  -q  -Q &quot;theories&quot; ExtLib   theories/Data/Pair
+# Makefile.coq:377: recipe for target &#39;theories/Core/Type.vo&#39; failed
+# make[1]: Leaving directory &#39;/home/bench/.opam/system/build/coq-ext-lib.0.9.3&#39;
+# Makefile:4: recipe for target &#39;theories&#39; failed
+### stderr ###
+# File &quot;./theories/Core/Type.v&quot;, line 78, characters 51-56:
+# Error: Universe {ExtLib.Core.Type.85} is unbound.
+# make[1]: *** [theories/Core/Type.vo] Error 1
+# make[1]: *** Waiting for unfinished jobs....
+# make: *** [theories] Error 2
+=-=- Error report -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+The following actions failed
+  - install coq-ext-lib 0.9.3
+No changes have been performed
+&#39;opam install -y -v coq-ext-lib.0.9.3&#39; failed.
+</pre></dd>
+            </dl>
+            <h2>Installation size</h2>
+            <p>No files were installed.</p>
+            <h2>Uninstall</h2>
+            <dl class="dl-horizontal">
+              <dt>Command</dt>
+              <dd><code>true</code></dd>
+              <dt>Return code</dt>
+              <dd>0</dd>
+              <dt>Missing removes</dt>
+              <dd>
+                none
+              </dd>
+              <dt>Wrong removes</dt>
+              <dd>
+                none
+              </dd>
+            </dl>
+          </div>
+        </div>
+      </div>
+      <hr/>
+      <div class="footer">
+        <p class="text-center">
+          <small>Sources are on <a href="https://github.com/coq-bench">GitHub</a>. © Guillaume Claret.</small>
+        </p>
+      </div>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="../../../../../bootstrap.min.js"></script>
+  </body>
+</html>

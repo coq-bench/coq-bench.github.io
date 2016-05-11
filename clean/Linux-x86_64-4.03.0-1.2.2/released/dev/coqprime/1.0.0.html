@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Coq bench</title>
+    <link rel="shortcut icon" type="image/png" href="../../../../../favicon.png" />
+    <link href="../../../../../bootstrap.min.css" rel="stylesheet">
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+    <script src="../../../../../moment.min.js"></script>
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="container">
+      <div class="navbar navbar-default" role="navigation">
+        <div class="container-fluid">
+          <div class="navbar-header">
+            <a class="navbar-brand" href="../../../../.."><i class="fa fa-lg fa-flag-checkered"></i> Coq bench</a>
+          </div>
+          <div id="navbar" class="collapse navbar-collapse">
+            <ul class="nav navbar-nav">
+              <li><a href="../..">clean / released</a></li>
+              <li class="active"><a href="">dev / coqprime - 1.0.0</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="article">
+        <div class="row">
+          <div class="col-md-12">
+            <a href="../..">« Up</a>
+            <h1>
+              coqprime
+              <small>
+                1.0.0
+                <span class="label label-danger">Error</span>
+              </small>
+            </h1>
+            <p><em><script>document.write(moment("2016-05-11 23:07:06 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2016-05-11 23:07:06 UTC)</em><p>
+            <h2>Context</h2>
+            <pre># Installed packages for system:
+base-bigarray     base  Bigarray library distributed with the OCaml compiler
+base-threads      base  Threads library distributed with the OCaml compiler
+base-unix         base  Unix library distributed with the OCaml compiler
+camlp5            6.16  Preprocessor-pretty-printer of OCaml
+conf-m4              1  Virtual package relying on m4
+conf-ncurses         1  Virtual package relying on ncurses
+conf-pkg-config    1.0  Virtual package relying on pkg-config installation.
+coq                dev  Formal proof management system.
+ocamlfind        1.6.2  A library manager for OCaml
+</pre>
+            <h2>Lint</h2>
+            <dl class="dl-horizontal">
+              <dt>Command</dt>
+              <dd><code>ruby lint.rb released opam-coq-archive/released/packages/coq-coqprime/coq-coqprime.1.0.0</code></dd>
+              <dt>Return code</dt>
+              <dd>0</dd>
+            </dl>
+            <h2>Dry install</h2>
+            <p>Dry install with the current Coq version:</p>
+            <dl class="dl-horizontal">
+              <dt>Command</dt>
+              <dd><code>opam install -y --show-action coq-coqprime.1.0.0 coq.dev</code></dd>
+              <dt>Return code</dt>
+              <dd>0</dd>
+            </dl>
+            <p>Dry install without Coq, to test if the problem was incompatibility with the current Coq version:</p>
+            <dl class="dl-horizontal">
+              <dt>Command</dt>
+              <dd><code>true</code></dd>
+              <dt>Return code</dt>
+              <dd>0</dd>
+            </dl>
+            <h2>Install dependencies</h2>
+            <dl class="dl-horizontal">
+              <dt>Command</dt>
+              <dd><code>opam list; ulimit -Sv 4000000; timeout 90m opam install -y --deps-only coq-coqprime.1.0.0</code></dd>
+              <dt>Return code</dt>
+              <dd>0</dd>
+              <dt>Duration</dt>
+              <dd>10 s</dd>
+            </dl>
+            <h2>Install</h2>
+            <dl class="dl-horizontal">
+              <dt>Command</dt>
+              <dd><code>opam list; ulimit -Sv 4000000; timeout 90m opam install -y -v coq-coqprime.1.0.0</code></dd>
+              <dt>Return code</dt>
+              <dd>1024</dd>
+              <dt>Duration</dt>
+              <dd>18 s</dd>
+              <dt>Output</dt>
+              <dd><pre># Installed packages for system:
+base-bigarray     base  Bigarray library distributed with the OCaml compiler
+base-threads      base  Threads library distributed with the OCaml compiler
+base-unix         base  Unix library distributed with the OCaml compiler
+camlp5            6.16  Preprocessor-pretty-printer of OCaml
+conf-m4              1  Virtual package relying on m4
+conf-ncurses         1  Virtual package relying on ncurses
+conf-pkg-config    1.0  Virtual package relying on pkg-config installation.
+coq                dev  Formal proof management system.
+ocamlfind        1.6.2  A library manager for OCaml
+The following actions will be performed:
+  - install coq-coqprime 1.0.0
+=-=- Gathering sources =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+[coq-coqprime: http] Command started
+[coq-coqprime: http] Command started
+[coq-coqprime.1.0.0] https://gforge.inria.fr/frs/download.php/file/35520/coqprime_8.5b.zip downloaded
+=-=- Processing actions -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+[coq-coqprime: ./configure.sh] Command started
++ ./configure.sh  (CWD=/home/bench/.opam/system/build/coq-coqprime.1.0.0)
+[coq-coqprime: make] Command started
++ make &quot;-j6&quot; (CWD=/home/bench/.opam/system/build/coq-coqprime.1.0.0)
+- &quot;coqdep&quot; -c -R &quot;Tactic&quot; Coqprime -R &quot;N&quot; Coqprime -R &quot;List&quot; Coqprime -R &quot;Z&quot; Coqprime -R &quot;PrimalityTest&quot; Coqprime -R &quot;elliptic&quot; Coqprime -R &quot;num&quot; Coqprime -R &quot;examples&quot; Coqprime &quot;examples/PocklingtonRefl.v&quot; &gt; &quot;examples/PocklingtonRefl.v.d&quot; || ( RV=$?; rm -f &quot;examples/PocklingtonRefl.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;Tactic&quot; Coqprime -R &quot;N&quot; Coqprime -R &quot;List&quot; Coqprime -R &quot;Z&quot; Coqprime -R &quot;PrimalityTest&quot; Coqprime -R &quot;elliptic&quot; Coqprime -R &quot;num&quot; Coqprime -R &quot;examples&quot; Coqprime &quot;examples/BasePrimes.v&quot; &gt; &quot;examples/BasePrimes.v.d&quot; || ( RV=$?; rm -f &quot;examples/BasePrimes.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;Tactic&quot; Coqprime -R &quot;N&quot; Coqprime -R &quot;List&quot; Coqprime -R &quot;Z&quot; Coqprime -R &quot;PrimalityTest&quot; Coqprime -R &quot;elliptic&quot; Coqprime -R &quot;num&quot; Coqprime -R &quot;examples&quot; Coqprime &quot;num/W.v&quot; &gt; &quot;num/W.v.d&quot; || ( RV=$?; rm -f &quot;num/W.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;Tactic&quot; Coqprime -R &quot;N&quot; Coqprime -R &quot;List&quot; Coqprime -R &quot;Z&quot; Coqprime -R &quot;PrimalityTest&quot; Coqprime -R &quot;elliptic&quot; Coqprime -R &quot;num&quot; Coqprime -R &quot;examples&quot; Coqprime &quot;num/montgomery.v&quot; &gt; &quot;num/montgomery.v.d&quot; || ( RV=$?; rm -f &quot;num/montgomery.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;Tactic&quot; Coqprime -R &quot;N&quot; Coqprime -R &quot;List&quot; Coqprime -R &quot;Z&quot; Coqprime -R &quot;PrimalityTest&quot; Coqprime -R &quot;elliptic&quot; Coqprime -R &quot;num&quot; Coqprime -R &quot;examples&quot; Coqprime &quot;num/Pock.v&quot; &gt; &quot;num/Pock.v.d&quot; || ( RV=$?; rm -f &quot;num/Pock.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;Tactic&quot; Coqprime -R &quot;N&quot; Coqprime -R &quot;List&quot; Coqprime -R &quot;Z&quot; Coqprime -R &quot;PrimalityTest&quot; Coqprime -R &quot;elliptic&quot; Coqprime -R &quot;num&quot; Coqprime -R &quot;examples&quot; Coqprime &quot;num/Mod_op.v&quot; &gt; &quot;num/Mod_op.v.d&quot; || ( RV=$?; rm -f &quot;num/Mod_op.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;Tactic&quot; Coqprime -R &quot;N&quot; Coqprime -R &quot;List&quot; Coqprime -R &quot;Z&quot; Coqprime -R &quot;PrimalityTest&quot; Coqprime -R &quot;elliptic&quot; Coqprime -R &quot;num&quot; Coqprime -R &quot;examples&quot; Coqprime &quot;num/MEll.v&quot; &gt; &quot;num/MEll.v.d&quot; || ( RV=$?; rm -f &quot;num/MEll.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;Tactic&quot; Coqprime -R &quot;N&quot; Coqprime -R &quot;List&quot; Coqprime -R &quot;Z&quot; Coqprime -R &quot;PrimalityTest&quot; Coqprime -R &quot;elliptic&quot; Coqprime -R &quot;num&quot; Coqprime -R &quot;examples&quot; Coqprime &quot;num/NEll.v&quot; &gt; &quot;num/NEll.v.d&quot; || ( RV=$?; rm -f &quot;num/NEll.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;Tactic&quot; Coqprime -R &quot;N&quot; Coqprime -R &quot;List&quot; Coqprime -R &quot;Z&quot; Coqprime -R &quot;PrimalityTest&quot; Coqprime -R &quot;elliptic&quot; Coqprime -R &quot;num&quot; Coqprime -R &quot;examples&quot; Coqprime &quot;num/Lucas.v&quot; &gt; &quot;num/Lucas.v.d&quot; || ( RV=$?; rm -f &quot;num/Lucas.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;Tactic&quot; Coqprime -R &quot;N&quot; Coqprime -R &quot;List&quot; Coqprime -R &quot;Z&quot; Coqprime -R &quot;PrimalityTest&quot; Coqprime -R &quot;elliptic&quot; Coqprime -R &quot;num&quot; Coqprime -R &quot;examples&quot; Coqprime &quot;num/Bits.v&quot; &gt; &quot;num/Bits.v.d&quot; || ( RV=$?; rm -f &quot;num/Bits.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;Tactic&quot; Coqprime -R &quot;N&quot; Coqprime -R &quot;List&quot; Coqprime -R &quot;Z&quot; Coqprime -R &quot;PrimalityTest&quot; Coqprime -R &quot;elliptic&quot; Coqprime -R &quot;num&quot; Coqprime -R &quot;examples&quot; Coqprime &quot;elliptic/ZEll.v&quot; &gt; &quot;elliptic/ZEll.v.d&quot; || ( RV=$?; rm -f &quot;elliptic/ZEll.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;Tactic&quot; Coqprime -R &quot;N&quot; Coqprime -R &quot;List&quot; Coqprime -R &quot;Z&quot; Coqprime -R &quot;PrimalityTest&quot; Coqprime -R &quot;elliptic&quot; Coqprime -R &quot;num&quot; Coqprime -R &quot;examples&quot; Coqprime &quot;elliptic/SMain.v&quot; &gt; &quot;elliptic/SMain.v.d&quot; || ( RV=$?; rm -f &quot;elliptic/SMain.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;Tactic&quot; Coqprime -R &quot;N&quot; Coqprime -R &quot;List&quot; Coqprime -R &quot;Z&quot; Coqprime -R &quot;PrimalityTest&quot; Coqprime -R &quot;elliptic&quot; Coqprime -R &quot;num&quot; Coqprime -R &quot;examples&quot; Coqprime &quot;elliptic/GZnZ.v&quot; &gt; &quot;elliptic/GZnZ.v.d&quot; || ( RV=$?; rm -f &quot;elliptic/GZnZ.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;Tactic&quot; Coqprime -R &quot;N&quot; Coqprime -R &quot;List&quot; Coqprime -R &quot;Z&quot; Coqprime -R &quot;PrimalityTest&quot; Coqprime -R &quot;elliptic&quot; Coqprime -R &quot;num&quot; Coqprime -R &quot;examples&quot; Coqprime &quot;PrimalityTest/Zp.v&quot; &gt; &quot;PrimalityTest/Zp.v.d&quot; || ( RV=$?; rm -f &quot;PrimalityTest/Zp.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;Tactic&quot; Coqprime -R &quot;N&quot; Coqprime -R &quot;List&quot; Coqprime -R &quot;Z&quot; Coqprime -R &quot;PrimalityTest&quot; Coqprime -R &quot;elliptic&quot; Coqprime -R &quot;num&quot; Coqprime -R &quot;examples&quot; Coqprime &quot;PrimalityTest/Root.v&quot; &gt; &quot;PrimalityTest/Root.v.d&quot; || ( RV=$?; rm -f &quot;PrimalityTest/Root.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;Tactic&quot; Coqprime -R &quot;N&quot; Coqprime -R &quot;List&quot; Coqprime -R &quot;Z&quot; Coqprime -R &quot;PrimalityTest&quot; Coqprime -R &quot;elliptic&quot; Coqprime -R &quot;num&quot; Coqprime -R &quot;examples&quot; Coqprime &quot;PrimalityTest/Proth.v&quot; &gt; &quot;PrimalityTest/Proth.v.d&quot; || ( RV=$?; rm -f &quot;PrimalityTest/Proth.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;Tactic&quot; Coqprime -R &quot;N&quot; Coqprime -R &quot;List&quot; Coqprime -R &quot;Z&quot; Coqprime -R &quot;PrimalityTest&quot; Coqprime -R &quot;elliptic&quot; Coqprime -R &quot;num&quot; Coqprime -R &quot;examples&quot; Coqprime &quot;PrimalityTest/Pocklington.v&quot; &gt; &quot;PrimalityTest/Pocklington.v.d&quot; || ( RV=$?; rm -f &quot;PrimalityTest/Pocklington.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;Tactic&quot; Coqprime -R &quot;N&quot; Coqprime -R &quot;List&quot; Coqprime -R &quot;Z&quot; Coqprime -R &quot;PrimalityTest&quot; Coqprime -R &quot;elliptic&quot; Coqprime -R &quot;num&quot; Coqprime -R &quot;examples&quot; Coqprime &quot;PrimalityTest/PocklingtonCertificat.v&quot; &gt; &quot;PrimalityTest/PocklingtonCertificat.v.d&quot; || ( RV=$?; rm -f &quot;PrimalityTest/PocklingtonCertificat.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;Tactic&quot; Coqprime -R &quot;N&quot; Coqprime -R &quot;List&quot; Coqprime -R &quot;Z&quot; Coqprime -R &quot;PrimalityTest&quot; Coqprime -R &quot;elliptic&quot; Coqprime -R &quot;num&quot; Coqprime -R &quot;examples&quot; Coqprime &quot;PrimalityTest/PGroup.v&quot; &gt; &quot;PrimalityTest/PGroup.v.d&quot; || ( RV=$?; rm -f &quot;PrimalityTest/PGroup.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;Tactic&quot; Coqprime -R &quot;N&quot; Coqprime -R &quot;List&quot; Coqprime -R &quot;Z&quot; Coqprime -R &quot;PrimalityTest&quot; Coqprime -R &quot;elliptic&quot; Coqprime -R &quot;num&quot; Coqprime -R &quot;examples&quot; Coqprime &quot;PrimalityTest/Pepin.v&quot; &gt; &quot;PrimalityTest/Pepin.v.d&quot; || ( RV=$?; rm -f &quot;PrimalityTest/Pepin.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;Tactic&quot; Coqprime -R &quot;N&quot; Coqprime -R &quot;List&quot; Coqprime -R &quot;Z&quot; Coqprime -R &quot;PrimalityTest&quot; Coqprime -R &quot;elliptic&quot; Coqprime -R &quot;num&quot; Coqprime -R &quot;examples&quot; Coqprime &quot;PrimalityTest/LucasLehmer.v&quot; &gt; &quot;PrimalityTest/LucasLehmer.v.d&quot; || ( RV=$?; rm -f &quot;PrimalityTest/LucasLehmer.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;Tactic&quot; Coqprime -R &quot;N&quot; Coqprime -R &quot;List&quot; Coqprime -R &quot;Z&quot; Coqprime -R &quot;PrimalityTest&quot; Coqprime -R &quot;elliptic&quot; Coqprime -R &quot;num&quot; Coqprime -R &quot;examples&quot; Coqprime &quot;PrimalityTest/Lagrange.v&quot; &gt; &quot;PrimalityTest/Lagrange.v.d&quot; || ( RV=$?; rm -f &quot;PrimalityTest/Lagrange.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;Tactic&quot; Coqprime -R &quot;N&quot; Coqprime -R &quot;List&quot; Coqprime -R &quot;Z&quot; Coqprime -R &quot;PrimalityTest&quot; Coqprime -R &quot;elliptic&quot; Coqprime -R &quot;num&quot; Coqprime -R &quot;examples&quot; Coqprime &quot;PrimalityTest/IGroup.v&quot; &gt; &quot;PrimalityTest/IGroup.v.d&quot; || ( RV=$?; rm -f &quot;PrimalityTest/IGroup.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;Tactic&quot; Coqprime -R &quot;N&quot; Coqprime -R &quot;List&quot; Coqprime -R &quot;Z&quot; Coqprime -R &quot;PrimalityTest&quot; Coqprime -R &quot;elliptic&quot; Coqprime -R &quot;num&quot; Coqprime -R &quot;examples&quot; Coqprime &quot;PrimalityTest/FGroup.v&quot; &gt; &quot;PrimalityTest/FGroup.v.d&quot; || ( RV=$?; rm -f &quot;PrimalityTest/FGroup.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;Tactic&quot; Coqprime -R &quot;N&quot; Coqprime -R &quot;List&quot; Coqprime -R &quot;Z&quot; Coqprime -R &quot;PrimalityTest&quot; Coqprime -R &quot;elliptic&quot; Coqprime -R &quot;num&quot; Coqprime -R &quot;examples&quot; Coqprime &quot;PrimalityTest/Euler.v&quot; &gt; &quot;PrimalityTest/Euler.v.d&quot; || ( RV=$?; rm -f &quot;PrimalityTest/Euler.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;Tactic&quot; Coqprime -R &quot;N&quot; Coqprime -R &quot;List&quot; Coqprime -R &quot;Z&quot; Coqprime -R &quot;PrimalityTest&quot; Coqprime -R &quot;elliptic&quot; Coqprime -R &quot;num&quot; Coqprime -R &quot;examples&quot; Coqprime &quot;PrimalityTest/EGroup.v&quot; &gt; &quot;PrimalityTest/EGroup.v.d&quot; || ( RV=$?; rm -f &quot;PrimalityTest/EGroup.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;Tactic&quot; Coqprime -R &quot;N&quot; Coqprime -R &quot;List&quot; Coqprime -R &quot;Z&quot; Coqprime -R &quot;PrimalityTest&quot; Coqprime -R &quot;elliptic&quot; Coqprime -R &quot;num&quot; Coqprime -R &quot;examples&quot; Coqprime &quot;PrimalityTest/Cyclic.v&quot; &gt; &quot;PrimalityTest/Cyclic.v.d&quot; || ( RV=$?; rm -f &quot;PrimalityTest/Cyclic.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;Tactic&quot; Coqprime -R &quot;N&quot; Coqprime -R &quot;List&quot; Coqprime -R &quot;Z&quot; Coqprime -R &quot;PrimalityTest&quot; Coqprime -R &quot;elliptic&quot; Coqprime -R &quot;num&quot; Coqprime -R &quot;examples&quot; Coqprime &quot;Z/ZSum.v&quot; &gt; &quot;Z/ZSum.v.d&quot; || ( RV=$?; rm -f &quot;Z/ZSum.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;Tactic&quot; Coqprime -R &quot;N&quot; Coqprime -R &quot;List&quot; Coqprime -R &quot;Z&quot; Coqprime -R &quot;PrimalityTest&quot; Coqprime -R &quot;elliptic&quot; Coqprime -R &quot;num&quot; Coqprime -R &quot;examples&quot; Coqprime &quot;Z/ZCmisc.v&quot; &gt; &quot;Z/ZCmisc.v.d&quot; || ( RV=$?; rm -f &quot;Z/ZCmisc.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;Tactic&quot; Coqprime -R &quot;N&quot; Coqprime -R &quot;List&quot; Coqprime -R &quot;Z&quot; Coqprime -R &quot;PrimalityTest&quot; Coqprime -R &quot;elliptic&quot; Coqprime -R &quot;num&quot; Coqprime -R &quot;examples&quot; Coqprime &quot;Z/Ppow.v&quot; &gt; &quot;Z/Ppow.v.d&quot; || ( RV=$?; rm -f &quot;Z/Ppow.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;Tactic&quot; Coqprime -R &quot;N&quot; Coqprime -R &quot;List&quot; Coqprime -R &quot;Z&quot; Coqprime -R &quot;PrimalityTest&quot; Coqprime -R &quot;elliptic&quot; Coqprime -R &quot;num&quot; Coqprime -R &quot;examples&quot; Coqprime &quot;Z/Zmod.v&quot; &gt; &quot;Z/Zmod.v.d&quot; || ( RV=$?; rm -f &quot;Z/Zmod.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;Tactic&quot; Coqprime -R &quot;N&quot; Coqprime -R &quot;List&quot; Coqprime -R &quot;Z&quot; Coqprime -R &quot;PrimalityTest&quot; Coqprime -R &quot;elliptic&quot; Coqprime -R &quot;num&quot; Coqprime -R &quot;examples&quot; Coqprime &quot;Z/ZCAux.v&quot; &gt; &quot;Z/ZCAux.v.d&quot; || ( RV=$?; rm -f &quot;Z/ZCAux.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;Tactic&quot; Coqprime -R &quot;N&quot; Coqprime -R &quot;List&quot; Coqprime -R &quot;Z&quot; Coqprime -R &quot;PrimalityTest&quot; Coqprime -R &quot;elliptic&quot; Coqprime -R &quot;num&quot; Coqprime -R &quot;examples&quot; Coqprime &quot;Z/Pmod.v&quot; &gt; &quot;Z/Pmod.v.d&quot; || ( RV=$?; rm -f &quot;Z/Pmod.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;Tactic&quot; Coqprime -R &quot;N&quot; Coqprime -R &quot;List&quot; Coqprime -R &quot;Z&quot; Coqprime -R &quot;PrimalityTest&quot; Coqprime -R &quot;elliptic&quot; Coqprime -R &quot;num&quot; Coqprime -R &quot;examples&quot; Coqprime &quot;List/ZProgression.v&quot; &gt; &quot;List/ZProgression.v.d&quot; || ( RV=$?; rm -f &quot;List/ZProgression.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;Tactic&quot; Coqprime -R &quot;N&quot; Coqprime -R &quot;List&quot; Coqprime -R &quot;Z&quot; Coqprime -R &quot;PrimalityTest&quot; Coqprime -R &quot;elliptic&quot; Coqprime -R &quot;num&quot; Coqprime -R &quot;examples&quot; Coqprime &quot;List/UList.v&quot; &gt; &quot;List/UList.v.d&quot; || ( RV=$?; rm -f &quot;List/UList.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;Tactic&quot; Coqprime -R &quot;N&quot; Coqprime -R &quot;List&quot; Coqprime -R &quot;Z&quot; Coqprime -R &quot;PrimalityTest&quot; Coqprime -R &quot;elliptic&quot; Coqprime -R &quot;num&quot; Coqprime -R &quot;examples&quot; Coqprime &quot;List/Permutation.v&quot; &gt; &quot;List/Permutation.v.d&quot; || ( RV=$?; rm -f &quot;List/Permutation.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;Tactic&quot; Coqprime -R &quot;N&quot; Coqprime -R &quot;List&quot; Coqprime -R &quot;Z&quot; Coqprime -R &quot;PrimalityTest&quot; Coqprime -R &quot;elliptic&quot; Coqprime -R &quot;num&quot; Coqprime -R &quot;examples&quot; Coqprime &quot;List/ListAux.v&quot; &gt; &quot;List/ListAux.v.d&quot; || ( RV=$?; rm -f &quot;List/ListAux.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;Tactic&quot; Coqprime -R &quot;N&quot; Coqprime -R &quot;List&quot; Coqprime -R &quot;Z&quot; Coqprime -R &quot;PrimalityTest&quot; Coqprime -R &quot;elliptic&quot; Coqprime -R &quot;num&quot; Coqprime -R &quot;examples&quot; Coqprime &quot;List/Iterator.v&quot; &gt; &quot;List/Iterator.v.d&quot; || ( RV=$?; rm -f &quot;List/Iterator.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;Tactic&quot; Coqprime -R &quot;N&quot; Coqprime -R &quot;List&quot; Coqprime -R &quot;Z&quot; Coqprime -R &quot;PrimalityTest&quot; Coqprime -R &quot;elliptic&quot; Coqprime -R &quot;num&quot; Coqprime -R &quot;examples&quot; Coqprime &quot;N/NatAux.v&quot; &gt; &quot;N/NatAux.v.d&quot; || ( RV=$?; rm -f &quot;N/NatAux.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;Tactic&quot; Coqprime -R &quot;N&quot; Coqprime -R &quot;List&quot; Coqprime -R &quot;Z&quot; Coqprime -R &quot;PrimalityTest&quot; Coqprime -R &quot;elliptic&quot; Coqprime -R &quot;num&quot; Coqprime -R &quot;examples&quot; Coqprime &quot;Tactic/Tactic.v&quot; &gt; &quot;Tactic/Tactic.v.d&quot; || ( RV=$?; rm -f &quot;Tactic/Tactic.v.d&quot;; exit ${RV} )
+- &quot;coqc&quot;  -q  -R &quot;Tactic&quot; Coqprime -R &quot;N&quot; Coqprime -R &quot;List&quot; Coqprime -R &quot;Z&quot; Coqprime -R &quot;PrimalityTest&quot; Coqprime -R &quot;elliptic&quot; Coqprime -R &quot;num&quot; Coqprime -R &quot;examples&quot; Coqprime   Tactic/Tactic
+- &quot;coqc&quot;  -q  -R &quot;Tactic&quot; Coqprime -R &quot;N&quot; Coqprime -R &quot;List&quot; Coqprime -R &quot;Z&quot; Coqprime -R &quot;PrimalityTest&quot; Coqprime -R &quot;elliptic&quot; Coqprime -R &quot;num&quot; Coqprime -R &quot;examples&quot; Coqprime   N/NatAux
+- &quot;coqc&quot;  -q  -R &quot;Tactic&quot; Coqprime -R &quot;N&quot; Coqprime -R &quot;List&quot; Coqprime -R &quot;Z&quot; Coqprime -R &quot;PrimalityTest&quot; Coqprime -R &quot;elliptic&quot; Coqprime -R &quot;num&quot; Coqprime -R &quot;examples&quot; Coqprime   Z/ZCmisc
+- &quot;coqc&quot;  -q  -R &quot;Tactic&quot; Coqprime -R &quot;N&quot; Coqprime -R &quot;List&quot; Coqprime -R &quot;Z&quot; Coqprime -R &quot;PrimalityTest&quot; Coqprime -R &quot;elliptic&quot; Coqprime -R &quot;num&quot; Coqprime -R &quot;examples&quot; Coqprime   Z/Zmod
+- &quot;coqc&quot;  -q  -R &quot;Tactic&quot; Coqprime -R &quot;N&quot; Coqprime -R &quot;List&quot; Coqprime -R &quot;Z&quot; Coqprime -R &quot;PrimalityTest&quot; Coqprime -R &quot;elliptic&quot; Coqprime -R &quot;num&quot; Coqprime -R &quot;examples&quot; Coqprime   Z/Ppow
+- &quot;coqc&quot;  -q  -R &quot;Tactic&quot; Coqprime -R &quot;N&quot; Coqprime -R &quot;List&quot; Coqprime -R &quot;Z&quot; Coqprime -R &quot;PrimalityTest&quot; Coqprime -R &quot;elliptic&quot; Coqprime -R &quot;num&quot; Coqprime -R &quot;examples&quot; Coqprime   num/Bits
+- &quot;coqc&quot;  -q  -R &quot;Tactic&quot; Coqprime -R &quot;N&quot; Coqprime -R &quot;List&quot; Coqprime -R &quot;Z&quot; Coqprime -R &quot;PrimalityTest&quot; Coqprime -R &quot;elliptic&quot; Coqprime -R &quot;num&quot; Coqprime -R &quot;examples&quot; Coqprime   num/montgomery
+- &quot;coqc&quot;  -q  -R &quot;Tactic&quot; Coqprime -R &quot;N&quot; Coqprime -R &quot;List&quot; Coqprime -R &quot;Z&quot; Coqprime -R &quot;PrimalityTest&quot; Coqprime -R &quot;elliptic&quot; Coqprime -R &quot;num&quot; Coqprime -R &quot;examples&quot; Coqprime   List/ListAux
+- Makefile:365: recipe for target &#39;Z/Zmod.vo&#39; failed
+-      = 1740564225 :: 343969132 :: 6812243 :: nil
+-      : number
+-      = 0 :: 1 :: nil
+-      : number
+-      = 31415926535897932384626433%Z
+-      : Z
+- File &quot;./Z/Zmod.v&quot;, line 51, characters 41-42:
+- Syntax error: &#39;end&#39; expected after [match_list] (in [tactic:tactic_expr]).
+- make: *** [Z/Zmod.vo] Error 1
+- make: *** Waiting for unfinished jobs....
+- Makefile:365: recipe for target &#39;num/montgomery.vo&#39; failed
+- File &quot;./num/montgomery.v&quot;, line 225, characters 22-24:
+- Error: Unexpected name (no introduction patterns were expected in the
+- branch).
+- make: *** [num/montgomery.vo] Error 1
+[ERROR] The compilation of coq-coqprime failed at &quot;make -j6&quot;.
+[coq-coqprime: rm] Command started
++ rm &quot;-R&quot; &quot;/home/bench/.opam/system/lib/coq/user-contrib/Coqprime&quot; (CWD=/home/bench/.opam/system/build/coq-coqprime.1.0.0)
+- rm: cannot remove &#39;/home/bench/.opam/system/lib/coq/user-contrib/Coqprime&#39;: No such file or directory
+#=== ERROR while installing coq-coqprime.1.0.0 ================================#
+# opam-version         1.2.2
+# os                   linux
+# command              make -j6
+# path                 /home/bench/.opam/system/build/coq-coqprime.1.0.0
+# compiler             system (4.03.0)
+# exit-code            2
+# env-file             /home/bench/.opam/system/build/coq-coqprime.1.0.0/coq-coqprime-29109-c61e7b.env
+# stdout-file          /home/bench/.opam/system/build/coq-coqprime.1.0.0/coq-coqprime-29109-c61e7b.out
+# stderr-file          /home/bench/.opam/system/build/coq-coqprime.1.0.0/coq-coqprime-29109-c61e7b.err
+### stdout ###
+# [...]
+# &quot;coqc&quot;  -q  -R &quot;Tactic&quot; Coqprime -R &quot;N&quot; Coqprime -R &quot;List&quot; Coqprime -R &quot;Z&quot; Coqprime -R &quot;PrimalityTest&quot; Coqprime -R &quot;elliptic&quot; Coqprime -R &quot;num&quot; Coqprime -R &quot;examples&quot; Coqprime   num/montgomery
+# &quot;coqc&quot;  -q  -R &quot;Tactic&quot; Coqprime -R &quot;N&quot; Coqprime -R &quot;List&quot; Coqprime -R &quot;Z&quot; Coqprime -R &quot;PrimalityTest&quot; Coqprime -R &quot;elliptic&quot; Coqprime -R &quot;num&quot; Coqprime -R &quot;examples&quot; Coqprime   List/ListAux
+# Makefile:365: recipe for target &#39;Z/Zmod.vo&#39; failed
+#      = 1740564225 :: 343969132 :: 6812243 :: nil
+#      : number
+#      = 0 :: 1 :: nil
+#      : number
+#      = 31415926535897932384626433%Z
+#      : Z
+# Makefile:365: recipe for target &#39;num/montgomery.vo&#39; failed
+### stderr ###
+# File &quot;./Z/Zmod.v&quot;, line 51, characters 41-42:
+# Syntax error: &#39;end&#39; expected after [match_list] (in [tactic:tactic_expr]).
+# make: *** [Z/Zmod.vo] Error 1
+# make: *** Waiting for unfinished jobs....
+# File &quot;./num/montgomery.v&quot;, line 225, characters 22-24:
+# Error: Unexpected name (no introduction patterns were expected in the
+# branch).
+# make: *** [num/montgomery.vo] Error 1
+=-=- Error report -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+The following actions failed
+  - install coq-coqprime 1.0.0
+No changes have been performed
+&#39;opam install -y -v coq-coqprime.1.0.0&#39; failed.
+</pre></dd>
+            </dl>
+            <h2>Installation size</h2>
+            <p>No files were installed.</p>
+            <h2>Uninstall</h2>
+            <dl class="dl-horizontal">
+              <dt>Command</dt>
+              <dd><code>true</code></dd>
+              <dt>Return code</dt>
+              <dd>0</dd>
+              <dt>Missing removes</dt>
+              <dd>
+                none
+              </dd>
+              <dt>Wrong removes</dt>
+              <dd>
+                none
+              </dd>
+            </dl>
+          </div>
+        </div>
+      </div>
+      <hr/>
+      <div class="footer">
+        <p class="text-center">
+          <small>Sources are on <a href="https://github.com/coq-bench">GitHub</a>. © Guillaume Claret.</small>
+        </p>
+      </div>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="../../../../../bootstrap.min.js"></script>
+  </body>
+</html>
