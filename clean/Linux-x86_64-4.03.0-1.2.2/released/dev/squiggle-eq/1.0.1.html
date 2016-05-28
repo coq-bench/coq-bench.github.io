@@ -41,7 +41,7 @@
                 <span class="label label-danger">Error</span>
               </small>
             </h1>
-            <p><em><script>document.write(moment("2016-05-28 04:31:23 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2016-05-28 04:31:23 UTC)</em><p>
+            <p><em><script>document.write(moment("2016-05-28 20:38:44 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2016-05-28 20:38:44 UTC)</em><p>
             <h2>Context</h2>
             <pre># Installed packages for system:
 base-bigarray     base  Bigarray library distributed with the OCaml compiler
@@ -79,7 +79,7 @@ ocamlfind        1.6.2  A library manager for OCaml
             <h2>Install dependencies</h2>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>opam list; ulimit -Sv 4000000; timeout 90m opam install -y --deps-only coq-squiggle-eq.1.0.1</code></dd>
+              <dd><code>opam list; ulimit -Sv 4000000; timeout 30m opam install -y --deps-only coq-squiggle-eq.1.0.1</code></dd>
               <dt>Return code</dt>
               <dd>0</dd>
               <dt>Duration</dt>
@@ -88,11 +88,11 @@ ocamlfind        1.6.2  A library manager for OCaml
             <h2>Install</h2>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>opam list; ulimit -Sv 4000000; timeout 90m opam install -y -v coq-squiggle-eq.1.0.1</code></dd>
+              <dd><code>opam list; ulimit -Sv 4000000; timeout 30m opam install -j1 -y -v coq-squiggle-eq.1.0.1</code></dd>
               <dt>Return code</dt>
               <dd>1024</dd>
               <dt>Duration</dt>
-              <dd>15 s</dd>
+              <dd>16 s</dd>
               <dt>Output</dt>
               <dd><pre># Installed packages for system:
 base-bigarray     base  Bigarray library distributed with the OCaml compiler
@@ -112,7 +112,7 @@ The following actions will be performed:
 [coq-squiggle-eq.1.0.1] https://github.com/aa755/SquiggleEq/archive/1.0.1.tar.gz downloaded
 =-=- Processing actions -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 [coq-squiggle-eq: make] Command started
-+ make &quot;-j6&quot; (CWD=/home/bench/.opam/system/build/coq-squiggle-eq.1.0.1)
++ make &quot;-j1&quot; (CWD=/home/bench/.opam/system/build/coq-squiggle-eq.1.0.1)
 - echo &quot;-R . SquiggleEq&quot; &gt; _CoqProject
 - find . -name &quot;*.v&quot; &gt;&gt; _CoqProject
 - coq_makefile -f _CoqProject -o Makefile.coq
@@ -130,12 +130,10 @@ The following actions will be performed:
 - &quot;coqdep&quot; -c -R &quot;.&quot; SquiggleEq &quot;UsefulTypes.v&quot; &gt; &quot;UsefulTypes.v.d&quot; || ( RV=$?; rm -f &quot;UsefulTypes.v.d&quot;; exit ${RV} )
 - &quot;coqdep&quot; -c -R &quot;.&quot; SquiggleEq &quot;bin_rels.v&quot; &gt; &quot;bin_rels.v.d&quot; || ( RV=$?; rm -f &quot;bin_rels.v.d&quot;; exit ${RV} )
 - &quot;coqdep&quot; -c -R &quot;.&quot; SquiggleEq &quot;varInterface.v&quot; &gt; &quot;varInterface.v.d&quot; || ( RV=$?; rm -f &quot;varInterface.v.d&quot;; exit ${RV} )
-- make[1]: warning: jobserver unavailable: using -j1.  Add &#39;+&#39; to parent make rule.
 - &quot;coqdep&quot; -c -R &quot;.&quot; SquiggleEq &quot;terms.v&quot; &gt; &quot;terms.v.d&quot; || ( RV=$?; rm -f &quot;terms.v.d&quot;; exit ${RV} )
 - &quot;coqdep&quot; -c -R &quot;.&quot; SquiggleEq &quot;alphaeq.v&quot; &gt; &quot;alphaeq.v.d&quot; || ( RV=$?; rm -f &quot;alphaeq.v.d&quot;; exit ${RV} )
 - &quot;coqdep&quot; -c -R &quot;.&quot; SquiggleEq &quot;LibTactics.v&quot; &gt; &quot;LibTactics.v.d&quot; || ( RV=$?; rm -f &quot;LibTactics.v.d&quot;; exit ${RV} )
 - &quot;coqc&quot;  -q  -R &quot;.&quot; SquiggleEq   LibTactics
-- make[1]: warning: jobserver unavailable: using -j1.  Add &#39;+&#39; to parent make rule.
 - Makefile.coq:275: recipe for target &#39;LibTactics.vo&#39; failed
 - make[1]: Leaving directory &#39;/home/bench/.opam/system/build/coq-squiggle-eq.1.0.1&#39;
 - Makefile:2: recipe for target &#39;all&#39; failed
@@ -143,20 +141,20 @@ The following actions will be performed:
 - Syntax error: &#39;)&#39; expected after [constr:lconstr] (in [tactic:tactic_arg]).
 - make[1]: *** [LibTactics.vo] Error 1
 - make: *** [all] Error 2
-[ERROR] The compilation of coq-squiggle-eq failed at &quot;make -j6&quot;.
+[ERROR] The compilation of coq-squiggle-eq failed at &quot;make -j1&quot;.
 [coq-squiggle-eq: rm] Command started
 + rm &quot;-R&quot; &quot;/home/bench/.opam/system/lib/coq/user-contrib/SquiggleEq&quot; (CWD=/home/bench/.opam/system/build/coq-squiggle-eq.1.0.1)
 - rm: cannot remove &#39;/home/bench/.opam/system/lib/coq/user-contrib/SquiggleEq&#39;: No such file or directory
 #=== ERROR while installing coq-squiggle-eq.1.0.1 =============================#
 # opam-version         1.2.2
 # os                   linux
-# command              make -j6
+# command              make -j1
 # path                 /home/bench/.opam/system/build/coq-squiggle-eq.1.0.1
 # compiler             system (4.03.0)
 # exit-code            2
-# env-file             /home/bench/.opam/system/build/coq-squiggle-eq.1.0.1/coq-squiggle-eq-10815-e7966f.env
-# stdout-file          /home/bench/.opam/system/build/coq-squiggle-eq.1.0.1/coq-squiggle-eq-10815-e7966f.out
-# stderr-file          /home/bench/.opam/system/build/coq-squiggle-eq.1.0.1/coq-squiggle-eq-10815-e7966f.err
+# env-file             /home/bench/.opam/system/build/coq-squiggle-eq.1.0.1/coq-squiggle-eq-10788-e7966f.env
+# stdout-file          /home/bench/.opam/system/build/coq-squiggle-eq.1.0.1/coq-squiggle-eq-10788-e7966f.out
+# stderr-file          /home/bench/.opam/system/build/coq-squiggle-eq.1.0.1/coq-squiggle-eq-10788-e7966f.err
 ### stdout ###
 # [...]
 # &quot;coqdep&quot; -c -R &quot;.&quot; SquiggleEq &quot;UsefulTypes.v&quot; &gt; &quot;UsefulTypes.v.d&quot; || ( RV=$?; rm -f &quot;UsefulTypes.v.d&quot;; exit ${RV} )
@@ -170,8 +168,6 @@ The following actions will be performed:
 # make[1]: Leaving directory &#39;/home/bench/.opam/system/build/coq-squiggle-eq.1.0.1&#39;
 # Makefile:2: recipe for target &#39;all&#39; failed
 ### stderr ###
-# make[1]: warning: jobserver unavailable: using -j1.  Add &#39;+&#39; to parent make rule.
-# make[1]: warning: jobserver unavailable: using -j1.  Add &#39;+&#39; to parent make rule.
 # File &quot;./LibTactics.v&quot;, line 2833, characters 17-18:
 # Syntax error: &#39;)&#39; expected after [constr:lconstr] (in [tactic:tactic_arg]).
 # make[1]: *** [LibTactics.vo] Error 1
@@ -180,7 +176,7 @@ The following actions will be performed:
 The following actions failed
   - install coq-squiggle-eq 1.0.1
 No changes have been performed
-&#39;opam install -y -v coq-squiggle-eq.1.0.1&#39; failed.
+&#39;opam install -j1 -y -v coq-squiggle-eq.1.0.1&#39; failed.
 </pre></dd>
             </dl>
             <h2>Installation size</h2>

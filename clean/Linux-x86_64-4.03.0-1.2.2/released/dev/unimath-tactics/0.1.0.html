@@ -38,10 +38,10 @@
               unimath-tactics
               <small>
                 0.1.0
-                <span class="label label-danger">Error</span>
+                <span class="label label-danger">Lint error</span>
               </small>
             </h1>
-            <p><em><script>document.write(moment("2016-05-28 04:31:23 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2016-05-28 04:31:23 UTC)</em><p>
+            <p><em><script>document.write(moment("2016-05-28 20:38:44 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2016-05-28 20:38:44 UTC)</em><p>
             <h2>Context</h2>
             <pre># Installed packages for system:
 base-bigarray     base  Bigarray library distributed with the OCaml compiler
@@ -59,13 +59,23 @@ ocamlfind        1.6.2  A library manager for OCaml
               <dt>Command</dt>
               <dd><code>ruby lint.rb released opam-coq-archive/released/packages/coq-unimath-tactics/coq-unimath-tactics.0.1.0</code></dd>
               <dt>Return code</dt>
-              <dd>0</dd>
+              <dd>256</dd>
+              <dt>Output</dt>
+              <dd><pre>Errors found in ~/run/opam-coq-archive/released/packages/coq-unimath-tactics/coq-unimath-tactics.0.1.0/opam:
+            error 21: Field &#39;opam-version&#39; doesn&#39;t match the current version,
+              validation may not be accurate
+            error 25: Missing field &#39;authors&#39;
+          warning 26: No field &#39;install&#39;, but a field &#39;remove&#39;: install
+              instructions probably part of &#39;build&#39;. Use the &#39;install&#39; field or
+              a .install file
+          warning 37: Missing field &#39;dev-repo&#39;
+</pre></dd>
             </dl>
             <h2>Dry install</h2>
             <p>Dry install with the current Coq version:</p>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>opam install -y --show-action coq-unimath-tactics.0.1.0 coq.dev</code></dd>
+              <dd><code>true</code></dd>
               <dt>Return code</dt>
               <dd>0</dd>
             </dl>
@@ -79,93 +89,20 @@ ocamlfind        1.6.2  A library manager for OCaml
             <h2>Install dependencies</h2>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>opam list; ulimit -Sv 4000000; timeout 90m opam install -y --deps-only coq-unimath-tactics.0.1.0</code></dd>
+              <dd><code>true</code></dd>
               <dt>Return code</dt>
               <dd>0</dd>
               <dt>Duration</dt>
-              <dd>7 m 5 s</dd>
+              <dd>0 s</dd>
             </dl>
             <h2>Install</h2>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>opam list; ulimit -Sv 4000000; timeout 90m opam install -y -v coq-unimath-tactics.0.1.0</code></dd>
+              <dd><code>true</code></dd>
               <dt>Return code</dt>
-              <dd>1024</dd>
+              <dd>0</dd>
               <dt>Duration</dt>
-              <dd>15 s</dd>
-              <dt>Output</dt>
-              <dd><pre># Installed packages for system:
-base-bigarray             base  Bigarray library distributed with the OCaml comp
-base-threads              base  Threads library distributed with the OCaml compi
-base-unix                 base  Unix library distributed with the OCaml compiler
-camlp5                    6.16  Preprocessor-pretty-printer of OCaml
-conf-m4                      1  Virtual package relying on m4
-conf-ncurses                 1  Virtual package relying on ncurses
-conf-pkg-config            1.0  Virtual package relying on pkg-config installati
-coq                        dev  Formal proof management system.
-coq-unimath-foundations  0.1.0  Aims to formalize a substantial body of mathemat
-ocamlfind                1.6.2  A library manager for OCaml
-The following actions will be performed:
-  - install coq-unimath-tactics 0.1.0
-=-=- Gathering sources =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
-[coq-unimath-tactics: http] Command started
-[coq-unimath-tactics: http] Command started
-[coq-unimath-tactics.0.1.0] https://github.com/UniMath/UniMath/archive/v0.1.tar.gz downloaded
-=-=- Processing actions -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
-[coq-unimath-tactics: coq_makefile Make] Command started
-+ coq_makefile &quot;-f&quot; &quot;Make&quot; &quot;-o&quot; &quot;Makefile&quot; (CWD=/home/bench/.opam/system/build/coq-unimath-tactics.0.1.0)
-[coq-unimath-tactics: make] Command started
-+ make &quot;-j6&quot; (CWD=/home/bench/.opam/system/build/coq-unimath-tactics.0.1.0)
-- &quot;coqdep&quot; -c -R &quot;UniMath/Tactics&quot; UniMath.Tactics &quot;UniMath/Tactics/Utilities.v&quot; &gt; &quot;UniMath/Tactics/Utilities.v.d&quot; || ( RV=$?; rm -f &quot;UniMath/Tactics/Utilities.v.d&quot;; exit ${RV} )
-- &quot;coqdep&quot; -c -R &quot;UniMath/Tactics&quot; UniMath.Tactics &quot;UniMath/Tactics/Nat_Tactics.v&quot; &gt; &quot;UniMath/Tactics/Nat_Tactics.v.d&quot; || ( RV=$?; rm -f &quot;UniMath/Tactics/Nat_Tactics.v.d&quot;; exit ${RV} )
-- &quot;coqdep&quot; -c -R &quot;UniMath/Tactics&quot; UniMath.Tactics &quot;UniMath/Tactics/Monoids_Tactics.v&quot; &gt; &quot;UniMath/Tactics/Monoids_Tactics.v.d&quot; || ( RV=$?; rm -f &quot;UniMath/Tactics/Monoids_Tactics.v.d&quot;; exit ${RV} )
-- &quot;coqdep&quot; -c -R &quot;UniMath/Tactics&quot; UniMath.Tactics &quot;UniMath/Tactics/Groups_Tactics.v&quot; &gt; &quot;UniMath/Tactics/Groups_Tactics.v.d&quot; || ( RV=$?; rm -f &quot;UniMath/Tactics/Groups_Tactics.v.d&quot;; exit ${RV} )
-- &quot;coqdep&quot; -c -R &quot;UniMath/Tactics&quot; UniMath.Tactics &quot;UniMath/Tactics/Abmonoids_Tactics.v&quot; &gt; &quot;UniMath/Tactics/Abmonoids_Tactics.v.d&quot; || ( RV=$?; rm -f &quot;UniMath/Tactics/Abmonoids_Tactics.v.d&quot;; exit ${RV} )
-- &quot;coqc&quot;  -q  -R &quot;UniMath/Tactics&quot; UniMath.Tactics -indices-matter -type-in-type  UniMath/Tactics/Utilities
-- &quot;coqc&quot;  -q  -R &quot;UniMath/Tactics&quot; UniMath.Tactics -indices-matter -type-in-type  UniMath/Tactics/Monoids_Tactics
-- &quot;coqc&quot;  -q  -R &quot;UniMath/Tactics&quot; UniMath.Tactics -indices-matter -type-in-type  UniMath/Tactics/Abmonoids_Tactics
-- &quot;coqc&quot;  -q  -R &quot;UniMath/Tactics&quot; UniMath.Tactics -indices-matter -type-in-type  UniMath/Tactics/Groups_Tactics
-- &quot;coqc&quot;  -q  -R &quot;UniMath/Tactics&quot; UniMath.Tactics -indices-matter -type-in-type  UniMath/Tactics/Nat_Tactics
-- Makefile:268: recipe for target &#39;UniMath/Tactics/Nat_Tactics.vo&#39; failed
-- File &quot;./UniMath/Tactics/Nat_Tactics.v&quot;, line 724, characters 51-52:
-- Syntax error: &#39;end&#39; expected after [match_context_list] (in [tactic:tactic_expr]).
-- make: *** [UniMath/Tactics/Nat_Tactics.vo] Error 1
-[ERROR] The compilation of coq-unimath-tactics failed at &quot;make -j6&quot;.
-[coq-unimath-tactics: rm] Command started
-+ rm &quot;-R&quot; &quot;/home/bench/.opam/system/lib/coq/user-contrib/UniMath/Tactics&quot; (CWD=/home/bench/.opam/system/build/coq-unimath-tactics.0.1.0)
-- rm: cannot remove &#39;/home/bench/.opam/system/lib/coq/user-contrib/UniMath/Tactics&#39;: No such file or directory
-#=== ERROR while installing coq-unimath-tactics.0.1.0 =========================#
-# opam-version         1.2.2
-# os                   linux
-# command              make -j6
-# path                 /home/bench/.opam/system/build/coq-unimath-tactics.0.1.0
-# compiler             system (4.03.0)
-# exit-code            2
-# env-file             /home/bench/.opam/system/build/coq-unimath-tactics.0.1.0/coq-unimath-tactics-5510-ad8886.env
-# stdout-file          /home/bench/.opam/system/build/coq-unimath-tactics.0.1.0/coq-unimath-tactics-5510-ad8886.out
-# stderr-file          /home/bench/.opam/system/build/coq-unimath-tactics.0.1.0/coq-unimath-tactics-5510-ad8886.err
-### stdout ###
-# [...]
-# &quot;coqdep&quot; -c -R &quot;UniMath/Tactics&quot; UniMath.Tactics &quot;UniMath/Tactics/Nat_Tactics.v&quot; &gt; &quot;UniMath/Tactics/Nat_Tactics.v.d&quot; || ( RV=$?; rm -f &quot;UniMath/Tactics/Nat_Tactics.v.d&quot;; exit ${RV} )
-# &quot;coqdep&quot; -c -R &quot;UniMath/Tactics&quot; UniMath.Tactics &quot;UniMath/Tactics/Monoids_Tactics.v&quot; &gt; &quot;UniMath/Tactics/Monoids_Tactics.v.d&quot; || ( RV=$?; rm -f &quot;UniMath/Tactics/Monoids_Tactics.v.d&quot;; exit ${RV} )
-# &quot;coqdep&quot; -c -R &quot;UniMath/Tactics&quot; UniMath.Tactics &quot;UniMath/Tactics/Groups_Tactics.v&quot; &gt; &quot;UniMath/Tactics/Groups_Tactics.v.d&quot; || ( RV=$?; rm -f &quot;UniMath/Tactics/Groups_Tactics.v.d&quot;; exit ${RV} )
-# &quot;coqdep&quot; -c -R &quot;UniMath/Tactics&quot; UniMath.Tactics &quot;UniMath/Tactics/Abmonoids_Tactics.v&quot; &gt; &quot;UniMath/Tactics/Abmonoids_Tactics.v.d&quot; || ( RV=$?; rm -f &quot;UniMath/Tactics/Abmonoids_Tactics.v.d&quot;; exit ${RV} )
-# &quot;coqc&quot;  -q  -R &quot;UniMath/Tactics&quot; UniMath.Tactics -indices-matter -type-in-type  UniMath/Tactics/Utilities
-# &quot;coqc&quot;  -q  -R &quot;UniMath/Tactics&quot; UniMath.Tactics -indices-matter -type-in-type  UniMath/Tactics/Monoids_Tactics
-# &quot;coqc&quot;  -q  -R &quot;UniMath/Tactics&quot; UniMath.Tactics -indices-matter -type-in-type  UniMath/Tactics/Abmonoids_Tactics
-# &quot;coqc&quot;  -q  -R &quot;UniMath/Tactics&quot; UniMath.Tactics -indices-matter -type-in-type  UniMath/Tactics/Groups_Tactics
-# &quot;coqc&quot;  -q  -R &quot;UniMath/Tactics&quot; UniMath.Tactics -indices-matter -type-in-type  UniMath/Tactics/Nat_Tactics
-# Makefile:268: recipe for target &#39;UniMath/Tactics/Nat_Tactics.vo&#39; failed
-### stderr ###
-# File &quot;./UniMath/Tactics/Nat_Tactics.v&quot;, line 724, characters 51-52:
-# Syntax error: &#39;end&#39; expected after [match_context_list] (in [tactic:tactic_expr]).
-# make: *** [UniMath/Tactics/Nat_Tactics.vo] Error 1
-=-=- Error report -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
-The following actions failed
-  - install coq-unimath-tactics 0.1.0
-No changes have been performed
-&#39;opam install -y -v coq-unimath-tactics.0.1.0&#39; failed.
-</pre></dd>
+              <dd>0 s</dd>
             </dl>
             <h2>Installation size</h2>
             <p>No files were installed.</p>

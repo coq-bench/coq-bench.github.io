@@ -38,10 +38,10 @@
               interval
               <small>
                 2.2.1
-                <span class="label label-warning">Error with dependencies</span>
+                <span class="label label-danger">Lint error</span>
               </small>
             </h1>
-            <p><em><script>document.write(moment("2016-05-28 04:31:23 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2016-05-28 04:31:23 UTC)</em><p>
+            <p><em><script>document.write(moment("2016-05-28 20:38:44 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2016-05-28 20:38:44 UTC)</em><p>
             <h2>Context</h2>
             <pre># Installed packages for system:
 base-bigarray     base  Bigarray library distributed with the OCaml compiler
@@ -59,13 +59,23 @@ ocamlfind        1.6.2  A library manager for OCaml
               <dt>Command</dt>
               <dd><code>ruby lint.rb released opam-coq-archive/released/packages/coq-interval/coq-interval.2.2.1</code></dd>
               <dt>Return code</dt>
-              <dd>0</dd>
+              <dd>256</dd>
+              <dt>Output</dt>
+              <dd><pre>Errors found in ~/run/opam-coq-archive/released/packages/coq-interval/coq-interval.2.2.1/opam:
+            error 21: Field &#39;opam-version&#39; doesn&#39;t match the current version,
+              validation may not be accurate
+          warning 26: No field &#39;install&#39;, but a field &#39;remove&#39;: install
+              instructions probably part of &#39;build&#39;. Use the &#39;install&#39; field or
+              a .install file
+          warning 36: Missing field &#39;bug-reports&#39;
+          warning 37: Missing field &#39;dev-repo&#39;
+</pre></dd>
             </dl>
             <h2>Dry install</h2>
             <p>Dry install with the current Coq version:</p>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>opam install -y --show-action coq-interval.2.2.1 coq.dev</code></dd>
+              <dd><code>true</code></dd>
               <dt>Return code</dt>
               <dd>0</dd>
             </dl>
@@ -79,116 +89,11 @@ ocamlfind        1.6.2  A library manager for OCaml
             <h2>Install dependencies</h2>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>opam list; ulimit -Sv 4000000; timeout 90m opam install -y --deps-only coq-interval.2.2.1</code></dd>
+              <dd><code>true</code></dd>
               <dt>Return code</dt>
-              <dd>1024</dd>
+              <dd>0</dd>
               <dt>Duration</dt>
-              <dd>1 m 58 s</dd>
-              <dt>Output</dt>
-              <dd><pre># Installed packages for system:
-base-bigarray     base  Bigarray library distributed with the OCaml compiler
-base-threads      base  Threads library distributed with the OCaml compiler
-base-unix         base  Unix library distributed with the OCaml compiler
-camlp5            6.16  Preprocessor-pretty-printer of OCaml
-conf-m4              1  Virtual package relying on m4
-conf-ncurses         1  Virtual package relying on ncurses
-conf-pkg-config    1.0  Virtual package relying on pkg-config installation.
-coq                dev  Formal proof management system.
-ocamlfind        1.6.2  A library manager for OCaml
-The following actions will be performed:
-  - install coq-flocq              2.5.1
-  - install coq-mathcomp-ssreflect 1.6  
-  - install coq-coquelicot         2.1.1
-===== 3 to install =====
-=-=- Gathering sources =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
-[coq-coquelicot: http] Command started
-[coq-flocq: http] Command started
-[coq-mathcomp-ssreflect: http] Command started
-[coq-coquelicot: http] Command started
-[coq-coquelicot.2.1.1] https://gforge.inria.fr/frs/download.php/file/35429/coquelicot-2.1.1.tar.gz downloaded
-[coq-flocq: http] Command started
-[coq-flocq.2.5.1] https://gforge.inria.fr/frs/download.php/file/35430/flocq-2.5.1.tar.gz downloaded
-[coq-mathcomp-ssreflect: http] Command started
-[coq-mathcomp-ssreflect.1.6] http://github.com/math-comp/math-comp/archive/mathcomp-1.6.tar.gz downloaded
-=-=- Processing actions -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
-[coq-flocq: ./configure] Command started
-[coq-mathcomp-ssreflect: make 6] Command started
-[ERROR] The compilation of coq-mathcomp-ssreflect failed at &quot;make -C
-        mathcomp/ssreflect -j 6&quot;.
-[coq-mathcomp-ssreflect: sh] Command started
-[coq-flocq: ./remake] Command started
-[ERROR] The compilation of coq-flocq failed at &quot;./remake -j6&quot;.
-[coq-flocq: rm] Command started
-#=== ERROR while installing coq-flocq.2.5.1 ===================================#
-# opam-version         1.2.2
-# os                   linux
-# command              ./remake -j6
-# path                 /home/bench/.opam/system/build/coq-flocq.2.5.1
-# compiler             system (4.03.0)
-# exit-code            1
-# env-file             /home/bench/.opam/system/build/coq-flocq.2.5.1/coq-flocq-13112-e4db2f.env
-# stdout-file          /home/bench/.opam/system/build/coq-flocq.2.5.1/coq-flocq-13112-e4db2f.out
-# stderr-file          /home/bench/.opam/system/build/coq-flocq.2.5.1/coq-flocq-13112-e4db2f.err
-### stdout ###
-# [...]
-# Finished src/Core/Fcore_FTZ.vo
-# Finished src/Core/Fcore_FLT.vo
-# Finished src/Core/Fcore.vo
-# Finished src/Prop/Fprop_plus_error.vo
-# Finished src/Prop/Fprop_mult_error.vo
-# Finished src/Prop/Fprop_relative.vo
-# Finished src/Calc/Fcalc_round.vo
-# Finished src/Appli/Fappli_rnd_odd.vo
-# Finished src/Prop/Fprop_div_sqrt_error.vo
-# Finished src/Appli/Fappli_double_round.vo
-### stderr ###
-# File &quot;./src/Appli/Fappli_IEEE.v&quot;, line 419, characters 0-12:
-# Error: No product even after head-reduction.
-# Failed to build src/Appli/Fappli_IEEE.vo
-# Failed to build all
-# Failed to build src/Appli/Fappli_IEEE_bits.vo
-#=== ERROR while installing coq-mathcomp-ssreflect.1.6 ========================#
-# opam-version         1.2.2
-# os                   linux
-# command              make -C mathcomp/ssreflect -j 6
-# path                 /home/bench/.opam/system/build/coq-mathcomp-ssreflect.1.6
-# compiler             system (4.03.0)
-# exit-code            2
-# env-file             /home/bench/.opam/system/build/coq-mathcomp-ssreflect.1.6/coq-mathcomp-ssreflect-13112-6cc03f.env
-# stdout-file          /home/bench/.opam/system/build/coq-mathcomp-ssreflect.1.6/coq-mathcomp-ssreflect-13112-6cc03f.out
-# stderr-file          /home/bench/.opam/system/build/coq-mathcomp-ssreflect.1.6/coq-mathcomp-ssreflect-13112-6cc03f.err
-### stdout ###
-# [...]
-# /home/bench/.opam/system/bin//coqdep -exclude-dir plugin -c -R &quot;.&quot; mathcomp.ssreflect -I &quot;.&quot; &quot;ssreflect.v&quot; &gt; &quot;ssreflect.v.d&quot; || ( RV=$?; rm -f &quot;ssreflect.v.d&quot;; exit ${RV} )
-# /home/bench/.opam/system/bin//coqdep -exclude-dir plugin -c -R &quot;.&quot; mathcomp.ssreflect -I &quot;.&quot; &quot;ssrbool.v&quot; &gt; &quot;ssrbool.v.d&quot; || ( RV=$?; rm -f &quot;ssrbool.v.d&quot;; exit ${RV} )
-# /home/bench/.opam/system/bin//coqdep -exclude-dir plugin -c -R &quot;.&quot; mathcomp.ssreflect -I &quot;.&quot; &quot;seq.v&quot; &gt; &quot;seq.v.d&quot; || ( RV=$?; rm -f &quot;seq.v.d&quot;; exit ${RV} )
-# /home/bench/.opam/system/bin//coqdep -exclude-dir plugin -c -R &quot;.&quot; mathcomp.ssreflect -I &quot;.&quot; &quot;eqtype.v&quot; &gt; &quot;eqtype.v.d&quot; || ( RV=$?; rm -f &quot;eqtype.v.d&quot;; exit ${RV} )
-# /home/bench/.opam/system/bin//coqdep -exclude-dir plugin -c -R &quot;.&quot; mathcomp.ssreflect -I &quot;.&quot; &quot;all_ssreflect.v&quot; &gt; &quot;all_ssreflect.v.d&quot; || ( RV=$?; rm -f &quot;all_ssreflect.v.d&quot;; exit ${RV} )
-# /home/bench/.opam/system/bin/ocamlfind ocamlc -c -rectypes -thread  -I &quot;.&quot; -I &quot;/home/bench/.opam/system/lib/coq/kernel&quot; -I &quot;/home/bench/.opam/system/lib/coq/lib&quot; -I &quot;/home/bench/.opam/system/lib/coq/library&quot; -I &quot;/home/bench/.opam/system/lib/coq/parsing&quot; -I &quot;/home/bench/.opam/system/lib/coq/pretyping&quot; -I &quot;/home/bench/.opam/system/lib/coq/interp&quot; -I &quot;/home/bench/.opam/system/lib/coq/printing&quot; -I &quot;/home/bench/.opam/system/lib/coq/intf&quot; -I &quot;/home/bench/.opam/system/lib/coq/proofs&quot; -I &quot;/home/bench/.opam/system/lib/coq/tactics&quot; -I &quot;/home/bench/.opam/system/lib/coq/tools&quot; -I &quot;/home/bench/.opam/system/lib/coq/toplevel&quot; -I &quot;/home/bench/.opam/system/lib/coq/stm&quot; -I &quot;/home/bench/.opam/system/lib/coq/grammar&quot; -I &quot;/home/bench/.opam/system/lib/coq/config&quot; -I &quot;/home/bench/.opam/system/lib/coq/ltac&quot; -I &quot;/home/bench/.opam/system/lib/coq/engine&quot; -I &quot;/home/bench/.opam/system/lib/coq//plugins/btauto&quot; -I &quot;/home/bench/.opam/system/lib/coq//plugins/cc&quot; -I &quot;/home/bench/.opam/system/lib/coq//plugins/decl_mode&quot; -I &quot;/home/bench/.opam/system/lib/coq//plugins/derive&quot; -I &quot;/home/bench/.opam/system/lib/coq//plugins/extraction&quot; -I &quot;/home/bench/.opam/system/lib/coq//plugins/firstorder&quot; -I &quot;/home/bench/.opam/system/lib/coq//plugins/fourier&quot; -I &quot;/home/bench/.opam/system/lib/coq//plugins/funind&quot; -I &quot;/home/bench/.opam/system/lib/coq//plugins/micromega&quot; -I &quot;/home/bench/.opam/system/lib/coq//plugins/nsatz&quot; -I &quot;/home/bench/.opam/system/lib/coq//plugins/omega&quot; -I &quot;/home/bench/.opam/system/lib/coq//plugins/quote&quot; -I &quot;/home/bench/.opam/system/lib/coq//plugins/romega&quot; -I &quot;/home/bench/.opam/system/lib/coq//plugins/rtauto&quot; -I &quot;/home/bench/.opam/system/lib/coq//plugins/setoid_ring&quot; -I &quot;/home/bench/.opam/system/lib/coq//plugins/syntax&quot; -I &quot;/home/bench/.opam/system/lib/coq//plugins/xml&quot; -I /home/bench/.opam/system/lib/camlp5 ssrmatching.mli
-# /home/bench/.opam/system/bin/ocamlfind ocamlc -c -rectypes -thread  -I &quot;.&quot; -I &quot;/home/bench/.opam/system/lib/coq/kernel&quot; -I &quot;/home/bench/.opam/system/lib/coq/lib&quot; -I &quot;/home/bench/.opam/system/lib/coq/library&quot; -I &quot;/home/bench/.opam/system/lib/coq/parsing&quot; -I &quot;/home/bench/.opam/system/lib/coq/pretyping&quot; -I &quot;/home/bench/.opam/system/lib/coq/interp&quot; -I &quot;/home/bench/.opam/system/lib/coq/printing&quot; -I &quot;/home/bench/.opam/system/lib/coq/intf&quot; -I &quot;/home/bench/.opam/system/lib/coq/proofs&quot; -I &quot;/home/bench/.opam/system/lib/coq/tactics&quot; -I &quot;/home/bench/.opam/system/lib/coq/tools&quot; -I &quot;/home/bench/.opam/system/lib/coq/toplevel&quot; -I &quot;/home/bench/.opam/system/lib/coq/stm&quot; -I &quot;/home/bench/.opam/system/lib/coq/grammar&quot; -I &quot;/home/bench/.opam/system/lib/coq/config&quot; -I &quot;/home/bench/.opam/system/lib/coq/ltac&quot; -I &quot;/home/bench/.opam/system/lib/coq/engine&quot; -I &quot;/home/bench/.opam/system/lib/coq//plugins/btauto&quot; -I &quot;/home/bench/.opam/system/lib/coq//plugins/cc&quot; -I &quot;/home/bench/.opam/system/lib/coq//plugins/decl_mode&quot; -I &quot;/home/bench/.opam/system/lib/coq//plugins/derive&quot; -I &quot;/home/bench/.opam/system/lib/coq//plugins/extraction&quot; -I &quot;/home/bench/.opam/system/lib/coq//plugins/firstorder&quot; -I &quot;/home/bench/.opam/system/lib/coq//plugins/fourier&quot; -I &quot;/home/bench/.opam/system/lib/coq//plugins/funind&quot; -I &quot;/home/bench/.opam/system/lib/coq//plugins/micromega&quot; -I &quot;/home/bench/.opam/system/lib/coq//plugins/nsatz&quot; -I &quot;/home/bench/.opam/system/lib/coq//plugins/omega&quot; -I &quot;/home/bench/.opam/system/lib/coq//plugins/quote&quot; -I &quot;/home/bench/.opam/system/lib/coq//plugins/romega&quot; -I &quot;/home/bench/.opam/system/lib/coq//plugins/rtauto&quot; -I &quot;/home/bench/.opam/system/lib/coq//plugins/setoid_ring&quot; -I &quot;/home/bench/.opam/system/lib/coq//plugins/syntax&quot; -I &quot;/home/bench/.opam/system/lib/coq//plugins/xml&quot; -I /home/bench/.opam/system/lib/camlp5 -pp &#39;/home/bench/.opam/system/bin/camlp5o -I /usr/local/lib/ocaml -I /usr/local/lib/ocaml/threads/ -I &quot;/home/bench/.opam/system/lib/coq/kernel&quot; -I &quot;/home/bench/.opam/system/lib/coq/lib&quot; -I &quot;/home/bench/.opam/system/lib/coq/library&quot; -I &quot;/home/bench/.opam/system/lib/coq/parsing&quot; -I &quot;/home/bench/.opam/system/lib/coq/pretyping&quot; -I &quot;/home/bench/.opam/system/lib/coq/interp&quot; -I &quot;/home/bench/.opam/system/lib/coq/printing&quot; -I &quot;/home/bench/.opam/system/lib/coq/intf&quot; -I &quot;/home/bench/.opam/system/lib/coq/proofs&quot; -I &quot;/home/bench/.opam/system/lib/coq/tactics&quot; -I &quot;/home/bench/.opam/system/lib/coq/tools&quot; -I &quot;/home/bench/.opam/system/lib/coq/toplevel&quot; -I &quot;/home/bench/.opam/system/lib/coq/stm&quot; -I &quot;/home/bench/.opam/system/lib/coq/grammar&quot; -I &quot;/home/bench/.opam/system/lib/coq/config&quot; -I &quot;/home/bench/.opam/system/lib/coq/ltac&quot; -I &quot;/home/bench/.opam/system/lib/coq/engine&quot; -I &quot;/home/bench/.opam/system/lib/coq//plugins/btauto&quot; -I &quot;/home/bench/.opam/system/lib/coq//plugins/cc&quot; -I &quot;/home/bench/.opam/system/lib/coq//plugins/decl_mode&quot; -I &quot;/home/bench/.opam/system/lib/coq//plugins/derive&quot; -I &quot;/home/bench/.opam/system/lib/coq//plugins/extraction&quot; -I &quot;/home/bench/.opam/system/lib/coq//plugins/firstorder&quot; -I &quot;/home/bench/.opam/system/lib/coq//plugins/fourier&quot; -I &quot;/home/bench/.opam/system/lib/coq//plugins/funind&quot; -I &quot;/home/bench/.opam/system/lib/coq//plugins/micromega&quot; -I &quot;/home/bench/.opam/system/lib/coq//plugins/nsatz&quot; -I &quot;/home/bench/.opam/system/lib/coq//plugins/omega&quot; -I &quot;/home/bench/.opam/system/lib/coq//plugins/quote&quot; -I &quot;/home/bench/.opam/system/lib/coq//plugins/romega&quot; -I &quot;/home/bench/.opam/system/lib/coq//plugins/rtauto&quot; -I &quot;/home/bench/.opam/system/lib/coq//plugins/setoid_ring&quot; -I &quot;/home/bench/.opam/system/lib/coq//plugins/syntax&quot; -I &quot;/home/bench/.opam/system/lib/coq//plugins/xml&quot; compat5.cmo pa_extend.cmo q_MLast.cmo pa_macro.cmo unix.cma threads.cma grammar.cma -loc loc -impl&#39; -impl ssrmatching.ml4
-# Makefile.coq:414: recipe for target &#39;ssrmatching.cmo&#39; failed
-# Makefile:24: recipe for target &#39;all&#39; failed
-# make: Leaving directory &#39;/home/bench/.opam/system/build/coq-mathcomp-ssreflect.1.6/mathcomp/ssreflect&#39;
-### stderr ###
-# [...]
-# Redundant [RAW_TYPED AS] clause in [ARGUMENT EXTEND lcpattern].
-# Redundant [GLOB_TYPED AS] clause in [ARGUMENT EXTEND lcpattern].
-# Redundant [RAW_TYPED AS] clause in [ARGUMENT EXTEND cpattern].
-# Redundant [GLOB_TYPED AS] clause in [ARGUMENT EXTEND cpattern].
-# Redundant [RAW_TYPED AS] clause in [ARGUMENT EXTEND lcpattern].
-# Redundant [GLOB_TYPED AS] clause in [ARGUMENT EXTEND lcpattern].
-# File &quot;ssrmatching.ml4&quot;, line 6, characters 19-31:
-# Error: Unbound module Lexer
-# make[1]: *** [ssrmatching.cmo] Error 2
-# make: *** [all] Error 2
-=-=- Error report -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
-The following actions were aborted
-  - install coq-coquelicot 2.1.1
-The following actions failed
-  - install coq-flocq              2.5.1
-  - install coq-mathcomp-ssreflect 1.6  
-No changes have been performed
-</pre></dd>
+              <dd>0 s</dd>
             </dl>
             <h2>Install</h2>
             <dl class="dl-horizontal">
