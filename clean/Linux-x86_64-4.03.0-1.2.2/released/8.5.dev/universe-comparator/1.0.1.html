@@ -38,10 +38,10 @@
               universe-comparator
               <small>
                 1.0.1
-                <span class="label label-info">Not compatible with this Coq</span>
+                <span class="label label-danger">Lint error</span>
               </small>
             </h1>
-            <p><em><script>document.write(moment("2016-05-28 09:41:22 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2016-05-28 09:41:22 UTC)</em><p>
+            <p><em><script>document.write(moment("2016-05-28 22:20:38 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2016-05-28 22:20:38 UTC)</em><p>
             <h2>Context</h2>
             <pre># Installed packages for system:
 base-bigarray     base  Bigarray library distributed with the OCaml compiler
@@ -55,28 +55,29 @@ coq            8.5.dev  Formal proof management system.
               <dt>Command</dt>
               <dd><code>ruby lint.rb released opam-coq-archive/released/packages/coq-universe-comparator/coq-universe-comparator.1.0.1</code></dd>
               <dt>Return code</dt>
-              <dd>0</dd>
+              <dd>256</dd>
+              <dt>Output</dt>
+              <dd><pre>Errors found in ~/run/opam-coq-archive/released/packages/coq-universe-comparator/coq-universe-comparator.1.0.1/opam:
+            error 21: Field &#39;opam-version&#39; doesn&#39;t match the current version,
+              validation may not be accurate
+          warning 26: No field &#39;install&#39;, but a field &#39;remove&#39;: install
+              instructions probably part of &#39;build&#39;. Use the &#39;install&#39; field or
+              a .install file
+          warning 37: Missing field &#39;dev-repo&#39;
+</pre></dd>
             </dl>
             <h2>Dry install</h2>
             <p>Dry install with the current Coq version:</p>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>opam install -y --show-action coq-universe-comparator.1.0.1 coq.8.5.dev</code></dd>
+              <dd><code>true</code></dd>
               <dt>Return code</dt>
-              <dd>768</dd>
-              <dt>Output</dt>
-              <dd><pre>[NOTE] Package coq is already installed (current version is 8.5.dev).
-The following dependencies couldn&#39;t be met:
-  - coq-universe-comparator -&gt; coq &lt; 8.5~beta3
-Your request can&#39;t be satisfied:
-  - Conflicting version constraints for coq
-No solution found, exiting
-</pre></dd>
+              <dd>0</dd>
             </dl>
             <p>Dry install without Coq, to test if the problem was incompatibility with the current Coq version:</p>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>opam remove -y coq; opam install -y --show-action coq-universe-comparator.1.0.1</code></dd>
+              <dd><code>true</code></dd>
               <dt>Return code</dt>
               <dd>0</dd>
             </dl>

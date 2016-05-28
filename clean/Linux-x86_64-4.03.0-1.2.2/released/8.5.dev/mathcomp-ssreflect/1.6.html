@@ -41,7 +41,7 @@
                 <span class="label label-danger">Error</span>
               </small>
             </h1>
-            <p><em><script>document.write(moment("2016-05-28 09:41:22 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2016-05-28 09:41:22 UTC)</em><p>
+            <p><em><script>document.write(moment("2016-05-28 22:20:38 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2016-05-28 22:20:38 UTC)</em><p>
             <h2>Context</h2>
             <pre># Installed packages for system:
 base-bigarray     base  Bigarray library distributed with the OCaml compiler
@@ -75,7 +75,7 @@ coq            8.5.dev  Formal proof management system.
             <h2>Install dependencies</h2>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>opam list; ulimit -Sv 4000000; timeout 90m opam install -y --deps-only coq-mathcomp-ssreflect.1.6</code></dd>
+              <dd><code>opam list; ulimit -Sv 4000000; timeout 30m opam install -y --deps-only coq-mathcomp-ssreflect.1.6</code></dd>
               <dt>Return code</dt>
               <dd>0</dd>
               <dt>Duration</dt>
@@ -84,11 +84,11 @@ coq            8.5.dev  Formal proof management system.
             <h2>Install</h2>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>opam list; ulimit -Sv 4000000; timeout 90m opam install -y -v coq-mathcomp-ssreflect.1.6</code></dd>
+              <dd><code>opam list; ulimit -Sv 4000000; timeout 30m opam install -j1 -y -v coq-mathcomp-ssreflect.1.6</code></dd>
               <dt>Return code</dt>
               <dd>1024</dd>
               <dt>Duration</dt>
-              <dd>24 s</dd>
+              <dd>22 s</dd>
               <dt>Output</dt>
               <dd><pre># Installed packages for system:
 base-bigarray     base  Bigarray library distributed with the OCaml compiler
@@ -103,8 +103,8 @@ The following actions will be performed:
 [coq-mathcomp-ssreflect: http] Command started
 [coq-mathcomp-ssreflect.1.6] http://github.com/math-comp/math-comp/archive/mathcomp-1.6.tar.gz downloaded
 =-=- Processing actions -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
-[coq-mathcomp-ssreflect: make 6] Command started
-+ make &quot;-C&quot; &quot;mathcomp/ssreflect&quot; &quot;-j&quot; &quot;6&quot; (CWD=/home/bench/.opam/system/build/coq-mathcomp-ssreflect.1.6)
+[coq-mathcomp-ssreflect: make 1] Command started
++ make &quot;-C&quot; &quot;mathcomp/ssreflect&quot; &quot;-j&quot; &quot;1&quot; (CWD=/home/bench/.opam/system/build/coq-mathcomp-ssreflect.1.6)
 - make: Entering directory &#39;/home/bench/.opam/system/build/coq-mathcomp-ssreflect.1.6/mathcomp/ssreflect&#39;
 - Generating Makefile.coq for Coq v8.5 with COQBIN=/home/bench/.opam/system/bin//
 - # Override COQDEP to find only the &quot;right&quot; copy .ml files
@@ -143,19 +143,19 @@ The following actions will be performed:
 - make[1]: *** [ssrmatching.cmo] Error 2
 - make: *** [all] Error 2
 [ERROR] The compilation of coq-mathcomp-ssreflect failed at &quot;make -C
-        mathcomp/ssreflect -j 6&quot;.
+        mathcomp/ssreflect -j 1&quot;.
 [coq-mathcomp-ssreflect: sh] Command started
 + sh &quot;-c&quot; &quot;rm -rf &#39;/home/bench/.opam/system/lib/coq/user-contrib/mathcomp&#39;&quot; (CWD=/home/bench/.opam/system/build/coq-mathcomp-ssreflect.1.6)
 #=== ERROR while installing coq-mathcomp-ssreflect.1.6 ========================#
 # opam-version         1.2.2
 # os                   linux
-# command              make -C mathcomp/ssreflect -j 6
+# command              make -C mathcomp/ssreflect -j 1
 # path                 /home/bench/.opam/system/build/coq-mathcomp-ssreflect.1.6
 # compiler             system (4.03.0)
 # exit-code            2
-# env-file             /home/bench/.opam/system/build/coq-mathcomp-ssreflect.1.6/coq-mathcomp-ssreflect-10859-e7966f.env
-# stdout-file          /home/bench/.opam/system/build/coq-mathcomp-ssreflect.1.6/coq-mathcomp-ssreflect-10859-e7966f.out
-# stderr-file          /home/bench/.opam/system/build/coq-mathcomp-ssreflect.1.6/coq-mathcomp-ssreflect-10859-e7966f.err
+# env-file             /home/bench/.opam/system/build/coq-mathcomp-ssreflect.1.6/coq-mathcomp-ssreflect-19474-e7966f.env
+# stdout-file          /home/bench/.opam/system/build/coq-mathcomp-ssreflect.1.6/coq-mathcomp-ssreflect-19474-e7966f.out
+# stderr-file          /home/bench/.opam/system/build/coq-mathcomp-ssreflect.1.6/coq-mathcomp-ssreflect-19474-e7966f.err
 ### stdout ###
 # [...]
 # /home/bench/.opam/system/bin//coqdep -exclude-dir plugin -c -R &quot;.&quot; mathcomp.ssreflect -I &quot;.&quot; &quot;ssreflect.v&quot; &gt; &quot;ssreflect.v.d&quot; || ( RV=$?; rm -f &quot;ssreflect.v.d&quot;; exit ${RV} )
@@ -178,7 +178,7 @@ The following actions will be performed:
 The following actions failed
   - install coq-mathcomp-ssreflect 1.6
 No changes have been performed
-&#39;opam install -y -v coq-mathcomp-ssreflect.1.6&#39; failed.
+&#39;opam install -j1 -y -v coq-mathcomp-ssreflect.1.6&#39; failed.
 </pre></dd>
             </dl>
             <h2>Installation size</h2>
