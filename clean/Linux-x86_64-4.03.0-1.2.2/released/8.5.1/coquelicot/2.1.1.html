@@ -38,10 +38,10 @@
               coquelicot
               <small>
                 2.1.1
-                <span class="label label-success">4 m 2 s</span>
+                <span class="label label-danger">Lint error</span>
               </small>
             </h1>
-            <p><em><script>document.write(moment("2016-05-26 18:51:54 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2016-05-26 18:51:54 UTC)</em><p>
+            <p><em><script>document.write(moment("2016-05-29 02:15:05 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2016-05-29 02:15:05 UTC)</em><p>
             <h2>Context</h2>
             <pre># Installed packages for system:
 base-bigarray   base  Bigarray library distributed with the OCaml compiler
@@ -55,13 +55,23 @@ coq            8.5.1  Formal proof management system.
               <dt>Command</dt>
               <dd><code>ruby lint.rb released opam-coq-archive/released/packages/coq-coquelicot/coq-coquelicot.2.1.1</code></dd>
               <dt>Return code</dt>
-              <dd>0</dd>
+              <dd>256</dd>
+              <dt>Output</dt>
+              <dd><pre>Errors found in ~/run/opam-coq-archive/released/packages/coq-coquelicot/coq-coquelicot.2.1.1/opam:
+            error 21: Field &#39;opam-version&#39; doesn&#39;t match the current version,
+              validation may not be accurate
+          warning 26: No field &#39;install&#39;, but a field &#39;remove&#39;: install
+              instructions probably part of &#39;build&#39;. Use the &#39;install&#39; field or
+              a .install file
+          warning 36: Missing field &#39;bug-reports&#39;
+          warning 37: Missing field &#39;dev-repo&#39;
+</pre></dd>
             </dl>
             <h2>Dry install</h2>
             <p>Dry install with the current Coq version:</p>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>opam install -y --show-action coq-coquelicot.2.1.1 coq.8.5.1</code></dd>
+              <dd><code>true</code></dd>
               <dt>Return code</dt>
               <dd>0</dd>
             </dl>
@@ -75,55 +85,27 @@ coq            8.5.1  Formal proof management system.
             <h2>Install dependencies</h2>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>opam list; ulimit -Sv 4000000; timeout 90m opam install -y --deps-only coq-coquelicot.2.1.1</code></dd>
+              <dd><code>true</code></dd>
               <dt>Return code</dt>
               <dd>0</dd>
               <dt>Duration</dt>
-              <dd>3 m 21 s</dd>
+              <dd>0 s</dd>
             </dl>
             <h2>Install</h2>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>opam list; ulimit -Sv 4000000; timeout 90m opam install -y -v coq-coquelicot.2.1.1</code></dd>
+              <dd><code>true</code></dd>
               <dt>Return code</dt>
               <dd>0</dd>
               <dt>Duration</dt>
-              <dd>4 m 2 s</dd>
+              <dd>0 s</dd>
             </dl>
             <h2>Installation size</h2>
-            <p>Total: 6,122 K</p>
-            <ul>
-              <li>1,227 K <code>lib/coq/user-contrib/Coquelicot/RInt.vo</code></li>
-              <li>582 K <code>lib/coq/user-contrib/Coquelicot/SF_seq.vo</code></li>
-              <li>521 K <code>lib/coq/user-contrib/Coquelicot/Hierarchy.vo</code></li>
-              <li>405 K <code>lib/coq/user-contrib/Coquelicot/Derive.vo</code></li>
-              <li>372 K <code>lib/coq/user-contrib/Coquelicot/Lim_seq.vo</code></li>
-              <li>343 K <code>lib/coq/user-contrib/Coquelicot/PSeries.vo</code></li>
-              <li>302 K <code>lib/coq/user-contrib/Coquelicot/AutoDerive.vo</code></li>
-              <li>262 K <code>lib/coq/user-contrib/Coquelicot/Rcomplements.vo</code></li>
-              <li>260 K <code>lib/coq/user-contrib/Coquelicot/Derive_2d.vo</code></li>
-              <li>215 K <code>lib/coq/user-contrib/Coquelicot/RInt_analysis.vo</code></li>
-              <li>201 K <code>lib/coq/user-contrib/Coquelicot/Continuity.vo</code></li>
-              <li>184 K <code>lib/coq/user-contrib/Coquelicot/Series.vo</code></li>
-              <li>162 K <code>lib/coq/user-contrib/Coquelicot/Seq_fct.vo</code></li>
-              <li>161 K <code>lib/coq/user-contrib/Coquelicot/Rbar.vo</code></li>
-              <li>133 K <code>lib/coq/user-contrib/Coquelicot/ElemFct.vo</code></li>
-              <li>129 K <code>lib/coq/user-contrib/Coquelicot/Complex.vo</code></li>
-              <li>113 K <code>lib/coq/user-contrib/Coquelicot/Equiv.vo</code></li>
-              <li>113 K <code>lib/coq/user-contrib/Coquelicot/KHInt.vo</code></li>
-              <li>95 K <code>lib/coq/user-contrib/Coquelicot/Lub.vo</code></li>
-              <li>83 K <code>lib/coq/user-contrib/Coquelicot/Compactness.vo</code></li>
-              <li>82 K <code>lib/coq/user-contrib/Coquelicot/Iter.vo</code></li>
-              <li>75 K <code>lib/coq/user-contrib/Coquelicot/RInt_gen.vo</code></li>
-              <li>54 K <code>lib/coq/user-contrib/Coquelicot/Markov.vo</code></li>
-              <li>36 K <code>lib/coq/user-contrib/Coquelicot/Coquelicot.vo</code></li>
-              <li>1 K <code>install/coq-coquelicot.install</code></li>
-              <li>0 K <code>lib/coq-coquelicot/opam.config</code></li>
-            </ul>
+            <p>No files were installed.</p>
             <h2>Uninstall</h2>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>opam remove -y coq-coquelicot.2.1.1</code></dd>
+              <dd><code>true</code></dd>
               <dt>Return code</dt>
               <dd>0</dd>
               <dt>Missing removes</dt>
