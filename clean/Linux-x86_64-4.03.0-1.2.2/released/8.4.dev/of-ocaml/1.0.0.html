@@ -38,10 +38,10 @@
               of-ocaml
               <small>
                 1.0.0
-                <span class="label label-danger">Error</span>
+                <span class="label label-danger">Lint error</span>
               </small>
             </h1>
-            <p><em><script>document.write(moment("2016-05-28 00:46:50 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2016-05-28 00:46:50 UTC)</em><p>
+            <p><em><script>document.write(moment("2016-05-29 06:04:54 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2016-05-29 06:04:54 UTC)</em><p>
             <h2>Context</h2>
             <pre># Installed packages for system:
 base-bigarray     base  Bigarray library distributed with the OCaml compiler
@@ -55,13 +55,24 @@ coq            8.4.dev  Formal proof management system.
               <dt>Command</dt>
               <dd><code>ruby lint.rb released opam-coq-archive/released/packages/coq-of-ocaml/coq-of-ocaml.1.0.0</code></dd>
               <dt>Return code</dt>
-              <dd>0</dd>
+              <dd>256</dd>
+              <dt>Output</dt>
+              <dd><pre>Errors found in ~/run/opam-coq-archive/released/packages/coq-of-ocaml/coq-of-ocaml.1.0.0/opam:
+            error 21: Field &#39;opam-version&#39; doesn&#39;t match the current version,
+              validation may not be accurate
+          warning 26: No field &#39;install&#39;, but a field &#39;remove&#39;: install
+              instructions probably part of &#39;build&#39;. Use the &#39;install&#39; field or
+              a .install file
+            error 32: Field &#39;ocaml-version&#39; is deprecated, use &#39;available&#39; and
+              the &#39;ocaml-version&#39; variable instead
+          warning 37: Missing field &#39;dev-repo&#39;
+</pre></dd>
             </dl>
             <h2>Dry install</h2>
             <p>Dry install with the current Coq version:</p>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>opam install -y --show-action coq-of-ocaml.1.0.0 coq.8.4.dev</code></dd>
+              <dd><code>true</code></dd>
               <dt>Return code</dt>
               <dd>0</dd>
             </dl>
@@ -75,191 +86,20 @@ coq            8.4.dev  Formal proof management system.
             <h2>Install dependencies</h2>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>opam list; ulimit -Sv 4000000; timeout 90m opam install -y --deps-only coq-of-ocaml.1.0.0</code></dd>
+              <dd><code>true</code></dd>
               <dt>Return code</dt>
               <dd>0</dd>
               <dt>Duration</dt>
-              <dd>38 s</dd>
+              <dd>0 s</dd>
             </dl>
             <h2>Install</h2>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>opam list; ulimit -Sv 4000000; timeout 90m opam install -y -v coq-of-ocaml.1.0.0</code></dd>
+              <dd><code>true</code></dd>
               <dt>Return code</dt>
-              <dd>1024</dd>
+              <dd>0</dd>
               <dt>Duration</dt>
-              <dd>1 m 10 s</dd>
-              <dt>Output</dt>
-              <dd><pre># Installed packages for system:
-base-bigarray       base  Bigarray library distributed with the OCaml compiler
-base-threads        base  Threads library distributed with the OCaml compiler
-base-unix           base  Unix library distributed with the OCaml compiler
-biniou             1.0.9  Binary data format designed for speed, safety, ease of
-camlp5              6.16  Preprocessor-pretty-printer of OCaml
-conf-m4                1  Virtual package relying on m4
-conf-ncurses           1  Virtual package relying on ncurses
-conf-pkg-config      1.0  Virtual package relying on pkg-config installation.
-conf-which             1  Virtual package relying on which
-coq              8.4.dev  Formal proof management system.
-cppo               1.3.2  Equivalent of the C preprocessor for OCaml programs
-easy-format        1.2.0  High-level and functional interface to the Format modu
-ocamlbuild         0.9.2  OCamlbuild is a build system with builtin rules to eas
-ocamlfind          1.6.2  A library manager for OCaml
-smart-print        0.2.0  The pretty-printing library which feels natural to use
-yojson             1.3.2  Yojson is an optimized parsing and printing library fo
-The following actions will be performed:
-  - install coq-of-ocaml 1.0.0
-=-=- Gathering sources =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
-[coq-of-ocaml: http] Command started
-[coq-of-ocaml: http] Command started
-[coq-of-ocaml.1.0.0] https://github.com/clarus/coq-of-ocaml/archive/1.0.0.tar.gz downloaded
-=-=- Processing actions -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
-[coq-of-ocaml: sh] Command started
-+ sh &quot;-c&quot; &quot;cd CoqOfOCaml &amp;&amp; ./configure.sh&quot; (CWD=/home/bench/.opam/system/build/coq-of-ocaml.1.0.0)
-- Basics.v.erb -&gt; Basics.v
-[coq-of-ocaml: sh cd CoqOfOCaml &amp;&amp; make -j6] Command started
-+ sh &quot;-c&quot; &quot;cd CoqOfOCaml &amp;&amp; make -j6&quot; (CWD=/home/bench/.opam/system/build/coq-of-ocaml.1.0.0)
-- &quot;coqdep&quot; -c -slash -R . CoqOfOCaml &quot;Basics.v&quot; &gt; &quot;Basics.v.d&quot; || ( RV=$?; rm -f &quot;Basics.v.d&quot;; exit ${RV} )
-- &quot;coqdep&quot; -c -slash -R . CoqOfOCaml &quot;Effect.v&quot; &gt; &quot;Effect.v.d&quot; || ( RV=$?; rm -f &quot;Effect.v.d&quot;; exit ${RV} )
-- &quot;coqdep&quot; -c -slash -R . CoqOfOCaml &quot;Libraries.v&quot; &gt; &quot;Libraries.v.d&quot; || ( RV=$?; rm -f &quot;Libraries.v.d&quot;; exit ${RV} )
-- &quot;coqdep&quot; -c -slash -R . CoqOfOCaml &quot;List.v&quot; &gt; &quot;List.v.d&quot; || ( RV=$?; rm -f &quot;List.v.d&quot;; exit ${RV} )
-- &quot;coqdep&quot; -c -slash -R . CoqOfOCaml &quot;OCaml.v&quot; &gt; &quot;OCaml.v.d&quot; || ( RV=$?; rm -f &quot;OCaml.v.d&quot;; exit ${RV} )
-- &quot;coqc&quot;  -q  -R . CoqOfOCaml   Libraries
-- &quot;coqc&quot;  -q  -R . CoqOfOCaml   Effect
-- &quot;coqc&quot;  -q  -R . CoqOfOCaml   Basics
-- &quot;coqc&quot;  -q  -R . CoqOfOCaml   List
-- &quot;coqc&quot;  -q  -R . CoqOfOCaml   OCaml
-[coq-of-ocaml: sh cd CoqOfOCaml &amp;&amp; make install] Command started
-+ sh &quot;-c&quot; &quot;cd CoqOfOCaml &amp;&amp; make install&quot; (CWD=/home/bench/.opam/system/build/coq-of-ocaml.1.0.0)
-- for i in OCaml.vo List.vo Libraries.vo Effect.vo Basics.vo; do \
--  install -d `dirname &quot;/home/bench/.opam/system/lib/coq/user-contrib&quot;/CoqOfOCaml/$i`; \
--  install -m 0644 $i &quot;/home/bench/.opam/system/lib/coq/user-contrib&quot;/CoqOfOCaml/$i; \
-- done
-[coq-of-ocaml: make] Command started
-+ make &quot;-j6&quot; (CWD=/home/bench/.opam/system/build/coq-of-ocaml.1.0.0)
-- ocamlbuild src/coqOfOCaml.native -lflags -I,+compiler-libs,ocamlcommon.cmxa -use-ocamlfind -package smart_print,compiler-libs,yojson,str
-- ocamlfind ocamldep -package smart_print,compiler-libs,yojson,str -modules src/coqOfOCaml.ml &gt; src/coqOfOCaml.ml.depends
-- ocamlfind ocamldep -package smart_print,compiler-libs,yojson,str -modules src/effect.ml &gt; src/effect.ml.depends
-- ocamlfind ocamldep -package smart_print,compiler-libs,yojson,str -modules src/boundName.ml &gt; src/boundName.ml.depends
-- ocamlfind ocamldep -package smart_print,compiler-libs,yojson,str -modules src/name.ml &gt; src/name.ml.depends
-- ocamlfind ocamldep -package smart_print,compiler-libs,yojson,str -modules src/error.ml &gt; src/error.ml.depends
-- ocamlfind ocamldep -package smart_print,compiler-libs,yojson,str -modules src/loc.ml &gt; src/loc.ml.depends
-- ocamlfind ocamlc -c -package smart_print,compiler-libs,yojson,str -I src -o src/loc.cmo src/loc.ml
-- + ocamlfind ocamlc -c -package smart_print,compiler-libs,yojson,str -I src -o src/loc.cmo src/loc.ml
-- findlib: [WARNING] Interface topdirs.cmi occurs in several directories: /usr/local/lib/ocaml, /usr/local/lib/ocaml/compiler-libs
-- ocamlfind ocamlc -c -package smart_print,compiler-libs,yojson,str -I src -o src/error.cmo src/error.ml
-- + ocamlfind ocamlc -c -package smart_print,compiler-libs,yojson,str -I src -o src/error.cmo src/error.ml
-- findlib: [WARNING] Interface topdirs.cmi occurs in several directories: /usr/local/lib/ocaml, /usr/local/lib/ocaml/compiler-libs
-- ocamlfind ocamldep -package smart_print,compiler-libs,yojson,str -modules src/pathName.ml &gt; src/pathName.ml.depends
-- ocamlfind ocamlc -c -package smart_print,compiler-libs,yojson,str -I src -o src/name.cmo src/name.ml
-- + ocamlfind ocamlc -c -package smart_print,compiler-libs,yojson,str -I src -o src/name.cmo src/name.ml
-- findlib: [WARNING] Interface topdirs.cmi occurs in several directories: /usr/local/lib/ocaml, /usr/local/lib/ocaml/compiler-libs
-- ocamlfind ocamlc -c -package smart_print,compiler-libs,yojson,str -I src -o src/pathName.cmo src/pathName.ml
-- + ocamlfind ocamlc -c -package smart_print,compiler-libs,yojson,str -I src -o src/pathName.cmo src/pathName.ml
-- findlib: [WARNING] Interface topdirs.cmi occurs in several directories: /usr/local/lib/ocaml, /usr/local/lib/ocaml/compiler-libs
-- ocamlfind ocamlc -c -package smart_print,compiler-libs,yojson,str -I src -o src/boundName.cmo src/boundName.ml
-- + ocamlfind ocamlc -c -package smart_print,compiler-libs,yojson,str -I src -o src/boundName.cmo src/boundName.ml
-- findlib: [WARNING] Interface topdirs.cmi occurs in several directories: /usr/local/lib/ocaml, /usr/local/lib/ocaml/compiler-libs
-- ocamlfind ocamldep -package smart_print,compiler-libs,yojson,str -modules src/interface.ml &gt; src/interface.ml.depends
-- ocamlfind ocamlc -c -package smart_print,compiler-libs,yojson,str -I src -o src/effect.cmo src/effect.ml
-- + ocamlfind ocamlc -c -package smart_print,compiler-libs,yojson,str -I src -o src/effect.cmo src/effect.ml
-- findlib: [WARNING] Interface topdirs.cmi occurs in several directories: /usr/local/lib/ocaml, /usr/local/lib/ocaml/compiler-libs
-- ocamlfind ocamldep -package smart_print,compiler-libs,yojson,str -modules src/envi.ml &gt; src/envi.ml.depends
-- ocamlfind ocamldep -package smart_print,compiler-libs,yojson,str -modules src/exception.ml &gt; src/exception.ml.depends
-- ocamlfind ocamldep -package smart_print,compiler-libs,yojson,str -modules src/fullEnvi.ml &gt; src/fullEnvi.ml.depends
-- ocamlfind ocamlc -c -package smart_print,compiler-libs,yojson,str -I src -o src/envi.cmo src/envi.ml
-- + ocamlfind ocamlc -c -package smart_print,compiler-libs,yojson,str -I src -o src/envi.cmo src/envi.ml
-- findlib: [WARNING] Interface topdirs.cmi occurs in several directories: /usr/local/lib/ocaml, /usr/local/lib/ocaml/compiler-libs
-- File &quot;src/envi.ml&quot;, line 95, characters 14-19:
-- Warning 52: the argument of this constructor should not be matched against a
-- constant pattern; the actual value of the argument could change
-- in the future.
-- ocamlfind ocamldep -package smart_print,compiler-libs,yojson,str -modules src/type.ml &gt; src/type.ml.depends
-- ocamlfind ocamlc -c -package smart_print,compiler-libs,yojson,str -I src -o src/fullEnvi.cmo src/fullEnvi.ml
-- + ocamlfind ocamlc -c -package smart_print,compiler-libs,yojson,str -I src -o src/fullEnvi.cmo src/fullEnvi.ml
-- findlib: [WARNING] Interface topdirs.cmi occurs in several directories: /usr/local/lib/ocaml, /usr/local/lib/ocaml/compiler-libs
-- ocamlfind ocamldep -package smart_print,compiler-libs,yojson,str -modules src/pp.ml &gt; src/pp.ml.depends
-- ocamlfind ocamlc -c -package smart_print,compiler-libs,yojson,str -I src -o src/pp.cmo src/pp.ml
-- + ocamlfind ocamlc -c -package smart_print,compiler-libs,yojson,str -I src -o src/pp.cmo src/pp.ml
-- findlib: [WARNING] Interface topdirs.cmi occurs in several directories: /usr/local/lib/ocaml, /usr/local/lib/ocaml/compiler-libs
-- ocamlfind ocamlc -c -package smart_print,compiler-libs,yojson,str -I src -o src/type.cmo src/type.ml
-- + ocamlfind ocamlc -c -package smart_print,compiler-libs,yojson,str -I src -o src/type.cmo src/type.ml
-- findlib: [WARNING] Interface topdirs.cmi occurs in several directories: /usr/local/lib/ocaml, /usr/local/lib/ocaml/compiler-libs
-- ocamlfind ocamldep -package smart_print,compiler-libs,yojson,str -modules src/exp.ml &gt; src/exp.ml.depends
-- ocamlfind ocamldep -package smart_print,compiler-libs,yojson,str -modules src/attribute.ml &gt; src/attribute.ml.depends
-- ocamlfind ocamldep -package smart_print,compiler-libs,yojson,str -modules src/constant.ml &gt; src/constant.ml.depends
-- ocamlfind ocamldep -package smart_print,compiler-libs,yojson,str -modules src/pattern.ml &gt; src/pattern.ml.depends
-- ocamlfind ocamlc -c -package smart_print,compiler-libs,yojson,str -I src -o src/constant.cmo src/constant.ml
-- + ocamlfind ocamlc -c -package smart_print,compiler-libs,yojson,str -I src -o src/constant.cmo src/constant.ml
-- findlib: [WARNING] Interface topdirs.cmi occurs in several directories: /usr/local/lib/ocaml, /usr/local/lib/ocaml/compiler-libs
-- ocamlfind ocamldep -package smart_print,compiler-libs,yojson,str -modules src/recursivity.ml &gt; src/recursivity.ml.depends
-- ocamlfind ocamlc -c -package smart_print,compiler-libs,yojson,str -I src -o src/attribute.cmo src/attribute.ml
-- + ocamlfind ocamlc -c -package smart_print,compiler-libs,yojson,str -I src -o src/attribute.cmo src/attribute.ml
-- findlib: [WARNING] Interface topdirs.cmi occurs in several directories: /usr/local/lib/ocaml, /usr/local/lib/ocaml/compiler-libs
-- ocamlfind ocamlc -c -package smart_print,compiler-libs,yojson,str -I src -o src/pattern.cmo src/pattern.ml
-- + ocamlfind ocamlc -c -package smart_print,compiler-libs,yojson,str -I src -o src/pattern.cmo src/pattern.ml
-- findlib: [WARNING] Interface topdirs.cmi occurs in several directories: /usr/local/lib/ocaml, /usr/local/lib/ocaml/compiler-libs
-- ocamlfind ocamlc -c -package smart_print,compiler-libs,yojson,str -I src -o src/recursivity.cmo src/recursivity.ml
-- + ocamlfind ocamlc -c -package smart_print,compiler-libs,yojson,str -I src -o src/recursivity.cmo src/recursivity.ml
-- findlib: [WARNING] Interface topdirs.cmi occurs in several directories: /usr/local/lib/ocaml, /usr/local/lib/ocaml/compiler-libs
-- ocamlfind ocamldep -package smart_print,compiler-libs,yojson,str -modules src/reference.ml &gt; src/reference.ml.depends
-- ocamlfind ocamldep -package smart_print,compiler-libs,yojson,str -modules src/structure.ml &gt; src/structure.ml.depends
-- ocamlfind ocamlc -c -package smart_print,compiler-libs,yojson,str -I src -o src/exception.cmo src/exception.ml
-- + ocamlfind ocamlc -c -package smart_print,compiler-libs,yojson,str -I src -o src/exception.cmo src/exception.ml
-- findlib: [WARNING] Interface topdirs.cmi occurs in several directories: /usr/local/lib/ocaml, /usr/local/lib/ocaml/compiler-libs
-- File &quot;src/exception.ml&quot;, line 15, characters 47-104:
-- Error: This expression has type Types.type_expr list -&gt; Type.t list
--        but an expression was expected of type
--          Types.constructor_arguments -&gt; &#39;a
--        Type Types.type_expr list is not compatible with type
--          Types.constructor_arguments 
-- Command exited with code 2.
-- Hint: Recursive traversal of subdirectories was not enabled for this build,
--   as the working directory does not look like an ocamlbuild project (no
--   &#39;_tags&#39; or &#39;myocamlbuild.ml&#39; file). If you have modules in subdirectories,
--   you should add the option &quot;-r&quot; or create an empty &#39;_tags&#39; file.
--   
--   To enable recursive traversal for some subdirectories only, you can use the
--   following &#39;_tags&#39; file:
--   
--       true: -traverse
--       &lt;dir1&gt; or &lt;dir2&gt;: traverse
--       
-- Makefile:6: recipe for target &#39;default&#39; failed
-- make: *** [default] Error 10
-[ERROR] The compilation of coq-of-ocaml failed at &quot;make -j6&quot;.
-[coq-of-ocaml: rm] Command started
-+ rm &quot;-R&quot; &quot;/home/bench/.opam/system/lib/coq/user-contrib/CoqOfOCaml&quot; (CWD=/home/bench/.opam/system/build/coq-of-ocaml.1.0.0)
-#=== ERROR while installing coq-of-ocaml.1.0.0 ================================#
-# opam-version         1.2.2
-# os                   linux
-# command              make -j6
-# path                 /home/bench/.opam/system/build/coq-of-ocaml.1.0.0
-# compiler             system (4.03.0)
-# exit-code            2
-# env-file             /home/bench/.opam/system/build/coq-of-ocaml.1.0.0/coq-of-ocaml-27835-ad8886.env
-# stdout-file          /home/bench/.opam/system/build/coq-of-ocaml.1.0.0/coq-of-ocaml-27835-ad8886.out
-# stderr-file          /home/bench/.opam/system/build/coq-of-ocaml.1.0.0/coq-of-ocaml-27835-ad8886.err
-### stdout ###
-# Hint: Recursive traversal of subdirectories was not enabled for this build,
-# [...]
-#   you should add the option &quot;-r&quot; or create an empty &#39;_tags&#39; file.
-#   
-#   To enable recursive traversal for some subdirectories only, you can use the
-#   following &#39;_tags&#39; file:
-#   
-#       true: -traverse
-#       &lt;dir1&gt; or &lt;dir2&gt;: traverse
-#       
-# Makefile:6: recipe for target &#39;default&#39; failed
-### stderr ###
-# make: *** [default] Error 10
-=-=- Error report -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
-The following actions failed
-  - install coq-of-ocaml 1.0.0
-No changes have been performed
-&#39;opam install -y -v coq-of-ocaml.1.0.0&#39; failed.
-</pre></dd>
+              <dd>0 s</dd>
             </dl>
             <h2>Installation size</h2>
             <p>No files were installed.</p>

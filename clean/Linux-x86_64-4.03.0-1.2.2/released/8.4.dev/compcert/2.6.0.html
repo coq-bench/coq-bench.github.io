@@ -38,10 +38,10 @@
               compcert
               <small>
                 2.6.0
-                <span class="label label-danger">Error</span>
+                <span class="label label-danger">Lint error</span>
               </small>
             </h1>
-            <p><em><script>document.write(moment("2016-05-28 00:46:50 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2016-05-28 00:46:50 UTC)</em><p>
+            <p><em><script>document.write(moment("2016-05-29 06:04:54 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2016-05-29 06:04:54 UTC)</em><p>
             <h2>Context</h2>
             <pre># Installed packages for system:
 base-bigarray     base  Bigarray library distributed with the OCaml compiler
@@ -55,13 +55,24 @@ coq            8.4.dev  Formal proof management system.
               <dt>Command</dt>
               <dd><code>ruby lint.rb released opam-coq-archive/released/packages/coq-compcert/coq-compcert.2.6.0</code></dd>
               <dt>Return code</dt>
-              <dd>0</dd>
+              <dd>256</dd>
+              <dt>Output</dt>
+              <dd><pre>Errors found in ~/run/opam-coq-archive/released/packages/coq-compcert/coq-compcert.2.6.0/opam:
+            error 21: Field &#39;opam-version&#39; doesn&#39;t match the current version,
+              validation may not be accurate
+            error 25: Missing field &#39;authors&#39;
+          warning 26: No field &#39;install&#39;, but a field &#39;remove&#39;: install
+              instructions probably part of &#39;build&#39;. Use the &#39;install&#39; field or
+              a .install file
+          warning 36: Missing field &#39;bug-reports&#39;
+          warning 37: Missing field &#39;dev-repo&#39;
+</pre></dd>
             </dl>
             <h2>Dry install</h2>
             <p>Dry install with the current Coq version:</p>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>opam install -y --show-action coq-compcert.2.6.0 coq.8.4.dev</code></dd>
+              <dd><code>true</code></dd>
               <dt>Return code</dt>
               <dd>0</dd>
             </dl>
@@ -75,250 +86,20 @@ coq            8.4.dev  Formal proof management system.
             <h2>Install dependencies</h2>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>opam list; ulimit -Sv 4000000; timeout 90m opam install -y --deps-only coq-compcert.2.6.0</code></dd>
+              <dd><code>true</code></dd>
               <dt>Return code</dt>
               <dd>0</dd>
               <dt>Duration</dt>
-              <dd>1 m 4 s</dd>
+              <dd>0 s</dd>
             </dl>
             <h2>Install</h2>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>opam list; ulimit -Sv 4000000; timeout 90m opam install -y -v coq-compcert.2.6.0</code></dd>
+              <dd><code>true</code></dd>
               <dt>Return code</dt>
-              <dd>31744</dd>
+              <dd>0</dd>
               <dt>Duration</dt>
-              <dd>1 h 30 m</dd>
-              <dt>Output</dt>
-              <dd><pre># Installed packages for system:
-base-bigarray        base  Bigarray library distributed with the OCaml compiler
-base-threads         base  Threads library distributed with the OCaml compiler
-base-unix            base  Unix library distributed with the OCaml compiler
-camlp5               6.16  Preprocessor-pretty-printer of OCaml
-conf-m4                 1  Virtual package relying on m4
-conf-ncurses            1  Virtual package relying on ncurses
-conf-pkg-config       1.0  Virtual package relying on pkg-config installation.
-coq               8.4.dev  Formal proof management system.
-menhir           20160504  LR(1) parser generator
-ocamlbuild          0.9.2  OCamlbuild is a build system with builtin rules to ea
-ocamlfind           1.6.2  A library manager for OCaml
-The following actions will be performed:
-  - install coq-compcert 2.6.0
-=-=- Gathering sources =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
-[coq-compcert: http] Command started
-[coq-compcert: http] Command started
-[coq-compcert.2.6.0] https://github.com/AbsInt/CompCert/archive/v2.6.tar.gz downloaded
-=-=- Processing actions -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
-[coq-compcert: ./configure ia32-linux] Command started
-+ ./configure &quot;ia32-linux&quot; &quot;-bindir&quot; &quot;/home/bench/.opam/system/bin&quot; &quot;-libdir&quot; &quot;/home/bench/.opam/system/lib/compcert&quot; (CWD=/home/bench/.opam/system/build/coq-compcert.2.6.0)
-- Testing assembler support for CFI directives... yes
-- Testing Coq... version 8.4pl6 -- good!
-- Testing OCaml... version 4.03.0 -- good!
-- Testing OCaml .opt compilers... yes
-- Testing Menhir... version 20160504 -- good!
-- Testing GNU make... version 4.0 (command &#39;make&#39;) -- good!
-- 
-- CompCert configuration:
--     Target architecture........... ia32
--     Hardware model................ sse2
--     Application binary interface.. standard
--     Composite passing conventions. arguments: ints, return values: ref
--     OS and development env........ linux
--     C compiler.................... gcc -m32
--     C preprocessor................ gcc -std=c99 -m32 -U__GNUC__ -E
--     Assembler..................... gcc -m32 -c
--     Assembler supports CFI........ true
--     Assembler for runtime lib..... gcc -m32 -c
--     Linker........................ gcc -m32
--     Math library.................. -lm
--     Binaries installed in......... /home/bench/.opam/system/bin
--     Runtime library provided...... true
--     Library files installed in.... /home/bench/.opam/system/lib/compcert
--     Standard headers provided..... true
--     Standard headers installed in. /home/bench/.opam/system/lib/compcert/include
--     Build command to use.......... make
-- 
-- If anything above looks wrong, please edit file ./Makefile.config to correct.
-- 
-[coq-compcert: make] Command started
-+ make &quot;-j6&quot; (CWD=/home/bench/.opam/system/build/coq-compcert.2.6.0)
-- make proof
-- make[1]: Entering directory &#39;/home/bench/.opam/system/build/coq-compcert.2.6.0&#39;
-- COQC lib/Axioms.v
-- COQC lib/Coqlib.v
-- ocamlopt -o tools/ndfun str.cmxa tools/ndfun.ml
-- COQC flocq/Core/Fcore_Zaux.v
-- COQC driver/Compopts.v
-- COQC cparser/validator/Alphabet.v
-- COQC cparser/validator/Tuples.v
-- COQC cparser/Cabs.v
-- menhir --coq cparser/Parser.vy
-- COQC lib/Wfsimpl.v
-- Preprocessing ia32/SelectOp.vp
-- Preprocessing backend/SelectDiv.vp
-- Preprocessing backend/SelectLong.vp
-- Preprocessing ia32/ConstpropOp.vp
-- COQC flocq/Core/Fcore_Raux.v
-- COQC flocq/Core/Fcore_digits.v
-- COQC lib/Intv.v
-- COQC lib/Maps.v
-- COQC lib/Integers.v
-- COQC lib/Iteration.v
-- COQC lib/Parmov.v
-- COQC lib/UnionFind.v
-- COQC lib/Postorder.v
-- COQC lib/FSetAVLplus.v
-- COQC lib/IntvSets.v
-- COQC common/Errors.v
-- Identifier &#39;do&#39; now a keyword
-- Identifier &#39;assertion&#39; now a keyword
-- COQC lib/Lattice.v
-- COQC flocq/Core/Fcore_defs.v
-- COQC common/Unityping.v
-- COQC flocq/Core/Fcore_float_prop.v
-- COQC flocq/Core/Fcore_rnd.v
-- COQC flocq/Calc/Fcalc_bracket.v
-- COQC flocq/Calc/Fcalc_digits.v
-- COQC flocq/Calc/Fcalc_ops.v
-- COQC flocq/Core/Fcore_generic_fmt.v
-- COQC lib/Ordered.v
-- COQC lib/Heaps.v
-- COQC flocq/Calc/Fcalc_div.v
-- COQC flocq/Calc/Fcalc_sqrt.v
-- COQC flocq/Core/Fcore_ulp.v
-- COQC flocq/Prop/Fprop_Sterbenz.v
-- COQC flocq/Core/Fcore_rnd_ne.v
-- COQC flocq/Core/Fcore_FIX.v
-- COQC flocq/Core/Fcore_FLX.v
-- COQC flocq/Core/Fcore_FLT.v
-- COQC flocq/Core/Fcore_FTZ.v
-- COQC flocq/Core/Fcore.v
-- COQC flocq/Prop/Fprop_plus_error.v
-- COQC flocq/Appli/Fappli_double_round.v
-- COQC flocq/Calc/Fcalc_round.v
-- COQC flocq/Prop/Fprop_relative.v
-- COQC flocq/Appli/Fappli_rnd_odd.v
-- COQC flocq/Prop/Fprop_mult_error.v
-- COQC flocq/Appli/Fappli_IEEE.v
-- COQC flocq/Prop/Fprop_div_sqrt_error.v
-- COQC flocq/Appli/Fappli_IEEE_bits.v
-- COQC lib/Fappli_IEEE_extra.v
-- COQC ia32/Archi.v
-- COQC backend/Kildall.v
-- COQC lib/Floats.v
-- COQC common/AST.v
-- COQC common/Values.v
-- COQC cfrontend/Ctypes.v
-- COQC common/Memdata.v
-- COQC common/Switch.v
-- COQC backend/Registers.v
-- COQC common/Memtype.v
-- COQC common/Memory.v
-- COQC common/Globalenvs.v
-- COQC cfrontend/Cop.v
-- COQC common/Events.v
-- COQC cfrontend/Csyntax.v
-- COQC cfrontend/Initializers.v
-- COQC common/Smallstep.v
-- COQC ia32/Op.v
-- Identifier &#39;Step&#39; now a keyword
-- Identifier &#39;Star&#39; now a keyword
-- Identifier &#39;Plus&#39; now a keyword
-- Identifier &#39;Forever_silent&#39; now a keyword
-- Identifier &#39;Forever_reactive&#39; now a keyword
-- Identifier &#39;Nostep&#39; now a keyword
-- COQC common/Behaviors.v
-- COQC cfrontend/Csem.v
-- COQC backend/Cminor.v
-- COQC cfrontend/Clight.v
-- COQC cfrontend/SimplExpr.v
-- COQC cfrontend/ClightBigstep.v
-- COQC cfrontend/SimplLocals.v
-- COQC common/Determinism.v
-- COQC cfrontend/Ctyping.v
-- COQC cfrontend/Cstrategy.v
-- COQC cfrontend/Initializersproof.v
-- COQC cfrontend/SimplExprspec.v
-- COQC cfrontend/SimplLocalsproof.v
-- COQC cfrontend/Csharpminor.v
-- COQC backend/CminorSel.v
-- COQC ia32/Machregs.v
-- COQC backend/RTL.v
-- COQC cfrontend/Cexec.v
-- COQC cfrontend/Cshmgen.v
-- COQC cfrontend/Cminorgen.v
-- Identifier &#39;check&#39; now a keyword
-- COQC ia32/SelectOp.v
-- COQC backend/Locations.v
-- COQC backend/Inlining.v
-- COQC backend/Renumber.v
-- COQC backend/Liveness.v
-- COQC backend/ValueDomain.v
-- COQC backend/CSEdomain.v
-- COQC backend/Unusedglob.v
-- COQC cfrontend/SimplExprproof.v
-- COQC cfrontend/Cshmgenproof.v
-- COQC cfrontend/Cminorgenproof.v
-- COQC backend/SelectDiv.v
-- COQC backend/SelectLong.v
-- COQC ia32/SelectOpproof.v
-- COQC backend/RTLgen.v
-- COQC ia32/Conventions1.v
-- Identifier &#39;do&#39; now a keyword
-- COQC backend/Inliningspec.v
-- COQC backend/Renumberproof.v
-- COQC ia32/ValueAOp.v
-- COQC ia32/ConstpropOp.v
-- COQC ia32/CombineOp.v
-- COQC backend/NeedDomain.v
-- COQC backend/Unusedglobproof.v
-- COQC backend/Selection.v
-- COQC backend/SelectDivproof.v
-- COQC backend/SelectLongproof.v
-- COQC backend/RTLgenspec.v
-- COQC backend/Conventions.v
-- COQC backend/ValueAnalysis.v
-- COQC ia32/ConstpropOpproof.v
-- COQC ia32/CombineOpproof.v
-- COQC ia32/NeedOp.v
-- COQC backend/LTL.v
-- COQC backend/Tailcall.v
-- COQC backend/Inliningproof.v
-- COQC backend/RTLtyping.v
-- COQC backend/Constprop.v
-- COQC backend/CSE.v
-- COQC backend/Deadcode.v
-- COQC backend/Tunneling.v
-- COQC backend/Linear.v
-- COQC backend/Selectionproof.v
-- COQC backend/RTLgenproof.v
-- COQC backend/Tailcallproof.v
-- COQC backend/Constpropproof.v
-- COQC backend/CSEproof.v
-- COQC backend/Deadcodeproof.v
-- COQC backend/Allocation.v
-- COQC backend/Tunnelingproof.v
-- COQC backend/Lineartyping.v
-- COQC backend/Linearize.v
-- COQC backend/CleanupLabels.v
-- COQC backend/Debugvar.v
-- COQC backend/Bounds.v
-- COQC backend/Allocproof.v
-- COQC backend/Linearizeproof.v
-- COQC backend/CleanupLabelsproof.v
-- COQC ia32/Stacklayout.v
-- COQC backend/Debugvarproof.v
-- COQC backend/Mach.v
-- COQC ia32/Asm.v
-- COQC backend/Stacking.v
-- COQC backend/Stackingproof.v
-- COQC ia32/Asmgen.v
-- COQC backend/Asmgenproof0.v
-- COQC ia32/Asmgenproof1.v
-- COQC ia32/Asmgenproof.v
-- COQC driver/Compiler.v
-- COQC driver/Complements.v
-</pre></dd>
+              <dd>0 s</dd>
             </dl>
             <h2>Installation size</h2>
             <p>No files were installed.</p>
