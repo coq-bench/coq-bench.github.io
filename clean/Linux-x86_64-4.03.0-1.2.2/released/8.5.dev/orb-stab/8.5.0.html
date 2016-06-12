@@ -38,10 +38,10 @@
               orb-stab
               <small>
                 8.5.0
-                <span class="label label-success">19 s</span>
+                <span class="label label-warning">Error with dependencies</span>
               </small>
             </h1>
-            <p><em><script>document.write(moment("2016-06-11 05:12:05 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2016-06-11 05:12:05 UTC)</em><p>
+            <p><em><script>document.write(moment("2016-06-12 11:05:06 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2016-06-12 11:05:06 UTC)</em><p>
             <h2>Context</h2>
             <pre># Installed packages for system:
 base-bigarray     base  Bigarray library distributed with the OCaml compiler
@@ -77,32 +77,88 @@ coq            8.5.dev  Formal proof management system.
               <dt>Command</dt>
               <dd><code>opam list; ulimit -Sv 4000000; timeout 30m opam install -y --deps-only coq-orb-stab.8.5.0</code></dd>
               <dt>Return code</dt>
-              <dd>0</dd>
+              <dd>1024</dd>
               <dt>Duration</dt>
-              <dd>5 m 8 s</dd>
+              <dd>19 s</dd>
+              <dt>Output</dt>
+              <dd><pre># Installed packages for system:
+base-bigarray     base  Bigarray library distributed with the OCaml compiler
+base-threads      base  Threads library distributed with the OCaml compiler
+base-unix         base  Unix library distributed with the OCaml compiler
+camlp5            6.16  Preprocessor-pretty-printer of OCaml
+coq            8.5.dev  Formal proof management system.
+The following actions will be performed:
+  - install coq-algebra 8.5.0
+  - install coq-lin-alg 8.5.0
+===== 2 to install =====
+=-=- Gathering sources =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+[coq-algebra: http] Command started
+[coq-lin-alg: http] Command started
+[coq-algebra: http] Command started
+[coq-algebra.8.5.0] https://github.com/coq-contribs/algebra/archive/v8.5.0.tar.gz downloaded
+[coq-lin-alg: http] Command started
+[coq-lin-alg.8.5.0] https://github.com/coq-contribs/lin-alg/archive/v8.5.0.tar.gz downloaded
+=-=- Processing actions -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+[coq-algebra: make] Command started
+[ERROR] The compilation of coq-algebra failed at &quot;make -j6&quot;.
+[coq-algebra: rm] Command started
+#=== ERROR while installing coq-algebra.8.5.0 =================================#
+# opam-version         1.2.2
+# os                   linux
+# command              make -j6
+# path                 /home/bench/.opam/system/build/coq-algebra.8.5.0
+# compiler             system (4.03.0)
+# exit-code            2
+# env-file             /home/bench/.opam/system/build/coq-algebra.8.5.0/coq-algebra-5170-d2d111.env
+# stdout-file          /home/bench/.opam/system/build/coq-algebra.8.5.0/coq-algebra-5170-d2d111.out
+# stderr-file          /home/bench/.opam/system/build/coq-algebra.8.5.0/coq-algebra-5170-d2d111.err
+### stdout ###
+# [...]
+# &quot;coqc&quot;  -q  -R &quot;.&quot; Algebra   Categories2
+# &quot;coqc&quot;  -q  -R &quot;.&quot; Algebra   Fpart
+# &quot;coqc&quot;  -q  -R &quot;.&quot; Algebra   Inter
+# &quot;coqc&quot;  -q  -R &quot;.&quot; Algebra   Sgroup_cat
+# &quot;coqc&quot;  -q  -R &quot;.&quot; Algebra   Cantor_Bernstein
+# &quot;coqc&quot;  -q  -R &quot;.&quot; Algebra   Parts3
+# Makefile.coq:333: recipe for target &#39;Fpart.vo&#39; failed
+# Makefile.coq:333: recipe for target &#39;Cantor_Bernstein.vo&#39; failed
+# make[1]: Leaving directory &#39;/home/bench/.opam/system/build/coq-algebra.8.5.0&#39;
+# Makefile:2: recipe for target &#39;all&#39; failed
+### stderr ###
+# PX := {|
+# [...]
+#                                H&#39; |} : part_set (part_set E)
+# X := union_part (E:=E) PX : part_set E
+# XhX : included (E:=E) X (h X)
+# hXX : included (E:=E) (h X) X
+# PXeq : Equal (s:=part_set E) (h X) X
+# The term &quot;compl (E:=E) (h X)&quot; has type &quot;Predicate E&quot;
+# while it is expected to have type &quot;let (Carrier, Equal, _) := ?E in Carrier&quot;.
+# make[1]: *** [Cantor_Bernstein.vo] Error 1
+# make: *** [all] Error 2
+=-=- Error report -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+The following actions were aborted
+  - install coq-lin-alg 8.5.0
+The following actions failed
+  - install coq-algebra 8.5.0
+No changes have been performed
+</pre></dd>
             </dl>
             <h2>Install</h2>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>opam list; ulimit -Sv 4000000; timeout 30m opam install -j1 -y -v coq-orb-stab.8.5.0</code></dd>
+              <dd><code>true</code></dd>
               <dt>Return code</dt>
               <dd>0</dd>
               <dt>Duration</dt>
-              <dd>19 s</dd>
+              <dd>0 s</dd>
             </dl>
             <h2>Installation size</h2>
-            <p>Total: 377 K</p>
-            <ul>
-              <li>197 K <code>lib/coq/user-contrib/OrbStab/orbstab.glob</code></li>
-              <li>136 K <code>lib/coq/user-contrib/OrbStab/orbstab.vo</code></li>
-              <li>43 K <code>lib/coq/user-contrib/OrbStab/orbstab.v</code></li>
-              <li>1 K <code>install/coq-orb-stab.install</code></li>
-              <li>0 K <code>lib/coq-orb-stab/opam.config</code></li>
-            </ul>
+            <p>No files were installed.</p>
             <h2>Uninstall</h2>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>opam remove -y coq-orb-stab.8.5.0</code></dd>
+              <dd><code>true</code></dd>
               <dt>Return code</dt>
               <dd>0</dd>
               <dt>Missing removes</dt>
