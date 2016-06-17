@@ -38,10 +38,10 @@
               unimath-ktheory
               <small>
                 0.1.0
-                <span class="label label-danger">Lint error</span>
+                <span class="label label-warning">Error with dependencies</span>
               </small>
             </h1>
-            <p><em><script>document.write(moment("2016-06-16 02:51:16 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2016-06-16 02:51:16 UTC)</em><p>
+            <p><em><script>document.write(moment("2016-06-17 15:20:41 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2016-06-17 15:20:41 UTC)</em><p>
             <h2>Context</h2>
             <pre># Installed packages for system:
 base-bigarray   base  Bigarray library distributed with the OCaml compiler
@@ -57,20 +57,13 @@ ocamlfind      1.6.2  A library manager for OCaml
               <dt>Command</dt>
               <dd><code>ruby lint.rb released opam-coq-archive/released/packages/coq-unimath-ktheory/coq-unimath-ktheory.0.1.0</code></dd>
               <dt>Return code</dt>
-              <dd>256</dd>
-              <dt>Output</dt>
-              <dd><pre>Errors found in ~/run/opam-coq-archive/released/packages/coq-unimath-ktheory/coq-unimath-ktheory.0.1.0/opam:
-            error 21: Field &#39;opam-version&#39; doesn&#39;t match the current version,
-              validation may not be accurate
-            error 25: Missing field &#39;authors&#39;
-          warning 37: Missing field &#39;dev-repo&#39;
-</pre></dd>
+              <dd>0</dd>
             </dl>
             <h2>Dry install</h2>
             <p>Dry install with the current Coq version:</p>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>true</code></dd>
+              <dd><code>opam install -y --show-action coq-unimath-ktheory.0.1.0 coq.dev</code></dd>
               <dt>Return code</dt>
               <dd>0</dd>
             </dl>
@@ -84,11 +77,82 @@ ocamlfind      1.6.2  A library manager for OCaml
             <h2>Install dependencies</h2>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>true</code></dd>
+              <dd><code>opam list; ulimit -Sv 4000000; timeout 30m opam install -y --deps-only coq-unimath-ktheory.0.1.0</code></dd>
               <dt>Return code</dt>
-              <dd>0</dd>
+              <dd>1024</dd>
               <dt>Duration</dt>
-              <dd>0 s</dd>
+              <dd>6 m 57 s</dd>
+              <dt>Output</dt>
+              <dd><pre># Installed packages for system:
+base-bigarray   base  Bigarray library distributed with the OCaml compiler
+base-threads    base  Threads library distributed with the OCaml compiler
+base-unix       base  Unix library distributed with the OCaml compiler
+camlp5          6.16  Preprocessor-pretty-printer of OCaml
+conf-m4            1  Virtual package relying on m4
+coq              dev  Formal proof management system.
+ocamlfind      1.6.2  A library manager for OCaml
+The following actions will be performed:
+  - install coq-unimath-foundations     0.1.0
+  - install coq-unimath-category-theory 0.1.0
+===== 2 to install =====
+=-=- Gathering sources =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+[coq-unimath-category-theory: http] Command started
+[coq-unimath-foundations: http] Command started
+[coq-unimath-category-theory: http] Command started
+[coq-unimath-category-theory.0.1.0] https://github.com/UniMath/UniMath/archive/v0.1.tar.gz downloaded
+[coq-unimath-foundations: http] Command started
+[coq-unimath-foundations.0.1.0] https://github.com/UniMath/UniMath/archive/v0.1.tar.gz downloaded
+=-=- Processing actions -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+[coq-unimath-foundations: coq_makefile Make] Command started
+[coq-unimath-foundations: make] Command started
+[coq-unimath-foundations: make install] Command started
+-&gt; installed coq-unimath-foundations.0.1.0
+[coq-unimath-category-theory: coq_makefile Make] Command started
+[coq-unimath-category-theory: make] Command started
+[ERROR] The compilation of coq-unimath-category-theory failed at &quot;make -j6&quot;.
+[coq-unimath-category-theory: rm] Command started
+#=== ERROR while installing coq-unimath-category-theory.0.1.0 =================#
+# opam-version         1.2.2
+# os                   linux
+# command              make -j6
+# path                 /home/bench/.opam/system/build/coq-unimath-category-theory.0.1.0
+# compiler             system (4.03.0)
+# exit-code            2
+# env-file             /home/bench/.opam/system/build/coq-unimath-category-theory.0.1.0/coq-unimath-category-theory-16311-335865.env
+# stdout-file          /home/bench/.opam/system/build/coq-unimath-category-theory.0.1.0/coq-unimath-category-theory-16311-335865.out
+# stderr-file          /home/bench/.opam/system/build/coq-unimath-category-theory.0.1.0/coq-unimath-category-theory-16311-335865.err
+### stdout ###
+# [...]
+# COQDEP UniMath/CategoryTheory/colimits/colimits.v
+# COQDEP UniMath/CategoryTheory/colimits/chains.v
+# COQDEP UniMath/CategoryTheory/category_hset.v
+# COQDEP UniMath/CategoryTheory/category_hset_structures.v
+# COQC UniMath/CategoryTheory/precategories
+# COQC UniMath/CategoryTheory/HLevel_n_is_of_hlevel_Sn
+# COQC UniMath/CategoryTheory/total2_paths
+# Makefile:306: recipe for target &#39;UniMath/CategoryTheory/precategories.vo&#39; failed
+# Makefile:306: recipe for target &#39;UniMath/CategoryTheory/total2_paths.vo&#39; failed
+# Makefile:306: recipe for target &#39;UniMath/CategoryTheory/HLevel_n_is_of_hlevel_Sn.vo&#39; failed
+### stderr ###
+# [...]
+# File &quot;./UniMath/CategoryTheory/total2_paths.v&quot;, line 1, characters 15-47:
+# Error: Cannot find a physical path bound to logical path matching suffix
+# UniMath.Foundations.Basics.
+# File &quot;./UniMath/CategoryTheory/HLevel_n_is_of_hlevel_Sn.v&quot;, line 14, characters 15-54:
+# Error: Cannot find a physical path bound to logical path matching suffix
+# UniMath.Foundations.Basics.
+# make: *** [UniMath/CategoryTheory/precategories.vo] Error 1
+# make: *** Waiting for unfinished jobs....
+# make: *** [UniMath/CategoryTheory/total2_paths.vo] Error 1
+# make: *** [UniMath/CategoryTheory/HLevel_n_is_of_hlevel_Sn.vo] Error 1
+=-=- Error report -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+The following actions failed
+  - install coq-unimath-category-theory 0.1.0
+The following changes have been performed
+  - install coq-unimath-foundations 0.1.0
+The former state can be restored with:
+    opam switch import &quot;~/.opam/system/backup/state-20160517115245.export&quot;
+</pre></dd>
             </dl>
             <h2>Install</h2>
             <dl class="dl-horizontal">
