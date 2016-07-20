@@ -25,7 +25,7 @@
           <div id="navbar" class="collapse navbar-collapse">
             <ul class="nav navbar-nav">
               <li><a href="../..">clean / released</a></li>
-              <li class="active"><a href="">8.6.dev / charge-core - 1.1.0</a></li>
+              <li class="active"><a href="">8.6.dev / mirror-core - 1.0.2</a></li>
             </ul>
           </div>
         </div>
@@ -35,9 +35,9 @@
           <div class="col-md-12">
             <a href="../..">« Up</a>
             <h1>
-              charge-core
+              mirror-core
               <small>
-                1.1.0
+                1.0.2
                 <span class="label label-warning">Error with dependencies</span>
               </small>
             </h1>
@@ -56,7 +56,7 @@ ocamlfind        1.6.2  A library manager for OCaml
             <h2>Lint</h2>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>ruby lint.rb released opam-coq-archive/released/packages/coq-charge-core/coq-charge-core.1.1.0</code></dd>
+              <dd><code>ruby lint.rb released opam-coq-archive/released/packages/coq-mirror-core/coq-mirror-core.1.0.2</code></dd>
               <dt>Return code</dt>
               <dd>0</dd>
             </dl>
@@ -64,7 +64,7 @@ ocamlfind        1.6.2  A library manager for OCaml
             <p>Dry install with the current Coq version:</p>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>opam install -y --show-action coq-charge-core.1.1.0 coq.8.6.dev</code></dd>
+              <dd><code>opam install -y --show-action coq-mirror-core.1.0.2 coq.8.6.dev</code></dd>
               <dt>Return code</dt>
               <dd>0</dd>
             </dl>
@@ -78,11 +78,11 @@ ocamlfind        1.6.2  A library manager for OCaml
             <h2>Install dependencies</h2>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>opam list; ulimit -Sv 4000000; timeout 30m opam install -y --deps-only coq-charge-core.1.1.0</code></dd>
+              <dd><code>opam list; ulimit -Sv 4000000; timeout 30m opam install -y --deps-only coq-mirror-core.1.0.2</code></dd>
               <dt>Return code</dt>
               <dd>1024</dd>
               <dt>Duration</dt>
-              <dd>22 s</dd>
+              <dd>23 s</dd>
               <dt>Output</dt>
               <dd><pre># Installed packages for system:
 base-bigarray     base  Bigarray library distributed with the OCaml compiler
@@ -94,13 +94,21 @@ coq            8.6.dev  Formal proof management system.
 lablgtk         2.18.4  OCaml interface to GTK+
 ocamlfind        1.6.2  A library manager for OCaml
 The following actions will be performed:
-  - install coq-ext-lib 0.9.4
+  - install coq-ext-lib      0.9.4
+  - install coq-plugin-utils 1.1.0
+===== 2 to install =====
 =-=- Gathering sources =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 [coq-ext-lib: http] Command started
+[coq-plugin-utils: http] Command started
+[coq-plugin-utils: http] Command started
+[coq-plugin-utils.1.1.0] https://github.com/gmalecha/coq-plugin-utils/archive/v1.1.0-8.5.tar.gz downloaded
 [coq-ext-lib: http] Command started
 [coq-ext-lib.0.9.4] https://github.com/coq-ext-lib/coq-ext-lib/archive/v0.9.4.tar.gz downloaded
 =-=- Processing actions -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 [coq-ext-lib: make] Command started
+[coq-plugin-utils: make] Command started
+[ERROR] The compilation of coq-plugin-utils failed at &quot;make -j6&quot;.
+[coq-plugin-utils: rm] Command started
 [ERROR] The compilation of coq-ext-lib failed at &quot;make -j6&quot;.
 [coq-ext-lib: rm] Command started
 #=== ERROR while installing coq-ext-lib.0.9.4 =================================#
@@ -110,18 +118,18 @@ The following actions will be performed:
 # path                 /home/bench/.opam/system/build/coq-ext-lib.0.9.4
 # compiler             system (4.03.0)
 # exit-code            2
-# env-file             /home/bench/.opam/system/build/coq-ext-lib.0.9.4/coq-ext-lib-8643-e7966f.env
-# stdout-file          /home/bench/.opam/system/build/coq-ext-lib.0.9.4/coq-ext-lib-8643-e7966f.out
-# stderr-file          /home/bench/.opam/system/build/coq-ext-lib.0.9.4/coq-ext-lib-8643-e7966f.err
+# env-file             /home/bench/.opam/system/build/coq-ext-lib.0.9.4/coq-ext-lib-15384-d2d111.env
+# stdout-file          /home/bench/.opam/system/build/coq-ext-lib.0.9.4/coq-ext-lib-15384-d2d111.out
+# stderr-file          /home/bench/.opam/system/build/coq-ext-lib.0.9.4/coq-ext-lib-15384-d2d111.err
 ### stdout ###
 # [...]
+# COQC theories/Tactics/Consider.v
+# COQC theories/Core/Type.v
 # COQC theories/Structures/Monad.v
 # COQC theories/Structures/Traversable.v
 # COQC theories/Data/Eq.v
 # COQC theories/Recur/Relation.v
-# COQC theories/Tactics/Cases.v
-# COQC theories/Structures/EqDep.v
-# COQC theories/Core/CmpDec.v
+# COQC theories/Structures/Reducible.v
 # Makefile.coq:387: recipe for target &#39;theories/Core/Type.vo&#39; failed
 # make[1]: Leaving directory &#39;/home/bench/.opam/system/build/coq-ext-lib.0.9.4&#39;
 # Makefile:4: recipe for target &#39;theories&#39; failed
@@ -137,9 +145,44 @@ The following actions will be performed:
 # make[1]: *** [theories/Core/Type.vo] Error 1
 # make[1]: *** Waiting for unfinished jobs....
 # make: *** [theories] Error 2
+#=== ERROR while installing coq-plugin-utils.1.1.0 ============================#
+# opam-version         1.2.2
+# os                   linux
+# command              make -j6
+# path                 /home/bench/.opam/system/build/coq-plugin-utils.1.1.0
+# compiler             system (4.03.0)
+# exit-code            2
+# env-file             /home/bench/.opam/system/build/coq-plugin-utils.1.1.0/coq-plugin-utils-15384-a00279.env
+# stdout-file          /home/bench/.opam/system/build/coq-plugin-utils.1.1.0/coq-plugin-utils-15384-a00279.out
+# stderr-file          /home/bench/.opam/system/build/coq-plugin-utils.1.1.0/coq-plugin-utils-15384-a00279.err
+### stdout ###
+# [...]
+# CAMLC -c src/coqstd.ml
+# CAMLOPT -c -for-pack Plugin_utils src/coqstd.ml
+# CAMLC -c src/use_ltac.ml
+# CAMLOPT -c -for-pack Plugin_utils src/use_ltac.ml
+# CAMLOPT -c -for-pack Plugin_utils src/term_match.ml
+# CAMLC -c src/term_match.ml
+# Makefile.coq:459: recipe for target &#39;src/use_ltac.cmo&#39; failed
+# Makefile.coq:312: recipe for target &#39;src/use_ltac.cmx&#39; failed
+# make[1]: Leaving directory &#39;/home/bench/.opam/system/build/coq-plugin-utils.1.1.0&#39;
+# Makefile:2: recipe for target &#39;plugin&#39; failed
+### stderr ###
+# [...]
+# Warning 58: no cmx file was found in path for module Coqlib, and its interface was not compiled with -opaque
+# File &quot;_none_&quot;, line 1:
+# Warning 58: no cmx file was found in path for module Universes, and its interface was not compiled with -opaque
+# File &quot;_none_&quot;, line 1:
+# Warning 58: no cmx file was found in path for module Term, and its interface was not compiled with -opaque
+# File &quot;_none_&quot;, line 1:
+# Warning 58: no cmx file was found in path for module Term, and its interface was not compiled with -opaque
+# File &quot;_none_&quot;, line 1:
+# Warning 58: no cmx file was found in path for module Vars, and its interface was not compiled with -opaque
+# make: *** [plugin] Error 2
 =-=- Error report -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 The following actions failed
-  - install coq-ext-lib 0.9.4
+  - install coq-ext-lib      0.9.4
+  - install coq-plugin-utils 1.1.0
 No changes have been performed
 </pre></dd>
             </dl>
