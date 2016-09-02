@@ -25,7 +25,7 @@
           <div id="navbar" class="collapse navbar-collapse">
             <ul class="nav navbar-nav">
               <li><a href="../..">clean / released</a></li>
-              <li class="active"><a href="">dev / mathcomp-ssreflect - 1.6</a></li>
+              <li class="active"><a href="">dev / interval - 3.1.0</a></li>
             </ul>
           </div>
         </div>
@@ -35,10 +35,10 @@
           <div class="col-md-12">
             <a href="../..">« Up</a>
             <h1>
-              mathcomp-ssreflect
+              interval
               <small>
-                1.6
-                <span class="label label-danger">Error</span>
+                3.1.0
+                <span class="label label-warning">Error with dependencies</span>
               </small>
             </h1>
             <p><em><script>document.write(moment("2016-09-02 19:43:04 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2016-09-02 19:43:04 UTC)</em><p>
@@ -55,7 +55,7 @@ ocamlfind      1.6.2  A library manager for OCaml
             <h2>Lint</h2>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>ruby lint.rb released opam-coq-archive/released/packages/coq-mathcomp-ssreflect/coq-mathcomp-ssreflect.1.6</code></dd>
+              <dd><code>ruby lint.rb released opam-coq-archive/released/packages/coq-interval/coq-interval.3.1.0</code></dd>
               <dt>Return code</dt>
               <dd>0</dd>
             </dl>
@@ -63,7 +63,7 @@ ocamlfind      1.6.2  A library manager for OCaml
             <p>Dry install with the current Coq version:</p>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>opam install -y --show-action coq-mathcomp-ssreflect.1.6 coq.dev</code></dd>
+              <dd><code>opam install -y --show-action coq-interval.3.1.0 coq.dev</code></dd>
               <dt>Return code</dt>
               <dd>0</dd>
             </dl>
@@ -77,20 +77,11 @@ ocamlfind      1.6.2  A library manager for OCaml
             <h2>Install dependencies</h2>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>opam list; ulimit -Sv 4000000; timeout 30m opam install -y --deps-only coq-mathcomp-ssreflect.1.6</code></dd>
-              <dt>Return code</dt>
-              <dd>0</dd>
-              <dt>Duration</dt>
-              <dd>13 s</dd>
-            </dl>
-            <h2>Install</h2>
-            <dl class="dl-horizontal">
-              <dt>Command</dt>
-              <dd><code>opam list; ulimit -Sv 4000000; timeout 30m opam install -j1 -y -v coq-mathcomp-ssreflect.1.6</code></dd>
+              <dd><code>opam list; ulimit -Sv 4000000; timeout 30m opam install -y --deps-only coq-interval.3.1.0</code></dd>
               <dt>Return code</dt>
               <dd>1024</dd>
               <dt>Duration</dt>
-              <dd>22 s</dd>
+              <dd>1 m 50 s</dd>
               <dt>Output</dt>
               <dd><pre># Installed packages for system:
 base-bigarray   base  Bigarray library distributed with the OCaml compiler
@@ -101,76 +92,73 @@ conf-m4            1  Virtual package relying on m4
 coq              dev  Formal proof management system.
 ocamlfind      1.6.2  A library manager for OCaml
 The following actions will be performed:
-  - install coq-mathcomp-ssreflect 1.6
+  - install coq-flocq              2.5.1
+  - install coq-mathcomp-ssreflect 1.6  
+  - install coq-coquelicot         2.1.1
+===== 3 to install =====
 =-=- Gathering sources =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+[coq-coquelicot: http] Command started
+[coq-flocq: http] Command started
 [coq-mathcomp-ssreflect: http] Command started
+[coq-flocq: http] Command started
+[coq-flocq.2.5.1] https://gforge.inria.fr/frs/download.php/file/35430/flocq-2.5.1.tar.gz downloaded
+[coq-coquelicot: http] Command started
+[coq-coquelicot.2.1.1] https://gforge.inria.fr/frs/download.php/file/35429/coquelicot-2.1.1.tar.gz downloaded
 [coq-mathcomp-ssreflect: http] Command started
 [coq-mathcomp-ssreflect.1.6] http://github.com/math-comp/math-comp/archive/mathcomp-1.6.tar.gz downloaded
 =-=- Processing actions -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
-[coq-mathcomp-ssreflect: make 1] Command started
-+ make &quot;-C&quot; &quot;mathcomp/ssreflect&quot; &quot;-j&quot; &quot;1&quot; (CWD=/home/bench/.opam/system/build/coq-mathcomp-ssreflect.1.6)
-- make: Entering directory &#39;/home/bench/.opam/system/build/coq-mathcomp-ssreflect.1.6/mathcomp/ssreflect&#39;
-- Generating Makefile.coq for Coq trunk with COQBIN=/home/bench/.opam/system/bin//
-- # Override COQDEP to find only the &quot;right&quot; copy .ml files
-- CAMLDEP ssrmatching.mli
-- COQDEP ssreflect.mllib
-- CAMLDEP -pp ssreflect.ml4
-- *** Warning: ssreflect.mllib already found in . (discarding ./ssreflect.mllib)
-- Redundant [RAW_TYPED AS] clause in [ARGUMENT EXTEND ssrterm].
-- Redundant [GLOB_TYPED AS] clause in [ARGUMENT EXTEND ssrterm].
-- CAMLDEP -pp ssrmatching.ml4
-- COQDEP tuple.v
-- COQDEP prime.v
-- COQDEP path.v
-- COQDEP generic_quotient.v
-- COQDEP fintype.v
-- COQDEP finset.v
-- COQDEP fingraph.v
-- COQDEP finfun.v
-- COQDEP div.v
-- COQDEP choice.v
-- Redundant [RAW_TYPED AS] clause in [ARGUMENT EXTEND cpattern].
-- Redundant [GLOB_TYPED AS] clause in [ARGUMENT EXTEND cpattern].
-- Redundant [RAW_TYPED AS] clause in [ARGUMENT EXTEND lcpattern].
-- Redundant [GLOB_TYPED AS] clause in [ARGUMENT EXTEND lcpattern].
-- COQDEP binomial.v
-- COQDEP bigop.v
-- COQDEP ssrnat.v
-- COQDEP ssrmatching.v
-- COQDEP ssrfun.v
-- COQDEP ssreflect.v
-- COQDEP ssrbool.v
-- COQDEP seq.v
-- COQDEP eqtype.v
-- COQDEP all_ssreflect.v
-- CAMLC -c ssrmatching.mli
-- CAMLC -pp -c ssrmatching.ml4
-- findlib: [WARNING] Interface ssrmatching.cmi occurs in several directories: /home/bench/.opam/system/lib/coq/plugins/ssrmatching, .
-- Makefile.coq:427: recipe for target &#39;ssrmatching.cmo&#39; failed
-- Makefile:24: recipe for target &#39;all&#39; failed
-- make: Leaving directory &#39;/home/bench/.opam/system/build/coq-mathcomp-ssreflect.1.6/mathcomp/ssreflect&#39;
-- Redundant [RAW_TYPED AS] clause in [ARGUMENT EXTEND cpattern].
-- Redundant [GLOB_TYPED AS] clause in [ARGUMENT EXTEND cpattern].
-- Redundant [RAW_TYPED AS] clause in [ARGUMENT EXTEND lcpattern].
-- Redundant [GLOB_TYPED AS] clause in [ARGUMENT EXTEND lcpattern].
-- File &quot;ssrmatching.ml4&quot;, line 6, characters 19-31:
-- Error: Unbound module Lexer
-- make[1]: *** [ssrmatching.cmo] Error 2
-- make: *** [all] Error 2
+[coq-flocq: ./configure] Command started
+[coq-mathcomp-ssreflect: make 6] Command started
 [ERROR] The compilation of coq-mathcomp-ssreflect failed at &quot;make -C
-        mathcomp/ssreflect -j 1&quot;.
+        mathcomp/ssreflect -j 6&quot;.
 [coq-mathcomp-ssreflect: sh] Command started
-+ sh &quot;-c&quot; &quot;rm -rf &#39;/home/bench/.opam/system/lib/coq/user-contrib/mathcomp&#39;&quot; (CWD=/home/bench/.opam/system/build/coq-mathcomp-ssreflect.1.6)
+[coq-flocq: ./remake] Command started
+[ERROR] The compilation of coq-flocq failed at &quot;./remake -j6&quot;.
+[coq-flocq: rm] Command started
+#=== ERROR while installing coq-flocq.2.5.1 ===================================#
+# opam-version         1.2.2
+# os                   linux
+# command              ./remake -j6
+# path                 /home/bench/.opam/system/build/coq-flocq.2.5.1
+# compiler             system (4.03.0)
+# exit-code            1
+# env-file             /home/bench/.opam/system/build/coq-flocq.2.5.1/coq-flocq-22753-e4db2f.env
+# stdout-file          /home/bench/.opam/system/build/coq-flocq.2.5.1/coq-flocq-22753-e4db2f.out
+# stderr-file          /home/bench/.opam/system/build/coq-flocq.2.5.1/coq-flocq-22753-e4db2f.err
+### stdout ###
+# [...]
+# Finished src/Core/Fcore_FTZ.vo
+# Finished src/Core/Fcore_FLT.vo
+# Finished src/Core/Fcore.vo
+# Finished src/Prop/Fprop_plus_error.vo
+# Finished src/Prop/Fprop_mult_error.vo
+# Finished src/Prop/Fprop_relative.vo
+# Finished src/Calc/Fcalc_round.vo
+# Finished src/Appli/Fappli_rnd_odd.vo
+# Finished src/Prop/Fprop_div_sqrt_error.vo
+# Finished src/Appli/Fappli_double_round.vo
+### stderr ###
+# [...]
+# Warning: Implicit Arguments is deprecated; use Arguments instead
+# [deprecated-implicit-arguments,deprecated]
+# File &quot;./src/Appli/Fappli_IEEE.v&quot;, line 49, characters 0-34:
+# Warning: Implicit Arguments is deprecated; use Arguments instead
+# [deprecated-implicit-arguments,deprecated]
+# File &quot;./src/Appli/Fappli_IEEE.v&quot;, line 419, characters 0-11:
+# Error: No product even after head-reduction.
+# Failed to build src/Appli/Fappli_IEEE.vo
+# Failed to build all
+# Failed to build src/Appli/Fappli_IEEE_bits.vo
 #=== ERROR while installing coq-mathcomp-ssreflect.1.6 ========================#
 # opam-version         1.2.2
 # os                   linux
-# command              make -C mathcomp/ssreflect -j 1
+# command              make -C mathcomp/ssreflect -j 6
 # path                 /home/bench/.opam/system/build/coq-mathcomp-ssreflect.1.6
 # compiler             system (4.03.0)
 # exit-code            2
-# env-file             /home/bench/.opam/system/build/coq-mathcomp-ssreflect.1.6/coq-mathcomp-ssreflect-25624-e7966f.env
-# stdout-file          /home/bench/.opam/system/build/coq-mathcomp-ssreflect.1.6/coq-mathcomp-ssreflect-25624-e7966f.out
-# stderr-file          /home/bench/.opam/system/build/coq-mathcomp-ssreflect.1.6/coq-mathcomp-ssreflect-25624-e7966f.err
+# env-file             /home/bench/.opam/system/build/coq-mathcomp-ssreflect.1.6/coq-mathcomp-ssreflect-22753-6cc03f.env
+# stdout-file          /home/bench/.opam/system/build/coq-mathcomp-ssreflect.1.6/coq-mathcomp-ssreflect-22753-6cc03f.out
+# stderr-file          /home/bench/.opam/system/build/coq-mathcomp-ssreflect.1.6/coq-mathcomp-ssreflect-22753-6cc03f.err
 ### stdout ###
 # [...]
 # COQDEP ssreflect.v
@@ -196,11 +184,22 @@ The following actions will be performed:
 # make[1]: *** [ssrmatching.cmo] Error 2
 # make: *** [all] Error 2
 =-=- Error report -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+The following actions were aborted
+  - install coq-coquelicot 2.1.1
 The following actions failed
-  - install coq-mathcomp-ssreflect 1.6
+  - install coq-flocq              2.5.1
+  - install coq-mathcomp-ssreflect 1.6  
 No changes have been performed
-&#39;opam install -j1 -y -v coq-mathcomp-ssreflect.1.6&#39; failed.
 </pre></dd>
+            </dl>
+            <h2>Install</h2>
+            <dl class="dl-horizontal">
+              <dt>Command</dt>
+              <dd><code>true</code></dd>
+              <dt>Return code</dt>
+              <dd>0</dd>
+              <dt>Duration</dt>
+              <dd>0 s</dd>
             </dl>
             <h2>Installation size</h2>
             <p>No files were installed.</p>
