@@ -38,10 +38,10 @@
               charge-core
               <small>
                 1.0.1
-                <span class="label label-danger">Uninstallation error</span>
+                <span class="label label-warning">Error with dependencies</span>
               </small>
             </h1>
-            <p><em><script>document.write(moment("2016-09-01 03:30:52 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2016-09-01 03:30:52 UTC)</em><p>
+            <p><em><script>document.write(moment("2016-09-03 13:44:26 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2016-09-03 13:44:26 UTC)</em><p>
             <h2>Context</h2>
             <pre># Installed packages for system:
 base-bigarray     base  Bigarray library distributed with the OCaml compiler
@@ -77,84 +77,86 @@ coq            8.5.dev  Formal proof management system.
               <dt>Command</dt>
               <dd><code>opam list; ulimit -Sv 4000000; timeout 30m opam install -y --deps-only coq-charge-core.1.0.1</code></dd>
               <dt>Return code</dt>
-              <dd>0</dd>
+              <dd>1024</dd>
               <dt>Duration</dt>
-              <dd>42 s</dd>
+              <dd>37 s</dd>
+              <dt>Output</dt>
+              <dd><pre># Installed packages for system:
+base-bigarray     base  Bigarray library distributed with the OCaml compiler
+base-threads      base  Threads library distributed with the OCaml compiler
+base-unix         base  Unix library distributed with the OCaml compiler
+camlp5            6.16  Preprocessor-pretty-printer of OCaml
+coq            8.5.dev  Formal proof management system.
+The following actions will be performed:
+  - install coq-ext-lib 0.9.4
+=-=- Gathering sources =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+[coq-ext-lib: http] Command started
+[coq-ext-lib: http] Command started
+[coq-ext-lib.0.9.4] https://github.com/coq-ext-lib/coq-ext-lib/archive/v0.9.4.tar.gz downloaded
+=-=- Processing actions -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+[coq-ext-lib: make] Command started
+[ERROR] The compilation of coq-ext-lib failed at &quot;make -j6&quot;.
+[coq-ext-lib: rm] Command started
+#=== ERROR while installing coq-ext-lib.0.9.4 =================================#
+# opam-version         1.2.2
+# os                   linux
+# command              make -j6
+# path                 /home/bench/.opam/system/build/coq-ext-lib.0.9.4
+# compiler             system (4.03.0)
+# exit-code            2
+# env-file             /home/bench/.opam/system/build/coq-ext-lib.0.9.4/coq-ext-lib-10440-e7966f.env
+# stdout-file          /home/bench/.opam/system/build/coq-ext-lib.0.9.4/coq-ext-lib-10440-e7966f.out
+# stderr-file          /home/bench/.opam/system/build/coq-ext-lib.0.9.4/coq-ext-lib-10440-e7966f.err
+### stdout ###
+# [...]
+# &quot;coqc&quot;  -q  -Q &quot;theories&quot; ExtLib   theories/Data/Set/ListSet.v
+# &quot;coqc&quot;  -q  -Q &quot;theories&quot; ExtLib   theories/Data/HList.v
+# &quot;coqc&quot;  -q  -Q &quot;theories&quot; ExtLib   theories/Generic/Func.v
+# &quot;coqc&quot;  -q  -Q &quot;theories&quot; ExtLib   theories/Data/SumN.v
+# &quot;coqc&quot;  -q  -Q &quot;theories&quot; ExtLib   theories/Generic/Ind.v
+# Makefile.coq:380: recipe for target &#39;theories/Data/HList.vo&#39; failed
+#      = &quot;-(5,-(6,-(7,-())))&quot;
+#      : string
+# make[1]: Leaving directory &#39;/home/bench/.opam/system/build/coq-ext-lib.0.9.4&#39;
+# Makefile:4: recipe for target &#39;theories&#39; failed
+### stderr ###
+# [...]
+# x, y : F l
+# h1, h2 : hlist ls
+# pf1 : (fun x : iT =&gt; eq) l x y
+# pf2 : equiv_hlist (fun x : iT =&gt; eq) h1 h2
+# H0 : equiv_hlist (fun x0 : iT =&gt; eq) h1 h2 &lt;-&gt; h1 = h2
+# Unable to unify &quot;equiv_hlist (fun x0 : iT =&gt; eq) h1 h2 &lt;-&gt; h1 = h2&quot; with
+#  &quot;x = y&quot;.
+# make[1]: *** [theories/Data/HList.vo] Error 1
+# make[1]: *** Waiting for unfinished jobs....
+# make: *** [theories] Error 2
+=-=- Error report -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+The following actions failed
+  - install coq-ext-lib 0.9.4
+No changes have been performed
+</pre></dd>
             </dl>
             <h2>Install</h2>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>opam list; ulimit -Sv 4000000; timeout 30m opam install -j1 -y -v coq-charge-core.1.0.1</code></dd>
+              <dd><code>true</code></dd>
               <dt>Return code</dt>
               <dd>0</dd>
               <dt>Duration</dt>
-              <dd>1 m 7 s</dd>
+              <dd>0 s</dd>
             </dl>
             <h2>Installation size</h2>
-            <p>Total: 1,274 K</p>
-            <ul>
-              <li>137 K <code>lib/coq/user-contrib/ChargeCore/SepAlg/SepAlgPfun.vo</code></li>
-              <li>128 K <code>lib/coq/user-contrib/ChargeCore/Logics/BILInsts.vo</code></li>
-              <li>105 K <code>lib/coq/user-contrib/ChargeCore/Logics/ILogic.vo</code></li>
-              <li>99 K <code>lib/coq/user-contrib/ChargeCore/Logics/ILInsts.vo</code></li>
-              <li>89 K <code>lib/coq/user-contrib/ChargeCore/Logics/ILEmbed.vo</code></li>
-              <li>81 K <code>lib/coq/user-contrib/ChargeCore/Logics/Later.vo</code></li>
-              <li>64 K <code>lib/coq/user-contrib/ChargeCore/Logics/IBILogic.vo</code></li>
-              <li>63 K <code>lib/coq/user-contrib/ChargeCore/Logics/BILogic.vo</code></li>
-              <li>57 K <code>lib/coq/user-contrib/ChargeCore/Logics/PureInsts.vo</code></li>
-              <li>55 K <code>lib/coq/user-contrib/ChargeCore/SepAlg/SepAlg.vo</code></li>
-              <li>54 K <code>lib/coq/user-contrib/ChargeCore/Open/Subst.vo</code></li>
-              <li>49 K <code>lib/coq/user-contrib/ChargeCore/Tactics/Lemmas.vo</code></li>
-              <li>49 K <code>lib/coq/user-contrib/ChargeCore/SepAlg/SepAlgInsts.vo</code></li>
-              <li>39 K <code>lib/coq/user-contrib/ChargeCore/Tactics/Indexed.vo</code></li>
-              <li>37 K <code>lib/coq/user-contrib/ChargeCore/Tactics/Tactics.vo</code></li>
-              <li>36 K <code>lib/coq/user-contrib/ChargeCore/Logics/Pure.vo</code></li>
-              <li>36 K <code>lib/coq/user-contrib/ChargeCore/Tactics/Model.vo</code></li>
-              <li>28 K <code>lib/coq/user-contrib/ChargeCore/Open/OpenILogic.vo</code></li>
-              <li>27 K <code>lib/coq/user-contrib/ChargeCore/SepAlg/UUSepAlg.vo</code></li>
-              <li>17 K <code>lib/coq/user-contrib/ChargeCore/Open/Open.vo</code></li>
-              <li>12 K <code>lib/coq/user-contrib/ChargeCore/Open/Stack.vo</code></li>
-              <li>1 K <code>lib/coq/user-contrib/ChargeCore/Open/OptionILogic.vo</code></li>
-              <li>1 K <code>install/coq-charge-core.install</code></li>
-              <li>0 K <code>lib/coq-charge-core/opam.config</code></li>
-            </ul>
+            <p>No files were installed.</p>
             <h2>Uninstall</h2>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>opam remove -y coq-charge-core.1.0.1</code></dd>
+              <dd><code>true</code></dd>
               <dt>Return code</dt>
               <dd>0</dd>
               <dt>Missing removes</dt>
               <dd>
-                <ul>
-                  <li><code>/home/bench/.opam/system/lib/coq/user-contrib/ChargeCore</code></li>
-                  <li><code>/home/bench/.opam/system/lib/coq/user-contrib/ChargeCore/Open</code></li>
-                  <li><code>/home/bench/.opam/system/lib/coq/user-contrib/ChargeCore/Open/Open.vo</code></li>
-                  <li><code>/home/bench/.opam/system/lib/coq/user-contrib/ChargeCore/Open/Stack.vo</code></li>
-                  <li><code>/home/bench/.opam/system/lib/coq/user-contrib/ChargeCore/Open/Subst.vo</code></li>
-                  <li><code>/home/bench/.opam/system/lib/coq/user-contrib/ChargeCore/Open/OpenILogic.vo</code></li>
-                  <li><code>/home/bench/.opam/system/lib/coq/user-contrib/ChargeCore/Open/OptionILogic.vo</code></li>
-                  <li><code>/home/bench/.opam/system/lib/coq/user-contrib/ChargeCore/Logics</code></li>
-                  <li><code>/home/bench/.opam/system/lib/coq/user-contrib/ChargeCore/Logics/BILInsts.vo</code></li>
-                  <li><code>/home/bench/.opam/system/lib/coq/user-contrib/ChargeCore/Logics/ILogic.vo</code></li>
-                  <li><code>/home/bench/.opam/system/lib/coq/user-contrib/ChargeCore/Logics/Later.vo</code></li>
-                  <li><code>/home/bench/.opam/system/lib/coq/user-contrib/ChargeCore/Logics/ILEmbed.vo</code></li>
-                  <li><code>/home/bench/.opam/system/lib/coq/user-contrib/ChargeCore/Logics/PureInsts.vo</code></li>
-                  <li><code>/home/bench/.opam/system/lib/coq/user-contrib/ChargeCore/Logics/Pure.vo</code></li>
-                  <li><code>/home/bench/.opam/system/lib/coq/user-contrib/ChargeCore/Logics/ILInsts.vo</code></li>
-                  <li><code>/home/bench/.opam/system/lib/coq/user-contrib/ChargeCore/Logics/BILogic.vo</code></li>
-                  <li><code>/home/bench/.opam/system/lib/coq/user-contrib/ChargeCore/Logics/IBILogic.vo</code></li>
-                  <li><code>/home/bench/.opam/system/lib/coq/user-contrib/ChargeCore/SepAlg</code></li>
-                  <li><code>/home/bench/.opam/system/lib/coq/user-contrib/ChargeCore/SepAlg/SepAlgInsts.vo</code></li>
-                  <li><code>/home/bench/.opam/system/lib/coq/user-contrib/ChargeCore/SepAlg/SepAlg.vo</code></li>
-                  <li><code>/home/bench/.opam/system/lib/coq/user-contrib/ChargeCore/SepAlg/UUSepAlg.vo</code></li>
-                  <li><code>/home/bench/.opam/system/lib/coq/user-contrib/ChargeCore/SepAlg/SepAlgPfun.vo</code></li>
-                  <li><code>/home/bench/.opam/system/lib/coq/user-contrib/ChargeCore/Tactics</code></li>
-                  <li><code>/home/bench/.opam/system/lib/coq/user-contrib/ChargeCore/Tactics/Indexed.vo</code></li>
-                  <li><code>/home/bench/.opam/system/lib/coq/user-contrib/ChargeCore/Tactics/Model.vo</code></li>
-                  <li><code>/home/bench/.opam/system/lib/coq/user-contrib/ChargeCore/Tactics/Tactics.vo</code></li>
-                  <li><code>/home/bench/.opam/system/lib/coq/user-contrib/ChargeCore/Tactics/Lemmas.vo</code></li>
-                </ul>
+                none
               </dd>
               <dt>Wrong removes</dt>
               <dd>
