@@ -38,10 +38,10 @@
               unimath-dedekind
               <small>
                 0.1.0
-                <span class="label label-danger">Error</span>
+                <span class="label label-warning">Error with dependencies</span>
               </small>
             </h1>
-            <p><em><script>document.write(moment("2016-09-10 09:53:07 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2016-09-10 09:53:07 UTC)</em><p>
+            <p><em><script>document.write(moment("2016-09-12 22:22:36 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2016-09-12 22:22:36 UTC)</em><p>
             <h2>Context</h2>
             <pre># Installed packages for system:
 base-bigarray     base  Bigarray library distributed with the OCaml compiler
@@ -80,204 +80,91 @@ ocamlfind        1.6.2  A library manager for OCaml
               <dt>Command</dt>
               <dd><code>opam list; ulimit -Sv 4000000; timeout 30m opam install -y --deps-only coq-unimath-dedekind.0.1.0</code></dd>
               <dt>Return code</dt>
-              <dd>0</dd>
+              <dd>1024</dd>
               <dt>Duration</dt>
-              <dd>9 m 2 s</dd>
+              <dd>3 m 27 s</dd>
+              <dt>Output</dt>
+              <dd><pre># Installed packages for system:
+base-bigarray     base  Bigarray library distributed with the OCaml compiler
+base-threads      base  Threads library distributed with the OCaml compiler
+base-unix         base  Unix library distributed with the OCaml compiler
+camlp5            6.16  Preprocessor-pretty-printer of OCaml
+conf-m4              1  Virtual package relying on m4
+coq            8.6.dev  Formal proof management system.
+lablgtk         2.18.5  OCaml interface to GTK+
+ocamlfind        1.6.2  A library manager for OCaml
+The following actions will be performed:
+  - install coq-unimath-foundations     0.1.0
+  - install coq-unimath-category-theory 0.1.0
+  - install coq-unimath-ktheory         0.1.0
+===== 3 to install =====
+=-=- Gathering sources =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+[coq-unimath-category-theory: http] Command started
+[coq-unimath-foundations: http] Command started
+[coq-unimath-ktheory: http] Command started
+[coq-unimath-category-theory: http] Command started
+[coq-unimath-category-theory.0.1.0] https://github.com/UniMath/UniMath/archive/v0.1.tar.gz downloaded
+[coq-unimath-foundations: http] Command started
+[coq-unimath-foundations.0.1.0] https://github.com/UniMath/UniMath/archive/v0.1.tar.gz downloaded
+[coq-unimath-ktheory: http] Command started
+[coq-unimath-ktheory.0.1.0] https://github.com/UniMath/UniMath/archive/v0.1.tar.gz downloaded
+=-=- Processing actions -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+[coq-unimath-foundations: coq_makefile Make] Command started
+[coq-unimath-foundations: make] Command started
+[ERROR] The compilation of coq-unimath-foundations failed at &quot;make -j6&quot;.
+[coq-unimath-foundations: rm] Command started
+[coq-unimath-foundations: sh] Command started
+#=== ERROR while installing coq-unimath-foundations.0.1.0 =====================#
+# opam-version         1.2.2
+# os                   linux
+# command              make -j6
+# path                 /home/bench/.opam/system/build/coq-unimath-foundations.0.1.0
+# compiler             system (4.03.0)
+# exit-code            2
+# env-file             /home/bench/.opam/system/build/coq-unimath-foundations.0.1.0/coq-unimath-foundations-16665-d0f245.env
+# stdout-file          /home/bench/.opam/system/build/coq-unimath-foundations.0.1.0/coq-unimath-foundations-16665-d0f245.out
+# stderr-file          /home/bench/.opam/system/build/coq-unimath-foundations.0.1.0/coq-unimath-foundations-16665-d0f245.err
+### stdout ###
+# [...]
+# COQC UniMath/Foundations/Basics/Sets.v
+# COQC UniMath/Foundations/Algebra/BinaryOperations.v
+# COQC UniMath/Foundations/Basics/Tests.v
+# COQC UniMath/Foundations/Algebra/Apartness.v
+# COQC UniMath/Foundations/Algebra/Monoids_and_Groups.v
+# COQC UniMath/Foundations/Algebra/Rigs_and_Rings.v
+# COQC UniMath/Foundations/Algebra/Domains_and_Fields.v
+# COQC UniMath/Foundations/Algebra/DivisionRig.v
+# COQC UniMath/Foundations/NumberSystems/NaturalNumbers.v
+# Makefile:298: recipe for target &#39;UniMath/Foundations/NumberSystems/NaturalNumbers.vo&#39; failed
+### stderr ###
+# [...]
+# Warning: Notation _ &lt; _ was already used in scope nat_scope
+# [notation-overridden,parsing]
+# File &quot;./UniMath/Foundations/NumberSystems/NaturalNumbers.v&quot;, line 297, characters 0-51:
+# Warning: Notation _ &lt;= _ was already used in scope nat_scope
+# [notation-overridden,parsing]
+# File &quot;./UniMath/Foundations/NumberSystems/NaturalNumbers.v&quot;, line 302, characters 70-71:
+# Error: Cannot infer this placeholder of type &quot;nat&quot; in environment:
+# n : nat
+# make: *** [UniMath/Foundations/NumberSystems/NaturalNumbers.vo] Error 1
+# make: *** Waiting for unfinished jobs....
+=-=- Error report -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+The following actions were aborted
+  - install coq-unimath-category-theory 0.1.0
+  - install coq-unimath-ktheory         0.1.0
+The following actions failed
+  - install coq-unimath-foundations 0.1.0
+No changes have been performed
+</pre></dd>
             </dl>
             <h2>Install</h2>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>opam list; ulimit -Sv 4000000; timeout 30m opam install -j1 -y -v coq-unimath-dedekind.0.1.0</code></dd>
+              <dd><code>true</code></dd>
               <dt>Return code</dt>
-              <dd>1024</dd>
+              <dd>0</dd>
               <dt>Duration</dt>
-              <dd>2 m 15 s</dd>
-              <dt>Output</dt>
-              <dd><pre># Installed packages for system:
-base-bigarray                   base  Bigarray library distributed with the OCam
-base-threads                    base  Threads library distributed with the OCaml
-base-unix                       base  Unix library distributed with the OCaml co
-camlp5                          6.16  Preprocessor-pretty-printer of OCaml
-conf-m4                            1  Virtual package relying on m4
-coq                          8.6.dev  Formal proof management system.
-coq-unimath-category-theory    0.1.0  Aims to formalize a substantial body of ma
-coq-unimath-foundations        0.1.0  Aims to formalize a substantial body of ma
-coq-unimath-ktheory            0.1.0  Aims to formalize a substantial body of ma
-lablgtk                       2.18.5  OCaml interface to GTK+
-ocamlfind                      1.6.2  A library manager for OCaml
-The following actions will be performed:
-  - install coq-unimath-dedekind 0.1.0
-=-=- Gathering sources =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
-[coq-unimath-dedekind: http] Command started
-[coq-unimath-dedekind: http] Command started
-[coq-unimath-dedekind.0.1.0] https://github.com/UniMath/UniMath/archive/v0.1.tar.gz downloaded
-=-=- Processing actions -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
-[coq-unimath-dedekind: coq_makefile Make] Command started
-+ coq_makefile &quot;-f&quot; &quot;Make&quot; &quot;-o&quot; &quot;Makefile&quot; (CWD=/home/bench/.opam/system/build/coq-unimath-dedekind.0.1.0)
-[coq-unimath-dedekind: make] Command started
-+ make &quot;-j1&quot; (CWD=/home/bench/.opam/system/build/coq-unimath-dedekind.0.1.0)
-- COQDEP UniMath/Dedekind/Sets.v
-- COQDEP UniMath/Dedekind/Reals.v
-- COQDEP UniMath/Dedekind/NonnegativeReals.v
-- COQDEP UniMath/Dedekind/NonnegativeRationals.v
-- COQDEP UniMath/Dedekind/Fields.v
-- COQDEP UniMath/Dedekind/DecidableDedekindCuts.v
-- COQDEP UniMath/Dedekind/Complements.v
-- COQC UniMath/Dedekind/Complements.v
-- File &quot;./UniMath/Dedekind/Complements.v&quot;, line 5, characters 0-64:
-- Warning: Notation _ = _ was already used in scope type_scope
-- [notation-overridden,parsing]
-- File &quot;./UniMath/Dedekind/Complements.v&quot;, line 5, characters 0-64:
-- Warning: Notation _ * _ was already used in scope nat_scope
-- [notation-overridden,parsing]
-- File &quot;./UniMath/Dedekind/Complements.v&quot;, line 5, characters 0-64:
-- Warning: Notation _ &lt;-&gt; _ was already used in scope type_scope
-- [notation-overridden,parsing]
-- File &quot;./UniMath/Dedekind/Complements.v&quot;, line 5, characters 0-64:
-- Warning: Notation _ ≠ _ was already used in scope nat_scope
-- [notation-overridden,parsing]
-- File &quot;./UniMath/Dedekind/Complements.v&quot;, line 5, characters 0-64:
-- Warning: Notation _ &gt; _ was already used in scope nat_scope
-- [notation-overridden,parsing]
-- File &quot;./UniMath/Dedekind/Complements.v&quot;, line 5, characters 0-64:
-- Warning: Notation _ &lt; _ was already used in scope nat_scope
-- [notation-overridden,parsing]
-- File &quot;./UniMath/Dedekind/Complements.v&quot;, line 5, characters 0-64:
-- Warning: Notation _ &lt;= _ was already used in scope nat_scope
-- [notation-overridden,parsing]
-- File &quot;./UniMath/Dedekind/Complements.v&quot;, line 5, characters 0-64:
-- Warning: Notation _ &gt;= _ was already used in scope nat_scope
-- [notation-overridden,parsing]
-- COQC UniMath/Dedekind/Sets.v
-- File &quot;./UniMath/Dedekind/Sets.v&quot;, line 5, characters 0-90:
-- Warning: Notation _ = _ was already used in scope type_scope
-- [notation-overridden,parsing]
-- File &quot;./UniMath/Dedekind/Sets.v&quot;, line 5, characters 0-90:
-- Warning: Notation _ * _ was already used in scope nat_scope
-- [notation-overridden,parsing]
-- File &quot;./UniMath/Dedekind/Sets.v&quot;, line 5, characters 0-90:
-- Warning: Notation _ &lt;-&gt; _ was already used in scope type_scope
-- [notation-overridden,parsing]
-- COQC UniMath/Dedekind/Fields.v
-- COQC UniMath/Dedekind/NonnegativeRationals.v
-- File &quot;./UniMath/Dedekind/Fields.v&quot;, line 3, characters 0-62:
-- Warning: Notation _ = _ was already used in scope type_scope
-- [notation-overridden,parsing]
-- File &quot;./UniMath/Dedekind/Fields.v&quot;, line 3, characters 0-62:
-- Warning: Notation _ * _ was already used in scope nat_scope
-- [notation-overridden,parsing]
-- File &quot;./UniMath/Dedekind/Fields.v&quot;, line 3, characters 0-62:
-- Warning: Notation _ &lt;-&gt; _ was already used in scope type_scope
-- [notation-overridden,parsing]
-- File &quot;./UniMath/Dedekind/NonnegativeRationals.v&quot;, line 7, characters 0-37:
-- Warning: Notation _ = _ was already used in scope type_scope
-- [notation-overridden,parsing]
-- File &quot;./UniMath/Dedekind/NonnegativeRationals.v&quot;, line 7, characters 0-37:
-- Warning: Notation _ * _ was already used in scope nat_scope
-- [notation-overridden,parsing]
-- File &quot;./UniMath/Dedekind/NonnegativeRationals.v&quot;, line 7, characters 0-37:
-- Warning: Notation _ &lt;-&gt; _ was already used in scope type_scope
-- [notation-overridden,parsing]
-- File &quot;./UniMath/Dedekind/NonnegativeRationals.v&quot;, line 10, characters 0-44:
-- Warning: Notation _ ≠ _ was already used in scope nat_scope
-- [notation-overridden,parsing]
-- File &quot;./UniMath/Dedekind/NonnegativeRationals.v&quot;, line 10, characters 0-44:
-- Warning: Notation _ &gt; _ was already used in scope nat_scope
-- [notation-overridden,parsing]
-- File &quot;./UniMath/Dedekind/NonnegativeRationals.v&quot;, line 10, characters 0-44:
-- Warning: Notation _ &lt; _ was already used in scope nat_scope
-- [notation-overridden,parsing]
-- File &quot;./UniMath/Dedekind/NonnegativeRationals.v&quot;, line 10, characters 0-44:
-- Warning: Notation _ &lt;= _ was already used in scope nat_scope
-- [notation-overridden,parsing]
-- File &quot;./UniMath/Dedekind/NonnegativeRationals.v&quot;, line 10, characters 0-44:
-- Warning: Notation _ &gt;= _ was already used in scope nat_scope
-- [notation-overridden,parsing]
-- File &quot;./UniMath/Dedekind/NonnegativeRationals.v&quot;, line 21, characters 0-46:
-- Warning: hnnq_set_to_hq does not respect the uniform inheritance condition
-- [uniform-inheritance,typechecker]
-- COQC UniMath/Dedekind/NonnegativeReals.v
-- File &quot;./UniMath/Dedekind/NonnegativeReals.v&quot;, line 4, characters 0-37:
-- Warning: Notation _ = _ was already used in scope type_scope
-- [notation-overridden,parsing]
-- File &quot;./UniMath/Dedekind/NonnegativeReals.v&quot;, line 4, characters 0-37:
-- Warning: Notation _ * _ was already used in scope nat_scope
-- [notation-overridden,parsing]
-- File &quot;./UniMath/Dedekind/NonnegativeReals.v&quot;, line 4, characters 0-37:
-- Warning: Notation _ &lt;-&gt; _ was already used in scope type_scope
-- [notation-overridden,parsing]
-- File &quot;./UniMath/Dedekind/NonnegativeReals.v&quot;, line 6, characters 0-44:
-- Warning: Notation _ ≠ _ was already used in scope nat_scope
-- [notation-overridden,parsing]
-- File &quot;./UniMath/Dedekind/NonnegativeReals.v&quot;, line 6, characters 0-44:
-- Warning: Notation _ &gt; _ was already used in scope nat_scope
-- [notation-overridden,parsing]
-- File &quot;./UniMath/Dedekind/NonnegativeReals.v&quot;, line 6, characters 0-44:
-- Warning: Notation _ &lt; _ was already used in scope nat_scope
-- [notation-overridden,parsing]
-- File &quot;./UniMath/Dedekind/NonnegativeReals.v&quot;, line 6, characters 0-44:
-- Warning: Notation _ &lt;= _ was already used in scope nat_scope
-- [notation-overridden,parsing]
-- File &quot;./UniMath/Dedekind/NonnegativeReals.v&quot;, line 6, characters 0-44:
-- Warning: Notation _ &gt;= _ was already used in scope nat_scope
-- [notation-overridden,parsing]
-- Makefile:278: recipe for target &#39;UniMath/Dedekind/NonnegativeReals.vo&#39; failed
-- File &quot;./UniMath/Dedekind/NonnegativeReals.v&quot;, line 313, characters 6-20:
-- Error: Cannot infer the implicit parameter X of hinhuniv whose type is
-- &quot;UU&quot; in environment:
-- X, Y : Dcuts_set
-- Hnlt : ¬ Dcuts_lt_rel X Y
-- y : NonnegativeRationals
-- Yy : y ∈ Y
-- y&#39; : NonnegativeRationals
-- Yy&#39; : pr1 Y y&#39;
-- Hy : 0 &lt; y&#39; - y
-- h : hexists (λ q : NonnegativeRationals, pr1 X q × ¬ pr1 X (q + (y&#39; - y)))
-- make: *** [UniMath/Dedekind/NonnegativeReals.vo] Error 1
-[ERROR] The compilation of coq-unimath-dedekind failed at &quot;make -j1&quot;.
-[coq-unimath-dedekind: rm] Command started
-+ rm &quot;-R&quot; &quot;/home/bench/.opam/system/lib/coq/user-contrib/UniMath/Dedekind&quot; (CWD=/home/bench/.opam/system/build/coq-unimath-dedekind.0.1.0)
-- rm: cannot remove &#39;/home/bench/.opam/system/lib/coq/user-contrib/UniMath/Dedekind&#39;: No such file or directory
-#=== ERROR while installing coq-unimath-dedekind.0.1.0 ========================#
-# opam-version         1.2.2
-# os                   linux
-# command              make -j1
-# path                 /home/bench/.opam/system/build/coq-unimath-dedekind.0.1.0
-# compiler             system (4.03.0)
-# exit-code            2
-# env-file             /home/bench/.opam/system/build/coq-unimath-dedekind.0.1.0/coq-unimath-dedekind-27036-ad8886.env
-# stdout-file          /home/bench/.opam/system/build/coq-unimath-dedekind.0.1.0/coq-unimath-dedekind-27036-ad8886.out
-# stderr-file          /home/bench/.opam/system/build/coq-unimath-dedekind.0.1.0/coq-unimath-dedekind-27036-ad8886.err
-### stdout ###
-# [...]
-# COQDEP UniMath/Dedekind/NonnegativeRationals.v
-# COQDEP UniMath/Dedekind/Fields.v
-# COQDEP UniMath/Dedekind/DecidableDedekindCuts.v
-# COQDEP UniMath/Dedekind/Complements.v
-# COQC UniMath/Dedekind/Complements.v
-# COQC UniMath/Dedekind/Sets.v
-# COQC UniMath/Dedekind/Fields.v
-# COQC UniMath/Dedekind/NonnegativeRationals.v
-# COQC UniMath/Dedekind/NonnegativeReals.v
-# Makefile:278: recipe for target &#39;UniMath/Dedekind/NonnegativeReals.vo&#39; failed
-### stderr ###
-# [...]
-# &quot;UU&quot; in environment:
-# X, Y : Dcuts_set
-# Hnlt : ¬ Dcuts_lt_rel X Y
-# y : NonnegativeRationals
-# Yy : y ∈ Y
-# y&#39; : NonnegativeRationals
-# Yy&#39; : pr1 Y y&#39;
-# Hy : 0 &lt; y&#39; - y
-# h : hexists (λ q : NonnegativeRationals, pr1 X q × ¬ pr1 X (q + (y&#39; - y)))
-# make: *** [UniMath/Dedekind/NonnegativeReals.vo] Error 1
-=-=- Error report -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
-The following actions failed
-  - install coq-unimath-dedekind 0.1.0
-No changes have been performed
-&#39;opam install -j1 -y -v coq-unimath-dedekind.0.1.0&#39; failed.
-</pre></dd>
+              <dd>0 s</dd>
             </dl>
             <h2>Installation size</h2>
             <p>No files were installed.</p>
