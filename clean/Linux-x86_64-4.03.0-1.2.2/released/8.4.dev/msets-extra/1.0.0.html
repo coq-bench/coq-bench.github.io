@@ -25,7 +25,7 @@
           <div id="navbar" class="collapse navbar-collapse">
             <ul class="nav navbar-nav">
               <li><a href="../..">clean / released</a></li>
-              <li class="active"><a href="">8.4.dev / interval - 2.2.1</a></li>
+              <li class="active"><a href="">8.4.dev / msets-extra - 1.0.0</a></li>
             </ul>
           </div>
         </div>
@@ -35,10 +35,10 @@
           <div class="col-md-12">
             <a href="../..">« Up</a>
             <h1>
-              interval
+              msets-extra
               <small>
-                2.2.1
-                <span class="label label-danger">Lint error</span>
+                1.0.0
+                <span class="label label-success">1 m 10 s</span>
               </small>
             </h1>
             <p><em><script>document.write(moment("2016-10-06 19:51:49 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2016-10-06 19:51:49 UTC)</em><p>
@@ -53,25 +53,15 @@ coq            8.4.dev  Formal proof management system.
             <h2>Lint</h2>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>ruby lint.rb released opam-coq-archive/released/packages/coq-interval/coq-interval.2.2.1</code></dd>
+              <dd><code>ruby lint.rb released opam-coq-archive/released/packages/coq-msets-extra/coq-msets-extra.1.0.0</code></dd>
               <dt>Return code</dt>
-              <dd>256</dd>
-              <dt>Output</dt>
-              <dd><pre>Errors found in ~/run/opam-coq-archive/released/packages/coq-interval/coq-interval.2.2.1/opam:
-            error 21: Field &#39;opam-version&#39; doesn&#39;t match the current version,
-              validation may not be accurate
-          warning 26: No field &#39;install&#39;, but a field &#39;remove&#39;: install
-              instructions probably part of &#39;build&#39;. Use the &#39;install&#39; field or
-              a .install file
-          warning 36: Missing field &#39;bug-reports&#39;
-          warning 37: Missing field &#39;dev-repo&#39;
-</pre></dd>
+              <dd>0</dd>
             </dl>
             <h2>Dry install</h2>
             <p>Dry install with the current Coq version:</p>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>true</code></dd>
+              <dd><code>opam install -y --show-action coq-msets-extra.1.0.0 coq.8.4.dev</code></dd>
               <dt>Return code</dt>
               <dd>0</dd>
             </dl>
@@ -85,27 +75,35 @@ coq            8.4.dev  Formal proof management system.
             <h2>Install dependencies</h2>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>true</code></dd>
+              <dd><code>opam list; ulimit -Sv 4000000; timeout 30m opam install -y --deps-only coq-msets-extra.1.0.0</code></dd>
               <dt>Return code</dt>
               <dd>0</dd>
               <dt>Duration</dt>
-              <dd>0 s</dd>
+              <dd>3 m 57 s</dd>
             </dl>
             <h2>Install</h2>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>true</code></dd>
+              <dd><code>opam list; ulimit -Sv 4000000; timeout 30m opam install -j1 -y -v coq-msets-extra.1.0.0</code></dd>
               <dt>Return code</dt>
               <dd>0</dd>
               <dt>Duration</dt>
-              <dd>0 s</dd>
+              <dd>1 m 10 s</dd>
             </dl>
             <h2>Installation size</h2>
-            <p>No files were installed.</p>
+            <p>Total: 7,713 K</p>
+            <ul>
+              <li>3,937 K <code>lib/coq/user-contrib/MSetsExtra/MSetIntervals.vo</code></li>
+              <li>3,336 K <code>lib/coq/user-contrib/MSetsExtra/MSetFoldWithAbort.vo</code></li>
+              <li>386 K <code>lib/coq/user-contrib/MSetsExtra/MSetListWithDups.vo</code></li>
+              <li>52 K <code>lib/coq/user-contrib/MSetsExtra/MSetWithDups.vo</code></li>
+              <li>1 K <code>install/coq-msets-extra.install</code></li>
+              <li>0 K <code>lib/coq-msets-extra/opam.config</code></li>
+            </ul>
             <h2>Uninstall</h2>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>true</code></dd>
+              <dd><code>opam remove -y coq-msets-extra.1.0.0</code></dd>
               <dt>Return code</dt>
               <dd>0</dd>
               <dt>Missing removes</dt>
