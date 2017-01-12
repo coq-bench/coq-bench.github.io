@@ -25,7 +25,7 @@
           <div id="navbar" class="collapse navbar-collapse">
             <ul class="nav navbar-nav">
               <li><a href="../..">clean / released</a></li>
-              <li class="active"><a href="">dev / mathcomp-field - 1.6.1</a></li>
+              <li class="active"><a href="">dev / dpdgraph - 0.6.1</a></li>
             </ul>
           </div>
         </div>
@@ -35,10 +35,10 @@
           <div class="col-md-12">
             <a href="../..">« Up</a>
             <h1>
-              mathcomp-field
+              dpdgraph
               <small>
-                1.6.1
-                <span class="label label-warning">Error with dependencies</span>
+                0.6.1
+                <span class="label label-info">Not compatible with this Coq</span>
               </small>
             </h1>
             <p><em><script>document.write(moment("2017-01-12 11:24:28 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2017-01-12 11:24:28 UTC)</em><p>
@@ -55,7 +55,7 @@ ocamlfind      1.7.1  A library manager for OCaml
             <h2>Lint</h2>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>ruby lint.rb released opam-coq-archive/released/packages/coq-mathcomp-field/coq-mathcomp-field.1.6.1</code></dd>
+              <dd><code>ruby lint.rb released opam-coq-archive/released/packages/coq-dpdgraph/coq-dpdgraph.0.6.1</code></dd>
               <dt>Return code</dt>
               <dd>0</dd>
             </dl>
@@ -63,60 +63,33 @@ ocamlfind      1.7.1  A library manager for OCaml
             <p>Dry install with the current Coq version:</p>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>opam install -y --show-action coq-mathcomp-field.1.6.1 coq.dev</code></dd>
+              <dd><code>opam install -y --show-action coq-dpdgraph.0.6.1 coq.dev</code></dd>
               <dt>Return code</dt>
-              <dd>0</dd>
+              <dd>768</dd>
+              <dt>Output</dt>
+              <dd><pre>[NOTE] Package coq is already installed (current version is dev).
+The following dependencies couldn&#39;t be met:
+  - coq-dpdgraph -&gt; coq &lt; 8.7~
+Your request can&#39;t be satisfied:
+  - Conflicting version constraints for coq
+No solution found, exiting
+</pre></dd>
             </dl>
             <p>Dry install without Coq, to test if the problem was incompatibility with the current Coq version:</p>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>true</code></dd>
+              <dd><code>opam remove -y coq; opam install -y --show-action coq-dpdgraph.0.6.1</code></dd>
               <dt>Return code</dt>
               <dd>0</dd>
             </dl>
             <h2>Install dependencies</h2>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>opam list; ulimit -Sv 4000000; timeout 30m opam install -y --deps-only coq-mathcomp-field.1.6.1</code></dd>
+              <dd><code>true</code></dd>
               <dt>Return code</dt>
-              <dd>16896</dd>
+              <dd>0</dd>
               <dt>Duration</dt>
-              <dd>36 s</dd>
-              <dt>Output</dt>
-              <dd><pre># Installed packages for system:
-base-bigarray   base  Bigarray library distributed with the OCaml compiler
-base-threads    base  Threads library distributed with the OCaml compiler
-base-unix       base  Unix library distributed with the OCaml compiler
-camlp5          6.17  Preprocessor-pretty-printer of OCaml
-conf-m4            1  Virtual package relying on m4
-coq              dev  Formal proof management system.
-ocamlfind      1.7.1  A library manager for OCaml
-The following actions will be performed:
-  - install coq-mathcomp-ssreflect 1.6.1
-  - install coq-mathcomp-fingroup  1.6.1
-  - install coq-mathcomp-algebra   1.6.1
-  - install coq-mathcomp-solvable  1.6.1
-===== 4 to install =====
-=-=- Gathering sources =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
-[coq-mathcomp-algebra: http] Command started
-[coq-mathcomp-fingroup: http] Command started
-[coq-mathcomp-solvable: http] Command started
-[ERROR] curl: code 503 while downloading
-        http://github.com/math-comp/math-comp/archive/mathcomp-1.6.1.tar.gz
-[coq-mathcomp-ssreflect: http] Command started
-[ERROR] curl: code 503 while downloading
-        http://github.com/math-comp/math-comp/archive/mathcomp-1.6.1.tar.gz
-[ERROR] curl: code 503 while downloading
-        http://github.com/math-comp/math-comp/archive/mathcomp-1.6.1.tar.gz
-[ERROR] curl: code 503 while downloading
-        http://github.com/math-comp/math-comp/archive/mathcomp-1.6.1.tar.gz
-[ERROR] The sources of the following couldn&#39;t be obtained, aborting:
-          - coq-mathcomp-algebra.1.6.1
-          - coq-mathcomp-fingroup.1.6.1
-          - coq-mathcomp-solvable.1.6.1
-          - coq-mathcomp-ssreflect.1.6.1
-        (This may be fixed by running &#39;opam update&#39;)
-</pre></dd>
+              <dd>0 s</dd>
             </dl>
             <h2>Install</h2>
             <dl class="dl-horizontal">
