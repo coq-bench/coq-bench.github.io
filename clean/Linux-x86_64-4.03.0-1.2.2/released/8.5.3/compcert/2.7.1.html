@@ -41,7 +41,7 @@
                 <span class="label label-danger">Error</span>
               </small>
             </h1>
-            <p><em><script>document.write(moment("2017-01-09 17:35:46 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2017-01-09 17:35:46 UTC)</em><p>
+            <p><em><script>document.write(moment("2017-01-15 01:32:01 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2017-01-15 01:32:01 UTC)</em><p>
             <h2>Context</h2>
             <pre># Installed packages for system:
 base-bigarray   base  Bigarray library distributed with the OCaml compiler
@@ -79,16 +79,16 @@ coq            8.5.3  Formal proof management system.
               <dt>Return code</dt>
               <dd>0</dd>
               <dt>Duration</dt>
-              <dd>59 s</dd>
+              <dd>58 s</dd>
             </dl>
             <h2>Install</h2>
             <dl class="dl-horizontal">
               <dt>Command</dt>
               <dd><code>opam list; ulimit -Sv 4000000; timeout 30m opam install -j1 -y -v coq-compcert.2.7.1</code></dd>
               <dt>Return code</dt>
-              <dd>1024</dd>
+              <dd>31744</dd>
               <dt>Duration</dt>
-              <dd>20 s</dd>
+              <dd>30 m 0 s</dd>
               <dt>Output</dt>
               <dd><pre># Installed packages for system:
 base-bigarray      base  Bigarray library distributed with the OCaml compiler
@@ -108,51 +108,174 @@ The following actions will be performed:
 [coq-compcert.2.7.1] https://github.com/AbsInt/CompCert/archive/v2.7.1.tar.gz downloaded
 =-=- Processing actions -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 [coq-compcert: ./configure ia32-linux] Command started
-+ ./configure &quot;ia32-linux&quot; &quot;-bindir&quot; &quot;/home/bench/.opam/system/bin&quot; &quot;-libdir&quot; &quot;/home/bench/.opam/system/lib/compcert&quot; (CWD=/home/bench/.opam/system/build/coq-compcert.2.7.1)
++ ./configure &quot;ia32-linux&quot; &quot;-bindir&quot; &quot;/home/bench/.opam/system/bin&quot; &quot;-libdir&quot; &quot;/home/bench/.opam/system/lib/compcert&quot; &quot;-clightgen&quot; (CWD=/home/bench/.opam/system/build/coq-compcert.2.7.1)
 - Testing assembler support for CFI directives... yes
-- Testing Coq... version 8.5pl3 -- UNSUPPORTED
-- Error: CompCert requires Coq version 8.5pl2.
+- Testing Coq... version 8.5pl3 -- good!
 - Testing OCaml... version 4.03.0 -- good!
 - Testing OCaml .opt compilers... yes
 - Testing Menhir... version 20170101 -- good!
 - Testing GNU make... version 4.1 (command &#39;make&#39;) -- good!
-- One or several required tools are missing or too old.  Aborting.
-[ERROR] The compilation of coq-compcert failed at &quot;./configure ia32-linux
-        -bindir /home/bench/.opam/system/bin -libdir
-        /home/bench/.opam/system/lib/compcert&quot;.
-[coq-compcert: rm] Command started
-+ rm &quot;/home/bench/.opam/system/bin/ccomp&quot; (CWD=/home/bench/.opam/system/build/coq-compcert.2.7.1)
-- rm: cannot remove &#39;/home/bench/.opam/system/bin/ccomp&#39;: No such file or directory
-[coq-compcert: rm] Command started
-+ rm &quot;-R&quot; &quot;/home/bench/.opam/system/lib/compcert&quot; (CWD=/home/bench/.opam/system/build/coq-compcert.2.7.1)
-- rm: cannot remove &#39;/home/bench/.opam/system/lib/compcert&#39;: No such file or directory
-[coq-compcert: rm] Command started
-+ rm &quot;/home/bench/.opam/system/share/compcert.ini&quot; (CWD=/home/bench/.opam/system/build/coq-compcert.2.7.1)
-- rm: cannot remove &#39;/home/bench/.opam/system/share/compcert.ini&#39;: No such file or directory
-#=== ERROR while installing coq-compcert.2.7.1 ================================#
-# opam-version         1.2.2
-# os                   linux
-# command              ./configure ia32-linux -bindir /home/bench/.opam/system/bin -libdir /home/bench/.opam/system/lib/compcert
-# path                 /home/bench/.opam/system/build/coq-compcert.2.7.1
-# compiler             system (4.03.0)
-# exit-code            2
-# env-file             /home/bench/.opam/system/build/coq-compcert.2.7.1/coq-compcert-29355-e7966f.env
-# stdout-file          /home/bench/.opam/system/build/coq-compcert.2.7.1/coq-compcert-29355-e7966f.out
-# stderr-file          /home/bench/.opam/system/build/coq-compcert.2.7.1/coq-compcert-29355-e7966f.err
-### stdout ###
-# Testing assembler support for CFI directives... yes
-# Testing Coq... version 8.5pl3 -- UNSUPPORTED
-# Error: CompCert requires Coq version 8.5pl2.
-# Testing OCaml... version 4.03.0 -- good!
-# Testing OCaml .opt compilers... yes
-# Testing Menhir... version 20170101 -- good!
-# Testing GNU make... version 4.1 (command &#39;make&#39;) -- good!
-# One or several required tools are missing or too old.  Aborting.
-=-=- Error report -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
-The following actions failed
-  - install coq-compcert 2.7.1
-No changes have been performed
-&#39;opam install -j1 -y -v coq-compcert.2.7.1&#39; failed.
+- 
+- CompCert configuration:
+-     Target architecture........... ia32
+-     Hardware model................ sse2
+-     Application binary interface.. standard
+-     Composite passing conventions. arguments: ints, return values: ref
+-     OS and development env........ linux
+-     C compiler.................... gcc -m32
+-     C preprocessor................ gcc
+-     Assembler..................... gcc
+-     Assembler supports CFI........ true
+-     Assembler for runtime lib..... gcc -m32 -c
+-     Linker........................ gcc
+-     Math library.................. -lm
+-     Binaries installed in......... /home/bench/.opam/system/bin
+-     Runtime library provided...... true
+-     Library files installed in.... /home/bench/.opam/system/lib/compcert
+-     Standard headers provided..... true
+-     Standard headers installed in. /home/bench/.opam/system/lib/compcert/include
+-     Build command to use.......... make
+- 
+- If anything above looks wrong, please edit file ./Makefile.config to correct.
+- 
+[coq-compcert: make] Command started
++ make &quot;-j1&quot; (CWD=/home/bench/.opam/system/build/coq-compcert.2.7.1)
+- make proof
+- make[1]: Entering directory &#39;/home/bench/.opam/system/build/coq-compcert.2.7.1&#39;
+- COQC lib/Axioms.v
+- COQC lib/Coqlib.v
+- COQC lib/Intv.v
+- COQC lib/Maps.v
+- COQC lib/Integers.v
+- COQC lib/Ordered.v
+- COQC lib/Heaps.v
+- COQC lib/Lattice.v
+- COQC lib/Wfsimpl.v
+- COQC lib/Iteration.v
+- COQC flocq/Core/Fcore_Zaux.v
+- COQC flocq/Core/Fcore_Raux.v
+- COQC flocq/Core/Fcore_defs.v
+- COQC flocq/Core/Fcore_float_prop.v
+- COQC flocq/Core/Fcore_rnd.v
+- COQC flocq/Core/Fcore_generic_fmt.v
+- COQC flocq/Core/Fcore_ulp.v
+- COQC flocq/Core/Fcore_rnd_ne.v
+- COQC flocq/Core/Fcore_FIX.v
+- COQC flocq/Core/Fcore_FLX.v
+- COQC flocq/Core/Fcore_FLT.v
+- COQC flocq/Core/Fcore.v
+- COQC flocq/Core/Fcore_digits.v
+- COQC flocq/Calc/Fcalc_digits.v
+- COQC flocq/Calc/Fcalc_bracket.v
+- COQC flocq/Calc/Fcalc_round.v
+- COQC flocq/Calc/Fcalc_ops.v
+- COQC flocq/Calc/Fcalc_div.v
+- COQC flocq/Calc/Fcalc_sqrt.v
+- COQC flocq/Prop/Fprop_relative.v
+- COQC flocq/Appli/Fappli_IEEE.v
+- COQC flocq/Appli/Fappli_IEEE_bits.v
+- COQC ia32/Archi.v
+- COQC flocq/Prop/Fprop_Sterbenz.v
+- COQC flocq/Appli/Fappli_rnd_odd.v
+- COQC lib/Fappli_IEEE_extra.v
+- COQC lib/Floats.v
+- COQC lib/Parmov.v
+- COQC lib/UnionFind.v
+- COQC lib/Postorder.v
+- COQC lib/FSetAVLplus.v
+- COQC lib/IntvSets.v
+- COQC lib/Decidableplus.v
+- COQC common/Errors.v
+- COQC common/AST.v
+- COQC common/Linking.v
+- COQC common/Values.v
+- COQC common/Memdata.v
+- COQC common/Memtype.v
+- COQC common/Memory.v
+- COQC common/Globalenvs.v
+- COQC common/Events.v
+- COQC common/Smallstep.v
+- COQC common/Behaviors.v
+- COQC common/Switch.v
+- COQC common/Determinism.v
+- COQC common/Unityping.v
+- COQC common/Separation.v
+- COQC backend/Cminor.v
+- COQC ia32/Op.v
+- COQC backend/CminorSel.v
+- ocamlopt -o tools/ndfun str.cmxa tools/ndfun.ml
+- Preprocessing ia32/SelectOp.vp
+- COQC driver/Compopts.v
+- COQC ia32/SelectOp.v
+- Preprocessing backend/SelectDiv.vp
+- COQC backend/SelectDiv.v
+- Preprocessing backend/SelectLong.vp
+- COQC backend/SelectLong.v
+- COQC ia32/Machregs.v
+- COQC backend/Selection.v
+- COQC ia32/SelectOpproof.v
+- COQC backend/SelectDivproof.v
+- COQC backend/SelectLongproof.v
+- COQC backend/Selectionproof.v
+- COQC backend/Registers.v
+- COQC backend/RTL.v
+- COQC backend/RTLgen.v
+- COQC backend/RTLgenspec.v
+- COQC backend/RTLgenproof.v
+- COQC backend/Locations.v
+- COQC ia32/Conventions1.v
+- COQC backend/Conventions.v
+- COQC backend/Tailcall.v
+- COQC backend/Tailcallproof.v
+- COQC backend/Inlining.v
+- COQC backend/Inliningspec.v
+- COQC backend/Inliningproof.v
+- COQC backend/Renumber.v
+- COQC backend/Renumberproof.v
+- COQC backend/RTLtyping.v
+- COQC backend/Kildall.v
+- COQC backend/Liveness.v
+- COQC backend/ValueDomain.v
+- COQC ia32/ValueAOp.v
+- COQC backend/ValueAnalysis.v
+- Preprocessing ia32/ConstpropOp.vp
+- COQC ia32/ConstpropOp.v
+- COQC backend/Constprop.v
+- COQC ia32/ConstpropOpproof.v
+- COQC backend/Constpropproof.v
+- COQC backend/CSEdomain.v
+- COQC ia32/CombineOp.v
+- COQC backend/CSE.v
+- COQC ia32/CombineOpproof.v
+- COQC backend/CSEproof.v
+- COQC backend/NeedDomain.v
+- COQC ia32/NeedOp.v
+- COQC backend/Deadcode.v
+- COQC backend/Deadcodeproof.v
+- COQC backend/Unusedglob.v
+- COQC backend/Unusedglobproof.v
+- COQC backend/LTL.v
+- COQC backend/Allocation.v
+- COQC backend/Allocproof.v
+- COQC backend/Tunneling.v
+- COQC backend/Tunnelingproof.v
+- COQC backend/Linear.v
+- COQC backend/Lineartyping.v
+- COQC backend/Linearize.v
+- COQC backend/Linearizeproof.v
+- COQC backend/CleanupLabels.v
+- COQC backend/CleanupLabelsproof.v
+- COQC backend/Debugvar.v
+- COQC backend/Debugvarproof.v
+- COQC backend/Bounds.v
+- COQC ia32/Stacklayout.v
+- COQC backend/Mach.v
+- COQC backend/Stacking.v
+- COQC backend/Stackingproof.v
+- COQC ia32/Asm.v
+- COQC ia32/Asmgen.v
+- COQC backend/Asmgenproof0.v
+- COQC ia32/Asmgenproof1.v
 </pre></dd>
             </dl>
             <h2>Installation size</h2>
