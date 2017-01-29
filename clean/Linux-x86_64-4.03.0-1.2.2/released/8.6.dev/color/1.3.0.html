@@ -38,10 +38,10 @@
               color
               <small>
                 1.3.0
-                <span class="label label-danger">Lint error</span>
+                <span class="label label-danger">Error</span>
               </small>
             </h1>
-            <p><em><script>document.write(moment("2017-01-23 21:33:35 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2017-01-23 21:33:35 UTC)</em><p>
+            <p><em><script>document.write(moment("2017-01-29 10:52:18 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2017-01-29 10:52:18 UTC)</em><p>
             <h2>Context</h2>
             <pre># Installed packages for system:
 base-bigarray     base  Bigarray library distributed with the OCaml compiler
@@ -57,23 +57,13 @@ ocamlfind        1.7.1  A library manager for OCaml
               <dt>Command</dt>
               <dd><code>ruby lint.rb released opam-coq-archive/released/packages/coq-color/coq-color.1.3.0</code></dd>
               <dt>Return code</dt>
-              <dd>256</dd>
-              <dt>Output</dt>
-              <dd><pre>Errors found in ~/run/opam-coq-archive/released/packages/coq-color/coq-color.1.3.0/opam:
-            error 21: Field &#39;opam-version&#39; doesn&#39;t match the current version,
-              validation may not be accurate
-          warning 26: No field &#39;install&#39;, but a field &#39;remove&#39;: install
-              instructions probably part of &#39;build&#39;. Use the &#39;install&#39; field or
-              a .install file
-          warning 36: Missing field &#39;bug-reports&#39;
-          warning 37: Missing field &#39;dev-repo&#39;
-</pre></dd>
+              <dd>0</dd>
             </dl>
             <h2>Dry install</h2>
             <p>Dry install with the current Coq version:</p>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>true</code></dd>
+              <dd><code>opam install -y --show-action coq-color.1.3.0 coq.8.6.dev</code></dd>
               <dt>Return code</dt>
               <dd>0</dd>
             </dl>
@@ -87,20 +77,653 @@ ocamlfind        1.7.1  A library manager for OCaml
             <h2>Install dependencies</h2>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>true</code></dd>
+              <dd><code>opam list; ulimit -Sv 4000000; timeout 30m opam install -y --deps-only coq-color.1.3.0</code></dd>
               <dt>Return code</dt>
               <dd>0</dd>
               <dt>Duration</dt>
-              <dd>0 s</dd>
+              <dd>17 s</dd>
             </dl>
             <h2>Install</h2>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>true</code></dd>
+              <dd><code>opam list; ulimit -Sv 4000000; timeout 30m opam install -j1 -y -v coq-color.1.3.0</code></dd>
               <dt>Return code</dt>
-              <dd>0</dd>
+              <dd>31744</dd>
               <dt>Duration</dt>
-              <dd>0 s</dd>
+              <dd>30 m 0 s</dd>
+              <dt>Output</dt>
+              <dd><pre># Installed packages for system:
+base-bigarray     base  Bigarray library distributed with the OCaml compiler
+base-threads      base  Threads library distributed with the OCaml compiler
+base-unix         base  Unix library distributed with the OCaml compiler
+camlp5            6.17  Preprocessor-pretty-printer of OCaml
+conf-m4              1  Virtual package relying on m4
+coq            8.6.dev  Formal proof management system.
+ocamlfind        1.7.1  A library manager for OCaml
+The following actions will be performed:
+  - install coq-color 1.3.0
+=-=- Gathering sources =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+[coq-color: http] Command started
+[coq-color: http] Command started
+[coq-color.1.3.0] https://gforge.inria.fr/frs/download.php/file/36399/color.1.3.0.tar.gz downloaded
+=-=- Processing actions -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+[coq-color: make] Command started
++ make &quot;-j1&quot; (CWD=/home/bench/.opam/system/build/coq-color.1.3.0)
+- echo -R . CoLoR SemLab/AFlatCont.v SemLab/ASemLab.v SemLab/ARootLab.v Conversion/VTerm_of_ATerm.v Conversion/String_of_ATerm.v Conversion/AReverse.v Conversion/ATerm_of_String.v SubtermCrit/ASimpleProj.v MatrixInt/AMatrixInt.v MatrixInt/ATropicalBasedInt.v MatrixInt/AArcticBasedInt.v MatrixInt/AArcticBZInt.v MatrixInt/ATropicalInt.v MatrixInt/AArcticInt.v MatrixInt/AMatrixBasedInt.v MatrixInt/ABigMatrixInt.v Term/Varyadic/VTrs.v Term/Varyadic/VContext.v Term/Varyadic/VSignature.v Term/Varyadic/VSubstitution.v Term/Varyadic/VTerm.v Term/Lambda/LSystemT.v Term/Lambda/LComp.v Term/Lambda/LTerm.v Term/Lambda/LCompRewrite.v Term/Lambda/LBeta.v Term/Lambda/LAlphaAlt.v Term/Lambda/LSubs.v Term/Lambda/LCall.v Term/Lambda/LSimple.v Term/Lambda/LCompSimple.v Term/Lambda/LCompInt.v Term/Lambda/LAlpha.v Term/Lambda/LEta.v Term/Lambda/LCompClos.v Term/WithArity/AMonAlg.v Term/WithArity/ANotvar.v Term/WithArity/AInterpretation.v Term/WithArity/ACap.v Term/WithArity/AMatching.v Term/WithArity/ATrs.v Term/WithArity/AUnif.v Term/WithArity/ABinary.v Term/WithArity/ATrsNorm.v Term/WithArity/ARenCap.v Term/WithArity/ACompat.v Term/WithArity/ARules.v Term/WithArity/ABterm.v Term/WithArity/AUnary.v Term/WithArity/ACalls.v Term/WithArity/ASubterm.v Term/WithArity/ASignature.v Term/WithArity/AContext.v Term/WithArity/AInfSeq.v Term/WithArity/ADepRel.v Term/WithArity/ADuplicateSymb.v Term/WithArity/AVariables.v Term/WithArity/AWFMInterpretation.v Term/WithArity/AShift.v Term/WithArity/AReduct.v Term/WithArity/APosition.v Term/WithArity/ATerm.v Term/WithArity/AMorphism.v Term/WithArity/ARelation.v Term/WithArity/MonAlgChecker.v Term/WithArity/ASubstitution.v Term/WithArity/ASN.v Term/String/SContext.v Term/String/Srs.v Term/String/SReverse.v Term/SimpleType/TermsManip.v Term/SimpleType/TermsEta.v Term/SimpleType/TermsDef.v Term/SimpleType/TermsSig.v Term/SimpleType/TermsTyping.v Term/SimpleType/TermsBeta.v Term/SimpleType/TermsLifting.v Term/SimpleType/TermsSubst.v Term/SimpleType/Terms.v Term/SimpleType/TermsRed.v Term/SimpleType/TermsEnv.v Term/SimpleType/TermsPos.v Term/SimpleType/TermsActiveEnv.v Term/SimpleType/TermsSubstConv.v Term/SimpleType/TermsBuilding.v Term/SimpleType/TermsAlgebraic.v Term/SimpleType/TermsConv.v Util/Multiset/MultisetListOrder.v Util/Multiset/MultisetTheory.v Util/Multiset/MultisetCore.v Util/Multiset/MultisetNat.v Util/Multiset/MultisetList.v Util/Multiset/MultisetOrder.v Util/Nat/BigNUtil.v Util/Nat/LeastNat.v Util/Nat/BoundNat.v Util/Nat/NatUtil.v Util/Nat/Log2.v Util/List/ListExtras.v Util/List/ListShrink.v Util/List/ListDec.v Util/List/ListPermutation.v Util/List/ListOccur.v Util/List/ListLex.v Util/List/SortUtil.v Util/List/ListSort.v Util/List/ListUtil.v Util/List/ListNodup.v Util/List/ListMax.v Util/FSet/FSetUtil.v Util/Option/OptUtil.v Util/Relation/RelSub.v Util/Relation/SCC_dec.v Util/Relation/InfSeq.v Util/Relation/AdjMat.v Util/Relation/Iter.v Util/Relation/RelExtras.v Util/Relation/NotSN_IS.v Util/Relation/Preorder.v Util/Relation/NotSN.v Util/Relation/Path.v Util/Relation/OrdUtil.v Util/Relation/Union.v Util/Relation/RelMidex.v Util/Relation/RelUtil.v Util/Relation/SCC.v Util/Relation/RedLength.v Util/Relation/SN.v Util/Relation/SCCTopoOrdering.v Util/Relation/RelDec.v Util/Relation/Lexico.v Util/Relation/Tarski.v Util/Relation/Cycle.v Util/Relation/AccUtil.v Util/Relation/Total.v Util/Relation/GDomainBij.v Util/Function/NaryFunction.v Util/Function/FunUtil.v Util/Polynom/MonotonePolynom.v Util/Polynom/PositivePolynom.v Util/Polynom/Polynom.v Util/Integer/BigZUtil.v Util/Integer/ZUtil.v Util/Set/InfSet.v Util/Set/Ramsey.v Util/Set/SetUtil.v Util/Set/FinSet.v Util/Pair/PairLex.v Util/Pair/PairUtil.v Util/FMap/FMapUtil.v Util/Bool/BoolUtil.v Util/Logic/EpsilonUtil.v Util/Logic/EqUtil.v Util/Logic/LogicUtil.v Util/Logic/IotaUtil.v Util/Logic/DepChoicePrf.v Util/Logic/DepChoice.v Util/Logic/ClassicUtil.v Util/Vector/VecUtil.v Util/Vector/VecArith.v Util/Vector/VecMax.v Util/Vector/VecFilter.v Util/Vector/VecFilterPerm.v Util/Vector/VecOrd.v Util/Vector/VecBool.v Util/Matrix/Matrix.v Util/Algebra/SemiRing.v Util/Algebra/OrdSemiRing.v Util/FGraph/FGraph.v Util/FGraph/TransClos.v MannaNess/AMannaNess.v MannaNess/ARedPair.v DP/ASCCUnion.v DP/AGraph.v DP/ADecomp.v DP/AHDE.v DP/ADP.v DP/ADPGraph.v DP/ADPUnif.v RPO/VMPO.v RPO/VLPO.v RPO/VRPO_Status.v RPO/VRPO_Type.v RPO/VPrecedence.v RPO/VRPO_Prover.v RPO/VRPO_Results.v NonTermin/SLoop.v NonTermin/AVarCond.v NonTermin/AModLoop.v NonTermin/ALoop.v NonTermin/SModLoop.v ProofChecker/IntBasedChecker.v ProofChecker/ProofChecker.v ProofChecker/Proof.v ProofChecker/EmptyChecker.v ProofChecker/Problem.v PolyInt/APolyInt_MA.v PolyInt/APolyInt.v PolyInt/PolyChecker.v Filter/AFilterPerm.v Filter/AFilterBool.v Filter/AProj.v MPO/VMpo.v HORPO/Horpo.v HORPO/HorpoComp.v HORPO/HorpoExNonTrans.v HORPO/Computability.v HORPO/HorpoWf.v HORPO/HorpoExMap.v &gt; _CoqProject
+- coq_makefile -f _CoqProject &gt; Makefile.coq
+- make -r -f Makefile.coq
+- make[1]: Entering directory &#39;/home/bench/.opam/system/build/coq-color.1.3.0&#39;
+- COQDEP HORPO/HorpoExMap.v
+- COQDEP HORPO/HorpoWf.v
+- COQDEP HORPO/Computability.v
+- COQDEP HORPO/HorpoExNonTrans.v
+- COQDEP HORPO/HorpoComp.v
+- COQDEP HORPO/Horpo.v
+- COQDEP MPO/VMpo.v
+- COQDEP Filter/AProj.v
+- COQDEP Filter/AFilterBool.v
+- COQDEP Filter/AFilterPerm.v
+- COQDEP PolyInt/PolyChecker.v
+- COQDEP PolyInt/APolyInt.v
+- COQDEP PolyInt/APolyInt_MA.v
+- COQDEP ProofChecker/Problem.v
+- COQDEP ProofChecker/EmptyChecker.v
+- COQDEP ProofChecker/Proof.v
+- COQDEP ProofChecker/ProofChecker.v
+- COQDEP ProofChecker/IntBasedChecker.v
+- COQDEP NonTermin/SModLoop.v
+- COQDEP NonTermin/ALoop.v
+- COQDEP NonTermin/AModLoop.v
+- COQDEP NonTermin/AVarCond.v
+- COQDEP NonTermin/SLoop.v
+- COQDEP RPO/VRPO_Results.v
+- COQDEP RPO/VRPO_Prover.v
+- COQDEP RPO/VPrecedence.v
+- COQDEP RPO/VRPO_Type.v
+- COQDEP RPO/VRPO_Status.v
+- COQDEP RPO/VLPO.v
+- COQDEP RPO/VMPO.v
+- COQDEP DP/ADPUnif.v
+- COQDEP DP/ADPGraph.v
+- COQDEP DP/ADP.v
+- COQDEP DP/AHDE.v
+- COQDEP DP/ADecomp.v
+- COQDEP DP/AGraph.v
+- COQDEP DP/ASCCUnion.v
+- COQDEP MannaNess/ARedPair.v
+- COQDEP MannaNess/AMannaNess.v
+- COQDEP Util/FGraph/TransClos.v
+- COQDEP Util/FGraph/FGraph.v
+- COQDEP Util/Algebra/OrdSemiRing.v
+- COQDEP Util/Algebra/SemiRing.v
+- COQDEP Util/Matrix/Matrix.v
+- COQDEP Util/Vector/VecBool.v
+- COQDEP Util/Vector/VecOrd.v
+- COQDEP Util/Vector/VecFilterPerm.v
+- COQDEP Util/Vector/VecFilter.v
+- COQDEP Util/Vector/VecMax.v
+- COQDEP Util/Vector/VecArith.v
+- COQDEP Util/Vector/VecUtil.v
+- COQDEP Util/Logic/ClassicUtil.v
+- COQDEP Util/Logic/DepChoice.v
+- COQDEP Util/Logic/DepChoicePrf.v
+- COQDEP Util/Logic/IotaUtil.v
+- COQDEP Util/Logic/LogicUtil.v
+- COQDEP Util/Logic/EqUtil.v
+- COQDEP Util/Logic/EpsilonUtil.v
+- COQDEP Util/Bool/BoolUtil.v
+- COQDEP Util/FMap/FMapUtil.v
+- COQDEP Util/Pair/PairUtil.v
+- COQDEP Util/Pair/PairLex.v
+- COQDEP Util/Set/FinSet.v
+- COQDEP Util/Set/SetUtil.v
+- COQDEP Util/Set/Ramsey.v
+- COQDEP Util/Set/InfSet.v
+- COQDEP Util/Integer/ZUtil.v
+- COQDEP Util/Integer/BigZUtil.v
+- COQDEP Util/Polynom/Polynom.v
+- COQDEP Util/Polynom/PositivePolynom.v
+- COQDEP Util/Polynom/MonotonePolynom.v
+- COQDEP Util/Function/FunUtil.v
+- COQDEP Util/Function/NaryFunction.v
+- COQDEP Util/Relation/GDomainBij.v
+- COQDEP Util/Relation/Total.v
+- COQDEP Util/Relation/AccUtil.v
+- COQDEP Util/Relation/Cycle.v
+- COQDEP Util/Relation/Tarski.v
+- COQDEP Util/Relation/Lexico.v
+- COQDEP Util/Relation/RelDec.v
+- COQDEP Util/Relation/SCCTopoOrdering.v
+- COQDEP Util/Relation/SN.v
+- COQDEP Util/Relation/RedLength.v
+- COQDEP Util/Relation/SCC.v
+- COQDEP Util/Relation/RelUtil.v
+- COQDEP Util/Relation/RelMidex.v
+- COQDEP Util/Relation/Union.v
+- COQDEP Util/Relation/OrdUtil.v
+- COQDEP Util/Relation/Path.v
+- COQDEP Util/Relation/NotSN.v
+- COQDEP Util/Relation/Preorder.v
+- COQDEP Util/Relation/NotSN_IS.v
+- COQDEP Util/Relation/RelExtras.v
+- COQDEP Util/Relation/Iter.v
+- COQDEP Util/Relation/AdjMat.v
+- COQDEP Util/Relation/InfSeq.v
+- COQDEP Util/Relation/SCC_dec.v
+- COQDEP Util/Relation/RelSub.v
+- COQDEP Util/Option/OptUtil.v
+- COQDEP Util/FSet/FSetUtil.v
+- COQDEP Util/List/ListMax.v
+- COQDEP Util/List/ListNodup.v
+- COQDEP Util/List/ListUtil.v
+- COQDEP Util/List/ListSort.v
+- COQDEP Util/List/SortUtil.v
+- COQDEP Util/List/ListLex.v
+- COQDEP Util/List/ListOccur.v
+- COQDEP Util/List/ListPermutation.v
+- COQDEP Util/List/ListDec.v
+- COQDEP Util/List/ListShrink.v
+- COQDEP Util/List/ListExtras.v
+- COQDEP Util/Nat/Log2.v
+- COQDEP Util/Nat/NatUtil.v
+- COQDEP Util/Nat/BoundNat.v
+- COQDEP Util/Nat/LeastNat.v
+- COQDEP Util/Nat/BigNUtil.v
+- COQDEP Util/Multiset/MultisetOrder.v
+- COQDEP Util/Multiset/MultisetList.v
+- COQDEP Util/Multiset/MultisetNat.v
+- COQDEP Util/Multiset/MultisetCore.v
+- COQDEP Util/Multiset/MultisetTheory.v
+- COQDEP Util/Multiset/MultisetListOrder.v
+- COQDEP Term/SimpleType/TermsConv.v
+- COQDEP Term/SimpleType/TermsAlgebraic.v
+- COQDEP Term/SimpleType/TermsBuilding.v
+- COQDEP Term/SimpleType/TermsSubstConv.v
+- COQDEP Term/SimpleType/TermsActiveEnv.v
+- COQDEP Term/SimpleType/TermsPos.v
+- COQDEP Term/SimpleType/TermsEnv.v
+- COQDEP Term/SimpleType/TermsRed.v
+- COQDEP Term/SimpleType/Terms.v
+- COQDEP Term/SimpleType/TermsSubst.v
+- COQDEP Term/SimpleType/TermsLifting.v
+- COQDEP Term/SimpleType/TermsBeta.v
+- COQDEP Term/SimpleType/TermsTyping.v
+- COQDEP Term/SimpleType/TermsSig.v
+- COQDEP Term/SimpleType/TermsDef.v
+- COQDEP Term/SimpleType/TermsEta.v
+- COQDEP Term/SimpleType/TermsManip.v
+- COQDEP Term/String/SReverse.v
+- COQDEP Term/String/Srs.v
+- COQDEP Term/String/SContext.v
+- COQDEP Term/WithArity/ASN.v
+- COQDEP Term/WithArity/ASubstitution.v
+- COQDEP Term/WithArity/MonAlgChecker.v
+- COQDEP Term/WithArity/ARelation.v
+- COQDEP Term/WithArity/AMorphism.v
+- COQDEP Term/WithArity/ATerm.v
+- COQDEP Term/WithArity/APosition.v
+- COQDEP Term/WithArity/AReduct.v
+- COQDEP Term/WithArity/AShift.v
+- COQDEP Term/WithArity/AWFMInterpretation.v
+- COQDEP Term/WithArity/AVariables.v
+- COQDEP Term/WithArity/ADuplicateSymb.v
+- COQDEP Term/WithArity/ADepRel.v
+- COQDEP Term/WithArity/AInfSeq.v
+- COQDEP Term/WithArity/AContext.v
+- COQDEP Term/WithArity/ASignature.v
+- COQDEP Term/WithArity/ASubterm.v
+- COQDEP Term/WithArity/ACalls.v
+- COQDEP Term/WithArity/AUnary.v
+- COQDEP Term/WithArity/ABterm.v
+- COQDEP Term/WithArity/ARules.v
+- COQDEP Term/WithArity/ACompat.v
+- COQDEP Term/WithArity/ARenCap.v
+- COQDEP Term/WithArity/ATrsNorm.v
+- COQDEP Term/WithArity/ABinary.v
+- COQDEP Term/WithArity/AUnif.v
+- COQDEP Term/WithArity/ATrs.v
+- COQDEP Term/WithArity/AMatching.v
+- COQDEP Term/WithArity/ACap.v
+- COQDEP Term/WithArity/AInterpretation.v
+- COQDEP Term/WithArity/ANotvar.v
+- COQDEP Term/WithArity/AMonAlg.v
+- COQDEP Term/Lambda/LCompClos.v
+- COQDEP Term/Lambda/LEta.v
+- COQDEP Term/Lambda/LAlpha.v
+- COQDEP Term/Lambda/LCompInt.v
+- COQDEP Term/Lambda/LCompSimple.v
+- COQDEP Term/Lambda/LSimple.v
+- COQDEP Term/Lambda/LCall.v
+- COQDEP Term/Lambda/LSubs.v
+- COQDEP Term/Lambda/LAlphaAlt.v
+- COQDEP Term/Lambda/LBeta.v
+- COQDEP Term/Lambda/LCompRewrite.v
+- COQDEP Term/Lambda/LTerm.v
+- COQDEP Term/Lambda/LComp.v
+- COQDEP Term/Lambda/LSystemT.v
+- COQDEP Term/Varyadic/VTerm.v
+- COQDEP Term/Varyadic/VSubstitution.v
+- COQDEP Term/Varyadic/VSignature.v
+- COQDEP Term/Varyadic/VContext.v
+- COQDEP Term/Varyadic/VTrs.v
+- COQDEP MatrixInt/ABigMatrixInt.v
+- COQDEP MatrixInt/AMatrixBasedInt.v
+- COQDEP MatrixInt/AArcticInt.v
+- COQDEP MatrixInt/ATropicalInt.v
+- COQDEP MatrixInt/AArcticBZInt.v
+- COQDEP MatrixInt/AArcticBasedInt.v
+- COQDEP MatrixInt/ATropicalBasedInt.v
+- COQDEP MatrixInt/AMatrixInt.v
+- COQDEP SubtermCrit/ASimpleProj.v
+- COQDEP Conversion/ATerm_of_String.v
+- COQDEP Conversion/AReverse.v
+- COQDEP Conversion/String_of_ATerm.v
+- COQDEP Conversion/VTerm_of_ATerm.v
+- COQDEP SemLab/ARootLab.v
+- COQDEP SemLab/ASemLab.v
+- COQDEP SemLab/AFlatCont.v
+- COQC Util/Logic/LogicUtil.v
+- COQC Util/Relation/RelMidex.v
+- COQC Util/Relation/RelUtil.v
+- COQC Util/Bool/BoolUtil.v
+- COQC Util/Logic/EqUtil.v
+- COQC Util/Nat/NatUtil.v
+- COQC Util/List/ListUtil.v
+- COQC Util/Vector/VecUtil.v
+- COQC Term/WithArity/ASignature.v
+- COQC Util/Vector/VecMax.v
+- COQC Util/List/ListMax.v
+- COQC Term/WithArity/ATerm.v
+- COQC Term/WithArity/AContext.v
+- COQC Util/Function/NaryFunction.v
+- COQC Term/WithArity/AInterpretation.v
+- COQC Term/WithArity/ASubstitution.v
+- COQC Util/List/ListDec.v
+- COQC Util/Logic/EpsilonUtil.v
+- COQC Util/Function/FunUtil.v
+- COQC Util/List/ListNodup.v
+- COQC Util/List/ListShrink.v
+- COQC Util/Relation/RelSub.v
+- COQC Util/List/ListOccur.v
+- COQC Util/Relation/Path.v
+- COQC Util/Nat/Log2.v
+- COQC Util/Relation/Iter.v
+- COQC Util/Logic/ClassicUtil.v
+- COQC Util/List/ListExtras.v
+- COQC Util/List/ListPermutation.v
+- COQC Util/List/SortUtil.v
+- COQC Util/Nat/BoundNat.v
+- COQC Util/Set/SetUtil.v
+- File &quot;./Util/Set/SetUtil.v&quot;, line 40, characters 2-37:
+- Warning: Notation _ [=] _ was already used [notation-overridden,parsing]
+- File &quot;./Util/Set/SetUtil.v&quot;, line 365, characters 0-35:
+- Warning: Notation _ [=] _ was already used [notation-overridden,parsing]
+- COQC Util/Relation/SN.v
+- COQC Term/WithArity/ARelation.v
+- COQC Util/Vector/VecOrd.v
+- COQC Term/WithArity/ATrs.v
+- COQC SemLab/AFlatCont.v
+- COQC Term/WithArity/AWFMInterpretation.v
+- COQC Term/WithArity/ARules.v
+- File &quot;./Term/WithArity/ARules.v&quot;, line 12, characters 0-76:
+- Warning: Notation _ [=] _ was already used [notation-overridden,parsing]
+- COQC Term/WithArity/AMorphism.v
+- COQC SemLab/ASemLab.v
+- COQC SemLab/ARootLab.v
+- COQC Term/Varyadic/VSignature.v
+- COQC Term/Varyadic/VTerm.v
+- COQC Term/Varyadic/VContext.v
+- COQC Term/Varyadic/VSubstitution.v
+- COQC Term/Varyadic/VTrs.v
+- COQC Conversion/VTerm_of_ATerm.v
+- COQC Term/String/SContext.v
+- COQC Term/String/Srs.v
+- COQC Term/WithArity/AUnary.v
+- COQC Util/FSet/FSetUtil.v
+- COQC Term/WithArity/AVariables.v
+- File &quot;./Term/WithArity/AVariables.v&quot;, line 21, characters 0-47:
+- Warning: Notation _ [=] _ was already used [notation-overridden,parsing]
+- COQC Conversion/String_of_ATerm.v
+- File &quot;./Conversion/String_of_ATerm.v&quot;, line 341, characters 0-37:
+- Warning: Notation _ [=] _ was already used [notation-overridden,parsing]
+- COQC Term/String/SReverse.v
+- COQC Conversion/ATerm_of_String.v
+- COQC Conversion/AReverse.v
+- COQC Term/WithArity/ACompat.v
+- File &quot;./Conversion/AReverse.v&quot;, line 211, characters 0-37:
+- Warning: Notation _ [=] _ was already used [notation-overridden,parsing]
+- COQC SubtermCrit/ASimpleProj.v
+- COQC Util/Relation/RelDec.v
+- COQC Util/Relation/RelExtras.v
+- COQC Util/Integer/ZUtil.v
+- COQC Util/Algebra/SemiRing.v
+- COQC Util/Relation/OrdUtil.v
+- COQC Util/Nat/BigNUtil.v
+- COQC Util/Algebra/OrdSemiRing.v
+- COQC Util/Vector/VecArith.v
+- COQC Util/Matrix/Matrix.v
+- COQC Term/WithArity/AMonAlg.v
+- COQC Term/WithArity/ABterm.v
+- COQC MatrixInt/AMatrixBasedInt.v
+- File &quot;./MatrixInt/AMatrixBasedInt.v&quot;, line 41, characters 2-36:
+- Warning: Notation _ =v _ was already used [notation-overridden,parsing]
+- File &quot;./MatrixInt/AMatrixBasedInt.v&quot;, line 57, characters 0-53:
+- Warning: Notation _ =v _ was already used [notation-overridden,parsing]
+- COQC MatrixInt/AMatrixInt.v
+- File &quot;./MatrixInt/AMatrixInt.v&quot;, line 47, characters 4-35:
+- Warning: Notation _ [+] _ was already used [notation-overridden,parsing]
+- File &quot;./MatrixInt/AMatrixInt.v&quot;, line 47, characters 4-35:
+- Warning: Notation _ =m _ was already used [notation-overridden,parsing]
+- File &quot;./MatrixInt/AMatrixInt.v&quot;, line 47, characters 4-35:
+- Warning: Notation _ &lt;+&gt; _ was already used [notation-overridden,parsing]
+- File &quot;./MatrixInt/AMatrixInt.v&quot;, line 47, characters 4-35:
+- Warning: Notation _ &lt;*&gt; _ was already used [notation-overridden,parsing]
+- File &quot;./MatrixInt/AMatrixInt.v&quot;, line 47, characters 4-35:
+- Warning: Notation _ &gt;=m _ was already used [notation-overridden,parsing]
+- File &quot;./MatrixInt/AMatrixInt.v&quot;, line 66, characters 2-43:
+- Warning: Notation _ [+] _ was already used [notation-overridden,parsing]
+- File &quot;./MatrixInt/AMatrixInt.v&quot;, line 66, characters 2-43:
+- Warning: Notation _ =m _ was already used [notation-overridden,parsing]
+- File &quot;./MatrixInt/AMatrixInt.v&quot;, line 66, characters 2-43:
+- Warning: Notation _ &lt;+&gt; _ was already used [notation-overridden,parsing]
+- File &quot;./MatrixInt/AMatrixInt.v&quot;, line 66, characters 2-43:
+- Warning: Notation _ &lt;*&gt; _ was already used [notation-overridden,parsing]
+- File &quot;./MatrixInt/AMatrixInt.v&quot;, line 66, characters 2-43:
+- Warning: Notation _ &gt;=m _ was already used [notation-overridden,parsing]
+- COQC MatrixInt/ATropicalBasedInt.v
+- File &quot;./MatrixInt/ATropicalBasedInt.v&quot;, line 49, characters 4-33:
+- Warning: A0_gt_A1 is declared as a local axiom [local-declaration,scope]
+- COQC MatrixInt/AArcticBasedInt.v
+- COQC MatrixInt/AArcticBZInt.v
+- COQC MatrixInt/ATropicalInt.v
+- COQC MatrixInt/AArcticInt.v
+- COQC MatrixInt/ABigMatrixInt.v
+- File &quot;./MatrixInt/ABigMatrixInt.v&quot;, line 42, characters 4-35:
+- Warning: Notation _ [+] _ was already used [notation-overridden,parsing]
+- File &quot;./MatrixInt/ABigMatrixInt.v&quot;, line 42, characters 4-35:
+- Warning: Notation _ =m _ was already used [notation-overridden,parsing]
+- File &quot;./MatrixInt/ABigMatrixInt.v&quot;, line 42, characters 4-35:
+- Warning: Notation _ &lt;+&gt; _ was already used [notation-overridden,parsing]
+- File &quot;./MatrixInt/ABigMatrixInt.v&quot;, line 42, characters 4-35:
+- Warning: Notation _ &lt;*&gt; _ was already used [notation-overridden,parsing]
+- File &quot;./MatrixInt/ABigMatrixInt.v&quot;, line 42, characters 4-35:
+- Warning: Notation _ &gt;=m _ was already used [notation-overridden,parsing]
+- File &quot;./MatrixInt/ABigMatrixInt.v&quot;, line 66, characters 4-15:
+- Warning: Notation _ [+] _ was already used [notation-overridden,parsing]
+- File &quot;./MatrixInt/ABigMatrixInt.v&quot;, line 66, characters 4-15:
+- Warning: Notation _ =m _ was already used [notation-overridden,parsing]
+- File &quot;./MatrixInt/ABigMatrixInt.v&quot;, line 66, characters 4-15:
+- Warning: Notation _ &lt;+&gt; _ was already used [notation-overridden,parsing]
+- File &quot;./MatrixInt/ABigMatrixInt.v&quot;, line 66, characters 4-15:
+- Warning: Notation _ &lt;*&gt; _ was already used [notation-overridden,parsing]
+- File &quot;./MatrixInt/ABigMatrixInt.v&quot;, line 66, characters 4-15:
+- Warning: Notation _ &gt;=m _ was already used [notation-overridden,parsing]
+- COQC Util/Relation/AccUtil.v
+- File &quot;./MatrixInt/ABigMatrixInt.v&quot;, line 303, characters 2-25:
+- Warning: Notation _ [+] _ was already used [notation-overridden,parsing]
+- File &quot;./MatrixInt/ABigMatrixInt.v&quot;, line 303, characters 2-25:
+- Warning: Notation _ =m _ was already used [notation-overridden,parsing]
+- File &quot;./MatrixInt/ABigMatrixInt.v&quot;, line 303, characters 2-25:
+- Warning: Notation _ &lt;+&gt; _ was already used [notation-overridden,parsing]
+- File &quot;./MatrixInt/ABigMatrixInt.v&quot;, line 303, characters 2-25:
+- Warning: Notation _ &lt;*&gt; _ was already used [notation-overridden,parsing]
+- File &quot;./MatrixInt/ABigMatrixInt.v&quot;, line 303, characters 2-25:
+- Warning: Notation _ &gt;=m _ was already used [notation-overridden,parsing]
+- COQC Util/Logic/DepChoice.v
+- File &quot;./Util/Relation/AccUtil.v&quot;, line 252, characters 2-33:
+- Warning: Notation _ == _ was already used [notation-overridden,parsing]
+- COQC Util/Relation/NotSN.v
+- COQC Util/Relation/NotSN_IS.v
+- COQC Util/Nat/LeastNat.v
+- COQC Util/Relation/Union.v
+- COQC Term/Lambda/LTerm.v
+- File &quot;./Term/Lambda/LTerm.v&quot;, line 494, characters 2-69:
+- Warning: Notation _ [=] _ was already used [notation-overridden,parsing]
+- File &quot;./Term/Lambda/LTerm.v&quot;, line 494, characters 2-69:
+- Warning: Notation _ [&lt;=] _ was already used [notation-overridden,parsing]
+- File &quot;./Term/Lambda/LTerm.v&quot;, line 540, characters 2-47:
+- Warning: Notation _ [=] _ was already used [notation-overridden,parsing]
+- File &quot;./Term/Lambda/LTerm.v&quot;, line 540, characters 2-47:
+- Warning: Notation _ [&lt;=] _ was already used [notation-overridden,parsing]
+- File &quot;./Term/Lambda/LTerm.v&quot;, line 567, characters 2-32:
+- Warning: Notation _ [=] _ was already used [notation-overridden,parsing]
+- File &quot;./Term/Lambda/LTerm.v&quot;, line 567, characters 2-32:
+- Warning: Notation _ [&lt;=] _ was already used [notation-overridden,parsing]
+- File &quot;./Term/Lambda/LTerm.v&quot;, line 599, characters 0-34:
+- Warning: Notation _ [=] _ was already used [notation-overridden,parsing]
+- File &quot;./Term/Lambda/LTerm.v&quot;, line 599, characters 0-34:
+- Warning: Notation _ [&lt;=] _ was already used [notation-overridden,parsing]
+- COQC Term/Lambda/LSubs.v
+- COQC Term/Lambda/LAlpha.v
+- COQC Term/Lambda/LBeta.v
+- COQC Util/FMap/FMapUtil.v
+- File &quot;./Util/FMap/FMapUtil.v&quot;, line 623, characters 4-49:
+- Warning: Notation _ [=] _ was already used [notation-overridden,parsing]
+- COQC Term/Lambda/LSimple.v
+- COQC Term/Lambda/LEta.v
+- COQC Term/Lambda/LComp.v
+- File &quot;./Term/Lambda/LComp.v&quot;, line 69, characters 2-37:
+- Warning: Notation _ [=] _ was already used [notation-overridden,parsing]
+- File &quot;./Term/Lambda/LComp.v&quot;, line 69, characters 2-37:
+- Warning: Notation _ [&lt;=] _ was already used [notation-overridden,parsing]
+- File &quot;./Term/Lambda/LComp.v&quot;, line 131, characters 0-54:
+- Warning: Notation _ [=] _ was already used [notation-overridden,parsing]
+- File &quot;./Term/Lambda/LComp.v&quot;, line 131, characters 0-54:
+- Warning: Notation _ [&lt;=] _ was already used [notation-overridden,parsing]
+- File &quot;./Term/Lambda/LComp.v&quot;, line 246, characters 0-36:
+- Warning: Notation _ [=] _ was already used [notation-overridden,parsing]
+- File &quot;./Term/Lambda/LComp.v&quot;, line 246, characters 0-36:
+- Warning: Notation _ [&lt;=] _ was already used [notation-overridden,parsing]
+- COQC Term/Lambda/LCompRewrite.v
+- COQC Util/Relation/Lexico.v
+- COQC Term/Lambda/LCall.v
+- COQC Term/Lambda/LCompSimple.v
+- File &quot;./Term/Lambda/LCompSimple.v&quot;, line 68, characters 0-84:
+- Warning: Notation _ [=] _ was already used [notation-overridden,parsing]
+- File &quot;./Term/Lambda/LCompSimple.v&quot;, line 68, characters 0-84:
+- Warning: Notation _ [&lt;=] _ was already used [notation-overridden,parsing]
+- File &quot;./Term/Lambda/LCompSimple.v&quot;, line 398, characters 2-17:
+- Warning: Notation _ [&lt;=] _ was already used [notation-overridden,parsing]
+- File &quot;./Term/Lambda/LCompSimple.v&quot;, line 398, characters 2-17:
+- Warning: Notation _ [=] _ was already used [notation-overridden,parsing]
+- File &quot;./Term/Lambda/LCompSimple.v&quot;, line 465, characters 0-43:
+- Warning: Notation _ [=] _ was already used [notation-overridden,parsing]
+- File &quot;./Term/Lambda/LCompSimple.v&quot;, line 465, characters 0-43:
+- Warning: Notation _ [&lt;=] _ was already used [notation-overridden,parsing]
+- COQC Util/Relation/Tarski.v
+- File &quot;./Util/Relation/Tarski.v&quot;, line 26, characters 2-33:
+- Warning: Notation _ == _ was already used [notation-overridden,parsing]
+- COQC Term/Lambda/LCompInt.v
+- File &quot;./Term/Lambda/LCompInt.v&quot;, line 63, characters 2-39:
+- Warning: Notation _ [=] _ was already used [notation-overridden,parsing]
+- File &quot;./Term/Lambda/LCompInt.v&quot;, line 63, characters 2-39:
+- Warning: Notation _ [&lt;=] _ was already used [notation-overridden,parsing]
+- File &quot;./Term/Lambda/LCompInt.v&quot;, line 110, characters 0-131:
+- Warning: Notation _ [=] _ was already used [notation-overridden,parsing]
+- File &quot;./Term/Lambda/LCompInt.v&quot;, line 110, characters 0-131:
+- Warning: Notation _ [&lt;=] _ was already used [notation-overridden,parsing]
+- File &quot;./Term/Lambda/LCompInt.v&quot;, line 311, characters 4-27:
+- Warning: Notation _ [&lt;=] _ was already used [notation-overridden,parsing]
+- File &quot;./Term/Lambda/LCompInt.v&quot;, line 311, characters 4-27:
+- Warning: Notation _ [=] _ was already used [notation-overridden,parsing]
+- File &quot;./Term/Lambda/LCompInt.v&quot;, line 351, characters 2-25:
+- Warning: Notation _ [&lt;=] _ was already used [notation-overridden,parsing]
+- File &quot;./Term/Lambda/LCompInt.v&quot;, line 351, characters 2-25:
+- Warning: Notation _ [=] _ was already used [notation-overridden,parsing]
+- COQC Term/Lambda/LCompClos.v
+- File &quot;./Term/Lambda/LCompClos.v&quot;, line 197, characters 2-39:
+- Warning: Notation _ [=] _ was already used [notation-overridden,parsing]
+- File &quot;./Term/Lambda/LCompClos.v&quot;, line 197, characters 2-39:
+- Warning: Notation _ [&lt;=] _ was already used [notation-overridden,parsing]
+- File &quot;./Term/Lambda/LCompClos.v&quot;, line 209, characters 0-90:
+- Warning: Notation _ [=] _ was already used [notation-overridden,parsing]
+- File &quot;./Term/Lambda/LCompClos.v&quot;, line 209, characters 0-90:
+- Warning: Notation _ [&lt;=] _ was already used [notation-overridden,parsing]
+- File &quot;./Term/Lambda/LCompClos.v&quot;, line 374, characters 0-92:
+- Warning: Notation _ [=] _ was already used [notation-overridden,parsing]
+- File &quot;./Term/Lambda/LCompClos.v&quot;, line 374, characters 0-92:
+- Warning: Notation _ [&lt;=] _ was already used [notation-overridden,parsing]
+- File &quot;./Term/Lambda/LCompClos.v&quot;, line 515, characters 0-151:
+- Warning: Notation _ [=] _ was already used [notation-overridden,parsing]
+- File &quot;./Term/Lambda/LCompClos.v&quot;, line 515, characters 0-151:
+- Warning: Notation _ [&lt;=] _ was already used [notation-overridden,parsing]
+- File &quot;./Term/Lambda/LCompClos.v&quot;, line 521, characters 2-51:
+- Warning: Notation _ |-s _ ~: _ was already used [notation-overridden,parsing]
+- COQC Term/Lambda/LSystemT.v
+- File &quot;./Term/Lambda/LSystemT.v&quot;, line 343, characters 2-17:
+- Warning: Notation _ [&lt;=] _ was already used [notation-overridden,parsing]
+- File &quot;./Term/Lambda/LSystemT.v&quot;, line 343, characters 2-17:
+- Warning: Notation _ [=] _ was already used [notation-overridden,parsing]
+- COQC Term/Lambda/LAlphaAlt.v
+- COQC Term/WithArity/ANotvar.v
+- COQC Term/WithArity/ACalls.v
+- COQC Term/WithArity/ACap.v
+- COQC Term/WithArity/AMatching.v
+- COQC Util/Multiset/MultisetCore.v
+- COQC Util/Multiset/MultisetTheory.v
+- COQC Util/Multiset/MultisetOrder.v
+- COQC Util/Multiset/MultisetList.v
+- COQC Util/Multiset/MultisetNat.v
+- COQC Term/WithArity/AUnif.v
+- File &quot;./Term/WithArity/AUnif.v&quot;, line 13, characters 0-116:
+- Warning: Notation _ [=] _ was already used [notation-overridden,parsing]
+- COQC Term/WithArity/ABinary.v
+- COQC Util/List/ListSort.v
+- COQC Term/WithArity/ATrsNorm.v
+- COQC Term/WithArity/ARenCap.v
+- COQC Term/WithArity/ASN.v
+- COQC Term/WithArity/ASubterm.v
+- COQC Util/Relation/InfSeq.v
+- COQC DP/ADP.v
+- File &quot;./DP/ADP.v&quot;, line 315, characters 0-37:
+- Warning: Notation _ [=] _ was already used [notation-overridden,parsing]
+- COQC Term/WithArity/AInfSeq.v
+- COQC Term/WithArity/ADepRel.v
+- COQC Term/WithArity/ADuplicateSymb.v
+- COQC Term/WithArity/AShift.v
+- COQC Term/WithArity/AReduct.v
+- COQC Util/Option/OptUtil.v
+- COQC Term/WithArity/APosition.v
+- COQC MannaNess/AMannaNess.v
+- COQC ProofChecker/Proof.v
+- COQC ProofChecker/IntBasedChecker.v
+- COQC ProofChecker/Problem.v
+- COQC Term/WithArity/MonAlgChecker.v
+- COQC Term/SimpleType/TermsSig.v
+- COQC Term/SimpleType/TermsDef.v
+- COQC Term/SimpleType/TermsTyping.v
+- COQC Term/SimpleType/TermsManip.v
+- COQC Term/SimpleType/TermsLifting.v
+- COQC Term/SimpleType/TermsEnv.v
+- File &quot;./Term/SimpleType/TermsEnv.v&quot;, line 1280, characters 2-55:
+- Warning: Notation _ [=] _ was already used [notation-overridden,parsing]
+- COQC Term/SimpleType/TermsActiveEnv.v
+- File &quot;./Term/SimpleType/TermsActiveEnv.v&quot;, line 18, characters 2-44:
+- Warning: Notation _ [=] _ was already used [notation-overridden,parsing]
+- COQC Term/SimpleType/TermsBuilding.v
+- COQC Term/SimpleType/TermsPos.v
+- File &quot;./Term/SimpleType/TermsBuilding.v&quot;, line 18, characters 2-57:
+- Warning: Notation _ [=] _ was already used [notation-overridden,parsing]
+- File &quot;./Term/SimpleType/TermsPos.v&quot;, line 17, characters 2-54:
+- Warning: Notation _ [=] _ was already used [notation-overridden,parsing]
+- COQC Term/SimpleType/TermsConv.v
+- File &quot;./Term/SimpleType/TermsConv.v&quot;, line 23, characters 2-44:
+- Warning: Notation _ [=] _ was already used [notation-overridden,parsing]
+- COQC Term/SimpleType/TermsSubst.v
+- File &quot;./Term/SimpleType/TermsSubst.v&quot;, line 19, characters 2-46:
+- Warning: Notation _ [=] _ was already used [notation-overridden,parsing]
+- COQC Term/SimpleType/TermsSubstConv.v
+- File &quot;./Term/SimpleType/TermsSubstConv.v&quot;, line 17, characters 2-48:
+- Warning: Notation _ [=] _ was already used [notation-overridden,parsing]
+- COQC Term/SimpleType/TermsRed.v
+- File &quot;./Term/SimpleType/TermsRed.v&quot;, line 16, characters 2-57:
+- Warning: Notation _ [=] _ was already used [notation-overridden,parsing]
+- COQC Term/SimpleType/TermsBeta.v
+- File &quot;./Term/SimpleType/TermsBeta.v&quot;, line 18, characters 2-44:
+- Warning: Notation _ [=] _ was already used [notation-overridden,parsing]
+- COQC Term/SimpleType/TermsEta.v
+- COQC Term/SimpleType/TermsAlgebraic.v
+- File &quot;./Term/SimpleType/TermsEta.v&quot;, line 18, characters 2-46:
+- Warning: Notation _ [=] _ was already used [notation-overridden,parsing]
+- File &quot;./Term/SimpleType/TermsAlgebraic.v&quot;, line 18, characters 2-44:
+- Warning: Notation _ [=] _ was already used [notation-overridden,parsing]
+- COQC Term/SimpleType/Terms.v
+- COQC Util/Multiset/MultisetListOrder.v
+- COQC Util/List/ListLex.v
+- COQC Util/Relation/Cycle.v
+- COQC Util/Relation/SCC.v
+- COQC Util/Relation/AdjMat.v
+- COQC Util/Relation/GDomainBij.v
+- COQC Util/Relation/SCC_dec.v
+- COQC Util/Relation/Preorder.v
+- COQC Util/Relation/RedLength.v
+- COQC Util/Relation/Total.v
+- COQC Util/Relation/SCCTopoOrdering.v
+- COQC Util/Polynom/Polynom.v
+- COQC Util/Polynom/PositivePolynom.v
+- COQC Util/Polynom/MonotonePolynom.v
+- COQC Util/Integer/BigZUtil.v
+- COQC Util/Logic/IotaUtil.v
+- COQC Util/Set/FinSet.v
+- File &quot;./Util/Set/FinSet.v&quot;, line 15, characters 0-126:
+- Warning: Notation _ [=] _ was already used [notation-overridden,parsing]
+- File &quot;./Util/Set/FinSet.v&quot;, line 311, characters 2-44:
+- Warning: Pf_equiv_of does not respect the uniform inheritance condition
+- [uniform-inheritance,typechecker]
+- COQC Util/Set/InfSet.v
+- COQC Util/Set/Ramsey.v
+- File &quot;./Util/Set/Ramsey.v&quot;, line 328, characters 2-6:
+- Warning: Nested proofs are deprecated and will stop working in a future Coq
+- version [deprecated-nested-proofs,deprecated]
+- COQC Util/Pair/PairLex.v
+- COQC Util/Pair/PairUtil.v
+- File &quot;./Util/Pair/PairLex.v&quot;, line 229, characters 0-53:
+- Warning: Notation _ =A= _ was already used [notation-overridden,parsing]
+- File &quot;./Util/Pair/PairLex.v&quot;, line 229, characters 0-53:
+- Warning: Notation _ &gt;A _ was already used [notation-overridden,parsing]
+- File &quot;./Util/Pair/PairLex.v&quot;, line 231, characters 2-41:
+- Warning: Notation _ =A= _ was already used [notation-overridden,parsing]
+- File &quot;./Util/Pair/PairLex.v&quot;, line 231, characters 2-41:
+- Warning: Notation _ &gt;A _ was already used [notation-overridden,parsing]
+- File &quot;./Util/Pair/PairLex.v&quot;, line 232, characters 2-41:
+- Warning: Notation _ =A= _ was already used [notation-overridden,parsing]
+- File &quot;./Util/Pair/PairLex.v&quot;, line 232, characters 2-41:
+- Warning: Notation _ &gt;A _ was already used [notation-overridden,parsing]
+- File &quot;./Util/Pair/PairLex.v&quot;, line 232, characters 2-41:
+- Warning: Notation _ &lt;A _ was already used [notation-overridden,parsing]
+- File &quot;./Util/Pair/PairLex.v&quot;, line 232, characters 2-41:
+- Warning: Notation _ &gt;=A _ was already used [notation-overridden,parsing]
+- File &quot;./Util/Pair/PairLex.v&quot;, line 232, characters 2-41:
+- Warning: Notation _ &lt;=A _ was already used [notation-overridden,parsing]
+- File &quot;./Util/Pair/PairLex.v&quot;, line 379, characters 2-41:
+- Warning: Notation _ =A= _ was already used [notation-overridden,parsing]
+- File &quot;./Util/Pair/PairLex.v&quot;, line 379, characters 2-41:
+- Warning: Notation _ &gt;A _ was already used [notation-overridden,parsing]
+- File &quot;./Util/Pair/PairLex.v&quot;, line 379, characters 2-41:
+- Warning: Notation _ &lt;A _ was already used [notation-overridden,parsing]
+- File &quot;./Util/Pair/PairLex.v&quot;, line 379, characters 2-41:
+- Warning: Notation _ &gt;=A _ was already used [notation-overridden,parsing]
+- File &quot;./Util/Pair/PairLex.v&quot;, line 379, characters 2-41:
+- Warning: Notation _ &lt;=A _ was already used [notation-overridden,parsing]
+- File &quot;./Util/Pair/PairLex.v&quot;, line 380, characters 2-41:
+- Warning: Notation _ =A= _ was already used [notation-overridden,parsing]
+- File &quot;./Util/Pair/PairLex.v&quot;, line 380, characters 2-41:
+- Warning: Notation _ &gt;A _ was already used [notation-overridden,parsing]
+- File &quot;./Util/Pair/PairLex.v&quot;, line 380, characters 2-41:
+- Warning: Notation _ &lt;A _ was already used [notation-overridden,parsing]
+- File &quot;./Util/Pair/PairLex.v&quot;, line 380, characters 2-41:
+- Warning: Notation _ &gt;=A _ was already used [notation-overridden,parsing]
+- File &quot;./Util/Pair/PairLex.v&quot;, line 380, characters 2-41:
+- Warning: Notation _ &lt;=A _ was already used [notation-overridden,parsing]
+- COQC Util/Logic/DepChoicePrf.v
+- COQC Util/Vector/VecBool.v
+- COQC Util/Vector/VecFilter.v
+- COQC Util/Vector/VecFilterPerm.v
+- COQC Util/FGraph/FGraph.v
+- File &quot;./Util/FGraph/FGraph.v&quot;, line 18, characters 2-40:
+- Warning: Notation _ [=] _ was already used [notation-overridden,parsing]
+- COQC Util/FGraph/TransClos.v
+</pre></dd>
             </dl>
             <h2>Installation size</h2>
             <p>No files were installed.</p>
