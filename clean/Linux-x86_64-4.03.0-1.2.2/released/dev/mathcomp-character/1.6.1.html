@@ -41,7 +41,7 @@
                 <span class="label label-warning">Error with dependencies</span>
               </small>
             </h1>
-            <p><em><script>document.write(moment("2017-02-20 22:52:37 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2017-02-20 22:52:37 UTC)</em><p>
+            <p><em><script>document.write(moment("2017-02-26 17:26:31 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2017-02-26 17:26:31 UTC)</em><p>
             <h2>Context</h2>
             <pre># Installed packages for system:
 base-bigarray   base  Bigarray library distributed with the OCaml compiler
@@ -79,9 +79,9 @@ ocamlfind      1.7.1  A library manager for OCaml
               <dt>Command</dt>
               <dd><code>opam list; ulimit -Sv 4000000; timeout 30m opam install -y --deps-only coq-mathcomp-character.1.6.1</code></dd>
               <dt>Return code</dt>
-              <dd>31744</dd>
+              <dd>1024</dd>
               <dt>Duration</dt>
-              <dd>30 m 0 s</dd>
+              <dd>33 s</dd>
               <dt>Output</dt>
               <dd><pre># Installed packages for system:
 base-bigarray   base  Bigarray library distributed with the OCaml compiler
@@ -102,32 +102,62 @@ The following actions will be performed:
 [coq-mathcomp-algebra: http] Command started
 [coq-mathcomp-field: http] Command started
 [coq-mathcomp-fingroup: http] Command started
-[coq-mathcomp-fingroup: http] Command started
-[coq-mathcomp-fingroup.1.6.1] http://github.com/math-comp/math-comp/archive/mathcomp-1.6.1.tar.gz downloaded
-[coq-mathcomp-solvable: http] Command started
 [coq-mathcomp-field: http] Command started
 [coq-mathcomp-field.1.6.1] http://github.com/math-comp/math-comp/archive/mathcomp-1.6.1.tar.gz downloaded
-[coq-mathcomp-ssreflect: http] Command started
+[coq-mathcomp-solvable: http] Command started
 [coq-mathcomp-algebra: http] Command started
 [coq-mathcomp-algebra.1.6.1] http://github.com/math-comp/math-comp/archive/mathcomp-1.6.1.tar.gz downloaded
+[coq-mathcomp-ssreflect: http] Command started
+[coq-mathcomp-fingroup: http] Command started
+[coq-mathcomp-fingroup.1.6.1] http://github.com/math-comp/math-comp/archive/mathcomp-1.6.1.tar.gz downloaded
 [coq-mathcomp-solvable: http] Command started
 [coq-mathcomp-solvable.1.6.1] http://github.com/math-comp/math-comp/archive/mathcomp-1.6.1.tar.gz downloaded
 [coq-mathcomp-ssreflect: http] Command started
 [coq-mathcomp-ssreflect.1.6.1] http://github.com/math-comp/math-comp/archive/mathcomp-1.6.1.tar.gz downloaded
 =-=- Processing actions -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 [coq-mathcomp-ssreflect: make 6] Command started
-[coq-mathcomp-ssreflect: make install] Command started
--&gt; installed coq-mathcomp-ssreflect.1.6.1
-[coq-mathcomp-fingroup: make 6] Command started
-[coq-mathcomp-fingroup: make install] Command started
--&gt; installed coq-mathcomp-fingroup.1.6.1
-[coq-mathcomp-algebra: make 6] Command started
-[coq-mathcomp-algebra: make install] Command started
--&gt; installed coq-mathcomp-algebra.1.6.1
-[coq-mathcomp-solvable: make 6] Command started
-[coq-mathcomp-solvable: make install] Command started
--&gt; installed coq-mathcomp-solvable.1.6.1
-[coq-mathcomp-field: make 6] Command started
+[ERROR] The compilation of coq-mathcomp-ssreflect failed at &quot;make -C
+        mathcomp/ssreflect -j 6&quot;.
+[coq-mathcomp-ssreflect: sh] Command started
+#=== ERROR while installing coq-mathcomp-ssreflect.1.6.1 ======================#
+# opam-version         1.2.2
+# os                   linux
+# command              make -C mathcomp/ssreflect -j 6
+# path                 /home/bench/.opam/system/build/coq-mathcomp-ssreflect.1.6.1
+# compiler             system (4.03.0)
+# exit-code            2
+# env-file             /home/bench/.opam/system/build/coq-mathcomp-ssreflect.1.6.1/coq-mathcomp-ssreflect-32504-6cc03f.env
+# stdout-file          /home/bench/.opam/system/build/coq-mathcomp-ssreflect.1.6.1/coq-mathcomp-ssreflect-32504-6cc03f.out
+# stderr-file          /home/bench/.opam/system/build/coq-mathcomp-ssreflect.1.6.1/coq-mathcomp-ssreflect-32504-6cc03f.err
+### stdout ###
+# [...]
+# COQDEP ssrfun.v
+# COQDEP ssreflect.v
+# COQDEP ssrbool.v
+# COQDEP seq.v
+# COQDEP eqtype.v
+# COQDEP all_ssreflect.v
+# CAMLC -pp -c ssreflect.ml4
+# Makefile.coq:402: recipe for target &#39;ssreflect.cmo&#39; failed
+# Makefile:24: recipe for target &#39;all&#39; failed
+# make: Leaving directory &#39;/home/bench/.opam/system/build/coq-mathcomp-ssreflect.1.6.1/mathcomp/ssreflect&#39;
+### stderr ###
+# Redundant [TYPED AS] clause in [ARGUMENT EXTEND ssrindex].
+# Redundant [TYPED AS] clause in [ARGUMENT EXTEND ssrindex].
+# File &quot;ssreflect.ml4&quot;, line 478, characters 18-36:
+# Error: Unbound module G_ltac
+# Hint: Did you mean Pltac?
+# make[1]: *** [ssreflect.cmo] Error 2
+# make: *** [all] Error 2
+=-=- Error report -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+The following actions were aborted
+  - install coq-mathcomp-algebra  1.6.1
+  - install coq-mathcomp-field    1.6.1
+  - install coq-mathcomp-fingroup 1.6.1
+  - install coq-mathcomp-solvable 1.6.1
+The following actions failed
+  - install coq-mathcomp-ssreflect 1.6.1
+No changes have been performed
 </pre></dd>
             </dl>
             <h2>Install</h2>
