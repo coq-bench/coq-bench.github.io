@@ -38,10 +38,10 @@
               gappa
               <small>
                 1.2.1
-                <span class="label label-danger">Error</span>
+                <span class="label label-warning">Error with dependencies</span>
               </small>
             </h1>
-            <p><em><script>document.write(moment("2017-03-04 13:14:59 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2017-03-04 13:14:59 UTC)</em><p>
+            <p><em><script>document.write(moment("2017-03-10 09:45:12 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2017-03-10 09:45:12 UTC)</em><p>
             <h2>Context</h2>
             <pre># Installed packages for system:
 base-bigarray   base  Bigarray library distributed with the OCaml compiler
@@ -79,18 +79,9 @@ ocamlfind      1.7.1  A library manager for OCaml
               <dt>Command</dt>
               <dd><code>opam list; ulimit -Sv 4000000; timeout 30m opam install -y --deps-only coq-gappa.1.2.1</code></dd>
               <dt>Return code</dt>
-              <dd>0</dd>
-              <dt>Duration</dt>
-              <dd>1 m 51 s</dd>
-            </dl>
-            <h2>Install</h2>
-            <dl class="dl-horizontal">
-              <dt>Command</dt>
-              <dd><code>opam list; ulimit -Sv 4000000; timeout 30m opam install -j1 -y -v coq-gappa.1.2.1</code></dd>
-              <dt>Return code</dt>
               <dd>1024</dd>
               <dt>Duration</dt>
-              <dd>21 s</dd>
+              <dd>35 s</dd>
               <dt>Output</dt>
               <dd><pre># Installed packages for system:
 base-bigarray   base  Bigarray library distributed with the OCaml compiler
@@ -99,59 +90,66 @@ base-unix       base  Unix library distributed with the OCaml compiler
 camlp5          6.17  Preprocessor-pretty-printer of OCaml
 conf-m4            1  Virtual package relying on m4
 coq              dev  Formal proof management system.
-coq-flocq      2.5.2  A floating-point formalization for the Coq system.
 ocamlfind      1.7.1  A library manager for OCaml
 The following actions will be performed:
-  - install coq-gappa 1.2.1
+  - install coq-flocq 2.5.2
 =-=- Gathering sources =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
-[coq-gappa: http] Command started
-[coq-gappa: http] Command started
-[coq-gappa.1.2.1] https://gforge.inria.fr/frs/download.php/file/35538/gappalib-coq-1.2.1.tar.gz downloaded
+[coq-flocq: http] Command started
+[coq-flocq: http] Command started
+[coq-flocq.2.5.2] https://gforge.inria.fr/frs/download.php/file/36199/flocq-2.5.2.tar.gz downloaded
 =-=- Processing actions -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
-[coq-gappa: ./configure] Command started
-+ ./configure  (CWD=/home/bench/.opam/system/build/coq-gappa.1.2.1)
-- checking for g++... g++
-- checking whether the C++ compiler works... yes
-- checking for C++ compiler default output file name... a.out
-- checking for suffix of executables... 
-- checking whether we are cross compiling... no
-- checking for suffix of object files... o
-- checking whether we are using the GNU C++ compiler... yes
-- checking whether g++ accepts -g... yes
-- checking for coqc &gt;= 8.4... no
-- configure: error:  *** Unable to find Coq (http://coq.inria.fr/)
-[ERROR] The compilation of coq-gappa failed at &quot;./configure&quot;.
-[coq-gappa: rm] Command started
-+ rm &quot;-R&quot; &quot;/home/bench/.opam/system/lib/coq/user-contrib/Gappa&quot; (CWD=/home/bench/.opam/system/build/coq-gappa.1.2.1)
-- rm: cannot remove &#39;/home/bench/.opam/system/lib/coq/user-contrib/Gappa&#39;: No such file or directory
-#=== ERROR while installing coq-gappa.1.2.1 ===================================#
+[coq-flocq: ./configure] Command started
+[coq-flocq: ./remake] Command started
+[ERROR] The compilation of coq-flocq failed at &quot;./remake -j6&quot;.
+[coq-flocq: rm] Command started
+#=== ERROR while installing coq-flocq.2.5.2 ===================================#
 # opam-version         1.2.2
 # os                   linux
-# command              ./configure
-# path                 /home/bench/.opam/system/build/coq-gappa.1.2.1
+# command              ./remake -j6
+# path                 /home/bench/.opam/system/build/coq-flocq.2.5.2
 # compiler             system (4.03.0)
 # exit-code            1
-# env-file             /home/bench/.opam/system/build/coq-gappa.1.2.1/coq-gappa-24513-e7966f.env
-# stdout-file          /home/bench/.opam/system/build/coq-gappa.1.2.1/coq-gappa-24513-e7966f.out
-# stderr-file          /home/bench/.opam/system/build/coq-gappa.1.2.1/coq-gappa-24513-e7966f.err
+# env-file             /home/bench/.opam/system/build/coq-flocq.2.5.2/coq-flocq-19551-c61e7b.env
+# stdout-file          /home/bench/.opam/system/build/coq-flocq.2.5.2/coq-flocq-19551-c61e7b.out
+# stderr-file          /home/bench/.opam/system/build/coq-flocq.2.5.2/coq-flocq-19551-c61e7b.err
 ### stdout ###
-# checking for g++... g++
-# checking whether the C++ compiler works... yes
-# checking for C++ compiler default output file name... a.out
-# checking for suffix of executables... 
-# checking whether we are cross compiling... no
-# checking for suffix of object files... o
-# checking whether we are using the GNU C++ compiler... yes
-# checking whether g++ accepts -g... yes
-# checking for coqc &gt;= 8.4... no
+# [...]
+# Building src/Prop/Fprop_plus_error.vo
+# Building src/Prop/Fprop_relative.vo
+# Building src/Prop/Fprop_Sterbenz.vo
+# Building src/Appli/Fappli_rnd_odd.vo
+# Building src/Appli/Fappli_IEEE.vo
+# Building src/Appli/Fappli_IEEE_bits.vo
+# Building src/Appli/Fappli_double_round.vo
+# Finished src/Flocq_version.vo
+# Finished src/Core/Fcore_Zaux.vo
+# Finished src/Core/Fcore_digits.vo
 ### stderr ###
-# configure: error:  *** Unable to find Coq (http://coq.inria.fr/)
+# [...]
+# Failed to build src/Calc/Fcalc_round.vo
+# Failed to build src/Prop/Fprop_relative.vo
+# Failed to build src/Core/Fcore_FLT.vo
+# Failed to build src/Core/Fcore_FLX.vo
+# Failed to build src/Core/Fcore_FTZ.vo
+# Failed to build src/Core/Fcore_defs.vo
+# Failed to build src/Core/Fcore_float_prop.vo
+# Failed to build src/Core/Fcore_FIX.vo
+# Failed to build src/Core/Fcore_generic_fmt.vo
+# Failed to build all
 =-=- Error report -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 The following actions failed
-  - install coq-gappa 1.2.1
+  - install coq-flocq 2.5.2
 No changes have been performed
-&#39;opam install -j1 -y -v coq-gappa.1.2.1&#39; failed.
 </pre></dd>
+            </dl>
+            <h2>Install</h2>
+            <dl class="dl-horizontal">
+              <dt>Command</dt>
+              <dd><code>true</code></dd>
+              <dt>Return code</dt>
+              <dd>0</dd>
+              <dt>Duration</dt>
+              <dd>0 s</dd>
             </dl>
             <h2>Installation size</h2>
             <p>No files were installed.</p>
