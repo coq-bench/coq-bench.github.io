@@ -38,10 +38,10 @@
               ails
               <small>
                 8.5.0
-                <span class="label label-success">1 m 11 s</span>
+                <span class="label label-danger">Error</span>
               </small>
             </h1>
-            <p><em><script>document.write(moment("2017-03-22 05:53:17 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2017-03-22 05:53:17 UTC)</em><p>
+            <p><em><script>document.write(moment("2017-03-28 06:06:52 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2017-03-28 06:06:52 UTC)</em><p>
             <h2>Context</h2>
             <pre># Installed packages for system:
 base-bigarray   base  Bigarray library distributed with the OCaml compiler
@@ -81,78 +81,112 @@ ocamlfind      1.7.1  A library manager for OCaml
               <dt>Return code</dt>
               <dd>0</dd>
               <dt>Duration</dt>
-              <dd>20 s</dd>
+              <dd>21 s</dd>
             </dl>
             <h2>Install</h2>
             <dl class="dl-horizontal">
               <dt>Command</dt>
               <dd><code>opam list; ulimit -Sv 4000000; timeout 30m opam install -j1 -y -v coq-ails.8.5.0</code></dd>
               <dt>Return code</dt>
-              <dd>0</dd>
+              <dd>1024</dd>
               <dt>Duration</dt>
-              <dd>1 m 11 s</dd>
+              <dd>27 s</dd>
+              <dt>Output</dt>
+              <dd><pre># Installed packages for system:
+base-bigarray   base  Bigarray library distributed with the OCaml compiler
+base-threads    base  Threads library distributed with the OCaml compiler
+base-unix       base  Unix library distributed with the OCaml compiler
+camlp5          6.17  Preprocessor-pretty-printer of OCaml
+conf-m4            1  Virtual package relying on m4
+coq              dev  Formal proof management system.
+ocamlfind      1.7.1  A library manager for OCaml
+The following actions will be performed:
+  - install coq-ails 8.5.0
+=-=- Gathering sources =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+[coq-ails: http] Command started
+[coq-ails: http] Command started
+[coq-ails.8.5.0] https://github.com/coq-contribs/ails/archive/v8.5.0.tar.gz downloaded
+=-=- Processing actions -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+[coq-ails: make] Command started
++ make &quot;-j1&quot; (CWD=/home/bench/.opam/system/build/coq-ails.8.5.0)
+- coq_makefile -f Make -o Makefile.coq
+- make -f Makefile.coq Makefile
+- make[1]: Entering directory &#39;/home/bench/.opam/system/build/coq-ails.8.5.0&#39;
+- COQDEP correctness.v
+- COQDEP alpha_no_conflict.v
+- COQDEP alarm.v
+- COQDEP ails_trajectory.v
+- COQDEP measure2state.v
+- COQDEP trajectory.v
+- COQDEP ails.v
+- COQDEP tau.v
+- COQDEP math_prop.v
+- COQDEP ails_def.v
+- COQDEP ycngstys.v
+- COQDEP ycngftys.v
+- COQDEP constants.v
+- COQDEP trajectory_def.v
+- make: Circular Make &lt;- Makefile.coq dependency dropped.
+- COQDEP rrho.v
+- COQDEP trajectory_const.v
+- COQDEP pi_ineq.v
+- make[1]: Nothing to be done for &#39;Makefile&#39;.
+- make[1]: Leaving directory &#39;/home/bench/.opam/system/build/coq-ails.8.5.0&#39;
+- make -f Makefile.coq all
+- make[1]: Entering directory &#39;/home/bench/.opam/system/build/coq-ails.8.5.0&#39;
+- COQC pi_ineq.v
+- Makefile.coq:284: recipe for target &#39;pi_ineq.vo&#39; failed
+- make[1]: Leaving directory &#39;/home/bench/.opam/system/build/coq-ails.8.5.0&#39;
+- Makefile:2: recipe for target &#39;all&#39; failed
+- File &quot;./pi_ineq.v&quot;, line 86, characters 27-29:
+- Error: H0 is already used.
+- make[1]: *** [pi_ineq.vo] Error 1
+- make: *** [all] Error 2
+[ERROR] The compilation of coq-ails failed at &quot;make -j1&quot;.
+[coq-ails: rm] Command started
++ rm &quot;-R&quot; &quot;/home/bench/.opam/system/lib/coq/user-contrib/AILS&quot; (CWD=/home/bench/.opam/system/build/coq-ails.8.5.0)
+- rm: cannot remove &#39;/home/bench/.opam/system/lib/coq/user-contrib/AILS&#39;: No such file or directory
+#=== ERROR while installing coq-ails.8.5.0 ====================================#
+# opam-version         1.2.2
+# os                   linux
+# command              make -j1
+# path                 /home/bench/.opam/system/build/coq-ails.8.5.0
+# compiler             system (4.03.0)
+# exit-code            2
+# env-file             /home/bench/.opam/system/build/coq-ails.8.5.0/coq-ails-31705-e7966f.env
+# stdout-file          /home/bench/.opam/system/build/coq-ails.8.5.0/coq-ails-31705-e7966f.out
+# stderr-file          /home/bench/.opam/system/build/coq-ails.8.5.0/coq-ails-31705-e7966f.err
+### stdout ###
+# [...]
+# COQDEP trajectory_const.v
+# COQDEP pi_ineq.v
+# make[1]: Nothing to be done for &#39;Makefile&#39;.
+# make[1]: Leaving directory &#39;/home/bench/.opam/system/build/coq-ails.8.5.0&#39;
+# make -f Makefile.coq all
+# make[1]: Entering directory &#39;/home/bench/.opam/system/build/coq-ails.8.5.0&#39;
+# COQC pi_ineq.v
+# Makefile.coq:284: recipe for target &#39;pi_ineq.vo&#39; failed
+# make[1]: Leaving directory &#39;/home/bench/.opam/system/build/coq-ails.8.5.0&#39;
+# Makefile:2: recipe for target &#39;all&#39; failed
+### stderr ###
+# make: Circular Make &lt;- Makefile.coq dependency dropped.
+# File &quot;./pi_ineq.v&quot;, line 86, characters 27-29:
+# Error: H0 is already used.
+# make[1]: *** [pi_ineq.vo] Error 1
+# make: *** [all] Error 2
+=-=- Error report -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+The following actions failed
+  - install coq-ails 8.5.0
+No changes have been performed
+&#39;opam install -j1 -y -v coq-ails.8.5.0&#39; failed.
+</pre></dd>
             </dl>
             <h2>Installation size</h2>
-            <p>Total: 2,854 K</p>
-            <ul>
-              <li>301 K <code>lib/coq/user-contrib/AILS/trajectory.glob</code></li>
-              <li>255 K <code>lib/coq/user-contrib/AILS/alpha_no_conflict.glob</code></li>
-              <li>243 K <code>lib/coq/user-contrib/AILS/ycngstys.glob</code></li>
-              <li>169 K <code>lib/coq/user-contrib/AILS/tau.glob</code></li>
-              <li>139 K <code>lib/coq/user-contrib/AILS/trajectory.vo</code></li>
-              <li>118 K <code>lib/coq/user-contrib/AILS/ycngstys.vo</code></li>
-              <li>97 K <code>lib/coq/user-contrib/AILS/ails_trajectory.glob</code></li>
-              <li>82 K <code>lib/coq/user-contrib/AILS/tau.vo</code></li>
-              <li>73 K <code>lib/coq/user-contrib/AILS/math_prop.glob</code></li>
-              <li>71 K <code>lib/coq/user-contrib/AILS/ycngftys.glob</code></li>
-              <li>70 K <code>lib/coq/user-contrib/AILS/alpha_no_conflict.vo</code></li>
-              <li>68 K <code>lib/coq/user-contrib/AILS/alarm.glob</code></li>
-              <li>68 K <code>lib/coq/user-contrib/AILS/constants.vo</code></li>
-              <li>68 K <code>lib/coq/user-contrib/AILS/ycngftys.vo</code></li>
-              <li>66 K <code>lib/coq/user-contrib/AILS/constants.glob</code></li>
-              <li>63 K <code>lib/coq/user-contrib/AILS/pi_ineq.vo</code></li>
-              <li>59 K <code>lib/coq/user-contrib/AILS/ails.vo</code></li>
-              <li>58 K <code>lib/coq/user-contrib/AILS/trajectory_def.vo</code></li>
-              <li>58 K <code>lib/coq/user-contrib/AILS/ails_trajectory.vo</code></li>
-              <li>58 K <code>lib/coq/user-contrib/AILS/alarm.vo</code></li>
-              <li>49 K <code>lib/coq/user-contrib/AILS/math_prop.vo</code></li>
-              <li>49 K <code>lib/coq/user-contrib/AILS/ails.glob</code></li>
-              <li>46 K <code>lib/coq/user-contrib/AILS/rrho.vo</code></li>
-              <li>45 K <code>lib/coq/user-contrib/AILS/trajectory_const.vo</code></li>
-              <li>42 K <code>lib/coq/user-contrib/AILS/correctness.vo</code></li>
-              <li>39 K <code>lib/coq/user-contrib/AILS/trajectory.v</code></li>
-              <li>37 K <code>lib/coq/user-contrib/AILS/pi_ineq.glob</code></li>
-              <li>35 K <code>lib/coq/user-contrib/AILS/ycngstys.v</code></li>
-              <li>34 K <code>lib/coq/user-contrib/AILS/ails_def.vo</code></li>
-              <li>34 K <code>lib/coq/user-contrib/AILS/measure2state.vo</code></li>
-              <li>31 K <code>lib/coq/user-contrib/AILS/trajectory_def.glob</code></li>
-              <li>28 K <code>lib/coq/user-contrib/AILS/rrho.glob</code></li>
-              <li>25 K <code>lib/coq/user-contrib/AILS/tau.v</code></li>
-              <li>21 K <code>lib/coq/user-contrib/AILS/alpha_no_conflict.v</code></li>
-              <li>20 K <code>lib/coq/user-contrib/AILS/correctness.glob</code></li>
-              <li>13 K <code>lib/coq/user-contrib/AILS/alarm.v</code></li>
-              <li>12 K <code>lib/coq/user-contrib/AILS/constants.v</code></li>
-              <li>12 K <code>lib/coq/user-contrib/AILS/ycngftys.v</code></li>
-              <li>11 K <code>lib/coq/user-contrib/AILS/ails.v</code></li>
-              <li>11 K <code>lib/coq/user-contrib/AILS/ails_trajectory.v</code></li>
-              <li>11 K <code>lib/coq/user-contrib/AILS/math_prop.v</code></li>
-              <li>9 K <code>lib/coq/user-contrib/AILS/trajectory_const.glob</code></li>
-              <li>7 K <code>lib/coq/user-contrib/AILS/rrho.v</code></li>
-              <li>6 K <code>lib/coq/user-contrib/AILS/trajectory_def.v</code></li>
-              <li>5 K <code>lib/coq/user-contrib/AILS/correctness.v</code></li>
-              <li>5 K <code>lib/coq/user-contrib/AILS/measure2state.glob</code></li>
-              <li>4 K <code>lib/coq/user-contrib/AILS/pi_ineq.v</code></li>
-              <li>3 K <code>lib/coq/user-contrib/AILS/trajectory_const.v</code></li>
-              <li>2 K <code>lib/coq/user-contrib/AILS/measure2state.v</code></li>
-              <li>1 K <code>lib/coq/user-contrib/AILS/ails_def.v</code></li>
-              <li>1 K <code>lib/coq/user-contrib/AILS/ails_def.glob</code></li>
-              <li>1 K <code>install/coq-ails.install</code></li>
-              <li>0 K <code>lib/coq-ails/opam.config</code></li>
-            </ul>
+            <p>No files were installed.</p>
             <h2>Uninstall</h2>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>opam remove -y coq-ails.8.5.0</code></dd>
+              <dd><code>true</code></dd>
               <dt>Return code</dt>
               <dd>0</dd>
               <dt>Missing removes</dt>
