@@ -41,7 +41,7 @@
                 <span class="label label-danger">Error</span>
               </small>
             </h1>
-            <p><em><script>document.write(moment("2017-04-22 02:39:23 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2017-04-22 02:39:23 UTC)</em><p>
+            <p><em><script>document.write(moment("2017-04-28 09:31:49 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2017-04-28 09:31:49 UTC)</em><p>
             <h2>Context</h2>
             <pre># Installed packages for system:
 base-bigarray   base  Bigarray library distributed with the OCaml compiler
@@ -81,7 +81,7 @@ ocamlfind      1.7.1  A library manager for OCaml
               <dt>Return code</dt>
               <dd>0</dd>
               <dt>Duration</dt>
-              <dd>32 s</dd>
+              <dd>33 s</dd>
             </dl>
             <h2>Install</h2>
             <dl class="dl-horizontal">
@@ -90,7 +90,7 @@ ocamlfind      1.7.1  A library manager for OCaml
               <dt>Return code</dt>
               <dd>1024</dd>
               <dt>Duration</dt>
-              <dd>27 s</dd>
+              <dd>31 s</dd>
               <dt>Output</dt>
               <dd><pre># Installed packages for system:
 base-bigarray         base  Bigarray library distributed with the OCaml compiler
@@ -130,40 +130,64 @@ The following actions will be performed:
 - COQDEP src/Computation.v
 - COQC src/Events.v
 - COQC src/Computation.v
-- Makefile:276: recipe for target &#39;src/Computation.vo&#39; failed
+- COQC src/Run.v
 - File &quot;./src/Computation.v&quot;, line 69, characters 2-30:
 - Error: Argument _ cannot be declared implicit.
 - 
-- make: *** [src/Computation.vo] Error 1
-[ERROR] The compilation of coq-concurrency-system failed at &quot;make -j1&quot;.
+- COQC src/Extraction.v
+- File &quot;./src/Run.v&quot;, line 3, characters 15-26:
+- Error: Unable to locate library Computation.
+- 
+- COQC src/StdLib.v
+- File &quot;./src/Extraction.v&quot;, line 12, characters 15-26:
+- Error: Unable to locate library Computation.
+- 
+- COQC src/Test.v
+- File &quot;./src/StdLib.v&quot;, line 5, characters 15-26:
+- Error: Unable to locate library Computation.
+- 
+- File &quot;./src/Test.v&quot;, line 6, characters 15-26:
+- Error: Unable to locate library Computation.
+- 
+[coq-concurrency-system: make install] Command started
++ make &quot;install&quot; (CWD=/home/bench/.opam/system/build/coq-concurrency-system.1.1.0)
+- cd &quot;src&quot; &amp;&amp; for i in   Computation.v Events.v Extraction.v Run.v StdLib.v Test.v Computation.vo Events.vo Extraction.vo Run.vo StdLib.vo Test.vo; do \
+-  install -d &quot;`dirname &quot;&quot;&quot;/home/bench/.opam/system/lib/coq/user-contrib&quot;/Concurrency/$i`&quot;; \
+-  install -m 0644 $i &quot;&quot;&quot;/home/bench/.opam/system/lib/coq/user-contrib&quot;/Concurrency/$i; \
+- done
+- Makefile:201: recipe for target &#39;install&#39; failed
+- install: cannot stat &#39;Computation.vo&#39;: No such file or directory
+- install: cannot stat &#39;Extraction.vo&#39;: No such file or directory
+- install: cannot stat &#39;Run.vo&#39;: No such file or directory
+- install: cannot stat &#39;StdLib.vo&#39;: No such file or directory
+- install: cannot stat &#39;Test.vo&#39;: No such file or directory
+- make: *** [install] Error 1
+[ERROR] The compilation of coq-concurrency-system failed at &quot;make install&quot;.
 [coq-concurrency-system: rm] Command started
 + rm &quot;-R&quot; &quot;/home/bench/.opam/system/lib/coq/user-contrib/Concurrency&quot; (CWD=/home/bench/.opam/system/build/coq-concurrency-system.1.1.0)
-- rm: cannot remove &#39;/home/bench/.opam/system/lib/coq/user-contrib/Concurrency&#39;: No such file or directory
 #=== ERROR while installing coq-concurrency-system.1.1.0 ======================#
 # opam-version         1.2.2
 # os                   linux
-# command              make -j1
+# command              make install
 # path                 /home/bench/.opam/system/build/coq-concurrency-system.1.1.0
 # compiler             system (4.03.0)
 # exit-code            2
-# env-file             /home/bench/.opam/system/build/coq-concurrency-system.1.1.0/coq-concurrency-system-10599-d2d111.env
-# stdout-file          /home/bench/.opam/system/build/coq-concurrency-system.1.1.0/coq-concurrency-system-10599-d2d111.out
-# stderr-file          /home/bench/.opam/system/build/coq-concurrency-system.1.1.0/coq-concurrency-system-10599-d2d111.err
+# env-file             /home/bench/.opam/system/build/coq-concurrency-system.1.1.0/coq-concurrency-system-24965-ad8886.env
+# stdout-file          /home/bench/.opam/system/build/coq-concurrency-system.1.1.0/coq-concurrency-system-24965-ad8886.out
+# stderr-file          /home/bench/.opam/system/build/coq-concurrency-system.1.1.0/coq-concurrency-system-24965-ad8886.err
 ### stdout ###
-# COQDEP src/Test.v
-# COQDEP src/StdLib.v
-# COQDEP src/Run.v
-# COQDEP src/Extraction.v
-# COQDEP src/Events.v
-# COQDEP src/Computation.v
-# COQC src/Events.v
-# COQC src/Computation.v
-# Makefile:276: recipe for target &#39;src/Computation.vo&#39; failed
+# cd &quot;src&quot; &amp;&amp; for i in   Computation.v Events.v Extraction.v Run.v StdLib.v Test.v Computation.vo Events.vo Extraction.vo Run.vo StdLib.vo Test.vo; do \
+#  install -d &quot;`dirname &quot;&quot;&quot;/home/bench/.opam/system/lib/coq/user-contrib&quot;/Concurrency/$i`&quot;; \
+#  install -m 0644 $i &quot;&quot;&quot;/home/bench/.opam/system/lib/coq/user-contrib&quot;/Concurrency/$i; \
+# done
+# Makefile:201: recipe for target &#39;install&#39; failed
 ### stderr ###
-# File &quot;./src/Computation.v&quot;, line 69, characters 2-30:
-# Error: Argument _ cannot be declared implicit.
-# 
-# make: *** [src/Computation.vo] Error 1
+# install: cannot stat &#39;Computation.vo&#39;: No such file or directory
+# install: cannot stat &#39;Extraction.vo&#39;: No such file or directory
+# install: cannot stat &#39;Run.vo&#39;: No such file or directory
+# install: cannot stat &#39;StdLib.vo&#39;: No such file or directory
+# install: cannot stat &#39;Test.vo&#39;: No such file or directory
+# make: *** [install] Error 1
 =-=- Error report -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 The following actions failed
   - install coq-concurrency-system 1.1.0
