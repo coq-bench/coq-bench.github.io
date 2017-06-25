@@ -25,7 +25,7 @@
           <div id="navbar" class="collapse navbar-collapse">
             <ul class="nav navbar-nav">
               <li><a href="../..">clean / released</a></li>
-              <li class="active"><a href="">8.4.dev / compcert - 3.0.0</a></li>
+              <li class="active"><a href="">8.4.dev / mathcomp-odd-order - 1.6.1</a></li>
             </ul>
           </div>
         </div>
@@ -35,10 +35,10 @@
           <div class="col-md-12">
             <a href="../..">« Up</a>
             <h1>
-              compcert
+              mathcomp-odd-order
               <small>
-                3.0.0
-                <span class="label label-info">Not compatible with this Coq</span>
+                1.6.1
+                <span class="label label-danger">Lint error</span>
               </small>
             </h1>
             <p><em><script>document.write(moment("2017-06-25 08:35:18 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2017-06-25 08:35:18 UTC)</em><p>
@@ -53,30 +53,28 @@ coq            8.4.dev  Formal proof management system.
             <h2>Lint</h2>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>ruby lint.rb released opam-coq-archive/released/packages/coq-compcert/coq-compcert.3.0.0</code></dd>
+              <dd><code>ruby lint.rb released opam-coq-archive/released/packages/coq-mathcomp-odd-order/coq-mathcomp-odd-order.1.6.1</code></dd>
               <dt>Return code</dt>
-              <dd>0</dd>
+              <dd>256</dd>
+              <dt>Output</dt>
+              <dd><pre>Errors found in ~/run/opam-coq-archive/released/packages/coq-mathcomp-odd-order/coq-mathcomp-odd-order.1.6.1/opam:
+            error  2: File format error: at
+              ~/run/opam-coq-archive/released/packages/coq-mathcomp-odd-order/coq-mathcomp-odd-order.1.6.1/opam:22:2,
+              Expected a formula list of the form [ &quot;item&quot; {condition}... ]
+</pre></dd>
             </dl>
             <h2>Dry install</h2>
             <p>Dry install with the current Coq version:</p>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>opam install -y --show-action coq-compcert.3.0.0 coq.8.4.dev</code></dd>
+              <dd><code>true</code></dd>
               <dt>Return code</dt>
-              <dd>768</dd>
-              <dt>Output</dt>
-              <dd><pre>[NOTE] Package coq is already installed (current version is 8.4.dev).
-The following dependencies couldn&#39;t be met:
-  - coq-compcert -&gt; coq &gt;= 8.5
-Your request can&#39;t be satisfied:
-  - Conflicting version constraints for coq
-No solution found, exiting
-</pre></dd>
+              <dd>0</dd>
             </dl>
             <p>Dry install without Coq, to test if the problem was incompatibility with the current Coq version:</p>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>opam remove -y coq; opam install -y --show-action coq-compcert.3.0.0</code></dd>
+              <dd><code>true</code></dd>
               <dt>Return code</dt>
               <dd>0</dd>
             </dl>
