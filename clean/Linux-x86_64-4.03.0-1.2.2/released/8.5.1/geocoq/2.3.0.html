@@ -1,0 +1,935 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Coq bench</title>
+    <link rel="shortcut icon" type="image/png" href="../../../../../favicon.png" />
+    <link href="../../../../../bootstrap.min.css" rel="stylesheet">
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+    <script src="../../../../../moment.min.js"></script>
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="container">
+      <div class="navbar navbar-default" role="navigation">
+        <div class="container-fluid">
+          <div class="navbar-header">
+            <a class="navbar-brand" href="../../../../.."><i class="fa fa-lg fa-flag-checkered"></i> Coq bench</a>
+          </div>
+          <div id="navbar" class="collapse navbar-collapse">
+            <ul class="nav navbar-nav">
+              <li><a href="../..">clean / released</a></li>
+              <li class="active"><a href="">8.5.1 / geocoq - 2.3.0</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="article">
+        <div class="row">
+          <div class="col-md-12">
+            <a href="../..">« Up</a>
+            <h1>
+              geocoq
+              <small>
+                2.3.0
+                <span class="label label-danger">Error</span>
+              </small>
+            </h1>
+            <p><em><script>document.write(moment("2017-10-05 08:29:30 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2017-10-05 08:29:30 UTC)</em><p>
+            <h2>Context</h2>
+            <pre># Installed packages for system:
+base-bigarray   base  Bigarray library distributed with the OCaml compiler
+base-num        base  Num library distributed with the OCaml compiler
+base-threads    base  Threads library distributed with the OCaml compiler
+base-unix       base  Unix library distributed with the OCaml compiler
+camlp5          7.01  Preprocessor-pretty-printer of OCaml
+coq            8.5.1  Formal proof management system.
+num                0  The Num library for arbitrary-precision integer and ration
+</pre>
+            <h2>Lint</h2>
+            <dl class="dl-horizontal">
+              <dt>Command</dt>
+              <dd><code>ruby lint.rb released opam-coq-archive/released/packages/coq-geocoq/coq-geocoq.2.3.0</code></dd>
+              <dt>Return code</dt>
+              <dd>0</dd>
+            </dl>
+            <h2>Dry install</h2>
+            <p>Dry install with the current Coq version:</p>
+            <dl class="dl-horizontal">
+              <dt>Command</dt>
+              <dd><code>opam install -y --show-action coq-geocoq.2.3.0 coq.8.5.1</code></dd>
+              <dt>Return code</dt>
+              <dd>0</dd>
+            </dl>
+            <p>Dry install without Coq, to test if the problem was incompatibility with the current Coq version:</p>
+            <dl class="dl-horizontal">
+              <dt>Command</dt>
+              <dd><code>true</code></dd>
+              <dt>Return code</dt>
+              <dd>0</dd>
+            </dl>
+            <h2>Install dependencies</h2>
+            <dl class="dl-horizontal">
+              <dt>Command</dt>
+              <dd><code>opam list; ulimit -Sv 4000000; timeout 30m opam install -y --deps-only coq-geocoq.2.3.0</code></dd>
+              <dt>Return code</dt>
+              <dd>0</dd>
+              <dt>Duration</dt>
+              <dd>33 s</dd>
+            </dl>
+            <h2>Install</h2>
+            <dl class="dl-horizontal">
+              <dt>Command</dt>
+              <dd><code>opam list; ulimit -Sv 4000000; timeout 120m opam install -j1 -y -v coq-geocoq.2.3.0</code></dd>
+              <dt>Return code</dt>
+              <dd>31744</dd>
+              <dt>Duration</dt>
+              <dd>2 h 0 m</dd>
+              <dt>Output</dt>
+              <dd><pre># Installed packages for system:
+base-bigarray   base  Bigarray library distributed with the OCaml compiler
+base-num        base  Num library distributed with the OCaml compiler
+base-threads    base  Threads library distributed with the OCaml compiler
+base-unix       base  Unix library distributed with the OCaml compiler
+camlp5          7.01  Preprocessor-pretty-printer of OCaml
+coq            8.5.1  Formal proof management system.
+num                0  The Num library for arbitrary-precision integer and ration
+The following actions will be performed:
+  - install coq-geocoq 2.3.0
+=-=- Gathering sources =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+[coq-geocoq: http] Command started
+[coq-geocoq: http] Command started
+[coq-geocoq.2.3.0] https://github.com/GeoCoq/GeoCoq/archive/v2.3.0.tar.gz downloaded
+=-=- Processing actions -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+[coq-geocoq: ./configure.sh] Command started
++ ./configure.sh  (CWD=/home/bench/.opam/system/build/coq-geocoq.2.3.0)
+[coq-geocoq: make] Command started
++ make &quot;-j1&quot; (CWD=/home/bench/.opam/system/build/coq-geocoq.2.3.0)
+- &quot;coqdep&quot; -c -R &quot;.&quot; GeoCoq &quot;Tactics/UnitTests/unit_tests_2.v&quot; &gt; &quot;Tactics/UnitTests/unit_tests_2.v.d&quot; || ( RV=$?; rm -f &quot;Tactics/UnitTests/unit_tests_2.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; GeoCoq &quot;Tactics/UnitTests/unit_tests.v&quot; &gt; &quot;Tactics/UnitTests/unit_tests.v.d&quot; || ( RV=$?; rm -f &quot;Tactics/UnitTests/unit_tests.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; GeoCoq &quot;Tactics/finish.v&quot; &gt; &quot;Tactics/finish.v.d&quot; || ( RV=$?; rm -f &quot;Tactics/finish.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; GeoCoq &quot;Tactics/Coinc/CoincR_for_col.v&quot; &gt; &quot;Tactics/Coinc/CoincR_for_col.v.d&quot; || ( RV=$?; rm -f &quot;Tactics/Coinc/CoincR_for_col.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; GeoCoq &quot;Tactics/Coinc/tarski_to_coinc_theory_for_cop.v&quot; &gt; &quot;Tactics/Coinc/tarski_to_coinc_theory_for_cop.v.d&quot; || ( RV=$?; rm -f &quot;Tactics/Coinc/tarski_to_coinc_theory_for_cop.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; GeoCoq &quot;Tactics/Coinc/CoincR_for_cop.v&quot; &gt; &quot;Tactics/Coinc/CoincR_for_cop.v.d&quot; || ( RV=$?; rm -f &quot;Tactics/Coinc/CoincR_for_cop.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; GeoCoq &quot;Tactics/Coinc/tarski_to_coinc_theory_for_col.v&quot; &gt; &quot;Tactics/Coinc/tarski_to_coinc_theory_for_col.v.d&quot; || ( RV=$?; rm -f &quot;Tactics/Coinc/tarski_to_coinc_theory_for_col.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; GeoCoq &quot;Tactics/Coinc/ColR.v&quot; &gt; &quot;Tactics/Coinc/ColR.v.d&quot; || ( RV=$?; rm -f &quot;Tactics/Coinc/ColR.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; GeoCoq &quot;Tactics/Coinc/essai.v&quot; &gt; &quot;Tactics/Coinc/essai.v.d&quot; || ( RV=$?; rm -f &quot;Tactics/Coinc/essai.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; GeoCoq &quot;Tactics/Coinc/tarski_to_col_theory.v&quot; &gt; &quot;Tactics/Coinc/tarski_to_col_theory.v.d&quot; || ( RV=$?; rm -f &quot;Tactics/Coinc/tarski_to_col_theory.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; GeoCoq &quot;Tactics/Coinc/CoincR.v&quot; &gt; &quot;Tactics/Coinc/CoincR.v.d&quot; || ( RV=$?; rm -f &quot;Tactics/Coinc/CoincR.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; GeoCoq &quot;Tactics/Coinc/tarski_to_coinc_theory_for_concyclic.v&quot; &gt; &quot;Tactics/Coinc/tarski_to_coinc_theory_for_concyclic.v.d&quot; || ( RV=$?; rm -f &quot;Tactics/Coinc/tarski_to_coinc_theory_for_concyclic.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; GeoCoq &quot;Tactics/Coinc/Permutations.v&quot; &gt; &quot;Tactics/Coinc/Permutations.v.d&quot; || ( RV=$?; rm -f &quot;Tactics/Coinc/Permutations.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; GeoCoq &quot;Tactics/Coinc/tactics_axioms.v&quot; &gt; &quot;Tactics/Coinc/tactics_axioms.v.d&quot; || ( RV=$?; rm -f &quot;Tactics/Coinc/tactics_axioms.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; GeoCoq &quot;Tarski_dev/Ch04_cong_bet.v&quot; &gt; &quot;Tarski_dev/Ch04_cong_bet.v.d&quot; || ( RV=$?; rm -f &quot;Tarski_dev/Ch04_cong_bet.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; GeoCoq &quot;Tarski_dev/Ch10_line_reflexivity.v&quot; &gt; &quot;Tarski_dev/Ch10_line_reflexivity.v.d&quot; || ( RV=$?; rm -f &quot;Tarski_dev/Ch10_line_reflexivity.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; GeoCoq &quot;Tarski_dev/Ch13_1.v&quot; &gt; &quot;Tarski_dev/Ch13_1.v.d&quot; || ( RV=$?; rm -f &quot;Tarski_dev/Ch13_1.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; GeoCoq &quot;Tarski_dev/Coplanar_trans.v&quot; &gt; &quot;Tarski_dev/Coplanar_trans.v.d&quot; || ( RV=$?; rm -f &quot;Tarski_dev/Coplanar_trans.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; GeoCoq &quot;Tarski_dev/Ch13_2_length.v&quot; &gt; &quot;Tarski_dev/Ch13_2_length.v.d&quot; || ( RV=$?; rm -f &quot;Tarski_dev/Ch13_2_length.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; GeoCoq &quot;Tarski_dev/Ch15_lengths.v&quot; &gt; &quot;Tarski_dev/Ch15_lengths.v.d&quot; || ( RV=$?; rm -f &quot;Tarski_dev/Ch15_lengths.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; GeoCoq &quot;Tarski_dev/Ch13_6_Desargues_Hessenberg.v&quot; &gt; &quot;Tarski_dev/Ch13_6_Desargues_Hessenberg.v.d&quot; || ( RV=$?; rm -f &quot;Tarski_dev/Ch13_6_Desargues_Hessenberg.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; GeoCoq &quot;Tarski_dev/Coplanar_perm.v&quot; &gt; &quot;Tarski_dev/Coplanar_perm.v.d&quot; || ( RV=$?; rm -f &quot;Tarski_dev/Coplanar_perm.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; GeoCoq &quot;Tarski_dev/Ch10_line_reflexivity_2D.v&quot; &gt; &quot;Tarski_dev/Ch10_line_reflexivity_2D.v.d&quot; || ( RV=$?; rm -f &quot;Tarski_dev/Ch10_line_reflexivity_2D.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; GeoCoq &quot;Tarski_dev/Ch06_out_lines.v&quot; &gt; &quot;Tarski_dev/Ch06_out_lines.v.d&quot; || ( RV=$?; rm -f &quot;Tarski_dev/Ch06_out_lines.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; GeoCoq &quot;Tarski_dev/Ch08_orthogonality.v&quot; &gt; &quot;Tarski_dev/Ch08_orthogonality.v.d&quot; || ( RV=$?; rm -f &quot;Tarski_dev/Ch08_orthogonality.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; GeoCoq &quot;Tarski_dev/Ch07_midpoint.v&quot; &gt; &quot;Tarski_dev/Ch07_midpoint.v.d&quot; || ( RV=$?; rm -f &quot;Tarski_dev/Ch07_midpoint.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; GeoCoq &quot;Tarski_dev/Ch03_bet.v&quot; &gt; &quot;Tarski_dev/Ch03_bet.v.d&quot; || ( RV=$?; rm -f &quot;Tarski_dev/Ch03_bet.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; GeoCoq &quot;Tarski_dev/Ch13_4_cos.v&quot; &gt; &quot;Tarski_dev/Ch13_4_cos.v.d&quot; || ( RV=$?; rm -f &quot;Tarski_dev/Ch13_4_cos.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; GeoCoq &quot;Tarski_dev/Ch04_col.v&quot; &gt; &quot;Tarski_dev/Ch04_col.v.d&quot; || ( RV=$?; rm -f &quot;Tarski_dev/Ch04_col.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; GeoCoq &quot;Tarski_dev/Ch12_parallel_inter_dec.v&quot; &gt; &quot;Tarski_dev/Ch12_parallel_inter_dec.v.d&quot; || ( RV=$?; rm -f &quot;Tarski_dev/Ch12_parallel_inter_dec.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; GeoCoq &quot;Tarski_dev/Definitions.v&quot; &gt; &quot;Tarski_dev/Definitions.v.d&quot; || ( RV=$?; rm -f &quot;Tarski_dev/Definitions.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; GeoCoq &quot;Tarski_dev/Ch16_coordinates_with_functions.v&quot; &gt; &quot;Tarski_dev/Ch16_coordinates_with_functions.v.d&quot; || ( RV=$?; rm -f &quot;Tarski_dev/Ch16_coordinates_with_functions.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; GeoCoq &quot;Tarski_dev/Ch13_5_Pappus_Pascal.v&quot; &gt; &quot;Tarski_dev/Ch13_5_Pappus_Pascal.v.d&quot; || ( RV=$?; rm -f &quot;Tarski_dev/Ch13_5_Pappus_Pascal.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; GeoCoq &quot;Tarski_dev/Ch14_sum.v&quot; &gt; &quot;Tarski_dev/Ch14_sum.v.d&quot; || ( RV=$?; rm -f &quot;Tarski_dev/Ch14_sum.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; GeoCoq &quot;Tarski_dev/Ch15_pyth_rel.v&quot; &gt; &quot;Tarski_dev/Ch15_pyth_rel.v.d&quot; || ( RV=$?; rm -f &quot;Tarski_dev/Ch15_pyth_rel.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; GeoCoq &quot;Tarski_dev/Annexes/project.v&quot; &gt; &quot;Tarski_dev/Annexes/project.v.d&quot; || ( RV=$?; rm -f &quot;Tarski_dev/Annexes/project.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; GeoCoq &quot;Tarski_dev/Annexes/quadrilaterals_inter_dec.v&quot; &gt; &quot;Tarski_dev/Annexes/quadrilaterals_inter_dec.v.d&quot; || ( RV=$?; rm -f &quot;Tarski_dev/Annexes/quadrilaterals_inter_dec.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; GeoCoq &quot;Tarski_dev/Annexes/suma.v&quot; &gt; &quot;Tarski_dev/Annexes/suma.v.d&quot; || ( RV=$?; rm -f &quot;Tarski_dev/Annexes/suma.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; GeoCoq &quot;Tarski_dev/Annexes/half_angles.v&quot; &gt; &quot;Tarski_dev/Annexes/half_angles.v.d&quot; || ( RV=$?; rm -f &quot;Tarski_dev/Annexes/half_angles.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; GeoCoq &quot;Tarski_dev/Annexes/quadrilaterals.v&quot; &gt; &quot;Tarski_dev/Annexes/quadrilaterals.v.d&quot; || ( RV=$?; rm -f &quot;Tarski_dev/Annexes/quadrilaterals.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; GeoCoq &quot;Tarski_dev/Annexes/Tagged_predicates.v&quot; &gt; &quot;Tarski_dev/Annexes/Tagged_predicates.v.d&quot; || ( RV=$?; rm -f &quot;Tarski_dev/Annexes/Tagged_predicates.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; GeoCoq &quot;Tarski_dev/Annexes/vectors.v&quot; &gt; &quot;Tarski_dev/Annexes/vectors.v.d&quot; || ( RV=$?; rm -f &quot;Tarski_dev/Annexes/vectors.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; GeoCoq &quot;Tarski_dev/Annexes/tangency.v&quot; &gt; &quot;Tarski_dev/Annexes/tangency.v.d&quot; || ( RV=$?; rm -f &quot;Tarski_dev/Annexes/tangency.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; GeoCoq &quot;Tarski_dev/Annexes/circles.v&quot; &gt; &quot;Tarski_dev/Annexes/circles.v.d&quot; || ( RV=$?; rm -f &quot;Tarski_dev/Annexes/circles.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; GeoCoq &quot;Tarski_dev/Annexes/saccheri.v&quot; &gt; &quot;Tarski_dev/Annexes/saccheri.v.d&quot; || ( RV=$?; rm -f &quot;Tarski_dev/Annexes/saccheri.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; GeoCoq &quot;Tarski_dev/Annexes/midpoint_theorems.v&quot; &gt; &quot;Tarski_dev/Annexes/midpoint_theorems.v.d&quot; || ( RV=$?; rm -f &quot;Tarski_dev/Annexes/midpoint_theorems.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; GeoCoq &quot;Tarski_dev/Annexes/perp_bisect.v&quot; &gt; &quot;Tarski_dev/Annexes/perp_bisect.v.d&quot; || ( RV=$?; rm -f &quot;Tarski_dev/Annexes/perp_bisect.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; GeoCoq &quot;Tarski_dev/Annexes/sums.v&quot; &gt; &quot;Tarski_dev/Annexes/sums.v.d&quot; || ( RV=$?; rm -f &quot;Tarski_dev/Annexes/sums.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; GeoCoq &quot;Tarski_dev/Annexes/inscribed_angle.v&quot; &gt; &quot;Tarski_dev/Annexes/inscribed_angle.v.d&quot; || ( RV=$?; rm -f &quot;Tarski_dev/Annexes/inscribed_angle.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; GeoCoq &quot;Tarski_dev/Ch14_prod.v&quot; &gt; &quot;Tarski_dev/Ch14_prod.v.d&quot; || ( RV=$?; rm -f &quot;Tarski_dev/Ch14_prod.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; GeoCoq &quot;Tarski_dev/Ch11_angles.v&quot; &gt; &quot;Tarski_dev/Ch11_angles.v.d&quot; || ( RV=$?; rm -f &quot;Tarski_dev/Ch11_angles.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; GeoCoq &quot;Tarski_dev/Ch05_bet_le.v&quot; &gt; &quot;Tarski_dev/Ch05_bet_le.v.d&quot; || ( RV=$?; rm -f &quot;Tarski_dev/Ch05_bet_le.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; GeoCoq &quot;Tarski_dev/Ch13_3_angles.v&quot; &gt; &quot;Tarski_dev/Ch13_3_angles.v.d&quot; || ( RV=$?; rm -f &quot;Tarski_dev/Ch13_3_angles.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; GeoCoq &quot;Tarski_dev/Ch16_coordinates.v&quot; &gt; &quot;Tarski_dev/Ch16_coordinates.v.d&quot; || ( RV=$?; rm -f &quot;Tarski_dev/Ch16_coordinates.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; GeoCoq &quot;Tarski_dev/Ch14_order.v&quot; &gt; &quot;Tarski_dev/Ch14_order.v.d&quot; || ( RV=$?; rm -f &quot;Tarski_dev/Ch14_order.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; GeoCoq &quot;Tarski_dev/Ch02_cong.v&quot; &gt; &quot;Tarski_dev/Ch02_cong.v.d&quot; || ( RV=$?; rm -f &quot;Tarski_dev/Ch02_cong.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; GeoCoq &quot;Tarski_dev/Ch12_parallel.v&quot; &gt; &quot;Tarski_dev/Ch12_parallel.v.d&quot; || ( RV=$?; rm -f &quot;Tarski_dev/Ch12_parallel.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; GeoCoq &quot;Tarski_dev/Ch09_plane.v&quot; &gt; &quot;Tarski_dev/Ch09_plane.v.d&quot; || ( RV=$?; rm -f &quot;Tarski_dev/Ch09_plane.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; GeoCoq &quot;Highschool/circumcenter.v&quot; &gt; &quot;Highschool/circumcenter.v.d&quot; || ( RV=$?; rm -f &quot;Highschool/circumcenter.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; GeoCoq &quot;Highschool/bisector.v&quot; &gt; &quot;Highschool/bisector.v.d&quot; || ( RV=$?; rm -f &quot;Highschool/bisector.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; GeoCoq &quot;Highschool/orientation.v&quot; &gt; &quot;Highschool/orientation.v.d&quot; || ( RV=$?; rm -f &quot;Highschool/orientation.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; GeoCoq &quot;Highschool/triangles.v&quot; &gt; &quot;Highschool/triangles.v.d&quot; || ( RV=$?; rm -f &quot;Highschool/triangles.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; GeoCoq &quot;Highschool/varignon.v&quot; &gt; &quot;Highschool/varignon.v.d&quot; || ( RV=$?; rm -f &quot;Highschool/varignon.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; GeoCoq &quot;Highschool/Euler_line.v&quot; &gt; &quot;Highschool/Euler_line.v.d&quot; || ( RV=$?; rm -f &quot;Highschool/Euler_line.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; GeoCoq &quot;Highschool/gravityCenter.v&quot; &gt; &quot;Highschool/gravityCenter.v.d&quot; || ( RV=$?; rm -f &quot;Highschool/gravityCenter.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; GeoCoq &quot;Highschool/concyclic.v&quot; &gt; &quot;Highschool/concyclic.v.d&quot; || ( RV=$?; rm -f &quot;Highschool/concyclic.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; GeoCoq &quot;Highschool/exercises.v&quot; &gt; &quot;Highschool/exercises.v.d&quot; || ( RV=$?; rm -f &quot;Highschool/exercises.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; GeoCoq &quot;Highschool/midpoint_thales.v&quot; &gt; &quot;Highschool/midpoint_thales.v.d&quot; || ( RV=$?; rm -f &quot;Highschool/midpoint_thales.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; GeoCoq &quot;Highschool/orthocenter.v&quot; &gt; &quot;Highschool/orthocenter.v.d&quot; || ( RV=$?; rm -f &quot;Highschool/orthocenter.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; GeoCoq &quot;Highschool/incenter.v&quot; &gt; &quot;Highschool/incenter.v.d&quot; || ( RV=$?; rm -f &quot;Highschool/incenter.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; GeoCoq &quot;main.v&quot; &gt; &quot;main.v.d&quot; || ( RV=$?; rm -f &quot;main.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; GeoCoq &quot;Axioms/euclidean_axioms.v&quot; &gt; &quot;Axioms/euclidean_axioms.v.d&quot; || ( RV=$?; rm -f &quot;Axioms/euclidean_axioms.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; GeoCoq &quot;Axioms/hilbert_axioms.v&quot; &gt; &quot;Axioms/hilbert_axioms.v.d&quot; || ( RV=$?; rm -f &quot;Axioms/hilbert_axioms.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; GeoCoq &quot;Axioms/continuity_axioms.v&quot; &gt; &quot;Axioms/continuity_axioms.v.d&quot; || ( RV=$?; rm -f &quot;Axioms/continuity_axioms.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; GeoCoq &quot;Axioms/beeson_s_axioms.v&quot; &gt; &quot;Axioms/beeson_s_axioms.v.d&quot; || ( RV=$?; rm -f &quot;Axioms/beeson_s_axioms.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; GeoCoq &quot;Axioms/makarios_variant_axioms.v&quot; &gt; &quot;Axioms/makarios_variant_axioms.v.d&quot; || ( RV=$?; rm -f &quot;Axioms/makarios_variant_axioms.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; GeoCoq &quot;Axioms/independent_tarski_axioms.v&quot; &gt; &quot;Axioms/independent_tarski_axioms.v.d&quot; || ( RV=$?; rm -f &quot;Axioms/independent_tarski_axioms.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; GeoCoq &quot;Axioms/parallel_postulates.v&quot; &gt; &quot;Axioms/parallel_postulates.v.d&quot; || ( RV=$?; rm -f &quot;Axioms/parallel_postulates.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; GeoCoq &quot;Axioms/tarski_axioms.v&quot; &gt; &quot;Axioms/tarski_axioms.v.d&quot; || ( RV=$?; rm -f &quot;Axioms/tarski_axioms.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; GeoCoq &quot;Elements/Statements/Book_1.v&quot; &gt; &quot;Elements/Statements/Book_1.v.d&quot; || ( RV=$?; rm -f &quot;Elements/Statements/Book_1.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; GeoCoq &quot;Elements/Statements/Book_3.v&quot; &gt; &quot;Elements/Statements/Book_3.v.d&quot; || ( RV=$?; rm -f &quot;Elements/Statements/Book_3.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; GeoCoq &quot;Elements/OriginalProofs/lemma_crossbar2.v&quot; &gt; &quot;Elements/OriginalProofs/lemma_crossbar2.v.d&quot; || ( RV=$?; rm -f &quot;Elements/OriginalProofs/lemma_crossbar2.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; GeoCoq &quot;Elements/OriginalProofs/lemma_samesideflip.v&quot; &gt; &quot;Elements/OriginalProofs/lemma_samesideflip.v.d&quot; || ( RV=$?; rm -f &quot;Elements/OriginalProofs/lemma_samesideflip.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; GeoCoq &quot;Elements/OriginalProofs/lemma_parallelcollinear.v&quot; &gt; &quot;Elements/OriginalProofs/lemma_parallelcollinear.v.d&quot; || ( RV=$?; rm -f &quot;Elements/OriginalProofs/lemma_parallelcollinear.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; GeoCoq &quot;Elements/OriginalProofs/lemma_sumofparts.v&quot; &gt; &quot;Elements/OriginalProofs/lemma_sumofparts.v.d&quot; || ( RV=$?; rm -f &quot;Elements/OriginalProofs/lemma_sumofparts.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; GeoCoq &quot;Elements/OriginalProofs/proposition_29.v&quot; &gt; &quot;Elements/OriginalProofs/proposition_29.v.d&quot; || ( RV=$?; rm -f &quot;Elements/OriginalProofs/proposition_29.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; GeoCoq &quot;Elements/OriginalProofs/lemma_angleaddition.v&quot; &gt; &quot;Elements/OriginalProofs/lemma_angleaddition.v.d&quot; || ( RV=$?; rm -f &quot;Elements/OriginalProofs/lemma_angleaddition.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; GeoCoq &quot;Elements/OriginalProofs/proposition_31.v&quot; &gt; &quot;Elements/OriginalProofs/proposition_31.v.d&quot; || ( RV=$?; rm -f &quot;Elements/OriginalProofs/proposition_31.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; GeoCoq &quot;Elements/OriginalProofs/proposition_34.v&quot; &gt; &quot;Elements/OriginalProofs/proposition_34.v.d&quot; || ( RV=$?; rm -f &quot;Elements/OriginalProofs/proposition_34.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; GeoCoq &quot;Elements/OriginalProofs/lemma_ray5.v&quot; &gt; &quot;Elements/OriginalProofs/lemma_ray5.v.d&quot; || ( RV=$?; rm -f &quot;Elements/OriginalProofs/lemma_ray5.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; GeoCoq &quot;Elements/OriginalProofs/lemma_oppositesidesymmetric.v&quot; &gt; &quot;Elements/OriginalProofs/lemma_oppositesidesymmetric.v.d&quot; || ( RV=$?; rm -f &quot;Elements/OriginalProofs/lemma_oppositesidesymmetric.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; GeoCoq &quot;Elements/OriginalProofs/proposition_29C.v&quot; &gt; &quot;Elements/OriginalProofs/proposition_29C.v.d&quot; || ( RV=$?; rm -f &quot;Elements/OriginalProofs/proposition_29C.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; GeoCoq &quot;Elements/OriginalProofs/lemma_insideor.v&quot; &gt; &quot;Elements/OriginalProofs/lemma_insideor.v.d&quot; || ( RV=$?; rm -f &quot;Elements/OriginalProofs/lemma_insideor.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; GeoCoq &quot;Elements/OriginalProofs/lemma_samesidecollinear.v&quot; &gt; &quot;Elements/OriginalProofs/lemma_samesidecollinear.v.d&quot; || ( RV=$?; rm -f &quot;Elements/OriginalProofs/lemma_samesidecollinear.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; GeoCoq &quot;Elements/OriginalProofs/lemma_samenotopposite.v&quot; &gt; &quot;Elements/OriginalProofs/lemma_samenotopposite.v.d&quot; || ( RV=$?; rm -f &quot;Elements/OriginalProofs/lemma_samenotopposite.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; GeoCoq &quot;Elements/OriginalProofs/lemma_rightangleNC.v&quot; &gt; &quot;Elements/OriginalProofs/lemma_rightangleNC.v.d&quot; || ( RV=$?; rm -f &quot;Elements/OriginalProofs/lemma_rightangleNC.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; GeoCoq &quot;Elements/OriginalProofs/lemma_3_6b.v&quot; &gt; &quot;Elements/OriginalProofs/lemma_3_6b.v.d&quot; || ( RV=$?; rm -f &quot;Elements/OriginalProofs/lemma_3_6b.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; GeoCoq &quot;Elements/OriginalProofs/proposition_33.v&quot; &gt; &quot;Elements/OriginalProofs/proposition_33.v.d&quot; || ( RV=$?; rm -f &quot;Elements/OriginalProofs/proposition_33.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; GeoCoq &quot;Elements/OriginalProofs/lemma_nullsegment3.v&quot; &gt; &quot;Elements/OriginalProofs/lemma_nullsegment3.v.d&quot; || ( RV=$?; rm -f &quot;Elements/OriginalProofs/lemma_nullsegment3.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; GeoCoq &quot;Elements/OriginalProofs/lemma_raystrict.v&quot; &gt; &quot;Elements/OriginalProofs/lemma_raystrict.v.d&quot; || ( RV=$?; rm -f &quot;Elements/OriginalProofs/lemma_raystrict.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; GeoCoq &quot;Elements/OriginalProofs/lemma_samesidetransitive.v&quot; &gt; &quot;Elements/OriginalProofs/lemma_samesidetransitive.v.d&quot; || ( RV=$?; rm -f &quot;Elements/OriginalProofs/lemma_samesidetransitive.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; GeoCoq &quot;Elements/OriginalProofs/lemma_angleorderrespectscongruence2.v&quot; &gt; &quot;Elements/OriginalProofs/lemma_angleorderrespectscongruence2.v.d&quot; || ( RV=$?; rm -f &quot;Elements/OriginalProofs/lemma_angleorderrespectscongruence2.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; GeoCoq &quot;Elements/OriginalProofs/lemma_righttogether.v&quot; &gt; &quot;Elements/OriginalProofs/lemma_righttogether.v.d&quot; || ( RV=$?; rm -f &quot;Elements/OriginalProofs/lemma_righttogether.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; GeoCoq &quot;Elements/OriginalProofs/lemma_lessthancongruence2.v&quot; &gt; &quot;Elements/OriginalProofs/lemma_lessthancongruence2.v.d&quot; || ( RV=$?; rm -f &quot;Elements/OriginalProofs/lemma_lessthancongruence2.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; GeoCoq &quot;Elements/OriginalProofs/lemma_outerconnectivity.v&quot; &gt; &quot;Elements/OriginalProofs/lemma_outerconnectivity.v.d&quot; || ( RV=$?; rm -f &quot;Elements/OriginalProofs/lemma_outerconnectivity.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; GeoCoq &quot;Elements/OriginalProofs/lemma_9_5.v&quot; &gt; &quot;Elements/OriginalProofs/lemma_9_5.v.d&quot; || ( RV=$?; rm -f &quot;Elements/OriginalProofs/lemma_9_5.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; GeoCoq &quot;Elements/OriginalProofs/lemma_supplements.v&quot; &gt; &quot;Elements/OriginalProofs/lemma_supplements.v.d&quot; || ( RV=$?; rm -f &quot;Elements/OriginalProofs/lemma_supplements.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; GeoCoq &quot;Elements/OriginalProofs/lemma_notperp.v&quot; &gt; &quot;Elements/OriginalProofs/lemma_notperp.v.d&quot; || ( RV=$?; rm -f &quot;Elements/OriginalProofs/lemma_notperp.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; GeoCoq &quot;Elements/OriginalProofs/lemma_planeseparation.v&quot; &gt; &quot;Elements/OriginalProofs/lemma_planeseparation.v.d&quot; || ( RV=$?; rm -f &quot;Elements/OriginalProofs/lemma_planeseparation.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; GeoCoq &quot;Elements/OriginalProofs/lemma_Playfairhelper.v&quot; &gt; &quot;Elements/OriginalProofs/lemma_Playfairhelper.v.d&quot; || ( RV=$?; rm -f &quot;Elements/OriginalProofs/lemma_Playfairhelper.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; GeoCoq &quot;Elements/OriginalProofs/lemma_ray4.v&quot; &gt; &quot;Elements/OriginalProofs/lemma_ray4.v.d&quot; || ( RV=$?; rm -f &quot;Elements/OriginalProofs/lemma_ray4.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; GeoCoq &quot;Elements/OriginalProofs/lemma_samesidesymmetric.v&quot; &gt; &quot;Elements/OriginalProofs/lemma_samesidesymmetric.v.d&quot; || ( RV=$?; rm -f &quot;Elements/OriginalProofs/lemma_samesidesymmetric.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; GeoCoq &quot;Elements/OriginalProofs/proposition_44A.v&quot; &gt; &quot;Elements/OriginalProofs/proposition_44A.v.d&quot; || ( RV=$?; rm -f &quot;Elements/OriginalProofs/proposition_44A.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; GeoCoq &quot;Elements/OriginalProofs/lemma_congruencetransitive.v&quot; &gt; &quot;Elements/OriginalProofs/lemma_congruencetransitive.v.d&quot; || ( RV=$?; rm -f &quot;Elements/OriginalProofs/lemma_congruencetransitive.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; GeoCoq &quot;Elements/OriginalProofs/lemma_RTcongruence.v&quot; &gt; &quot;Elements/OriginalProofs/lemma_RTcongruence.v.d&quot; || ( RV=$?; rm -f &quot;Elements/OriginalProofs/lemma_RTcongruence.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; GeoCoq &quot;Elements/OriginalProofs/lemma_collinearright.v&quot; &gt; &quot;Elements/OriginalProofs/lemma_collinearright.v.d&quot; || ( RV=$?; rm -f &quot;Elements/OriginalProofs/lemma_collinearright.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; GeoCoq &quot;Elements/OriginalProofs/proposition_47B.v&quot; &gt; &quot;Elements/OriginalProofs/proposition_47B.v.d&quot; || ( RV=$?; rm -f &quot;Elements/OriginalProofs/proposition_47B.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; GeoCoq &quot;Elements/OriginalProofs/lemma_equalangleshelper.v&quot; &gt; &quot;Elements/OriginalProofs/lemma_equalangleshelper.v.d&quot; || ( RV=$?; rm -f &quot;Elements/OriginalProofs/lemma_equalangleshelper.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; GeoCoq &quot;Elements/OriginalProofs/proposition_28D.v&quot; &gt; &quot;Elements/OriginalProofs/proposition_28D.v.d&quot; || ( RV=$?; rm -f &quot;Elements/OriginalProofs/proposition_28D.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; GeoCoq &quot;Elements/OriginalProofs/lemma_lessthancongruence.v&quot; &gt; &quot;Elements/OriginalProofs/lemma_lessthancongruence.v.d&quot; || ( RV=$?; rm -f &quot;Elements/OriginalProofs/lemma_lessthancongruence.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; GeoCoq &quot;Elements/OriginalProofs/lemma_lessthannotequal.v&quot; &gt; &quot;Elements/OriginalProofs/lemma_lessthannotequal.v.d&quot; || ( RV=$?; rm -f &quot;Elements/OriginalProofs/lemma_lessthannotequal.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; GeoCoq &quot;Elements/OriginalProofs/lemma_8_2.v&quot; &gt; &quot;Elements/OriginalProofs/lemma_8_2.v.d&quot; || ( RV=$?; rm -f &quot;Elements/OriginalProofs/lemma_8_2.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; GeoCoq &quot;Elements/OriginalProofs/proposition_06a.v&quot; &gt; &quot;Elements/OriginalProofs/proposition_06a.v.d&quot; || ( RV=$?; rm -f &quot;Elements/OriginalProofs/proposition_06a.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; GeoCoq &quot;Elements/OriginalProofs/lemma_26helper.v&quot; &gt; &quot;Elements/OriginalProofs/lemma_26helper.v.d&quot; || ( RV=$?; rm -f &quot;Elements/OriginalProofs/lemma_26helper.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; GeoCoq &quot;Elements/OriginalProofs/proposition_23.v&quot; &gt; &quot;Elements/OriginalProofs/proposition_23.v.d&quot; || ( RV=$?; rm -f &quot;Elements/OriginalProofs/proposition_23.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; GeoCoq &quot;Elements/OriginalProofs/lemma_collinearparallel.v&quot; &gt; &quot;Elements/OriginalProofs/lemma_collinearparallel.v.d&quot; || ( RV=$?; rm -f &quot;Elements/OriginalProofs/lemma_collinearparallel.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; GeoCoq &quot;Elements/OriginalProofs/proposition_13.v&quot; &gt; &quot;Elements/OriginalProofs/proposition_13.v.d&quot; || ( RV=$?; rm -f &quot;Elements/OriginalProofs/proposition_13.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; GeoCoq &quot;Elements/OriginalProofs/lemma_NChelper.v&quot; &gt; &quot;Elements/OriginalProofs/lemma_NChelper.v.d&quot; || ( RV=$?; rm -f &quot;Elements/OriginalProofs/lemma_NChelper.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; GeoCoq &quot;Elements/OriginalProofs/lemma_ray3.v&quot; &gt; &quot;Elements/OriginalProofs/lemma_ray3.v.d&quot; || ( RV=$?; rm -f &quot;Elements/OriginalProofs/lemma_ray3.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; GeoCoq &quot;Elements/OriginalProofs/lemma_betweennesspreserved.v&quot; &gt; &quot;Elements/OriginalProofs/lemma_betweennesspreserved.v.d&quot; || ( RV=$?; rm -f &quot;Elements/OriginalProofs/lemma_betweennesspreserved.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; GeoCoq &quot;Elements/OriginalProofs/lemma_Euclid4.v&quot; &gt; &quot;Elements/OriginalProofs/lemma_Euclid4.v.d&quot; || ( RV=$?; rm -f &quot;Elements/OriginalProofs/lemma_Euclid4.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; GeoCoq &quot;Elements/OriginalProofs/proposition_15.v&quot; &gt; &quot;Elements/OriginalProofs/proposition_15.v.d&quot; || ( RV=$?; rm -f &quot;Elements/OriginalProofs/proposition_15.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; GeoCoq &quot;Elements/OriginalProofs/lemma_TTflip.v&quot; &gt; &quot;Elements/OriginalProofs/lemma_TTflip.v.d&quot; || ( RV=$?; rm -f &quot;Elements/OriginalProofs/lemma_TTflip.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; GeoCoq &quot;Elements/OriginalProofs/proposition_47.v&quot; &gt; &quot;Elements/OriginalProofs/proposition_47.v.d&quot; || ( RV=$?; rm -f &quot;Elements/OriginalProofs/proposition_47.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; GeoCoq &quot;Elements/OriginalProofs/lemma_PGrotate.v&quot; &gt; &quot;Elements/OriginalProofs/lemma_PGrotate.v.d&quot; || ( RV=$?; rm -f &quot;Elements/OriginalProofs/lemma_PGrotate.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; GeoCoq &quot;Elements/OriginalProofs/lemma_angledistinct.v&quot; &gt; &quot;Elements/OriginalProofs/lemma_angledistinct.v.d&quot; || ( RV=$?; rm -f &quot;Elements/OriginalProofs/lemma_angledistinct.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; GeoCoq &quot;Elements/OriginalProofs/lemma_ETreflexive.v&quot; &gt; &quot;Elements/OriginalProofs/lemma_ETreflexive.v.d&quot; || ( RV=$?; rm -f &quot;Elements/OriginalProofs/lemma_ETreflexive.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; GeoCoq &quot;Elements/OriginalProofs/lemma_diagonalsmeet.v&quot; &gt; &quot;Elements/OriginalProofs/lemma_diagonalsmeet.v.d&quot; || ( RV=$?; rm -f &quot;Elements/OriginalProofs/lemma_diagonalsmeet.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; GeoCoq &quot;Elements/OriginalProofs/proposition_07.v&quot; &gt; &quot;Elements/OriginalProofs/proposition_07.v.d&quot; || ( RV=$?; rm -f &quot;Elements/OriginalProofs/proposition_07.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; GeoCoq &quot;Elements/OriginalProofs/lemma_collinearitypreserved.v&quot; &gt; &quot;Elements/OriginalProofs/lemma_collinearitypreserved.v.d&quot; || ( RV=$?; rm -f &quot;Elements/OriginalProofs/lemma_collinearitypreserved.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; GeoCoq &quot;Elements/OriginalProofs/lemma_twolines.v&quot; &gt; &quot;Elements/OriginalProofs/lemma_twolines.v.d&quot; || ( RV=$?; rm -f &quot;Elements/OriginalProofs/lemma_twolines.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; GeoCoq &quot;Elements/OriginalProofs/lemma_collinearbetween.v&quot; &gt; &quot;Elements/OriginalProofs/lemma_collinearbetween.v.d&quot; || ( RV=$?; rm -f &quot;Elements/OriginalProofs/lemma_collinearbetween.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; GeoCoq &quot;Elements/OriginalProofs/proposition_28A.v&quot; &gt; &quot;Elements/OriginalProofs/proposition_28A.v.d&quot; || ( RV=$?; rm -f &quot;Elements/OriginalProofs/proposition_28A.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; GeoCoq &quot;Elements/OriginalProofs/lemma_equalanglesNC.v&quot; &gt; &quot;Elements/OriginalProofs/lemma_equalanglesNC.v.d&quot; || ( RV=$?; rm -f &quot;Elements/OriginalProofs/lemma_equalanglesNC.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; GeoCoq &quot;Elements/OriginalProofs/proposition_05b.v&quot; &gt; &quot;Elements/OriginalProofs/proposition_05b.v.d&quot; || ( RV=$?; rm -f &quot;Elements/OriginalProofs/proposition_05b.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; GeoCoq &quot;Elements/OriginalProofs/lemma_ABCequalsCBA.v&quot; &gt; &quot;Elements/OriginalProofs/lemma_ABCequalsCBA.v.d&quot; || ( RV=$?; rm -f &quot;Elements/OriginalProofs/lemma_ABCequalsCBA.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; GeoCoq &quot;Elements/OriginalProofs/proposition_05.v&quot; &gt; &quot;Elements/OriginalProofs/proposition_05.v.d&quot; || ( RV=$?; rm -f &quot;Elements/OriginalProofs/proposition_05.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; GeoCoq &quot;Elements/OriginalProofs/lemma_supplements2.v&quot; &gt; &quot;Elements/OriginalProofs/lemma_supplements2.v.d&quot; || ( RV=$?; rm -f &quot;Elements/OriginalProofs/lemma_supplements2.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; GeoCoq &quot;Elements/OriginalProofs/proposition_14.v&quot; &gt; &quot;Elements/OriginalProofs/proposition_14.v.d&quot; || ( RV=$?; rm -f &quot;Elements/OriginalProofs/proposition_14.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; GeoCoq &quot;Elements/OriginalProofs/lemma_midpointunique.v&quot; &gt; &quot;Elements/OriginalProofs/lemma_midpointunique.v.d&quot; || ( RV=$?; rm -f &quot;Elements/OriginalProofs/lemma_midpointunique.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; GeoCoq &quot;Elements/OriginalProofs/proposition_26A.v&quot; &gt; &quot;Elements/OriginalProofs/proposition_26A.v.d&quot; || ( RV=$?; rm -f &quot;Elements/OriginalProofs/proposition_26A.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; GeoCoq &quot;Elements/OriginalProofs/lemma_3_7a.v&quot; &gt; &quot;Elements/OriginalProofs/lemma_3_7a.v.d&quot; || ( RV=$?; rm -f &quot;Elements/OriginalProofs/lemma_3_7a.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; GeoCoq &quot;Elements/OriginalProofs/lemma_differenceofparts.v&quot; &gt; &quot;Elements/OriginalProofs/lemma_differenceofparts.v.d&quot; || ( RV=$?; rm -f &quot;Elements/OriginalProofs/lemma_differenceofparts.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; GeoCoq &quot;Elements/OriginalProofs/proposition_27B.v&quot; &gt; &quot;Elements/OriginalProofs/proposition_27B.v.d&quot; || ( RV=$?; rm -f &quot;Elements/OriginalProofs/proposition_27B.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; GeoCoq &quot;Elements/OriginalProofs/lemma_paralleldef2B.v&quot; &gt; &quot;Elements/OriginalProofs/lemma_paralleldef2B.v.d&quot; || ( RV=$?; rm -f &quot;Elements/OriginalProofs/lemma_paralleldef2B.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; GeoCoq &quot;Elements/OriginalProofs/lemma_collinearorder.v&quot; &gt; &quot;Elements/OriginalProofs/lemma_collinearorder.v.d&quot; || ( RV=$?; rm -f &quot;Elements/OriginalProofs/lemma_collinearorder.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; GeoCoq &quot;Elements/OriginalProofs/proposition_23B.v&quot; &gt; &quot;Elements/OriginalProofs/proposition_23B.v.d&quot; || ( RV=$?; rm -f &quot;Elements/OriginalProofs/proposition_23B.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; GeoCoq &quot;Elements/OriginalProofs/lemma_linereflectionisometry.v&quot; &gt; &quot;Elements/OriginalProofs/lemma_linereflectionisometry.v.d&quot; || ( RV=$?; rm -f &quot;Elements/OriginalProofs/lemma_linereflectionisometry.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; GeoCoq &quot;Elements/OriginalProofs/lemma_together2.v&quot; &gt; &quot;Elements/OriginalProofs/lemma_together2.v.d&quot; || ( RV=$?; rm -f &quot;Elements/OriginalProofs/lemma_together2.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; GeoCoq &quot;Elements/OriginalProofs/lemma_ray1.v&quot; &gt; &quot;Elements/OriginalProofs/lemma_ray1.v.d&quot; || ( RV=$?; rm -f &quot;Elements/OriginalProofs/lemma_ray1.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; GeoCoq &quot;Elements/OriginalProofs/proposition_36.v&quot; &gt; &quot;Elements/OriginalProofs/proposition_36.v.d&quot; || ( RV=$?; rm -f &quot;Elements/OriginalProofs/proposition_36.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; GeoCoq &quot;Elements/OriginalProofs/lemma_8_7.v&quot; &gt; &quot;Elements/OriginalProofs/lemma_8_7.v.d&quot; || ( RV=$?; rm -f &quot;Elements/OriginalProofs/lemma_8_7.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; GeoCoq &quot;Elements/OriginalProofs/proposition_27.v&quot; &gt; &quot;Elements/OriginalProofs/proposition_27.v.d&quot; || ( RV=$?; rm -f &quot;Elements/OriginalProofs/proposition_27.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; GeoCoq &quot;Elements/OriginalProofs/lemma_parallelcollinear2.v&quot; &gt; &quot;Elements/OriginalProofs/lemma_parallelcollinear2.v.d&quot; || ( RV=$?; rm -f &quot;Elements/OriginalProofs/lemma_parallelcollinear2.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; GeoCoq &quot;Elements/OriginalProofs/proposition_11B.v&quot; &gt; &quot;Elements/OriginalProofs/proposition_11B.v.d&quot; || ( RV=$?; rm -f &quot;Elements/OriginalProofs/proposition_11B.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; GeoCoq &quot;Elements/OriginalProofs/proposition_35.v&quot; &gt; &quot;Elements/OriginalProofs/proposition_35.v.d&quot; || ( RV=$?; rm -f &quot;Elements/OriginalProofs/proposition_35.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; GeoCoq &quot;Elements/OriginalProofs/lemma_NCdistinct.v&quot; &gt; &quot;Elements/OriginalProofs/lemma_NCdistinct.v.d&quot; || ( RV=$?; rm -f &quot;Elements/OriginalProofs/lemma_NCdistinct.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; GeoCoq &quot;Elements/OriginalProofs/proposition_43B.v&quot; &gt; &quot;Elements/OriginalProofs/proposition_43B.v.d&quot; || ( RV=$?; rm -f &quot;Elements/OriginalProofs/proposition_43B.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; GeoCoq &quot;Elements/OriginalProofs/lemma_fiveline.v&quot; &gt; &quot;Elements/OriginalProofs/lemma_fiveline.v.d&quot; || ( RV=$?; rm -f &quot;Elements/OriginalProofs/lemma_fiveline.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; GeoCoq &quot;Elements/OriginalProofs/lemma_collinear4.v&quot; &gt; &quot;Elements/OriginalProofs/lemma_collinear4.v.d&quot; || ( RV=$?; rm -f &quot;Elements/OriginalProofs/lemma_collinear4.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; GeoCoq &quot;Elements/OriginalProofs/proposition_31short.v&quot; &gt; &quot;Elements/OriginalProofs/proposition_31short.v.d&quot; || ( RV=$?; rm -f &quot;Elements/OriginalProofs/proposition_31short.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; GeoCoq &quot;Elements/OriginalProofs/proposition_26B.v&quot; &gt; &quot;Elements/OriginalProofs/proposition_26B.v.d&quot; || ( RV=$?; rm -f &quot;Elements/OriginalProofs/proposition_26B.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; GeoCoq &quot;Elements/OriginalProofs/lemma_21helper.v&quot; &gt; &quot;Elements/OriginalProofs/lemma_21helper.v.d&quot; || ( RV=$?; rm -f &quot;Elements/OriginalProofs/lemma_21helper.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; GeoCoq &quot;Elements/OriginalProofs/lemma_equalanglesflip.v&quot; &gt; &quot;Elements/OriginalProofs/lemma_equalanglesflip.v.d&quot; || ( RV=$?; rm -f &quot;Elements/OriginalProofs/lemma_equalanglesflip.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; GeoCoq &quot;Elements/OriginalProofs/proposition_20.v&quot; &gt; &quot;Elements/OriginalProofs/proposition_20.v.d&quot; || ( RV=$?; rm -f &quot;Elements/OriginalProofs/proposition_20.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; GeoCoq &quot;Elements/OriginalProofs/proposition_48.v&quot; &gt; &quot;Elements/OriginalProofs/proposition_48.v.d&quot; || ( RV=$?; rm -f &quot;Elements/OriginalProofs/proposition_48.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; GeoCoq &quot;Elements/OriginalProofs/lemma_supplementsymmetric.v&quot; &gt; &quot;Elements/OriginalProofs/lemma_supplementsymmetric.v.d&quot; || ( RV=$?; rm -f &quot;Elements/OriginalProofs/lemma_supplementsymmetric.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; GeoCoq &quot;Elements/OriginalProofs/euclidean_tactics.v&quot; &gt; &quot;Elements/OriginalProofs/euclidean_tactics.v.d&quot; || ( RV=$?; rm -f &quot;Elements/OriginalProofs/euclidean_tactics.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; GeoCoq &quot;Elements/OriginalProofs/proposition_45.v&quot; &gt; &quot;Elements/OriginalProofs/proposition_45.v.d&quot; || ( RV=$?; rm -f &quot;Elements/OriginalProofs/proposition_45.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; GeoCoq &quot;Elements/OriginalProofs/lemma_3_7b.v&quot; &gt; &quot;Elements/OriginalProofs/lemma_3_7b.v.d&quot; || ( RV=$?; rm -f &quot;Elements/OriginalProofs/lemma_3_7b.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; GeoCoq &quot;Elements/OriginalProofs/lemma_rectanglereverse.v&quot; &gt; &quot;Elements/OriginalProofs/lemma_rectanglereverse.v.d&quot; || ( RV=$?; rm -f &quot;Elements/OriginalProofs/lemma_rectanglereverse.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; GeoCoq &quot;Elements/OriginalProofs/lemma_crisscross.v&quot; &gt; &quot;Elements/OriginalProofs/lemma_crisscross.v.d&quot; || ( RV=$?; rm -f &quot;Elements/OriginalProofs/lemma_crisscross.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; GeoCoq &quot;Elements/OriginalProofs/lemma_PGsymmetric.v&quot; &gt; &quot;Elements/OriginalProofs/lemma_PGsymmetric.v.d&quot; || ( RV=$?; rm -f &quot;Elements/OriginalProofs/lemma_PGsymmetric.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; GeoCoq &quot;Elements/OriginalProofs/lemma_equalanglesreflexive.v&quot; &gt; &quot;Elements/OriginalProofs/lemma_equalanglesreflexive.v.d&quot; || ( RV=$?; rm -f &quot;Elements/OriginalProofs/lemma_equalanglesreflexive.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; GeoCoq &quot;Elements/OriginalProofs/lemma_squareparallelogram.v&quot; &gt; &quot;Elements/OriginalProofs/lemma_squareparallelogram.v.d&quot; || ( RV=$?; rm -f &quot;Elements/OriginalProofs/lemma_squareparallelogram.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; GeoCoq &quot;Elements/OriginalProofs/proposition_22.v&quot; &gt; &quot;Elements/OriginalProofs/proposition_22.v.d&quot; || ( RV=$?; rm -f &quot;Elements/OriginalProofs/proposition_22.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; GeoCoq &quot;Elements/OriginalProofs/lemma_parallelflip.v&quot; &gt; &quot;Elements/OriginalProofs/lemma_parallelflip.v.d&quot; || ( RV=$?; rm -f &quot;Elements/OriginalProofs/lemma_parallelflip.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; GeoCoq &quot;Elements/OriginalProofs/lemma_parallelcollinear1.v&quot; &gt; &quot;Elements/OriginalProofs/lemma_parallelcollinear1.v.d&quot; || ( RV=$?; rm -f &quot;Elements/OriginalProofs/lemma_parallelcollinear1.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; GeoCoq &quot;Elements/OriginalProofs/lemma_Playfairhelper2.v&quot; &gt; &quot;Elements/OriginalProofs/lemma_Playfairhelper2.v.d&quot; || ( RV=$?; rm -f &quot;Elements/OriginalProofs/lemma_Playfairhelper2.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; GeoCoq &quot;Elements/OriginalProofs/lemma_twoperpsparallel.v&quot; &gt; &quot;Elements/OriginalProofs/lemma_twoperpsparallel.v.d&quot; || ( RV=$?; rm -f &quot;Elements/OriginalProofs/lemma_twoperpsparallel.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; GeoCoq &quot;Elements/OriginalProofs/lemma_3_6a.v&quot; &gt; &quot;Elements/OriginalProofs/lemma_3_6a.v.d&quot; || ( RV=$?; rm -f &quot;Elements/OriginalProofs/lemma_3_6a.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; GeoCoq &quot;Elements/OriginalProofs/lemma_collinear5.v&quot; &gt; &quot;Elements/OriginalProofs/lemma_collinear5.v.d&quot; || ( RV=$?; rm -f &quot;Elements/OriginalProofs/lemma_collinear5.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; GeoCoq &quot;Elements/OriginalProofs/proposition_12.v&quot; &gt; &quot;Elements/OriginalProofs/proposition_12.v.d&quot; || ( RV=$?; rm -f &quot;Elements/OriginalProofs/proposition_12.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; GeoCoq &quot;Elements/OriginalProofs/proposition_03.v&quot; &gt; &quot;Elements/OriginalProofs/proposition_03.v.d&quot; || ( RV=$?; rm -f &quot;Elements/OriginalProofs/proposition_03.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; GeoCoq &quot;Elements/OriginalProofs/proposition_19.v&quot; &gt; &quot;Elements/OriginalProofs/proposition_19.v.d&quot; || ( RV=$?; rm -f &quot;Elements/OriginalProofs/proposition_19.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; GeoCoq &quot;Elements/OriginalProofs/proposition_44.v&quot; &gt; &quot;Elements/OriginalProofs/proposition_44.v.d&quot; || ( RV=$?; rm -f &quot;Elements/OriginalProofs/proposition_44.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; GeoCoq &quot;Elements/OriginalProofs/lemma_betweennotequal.v&quot; &gt; &quot;Elements/OriginalProofs/lemma_betweennotequal.v.d&quot; || ( RV=$?; rm -f &quot;Elements/OriginalProofs/lemma_betweennotequal.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; GeoCoq &quot;Elements/OriginalProofs/euclidean_defs.v&quot; &gt; &quot;Elements/OriginalProofs/euclidean_defs.v.d&quot; || ( RV=$?; rm -f &quot;Elements/OriginalProofs/euclidean_defs.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; GeoCoq &quot;Elements/OriginalProofs/lemma_rightreverse.v&quot; &gt; &quot;Elements/OriginalProofs/lemma_rightreverse.v.d&quot; || ( RV=$?; rm -f &quot;Elements/OriginalProofs/lemma_rightreverse.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; GeoCoq &quot;Elements/OriginalProofs/lemma_samesidereflexive.v&quot; &gt; &quot;Elements/OriginalProofs/lemma_samesidereflexive.v.d&quot; || ( RV=$?; rm -f &quot;Elements/OriginalProofs/lemma_samesidereflexive.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; GeoCoq &quot;Elements/OriginalProofs/lemma_parallelbetween.v&quot; &gt; &quot;Elements/OriginalProofs/lemma_parallelbetween.v.d&quot; || ( RV=$?; rm -f &quot;Elements/OriginalProofs/lemma_parallelbetween.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; GeoCoq &quot;Elements/OriginalProofs/proposition_39A.v&quot; &gt; &quot;Elements/OriginalProofs/proposition_39A.v.d&quot; || ( RV=$?; rm -f &quot;Elements/OriginalProofs/proposition_39A.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; GeoCoq &quot;Elements/OriginalProofs/proposition_30.v&quot; &gt; &quot;Elements/OriginalProofs/proposition_30.v.d&quot; || ( RV=$?; rm -f &quot;Elements/OriginalProofs/proposition_30.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; GeoCoq &quot;Elements/OriginalProofs/proposition_08.v&quot; &gt; &quot;Elements/OriginalProofs/proposition_08.v.d&quot; || ( RV=$?; rm -f &quot;Elements/OriginalProofs/proposition_08.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; GeoCoq &quot;Elements/OriginalProofs/lemma_parallelNC.v&quot; &gt; &quot;Elements/OriginalProofs/lemma_parallelNC.v.d&quot; || ( RV=$?; rm -f &quot;Elements/OriginalProofs/lemma_parallelNC.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; GeoCoq &quot;Elements/OriginalProofs/lemma_paste5.v&quot; &gt; &quot;Elements/OriginalProofs/lemma_paste5.v.d&quot; || ( RV=$?; rm -f &quot;Elements/OriginalProofs/lemma_paste5.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; GeoCoq &quot;Elements/OriginalProofs/lemma_tworays.v&quot; &gt; &quot;Elements/OriginalProofs/lemma_tworays.v.d&quot; || ( RV=$?; rm -f &quot;Elements/OriginalProofs/lemma_tworays.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; GeoCoq &quot;Elements/OriginalProofs/lemma_interior5.v&quot; &gt; &quot;Elements/OriginalProofs/lemma_interior5.v.d&quot; || ( RV=$?; rm -f &quot;Elements/OriginalProofs/lemma_interior5.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; GeoCoq &quot;Elements/OriginalProofs/lemma_trichotomy1.v&quot; &gt; &quot;Elements/OriginalProofs/lemma_trichotomy1.v.d&quot; || ( RV=$?; rm -f &quot;Elements/OriginalProofs/lemma_trichotomy1.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; GeoCoq &quot;Elements/OriginalProofs/lemma_equaltorightisright.v&quot; &gt; &quot;Elements/OriginalProofs/lemma_equaltorightisright.v.d&quot; || ( RV=$?; rm -f &quot;Elements/OriginalProofs/lemma_equaltorightisright.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; GeoCoq &quot;Elements/OriginalProofs/lemma_TTtransitive.v&quot; &gt; &quot;Elements/OriginalProofs/lemma_TTtransitive.v.d&quot; || ( RV=$?; rm -f &quot;Elements/OriginalProofs/lemma_TTtransitive.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; GeoCoq &quot;Elements/OriginalProofs/proposition_04.v&quot; &gt; &quot;Elements/OriginalProofs/proposition_04.v.d&quot; || ( RV=$?; rm -f &quot;Elements/OriginalProofs/proposition_04.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; GeoCoq &quot;Elements/OriginalProofs/proposition_41.v&quot; &gt; &quot;Elements/OriginalProofs/proposition_41.v.d&quot; || ( RV=$?; rm -f &quot;Elements/OriginalProofs/proposition_41.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; GeoCoq &quot;Elements/OriginalProofs/lemma_squareunique.v&quot; &gt; &quot;Elements/OriginalProofs/lemma_squareunique.v.d&quot; || ( RV=$?; rm -f &quot;Elements/OriginalProofs/lemma_squareunique.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; GeoCoq &quot;Elements/OriginalProofs/lemma_8_3.v&quot; &gt; &quot;Elements/OriginalProofs/lemma_8_3.v.d&quot; || ( RV=$?; rm -f &quot;Elements/OriginalProofs/lemma_8_3.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; GeoCoq &quot;Elements/OriginalProofs/proposition_06.v&quot; &gt; &quot;Elements/OriginalProofs/proposition_06.v.d&quot; || ( RV=$?; rm -f &quot;Elements/OriginalProofs/proposition_06.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; GeoCoq &quot;Elements/OriginalProofs/proposition_30B.v&quot; &gt; &quot;Elements/OriginalProofs/proposition_30B.v.d&quot; || ( RV=$?; rm -f &quot;Elements/OriginalProofs/proposition_30B.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; GeoCoq &quot;Elements/OriginalProofs/lemma_oppositesideflip.v&quot; &gt; &quot;Elements/OriginalProofs/lemma_oppositesideflip.v.d&quot; || ( RV=$?; rm -f &quot;Elements/OriginalProofs/lemma_oppositesideflip.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; GeoCoq &quot;Elements/OriginalProofs/proposition_09.v&quot; &gt; &quot;Elements/OriginalProofs/proposition_09.v.d&quot; || ( RV=$?; rm -f &quot;Elements/OriginalProofs/proposition_09.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; GeoCoq &quot;Elements/OriginalProofs/proposition_01.v&quot; &gt; &quot;Elements/OriginalProofs/proposition_01.v.d&quot; || ( RV=$?; rm -f &quot;Elements/OriginalProofs/proposition_01.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; GeoCoq &quot;Elements/OriginalProofs/lemma_erectedperpendicularunique.v&quot; &gt; &quot;Elements/OriginalProofs/lemma_erectedperpendicularunique.v.d&quot; || ( RV=$?; rm -f &quot;Elements/OriginalProofs/lemma_erectedperpendicularunique.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; GeoCoq &quot;Elements/OriginalProofs/lemma_diagonalsbisect.v&quot; &gt; &quot;Elements/OriginalProofs/lemma_diagonalsbisect.v.d&quot; || ( RV=$?; rm -f &quot;Elements/OriginalProofs/lemma_diagonalsbisect.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; GeoCoq &quot;Elements/OriginalProofs/proposition_33B.v&quot; &gt; &quot;Elements/OriginalProofs/proposition_33B.v.d&quot; || ( RV=$?; rm -f &quot;Elements/OriginalProofs/proposition_33B.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; GeoCoq &quot;Elements/OriginalProofs/proposition_28C.v&quot; &gt; &quot;Elements/OriginalProofs/proposition_28C.v.d&quot; || ( RV=$?; rm -f &quot;Elements/OriginalProofs/proposition_28C.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; GeoCoq &quot;Elements/OriginalProofs/lemma_equalanglessymmetric.v&quot; &gt; &quot;Elements/OriginalProofs/lemma_equalanglessymmetric.v.d&quot; || ( RV=$?; rm -f &quot;Elements/OriginalProofs/lemma_equalanglessymmetric.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; GeoCoq &quot;Elements/OriginalProofs/book1.v&quot; &gt; &quot;Elements/OriginalProofs/book1.v.d&quot; || ( RV=$?; rm -f &quot;Elements/OriginalProofs/book1.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; GeoCoq &quot;Elements/OriginalProofs/lemma_ray.v&quot; &gt; &quot;Elements/OriginalProofs/lemma_ray.v.d&quot; || ( RV=$?; rm -f &quot;Elements/OriginalProofs/lemma_ray.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; GeoCoq &quot;Elements/OriginalProofs/proposition_18.v&quot; &gt; &quot;Elements/OriginalProofs/proposition_18.v.d&quot; || ( RV=$?; rm -f &quot;Elements/OriginalProofs/proposition_18.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; GeoCoq &quot;Elements/OriginalProofs/proposition_42B.v&quot; &gt; &quot;Elements/OriginalProofs/proposition_42B.v.d&quot; || ( RV=$?; rm -f &quot;Elements/OriginalProofs/proposition_42B.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; GeoCoq &quot;Elements/OriginalProofs/lemma_30helper.v&quot; &gt; &quot;Elements/OriginalProofs/lemma_30helper.v.d&quot; || ( RV=$?; rm -f &quot;Elements/OriginalProofs/lemma_30helper.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; GeoCoq &quot;Elements/OriginalProofs/proposition_16.v&quot; &gt; &quot;Elements/OriginalProofs/proposition_16.v.d&quot; || ( RV=$?; rm -f &quot;Elements/OriginalProofs/proposition_16.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; GeoCoq &quot;Elements/OriginalProofs/proposition_25.v&quot; &gt; &quot;Elements/OriginalProofs/proposition_25.v.d&quot; || ( RV=$?; rm -f &quot;Elements/OriginalProofs/proposition_25.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; GeoCoq &quot;Elements/OriginalProofs/lemma_Playfair.v&quot; &gt; &quot;Elements/OriginalProofs/lemma_Playfair.v.d&quot; || ( RV=$?; rm -f &quot;Elements/OriginalProofs/lemma_Playfair.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; GeoCoq &quot;Elements/OriginalProofs/general_tactics.v&quot; &gt; &quot;Elements/OriginalProofs/general_tactics.v.d&quot; || ( RV=$?; rm -f &quot;Elements/OriginalProofs/general_tactics.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; GeoCoq &quot;Elements/OriginalProofs/proposition_29B.v&quot; &gt; &quot;Elements/OriginalProofs/proposition_29B.v.d&quot; || ( RV=$?; rm -f &quot;Elements/OriginalProofs/proposition_29B.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; GeoCoq &quot;Elements/OriginalProofs/proposition_30A.v&quot; &gt; &quot;Elements/OriginalProofs/proposition_30A.v.d&quot; || ( RV=$?; rm -f &quot;Elements/OriginalProofs/proposition_30A.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; GeoCoq &quot;Elements/OriginalProofs/lemma_crossimpliesopposite.v&quot; &gt; &quot;Elements/OriginalProofs/lemma_crossimpliesopposite.v.d&quot; || ( RV=$?; rm -f &quot;Elements/OriginalProofs/lemma_crossimpliesopposite.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; GeoCoq &quot;Elements/OriginalProofs/lemma_inequalitysymmetric.v&quot; &gt; &quot;Elements/OriginalProofs/lemma_inequalitysymmetric.v.d&quot; || ( RV=$?; rm -f &quot;Elements/OriginalProofs/lemma_inequalitysymmetric.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; GeoCoq &quot;Elements/OriginalProofs/lemma_lessthanbetween.v&quot; &gt; &quot;Elements/OriginalProofs/lemma_lessthanbetween.v.d&quot; || ( RV=$?; rm -f &quot;Elements/OriginalProofs/lemma_lessthanbetween.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; GeoCoq &quot;Elements/OriginalProofs/lemma_rayimpliescollinear.v&quot; &gt; &quot;Elements/OriginalProofs/lemma_rayimpliescollinear.v.d&quot; || ( RV=$?; rm -f &quot;Elements/OriginalProofs/lemma_rayimpliescollinear.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; GeoCoq &quot;Elements/OriginalProofs/lemma_tarskiparallelflip.v&quot; &gt; &quot;Elements/OriginalProofs/lemma_tarskiparallelflip.v.d&quot; || ( RV=$?; rm -f &quot;Elements/OriginalProofs/lemma_tarskiparallelflip.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; GeoCoq &quot;Elements/OriginalProofs/lemma_congruencesymmetric.v&quot; &gt; &quot;Elements/OriginalProofs/lemma_congruencesymmetric.v.d&quot; || ( RV=$?; rm -f &quot;Elements/OriginalProofs/lemma_congruencesymmetric.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; GeoCoq &quot;Elements/OriginalProofs/lemma_TTflip2.v&quot; &gt; &quot;Elements/OriginalProofs/lemma_TTflip2.v.d&quot; || ( RV=$?; rm -f &quot;Elements/OriginalProofs/lemma_TTflip2.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; GeoCoq &quot;Elements/OriginalProofs/lemma_sameside2.v&quot; &gt; &quot;Elements/OriginalProofs/lemma_sameside2.v.d&quot; || ( RV=$?; rm -f &quot;Elements/OriginalProofs/lemma_sameside2.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; GeoCoq &quot;Elements/OriginalProofs/lemma_supplementinequality.v&quot; &gt; &quot;Elements/OriginalProofs/lemma_supplementinequality.v.d&quot; || ( RV=$?; rm -f &quot;Elements/OriginalProofs/lemma_supplementinequality.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; GeoCoq &quot;Elements/OriginalProofs/lemma_lessthantransitive.v&quot; &gt; &quot;Elements/OriginalProofs/lemma_lessthantransitive.v.d&quot; || ( RV=$?; rm -f &quot;Elements/OriginalProofs/lemma_lessthantransitive.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; GeoCoq &quot;Elements/OriginalProofs/lemma_9_5b.v&quot; &gt; &quot;Elements/OriginalProofs/lemma_9_5b.v.d&quot; || ( RV=$?; rm -f &quot;Elements/OriginalProofs/lemma_9_5b.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; GeoCoq &quot;Elements/OriginalProofs/lemma_doublereverse.v&quot; &gt; &quot;Elements/OriginalProofs/lemma_doublereverse.v.d&quot; || ( RV=$?; rm -f &quot;Elements/OriginalProofs/lemma_doublereverse.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; GeoCoq &quot;Elements/OriginalProofs/lemma_collinearparallel2.v&quot; &gt; &quot;Elements/OriginalProofs/lemma_collinearparallel2.v.d&quot; || ( RV=$?; rm -f &quot;Elements/OriginalProofs/lemma_collinearparallel2.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; GeoCoq &quot;Elements/OriginalProofs/lemma_supplementofright.v&quot; &gt; &quot;Elements/OriginalProofs/lemma_supplementofright.v.d&quot; || ( RV=$?; rm -f &quot;Elements/OriginalProofs/lemma_supplementofright.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; GeoCoq &quot;Elements/OriginalProofs/lemma_TGflip.v&quot; &gt; &quot;Elements/OriginalProofs/lemma_TGflip.v.d&quot; || ( RV=$?; rm -f &quot;Elements/OriginalProofs/lemma_TGflip.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; GeoCoq &quot;Elements/OriginalProofs/lemma_squaresequal.v&quot; &gt; &quot;Elements/OriginalProofs/lemma_squaresequal.v.d&quot; || ( RV=$?; rm -f &quot;Elements/OriginalProofs/lemma_squaresequal.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; GeoCoq &quot;Elements/OriginalProofs/proposition_37.v&quot; &gt; &quot;Elements/OriginalProofs/proposition_37.v.d&quot; || ( RV=$?; rm -f &quot;Elements/OriginalProofs/proposition_37.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; GeoCoq &quot;Elements/OriginalProofs/lemma_ray2.v&quot; &gt; &quot;Elements/OriginalProofs/lemma_ray2.v.d&quot; || ( RV=$?; rm -f &quot;Elements/OriginalProofs/lemma_ray2.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; GeoCoq &quot;Elements/OriginalProofs/lemma_Pasch_outer2.v&quot; &gt; &quot;Elements/OriginalProofs/lemma_Pasch_outer2.v.d&quot; || ( RV=$?; rm -f &quot;Elements/OriginalProofs/lemma_Pasch_outer2.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; GeoCoq &quot;Elements/OriginalProofs/lemma_squarerectangle.v&quot; &gt; &quot;Elements/OriginalProofs/lemma_squarerectangle.v.d&quot; || ( RV=$?; rm -f &quot;Elements/OriginalProofs/lemma_squarerectangle.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; GeoCoq &quot;Elements/OriginalProofs/lemma_squareflip.v&quot; &gt; &quot;Elements/OriginalProofs/lemma_squareflip.v.d&quot; || ( RV=$?; rm -f &quot;Elements/OriginalProofs/lemma_squareflip.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; GeoCoq &quot;Elements/OriginalProofs/lemma_extensionunique.v&quot; &gt; &quot;Elements/OriginalProofs/lemma_extensionunique.v.d&quot; || ( RV=$?; rm -f &quot;Elements/OriginalProofs/lemma_extensionunique.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; GeoCoq &quot;Elements/OriginalProofs/lemma_rectangleparallelogram.v&quot; &gt; &quot;Elements/OriginalProofs/lemma_rectangleparallelogram.v.d&quot; || ( RV=$?; rm -f &quot;Elements/OriginalProofs/lemma_rectangleparallelogram.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; GeoCoq &quot;Elements/OriginalProofs/proposition_17.v&quot; &gt; &quot;Elements/OriginalProofs/proposition_17.v.d&quot; || ( RV=$?; rm -f &quot;Elements/OriginalProofs/proposition_17.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; GeoCoq &quot;Elements/OriginalProofs/lemma_congruenceflip.v&quot; &gt; &quot;Elements/OriginalProofs/lemma_congruenceflip.v.d&quot; || ( RV=$?; rm -f &quot;Elements/OriginalProofs/lemma_congruenceflip.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; GeoCoq &quot;Elements/OriginalProofs/lemma_triangletoparallelogram.v&quot; &gt; &quot;Elements/OriginalProofs/lemma_triangletoparallelogram.v.d&quot; || ( RV=$?; rm -f &quot;Elements/OriginalProofs/lemma_triangletoparallelogram.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; GeoCoq &quot;Elements/OriginalProofs/proposition_32.v&quot; &gt; &quot;Elements/OriginalProofs/proposition_32.v.d&quot; || ( RV=$?; rm -f &quot;Elements/OriginalProofs/proposition_32.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; GeoCoq &quot;Elements/OriginalProofs/lemma_rectanglerotate.v&quot; &gt; &quot;Elements/OriginalProofs/lemma_rectanglerotate.v.d&quot; || ( RV=$?; rm -f &quot;Elements/OriginalProofs/lemma_rectanglerotate.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; GeoCoq &quot;Elements/OriginalProofs/lemma_angletrichotomy2.v&quot; &gt; &quot;Elements/OriginalProofs/lemma_angletrichotomy2.v.d&quot; || ( RV=$?; rm -f &quot;Elements/OriginalProofs/lemma_angletrichotomy2.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; GeoCoq &quot;Elements/OriginalProofs/lemma_twolines2.v&quot; &gt; &quot;Elements/OriginalProofs/lemma_twolines2.v.d&quot; || ( RV=$?; rm -f &quot;Elements/OriginalProofs/lemma_twolines2.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; GeoCoq &quot;Elements/OriginalProofs/proposition_38.v&quot; &gt; &quot;Elements/OriginalProofs/proposition_38.v.d&quot; || ( RV=$?; rm -f &quot;Elements/OriginalProofs/proposition_38.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; GeoCoq &quot;Elements/OriginalProofs/lemma_layoffunique.v&quot; &gt; &quot;Elements/OriginalProofs/lemma_layoffunique.v.d&quot; || ( RV=$?; rm -f &quot;Elements/OriginalProofs/lemma_layoffunique.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; GeoCoq &quot;Elements/OriginalProofs/lemma_parallelsymmetric.v&quot; &gt; &quot;Elements/OriginalProofs/lemma_parallelsymmetric.v.d&quot; || ( RV=$?; rm -f &quot;Elements/OriginalProofs/lemma_parallelsymmetric.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; GeoCoq &quot;Elements/OriginalProofs/lemma_legsmallerhypotenuse.v&quot; &gt; &quot;Elements/OriginalProofs/lemma_legsmallerhypotenuse.v.d&quot; || ( RV=$?; rm -f &quot;Elements/OriginalProofs/lemma_legsmallerhypotenuse.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; GeoCoq &quot;Elements/OriginalProofs/lemma_35helper.v&quot; &gt; &quot;Elements/OriginalProofs/lemma_35helper.v.d&quot; || ( RV=$?; rm -f &quot;Elements/OriginalProofs/lemma_35helper.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; GeoCoq &quot;Elements/OriginalProofs/lemma_collinear2.v&quot; &gt; &quot;Elements/OriginalProofs/lemma_collinear2.v.d&quot; || ( RV=$?; rm -f &quot;Elements/OriginalProofs/lemma_collinear2.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; GeoCoq &quot;Elements/OriginalProofs/lemma_10_12.v&quot; &gt; &quot;Elements/OriginalProofs/lemma_10_12.v.d&quot; || ( RV=$?; rm -f &quot;Elements/OriginalProofs/lemma_10_12.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; GeoCoq &quot;Elements/OriginalProofs/lemma_angleordertransitive.v&quot; &gt; &quot;Elements/OriginalProofs/lemma_angleordertransitive.v.d&quot; || ( RV=$?; rm -f &quot;Elements/OriginalProofs/lemma_angleordertransitive.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; GeoCoq &quot;Elements/OriginalProofs/proposition_40.v&quot; &gt; &quot;Elements/OriginalProofs/proposition_40.v.d&quot; || ( RV=$?; rm -f &quot;Elements/OriginalProofs/proposition_40.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; GeoCoq &quot;Elements/OriginalProofs/proposition_47A.v&quot; &gt; &quot;Elements/OriginalProofs/proposition_47A.v.d&quot; || ( RV=$?; rm -f &quot;Elements/OriginalProofs/proposition_47A.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; GeoCoq &quot;Elements/OriginalProofs/lemma_altitudebisectsbase.v&quot; &gt; &quot;Elements/OriginalProofs/lemma_altitudebisectsbase.v.d&quot; || ( RV=$?; rm -f &quot;Elements/OriginalProofs/lemma_altitudebisectsbase.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; GeoCoq &quot;Elements/OriginalProofs/proposition_43.v&quot; &gt; &quot;Elements/OriginalProofs/proposition_43.v.d&quot; || ( RV=$?; rm -f &quot;Elements/OriginalProofs/proposition_43.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; GeoCoq &quot;Elements/OriginalProofs/lemma_9_5a.v&quot; &gt; &quot;Elements/OriginalProofs/lemma_9_5a.v.d&quot; || ( RV=$?; rm -f &quot;Elements/OriginalProofs/lemma_9_5a.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; GeoCoq &quot;Elements/OriginalProofs/proposition_21.v&quot; &gt; &quot;Elements/OriginalProofs/proposition_21.v.d&quot; || ( RV=$?; rm -f &quot;Elements/OriginalProofs/proposition_21.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; GeoCoq &quot;Elements/OriginalProofs/lemma_angleorderrespectscongruence.v&quot; &gt; &quot;Elements/OriginalProofs/lemma_angleorderrespectscongruence.v.d&quot; || ( RV=$?; rm -f &quot;Elements/OriginalProofs/lemma_angleorderrespectscongruence.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; GeoCoq &quot;Elements/OriginalProofs/lemma_lessthanadditive.v&quot; &gt; &quot;Elements/OriginalProofs/lemma_lessthanadditive.v.d&quot; || ( RV=$?; rm -f &quot;Elements/OriginalProofs/lemma_lessthanadditive.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; GeoCoq &quot;Elements/OriginalProofs/lemma_together.v&quot; &gt; &quot;Elements/OriginalProofs/lemma_together.v.d&quot; || ( RV=$?; rm -f &quot;Elements/OriginalProofs/lemma_together.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; GeoCoq &quot;Elements/OriginalProofs/lemma_partnotequalwhole.v&quot; &gt; &quot;Elements/OriginalProofs/lemma_partnotequalwhole.v.d&quot; || ( RV=$?; rm -f &quot;Elements/OriginalProofs/lemma_partnotequalwhole.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; GeoCoq &quot;Elements/OriginalProofs/lemma_TCreflexive.v&quot; &gt; &quot;Elements/OriginalProofs/lemma_TCreflexive.v.d&quot; || ( RV=$?; rm -f &quot;Elements/OriginalProofs/lemma_TCreflexive.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; GeoCoq &quot;Elements/OriginalProofs/lemma_angletrichotomy.v&quot; &gt; &quot;Elements/OriginalProofs/lemma_angletrichotomy.v.d&quot; || ( RV=$?; rm -f &quot;Elements/OriginalProofs/lemma_angletrichotomy.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; GeoCoq &quot;Elements/OriginalProofs/lemma_PGflip.v&quot; &gt; &quot;Elements/OriginalProofs/lemma_PGflip.v.d&quot; || ( RV=$?; rm -f &quot;Elements/OriginalProofs/lemma_PGflip.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; GeoCoq &quot;Elements/OriginalProofs/lemma_3_5b.v&quot; &gt; &quot;Elements/OriginalProofs/lemma_3_5b.v.d&quot; || ( RV=$?; rm -f &quot;Elements/OriginalProofs/lemma_3_5b.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; GeoCoq &quot;Elements/OriginalProofs/lemma_paralleldef2A.v&quot; &gt; &quot;Elements/OriginalProofs/lemma_paralleldef2A.v.d&quot; || ( RV=$?; rm -f &quot;Elements/OriginalProofs/lemma_paralleldef2A.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; GeoCoq &quot;Elements/OriginalProofs/lemma_RTsymmetric.v&quot; &gt; &quot;Elements/OriginalProofs/lemma_RTsymmetric.v.d&quot; || ( RV=$?; rm -f &quot;Elements/OriginalProofs/lemma_RTsymmetric.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; GeoCoq &quot;Elements/OriginalProofs/proposition_10.v&quot; &gt; &quot;Elements/OriginalProofs/proposition_10.v.d&quot; || ( RV=$?; rm -f &quot;Elements/OriginalProofs/proposition_10.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; GeoCoq &quot;Elements/OriginalProofs/proposition_35A.v&quot; &gt; &quot;Elements/OriginalProofs/proposition_35A.v.d&quot; || ( RV=$?; rm -f &quot;Elements/OriginalProofs/proposition_35A.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; GeoCoq &quot;Elements/OriginalProofs/lemma_droppedperpendicularunique.v&quot; &gt; &quot;Elements/OriginalProofs/lemma_droppedperpendicularunique.v.d&quot; || ( RV=$?; rm -f &quot;Elements/OriginalProofs/lemma_droppedperpendicularunique.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; GeoCoq &quot;Elements/OriginalProofs/proposition_46.v&quot; &gt; &quot;Elements/OriginalProofs/proposition_46.v.d&quot; || ( RV=$?; rm -f &quot;Elements/OriginalProofs/proposition_46.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; GeoCoq &quot;Elements/OriginalProofs/proposition_23C.v&quot; &gt; &quot;Elements/OriginalProofs/proposition_23C.v.d&quot; || ( RV=$?; rm -f &quot;Elements/OriginalProofs/proposition_23C.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; GeoCoq &quot;Elements/OriginalProofs/proposition_39.v&quot; &gt; &quot;Elements/OriginalProofs/proposition_39.v.d&quot; || ( RV=$?; rm -f &quot;Elements/OriginalProofs/proposition_39.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; GeoCoq &quot;Elements/OriginalProofs/lemma_parallelPasch.v&quot; &gt; &quot;Elements/OriginalProofs/lemma_parallelPasch.v.d&quot; || ( RV=$?; rm -f &quot;Elements/OriginalProofs/lemma_parallelPasch.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; GeoCoq &quot;Elements/OriginalProofs/lemma_4_19.v&quot; &gt; &quot;Elements/OriginalProofs/lemma_4_19.v.d&quot; || ( RV=$?; rm -f &quot;Elements/OriginalProofs/lemma_4_19.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; GeoCoq &quot;Elements/OriginalProofs/lemma_layoff.v&quot; &gt; &quot;Elements/OriginalProofs/lemma_layoff.v.d&quot; || ( RV=$?; rm -f &quot;Elements/OriginalProofs/lemma_layoff.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; GeoCoq &quot;Elements/OriginalProofs/proposition_36A.v&quot; &gt; &quot;Elements/OriginalProofs/proposition_36A.v.d&quot; || ( RV=$?; rm -f &quot;Elements/OriginalProofs/proposition_36A.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; GeoCoq &quot;Elements/OriginalProofs/lemma_altitudeofrighttriangle.v&quot; &gt; &quot;Elements/OriginalProofs/lemma_altitudeofrighttriangle.v.d&quot; || ( RV=$?; rm -f &quot;Elements/OriginalProofs/lemma_altitudeofrighttriangle.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; GeoCoq &quot;Elements/OriginalProofs/lemma_TGsymmetric.v&quot; &gt; &quot;Elements/OriginalProofs/lemma_TGsymmetric.v.d&quot; || ( RV=$?; rm -f &quot;Elements/OriginalProofs/lemma_TGsymmetric.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; GeoCoq &quot;Elements/OriginalProofs/proposition_42.v&quot; &gt; &quot;Elements/OriginalProofs/proposition_42.v.d&quot; || ( RV=$?; rm -f &quot;Elements/OriginalProofs/proposition_42.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; GeoCoq &quot;Elements/OriginalProofs/lemma_subtractequals.v&quot; &gt; &quot;Elements/OriginalProofs/lemma_subtractequals.v.d&quot; || ( RV=$?; rm -f &quot;Elements/OriginalProofs/lemma_subtractequals.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; GeoCoq &quot;Elements/OriginalProofs/proposition_48A.v&quot; &gt; &quot;Elements/OriginalProofs/proposition_48A.v.d&quot; || ( RV=$?; rm -f &quot;Elements/OriginalProofs/proposition_48A.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; GeoCoq &quot;Elements/OriginalProofs/lemma_TTorder.v&quot; &gt; &quot;Elements/OriginalProofs/lemma_TTorder.v.d&quot; || ( RV=$?; rm -f &quot;Elements/OriginalProofs/lemma_TTorder.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; GeoCoq &quot;Elements/OriginalProofs/lemma_trichotomy2.v&quot; &gt; &quot;Elements/OriginalProofs/lemma_trichotomy2.v.d&quot; || ( RV=$?; rm -f &quot;Elements/OriginalProofs/lemma_trichotomy2.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; GeoCoq &quot;Elements/OriginalProofs/lemma_pointreflectionisometry.v&quot; &gt; &quot;Elements/OriginalProofs/lemma_pointreflectionisometry.v.d&quot; || ( RV=$?; rm -f &quot;Elements/OriginalProofs/lemma_pointreflectionisometry.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; GeoCoq &quot;Elements/OriginalProofs/lemma_PGrectangle.v&quot; &gt; &quot;Elements/OriginalProofs/lemma_PGrectangle.v.d&quot; || ( RV=$?; rm -f &quot;Elements/OriginalProofs/lemma_PGrectangle.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; GeoCoq &quot;Elements/OriginalProofs/proposition_11.v&quot; &gt; &quot;Elements/OriginalProofs/proposition_11.v.d&quot; || ( RV=$?; rm -f &quot;Elements/OriginalProofs/proposition_11.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; GeoCoq &quot;Elements/OriginalProofs/lemma_collinear1.v&quot; &gt; &quot;Elements/OriginalProofs/lemma_collinear1.v.d&quot; || ( RV=$?; rm -f &quot;Elements/OriginalProofs/lemma_collinear1.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; GeoCoq &quot;Elements/OriginalProofs/lemma_NCorder.v&quot; &gt; &quot;Elements/OriginalProofs/lemma_NCorder.v.d&quot; || ( RV=$?; rm -f &quot;Elements/OriginalProofs/lemma_NCorder.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; GeoCoq &quot;Elements/OriginalProofs/lemma_rightreflection.v&quot; &gt; &quot;Elements/OriginalProofs/lemma_rightreflection.v.d&quot; || ( RV=$?; rm -f &quot;Elements/OriginalProofs/lemma_rightreflection.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; GeoCoq &quot;Elements/OriginalProofs/lemma_crossbar.v&quot; &gt; &quot;Elements/OriginalProofs/lemma_crossbar.v.d&quot; || ( RV=$?; rm -f &quot;Elements/OriginalProofs/lemma_crossbar.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; GeoCoq &quot;Elements/OriginalProofs/proposition_28B.v&quot; &gt; &quot;Elements/OriginalProofs/proposition_28B.v.d&quot; || ( RV=$?; rm -f &quot;Elements/OriginalProofs/proposition_28B.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; GeoCoq &quot;Elements/OriginalProofs/proposition_24.v&quot; &gt; &quot;Elements/OriginalProofs/proposition_24.v.d&quot; || ( RV=$?; rm -f &quot;Elements/OriginalProofs/proposition_24.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; GeoCoq &quot;Elements/OriginalProofs/lemma_equalanglestransitive.v&quot; &gt; &quot;Elements/OriginalProofs/lemma_equalanglestransitive.v.d&quot; || ( RV=$?; rm -f &quot;Elements/OriginalProofs/lemma_equalanglestransitive.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; GeoCoq &quot;Elements/OriginalProofs/lemma_equalitysymmetric.v&quot; &gt; &quot;Elements/OriginalProofs/lemma_equalitysymmetric.v.d&quot; || ( RV=$?; rm -f &quot;Elements/OriginalProofs/lemma_equalitysymmetric.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; GeoCoq &quot;Meta_theory/Counter_models/counter_model_bet_identity.v&quot; &gt; &quot;Meta_theory/Counter_models/counter_model_bet_identity.v.d&quot; || ( RV=$?; rm -f &quot;Meta_theory/Counter_models/counter_model_bet_identity.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; GeoCoq &quot;Meta_theory/Counter_models/counter_model_segment_construction.v&quot; &gt; &quot;Meta_theory/Counter_models/counter_model_segment_construction.v.d&quot; || ( RV=$?; rm -f &quot;Meta_theory/Counter_models/counter_model_segment_construction.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; GeoCoq &quot;Meta_theory/Parallel_postulates/bachmann_s_lotschnittaxiom_weak_triangle_circumscription_principle.v&quot; &gt; &quot;Meta_theory/Parallel_postulates/bachmann_s_lotschnittaxiom_weak_triangle_circumscription_principle.v.d&quot; || ( RV=$?; rm -f &quot;Meta_theory/Parallel_postulates/bachmann_s_lotschnittaxiom_weak_triangle_circumscription_principle.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; GeoCoq &quot;Meta_theory/Parallel_postulates/existential_playfair_rah.v&quot; &gt; &quot;Meta_theory/Parallel_postulates/existential_playfair_rah.v.d&quot; || ( RV=$?; rm -f &quot;Meta_theory/Parallel_postulates/existential_playfair_rah.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; GeoCoq &quot;Meta_theory/Parallel_postulates/euclid_5_original_euclid.v&quot; &gt; &quot;Meta_theory/Parallel_postulates/euclid_5_original_euclid.v.d&quot; || ( RV=$?; rm -f &quot;Meta_theory/Parallel_postulates/euclid_5_original_euclid.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; GeoCoq &quot;Meta_theory/Parallel_postulates/consecutive_interior_angles_alternate_interior_angles.v&quot; &gt; &quot;Meta_theory/Parallel_postulates/consecutive_interior_angles_alternate_interior_angles.v.d&quot; || ( RV=$?; rm -f &quot;Meta_theory/Parallel_postulates/consecutive_interior_angles_alternate_interior_angles.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; GeoCoq &quot;Meta_theory/Parallel_postulates/bachmann_s_lotschnittaxiom_weak_inverse_projection_postulate.v&quot; &gt; &quot;Meta_theory/Parallel_postulates/bachmann_s_lotschnittaxiom_weak_inverse_projection_postulate.v.d&quot; || ( RV=$?; rm -f &quot;Meta_theory/Parallel_postulates/bachmann_s_lotschnittaxiom_weak_inverse_projection_postulate.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; GeoCoq &quot;Meta_theory/Parallel_postulates/alternate_interior_angles_triangle.v&quot; &gt; &quot;Meta_theory/Parallel_postulates/alternate_interior_angles_triangle.v.d&quot; || ( RV=$?; rm -f &quot;Meta_theory/Parallel_postulates/alternate_interior_angles_triangle.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; GeoCoq &quot;Meta_theory/Parallel_postulates/SPP_tarski.v&quot; &gt; &quot;Meta_theory/Parallel_postulates/SPP_tarski.v.d&quot; || ( RV=$?; rm -f &quot;Meta_theory/Parallel_postulates/SPP_tarski.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; GeoCoq &quot;Meta_theory/Parallel_postulates/playfair_universal_posidonius_postulate.v&quot; &gt; &quot;Meta_theory/Parallel_postulates/playfair_universal_posidonius_postulate.v.d&quot; || ( RV=$?; rm -f &quot;Meta_theory/Parallel_postulates/playfair_universal_posidonius_postulate.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; GeoCoq &quot;Meta_theory/Parallel_postulates/rectangle_existence_rah.v&quot; &gt; &quot;Meta_theory/Parallel_postulates/rectangle_existence_rah.v.d&quot; || ( RV=$?; rm -f &quot;Meta_theory/Parallel_postulates/rectangle_existence_rah.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; GeoCoq &quot;Meta_theory/Parallel_postulates/szmielew.v&quot; &gt; &quot;Meta_theory/Parallel_postulates/szmielew.v.d&quot; || ( RV=$?; rm -f &quot;Meta_theory/Parallel_postulates/szmielew.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; GeoCoq &quot;Meta_theory/Parallel_postulates/weak_inverse_projection_postulate_bachmann_s_lotschnittaxiom.v&quot; &gt; &quot;Meta_theory/Parallel_postulates/weak_inverse_projection_postulate_bachmann_s_lotschnittaxiom.v.d&quot; || ( RV=$?; rm -f &quot;Meta_theory/Parallel_postulates/weak_inverse_projection_postulate_bachmann_s_lotschnittaxiom.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; GeoCoq &quot;Meta_theory/Parallel_postulates/alternate_interior_angles_playfair_bis.v&quot; &gt; &quot;Meta_theory/Parallel_postulates/alternate_interior_angles_playfair_bis.v.d&quot; || ( RV=$?; rm -f &quot;Meta_theory/Parallel_postulates/alternate_interior_angles_playfair_bis.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; GeoCoq &quot;Meta_theory/Parallel_postulates/universal_posidonius_postulate_par_perp_perp.v&quot; &gt; &quot;Meta_theory/Parallel_postulates/universal_posidonius_postulate_par_perp_perp.v.d&quot; || ( RV=$?; rm -f &quot;Meta_theory/Parallel_postulates/universal_posidonius_postulate_par_perp_perp.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; GeoCoq &quot;Meta_theory/Parallel_postulates/playfair_midpoint.v&quot; &gt; &quot;Meta_theory/Parallel_postulates/playfair_midpoint.v.d&quot; || ( RV=$?; rm -f &quot;Meta_theory/Parallel_postulates/playfair_midpoint.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; GeoCoq &quot;Meta_theory/Parallel_postulates/existential_saccheri_rah.v&quot; &gt; &quot;Meta_theory/Parallel_postulates/existential_saccheri_rah.v.d&quot; || ( RV=$?; rm -f &quot;Meta_theory/Parallel_postulates/existential_saccheri_rah.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; GeoCoq &quot;Meta_theory/Parallel_postulates/par_perp_perp_par_perp_2_par.v&quot; &gt; &quot;Meta_theory/Parallel_postulates/par_perp_perp_par_perp_2_par.v.d&quot; || ( RV=$?; rm -f &quot;Meta_theory/Parallel_postulates/par_perp_perp_par_perp_2_par.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; GeoCoq &quot;Meta_theory/Parallel_postulates/legendre.v&quot; &gt; &quot;Meta_theory/Parallel_postulates/legendre.v.d&quot; || ( RV=$?; rm -f &quot;Meta_theory/Parallel_postulates/legendre.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; GeoCoq &quot;Meta_theory/Parallel_postulates/SPP_ID.v&quot; &gt; &quot;Meta_theory/Parallel_postulates/SPP_ID.v.d&quot; || ( RV=$?; rm -f &quot;Meta_theory/Parallel_postulates/SPP_ID.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; GeoCoq &quot;Meta_theory/Parallel_postulates/rah_thales_postulate.v&quot; &gt; &quot;Meta_theory/Parallel_postulates/rah_thales_postulate.v.d&quot; || ( RV=$?; rm -f &quot;Meta_theory/Parallel_postulates/rah_thales_postulate.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; GeoCoq &quot;Meta_theory/Parallel_postulates/rah_existential_saccheri.v&quot; &gt; &quot;Meta_theory/Parallel_postulates/rah_existential_saccheri.v.d&quot; || ( RV=$?; rm -f &quot;Meta_theory/Parallel_postulates/rah_existential_saccheri.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; GeoCoq &quot;Meta_theory/Parallel_postulates/rah_rectangle_principle.v&quot; &gt; &quot;Meta_theory/Parallel_postulates/rah_rectangle_principle.v.d&quot; || ( RV=$?; rm -f &quot;Meta_theory/Parallel_postulates/rah_rectangle_principle.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; GeoCoq &quot;Meta_theory/Parallel_postulates/rectangle_principle_rectangle_existence.v&quot; &gt; &quot;Meta_theory/Parallel_postulates/rectangle_principle_rectangle_existence.v.d&quot; || ( RV=$?; rm -f &quot;Meta_theory/Parallel_postulates/rectangle_principle_rectangle_existence.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; GeoCoq &quot;Meta_theory/Parallel_postulates/par_perp_perp_TCP.v&quot; &gt; &quot;Meta_theory/Parallel_postulates/par_perp_perp_TCP.v.d&quot; || ( RV=$?; rm -f &quot;Meta_theory/Parallel_postulates/par_perp_perp_TCP.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; GeoCoq &quot;Meta_theory/Parallel_postulates/rah_triangle.v&quot; &gt; &quot;Meta_theory/Parallel_postulates/rah_triangle.v.d&quot; || ( RV=$?; rm -f &quot;Meta_theory/Parallel_postulates/rah_triangle.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; GeoCoq &quot;Meta_theory/Parallel_postulates/bachmann_s_lotschnittaxiom_legendre_s_parallel_postulate.v&quot; &gt; &quot;Meta_theory/Parallel_postulates/bachmann_s_lotschnittaxiom_legendre_s_parallel_postulate.v.d&quot; || ( RV=$?; rm -f &quot;Meta_theory/Parallel_postulates/bachmann_s_lotschnittaxiom_legendre_s_parallel_postulate.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; GeoCoq &quot;Meta_theory/Parallel_postulates/original_euclid_original_spp.v&quot; &gt; &quot;Meta_theory/Parallel_postulates/original_euclid_original_spp.v.d&quot; || ( RV=$?; rm -f &quot;Meta_theory/Parallel_postulates/original_euclid_original_spp.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; GeoCoq &quot;Meta_theory/Parallel_postulates/playfair_alternate_interior_angles.v&quot; &gt; &quot;Meta_theory/Parallel_postulates/playfair_alternate_interior_angles.v.d&quot; || ( RV=$?; rm -f &quot;Meta_theory/Parallel_postulates/playfair_alternate_interior_angles.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; GeoCoq &quot;Meta_theory/Parallel_postulates/proclus_bis_proclus.v&quot; &gt; &quot;Meta_theory/Parallel_postulates/proclus_bis_proclus.v.d&quot; || ( RV=$?; rm -f &quot;Meta_theory/Parallel_postulates/proclus_bis_proclus.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; GeoCoq &quot;Meta_theory/Parallel_postulates/weak_triangle_circumscription_principle_bachmann_s_lotschnittaxiom.v&quot; &gt; &quot;Meta_theory/Parallel_postulates/weak_triangle_circumscription_principle_bachmann_s_lotschnittaxiom.v.d&quot; || ( RV=$?; rm -f &quot;Meta_theory/Parallel_postulates/weak_triangle_circumscription_principle_bachmann_s_lotschnittaxiom.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; GeoCoq &quot;Meta_theory/Parallel_postulates/triangle_existential_triangle.v&quot; &gt; &quot;Meta_theory/Parallel_postulates/triangle_existential_triangle.v.d&quot; || ( RV=$?; rm -f &quot;Meta_theory/Parallel_postulates/triangle_existential_triangle.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; GeoCoq &quot;Meta_theory/Parallel_postulates/thales_converse_postulate_thales_existence.v&quot; &gt; &quot;Meta_theory/Parallel_postulates/thales_converse_postulate_thales_existence.v.d&quot; || ( RV=$?; rm -f &quot;Meta_theory/Parallel_postulates/thales_converse_postulate_thales_existence.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; GeoCoq &quot;Meta_theory/Parallel_postulates/thales_converse_postulate_weak_triangle_circumscription_principle.v&quot; &gt; &quot;Meta_theory/Parallel_postulates/thales_converse_postulate_weak_triangle_circumscription_principle.v.d&quot; || ( RV=$?; rm -f &quot;Meta_theory/Parallel_postulates/thales_converse_postulate_weak_triangle_circumscription_principle.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; GeoCoq &quot;Meta_theory/Parallel_postulates/existential_triangle_rah.v&quot; &gt; &quot;Meta_theory/Parallel_postulates/existential_triangle_rah.v.d&quot; || ( RV=$?; rm -f &quot;Meta_theory/Parallel_postulates/existential_triangle_rah.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; GeoCoq &quot;Meta_theory/Parallel_postulates/playfair_bis_playfair.v&quot; &gt; &quot;Meta_theory/Parallel_postulates/playfair_bis_playfair.v.d&quot; || ( RV=$?; rm -f &quot;Meta_theory/Parallel_postulates/playfair_bis_playfair.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; GeoCoq &quot;Meta_theory/Parallel_postulates/inverse_projection_postulate_proclus_bis.v&quot; &gt; &quot;Meta_theory/Parallel_postulates/inverse_projection_postulate_proclus_bis.v.d&quot; || ( RV=$?; rm -f &quot;Meta_theory/Parallel_postulates/inverse_projection_postulate_proclus_bis.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; GeoCoq &quot;Meta_theory/Parallel_postulates/parallel_postulates.v&quot; &gt; &quot;Meta_theory/Parallel_postulates/parallel_postulates.v.d&quot; || ( RV=$?; rm -f &quot;Meta_theory/Parallel_postulates/parallel_postulates.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; GeoCoq &quot;Meta_theory/Parallel_postulates/tarski_s_euclid_remove_degenerated_cases.v&quot; &gt; &quot;Meta_theory/Parallel_postulates/tarski_s_euclid_remove_degenerated_cases.v.d&quot; || ( RV=$?; rm -f &quot;Meta_theory/Parallel_postulates/tarski_s_euclid_remove_degenerated_cases.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; GeoCoq &quot;Meta_theory/Parallel_postulates/tarski_playfair.v&quot; &gt; &quot;Meta_theory/Parallel_postulates/tarski_playfair.v.d&quot; || ( RV=$?; rm -f &quot;Meta_theory/Parallel_postulates/tarski_playfair.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; GeoCoq &quot;Meta_theory/Parallel_postulates/weak_inverse_projection_postulate_weak_tarski_s_parallel_postulate.v&quot; &gt; &quot;Meta_theory/Parallel_postulates/weak_inverse_projection_postulate_weak_tarski_s_parallel_postulate.v.d&quot; || ( RV=$?; rm -f &quot;Meta_theory/Parallel_postulates/weak_inverse_projection_postulate_weak_tarski_s_parallel_postulate.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; GeoCoq &quot;Meta_theory/Parallel_postulates/rah_similar.v&quot; &gt; &quot;Meta_theory/Parallel_postulates/rah_similar.v.d&quot; || ( RV=$?; rm -f &quot;Meta_theory/Parallel_postulates/rah_similar.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; GeoCoq &quot;Meta_theory/Parallel_postulates/midpoint_playfair.v&quot; &gt; &quot;Meta_theory/Parallel_postulates/midpoint_playfair.v.d&quot; || ( RV=$?; rm -f &quot;Meta_theory/Parallel_postulates/midpoint_playfair.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; GeoCoq &quot;Meta_theory/Parallel_postulates/thales_postulate_thales_converse_postulate.v&quot; &gt; &quot;Meta_theory/Parallel_postulates/thales_postulate_thales_converse_postulate.v.d&quot; || ( RV=$?; rm -f &quot;Meta_theory/Parallel_postulates/thales_postulate_thales_converse_postulate.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; GeoCoq &quot;Meta_theory/Parallel_postulates/thales_existence_rah.v&quot; &gt; &quot;Meta_theory/Parallel_postulates/thales_existence_rah.v.d&quot; || ( RV=$?; rm -f &quot;Meta_theory/Parallel_postulates/thales_existence_rah.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; GeoCoq &quot;Meta_theory/Parallel_postulates/alternate_interior_angles_consecutive_interior_angles.v&quot; &gt; &quot;Meta_theory/Parallel_postulates/alternate_interior_angles_consecutive_interior_angles.v.d&quot; || ( RV=$?; rm -f &quot;Meta_theory/Parallel_postulates/alternate_interior_angles_consecutive_interior_angles.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; GeoCoq &quot;Meta_theory/Parallel_postulates/alternate_interior_angles_proclus.v&quot; &gt; &quot;Meta_theory/Parallel_postulates/alternate_interior_angles_proclus.v.d&quot; || ( RV=$?; rm -f &quot;Meta_theory/Parallel_postulates/alternate_interior_angles_proclus.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; GeoCoq &quot;Meta_theory/Parallel_postulates/posidonius_postulate_rah.v&quot; &gt; &quot;Meta_theory/Parallel_postulates/posidonius_postulate_rah.v.d&quot; || ( RV=$?; rm -f &quot;Meta_theory/Parallel_postulates/posidonius_postulate_rah.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; GeoCoq &quot;Meta_theory/Parallel_postulates/original_spp_inverse_projection_postulate.v&quot; &gt; &quot;Meta_theory/Parallel_postulates/original_spp_inverse_projection_postulate.v.d&quot; || ( RV=$?; rm -f &quot;Meta_theory/Parallel_postulates/original_spp_inverse_projection_postulate.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; GeoCoq &quot;Meta_theory/Parallel_postulates/rah_posidonius_postulate.v&quot; &gt; &quot;Meta_theory/Parallel_postulates/rah_posidonius_postulate.v.d&quot; || ( RV=$?; rm -f &quot;Meta_theory/Parallel_postulates/rah_posidonius_postulate.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; GeoCoq &quot;Meta_theory/Parallel_postulates/weak_tarski_s_parallel_postulate_weak_inverse_projection_postulate.v&quot; &gt; &quot;Meta_theory/Parallel_postulates/weak_tarski_s_parallel_postulate_weak_inverse_projection_postulate.v.d&quot; || ( RV=$?; rm -f &quot;Meta_theory/Parallel_postulates/weak_tarski_s_parallel_postulate_weak_inverse_projection_postulate.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; GeoCoq &quot;Meta_theory/Parallel_postulates/par_perp_perp_playfair.v&quot; &gt; &quot;Meta_theory/Parallel_postulates/par_perp_perp_playfair.v.d&quot; || ( RV=$?; rm -f &quot;Meta_theory/Parallel_postulates/par_perp_perp_playfair.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; GeoCoq &quot;Meta_theory/Parallel_postulates/TCP_tarski.v&quot; &gt; &quot;Meta_theory/Parallel_postulates/TCP_tarski.v.d&quot; || ( RV=$?; rm -f &quot;Meta_theory/Parallel_postulates/TCP_tarski.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; GeoCoq &quot;Meta_theory/Parallel_postulates/tarski_euclid.v&quot; &gt; &quot;Meta_theory/Parallel_postulates/tarski_euclid.v.d&quot; || ( RV=$?; rm -f &quot;Meta_theory/Parallel_postulates/tarski_euclid.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; GeoCoq &quot;Meta_theory/Parallel_postulates/proclus_SPP.v&quot; &gt; &quot;Meta_theory/Parallel_postulates/proclus_SPP.v.d&quot; || ( RV=$?; rm -f &quot;Meta_theory/Parallel_postulates/proclus_SPP.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; GeoCoq &quot;Meta_theory/Parallel_postulates/par_trans_playfair.v&quot; &gt; &quot;Meta_theory/Parallel_postulates/par_trans_playfair.v.d&quot; || ( RV=$?; rm -f &quot;Meta_theory/Parallel_postulates/par_trans_playfair.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; GeoCoq &quot;Meta_theory/Parallel_postulates/triangle_playfair_bis.v&quot; &gt; &quot;Meta_theory/Parallel_postulates/triangle_playfair_bis.v.d&quot; || ( RV=$?; rm -f &quot;Meta_theory/Parallel_postulates/triangle_playfair_bis.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; GeoCoq &quot;Meta_theory/Parallel_postulates/playfair_par_trans.v&quot; &gt; &quot;Meta_theory/Parallel_postulates/playfair_par_trans.v.d&quot; || ( RV=$?; rm -f &quot;Meta_theory/Parallel_postulates/playfair_par_trans.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; GeoCoq &quot;Meta_theory/Parallel_postulates/par_perp_2_par_par_perp_perp.v&quot; &gt; &quot;Meta_theory/Parallel_postulates/par_perp_2_par_par_perp_perp.v.d&quot; || ( RV=$?; rm -f &quot;Meta_theory/Parallel_postulates/par_perp_2_par_par_perp_perp.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; GeoCoq &quot;Meta_theory/Parallel_postulates/playfair_existential_playfair.v&quot; &gt; &quot;Meta_theory/Parallel_postulates/playfair_existential_playfair.v.d&quot; || ( RV=$?; rm -f &quot;Meta_theory/Parallel_postulates/playfair_existential_playfair.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; GeoCoq &quot;Meta_theory/Parallel_postulates/similar_rah.v&quot; &gt; &quot;Meta_theory/Parallel_postulates/similar_rah.v.d&quot; || ( RV=$?; rm -f &quot;Meta_theory/Parallel_postulates/similar_rah.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; GeoCoq &quot;Meta_theory/Parallel_postulates/par_trans_NID.v&quot; &gt; &quot;Meta_theory/Parallel_postulates/par_trans_NID.v.d&quot; || ( RV=$?; rm -f &quot;Meta_theory/Parallel_postulates/par_trans_NID.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; GeoCoq &quot;Meta_theory/Parallel_postulates/proclus_aristotle.v&quot; &gt; &quot;Meta_theory/Parallel_postulates/proclus_aristotle.v.d&quot; || ( RV=$?; rm -f &quot;Meta_theory/Parallel_postulates/proclus_aristotle.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; GeoCoq &quot;Meta_theory/Models/hilbert_to_tarski.v&quot; &gt; &quot;Meta_theory/Models/hilbert_to_tarski.v.d&quot; || ( RV=$?; rm -f &quot;Meta_theory/Models/hilbert_to_tarski.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; GeoCoq &quot;Meta_theory/Models/tarski_to_hilbert.v&quot; &gt; &quot;Meta_theory/Models/tarski_to_hilbert.v.d&quot; || ( RV=$?; rm -f &quot;Meta_theory/Models/tarski_to_hilbert.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; GeoCoq &quot;Meta_theory/Models/tarski_to_beeson.v&quot; &gt; &quot;Meta_theory/Models/tarski_to_beeson.v.d&quot; || ( RV=$?; rm -f &quot;Meta_theory/Models/tarski_to_beeson.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; GeoCoq &quot;Meta_theory/Models/independent_tarski_to_tarski.v&quot; &gt; &quot;Meta_theory/Models/independent_tarski_to_tarski.v.d&quot; || ( RV=$?; rm -f &quot;Meta_theory/Models/independent_tarski_to_tarski.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; GeoCoq &quot;Meta_theory/Models/euclid_to_tarski.v&quot; &gt; &quot;Meta_theory/Models/euclid_to_tarski.v.d&quot; || ( RV=$?; rm -f &quot;Meta_theory/Models/euclid_to_tarski.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; GeoCoq &quot;Meta_theory/Models/tarski_to_makarios.v&quot; &gt; &quot;Meta_theory/Models/tarski_to_makarios.v.d&quot; || ( RV=$?; rm -f &quot;Meta_theory/Models/tarski_to_makarios.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; GeoCoq &quot;Meta_theory/Models/tarski_to_euclid.v&quot; &gt; &quot;Meta_theory/Models/tarski_to_euclid.v.d&quot; || ( RV=$?; rm -f &quot;Meta_theory/Models/tarski_to_euclid.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; GeoCoq &quot;Meta_theory/Continuity/angle_archimedes.v&quot; &gt; &quot;Meta_theory/Continuity/angle_archimedes.v.d&quot; || ( RV=$?; rm -f &quot;Meta_theory/Continuity/angle_archimedes.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; GeoCoq &quot;Meta_theory/Continuity/dedekind_archimedes.v&quot; &gt; &quot;Meta_theory/Continuity/dedekind_archimedes.v.d&quot; || ( RV=$?; rm -f &quot;Meta_theory/Continuity/dedekind_archimedes.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; GeoCoq &quot;Meta_theory/Continuity/elementary_continuity_props.v&quot; &gt; &quot;Meta_theory/Continuity/elementary_continuity_props.v.d&quot; || ( RV=$?; rm -f &quot;Meta_theory/Continuity/elementary_continuity_props.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; GeoCoq &quot;Meta_theory/Continuity/archimedes.v&quot; &gt; &quot;Meta_theory/Continuity/archimedes.v.d&quot; || ( RV=$?; rm -f &quot;Meta_theory/Continuity/archimedes.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; GeoCoq &quot;Meta_theory/Continuity/aristotle.v&quot; &gt; &quot;Meta_theory/Continuity/aristotle.v.d&quot; || ( RV=$?; rm -f &quot;Meta_theory/Continuity/aristotle.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; GeoCoq &quot;Meta_theory/Continuity/first_order_dedekind_circle_circle.v&quot; &gt; &quot;Meta_theory/Continuity/first_order_dedekind_circle_circle.v.d&quot; || ( RV=$?; rm -f &quot;Meta_theory/Continuity/first_order_dedekind_circle_circle.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; GeoCoq &quot;Meta_theory/Continuity/first_order.v&quot; &gt; &quot;Meta_theory/Continuity/first_order.v.d&quot; || ( RV=$?; rm -f &quot;Meta_theory/Continuity/first_order.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; GeoCoq &quot;Meta_theory/Decidability/equivalence_between_decidability_properties_of_basic_relations.v&quot; &gt; &quot;Meta_theory/Decidability/equivalence_between_decidability_properties_of_basic_relations.v.d&quot; || ( RV=$?; rm -f &quot;Meta_theory/Decidability/equivalence_between_decidability_properties_of_basic_relations.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; GeoCoq &quot;Meta_theory/Dimension_axioms/upper_dim.v&quot; &gt; &quot;Meta_theory/Dimension_axioms/upper_dim.v.d&quot; || ( RV=$?; rm -f &quot;Meta_theory/Dimension_axioms/upper_dim.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; GeoCoq &quot;Utils/all_equiv.v&quot; &gt; &quot;Utils/all_equiv.v.d&quot; || ( RV=$?; rm -f &quot;Utils/all_equiv.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; GeoCoq &quot;Utils/sets.v&quot; &gt; &quot;Utils/sets.v.d&quot; || ( RV=$?; rm -f &quot;Utils/sets.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; GeoCoq &quot;Utils/arity.v&quot; &gt; &quot;Utils/arity.v.d&quot; || ( RV=$?; rm -f &quot;Utils/arity.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; GeoCoq &quot;Utils/triples.v&quot; &gt; &quot;Utils/triples.v.d&quot; || ( RV=$?; rm -f &quot;Utils/triples.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; GeoCoq &quot;Utils/general_tactics.v&quot; &gt; &quot;Utils/general_tactics.v.d&quot; || ( RV=$?; rm -f &quot;Utils/general_tactics.v.d&quot;; exit ${RV} )
+- &quot;coqc&quot;  -q  -R &quot;.&quot; GeoCoq   Utils/general_tactics
+- &quot;coqc&quot;  -q  -R &quot;.&quot; GeoCoq   Utils/triples
+- &quot;coqc&quot;  -q  -R &quot;.&quot; GeoCoq   Utils/arity
+- &quot;coqc&quot;  -q  -R &quot;.&quot; GeoCoq   Tactics/Coinc/tactics_axioms
+- &quot;coqc&quot;  -q  -R &quot;.&quot; GeoCoq   Utils/sets
+- &quot;coqc&quot;  -q  -R &quot;.&quot; GeoCoq   Utils/all_equiv
+- &quot;coqc&quot;  -q  -R &quot;.&quot; GeoCoq   Axioms/tarski_axioms
+- &quot;coqc&quot;  -q  -R &quot;.&quot; GeoCoq   Tarski_dev/Definitions
+- &quot;coqc&quot;  -q  -R &quot;.&quot; GeoCoq   Tactics/finish
+- &quot;coqc&quot;  -q  -R &quot;.&quot; GeoCoq   Tarski_dev/Ch02_cong
+- &quot;coqc&quot;  -q  -R &quot;.&quot; GeoCoq   Tarski_dev/Ch03_bet
+- &quot;coqc&quot;  -q  -R &quot;.&quot; GeoCoq   Tarski_dev/Ch04_cong_bet
+- &quot;coqc&quot;  -q  -R &quot;.&quot; GeoCoq   Tarski_dev/Ch04_col
+- &quot;coqc&quot;  -q  -R &quot;.&quot; GeoCoq   Meta_theory/Decidability/equivalence_between_decidability_properties_of_basic_relations
+- &quot;coqc&quot;  -q  -R &quot;.&quot; GeoCoq   Tarski_dev/Ch05_bet_le
+- &quot;coqc&quot;  -q  -R &quot;.&quot; GeoCoq   Tarski_dev/Ch06_out_lines
+- &quot;coqc&quot;  -q  -R &quot;.&quot; GeoCoq   Tactics/Coinc/tarski_to_col_theory
+- &quot;coqc&quot;  -q  -R &quot;.&quot; GeoCoq   Tactics/Coinc/ColR
+- &quot;coqc&quot;  -q  -R &quot;.&quot; GeoCoq   Tarski_dev/Ch07_midpoint
+- &quot;coqc&quot;  -q  -R &quot;.&quot; GeoCoq   Tarski_dev/Ch08_orthogonality
+- &quot;coqc&quot;  -q  -R &quot;.&quot; GeoCoq   Tarski_dev/Ch09_plane
+- &quot;coqc&quot;  -q  -R &quot;.&quot; GeoCoq   Tarski_dev/Ch10_line_reflexivity
+- &quot;coqc&quot;  -q  -R &quot;.&quot; GeoCoq   Tarski_dev/Coplanar_perm
+- &quot;coqc&quot;  -q  -R &quot;.&quot; GeoCoq   Meta_theory/Dimension_axioms/upper_dim
+- &quot;coqc&quot;  -q  -R &quot;.&quot; GeoCoq   Axioms/continuity_axioms
+- &quot;coqc&quot;  -q  -R &quot;.&quot; GeoCoq   Meta_theory/Continuity/first_order
+- &quot;coqc&quot;  -q  -R &quot;.&quot; GeoCoq   Tarski_dev/Ch10_line_reflexivity_2D
+- &quot;coqc&quot;  -q  -R &quot;.&quot; GeoCoq   Tarski_dev/Ch11_angles
+- &quot;coqc&quot;  -q  -R &quot;.&quot; GeoCoq   Tarski_dev/Ch12_parallel
+- &quot;coqc&quot;  -q  -R &quot;.&quot; GeoCoq   Tarski_dev/Annexes/circles
+- &quot;coqc&quot;  -q  -R &quot;.&quot; GeoCoq   Meta_theory/Continuity/first_order_dedekind_circle_circle
+- &quot;coqc&quot;  -q  -R &quot;.&quot; GeoCoq   Tarski_dev/Annexes/suma
+- &quot;coqc&quot;  -q  -R &quot;.&quot; GeoCoq   Tarski_dev/Annexes/saccheri
+- &quot;coqc&quot;  -q  -R &quot;.&quot; GeoCoq   Meta_theory/Continuity/aristotle
+- &quot;coqc&quot;  -q  -R &quot;.&quot; GeoCoq   Tarski_dev/Ch13_1
+- &quot;coqc&quot;  -q  -R &quot;.&quot; GeoCoq   Meta_theory/Continuity/archimedes
+- &quot;coqc&quot;  -q  -R &quot;.&quot; GeoCoq   Meta_theory/Continuity/elementary_continuity_props
+- &quot;coqc&quot;  -q  -R &quot;.&quot; GeoCoq   Meta_theory/Continuity/dedekind_archimedes
+- &quot;coqc&quot;  -q  -R &quot;.&quot; GeoCoq   Meta_theory/Continuity/angle_archimedes
+- &quot;coqc&quot;  -q  -R &quot;.&quot; GeoCoq   Axioms/euclidean_axioms
+- &quot;coqc&quot;  -q  -R &quot;.&quot; GeoCoq   Axioms/parallel_postulates
+- &quot;coqc&quot;  -q  -R &quot;.&quot; GeoCoq   Meta_theory/Parallel_postulates/tarski_s_euclid_remove_degenerated_cases
+- &quot;coqc&quot;  -q  -R &quot;.&quot; GeoCoq   Meta_theory/Parallel_postulates/SPP_tarski
+- &quot;coqc&quot;  -q  -R &quot;.&quot; GeoCoq   Meta_theory/Parallel_postulates/alternate_interior_angles_consecutive_interior_angles
+- &quot;coqc&quot;  -q  -R &quot;.&quot; GeoCoq   Meta_theory/Parallel_postulates/alternate_interior_angles_playfair_bis
+- &quot;coqc&quot;  -q  -R &quot;.&quot; GeoCoq   Meta_theory/Parallel_postulates/alternate_interior_angles_triangle
+- &quot;coqc&quot;  -q  -R &quot;.&quot; GeoCoq   Meta_theory/Parallel_postulates/alternate_interior_angles_proclus
+- &quot;coqc&quot;  -q  -R &quot;.&quot; GeoCoq   Tarski_dev/Annexes/perp_bisect
+- &quot;coqc&quot;  -q  -R &quot;.&quot; GeoCoq   Meta_theory/Parallel_postulates/bachmann_s_lotschnittaxiom_legendre_s_parallel_postulate
+- &quot;coqc&quot;  -q  -R &quot;.&quot; GeoCoq   Meta_theory/Parallel_postulates/bachmann_s_lotschnittaxiom_weak_inverse_projection_postulate
+- &quot;coqc&quot;  -q  -R &quot;.&quot; GeoCoq   Meta_theory/Parallel_postulates/bachmann_s_lotschnittaxiom_weak_triangle_circumscription_principle
+- &quot;coqc&quot;  -q  -R &quot;.&quot; GeoCoq   Meta_theory/Parallel_postulates/consecutive_interior_angles_alternate_interior_angles
+- &quot;coqc&quot;  -q  -R &quot;.&quot; GeoCoq   Meta_theory/Parallel_postulates/existential_playfair_rah
+- &quot;coqc&quot;  -q  -R &quot;.&quot; GeoCoq   Meta_theory/Parallel_postulates/existential_saccheri_rah
+- &quot;coqc&quot;  -q  -R &quot;.&quot; GeoCoq   Meta_theory/Parallel_postulates/inverse_projection_postulate_proclus_bis
+- &quot;coqc&quot;  -q  -R &quot;.&quot; GeoCoq   Meta_theory/Parallel_postulates/SPP_ID
+- &quot;coqc&quot;  -q  -R &quot;.&quot; GeoCoq   Meta_theory/Parallel_postulates/TCP_tarski
+- &quot;coqc&quot;  -q  -R &quot;.&quot; GeoCoq   Meta_theory/Parallel_postulates/euclid_5_original_euclid
+- &quot;coqc&quot;  -q  -R &quot;.&quot; GeoCoq   Meta_theory/Parallel_postulates/existential_triangle_rah
+- &quot;coqc&quot;  -q  -R &quot;.&quot; GeoCoq   Meta_theory/Parallel_postulates/par_perp_perp_TCP
+- &quot;coqc&quot;  -q  -R &quot;.&quot; GeoCoq   Meta_theory/Parallel_postulates/playfair_alternate_interior_angles
+- &quot;coqc&quot;  -q  -R &quot;.&quot; GeoCoq   Meta_theory/Parallel_postulates/playfair_bis_playfair
+- &quot;coqc&quot;  -q  -R &quot;.&quot; GeoCoq   Meta_theory/Parallel_postulates/playfair_universal_posidonius_postulate
+- &quot;coqc&quot;  -q  -R &quot;.&quot; GeoCoq   Meta_theory/Parallel_postulates/proclus_SPP
+- &quot;coqc&quot;  -q  -R &quot;.&quot; GeoCoq   Meta_theory/Parallel_postulates/rah_triangle
+- &quot;coqc&quot;  -q  -R &quot;.&quot; GeoCoq   Meta_theory/Parallel_postulates/tarski_euclid
+- &quot;coqc&quot;  -q  -R &quot;.&quot; GeoCoq   Meta_theory/Parallel_postulates/triangle_playfair_bis
+- &quot;coqc&quot;  -q  -R &quot;.&quot; GeoCoq   Meta_theory/Parallel_postulates/triangle_existential_triangle
+- &quot;coqc&quot;  -q  -R &quot;.&quot; GeoCoq   Meta_theory/Parallel_postulates/rah_thales_postulate
+- &quot;coqc&quot;  -q  -R &quot;.&quot; GeoCoq   Meta_theory/Parallel_postulates/thales_converse_postulate_weak_triangle_circumscription_principle
+- &quot;coqc&quot;  -q  -R &quot;.&quot; GeoCoq   Meta_theory/Parallel_postulates/thales_postulate_thales_converse_postulate
+- &quot;coqc&quot;  -q  -R &quot;.&quot; GeoCoq   Meta_theory/Parallel_postulates/weak_triangle_circumscription_principle_bachmann_s_lotschnittaxiom
+- &quot;coqc&quot;  -q  -R &quot;.&quot; GeoCoq   Meta_theory/Parallel_postulates/universal_posidonius_postulate_par_perp_perp
+- &quot;coqc&quot;  -q  -R &quot;.&quot; GeoCoq   Meta_theory/Parallel_postulates/legendre
+- &quot;coqc&quot;  -q  -R &quot;.&quot; GeoCoq   Meta_theory/Parallel_postulates/midpoint_playfair
+- &quot;coqc&quot;  -q  -R &quot;.&quot; GeoCoq   Meta_theory/Parallel_postulates/original_euclid_original_spp
+- &quot;coqc&quot;  -q  -R &quot;.&quot; GeoCoq   Meta_theory/Parallel_postulates/original_spp_inverse_projection_postulate
+- &quot;coqc&quot;  -q  -R &quot;.&quot; GeoCoq   Meta_theory/Parallel_postulates/par_perp_2_par_par_perp_perp
+- &quot;coqc&quot;  -q  -R &quot;.&quot; GeoCoq   Meta_theory/Parallel_postulates/par_perp_perp_par_perp_2_par
+- &quot;coqc&quot;  -q  -R &quot;.&quot; GeoCoq   Meta_theory/Parallel_postulates/par_perp_perp_playfair
+- &quot;coqc&quot;  -q  -R &quot;.&quot; GeoCoq   Meta_theory/Parallel_postulates/par_trans_playfair
+- &quot;coqc&quot;  -q  -R &quot;.&quot; GeoCoq   Meta_theory/Parallel_postulates/playfair_existential_playfair
+- &quot;coqc&quot;  -q  -R &quot;.&quot; GeoCoq   Meta_theory/Parallel_postulates/playfair_midpoint
+- &quot;coqc&quot;  -q  -R &quot;.&quot; GeoCoq   Meta_theory/Parallel_postulates/playfair_par_trans
+- &quot;coqc&quot;  -q  -R &quot;.&quot; GeoCoq   Meta_theory/Parallel_postulates/posidonius_postulate_rah
+- &quot;coqc&quot;  -q  -R &quot;.&quot; GeoCoq   Meta_theory/Parallel_postulates/tarski_playfair
+- &quot;coqc&quot;  -q  -R &quot;.&quot; GeoCoq   Meta_theory/Parallel_postulates/proclus_aristotle
+- &quot;coqc&quot;  -q  -R &quot;.&quot; GeoCoq   Meta_theory/Parallel_postulates/proclus_bis_proclus
+- &quot;coqc&quot;  -q  -R &quot;.&quot; GeoCoq   Meta_theory/Parallel_postulates/rah_existential_saccheri
+- &quot;coqc&quot;  -q  -R &quot;.&quot; GeoCoq   Meta_theory/Parallel_postulates/rah_rectangle_principle
+- &quot;coqc&quot;  -q  -R &quot;.&quot; GeoCoq   Meta_theory/Parallel_postulates/rah_similar
+- &quot;coqc&quot;  -q  -R &quot;.&quot; GeoCoq   Meta_theory/Parallel_postulates/rah_posidonius_postulate
+- &quot;coqc&quot;  -q  -R &quot;.&quot; GeoCoq   Meta_theory/Parallel_postulates/rectangle_existence_rah
+- &quot;coqc&quot;  -q  -R &quot;.&quot; GeoCoq   Meta_theory/Parallel_postulates/rectangle_principle_rectangle_existence
+- &quot;coqc&quot;  -q  -R &quot;.&quot; GeoCoq   Meta_theory/Parallel_postulates/similar_rah
+- &quot;coqc&quot;  -q  -R &quot;.&quot; GeoCoq   Meta_theory/Parallel_postulates/thales_converse_postulate_thales_existence
+- &quot;coqc&quot;  -q  -R &quot;.&quot; GeoCoq   Meta_theory/Parallel_postulates/thales_existence_rah
+- &quot;coqc&quot;  -q  -R &quot;.&quot; GeoCoq   Meta_theory/Parallel_postulates/weak_inverse_projection_postulate_bachmann_s_lotschnittaxiom
+- &quot;coqc&quot;  -q  -R &quot;.&quot; GeoCoq   Meta_theory/Parallel_postulates/weak_inverse_projection_postulate_weak_tarski_s_parallel_postulate
+- &quot;coqc&quot;  -q  -R &quot;.&quot; GeoCoq   Meta_theory/Parallel_postulates/weak_tarski_s_parallel_postulate_weak_inverse_projection_postulate
+- &quot;coqc&quot;  -q  -R &quot;.&quot; GeoCoq   Tarski_dev/Annexes/quadrilaterals
+- &quot;coqc&quot;  -q  -R &quot;.&quot; GeoCoq   Meta_theory/Parallel_postulates/parallel_postulates
+- &quot;coqc&quot;  -q  -R &quot;.&quot; GeoCoq   Meta_theory/Models/tarski_to_euclid
+- &quot;coqc&quot;  -q  -R &quot;.&quot; GeoCoq   Axioms/makarios_variant_axioms
+- &quot;coqc&quot;  -q  -R &quot;.&quot; GeoCoq   Meta_theory/Models/tarski_to_makarios
+- &quot;coqc&quot;  -q  -R &quot;.&quot; GeoCoq   Elements/OriginalProofs/euclidean_defs
+- &quot;coqc&quot;  -q  -R &quot;.&quot; GeoCoq   Elements/OriginalProofs/general_tactics
+- &quot;coqc&quot;  -q  -R &quot;.&quot; GeoCoq   Elements/OriginalProofs/euclidean_tactics
+- &quot;coqc&quot;  -q  -R &quot;.&quot; GeoCoq   Elements/OriginalProofs/lemma_congruencesymmetric
+- &quot;coqc&quot;  -q  -R &quot;.&quot; GeoCoq   Elements/OriginalProofs/lemma_congruencetransitive
+- &quot;coqc&quot;  -q  -R &quot;.&quot; GeoCoq   Elements/OriginalProofs/lemma_nullsegment3
+- &quot;coqc&quot;  -q  -R &quot;.&quot; GeoCoq   Elements/OriginalProofs/lemma_equalitysymmetric
+- &quot;coqc&quot;  -q  -R &quot;.&quot; GeoCoq   Elements/OriginalProofs/lemma_inequalitysymmetric
+- &quot;coqc&quot;  -q  -R &quot;.&quot; GeoCoq   Elements/OriginalProofs/lemma_3_6a
+- &quot;coqc&quot;  -q  -R &quot;.&quot; GeoCoq   Elements/OriginalProofs/lemma_betweennotequal
+- &quot;coqc&quot;  -q  -R &quot;.&quot; GeoCoq   Elements/OriginalProofs/lemma_extensionunique
+- &quot;coqc&quot;  -q  -R &quot;.&quot; GeoCoq   Elements/OriginalProofs/lemma_3_7a
+- &quot;coqc&quot;  -q  -R &quot;.&quot; GeoCoq   Elements/OriginalProofs/lemma_3_7b
+- &quot;coqc&quot;  -q  -R &quot;.&quot; GeoCoq   Elements/OriginalProofs/lemma_partnotequalwhole
+- &quot;coqc&quot;  -q  -R &quot;.&quot; GeoCoq   Elements/OriginalProofs/proposition_01
+- &quot;coqc&quot;  -q  -R &quot;.&quot; GeoCoq   Elements/OriginalProofs/lemma_congruenceflip
+- &quot;coqc&quot;  -q  -R &quot;.&quot; GeoCoq   Meta_theory/Models/euclid_to_tarski
+- &quot;coqc&quot;  -q  -R &quot;.&quot; GeoCoq   Axioms/independent_tarski_axioms
+- &quot;coqc&quot;  -q  -R &quot;.&quot; GeoCoq   Meta_theory/Models/independent_tarski_to_tarski
+- &quot;coqc&quot;  -q  -R &quot;.&quot; GeoCoq   Axioms/beeson_s_axioms
+- &quot;coqc&quot;  -q  -R &quot;.&quot; GeoCoq   Meta_theory/Models/tarski_to_beeson
+- &quot;coqc&quot;  -q  -R &quot;.&quot; GeoCoq   Meta_theory/Parallel_postulates/par_trans_NID
+- &quot;coqc&quot;  -q  -R &quot;.&quot; GeoCoq   Tarski_dev/Ch12_parallel_inter_dec
+- &quot;coqc&quot;  -q  -R &quot;.&quot; GeoCoq   Axioms/hilbert_axioms
+- &quot;coqc&quot;  -q  -R &quot;.&quot; GeoCoq   Meta_theory/Models/tarski_to_hilbert
+- &quot;coqc&quot;  -q  -R &quot;.&quot; GeoCoq   Meta_theory/Models/hilbert_to_tarski
+- &quot;coqc&quot;  -q  -R &quot;.&quot; GeoCoq   Meta_theory/Parallel_postulates/szmielew
+- &quot;coqc&quot;  -q  -R &quot;.&quot; GeoCoq   Meta_theory/Counter_models/counter_model_segment_construction
+- &quot;coqc&quot;  -q  -R &quot;.&quot; GeoCoq   Meta_theory/Counter_models/counter_model_bet_identity
+- &quot;coqc&quot;  -q  -R &quot;.&quot; GeoCoq   Elements/OriginalProofs/lemma_collinear2
+- &quot;coqc&quot;  -q  -R &quot;.&quot; GeoCoq   Elements/OriginalProofs/lemma_collinear1
+- &quot;coqc&quot;  -q  -R &quot;.&quot; GeoCoq   Elements/OriginalProofs/lemma_collinearorder
+- &quot;coqc&quot;  -q  -R &quot;.&quot; GeoCoq   Elements/OriginalProofs/lemma_3_5b
+- &quot;coqc&quot;  -q  -R &quot;.&quot; GeoCoq   Elements/OriginalProofs/lemma_3_6b
+- &quot;coqc&quot;  -q  -R &quot;.&quot; GeoCoq   Elements/OriginalProofs/lemma_sumofparts
+- &quot;coqc&quot;  -q  -R &quot;.&quot; GeoCoq   Elements/OriginalProofs/lemma_doublereverse
+- &quot;coqc&quot;  -q  -R &quot;.&quot; GeoCoq   Elements/OriginalProofs/lemma_differenceofparts
+- &quot;coqc&quot;  -q  -R &quot;.&quot; GeoCoq   Elements/OriginalProofs/lemma_outerconnectivity
+- &quot;coqc&quot;  -q  -R &quot;.&quot; GeoCoq   Elements/OriginalProofs/lemma_collinear4
+- &quot;coqc&quot;  -q  -R &quot;.&quot; GeoCoq   Elements/OriginalProofs/lemma_rayimpliescollinear
+- &quot;coqc&quot;  -q  -R &quot;.&quot; GeoCoq   Elements/OriginalProofs/lemma_ray2
+- &quot;coqc&quot;  -q  -R &quot;.&quot; GeoCoq   Elements/OriginalProofs/lemma_betweennesspreserved
+- &quot;coqc&quot;  -q  -R &quot;.&quot; GeoCoq   Elements/OriginalProofs/lemma_collinearitypreserved
+- &quot;coqc&quot;  -q  -R &quot;.&quot; GeoCoq   Elements/OriginalProofs/lemma_raystrict
+- &quot;coqc&quot;  -q  -R &quot;.&quot; GeoCoq   Elements/OriginalProofs/lemma_equalanglessymmetric
+- &quot;coqc&quot;  -q  -R &quot;.&quot; GeoCoq   Elements/OriginalProofs/lemma_angledistinct
+- &quot;coqc&quot;  -q  -R &quot;.&quot; GeoCoq   Elements/OriginalProofs/lemma_layoff
+- &quot;coqc&quot;  -q  -R &quot;.&quot; GeoCoq   Elements/OriginalProofs/lemma_equalanglesNC
+- &quot;coqc&quot;  -q  -R &quot;.&quot; GeoCoq   Elements/OriginalProofs/lemma_ray3
+- &quot;coqc&quot;  -q  -R &quot;.&quot; GeoCoq   Elements/OriginalProofs/lemma_equalangleshelper
+- &quot;coqc&quot;  -q  -R &quot;.&quot; GeoCoq   Elements/OriginalProofs/lemma_lessthancongruence
+- &quot;coqc&quot;  -q  -R &quot;.&quot; GeoCoq   Elements/OriginalProofs/lemma_ray
+- &quot;coqc&quot;  -q  -R &quot;.&quot; GeoCoq   Elements/OriginalProofs/lemma_ray1
+- &quot;coqc&quot;  -q  -R &quot;.&quot; GeoCoq   Elements/OriginalProofs/lemma_interior5
+- &quot;coqc&quot;  -q  -R &quot;.&quot; GeoCoq   Elements/OriginalProofs/lemma_layoffunique
+- &quot;coqc&quot;  -q  -R &quot;.&quot; GeoCoq   Elements/OriginalProofs/lemma_ray4
+- &quot;coqc&quot;  -q  -R &quot;.&quot; GeoCoq   Elements/OriginalProofs/lemma_ray5
+- &quot;coqc&quot;  -q  -R &quot;.&quot; GeoCoq   Elements/OriginalProofs/proposition_04
+- &quot;coqc&quot;  -q  -R &quot;.&quot; GeoCoq   Elements/OriginalProofs/lemma_equalanglestransitive
+- &quot;coqc&quot;  -q  -R &quot;.&quot; GeoCoq   Elements/OriginalProofs/lemma_ABCequalsCBA
+- &quot;coqc&quot;  -q  -R &quot;.&quot; GeoCoq   Elements/OriginalProofs/lemma_equalanglesflip
+- &quot;coqc&quot;  -q  -R &quot;.&quot; GeoCoq   Elements/OriginalProofs/lemma_equalanglesreflexive
+- &quot;coqc&quot;  -q  -R &quot;.&quot; GeoCoq   Elements/OriginalProofs/proposition_03
+- &quot;coqc&quot;  -q  -R &quot;.&quot; GeoCoq   Elements/OriginalProofs/lemma_angleorderrespectscongruence
+- &quot;coqc&quot;  -q  -R &quot;.&quot; GeoCoq   Elements/OriginalProofs/lemma_crossbar
+- &quot;coqc&quot;  -q  -R &quot;.&quot; GeoCoq   Elements/OriginalProofs/lemma_angleordertransitive
+- &quot;coqc&quot;  -q  -R &quot;.&quot; GeoCoq   Elements/OriginalProofs/lemma_9_5b
+- &quot;coqc&quot;  -q  -R &quot;.&quot; GeoCoq   Elements/OriginalProofs/lemma_9_5a
+- &quot;coqc&quot;  -q  -R &quot;.&quot; GeoCoq   Elements/OriginalProofs/lemma_sameside2
+- &quot;coqc&quot;  -q  -R &quot;.&quot; GeoCoq   Elements/OriginalProofs/lemma_twolines
+- &quot;coqc&quot;  -q  -R &quot;.&quot; GeoCoq   Elements/OriginalProofs/proposition_10
+- &quot;coqc&quot;  -q  -R &quot;.&quot; GeoCoq   Elements/OriginalProofs/proposition_12
+- &quot;coqc&quot;  -q  -R &quot;.&quot; GeoCoq   Elements/OriginalProofs/lemma_NCorder
+- &quot;coqc&quot;  -q  -R &quot;.&quot; GeoCoq   Elements/OriginalProofs/lemma_samesidesymmetric
+- &quot;coqc&quot;  -q  -R &quot;.&quot; GeoCoq   Elements/OriginalProofs/lemma_twolines2
+- &quot;coqc&quot;  -q  -R &quot;.&quot; GeoCoq   Elements/OriginalProofs/lemma_collinear5
+- &quot;coqc&quot;  -q  -R &quot;.&quot; GeoCoq   Elements/OriginalProofs/lemma_planeseparation
+- &quot;coqc&quot;  -q  -R &quot;.&quot; GeoCoq   Elements/OriginalProofs/lemma_lessthantransitive
+- &quot;coqc&quot;  -q  -R &quot;.&quot; GeoCoq   Elements/OriginalProofs/lemma_midpointunique
+- &quot;coqc&quot;  -q  -R &quot;.&quot; GeoCoq   Elements/OriginalProofs/lemma_rightangleNC
+- &quot;coqc&quot;  -q  -R &quot;.&quot; GeoCoq   Elements/OriginalProofs/lemma_supplements
+- &quot;coqc&quot;  -q  -R &quot;.&quot; GeoCoq   Elements/OriginalProofs/lemma_8_2
+- &quot;coqc&quot;  -q  -R &quot;.&quot; GeoCoq   Elements/OriginalProofs/lemma_8_3
+- &quot;coqc&quot;  -q  -R &quot;.&quot; GeoCoq   Elements/OriginalProofs/lemma_collinearright
+- &quot;coqc&quot;  -q  -R &quot;.&quot; GeoCoq   Elements/OriginalProofs/lemma_rightreverse
+- &quot;coqc&quot;  -q  -R &quot;.&quot; GeoCoq   Elements/OriginalProofs/lemma_altitudebisectsbase
+- &quot;coqc&quot;  -q  -R &quot;.&quot; GeoCoq   Elements/OriginalProofs/lemma_droppedperpendicularunique
+- &quot;coqc&quot;  -q  -R &quot;.&quot; GeoCoq   Elements/OriginalProofs/lemma_fiveline
+- &quot;coqc&quot;  -q  -R &quot;.&quot; GeoCoq   Elements/OriginalProofs/proposition_07
+- &quot;coqc&quot;  -q  -R &quot;.&quot; GeoCoq   Elements/OriginalProofs/lemma_angletrichotomy
+- &quot;coqc&quot;  -q  -R &quot;.&quot; GeoCoq   Elements/OriginalProofs/proposition_15
+- &quot;coqc&quot;  -q  -R &quot;.&quot; GeoCoq   Elements/OriginalProofs/lemma_angleorderrespectscongruence2
+- &quot;coqc&quot;  -q  -R &quot;.&quot; GeoCoq   Elements/OriginalProofs/proposition_16
+- &quot;coqc&quot;  -q  -R &quot;.&quot; GeoCoq   Elements/OriginalProofs/proposition_05
+- &quot;coqc&quot;  -q  -R &quot;.&quot; GeoCoq   Elements/OriginalProofs/proposition_18
+- &quot;coqc&quot;  -q  -R &quot;.&quot; GeoCoq   Elements/OriginalProofs/lemma_trichotomy1
+- &quot;coqc&quot;  -q  -R &quot;.&quot; GeoCoq   Elements/OriginalProofs/proposition_19
+- &quot;coqc&quot;  -q  -R &quot;.&quot; GeoCoq   Elements/OriginalProofs/lemma_lessthancongruence2
+- &quot;coqc&quot;  -q  -R &quot;.&quot; GeoCoq   Elements/OriginalProofs/proposition_24
+- &quot;coqc&quot;  -q  -R &quot;.&quot; GeoCoq   Elements/OriginalProofs/lemma_supplementsymmetric
+- &quot;coqc&quot;  -q  -R &quot;.&quot; GeoCoq   Elements/OriginalProofs/lemma_oppositesidesymmetric
+- &quot;coqc&quot;  -q  -R &quot;.&quot; GeoCoq   Elements/OriginalProofs/lemma_collinearbetween
+- &quot;coqc&quot;  -q  -R &quot;.&quot; GeoCoq   Elements/OriginalProofs/proposition_27
+- &quot;coqc&quot;  -q  -R &quot;.&quot; GeoCoq   Elements/OriginalProofs/proposition_28B
+- &quot;coqc&quot;  -q  -R &quot;.&quot; GeoCoq   Elements/OriginalProofs/lemma_pointreflectionisometry
+- &quot;coqc&quot;  -q  -R &quot;.&quot; GeoCoq   Elements/OriginalProofs/lemma_rightreflection
+- &quot;coqc&quot;  -q  -R &quot;.&quot; GeoCoq   Elements/OriginalProofs/proposition_11
+- &quot;coqc&quot;  -q  -R &quot;.&quot; GeoCoq   Elements/OriginalProofs/lemma_parallelsymmetric
+- &quot;coqc&quot;  -q  -R &quot;.&quot; GeoCoq   Elements/OriginalProofs/lemma_NChelper
+- &quot;coqc&quot;  -q  -R &quot;.&quot; GeoCoq   Elements/OriginalProofs/lemma_parallelcollinear1
+- &quot;coqc&quot;  -q  -R &quot;.&quot; GeoCoq   Elements/OriginalProofs/lemma_tarskiparallelflip
+- &quot;coqc&quot;  -q  -R &quot;.&quot; GeoCoq   Elements/OriginalProofs/lemma_parallelcollinear2
+- &quot;coqc&quot;  -q  -R &quot;.&quot; GeoCoq   Elements/OriginalProofs/lemma_parallelcollinear
+- &quot;coqc&quot;  -q  -R &quot;.&quot; GeoCoq   Elements/OriginalProofs/lemma_paralleldef2B
+- &quot;coqc&quot;  -q  -R &quot;.&quot; GeoCoq   Elements/OriginalProofs/lemma_diagonalsmeet
+- &quot;coqc&quot;  -q  -R &quot;.&quot; GeoCoq   Elements/OriginalProofs/lemma_parallelflip
+- &quot;coqc&quot;  -q  -R &quot;.&quot; GeoCoq   Elements/OriginalProofs/proposition_31
+- &quot;coqc&quot;  -q  -R &quot;.&quot; GeoCoq   Elements/OriginalProofs/lemma_crossbar2
+- &quot;coqc&quot;  -q  -R &quot;.&quot; GeoCoq   Elements/OriginalProofs/lemma_supplementinequality
+- &quot;coqc&quot;  -q  -R &quot;.&quot; GeoCoq   Elements/OriginalProofs/proposition_20
+- &quot;coqc&quot;  -q  -R &quot;.&quot; GeoCoq   Elements/OriginalProofs/lemma_TGsymmetric
+- &quot;coqc&quot;  -q  -R &quot;.&quot; GeoCoq   Elements/OriginalProofs/lemma_TGflip
+- &quot;coqc&quot;  -q  -R &quot;.&quot; GeoCoq   Elements/OriginalProofs/lemma_lessthannotequal
+- &quot;coqc&quot;  -q  -R &quot;.&quot; GeoCoq   Elements/OriginalProofs/lemma_together
+- &quot;coqc&quot;  -q  -R &quot;.&quot; GeoCoq   Elements/OriginalProofs/lemma_trichotomy2
+- &quot;coqc&quot;  -q  -R &quot;.&quot; GeoCoq   Elements/OriginalProofs/lemma_subtractequals
+- &quot;coqc&quot;  -q  -R &quot;.&quot; GeoCoq   Elements/OriginalProofs/proposition_22
+- &quot;coqc&quot;  -q  -R &quot;.&quot; GeoCoq   Elements/OriginalProofs/proposition_23
+- &quot;coqc&quot;  -q  -R &quot;.&quot; GeoCoq   Elements/OriginalProofs/lemma_samesidereflexive
+- &quot;coqc&quot;  -q  -R &quot;.&quot; GeoCoq   Elements/OriginalProofs/lemma_8_7
+- &quot;coqc&quot;  -q  -R &quot;.&quot; GeoCoq   Elements/OriginalProofs/lemma_notperp
+- &quot;coqc&quot;  -q  -R &quot;.&quot; GeoCoq   Elements/OriginalProofs/proposition_11B
+- &quot;coqc&quot;  -q  -R &quot;.&quot; GeoCoq   Elements/OriginalProofs/lemma_linereflectionisometry
+- &quot;coqc&quot;  -q  -R &quot;.&quot; GeoCoq   Elements/OriginalProofs/lemma_10_12
+- &quot;coqc&quot;  -q  -R &quot;.&quot; GeoCoq   Elements/OriginalProofs/lemma_Euclid4
+- &quot;coqc&quot;  -q  -R &quot;.&quot; GeoCoq   Elements/OriginalProofs/lemma_9_5
+- &quot;coqc&quot;  -q  -R &quot;.&quot; GeoCoq   Elements/OriginalProofs/proposition_23B
+- &quot;coqc&quot;  -q  -R &quot;.&quot; GeoCoq   Elements/OriginalProofs/proposition_23C
+- &quot;coqc&quot;  -q  -R &quot;.&quot; GeoCoq   Elements/OriginalProofs/lemma_angletrichotomy2
+- &quot;coqc&quot;  -q  -R &quot;.&quot; GeoCoq   Elements/OriginalProofs/proposition_29
+- &quot;coqc&quot;  -q  -R &quot;.&quot; GeoCoq   Elements/OriginalProofs/proposition_29B
+- &quot;coqc&quot;  -q  -R &quot;.&quot; GeoCoq   Elements/OriginalProofs/proposition_26A
+- &quot;coqc&quot;  -q  -R &quot;.&quot; GeoCoq   Elements/OriginalProofs/proposition_34
+- &quot;coqc&quot;  -q  -R &quot;.&quot; GeoCoq   Elements/OriginalProofs/lemma_NCdistinct
+- &quot;coqc&quot;  -q  -R &quot;.&quot; GeoCoq   Elements/OriginalProofs/lemma_equaltorightisright
+- &quot;coqc&quot;  -q  -R &quot;.&quot; GeoCoq   Elements/OriginalProofs/lemma_parallelNC
+- &quot;coqc&quot;  -q  -R &quot;.&quot; GeoCoq   Elements/OriginalProofs/lemma_collinearparallel
+- &quot;coqc&quot;  -q  -R &quot;.&quot; GeoCoq   Elements/OriginalProofs/proposition_29C
+- &quot;coqc&quot;  -q  -R &quot;.&quot; GeoCoq   Elements/OriginalProofs/lemma_supplementofright
+- &quot;coqc&quot;  -q  -R &quot;.&quot; GeoCoq   Elements/OriginalProofs/lemma_PGrectangle
+- &quot;coqc&quot;  -q  -R &quot;.&quot; GeoCoq   Elements/OriginalProofs/lemma_TTorder
+- &quot;coqc&quot;  -q  -R &quot;.&quot; GeoCoq   Elements/OriginalProofs/proposition_31short
+- &quot;coqc&quot;  -q  -R &quot;.&quot; GeoCoq   Elements/OriginalProofs/proposition_27B
+- &quot;coqc&quot;  -q  -R &quot;.&quot; GeoCoq   Elements/OriginalProofs/proposition_33
+- &quot;coqc&quot;  -q  -R &quot;.&quot; GeoCoq   Elements/OriginalProofs/lemma_collinearparallel2
+- &quot;coqc&quot;  -q  -R &quot;.&quot; GeoCoq   Elements/OriginalProofs/lemma_crisscross
+- &quot;coqc&quot;  -q  -R &quot;.&quot; GeoCoq   Elements/OriginalProofs/lemma_samesidetransitive
+- &quot;coqc&quot;  -q  -R &quot;.&quot; GeoCoq   Elements/OriginalProofs/lemma_Playfairhelper
+- &quot;coqc&quot;  -q  -R &quot;.&quot; GeoCoq   Elements/OriginalProofs/lemma_Playfairhelper2
+- &quot;coqc&quot;  -q  -R &quot;.&quot; GeoCoq   Elements/OriginalProofs/lemma_Playfair
+- &quot;coqc&quot;  -q  -R &quot;.&quot; GeoCoq   Elements/OriginalProofs/lemma_triangletoparallelogram
+- &quot;coqc&quot;  -q  -R &quot;.&quot; GeoCoq   Elements/OriginalProofs/lemma_samenotopposite
+- &quot;coqc&quot;  -q  -R &quot;.&quot; GeoCoq   Elements/OriginalProofs/lemma_PGsymmetric
+- &quot;coqc&quot;  -q  -R &quot;.&quot; GeoCoq   Elements/OriginalProofs/lemma_PGflip
+- &quot;coqc&quot;  -q  -R &quot;.&quot; GeoCoq   Elements/OriginalProofs/proposition_46
+- &quot;coqc&quot;  -q  -R &quot;.&quot; GeoCoq   Elements/OriginalProofs/lemma_oppositesideflip
+- &quot;coqc&quot;  -q  -R &quot;.&quot; GeoCoq   Elements/OriginalProofs/proposition_14
+- &quot;coqc&quot;  -q  -R &quot;.&quot; GeoCoq   Elements/OriginalProofs/lemma_righttogether
+- &quot;coqc&quot;  -q  -R &quot;.&quot; GeoCoq   Elements/OriginalProofs/lemma_crossimpliesopposite
+- &quot;coqc&quot;  -q  -R &quot;.&quot; GeoCoq   Elements/OriginalProofs/lemma_diagonalsbisect
+- &quot;coqc&quot;  -q  -R &quot;.&quot; GeoCoq   Elements/OriginalProofs/lemma_squareparallelogram
+- &quot;coqc&quot;  -q  -R &quot;.&quot; GeoCoq   Elements/OriginalProofs/lemma_squarerectangle
+- &quot;coqc&quot;  -q  -R &quot;.&quot; GeoCoq   Elements/OriginalProofs/proposition_48A
+- &quot;coqc&quot;  -q  -R &quot;.&quot; GeoCoq   Elements/OriginalProofs/lemma_samesidecollinear
+- &quot;coqc&quot;  -q  -R &quot;.&quot; GeoCoq   Elements/OriginalProofs/lemma_PGrotate
+- &quot;coqc&quot;  -q  -R &quot;.&quot; GeoCoq   Elements/OriginalProofs/lemma_35helper
+- &quot;coqc&quot;  -q  -R &quot;.&quot; GeoCoq   Elements/OriginalProofs/lemma_TCreflexive
+- &quot;coqc&quot;  -q  -R &quot;.&quot; GeoCoq   Elements/OriginalProofs/lemma_ETreflexive
+- &quot;coqc&quot;  -q  -R &quot;.&quot; GeoCoq   Elements/OriginalProofs/proposition_35A
+- &quot;coqc&quot;  -q  -R &quot;.&quot; GeoCoq   Elements/OriginalProofs/lemma_parallelPasch
+- &quot;coqc&quot;  -q  -R &quot;.&quot; GeoCoq   Elements/OriginalProofs/proposition_35
+- &quot;coqc&quot;  -q  -R &quot;.&quot; GeoCoq   Elements/OriginalProofs/proposition_37
+- &quot;coqc&quot;  -q  -R &quot;.&quot; GeoCoq   Elements/OriginalProofs/proposition_41
+- &quot;coqc&quot;  -q  -R &quot;.&quot; GeoCoq   Elements/OriginalProofs/proposition_36
+- &quot;coqc&quot;  -q  -R &quot;.&quot; GeoCoq   Elements/OriginalProofs/proposition_38
+- &quot;coqc&quot;  -q  -R &quot;.&quot; GeoCoq   Elements/OriginalProofs/proposition_42
+- &quot;coqc&quot;  -q  -R &quot;.&quot; GeoCoq   Elements/OriginalProofs/lemma_legsmallerhypotenuse
+- &quot;coqc&quot;  -q  -R &quot;.&quot; GeoCoq   Elements/OriginalProofs/lemma_tworays
+- &quot;coqc&quot;  -q  -R &quot;.&quot; GeoCoq   Elements/OriginalProofs/lemma_altitudeofrighttriangle
+- &quot;coqc&quot;  -q  -R &quot;.&quot; GeoCoq   Elements/OriginalProofs/proposition_36A
+- &quot;coqc&quot;  -q  -R &quot;.&quot; GeoCoq   Elements/OriginalProofs/lemma_4_19
+- &quot;coqc&quot;  -q  -R &quot;.&quot; GeoCoq   Elements/OriginalProofs/lemma_samesideflip
+- &quot;coqc&quot;  -q  -R &quot;.&quot; GeoCoq   Elements/OriginalProofs/proposition_39A
+- &quot;coqc&quot;  -q  -R &quot;.&quot; GeoCoq   Elements/OriginalProofs/proposition_39
+- &quot;coqc&quot;  -q  -R &quot;.&quot; GeoCoq   Elements/OriginalProofs/lemma_RTsymmetric
+- &quot;coqc&quot;  -q  -R &quot;.&quot; GeoCoq   Elements/OriginalProofs/lemma_paralleldef2A
+- &quot;coqc&quot;  -q  -R &quot;.&quot; GeoCoq   Elements/OriginalProofs/lemma_lessthanadditive
+- &quot;coqc&quot;  -q  -R &quot;.&quot; GeoCoq   Elements/OriginalProofs/lemma_lessthanbetween
+- &quot;coqc&quot;  -q  -R &quot;.&quot; GeoCoq   Elements/OriginalProofs/lemma_21helper
+- &quot;coqc&quot;  -q  -R &quot;.&quot; GeoCoq   Elements/OriginalProofs/lemma_TTflip
+- &quot;coqc&quot;  -q  -R &quot;.&quot; GeoCoq   Elements/OriginalProofs/lemma_TTtransitive
+- &quot;coqc&quot;  -q  -R &quot;.&quot; GeoCoq   Elements/OriginalProofs/lemma_TTflip2
+- &quot;coqc&quot;  -q  -R &quot;.&quot; GeoCoq   Elements/OriginalProofs/proposition_21
+- &quot;coqc&quot;  -q  -R &quot;.&quot; GeoCoq   Elements/OriginalProofs/proposition_43
+- &quot;coqc&quot;  -q  -R &quot;.&quot; GeoCoq   Elements/OriginalProofs/lemma_erectedperpendicularunique
+- &quot;coqc&quot;  -q  -R &quot;.&quot; GeoCoq   Elements/OriginalProofs/proposition_28C
+- &quot;coqc&quot;  -q  -R &quot;.&quot; GeoCoq   Elements/OriginalProofs/lemma_twoperpsparallel
+- &quot;coqc&quot;  -q  -R &quot;.&quot; GeoCoq   Elements/OriginalProofs/proposition_47A
+- &quot;coqc&quot;  -q  -R &quot;.&quot; GeoCoq   Elements/OriginalProofs/proposition_40
+- &quot;coqc&quot;  -q  -R &quot;.&quot; GeoCoq   Elements/OriginalProofs/lemma_rectanglerotate
+- &quot;coqc&quot;  -q  -R &quot;.&quot; GeoCoq   Elements/OriginalProofs/proposition_32
+- &quot;coqc&quot;  -q  -R &quot;.&quot; GeoCoq   Elements/OriginalProofs/proposition_17
+- &quot;coqc&quot;  -q  -R &quot;.&quot; GeoCoq   Elements/OriginalProofs/lemma_rectangleparallelogram
+- &quot;coqc&quot;  -q  -R &quot;.&quot; GeoCoq   Elements/OriginalProofs/lemma_squareflip
+- &quot;coqc&quot;  -q  -R &quot;.&quot; GeoCoq   Elements/OriginalProofs/lemma_Pasch_outer2
+- &quot;coqc&quot;  -q  -R &quot;.&quot; GeoCoq   Elements/OriginalProofs/lemma_squaresequal
+- &quot;coqc&quot;  -q  -R &quot;.&quot; GeoCoq   Elements/OriginalProofs/proposition_30A
+- &quot;coqc&quot;  -q  -R &quot;.&quot; GeoCoq   Elements/OriginalProofs/proposition_25
+- &quot;coqc&quot;  -q  -R &quot;.&quot; GeoCoq   Elements/OriginalProofs/lemma_30helper
+- &quot;coqc&quot;  -q  -R &quot;.&quot; GeoCoq   Elements/OriginalProofs/proposition_42B
+- &quot;coqc&quot;  -q  -R &quot;.&quot; GeoCoq   Elements/OriginalProofs/proposition_05b
+- &quot;coqc&quot;  -q  -R &quot;.&quot; GeoCoq   Elements/OriginalProofs/proposition_06a
+- &quot;coqc&quot;  -q  -R &quot;.&quot; GeoCoq   Elements/OriginalProofs/proposition_06
+- &quot;coqc&quot;  -q  -R &quot;.&quot; GeoCoq   Elements/OriginalProofs/proposition_08
+- &quot;coqc&quot;  -q  -R &quot;.&quot; GeoCoq   Elements/OriginalProofs/proposition_09
+- &quot;coqc&quot;  -q  -R &quot;.&quot; GeoCoq   Elements/OriginalProofs/proposition_13
+- &quot;coqc&quot;  -q  -R &quot;.&quot; GeoCoq   Elements/OriginalProofs/lemma_26helper
+- &quot;coqc&quot;  -q  -R &quot;.&quot; GeoCoq   Elements/OriginalProofs/proposition_26B
+- &quot;coqc&quot;  -q  -R &quot;.&quot; GeoCoq   Elements/OriginalProofs/proposition_28A
+- &quot;coqc&quot;  -q  -R &quot;.&quot; GeoCoq   Elements/OriginalProofs/proposition_30B
+- &quot;coqc&quot;  -q  -R &quot;.&quot; GeoCoq   Elements/OriginalProofs/proposition_30
+- &quot;coqc&quot;  -q  -R &quot;.&quot; GeoCoq   Elements/OriginalProofs/proposition_33B
+- &quot;coqc&quot;  -q  -R &quot;.&quot; GeoCoq   Elements/OriginalProofs/lemma_supplements2
+- &quot;coqc&quot;  -q  -R &quot;.&quot; GeoCoq   Elements/OriginalProofs/proposition_28D
+- &quot;coqc&quot;  -q  -R &quot;.&quot; GeoCoq   Elements/OriginalProofs/proposition_43B
+- &quot;coqc&quot;  -q  -R &quot;.&quot; GeoCoq   Elements/OriginalProofs/lemma_parallelbetween
+- &quot;coqc&quot;  -q  -R &quot;.&quot; GeoCoq   Elements/OriginalProofs/proposition_44A
+- &quot;coqc&quot;  -q  -R &quot;.&quot; GeoCoq   Elements/OriginalProofs/proposition_44
+- &quot;coqc&quot;  -q  -R &quot;.&quot; GeoCoq   Elements/OriginalProofs/lemma_RTcongruence
+- &quot;coqc&quot;  -q  -R &quot;.&quot; GeoCoq   Elements/OriginalProofs/proposition_45
+- &quot;coqc&quot;  -q  -R &quot;.&quot; GeoCoq   Elements/OriginalProofs/lemma_angleaddition
+- &quot;coqc&quot;  -q  -R &quot;.&quot; GeoCoq   Elements/OriginalProofs/proposition_47B
+- &quot;coqc&quot;  -q  -R &quot;.&quot; GeoCoq   Elements/OriginalProofs/proposition_47
+- &quot;coqc&quot;  -q  -R &quot;.&quot; GeoCoq   Elements/OriginalProofs/proposition_48
+- &quot;coqc&quot;  -q  -R &quot;.&quot; GeoCoq   Elements/OriginalProofs/book1
+- &quot;coqc&quot;  -q  -R &quot;.&quot; GeoCoq   Elements/OriginalProofs/lemma_squareunique
+- &quot;coqc&quot;  -q  -R &quot;.&quot; GeoCoq   Elements/OriginalProofs/lemma_paste5
+- &quot;coqc&quot;  -q  -R &quot;.&quot; GeoCoq   Elements/OriginalProofs/lemma_rectanglereverse
+- &quot;coqc&quot;  -q  -R &quot;.&quot; GeoCoq   Elements/OriginalProofs/lemma_together2
+- &quot;coqc&quot;  -q  -R &quot;.&quot; GeoCoq   Elements/OriginalProofs/lemma_insideor
+- &quot;coqc&quot;  -q  -R &quot;.&quot; GeoCoq   Tarski_dev/Annexes/tangency
+- &quot;coqc&quot;  -q  -R &quot;.&quot; GeoCoq   Elements/Statements/Book_3
+- &quot;coqc&quot;  -q  -R &quot;.&quot; GeoCoq   Tarski_dev/Annexes/sums
+- &quot;coqc&quot;  -q  -R &quot;.&quot; GeoCoq   Tarski_dev/Annexes/Tagged_predicates
+- &quot;coqc&quot;  -q  -R &quot;.&quot; GeoCoq   Tarski_dev/Annexes/quadrilaterals_inter_dec
+- &quot;coqc&quot;  -q  -R &quot;.&quot; GeoCoq   Tarski_dev/Annexes/midpoint_theorems
+- &quot;coqc&quot;  -q  -R &quot;.&quot; GeoCoq   Tarski_dev/Ch13_2_length
+- &quot;coqc&quot;  -q  -R &quot;.&quot; GeoCoq   Tarski_dev/Ch13_3_angles
+- &quot;coqc&quot;  -q  -R &quot;.&quot; GeoCoq   Tarski_dev/Ch13_4_cos
+- &quot;coqc&quot;  -q  -R &quot;.&quot; GeoCoq   Tarski_dev/Annexes/vectors
+- &quot;coqc&quot;  -q  -R &quot;.&quot; GeoCoq   Tarski_dev/Annexes/project
+- &quot;coqc&quot;  -q  -R &quot;.&quot; GeoCoq   Tarski_dev/Ch13_5_Pappus_Pascal
+- &quot;coqc&quot;  -q  -R &quot;.&quot; GeoCoq   Tarski_dev/Ch13_6_Desargues_Hessenberg
+- &quot;coqc&quot;  -q  -R &quot;.&quot; GeoCoq   Tarski_dev/Ch14_sum
+- &quot;coqc&quot;  -q  -R &quot;.&quot; GeoCoq   Tarski_dev/Ch14_prod
+- &quot;coqc&quot;  -q  -R &quot;.&quot; GeoCoq   Tarski_dev/Ch14_order
+- &quot;coqc&quot;  -q  -R &quot;.&quot; GeoCoq   Tarski_dev/Ch15_lengths
+- &quot;coqc&quot;  -q  -R &quot;.&quot; GeoCoq   Tarski_dev/Ch16_coordinates
+- &quot;coqc&quot;  -q  -R &quot;.&quot; GeoCoq   Tarski_dev/Ch15_pyth_rel
+- &quot;coqc&quot;  -q  -R &quot;.&quot; GeoCoq   Tarski_dev/Ch16_coordinates_with_functions
+- could not prove discrimination result
+- could not prove discrimination result
+- could not prove discrimination result
+- could not prove discrimination result
+- could not prove discrimination result
+- could not prove discrimination result
+- could not prove discrimination result
+- could not prove discrimination result
+- could not prove discrimination result
+- could not prove discrimination result
+- could not prove discrimination result
+- could not prove discrimination result
+</pre></dd>
+            </dl>
+            <h2>Installation size</h2>
+            <p>No files were installed.</p>
+            <h2>Uninstall</h2>
+            <dl class="dl-horizontal">
+              <dt>Command</dt>
+              <dd><code>true</code></dd>
+              <dt>Return code</dt>
+              <dd>0</dd>
+              <dt>Missing removes</dt>
+              <dd>
+                none
+              </dd>
+              <dt>Wrong removes</dt>
+              <dd>
+                none
+              </dd>
+            </dl>
+          </div>
+        </div>
+      </div>
+      <hr/>
+      <div class="footer">
+        <p class="text-center">
+          <small>Sources are on <a href="https://github.com/coq-bench">GitHub</a>. © Guillaume Claret.</small>
+        </p>
+      </div>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="../../../../../bootstrap.min.js"></script>
+  </body>
+</html>
