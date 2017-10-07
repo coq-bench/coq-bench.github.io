@@ -1,0 +1,937 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Coq bench</title>
+    <link rel="shortcut icon" type="image/png" href="../../../../../favicon.png" />
+    <link href="../../../../../bootstrap.min.css" rel="stylesheet">
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+    <script src="../../../../../moment.min.js"></script>
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="container">
+      <div class="navbar navbar-default" role="navigation">
+        <div class="container-fluid">
+          <div class="navbar-header">
+            <a class="navbar-brand" href="../../../../.."><i class="fa fa-lg fa-flag-checkered"></i> Coq bench</a>
+          </div>
+          <div id="navbar" class="collapse navbar-collapse">
+            <ul class="nav navbar-nav">
+              <li><a href="../..">clean / released</a></li>
+              <li class="active"><a href="">8.6.dev / geocoq - 2.3.0</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="article">
+        <div class="row">
+          <div class="col-md-12">
+            <a href="../..">« Up</a>
+            <h1>
+              geocoq
+              <small>
+                2.3.0
+                <span class="label label-danger">Error</span>
+              </small>
+            </h1>
+            <p><em><script>document.write(moment("2017-10-07 10:59:05 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2017-10-07 10:59:05 UTC)</em><p>
+            <h2>Context</h2>
+            <pre># Installed packages for system:
+base-bigarray     base  Bigarray library distributed with the OCaml compiler
+base-threads      base  Threads library distributed with the OCaml compiler
+base-unix         base  Unix library distributed with the OCaml compiler
+camlp5            7.01  Preprocessor-pretty-printer of OCaml
+conf-m4              1  Virtual package relying on m4
+coq            8.6.dev  Formal proof management system.
+ocamlfind        1.7.3  A library manager for OCaml
+</pre>
+            <h2>Lint</h2>
+            <dl class="dl-horizontal">
+              <dt>Command</dt>
+              <dd><code>ruby lint.rb released opam-coq-archive/released/packages/coq-geocoq/coq-geocoq.2.3.0</code></dd>
+              <dt>Return code</dt>
+              <dd>0</dd>
+            </dl>
+            <h2>Dry install</h2>
+            <p>Dry install with the current Coq version:</p>
+            <dl class="dl-horizontal">
+              <dt>Command</dt>
+              <dd><code>opam install -y --show-action coq-geocoq.2.3.0 coq.8.6.dev</code></dd>
+              <dt>Return code</dt>
+              <dd>0</dd>
+            </dl>
+            <p>Dry install without Coq, to test if the problem was incompatibility with the current Coq version:</p>
+            <dl class="dl-horizontal">
+              <dt>Command</dt>
+              <dd><code>true</code></dd>
+              <dt>Return code</dt>
+              <dd>0</dd>
+            </dl>
+            <h2>Install dependencies</h2>
+            <dl class="dl-horizontal">
+              <dt>Command</dt>
+              <dd><code>opam list; ulimit -Sv 4000000; timeout 30m opam install -y --deps-only coq-geocoq.2.3.0</code></dd>
+              <dt>Return code</dt>
+              <dd>0</dd>
+              <dt>Duration</dt>
+              <dd>34 s</dd>
+            </dl>
+            <h2>Install</h2>
+            <dl class="dl-horizontal">
+              <dt>Command</dt>
+              <dd><code>opam list; ulimit -Sv 4000000; timeout 120m opam install -j1 -y -v coq-geocoq.2.3.0</code></dd>
+              <dt>Return code</dt>
+              <dd>31744</dd>
+              <dt>Duration</dt>
+              <dd>2 h 0 m</dd>
+              <dt>Output</dt>
+              <dd><pre># Installed packages for system:
+base-bigarray     base  Bigarray library distributed with the OCaml compiler
+base-threads      base  Threads library distributed with the OCaml compiler
+base-unix         base  Unix library distributed with the OCaml compiler
+camlp5            7.01  Preprocessor-pretty-printer of OCaml
+conf-m4              1  Virtual package relying on m4
+coq            8.6.dev  Formal proof management system.
+ocamlfind        1.7.3  A library manager for OCaml
+The following actions will be performed:
+  - install coq-geocoq 2.3.0
+=-=- Gathering sources =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+[coq-geocoq: http] Command started
+[coq-geocoq: http] Command started
+[coq-geocoq.2.3.0] https://github.com/GeoCoq/GeoCoq/archive/v2.3.0.tar.gz downloaded
+=-=- Processing actions -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+[coq-geocoq: ./configure.sh] Command started
++ ./configure.sh  (CWD=/home/bench/.opam/system/build/coq-geocoq.2.3.0)
+[coq-geocoq: make] Command started
++ make &quot;-j1&quot; (CWD=/home/bench/.opam/system/build/coq-geocoq.2.3.0)
+- COQDEP Tactics/UnitTests/unit_tests_2.v
+- COQDEP Tactics/UnitTests/unit_tests.v
+- COQDEP Tactics/finish.v
+- COQDEP Tactics/Coinc/CoincR_for_col.v
+- COQDEP Tactics/Coinc/tarski_to_coinc_theory_for_cop.v
+- COQDEP Tactics/Coinc/CoincR_for_cop.v
+- COQDEP Tactics/Coinc/tarski_to_coinc_theory_for_col.v
+- COQDEP Tactics/Coinc/ColR.v
+- COQDEP Tactics/Coinc/essai.v
+- COQDEP Tactics/Coinc/tarski_to_col_theory.v
+- COQDEP Tactics/Coinc/CoincR.v
+- COQDEP Tactics/Coinc/tarski_to_coinc_theory_for_concyclic.v
+- COQDEP Tactics/Coinc/Permutations.v
+- COQDEP Tactics/Coinc/tactics_axioms.v
+- COQDEP Tarski_dev/Ch04_cong_bet.v
+- COQDEP Tarski_dev/Ch10_line_reflexivity.v
+- COQDEP Tarski_dev/Ch13_1.v
+- COQDEP Tarski_dev/Coplanar_trans.v
+- COQDEP Tarski_dev/Ch13_2_length.v
+- COQDEP Tarski_dev/Ch15_lengths.v
+- COQDEP Tarski_dev/Ch13_6_Desargues_Hessenberg.v
+- COQDEP Tarski_dev/Coplanar_perm.v
+- COQDEP Tarski_dev/Ch10_line_reflexivity_2D.v
+- COQDEP Tarski_dev/Ch06_out_lines.v
+- COQDEP Tarski_dev/Ch08_orthogonality.v
+- COQDEP Tarski_dev/Ch07_midpoint.v
+- COQDEP Tarski_dev/Ch03_bet.v
+- COQDEP Tarski_dev/Ch13_4_cos.v
+- COQDEP Tarski_dev/Ch04_col.v
+- COQDEP Tarski_dev/Ch12_parallel_inter_dec.v
+- COQDEP Tarski_dev/Definitions.v
+- COQDEP Tarski_dev/Ch16_coordinates_with_functions.v
+- COQDEP Tarski_dev/Ch13_5_Pappus_Pascal.v
+- COQDEP Tarski_dev/Ch14_sum.v
+- COQDEP Tarski_dev/Ch15_pyth_rel.v
+- COQDEP Tarski_dev/Annexes/project.v
+- COQDEP Tarski_dev/Annexes/quadrilaterals_inter_dec.v
+- COQDEP Tarski_dev/Annexes/suma.v
+- COQDEP Tarski_dev/Annexes/half_angles.v
+- COQDEP Tarski_dev/Annexes/quadrilaterals.v
+- COQDEP Tarski_dev/Annexes/Tagged_predicates.v
+- COQDEP Tarski_dev/Annexes/vectors.v
+- COQDEP Tarski_dev/Annexes/tangency.v
+- COQDEP Tarski_dev/Annexes/circles.v
+- COQDEP Tarski_dev/Annexes/saccheri.v
+- COQDEP Tarski_dev/Annexes/midpoint_theorems.v
+- COQDEP Tarski_dev/Annexes/perp_bisect.v
+- COQDEP Tarski_dev/Annexes/sums.v
+- COQDEP Tarski_dev/Annexes/inscribed_angle.v
+- COQDEP Tarski_dev/Ch14_prod.v
+- COQDEP Tarski_dev/Ch11_angles.v
+- COQDEP Tarski_dev/Ch05_bet_le.v
+- COQDEP Tarski_dev/Ch13_3_angles.v
+- COQDEP Tarski_dev/Ch16_coordinates.v
+- COQDEP Tarski_dev/Ch14_order.v
+- COQDEP Tarski_dev/Ch02_cong.v
+- COQDEP Tarski_dev/Ch12_parallel.v
+- COQDEP Tarski_dev/Ch09_plane.v
+- COQDEP Highschool/circumcenter.v
+- COQDEP Highschool/bisector.v
+- COQDEP Highschool/orientation.v
+- COQDEP Highschool/triangles.v
+- COQDEP Highschool/varignon.v
+- COQDEP Highschool/Euler_line.v
+- COQDEP Highschool/gravityCenter.v
+- COQDEP Highschool/concyclic.v
+- COQDEP Highschool/exercises.v
+- COQDEP Highschool/midpoint_thales.v
+- COQDEP Highschool/orthocenter.v
+- COQDEP Highschool/incenter.v
+- COQDEP main.v
+- COQDEP Axioms/euclidean_axioms.v
+- COQDEP Axioms/hilbert_axioms.v
+- COQDEP Axioms/continuity_axioms.v
+- COQDEP Axioms/beeson_s_axioms.v
+- COQDEP Axioms/makarios_variant_axioms.v
+- COQDEP Axioms/independent_tarski_axioms.v
+- COQDEP Axioms/parallel_postulates.v
+- COQDEP Axioms/tarski_axioms.v
+- COQDEP Elements/Statements/Book_1.v
+- COQDEP Elements/Statements/Book_3.v
+- COQDEP Elements/OriginalProofs/lemma_crossbar2.v
+- COQDEP Elements/OriginalProofs/lemma_samesideflip.v
+- COQDEP Elements/OriginalProofs/lemma_parallelcollinear.v
+- COQDEP Elements/OriginalProofs/lemma_sumofparts.v
+- COQDEP Elements/OriginalProofs/proposition_29.v
+- COQDEP Elements/OriginalProofs/lemma_angleaddition.v
+- COQDEP Elements/OriginalProofs/proposition_31.v
+- COQDEP Elements/OriginalProofs/proposition_34.v
+- COQDEP Elements/OriginalProofs/lemma_ray5.v
+- COQDEP Elements/OriginalProofs/lemma_oppositesidesymmetric.v
+- COQDEP Elements/OriginalProofs/proposition_29C.v
+- COQDEP Elements/OriginalProofs/lemma_insideor.v
+- COQDEP Elements/OriginalProofs/lemma_samesidecollinear.v
+- COQDEP Elements/OriginalProofs/lemma_samenotopposite.v
+- COQDEP Elements/OriginalProofs/lemma_rightangleNC.v
+- COQDEP Elements/OriginalProofs/lemma_3_6b.v
+- COQDEP Elements/OriginalProofs/proposition_33.v
+- COQDEP Elements/OriginalProofs/lemma_nullsegment3.v
+- COQDEP Elements/OriginalProofs/lemma_raystrict.v
+- COQDEP Elements/OriginalProofs/lemma_samesidetransitive.v
+- COQDEP Elements/OriginalProofs/lemma_angleorderrespectscongruence2.v
+- COQDEP Elements/OriginalProofs/lemma_righttogether.v
+- COQDEP Elements/OriginalProofs/lemma_lessthancongruence2.v
+- COQDEP Elements/OriginalProofs/lemma_outerconnectivity.v
+- COQDEP Elements/OriginalProofs/lemma_9_5.v
+- COQDEP Elements/OriginalProofs/lemma_supplements.v
+- COQDEP Elements/OriginalProofs/lemma_notperp.v
+- COQDEP Elements/OriginalProofs/lemma_planeseparation.v
+- COQDEP Elements/OriginalProofs/lemma_Playfairhelper.v
+- COQDEP Elements/OriginalProofs/lemma_ray4.v
+- COQDEP Elements/OriginalProofs/lemma_samesidesymmetric.v
+- COQDEP Elements/OriginalProofs/proposition_44A.v
+- COQDEP Elements/OriginalProofs/lemma_congruencetransitive.v
+- COQDEP Elements/OriginalProofs/lemma_RTcongruence.v
+- COQDEP Elements/OriginalProofs/lemma_collinearright.v
+- COQDEP Elements/OriginalProofs/proposition_47B.v
+- COQDEP Elements/OriginalProofs/lemma_equalangleshelper.v
+- COQDEP Elements/OriginalProofs/proposition_28D.v
+- COQDEP Elements/OriginalProofs/lemma_lessthancongruence.v
+- COQDEP Elements/OriginalProofs/lemma_lessthannotequal.v
+- COQDEP Elements/OriginalProofs/lemma_8_2.v
+- COQDEP Elements/OriginalProofs/proposition_06a.v
+- COQDEP Elements/OriginalProofs/lemma_26helper.v
+- COQDEP Elements/OriginalProofs/proposition_23.v
+- COQDEP Elements/OriginalProofs/lemma_collinearparallel.v
+- COQDEP Elements/OriginalProofs/proposition_13.v
+- COQDEP Elements/OriginalProofs/lemma_NChelper.v
+- COQDEP Elements/OriginalProofs/lemma_ray3.v
+- COQDEP Elements/OriginalProofs/lemma_betweennesspreserved.v
+- COQDEP Elements/OriginalProofs/lemma_Euclid4.v
+- COQDEP Elements/OriginalProofs/proposition_15.v
+- COQDEP Elements/OriginalProofs/lemma_TTflip.v
+- COQDEP Elements/OriginalProofs/proposition_47.v
+- COQDEP Elements/OriginalProofs/lemma_PGrotate.v
+- COQDEP Elements/OriginalProofs/lemma_angledistinct.v
+- COQDEP Elements/OriginalProofs/lemma_ETreflexive.v
+- COQDEP Elements/OriginalProofs/lemma_diagonalsmeet.v
+- COQDEP Elements/OriginalProofs/proposition_07.v
+- COQDEP Elements/OriginalProofs/lemma_collinearitypreserved.v
+- COQDEP Elements/OriginalProofs/lemma_twolines.v
+- COQDEP Elements/OriginalProofs/lemma_collinearbetween.v
+- COQDEP Elements/OriginalProofs/proposition_28A.v
+- COQDEP Elements/OriginalProofs/lemma_equalanglesNC.v
+- COQDEP Elements/OriginalProofs/proposition_05b.v
+- COQDEP Elements/OriginalProofs/lemma_ABCequalsCBA.v
+- COQDEP Elements/OriginalProofs/proposition_05.v
+- COQDEP Elements/OriginalProofs/lemma_supplements2.v
+- COQDEP Elements/OriginalProofs/proposition_14.v
+- COQDEP Elements/OriginalProofs/lemma_midpointunique.v
+- COQDEP Elements/OriginalProofs/proposition_26A.v
+- COQDEP Elements/OriginalProofs/lemma_3_7a.v
+- COQDEP Elements/OriginalProofs/lemma_differenceofparts.v
+- COQDEP Elements/OriginalProofs/proposition_27B.v
+- COQDEP Elements/OriginalProofs/lemma_paralleldef2B.v
+- COQDEP Elements/OriginalProofs/lemma_collinearorder.v
+- COQDEP Elements/OriginalProofs/proposition_23B.v
+- COQDEP Elements/OriginalProofs/lemma_linereflectionisometry.v
+- COQDEP Elements/OriginalProofs/lemma_together2.v
+- COQDEP Elements/OriginalProofs/lemma_ray1.v
+- COQDEP Elements/OriginalProofs/proposition_36.v
+- COQDEP Elements/OriginalProofs/lemma_8_7.v
+- COQDEP Elements/OriginalProofs/proposition_27.v
+- COQDEP Elements/OriginalProofs/lemma_parallelcollinear2.v
+- COQDEP Elements/OriginalProofs/proposition_11B.v
+- COQDEP Elements/OriginalProofs/proposition_35.v
+- COQDEP Elements/OriginalProofs/lemma_NCdistinct.v
+- COQDEP Elements/OriginalProofs/proposition_43B.v
+- COQDEP Elements/OriginalProofs/lemma_fiveline.v
+- COQDEP Elements/OriginalProofs/lemma_collinear4.v
+- COQDEP Elements/OriginalProofs/proposition_31short.v
+- COQDEP Elements/OriginalProofs/proposition_26B.v
+- COQDEP Elements/OriginalProofs/lemma_21helper.v
+- COQDEP Elements/OriginalProofs/lemma_equalanglesflip.v
+- COQDEP Elements/OriginalProofs/proposition_20.v
+- COQDEP Elements/OriginalProofs/proposition_48.v
+- COQDEP Elements/OriginalProofs/lemma_supplementsymmetric.v
+- COQDEP Elements/OriginalProofs/euclidean_tactics.v
+- COQDEP Elements/OriginalProofs/proposition_45.v
+- COQDEP Elements/OriginalProofs/lemma_3_7b.v
+- COQDEP Elements/OriginalProofs/lemma_rectanglereverse.v
+- COQDEP Elements/OriginalProofs/lemma_crisscross.v
+- COQDEP Elements/OriginalProofs/lemma_PGsymmetric.v
+- COQDEP Elements/OriginalProofs/lemma_equalanglesreflexive.v
+- COQDEP Elements/OriginalProofs/lemma_squareparallelogram.v
+- COQDEP Elements/OriginalProofs/proposition_22.v
+- COQDEP Elements/OriginalProofs/lemma_parallelflip.v
+- COQDEP Elements/OriginalProofs/lemma_parallelcollinear1.v
+- COQDEP Elements/OriginalProofs/lemma_Playfairhelper2.v
+- COQDEP Elements/OriginalProofs/lemma_twoperpsparallel.v
+- COQDEP Elements/OriginalProofs/lemma_3_6a.v
+- COQDEP Elements/OriginalProofs/lemma_collinear5.v
+- COQDEP Elements/OriginalProofs/proposition_12.v
+- COQDEP Elements/OriginalProofs/proposition_03.v
+- COQDEP Elements/OriginalProofs/proposition_19.v
+- COQDEP Elements/OriginalProofs/proposition_44.v
+- COQDEP Elements/OriginalProofs/lemma_betweennotequal.v
+- COQDEP Elements/OriginalProofs/euclidean_defs.v
+- COQDEP Elements/OriginalProofs/lemma_rightreverse.v
+- COQDEP Elements/OriginalProofs/lemma_samesidereflexive.v
+- COQDEP Elements/OriginalProofs/lemma_parallelbetween.v
+- COQDEP Elements/OriginalProofs/proposition_39A.v
+- COQDEP Elements/OriginalProofs/proposition_30.v
+- COQDEP Elements/OriginalProofs/proposition_08.v
+- COQDEP Elements/OriginalProofs/lemma_parallelNC.v
+- COQDEP Elements/OriginalProofs/lemma_paste5.v
+- COQDEP Elements/OriginalProofs/lemma_tworays.v
+- COQDEP Elements/OriginalProofs/lemma_interior5.v
+- COQDEP Elements/OriginalProofs/lemma_trichotomy1.v
+- COQDEP Elements/OriginalProofs/lemma_equaltorightisright.v
+- COQDEP Elements/OriginalProofs/lemma_TTtransitive.v
+- COQDEP Elements/OriginalProofs/proposition_04.v
+- COQDEP Elements/OriginalProofs/proposition_41.v
+- COQDEP Elements/OriginalProofs/lemma_squareunique.v
+- COQDEP Elements/OriginalProofs/lemma_8_3.v
+- COQDEP Elements/OriginalProofs/proposition_06.v
+- COQDEP Elements/OriginalProofs/proposition_30B.v
+- COQDEP Elements/OriginalProofs/lemma_oppositesideflip.v
+- COQDEP Elements/OriginalProofs/proposition_09.v
+- COQDEP Elements/OriginalProofs/proposition_01.v
+- COQDEP Elements/OriginalProofs/lemma_erectedperpendicularunique.v
+- COQDEP Elements/OriginalProofs/lemma_diagonalsbisect.v
+- COQDEP Elements/OriginalProofs/proposition_33B.v
+- COQDEP Elements/OriginalProofs/proposition_28C.v
+- COQDEP Elements/OriginalProofs/lemma_equalanglessymmetric.v
+- COQDEP Elements/OriginalProofs/book1.v
+- COQDEP Elements/OriginalProofs/lemma_ray.v
+- COQDEP Elements/OriginalProofs/proposition_18.v
+- COQDEP Elements/OriginalProofs/proposition_42B.v
+- COQDEP Elements/OriginalProofs/lemma_30helper.v
+- COQDEP Elements/OriginalProofs/proposition_16.v
+- COQDEP Elements/OriginalProofs/proposition_25.v
+- COQDEP Elements/OriginalProofs/lemma_Playfair.v
+- COQDEP Elements/OriginalProofs/general_tactics.v
+- COQDEP Elements/OriginalProofs/proposition_29B.v
+- COQDEP Elements/OriginalProofs/proposition_30A.v
+- COQDEP Elements/OriginalProofs/lemma_crossimpliesopposite.v
+- COQDEP Elements/OriginalProofs/lemma_inequalitysymmetric.v
+- COQDEP Elements/OriginalProofs/lemma_lessthanbetween.v
+- COQDEP Elements/OriginalProofs/lemma_rayimpliescollinear.v
+- COQDEP Elements/OriginalProofs/lemma_tarskiparallelflip.v
+- COQDEP Elements/OriginalProofs/lemma_congruencesymmetric.v
+- COQDEP Elements/OriginalProofs/lemma_TTflip2.v
+- COQDEP Elements/OriginalProofs/lemma_sameside2.v
+- COQDEP Elements/OriginalProofs/lemma_supplementinequality.v
+- COQDEP Elements/OriginalProofs/lemma_lessthantransitive.v
+- COQDEP Elements/OriginalProofs/lemma_9_5b.v
+- COQDEP Elements/OriginalProofs/lemma_doublereverse.v
+- COQDEP Elements/OriginalProofs/lemma_collinearparallel2.v
+- COQDEP Elements/OriginalProofs/lemma_supplementofright.v
+- COQDEP Elements/OriginalProofs/lemma_TGflip.v
+- COQDEP Elements/OriginalProofs/lemma_squaresequal.v
+- COQDEP Elements/OriginalProofs/proposition_37.v
+- COQDEP Elements/OriginalProofs/lemma_ray2.v
+- COQDEP Elements/OriginalProofs/lemma_Pasch_outer2.v
+- COQDEP Elements/OriginalProofs/lemma_squarerectangle.v
+- COQDEP Elements/OriginalProofs/lemma_squareflip.v
+- COQDEP Elements/OriginalProofs/lemma_extensionunique.v
+- COQDEP Elements/OriginalProofs/lemma_rectangleparallelogram.v
+- COQDEP Elements/OriginalProofs/proposition_17.v
+- COQDEP Elements/OriginalProofs/lemma_congruenceflip.v
+- COQDEP Elements/OriginalProofs/lemma_triangletoparallelogram.v
+- COQDEP Elements/OriginalProofs/proposition_32.v
+- COQDEP Elements/OriginalProofs/lemma_rectanglerotate.v
+- COQDEP Elements/OriginalProofs/lemma_angletrichotomy2.v
+- COQDEP Elements/OriginalProofs/lemma_twolines2.v
+- COQDEP Elements/OriginalProofs/proposition_38.v
+- COQDEP Elements/OriginalProofs/lemma_layoffunique.v
+- COQDEP Elements/OriginalProofs/lemma_parallelsymmetric.v
+- COQDEP Elements/OriginalProofs/lemma_legsmallerhypotenuse.v
+- COQDEP Elements/OriginalProofs/lemma_35helper.v
+- COQDEP Elements/OriginalProofs/lemma_collinear2.v
+- COQDEP Elements/OriginalProofs/lemma_10_12.v
+- COQDEP Elements/OriginalProofs/lemma_angleordertransitive.v
+- COQDEP Elements/OriginalProofs/proposition_40.v
+- COQDEP Elements/OriginalProofs/proposition_47A.v
+- COQDEP Elements/OriginalProofs/lemma_altitudebisectsbase.v
+- COQDEP Elements/OriginalProofs/proposition_43.v
+- COQDEP Elements/OriginalProofs/lemma_9_5a.v
+- COQDEP Elements/OriginalProofs/proposition_21.v
+- COQDEP Elements/OriginalProofs/lemma_angleorderrespectscongruence.v
+- COQDEP Elements/OriginalProofs/lemma_lessthanadditive.v
+- COQDEP Elements/OriginalProofs/lemma_together.v
+- COQDEP Elements/OriginalProofs/lemma_partnotequalwhole.v
+- COQDEP Elements/OriginalProofs/lemma_TCreflexive.v
+- COQDEP Elements/OriginalProofs/lemma_angletrichotomy.v
+- COQDEP Elements/OriginalProofs/lemma_PGflip.v
+- COQDEP Elements/OriginalProofs/lemma_3_5b.v
+- COQDEP Elements/OriginalProofs/lemma_paralleldef2A.v
+- COQDEP Elements/OriginalProofs/lemma_RTsymmetric.v
+- COQDEP Elements/OriginalProofs/proposition_10.v
+- COQDEP Elements/OriginalProofs/proposition_35A.v
+- COQDEP Elements/OriginalProofs/lemma_droppedperpendicularunique.v
+- COQDEP Elements/OriginalProofs/proposition_46.v
+- COQDEP Elements/OriginalProofs/proposition_23C.v
+- COQDEP Elements/OriginalProofs/proposition_39.v
+- COQDEP Elements/OriginalProofs/lemma_parallelPasch.v
+- COQDEP Elements/OriginalProofs/lemma_4_19.v
+- COQDEP Elements/OriginalProofs/lemma_layoff.v
+- COQDEP Elements/OriginalProofs/proposition_36A.v
+- COQDEP Elements/OriginalProofs/lemma_altitudeofrighttriangle.v
+- COQDEP Elements/OriginalProofs/lemma_TGsymmetric.v
+- COQDEP Elements/OriginalProofs/proposition_42.v
+- COQDEP Elements/OriginalProofs/lemma_subtractequals.v
+- COQDEP Elements/OriginalProofs/proposition_48A.v
+- COQDEP Elements/OriginalProofs/lemma_TTorder.v
+- COQDEP Elements/OriginalProofs/lemma_trichotomy2.v
+- COQDEP Elements/OriginalProofs/lemma_pointreflectionisometry.v
+- COQDEP Elements/OriginalProofs/lemma_PGrectangle.v
+- COQDEP Elements/OriginalProofs/proposition_11.v
+- COQDEP Elements/OriginalProofs/lemma_collinear1.v
+- COQDEP Elements/OriginalProofs/lemma_NCorder.v
+- COQDEP Elements/OriginalProofs/lemma_rightreflection.v
+- COQDEP Elements/OriginalProofs/lemma_crossbar.v
+- COQDEP Elements/OriginalProofs/proposition_28B.v
+- COQDEP Elements/OriginalProofs/proposition_24.v
+- COQDEP Elements/OriginalProofs/lemma_equalanglestransitive.v
+- COQDEP Elements/OriginalProofs/lemma_equalitysymmetric.v
+- COQDEP Meta_theory/Counter_models/counter_model_bet_identity.v
+- COQDEP Meta_theory/Counter_models/counter_model_segment_construction.v
+- COQDEP Meta_theory/Parallel_postulates/bachmann_s_lotschnittaxiom_weak_triangle_circumscription_principle.v
+- COQDEP Meta_theory/Parallel_postulates/existential_playfair_rah.v
+- COQDEP Meta_theory/Parallel_postulates/euclid_5_original_euclid.v
+- COQDEP Meta_theory/Parallel_postulates/consecutive_interior_angles_alternate_interior_angles.v
+- COQDEP Meta_theory/Parallel_postulates/bachmann_s_lotschnittaxiom_weak_inverse_projection_postulate.v
+- COQDEP Meta_theory/Parallel_postulates/alternate_interior_angles_triangle.v
+- COQDEP Meta_theory/Parallel_postulates/SPP_tarski.v
+- COQDEP Meta_theory/Parallel_postulates/playfair_universal_posidonius_postulate.v
+- COQDEP Meta_theory/Parallel_postulates/rectangle_existence_rah.v
+- COQDEP Meta_theory/Parallel_postulates/szmielew.v
+- COQDEP Meta_theory/Parallel_postulates/weak_inverse_projection_postulate_bachmann_s_lotschnittaxiom.v
+- COQDEP Meta_theory/Parallel_postulates/alternate_interior_angles_playfair_bis.v
+- COQDEP Meta_theory/Parallel_postulates/universal_posidonius_postulate_par_perp_perp.v
+- COQDEP Meta_theory/Parallel_postulates/playfair_midpoint.v
+- COQDEP Meta_theory/Parallel_postulates/existential_saccheri_rah.v
+- COQDEP Meta_theory/Parallel_postulates/par_perp_perp_par_perp_2_par.v
+- COQDEP Meta_theory/Parallel_postulates/legendre.v
+- COQDEP Meta_theory/Parallel_postulates/SPP_ID.v
+- COQDEP Meta_theory/Parallel_postulates/rah_thales_postulate.v
+- COQDEP Meta_theory/Parallel_postulates/rah_existential_saccheri.v
+- COQDEP Meta_theory/Parallel_postulates/rah_rectangle_principle.v
+- COQDEP Meta_theory/Parallel_postulates/rectangle_principle_rectangle_existence.v
+- COQDEP Meta_theory/Parallel_postulates/par_perp_perp_TCP.v
+- COQDEP Meta_theory/Parallel_postulates/rah_triangle.v
+- COQDEP Meta_theory/Parallel_postulates/bachmann_s_lotschnittaxiom_legendre_s_parallel_postulate.v
+- COQDEP Meta_theory/Parallel_postulates/original_euclid_original_spp.v
+- COQDEP Meta_theory/Parallel_postulates/playfair_alternate_interior_angles.v
+- COQDEP Meta_theory/Parallel_postulates/proclus_bis_proclus.v
+- COQDEP Meta_theory/Parallel_postulates/weak_triangle_circumscription_principle_bachmann_s_lotschnittaxiom.v
+- COQDEP Meta_theory/Parallel_postulates/triangle_existential_triangle.v
+- COQDEP Meta_theory/Parallel_postulates/thales_converse_postulate_thales_existence.v
+- COQDEP Meta_theory/Parallel_postulates/thales_converse_postulate_weak_triangle_circumscription_principle.v
+- COQDEP Meta_theory/Parallel_postulates/existential_triangle_rah.v
+- COQDEP Meta_theory/Parallel_postulates/playfair_bis_playfair.v
+- COQDEP Meta_theory/Parallel_postulates/inverse_projection_postulate_proclus_bis.v
+- COQDEP Meta_theory/Parallel_postulates/parallel_postulates.v
+- COQDEP Meta_theory/Parallel_postulates/tarski_s_euclid_remove_degenerated_cases.v
+- COQDEP Meta_theory/Parallel_postulates/tarski_playfair.v
+- COQDEP Meta_theory/Parallel_postulates/weak_inverse_projection_postulate_weak_tarski_s_parallel_postulate.v
+- COQDEP Meta_theory/Parallel_postulates/rah_similar.v
+- COQDEP Meta_theory/Parallel_postulates/midpoint_playfair.v
+- COQDEP Meta_theory/Parallel_postulates/thales_postulate_thales_converse_postulate.v
+- COQDEP Meta_theory/Parallel_postulates/thales_existence_rah.v
+- COQDEP Meta_theory/Parallel_postulates/alternate_interior_angles_consecutive_interior_angles.v
+- COQDEP Meta_theory/Parallel_postulates/alternate_interior_angles_proclus.v
+- COQDEP Meta_theory/Parallel_postulates/posidonius_postulate_rah.v
+- COQDEP Meta_theory/Parallel_postulates/original_spp_inverse_projection_postulate.v
+- COQDEP Meta_theory/Parallel_postulates/rah_posidonius_postulate.v
+- COQDEP Meta_theory/Parallel_postulates/weak_tarski_s_parallel_postulate_weak_inverse_projection_postulate.v
+- COQDEP Meta_theory/Parallel_postulates/par_perp_perp_playfair.v
+- COQDEP Meta_theory/Parallel_postulates/TCP_tarski.v
+- COQDEP Meta_theory/Parallel_postulates/tarski_euclid.v
+- COQDEP Meta_theory/Parallel_postulates/proclus_SPP.v
+- COQDEP Meta_theory/Parallel_postulates/par_trans_playfair.v
+- COQDEP Meta_theory/Parallel_postulates/triangle_playfair_bis.v
+- COQDEP Meta_theory/Parallel_postulates/playfair_par_trans.v
+- COQDEP Meta_theory/Parallel_postulates/par_perp_2_par_par_perp_perp.v
+- COQDEP Meta_theory/Parallel_postulates/playfair_existential_playfair.v
+- COQDEP Meta_theory/Parallel_postulates/similar_rah.v
+- COQDEP Meta_theory/Parallel_postulates/par_trans_NID.v
+- COQDEP Meta_theory/Parallel_postulates/proclus_aristotle.v
+- COQDEP Meta_theory/Models/hilbert_to_tarski.v
+- COQDEP Meta_theory/Models/tarski_to_hilbert.v
+- COQDEP Meta_theory/Models/tarski_to_beeson.v
+- COQDEP Meta_theory/Models/independent_tarski_to_tarski.v
+- COQDEP Meta_theory/Models/euclid_to_tarski.v
+- COQDEP Meta_theory/Models/tarski_to_makarios.v
+- COQDEP Meta_theory/Models/tarski_to_euclid.v
+- COQDEP Meta_theory/Continuity/angle_archimedes.v
+- COQDEP Meta_theory/Continuity/dedekind_archimedes.v
+- COQDEP Meta_theory/Continuity/elementary_continuity_props.v
+- COQDEP Meta_theory/Continuity/archimedes.v
+- COQDEP Meta_theory/Continuity/aristotle.v
+- COQDEP Meta_theory/Continuity/first_order_dedekind_circle_circle.v
+- COQDEP Meta_theory/Continuity/first_order.v
+- COQDEP Meta_theory/Decidability/equivalence_between_decidability_properties_of_basic_relations.v
+- COQDEP Meta_theory/Dimension_axioms/upper_dim.v
+- COQDEP Utils/all_equiv.v
+- COQDEP Utils/sets.v
+- COQDEP Utils/arity.v
+- COQDEP Utils/triples.v
+- COQDEP Utils/general_tactics.v
+- COQC Utils/general_tactics.v
+- COQC Utils/triples.v
+- COQC Utils/arity.v
+- COQC Tactics/Coinc/tactics_axioms.v
+- COQC Utils/sets.v
+- COQC Utils/all_equiv.v
+- COQC Axioms/tarski_axioms.v
+- COQC Tarski_dev/Definitions.v
+- COQC Tactics/finish.v
+- COQC Tarski_dev/Ch02_cong.v
+- COQC Tarski_dev/Ch03_bet.v
+- COQC Tarski_dev/Ch04_cong_bet.v
+- COQC Tarski_dev/Ch04_col.v
+- COQC Meta_theory/Decidability/equivalence_between_decidability_properties_of_basic_relations.v
+- COQC Tarski_dev/Ch05_bet_le.v
+- COQC Tarski_dev/Ch06_out_lines.v
+- COQC Tactics/Coinc/tarski_to_col_theory.v
+- COQC Tactics/Coinc/ColR.v
+- COQC Tarski_dev/Ch07_midpoint.v
+- COQC Tarski_dev/Ch08_orthogonality.v
+- COQC Tarski_dev/Ch09_plane.v
+- COQC Tarski_dev/Ch10_line_reflexivity.v
+- COQC Tarski_dev/Coplanar_perm.v
+- COQC Meta_theory/Dimension_axioms/upper_dim.v
+- COQC Axioms/continuity_axioms.v
+- COQC Meta_theory/Continuity/first_order.v
+- COQC Tarski_dev/Ch10_line_reflexivity_2D.v
+- COQC Tarski_dev/Ch11_angles.v
+- COQC Tarski_dev/Ch12_parallel.v
+- COQC Tarski_dev/Annexes/circles.v
+- COQC Meta_theory/Continuity/first_order_dedekind_circle_circle.v
+- COQC Tarski_dev/Annexes/suma.v
+- COQC Tarski_dev/Annexes/saccheri.v
+- COQC Meta_theory/Continuity/aristotle.v
+- COQC Tarski_dev/Ch13_1.v
+- COQC Meta_theory/Continuity/archimedes.v
+- COQC Meta_theory/Continuity/elementary_continuity_props.v
+- COQC Meta_theory/Continuity/dedekind_archimedes.v
+- COQC Meta_theory/Continuity/angle_archimedes.v
+- COQC Axioms/euclidean_axioms.v
+- COQC Axioms/parallel_postulates.v
+- COQC Meta_theory/Parallel_postulates/tarski_s_euclid_remove_degenerated_cases.v
+- COQC Meta_theory/Parallel_postulates/SPP_tarski.v
+- COQC Meta_theory/Parallel_postulates/alternate_interior_angles_consecutive_interior_angles.v
+- COQC Meta_theory/Parallel_postulates/alternate_interior_angles_playfair_bis.v
+- COQC Meta_theory/Parallel_postulates/alternate_interior_angles_triangle.v
+- COQC Meta_theory/Parallel_postulates/alternate_interior_angles_proclus.v
+- COQC Tarski_dev/Annexes/perp_bisect.v
+- COQC Meta_theory/Parallel_postulates/bachmann_s_lotschnittaxiom_legendre_s_parallel_postulate.v
+- COQC Meta_theory/Parallel_postulates/bachmann_s_lotschnittaxiom_weak_inverse_projection_postulate.v
+- COQC Meta_theory/Parallel_postulates/bachmann_s_lotschnittaxiom_weak_triangle_circumscription_principle.v
+- COQC Meta_theory/Parallel_postulates/consecutive_interior_angles_alternate_interior_angles.v
+- COQC Meta_theory/Parallel_postulates/existential_playfair_rah.v
+- COQC Meta_theory/Parallel_postulates/existential_saccheri_rah.v
+- COQC Meta_theory/Parallel_postulates/inverse_projection_postulate_proclus_bis.v
+- COQC Meta_theory/Parallel_postulates/SPP_ID.v
+- COQC Meta_theory/Parallel_postulates/TCP_tarski.v
+- COQC Meta_theory/Parallel_postulates/euclid_5_original_euclid.v
+- COQC Meta_theory/Parallel_postulates/existential_triangle_rah.v
+- COQC Meta_theory/Parallel_postulates/par_perp_perp_TCP.v
+- COQC Meta_theory/Parallel_postulates/playfair_alternate_interior_angles.v
+- COQC Meta_theory/Parallel_postulates/playfair_bis_playfair.v
+- COQC Meta_theory/Parallel_postulates/playfair_universal_posidonius_postulate.v
+- COQC Meta_theory/Parallel_postulates/proclus_SPP.v
+- COQC Meta_theory/Parallel_postulates/rah_triangle.v
+- COQC Meta_theory/Parallel_postulates/tarski_euclid.v
+- COQC Meta_theory/Parallel_postulates/triangle_playfair_bis.v
+- COQC Meta_theory/Parallel_postulates/triangle_existential_triangle.v
+- COQC Meta_theory/Parallel_postulates/rah_thales_postulate.v
+- COQC Meta_theory/Parallel_postulates/thales_converse_postulate_weak_triangle_circumscription_principle.v
+- COQC Meta_theory/Parallel_postulates/thales_postulate_thales_converse_postulate.v
+- COQC Meta_theory/Parallel_postulates/weak_triangle_circumscription_principle_bachmann_s_lotschnittaxiom.v
+- COQC Meta_theory/Parallel_postulates/universal_posidonius_postulate_par_perp_perp.v
+- COQC Meta_theory/Parallel_postulates/legendre.v
+- COQC Meta_theory/Parallel_postulates/midpoint_playfair.v
+- COQC Meta_theory/Parallel_postulates/original_euclid_original_spp.v
+- COQC Meta_theory/Parallel_postulates/original_spp_inverse_projection_postulate.v
+- COQC Meta_theory/Parallel_postulates/par_perp_2_par_par_perp_perp.v
+- COQC Meta_theory/Parallel_postulates/par_perp_perp_par_perp_2_par.v
+- COQC Meta_theory/Parallel_postulates/par_perp_perp_playfair.v
+- COQC Meta_theory/Parallel_postulates/par_trans_playfair.v
+- COQC Meta_theory/Parallel_postulates/playfair_existential_playfair.v
+- COQC Meta_theory/Parallel_postulates/playfair_midpoint.v
+- COQC Meta_theory/Parallel_postulates/playfair_par_trans.v
+- COQC Meta_theory/Parallel_postulates/posidonius_postulate_rah.v
+- COQC Meta_theory/Parallel_postulates/tarski_playfair.v
+- COQC Meta_theory/Parallel_postulates/proclus_aristotle.v
+- COQC Meta_theory/Parallel_postulates/proclus_bis_proclus.v
+- COQC Meta_theory/Parallel_postulates/rah_existential_saccheri.v
+- COQC Meta_theory/Parallel_postulates/rah_rectangle_principle.v
+- COQC Meta_theory/Parallel_postulates/rah_similar.v
+- COQC Meta_theory/Parallel_postulates/rah_posidonius_postulate.v
+- COQC Meta_theory/Parallel_postulates/rectangle_existence_rah.v
+- COQC Meta_theory/Parallel_postulates/rectangle_principle_rectangle_existence.v
+- COQC Meta_theory/Parallel_postulates/similar_rah.v
+- COQC Meta_theory/Parallel_postulates/thales_converse_postulate_thales_existence.v
+- COQC Meta_theory/Parallel_postulates/thales_existence_rah.v
+- COQC Meta_theory/Parallel_postulates/weak_inverse_projection_postulate_bachmann_s_lotschnittaxiom.v
+- COQC Meta_theory/Parallel_postulates/weak_inverse_projection_postulate_weak_tarski_s_parallel_postulate.v
+- COQC Meta_theory/Parallel_postulates/weak_tarski_s_parallel_postulate_weak_inverse_projection_postulate.v
+- COQC Tarski_dev/Annexes/quadrilaterals.v
+- COQC Meta_theory/Parallel_postulates/parallel_postulates.v
+- COQC Meta_theory/Models/tarski_to_euclid.v
+- COQC Axioms/makarios_variant_axioms.v
+- COQC Meta_theory/Models/tarski_to_makarios.v
+- COQC Elements/OriginalProofs/euclidean_defs.v
+- COQC Elements/OriginalProofs/general_tactics.v
+- COQC Elements/OriginalProofs/euclidean_tactics.v
+- COQC Elements/OriginalProofs/lemma_congruencesymmetric.v
+- COQC Elements/OriginalProofs/lemma_congruencetransitive.v
+- COQC Elements/OriginalProofs/lemma_nullsegment3.v
+- COQC Elements/OriginalProofs/lemma_equalitysymmetric.v
+- COQC Elements/OriginalProofs/lemma_inequalitysymmetric.v
+- COQC Elements/OriginalProofs/lemma_3_6a.v
+- COQC Elements/OriginalProofs/lemma_betweennotequal.v
+- COQC Elements/OriginalProofs/lemma_extensionunique.v
+- COQC Elements/OriginalProofs/lemma_3_7a.v
+- COQC Elements/OriginalProofs/lemma_3_7b.v
+- COQC Elements/OriginalProofs/lemma_partnotequalwhole.v
+- COQC Elements/OriginalProofs/proposition_01.v
+- COQC Elements/OriginalProofs/lemma_congruenceflip.v
+- COQC Meta_theory/Models/euclid_to_tarski.v
+- COQC Axioms/independent_tarski_axioms.v
+- COQC Meta_theory/Models/independent_tarski_to_tarski.v
+- COQC Axioms/beeson_s_axioms.v
+- COQC Meta_theory/Models/tarski_to_beeson.v
+- COQC Meta_theory/Parallel_postulates/par_trans_NID.v
+- COQC Tarski_dev/Ch12_parallel_inter_dec.v
+- COQC Axioms/hilbert_axioms.v
+- COQC Meta_theory/Models/tarski_to_hilbert.v
+- COQC Meta_theory/Models/hilbert_to_tarski.v
+- COQC Meta_theory/Parallel_postulates/szmielew.v
+- COQC Meta_theory/Counter_models/counter_model_segment_construction.v
+- COQC Meta_theory/Counter_models/counter_model_bet_identity.v
+- COQC Elements/OriginalProofs/lemma_collinear2.v
+- COQC Elements/OriginalProofs/lemma_collinear1.v
+- COQC Elements/OriginalProofs/lemma_collinearorder.v
+- COQC Elements/OriginalProofs/lemma_3_5b.v
+- COQC Elements/OriginalProofs/lemma_3_6b.v
+- COQC Elements/OriginalProofs/lemma_sumofparts.v
+- COQC Elements/OriginalProofs/lemma_doublereverse.v
+- COQC Elements/OriginalProofs/lemma_differenceofparts.v
+- COQC Elements/OriginalProofs/lemma_outerconnectivity.v
+- COQC Elements/OriginalProofs/lemma_collinear4.v
+- COQC Elements/OriginalProofs/lemma_rayimpliescollinear.v
+- COQC Elements/OriginalProofs/lemma_ray2.v
+- COQC Elements/OriginalProofs/lemma_betweennesspreserved.v
+- COQC Elements/OriginalProofs/lemma_collinearitypreserved.v
+- COQC Elements/OriginalProofs/lemma_raystrict.v
+- COQC Elements/OriginalProofs/lemma_equalanglessymmetric.v
+- COQC Elements/OriginalProofs/lemma_angledistinct.v
+- COQC Elements/OriginalProofs/lemma_layoff.v
+- COQC Elements/OriginalProofs/lemma_equalanglesNC.v
+- COQC Elements/OriginalProofs/lemma_ray3.v
+- COQC Elements/OriginalProofs/lemma_equalangleshelper.v
+- COQC Elements/OriginalProofs/lemma_lessthancongruence.v
+- COQC Elements/OriginalProofs/lemma_ray.v
+- COQC Elements/OriginalProofs/lemma_ray1.v
+- COQC Elements/OriginalProofs/lemma_interior5.v
+- COQC Elements/OriginalProofs/lemma_layoffunique.v
+- COQC Elements/OriginalProofs/lemma_ray4.v
+- COQC Elements/OriginalProofs/lemma_ray5.v
+- COQC Elements/OriginalProofs/proposition_04.v
+- COQC Elements/OriginalProofs/lemma_equalanglestransitive.v
+- COQC Elements/OriginalProofs/lemma_ABCequalsCBA.v
+- COQC Elements/OriginalProofs/lemma_equalanglesflip.v
+- COQC Elements/OriginalProofs/lemma_equalanglesreflexive.v
+- COQC Elements/OriginalProofs/proposition_03.v
+- COQC Elements/OriginalProofs/lemma_angleorderrespectscongruence.v
+- COQC Elements/OriginalProofs/lemma_crossbar.v
+- COQC Elements/OriginalProofs/lemma_angleordertransitive.v
+- COQC Elements/OriginalProofs/lemma_9_5b.v
+- COQC Elements/OriginalProofs/lemma_9_5a.v
+- COQC Elements/OriginalProofs/lemma_sameside2.v
+- COQC Elements/OriginalProofs/lemma_twolines.v
+- COQC Elements/OriginalProofs/proposition_10.v
+- COQC Elements/OriginalProofs/proposition_12.v
+- COQC Elements/OriginalProofs/lemma_NCorder.v
+- COQC Elements/OriginalProofs/lemma_samesidesymmetric.v
+- COQC Elements/OriginalProofs/lemma_twolines2.v
+- COQC Elements/OriginalProofs/lemma_collinear5.v
+- COQC Elements/OriginalProofs/lemma_planeseparation.v
+- COQC Elements/OriginalProofs/lemma_lessthantransitive.v
+- COQC Elements/OriginalProofs/lemma_midpointunique.v
+- COQC Elements/OriginalProofs/lemma_rightangleNC.v
+- COQC Elements/OriginalProofs/lemma_supplements.v
+- COQC Elements/OriginalProofs/lemma_8_2.v
+- COQC Elements/OriginalProofs/lemma_8_3.v
+- COQC Elements/OriginalProofs/lemma_collinearright.v
+- COQC Elements/OriginalProofs/lemma_rightreverse.v
+- COQC Elements/OriginalProofs/lemma_altitudebisectsbase.v
+- COQC Elements/OriginalProofs/lemma_droppedperpendicularunique.v
+- COQC Elements/OriginalProofs/lemma_fiveline.v
+- COQC Elements/OriginalProofs/proposition_07.v
+- COQC Elements/OriginalProofs/lemma_angletrichotomy.v
+- COQC Elements/OriginalProofs/proposition_15.v
+- COQC Elements/OriginalProofs/lemma_angleorderrespectscongruence2.v
+- COQC Elements/OriginalProofs/proposition_16.v
+- COQC Elements/OriginalProofs/proposition_05.v
+- COQC Elements/OriginalProofs/proposition_18.v
+- COQC Elements/OriginalProofs/lemma_trichotomy1.v
+- COQC Elements/OriginalProofs/proposition_19.v
+- COQC Elements/OriginalProofs/lemma_lessthancongruence2.v
+- COQC Elements/OriginalProofs/proposition_24.v
+- COQC Elements/OriginalProofs/lemma_supplementsymmetric.v
+- COQC Elements/OriginalProofs/lemma_oppositesidesymmetric.v
+- COQC Elements/OriginalProofs/lemma_collinearbetween.v
+- COQC Elements/OriginalProofs/proposition_27.v
+- COQC Elements/OriginalProofs/proposition_28B.v
+- COQC Elements/OriginalProofs/lemma_pointreflectionisometry.v
+- COQC Elements/OriginalProofs/lemma_rightreflection.v
+- COQC Elements/OriginalProofs/proposition_11.v
+- COQC Elements/OriginalProofs/lemma_parallelsymmetric.v
+- COQC Elements/OriginalProofs/lemma_NChelper.v
+- COQC Elements/OriginalProofs/lemma_parallelcollinear1.v
+- COQC Elements/OriginalProofs/lemma_tarskiparallelflip.v
+- COQC Elements/OriginalProofs/lemma_parallelcollinear2.v
+- COQC Elements/OriginalProofs/lemma_parallelcollinear.v
+- COQC Elements/OriginalProofs/lemma_paralleldef2B.v
+- COQC Elements/OriginalProofs/lemma_diagonalsmeet.v
+- COQC Elements/OriginalProofs/lemma_parallelflip.v
+- COQC Elements/OriginalProofs/proposition_31.v
+- COQC Elements/OriginalProofs/lemma_crossbar2.v
+- COQC Elements/OriginalProofs/lemma_supplementinequality.v
+- COQC Elements/OriginalProofs/proposition_20.v
+- COQC Elements/OriginalProofs/lemma_TGsymmetric.v
+- COQC Elements/OriginalProofs/lemma_TGflip.v
+- COQC Elements/OriginalProofs/lemma_lessthannotequal.v
+- COQC Elements/OriginalProofs/lemma_together.v
+- COQC Elements/OriginalProofs/lemma_trichotomy2.v
+- COQC Elements/OriginalProofs/lemma_subtractequals.v
+- COQC Elements/OriginalProofs/proposition_22.v
+- COQC Elements/OriginalProofs/proposition_23.v
+- COQC Elements/OriginalProofs/lemma_samesidereflexive.v
+- COQC Elements/OriginalProofs/lemma_8_7.v
+- COQC Elements/OriginalProofs/lemma_notperp.v
+- COQC Elements/OriginalProofs/proposition_11B.v
+- COQC Elements/OriginalProofs/lemma_linereflectionisometry.v
+- COQC Elements/OriginalProofs/lemma_10_12.v
+- COQC Elements/OriginalProofs/lemma_Euclid4.v
+- COQC Elements/OriginalProofs/lemma_9_5.v
+- COQC Elements/OriginalProofs/proposition_23B.v
+- COQC Elements/OriginalProofs/proposition_23C.v
+- COQC Elements/OriginalProofs/lemma_angletrichotomy2.v
+- COQC Elements/OriginalProofs/proposition_29.v
+- COQC Elements/OriginalProofs/proposition_29B.v
+- COQC Elements/OriginalProofs/proposition_26A.v
+- COQC Elements/OriginalProofs/proposition_34.v
+- COQC Elements/OriginalProofs/lemma_NCdistinct.v
+- COQC Elements/OriginalProofs/lemma_equaltorightisright.v
+- COQC Elements/OriginalProofs/lemma_parallelNC.v
+- COQC Elements/OriginalProofs/lemma_collinearparallel.v
+- COQC Elements/OriginalProofs/proposition_29C.v
+- COQC Elements/OriginalProofs/lemma_supplementofright.v
+- COQC Elements/OriginalProofs/lemma_PGrectangle.v
+- COQC Elements/OriginalProofs/lemma_TTorder.v
+- COQC Elements/OriginalProofs/proposition_31short.v
+- COQC Elements/OriginalProofs/proposition_27B.v
+- COQC Elements/OriginalProofs/proposition_33.v
+- COQC Elements/OriginalProofs/lemma_collinearparallel2.v
+- COQC Elements/OriginalProofs/lemma_crisscross.v
+- COQC Elements/OriginalProofs/lemma_samesidetransitive.v
+- COQC Elements/OriginalProofs/lemma_Playfairhelper.v
+- COQC Elements/OriginalProofs/lemma_Playfairhelper2.v
+- COQC Elements/OriginalProofs/lemma_Playfair.v
+- COQC Elements/OriginalProofs/lemma_triangletoparallelogram.v
+- COQC Elements/OriginalProofs/lemma_samenotopposite.v
+- COQC Elements/OriginalProofs/lemma_PGsymmetric.v
+- COQC Elements/OriginalProofs/lemma_PGflip.v
+- COQC Elements/OriginalProofs/proposition_46.v
+- COQC Elements/OriginalProofs/lemma_oppositesideflip.v
+- COQC Elements/OriginalProofs/proposition_14.v
+- COQC Elements/OriginalProofs/lemma_righttogether.v
+- COQC Elements/OriginalProofs/lemma_crossimpliesopposite.v
+- COQC Elements/OriginalProofs/lemma_diagonalsbisect.v
+- COQC Elements/OriginalProofs/lemma_squareparallelogram.v
+- COQC Elements/OriginalProofs/lemma_squarerectangle.v
+- COQC Elements/OriginalProofs/proposition_48A.v
+- COQC Elements/OriginalProofs/lemma_samesidecollinear.v
+- COQC Elements/OriginalProofs/lemma_PGrotate.v
+- COQC Elements/OriginalProofs/lemma_35helper.v
+- COQC Elements/OriginalProofs/lemma_TCreflexive.v
+- COQC Elements/OriginalProofs/lemma_ETreflexive.v
+- COQC Elements/OriginalProofs/proposition_35A.v
+- COQC Elements/OriginalProofs/lemma_parallelPasch.v
+- COQC Elements/OriginalProofs/proposition_35.v
+- COQC Elements/OriginalProofs/proposition_37.v
+- COQC Elements/OriginalProofs/proposition_41.v
+- COQC Elements/OriginalProofs/proposition_36.v
+- COQC Elements/OriginalProofs/proposition_38.v
+- COQC Elements/OriginalProofs/proposition_42.v
+- COQC Elements/OriginalProofs/lemma_legsmallerhypotenuse.v
+- COQC Elements/OriginalProofs/lemma_tworays.v
+- COQC Elements/OriginalProofs/lemma_altitudeofrighttriangle.v
+- COQC Elements/OriginalProofs/proposition_36A.v
+- COQC Elements/OriginalProofs/lemma_4_19.v
+- COQC Elements/OriginalProofs/lemma_samesideflip.v
+- COQC Elements/OriginalProofs/proposition_39A.v
+- COQC Elements/OriginalProofs/proposition_39.v
+- COQC Elements/OriginalProofs/lemma_RTsymmetric.v
+- COQC Elements/OriginalProofs/lemma_paralleldef2A.v
+- COQC Elements/OriginalProofs/lemma_lessthanadditive.v
+- COQC Elements/OriginalProofs/lemma_lessthanbetween.v
+- COQC Elements/OriginalProofs/lemma_21helper.v
+- COQC Elements/OriginalProofs/lemma_TTflip.v
+- COQC Elements/OriginalProofs/lemma_TTtransitive.v
+- COQC Elements/OriginalProofs/lemma_TTflip2.v
+- COQC Elements/OriginalProofs/proposition_21.v
+- COQC Elements/OriginalProofs/proposition_43.v
+- COQC Elements/OriginalProofs/lemma_erectedperpendicularunique.v
+- COQC Elements/OriginalProofs/proposition_28C.v
+- COQC Elements/OriginalProofs/lemma_twoperpsparallel.v
+- COQC Elements/OriginalProofs/proposition_47A.v
+- COQC Elements/OriginalProofs/proposition_40.v
+- COQC Elements/OriginalProofs/lemma_rectanglerotate.v
+- COQC Elements/OriginalProofs/proposition_32.v
+- COQC Elements/OriginalProofs/proposition_17.v
+- COQC Elements/OriginalProofs/lemma_rectangleparallelogram.v
+- COQC Elements/OriginalProofs/lemma_squareflip.v
+- COQC Elements/OriginalProofs/lemma_Pasch_outer2.v
+- COQC Elements/OriginalProofs/lemma_squaresequal.v
+- COQC Elements/OriginalProofs/proposition_30A.v
+- COQC Elements/OriginalProofs/proposition_25.v
+- COQC Elements/OriginalProofs/lemma_30helper.v
+- COQC Elements/OriginalProofs/proposition_42B.v
+- COQC Elements/OriginalProofs/proposition_05b.v
+- COQC Elements/OriginalProofs/proposition_06a.v
+- COQC Elements/OriginalProofs/proposition_06.v
+- COQC Elements/OriginalProofs/proposition_08.v
+- COQC Elements/OriginalProofs/proposition_09.v
+- COQC Elements/OriginalProofs/proposition_13.v
+- COQC Elements/OriginalProofs/lemma_26helper.v
+- COQC Elements/OriginalProofs/proposition_26B.v
+- COQC Elements/OriginalProofs/proposition_28A.v
+- COQC Elements/OriginalProofs/proposition_30B.v
+- COQC Elements/OriginalProofs/proposition_30.v
+- COQC Elements/OriginalProofs/proposition_33B.v
+- COQC Elements/OriginalProofs/lemma_supplements2.v
+- COQC Elements/OriginalProofs/proposition_28D.v
+- COQC Elements/OriginalProofs/proposition_43B.v
+- COQC Elements/OriginalProofs/lemma_parallelbetween.v
+- COQC Elements/OriginalProofs/proposition_44A.v
+- COQC Elements/OriginalProofs/proposition_44.v
+- COQC Elements/OriginalProofs/lemma_RTcongruence.v
+- COQC Elements/OriginalProofs/proposition_45.v
+- COQC Elements/OriginalProofs/lemma_angleaddition.v
+- COQC Elements/OriginalProofs/proposition_47B.v
+- COQC Elements/OriginalProofs/proposition_47.v
+- COQC Elements/OriginalProofs/proposition_48.v
+- COQC Elements/OriginalProofs/book1.v
+- COQC Elements/OriginalProofs/lemma_squareunique.v
+- COQC Elements/OriginalProofs/lemma_paste5.v
+- COQC Elements/OriginalProofs/lemma_rectanglereverse.v
+- COQC Elements/OriginalProofs/lemma_together2.v
+- COQC Elements/OriginalProofs/lemma_insideor.v
+- COQC Tarski_dev/Annexes/tangency.v
+- COQC Elements/Statements/Book_3.v
+- COQC Tarski_dev/Annexes/sums.v
+- COQC Tarski_dev/Annexes/Tagged_predicates.v
+- COQC Tarski_dev/Annexes/quadrilaterals_inter_dec.v
+- COQC Tarski_dev/Annexes/midpoint_theorems.v
+- COQC Tarski_dev/Ch13_2_length.v
+- COQC Tarski_dev/Ch13_3_angles.v
+- COQC Tarski_dev/Ch13_4_cos.v
+- COQC Tarski_dev/Annexes/vectors.v
+- COQC Tarski_dev/Annexes/project.v
+- COQC Tarski_dev/Ch13_5_Pappus_Pascal.v
+- COQC Tarski_dev/Ch13_6_Desargues_Hessenberg.v
+- COQC Tarski_dev/Ch14_sum.v
+- COQC Tarski_dev/Ch14_prod.v
+- COQC Tarski_dev/Ch14_order.v
+- COQC Tarski_dev/Ch15_lengths.v
+- COQC Tarski_dev/Ch16_coordinates.v
+- COQC Tarski_dev/Ch15_pyth_rel.v
+- COQC Tarski_dev/Ch16_coordinates_with_functions.v
+- File &quot;./Tarski_dev/Ch16_coordinates_with_functions.v&quot;, line 5, characters 0-22:
+- Warning: Notation [ _ ] was already used [notation-overridden,parsing]
+- could not prove discrimination result
+- could not prove discrimination result
+- could not prove discrimination result
+- could not prove discrimination result
+- could not prove discrimination result
+- could not prove discrimination result
+- could not prove discrimination result
+- could not prove discrimination result
+- could not prove discrimination result
+- could not prove discrimination result
+- could not prove discrimination result
+- could not prove discrimination result
+</pre></dd>
+            </dl>
+            <h2>Installation size</h2>
+            <p>No files were installed.</p>
+            <h2>Uninstall</h2>
+            <dl class="dl-horizontal">
+              <dt>Command</dt>
+              <dd><code>true</code></dd>
+              <dt>Return code</dt>
+              <dd>0</dd>
+              <dt>Missing removes</dt>
+              <dd>
+                none
+              </dd>
+              <dt>Wrong removes</dt>
+              <dd>
+                none
+              </dd>
+            </dl>
+          </div>
+        </div>
+      </div>
+      <hr/>
+      <div class="footer">
+        <p class="text-center">
+          <small>Sources are on <a href="https://github.com/coq-bench">GitHub</a>. © Guillaume Claret.</small>
+        </p>
+      </div>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="../../../../../bootstrap.min.js"></script>
+  </body>
+</html>
