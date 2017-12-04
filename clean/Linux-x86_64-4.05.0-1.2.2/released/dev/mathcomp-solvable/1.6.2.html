@@ -38,10 +38,10 @@
               mathcomp-solvable
               <small>
                 1.6.2
-                <span class="label label-success">8 m 32 s</span>
+                <span class="label label-warning">Error with dependencies</span>
               </small>
             </h1>
-            <p><em><script>document.write(moment("2017-11-27 16:12:15 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2017-11-27 16:12:15 UTC)</em><p>
+            <p><em><script>document.write(moment("2017-12-04 19:34:49 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2017-12-04 19:34:49 UTC)</em><p>
             <h2>Context</h2>
             <pre># Installed packages for system:
 base-bigarray   base  Bigarray library distributed with the OCaml compiler
@@ -79,86 +79,96 @@ ocamlfind      1.7.3  A library manager for OCaml
               <dt>Command</dt>
               <dd><code>opam list; ulimit -Sv 4000000; timeout 30m opam install -y --deps-only coq-mathcomp-solvable.1.6.2</code></dd>
               <dt>Return code</dt>
-              <dd>0</dd>
+              <dd>1024</dd>
               <dt>Duration</dt>
-              <dd>11 m 56 s</dd>
+              <dd>43 s</dd>
+              <dt>Output</dt>
+              <dd><pre># Installed packages for system:
+base-bigarray   base  Bigarray library distributed with the OCaml compiler
+base-threads    base  Threads library distributed with the OCaml compiler
+base-unix       base  Unix library distributed with the OCaml compiler
+camlp5          7.03  Preprocessor-pretty-printer of OCaml
+conf-m4            1  Virtual package relying on m4
+coq              dev  Formal proof management system.
+ocamlfind      1.7.3  A library manager for OCaml
+The following actions will be performed:
+  - install coq-mathcomp-ssreflect 1.6.2
+  - install coq-mathcomp-fingroup  1.6.2
+  - install coq-mathcomp-algebra   1.6.2
+===== 3 to install =====
+=-=- Gathering sources =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+[coq-mathcomp-algebra: http] Command started
+[coq-mathcomp-fingroup: http] Command started
+[coq-mathcomp-ssreflect: http] Command started
+[coq-mathcomp-ssreflect: http] Command started
+[coq-mathcomp-ssreflect.1.6.2] http://github.com/math-comp/math-comp/archive/mathcomp-1.6.2.tar.gz downloaded
+[coq-mathcomp-algebra: http] Command started
+[coq-mathcomp-algebra.1.6.2] http://github.com/math-comp/math-comp/archive/mathcomp-1.6.2.tar.gz downloaded
+[coq-mathcomp-fingroup: http] Command started
+[coq-mathcomp-fingroup.1.6.2] http://github.com/math-comp/math-comp/archive/mathcomp-1.6.2.tar.gz downloaded
+=-=- Processing actions -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+[coq-mathcomp-ssreflect: make 6] Command started
+[ERROR] The compilation of coq-mathcomp-ssreflect failed at &quot;make -C
+        mathcomp/ssreflect -j 6&quot;.
+[coq-mathcomp-ssreflect: sh] Command started
+#=== ERROR while installing coq-mathcomp-ssreflect.1.6.2 ======================#
+# opam-version         1.2.2
+# os                   linux
+# command              make -C mathcomp/ssreflect -j 6
+# path                 /home/bench/.opam/system/build/coq-mathcomp-ssreflect.1.6.2
+# compiler             system (4.05.0)
+# exit-code            2
+# env-file             /home/bench/.opam/system/build/coq-mathcomp-ssreflect.1.6.2/coq-mathcomp-ssreflect-20692-d8a4ae.env
+# stdout-file          /home/bench/.opam/system/build/coq-mathcomp-ssreflect.1.6.2/coq-mathcomp-ssreflect-20692-d8a4ae.out
+# stderr-file          /home/bench/.opam/system/build/coq-mathcomp-ssreflect.1.6.2/coq-mathcomp-ssreflect-20692-d8a4ae.err
+### stdout ###
+# [...]
+# COQDEP all_ssreflect.v
+# COQC ssreflect.v
+# COQC ssrbool.v
+# COQC ssrnotations.v
+# COQC ssrfun.v
+# COQC eqtype.v
+# Makefile.coq:642: recipe for target &#39;eqtype.vo&#39; failed
+# Makefile.coq:315: recipe for target &#39;all&#39; failed
+# Makefile:24: recipe for target &#39;all&#39; failed
+# make: Leaving directory &#39;/home/bench/.opam/system/build/coq-mathcomp-ssreflect.1.6.2/mathcomp/ssreflect&#39;
+### stderr ###
+# [...]
+# [deprecated-implicit-arguments,deprecated]
+# File &quot;./eqtype.v&quot;, line 699, characters 0-79:
+# Warning: This notation will not be used for printing as it is not reversible.
+# [non-reversible-notation,parsing]
+# File &quot;./eqtype.v&quot;, line 700, characters 16-21:
+# Error: The reference ev_ax was not found in the current environment.
+# 
+# make[2]: *** [eqtype.vo] Error 1
+# make[1]: *** [all] Error 2
+# make: *** [all] Error 2
+=-=- Error report -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+The following actions were aborted
+  - install coq-mathcomp-algebra  1.6.2
+  - install coq-mathcomp-fingroup 1.6.2
+The following actions failed
+  - install coq-mathcomp-ssreflect 1.6.2
+No changes have been performed
+</pre></dd>
             </dl>
             <h2>Install</h2>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>opam list; ulimit -Sv 4000000; timeout 30m opam install -j1 -y -v coq-mathcomp-solvable.1.6.2</code></dd>
+              <dd><code>true</code></dd>
               <dt>Return code</dt>
               <dd>0</dd>
               <dt>Duration</dt>
-              <dd>8 m 32 s</dd>
+              <dd>0 s</dd>
             </dl>
             <h2>Installation size</h2>
-            <p>Total: 16,134 K</p>
-            <ul>
-              <li>2,078 K <code>lib/coq/user-contrib/mathcomp/solvable/extremal.vo</code></li>
-              <li>1,421 K <code>lib/coq/user-contrib/mathcomp/solvable/extremal.glob</code></li>
-              <li>935 K <code>lib/coq/user-contrib/mathcomp/solvable/abelian.vo</code></li>
-              <li>885 K <code>lib/coq/user-contrib/mathcomp/solvable/maximal.vo</code></li>
-              <li>829 K <code>lib/coq/user-contrib/mathcomp/solvable/abelian.glob</code></li>
-              <li>771 K <code>lib/coq/user-contrib/mathcomp/solvable/maximal.glob</code></li>
-              <li>531 K <code>lib/coq/user-contrib/mathcomp/solvable/extraspecial.vo</code></li>
-              <li>470 K <code>lib/coq/user-contrib/mathcomp/solvable/pgroup.glob</code></li>
-              <li>449 K <code>lib/coq/user-contrib/mathcomp/solvable/hall.vo</code></li>
-              <li>437 K <code>lib/coq/user-contrib/mathcomp/solvable/hall.glob</code></li>
-              <li>420 K <code>lib/coq/user-contrib/mathcomp/solvable/center.vo</code></li>
-              <li>406 K <code>lib/coq/user-contrib/mathcomp/solvable/extraspecial.glob</code></li>
-              <li>365 K <code>lib/coq/user-contrib/mathcomp/solvable/frobenius.vo</code></li>
-              <li>359 K <code>lib/coq/user-contrib/mathcomp/solvable/pgroup.vo</code></li>
-              <li>327 K <code>lib/coq/user-contrib/mathcomp/solvable/finmodule.vo</code></li>
-              <li>302 K <code>lib/coq/user-contrib/mathcomp/solvable/cyclic.vo</code></li>
-              <li>301 K <code>lib/coq/user-contrib/mathcomp/solvable/frobenius.glob</code></li>
-              <li>298 K <code>lib/coq/user-contrib/mathcomp/solvable/alt.vo</code></li>
-              <li>298 K <code>lib/coq/user-contrib/mathcomp/solvable/cyclic.glob</code></li>
-              <li>285 K <code>lib/coq/user-contrib/mathcomp/solvable/sylow.vo</code></li>
-              <li>284 K <code>lib/coq/user-contrib/mathcomp/solvable/sylow.glob</code></li>
-              <li>279 K <code>lib/coq/user-contrib/mathcomp/solvable/nilpotent.glob</code></li>
-              <li>270 K <code>lib/coq/user-contrib/mathcomp/solvable/finmodule.glob</code></li>
-              <li>252 K <code>lib/coq/user-contrib/mathcomp/solvable/nilpotent.vo</code></li>
-              <li>249 K <code>lib/coq/user-contrib/mathcomp/solvable/jordanholder.vo</code></li>
-              <li>232 K <code>lib/coq/user-contrib/mathcomp/solvable/alt.glob</code></li>
-              <li>218 K <code>lib/coq/user-contrib/mathcomp/solvable/gseries.vo</code></li>
-              <li>218 K <code>lib/coq/user-contrib/mathcomp/solvable/jordanholder.glob</code></li>
-              <li>217 K <code>lib/coq/user-contrib/mathcomp/solvable/center.glob</code></li>
-              <li>197 K <code>lib/coq/user-contrib/mathcomp/solvable/primitive_action.vo</code></li>
-              <li>165 K <code>lib/coq/user-contrib/mathcomp/solvable/commutator.glob</code></li>
-              <li>140 K <code>lib/coq/user-contrib/mathcomp/solvable/gseries.glob</code></li>
-              <li>139 K <code>lib/coq/user-contrib/mathcomp/solvable/commutator.vo</code></li>
-              <li>128 K <code>lib/coq/user-contrib/mathcomp/solvable/gfunctor.vo</code></li>
-              <li>125 K <code>lib/coq/user-contrib/mathcomp/solvable/primitive_action.glob</code></li>
-              <li>119 K <code>lib/coq/user-contrib/mathcomp/solvable/extremal.v</code></li>
-              <li>93 K <code>lib/coq/user-contrib/mathcomp/solvable/gfunctor.glob</code></li>
-              <li>87 K <code>lib/coq/user-contrib/mathcomp/solvable/abelian.v</code></li>
-              <li>73 K <code>lib/coq/user-contrib/mathcomp/solvable/maximal.v</code></li>
-              <li>50 K <code>lib/coq/user-contrib/mathcomp/solvable/pgroup.v</code></li>
-              <li>41 K <code>lib/coq/user-contrib/mathcomp/solvable/hall.v</code></li>
-              <li>40 K <code>lib/coq/user-contrib/mathcomp/solvable/extraspecial.v</code></li>
-              <li>34 K <code>lib/coq/user-contrib/mathcomp/solvable/frobenius.v</code></li>
-              <li>33 K <code>lib/coq/user-contrib/mathcomp/solvable/all_solvable.vo</code></li>
-              <li>32 K <code>lib/coq/user-contrib/mathcomp/solvable/cyclic.v</code></li>
-              <li>29 K <code>lib/coq/user-contrib/mathcomp/solvable/jordanholder.v</code></li>
-              <li>27 K <code>lib/coq/user-contrib/mathcomp/solvable/nilpotent.v</code></li>
-              <li>27 K <code>lib/coq/user-contrib/mathcomp/solvable/sylow.v</code></li>
-              <li>26 K <code>lib/coq/user-contrib/mathcomp/solvable/finmodule.v</code></li>
-              <li>23 K <code>lib/coq/user-contrib/mathcomp/solvable/center.v</code></li>
-              <li>23 K <code>lib/coq/user-contrib/mathcomp/solvable/alt.v</code></li>
-              <li>20 K <code>lib/coq/user-contrib/mathcomp/solvable/gseries.v</code></li>
-              <li>19 K <code>lib/coq/user-contrib/mathcomp/solvable/gfunctor.v</code></li>
-              <li>14 K <code>lib/coq/user-contrib/mathcomp/solvable/primitive_action.v</code></li>
-              <li>13 K <code>lib/coq/user-contrib/mathcomp/solvable/commutator.v</code></li>
-              <li>1 K <code>lib/coq/user-contrib/mathcomp/solvable/all_solvable.glob</code></li>
-              <li>1 K <code>lib/coq/user-contrib/mathcomp/solvable/all_solvable.v</code></li>
-              <li>1 K <code>install/coq-mathcomp-solvable.install</code></li>
-              <li>0 K <code>lib/coq-mathcomp-solvable/opam.config</code></li>
-            </ul>
+            <p>No files were installed.</p>
             <h2>Uninstall</h2>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>opam remove -y coq-mathcomp-solvable.1.6.2</code></dd>
+              <dd><code>true</code></dd>
               <dt>Return code</dt>
               <dd>0</dd>
               <dt>Missing removes</dt>
