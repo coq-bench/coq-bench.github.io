@@ -41,7 +41,7 @@
                 <span class="label label-warning">Error with dependencies</span>
               </small>
             </h1>
-            <p><em><script>document.write(moment("2018-05-20 00:16:59 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2018-05-20 00:16:59 UTC)</em><p>
+            <p><em><script>document.write(moment("2018-05-31 19:10:17 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2018-05-31 19:10:17 UTC)</em><p>
             <h2>Context</h2>
             <pre># Installed packages for system:
 base-bigarray   base  Bigarray library distributed with the OCaml compiler
@@ -83,7 +83,7 @@ ocamlfind      1.8.0  A library manager for OCaml
               <dt>Return code</dt>
               <dd>1024</dd>
               <dt>Duration</dt>
-              <dd>3 m 9 s</dd>
+              <dd>1 m 0 s</dd>
               <dt>Output</dt>
               <dd><pre># Installed packages for system:
 base-bigarray   base  Bigarray library distributed with the OCaml compiler
@@ -112,8 +112,8 @@ The following actions will be performed:
 [ERROR] The compilation of coq-mathcomp-ssreflect failed at &quot;make -C
         mathcomp/ssreflect -j 6&quot;.
 [coq-mathcomp-ssreflect: sh] Command started
-[coq-stdpp: make install] Command started
--&gt; installed coq-stdpp.1.1.0
+[ERROR] The compilation of coq-stdpp failed at &quot;make -j6&quot;.
+[coq-stdpp: rm] Command started
 #=== ERROR while installing coq-mathcomp-ssreflect.1.6.2 ======================#
 # opam-version         1.2.2
 # os                   linux
@@ -121,9 +121,9 @@ The following actions will be performed:
 # path                 /home/bench/.opam/system/build/coq-mathcomp-ssreflect.1.6.2
 # compiler             system (4.05.0)
 # exit-code            2
-# env-file             /home/bench/.opam/system/build/coq-mathcomp-ssreflect.1.6.2/coq-mathcomp-ssreflect-22231-d2d111.env
-# stdout-file          /home/bench/.opam/system/build/coq-mathcomp-ssreflect.1.6.2/coq-mathcomp-ssreflect-22231-d2d111.out
-# stderr-file          /home/bench/.opam/system/build/coq-mathcomp-ssreflect.1.6.2/coq-mathcomp-ssreflect-22231-d2d111.err
+# env-file             /home/bench/.opam/system/build/coq-mathcomp-ssreflect.1.6.2/coq-mathcomp-ssreflect-27944-d2d111.env
+# stdout-file          /home/bench/.opam/system/build/coq-mathcomp-ssreflect.1.6.2/coq-mathcomp-ssreflect-27944-d2d111.out
+# stderr-file          /home/bench/.opam/system/build/coq-mathcomp-ssreflect.1.6.2/coq-mathcomp-ssreflect-27944-d2d111.err
 ### stdout ###
 # [...]
 # COQDEP VFILES
@@ -144,13 +144,45 @@ The following actions will be performed:
 # make[2]: *** [eqtype.vo] Error 1
 # make[1]: *** [all] Error 2
 # make: *** [all] Error 2
+#=== ERROR while installing coq-stdpp.1.1.0 ===================================#
+# opam-version         1.2.2
+# os                   linux
+# command              make -j6
+# path                 /home/bench/.opam/system/build/coq-stdpp.1.1.0
+# compiler             system (4.05.0)
+# exit-code            2
+# env-file             /home/bench/.opam/system/build/coq-stdpp.1.1.0/coq-stdpp-27944-a00279.env
+# stdout-file          /home/bench/.opam/system/build/coq-stdpp.1.1.0/coq-stdpp-27944-a00279.out
+# stderr-file          /home/bench/.opam/system/build/coq-stdpp.1.1.0/coq-stdpp-27944-a00279.err
+### stdout ###
+# [...]
+# COQC theories/fin.v
+# COQC theories/orders.v
+# COQC theories/functions.v
+# COQC theories/relations.v
+# COQC theories/hlist.v
+# Makefile.coq:673: recipe for target &#39;theories/streams.vo&#39; failed
+# Makefile.coq:673: recipe for target &#39;theories/relations.vo&#39; failed
+# Makefile.coq:328: recipe for target &#39;all&#39; failed
+# make[1]: Leaving directory &#39;/home/bench/.opam/system/build/coq-stdpp.1.1.0&#39;
+# Makefile:6: recipe for target &#39;all&#39; failed
+### stderr ###
+# Syntax error: [prim:ident] expected after &#39;cofix&#39; (in [tactic:simple_tactic]).
+# [...]
+# make[2]: *** [theories/streams.vo] Error 1
+# make[2]: *** Waiting for unfinished jobs....
+# File &quot;./theories/relations.v&quot;, line 223, characters 31-32:
+# Error:
+# Syntax error: [prim:ident] expected after &#39;fix&#39; (in [tactic:simple_tactic]).
+# 
+# make[2]: *** [theories/relations.vo] Error 1
+# make[1]: *** [all] Error 2
+# make: *** [all] Error 2
 =-=- Error report -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 The following actions failed
   - install coq-mathcomp-ssreflect 1.6.2
-The following changes have been performed
-  - install coq-stdpp 1.1.0
-The former state can be restored with:
-    opam switch import &quot;~/.opam/system/backup/state-20180419171924.export&quot;
+  - install coq-stdpp              1.1.0
+No changes have been performed
 </pre></dd>
             </dl>
             <h2>Install</h2>
