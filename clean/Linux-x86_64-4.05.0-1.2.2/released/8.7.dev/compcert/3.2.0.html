@@ -38,10 +38,10 @@
               compcert
               <small>
                 3.2.0
-                <span class="label label-danger">Uninstallation error</span>
+                <span class="label label-danger">Error</span>
               </small>
             </h1>
-            <p><em><script>document.write(moment("2018-05-21 05:55:55 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2018-05-21 05:55:55 UTC)</em><p>
+            <p><em><script>document.write(moment("2018-06-02 00:56:40 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2018-06-02 00:56:40 UTC)</em><p>
             <h2>Context</h2>
             <pre># Installed packages for system:
 base-bigarray     base  Bigarray library distributed with the OCaml compiler
@@ -90,41 +90,335 @@ ocamlfind        1.8.0  A library manager for OCaml
               <dt>Command</dt>
               <dd><code>opam list; ulimit -Sv 4000000; timeout 400m opam install -j1 -y -v coq-compcert.3.2.0</code></dd>
               <dt>Return code</dt>
-              <dd>0</dd>
+              <dd>1024</dd>
               <dt>Duration</dt>
-              <dd>43 m 33 s</dd>
+              <dd>38 m 24 s</dd>
+              <dt>Output</dt>
+              <dd><pre># Installed packages for system:
+base-bigarray      base  Bigarray library distributed with the OCaml compiler
+base-num           base  Num library distributed with the OCaml compiler
+base-threads       base  Threads library distributed with the OCaml compiler
+base-unix          base  Unix library distributed with the OCaml compiler
+camlp5             7.05  Preprocessor-pretty-printer of OCaml
+conf-m4               1  Virtual package relying on m4
+coq             8.7.dev  Formal proof management system.
+menhir         20180530  LR(1) parser generator
+num                   0  The Num library for arbitrary-precision integer and rat
+ocamlbuild       0.12.0  OCamlbuild is a build system with builtin rules to easi
+ocamlfind         1.8.0  A library manager for OCaml
+The following actions will be performed:
+  - install coq-compcert 3.2.0
+=-=- Gathering sources =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+[coq-compcert: http] Command started
+[coq-compcert: http] Command started
+[coq-compcert.3.2.0] https://github.com/AbsInt/CompCert/archive/v3.2.tar.gz downloaded
+=-=- Processing actions -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+[coq-compcert: ./configure ia32-linux] Command started
++ ./configure &quot;ia32-linux&quot; &quot;-bindir&quot; &quot;/home/bench/.opam/system/bin&quot; &quot;-libdir&quot; &quot;/home/bench/.opam/system/lib/coq/user-contrib/compcert&quot; &quot;-clightgen&quot; &quot;-ignore-coq-version&quot; (CWD=/home/bench/.opam/system/build/coq-compcert.3.2.0)
+- Testing assembler support for CFI directives... yes
+- Testing linker support for &#39;-no-pie&#39; option... no
+- Testing Coq... version 8.7.2 -- UNSUPPORTED
+- Warning: this version of Coq is unsupported, proceed at your own risks.
+- Testing OCaml... version 4.05.0 -- good!
+- Testing OCaml .opt compilers... yes
+- Testing Menhir... version 20180530 -- good!
+- Testing GNU make... version 4.1 (command &#39;make&#39;) -- good!
+- 
+- CompCert configuration:
+-     Target architecture........... x86
+-     Hardware model................ 32sse2
+-     Application binary interface.. standard
+-     Endianness.................... little
+-     Composite passing conventions. arguments: ints, return values: ref
+-     OS and development env........ linux
+-     C compiler.................... gcc -m32
+-     C preprocessor................ gcc
+-     Assembler..................... gcc
+-     Assembler supports CFI........ true
+-     Assembler for runtime lib..... gcc -m32 -c
+-     Linker........................ gcc
+-     Linker needs &#39;-no-pie&#39;........ false
+-     Math library.................. -lm
+-     Binaries installed in......... /home/bench/.opam/system/bin
+-     Runtime library provided...... true
+-     Library files installed in.... /home/bench/.opam/system/lib/coq/user-contrib/compcert
+-     Standard headers provided..... true
+-     Standard headers installed in. /home/bench/.opam/system/lib/coq/user-contrib/compcert/include
+-     Build command to use.......... make
+- 
+[coq-compcert: make] Command started
++ make &quot;-j1&quot; (CWD=/home/bench/.opam/system/build/coq-compcert.3.2.0)
+- make[1]: Entering directory &#39;/home/bench/.opam/system/build/coq-compcert.3.2.0&#39;
+- ocamlopt -o tools/ndfun str.cmxa tools/ndfun.ml
+- Preprocessing x86/ConstpropOp.vp
+- Preprocessing x86/SelectOp.vp
+- Preprocessing x86/SelectLong.vp
+- Preprocessing backend/SelectDiv.vp
+- Preprocessing backend/SplitLong.vp
+- menhir --coq cparser/Parser.vy
+- Analyzing Coq dependencies
+- make[1]: Leaving directory &#39;/home/bench/.opam/system/build/coq-compcert.3.2.0&#39;
+- make proof
+- make[1]: Entering directory &#39;/home/bench/.opam/system/build/coq-compcert.3.2.0&#39;
+- COQC lib/Axioms.v
+- *** Warning: in file cparser/Parser.v, library MenhirLib.Tuples is required and has not been found in the loadpath!
+- *** Warning: in file cparser/Parser.v, library MenhirLib.Alphabet is required and has not been found in the loadpath!
+- *** Warning: in file cparser/Parser.v, library MenhirLib.Grammar is required and has not been found in the loadpath!
+- *** Warning: in file cparser/Parser.v, library MenhirLib.Automaton is required and has not been found in the loadpath!
+- *** Warning: in file cparser/Parser.v, library MenhirLib.Main is required and has not been found in the loadpath!
+- *** Warning: in file cparser/Parser.v, library MenhirLib.Tuples is required and has not been found in the loadpath!
+- *** Warning: in file cparser/Parser.v, library MenhirLib.Alphabet is required and has not been found in the loadpath!
+- *** Warning: in file cparser/Parser.v, library MenhirLib.Grammar is required and has not been found in the loadpath!
+- *** Warning: in file cparser/Parser.v, library MenhirLib.Automaton is required and has not been found in the loadpath!
+- *** Warning: in file cparser/Parser.v, library MenhirLib.Main is required and has not been found in the loadpath!
+- COQC lib/Coqlib.v
+- COQC lib/Intv.v
+- COQC lib/Maps.v
+- COQC flocq/Core/Fcore_Zaux.v
+- COQC flocq/Core/Fcore_Raux.v
+- COQC flocq/Core/Fcore_defs.v
+- COQC flocq/Core/Fcore_float_prop.v
+- COQC flocq/Core/Fcore_rnd.v
+- COQC flocq/Core/Fcore_generic_fmt.v
+- COQC flocq/Core/Fcore_ulp.v
+- COQC flocq/Core/Fcore_rnd_ne.v
+- COQC flocq/Core/Fcore_FIX.v
+- COQC flocq/Core/Fcore_FLX.v
+- COQC flocq/Core/Fcore_FLT.v
+- COQC flocq/Core/Fcore.v
+- COQC flocq/Core/Fcore_digits.v
+- COQC flocq/Calc/Fcalc_digits.v
+- COQC flocq/Calc/Fcalc_bracket.v
+- COQC flocq/Calc/Fcalc_round.v
+- COQC flocq/Calc/Fcalc_ops.v
+- COQC flocq/Calc/Fcalc_div.v
+- COQC flocq/Calc/Fcalc_sqrt.v
+- COQC flocq/Prop/Fprop_relative.v
+- COQC flocq/Appli/Fappli_IEEE.v
+- COQC flocq/Appli/Fappli_IEEE_bits.v
+- COQC x86_32/Archi.v
+- COQC lib/Integers.v
+- COQC lib/Ordered.v
+- COQC lib/Heaps.v
+- COQC lib/Lattice.v
+- COQC lib/Wfsimpl.v
+- COQC lib/Iteration.v
+- COQC flocq/Prop/Fprop_Sterbenz.v
+- COQC flocq/Appli/Fappli_rnd_odd.v
+- COQC lib/Fappli_IEEE_extra.v
+- COQC lib/Floats.v
+- COQC lib/Parmov.v
+- COQC lib/UnionFind.v
+- COQC lib/Postorder.v
+- COQC lib/FSetAVLplus.v
+- COQC lib/IntvSets.v
+- COQC lib/Decidableplus.v
+- COQC lib/BoolEqual.v
+- COQC common/Errors.v
+- COQC common/AST.v
+- COQC common/Linking.v
+- COQC common/Values.v
+- COQC common/Memdata.v
+- COQC common/Memtype.v
+- COQC common/Memory.v
+- COQC common/Globalenvs.v
+- COQC common/Events.v
+- COQC common/Smallstep.v
+- COQC common/Behaviors.v
+- COQC common/Switch.v
+- COQC common/Determinism.v
+- COQC common/Unityping.v
+- COQC common/Separation.v
+- COQC backend/Cminor.v
+- COQC x86/Op.v
+- COQC backend/CminorSel.v
+- COQC driver/Compopts.v
+- COQC x86/SelectOp.v
+- COQC backend/SplitLong.v
+- COQC x86/SelectLong.v
+- COQC backend/SelectDiv.v
+- COQC x86/Machregs.v
+- COQC backend/Selection.v
+- COQC x86/SelectOpproof.v
+- COQC backend/SplitLongproof.v
+- COQC x86/SelectLongproof.v
+- COQC backend/SelectDivproof.v
+- COQC backend/Selectionproof.v
+- COQC backend/Registers.v
+- COQC backend/RTL.v
+- COQC backend/RTLgen.v
+- COQC backend/RTLgenspec.v
+- COQC backend/RTLgenproof.v
+- COQC backend/Locations.v
+- COQC x86/Conventions1.v
+- COQC backend/Conventions.v
+- COQC backend/Tailcall.v
+- COQC backend/Tailcallproof.v
+- COQC backend/Inlining.v
+- COQC backend/Inliningspec.v
+- COQC backend/Inliningproof.v
+- COQC backend/Renumber.v
+- COQC backend/Renumberproof.v
+- COQC backend/RTLtyping.v
+- COQC backend/Kildall.v
+- COQC backend/Liveness.v
+- COQC backend/ValueDomain.v
+- COQC x86/ValueAOp.v
+- COQC backend/ValueAnalysis.v
+- COQC x86/ConstpropOp.v
+- COQC backend/Constprop.v
+- COQC x86/ConstpropOpproof.v
+- COQC backend/Constpropproof.v
+- COQC backend/CSEdomain.v
+- COQC x86/CombineOp.v
+- COQC backend/CSE.v
+- COQC x86/CombineOpproof.v
+- COQC backend/CSEproof.v
+- COQC backend/NeedDomain.v
+- COQC x86/NeedOp.v
+- COQC backend/Deadcode.v
+- COQC backend/Deadcodeproof.v
+- COQC backend/Unusedglob.v
+- COQC backend/Unusedglobproof.v
+- COQC backend/LTL.v
+- COQC backend/Allocation.v
+- COQC backend/Allocproof.v
+- COQC backend/Tunneling.v
+- COQC backend/Tunnelingproof.v
+- COQC backend/Linear.v
+- COQC backend/Lineartyping.v
+- COQC backend/Linearize.v
+- COQC backend/Linearizeproof.v
+- COQC backend/CleanupLabels.v
+- COQC backend/CleanupLabelsproof.v
+- COQC backend/Debugvar.v
+- COQC backend/Debugvarproof.v
+- COQC backend/Bounds.v
+- COQC x86/Stacklayout.v
+- COQC backend/Mach.v
+- COQC backend/Stacking.v
+- COQC backend/Stackingproof.v
+- COQC x86/Asm.v
+- COQC x86/Asmgen.v
+- COQC backend/Asmgenproof0.v
+- COQC x86/Asmgenproof1.v
+- COQC x86/Asmgenproof.v
+- COQC cfrontend/Ctypes.v
+- COQC cfrontend/Cop.v
+- COQC cfrontend/Csyntax.v
+- COQC cfrontend/Csem.v
+- COQC cfrontend/Ctyping.v
+- COQC cfrontend/Cstrategy.v
+- COQC cfrontend/Cexec.v
+- COQC cfrontend/Initializers.v
+- COQC cfrontend/Initializersproof.v
+- COQC cfrontend/Clight.v
+- COQC cfrontend/SimplExpr.v
+- COQC cfrontend/SimplExprspec.v
+- COQC cfrontend/SimplExprproof.v
+- COQC cfrontend/ClightBigstep.v
+- COQC cfrontend/SimplLocals.v
+- COQC cfrontend/SimplLocalsproof.v
+- COQC cfrontend/Csharpminor.v
+- COQC cfrontend/Cshmgen.v
+- COQC cfrontend/Cshmgenproof.v
+- COQC cfrontend/Cminorgen.v
+- COQC cfrontend/Cminorgenproof.v
+- COQC driver/Compiler.v
+- COQC driver/Complements.v
+- COQC flocq/Core/Fcore_FTZ.v
+- COQC flocq/Prop/Fprop_div_sqrt_error.v
+- COQC flocq/Prop/Fprop_mult_error.v
+- COQC flocq/Prop/Fprop_plus_error.v
+- COQC flocq/Appli/Fappli_double_round.v
+- COQC cparser/validator/Alphabet.v
+- COQC cparser/validator/Tuples.v
+- COQC cparser/validator/Grammar.v
+- COQC cparser/validator/Automaton.v
+- COQC cparser/validator/Interpreter.v
+- COQC cparser/validator/Validator_complete.v
+- COQC cparser/validator/Interpreter_complete.v
+- COQC cparser/validator/Interpreter_correct.v
+- COQC cparser/validator/Validator_safe.v
+- COQC cparser/validator/Interpreter_safe.v
+- COQC cparser/validator/Main.v
+- COQC cparser/Cabs.v
+- COQC cparser/Parser.v
+- Makefile:202: recipe for target &#39;cparser/Parser.vo&#39; failed
+- make[1]: Leaving directory &#39;/home/bench/.opam/system/build/coq-compcert.3.2.0&#39;
+- Makefile:136: recipe for target &#39;all&#39; failed
+- File &quot;./cparser/Parser.v&quot;, line 11, characters 30-36:
+- Error:
+- Cannot find a physical path bound to logical path matching suffix
+- &lt;&gt; and prefix MenhirLib.
+- 
+- make[1]: *** [cparser/Parser.vo] Error 1
+- make: *** [all] Error 2
+[ERROR] The compilation of coq-compcert failed at &quot;make -j1&quot;.
+[coq-compcert: rm] Command started
++ rm &quot;/home/bench/.opam/system/bin/ccomp&quot; (CWD=/home/bench/.opam/system/build/coq-compcert.3.2.0)
+- rm: cannot remove &#39;/home/bench/.opam/system/bin/ccomp&#39;: No such file or directory
+[coq-compcert: rm] Command started
++ rm &quot;/home/bench/.opam/system/bin/clightgen&quot; (CWD=/home/bench/.opam/system/build/coq-compcert.3.2.0)
+- rm: cannot remove &#39;/home/bench/.opam/system/bin/clightgen&#39;: No such file or directory
+[coq-compcert: rm] Command started
++ rm &quot;-R&quot; &quot;/home/bench/.opam/system/lib/coq/user-contrib/compcert&quot; (CWD=/home/bench/.opam/system/build/coq-compcert.3.2.0)
+- rm: cannot remove &#39;/home/bench/.opam/system/lib/coq/user-contrib/compcert&#39;: No such file or directory
+[coq-compcert: rm] Command started
++ rm &quot;/home/bench/.opam/system/share/compcert.ini&quot; (CWD=/home/bench/.opam/system/build/coq-compcert.3.2.0)
+- rm: cannot remove &#39;/home/bench/.opam/system/share/compcert.ini&#39;: No such file or directory
+#=== ERROR while installing coq-compcert.3.2.0 ================================#
+# opam-version         1.2.2
+# os                   linux
+# command              make -j1
+# path                 /home/bench/.opam/system/build/coq-compcert.3.2.0
+# compiler             system (4.05.0)
+# exit-code            2
+# env-file             /home/bench/.opam/system/build/coq-compcert.3.2.0/coq-compcert-29350-c61e7b.env
+# stdout-file          /home/bench/.opam/system/build/coq-compcert.3.2.0/coq-compcert-29350-c61e7b.out
+# stderr-file          /home/bench/.opam/system/build/coq-compcert.3.2.0/coq-compcert-29350-c61e7b.err
+### stdout ###
+# [...]
+# COQC cparser/validator/Interpreter_complete.v
+# COQC cparser/validator/Interpreter_correct.v
+# COQC cparser/validator/Validator_safe.v
+# COQC cparser/validator/Interpreter_safe.v
+# COQC cparser/validator/Main.v
+# COQC cparser/Cabs.v
+# COQC cparser/Parser.v
+# Makefile:202: recipe for target &#39;cparser/Parser.vo&#39; failed
+# make[1]: Leaving directory &#39;/home/bench/.opam/system/build/coq-compcert.3.2.0&#39;
+# Makefile:136: recipe for target &#39;all&#39; failed
+### stderr ###
+# [...]
+# *** Warning: in file cparser/Parser.v, library MenhirLib.Grammar is required and has not been found in the loadpath!
+# *** Warning: in file cparser/Parser.v, library MenhirLib.Automaton is required and has not been found in the loadpath!
+# *** Warning: in file cparser/Parser.v, library MenhirLib.Main is required and has not been found in the loadpath!
+# File &quot;./cparser/Parser.v&quot;, line 11, characters 30-36:
+# Error:
+# Cannot find a physical path bound to logical path matching suffix
+# &lt;&gt; and prefix MenhirLib.
+# 
+# make[1]: *** [cparser/Parser.vo] Error 1
+# make: *** [all] Error 2
+=-=- Error report -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+The following actions failed
+  - install coq-compcert 3.2.0
+No changes have been performed
+&#39;opam install -j1 -y -v coq-compcert.3.2.0&#39; failed.
+</pre></dd>
             </dl>
             <h2>Installation size</h2>
-            <p>Total: 12,480 K</p>
-            <ul>
-              <li>7,350 K <code>bin/ccomp</code></li>
-              <li>5,088 K <code>bin/clightgen</code></li>
-              <li>13 K <code>share/man/man1/ccomp.1</code></li>
-              <li>11 K <code>lib/coq/user-contrib/compcert/libcompcert.a</code></li>
-              <li>3 K <code>lib/coq/user-contrib/compcert/include/stddef.h</code></li>
-              <li>2 K <code>lib/coq/user-contrib/compcert/include/float.h</code></li>
-              <li>2 K <code>lib/coq/user-contrib/compcert/include/stdarg.h</code></li>
-              <li>1 K <code>lib/coq/user-contrib/compcert/include/stdalign.h</code></li>
-              <li>1 K <code>lib/coq/user-contrib/compcert/include/varargs.h</code></li>
-              <li>1 K <code>lib/coq/user-contrib/compcert/include/stdbool.h</code></li>
-              <li>1 K <code>lib/coq/user-contrib/compcert/include/stdnoreturn.h</code></li>
-              <li>1 K <code>share/compcert.ini</code></li>
-              <li>1 K <code>install/coq-compcert.install</code></li>
-              <li>0 K <code>lib/coq-compcert/opam.config</code></li>
-            </ul>
+            <p>No files were installed.</p>
             <h2>Uninstall</h2>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>opam remove -y coq-compcert.3.2.0</code></dd>
+              <dd><code>true</code></dd>
               <dt>Return code</dt>
               <dd>0</dd>
               <dt>Missing removes</dt>
               <dd>
-                <ul>
-                  <li><code>/home/bench/.opam/system/share/man</code></li>
-                  <li><code>/home/bench/.opam/system/share/man/man1</code></li>
-                  <li><code>/home/bench/.opam/system/share/man/man1/ccomp.1</code></li>
-                </ul>
+                none
               </dd>
               <dt>Wrong removes</dt>
               <dd>
