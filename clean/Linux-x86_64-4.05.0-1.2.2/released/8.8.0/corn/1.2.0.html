@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Coq bench</title>
+    <link rel="shortcut icon" type="image/png" href="../../../../../favicon.png" />
+    <link href="../../../../../bootstrap.min.css" rel="stylesheet">
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+    <script src="../../../../../moment.min.js"></script>
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="container">
+      <div class="navbar navbar-default" role="navigation">
+        <div class="container-fluid">
+          <div class="navbar-header">
+            <a class="navbar-brand" href="../../../../.."><i class="fa fa-lg fa-flag-checkered"></i> Coq bench</a>
+          </div>
+          <div id="navbar" class="collapse navbar-collapse">
+            <ul class="nav navbar-nav">
+              <li><a href="../..">clean / released</a></li>
+              <li class="active"><a href="">8.8.0 / corn - 1.2.0</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="article">
+        <div class="row">
+          <div class="col-md-12">
+            <a href="../..">« Up</a>
+            <h1>
+              corn
+              <small>
+                1.2.0
+                <span class="label label-danger">Error</span>
+              </small>
+            </h1>
+            <p><em><script>document.write(moment("2018-06-11 14:58:50 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2018-06-11 14:58:50 UTC)</em><p>
+            <h2>Context</h2>
+            <pre># Installed packages for system:
+base-bigarray   base  Bigarray library distributed with the OCaml compiler
+base-num        base  Num library distributed with the OCaml compiler
+base-threads    base  Threads library distributed with the OCaml compiler
+base-unix       base  Unix library distributed with the OCaml compiler
+camlp5          7.05  Preprocessor-pretty-printer of OCaml
+conf-m4            1  Virtual package relying on m4
+coq            8.8.0  Formal proof management system.
+num                0  The Num library for arbitrary-precision integer and ration
+ocamlfind      1.8.0  A library manager for OCaml
+</pre>
+            <h2>Lint</h2>
+            <dl class="dl-horizontal">
+              <dt>Command</dt>
+              <dd><code>ruby lint.rb released opam-coq-archive/released/packages/coq-corn/coq-corn.1.2.0</code></dd>
+              <dt>Return code</dt>
+              <dd>0</dd>
+            </dl>
+            <h2>Dry install</h2>
+            <p>Dry install with the current Coq version:</p>
+            <dl class="dl-horizontal">
+              <dt>Command</dt>
+              <dd><code>opam install -y --show-action coq-corn.1.2.0 coq.8.8.0</code></dd>
+              <dt>Return code</dt>
+              <dd>0</dd>
+            </dl>
+            <p>Dry install without Coq, to test if the problem was incompatibility with the current Coq version:</p>
+            <dl class="dl-horizontal">
+              <dt>Command</dt>
+              <dd><code>true</code></dd>
+              <dt>Return code</dt>
+              <dd>0</dd>
+            </dl>
+            <h2>Install dependencies</h2>
+            <dl class="dl-horizontal">
+              <dt>Command</dt>
+              <dd><code>opam list; ulimit -Sv 4000000; timeout 30m opam install -y --deps-only coq-corn.1.2.0</code></dd>
+              <dt>Return code</dt>
+              <dd>0</dd>
+              <dt>Duration</dt>
+              <dd>5 m 22 s</dd>
+            </dl>
+            <h2>Install</h2>
+            <dl class="dl-horizontal">
+              <dt>Command</dt>
+              <dd><code>opam list; ulimit -Sv 4000000; timeout 30m opam install -j1 -y -v coq-corn.1.2.0</code></dd>
+              <dt>Return code</dt>
+              <dd>1024</dd>
+              <dt>Duration</dt>
+              <dd>1 m 1 s</dd>
+              <dt>Output</dt>
+              <dd><pre># Installed packages for system:
+base-bigarray      base  Bigarray library distributed with the OCaml compiler
+base-num           base  Num library distributed with the OCaml compiler
+base-threads       base  Threads library distributed with the OCaml compiler
+base-unix          base  Unix library distributed with the OCaml compiler
+camlp5             7.05  Preprocessor-pretty-printer of OCaml
+conf-m4               1  Virtual package relying on m4
+coq               8.8.0  Formal proof management system.
+coq-bignums       8.8.0  Bignums, the Coq library of arbitrary large numbers
+coq-math-classes  1.0.7  A library of abstract interfaces for mathematical struc
+num                   0  The Num library for arbitrary-precision integer and rat
+ocamlfind         1.8.0  A library manager for OCaml
+The following actions will be performed:
+  - install coq-corn 1.2.0
+=-=- Gathering sources =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+[coq-corn: http] Command started
+[coq-corn: http] Command started
+[coq-corn.1.2.0] https://github.com/c-corn/corn/archive/1.2.0.zip downloaded
+=-=- Processing actions -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+[coq-corn: ./configure.sh] Command started
++ ./configure.sh  (CWD=/home/bench/.opam/system/build/coq-corn.1.2.0)
+[coq-corn: make] Command started
++ make &quot;-j1&quot; (CWD=/home/bench/.opam/system/build/coq-corn.1.2.0)
+- COQDEP VFILES
+- COQC tactics/CornTac.v
+- COQC stdlib_omissions/Pair.v
+- COQC stdlib_omissions/List.v
+- COQC logic/CornBasics.v
+- File &quot;./logic/CornBasics.v&quot;, line 73, characters 0-38:
+- Warning: Option Automatic Coercions Import is deprecated
+- [deprecated-option,deprecated]
+- File &quot;./logic/CornBasics.v&quot;, line 75, characters 0-34:
+- Warning: Option Automatic Introduction is deprecated
+- [deprecated-option,deprecated]
+- COQC logic/CLogic.v
+- File &quot;./logic/CornBasics.v&quot;, line 333, characters 2-21:
+- Warning: Ppred_succ is Pos.pred_succ [compatibility-notation,deprecated]
+- File &quot;./logic/CornBasics.v&quot;, line 333, characters 2-21:
+- Warning: Ppred_succ is Pos.pred_succ [compatibility-notation,deprecated]
+- File &quot;./logic/CornBasics.v&quot;, line 333, characters 2-21:
+- Warning: Ppred_succ is Pos.pred_succ [compatibility-notation,deprecated]
+- File &quot;./logic/CornBasics.v&quot;, line 504, characters 1-22:
+- Warning: Zsucc is Z.succ [compatibility-notation,deprecated]
+- File &quot;./logic/CornBasics.v&quot;, line 504, characters 1-22:
+- Warning: Zsucc is Z.succ [compatibility-notation,deprecated]
+- File &quot;./logic/CornBasics.v&quot;, line 634, characters 2-18:
+- Warning: Zgt is Z.gt [compatibility-notation,deprecated]
+- File &quot;./logic/CornBasics.v&quot;, line 634, characters 2-18:
+- Warning: Zgt is Z.gt [compatibility-notation,deprecated]
+- File &quot;./logic/CornBasics.v&quot;, line 640, characters 2-19:
+- Warning: Zlt is Z.lt [compatibility-notation,deprecated]
+- File &quot;./logic/CornBasics.v&quot;, line 640, characters 2-19:
+- Warning: Zlt is Z.lt [compatibility-notation,deprecated]
+- File &quot;./logic/CornBasics.v&quot;, line 641, characters 2-21:
+- Warning: Zlt is Z.lt [compatibility-notation,deprecated]
+- File &quot;./logic/CornBasics.v&quot;, line 641, characters 2-21:
+- Warning: Zlt is Z.lt [compatibility-notation,deprecated]
+- File &quot;./logic/CornBasics.v&quot;, line 666, characters 1-22:
+- Warning: Zlt_gt is Z.lt_gt [compatibility-notation,deprecated]
+- File &quot;./logic/CornBasics.v&quot;, line 666, characters 1-22:
+- Warning: Zlt_gt is Z.lt_gt [compatibility-notation,deprecated]
+- File &quot;./logic/CornBasics.v&quot;, line 688, characters 6-38:
+- Warning: Zopp_involutive is Z.opp_involutive
+- [compatibility-notation,deprecated]
+- File &quot;./logic/CornBasics.v&quot;, line 688, characters 6-38:
+- Warning: Zopp_involutive is Z.opp_involutive
+- [compatibility-notation,deprecated]
+- File &quot;./logic/CornBasics.v&quot;, line 689, characters 5-37:
+- Warning: Zopp_involutive is Z.opp_involutive
+- [compatibility-notation,deprecated]
+- File &quot;./logic/CornBasics.v&quot;, line 689, characters 5-37:
+- Warning: Zopp_involutive is Z.opp_involutive
+- [compatibility-notation,deprecated]
+- File &quot;./logic/CornBasics.v&quot;, line 699, characters 6-30:
+- Warning: Zopp is Z.opp [compatibility-notation,deprecated]
+- File &quot;./logic/CornBasics.v&quot;, line 699, characters 6-30:
+- Warning: Zopp is Z.opp [compatibility-notation,deprecated]
+- File &quot;./logic/CornBasics.v&quot;, line 703, characters 5-29:
+- Warning: Zopp is Z.opp [compatibility-notation,deprecated]
+- File &quot;./logic/CornBasics.v&quot;, line 703, characters 5-29:
+- Warning: Zopp is Z.opp [compatibility-notation,deprecated]
+- File &quot;./logic/CornBasics.v&quot;, line 725, characters 1-22:
+- Warning: Zgt_lt is Z.gt_lt [compatibility-notation,deprecated]
+- File &quot;./logic/CornBasics.v&quot;, line 725, characters 1-22:
+- Warning: Zgt_lt is Z.gt_lt [compatibility-notation,deprecated]
+- File &quot;./logic/CornBasics.v&quot;, line 761, characters 3-25:
+- Warning: Zlt_gt is Z.lt_gt [compatibility-notation,deprecated]
+- File &quot;./logic/CornBasics.v&quot;, line 761, characters 3-25:
+- Warning: Zlt_gt is Z.lt_gt [compatibility-notation,deprecated]
+- File &quot;./logic/CornBasics.v&quot;, line 796, characters 2-24:
+- Warning: Zlt_gt is Z.lt_gt [compatibility-notation,deprecated]
+- File &quot;./logic/CornBasics.v&quot;, line 796, characters 2-24:
+- Warning: Zlt_gt is Z.lt_gt [compatibility-notation,deprecated]
+- File &quot;./logic/CornBasics.v&quot;, line 815, characters 0-26:
+- Warning: Implicit Arguments is deprecated; use Arguments instead
+- [deprecated-implicit-arguments,deprecated]
+- File &quot;./logic/CornBasics.v&quot;, line 885, characters 0-783:
+- Warning: Psucc is Pos.succ [compatibility-notation,deprecated]
+- File &quot;./logic/CornBasics.v&quot;, line 885, characters 0-783:
+- Warning: Psucc is Pos.succ [compatibility-notation,deprecated]
+- File &quot;./logic/CornBasics.v&quot;, line 903, characters 0-241:
+- Warning: Psucc is Pos.succ [compatibility-notation,deprecated]
+- File &quot;./logic/CornBasics.v&quot;, line 910, characters 0-147:
+- Warning: Psucc is Pos.succ [compatibility-notation,deprecated]
+- File &quot;./logic/CornBasics.v&quot;, line 921, characters 0-157:
+- Warning: Psucc is Pos.succ [compatibility-notation,deprecated]
+- File &quot;./logic/CornBasics.v&quot;, line 953, characters 0-31:
+- Warning: Implicit Arguments is deprecated; use Arguments instead
+- [deprecated-implicit-arguments,deprecated]
+- File &quot;./logic/CLogic.v&quot;, line 54, characters 0-27:
+- Warning: Option Automatic Introduction is deprecated
+- [deprecated-option,deprecated]
+- File &quot;./logic/CLogic.v&quot;, line 233, characters 0-103:
+- Warning: Notation { _ : _ | _ } was already used in scope type_scope.
+- [notation-overridden,parsing]
+- File &quot;./logic/CLogic.v&quot;, line 328, characters 0-29:
+- Warning: Implicit Arguments is deprecated; use Arguments instead
+- [deprecated-implicit-arguments,deprecated]
+- File &quot;./logic/CLogic.v&quot;, line 626, characters 1-22:
+- Warning: Zsucc is Z.succ [compatibility-notation,deprecated]
+- File &quot;./logic/CLogic.v&quot;, line 626, characters 1-22:
+- Warning: Zsucc is Z.succ [compatibility-notation,deprecated]
+- File &quot;./logic/CLogic.v&quot;, line 681, characters 0-38:
+- Warning: Implicit Arguments is deprecated; use Arguments instead
+- [deprecated-implicit-arguments,deprecated]
+- File &quot;./logic/CLogic.v&quot;, line 682, characters 0-39:
+- Warning: Implicit Arguments is deprecated; use Arguments instead
+- [deprecated-implicit-arguments,deprecated]
+- File &quot;./logic/CLogic.v&quot;, line 1281, characters 1-17:
+- Warning: Zlt is Z.lt [compatibility-notation,deprecated]
+- File &quot;./logic/CLogic.v&quot;, line 1281, characters 1-17:
+- Warning: Zlt is Z.lt [compatibility-notation,deprecated]
+- File &quot;./logic/CLogic.v&quot;, line 1288, characters 1-20:
+- Warning: Zlt is Z.lt [compatibility-notation,deprecated]
+- File &quot;./logic/CLogic.v&quot;, line 1288, characters 1-20:
+- Warning: Zlt is Z.lt [compatibility-notation,deprecated]
+- File &quot;./logic/CLogic.v&quot;, line 1293, characters 0-81:
+- Warning: Zsgn is Z.sgn [compatibility-notation,deprecated]
+- File &quot;./logic/CLogic.v&quot;, line 1293, characters 0-81:
+- Warning: Zsgn is Z.sgn [compatibility-notation,deprecated]
+- File &quot;./logic/CLogic.v&quot;, line 1293, characters 0-81:
+- Warning: Zsgn is Z.sgn [compatibility-notation,deprecated]
+- File &quot;./logic/CLogic.v&quot;, line 1299, characters 3-23:
+- Warning: Zsgn is Z.sgn [compatibility-notation,deprecated]
+- File &quot;./logic/CLogic.v&quot;, line 1299, characters 3-23:
+- Warning: Zsgn is Z.sgn [compatibility-notation,deprecated]
+- File &quot;./logic/CLogic.v&quot;, line 1312, characters 0-53:
+- Warning: Zsgn is Z.sgn [compatibility-notation,deprecated]
+- File &quot;./logic/CLogic.v&quot;, line 1324, characters 0-55:
+- Warning: Zsgn is Z.sgn [compatibility-notation,deprecated]
+- File &quot;./logic/CLogic.v&quot;, line 1365, characters 2-54:
+- Warning: Ppred is Pos.pred [compatibility-notation,deprecated]
+- File &quot;./logic/CLogic.v&quot;, line 1365, characters 2-54:
+- Warning: Psucc is Pos.succ [compatibility-notation,deprecated]
+- File &quot;./logic/CLogic.v&quot;, line 1365, characters 2-54:
+- Warning: Ppred is Pos.pred [compatibility-notation,deprecated]
+- File &quot;./logic/CLogic.v&quot;, line 1365, characters 2-54:
+- Warning: Ppred is Pos.pred [compatibility-notation,deprecated]
+- File &quot;./logic/CLogic.v&quot;, line 1365, characters 2-54:
+- Warning: Psucc is Pos.succ [compatibility-notation,deprecated]
+- File &quot;./logic/CLogic.v&quot;, line 1365, characters 2-54:
+- Warning: Ppred is Pos.pred [compatibility-notation,deprecated]
+- File &quot;./logic/CLogic.v&quot;, line 1367, characters 3-28:
+- Warning: Ppred_succ is Pos.pred_succ [compatibility-notation,deprecated]
+- File &quot;./logic/CLogic.v&quot;, line 1367, characters 3-28:
+- Warning: Ppred_succ is Pos.pred_succ [compatibility-notation,deprecated]
+- File &quot;./logic/CLogic.v&quot;, line 1367, characters 3-28:
+- Warning: Ppred_succ is Pos.pred_succ [compatibility-notation,deprecated]
+- File &quot;./logic/CLogic.v&quot;, line 1369, characters 3-28:
+- Warning: Ppred_succ is Pos.pred_succ [compatibility-notation,deprecated]
+- File &quot;./logic/CLogic.v&quot;, line 1369, characters 3-28:
+- Warning: Ppred_succ is Pos.pred_succ [compatibility-notation,deprecated]
+- File &quot;./logic/CLogic.v&quot;, line 1369, characters 3-28:
+- Warning: Ppred_succ is Pos.pred_succ [compatibility-notation,deprecated]
+- File &quot;./logic/CLogic.v&quot;, line 1371, characters 2-66:
+- Warning: Ppred is Pos.pred [compatibility-notation,deprecated]
+- File &quot;./logic/CLogic.v&quot;, line 1371, characters 2-66:
+- Warning: Ppred is Pos.pred [compatibility-notation,deprecated]
+- File &quot;./logic/CLogic.v&quot;, line 1377, characters 0-59:
+- Warning: Zsgn is Z.sgn [compatibility-notation,deprecated]
+- File &quot;./logic/CLogic.v&quot;, line 1377, characters 0-59:
+- Warning: Zabs_nat is Z.abs_nat [compatibility-notation,deprecated]
+- File &quot;./logic/CLogic.v&quot;, line 1384, characters 2-22:
+- Warning: Zsgn is Z.sgn [compatibility-notation,deprecated]
+- File &quot;./logic/CLogic.v&quot;, line 1384, characters 2-22:
+- Warning: Zsgn is Z.sgn [compatibility-notation,deprecated]
+- File &quot;./logic/CLogic.v&quot;, line 1385, characters 2-26:
+- Warning: Zabs_nat is Z.abs_nat [compatibility-notation,deprecated]
+- File &quot;./logic/CLogic.v&quot;, line 1385, characters 2-26:
+- Warning: Zabs_nat is Z.abs_nat [compatibility-notation,deprecated]
+- File &quot;./logic/CLogic.v&quot;, line 1390, characters 1-21:
+- Warning: Zsgn is Z.sgn [compatibility-notation,deprecated]
+- File &quot;./logic/CLogic.v&quot;, line 1390, characters 1-21:
+- Warning: Zsgn is Z.sgn [compatibility-notation,deprecated]
+- File &quot;./logic/CLogic.v&quot;, line 1391, characters 1-25:
+- Warning: Zabs_nat is Z.abs_nat [compatibility-notation,deprecated]
+- File &quot;./logic/CLogic.v&quot;, line 1391, characters 1-25:
+- Warning: Zabs_nat is Z.abs_nat [compatibility-notation,deprecated]
+- File &quot;./logic/CLogic.v&quot;, line 1396, characters 0-129:
+- Warning: Zsgn is Z.sgn [compatibility-notation,deprecated]
+- File &quot;./logic/CLogic.v&quot;, line 1396, characters 0-129:
+- Warning: Zsgn is Z.sgn [compatibility-notation,deprecated]
+- File &quot;./logic/CLogic.v&quot;, line 1396, characters 0-129:
+- Warning: Zsgn is Z.sgn [compatibility-notation,deprecated]
+- File &quot;./logic/CLogic.v&quot;, line 1396, characters 0-129:
+- Warning: Zsgn is Z.sgn [compatibility-notation,deprecated]
+- File &quot;./logic/CLogic.v&quot;, line 1405, characters 4-24:
+- Warning: Zsgn is Z.sgn [compatibility-notation,deprecated]
+- File &quot;./logic/CLogic.v&quot;, line 1405, characters 4-24:
+- Warning: Zsgn is Z.sgn [compatibility-notation,deprecated]
+- File &quot;./logic/CLogic.v&quot;, line 1412, characters 3-23:
+- Warning: Zsgn is Z.sgn [compatibility-notation,deprecated]
+- File &quot;./logic/CLogic.v&quot;, line 1412, characters 3-23:
+- Warning: Zsgn is Z.sgn [compatibility-notation,deprecated]
+- File &quot;./logic/CLogic.v&quot;, line 1415, characters 3-18:
+- Warning: Zopp_inj is Z.opp_inj [compatibility-notation,deprecated]
+- File &quot;./logic/CLogic.v&quot;, line 1415, characters 3-18:
+- Warning: Zopp_inj is Z.opp_inj [compatibility-notation,deprecated]
+- File &quot;./logic/CLogic.v&quot;, line 1419, characters 2-27:
+- Warning: Zsgn is Z.sgn [compatibility-notation,deprecated]
+- File &quot;./logic/CLogic.v&quot;, line 1419, characters 2-27:
+- Warning: Zsgn is Z.sgn [compatibility-notation,deprecated]
+- File &quot;./logic/CLogic.v&quot;, line 1420, characters 2-27:
+- Warning: Zsgn is Z.sgn [compatibility-notation,deprecated]
+- File &quot;./logic/CLogic.v&quot;, line 1420, characters 2-27:
+- Warning: Zsgn is Z.sgn [compatibility-notation,deprecated]
+- File &quot;./logic/CLogic.v&quot;, line 1425, characters 2-41:
+- Warning: Zsgn is Z.sgn [compatibility-notation,deprecated]
+- File &quot;./logic/CLogic.v&quot;, line 1425, characters 2-41:
+- Warning: Zsgn is Z.sgn [compatibility-notation,deprecated]
+- File &quot;./logic/CLogic.v&quot;, line 1425, characters 2-41:
+- Warning: Zsgn is Z.sgn [compatibility-notation,deprecated]
+- File &quot;./logic/CLogic.v&quot;, line 1425, characters 2-41:
+- Warning: Zsgn is Z.sgn [compatibility-notation,deprecated]
+- File &quot;./logic/CLogic.v&quot;, line 1447, characters 1-26:
+- Warning: Zsgn is Z.sgn [compatibility-notation,deprecated]
+- File &quot;./logic/CLogic.v&quot;, line 1447, characters 1-26:
+- Warning: Zsgn is Z.sgn [compatibility-notation,deprecated]
+- File &quot;./logic/CLogic.v&quot;, line 1448, characters 1-26:
+- Warning: Zsgn is Z.sgn [compatibility-notation,deprecated]
+- File &quot;./logic/CLogic.v&quot;, line 1448, characters 1-26:
+- Warning: Zsgn is Z.sgn [compatibility-notation,deprecated]
+- File &quot;./logic/CLogic.v&quot;, line 1450, characters 1-47:
+- Warning: Zsgn is Z.sgn [compatibility-notation,deprecated]
+- File &quot;./logic/CLogic.v&quot;, line 1450, characters 1-47:
+- Warning: Zsgn is Z.sgn [compatibility-notation,deprecated]
+- File &quot;./logic/CLogic.v&quot;, line 1450, characters 1-47:
+- Warning: Zsgn is Z.sgn [compatibility-notation,deprecated]
+- File &quot;./logic/CLogic.v&quot;, line 1450, characters 1-47:
+- Warning: Zsgn is Z.sgn [compatibility-notation,deprecated]
+- File &quot;./logic/CLogic.v&quot;, line 1456, characters 4-19:
+- Warning: Zopp_inj is Z.opp_inj [compatibility-notation,deprecated]
+- File &quot;./logic/CLogic.v&quot;, line 1456, characters 4-19:
+- Warning: Zopp_inj is Z.opp_inj [compatibility-notation,deprecated]
+- File &quot;./logic/CLogic.v&quot;, line 1459, characters 4-24:
+- Warning: Zopp is Z.opp [compatibility-notation,deprecated]
+- File &quot;./logic/CLogic.v&quot;, line 1459, characters 4-24:
+- Warning: Zopp is Z.opp [compatibility-notation,deprecated]
+- File &quot;./logic/CLogic.v&quot;, line 1476, characters 1-14:
+- Warning: Zlt_gt is Z.lt_gt [compatibility-notation,deprecated]
+- File &quot;./logic/CLogic.v&quot;, line 1476, characters 1-14:
+- Warning: Zlt_gt is Z.lt_gt [compatibility-notation,deprecated]
+- File &quot;./logic/CLogic.v&quot;, line 1485, characters 2-44:
+- Warning: Zsucc is Z.succ [compatibility-notation,deprecated]
+- File &quot;./logic/CLogic.v&quot;, line 1485, characters 2-44:
+- Warning: Zsucc is Z.succ [compatibility-notation,deprecated]
+- File &quot;./logic/CLogic.v&quot;, line 1490, characters 1-14:
+- Warning: Zlt_gt is Z.lt_gt [compatibility-notation,deprecated]
+- File &quot;./logic/CLogic.v&quot;, line 1490, characters 1-14:
+- Warning: Zlt_gt is Z.lt_gt [compatibility-notation,deprecated]
+- File &quot;./logic/CLogic.v&quot;, line 1491, characters 1-43:
+- Warning: Zsucc is Z.succ [compatibility-notation,deprecated]
+- File &quot;./logic/CLogic.v&quot;, line 1491, characters 1-43:
+- Warning: Zsucc is Z.succ [compatibility-notation,deprecated]
+- File &quot;./logic/CLogic.v&quot;, line 1506, characters 0-57:
+- Warning: Zabs_nat is Z.abs_nat [compatibility-notation,deprecated]
+- File &quot;./logic/CLogic.v&quot;, line 1520, characters 2-41:
+- Warning: Zabs_nat is Z.abs_nat [compatibility-notation,deprecated]
+- File &quot;./logic/CLogic.v&quot;, line 1520, characters 2-41:
+- Warning: Zabs_nat is Z.abs_nat [compatibility-notation,deprecated]
+- File &quot;./logic/CLogic.v&quot;, line 1526, characters 2-33:
+- Warning: Zlt_gt is Z.lt_gt [compatibility-notation,deprecated]
+- File &quot;./logic/CLogic.v&quot;, line 1526, characters 2-33:
+- Warning: Zlt_gt is Z.lt_gt [compatibility-notation,deprecated]
+- File &quot;./logic/CLogic.v&quot;, line 1534, characters 3-27:
+- Warning: Zabs_nat is Z.abs_nat [compatibility-notation,deprecated]
+- File &quot;./logic/CLogic.v&quot;, line 1534, characters 3-27:
+- Warning: Zabs_nat is Z.abs_nat [compatibility-notation,deprecated]
+- File &quot;./logic/CLogic.v&quot;, line 1542, characters 2-33:
+- Warning: Zopp_involutive is Z.opp_involutive
+- [compatibility-notation,deprecated]
+- File &quot;./logic/CLogic.v&quot;, line 1542, characters 2-33:
+- Warning: Zopp_involutive is Z.opp_involutive
+- [compatibility-notation,deprecated]
+- File &quot;./logic/CLogic.v&quot;, line 1542, characters 2-33:
+- Warning: Zopp_involutive is Z.opp_involutive
+- [compatibility-notation,deprecated]
+- File &quot;./logic/CLogic.v&quot;, line 1543, characters 2-26:
+- Warning: Zopp is Z.opp [compatibility-notation,deprecated]
+- File &quot;./logic/CLogic.v&quot;, line 1543, characters 2-26:
+- Warning: Zopp is Z.opp [compatibility-notation,deprecated]
+- File &quot;./logic/CLogic.v&quot;, line 1545, characters 1-40:
+- Warning: Zabs_nat is Z.abs_nat [compatibility-notation,deprecated]
+- File &quot;./logic/CLogic.v&quot;, line 1545, characters 1-40:
+- Warning: Zabs_nat is Z.abs_nat [compatibility-notation,deprecated]
+- File &quot;./logic/CLogic.v&quot;, line 1555, characters 1-25:
+- Warning: Zabs_nat is Z.abs_nat [compatibility-notation,deprecated]
+- File &quot;./logic/CLogic.v&quot;, line 1555, characters 1-25:
+- Warning: Zabs_nat is Z.abs_nat [compatibility-notation,deprecated]
+- File &quot;./logic/CLogic.v&quot;, line 1560, characters 0-59:
+- Warning: Zabs_nat is Z.abs_nat [compatibility-notation,deprecated]
+- File &quot;./logic/CLogic.v&quot;, line 1600, characters 2-38:
+- Warning: Zopp_involutive is Z.opp_involutive
+- [compatibility-notation,deprecated]
+- File &quot;./logic/CLogic.v&quot;, line 1600, characters 2-38:
+- Warning: Zopp_involutive is Z.opp_involutive
+- [compatibility-notation,deprecated]
+- File &quot;./logic/CLogic.v&quot;, line 1600, characters 2-38:
+- Warning: Zopp_involutive is Z.opp_involutive
+- [compatibility-notation,deprecated]
+- File &quot;./logic/CLogic.v&quot;, line 1601, characters 2-38:
+- Warning: Zopp_involutive is Z.opp_involutive
+- [compatibility-notation,deprecated]
+- File &quot;./logic/CLogic.v&quot;, line 1601, characters 2-38:
+- Warning: Zopp_involutive is Z.opp_involutive
+- [compatibility-notation,deprecated]
+- File &quot;./logic/CLogic.v&quot;, line 1601, characters 2-38:
+- Warning: Zopp_involutive is Z.opp_involutive
+- [compatibility-notation,deprecated]
+- File &quot;./logic/CLogic.v&quot;, line 1604, characters 2-33:
+- Warning: Zopp_involutive is Z.opp_involutive
+- [compatibility-notation,deprecated]
+- File &quot;./logic/CLogic.v&quot;, line 1604, characters 2-33:
+- Warning: Zopp_involutive is Z.opp_involutive
+- [compatibility-notation,deprecated]
+- File &quot;./logic/CLogic.v&quot;, line 1604, characters 2-33:
+- Warning: Zopp_involutive is Z.opp_involutive
+- [compatibility-notation,deprecated]
+- File &quot;./logic/CLogic.v&quot;, line 1605, characters 2-33:
+- Warning: Zopp_involutive is Z.opp_involutive
+- [compatibility-notation,deprecated]
+- File &quot;./logic/CLogic.v&quot;, line 1605, characters 2-33:
+- Warning: Zopp_involutive is Z.opp_involutive
+- [compatibility-notation,deprecated]
+- File &quot;./logic/CLogic.v&quot;, line 1605, characters 2-33:
+- Warning: Zopp_involutive is Z.opp_involutive
+- [compatibility-notation,deprecated]
+- File &quot;./logic/CLogic.v&quot;, line 1614, characters 2-15:
+- Warning: Zgt_lt is Z.gt_lt [compatibility-notation,deprecated]
+- File &quot;./logic/CLogic.v&quot;, line 1614, characters 2-15:
+- Warning: Zgt_lt is Z.gt_lt [compatibility-notation,deprecated]
+- File &quot;./logic/CLogic.v&quot;, line 1616, characters 2-15:
+- Warning: Zgt_lt is Z.gt_lt [compatibility-notation,deprecated]
+- File &quot;./logic/CLogic.v&quot;, line 1616, characters 2-15:
+- Warning: Zgt_lt is Z.gt_lt [compatibility-notation,deprecated]
+- COQC tactics/Step.v
+- COQC algebra/RSetoid.v
+- Makefile:656: recipe for target &#39;algebra/RSetoid.vo&#39; failed
+- Makefile:317: recipe for target &#39;all&#39; failed
+- File &quot;./algebra/RSetoid.v&quot;, line 26, characters 0-55:
+- Warning: Notation _ = _ was already used in scope type_scope.
+- [notation-overridden,parsing]
+- File &quot;./algebra/RSetoid.v&quot;, line 26, characters 0-55:
+- Warning: Notation _ ≠ _ was already used in scope type_scope.
+- [notation-overridden,parsing]
+- File &quot;./algebra/RSetoid.v&quot;, line 47, characters 0-28:
+- Warning: Implicit Arguments is deprecated; use Arguments instead
+- [deprecated-implicit-arguments,deprecated]
+- File &quot;./algebra/RSetoid.v&quot;, line 50, characters 0-53:
+- Warning: Implicit Arguments is deprecated; use Arguments instead
+- [deprecated-implicit-arguments,deprecated]
+- File &quot;./algebra/RSetoid.v&quot;, line 82, characters 0-30:
+- Error: No focused proof (No proof-editing in progress).
+- 
+- make[1]: *** [algebra/RSetoid.vo] Error 1
+- make: *** [all] Error 2
+[ERROR] The compilation of coq-corn failed at &quot;make -j1&quot;.
+[coq-corn: rm] Command started
++ rm &quot;-R&quot; &quot;/home/bench/.opam/system/lib/coq/user-contrib/CoRN&quot; (CWD=/home/bench/.opam/system/build/coq-corn.1.2.0)
+- rm: cannot remove &#39;/home/bench/.opam/system/lib/coq/user-contrib/CoRN&#39;: No such file or directory
+#=== ERROR while installing coq-corn.1.2.0 ====================================#
+# opam-version         1.2.2
+# os                   linux
+# command              make -j1
+# path                 /home/bench/.opam/system/build/coq-corn.1.2.0
+# compiler             system (4.05.0)
+# exit-code            2
+# env-file             /home/bench/.opam/system/build/coq-corn.1.2.0/coq-corn-4751-c61e7b.env
+# stdout-file          /home/bench/.opam/system/build/coq-corn.1.2.0/coq-corn-4751-c61e7b.out
+# stderr-file          /home/bench/.opam/system/build/coq-corn.1.2.0/coq-corn-4751-c61e7b.err
+### stdout ###
+# [...]
+# COQDEP VFILES
+# COQC tactics/CornTac.v
+# COQC stdlib_omissions/Pair.v
+# COQC stdlib_omissions/List.v
+# COQC logic/CornBasics.v
+# COQC logic/CLogic.v
+# COQC tactics/Step.v
+# COQC algebra/RSetoid.v
+# Makefile:656: recipe for target &#39;algebra/RSetoid.vo&#39; failed
+# Makefile:317: recipe for target &#39;all&#39; failed
+### stderr ###
+# [...]
+# Warning: Implicit Arguments is deprecated; use Arguments instead
+# [deprecated-implicit-arguments,deprecated]
+# File &quot;./algebra/RSetoid.v&quot;, line 50, characters 0-53:
+# Warning: Implicit Arguments is deprecated; use Arguments instead
+# [deprecated-implicit-arguments,deprecated]
+# File &quot;./algebra/RSetoid.v&quot;, line 82, characters 0-30:
+# Error: No focused proof (No proof-editing in progress).
+# 
+# make[1]: *** [algebra/RSetoid.vo] Error 1
+# make: *** [all] Error 2
+=-=- Error report -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+The following actions failed
+  - install coq-corn 1.2.0
+No changes have been performed
+&#39;opam install -j1 -y -v coq-corn.1.2.0&#39; failed.
+</pre></dd>
+            </dl>
+            <h2>Installation size</h2>
+            <p>No files were installed.</p>
+            <h2>Uninstall</h2>
+            <dl class="dl-horizontal">
+              <dt>Command</dt>
+              <dd><code>true</code></dd>
+              <dt>Return code</dt>
+              <dd>0</dd>
+              <dt>Missing removes</dt>
+              <dd>
+                none
+              </dd>
+              <dt>Wrong removes</dt>
+              <dd>
+                none
+              </dd>
+            </dl>
+          </div>
+        </div>
+      </div>
+      <hr/>
+      <div class="footer">
+        <p class="text-center">
+          <small>Sources are on <a href="https://github.com/coq-bench">GitHub</a>. © Guillaume Claret.</small>
+        </p>
+      </div>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="../../../../../bootstrap.min.js"></script>
+  </body>
+</html>
