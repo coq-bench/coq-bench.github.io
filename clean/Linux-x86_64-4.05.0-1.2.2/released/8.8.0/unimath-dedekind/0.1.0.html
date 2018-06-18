@@ -41,7 +41,7 @@
                 <span class="label label-warning">Error with dependencies</span>
               </small>
             </h1>
-            <p><em><script>document.write(moment("2018-06-11 14:58:50 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2018-06-11 14:58:50 UTC)</em><p>
+            <p><em><script>document.write(moment("2018-06-18 01:38:46 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2018-06-18 01:38:46 UTC)</em><p>
             <h2>Context</h2>
             <pre># Installed packages for system:
 base-bigarray   base  Bigarray library distributed with the OCaml compiler
@@ -53,6 +53,27 @@ conf-m4            1  Virtual package relying on m4
 coq            8.8.0  Formal proof management system.
 num                0  The Num library for arbitrary-precision integer and ration
 ocamlfind      1.8.0  A library manager for OCaml
+# opam file:
+opam-version: &quot;1.2&quot;
+maintainer: &quot;opam@clarus.me&quot;
+homepage: &quot;https://github.com/UniMath/UniMath&quot;
+dev-repo: &quot;https://github.com/UniMath/UniMath.git&quot;
+bug-reports: &quot;https://github.com/UniMath/UniMath/issues&quot;
+license: &quot;Kind of MIT&quot;
+authors: [&quot;The UniMath Development Team&quot;]
+build: [
+  [&quot;coq_makefile&quot; &quot;-f&quot; &quot;Make&quot; &quot;-o&quot; &quot;Makefile&quot;]
+  [make &quot;-j%{jobs}%&quot;]
+]
+install: [
+  [make &quot;install&quot;]
+]
+remove: [&quot;rm&quot; &quot;-R&quot; &quot;%{lib}%/coq/user-contrib/UniMath/Dedekind&quot;]
+depends: [
+  &quot;coq&quot; {&gt;= &quot;8.5.0&quot;}
+  &quot;coq-unimath-foundations&quot;
+  &quot;coq-unimath-ktheory&quot;
+]
 </pre>
             <h2>Lint</h2>
             <dl class="dl-horizontal">
@@ -104,11 +125,11 @@ The following actions will be performed:
 [coq-unimath-category-theory: http] Command started
 [coq-unimath-foundations: http] Command started
 [coq-unimath-ktheory: http] Command started
-[coq-unimath-category-theory: http] Command started
 [coq-unimath-foundations: http] Command started
+[coq-unimath-category-theory: http] Command started
 [coq-unimath-ktheory: http] Command started
-[coq-unimath-category-theory.0.1.0] https://github.com/UniMath/UniMath/archive/v0.1.tar.gz downloaded
 [coq-unimath-foundations.0.1.0] https://github.com/UniMath/UniMath/archive/v0.1.tar.gz downloaded
+[coq-unimath-category-theory.0.1.0] https://github.com/UniMath/UniMath/archive/v0.1.tar.gz downloaded
 [coq-unimath-ktheory.0.1.0] https://github.com/UniMath/UniMath/archive/v0.1.tar.gz downloaded
 =-=- Processing actions -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 [coq-unimath-foundations: coq_makefile Make] Command started
@@ -123,9 +144,9 @@ The following actions will be performed:
 # path                 /home/bench/.opam/system/build/coq-unimath-foundations.0.1.0
 # compiler             system (4.05.0)
 # exit-code            127
-# env-file             /home/bench/.opam/system/build/coq-unimath-foundations.0.1.0/coq-unimath-foundations-26666-a00279.env
-# stdout-file          /home/bench/.opam/system/build/coq-unimath-foundations.0.1.0/coq-unimath-foundations-26666-a00279.out
-# stderr-file          /home/bench/.opam/system/build/coq-unimath-foundations.0.1.0/coq-unimath-foundations-26666-a00279.err
+# env-file             /home/bench/.opam/system/build/coq-unimath-foundations.0.1.0/coq-unimath-foundations-7675-a00279.env
+# stdout-file          /home/bench/.opam/system/build/coq-unimath-foundations.0.1.0/coq-unimath-foundations-7675-a00279.out
+# stderr-file          /home/bench/.opam/system/build/coq-unimath-foundations.0.1.0/coq-unimath-foundations-7675-a00279.err
 =-=- Error report -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 The following actions were aborted
   - install coq-unimath-category-theory 0.1.0

@@ -41,7 +41,7 @@
                 <span class="label label-info">Not compatible with this Coq</span>
               </small>
             </h1>
-            <p><em><script>document.write(moment("2018-06-11 14:58:50 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2018-06-11 14:58:50 UTC)</em><p>
+            <p><em><script>document.write(moment("2018-06-18 01:38:46 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2018-06-18 01:38:46 UTC)</em><p>
             <h2>Context</h2>
             <pre># Installed packages for system:
 base-bigarray   base  Bigarray library distributed with the OCaml compiler
@@ -53,6 +53,38 @@ conf-m4            1  Virtual package relying on m4
 coq            8.8.0  Formal proof management system.
 num                0  The Num library for arbitrary-precision integer and ration
 ocamlfind      1.8.0  A library manager for OCaml
+# opam file:
+opam-version: &quot;1.2&quot;
+maintainer: &quot;minki.cho@sf.snu.ac.kr&quot;
+version: &quot;1.2.8&quot;
+homepage: &quot;https://github.com/snu-sf/paco&quot;
+dev-repo: &quot;https://github.com/snu-sf/paco&quot;
+bug-reports: &quot;https://github.com/snu-sf/paco/issues&quot;
+authors: [
+  &quot;Chung-Kil Hur &lt;gil.hur@sf.snu.ac.kr&gt;&quot;
+  &quot;Georg Neis &lt;neis@mpi-sws.org&gt;&quot;
+  &quot;Derek Dreyer &lt;dreyer@mpi-sws.org&gt;&quot;
+  &quot;Viktor Vafeiadis &lt;viktor@mpi-sws.org&gt;&quot;
+]
+license: &quot;BSD-3&quot;
+build: [
+  [make &quot;-C&quot; &quot;src&quot; &quot;all&quot; &quot;-j%{jobs}%&quot;]
+]
+install: [
+  [make &quot;-C&quot; &quot;src&quot; &quot;-f&quot; &quot;Makefile.coq&quot; &quot;install&quot;]
+]
+remove: [&quot;rm&quot; &quot;-r&quot; &quot;-f&quot; &quot;%{lib}%/coq/user-contrib/Paco&quot;]
+depends: [
+  &quot;coq&quot; {&gt;= &quot;8.3&quot; &amp; &lt; &quot;8.8~&quot;}
+]
+tags: [
+  &quot;date:2018-02-11&quot;
+  &quot;category:Programming Languages/Formal Definitions and Theory&quot;
+  &quot;category:Mathematical Logic and Foramal Languages/Mathematical Logic&quot;
+  &quot;keyword:coinduction&quot;
+  &quot;keyword:simulation&quot;
+  &quot;keyword:parameterized greatest fixed point&quot;
+]
 </pre>
             <h2>Lint</h2>
             <dl class="dl-horizontal">

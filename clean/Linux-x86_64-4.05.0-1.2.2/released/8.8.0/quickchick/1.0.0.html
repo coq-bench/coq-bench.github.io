@@ -41,7 +41,7 @@
                 <span class="label label-info">Not compatible with this Coq</span>
               </small>
             </h1>
-            <p><em><script>document.write(moment("2018-06-11 14:58:50 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2018-06-11 14:58:50 UTC)</em><p>
+            <p><em><script>document.write(moment("2018-06-18 01:38:46 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2018-06-18 01:38:46 UTC)</em><p>
             <h2>Context</h2>
             <pre># Installed packages for system:
 base-bigarray   base  Bigarray library distributed with the OCaml compiler
@@ -53,6 +53,36 @@ conf-m4            1  Virtual package relying on m4
 coq            8.8.0  Formal proof management system.
 num                0  The Num library for arbitrary-precision integer and ration
 ocamlfind      1.8.0  A library manager for OCaml
+# opam file:
+opam-version: &quot;1.2&quot;
+name: &quot;coq-quickchick&quot;
+version: &quot;1.0.0&quot;
+maintainer: &quot;llamp@seas.upenn.edu&quot;
+homepage: &quot;https://github.com/QuickChick/QuickChick&quot;
+dev-repo: &quot;https://github.com/QuickChick/QuickChick.git&quot;
+bug-reports: &quot;https://github.com/QuickChick/QuickChick/issues&quot;
+license: &quot;MIT&quot;
+build: [ make &quot;-j%{jobs}%&quot; &quot;plugin&quot; ]
+install: [ make &quot;install&quot; ]
+remove: [ [ &quot;rm&quot; &quot;-rf&quot; &quot;%{lib}%/coq/user-contrib/QuickChick&quot; ]
+          [ &quot;rm&quot; &quot;-f&quot; &quot;`which quickChick | grep opam`&quot; ] ]
+depends: [
+  &quot;coq&quot; {&gt;= &quot;8.7&quot;}
+  &quot;coq-ext-lib&quot;
+  &quot;coq-mathcomp-ssreflect&quot; {&gt;= &quot;1.6&quot; &amp; &lt; &quot;1.7~&quot;}
+]
+available: [ ocaml-version &gt;= &quot;4.04.0&quot; ]
+authors: [
+  &quot;Leonidas Lampropoulos &lt;&gt;&quot;
+  &quot;Zoe Paraskevopoulou &lt;&gt;&quot;
+  &quot;Maxime Denes &lt;&gt;&quot;
+  &quot;Catalin Hritcu &lt;&gt;&quot;
+  &quot;Benjamin Pierce &lt;&gt;&quot;
+  &quot;Arthur Azevedo de Amorim &lt;&gt;&quot;
+  &quot;Antal Spector-Zabusky &lt;&gt;&quot;
+  &quot;Li-Yao Xia &lt;&gt;&quot;
+  &quot;Yishuai Li &lt;&gt;&quot;
+]
 </pre>
             <h2>Lint</h2>
             <dl class="dl-horizontal">

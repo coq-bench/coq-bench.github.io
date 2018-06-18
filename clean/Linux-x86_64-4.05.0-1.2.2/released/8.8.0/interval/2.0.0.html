@@ -41,7 +41,7 @@
                 <span class="label label-danger">Lint error</span>
               </small>
             </h1>
-            <p><em><script>document.write(moment("2018-06-11 14:58:50 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2018-06-11 14:58:50 UTC)</em><p>
+            <p><em><script>document.write(moment("2018-06-18 01:38:46 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2018-06-18 01:38:46 UTC)</em><p>
             <h2>Context</h2>
             <pre># Installed packages for system:
 base-bigarray   base  Bigarray library distributed with the OCaml compiler
@@ -53,6 +53,25 @@ conf-m4            1  Virtual package relying on m4
 coq            8.8.0  Formal proof management system.
 num                0  The Num library for arbitrary-precision integer and ration
 ocamlfind      1.8.0  A library manager for OCaml
+# opam file:
+opam-version: &quot;1.1&quot;
+maintainer: &quot;guillaume.melquiond@inria.fr&quot;
+homepage: &quot;http://coq-interval.gforge.inria.fr/&quot;
+license: &quot;CeCILL-C&quot;
+build: [
+  [&quot;./configure&quot;]
+  [&quot;./remake&quot; &quot;-j%{jobs}%&quot;]
+  [&quot;./remake&quot; &quot;install&quot;]
+]
+remove: [&quot;rm&quot; &quot;-R&quot; &quot;%{lib}%/coq/user-contrib/Interval&quot;]
+depends: [
+  &quot;coq&quot; {&gt;= &quot;8.4pl4&quot;}
+  &quot;coq-flocq&quot; {&gt;= &quot;2.4.0&quot; &amp; &lt; &quot;2.5.0&quot;}
+  &quot;coq-ssreflect&quot; {&gt;= &quot;1.5.0&quot;}
+  &quot;coq-math-comp&quot; {&gt;= &quot;1.5.0&quot;}
+]
+tags: [ &quot;keyword:interval arithmetic&quot; &quot;keyword:decision procedure&quot; &quot;keyword:floating point arithmetic&quot; &quot;keyword:reflexive tactic&quot; &quot;keyword:taylor models&quot; &quot;category:Mathematics/Real Calculus and Topology&quot; &quot;category:Computer Science/Decision Procedures and Certified Algorithms/Decision procedures&quot; ]
+authors: [ &quot;Guillaume Melquiond &lt;guillaume.melquiond@inria.fr&gt;&quot; ]
 </pre>
             <h2>Lint</h2>
             <dl class="dl-horizontal">

@@ -41,7 +41,7 @@
                 <span class="label label-info">Not compatible with this Coq</span>
               </small>
             </h1>
-            <p><em><script>document.write(moment("2018-06-11 14:58:50 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2018-06-11 14:58:50 UTC)</em><p>
+            <p><em><script>document.write(moment("2018-06-18 01:38:46 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2018-06-18 01:38:46 UTC)</em><p>
             <h2>Context</h2>
             <pre># Installed packages for system:
 base-bigarray   base  Bigarray library distributed with the OCaml compiler
@@ -53,6 +53,30 @@ conf-m4            1  Virtual package relying on m4
 coq            8.8.0  Formal proof management system.
 num                0  The Num library for arbitrary-precision integer and ration
 ocamlfind      1.8.0  A library manager for OCaml
+# opam file:
+opam-version: &quot;1.2&quot;
+maintainer: &quot;Julien Narboux &lt;julien@narboux.fr&gt;&quot;
+homepage: &quot;http://geocoq.github.io/GeoCoq/&quot;
+bug-reports: &quot;https://github.com/GeoCoq/GeoCoq/issues&quot;
+authors: [&quot;Gabriel Braun &lt;gabriel.braun@unistra.fr&gt;&quot; 
+          &quot;Pierre Boutry &lt;pierre.boutry@unistra.fr&gt;&quot;
+          &quot;Charly Gries &lt;Charly.Gries@etu.unistra.fr&gt;&quot;
+          &quot;Julien Narboux &lt;narboux@unistra.fr&gt;&quot;]
+license: &quot;LGPL 3&quot;
+build: [
+  [&quot;./configure.sh&quot;]
+  [make &quot;-j%{jobs}%&quot;]
+]
+install: [
+  [make &quot;install&quot;]
+]
+remove: [&quot;rm&quot; &quot;-R&quot; &quot;%{lib}%/coq/user-contrib/GeoCoq&quot;]
+depends: [
+  &quot;coq&quot; { ((&gt;= &quot;8.4pl4&quot; &amp; &lt; &quot;8.5~&quot;) | (&gt;= &quot;8.5&quot; &amp; &lt; &quot;8.6~&quot;) | (&gt;= &quot;8.6&quot; &amp; &lt; &quot;8.7~&quot;))} 
+]
+tags: [ &quot;keyword:geometry&quot; &quot;keyword:neutral geometry&quot; &quot;keyword:euclidean geometry&quot; &quot;keyword:foundations&quot;
+        &quot;keyword:Tarski&quot; &quot;keyword:hilbert&quot; &quot;keyword:Pappus&quot; &quot;keyword:desargues&quot; &quot;keyword:parallel postulates&quot;
+        &quot;category:Mathematics/Geometry/General&quot; &quot;date:2016-12-22&quot;]
 </pre>
             <h2>Lint</h2>
             <dl class="dl-horizontal">

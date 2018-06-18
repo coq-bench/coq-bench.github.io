@@ -41,7 +41,7 @@
                 <span class="label label-info">Not compatible with this Coq</span>
               </small>
             </h1>
-            <p><em><script>document.write(moment("2018-06-11 14:58:50 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2018-06-11 14:58:50 UTC)</em><p>
+            <p><em><script>document.write(moment("2018-06-18 01:38:46 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2018-06-18 01:38:46 UTC)</em><p>
             <h2>Context</h2>
             <pre># Installed packages for system:
 base-bigarray   base  Bigarray library distributed with the OCaml compiler
@@ -53,6 +53,25 @@ conf-m4            1  Virtual package relying on m4
 coq            8.8.0  Formal proof management system.
 num                0  The Num library for arbitrary-precision integer and ration
 ocamlfind      1.8.0  A library manager for OCaml
+# opam file:
+opam-version: &quot;1.2&quot;
+name: &quot;coq-iris&quot;
+version: &quot;3.0.0&quot;
+maintainer: &quot;Ralf Jung &lt;jung@mpi-sws.org&gt;&quot;
+authors: &quot;The Iris Team&quot;
+homepage: &quot;http://iris-project.org/&quot;
+bug-reports: &quot;https://gitlab.mpi-sws.org/FP/iris-coq/issues&quot;
+license: &quot;BSD&quot;
+dev-repo: &quot;https://gitlab.mpi-sws.org/FP/iris-coq.git&quot;
+build: [
+  [make &quot;-j%{jobs}%&quot;]
+]
+install: [make &quot;install&quot;]
+remove: [ &quot;sh&quot; &quot;-c&quot; &quot;rm -rf &#39;%{lib}%/coq/user-contrib/iris&#39;&quot; ]
+depends: [
+  &quot;coq&quot; { ((&gt;= &quot;8.5.1&quot; &amp; &lt; &quot;8.7~&quot;) | (= &quot;dev&quot;))}
+  &quot;coq-mathcomp-ssreflect&quot; { ((&gt;= &quot;1.6.1&quot; &amp; &lt; &quot;1.7~&quot;) | (= &quot;dev&quot;))}
+]
 </pre>
             <h2>Lint</h2>
             <dl class="dl-horizontal">

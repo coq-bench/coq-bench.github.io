@@ -41,7 +41,7 @@
                 <span class="label label-danger">Lint error</span>
               </small>
             </h1>
-            <p><em><script>document.write(moment("2018-06-11 14:58:50 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2018-06-11 14:58:50 UTC)</em><p>
+            <p><em><script>document.write(moment("2018-06-18 01:38:46 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2018-06-18 01:38:46 UTC)</em><p>
             <h2>Context</h2>
             <pre># Installed packages for system:
 base-bigarray   base  Bigarray library distributed with the OCaml compiler
@@ -53,6 +53,22 @@ conf-m4            1  Virtual package relying on m4
 coq            8.8.0  Formal proof management system.
 num                0  The Num library for arbitrary-precision integer and ration
 ocamlfind      1.8.0  A library manager for OCaml
+# opam file:
+opam-version: &quot;1.1&quot;
+maintainer: &quot;Damien Pous &lt;Damien.Pous@ens-lyon.fr&gt;&quot;
+homepage: &quot;http://perso.ens-lyon.fr/damien.pous/ra/&quot;
+license: &quot;LGPL&quot;
+build: [
+  [&quot;coq_makefile&quot; &quot;-f&quot; &quot;Make&quot; &quot;-o&quot; &quot;Makefile&quot;]
+  [make &quot;-j%{jobs}%&quot;]
+  [make &quot;install&quot;]
+]
+remove: [&quot;rm&quot; &quot;-R&quot; &quot;%{lib}%/coq/user-contrib/RelationAlgebra&quot;]
+depends: [
+  &quot;coq&quot; {&gt;= &quot;8.5.1&quot;}
+]
+tags: [ &quot;keyword:relation algebra&quot; &quot;keyword:kleene algebra with tests&quot; &quot;keyword:kat&quot; &quot;keyword:allegories&quot; &quot;keyword:residuated structures&quot; &quot;keyword:automata&quot; &quot;keyword:regular expressions&quot; &quot;keyword:matrices&quot; &quot;category:Mathematics/Algebra&quot; ]
+authors: [ &quot;Damien Pous &lt;Damien.Pous@ens-lyon.fr&gt;&quot; ]
 </pre>
             <h2>Lint</h2>
             <dl class="dl-horizontal">

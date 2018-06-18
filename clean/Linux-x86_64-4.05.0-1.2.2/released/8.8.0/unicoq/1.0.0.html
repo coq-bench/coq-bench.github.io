@@ -41,7 +41,7 @@
                 <span class="label label-info">Not compatible with this Coq</span>
               </small>
             </h1>
-            <p><em><script>document.write(moment("2018-06-11 14:58:50 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2018-06-11 14:58:50 UTC)</em><p>
+            <p><em><script>document.write(moment("2018-06-18 01:38:46 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2018-06-18 01:38:46 UTC)</em><p>
             <h2>Context</h2>
             <pre># Installed packages for system:
 base-bigarray   base  Bigarray library distributed with the OCaml compiler
@@ -53,6 +53,25 @@ conf-m4            1  Virtual package relying on m4
 coq            8.8.0  Formal proof management system.
 num                0  The Num library for arbitrary-precision integer and ration
 ocamlfind      1.8.0  A library manager for OCaml
+# opam file:
+opam-version: &quot;1.2&quot;
+maintainer: &quot;matthieu.sozeau@inria.fr&quot;
+authors: [ &quot;Matthieu Sozeau &lt;matthieu.sozeau@inria.fr&gt;&quot; &quot;Beta Ziliani &lt;bziliani@famaf.unc.edu.ar&gt;&quot; ]
+dev-repo: &quot;https://github.com/unicoq/unicoq.git&quot; 
+homepage: &quot;https://github.com/unicoq/unicoq&quot;
+bug-reports: &quot;https://github.com/unicoq/unicoq/issues&quot;
+license: &quot;MIT&quot;
+build: [
+  [&quot;coq_makefile&quot; &quot;-f&quot; &quot;Make&quot; &quot;-o&quot; &quot;Makefile&quot;]
+  [make &quot;-j%{jobs}%&quot;]
+]
+install: [
+  [make &quot;install&quot;]
+]
+remove: [&quot;rm&quot; &quot;-R&quot; &quot;%{lib}%/coq/user-contrib/Unicoq&quot;]
+depends: [
+  &quot;coq&quot; {&gt;= &quot;8.5.0&quot; &amp; &lt; &quot;8.6~&quot;}
+]
 </pre>
             <h2>Lint</h2>
             <dl class="dl-horizontal">
