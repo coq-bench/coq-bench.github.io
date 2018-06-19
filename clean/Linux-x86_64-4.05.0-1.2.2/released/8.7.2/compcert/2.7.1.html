@@ -41,7 +41,7 @@
                 <span class="label label-info">Not compatible with this Coq</span>
               </small>
             </h1>
-            <p><em><script>document.write(moment("2018-06-03 06:47:02 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2018-06-03 06:47:02 UTC)</em><p>
+            <p><em><script>document.write(moment("2018-06-19 14:59:06 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2018-06-19 14:59:06 UTC)</em><p>
             <h2>Context</h2>
             <pre># Installed packages for system:
 base-bigarray   base  Bigarray library distributed with the OCaml compiler
@@ -53,6 +53,36 @@ conf-m4            1  Virtual package relying on m4
 coq            8.7.2  Formal proof management system.
 num                0  The Num library for arbitrary-precision integer and ration
 ocamlfind      1.8.0  A library manager for OCaml
+# opam file:
+opam-version: &quot;1.2&quot;
+maintainer: &quot;Maxime Dénès &lt;mail@maximedenes.fr&gt;&quot;
+author: &quot;Xavier Leroy &lt;xavier.leroy@inria.fr&gt;&quot;
+homepage: &quot;http://compcert.inria.fr/&quot;
+dev-repo: &quot;https://github.com/AbsInt/CompCert.git&quot;
+bug-reports: &quot;https://github.com/AbsInt/CompCert/issues&quot;
+license: &quot;INRIA Non-Commercial License Agreement&quot;
+build: [
+  [&quot;./configure&quot; &quot;ia32-linux&quot; {os = &quot;linux&quot;}
+  		 &quot;ia32-macosx&quot; {os = &quot;darwin&quot;}
+		 &quot;ia32-cygwin&quot; {os = &quot;cygwin&quot;}
+		 &quot;-bindir&quot; &quot;%{bin}%&quot; &quot;-libdir&quot; &quot;%{lib}%/compcert&quot;
+		 &quot;-clightgen&quot;]
+  [make &quot;-j%{jobs}%&quot;]
+]
+install: [
+  [make &quot;install&quot;]
+]
+remove: [
+  [&quot;rm&quot; &quot;%{bin}%/ccomp&quot;]
+  [&quot;rm&quot; &quot;%{bin}%/clightgen&quot;]
+  [&quot;rm&quot; &quot;-R&quot; &quot;%{lib}%/compcert&quot;]
+  [&quot;rm&quot; &quot;%{share}%/compcert.ini&quot;]
+]
+depends: [
+  &quot;coq&quot; {&gt;= &quot;8.5.2&quot; &amp; &lt; &quot;8.6~&quot;}
+  &quot;menhir&quot; {&gt;= &quot;20160303&quot;}
+]
+patches: &quot;fix-coq-version.patch&quot;
 </pre>
             <h2>Lint</h2>
             <dl class="dl-horizontal">
