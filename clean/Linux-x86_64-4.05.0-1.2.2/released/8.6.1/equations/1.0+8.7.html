@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>equations: Lint error</title>
+    <title>equations: Not compatible with this Coq</title>
     <link rel="shortcut icon" type="image/png" href="../../../../../favicon.png" />
     <link href="../../../../../bootstrap.min.css" rel="stylesheet">
     <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
@@ -38,10 +38,10 @@
               equations
               <small>
                 1.0+8.7
-                <span class="label label-danger">Lint error</span>
+                <span class="label label-info">Not compatible with this Coq</span>
               </small>
             </h1>
-            <p><em><script>document.write(moment("2018-05-27 11:47:20 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2018-05-27 11:47:20 UTC)</em><p>
+            <p><em><script>document.write(moment("2018-06-21 01:56:31 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2018-06-21 01:56:31 UTC)</em><p>
             <h2>Context</h2>
             <pre># Installed packages for system:
 base-bigarray   base  Bigarray library distributed with the OCaml compiler
@@ -53,30 +53,53 @@ conf-m4            1  Virtual package relying on m4
 coq            8.6.1  Formal proof management system.
 num                0  The Num library for arbitrary-precision integer and ration
 ocamlfind      1.8.0  A library manager for OCaml
+# opam file:
+opam-version: &quot;1.2&quot;
+authors: [ &quot;Matthieu Sozeau &lt;matthieu.sozeau@inria.fr&gt;&quot; &quot;Cyprien Mangin &lt;cyprien.mangin@m4x.org&gt;&quot; ]
+dev-repo: &quot;https://github.com/mattam82/Coq-Equations.git&quot;
+maintainer: &quot;matthieu.sozeau@inria.fr&quot;
+homepage: &quot;https://mattam82.github.io/Coq-Equations&quot;
+bug-reports: &quot;https://github.com/mattam82/Coq-Equations/issues&quot;
+license: &quot;LGPL 2.1&quot;
+build: [
+  [&quot;coq_makefile&quot; &quot;-f&quot; &quot;_CoqProject&quot; &quot;-o&quot; &quot;Makefile&quot;]
+  [make &quot;-j%{jobs}%&quot;]
+]
+install: [
+  [make &quot;install&quot;]
+]
+remove: [&quot;rm&quot; &quot;-R&quot; &quot;%{lib}%/coq/user-contrib/Equations&quot;]
+depends: [
+  &quot;coq&quot; {&gt;= &quot;8.7&quot; &amp; &lt; &quot;8.8&quot;}
+]
 </pre>
             <h2>Lint</h2>
             <dl class="dl-horizontal">
               <dt>Command</dt>
               <dd><code>ruby lint.rb released opam-coq-archive/released/packages/coq-equations/coq-equations.1.0+8.7</code></dd>
               <dt>Return code</dt>
-              <dd>256</dd>
-              <dt>Output</dt>
-              <dd><pre>~/run/opam-coq-archive/released/packages/coq-equations/coq-equations.1.0+8.7/opam: Passed.
-Wrong released version name &quot;1.0+8.7&quot;, expected three (or two) numbers separated by dots or a name containing the word &quot;beta&quot;.
-</pre></dd>
+              <dd>0</dd>
             </dl>
             <h2>Dry install</h2>
             <p>Dry install with the current Coq version:</p>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>true</code></dd>
+              <dd><code>opam install -y --show-action coq-equations.1.0+8.7 coq.8.6.1</code></dd>
               <dt>Return code</dt>
-              <dd>0</dd>
+              <dd>768</dd>
+              <dt>Output</dt>
+              <dd><pre>[NOTE] Package coq is already installed (current version is 8.6.1).
+The following dependencies couldn&#39;t be met:
+  - coq-equations -&gt; coq &gt;= 8.7
+Your request can&#39;t be satisfied:
+  - Conflicting version constraints for coq
+No solution found, exiting
+</pre></dd>
             </dl>
             <p>Dry install without Coq, to test if the problem was incompatibility with the current Coq version:</p>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>true</code></dd>
+              <dd><code>opam remove -y coq; opam install -y --show-action coq-equations.1.0+8.7</code></dd>
               <dt>Return code</dt>
               <dd>0</dd>
             </dl>

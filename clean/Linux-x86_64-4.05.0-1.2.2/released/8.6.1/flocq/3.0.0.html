@@ -41,7 +41,7 @@
                 <span class="label label-info">Not compatible with this Coq</span>
               </small>
             </h1>
-            <p><em><script>document.write(moment("2018-05-27 11:47:20 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2018-05-27 11:47:20 UTC)</em><p>
+            <p><em><script>document.write(moment("2018-06-21 01:56:31 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2018-06-21 01:56:31 UTC)</em><p>
             <h2>Context</h2>
             <pre># Installed packages for system:
 base-bigarray   base  Bigarray library distributed with the OCaml compiler
@@ -53,6 +53,24 @@ conf-m4            1  Virtual package relying on m4
 coq            8.6.1  Formal proof management system.
 num                0  The Num library for arbitrary-precision integer and ration
 ocamlfind      1.8.0  A library manager for OCaml
+# opam file:
+opam-version: &quot;1.2&quot;
+maintainer: &quot;guillaume.melquiond@inria.fr&quot;
+homepage: &quot;http://flocq.gforge.inria.fr/&quot;
+dev-repo: &quot;https://gitlab.inria.fr/flocq/flocq&quot;
+bug-reports: &quot;https://gitlab.inria.fr/flocq/flocq/issues&quot;
+license: &quot;LGPL 3&quot;
+build: [
+  [&quot;./configure&quot;]
+  [&quot;./remake&quot; &quot;-j%{jobs}%&quot;]
+]
+install: [&quot;./remake&quot; &quot;install&quot;]
+remove: [&quot;rm&quot; &quot;-R&quot; &quot;%{lib}%/coq/user-contrib/Flocq&quot;]
+depends: [
+  &quot;coq&quot; {&gt;= &quot;8.7&quot; &amp; &lt; &quot;8.9~&quot;}
+]
+tags: [ &quot;keyword:floating point arithmetic&quot; ]
+authors: [ &quot;Sylvie Boldo &lt;sylvie.boldo@inria.fr&gt;&quot; &quot;Guillaume Melquiond &lt;guillaume.melquiond@inria.fr&gt;&quot; ]
 </pre>
             <h2>Lint</h2>
             <dl class="dl-horizontal">
