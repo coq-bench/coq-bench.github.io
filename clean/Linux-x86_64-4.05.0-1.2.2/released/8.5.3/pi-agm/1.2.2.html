@@ -41,7 +41,7 @@
                 <span class="label label-danger">Lint error</span>
               </small>
             </h1>
-            <p><em><script>document.write(moment("2018-05-31 01:32:39 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2018-05-31 01:32:39 UTC)</em><p>
+            <p><em><script>document.write(moment("2018-06-22 22:31:07 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2018-06-22 22:31:07 UTC)</em><p>
             <h2>Context</h2>
             <pre># Installed packages for system:
 base-bigarray   base  Bigarray library distributed with the OCaml compiler
@@ -51,6 +51,25 @@ base-unix       base  Unix library distributed with the OCaml compiler
 camlp5          7.05  Preprocessor-pretty-printer of OCaml
 coq            8.5.3  Formal proof management system.
 num                0  The Num library for arbitrary-precision integer and ration
+# opam file:
+opam-version: &quot;1.2&quot;
+name: &quot;coq-pi-agm&quot;
+version: &quot;1.2.1&quot;
+maintainer: &quot;yves.bertot@inria.fr&quot;
+homepage: &quot;http://www-sop.inria.fr/members/Yves.Bertot/&quot;
+bug-reports: &quot;yves.bertot@inria.fr&quot;
+license: &quot;CeCILL-B&quot;
+build: [[&quot;coq_makefile&quot; &quot;-f&quot; &quot;_CoqProject&quot; &quot;-o&quot; &quot;Makefile&quot; ]
+       [ make &quot;-j&quot; &quot;%{jobs}%&quot; ]]
+install: [ make &quot;install&quot; &quot;DEST=&#39;%{lib}%/coq/user-contrib/pi_agm&#39;&quot; ]
+remove: [ &quot;sh&quot; &quot;-c&quot; &quot;rm -rf &#39;%{lib}%/coq/user-contrib/pi_agm&#39;&quot; ]
+depends: [
+  &quot;coq&quot; {&gt;= &quot;8.8&quot; &amp; &lt; &quot;8.9~&quot;}
+  &quot;coq-coquelicot&quot; {&gt;= &quot;3&quot; &amp; &lt; &quot;4~&quot; }
+  &quot;coq-interval&quot; {&gt;= &quot;3.1&quot;}
+]
+tags: [ &quot;keyword:real analysis&quot; &quot;keyword:pi&quot; &quot;category:Mathematics/Real Calculus and Topology&quot; ]
+authors: [ &quot;Yves Bertot &lt;yves.bertot@inria.fr&gt;&quot; ]
 </pre>
             <h2>Lint</h2>
             <dl class="dl-horizontal">

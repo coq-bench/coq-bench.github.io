@@ -41,7 +41,7 @@
                 <span class="label label-warning">Error with dependencies</span>
               </small>
             </h1>
-            <p><em><script>document.write(moment("2018-05-31 01:32:39 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2018-05-31 01:32:39 UTC)</em><p>
+            <p><em><script>document.write(moment("2018-06-22 22:31:07 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2018-06-22 22:31:07 UTC)</em><p>
             <h2>Context</h2>
             <pre># Installed packages for system:
 base-bigarray   base  Bigarray library distributed with the OCaml compiler
@@ -51,6 +51,30 @@ base-unix       base  Unix library distributed with the OCaml compiler
 camlp5          7.05  Preprocessor-pretty-printer of OCaml
 coq            8.5.3  Formal proof management system.
 num                0  The Num library for arbitrary-precision integer and ration
+# opam file:
+opam-version: &quot;1.2&quot;
+maintainer: &quot;dev@clarus.me&quot;
+homepage: &quot;https://github.com/coq-concurrency/pluto&quot;
+dev-repo: &quot;https://github.com/coq-concurrency/pluto.git&quot;
+bug-reports: &quot;https://github.com/coq-concurrency/pluto/issues&quot;
+authors: [&quot;Guillaume Claret&quot;]
+license: &quot;MIT&quot;
+build: [
+  [&quot;./configure.sh&quot;]
+  [make &quot;-j%{jobs}%&quot;]
+  [&quot;sh&quot; &quot;-c&quot; &quot;cd extraction &amp;&amp; make&quot;]
+]
+depends: [
+  &quot;coq&quot; {&gt;= &quot;8.4pl4&quot;}
+  &quot;coq-error-handlers&quot;
+  &quot;coq-function-ninjas&quot;
+  &quot;coq-iterable&quot;
+  &quot;coq-list-string&quot; {&gt;= &quot;2.0.0&quot;}
+  &quot;coq-moment&quot;
+  &quot;coq-concurrency-proxy&quot;
+  &quot;coq-concurrency-system&quot; {&gt;= &quot;1.1.0&quot;}
+  &quot;base64&quot; {= &quot;1.0.0&quot;}
+]
 </pre>
             <h2>Lint</h2>
             <dl class="dl-horizontal">
@@ -81,7 +105,7 @@ num                0  The Num library for arbitrary-precision integer and ration
               <dt>Return code</dt>
               <dd>1024</dd>
               <dt>Duration</dt>
-              <dd>1 m 20 s</dd>
+              <dd>1 m 21 s</dd>
               <dt>Output</dt>
               <dd><pre># Installed packages for system:
 base-bigarray   base  Bigarray library distributed with the OCaml compiler
@@ -150,14 +174,14 @@ The following actions will be performed:
 [coq-moment: http] Command started
 [coq-moment.1.0.0] https://github.com/clarus/coq-moment/archive/1.0.0.tar.gz downloaded
 [ocamlbuild: from default] Command started
-[jbuilder: from default] Command started
-[default] https://opam.ocaml.org/archives/jbuilder.1.0+beta20+opam.tar.gz downloaded
-[ocamlfind: from default] Command started
 [ocamlbuild: from default] Command started
 [default] https://opam.ocaml.org/archives/ocamlbuild.0.12.0+opam.tar.gz downloaded
-[result: from default] Command started
+[ocamlfind: from default] Command started
 [lwt: from default] Command started
 [default] https://opam.ocaml.org/archives/lwt.4.0.1+opam.tar.gz downloaded
+[result: from default] Command started
+[jbuilder: from default] Command started
+[default] https://opam.ocaml.org/archives/jbuilder.1.0+beta20+opam.tar.gz downloaded
 [result: from default] Command started
 [default] https://opam.ocaml.org/archives/result.1.3+opam.tar.gz downloaded
 [ocamlfind: from default] Command started
@@ -185,8 +209,8 @@ The following actions will be performed:
 [coq-iterable: ./configure.sh] Command started
 [coq-iterable: make] Command started
 [coq-cunit: make install] Command started
--&gt; installed coq-cunit.1.0.0
 [ocamlfind: make all] Command started
+-&gt; installed coq-cunit.1.0.0
 [coq-list-plus: make install] Command started
 -&gt; installed coq-list-plus.1.1.0
 [coq-list-string: ./configure.sh] Command started
@@ -214,9 +238,9 @@ The following actions will be performed:
 -&gt; installed jbuilder.1.0+beta20
 [cppo: jbuilder build] Command started
 [result: jbuilder build] Command started
+-&gt; installed base64.1.0.0
 [ERROR] The compilation of cppo failed at &quot;jbuilder build -p cppo -j 6&quot;.
 [ERROR] The compilation of result failed at &quot;jbuilder build -p result -j 6&quot;.
--&gt; installed base64.1.0.0
 [coq-moment: make install] Command started
 -&gt; installed coq-moment.1.0.0
 [coq-concurrency-system: make install] Command started
@@ -228,9 +252,9 @@ The following actions will be performed:
 # path                 /home/bench/.opam/system/build/cppo.1.6.4
 # compiler             system (4.05.0)
 # exit-code            127
-# env-file             /home/bench/.opam/system/build/cppo.1.6.4/cppo-18889-be0162.env
-# stdout-file          /home/bench/.opam/system/build/cppo.1.6.4/cppo-18889-be0162.out
-# stderr-file          /home/bench/.opam/system/build/cppo.1.6.4/cppo-18889-be0162.err
+# env-file             /home/bench/.opam/system/build/cppo.1.6.4/cppo-7076-be0162.env
+# stdout-file          /home/bench/.opam/system/build/cppo.1.6.4/cppo-7076-be0162.out
+# stderr-file          /home/bench/.opam/system/build/cppo.1.6.4/cppo-7076-be0162.err
 #=== ERROR while installing result.1.3 ========================================#
 # opam-version         1.2.2
 # os                   linux
@@ -238,9 +262,9 @@ The following actions will be performed:
 # path                 /home/bench/.opam/system/build/result.1.3
 # compiler             system (4.05.0)
 # exit-code            127
-# env-file             /home/bench/.opam/system/build/result.1.3/result-18889-4748d7.env
-# stdout-file          /home/bench/.opam/system/build/result.1.3/result-18889-4748d7.out
-# stderr-file          /home/bench/.opam/system/build/result.1.3/result-18889-4748d7.err
+# env-file             /home/bench/.opam/system/build/result.1.3/result-7076-4748d7.env
+# stdout-file          /home/bench/.opam/system/build/result.1.3/result-7076-4748d7.out
+# stderr-file          /home/bench/.opam/system/build/result.1.3/result-7076-4748d7.err
 =-=- Error report -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 The following actions were aborted
   - install coq-concurrency-proxy 1.0.0
@@ -264,7 +288,7 @@ The following changes have been performed
   - install ocamlbuild             0.12.0    
   - install ocamlfind              1.8.0     
 The former state can be restored with:
-    opam switch import &quot;~/.opam/system/backup/state-20180430193310.export&quot;
+    opam switch import &quot;~/.opam/system/backup/state-20180522160859.export&quot;
 </pre></dd>
             </dl>
             <h2>Install</h2>

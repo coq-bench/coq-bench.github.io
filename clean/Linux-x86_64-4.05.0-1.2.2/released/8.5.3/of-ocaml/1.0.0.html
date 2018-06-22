@@ -41,7 +41,7 @@
                 <span class="label label-warning">Error with dependencies</span>
               </small>
             </h1>
-            <p><em><script>document.write(moment("2018-05-31 01:32:39 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2018-05-31 01:32:39 UTC)</em><p>
+            <p><em><script>document.write(moment("2018-06-22 22:31:07 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2018-06-22 22:31:07 UTC)</em><p>
             <h2>Context</h2>
             <pre># Installed packages for system:
 base-bigarray   base  Bigarray library distributed with the OCaml compiler
@@ -51,6 +51,27 @@ base-unix       base  Unix library distributed with the OCaml compiler
 camlp5          7.05  Preprocessor-pretty-printer of OCaml
 coq            8.5.3  Formal proof management system.
 num                0  The Num library for arbitrary-precision integer and ration
+# opam file:
+opam-version: &quot;1.2&quot;
+maintainer: &quot;dev@clarus.me&quot;
+homepage: &quot;https://github.com/clarus/coq-of-ocaml&quot;
+dev-repo: &quot;https://github.com/clarus/coq-of-ocaml.git&quot;
+bug-reports: &quot;https://github.com/clarus/coq-of-ocaml/issues&quot;
+authors: [&quot;Guillaume Claret&quot;]
+license: &quot;MIT&quot;
+build: [
+  [&quot;sh&quot; &quot;-c&quot; &quot;cd CoqOfOCaml &amp;&amp; ./configure.sh&quot;]
+  [&quot;sh&quot; &quot;-c&quot; &quot;cd CoqOfOCaml &amp;&amp; make -j%{jobs}%&quot;]
+  [&quot;sh&quot; &quot;-c&quot; &quot;cd CoqOfOCaml &amp;&amp; make install&quot;]
+  [make &quot;-j%{jobs}%&quot;]
+]
+remove: [&quot;rm&quot; &quot;-R&quot; &quot;%{lib}%/coq/user-contrib/CoqOfOCaml&quot;]
+depends: [
+  &quot;coq&quot; {&gt;= &quot;8.4.5&quot; &amp; &lt; &quot;8.6&quot;}
+  &quot;yojson&quot;
+  &quot;smart-print&quot;
+]
+available: [ocaml-version &gt;= &quot;4.02.0&quot; &amp; ocaml-version &lt; &quot;4.03.0&quot;]
 </pre>
             <h2>Lint</h2>
             <dl class="dl-horizontal">
@@ -65,135 +86,42 @@ num                0  The Num library for arbitrary-precision integer and ration
               <dt>Command</dt>
               <dd><code>opam install -y --show-action coq-of-ocaml.1.0.0 coq.8.5.3</code></dd>
               <dt>Return code</dt>
-              <dd>0</dd>
+              <dd>16896</dd>
+              <dt>Output</dt>
+              <dd><pre>[NOTE] Package coq is already installed (current version is 8.5.3).
+[ERROR] coq-of-ocaml.1.0.0 is not available because your system doesn&#39;t comply
+        with ocaml-version &gt;= &quot;4.02.0&quot; &amp; ocaml-version &lt; &quot;4.03.0&quot;.
+</pre></dd>
             </dl>
             <p>Dry install without Coq, to test if the problem was incompatibility with the current Coq version:</p>
+            <dl class="dl-horizontal">
+              <dt>Command</dt>
+              <dd><code>opam remove -y coq; opam install -y --show-action coq-of-ocaml.1.0.0</code></dd>
+              <dt>Return code</dt>
+              <dd>16896</dd>
+              <dt>Output</dt>
+              <dd><pre>The following actions will be performed:
+  - remove coq 8.5.3
+=-=- Gathering sources =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+[coq: from default] Command started
+[coq: from default] Command started
+[default] https://opam.ocaml.org/archives/coq.8.5.3+opam.tar.gz downloaded
+=-=- Processing actions -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+[coq: rm] Command started
+-&gt; removed   coq.8.5.3
+Done.
+[ERROR] coq-of-ocaml.1.0.0 is not available because your system doesn&#39;t comply
+        with ocaml-version &gt;= &quot;4.02.0&quot; &amp; ocaml-version &lt; &quot;4.03.0&quot;.
+</pre></dd>
+            </dl>
+            <h2>Install dependencies</h2>
             <dl class="dl-horizontal">
               <dt>Command</dt>
               <dd><code>true</code></dd>
               <dt>Return code</dt>
               <dd>0</dd>
-            </dl>
-            <h2>Install dependencies</h2>
-            <dl class="dl-horizontal">
-              <dt>Command</dt>
-              <dd><code>opam list; ulimit -Sv 4000000; timeout 30m opam install -y --deps-only coq-of-ocaml.1.0.0</code></dd>
-              <dt>Return code</dt>
-              <dd>1024</dd>
               <dt>Duration</dt>
-              <dd>1 m 6 s</dd>
-              <dt>Output</dt>
-              <dd><pre># Installed packages for system:
-base-bigarray   base  Bigarray library distributed with the OCaml compiler
-base-num        base  Num library distributed with the OCaml compiler
-base-threads    base  Threads library distributed with the OCaml compiler
-base-unix       base  Unix library distributed with the OCaml compiler
-camlp5          7.05  Preprocessor-pretty-printer of OCaml
-coq            8.5.3  Formal proof management system.
-num                0  The Num library for arbitrary-precision integer and ration
-The following actions will be performed:
-  - install jbuilder    1.0+beta20
-  - install conf-m4     1         
-  - install conf-which  1         
-  - install ocamlbuild  0.12.0    
-  - install easy-format 1.3.1     
-  - install ocamlfind   1.8.0     
-  - install biniou      1.2.0     
-  - install smart-print 0.2.0     
-  - install base-bytes  base      
-  - install cppo        1.6.4     
-  - install yojson      1.4.1     
-===== 11 to install =====
-=-=- Gathering sources =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
-[biniou: from default] Command started
-[cppo: from default] Command started
-[easy-format: from default] Command started
-[biniou: from default] Command started
-[cppo: from default] Command started
-[easy-format: from default] Command started
-[default] https://opam.ocaml.org/archives/biniou.1.2.0+opam.tar.gz downloaded
-[jbuilder: from default] Command started
-[default] https://opam.ocaml.org/archives/cppo.1.6.4+opam.tar.gz downloaded
-[ocamlbuild: from default] Command started
-[default] https://opam.ocaml.org/archives/easy-format.1.3.1+opam.tar.gz downloaded
-[ocamlfind: from default] Command started
-[ocamlbuild: from default] Command started
-[default] https://opam.ocaml.org/archives/ocamlbuild.0.12.0+opam.tar.gz downloaded
-[smart-print: from default] Command started
-[ocamlfind: from default] Command started
-[default] https://opam.ocaml.org/archives/ocamlfind.1.8.0+opam.tar.gz downloaded
-[yojson: from default] Command started
-[jbuilder: from default] Command started
-[default] https://opam.ocaml.org/archives/jbuilder.1.0+beta20+opam.tar.gz downloaded
-[smart-print: from default] Command started
-[default] https://opam.ocaml.org/archives/smart-print.0.2.0+opam.tar.gz downloaded
-[yojson: from default] Command started
-[default] https://opam.ocaml.org/archives/yojson.1.4.1+opam.tar.gz downloaded
-=-=- Processing actions -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
-[conf-m4: sh echo | m4] Command started
-[conf-which: which which] Command started
-[jbuilder: ocaml configure.ml] Command started
-[ocamlbuild: make configure.make] Command started
--&gt; installed conf-m4.1
-[ocamlfind: ./configure] Command started
--&gt; installed conf-which.1
-[jbuilder: ocaml bootstrap.ml] Command started
-[ocamlbuild: make check-if-preinstalled] Command started
-[ocamlfind: make all] Command started
-[ocamlfind: make opt] Command started
-[ocamlfind: make install] Command started
-[ocamlfind: install 0755] Command started
--&gt; installed ocamlfind.1.8.0
--&gt; installed base-bytes.base
-[jbuilder: ./boot.exe 6] Command started
--&gt; installed ocamlbuild.0.12.0
-[smart-print: make] Command started
-[smart-print: make install] Command started
--&gt; installed smart-print.0.2.0
--&gt; installed jbuilder.1.0+beta20
-[cppo: jbuilder build] Command started
-[easy-format: jbuilder build] Command started
-[ERROR] The compilation of cppo failed at &quot;jbuilder build -p cppo -j 6&quot;.
-[ERROR] The compilation of easy-format failed at &quot;jbuilder build -p easy-format
-        -j 6&quot;.
-#=== ERROR while installing cppo.1.6.4 ========================================#
-# opam-version         1.2.2
-# os                   linux
-# command              jbuilder build -p cppo -j 6
-# path                 /home/bench/.opam/system/build/cppo.1.6.4
-# compiler             system (4.05.0)
-# exit-code            127
-# env-file             /home/bench/.opam/system/build/cppo.1.6.4/cppo-6549-4d7566.env
-# stdout-file          /home/bench/.opam/system/build/cppo.1.6.4/cppo-6549-4d7566.out
-# stderr-file          /home/bench/.opam/system/build/cppo.1.6.4/cppo-6549-4d7566.err
-#=== ERROR while installing easy-format.1.3.1 =================================#
-# opam-version         1.2.2
-# os                   linux
-# command              jbuilder build -p easy-format -j 6
-# path                 /home/bench/.opam/system/build/easy-format.1.3.1
-# compiler             system (4.05.0)
-# exit-code            127
-# env-file             /home/bench/.opam/system/build/easy-format.1.3.1/easy-format-6549-489228.env
-# stdout-file          /home/bench/.opam/system/build/easy-format.1.3.1/easy-format-6549-489228.out
-# stderr-file          /home/bench/.opam/system/build/easy-format.1.3.1/easy-format-6549-489228.err
-=-=- Error report -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
-The following actions were aborted
-  - install biniou 1.2.0
-  - install yojson 1.4.1
-The following actions failed
-  - install cppo        1.6.4
-  - install easy-format 1.3.1
-The following changes have been performed
-  - install base-bytes  base      
-  - install conf-m4     1         
-  - install conf-which  1         
-  - install jbuilder    1.0+beta20
-  - install ocamlbuild  0.12.0    
-  - install ocamlfind   1.8.0     
-  - install smart-print 0.2.0     
-The former state can be restored with:
-    opam switch import &quot;~/.opam/system/backup/state-20180429130855.export&quot;
-</pre></dd>
+              <dd>0 s</dd>
             </dl>
             <h2>Install</h2>
             <dl class="dl-horizontal">
