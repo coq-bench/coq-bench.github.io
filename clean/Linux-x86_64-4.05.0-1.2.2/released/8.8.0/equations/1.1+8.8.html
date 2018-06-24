@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>opam-website: Not compatible with this Coq</title>
+    <title>equations: Error</title>
     <link rel="shortcut icon" type="image/png" href="../../../../../favicon.png" />
     <link href="../../../../../bootstrap.min.css" rel="stylesheet">
     <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
@@ -25,7 +25,7 @@
           <div id="navbar" class="collapse navbar-collapse">
             <ul class="nav navbar-nav">
               <li><a href="../..">clean / released</a></li>
-              <li class="active"><a href="">8.8.0 / opam-website - 1.3.2</a></li>
+              <li class="active"><a href="">8.8.0 / equations - 1.1+8.8</a></li>
             </ul>
           </div>
         </div>
@@ -35,10 +35,10 @@
           <div class="col-md-12">
             <a href="../..">« Up</a>
             <h1>
-              opam-website
+              equations
               <small>
-                1.3.2
-                <span class="label label-info">Not compatible with this Coq</span>
+                1.1+8.8
+                <span class="label label-danger">Error</span>
               </small>
             </h1>
             <p><em><script>document.write(moment("2018-06-24 06:51:57 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2018-06-24 06:51:57 UTC)</em><p>
@@ -55,29 +55,28 @@ num                0  The Num library for arbitrary-precision integer and ration
 ocamlfind      1.8.0  A library manager for OCaml
 # opam file:
 opam-version: &quot;1.2&quot;
-maintainer: &quot;dev@clarus.me&quot;
-homepage: &quot;https://github.com/clarus/coq-opam-website&quot;
-dev-repo: &quot;https://github.com/clarus/coq-opam-website.git&quot;
-bug-reports: &quot;https://github.com/clarus/coq-opam-website/issues&quot;
-authors: [&quot;Guillaume Claret&quot;]
-license: &quot;MIT&quot;
+authors: [ &quot;Matthieu Sozeau &lt;matthieu.sozeau@inria.fr&gt;&quot; &quot;Cyprien Mangin &lt;cyprien.mangin@m4x.org&gt;&quot; ]
+dev-repo: &quot;https://github.com/mattam82/Coq-Equations.git&quot;
+maintainer: &quot;matthieu.sozeau@inria.fr&quot;
+homepage: &quot;https://mattam82.github.io/Coq-Equations&quot;
+bug-reports: &quot;https://github.com/mattam82/Coq-Equations/issues&quot;
+license: &quot;LGPL 2.1&quot;
 build: [
-  [&quot;./configure.sh&quot;]
+  [&quot;coq_makefile&quot; &quot;-f&quot; &quot;_CoqProject&quot; &quot;-o&quot; &quot;Makefile&quot;]
   [make &quot;-j%{jobs}%&quot;]
-  [&quot;sh&quot; &quot;-c&quot; &quot;cd extraction &amp;&amp; make&quot;]
 ]
+install: [
+  [make &quot;install&quot;]
+]
+remove: [&quot;rm&quot; &quot;-R&quot; &quot;%{lib}%/coq/user-contrib/Equations&quot;]
 depends: [
-  &quot;coq&quot; {&gt;= &quot;8.4pl4&quot;}
-  &quot;coq-io&quot; {&gt;= &quot;3.1.0&quot;}
-  &quot;coq-io-exception&quot; {&gt;= &quot;1.0.0&quot;}
-  &quot;coq-io-system&quot; {&gt;= &quot;2.3.0&quot;}
-  &quot;coq-list-string&quot; {&gt;= &quot;2.1.0&quot;}
+  &quot;coq&quot; {&gt;= &quot;8.8&quot; &amp; &lt; &quot;8.9&quot;}
 ]
 </pre>
             <h2>Lint</h2>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>ruby lint.rb released opam-coq-archive/released/packages/coq-opam-website/coq-opam-website.1.3.2</code></dd>
+              <dd><code>ruby lint.rb released opam-coq-archive/released/packages/coq-equations/coq-equations.1.1+8.8</code></dd>
               <dt>Return code</dt>
               <dd>0</dd>
             </dl>
@@ -85,42 +84,75 @@ depends: [
             <p>Dry install with the current Coq version:</p>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>opam install -y --show-action coq-opam-website.1.3.2 coq.8.8.0</code></dd>
+              <dd><code>opam install -y --show-action coq-equations.1.1+8.8 coq.8.8.0</code></dd>
               <dt>Return code</dt>
-              <dd>768</dd>
-              <dt>Output</dt>
-              <dd><pre>[NOTE] Package coq is already installed (current version is 8.8.0).
-The following dependencies couldn&#39;t be met:
-  - coq-opam-website -&gt; coq-io-exception &gt;= 1.0.0 -&gt; coq &lt; 8.5~
-Your request can&#39;t be satisfied:
-  - Conflicting version constraints for coq
-No solution found, exiting
-</pre></dd>
+              <dd>0</dd>
             </dl>
             <p>Dry install without Coq, to test if the problem was incompatibility with the current Coq version:</p>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>opam remove -y coq; opam install -y --show-action coq-opam-website.1.3.2</code></dd>
+              <dd><code>true</code></dd>
               <dt>Return code</dt>
               <dd>0</dd>
             </dl>
             <h2>Install dependencies</h2>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>true</code></dd>
+              <dd><code>opam list; ulimit -Sv 4000000; timeout 30m opam install -y --deps-only coq-equations.1.1+8.8</code></dd>
               <dt>Return code</dt>
               <dd>0</dd>
               <dt>Duration</dt>
-              <dd>0 s</dd>
+              <dd>48 s</dd>
             </dl>
             <h2>Install</h2>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>true</code></dd>
+              <dd><code>opam list; ulimit -Sv 4000000; timeout 30m opam install -j1 -y -v coq-equations.1.1+8.8</code></dd>
               <dt>Return code</dt>
-              <dd>0</dd>
+              <dd>1024</dd>
               <dt>Duration</dt>
-              <dd>0 s</dd>
+              <dd>50 s</dd>
+              <dt>Output</dt>
+              <dd><pre># Installed packages for system:
+base-bigarray   base  Bigarray library distributed with the OCaml compiler
+base-num        base  Num library distributed with the OCaml compiler
+base-threads    base  Threads library distributed with the OCaml compiler
+base-unix       base  Unix library distributed with the OCaml compiler
+camlp5          7.05  Preprocessor-pretty-printer of OCaml
+conf-m4            1  Virtual package relying on m4
+coq            8.8.0  Formal proof management system.
+num                0  The Num library for arbitrary-precision integer and ration
+ocamlfind      1.8.0  A library manager for OCaml
+The following actions will be performed:
+  - install coq-equations 1.1+8.8
+=-=- Gathering sources =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+[coq-equations: http] Command started
+[coq-equations: http] Command started
+[coq-equations.1.1+8.8] https://github.com/mattam82/Coq-Equations/archive/v1.1-8.8.tar.gz downloaded
+=-=- Processing actions -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+[coq-equations: coq_makefile _CoqProject] Command started
++ coq_makefile &quot;-f&quot; &quot;_CoqProject&quot; &quot;-o&quot; &quot;Makefile&quot; (CWD=/home/bench/.opam/system/build/coq-equations.1.1+8.8)
+[ERROR] The compilation of coq-equations failed at &quot;coq_makefile -f _CoqProject
+        -o Makefile&quot;.
+[coq-equations: rm] Command started
++ rm &quot;-R&quot; &quot;/home/bench/.opam/system/lib/coq/user-contrib/Equations&quot; (CWD=/home/bench/.opam/system/build/coq-equations.1.1+8.8)
+- rm: cannot remove &#39;/home/bench/.opam/system/lib/coq/user-contrib/Equations&#39;: No such file or directory
+#=== ERROR while installing coq-equations.1.1+8.8 =============================#
+# opam-version         1.2.2
+# os                   linux
+# command              coq_makefile -f _CoqProject -o Makefile
+# path                 /home/bench/.opam/system/build/coq-equations.1.1+8.8
+# compiler             system (4.05.0)
+# exit-code            127
+# env-file             /home/bench/.opam/system/build/coq-equations.1.1+8.8/coq-equations-30275-e7966f.env
+# stdout-file          /home/bench/.opam/system/build/coq-equations.1.1+8.8/coq-equations-30275-e7966f.out
+# stderr-file          /home/bench/.opam/system/build/coq-equations.1.1+8.8/coq-equations-30275-e7966f.err
+=-=- Error report -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+The following actions failed
+  - install coq-equations 1.1+8.8
+No changes have been performed
+&#39;opam install -j1 -y -v coq-equations.1.1+8.8&#39; failed.
+</pre></dd>
             </dl>
             <h2>Installation size</h2>
             <p>No files were installed.</p>
