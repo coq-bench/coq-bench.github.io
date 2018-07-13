@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>coqprime: Lint error</title>
+    <title>coqprime: Not compatible with this Coq</title>
     <link rel="shortcut icon" type="image/png" href="../../../../../favicon.png" />
     <link href="../../../../../bootstrap.min.css" rel="stylesheet">
     <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
@@ -38,17 +38,17 @@
               coqprime
               <small>
                 1.0.3
-                <span class="label label-danger">Lint error</span>
+                <span class="label label-info">Not compatible with this Coq</span>
               </small>
             </h1>
-            <p><em><script>document.write(moment("2018-07-05 11:14:10 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2018-07-05 11:14:10 UTC)</em><p>
+            <p><em><script>document.write(moment("2018-07-13 05:54:17 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2018-07-13 05:54:17 UTC)</em><p>
             <h2>Context</h2>
             <pre># Installed packages for system:
 base-bigarray   base  Bigarray library distributed with the OCaml compiler
 base-num        base  Num library distributed with the OCaml compiler
 base-threads    base  Threads library distributed with the OCaml compiler
 base-unix       base  Unix library distributed with the OCaml compiler
-camlp5          7.05  Preprocessor-pretty-printer of OCaml
+camlp5          7.06  Preprocessor-pretty-printer of OCaml
 coq            8.5.3  Formal proof management system.
 num                0  The Num library for arbitrary-precision integer and ration
 # opam file:
@@ -56,11 +56,15 @@ opam-version: &quot;1.2&quot;
 maintainer: &quot;thery@sophia.inria.fr&quot;
 homepage: &quot;http://coqprime.gforge.inria.fr/&quot;
 bug-reports: &quot;http://coqprime.gforge.inria.fr/&quot;
+dev-repo: &quot;git+https://github.com/thery/coqprime.git&quot;
 license: &quot;LGPL&quot;
+authors: [&quot;Laurent Théry&quot;]
 build: [
   [&quot;./configure.sh&quot;]
-  [&quot;make&quot; &quot;-j%{jobs}%&quot;]
-  [&quot;make&quot; &quot;install&quot;]
+  [make &quot;-j%{jobs}%&quot;]
+]
+install: [
+  [make &quot;install&quot;]
 ]
 remove: [&quot;rm&quot; &quot;-R&quot; &quot;%{lib}%/coq/user-contrib/Coqprime&quot;]
 depends: [
@@ -73,30 +77,28 @@ depends: [
               <dt>Command</dt>
               <dd><code>ruby lint.rb released opam-coq-archive/released/packages/coq-coqprime/coq-coqprime.1.0.3</code></dd>
               <dt>Return code</dt>
-              <dd>256</dd>
-              <dt>Output</dt>
-              <dd><pre>Errors found in ~/run/opam-coq-archive/released/packages/coq-coqprime/coq-coqprime.1.0.3/opam:
-            error 25: Missing field &#39;authors&#39;
-          warning 26: No field &#39;install&#39;, but a field &#39;remove&#39;: install
-              instructions probably part of &#39;build&#39;. Use the &#39;install&#39; field or
-              a .install file
-          warning 37: Missing field &#39;dev-repo&#39;
-            error 39: Command &#39;make&#39; called directly, use the built-in variable
-              instead
-</pre></dd>
+              <dd>0</dd>
             </dl>
             <h2>Dry install</h2>
             <p>Dry install with the current Coq version:</p>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>true</code></dd>
+              <dd><code>opam install -y --show-action coq-coqprime.1.0.3 coq.8.5.3</code></dd>
               <dt>Return code</dt>
-              <dd>0</dd>
+              <dd>768</dd>
+              <dt>Output</dt>
+              <dd><pre>[NOTE] Package coq is already installed (current version is 8.5.3).
+The following dependencies couldn&#39;t be met:
+  - coq-coqprime -&gt; coq &gt;= 8.8~
+Your request can&#39;t be satisfied:
+  - Conflicting version constraints for coq
+No solution found, exiting
+</pre></dd>
             </dl>
             <p>Dry install without Coq, to test if the problem was incompatibility with the current Coq version:</p>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>true</code></dd>
+              <dd><code>opam remove -y coq; opam install -y --show-action coq-coqprime.1.0.3</code></dd>
               <dt>Return code</dt>
               <dd>0</dd>
             </dl>
