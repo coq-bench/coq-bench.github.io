@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>fpmods: Lint error</title>
+    <title>gappa: Not compatible with this Coq</title>
     <link rel="shortcut icon" type="image/png" href="../../../../../favicon.png" />
     <link href="../../../../../bootstrap.min.css" rel="stylesheet">
     <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
@@ -25,7 +25,7 @@
           <div id="navbar" class="collapse navbar-collapse">
             <ul class="nav navbar-nav">
               <li><a href="../..">clean / released</a></li>
-              <li class="active"><a href="">8.5.3 / fpmods - 0.2.0</a></li>
+              <li class="active"><a href="">8.5.3 / gappa - 1.4.0</a></li>
             </ul>
           </div>
         </div>
@@ -35,10 +35,10 @@
           <div class="col-md-12">
             <a href="../..">« Up</a>
             <h1>
-              fpmods
+              gappa
               <small>
-                0.2.0
-                <span class="label label-danger">Lint error</span>
+                1.4.0
+                <span class="label label-info">Not compatible with this Coq</span>
               </small>
             </h1>
             <p><em><script>document.write(moment("2018-07-20 20:02:43 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2018-07-20 20:02:43 UTC)</em><p>
@@ -52,50 +52,53 @@ camlp5          7.06  Preprocessor-pretty-printer of OCaml
 coq            8.5.3  Formal proof management system.
 num                0  The Num library for arbitrary-precision integer and ration
 # opam file:
-opam-version: &quot;1.1&quot;
-maintainer: &quot;cohen@crans.org&quot;
-homepage: &quot;http://perso.crans.org/cohen/work/fpmods/&quot;
-license: &quot;MIT&quot;
+opam-version: &quot;1.2&quot;
+maintainer: &quot;guillaume.melquiond@inria.fr&quot;
+homepage: &quot;http://gappa.gforge.inria.fr/&quot;
+dev-repo: &quot;https://scm.gforge.inria.fr/anonscm/git/gappa/coq.git&quot;
+license: &quot;LGPL 2.1&quot;
 build: [
-  [make &quot;-j%{jobs}%&quot;]
-  [make &quot;install&quot;]
+  [&quot;./configure&quot;]
+  [&quot;./remake&quot; &quot;-j%{jobs}%&quot;]
 ]
-remove: [&quot;rm&quot; &quot;-R&quot; &quot;%{lib}%/coq/user-contrib/fpmods&quot;]
+install: [&quot;./remake&quot; &quot;install&quot;]
+remove: [&quot;rm&quot; &quot;-R&quot; &quot;%{lib}%/coq/user-contrib/Gappa&quot;]
 depends: [
-  &quot;coq&quot; {&gt;= &quot;8.4pl4&quot; &amp; &lt; &quot;8.5~&quot;}
-  &quot;coq-coqeal-theory&quot; {&gt;= &quot;0.9.0&quot;}
+  &quot;coq&quot; {&gt;= &quot;8.7&quot; &amp; &lt; &quot;8.9~&quot;}
+  &quot;coq-flocq&quot; {&gt;= &quot;3.0&quot;}
 ]
+conflicts: [ &quot;coq&quot; {= &quot;8.8.0&quot;} ]
+tags: [ &quot;keyword:floating point arithmetic&quot; &quot;keyword:interval arithmetic&quot; &quot;keyword:decision procedure&quot; &quot;category:Computer Science/Decision Procedures and Certified Algorithms/Decision procedures&quot; ]
+authors: [ &quot;Guillaume Melquiond &lt;guillaume.melquiond@inria.fr&gt;&quot; ]
 </pre>
             <h2>Lint</h2>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>ruby lint.rb released opam-coq-archive/released/packages/coq-fpmods/coq-fpmods.0.2.0</code></dd>
+              <dd><code>ruby lint.rb released opam-coq-archive/released/packages/coq-gappa/coq-gappa.1.4.0</code></dd>
               <dt>Return code</dt>
-              <dd>256</dd>
-              <dt>Output</dt>
-              <dd><pre>Errors found in ~/run/opam-coq-archive/released/packages/coq-fpmods/coq-fpmods.0.2.0/opam:
-            error 21: Field &#39;opam-version&#39; doesn&#39;t match the current version,
-              validation may not be accurate
-            error 25: Missing field &#39;authors&#39;
-          warning 26: No field &#39;install&#39;, but a field &#39;remove&#39;: install
-              instructions probably part of &#39;build&#39;. Use the &#39;install&#39; field or
-              a .install file
-          warning 36: Missing field &#39;bug-reports&#39;
-          warning 37: Missing field &#39;dev-repo&#39;
-</pre></dd>
+              <dd>0</dd>
             </dl>
             <h2>Dry install</h2>
             <p>Dry install with the current Coq version:</p>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>true</code></dd>
+              <dd><code>opam install -y --show-action coq-gappa.1.4.0 coq.8.5.3</code></dd>
               <dt>Return code</dt>
-              <dd>0</dd>
+              <dd>768</dd>
+              <dt>Output</dt>
+              <dd><pre>[NOTE] Package coq is already installed (current version is 8.5.3).
+The following dependencies couldn&#39;t be met:
+  - coq-gappa -&gt; coq-flocq &gt;= 3.0 -&gt; coq &gt;= 8.7
+Your request can&#39;t be satisfied:
+  - Conflicting version constraints for coq
+  - coq.8.8.0 is in conflict with coq-gappa.1.4.0
+No solution found, exiting
+</pre></dd>
             </dl>
             <p>Dry install without Coq, to test if the problem was incompatibility with the current Coq version:</p>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>true</code></dd>
+              <dd><code>opam remove -y coq; opam install -y --show-action coq-gappa.1.4.0</code></dd>
               <dt>Return code</dt>
               <dd>0</dd>
             </dl>
