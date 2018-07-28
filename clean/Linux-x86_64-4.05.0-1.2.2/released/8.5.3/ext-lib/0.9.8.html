@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>unimath-dedekind: Error with dependencies</title>
+    <title>ext-lib: Not compatible with this Coq</title>
     <link rel="shortcut icon" type="image/png" href="../../../../../favicon.png" />
     <link href="../../../../../bootstrap.min.css" rel="stylesheet">
     <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
@@ -25,7 +25,7 @@
           <div id="navbar" class="collapse navbar-collapse">
             <ul class="nav navbar-nav">
               <li><a href="../..">clean / released</a></li>
-              <li class="active"><a href="">8.5.3 / unimath-dedekind - 0.1.0</a></li>
+              <li class="active"><a href="">8.5.3 / ext-lib - 0.9.8</a></li>
             </ul>
           </div>
         </div>
@@ -35,10 +35,10 @@
           <div class="col-md-12">
             <a href="../..">« Up</a>
             <h1>
-              unimath-dedekind
+              ext-lib
               <small>
-                0.1.0
-                <span class="label label-warning">Error with dependencies</span>
+                0.9.8
+                <span class="label label-info">Not compatible with this Coq</span>
               </small>
             </h1>
             <p><em><script>document.write(moment("2018-07-28 19:19:14 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2018-07-28 19:19:14 UTC)</em><p>
@@ -53,30 +53,29 @@ coq            8.5.3  Formal proof management system.
 num                0  The Num library for arbitrary-precision integer and ration
 # opam file:
 opam-version: &quot;1.2&quot;
-maintainer: &quot;opam@clarus.me&quot;
-homepage: &quot;https://github.com/UniMath/UniMath&quot;
-dev-repo: &quot;https://github.com/UniMath/UniMath.git&quot;
-bug-reports: &quot;https://github.com/UniMath/UniMath/issues&quot;
-license: &quot;Kind of MIT&quot;
-authors: [&quot;The UniMath Development Team&quot;]
+maintainer: &quot;gmalecha@gmail.com&quot;
+homepage: &quot;https://github.com/coq-ext-lib/coq-ext-lib&quot;
+dev-repo: &quot;https://github.com/coq-ext-lib/coq-ext-lib.git#v8.8&quot;
+bug-reports: &quot;https://github.com/coq-ext-lib/coq-ext-lib/issues&quot;
+authors: [&quot;Gregory Malecha&quot;]
+license: &quot;BSD&quot;
 build: [
-  [&quot;coq_makefile&quot; &quot;-f&quot; &quot;Make&quot; &quot;-o&quot; &quot;Makefile&quot;]
   [make &quot;-j%{jobs}%&quot;]
 ]
 install: [
   [make &quot;install&quot;]
 ]
-remove: [&quot;rm&quot; &quot;-R&quot; &quot;%{lib}%/coq/user-contrib/UniMath/Dedekind&quot;]
+remove: [
+  [&quot;rm&quot; &quot;-R&quot; &quot;%{lib}%/coq/user-contrib/ExtLib&quot;]
+]
 depends: [
-  &quot;coq&quot; {&gt;= &quot;8.5.0&quot;}
-  &quot;coq-unimath-foundations&quot;
-  &quot;coq-unimath-ktheory&quot;
+  &quot;coq&quot; {&gt;= &quot;8.8&quot; &amp; &lt; &quot;8.9~&quot;}
 ]
 </pre>
             <h2>Lint</h2>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>ruby lint.rb released opam-coq-archive/released/packages/coq-unimath-dedekind/coq-unimath-dedekind.0.1.0</code></dd>
+              <dd><code>ruby lint.rb released opam-coq-archive/released/packages/coq-ext-lib/coq-ext-lib.0.9.8</code></dd>
               <dt>Return code</dt>
               <dd>0</dd>
             </dl>
@@ -84,73 +83,33 @@ depends: [
             <p>Dry install with the current Coq version:</p>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>opam install -y --show-action coq-unimath-dedekind.0.1.0 coq.8.5.3</code></dd>
+              <dd><code>opam install -y --show-action coq-ext-lib.0.9.8 coq.8.5.3</code></dd>
               <dt>Return code</dt>
-              <dd>0</dd>
+              <dd>768</dd>
+              <dt>Output</dt>
+              <dd><pre>[NOTE] Package coq is already installed (current version is 8.5.3).
+The following dependencies couldn&#39;t be met:
+  - coq-ext-lib -&gt; coq &gt;= 8.8
+Your request can&#39;t be satisfied:
+  - Conflicting version constraints for coq
+No solution found, exiting
+</pre></dd>
             </dl>
             <p>Dry install without Coq, to test if the problem was incompatibility with the current Coq version:</p>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>true</code></dd>
+              <dd><code>opam remove -y coq; opam install -y --show-action coq-ext-lib.0.9.8</code></dd>
               <dt>Return code</dt>
               <dd>0</dd>
             </dl>
             <h2>Install dependencies</h2>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>opam list; ulimit -Sv 4000000; timeout 30m opam install -y --deps-only coq-unimath-dedekind.0.1.0</code></dd>
+              <dd><code>true</code></dd>
               <dt>Return code</dt>
-              <dd>1024</dd>
+              <dd>0</dd>
               <dt>Duration</dt>
-              <dd>51 s</dd>
-              <dt>Output</dt>
-              <dd><pre># Installed packages for system:
-base-bigarray   base  Bigarray library distributed with the OCaml compiler
-base-num        base  Num library distributed with the OCaml compiler
-base-threads    base  Threads library distributed with the OCaml compiler
-base-unix       base  Unix library distributed with the OCaml compiler
-camlp5          7.06  Preprocessor-pretty-printer of OCaml
-coq            8.5.3  Formal proof management system.
-num                0  The Num library for arbitrary-precision integer and ration
-The following actions will be performed:
-  - install coq-unimath-foundations     0.1.0
-  - install coq-unimath-category-theory 0.1.0
-  - install coq-unimath-ktheory         0.1.0
-===== 3 to install =====
-=-=- Gathering sources =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
-[coq-unimath-category-theory: http] Command started
-[coq-unimath-foundations: http] Command started
-[coq-unimath-ktheory: http] Command started
-[coq-unimath-category-theory: http] Command started
-[coq-unimath-foundations: http] Command started
-[coq-unimath-ktheory: http] Command started
-[coq-unimath-category-theory.0.1.0] https://github.com/UniMath/UniMath/archive/v0.1.tar.gz downloaded
-[coq-unimath-foundations.0.1.0] https://github.com/UniMath/UniMath/archive/v0.1.tar.gz downloaded
-[coq-unimath-ktheory.0.1.0] https://github.com/UniMath/UniMath/archive/v0.1.tar.gz downloaded
-=-=- Processing actions -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
-[coq-unimath-foundations: coq_makefile Make] Command started
-[ERROR] The compilation of coq-unimath-foundations failed at &quot;coq_makefile -f
-        Make -o Makefile&quot;.
-[coq-unimath-foundations: rm] Command started
-[coq-unimath-foundations: sh] Command started
-#=== ERROR while installing coq-unimath-foundations.0.1.0 =====================#
-# opam-version         1.2.2
-# os                   linux
-# command              coq_makefile -f Make -o Makefile
-# path                 /home/bench/.opam/system/build/coq-unimath-foundations.0.1.0
-# compiler             system (4.05.0)
-# exit-code            127
-# env-file             /home/bench/.opam/system/build/coq-unimath-foundations.0.1.0/coq-unimath-foundations-1698-a00279.env
-# stdout-file          /home/bench/.opam/system/build/coq-unimath-foundations.0.1.0/coq-unimath-foundations-1698-a00279.out
-# stderr-file          /home/bench/.opam/system/build/coq-unimath-foundations.0.1.0/coq-unimath-foundations-1698-a00279.err
-=-=- Error report -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
-The following actions were aborted
-  - install coq-unimath-category-theory 0.1.0
-  - install coq-unimath-ktheory         0.1.0
-The following actions failed
-  - install coq-unimath-foundations 0.1.0
-No changes have been performed
-</pre></dd>
+              <dd>0 s</dd>
             </dl>
             <h2>Install</h2>
             <dl class="dl-horizontal">
