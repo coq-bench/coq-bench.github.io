@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>interval: Lint error</title>
+    <title>menhirlib: Lint error</title>
     <link rel="shortcut icon" type="image/png" href="../../../../../favicon.png" />
     <link href="../../../../../bootstrap.min.css" rel="stylesheet">
     <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
@@ -25,7 +25,7 @@
           <div id="navbar" class="collapse navbar-collapse">
             <ul class="nav navbar-nav">
               <li><a href="../..">clean / released</a></li>
-              <li class="active"><a href="">8.5.3 / interval - 2.2.0</a></li>
+              <li class="active"><a href="">8.5.3 / menhirlib - 20180827</a></li>
             </ul>
           </div>
         </div>
@@ -35,9 +35,9 @@
           <div class="col-md-12">
             <a href="../..">« Up</a>
             <h1>
-              interval
+              menhirlib
               <small>
-                2.2.0
+                20180827
                 <span class="label label-danger">Lint error</span>
               </small>
             </h1>
@@ -52,41 +52,32 @@ camlp5          7.06  Preprocessor-pretty-printer of OCaml
 coq            8.5.3  Formal proof management system.
 num                0  The Num library for arbitrary-precision integer and ration
 # opam file:
-opam-version: &quot;1.1&quot;
-maintainer: &quot;guillaume.melquiond@inria.fr&quot;
-homepage: &quot;http://coq-interval.gforge.inria.fr/&quot;
-license: &quot;CeCILL-C&quot;
-build: [
-  [&quot;./configure&quot;]
-  [&quot;./remake&quot; &quot;-j%{jobs}%&quot;]
-  [&quot;./remake&quot; &quot;install&quot;]
-]
-remove: [&quot;rm&quot; &quot;-R&quot; &quot;%{lib}%/coq/user-contrib/Interval&quot;]
+opam-version: &quot;1.2&quot;
+maintainer: &quot;francois.pottier@inria.fr&quot;
+authors: &quot;Jacques-Henri Jourdan &lt;jacques-henri.jourdan@lri.fr&gt;&quot;
+homepage: &quot;https://gitlab.inria.fr/fpottier/coq-menhirlib&quot;
+bug-reports: &quot;jacques-henri.jourdan@lri.fr&quot;
+dev-repo: &quot;https://gitlab.inria.fr/fpottier/coq-menhirlib.git&quot;
+build: [make &quot;-j%{jobs}%&quot;]
+install: [make &quot;install&quot;]
+remove: [make &quot;uninstall&quot;]
 depends: [
-  &quot;coq&quot; {&gt;= &quot;8.4pl4&quot;}
-  &quot;coq-flocq&quot; {&gt;= &quot;2.5.0&quot; &amp; &lt; &quot;3.0~&quot;}
-  &quot;coq-ssreflect&quot; {&gt;= &quot;1.5.0&quot;}
-  &quot;coq-math-comp&quot; {&gt;= &quot;1.5.0&quot;}
-  &quot;coq-coquelicot&quot;
+  &quot;coq&quot; {&gt;= &quot;8.6&quot;}
 ]
-tags: [ &quot;keyword:interval arithmetic&quot; &quot;keyword:decision procedure&quot; &quot;keyword:floating point arithmetic&quot; &quot;keyword:reflexive tactic&quot; &quot;keyword:taylor models&quot; &quot;category:Mathematics/Real Calculus and Topology&quot; &quot;category:Computer Science/Decision Procedures and Certified Algorithms/Decision procedures&quot; ]
-authors: [ &quot;Guillaume Melquiond &lt;guillaume.melquiond@inria.fr&gt;&quot; ]
+conflicts: [
+  &quot;menhir&quot; {&lt; &quot;20180530&quot;}
+]
 </pre>
             <h2>Lint</h2>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>ruby lint.rb released opam-coq-archive/released/packages/coq-interval/coq-interval.2.2.0</code></dd>
+              <dd><code>ruby lint.rb released opam-coq-archive/released/packages/coq-menhirlib/coq-menhirlib.20180827</code></dd>
               <dt>Return code</dt>
               <dd>256</dd>
               <dt>Output</dt>
-              <dd><pre>Errors found in ~/run/opam-coq-archive/released/packages/coq-interval/coq-interval.2.2.0/opam:
-            error 21: Field &#39;opam-version&#39; doesn&#39;t match the current version,
-              validation may not be accurate
-          warning 26: No field &#39;install&#39;, but a field &#39;remove&#39;: install
-              instructions probably part of &#39;build&#39;. Use the &#39;install&#39; field or
-              a .install file
-          warning 36: Missing field &#39;bug-reports&#39;
-          warning 37: Missing field &#39;dev-repo&#39;
+              <dd><pre>~/run/opam-coq-archive/released/packages/coq-menhirlib/coq-menhirlib.20180827/opam: Passed.
+You should specify the license to make your package public, if possible an open-source one. For example:
+license: &quot;MIT&quot;
 </pre></dd>
             </dl>
             <h2>Dry install</h2>
