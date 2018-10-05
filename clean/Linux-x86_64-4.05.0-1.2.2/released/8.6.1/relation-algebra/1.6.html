@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>relation-algebra: Lint error</title>
+    <title>relation-algebra: Not compatible with this Coq</title>
     <link rel="shortcut icon" type="image/png" href="../../../../../favicon.png" />
     <link href="../../../../../bootstrap.min.css" rel="stylesheet">
     <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
@@ -38,10 +38,10 @@
               relation-algebra
               <small>
                 1.6
-                <span class="label label-danger">Lint error</span>
+                <span class="label label-info">Not compatible with this Coq</span>
               </small>
             </h1>
-            <p><em><script>document.write(moment("2018-09-23 03:51:32 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2018-09-23 03:51:32 UTC)</em><p>
+            <p><em><script>document.write(moment("2018-10-05 01:08:34 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2018-10-05 01:08:34 UTC)</em><p>
             <h2>Context</h2>
             <pre># Installed packages for system:
 base-bigarray   base  Bigarray library distributed with the OCaml compiler
@@ -54,7 +54,7 @@ coq            8.6.1  Formal proof management system.
 num                0  The Num library for arbitrary-precision integer and ration
 ocamlfind      1.8.0  A library manager for OCaml
 # opam file:
-opam-version: &quot;1.1&quot;
+opam-version: &quot;1.2&quot;
 maintainer: &quot;Damien Pous &lt;Damien.Pous@ens-lyon.fr&gt;&quot;
 homepage: &quot;http://perso.ens-lyon.fr/damien.pous/ra/&quot;
 license: &quot;LGPL&quot;
@@ -65,7 +65,7 @@ build: [
 ]
 remove: [&quot;rm&quot; &quot;-R&quot; &quot;%{lib}%/coq/user-contrib/RelationAlgebra&quot;]
 depends: [
-  &quot;coq&quot; {&gt;= &quot;8.5.1&quot;}
+  &quot;coq&quot; {&gt;= &quot;8.5.1&quot; &amp; &lt; &quot;8.6~&quot;}
 ]
 tags: [ &quot;keyword:relation algebra&quot; &quot;keyword:kleene algebra with tests&quot; &quot;keyword:kat&quot; &quot;keyword:allegories&quot; &quot;keyword:residuated structures&quot; &quot;keyword:automata&quot; &quot;keyword:regular expressions&quot; &quot;keyword:matrices&quot; &quot;category:Mathematics/Algebra&quot; ]
 authors: [ &quot;Damien Pous &lt;Damien.Pous@ens-lyon.fr&gt;&quot; ]
@@ -75,30 +75,28 @@ authors: [ &quot;Damien Pous &lt;Damien.Pous@ens-lyon.fr&gt;&quot; ]
               <dt>Command</dt>
               <dd><code>ruby lint.rb released opam-coq-archive/released/packages/coq-relation-algebra/coq-relation-algebra.1.6</code></dd>
               <dt>Return code</dt>
-              <dd>256</dd>
-              <dt>Output</dt>
-              <dd><pre>Errors found in ~/run/opam-coq-archive/released/packages/coq-relation-algebra/coq-relation-algebra.1.6/opam:
-            error 21: Field &#39;opam-version&#39; doesn&#39;t match the current version,
-              validation may not be accurate
-          warning 26: No field &#39;install&#39;, but a field &#39;remove&#39;: install
-              instructions probably part of &#39;build&#39;. Use the &#39;install&#39; field or
-              a .install file
-          warning 36: Missing field &#39;bug-reports&#39;
-          warning 37: Missing field &#39;dev-repo&#39;
-</pre></dd>
+              <dd>0</dd>
             </dl>
             <h2>Dry install</h2>
             <p>Dry install with the current Coq version:</p>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>true</code></dd>
+              <dd><code>opam install -y --show-action coq-relation-algebra.1.6 coq.8.6.1</code></dd>
               <dt>Return code</dt>
-              <dd>0</dd>
+              <dd>768</dd>
+              <dt>Output</dt>
+              <dd><pre>[NOTE] Package coq is already installed (current version is 8.6.1).
+The following dependencies couldn&#39;t be met:
+  - coq-relation-algebra -&gt; coq &lt; 8.6~
+Your request can&#39;t be satisfied:
+  - Conflicting version constraints for coq
+No solution found, exiting
+</pre></dd>
             </dl>
             <p>Dry install without Coq, to test if the problem was incompatibility with the current Coq version:</p>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>true</code></dd>
+              <dd><code>opam remove -y coq; opam install -y --show-action coq-relation-algebra.1.6</code></dd>
               <dt>Return code</dt>
               <dd>0</dd>
             </dl>
