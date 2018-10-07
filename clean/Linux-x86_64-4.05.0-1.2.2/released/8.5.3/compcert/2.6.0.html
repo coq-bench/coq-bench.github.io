@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>compcert: Lint error</title>
+    <title>compcert: Not compatible with this Coq</title>
     <link rel="shortcut icon" type="image/png" href="../../../../../favicon.png" />
     <link href="../../../../../bootstrap.min.css" rel="stylesheet">
     <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
@@ -38,10 +38,10 @@
               compcert
               <small>
                 2.6.0
-                <span class="label label-danger">Lint error</span>
+                <span class="label label-info">Not compatible with this Coq</span>
               </small>
             </h1>
-            <p><em><script>document.write(moment("2018-09-16 11:53:10 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2018-09-16 11:53:10 UTC)</em><p>
+            <p><em><script>document.write(moment("2018-10-07 06:24:19 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2018-10-07 06:24:19 UTC)</em><p>
             <h2>Context</h2>
             <pre># Installed packages for system:
 base-bigarray   base  Bigarray library distributed with the OCaml compiler
@@ -53,6 +53,7 @@ coq            8.5.3  Formal proof management system.
 num                0  The Num library for arbitrary-precision integer and ration
 # opam file:
 opam-version: &quot;1.2&quot;
+author: &quot;Xavier Leroy &lt;xavier.leroy@inria.fr&gt;&quot;
 maintainer: &quot;dev@clarus.me&quot;
 homepage: &quot;http://compcert.inria.fr/&quot;
 dev-repo: &quot;https://github.com/AbsInt/CompCert.git&quot;
@@ -72,7 +73,7 @@ remove: [
 ]
 depends: [
   &quot;coq&quot; {&gt;= &quot;8.4pl4&quot; &amp; &lt; &quot;8.5~&quot;}
-  &quot;menhir&quot; {&gt;= &quot;20140422&quot;}
+  &quot;menhir&quot; {&gt;= &quot;20151110&quot; &amp; &lt; &quot;20180530&quot;}
 ]
 </pre>
             <h2>Lint</h2>
@@ -80,24 +81,28 @@ depends: [
               <dt>Command</dt>
               <dd><code>ruby lint.rb released opam-coq-archive/released/packages/coq-compcert/coq-compcert.2.6.0</code></dd>
               <dt>Return code</dt>
-              <dd>256</dd>
-              <dt>Output</dt>
-              <dd><pre>Errors found in ~/run/opam-coq-archive/released/packages/coq-compcert/coq-compcert.2.6.0/opam:
-            error 25: Missing field &#39;authors&#39;
-</pre></dd>
+              <dd>0</dd>
             </dl>
             <h2>Dry install</h2>
             <p>Dry install with the current Coq version:</p>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>true</code></dd>
+              <dd><code>opam install -y --show-action coq-compcert.2.6.0 coq.8.5.3</code></dd>
               <dt>Return code</dt>
-              <dd>0</dd>
+              <dd>768</dd>
+              <dt>Output</dt>
+              <dd><pre>[NOTE] Package coq is already installed (current version is 8.5.3).
+The following dependencies couldn&#39;t be met:
+  - coq-compcert -&gt; coq &lt; 8.5~
+Your request can&#39;t be satisfied:
+  - Conflicting version constraints for coq
+No solution found, exiting
+</pre></dd>
             </dl>
             <p>Dry install without Coq, to test if the problem was incompatibility with the current Coq version:</p>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>true</code></dd>
+              <dd><code>opam remove -y coq; opam install -y --show-action coq-compcert.2.6.0</code></dd>
               <dt>Return code</dt>
               <dd>0</dd>
             </dl>
