@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>interval: Lint error</title>
+    <title>interval: Error with dependencies</title>
     <link rel="shortcut icon" type="image/png" href="../../../../../favicon.png" />
     <link href="../../../../../bootstrap.min.css" rel="stylesheet">
     <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
@@ -38,10 +38,10 @@
               interval
               <small>
                 2.0.0
-                <span class="label label-danger">Lint error</span>
+                <span class="label label-warning">Error with dependencies</span>
               </small>
             </h1>
-            <p><em><script>document.write(moment("2018-10-20 22:16:44 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2018-10-20 22:16:44 UTC)</em><p>
+            <p><em><script>document.write(moment("2018-10-29 00:29:49 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2018-10-29 00:29:49 UTC)</em><p>
             <h2>Context</h2>
             <pre># Installed packages for system:
 base-bigarray   base  Bigarray library distributed with the OCaml compiler
@@ -54,7 +54,7 @@ coq            8.6.1  Formal proof management system.
 num                0  The Num library for arbitrary-precision integer and ration
 ocamlfind      1.8.0  A library manager for OCaml
 # opam file:
-opam-version: &quot;1.1&quot;
+opam-version: &quot;1.2&quot;
 maintainer: &quot;guillaume.melquiond@inria.fr&quot;
 homepage: &quot;http://coq-interval.gforge.inria.fr/&quot;
 license: &quot;CeCILL-C&quot;
@@ -78,32 +78,47 @@ authors: [ &quot;Guillaume Melquiond &lt;guillaume.melquiond@inria.fr&gt;&quot; 
               <dt>Command</dt>
               <dd><code>ruby lint.rb released opam-coq-archive/released/packages/coq-interval/coq-interval.2.0.0</code></dd>
               <dt>Return code</dt>
-              <dd>256</dd>
-              <dt>Output</dt>
-              <dd><pre>Errors found in ~/run/opam-coq-archive/released/packages/coq-interval/coq-interval.2.0.0/opam:
-            error 21: Field &#39;opam-version&#39; doesn&#39;t match the current version,
-              validation may not be accurate
-          warning 26: No field &#39;install&#39;, but a field &#39;remove&#39;: install
-              instructions probably part of &#39;build&#39;. Use the &#39;install&#39; field or
-              a .install file
-          warning 36: Missing field &#39;bug-reports&#39;
-          warning 37: Missing field &#39;dev-repo&#39;
-</pre></dd>
+              <dd>0</dd>
             </dl>
             <h2>Dry install</h2>
             <p>Dry install with the current Coq version:</p>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>true</code></dd>
+              <dd><code>opam install -y --show-action coq-interval.2.0.0 coq.8.6.1</code></dd>
               <dt>Return code</dt>
-              <dd>0</dd>
+              <dd>768</dd>
+              <dt>Output</dt>
+              <dd><pre>[NOTE] Package coq is already installed (current version is 8.6.1).
+The following dependencies couldn&#39;t be met:
+  - coq-interval -&gt; coq-math-comp &gt;= 1.5.0
+Your request can&#39;t be satisfied:
+  - No package named coq-math-comp found.
+No solution found, exiting
+</pre></dd>
             </dl>
             <p>Dry install without Coq, to test if the problem was incompatibility with the current Coq version:</p>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>true</code></dd>
+              <dd><code>opam remove -y coq; opam install -y --show-action coq-interval.2.0.0</code></dd>
               <dt>Return code</dt>
-              <dd>0</dd>
+              <dd>768</dd>
+              <dt>Output</dt>
+              <dd><pre>The following actions will be performed:
+  - remove coq 8.6.1
+=-=- Gathering sources =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+[coq: from default] Command started
+[coq: from default] Command started
+[default] https://opam.ocaml.org/1.2.2/archives/coq.8.6.1+opam.tar.gz downloaded
+=-=- Processing actions -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+[coq: rm] Command started
+-&gt; removed   coq.8.6.1
+Done.
+The following dependencies couldn&#39;t be met:
+  - coq-interval -&gt; coq-math-comp &gt;= 1.5.0
+Your request can&#39;t be satisfied:
+  - No package named coq-math-comp found.
+No solution found, exiting
+</pre></dd>
             </dl>
             <h2>Install dependencies</h2>
             <dl class="dl-horizontal">
