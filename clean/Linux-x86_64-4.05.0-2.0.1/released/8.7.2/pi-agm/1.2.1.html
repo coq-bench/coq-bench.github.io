@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>pi-agm: Error</title>
+    <link rel="shortcut icon" type="image/png" href="../../../../../favicon.png" />
+    <link href="../../../../../bootstrap.min.css" rel="stylesheet">
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+    <script src="../../../../../moment.min.js"></script>
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="container">
+      <div class="navbar navbar-default" role="navigation">
+        <div class="container-fluid">
+          <div class="navbar-header">
+            <a class="navbar-brand" href="../../../../.."><i class="fa fa-lg fa-flag-checkered"></i> Coq bench</a>
+          </div>
+          <div id="navbar" class="collapse navbar-collapse">
+            <ul class="nav navbar-nav">
+              <li><a href="../..">clean / released</a></li>
+              <li class="active"><a href="">8.7.2 / pi-agm - 1.2.1</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="article">
+        <div class="row">
+          <div class="col-md-12">
+            <a href="../..">« Up</a>
+            <h1>
+              pi-agm
+              <small>
+                1.2.1
+                <span class="label label-danger">Error</span>
+              </small>
+            </h1>
+            <p><em><script>document.write(moment("2018-11-05 21:33:28 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2018-11-05 21:33:28 UTC)</em><p>
+            <h2>Context</h2>
+            <pre># Packages matching: installed
+# Name        # Installed       # Synopsis
+base-bigarray base
+base-num      base              Num library distributed with the OCaml compiler
+base-threads  base
+base-unix     base
+camlp5        7.06.10-g84ce6cc4 Preprocessor-pretty-printer of OCaml
+conf-m4       1                 Virtual package relying on m4
+coq           8.7.2             Formal proof management system.
+num           0                 The Num library for arbitrary-precision integer and rational arithmetic
+ocaml         4.05.0            The OCaml compiler (virtual package)
+ocaml-config  1                 OCaml Switch Configuration
+ocaml-system  4.05.0            The OCaml compiler (system version, from outside of opam)
+ocamlfind     1.8.0             A library manager for OCaml
+# opam file:
+opam-version: &quot;1.2&quot;
+name: &quot;coq-pi-agm&quot;
+version: &quot;1.2.1&quot;
+maintainer: &quot;yves.bertot@inria.fr&quot;
+homepage: &quot;http://www-sop.inria.fr/members/Yves.Bertot/&quot;
+bug-reports: &quot;yves.bertot@inria.fr&quot;
+license: &quot;CeCILL-B&quot;
+build: [[&quot;coq_makefile&quot; &quot;-f&quot; &quot;_CoqProject&quot; &quot;-o&quot; &quot;Makefile&quot; ]
+       [ make &quot;-j&quot; &quot;%{jobs}%&quot; ]]
+install: [ make &quot;install&quot; &quot;DEST=&#39;%{lib}%/coq/user-contrib/pi_agm&#39;&quot; ]
+remove: [ &quot;sh&quot; &quot;-c&quot; &quot;rm -rf &#39;%{lib}%/coq/user-contrib/pi_agm&#39;&quot; ]
+depends: [
+  &quot;coq&quot; {&gt;= &quot;8.7&quot; &amp; &lt; &quot;8.8~&quot;}
+  &quot;coq-coquelicot&quot; {&gt;= &quot;3&quot; &amp; &lt; &quot;4~&quot; }
+  &quot;coq-interval&quot; {&gt;= &quot;3.1&quot;}
+]
+tags: [ &quot;keyword:real analysis&quot; &quot;keyword:pi&quot; &quot;category:Mathematics/Real Calculus and Topology&quot; ]
+authors: [ &quot;Yves Bertot &lt;yves.bertot@inria.fr&gt;&quot; ]
+</pre>
+            <h2>Lint</h2>
+            <dl class="dl-horizontal">
+              <dt>Command</dt>
+              <dd><code>true</code></dd>
+              <dt>Return code</dt>
+              <dd>0</dd>
+            </dl>
+            <h2>Dry install</h2>
+            <p>Dry install with the current Coq version:</p>
+            <dl class="dl-horizontal">
+              <dt>Command</dt>
+              <dd><code>opam install -y --show-action coq-pi-agm.1.2.1 coq.8.7.2</code></dd>
+              <dt>Return code</dt>
+              <dd>0</dd>
+            </dl>
+            <p>Dry install without Coq, to test if the problem was incompatibility with the current Coq version:</p>
+            <dl class="dl-horizontal">
+              <dt>Command</dt>
+              <dd><code>true</code></dd>
+              <dt>Return code</dt>
+              <dd>0</dd>
+            </dl>
+            <h2>Install dependencies</h2>
+            <dl class="dl-horizontal">
+              <dt>Command</dt>
+              <dd><code>opam list; ulimit -Sv 4000000; timeout 30m opam install -y --deps-only coq-pi-agm.1.2.1</code></dd>
+              <dt>Return code</dt>
+              <dd>0</dd>
+              <dt>Duration</dt>
+              <dd>11 m 59 s</dd>
+            </dl>
+            <h2>Install</h2>
+            <dl class="dl-horizontal">
+              <dt>Command</dt>
+              <dd><code>opam list; ulimit -Sv 4000000; timeout 30m opam install -j1 -y -v coq-pi-agm.1.2.1</code></dd>
+              <dt>Return code</dt>
+              <dd>7936</dd>
+              <dt>Duration</dt>
+              <dd>39 s</dd>
+              <dt>Output</dt>
+              <dd><pre># Packages matching: installed
+# Name                 # Installed       # Synopsis
+base-bigarray          base
+base-num               base              Num library distributed with the OCaml compiler
+base-threads           base
+base-unix              base
+camlp5                 7.06.10-g84ce6cc4 Preprocessor-pretty-printer of OCaml
+conf-m4                1                 Virtual package relying on m4
+coq                    8.7.2             Formal proof management system.
+coq-bignums            8.7.0             Bignums, the Coq library of arbitrary large numbers
+coq-coquelicot         3.0.2             A Coq formalization of real analysis compatible with the standard library.
+coq-flocq              3.0.0             A floating-point formalization for the Coq system.
+coq-interval           3.4.0             A Coq tactic for proving bounds on real-valued expressions automatically.
+coq-mathcomp-ssreflect 1.7.0             Small Scale Reflection
+num                    0                 The Num library for arbitrary-precision integer and rational arithmetic
+ocaml                  4.05.0            The OCaml compiler (virtual package)
+ocaml-config           1                 OCaml Switch Configuration
+ocaml-system           4.05.0            The OCaml compiler (system version, from outside of opam)
+ocamlfind              1.8.0             A library manager for OCaml
+The following actions will be performed:
+  - install coq-pi-agm 1.2.1
+&lt;&gt;&lt;&gt; Gathering sources &gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;
+Processing  1/1: [coq-pi-agm.1.2.1: http]
+[coq-pi-agm.1.2.1] downloaded from https://github.com/ybertot/pi-agm/archive/v1.1.10.tar.gz
+Processing  1/1:
+&lt;&gt;&lt;&gt; Processing actions &lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;
+Processing  1/2: [coq-pi-agm: coq_makefile _CoqProject]
++ /home/bench/.opam/default/bin/coq_makefile &quot;-f&quot; &quot;_CoqProject&quot; &quot;-o&quot; &quot;Makefile&quot; (CWD=/home/bench/.opam/default/.opam-switch/build/coq-pi-agm.1.2.1)
+Processing  1/2: [coq-pi-agm: make 7]
++ /usr/bin/make &quot;-j&quot; &quot;7&quot; (CWD=/home/bench/.opam/default/.opam-switch/build/coq-pi-agm.1.2.1)
+- COQDEP rounding2.v
+- COQDEP alg2.v
+- COQDEP computing.v
+- COQDEP rounding_correct.v
+- COQDEP filter_Rlt.v
+- COQDEP generalities.v
+- COQDEP rounding_big.v
+- COQDEP elliptic_integral.v
+- COQDEP atan_derivative_improper_integral.v
+- COQDEP arcsinh.v
+- COQDEP agmpi.v
+- COQC filter_Rlt.v
+- COQC arcsinh.v
+- COQC atan_derivative_improper_integral.v
+- COQC rounding_big.v
+- COQC computing.v
+-      = 31415926535897932384626433832795028841971693993751058209749445923078164062862089986280348253421170679821480865132823066470938446095505822317253594081284811174502841027019385211055596446229489549303819644288109756659334461284756482337867831652712019091456485669234603486104543266482133936072602491412737245870066063155881748815209209628292540917153643678925903600113305305488204665213841469519415116094330572703657595919530921861173819326117931051185480744623799627495673518857527248912279381830119491298336733624406566430860213949463952247371907021798609437027705392171762931767523846748184676694051320005681271452635608277857713427577896091736371787214684409012249534301465495853710507922796892589235420199561121290219608640344181598136297747713099605187072113499999983729780499510597317328160963185950244594553469083026425223082533446850352619311881710100031378387528865875332083814206171776691473035982534904287554687311595628638823537875937519577818577805321712268066130019278766111959092164201967%bigZ
+-      : BigZ.t_
+- COQC generalities.v
+- File &quot;./generalities.v&quot;, line 416, characters 16-38:
+- Error: The reference Fcore_Raux.Rle_0_minus was not found in the current
+- environment.
+- 
+- Makefile:645: recipe for target &#39;generalities.vo&#39; failed
+- make[1]: *** [generalities.vo] Error 1
+- Makefile:318: recipe for target &#39;all&#39; failed
+- make: *** [all] Error 2
+[ERROR] The compilation of coq-pi-agm failed at &quot;/usr/bin/make -j 7&quot;.
+#=== ERROR while compiling coq-pi-agm.1.2.1 ===================================#
+# context              2.0.1 | linux/x86_64 | ocaml-system.4.05.0 | file:///home/bench/run/opam-coq-archive/released
+# path                 ~/.opam/default/.opam-switch/build/coq-pi-agm.1.2.1
+# command              /usr/bin/make -j 7
+# exit-code            2
+# env-file             ~/.opam/log/coq-pi-agm-5727-865888.env
+# output-file          ~/.opam/log/coq-pi-agm-5727-865888.out
+### output ###
+# [...]
+# COQC computing.v
+#      = 3141592653589793238462643383279502884197169399375105820974944592307816406286208998628034825342117067982148086513282306647093844609550582231725359408128481117450284102701938521105559644622948954930381964428810975665933446128475648233786783165271201909145648566923460348610454326648213393607260249141273724587006606315588174881520920962829254091715364367892590360011330530548820466521384146[...]
+#      : BigZ.t_
+# COQC generalities.v
+# File &quot;./generalities.v&quot;, line 416, characters 16-38:
+# Error: The reference Fcore_Raux.Rle_0_minus was not found in the current
+# environment.
+# 
+# Makefile:645: recipe for target &#39;generalities.vo&#39; failed
+# make[1]: *** [generalities.vo] Error 1
+# Makefile:318: recipe for target &#39;all&#39; failed
+# make: *** [all] Error 2
+&lt;&gt;&lt;&gt; Error report &lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;
++- The following actions failed
+| - build coq-pi-agm 1.2.1
++- 
+- No changes have been performed
+# Run eval $(opam env) to update the current shell environment
+&#39;opam install -j1 -y -v coq-pi-agm.1.2.1&#39; failed.
+</pre></dd>
+            </dl>
+            <h2>Installation size</h2>
+            <p>No files were installed.</p>
+            <h2>Uninstall</h2>
+            <dl class="dl-horizontal">
+              <dt>Command</dt>
+              <dd><code>true</code></dd>
+              <dt>Return code</dt>
+              <dd>0</dd>
+              <dt>Missing removes</dt>
+              <dd>
+                none
+              </dd>
+              <dt>Wrong removes</dt>
+              <dd>
+                none
+              </dd>
+            </dl>
+          </div>
+        </div>
+      </div>
+      <hr/>
+      <div class="footer">
+        <p class="text-center">
+          <small>Sources are on <a href="https://github.com/coq-bench">GitHub</a>. © Guillaume Claret.</small>
+        </p>
+      </div>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="../../../../../bootstrap.min.js"></script>
+  </body>
+</html>
