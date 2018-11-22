@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>menhirlib: 39 s</title>
+    <title>menhirlib: Not compatible with this Coq</title>
     <link rel="shortcut icon" type="image/png" href="../../../../../favicon.png" />
     <link href="../../../../../bootstrap.min.css" rel="stylesheet">
     <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
@@ -38,10 +38,10 @@
               menhirlib
               <small>
                 20180530
-                <span class="label label-success">39 s</span>
+                <span class="label label-info">Not compatible with this Coq</span>
               </small>
             </h1>
-            <p><em><script>document.write(moment("2018-11-17 14:46:58 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2018-11-17 14:46:58 UTC)</em><p>
+            <p><em><script>document.write(moment("2018-11-22 04:45:15 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2018-11-22 04:45:15 UTC)</em><p>
             <h2>Context</h2>
             <pre># Packages matching: installed
 # Name        # Installed       # Synopsis
@@ -59,6 +59,7 @@ ocaml-system  4.05.0            The OCaml compiler (system version, from outside
 ocamlfind     1.8.0             A library manager for OCaml
 # opam file:
 opam-version: &quot;1.2&quot;
+synopsis: &quot;A support library for verified Coq parsers produced by Menhir&quot;
 maintainer: &quot;francois.pottier@inria.fr&quot;
 authors: &quot;Jacques-Henri Jourdan &lt;jacques-henri.jourdan@lri.fr&gt;&quot;
 license: &quot;GPL 2 &amp; INRIA Non-Commercial License Agreement&quot;
@@ -69,7 +70,7 @@ build: [make &quot;-j%{jobs}%&quot;]
 install: [make &quot;install&quot;]
 remove: [make &quot;uninstall&quot;]
 depends: [
-  &quot;coq&quot; {&gt;= &quot;8.6&quot;}
+  &quot;coq&quot; {(&gt;= &quot;8.6&quot; &amp; &lt;= &quot;8.8.1&quot;)}
 ]
 depopts: &quot;menhir&quot;
 conflicts: [
@@ -89,74 +90,48 @@ conflicts: [
               <dt>Command</dt>
               <dd><code>opam install -y --show-action coq-menhirlib.20180530 coq.8.8.2</code></dd>
               <dt>Return code</dt>
-              <dd>0</dd>
+              <dd>5120</dd>
+              <dt>Output</dt>
+              <dd><pre>[NOTE] Package coq is already installed (current version is 8.8.2).
+The following dependencies couldn&#39;t be met:
+  - coq-menhirlib -&gt; coq &lt; 8.8.2 -&gt; ocaml &lt; 4.03.0
+      base of this switch (use `--unlock-base&#39; to force)
+Your request can&#39;t be satisfied:
+  - No available version of coq satisfies the constraints
+No solution found, exiting
+</pre></dd>
             </dl>
             <p>Dry install without Coq, to test if the problem was incompatibility with the current Coq version:</p>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>true</code></dd>
+              <dd><code>opam remove -y coq; opam install -y --show-action coq-menhirlib.20180530</code></dd>
               <dt>Return code</dt>
               <dd>0</dd>
             </dl>
             <h2>Install dependencies</h2>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>opam list; ulimit -Sv 4000000; timeout 30m opam install -y --deps-only coq-menhirlib.20180530</code></dd>
+              <dd><code>true</code></dd>
               <dt>Return code</dt>
               <dd>0</dd>
               <dt>Duration</dt>
-              <dd>5 s</dd>
+              <dd>0 s</dd>
             </dl>
             <h2>Install</h2>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>opam list; ulimit -Sv 4000000; timeout 30m opam install -j1 -y -v coq-menhirlib.20180530</code></dd>
+              <dd><code>true</code></dd>
               <dt>Return code</dt>
               <dd>0</dd>
               <dt>Duration</dt>
-              <dd>39 s</dd>
+              <dd>0 s</dd>
             </dl>
             <h2>Installation size</h2>
-            <p>Total: 5,303 K</p>
-            <ul>
-              <li>1,398 K <code>../default/lib/coq/user-contrib/MenhirLib/Interpreter_complete.vo</code></li>
-              <li>1,342 K <code>../default/lib/coq/user-contrib/MenhirLib/Main.vo</code></li>
-              <li>1,156 K <code>../default/lib/coq/user-contrib/MenhirLib/Validator_complete.vo</code></li>
-              <li>205 K <code>../default/lib/coq/user-contrib/MenhirLib/Interpreter_safe.vo</code></li>
-              <li>187 K <code>../default/lib/coq/user-contrib/MenhirLib/Interpreter_correct.vo</code></li>
-              <li>168 K <code>../default/lib/coq/user-contrib/MenhirLib/Interpreter.vo</code></li>
-              <li>127 K <code>../default/lib/coq/user-contrib/MenhirLib/Validator_safe.vo</code></li>
-              <li>111 K <code>../default/lib/coq/user-contrib/MenhirLib/Alphabet.vo</code></li>
-              <li>95 K <code>../default/lib/coq/user-contrib/MenhirLib/Automaton.vo</code></li>
-              <li>82 K <code>../default/lib/coq/user-contrib/MenhirLib/Interpreter_complete.glob</code></li>
-              <li>72 K <code>../default/lib/coq/user-contrib/MenhirLib/Grammar.vo</code></li>
-              <li>55 K <code>../default/lib/coq/user-contrib/MenhirLib/Validator_complete.glob</code></li>
-              <li>42 K <code>../default/lib/coq/user-contrib/MenhirLib/Alphabet.glob</code></li>
-              <li>33 K <code>../default/lib/coq/user-contrib/MenhirLib/Validator_safe.glob</code></li>
-              <li>26 K <code>../default/lib/coq/user-contrib/MenhirLib/Interpreter_correct.glob</code></li>
-              <li>22 K <code>../default/lib/coq/user-contrib/MenhirLib/Interpreter_safe.glob</code></li>
-              <li>22 K <code>../default/lib/coq/user-contrib/MenhirLib/Interpreter_complete.v</code></li>
-              <li>20 K <code>../default/lib/coq/user-contrib/MenhirLib/Tuples.vo</code></li>
-              <li>18 K <code>../default/lib/coq/user-contrib/MenhirLib/Validator_complete.v</code></li>
-              <li>16 K <code>../default/lib/coq/user-contrib/MenhirLib/Interpreter.glob</code></li>
-              <li>12 K <code>../default/lib/coq/user-contrib/MenhirLib/Validator_safe.v</code></li>
-              <li>11 K <code>../default/lib/coq/user-contrib/MenhirLib/Grammar.glob</code></li>
-              <li>10 K <code>../default/lib/coq/user-contrib/MenhirLib/Alphabet.v</code></li>
-              <li>9 K <code>../default/lib/coq/user-contrib/MenhirLib/Interpreter_safe.v</code></li>
-              <li>8 K <code>../default/lib/coq/user-contrib/MenhirLib/Automaton.glob</code></li>
-              <li>8 K <code>../default/lib/coq/user-contrib/MenhirLib/Main.glob</code></li>
-              <li>8 K <code>../default/lib/coq/user-contrib/MenhirLib/Interpreter_correct.v</code></li>
-              <li>7 K <code>../default/lib/coq/user-contrib/MenhirLib/Interpreter.v</code></li>
-              <li>6 K <code>../default/lib/coq/user-contrib/MenhirLib/Automaton.v</code></li>
-              <li>6 K <code>../default/lib/coq/user-contrib/MenhirLib/Grammar.v</code></li>
-              <li>3 K <code>../default/lib/coq/user-contrib/MenhirLib/Main.v</code></li>
-              <li>3 K <code>../default/lib/coq/user-contrib/MenhirLib/Tuples.glob</code></li>
-              <li>1 K <code>../default/lib/coq/user-contrib/MenhirLib/Tuples.v</code></li>
-            </ul>
+            <p>No files were installed.</p>
             <h2>Uninstall</h2>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>opam remove -y coq-menhirlib.20180530</code></dd>
+              <dd><code>true</code></dd>
               <dt>Return code</dt>
               <dd>0</dd>
               <dt>Missing removes</dt>
