@@ -1,0 +1,2449 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>projective-geometry: Error</title>
+    <link rel="shortcut icon" type="image/png" href="../../../../../favicon.png" />
+    <link href="../../../../../bootstrap.min.css" rel="stylesheet">
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+    <script src="../../../../../moment.min.js"></script>
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="container">
+      <div class="navbar navbar-default" role="navigation">
+        <div class="container-fluid">
+          <div class="navbar-header">
+            <a class="navbar-brand" href="../../../../.."><i class="fa fa-lg fa-flag-checkered"></i> Coq bench</a>
+          </div>
+          <div id="navbar" class="collapse navbar-collapse">
+            <ul class="nav navbar-nav">
+              <li><a href="../..">clean / released</a></li>
+              <li class="active"><a href="">8.6.1 / projective-geometry - 8.6.0</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="article">
+        <div class="row">
+          <div class="col-md-12">
+            <a href="../..">« Up</a>
+            <h1>
+              projective-geometry
+              <small>
+                8.6.0
+                <span class="label label-danger">Error</span>
+              </small>
+            </h1>
+            <p><em><script>document.write(moment("2018-12-02 10:04:13 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2018-12-02 10:04:13 UTC)</em><p>
+            <h2>Context</h2>
+            <pre># Installed packages for system:
+base-bigarray   base  Bigarray library distributed with the OCaml compiler
+base-num        base  Num library distributed with the OCaml compiler
+base-threads    base  Threads library distributed with the OCaml compiler
+base-unix       base  Unix library distributed with the OCaml compiler
+camlp5          7.06  Preprocessor-pretty-printer of OCaml
+conf-m4            1  Virtual package relying on m4
+coq            8.6.1  Formal proof management system.
+num                0  The Num library for arbitrary-precision integer and ration
+ocamlfind      1.8.0  A library manager for OCaml
+# opam file:
+opam-version: &quot;1.2&quot;
+maintainer: &quot;Hugo.Herbelin@inria.fr&quot;
+homepage: &quot;https://github.com/coq-contribs/projective-geometry&quot;
+license: &quot;GPL&quot;
+build: [make &quot;-j%{jobs}%&quot;]
+install: [make &quot;install&quot;]
+remove: [&quot;rm&quot; &quot;-R&quot; &quot;%{lib}%/coq/user-contrib/ProjectiveGeometry&quot;]
+depends: [
+  &quot;coq&quot; {&gt;= &quot;8.6&quot; &amp; &lt; &quot;8.7~&quot;}
+]
+tags: [ &quot;keyword: geometry&quot; &quot;keyword: projective&quot; &quot;keyword: fano&quot; &quot;keyword: homogeneous coordinates model&quot; &quot;keyword: flat&quot; &quot;keyword: rank&quot; &quot;keyword: desargues&quot; &quot;keyword: moulton&quot; &quot;category: Mathematics/Geometry/General&quot; &quot;date: 2009-10&quot; ]
+authors: [ &quot;Nicolas Magaud &lt;Nicolas.Magaud@lsiit-cnrs.unistra.fr&gt;&quot; &quot;Julien Narboux &lt;Julien.Narboux@lsiit-cnrs.unistra.fr&gt;&quot; &quot;Pascal Schreck &lt;Pascal.Schreck@lsiit-cnrs.unistra.fr&gt;&quot; ]
+bug-reports: &quot;https://github.com/coq-contribs/projective-geometry/issues&quot;
+dev-repo: &quot;https://github.com/coq-contribs/projective-geometry.git&quot;
+</pre>
+            <h2>Lint</h2>
+            <dl class="dl-horizontal">
+              <dt>Command</dt>
+              <dd><code>ruby lint.rb released opam-coq-archive/released/packages/coq-projective-geometry/coq-projective-geometry.8.6.0</code></dd>
+              <dt>Return code</dt>
+              <dd>0</dd>
+            </dl>
+            <h2>Dry install</h2>
+            <p>Dry install with the current Coq version:</p>
+            <dl class="dl-horizontal">
+              <dt>Command</dt>
+              <dd><code>opam install -y --show-action coq-projective-geometry.8.6.0 coq.8.6.1</code></dd>
+              <dt>Return code</dt>
+              <dd>0</dd>
+            </dl>
+            <p>Dry install without Coq, to test if the problem was incompatibility with the current Coq version:</p>
+            <dl class="dl-horizontal">
+              <dt>Command</dt>
+              <dd><code>true</code></dd>
+              <dt>Return code</dt>
+              <dd>0</dd>
+            </dl>
+            <h2>Install dependencies</h2>
+            <dl class="dl-horizontal">
+              <dt>Command</dt>
+              <dd><code>opam list; ulimit -Sv 4000000; timeout 30m opam install -y --deps-only coq-projective-geometry.8.6.0</code></dd>
+              <dt>Return code</dt>
+              <dd>0</dd>
+              <dt>Duration</dt>
+              <dd>55 s</dd>
+            </dl>
+            <h2>Install</h2>
+            <dl class="dl-horizontal">
+              <dt>Command</dt>
+              <dd><code>opam list; ulimit -Sv 4000000; timeout 30m opam install -j1 -y -v coq-projective-geometry.8.6.0</code></dd>
+              <dt>Return code</dt>
+              <dd>31744</dd>
+              <dt>Duration</dt>
+              <dd>30 m 0 s</dd>
+              <dt>Output</dt>
+              <dd><pre># Installed packages for system:
+base-bigarray   base  Bigarray library distributed with the OCaml compiler
+base-num        base  Num library distributed with the OCaml compiler
+base-threads    base  Threads library distributed with the OCaml compiler
+base-unix       base  Unix library distributed with the OCaml compiler
+camlp5          7.06  Preprocessor-pretty-printer of OCaml
+conf-m4            1  Virtual package relying on m4
+coq            8.6.1  Formal proof management system.
+num                0  The Num library for arbitrary-precision integer and ration
+ocamlfind      1.8.0  A library manager for OCaml
+The following actions will be performed:
+  - install coq-projective-geometry 8.6.0
+=-=- Gathering sources =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+[coq-projective-geometry: http] Command started
+[coq-projective-geometry: http] Command started
+[coq-projective-geometry.8.6.0] https://github.com/coq-contribs/projective-geometry/archive/v8.6.0.tar.gz downloaded
+=-=- Processing actions -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+[coq-projective-geometry: make] Command started
++ make &quot;-j1&quot; (CWD=/home/bench/.opam/system/build/coq-projective-geometry.8.6.0)
+- coq_makefile -f Make -o Makefile.coq
+- make -f Makefile.coq Makefile
+- make[1]: Entering directory &#39;/home/bench/.opam/system/build/coq-projective-geometry.8.6.0&#39;
+- COQDEP Space/desargues2Dlemmas2.v
+- COQDEP Space/projective_space_axioms.v
+- COQDEP Space/desargues3D.v
+- COQDEP Space/desargues2D.v
+- COQDEP Space/matroids_properties.v
+- COQDEP Space/basic_facts.v
+- COQDEP Space/desarguesxD.v
+- COQDEP Space/desargues2Dmore.v
+- COQDEP Space/projective_space_rank_to_projective_space.v
+- COQDEP Space/desargues3Dspecial.v
+- COQDEP Space/desargues2Dlemmas3.v
+- COQDEP Space/rank_properties.v
+- COQDEP Space/sets_of_points.v
+- COQDEP Space/projective_space_rank_axioms.v
+- COQDEP Space/desargues2Dlemmas.v
+- COQDEP Space/matroid_to_matroid_p.v
+- COQDEP Space/matroids_axioms.v
+- COQDEP Space/desargues3Dlemmas.v
+- COQDEP Plane/projective_plane_duality.v
+- COQDEP Plane/projective_plane_to_Heyting_projective_plane.v
+- COQDEP Plane/Heyting_projective_plane_axioms.v
+- COQDEP Plane/fano_plane_desargues.v
+- COQDEP Plane/fano_plane.v
+- COQDEP Plane/hexamys_desargues.v
+- COQDEP Plane/hexamys.v
+- COQDEP Plane/P14_pseudo_midpoint.v
+- COQDEP Plane/P12_aeolian.v
+- COQDEP Plane/P11_chasles.v
+- COQDEP Plane/P10_complete_quadrilateral_2.v
+- COQDEP Plane/P09_complete_quadrilateral.v
+- COQDEP Plane/P08_cevian_lines_2.v
+- COQDEP Plane/P07_cevian_lines.v
+- COQDEP Plane/P06_angle_line.v
+- COQDEP Plane/P05_almost_pappus.v
+- COQDEP Plane/examples.v
+- COQDEP Plane/bij.v
+- COQDEP Plane/homogeneous.v
+- COQDEP Plane/projective_plane_inst.v
+- COQDEP Plane/basic_facts_plane.v
+- COQDEP Plane/forth.v
+- COQDEP Plane/pg25.v
+- COQDEP Plane/moulton.v
+- COQDEP Plane/flat.v
+- COQDEP Plane/decidability.v
+- COQDEP Plane/projective_plane_axioms.v
+- COQDEP Plane/back.v
+- COQDEP field_variable_isolation_tactic.v
+- COQDEP general_tactics.v
+- make[1]: Nothing to be done for &#39;Makefile&#39;.
+- make[1]: Leaving directory &#39;/home/bench/.opam/system/build/coq-projective-geometry.8.6.0&#39;
+- make -f Makefile.coq all
+- make[1]: Entering directory &#39;/home/bench/.opam/system/build/coq-projective-geometry.8.6.0&#39;
+- COQC general_tactics.v
+- COQC field_variable_isolation_tactic.v
+- File &quot;./general_tactics.v&quot;, line 71, characters 0-24:
+- Warning: Implicit Arguments is deprecated; use Arguments instead
+- [deprecated-implicit-arguments,deprecated]
+- File &quot;./general_tactics.v&quot;, line 72, characters 0-24:
+- Warning: Implicit Arguments is deprecated; use Arguments instead
+- [deprecated-implicit-arguments,deprecated]
+- File &quot;./general_tactics.v&quot;, line 73, characters 0-24:
+- Warning: Implicit Arguments is deprecated; use Arguments instead
+- [deprecated-implicit-arguments,deprecated]
+- COQC Plane/projective_plane_axioms.v
+- COQC Plane/basic_facts_plane.v
+- COQC Plane/back.v
+- COQC Plane/forth.v
+- COQC Plane/decidability.v
+- COQC Plane/projective_plane_inst.v
+- COQC Plane/flat.v
+- COQC Plane/moulton.v
+- File &quot;./Plane/flat.v&quot;, line 6, characters 0-28:
+- Warning: Implicit Arguments is deprecated; use Arguments instead
+- [deprecated-implicit-arguments,deprecated]
+- File &quot;./Plane/flat.v&quot;, line 7, characters 0-21:
+- Warning: Implicit Arguments is deprecated; use Arguments instead
+- [deprecated-implicit-arguments,deprecated]
+- COQC Plane/pg25.v
+- COQC Plane/homogeneous.v
+- COQC Plane/bij.v
+- COQC Plane/examples.v
+- File &quot;./Plane/bij.v&quot;, line 15, characters 0-30:
+- Warning: Implicit Arguments is deprecated; use Arguments instead
+- [deprecated-implicit-arguments,deprecated]
+- COQC Plane/hexamys.v
+- we have  l  =  x
+- we have  l  =  x
+- we have :  P  =  x
+- we have :  P  =  x
+- we have  m  =  x
+- we have  l  =  x0
+- we have  lAB&#39;  =  m
+- we have  m  =  l
+- we have  lBC&#39;  =  l
+- we have  lA&#39;C  =  l
+- we have  lB&#39;C  =  l
+- we have  lAC&#39;  =  l
+- we have  x1  =  x6
+- we have  x6  =  x5
+- we have  x0  =  x5
+- we have  x5  =  x4
+- we have  x4  =  x3
+- we have  x  =  x3
+- we have  x  =  x6
+- we have  x6  =  x5
+- we have  x2  =  x5
+- we have  x5  =  x4
+- we have  x4  =  x3
+- we have  x3  =  x1
+- we have  x  =  x1
+- we have :  P  =  B
+- we have  x2  =  x3
+- we have :  R  =  C
+- we have  x0  =  x2
+- we have :  Q  =  C
+- we have  x0  =  x2
+- we have :  P  =  B&#39;
+- we have  x1  =  x4
+- we have :  R  =  C&#39;
+- we have  x  =  x1
+- we have :  Q  =  C&#39;
+- we have  x0  =  x6
+- we have  x4  =  x6
+- we have  x  =  x5
+- we have  x3  =  x5
+- we have :  R  =  P
+- we have :  A&#39;  =  P
+- we have  x2  =  x6
+- we have  x  =  x5
+- we have :  Q  =  B
+- we have :  R  =  A&#39;
+- we have  x1  =  x6
+- we have  x3  =  x5
+- we have :  P  =  A&#39;
+- we have :  Q  =  C
+- we have  x0  =  x6
+- we have  x3  =  x5
+- we have :  R  =  A
+- we have :  Q  =  B&#39;
+- we have  x4  =  x6
+- we have  x3  =  x5
+- we have  x2  =  x5
+- we have  x1  =  x6
+- we have :  P  =  Q
+- we have :  B&#39;  =  Q
+- we have  x  =  x6
+- we have  x2  =  x5
+- we have :  P  =  B&#39;
+- we have :  R  =  C
+- we have  x4  =  x6
+- we have  x0  =  x5
+- we have :  P  =  A
+- we have :  Q  =  C&#39;
+- we have  x3  =  x6
+- we have  x2  =  x5
+- we have :  R  =  C&#39;
+- we have :  P  =  B
+- we have  x  =  x6
+- we have  x0  =  x5
+- we have  x2  =  x5
+- we have  x6  =  x1
+- we have :  Q  =  R
+- we have :  C&#39;  =  R
+- we have  lDE  =  l4
+- we have  lAB  =  l3
+- we have  lAF  =  l2
+- we have  lCD  =  l1
+- we have  lEF  =  l0
+- we have  lBC  =  l
+- we have  lDF  =  l2
+- we have :  b  =  D
+- we have  lBD  =  l3
+- we have  l2  =  l3
+- we have  lBF  =  l3
+- we have  l3  =  l2
+- we have  lBD  =  l2
+- we have  lBF  =  l2
+- we have  l3  =  l2
+- we have  lBD  =  l2
+- we have  lBF  =  l2
+- we have  lBD  =  l3
+- we have  l2  =  l3
+- we have  lBF  =  l3
+- we have  lBD  =  l3
+- we have  l2  =  l3
+- we have  lBF  =  l3
+- we have  l4  =  x
+- we have  lCE  =  l
+- we have  lBE  =  l
+- we have  l  =  lCE
+- we have  lBE  =  lCE
+- we have  l  =  lCE
+- we have  lBE  =  lCE
+- we have  lCE  =  l
+- we have  lBE  =  l
+- we have  l2  =  x
+- we have  lAE  =  x
+- we have :  c  =  A
+- we have :  b&#39;  =  A
+- we have  l2  =  x
+- we have  lAE  =  x
+- we have :  c  =  A
+- we have :  b&#39;  =  A
+- we have  l0  =  l2
+- we have  lAE  =  l2
+- we have :  A  =  c
+- we have :  b&#39;  =  c
+- we have  l0  =  l2
+- we have  lAE  =  l2
+- we have :  A  =  c
+- we have :  b&#39;  =  c
+- we have  lCE  =  l
+- we have  lBE  =  l
+- we have  l1  =  l5
+- we have  lBF  =  l4
+- we have  l0  =  x
+- we have  l2  =  x
+- we have  lAE  =  x
+- we have :  c  =  A
+- we have :  b&#39;  =  A
+- we have  lAE  =  lBE
+- we have :  E  =  c
+- we have  lCE  =  l
+- we have  lBE  =  l
+- we have  lAC  =  l
+- we have :  b&#39;  =  c
+- we have  lCE  =  l
+- we have  lBE  =  l
+- we have  lAC  =  l
+- we have :  b&#39;  =  c
+- we have  l  =  lCE
+- we have  lBE  =  lCE
+- we have  lAC  =  lCE
+- we have :  a  =  b&#39;
+- we have  l  =  lCE
+- we have  lBE  =  lCE
+- we have  lAC  =  lCE
+- we have :  a  =  b&#39;
+- we have  lCE  =  l
+- we have  lBE  =  l
+- we have  lAC  =  l
+- we have :  b&#39;  =  c
+- we have  x  =  l0
+- we have  l1  =  lDF
+- we have  lCF  =  lDF
+- we have  l1  =  lDF
+- we have  lCF  =  lDF
+- we have  lDF  =  l1
+- we have  lCF  =  l1
+- we have  lDF  =  l1
+- we have  lCF  =  l1
+- we have  lBE  =  l0
+- we have  lBF  =  l0
+- we have :  a  =  B
+- we have :  b&#39;  =  A
+- we have  lBE  =  l2
+- we have  lBF  =  l2
+- we have :  a  =  B
+- we have :  A  =  b&#39;
+- we have  lBE  =  l2
+- we have  lBF  =  l2
+- we have :  a  =  B
+- we have :  A  =  b&#39;
+- we have  lBE  =  l0
+- we have  lBF  =  l0
+- we have :  a  =  B
+- we have :  b&#39;  =  A
+- we have  lDF  =  l1
+- we have  lCF  =  l1
+- we have  l0  =  l2
+- we have  lBE  =  l2
+- we have  lBF  =  l2
+- we have :  a  =  B
+- we have :  A  =  b&#39;
+- we have  lAE  =  l2
+- we have :  A  =  b&#39;
+- we have :  b&#39;  =  c
+- we have  l4  =  l2
+- we have  lAD  =  l2
+- we have  lDF  =  l2
+- we have :  b  =  D
+- we have  b  =  a
+- we have  l2  =  lAC
+- we have  lCE  =  lAC
+- we have  lCF  =  lAC
+- we have  l  =  l1
+- we have  lBD  =  l1
+- we have  l3  =  lAD
+- we have  lBE  =  l4
+- we have  lBF  =  lDF
+- we have :  c  =  B
+- we have  lBD  =  l1
+- we have  lCF  =  l0
+- we have :  a  =  C
+- we have :  b&#39;  =  C
+- we have  lAC  =  l2
+- we have  l0  =  l2
+- we have  lAE  =  l2
+- we have  l1  =  x
+- we have  lBD  =  l3
+- we have  lAD  =  l3
+- we have  l3  =  lBD
+- we have  lAD  =  lBD
+- we have  l3  =  lBD
+- we have  lAD  =  lBD
+- we have  lBD  =  l3
+- we have  lAD  =  l3
+- we have  l0  =  x
+- we have  lDF  =  x
+- we have :  F  =  b
+- we have  l0  =  x
+- we have  lDF  =  x
+- we have :  F  =  b
+- we have  l0  =  l4
+- we have  lDF  =  l4
+- we have :  F  =  b
+- we have  l0  =  l4
+- we have  lDF  =  l4
+- we have :  F  =  b
+- we have  l  =  l3
+- we have  lAC  =  l3
+- we have  l4  =  x
+- we have  l0  =  x
+- we have  lDF  =  x
+- we have :  F  =  b
+- we have  lAE  =  l4
+- we have :  c  =  A
+- we have  l1  =  l4
+- we have  lAC  =  l4
+- we have  lCE  =  l4
+- we have :  E  =  b&#39;
+- we have  l1  =  l4
+- we have  lAC  =  l4
+- we have  lCE  =  l4
+- we have :  E  =  b&#39;
+- we have  l1  =  l4
+- we have  lAC  =  l4
+- we have  lCE  =  l4
+- we have :  E  =  b&#39;
+- we have  l1  =  l4
+- we have  lAC  =  l4
+- we have  lCE  =  l4
+- we have :  E  =  b&#39;
+- we have :  a  =  F
+- we have  lCF  =  l
+- we have  lBF  =  l
+- we have :  a  =  F
+- we have  lCF  =  l
+- we have  lBF  =  l
+- we have :  F  =  a
+- we have  l  =  lCF
+- we have  lBF  =  lCF
+- we have :  F  =  a
+- we have  l  =  lCF
+- we have  lBF  =  lCF
+- we have  l0  =  l4
+- we have  l2  =  l4
+- we have  lDF  =  l4
+- we have :  D  =  b
+- we have  x  =  l4
+- we have  l1  =  l4
+- we have  lAC  =  l4
+- we have  lCE  =  l4
+- we have :  E  =  b&#39;
+- we have  l4  =  l0
+- we have  l  =  l0
+- we have  l3  =  l0
+- we have  lBD  =  l0
+- we have  l0  =  lBE
+- we have  lCF  =  lBE
+- we have  lDF  =  lBE
+- we have  l2  =  lBE
+- we have  lBF  =  lBE
+- we have  l2  =  x
+- we have :  a  =  F
+- we have  lCF  =  l
+- we have  lBF  =  l
+- we have  lCE  =  l4
+- we have :  E  =  a
+- we have  l  =  lBE
+- we have  l4  =  lBE
+- we have  lBD  =  lBE
+- we have :  B  =  c
+- we have :  E  =  a
+- we have  l  =  lBE
+- we have  x  =  lBE
+- we have  lBD  =  lBE
+- we have :  B  =  c
+- we have :  E  =  a
+- we have  l  =  lBE
+- we have  x  =  lBE
+- we have  lBD  =  lBE
+- we have :  B  =  c
+- we have :  E  =  a
+- we have  l  =  lBE
+- we have  l4  =  lBE
+- we have  lBD  =  lBE
+- we have :  B  =  c
+- we have :  E  =  b
+- we have  l  =  lBE
+- we have  l4  =  lBE
+- we have  lBD  =  lBE
+- we have  l2  =  lAE
+- we have  l0  =  lAE
+- we have :  A  =  b&#39;
+- we have :  B  =  c
+- we have  x  =  lBE
+- we have  x  =  l4
+- we have :  E  =  c
+- we have  l  =  lBE
+- we have  l4  =  lBE
+- we have  lBD  =  lBE
+- we have  l3  =  lBE
+- we have  lAD  =  lBE
+- we have  lAC  =  lBE
+- we have  lAE  =  lBE
+- we have :  b&#39;  =  c
+- we have :  A  =  b
+- we have  lAC  =  l4
+- we have  lAE  =  l4
+- we have  lAD  =  l4
+- we have :  E  =  b&#39;
+- we have  l3  =  l2
+- we have  lBF  =  l2
+- we have  lBE  =  l0
+- we have  lBD  =  lDF
+- we have  l  =  lCF
+- we have :  a  =  B
+- we have  x  =  l2
+- we have  lBF  =  l2
+- we have  l4  =  x
+- we have :  E  =  a
+- we have  l  =  lBE
+- we have  x  =  lBE
+- we have  lBD  =  lBE
+- we have :  B  =  c
+- we have  l0  =  l4
+- we have  lCF  =  l4
+- we have  lDF  =  l4
+- we have  lCE  =  l4
+- we have :  a  =  C
+- we have :  b&#39;  =  C
+- we have :  F  =  b
+- we have  x  =  l4
+- we have  lDF  =  l0
+- we have :  D  =  b
+- we have  l2  =  lAD
+- we have  l0  =  lAD
+- we have  lAE  =  lAD
+- we have :  A  =  c
+- we have :  b&#39;  =  c
+- we have  a  =  c
+- we have  lBD  =  l0
+- we have  lBF  =  l0
+- we have  lBE  =  l0
+- we have  lBD  =  l0
+- we have  lBF  =  l0
+- we have  lBE  =  l0
+- we have  lBD  =  l0
+- we have  lBF  =  l0
+- we have  lBE  =  l0
+- we have  lBD  =  l0
+- we have  lBF  =  l0
+- we have  lBE  =  l0
+- we have  lAC  =  l
+- we have :  b&#39;  =  c
+- we have  lAC  =  l3
+- we have :  b&#39;  =  c
+- we have  lAC  =  l3
+- we have :  b&#39;  =  c
+- we have  lAC  =  l
+- we have :  b&#39;  =  c
+- we have :  F  =  c
+- we have  l1  =  lCF
+- we have  l0  =  lCF
+- we have  lCE  =  lCF
+- we have  l  =  lCF
+- we have  lBE  =  lCF
+- we have  lBD  =  lCF
+- we have  lBF  =  lCF
+- we have  l3  =  lCF
+- we have  lAE  =  lCF
+- we have  lAD  =  lCF
+- we have  l2  =  lCF
+- we have  lAC  =  lCF
+- we have  x  =  l1
+- we have  l3  =  lAC
+- we have  l  =  lAC
+- we have  l1  =  l0
+- we have  lCF  =  l0
+- we have  lCE  =  l0
+- we have :  F  =  b
+- we have  l  =  lAC
+- we have  l3  =  lAC
+- we have  lBD  =  l0
+- we have  lBF  =  l0
+- we have  lBE  =  l0
+- we have  lAC  =  l3
+- we have  lBF  =  l2
+- we have  lAE  =  lBE
+- we have  lAD  =  lBD
+- we have  l3  =  lAC
+- we have  lBD  =  l0
+- we have  lBF  =  l0
+- we have  lBE  =  l0
+- we have  lBD  =  l0
+- we have  lBF  =  l0
+- we have  lBE  =  l0
+- we have  lBD  =  l0
+- we have  lBF  =  l0
+- we have  lBE  =  l0
+- we have  lBD  =  l0
+- we have  lBF  =  l0
+- we have  lBE  =  l0
+- we have  lAC  =  l
+- we have  l0  =  l
+- we have  lAD  =  l
+- we have  l1  =  l
+- we have  lBD  =  l
+- we have  l2  =  l
+- we have  lCF  =  l
+- we have  lBF  =  l
+- we have  lAE  =  l
+- we have  lCE  =  l
+- we have  lBE  =  l
+- we have  x  =  l
+- we have  B  =  c
+- we have  x  =  l2
+- we have  l3  =  l2
+- we have  l  =  lCF
+- we have  l0  =  lBE
+- we have  lBD  =  lBE
+- we have  l0  =  lBF
+- we have  lBD  =  lBF
+- we have  l1  =  l
+- we have  x  =  l
+- we have  lAD  =  l3
+- we have  lBE  =  lBF
+- we have  lBD  =  lBF
+- we have  lBE  =  lBF
+- we have  lCE  =  l
+- we have  lAE  =  l3
+- we have  lBE  =  lBF
+- we have  lCF  =  l2
+- we have :  F  =  b&#39;
+- we have :  b  =  C
+- we have  l0  =  l2
+- we have  lCE  =  l2
+- we have  lAE  =  l2
+- we have  l  =  x
+- we have  lBE  =  l4
+- we have  lBD  =  l4
+- we have  lBE  =  l4
+- we have  lBD  =  l4
+- we have  lBE  =  l4
+- we have  lBD  =  l4
+- we have  lBE  =  l4
+- we have  lBD  =  l4
+- we have  l2  =  x
+- we have  lBF  =  x
+- we have :  a  =  b&#39;
+- we have  l2  =  x
+- we have  lBF  =  x
+- we have :  a  =  b&#39;
+- we have  l2  =  l3
+- we have  lBF  =  l3
+- we have :  a  =  b&#39;
+- we have  l2  =  l3
+- we have  lBF  =  l3
+- we have :  a  =  b&#39;
+- we have  lBE  =  l4
+- we have  lBD  =  l4
+- we have  l3  =  x
+- we have  l2  =  x
+- we have  lBF  =  x
+- we have :  a  =  b&#39;
+- we have  l  =  l3
+- we have :  a  =  b&#39;
+- we have :  E  =  b&#39;
+- we have  l3  =  lCE
+- we have  lBE  =  lCE
+- we have  lAE  =  lCE
+- we have  l3  =  x
+- we have  l2  =  x
+- we have  lCF  =  x
+- we have  lBF  =  x
+- we have :  b&#39;  =  F
+- we have  l1  =  x
+- we have  lBD  =  x
+- we have  lAD  =  x
+- we have  lBE  =  l4
+- we have  lBF  =  lDF
+- we have :  D  =  c
+- we have :  A  =  b
+- we have  lBD  =  x
+- we have  lAD  =  x
+- we have  lAE  =  l4
+- we have  lDF  =  l2
+- we have :  b  =  D
+- we have :  D  =  c
+- we have  lAD  =  x
+- we have :  D  =  D
+- we have :  D  =  D
+- we have :  D  =  D
+- we have :  D  =  D
+- we have :  D  =  D
+- we have :  D  =  D
+- we have :  D  =  D
+- we have :  D  =  D
+- we have :  A  =  b
+- we have :  A  =  A
+- we have :  A  =  A
+- we have :  A  =  A
+- we have :  A  =  A
+- we have :  D  =  c
+- we have :  c  =  c
+- we have :  c  =  c
+- we have :  c  =  c
+- we have :  c  =  c
+- we have :  c  =  c
+- we have :  c  =  c
+- we have :  c  =  c
+- we have :  c  =  c
+- we have :  A  =  b
+- we have :  b  =  b
+- we have :  b  =  b
+- we have :  b  =  b
+- we have :  b  =  b
+- we have :  D  =  c
+- we have :  c  =  c
+- we have :  c  =  c
+- we have :  c  =  c
+- we have :  c  =  c
+- we have :  c  =  c
+- we have :  c  =  c
+- we have :  c  =  c
+- we have :  c  =  c
+- we have :  A  =  b
+- we have :  D  =  D
+- we have :  D  =  D
+- we have :  D  =  D
+- we have :  D  =  D
+- we have :  D  =  D
+- we have :  D  =  D
+- we have :  D  =  D
+- we have :  D  =  D
+- we have :  A  =  b
+- we have :  b  =  b
+- we have :  b  =  b
+- we have :  b  =  b
+- we have :  b  =  b
+- we have :  D  =  c
+- we have :  A  =  A
+- we have :  A  =  A
+- we have :  A  =  A
+- we have :  A  =  A
+- we have :  D  =  c
+- we have  lCE  =  x
+- we have  lBE  =  x
+- we have  lAE  =  x
+- we have :  E  =  b&#39;
+- we have :  A  =  b
+- we have  c  =  D
+- we have :  A  =  A
+- we have :  A  =  A
+- we have :  A  =  A
+- we have :  A  =  A
+- we have :  A  =  A
+- we have :  A  =  A
+- we have :  A  =  A
+- we have :  A  =  A
+- we have :  b  =  b
+- we have :  b  =  b
+- we have :  b  =  b
+- we have :  b  =  b
+- we have :  b  =  b
+- we have :  b  =  b
+- we have :  b  =  b
+- we have :  b  =  b
+- we have :  b  =  b
+- we have :  b  =  b
+- we have :  b  =  b
+- we have :  b  =  b
+- we have :  b  =  b
+- we have :  b  =  b
+- we have :  b  =  b
+- we have :  b  =  b
+- we have :  A  =  A
+- we have :  A  =  A
+- we have :  A  =  A
+- we have :  A  =  A
+- we have :  A  =  A
+- we have :  A  =  A
+- we have :  A  =  A
+- we have :  A  =  A
+- we have  lDF  =  x
+- we have  lCF  =  x
+- we have  lBF  =  x
+- we have :  b&#39;  =  F
+- we have  b  =  A
+- we have  lAD  =  l1
+- we have :  A  =  b
+- we have  lAE  =  l4
+- we have  l1  =  l4
+- we have  lCE  =  l4
+- we have :  E  =  b&#39;
+- we have  x  =  l3
+- we have  lBF  =  l0
+- we have  lBE  =  l0
+- we have  lBF  =  l0
+- we have  lBE  =  l0
+- we have  lBF  =  l0
+- we have  lBE  =  l0
+- we have  lBF  =  l0
+- we have  lBE  =  l0
+- we have  l1  =  l3
+- we have  lBD  =  l3
+- we have :  a  =  b&#39;
+- we have :  D  =  c
+- we have  B  =  a
+- we have  l3  =  l2
+- we have  lBD  =  lDF
+- we have  l  =  lCF
+- we have  l0  =  lBE
+- we have  l0  =  lBF
+- we have  lBE  =  lBF
+- we have  l4  =  lBD
+- we have  lAE  =  l3
+- we have  lCE  =  l
+- we have :  E  =  c
+- we have  lBE  =  lBF
+- we have :  F  =  b
+- we have  l1  =  lDF
+- we have  lCF  =  lDF
+- we have  l  =  lDF
+- we have  lBF  =  lDF
+- we have  lBD  =  lDF
+- we have :  E  =  c
+- we have  l  =  lCE
+- we have  lBE  =  lCE
+- we have  l3  =  lCE
+- we have  lAE  =  lCE
+- we have  lAC  =  lCE
+- we have :  b&#39;  =  c
+- we have :  C  =  b&#39;
+- we have  l1  =  x
+- we have  lCF  =  l0
+- we have  lCE  =  l0
+- we have :  D  =  c
+- we have  l3  =  lBD
+- we have  lAD  =  lBD
+- we have  l3  =  x
+- we have  l  =  x
+- we have  lAC  =  x
+- we have  l0  =  x
+- we have  lCF  =  x
+- we have  lBF  =  x
+- we have  l2  =  x
+- we have  lCE  =  x
+- we have  lBE  =  x
+- we have  lAE  =  x
+- we have :  c  =  E
+- we have :  b  =  C
+- we have :  C  =  a
+- we have  l1  =  x
+- we have  lCF  =  l0
+- we have  lCE  =  l0
+- we have :  D  =  c
+- we have  l3  =  lBD
+- we have  lAD  =  lBD
+- we have  l0  =  lAC
+- we have  lCF  =  lAC
+- we have  l2  =  lAC
+- we have  x  =  lAC
+- we have  l1  =  lAC
+- we have  lAD  =  lAC
+- we have  lDF  =  lAC
+- we have  l4  =  lAC
+- we have  lCE  =  lAC
+- we have  lAE  =  lAC
+- we have :  A  =  c
+- we have :  D  =  c
+- we have  l3  =  lBD
+- we have  lAD  =  lBD
+- we have  l2  =  lBD
+- we have  lDF  =  lBD
+- we have  lBF  =  lBD
+- we have  l0  =  x
+- we have :  c  =  E
+- we have  lBE  =  l3
+- we have  lAE  =  l3
+- we have :  F  =  b&#39;
+- we have  l1  =  lDF
+- we have  lCF  =  lDF
+- we have  lAC  =  lDF
+- we have  l2  =  lDF
+- we have  lAD  =  lDF
+- we have  x  =  l
+- we have  l2  =  lAC
+- we have  lCF  =  lAC
+- we have :  b&#39;  =  F
+- we have  l1  =  lAC
+- we have  lAD  =  lAC
+- we have  l3  =  x
+- we have  x  =  l2
+- we have  lAE  =  l4
+- we have  lAD  =  l4
+- we have :  F  =  a
+- we have  l  =  lCF
+- we have  lBF  =  lCF
+- we have  l0  =  x
+- we have  lAC  =  l3
+- we have  l  =  l3
+- we have  x  =  l3
+- we have  lCF  =  l3
+- we have  lBF  =  l3
+- we have  l2  =  l3
+- we have  lCE  =  l3
+- we have  lBE  =  l3
+- we have  lAE  =  l3
+- we have  l1  =  l3
+- we have  lBD  =  l3
+- we have  lAD  =  l3
+- we have  lDF  =  l3
+- we have  l4  =  l3
+- we have  x  =  l1
+- we have  l  =  l1
+- we have  l3  =  l1
+- we have  lAC  =  l1
+- we have  l0  =  l1
+- we have  l2  =  l1
+- we have  lBF  =  l1
+- we have  lCF  =  l1
+- we have  lDF  =  l1
+- we have  lAE  =  l1
+- we have  lBE  =  l1
+- we have  l4  =  l1
+- we have  lCE  =  l1
+- we have  lAD  =  l1
+- we have  lBD  =  l1
+- we have  l0  =  l2
+- we have  lAE  =  l2
+- we have  l2  =  x
+- we have  l3  =  x
+- we have  lBE  =  x
+- we have  lBF  =  x
+- we have :  a  =  B
+- we have :  c  =  E
+- we have  l  =  l3
+- we have  l3  =  x
+- we have  l2  =  x
+- we have  lCF  =  x
+- we have  lBF  =  x
+- we have  l1  =  x
+- we have  lAD  =  x
+- we have  lBD  =  x
+- we have  lDF  =  x
+- we have  lAE  =  lCE
+- we have :  a  =  F
+- we have :  D  =  c
+- we have  l  =  l0
+- we have  lBF  =  l0
+- we have  lCF  =  l0
+- we have  lBE  =  l0
+- we have  lCE  =  l0
+- we have  lAC  =  x7
+- we have  lBF  =  x6
+- we have  l2  =  x5
+- we have  l0  =  x4
+- we have  l3  =  x3
+- we have  l  =  x2
+- we have  lcb&#39;  =  x1
+- we have  l1  =  x0
+- we have  x7  =  x1
+- we have  x5  =  x1
+- we have  lDF  =  x1
+- we have  lCF  =  x1
+- we have  x3  =  x1
+- we have  x6  =  x1
+- we have  lBD  =  x1
+- we have  lAD  =  x1
+- we have  x2  =  x1
+- we have  x4  =  x1
+- we have  lBE  =  x1
+- we have  lAE  =  x1
+- we have  l4  =  x1
+- we have  lCE  =  x1
+- we have  x  =  x1
+- we have  P  =  (inter x0 x6)
+- we have  lAC  =  x7
+- we have  lBF  =  x6
+- we have  l2  =  x5
+- we have  l0  =  x4
+- we have  l3  =  x3
+- we have  l  =  x2
+- we have  lcb&#39;  =  x1
+- we have  l1  =  x0
+- we have  x7  =  x1
+- we have  x5  =  x1
+- we have  lDF  =  x1
+- we have  lCF  =  x1
+- we have  x3  =  x1
+- we have  x6  =  x1
+- we have  lBD  =  x1
+- we have  lAD  =  x1
+- we have  x2  =  x1
+- we have  x4  =  x1
+- we have  lBE  =  x1
+- we have  lAE  =  x1
+- we have  l4  =  x1
+- we have  lCE  =  x1
+- we have  x  =  x1
+- we have  P  =  (inter x0 x1)
+- we have :  (inter x0 x1)  =  x8
+- COQC Plane/P05_almost_pappus.v
+- we have  x5  =  l0
+- we have  x6  =  l
+- we have  x0  =  l
+- we have  x4  =  l
+- we have  l  =  l0
+- we have  x3  =  l0
+- we have  x1  =  l0
+- we have  l0  =  x2
+- we have  x2  =  l
+- we have  l  =  l0
+- we have  l0  =  x4
+- we have  x4  =  x3
+- we have  x0  =  x3
+- we have  x  =  x3
+- we have  x4  =  l
+- we have  x  =  l
+- we have  l  =  l0
+- we have  x2  =  l0
+- we have  x1  =  l0
+- we have  x0  =  l0
+- COQC Plane/P06_angle_line.v
+- we have  x6  =  l0
+- we have  x5  =  l
+- we have  x4  =  l0
+- we have  l0  =  l
+- we have  x  =  l
+- we have  x2  =  l
+- we have  x0  =  l
+- we have  l  =  x1
+- we have  x0  =  l0
+- we have  l0  =  l
+- we have  x2  =  l
+- we have  l  =  x4
+- we have  x4  =  x3
+- we have  x3  =  x1
+- we have  x2  =  l0
+- we have  l0  =  l
+- we have  x0  =  l
+- we have  l  =  x4
+- we have  x4  =  x3
+- we have  x  =  x3
+- COQC Plane/P07_cevian_lines.v
+- we have  x2  =  l0
+- we have  x4  =  l
+- we have  x0  =  l
+- we have  l  =  x5
+- we have  x5  =  x6
+- we have  x6  =  x3
+- we have  x1  =  x3
+- we have  x3  =  l0
+- we have  l  =  x5
+- we have  l0  =  x5
+- we have  x3  =  x5
+- we have  x1  =  x5
+- we have  x0  =  x5
+- we have  x  =  x5
+- we have  x1  =  l
+- we have  l  =  x6
+- we have  x5  =  x6
+- we have  l0  =  x6
+- we have  x0  =  x6
+- we have  x  =  x6
+- COQC Plane/P08_cevian_lines_2.v
+- we have  x1  =  x7
+- we have  x0  =  x6
+- we have  x  =  x5
+- we have  x6  =  x12
+- we have  x5  =  x12
+- we have  x12  =  x9
+- we have  x9  =  x8
+- we have  x8  =  x3
+- we have  x3  =  x2
+- we have  x2  =  x7
+- we have  x7  =  x10
+- we have  x10  =  x4
+- we have  x5  =  x12
+- we have  x12  =  x11
+- we have  x11  =  x9
+- we have  x9  =  x8
+- we have  x8  =  x3
+- we have  x3  =  x2
+- we have  x2  =  x7
+- we have  x7  =  x10
+- we have  x10  =  x4
+- we have  x7  =  x8
+- we have  x6  =  x8
+- we have  x8  =  x12
+- we have  x12  =  x10
+- we have  x5  =  x10
+- we have  x10  =  x11
+- we have  x11  =  x4
+- we have  x4  =  x3
+- we have  x3  =  x2
+- we have  x7  =  x2
+- we have  x6  =  x2
+- we have  x2  =  x11
+- we have  x11  =  x10
+- we have  x10  =  x9
+- we have  x9  =  x4
+- we have  x5  =  x4
+- we have  x4  =  x12
+- we have  x12  =  x8
+- COQC Plane/P09_complete_quadrilateral.v
+- we have  x9  =  l0
+- we have  x5  =  l
+- we have  x8  =  x12
+- we have  x7  =  x11
+- we have  x6  =  x10
+- we have  x0  =  x12
+- we have  x2  =  x11
+- we have  x4  =  x10
+- we have  x11  =  lC&#39;C&#39;&#39;
+- we have  x10  =  lB&#39;B&#39;&#39;
+- we have  lC&#39;C&#39;&#39;  =  lA&#39;A&#39;&#39;
+- we have  l0  =  lA&#39;A&#39;&#39;
+- we have  x1  =  lA&#39;A&#39;&#39;
+- we have  x3  =  lA&#39;A&#39;&#39;
+- we have  lA&#39;A&#39;&#39;  =  l
+- we have  l  =  lB&#39;B&#39;&#39;
+- we have  x  =  lB&#39;B&#39;&#39;
+- we have  x11  =  lC&#39;C&#39;&#39;
+- we have  x10  =  lB&#39;B&#39;&#39;
+- we have  x12  =  lA&#39;A&#39;&#39;
+- we have  l0  =  lC&#39;C&#39;&#39;
+- we have  lC&#39;C&#39;&#39;  =  lA&#39;A&#39;&#39;
+- we have  x3  =  lA&#39;A&#39;&#39;
+- we have  lA&#39;A&#39;&#39;  =  l
+- we have  l  =  lB&#39;B&#39;&#39;
+- we have  x  =  lB&#39;B&#39;&#39;
+- we have  x11  =  lC&#39;C&#39;&#39;
+- we have  x10  =  lB&#39;B&#39;&#39;
+- we have  x12  =  lA&#39;A&#39;&#39;
+- we have  lA&#39;A&#39;&#39;  =  l0
+- we have  x1  =  l0
+- we have  l0  =  lB&#39;B&#39;&#39;
+- we have  lB&#39;B&#39;&#39;  =  l
+- we have  l  =  lC&#39;C&#39;&#39;
+- we have  x3  =  lC&#39;C&#39;&#39;
+- we have  x11  =  lC&#39;C&#39;&#39;
+- we have  x3  =  lB&#39;B&#39;&#39;
+- we have  x12  =  lA&#39;A&#39;&#39;
+- we have  l0  =  lB&#39;B&#39;&#39;
+- we have  lB&#39;B&#39;&#39;  =  lC&#39;C&#39;&#39;
+- we have  x  =  lC&#39;C&#39;&#39;
+- we have  lC&#39;C&#39;&#39;  =  l
+- we have  l  =  lA&#39;A&#39;&#39;
+- we have  x1  =  lA&#39;A&#39;&#39;
+- COQC Plane/P10_complete_quadrilateral_2.v
+- we have  x8  =  l0
+- we have  x7  =  l
+- we have  x1  =  l0
+- we have  x6  =  l0
+- we have  x5  =  l0
+- we have  x0  =  l0
+- we have  x3  =  l0
+- we have  l0  =  x4
+- we have  x4  =  x2
+- we have  x  =  x2
+- we have  x0  =  l0
+- we have  x5  =  l0
+- we have  l0  =  l
+- we have  x4  =  l
+- we have  l  =  x6
+- we have  x3  =  x6
+- we have  x6  =  x2
+- we have  x2  =  x1
+- we have  x2  =  l0
+- we have  l0  =  l
+- we have  x6  =  l
+- we have  l  =  x5
+- we have  x4  =  x5
+- we have  x5  =  x3
+- we have  x0  =  x3
+- we have  x  =  x3
+- we have  x5  =  l0
+- we have  x1  =  l0
+- we have  l0  =  l
+- we have  x2  =  l
+- we have  l  =  x6
+- we have  x6  =  x3
+- we have  x0  =  x3
+- we have  x  =  x3
+- COQC Plane/P11_chasles.v
+- we have  x6  =  x12
+- we have  x1  =  x11
+- we have  x4  =  x10
+- we have  x7  =  x9
+- we have  x2  =  x8
+- we have  x3  =  x5
+- we have  x0  =  x10
+- we have  x10  =  x11
+- we have  x11  =  x9
+- we have  x12  =  x9
+- we have  x9  =  x5
+- we have  x8  =  x5
+- we have  x12  =  x9
+- we have  x  =  x9
+- we have  x10  =  x9
+- we have  x9  =  x11
+- we have  x8  =  x11
+- we have  x0  =  x11
+- we have  x11  =  x9
+- we have  x  =  x9
+- we have  x12  =  x9
+- we have  x9  =  x10
+- we have  x10  =  x5
+- we have  x0  =  x5
+- COQC Plane/P12_aeolian.v
+- we have  x3  =  x5
+- we have  x4  =  x5
+- we have  x  =  x5
+- we have  x1  =  x5
+- we have  x2  =  x5
+- we have  x0  =  x5
+- we have  x0  =  x6
+- we have  x6  =  x5
+- we have  x5  =  x4
+- we have  x3  =  x4
+- we have  x2  =  x4
+- we have  x  =  x4
+- we have  x2  =  x6
+- we have  x6  =  x4
+- we have  x4  =  x5
+- we have  x1  =  x5
+- we have  x5  =  x3
+- we have  x0  =  x3
+- we have  x5  =  x6
+- we have  x2  =  x6
+- we have  x1  =  x6
+- we have  x6  =  x3
+- we have  x  =  x3
+- we have  x0  =  x3
+- COQC Plane/P14_pseudo_midpoint.v
+- we have  x7  =  lHN
+- we have  x4  =  x12
+- we have  x12  =  lPM
+- we have  x5  =  x11
+- we have  x11  =  lHP
+- we have  x2  =  x10
+- we have  x10  =  lQN
+- we have  x  =  x9
+- we have  x9  =  lLQ
+- we have  x1  =  x6
+- we have  x6  =  lHN
+- we have  x0  =  x3
+- we have  x3  =  lHN
+- we have  lQN  =  lHN
+- we have  x8  =  lHN
+- we have  lHN  =  lLQ
+- we have  lLQ  =  x13
+- we have  x13  =  lHP
+- we have  lHP  =  lPM
+- we have  lQN  =  lHN
+- we have  x8  =  lHN
+- we have  lHN  =  lLQ
+- we have  lLQ  =  x13
+- we have  x13  =  lHP
+- we have  lHP  =  lPM
+- we have  lQN  =  lHN
+- we have  x8  =  lHN
+- we have  lHN  =  lLQ
+- we have  lLQ  =  x13
+- we have  x13  =  lHP
+- we have  lHP  =  lPM
+- we have  lLQ  =  lHN
+- we have  lHN  =  lQN
+- we have  lQN  =  x13
+- we have  x8  =  x13
+- we have  lHP  =  x13
+- we have  x13  =  lPM
+- we have  lLQ  =  lHN
+- we have  lHN  =  lQN
+- we have  lQN  =  x13
+- we have  x8  =  x13
+- we have  lHP  =  x13
+- we have  x13  =  lPM
+- we have  lLQ  =  lHN
+- we have  lHN  =  lQN
+- we have  lQN  =  x13
+- we have  x8  =  x13
+- we have  lHP  =  x13
+- we have  x13  =  lPM
+- we have  lHP  =  lHN
+- we have  lLQ  =  lHN
+- we have  lHN  =  lQN
+- we have  lQN  =  x13
+- we have  x8  =  x13
+- we have  x13  =  lPM
+- we have  lHP  =  lHN
+- we have  lLQ  =  lHN
+- we have  lHN  =  lQN
+- we have  lQN  =  x13
+- we have  x8  =  x13
+- we have  x13  =  lPM
+- we have  lLQ  =  lHN
+- we have  lHN  =  lQN
+- we have  lQN  =  x13
+- we have  x8  =  x13
+- we have  lHP  =  x13
+- we have  x13  =  lPM
+- we have  lHN  =  lPM
+- we have  lHP  =  lPM
+- we have  lPM  =  x13
+- we have  lQN  =  x13
+- we have  x8  =  x13
+- we have  x13  =  lLQ
+- we have  lHP  =  lHN
+- we have  lLQ  =  lHN
+- we have  lHN  =  lQN
+- we have  lQN  =  x13
+- we have  x8  =  x13
+- we have  x13  =  lPM
+- we have  lQN  =  lHN
+- we have  x8  =  lHN
+- we have  lHN  =  lLQ
+- we have  lLQ  =  x13
+- we have  x13  =  lHP
+- we have  lHP  =  lPM
+- we have  lHP  =  lHN
+- we have  lLQ  =  lHN
+- we have  lHN  =  lQN
+- we have  lQN  =  x13
+- we have  x8  =  x13
+- we have  x13  =  lPM
+- we have  lHN  =  lPM
+- we have  lHP  =  lPM
+- we have  lPM  =  x13
+- we have  lQN  =  x13
+- we have  x8  =  x13
+- we have  x13  =  lLQ
+- we have  lHN  =  lPM
+- we have  lHP  =  lPM
+- we have  lPM  =  x13
+- we have  lQN  =  x13
+- we have  x8  =  x13
+- we have  x13  =  lLQ
+- we have  lHN  =  lPM
+- we have  lHP  =  lPM
+- we have  lPM  =  x13
+- we have  lQN  =  x13
+- we have  x8  =  x13
+- we have  x13  =  lLQ
+- we have  lLQ  =  lHN
+- we have  lHN  =  lQN
+- we have  lQN  =  x13
+- we have  x8  =  x13
+- we have  x13  =  lPM
+- we have  lLQ  =  lHP
+- we have  lHP  =  lQN
+- we have  lQN  =  x13
+- we have  x8  =  x13
+- we have  x13  =  lPM
+- we have  lLQ  =  lHP
+- we have  lHP  =  lQN
+- we have  lQN  =  x13
+- we have  x8  =  x13
+- we have  x13  =  lPM
+- we have  lHP  =  lPM
+- we have  lPM  =  x13
+- we have  lQN  =  x13
+- we have  x8  =  x13
+- we have  x13  =  lLQ
+- we have  lHP  =  lPM
+- we have  lPM  =  x13
+- we have  lQN  =  x13
+- we have  x8  =  x13
+- we have  x13  =  lLQ
+- we have  lHP  =  lHN
+- we have  lHN  =  x13
+- we have  lQN  =  x13
+- we have  x8  =  x13
+- we have  x13  =  lLQ
+- we have  x8  =  lQN
+- we have  lQN  =  lLQ
+- we have  lLQ  =  x13
+- we have  lHP  =  x13
+- we have  x13  =  lPM
+- we have  x8  =  lQN
+- we have  lQN  =  lLQ
+- we have  lLQ  =  x13
+- we have  lHP  =  x13
+- we have  x13  =  lPM
+- we have  lHP  =  lHN
+- we have  lHN  =  x13
+- we have  lQN  =  x13
+- we have  x8  =  x13
+- we have  x13  =  lLQ
+- we have  lHN  =  lQN
+- we have  lQN  =  x13
+- we have  x8  =  x13
+- we have  lHP  =  x13
+- we have  x13  =  lPM
+- we have  x8  =  lHN
+- we have  lHN  =  lLQ
+- we have  lLQ  =  x13
+- we have  lHP  =  x13
+- we have  x13  =  lPM
+- we have  lLQ  =  lHN
+- we have  lHN  =  lQN
+- we have  lQN  =  x13
+- we have  x8  =  x13
+- we have  x13  =  lPM
+- we have  x8  =  lHN
+- we have  lHN  =  lLQ
+- we have  lLQ  =  x13
+- we have  lHP  =  x13
+- we have  x13  =  lPM
+- we have  lHN  =  lQN
+- we have  lQN  =  x13
+- we have  x8  =  x13
+- we have  lHP  =  x13
+- we have  x13  =  lPM
+- we have  lLQ  =  lQN
+- we have  lQN  =  x13
+- we have  x8  =  x13
+- we have  lHP  =  x13
+- we have  x13  =  lPM
+- we have  lLQ  =  lQN
+- we have  lQN  =  x13
+- we have  x8  =  x13
+- we have  lHP  =  x13
+- we have  x13  =  lPM
+- we have  x11  =  x13
+- we have  x3  =  x13
+- we have  x13  =  lPM
+- we have  x4  =  lPM
+- we have  x9  =  lPM
+- we have  lPM  =  x10
+- we have  x5  =  x10
+- we have  x10  =  lHP
+- we have  x8  =  lHP
+- we have  lHP  =  x6
+- we have  x  =  x6
+- we have  x6  =  lLQ
+- we have  lLQ  =  lML
+- we have  x0  =  lML
+- we have  x2  =  lML
+- we have  lML  =  lQN
+- we have  lQN  =  lHN
+- we have  lHN  =  x7
+- we have  x7  =  x1
+- we have  x4  =  x10
+- we have  x10  =  lPM
+- we have  x5  =  x11
+- we have  x11  =  lHP
+- we have  x8  =  lPM
+- we have  x  =  x9
+- we have  x9  =  lLQ
+- we have  lPM  =  lLQ
+- we have  lLQ  =  lML
+- we have  lML  =  x13
+- we have  x3  =  x13
+- we have  x13  =  x6
+- we have  lHP  =  x6
+- we have  x0  =  x6
+- we have  x2  =  x6
+- we have  x6  =  lQN
+- we have  lQN  =  lHN
+- we have  lHN  =  x7
+- we have  x7  =  x1
+- we have  x10  =  x11
+- we have  x11  =  x13
+- we have  x3  =  x13
+- we have  x13  =  lPM
+- we have  lML  =  lPM
+- we have  x4  =  x12
+- we have  x5  =  lPM
+- we have  lPM  =  lHP
+- we have  x2  =  lHP
+- we have  lHP  =  lQN
+- we have  lQN  =  lHN
+- we have  x8  =  lHN
+- we have  x  =  x9
+- we have  lHN  =  x9
+- we have  x9  =  x7
+- we have  x7  =  x6
+- we have  x6  =  x12
+- we have  x0  =  x12
+- we have  x12  =  x1
+- we have  x11  =  lPM
+- we have  x4  =  x12
+- we have  x5  =  lPM
+- we have  lPM  =  lHP
+- we have  x2  =  x10
+- we have  x10  =  lQN
+- we have  x  =  x9
+- we have  x9  =  lLQ
+- we have  x1  =  x6
+- we have  x6  =  lHN
+- we have  lHP  =  x12
+- we have  x12  =  x13
+- we have  x0  =  x13
+- we have  x13  =  lML
+- we have  lLQ  =  lML
+- we have  lML  =  lQN
+- we have  x8  =  lQN
+- we have  lQN  =  x7
+- we have  x7  =  lHN
+- we have  lHN  =  lQN
+- we have  x4  =  x12
+- we have  x12  =  lPM
+- we have  x5  =  x11
+- we have  x11  =  lHP
+- we have  x2  =  x10
+- we have  x10  =  lQN
+- we have  x  =  x9
+- we have  x9  =  lQN
+- we have  lQN  =  x13
+- we have  x3  =  x13
+- we have  x13  =  lML
+- we have  lML  =  x7
+- we have  x8  =  x7
+- we have  lHP  =  x7
+- we have  x7  =  x6
+- we have  x6  =  lPM
+- we have  x0  =  lPM
+- we have  lPM  =  x1
+- we have  x10  =  x12
+- we have  x9  =  x11
+- we have  x11  =  x12
+- we have  x12  =  x13
+- we have  x6  =  x13
+- we have  x13  =  lHP
+- we have  x4  =  lHP
+- we have  lHP  =  lPM
+- we have  x8  =  lPM
+- we have  x5  =  lPM
+- we have  x3  =  lPM
+- we have  x  =  lPM
+- we have  lPM  =  lLQ
+- we have  lLQ  =  lML
+- we have  x2  =  lML
+- we have  lML  =  lQN
+- we have  lQN  =  lHN
+- we have  lHN  =  x7
+- we have  x1  =  x7
+- we have  x0  =  x7
+- we have  x7  =  lQN
+- we have  lQN  =  lPM
+- we have  x4  =  x12
+- we have  x5  =  x11
+- we have  x11  =  lHP
+- we have  x2  =  x10
+- we have  x  =  x9
+- we have  x9  =  lLQ
+- we have  x10  =  lPM
+- we have  x12  =  lPM
+- we have  lPM  =  lLQ
+- we have  lLQ  =  lML
+- we have  lML  =  x13
+- we have  x3  =  x13
+- we have  x13  =  x6
+- we have  x6  =  lHN
+- we have  lHP  =  lHN
+- we have  x0  =  lHN
+- we have  lHN  =  x1
+- we have  x4  =  x12
+- we have  x12  =  lPM
+- we have  x5  =  x11
+- we have  x11  =  lHP
+- we have  x2  =  x10
+- we have  x10  =  lQN
+- we have  x  =  x9
+- we have  x9  =  lLQ
+- we have  x1  =  x6
+- we have  x6  =  lHN
+- we have  x0  =  x3
+- we have  x3  =  lML
+- COQC Plane/hexamys_desargues.v
+- we have  x0  =  x11
+- we have  x1  =  x10
+- we have  x2  =  x9
+- we have  x  =  x8
+- we have :  B  =  Q
+- we have  x10  =  x6
+- we have  x6  =  x7
+- we have  x9  =  x7
+- we have  x8  =  x7
+- we have  x7  =  x5
+- we have  x3  =  x5
+- we have  x5  =  x4
+- we have  x11  =  x4
+- we have  x7  =  x10
+- we have  x10  =  x6
+- we have  x9  =  x6
+- we have  x11  =  x3
+- we have  x3  =  x6
+- we have  x6  =  x5
+- we have  x8  =  x5
+- we have  x5  =  x4
+- we have  x3  =  x9
+- we have  x8  =  x5
+- we have  x5  =  x6
+- we have  x9  =  x6
+- we have  x6  =  x7
+- we have  x7  =  x4
+- we have  x10  =  x4
+- we have  x11  =  x4
+- we have  x6  =  l3
+- we have  x9  =  l3
+- we have  l3  =  l2
+- we have  l  =  l1
+- we have  x5  =  l0
+- we have  l2  =  l1
+- we have  x0  =  x11
+- we have  x4  =  l1
+- we have  x  =  l1
+- we have  x2  =  x8
+- we have  x1  =  x7
+- we have  x3  =  l0
+- we have :  R  =  R1
+- we have :  B&#39;  =  Q
+- we have :  C&#39;  =  P
+- we have :  A&#39;  =  R1
+- we have  x2  =  l6
+- we have  x7  =  l5
+- we have  x9  =  l3
+- we have  x4  =  l2
+- we have  l  =  l1
+- we have  x5  =  l0
+- we have  x  =  l1
+- we have  l3  =  x12
+- we have  x0  =  x11
+- we have  x12  =  x10
+- we have  x8  =  x10
+- we have  l6  =  x10
+- we have  x10  =  x11
+- we have  l2  =  x11
+- we have  x1  =  l5
+- we have  x11  =  x6
+- we have  l1  =  x6
+- we have  x3  =  l0
+- we have  x6  =  l0
+- we have  l0  =  l5
+- we have  x10  =  l8
+- we have  l4  =  l7
+- we have  x7  =  l5
+- we have  x9  =  l3
+- we have  x4  =  l2
+- we have  l  =  l1
+- we have  x5  =  l0
+- we have  x  =  l1
+- we have  x0  =  x11
+- we have  x2  =  x8
+- we have  x1  =  l5
+- we have  x3  =  l0
+- we have  x11  =  x12
+- we have  x6  =  x12
+- we have  x12  =  l5
+- we have  l5  =  l8
+- we have  x8  =  l8
+- we have  l8  =  l3
+- we have  l3  =  l6
+- we have  l6  =  l7
+- we have  l1  =  l7
+- we have  l7  =  l2
+- we have  l2  =  l0
+- we have  l5  =  x12
+- we have  x12  =  l8
+- we have  x8  =  l8
+- we have  l8  =  x11
+- we have  x11  =  l7
+- we have  l7  =  l6
+- we have  l6  =  l3
+- we have  l1  =  l3
+- we have  l3  =  x6
+- we have  x6  =  l2
+- we have  l2  =  l0
+- we have  x12  =  l7
+- we have  x11  =  l7
+- we have  l7  =  l6
+- we have  x8  =  l6
+- we have  l3  =  l6
+- we have  l2  =  l6
+- we have  l6  =  x6
+- we have  l1  =  x6
+- we have  x6  =  l0
+- we have  l0  =  l5
+- we have  l1  =  l7
+- we have  x6  =  x12
+- we have  x12  =  x11
+- we have  l7  =  x8
+- we have  x8  =  l6
+- we have  l6  =  x11
+- we have  x11  =  l8
+- we have  l3  =  l8
+- we have  l2  =  l8
+- we have  l8  =  l0
+- we have  l0  =  l5
+- we have  l7  =  l6
+- we have  x8  =  l6
+- we have :  C  =  M
+- we have :  Q  =  L
+- we have  l1  =  l6
+- we have  l6  =  l5
+- we have  l5  =  l8
+- we have  l8  =  x12
+- we have  x6  =  x12
+- we have  x12  =  l3
+- we have  l3  =  l2
+- we have  l0  =  l2
+- we have  x11  =  l2
+- we have  l5  =  l7
+- we have  x11  =  x6
+- we have  x6  =  x12
+- we have  l7  =  x12
+- we have  x12  =  l6
+- we have  l6  =  l8
+- we have  x8  =  l8
+- we have  l8  =  l3
+- we have  l1  =  l3
+- we have  l3  =  l2
+- we have  l2  =  l0
+- we have  l3  =  l8
+- we have  l8  =  x12
+- we have  x12  =  l7
+- we have  x11  =  l7
+- we have  l7  =  l6
+- we have  l2  =  l6
+- we have  l6  =  x6
+- we have  l1  =  x6
+- we have  x6  =  l5
+- we have  x8  =  l5
+- we have  l3  =  l8
+- we have  l8  =  x12
+- we have  x12  =  l7
+- we have  x11  =  l7
+- we have  l7  =  l6
+- we have  x8  =  l6
+- we have  l2  =  l6
+- we have  l6  =  x6
+- we have  x6  =  l5
+- we have  l5  =  l0
+- we have  l1  =  l0
+- we have  x8  =  l7
+- we have  l7  =  l6
+- we have  x11  =  l6
+- we have  l6  =  x12
+- we have  x12  =  l8
+- we have  l3  =  l8
+- we have  l2  =  l8
+- we have  l8  =  x6
+- we have  x6  =  l5
+- we have  l5  =  l0
+- we have  l1  =  l0
+- we have  x11  =  l7
+- we have  l7  =  l6
+- we have  l0  =  x12
+- we have  x8  =  l6
+- we have  x12  =  l8
+- we have  l3  =  l8
+- we have  l8  =  l6
+- we have  l2  =  l6
+- we have  l1  =  l6
+- we have  l6  =  l5
+- we have  l5  =  x6
+- we have  l3  =  x12
+- we have  x12  =  l7
+- we have  x11  =  l7
+- we have  l7  =  l6
+- we have  x6  =  l6
+- we have  x8  =  l6
+- we have  l6  =  l8
+- we have  l2  =  l8
+- we have  l8  =  l5
+- we have  l5  =  l0
+- we have  l1  =  l0
+- we have  l3  =  l6
+- we have  l6  =  x6
+- we have  l1  =  x6
+- we have  x6  =  x11
+- we have  x11  =  x12
+- we have  x12  =  l7
+- we have  l7  =  l8
+- we have  x8  =  l8
+- we have  l8  =  l5
+- we have  l5  =  l0
+- we have  l3  =  l6
+- we have  l1  =  x11
+- we have  x6  =  l6
+- we have  l2  =  l6
+- we have  x11  =  l6
+- we have  l6  =  x12
+- we have  x12  =  l7
+- we have  l7  =  l8
+- we have  x8  =  l8
+- we have  l8  =  l5
+- we have  l5  =  l0
+- we have  x11  =  l6
+- we have  l1  =  l3
+- we have  x6  =  l3
+- we have  l3  =  l6
+- we have  l6  =  x12
+- we have  x12  =  l7
+- we have  l7  =  l8
+- we have  x8  =  l8
+- we have  l2  =  l8
+- we have  l8  =  l5
+- we have  l5  =  l0
+- we have  l7  =  l5
+- we have  x11  =  l5
+- we have  l5  =  x12
+- we have  x6  =  x12
+- we have  x12  =  l8
+- we have  x8  =  l8
+- we have  l8  =  l3
+- we have  l1  =  l3
+- we have  l3  =  l2
+- we have  l2  =  l0
+- we have  x6  =  x12
+- we have  x12  =  l7
+- we have  l7  =  l6
+- we have  l6  =  l5
+- we have  l5  =  l8
+- we have  l0  =  l8
+- we have  l8  =  l3
+- we have  l1  =  l3
+- we have  l3  =  x8
+- we have  x8  =  l2
+- we have  l3  =  x12
+- we have  x11  =  x12
+- we have  x12  =  l6
+- we have  x6  =  l6
+- we have  l6  =  l8
+- we have  x8  =  l8
+- we have  l2  =  l8
+- we have  l1  =  l8
+- we have  l8  =  l5
+- we have  l5  =  l0
+- we have  l3  =  l7
+- we have  l7  =  x12
+- we have  x12  =  l8
+- we have  x8  =  l8
+- we have  l8  =  l6
+- we have  l6  =  x11
+- we have  l2  =  x11
+- we have  x6  =  x11
+- we have  x11  =  l5
+- we have  l5  =  l0
+- we have  x12  =  l7
+- we have  l7  =  l6
+- we have  x6  =  l6
+- we have  l6  =  l5
+- we have  l5  =  l8
+- we have  l0  =  l8
+- we have  l8  =  l3
+- we have  l1  =  l3
+- we have  l3  =  x8
+- we have  x8  =  l2
+- we have  x11  =  x12
+- we have  x6  =  x12
+- we have  l1  =  x8
+- we have  x12  =  l5
+- we have  l5  =  l8
+- we have  x8  =  l8
+- we have  l8  =  l3
+- we have  l3  =  l6
+- we have  l6  =  l7
+- we have  l7  =  l2
+- we have  l2  =  l0
+- we have  l3  =  l7
+- we have  x12  =  l7
+- we have  x6  =  x11
+- we have  l7  =  l8
+- we have  x8  =  l8
+- we have  l8  =  l6
+- we have  l1  =  l6
+- we have  l2  =  l6
+- we have  l6  =  l5
+- we have  l5  =  x11
+- we have  x11  =  l0
+- we have  x6  =  l6
+- we have  l5  =  l7
+- we have  l1  =  l7
+- we have  l6  =  l3
+- we have  l2  =  l3
+- we have  l7  =  l3
+- we have  l3  =  x12
+- we have  x12  =  x11
+- we have  x11  =  l8
+- we have  x8  =  l8
+- we have  l8  =  l0
+- we have  l5  =  x11
+- we have  x11  =  l7
+- we have  l7  =  l6
+- we have  l6  =  x12
+- we have  x6  =  x12
+- we have  x12  =  l8
+- we have  x8  =  l8
+- we have  l8  =  l3
+- we have  l1  =  l3
+- we have  l3  =  l2
+- we have  l2  =  l0
+- we have  l7  =  l6
+- we have  x11  =  l6
+- we have  x6  =  x12
+- we have  l5  =  l6
+- we have  l6  =  l8
+- we have  l0  =  l8
+- we have  l8  =  l3
+- we have  l1  =  l3
+- we have  l3  =  x8
+- we have  x8  =  x12
+- we have  x12  =  l2
+- we have  x6  =  l6
+- we have  x12  =  l7
+- we have  x11  =  l7
+- we have  x8  =  l7
+- we have  l7  =  l8
+- we have  l3  =  l8
+- we have  l2  =  l8
+- we have  l1  =  l8
+- we have  l6  =  l8
+- we have  l8  =  l5
+- we have  l5  =  l0
+- we have  l6  =  x0
+- we have  l1  =  l7
+- we have  x12  =  l7
+- we have  l3  =  l7
+- we have  l7  =  l8
+- we have  x8  =  l8
+- we have  l8  =  x0
+- we have  x0  =  x11
+- we have  x6  =  x11
+- we have  l2  =  x11
+- we have  x11  =  l5
+- we have  l5  =  l0
+- we have  l1  =  l5
+- we have  l5  =  l7
+- we have  l7  =  x12
+- we have  l3  =  x12
+- we have  x12  =  l8
+- we have  l0  =  l8
+- we have  l8  =  x6
+- we have  x6  =  x0
+- we have  x0  =  x11
+- we have  x11  =  x8
+- we have  x8  =  l2
+- we have  x8  =  x0
+- we have  l7  =  x0
+- we have  x11  =  x0
+- we have  x0  =  x12
+- we have  l3  =  x12
+- we have  x12  =  l8
+- we have  l1  =  l8
+- we have  x6  =  l8
+- we have  l2  =  l8
+- we have  l8  =  l5
+- we have  l5  =  l0
+- we have  x8  =  l7
+- we have  l7  =  x0
+- we have  x11  =  l8
+- we have  l2  =  l8
+- we have  l1  =  x0
+- we have  x0  =  l5
+- we have  l5  =  x6
+- we have  l3  =  x6
+- we have  x6  =  x12
+- we have  x12  =  x
+- we have  x  =  l8
+- we have  l8  =  l0
+- we have  l5  =  l7
+- we have  l1  =  l7
+- we have :  C&#39;  =  M
+- we have :  Q  =  N
+- we have  x8  =  x0
+- we have  l7  =  x0
+- we have  x0  =  x11
+- we have  x11  =  x
+- we have  x  =  x12
+- we have  l3  =  x12
+- we have  x12  =  l8
+- we have  x6  =  l8
+- we have  l8  =  l2
+- we have  l2  =  l0
+- we have  x11  =  x
+- we have  x8  =  x
+- we have  x  =  l7
+- we have  l7  =  x0
+- we have  x0  =  x12
+- we have  l3  =  x12
+- we have  x12  =  l8
+- we have  l2  =  l8
+- we have  l8  =  x6
+- we have  x6  =  l5
+- we have  l5  =  l0
+- we have  l1  =  l0
+- we have  x12  =  x
+- we have  l3  =  l7
+- we have  l1  =  l7
+- we have  l7  =  x
+- we have  x  =  l8
+- we have  x8  =  l8
+- we have  l8  =  x0
+- we have  x0  =  x11
+- we have  l2  =  x11
+- we have  x6  =  x11
+- we have  x11  =  l5
+- we have  l5  =  l0
+- we have  x11  =  x12
+- we have  x12  =  l7
+- we have  l7  =  x0
+- we have  l3  =  x0
+- we have  x0  =  x
+- we have  x6  =  x
+- we have  x8  =  x
+- we have  x  =  l8
+- we have  l1  =  l8
+- we have  l2  =  l8
+- we have  l8  =  l5
+- we have  l1  =  l7
+- we have  l7  =  x8
+- we have  x8  =  x0
+- we have  x0  =  x11
+- we have  x11  =  x
+- we have  x  =  x12
+- we have  l3  =  x12
+- we have  x12  =  l8
+- we have  x6  =  l8
+- we have  l8  =  l2
+- we have  l2  =  l0
+- we have  x8  =  x
+- we have  x  =  x11
+- we have  x11  =  l7
+- we have  l7  =  x0
+- we have  l3  =  x0
+- we have  x0  =  l8
+- we have  l1  =  l8
+- we have  x6  =  l8
+- we have  l2  =  l8
+- we have  l8  =  l5
+- we have  l5  =  l0
+- we have  x12  =  l7
+- we have  l3  =  l7
+- we have  l7  =  x
+- we have  x11  =  x
+- we have  x  =  x0
+- we have  x8  =  x0
+- we have  l2  =  x0
+- we have  l1  =  x0
+- we have  x6  =  x0
+- we have  x0  =  l5
+- we have  l5  =  l0
+- we have  l1  =  l5
+- we have  l5  =  l7
+- we have  l7  =  x12
+- we have  l3  =  x12
+- we have  x12  =  l8
+- we have  l0  =  l8
+- we have  l8  =  x8
+- we have  x8  =  x0
+- we have  x0  =  x11
+- we have  x11  =  x6
+- we have  x6  =  l2
+- we have  l0  =  x6
+- we have  x6  =  x11
+- we have  x11  =  x
+- we have  x  =  x12
+- we have  x12  =  l7
+- we have  l7  =  x0
+- we have  l3  =  x0
+- we have  x8  =  x0
+- we have  x0  =  l8
+- we have  l2  =  l8
+- we have  l8  =  l5
+- we have  l8  =  x
+- we have  x8  =  x
+- we have  x  =  x12
+- we have  x12  =  x11
+- we have  x11  =  l7
+- we have  l7  =  x0
+- we have  l3  =  x0
+- we have  l5  =  x0
+- we have  x6  =  x0
+- we have  x0  =  l2
+- we have  l2  =  l0
+- we have  l1  =  l0
+- we have  l3  =  l7
+- we have  l5  =  l7
+- we have  l7  =  x12
+- we have  x12  =  x
+- we have  x  =  l8
+- we have  x8  =  l8
+- we have  l8  =  x0
+- we have  x0  =  x11
+- we have  x6  =  x11
+- we have  l1  =  x11
+- we have  x11  =  l2
+- we have  l2  =  l0
+- we have  x8  =  x0
+- we have  x0  =  l7
+- we have  x11  =  l7
+- we have  l7  =  x
+- we have  x  =  x12
+- we have  x12  =  l8
+- we have  l3  =  l8
+- we have  l2  =  l8
+- we have  l1  =  l8
+- we have  x6  =  l8
+- we have  l8  =  l5
+- we have  l5  =  l0
+- we have  l3  =  x
+- we have  x11  =  x0
+- we have  x12  =  l7
+- we have  l7  =  x
+- we have  x0  =  x
+- we have  x8  =  x
+- we have  x  =  l8
+- we have  l1  =  l8
+- we have  x6  =  l8
+- we have  l2  =  l8
+- we have  l8  =  l5
+- we have  l5  =  l0
+- we have  x11  =  l8
+- we have  l0  =  l8
+- we have  l8  =  x12
+- we have  x12  =  l7
+- we have  l7  =  x0
+- we have  l3  =  x0
+- we have  x0  =  x
+- we have  x8  =  x
+- we have  l1  =  x
+- we have  x  =  l5
+- we have  l5  =  x6
+- we have  l7  =  x0
+- we have  l3  =  x0
+- we have  x11  =  x0
+- we have  x0  =  x
+- we have  x  =  x12
+- we have  x12  =  l8
+- we have  l1  =  l8
+- we have  x6  =  l8
+- we have  l2  =  l8
+- we have  l8  =  l5
+- we have  l5  =  l0
+- we have  l3  =  x12
+- we have  x12  =  l7
+- we have  x11  =  l7
+- we have  l7  =  x0
+- we have  x6  =  x0
+- we have  x8  =  x0
+- we have  x0  =  l8
+- we have  l1  =  l8
+- we have  l2  =  l8
+- we have  l8  =  l5
+- we have  l5  =  l0
+- we have  x12  =  l7
+- we have  l3  =  l7
+- we have  l7  =  x
+- we have  x11  =  x
+- we have  x  =  x0
+- we have  x8  =  x0
+- we have  l2  =  x0
+- we have  l1  =  x0
+- we have  x6  =  x0
+- we have  x0  =  l5
+- we have  l5  =  l0
+- we have  x8  =  x0
+- we have  l3  =  x0
+- we have  x0  =  l7
+- we have  x11  =  l7
+- we have  l7  =  x12
+- we have  x12  =  l8
+- we have  l1  =  l8
+- we have  x6  =  l8
+- we have  l2  =  l8
+- we have  l8  =  l5
+- we have  l5  =  l0
+- we have  l2  =  l3
+- we have  l3  =  x0
+- we have  x0  =  l7
+- we have  x8  =  l7
+- we have  l7  =  x12
+- we have  x12  =  x
+- we have  x  =  x11
+- we have  x11  =  l8
+- we have  x6  =  l8
+- we have  l8  =  l5
+- we have  l5  =  l0
+- we have  l2  =  x0
+- we have  l5  =  l7
+- we have  l1  =  l7
+- we have  l7  =  l3
+- we have  l3  =  x12
+- we have  x12  =  x
+- we have  x  =  l8
+- we have  l0  =  l8
+- we have  l8  =  x8
+- we have  x8  =  x11
+- we have  x11  =  x6
+- we have  x6  =  x0
+- we have :  R  =  R2
+- we have :  R  =  R1
+- we have :  R  =  R2
+- we have :  R  =  R1
+- we have :  P  =  N
+- we have  x2  =  x
+- we have  x6  =  x0
+- we have  l3  =  x0
+- we have  x  =  x0
+- we have  x0  =  l7
+- we have  x12  =  l7
+- we have  x8  =  l7
+- we have  l7  =  x11
+- we have  x11  =  l8
+- we have  l2  =  l8
+- we have  l8  =  l5
+- we have  l5  =  l0
+- we have  R1  =  R2
+- we have :  R2  =  R2
+- we have :  R2  =  R2
+- we have :  R2  =  R2
+- we have :  R2  =  R2
+- we have :  R2  =  R2
+- we have :  R2  =  R2
+- we have :  R2  =  R2
+- we have :  R2  =  R2
+- we have :  R  =  R
+- we have :  R  =  R
+- we have :  R  =  R
+- we have :  R  =  R
+- we have :  R  =  R
+- we have :  R  =  R
+- we have :  R  =  R
+- we have :  R  =  R
+- we have  l2  =  x11
+- we have  x11  =  x12
+- we have  x12  =  l7
+- we have  l7  =  x0
+- we have  l3  =  x0
+- we have  x0  =  x
+- we have  x8  =  x
+- we have  x  =  l8
+- we have  l1  =  l8
+- we have  l8  =  l5
+- we have  l5  =  x6
+- we have  R  =  R2
+- we have :  M  =  N
+- we have  l7  =  x0
+- we have  x11  =  x0
+- we have  x8  =  x0
+- we have  x0  =  x
+- we have  l3  =  x
+- we have  x  =  x12
+- we have  x12  =  l8
+- we have  l2  =  l8
+- we have  l1  =  l8
+- we have  x6  =  l8
+- we have  l8  =  l5
+- we have  l5  =  l0
+- we have  l8  =  x
+- we have  l3  =  x
+- we have  x  =  x12
+- we have  x12  =  l7
+- we have  x11  =  l7
+- we have  l7  =  x0
+- we have  x8  =  x0
+- we have  l5  =  x0
+- we have  x6  =  x0
+- we have  x0  =  l2
+- we have  l2  =  l0
+- we have  l1  =  l0
+- we have  l3  =  x
+- we have  l5  =  l7
+- we have  l1  =  l7
+- we have  l7  =  x
+- we have  x  =  x12
+- we have  x6  =  x12
+- we have  x12  =  x0
+- we have  x0  =  x11
+- we have  x8  =  x11
+- we have  x11  =  l2
+- we have  l2  =  l0
+- we have  x  =  l7
+- we have  l5  =  l7
+- we have  x11  =  l7
+- we have  l7  =  x0
+- we have  x0  =  x12
+- we have  x6  =  x12
+- we have  x8  =  x12
+- we have  l1  =  x12
+- we have  x12  =  l2
+- we have  l2  =  l0
+- we have  x0  =  l7
+- we have  x8  =  l7
+- we have  x11  =  l7
+- we have  l7  =  x12
+- we have  l1  =  x12
+- we have  l2  =  x12
+- we have  x6  =  x12
+- we have  x12  =  l5
+- we have  l5  =  l0
+- we have  l5  =  l7
+- we have  x11  =  l7
+- we have  l7  =  x12
+- we have  x8  =  x12
+- we have  x6  =  x12
+- we have  l1  =  x12
+- we have  x12  =  l2
+- we have  l2  =  l0
+- we have  x11  =  l7
+- we have  l7  =  x12
+- we have  x8  =  x12
+- we have  l1  =  x12
+- we have  x12  =  x6
+- we have  x6  =  l2
+- we have  l2  =  l0
+- we have  l7  =  x12
+- we have  x8  =  x12
+- we have  x6  =  x12
+- we have  x12  =  l2
+- we have  l2  =  l0
+- we have  l1  =  l0
+- we have  x8  =  x12
+- we have  x6  =  x12
+- we have  l1  =  x12
+- we have  x12  =  l2
+- we have  l2  =  l0
+- we have  x6  =  x12
+- we have  l1  =  x12
+- we have  x12  =  l2
+- we have  l2  =  l0
+- we have  l1  =  x12
+- we have  x12  =  l2
+- we have  l2  =  l0
+- we have  x12  =  x2
+- we have  x2  =  l2
+- we have  l2  =  l0
+- we have  x2  =  x1
+- we have  x1  =  l2
+- we have  l2  =  l0
+- we have  x1  =  l2
+- we have  l2  =  l0
+- we have  l2  =  l0
+- we have  x4  =  l2
+- we have  l  =  l1
+- we have  x5  =  l0
+- we have  x  =  l1
+- we have  x0  =  x11
+- we have  x2  =  x8
+- we have  x1  =  x7
+- we have  x3  =  l0
+- we have :  R  =  R1
+- COQC Plane/fano_plane.v
+- COQC Plane/fano_plane_desargues.v
+- COQC Plane/Heyting_projective_plane_axioms.v
+- COQC Plane/projective_plane_to_Heyting_projective_plane.v
+- COQC Plane/projective_plane_duality.v
+- COQC Space/sets_of_points.v
+- COQC Space/matroids_axioms.v
+- COQC Space/projective_space_rank_axioms.v
+- COQC Space/matroid_to_matroid_p.v
+- COQC Space/matroids_properties.v
+- COQC Space/rank_properties.v
+- COQC Space/desargues3Dlemmas.v
+- COQC Space/desargues2Dlemmas.v
+- COQC Space/desargues2Dlemmas2.v
+- COQC Space/desargues2Dlemmas3.v
+- COQC Space/desargues3D.v
+- COQC Space/desargues3Dspecial.v
+- COQC Space/projective_space_axioms.v
+- COQC Space/projective_space_rank_to_projective_space.v
+- File &quot;./Space/projective_space_rank_to_projective_space.v&quot;, line 5, characters 0-200:
+- Warning: Notation _ [=] _ was already used [notation-overridden,parsing]
+- File &quot;./Space/projective_space_rank_to_projective_space.v&quot;, line 5, characters 0-200:
+- Warning: Notation _ [&lt;=] _ was already used [notation-overridden,parsing]
+- COQC Space/desargues2D.v
+- COQC Space/desargues2Dmore.v
+</pre></dd>
+            </dl>
+            <h2>Installation size</h2>
+            <p>No files were installed.</p>
+            <h2>Uninstall</h2>
+            <dl class="dl-horizontal">
+              <dt>Command</dt>
+              <dd><code>true</code></dd>
+              <dt>Return code</dt>
+              <dd>0</dd>
+              <dt>Missing removes</dt>
+              <dd>
+                none
+              </dd>
+              <dt>Wrong removes</dt>
+              <dd>
+                none
+              </dd>
+            </dl>
+          </div>
+        </div>
+      </div>
+      <hr/>
+      <div class="footer">
+        <p class="text-center">
+          <small>Sources are on <a href="https://github.com/coq-bench">GitHub</a>. © Guillaume Claret.</small>
+        </p>
+      </div>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="../../../../../bootstrap.min.js"></script>
+  </body>
+</html>
