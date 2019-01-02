@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>io-system: 12 s</title>
+    <title>io-system: Error with dependencies</title>
     <link rel="shortcut icon" type="image/png" href="../../../../../favicon.png" />
     <link href="../../../../../bootstrap.min.css" rel="stylesheet">
     <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
@@ -38,10 +38,10 @@
               io-system
               <small>
                 2.3.0
-                <span class="label label-success">12 s</span>
+                <span class="label label-warning">Error with dependencies</span>
               </small>
             </h1>
-            <p><em><script>document.write(moment("2018-12-29 06:39:40 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2018-12-29 06:39:40 UTC)</em><p>
+            <p><em><script>document.write(moment("2019-01-02 23:43:11 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2019-01-02 23:43:11 UTC)</em><p>
             <h2>Context</h2>
             <pre># Packages matching: installed
 # Name        # Installed       # Synopsis
@@ -108,36 +108,69 @@ depends: [
               <dt>Command</dt>
               <dd><code>opam list; ulimit -Sv 4000000; timeout 30m opam install -y --deps-only coq-io-system.2.3.0</code></dd>
               <dt>Return code</dt>
-              <dd>0</dd>
+              <dd>10240</dd>
               <dt>Duration</dt>
-              <dd>1 m 32 s</dd>
+              <dd>1 m 41 s</dd>
+              <dt>Output</dt>
+              <dd><pre># Packages matching: installed
+# Name        # Installed       # Synopsis
+base-bigarray base
+base-num      base              Num library distributed with the OCaml compiler
+base-threads  base
+base-unix     base
+camlp5        7.06.10-g84ce6cc4 Preprocessor-pretty-printer of OCaml
+conf-m4       1                 Virtual package relying on m4
+coq           8.8.2             Formal proof management system.
+num           0                 The Num library for arbitrary-precision integer and rational arithmetic
+ocaml         4.05.0            The OCaml compiler (virtual package)
+ocaml-config  1                 OCaml Switch Configuration
+ocaml-system  4.05.0            The OCaml compiler (system version, from outside of opam)
+ocamlfind     1.8.0             A library manager for OCaml
+The following actions will be performed:
+  - install coq-list-plus       1.1.0
+  - install coq-io              3.1.0
+  - install coq-cunit           1.0.0
+  - install dune                1.6.2
+  - install coq-error-handlers  1.2.0
+  - install coq-function-ninjas 1.0.0
+  - install jbuilder            transition
+  - install coq-list-string     2.1.1
+  - install result              1.3
+  - install cppo                1.6.5
+  - install lwt                 4.1.0       For the PPX, please install package lwt_ppx
+                                            For Lwt_log and Lwt_daemon, please install package lwt_log
+  - install coq-io-system-ocaml 2.3.0
+===== 12 to install =====
+&lt;&gt;&lt;&gt; Gathering sources &gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;
+[coq-cunit.1.0.0] downloaded from https://github.com/clarus/coq-cunit/archive/1.0.0.tar.gz
+[cppo.1.6.5] downloaded from cache at https://opam.ocaml.org/cache
+[dune.1.6.2] downloaded from cache at https://opam.ocaml.org/cache
+[coq-error-handlers.1.2.0] downloaded from https://github.com/clarus/coq-error-handlers/archive/1.2.0.tar.gz
+[lwt.4.1.0] downloaded from cache at https://opam.ocaml.org/cache
+[result.1.3] downloaded from cache at https://opam.ocaml.org/cache
+[ERROR] The sources of the following couldn&#39;t be obtained, aborting:
+          - coq-function-ninjas.1.0.0: curl error code 502
+          - coq-io.3.1.0: curl error code 502
+          - coq-io-system-ocaml.2.3.0: curl error code 502
+          - coq-list-plus.1.1.0: curl error code 502
+          - coq-list-string.2.1.1: curl error code 504
+</pre></dd>
             </dl>
             <h2>Install</h2>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>opam list; ulimit -Sv 4000000; timeout 30m opam install -j1 -y -v coq-io-system.2.3.0</code></dd>
+              <dd><code>true</code></dd>
               <dt>Return code</dt>
               <dd>0</dd>
               <dt>Duration</dt>
-              <dd>12 s</dd>
+              <dd>0 s</dd>
             </dl>
             <h2>Installation size</h2>
-            <p>Total: 182 K</p>
-            <ul>
-              <li>55 K <code>../default/lib/coq/user-contrib/Io/System/Extraction.vo</code></li>
-              <li>47 K <code>../default/lib/coq/user-contrib/Io/System/System.vo</code></li>
-              <li>41 K <code>../default/lib/coq/user-contrib/Io/System/All.vo</code></li>
-              <li>14 K <code>../default/lib/coq/user-contrib/Io/System/System.glob</code></li>
-              <li>12 K <code>../default/lib/coq/user-contrib/Io/System/Extraction.glob</code></li>
-              <li>5 K <code>../default/lib/coq/user-contrib/Io/System/Extraction.v</code></li>
-              <li>4 K <code>../default/lib/coq/user-contrib/Io/System/System.v</code></li>
-              <li>1 K <code>../default/lib/coq/user-contrib/Io/System/All.glob</code></li>
-              <li>1 K <code>../default/lib/coq/user-contrib/Io/System/All.v</code></li>
-            </ul>
+            <p>No files were installed.</p>
             <h2>Uninstall</h2>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>opam remove -y coq-io-system.2.3.0</code></dd>
+              <dd><code>true</code></dd>
               <dt>Return code</dt>
               <dd>0</dd>
               <dt>Missing removes</dt>
