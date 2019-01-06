@@ -41,7 +41,7 @@
                 <span class="label label-danger">Error</span>
               </small>
             </h1>
-            <p><em><script>document.write(moment("2019-01-01 14:31:36 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2019-01-01 14:31:36 UTC)</em><p>
+            <p><em><script>document.write(moment("2019-01-06 13:05:40 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2019-01-06 13:05:40 UTC)</em><p>
             <h2>Context</h2>
             <pre># Installed packages for system:
 base-bigarray   base  Bigarray library distributed with the OCaml compiler
@@ -104,7 +104,7 @@ depends: [
               <dt>Return code</dt>
               <dd>0</dd>
               <dt>Duration</dt>
-              <dd>1 m 17 s</dd>
+              <dd>1 m 29 s</dd>
             </dl>
             <h2>Install</h2>
             <dl class="dl-horizontal">
@@ -369,10 +369,10 @@ The following actions will be performed:
 - &quot;coqc&quot;  -q  -Q &quot;theories&quot; MirrorCore -Q &quot;examples&quot; McExamples -I &quot;src&quot; -I &quot;/home/bench/.opam/system/lib/coq//user-contrib/PluginUtils&quot;   theories/RTac/SolveK.v
 - &quot;coqc&quot;  -q  -Q &quot;theories&quot; MirrorCore -Q &quot;examples&quot; McExamples -I &quot;src&quot; -I &quot;/home/bench/.opam/system/lib/coq//user-contrib/PluginUtils&quot;   theories/RTac/IdtacK.v
 - &quot;coqc&quot;  -q  -Q &quot;theories&quot; MirrorCore -Q &quot;examples&quot; McExamples -I &quot;src&quot; -I &quot;/home/bench/.opam/system/lib/coq//user-contrib/PluginUtils&quot;   theories/Lambda/AutoSetoidRewriteRtac.v
-- Finished transaction in 13.375 secs (13.372u,0.007s) (successful)
-- Finished transaction in 22.799 secs (22.797u,0.008s) (successful)
-- Finished transaction in 25.536 secs (25.506u,0.04s) (successful)
-- Finished transaction in 3.144 secs (3.145u,0.s) (successful)
+- Finished transaction in 18.549 secs (18.544u,0.015s) (successful)
+- Finished transaction in 22.732 secs (22.714u,0.027s) (successful)
+- Finished transaction in 25.427 secs (25.399u,0.035s) (successful)
+- Finished transaction in 3.124 secs (3.121u,0.004s) (successful)
 - &quot;coqc&quot;  -q  -Q &quot;theories&quot; MirrorCore -Q &quot;examples&quot; McExamples -I &quot;src&quot; -I &quot;/home/bench/.opam/system/lib/coq//user-contrib/PluginUtils&quot;   theories/Lambda/Ptrns.v
 - &quot;coqc&quot;  -q  -Q &quot;theories&quot; MirrorCore -Q &quot;examples&quot; McExamples -I &quot;src&quot; -I &quot;/home/bench/.opam/system/lib/coq//user-contrib/PluginUtils&quot;   theories/RTac/Idtac.v
 - &quot;coqc&quot;  -q  -Q &quot;theories&quot; MirrorCore -Q &quot;examples&quot; McExamples -I &quot;src&quot; -I &quot;/home/bench/.opam/system/lib/coq//user-contrib/PluginUtils&quot;   theories/RTac/Fail.v
@@ -432,8 +432,8 @@ The following actions will be performed:
 - &quot;coqc&quot;  -q  -Q &quot;theories&quot; MirrorCore -Q &quot;examples&quot; McExamples -I &quot;src&quot; -I &quot;/home/bench/.opam/system/lib/coq//user-contrib/PluginUtils&quot;   examples/Cancel/MonoidSyntaxWithConst.v
 - &quot;coqc&quot;  -q  -Q &quot;theories&quot; MirrorCore -Q &quot;examples&quot; McExamples -I &quot;src&quot; -I &quot;/home/bench/.opam/system/lib/coq//user-contrib/PluginUtils&quot;   examples/Cancel/MonoidSyntaxModular.v
 - &quot;coqc&quot;  -q  -Q &quot;theories&quot; MirrorCore -Q &quot;examples&quot; McExamples -I &quot;src&quot; -I &quot;/home/bench/.opam/system/lib/coq//user-contrib/PluginUtils&quot;   examples/Cancel/LtacDemo.v
-- Finished transaction in 0.235 secs (0.167u,0.067s) (successful)
-- Finished transaction in 0.033 secs (0.026u,0.007s) (successful)
+- Finished transaction in 0.263 secs (0.16u,0.104s) (successful)
+- Finished transaction in 0.035 secs (0.032u,0.003s) (successful)
 - Axioms:
 - refl : forall a : M, a %is a
 - plus_comm_c : forall c b a : M, c %is a &amp; b -&gt; c %is b &amp; a
@@ -443,6 +443,42 @@ The following actions will be performed:
 - N : nat -&gt; M
 - M : Type
 - &quot;coqc&quot;  -q  -Q &quot;theories&quot; MirrorCore -Q &quot;examples&quot; McExamples -I &quot;src&quot; -I &quot;/home/bench/.opam/system/lib/coq//user-contrib/PluginUtils&quot;   examples/Cancel/RtacDemo.v
+- Total reification time = 0.293088
+- 
+- Finished transaction in 9.043 secs (8.893u,0.144s) (successful)
+- Finished transaction in 9.556 secs (9.484u,0.075s) (successful)
+- Axioms:
+- M.refl : forall a : M.M, M.R a a
+- M.plus_unit_p : forall b a : M.M, M.R a b -&gt; M.R (M.P M.U a) b
+- M.plus_unit_c : forall b a : M.M, M.R a b -&gt; M.R a (M.P M.U b)
+- M.plus_comm_p : forall c b a : M.M, M.R (M.P a b) c -&gt; M.R (M.P b a) c
+- M.plus_comm_c : forall c b a : M.M, M.R c (M.P a b) -&gt; M.R c (M.P b a)
+- M.plus_cancel : forall d c b a : M.M,
+-                 M.R a c -&gt; M.R b d -&gt; M.R (M.P a b) (M.P c d)
+- M.plus_assoc_p2 : forall d c b a : M.M,
+-                   M.R (M.P b (M.P a c)) d -&gt; M.R (M.P (M.P a b) c) d
+- M.plus_assoc_p1 : forall d c b a : M.M,
+-                   M.R (M.P a (M.P b c)) d -&gt; M.R (M.P (M.P a b) c) d
+- M.plus_assoc_c2 : forall d c b a : M.M,
+-                   M.R d (M.P b (M.P a c)) -&gt; M.R d (M.P (M.P a b) c)
+- M.plus_assoc_c1 : forall d c b a : M.M,
+-                   M.R d (M.P a (M.P b c)) -&gt; M.R d (M.P (M.P a b) c)
+- FunctionalExtensionality.functional_extensionality_dep : 
+- forall (A : Type) (B : A -&gt; Type) (f g : forall x : A, B x),
+- (forall x : A, f x = g x) -&gt; f = g
+- M.U : M.M
+- M.R : M.M -&gt; M.M -&gt; Prop
+- M.P : M.M -&gt; M.M -&gt; M.M
+- N : nat -&gt; M.M
+- M.M : Type
+- &quot;coqc&quot;  -q  -Q &quot;theories&quot; MirrorCore -Q &quot;examples&quot; McExamples -I &quot;src&quot; -I &quot;/home/bench/.opam/system/lib/coq//user-contrib/PluginUtils&quot;   examples/Hoare/ILogic.v
+- Loading table
+- table length = 1
+- &quot;coqc&quot;  -q  -Q &quot;theories&quot; MirrorCore -Q &quot;examples&quot; McExamples -I &quot;src&quot; -I &quot;/home/bench/.opam/system/lib/coq//user-contrib/PluginUtils&quot;   examples/Hoare/ILogicFunc.v
+- &quot;coqc&quot;  -q  -Q &quot;theories&quot; MirrorCore -Q &quot;examples&quot; McExamples -I &quot;src&quot; -I &quot;/home/bench/.opam/system/lib/coq//user-contrib/PluginUtils&quot;   examples/Hoare/Imp.v
+- &quot;coqc&quot;  -q  -Q &quot;theories&quot; MirrorCore -Q &quot;examples&quot; McExamples -I &quot;src&quot; -I &quot;/home/bench/.opam/system/lib/coq//user-contrib/PluginUtils&quot;   examples/Hoare/LogicTac.v
+- &quot;coqc&quot;  -q  -Q &quot;theories&quot; MirrorCore -Q &quot;examples&quot; McExamples -I &quot;src&quot; -I &quot;/home/bench/.opam/system/lib/coq//user-contrib/PluginUtils&quot;   examples/Hoare/ImpMetaTheory.v
+- &quot;coqc&quot;  -q  -Q &quot;theories&quot; MirrorCore -Q &quot;examples&quot; McExamples -I &quot;src&quot; -I &quot;/home/bench/.opam/system/lib/coq//user-contrib/PluginUtils&quot;   examples/Hoare/ImpSyntax.v
 </pre></dd>
             </dl>
             <h2>Installation size</h2>
