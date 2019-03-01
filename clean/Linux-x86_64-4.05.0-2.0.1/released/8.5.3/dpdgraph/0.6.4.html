@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>param-pi: Not compatible with this Coq</title>
+    <title>dpdgraph: Not compatible with this Coq</title>
     <link rel="shortcut icon" type="image/png" href="../../../../../favicon.png" />
     <link href="../../../../../bootstrap.min.css" rel="stylesheet">
     <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
@@ -25,7 +25,7 @@
           <div id="navbar" class="collapse navbar-collapse">
             <ul class="nav navbar-nav">
               <li><a href="../..">clean / released</a></li>
-              <li class="active"><a href="">8.5.3 / param-pi - 8.7.0</a></li>
+              <li class="active"><a href="">8.5.3 / dpdgraph - 0.6.4</a></li>
             </ul>
           </div>
         </div>
@@ -35,9 +35,9 @@
           <div class="col-md-12">
             <a href="../..">« Up</a>
             <h1>
-              param-pi
+              dpdgraph
               <small>
-                8.7.0
+                0.6.4
                 <span class="label label-info">Not compatible with this Coq</span>
               </small>
             </h1>
@@ -56,20 +56,29 @@ ocaml         4.05.0            The OCaml compiler (virtual package)
 ocaml-config  1                 OCaml Switch Configuration
 ocaml-system  4.05.0            The OCaml compiler (system version, from outside of opam)
 # opam file:
-opam-version: &quot;1.2&quot;
-maintainer: &quot;Hugo.Herbelin@inria.fr&quot;
-homepage: &quot;https://github.com/coq-contribs/param-pi&quot;
+opam-version: &quot;1.2.2&quot;
+maintainer: &quot;yves.bertot@inria.fr&quot;
 license: &quot;LGPL 2.1&quot;
-build: [make &quot;-j%{jobs}%&quot;]
-install: [make &quot;install&quot;]
-remove: [&quot;rm&quot; &quot;-R&quot; &quot;%{lib}%/coq/user-contrib/ParamPi&quot;]
-depends: [
-  &quot;coq&quot; {&gt;= &quot;8.7&quot; &amp; &lt; &quot;8.8~&quot;}
+homepage: &quot;https://github.com/karmaki/coq-dpdgraph&quot;
+build: [
+  [&quot;./configure&quot;]
+  [&quot;echo&quot; &quot;%{jobs}%&quot; &quot;jobs for the linter&quot;]
+  [make]
+ ]
+bug-reports: &quot;https://github.com/karmaki/coq-dpdgraph/issues&quot;
+dev-repo: &quot;https://github.com/karmaki/coq-dpdgraph.git&quot;
+install: [
+  [make &quot;install&quot; &quot;BINDIR=%{bin}%&quot;]
 ]
-tags: [ &quot;keyword: Pi-Calculus&quot; &quot;category: Computer Science/Lambda Calculi&quot; &quot;date: 1998-09-30&quot; ]
-authors: [ &quot;Loïc Henry-Gréard&quot; ]
-bug-reports: &quot;https://github.com/coq-contribs/param-pi/issues&quot;
-dev-repo: &quot;https://github.com/coq-contribs/param-pi.git&quot;
+remove: [
+  [&quot;rm&quot; &quot;%{bin}%/dpd2dot&quot; &quot;%{bin}%/dpdusage&quot;]
+  [&quot;rm&quot; &quot;-R&quot; &quot;%{lib}%/coq/user-contrib/dpdgraph&quot;]
+]
+depends: [
+   &quot;coq&quot; {&gt;= &quot;8.9&quot; &amp; &lt; &quot;8.10~&quot;}
+   &quot;ocamlgraph&quot;
+]
+authors: [ &quot;Anne Pacalet&quot; &quot;Yves Bertot&quot;]
 </pre>
             <h2>Lint</h2>
             <dl class="dl-horizontal">
@@ -82,13 +91,13 @@ dev-repo: &quot;https://github.com/coq-contribs/param-pi.git&quot;
             <p>Dry install with the current Coq version:</p>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>opam install -y --show-action coq-param-pi.8.7.0 coq.8.5.3</code></dd>
+              <dd><code>opam install -y --show-action coq-dpdgraph.0.6.4 coq.8.5.3</code></dd>
               <dt>Return code</dt>
               <dd>5120</dd>
               <dt>Output</dt>
               <dd><pre>[NOTE] Package coq is already installed (current version is 8.5.3).
 The following dependencies couldn&#39;t be met:
-  - coq-param-pi -&gt; coq &gt;= 8.7
+  - coq-dpdgraph -&gt; coq &gt;= 8.9
 Your request can&#39;t be satisfied:
   - No available version of coq satisfies the constraints
 No solution found, exiting
@@ -97,7 +106,7 @@ No solution found, exiting
             <p>Dry install without Coq, to test if the problem was incompatibility with the current Coq version:</p>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>opam remove -y coq; opam install -y --show-action coq-param-pi.8.7.0</code></dd>
+              <dd><code>opam remove -y coq; opam install -y --show-action coq-dpdgraph.0.6.4</code></dd>
               <dt>Return code</dt>
               <dd>0</dd>
             </dl>
