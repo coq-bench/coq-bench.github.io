@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>lazy-pcf: Not compatible with this Coq</title>
+    <title>bbv: Not compatible with this Coq</title>
     <link rel="shortcut icon" type="image/png" href="../../../../../favicon.png" />
     <link href="../../../../../bootstrap.min.css" rel="stylesheet">
     <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
@@ -25,7 +25,7 @@
           <div id="navbar" class="collapse navbar-collapse">
             <ul class="nav navbar-nav">
               <li><a href="../..">clean / released</a></li>
-              <li class="active"><a href="">8.7.2 / lazy-pcf - 8.5.0</a></li>
+              <li class="active"><a href="">8.7.2 / bbv - 1.1</a></li>
             </ul>
           </div>
         </div>
@@ -35,9 +35,9 @@
           <div class="col-md-12">
             <a href="../..">« Up</a>
             <h1>
-              lazy-pcf
+              bbv
               <small>
-                8.5.0
+                1.1
                 <span class="label label-info">Not compatible with this Coq</span>
               </small>
             </h1>
@@ -59,19 +59,38 @@ ocaml-system  4.05.0            The OCaml compiler (system version, from outside
 ocamlfind     1.8.0             A library manager for OCaml
 # opam file:
 opam-version: &quot;1.2&quot;
-maintainer: &quot;matej.kosik@inria.fr&quot;
-homepage: &quot;https://github.com/coq-contribs/lazy-pcf&quot;
-license: &quot;Proprietary&quot;
-build: [make &quot;-j%{jobs}%&quot;]
-install: [make &quot;install&quot;]
-remove: [&quot;rm&quot; &quot;-R&quot; &quot;%{lib}%/coq/user-contrib/lazyPCF&quot;]
-depends: [
-  &quot;coq&quot; {&gt;= &quot;8.5&quot; &amp; &lt; &quot;8.6~&quot;}
+maintainer: &quot;gmalecha@gmail.com&quot;
+homepage: &quot;https://github.com/mit-plv/bbv&quot;
+dev-repo: &quot;git://git@github.com:mit-plv/bbv.git&quot;
+bug-reports: &quot;https://github.com/mit-plv/bbv/issues&quot;
+authors: [&quot;Tej Chajed&quot;
+          &quot;Haogang Chen&quot;
+          &quot;Adam Chlipala&quot;
+          &quot;Joonwon Choi&quot;
+          &quot;Andres Erbsen&quot;
+          &quot;Jason Gross&quot;
+          &quot;Samuel Gruetter&quot;
+          &quot;Frans Kaashoek&quot;
+          &quot;Alex Konradi&quot;
+          &quot;Gregory Malecha&quot;
+          &quot;Duckki Oe&quot;
+          &quot;Murali Vijayaraghavan&quot;
+          &quot;Nickolai Zeldovich&quot;
+          &quot;Daniel Ziegler&quot;
 ]
-tags: [ &quot;keyword:functional programming&quot; &quot;keyword:lazy evaluation&quot; &quot;keyword:operational&quot; &quot;keyword:semantics&quot; &quot;keyword:type soundness&quot; &quot;keyword:normal forms&quot; &quot;category:Computer Science/Lambda Calculi&quot; ]
-authors: [ &quot;Amy Felty &lt;&gt;&quot; &quot;Jill Seaman &lt;&gt;&quot; ]
-bug-reports: &quot;https://github.com/coq-contribs/lazy-pcf/issues&quot;
-dev-repo: &quot;https://github.com/coq-contribs/lazy-pcf.git&quot;
+license: &quot;MIT&quot;
+build: [
+  [make &quot;-j%{jobs}%&quot;]
+]
+install: [
+  [make &quot;install&quot;]
+]
+remove: [
+  [&quot;rm&quot; &quot;-R&quot; &quot;%{lib}%/coq/user-contrib/bbv&quot;]
+]
+depends: [
+  &quot;coq&quot; {&gt;= &quot;8.9&quot; &lt; &quot;8.10~&quot;}
+]
 </pre>
             <h2>Lint</h2>
             <dl class="dl-horizontal">
@@ -84,14 +103,13 @@ dev-repo: &quot;https://github.com/coq-contribs/lazy-pcf.git&quot;
             <p>Dry install with the current Coq version:</p>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>opam install -y --show-action coq-lazy-pcf.8.5.0 coq.8.7.2</code></dd>
+              <dd><code>opam install -y --show-action coq-bbv.1.1 coq.8.7.2</code></dd>
               <dt>Return code</dt>
               <dd>5120</dd>
               <dt>Output</dt>
               <dd><pre>[NOTE] Package coq is already installed (current version is 8.7.2).
 The following dependencies couldn&#39;t be met:
-  - coq-lazy-pcf -&gt; coq &lt; 8.6~ -&gt; ocaml &lt; 4.05.0
-      base of this switch (use `--unlock-base&#39; to force)
+  - coq-bbv -&gt; coq &gt;= 8.9
 Your request can&#39;t be satisfied:
   - No available version of coq satisfies the constraints
 No solution found, exiting
@@ -100,7 +118,7 @@ No solution found, exiting
             <p>Dry install without Coq, to test if the problem was incompatibility with the current Coq version:</p>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>opam remove -y coq; opam install -y --show-action coq-lazy-pcf.8.5.0</code></dd>
+              <dd><code>opam remove -y coq; opam install -y --show-action coq-bbv.1.1</code></dd>
               <dt>Return code</dt>
               <dd>0</dd>
             </dl>
