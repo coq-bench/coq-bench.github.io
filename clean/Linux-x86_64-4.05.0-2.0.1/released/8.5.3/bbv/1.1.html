@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>equations: Not compatible with this Coq</title>
+    <title>bbv: Not compatible with this Coq</title>
     <link rel="shortcut icon" type="image/png" href="../../../../../favicon.png" />
     <link href="../../../../../bootstrap.min.css" rel="stylesheet">
     <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
@@ -25,7 +25,7 @@
           <div id="navbar" class="collapse navbar-collapse">
             <ul class="nav navbar-nav">
               <li><a href="../..">clean / released</a></li>
-              <li class="active"><a href="">8.5.3 / equations - 1.2~beta+8.8</a></li>
+              <li class="active"><a href="">8.5.3 / bbv - 1.1</a></li>
             </ul>
           </div>
         </div>
@@ -35,9 +35,9 @@
           <div class="col-md-12">
             <a href="../..">« Up</a>
             <h1>
-              equations
+              bbv
               <small>
-                1.2~beta+8.8
+                1.1
                 <span class="label label-info">Not compatible with this Coq</span>
               </small>
             </h1>
@@ -57,22 +57,37 @@ ocaml-config  1                 OCaml Switch Configuration
 ocaml-system  4.05.0            The OCaml compiler (system version, from outside of opam)
 # opam file:
 opam-version: &quot;1.2&quot;
-authors: [ &quot;Matthieu Sozeau &lt;matthieu.sozeau@inria.fr&gt;&quot; &quot;Cyprien Mangin &lt;cyprien.mangin@m4x.org&gt;&quot; ]
-dev-repo: &quot;https://github.com/mattam82/Coq-Equations.git&quot;
-maintainer: &quot;matthieu.sozeau@inria.fr&quot;
-homepage: &quot;https://mattam82.github.io/Coq-Equations&quot;
-bug-reports: &quot;https://github.com/mattam82/Coq-Equations/issues&quot;
-license: &quot;LGPL 2.1&quot;
+maintainer: &quot;gmalecha@gmail.com&quot;
+homepage: &quot;https://github.com/mit-plv/bbv&quot;
+dev-repo: &quot;git://git@github.com:mit-plv/bbv.git&quot;
+bug-reports: &quot;https://github.com/mit-plv/bbv/issues&quot;
+authors: [&quot;Tej Chajed&quot;
+          &quot;Haogang Chen&quot;
+          &quot;Adam Chlipala&quot;
+          &quot;Joonwon Choi&quot;
+          &quot;Andres Erbsen&quot;
+          &quot;Jason Gross&quot;
+          &quot;Samuel Gruetter&quot;
+          &quot;Frans Kaashoek&quot;
+          &quot;Alex Konradi&quot;
+          &quot;Gregory Malecha&quot;
+          &quot;Duckki Oe&quot;
+          &quot;Murali Vijayaraghavan&quot;
+          &quot;Nickolai Zeldovich&quot;
+          &quot;Daniel Ziegler&quot;
+]
+license: &quot;MIT&quot;
 build: [
-  [&quot;coq_makefile&quot; &quot;-f&quot; &quot;_CoqProject&quot; &quot;-o&quot; &quot;Makefile&quot;]
   [make &quot;-j%{jobs}%&quot;]
 ]
 install: [
   [make &quot;install&quot;]
 ]
-remove: [&quot;rm&quot; &quot;-R&quot; &quot;%{lib}%/coq/user-contrib/Equations&quot;]
+remove: [
+  [&quot;rm&quot; &quot;-R&quot; &quot;%{lib}%/coq/user-contrib/bbv&quot;]
+]
 depends: [
-  &quot;coq&quot; {&gt;= &quot;8.8&quot; &amp; &lt; &quot;8.9&quot;}
+  &quot;coq&quot; {&gt;= &quot;8.9&quot; &lt; &quot;8.10~&quot;}
 ]
 </pre>
             <h2>Lint</h2>
@@ -86,13 +101,13 @@ depends: [
             <p>Dry install with the current Coq version:</p>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>opam install -y --show-action coq-equations.1.2~beta+8.8 coq.8.5.3</code></dd>
+              <dd><code>opam install -y --show-action coq-bbv.1.1 coq.8.5.3</code></dd>
               <dt>Return code</dt>
               <dd>5120</dd>
               <dt>Output</dt>
               <dd><pre>[NOTE] Package coq is already installed (current version is 8.5.3).
 The following dependencies couldn&#39;t be met:
-  - coq-equations -&gt; coq &gt;= 8.8
+  - coq-bbv -&gt; coq &gt;= 8.9
 Your request can&#39;t be satisfied:
   - No available version of coq satisfies the constraints
 No solution found, exiting
@@ -101,7 +116,7 @@ No solution found, exiting
             <p>Dry install without Coq, to test if the problem was incompatibility with the current Coq version:</p>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>opam remove -y coq; opam install -y --show-action coq-equations.1.2~beta+8.8</code></dd>
+              <dd><code>opam remove -y coq; opam install -y --show-action coq-bbv.1.1</code></dd>
               <dt>Return code</dt>
               <dd>0</dd>
             </dl>
