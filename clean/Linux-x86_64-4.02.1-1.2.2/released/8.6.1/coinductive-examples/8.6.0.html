@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>coinductive-examples: 55 s</title>
+    <title>coinductive-examples: Lint error</title>
     <link rel="shortcut icon" type="image/png" href="../../../../../favicon.png" />
     <link href="../../../../../bootstrap.min.css" rel="stylesheet">
     <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
@@ -38,10 +38,10 @@
               coinductive-examples
               <small>
                 8.6.0
-                <span class="label label-success">55 s</span>
+                <span class="label label-danger">Lint error</span>
               </small>
             </h1>
-            <p><em><script>document.write(moment("2019-03-31 18:05:58 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2019-03-31 18:05:58 UTC)</em><p>
+            <p><em><script>document.write(moment("2019-04-04 04:38:34 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2019-04-04 04:38:34 UTC)</em><p>
             <h2>Context</h2>
             <pre># Installed packages for system:
 base-bigarray   base  Bigarray library distributed with the OCaml compiler
@@ -54,7 +54,7 @@ coq            8.6.1  Formal proof management system.
 num                0  The Num library for arbitrary-precision integer and ration
 ocamlfind      1.8.0  A library manager for OCaml
 # opam file:
-opam-version: &quot;1.2&quot;
+opam-version: &quot;2.0&quot;
 maintainer: &quot;Hugo.Herbelin@inria.fr&quot;
 homepage: &quot;https://github.com/coq-contribs/coinductive-examples&quot;
 license: &quot;LGPL 2.1&quot;
@@ -62,25 +62,46 @@ build: [make &quot;-j%{jobs}%&quot;]
 install: [make &quot;install&quot;]
 remove: [&quot;rm&quot; &quot;-R&quot; &quot;%{lib}%/coq/user-contrib/CoinductiveExamples&quot;]
 depends: [
+  &quot;ocaml&quot;
   &quot;coq&quot; {&gt;= &quot;8.6&quot; &amp; &lt; &quot;8.7~&quot;}
 ]
 tags: [ &quot;keyword: co-inductive types&quot; &quot;keyword: co-induction&quot; &quot;category: Miscellaneous/Coq Use Examples&quot; ]
 authors: [ &quot;Eduardo Giménez&quot; ]
 bug-reports: &quot;https://github.com/coq-contribs/coinductive-examples/issues&quot;
-dev-repo: &quot;https://github.com/coq-contribs/coinductive-examples.git&quot;
+dev-repo: &quot;git+https://github.com/coq-contribs/coinductive-examples.git&quot;
+synopsis: &quot;Some simple examples about co-inductive types and co-induction&quot;
+description: &quot;&quot;&quot;
+This directory containts some simple examples about
+the use of co-inductive types in Coq. Directory ARITH
+is about non-standard arithmetic. Directory STREAMS
+contains examples about schemes, including an application
+of the translation method presented in Eduardo Giménez&#39;s
+article ``Codifying guarded definitions with recursive
+schemes&#39;&#39; (LNCS no. 996).&quot;&quot;&quot;
+flags: light-uninstall
+url {
+  src:
+    &quot;https://github.com/coq-contribs/coinductive-examples/archive/v8.6.0.tar.gz&quot;
+  checksum: &quot;md5=30dfec6531961e4e1eb46766d3262c4b&quot;
+}
 </pre>
             <h2>Lint</h2>
             <dl class="dl-horizontal">
               <dt>Command</dt>
               <dd><code>ruby lint.rb released opam-coq-archive/released/packages/coq-coinductive-examples/coq-coinductive-examples.8.6.0</code></dd>
               <dt>Return code</dt>
-              <dd>0</dd>
+              <dd>256</dd>
+              <dt>Output</dt>
+              <dd><pre>lint.rb:11:in `read&#39;: No such file or directory @ rb_sysopen - opam-coq-archive/released/packages/coq-coinductive-examples/coq-coinductive-examples.8.6.0/descr (Errno::ENOENT)
+	from lint.rb:11:in `lint&#39;
+	from lint.rb:52:in `&lt;main&gt;&#39;
+</pre></dd>
             </dl>
             <h2>Dry install</h2>
             <p>Dry install with the current Coq version:</p>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>opam install -y --show-action coq-coinductive-examples.8.6.0 coq.8.6.1</code></dd>
+              <dd><code>true</code></dd>
               <dt>Return code</dt>
               <dd>0</dd>
             </dl>
@@ -94,46 +115,27 @@ dev-repo: &quot;https://github.com/coq-contribs/coinductive-examples.git&quot;
             <h2>Install dependencies</h2>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>opam list; ulimit -Sv 4000000; timeout 30m opam install -y --deps-only coq-coinductive-examples.8.6.0</code></dd>
+              <dd><code>true</code></dd>
               <dt>Return code</dt>
               <dd>0</dd>
               <dt>Duration</dt>
-              <dd>51 s</dd>
+              <dd>0 s</dd>
             </dl>
             <h2>Install</h2>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>opam list; ulimit -Sv 4000000; timeout 30m opam install -j1 -y -v coq-coinductive-examples.8.6.0</code></dd>
+              <dd><code>true</code></dd>
               <dt>Return code</dt>
               <dd>0</dd>
               <dt>Duration</dt>
-              <dd>55 s</dd>
+              <dd>0 s</dd>
             </dl>
             <h2>Installation size</h2>
-            <p>Total: 142 K</p>
-            <ul>
-              <li>25 K <code>lib/coq/user-contrib/CoinductiveExamples/STREAMS/Examples.vo</code></li>
-              <li>20 K <code>lib/coq/user-contrib/CoinductiveExamples/STREAMS/Examples.glob</code></li>
-              <li>18 K <code>lib/coq/user-contrib/CoinductiveExamples/ARITH/Omega.glob</code></li>
-              <li>16 K <code>lib/coq/user-contrib/CoinductiveExamples/STREAMS/Alter.vo</code></li>
-              <li>13 K <code>lib/coq/user-contrib/CoinductiveExamples/ARITH/Omega.vo</code></li>
-              <li>13 K <code>lib/coq/user-contrib/CoinductiveExamples/STREAMS/Alter.glob</code></li>
-              <li>8 K <code>lib/coq/user-contrib/CoinductiveExamples/STREAMS/Examples.v</code></li>
-              <li>6 K <code>lib/coq/user-contrib/CoinductiveExamples/STREAMS/Alter.v</code></li>
-              <li>4 K <code>lib/coq/user-contrib/CoinductiveExamples/ARITH/Omega.v</code></li>
-              <li>4 K <code>lib/coq/user-contrib/CoinductiveExamples/STREAMS/Specified_Streams.glob</code></li>
-              <li>3 K <code>lib/coq/user-contrib/CoinductiveExamples/STREAMS/Specified_Streams.vo</code></li>
-              <li>2 K <code>lib/coq/user-contrib/CoinductiveExamples/ARITH/Acc_and_Inf.vo</code></li>
-              <li>1 K <code>lib/coq/user-contrib/CoinductiveExamples/STREAMS/Specified_Streams.v</code></li>
-              <li>1 K <code>lib/coq/user-contrib/CoinductiveExamples/ARITH/Acc_and_Inf.glob</code></li>
-              <li>1 K <code>lib/coq/user-contrib/CoinductiveExamples/ARITH/Acc_and_Inf.v</code></li>
-              <li>1 K <code>install/coq-coinductive-examples.install</code></li>
-              <li>0 K <code>lib/coq-coinductive-examples/opam.config</code></li>
-            </ul>
+            <p>No files were installed.</p>
             <h2>Uninstall</h2>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>opam remove -y coq-coinductive-examples.8.6.0</code></dd>
+              <dd><code>true</code></dd>
               <dt>Return code</dt>
               <dd>0</dd>
               <dt>Missing removes</dt>

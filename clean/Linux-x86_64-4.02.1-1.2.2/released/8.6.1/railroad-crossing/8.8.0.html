@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>railroad-crossing: Error with dependencies</title>
+    <title>railroad-crossing: Lint error</title>
     <link rel="shortcut icon" type="image/png" href="../../../../../favicon.png" />
     <link href="../../../../../bootstrap.min.css" rel="stylesheet">
     <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
@@ -38,10 +38,10 @@
               railroad-crossing
               <small>
                 8.8.0
-                <span class="label label-warning">Error with dependencies</span>
+                <span class="label label-danger">Lint error</span>
               </small>
             </h1>
-            <p><em><script>document.write(moment("2019-03-31 18:05:58 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2019-03-31 18:05:58 UTC)</em><p>
+            <p><em><script>document.write(moment("2019-04-04 04:38:34 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2019-04-04 04:38:34 UTC)</em><p>
             <h2>Context</h2>
             <pre># Installed packages for system:
 base-bigarray   base  Bigarray library distributed with the OCaml compiler
@@ -54,7 +54,7 @@ coq            8.6.1  Formal proof management system.
 num                0  The Num library for arbitrary-precision integer and ration
 ocamlfind      1.8.0  A library manager for OCaml
 # opam file:
-opam-version: &quot;1.2&quot;
+opam-version: &quot;2.0&quot;
 maintainer: &quot;Hugo.Herbelin@inria.fr&quot;
 homepage: &quot;https://github.com/coq-contribs/railroad-crossing&quot;
 license: &quot;LGPL 2.1&quot;
@@ -62,59 +62,54 @@ build: [make &quot;-j%{jobs}%&quot;]
 install: [make &quot;install&quot;]
 remove: [&quot;rm&quot; &quot;-R&quot; &quot;%{lib}%/coq/user-contrib/RailroadCrossing&quot;]
 depends: [
+  &quot;ocaml&quot;
   &quot;coq&quot; {&gt;= &quot;8.8&quot; &amp; &lt; &quot;8.9~&quot;}
 ]
 tags: [ &quot;keyword: CTL&quot; &quot;keyword: TCTL&quot; &quot;keyword: Real Time Systems&quot; &quot;keyword: Timed Automatas&quot; &quot;keyword: Safety&quot; &quot;keyword: Concurrency Properties&quot; &quot;keyword: Invariants&quot; &quot;keyword: NonZeno&quot; &quot;keyword: Discrete Time.&quot; &quot;category: Computer Science/Concurrent Systems and Protocols/Correctness of specific protocols&quot; &quot;date: February-March 2000&quot; ]
 authors: [ &quot;Carlos Daniel Luna [http://www.fing.edu.uy/~cluna]&quot; ]
 bug-reports: &quot;https://github.com/coq-contribs/railroad-crossing/issues&quot;
-dev-repo: &quot;https://github.com/coq-contribs/railroad-crossing.git&quot;
+dev-repo: &quot;git+https://github.com/coq-contribs/railroad-crossing.git&quot;
+synopsis: &quot;The Railroad Crossing Example&quot;
+description: &quot;&quot;&quot;
+This library present the specification and verification of
+one real time system: the Railroad Crossing Problem, which has been
+proposed as a benchmark for the comparison of real-time formalisms. We
+specify the system using timed automatas (timed graphs) with discrete
+time and we prove invariants, the system safety property and the NonZeno
+property, using the logics CTL and TCTL.&quot;&quot;&quot;
+flags: light-uninstall
+url {
+  src:
+    &quot;https://github.com/coq-contribs/railroad-crossing/archive/v8.8.0.tar.gz&quot;
+  checksum: &quot;md5=b3d43148c290b04b040e11078b4acf26&quot;
+}
 </pre>
             <h2>Lint</h2>
             <dl class="dl-horizontal">
               <dt>Command</dt>
               <dd><code>ruby lint.rb released opam-coq-archive/released/packages/coq-railroad-crossing/coq-railroad-crossing.8.8.0</code></dd>
               <dt>Return code</dt>
-              <dd>0</dd>
+              <dd>256</dd>
+              <dt>Output</dt>
+              <dd><pre>lint.rb:11:in `read&#39;: No such file or directory @ rb_sysopen - opam-coq-archive/released/packages/coq-railroad-crossing/coq-railroad-crossing.8.8.0/descr (Errno::ENOENT)
+	from lint.rb:11:in `lint&#39;
+	from lint.rb:52:in `&lt;main&gt;&#39;
+</pre></dd>
             </dl>
             <h2>Dry install</h2>
             <p>Dry install with the current Coq version:</p>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>opam install -y --show-action coq-railroad-crossing.8.8.0 coq.8.6.1</code></dd>
+              <dd><code>true</code></dd>
               <dt>Return code</dt>
-              <dd>768</dd>
-              <dt>Output</dt>
-              <dd><pre>[NOTE] Package coq is already installed (current version is 8.6.1).
-The following dependencies couldn&#39;t be met:
-  - coq-railroad-crossing -&gt; coq &gt;= 8.8
-Your request can&#39;t be satisfied:
-  - coq&gt;=8.8 is not available because your system doesn&#39;t comply with ocaml-version &gt;= &quot;4.02.3&quot;.
-No solution found, exiting
-</pre></dd>
+              <dd>0</dd>
             </dl>
             <p>Dry install without Coq, to test if the problem was incompatibility with the current Coq version:</p>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>opam remove -y coq; opam install -y --show-action coq-railroad-crossing.8.8.0</code></dd>
+              <dd><code>true</code></dd>
               <dt>Return code</dt>
-              <dd>768</dd>
-              <dt>Output</dt>
-              <dd><pre>The following actions will be performed:
-  - remove coq 8.6.1
-=-=- Gathering sources =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
-[coq: from default] Command started
-[coq: from default] Command started
-[default] https://opam.ocaml.org/1.2.2/archives/coq.8.6.1+opam.tar.gz downloaded
-=-=- Processing actions -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
-[coq: rm] Command started
--&gt; removed   coq.8.6.1
-Done.
-The following dependencies couldn&#39;t be met:
-  - coq-railroad-crossing -&gt; coq &gt;= 8.8
-Your request can&#39;t be satisfied:
-  - coq&gt;=8.8 is not available because your system doesn&#39;t comply with ocaml-version &gt;= &quot;4.02.3&quot;.
-No solution found, exiting
-</pre></dd>
+              <dd>0</dd>
             </dl>
             <h2>Install dependencies</h2>
             <dl class="dl-horizontal">

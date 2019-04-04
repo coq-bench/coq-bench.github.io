@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>unicoq: 1 m 0 s</title>
+    <title>unicoq: Lint error</title>
     <link rel="shortcut icon" type="image/png" href="../../../../../favicon.png" />
     <link href="../../../../../bootstrap.min.css" rel="stylesheet">
     <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
@@ -38,10 +38,10 @@
               unicoq
               <small>
                 1.3+8.6
-                <span class="label label-success">1 m 0 s</span>
+                <span class="label label-danger">Lint error</span>
               </small>
             </h1>
-            <p><em><script>document.write(moment("2019-03-31 18:05:58 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2019-03-31 18:05:58 UTC)</em><p>
+            <p><em><script>document.write(moment("2019-04-04 04:38:34 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2019-04-04 04:38:34 UTC)</em><p>
             <h2>Context</h2>
             <pre># Installed packages for system:
 base-bigarray   base  Bigarray library distributed with the OCaml compiler
@@ -54,10 +54,10 @@ coq            8.6.1  Formal proof management system.
 num                0  The Num library for arbitrary-precision integer and ration
 ocamlfind      1.8.0  A library manager for OCaml
 # opam file:
-opam-version: &quot;1.2&quot;
+opam-version: &quot;2.0&quot;
 maintainer: &quot;matthieu.sozeau@inria.fr&quot;
 authors: [ &quot;Matthieu Sozeau &lt;matthieu.sozeau@inria.fr&gt;&quot; &quot;Beta Ziliani &lt;bziliani@famaf.unc.edu.ar&gt;&quot; ]
-dev-repo: &quot;https://github.com/unicoq/unicoq.git&quot; 
+dev-repo: &quot;git+https://github.com/unicoq/unicoq.git&quot;
 homepage: &quot;https://github.com/unicoq/unicoq&quot;
 bug-reports: &quot;https://github.com/unicoq/unicoq/issues&quot;
 license: &quot;MIT&quot;
@@ -70,21 +70,33 @@ install: [
 ]
 remove: [&quot;rm&quot; &quot;-R&quot; &quot;%{lib}%/coq/user-contrib/Unicoq&quot;]
 depends: [
+  &quot;ocaml&quot;
   &quot;coq&quot; {&gt;= &quot;8.6.0&quot; &amp; &lt; &quot;8.7~&quot;}
 ]
+synopsis: &quot;An enhanced unification algorithm for Coq&quot;
+flags: light-uninstall
+url {
+  src: &quot;https://github.com/unicoq/unicoq/archive/v1.3-8.6.tar.gz&quot;
+  checksum: &quot;md5=954ccceb6e470d2b276f6487d995641c&quot;
+}
 </pre>
             <h2>Lint</h2>
             <dl class="dl-horizontal">
               <dt>Command</dt>
               <dd><code>ruby lint.rb released opam-coq-archive/released/packages/coq-unicoq/coq-unicoq.1.3+8.6</code></dd>
               <dt>Return code</dt>
-              <dd>0</dd>
+              <dd>256</dd>
+              <dt>Output</dt>
+              <dd><pre>lint.rb:11:in `read&#39;: No such file or directory @ rb_sysopen - opam-coq-archive/released/packages/coq-unicoq/coq-unicoq.1.3+8.6/descr (Errno::ENOENT)
+	from lint.rb:11:in `lint&#39;
+	from lint.rb:52:in `&lt;main&gt;&#39;
+</pre></dd>
             </dl>
             <h2>Dry install</h2>
             <p>Dry install with the current Coq version:</p>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>opam install -y --show-action coq-unicoq.1.3+8.6 coq.8.6.1</code></dd>
+              <dd><code>true</code></dd>
               <dt>Return code</dt>
               <dd>0</dd>
             </dl>
@@ -98,38 +110,27 @@ depends: [
             <h2>Install dependencies</h2>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>opam list; ulimit -Sv 4000000; timeout 30m opam install -y --deps-only coq-unicoq.1.3+8.6</code></dd>
+              <dd><code>true</code></dd>
               <dt>Return code</dt>
               <dd>0</dd>
               <dt>Duration</dt>
-              <dd>51 s</dd>
+              <dd>0 s</dd>
             </dl>
             <h2>Install</h2>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>opam list; ulimit -Sv 4000000; timeout 30m opam install -j1 -y -v coq-unicoq.1.3+8.6</code></dd>
+              <dd><code>true</code></dd>
               <dt>Return code</dt>
               <dd>0</dd>
               <dt>Duration</dt>
-              <dd>1 m 0 s</dd>
+              <dd>0 s</dd>
             </dl>
             <h2>Installation size</h2>
-            <p>Total: 322 K</p>
-            <ul>
-              <li>240 K <code>lib/coq/user-contrib/Unicoq/unicoq.cmxs</code></li>
-              <li>69 K <code>lib/coq/user-contrib/Unicoq/unicoq.cma</code></li>
-              <li>4 K <code>lib/coq/user-contrib/Unicoq/unitactics.cmi</code></li>
-              <li>3 K <code>lib/coq/user-contrib/Unicoq/munify.cmi</code></li>
-              <li>2 K <code>lib/coq/user-contrib/Unicoq/logger.cmi</code></li>
-              <li>1 K <code>lib/coq/user-contrib/Unicoq/Unicoq.vo</code></li>
-              <li>1 K <code>lib/coq/user-contrib/Unicoq/Unicoq.v</code></li>
-              <li>1 K <code>install/coq-unicoq.install</code></li>
-              <li>0 K <code>lib/coq-unicoq/opam.config</code></li>
-            </ul>
+            <p>No files were installed.</p>
             <h2>Uninstall</h2>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>opam remove -y coq-unicoq.1.3+8.6</code></dd>
+              <dd><code>true</code></dd>
               <dt>Return code</dt>
               <dd>0</dd>
               <dt>Missing removes</dt>

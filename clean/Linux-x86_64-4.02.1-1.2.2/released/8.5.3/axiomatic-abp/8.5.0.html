@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>axiomatic-abp: 1 m 10 s</title>
+    <title>axiomatic-abp: Lint error</title>
     <link rel="shortcut icon" type="image/png" href="../../../../../favicon.png" />
     <link href="../../../../../bootstrap.min.css" rel="stylesheet">
     <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
@@ -38,10 +38,10 @@
               axiomatic-abp
               <small>
                 8.5.0
-                <span class="label label-success">1 m 10 s</span>
+                <span class="label label-danger">Lint error</span>
               </small>
             </h1>
-            <p><em><script>document.write(moment("2019-03-29 02:32:46 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2019-03-29 02:32:46 UTC)</em><p>
+            <p><em><script>document.write(moment("2019-04-04 06:16:02 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2019-04-04 06:16:02 UTC)</em><p>
             <h2>Context</h2>
             <pre># Installed packages for system:
 base-bigarray   base  Bigarray library distributed with the OCaml compiler
@@ -52,7 +52,7 @@ camlp5          7.06  Preprocessor-pretty-printer of OCaml
 coq            8.5.3  Formal proof management system.
 num                0  The Num library for arbitrary-precision integer and ration
 # opam file:
-opam-version: &quot;1.2&quot;
+opam-version: &quot;2.0&quot;
 maintainer: &quot;matej.kosik@inria.fr&quot;
 homepage: &quot;https://github.com/coq-contribs/axiomatic-abp&quot;
 license: &quot;Proprietary&quot;
@@ -60,25 +60,40 @@ build: [make &quot;-j%{jobs}%&quot;]
 install: [make &quot;install&quot;]
 remove: [&quot;rm&quot; &quot;-R&quot; &quot;%{lib}%/coq/user-contrib/AxiomaticABP&quot;]
 depends: [
+  &quot;ocaml&quot;
   &quot;coq&quot; {&gt;= &quot;8.5&quot; &amp; &lt; &quot;8.6~&quot;}
 ]
 tags: [ &quot;keyword:alternating bit protocol&quot; &quot;keyword:process calculi&quot; &quot;keyword:reactive systems&quot; &quot;category:Computer Science/Concurrent Systems and Protocols/Correctness of specific protocols&quot; ]
 authors: [ &quot;Jan Friso Groote &lt;&gt;&quot; ]
 bug-reports: &quot;https://github.com/coq-contribs/axiomatic-abp/issues&quot;
-dev-repo: &quot;https://github.com/coq-contribs/axiomatic-abp.git&quot;
+dev-repo: &quot;git+https://github.com/coq-contribs/axiomatic-abp.git&quot;
+synopsis: &quot;Verification of an axiomatisation of the Alternating Bit Protocol&quot;
+description: &quot;&quot;&quot;
+The Alternating Bit Protocol is expressed in an axiomatized calculi of process.
+Correctness is proven.&quot;&quot;&quot;
+flags: light-uninstall
+url {
+  src: &quot;https://github.com/coq-contribs/axiomatic-abp/archive/v8.5.0.tar.gz&quot;
+  checksum: &quot;md5=e3cd5ed15e4cf78e25e5db20a904c920&quot;
+}
 </pre>
             <h2>Lint</h2>
             <dl class="dl-horizontal">
               <dt>Command</dt>
               <dd><code>ruby lint.rb released opam-coq-archive/released/packages/coq-axiomatic-abp/coq-axiomatic-abp.8.5.0</code></dd>
               <dt>Return code</dt>
-              <dd>0</dd>
+              <dd>256</dd>
+              <dt>Output</dt>
+              <dd><pre>lint.rb:11:in `read&#39;: No such file or directory @ rb_sysopen - opam-coq-archive/released/packages/coq-axiomatic-abp/coq-axiomatic-abp.8.5.0/descr (Errno::ENOENT)
+	from lint.rb:11:in `lint&#39;
+	from lint.rb:52:in `&lt;main&gt;&#39;
+</pre></dd>
             </dl>
             <h2>Dry install</h2>
             <p>Dry install with the current Coq version:</p>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>opam install -y --show-action coq-axiomatic-abp.8.5.0 coq.8.5.3</code></dd>
+              <dd><code>true</code></dd>
               <dt>Return code</dt>
               <dd>0</dd>
             </dl>
@@ -92,52 +107,27 @@ dev-repo: &quot;https://github.com/coq-contribs/axiomatic-abp.git&quot;
             <h2>Install dependencies</h2>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>opam list; ulimit -Sv 4000000; timeout 30m opam install -y --deps-only coq-axiomatic-abp.8.5.0</code></dd>
+              <dd><code>true</code></dd>
               <dt>Return code</dt>
               <dd>0</dd>
               <dt>Duration</dt>
-              <dd>51 s</dd>
+              <dd>0 s</dd>
             </dl>
             <h2>Install</h2>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>opam list; ulimit -Sv 4000000; timeout 30m opam install -j1 -y -v coq-axiomatic-abp.8.5.0</code></dd>
+              <dd><code>true</code></dd>
               <dt>Return code</dt>
               <dd>0</dd>
               <dt>Duration</dt>
-              <dd>1 m 10 s</dd>
+              <dd>0 s</dd>
             </dl>
             <h2>Installation size</h2>
-            <p>Total: 2,168 K</p>
-            <ul>
-              <li>928 K <code>lib/coq/user-contrib/AxiomaticABP/abp_lem1.glob</code></li>
-              <li>191 K <code>lib/coq/user-contrib/AxiomaticABP/abp_lem3.glob</code></li>
-              <li>142 K <code>lib/coq/user-contrib/AxiomaticABP/abp_defs.vo</code></li>
-              <li>100 K <code>lib/coq/user-contrib/AxiomaticABP/abp_lem1.vo</code></li>
-              <li>93 K <code>lib/coq/user-contrib/AxiomaticABP/abp_defs.glob</code></li>
-              <li>92 K <code>lib/coq/user-contrib/AxiomaticABP/abp_base.glob</code></li>
-              <li>85 K <code>lib/coq/user-contrib/AxiomaticABP/abp_proc.glob</code></li>
-              <li>83 K <code>lib/coq/user-contrib/AxiomaticABP/abp_lem1.v</code></li>
-              <li>78 K <code>lib/coq/user-contrib/AxiomaticABP/abp_lem2.glob</code></li>
-              <li>76 K <code>lib/coq/user-contrib/AxiomaticABP/abp_lem25.glob</code></li>
-              <li>64 K <code>lib/coq/user-contrib/AxiomaticABP/abp_lem3.vo</code></li>
-              <li>52 K <code>lib/coq/user-contrib/AxiomaticABP/abp_base.vo</code></li>
-              <li>35 K <code>lib/coq/user-contrib/AxiomaticABP/abp_lem25.vo</code></li>
-              <li>32 K <code>lib/coq/user-contrib/AxiomaticABP/abp_lem2.vo</code></li>
-              <li>25 K <code>lib/coq/user-contrib/AxiomaticABP/abp_defs.v</code></li>
-              <li>24 K <code>lib/coq/user-contrib/AxiomaticABP/abp_proc.vo</code></li>
-              <li>19 K <code>lib/coq/user-contrib/AxiomaticABP/abp_lem3.v</code></li>
-              <li>12 K <code>lib/coq/user-contrib/AxiomaticABP/abp_base.v</code></li>
-              <li>9 K <code>lib/coq/user-contrib/AxiomaticABP/abp_proc.v</code></li>
-              <li>9 K <code>lib/coq/user-contrib/AxiomaticABP/abp_lem25.v</code></li>
-              <li>9 K <code>lib/coq/user-contrib/AxiomaticABP/abp_lem2.v</code></li>
-              <li>1 K <code>install/coq-axiomatic-abp.install</code></li>
-              <li>0 K <code>lib/coq-axiomatic-abp/opam.config</code></li>
-            </ul>
+            <p>No files were installed.</p>
             <h2>Uninstall</h2>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>opam remove -y coq-axiomatic-abp.8.5.0</code></dd>
+              <dd><code>true</code></dd>
               <dt>Return code</dt>
               <dd>0</dd>
               <dt>Missing removes</dt>

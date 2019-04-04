@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>generic-environments: 1 m 0 s</title>
+    <title>generic-environments: Lint error</title>
     <link rel="shortcut icon" type="image/png" href="../../../../../favicon.png" />
     <link href="../../../../../bootstrap.min.css" rel="stylesheet">
     <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
@@ -38,10 +38,10 @@
               generic-environments
               <small>
                 8.6.0
-                <span class="label label-success">1 m 0 s</span>
+                <span class="label label-danger">Lint error</span>
               </small>
             </h1>
-            <p><em><script>document.write(moment("2019-03-31 18:05:58 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2019-03-31 18:05:58 UTC)</em><p>
+            <p><em><script>document.write(moment("2019-04-04 04:38:34 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2019-04-04 04:38:34 UTC)</em><p>
             <h2>Context</h2>
             <pre># Installed packages for system:
 base-bigarray   base  Bigarray library distributed with the OCaml compiler
@@ -54,7 +54,7 @@ coq            8.6.1  Formal proof management system.
 num                0  The Num library for arbitrary-precision integer and ration
 ocamlfind      1.8.0  A library manager for OCaml
 # opam file:
-opam-version: &quot;1.2&quot;
+opam-version: &quot;2.0&quot;
 maintainer: &quot;Hugo.Herbelin@inria.fr&quot;
 homepage: &quot;https://github.com/coq-contribs/generic-environments&quot;
 license: &quot;LGPL&quot;
@@ -62,25 +62,41 @@ build: [make &quot;-j%{jobs}%&quot;]
 install: [make &quot;install&quot;]
 remove: [&quot;rm&quot; &quot;-R&quot; &quot;%{lib}%/coq/user-contrib/GenericEnvironments&quot;]
 depends: [
+  &quot;ocaml&quot;
   &quot;coq&quot; {&gt;= &quot;8.6&quot; &amp; &lt; &quot;8.7~&quot;}
 ]
 tags: [ &quot;keyword: generic environments&quot; &quot;keyword: typing&quot; &quot;keyword: type theory&quot; &quot;category: Mathematics/Logic/Type theory&quot; ]
 authors: [ &quot;Emmanuel Polonowski &lt;emmanuel.polonowski@u-pec.fr&gt; [http://lacl.u-pec.fr/polonowski/]&quot; ]
 bug-reports: &quot;https://github.com/coq-contribs/generic-environments/issues&quot;
-dev-repo: &quot;https://github.com/coq-contribs/generic-environments.git&quot;
+dev-repo: &quot;git+https://github.com/coq-contribs/generic-environments.git&quot;
+synopsis: &quot;Generic_Environments&quot;
+description: &quot;&quot;&quot;
+http://lacl.u-pec.fr/polonowski/Develop/Generic_Env/gen-env.html
+Generic_Environments is a library which provides an abstract data type of environments, as a functor parameterized by a module defining variables, and a function which builds environments for such variables with any Type of type. Usual operations over environments are defined, along with an extensive set of basic and more advanced properties. Moreover, an implementation using lists satisfying and all the required properties is provided.&quot;&quot;&quot;
+flags: light-uninstall
+url {
+  src:
+    &quot;https://github.com/coq-contribs/generic-environments/archive/v8.6.0.tar.gz&quot;
+  checksum: &quot;md5=53df6c28d6bd4daa1d581c9397432681&quot;
+}
 </pre>
             <h2>Lint</h2>
             <dl class="dl-horizontal">
               <dt>Command</dt>
               <dd><code>ruby lint.rb released opam-coq-archive/released/packages/coq-generic-environments/coq-generic-environments.8.6.0</code></dd>
               <dt>Return code</dt>
-              <dd>0</dd>
+              <dd>256</dd>
+              <dt>Output</dt>
+              <dd><pre>lint.rb:11:in `read&#39;: No such file or directory @ rb_sysopen - opam-coq-archive/released/packages/coq-generic-environments/coq-generic-environments.8.6.0/descr (Errno::ENOENT)
+	from lint.rb:11:in `lint&#39;
+	from lint.rb:52:in `&lt;main&gt;&#39;
+</pre></dd>
             </dl>
             <h2>Dry install</h2>
             <p>Dry install with the current Coq version:</p>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>opam install -y --show-action coq-generic-environments.8.6.0 coq.8.6.1</code></dd>
+              <dd><code>true</code></dd>
               <dt>Return code</dt>
               <dd>0</dd>
             </dl>
@@ -94,40 +110,27 @@ dev-repo: &quot;https://github.com/coq-contribs/generic-environments.git&quot;
             <h2>Install dependencies</h2>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>opam list; ulimit -Sv 4000000; timeout 30m opam install -y --deps-only coq-generic-environments.8.6.0</code></dd>
+              <dd><code>true</code></dd>
               <dt>Return code</dt>
               <dd>0</dd>
               <dt>Duration</dt>
-              <dd>51 s</dd>
+              <dd>0 s</dd>
             </dl>
             <h2>Install</h2>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>opam list; ulimit -Sv 4000000; timeout 30m opam install -j1 -y -v coq-generic-environments.8.6.0</code></dd>
+              <dd><code>true</code></dd>
               <dt>Return code</dt>
               <dd>0</dd>
               <dt>Duration</dt>
-              <dd>1 m 0 s</dd>
+              <dd>0 s</dd>
             </dl>
             <h2>Installation size</h2>
-            <p>Total: 1,337 K</p>
-            <ul>
-              <li>259 K <code>lib/coq/user-contrib/GenericEnvironments/GenericEnvList.vo</code></li>
-              <li>256 K <code>lib/coq/user-contrib/GenericEnvironments/GenericEnvList.glob</code></li>
-              <li>217 K <code>lib/coq/user-contrib/GenericEnvironments/GenericEnv.glob</code></li>
-              <li>208 K <code>lib/coq/user-contrib/GenericEnvironments/GenericEnv.vo</code></li>
-              <li>191 K <code>lib/coq/user-contrib/GenericEnvironments/CoreGenericEnv.glob</code></li>
-              <li>90 K <code>lib/coq/user-contrib/GenericEnvironments/CoreGenericEnv.vo</code></li>
-              <li>46 K <code>lib/coq/user-contrib/GenericEnvironments/GenericEnvList.v</code></li>
-              <li>42 K <code>lib/coq/user-contrib/GenericEnvironments/GenericEnv.v</code></li>
-              <li>25 K <code>lib/coq/user-contrib/GenericEnvironments/CoreGenericEnv.v</code></li>
-              <li>1 K <code>install/coq-generic-environments.install</code></li>
-              <li>0 K <code>lib/coq-generic-environments/opam.config</code></li>
-            </ul>
+            <p>No files were installed.</p>
             <h2>Uninstall</h2>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>opam remove -y coq-generic-environments.8.6.0</code></dd>
+              <dd><code>true</code></dd>
               <dt>Return code</dt>
               <dd>0</dd>
               <dt>Missing removes</dt>

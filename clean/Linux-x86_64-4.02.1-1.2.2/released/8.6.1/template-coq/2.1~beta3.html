@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>template-coq: Error with dependencies</title>
+    <title>template-coq: Lint error</title>
     <link rel="shortcut icon" type="image/png" href="../../../../../favicon.png" />
     <link href="../../../../../bootstrap.min.css" rel="stylesheet">
     <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
@@ -38,10 +38,10 @@
               template-coq
               <small>
                 2.1~beta3
-                <span class="label label-warning">Error with dependencies</span>
+                <span class="label label-danger">Lint error</span>
               </small>
             </h1>
-            <p><em><script>document.write(moment("2019-03-31 18:05:58 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2019-03-31 18:05:58 UTC)</em><p>
+            <p><em><script>document.write(moment("2019-04-04 04:38:34 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2019-04-04 04:38:34 UTC)</em><p>
             <h2>Context</h2>
             <pre># Installed packages for system:
 base-bigarray   base  Bigarray library distributed with the OCaml compiler
@@ -54,11 +54,11 @@ coq            8.6.1  Formal proof management system.
 num                0  The Num library for arbitrary-precision integer and ration
 ocamlfind      1.8.0  A library manager for OCaml
 # opam file:
-opam-version: &quot;1.2&quot;
+opam-version: &quot;2.0&quot;
 version: &quot;2.1~beta3&quot;
 maintainer: &quot;matthieu.sozeau@inria.fr&quot;
 homepage: &quot;https://template-coq.github.io/template-coq&quot;
-dev-repo: &quot;https://github.com/Template-Coq/template-coq.git#coq-8.8&quot;
+dev-repo: &quot;git+https://github.com/Template-Coq/template-coq.git#coq-8.8&quot;
 bug-reports: &quot;https://github.com/Template-Coq/template-coq/issues&quot;
 authors: [&quot;Abhishek Anand &lt;aa755@cs.cornell.edu&gt;&quot;
           &quot;Simon Boulier &lt;simon.boulier@inria.fr&gt;&quot;
@@ -79,52 +79,56 @@ remove: [
   [&quot;rm&quot; &quot;-R&quot; &quot;%{lib}%/coq/user-contrib/TemplateExtraction&quot;]
 ]
 depends: [
+  &quot;ocaml&quot; {&gt; &quot;4.02.3&quot;}
   &quot;coq&quot; {&gt;= &quot;8.8&quot; &amp; &lt; &quot;8.9~&quot;}
 ]
-available: [
-  ocaml-version &gt; &quot;4.02.3&quot; # Bug in ocamlc -open in that version
-]
+synopsis: &quot;A quoting and unquoting library for Coq in Coq&quot;
+description: &quot;&quot;&quot;
+Template Coq is a quoting library for Coq. It takes Coq terms and
+constructs a representation of their syntax tree as a Coq inductive data
+type. The representation is based on the kernel&#39;s term representation.
+In addition to a complete reification and denotation of CIC terms,
+Template Coq includes:
+- Reification of the environment structures, for constant and inductive declarations.
+- Denotation of terms and global declarations
+- A monad for manipulating global declarations, calling the type
+  checker, and inserting them in the global environment, in the style of
+  MetaCoq/MTac.
+- A partial type-checker for the Calculus of Inductive Constructions,
+  runnable as a plugin.
+- Example plugins built on top of this.&quot;&quot;&quot;
+flags: light-uninstall
+url {
+  src: &quot;https://github.com/MetaCoq/metacoq/archive/v2.1-beta3.tar.gz&quot;
+  checksum: &quot;md5=e81b8ecabef788a10337a39b095d54f3&quot;
+}
 </pre>
             <h2>Lint</h2>
             <dl class="dl-horizontal">
               <dt>Command</dt>
               <dd><code>ruby lint.rb released opam-coq-archive/released/packages/coq-template-coq/coq-template-coq.2.1~beta3</code></dd>
               <dt>Return code</dt>
-              <dd>0</dd>
+              <dd>256</dd>
+              <dt>Output</dt>
+              <dd><pre>lint.rb:11:in `read&#39;: No such file or directory @ rb_sysopen - opam-coq-archive/released/packages/coq-template-coq/coq-template-coq.2.1~beta3/descr (Errno::ENOENT)
+	from lint.rb:11:in `lint&#39;
+	from lint.rb:52:in `&lt;main&gt;&#39;
+</pre></dd>
             </dl>
             <h2>Dry install</h2>
             <p>Dry install with the current Coq version:</p>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>opam install -y --show-action coq-template-coq.2.1~beta3 coq.8.6.1</code></dd>
+              <dd><code>true</code></dd>
               <dt>Return code</dt>
-              <dd>16896</dd>
-              <dt>Output</dt>
-              <dd><pre>[NOTE] Package coq is already installed (current version is 8.6.1).
-[ERROR] coq-template-coq.2.1~beta3 is not available because your system doesn&#39;t
-        comply with ocaml-version &gt; &quot;4.02.3&quot;.
-</pre></dd>
+              <dd>0</dd>
             </dl>
             <p>Dry install without Coq, to test if the problem was incompatibility with the current Coq version:</p>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>opam remove -y coq; opam install -y --show-action coq-template-coq.2.1~beta3</code></dd>
+              <dd><code>true</code></dd>
               <dt>Return code</dt>
-              <dd>16896</dd>
-              <dt>Output</dt>
-              <dd><pre>The following actions will be performed:
-  - remove coq 8.6.1
-=-=- Gathering sources =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
-[coq: from default] Command started
-[coq: from default] Command started
-[default] https://opam.ocaml.org/1.2.2/archives/coq.8.6.1+opam.tar.gz downloaded
-=-=- Processing actions -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
-[coq: rm] Command started
--&gt; removed   coq.8.6.1
-Done.
-[ERROR] coq-template-coq.2.1~beta3 is not available because your system doesn&#39;t
-        comply with ocaml-version &gt; &quot;4.02.3&quot;.
-</pre></dd>
+              <dd>0</dd>
             </dl>
             <h2>Install dependencies</h2>
             <dl class="dl-horizontal">

@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>stdpp: Not compatible with this Coq</title>
+    <title>stdpp: Lint error</title>
     <link rel="shortcut icon" type="image/png" href="../../../../../favicon.png" />
     <link href="../../../../../bootstrap.min.css" rel="stylesheet">
     <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
@@ -38,10 +38,10 @@
               stdpp
               <small>
                 1.1.0
-                <span class="label label-info">Not compatible with this Coq</span>
+                <span class="label label-danger">Lint error</span>
               </small>
             </h1>
-            <p><em><script>document.write(moment("2019-03-29 02:32:46 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2019-03-29 02:32:46 UTC)</em><p>
+            <p><em><script>document.write(moment("2019-04-04 06:16:02 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2019-04-04 06:16:02 UTC)</em><p>
             <h2>Context</h2>
             <pre># Installed packages for system:
 base-bigarray   base  Bigarray library distributed with the OCaml compiler
@@ -52,48 +52,71 @@ camlp5          7.06  Preprocessor-pretty-printer of OCaml
 coq            8.5.3  Formal proof management system.
 num                0  The Num library for arbitrary-precision integer and ration
 # opam file:
-opam-version: &quot;1.2&quot;
+opam-version: &quot;2.0&quot;
 name: &quot;coq-stdpp&quot;
 maintainer: &quot;Ralf Jung &lt;jung@mpi-sws.org&gt;&quot;
 homepage: &quot;https://gitlab.mpi-sws.org/robbertkrebbers/coq-stdpp&quot;
 authors: &quot;Robbert Krebbers, Jacques-Henri Jourdan, Ralf Jung&quot;
 bug-reports: &quot;https://gitlab.mpi-sws.org/robbertkrebbers/coq-stdpp/issues&quot;
 license: &quot;BSD&quot;
-dev-repo: &quot;https://gitlab.mpi-sws.org/robbertkrebbers/coq-stdpp.git&quot;
+dev-repo: &quot;git+https://gitlab.mpi-sws.org/robbertkrebbers/coq-stdpp.git&quot;
 build: [make &quot;-j%{jobs}%&quot;]
 install: [make &quot;install&quot;]
 remove: [&quot;rm&quot; &quot;-rf&quot; &quot;%{lib}%/coq/user-contrib/stdpp&quot;]
 depends: [
-  &quot;coq&quot; { (&gt;= &quot;8.6&quot; &amp; &lt; &quot;8.9~&quot;) | (= &quot;dev&quot;) }
+  &quot;ocaml&quot;
+  &quot;coq&quot; {(&gt;= &quot;8.6&quot; &amp; &lt; &quot;8.9~&quot;) | (= &quot;dev&quot;)}
 ]
+synopsis: &quot;This project contains an extended \&quot;Standard Library\&quot; for Coq called coq-std++&quot;
+description: &quot;&quot;&quot;
+The key features of this library are as follows:
+- It provides a great number of definitions and lemmas for common data
+  structures such as lists, finite maps, finite sets, and finite multisets.
+- It uses type classes for common notations (like `∅`, `∪`, and Haskell-style
+  monad notations) so that these can be overloaded for different data structures.
+- It uses type classes to keep track of common properties of types, like it
+  having decidable equality or being countable or finite.
+- Most data structures are represented in canonical ways so that Leibniz
+  equality can be used as much as possible (for example, for maps we have
+  `m1 = m2` iff `∀ i, m1 !! i = m2 !! i`). On top of that, the library provides
+  setoid instances for most types and operations.
+- It provides various tactics for common tasks, like an ssreflect inspired
+  `done` tactic for finishing trivial goals, a simple breadth-first solver
+  `naive_solver`, an equality simplifier `simplify_eq`, a solver `solve_proper`
+  for proving compatibility of functions with respect to relations, and a solver
+  `set_solver` for goals involving set operations.
+- It is entirely dependency- and axiom-free.&quot;&quot;&quot;
+flags: light-uninstall
+url {
+  src:
+    &quot;https://gitlab.mpi-sws.org/robbertkrebbers/coq-stdpp/repository/coq-stdpp-1.1.0/archive.tar.gz&quot;
+  checksum: &quot;md5=2a24643f073f0975597dfbe6cbbc63e5&quot;
+}
 </pre>
             <h2>Lint</h2>
             <dl class="dl-horizontal">
               <dt>Command</dt>
               <dd><code>ruby lint.rb released opam-coq-archive/released/packages/coq-stdpp/coq-stdpp.1.1.0</code></dd>
               <dt>Return code</dt>
-              <dd>0</dd>
+              <dd>256</dd>
+              <dt>Output</dt>
+              <dd><pre>lint.rb:11:in `read&#39;: No such file or directory @ rb_sysopen - opam-coq-archive/released/packages/coq-stdpp/coq-stdpp.1.1.0/descr (Errno::ENOENT)
+	from lint.rb:11:in `lint&#39;
+	from lint.rb:52:in `&lt;main&gt;&#39;
+</pre></dd>
             </dl>
             <h2>Dry install</h2>
             <p>Dry install with the current Coq version:</p>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>opam install -y --show-action coq-stdpp.1.1.0 coq.8.5.3</code></dd>
+              <dd><code>true</code></dd>
               <dt>Return code</dt>
-              <dd>768</dd>
-              <dt>Output</dt>
-              <dd><pre>[NOTE] Package coq is already installed (current version is 8.5.3).
-The following dependencies couldn&#39;t be met:
-  - coq-stdpp -&gt; coq = dev
-Your request can&#39;t be satisfied:
-  - Conflicting version constraints for coq
-No solution found, exiting
-</pre></dd>
+              <dd>0</dd>
             </dl>
             <p>Dry install without Coq, to test if the problem was incompatibility with the current Coq version:</p>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>opam remove -y coq; opam install -y --show-action coq-stdpp.1.1.0</code></dd>
+              <dd><code>true</code></dd>
               <dt>Return code</dt>
               <dd>0</dd>
             </dl>

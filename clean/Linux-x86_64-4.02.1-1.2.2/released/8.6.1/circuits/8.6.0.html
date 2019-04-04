@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>circuits: 1 m 14 s</title>
+    <title>circuits: Lint error</title>
     <link rel="shortcut icon" type="image/png" href="../../../../../favicon.png" />
     <link href="../../../../../bootstrap.min.css" rel="stylesheet">
     <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
@@ -38,10 +38,10 @@
               circuits
               <small>
                 8.6.0
-                <span class="label label-success">1 m 14 s</span>
+                <span class="label label-danger">Lint error</span>
               </small>
             </h1>
-            <p><em><script>document.write(moment("2019-03-31 18:05:58 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2019-03-31 18:05:58 UTC)</em><p>
+            <p><em><script>document.write(moment("2019-04-04 04:38:34 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2019-04-04 04:38:34 UTC)</em><p>
             <h2>Context</h2>
             <pre># Installed packages for system:
 base-bigarray   base  Bigarray library distributed with the OCaml compiler
@@ -54,7 +54,7 @@ coq            8.6.1  Formal proof management system.
 num                0  The Num library for arbitrary-precision integer and ration
 ocamlfind      1.8.0  A library manager for OCaml
 # opam file:
-opam-version: &quot;1.2&quot;
+opam-version: &quot;2.0&quot;
 maintainer: &quot;Hugo.Herbelin@inria.fr&quot;
 homepage: &quot;https://github.com/coq-contribs/circuits&quot;
 license: &quot;LGPL 2.1&quot;
@@ -62,25 +62,40 @@ build: [make &quot;-j%{jobs}%&quot;]
 install: [make &quot;install&quot;]
 remove: [&quot;rm&quot; &quot;-R&quot; &quot;%{lib}%/coq/user-contrib/Circuits&quot;]
 depends: [
+  &quot;ocaml&quot;
   &quot;coq&quot; {&gt;= &quot;8.6&quot; &amp; &lt; &quot;8.7~&quot;}
 ]
 tags: [ &quot;keyword: hardware verification&quot; &quot;category: Computer Science/Architecture&quot; ]
 authors: [ &quot;Laurent Arditi&quot; ]
 bug-reports: &quot;https://github.com/coq-contribs/circuits/issues&quot;
-dev-repo: &quot;https://github.com/coq-contribs/circuits.git&quot;
+dev-repo: &quot;git+https://github.com/coq-contribs/circuits.git&quot;
+synopsis: &quot;Some proofs of hardware (adder, multiplier, memory block instruction)&quot;
+description: &quot;&quot;&quot;
+definition and proof of a combinatorial adder, a
+sequential multiplier, a memory block instruction&quot;&quot;&quot;
+flags: light-uninstall
+url {
+  src: &quot;https://github.com/coq-contribs/circuits/archive/v8.6.0.tar.gz&quot;
+  checksum: &quot;md5=b9ba5f4874f9845c96a9e72e12df3f32&quot;
+}
 </pre>
             <h2>Lint</h2>
             <dl class="dl-horizontal">
               <dt>Command</dt>
               <dd><code>ruby lint.rb released opam-coq-archive/released/packages/coq-circuits/coq-circuits.8.6.0</code></dd>
               <dt>Return code</dt>
-              <dd>0</dd>
+              <dd>256</dd>
+              <dt>Output</dt>
+              <dd><pre>lint.rb:11:in `read&#39;: No such file or directory @ rb_sysopen - opam-coq-archive/released/packages/coq-circuits/coq-circuits.8.6.0/descr (Errno::ENOENT)
+	from lint.rb:11:in `lint&#39;
+	from lint.rb:52:in `&lt;main&gt;&#39;
+</pre></dd>
             </dl>
             <h2>Dry install</h2>
             <p>Dry install with the current Coq version:</p>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>opam install -y --show-action coq-circuits.8.6.0 coq.8.6.1</code></dd>
+              <dd><code>true</code></dd>
               <dt>Return code</dt>
               <dd>0</dd>
             </dl>
@@ -94,88 +109,27 @@ dev-repo: &quot;https://github.com/coq-contribs/circuits.git&quot;
             <h2>Install dependencies</h2>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>opam list; ulimit -Sv 4000000; timeout 30m opam install -y --deps-only coq-circuits.8.6.0</code></dd>
+              <dd><code>true</code></dd>
               <dt>Return code</dt>
               <dd>0</dd>
               <dt>Duration</dt>
-              <dd>57 s</dd>
+              <dd>0 s</dd>
             </dl>
             <h2>Install</h2>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>opam list; ulimit -Sv 4000000; timeout 30m opam install -j1 -y -v coq-circuits.8.6.0</code></dd>
+              <dd><code>true</code></dd>
               <dt>Return code</dt>
               <dd>0</dd>
               <dt>Duration</dt>
-              <dd>1 m 14 s</dd>
+              <dd>0 s</dd>
             </dl>
             <h2>Installation size</h2>
-            <p>Total: 1,012 K</p>
-            <ul>
-              <li>74 K <code>lib/coq/user-contrib/Circuits/MULTIPLIER/MultSeq.glob</code></li>
-              <li>59 K <code>lib/coq/user-contrib/Circuits/BLOCK/Fill_impl.vo</code></li>
-              <li>54 K <code>lib/coq/user-contrib/Circuits/GENE/Lists_field.glob</code></li>
-              <li>45 K <code>lib/coq/user-contrib/Circuits/GENE/Lists_field.vo</code></li>
-              <li>38 K <code>lib/coq/user-contrib/Circuits/BLOCK/Fill_impl.glob</code></li>
-              <li>35 K <code>lib/coq/user-contrib/Circuits/GENE/Lists_compl.vo</code></li>
-              <li>32 K <code>lib/coq/user-contrib/Circuits/MULTIPLIER/MultSeq.vo</code></li>
-              <li>29 K <code>lib/coq/user-contrib/Circuits/BLOCK/Fill_spec.vo</code></li>
-              <li>29 K <code>lib/coq/user-contrib/Circuits/MULTIPLIER/Definitions.vo</code></li>
-              <li>27 K <code>lib/coq/user-contrib/Circuits/GENE/Arith_compl.vo</code></li>
-              <li>26 K <code>lib/coq/user-contrib/Circuits/MULTIPLIER/Definitions.glob</code></li>
-              <li>25 K <code>lib/coq/user-contrib/Circuits/ADDER/Adder.vo</code></li>
-              <li>25 K <code>lib/coq/user-contrib/Circuits/ADDER/AdderProof.glob</code></li>
-              <li>24 K <code>lib/coq/user-contrib/Circuits/GENE/Lists_compl.glob</code></li>
-              <li>23 K <code>lib/coq/user-contrib/Circuits/GENE/Arith_compl.glob</code></li>
-              <li>22 K <code>lib/coq/user-contrib/Circuits/ADDER/AdderProof.vo</code></li>
-              <li>21 K <code>lib/coq/user-contrib/Circuits/MULTIPLIER/LemPrelim.glob</code></li>
-              <li>20 K <code>lib/coq/user-contrib/Circuits/GENE/BV.vo</code></li>
-              <li>20 K <code>lib/coq/user-contrib/Circuits/ADDER/IncrDecr.vo</code></li>
-              <li>20 K <code>lib/coq/user-contrib/Circuits/GENE/Lists_replace.vo</code></li>
-              <li>19 K <code>lib/coq/user-contrib/Circuits/ADDER/Adder.glob</code></li>
-              <li>19 K <code>lib/coq/user-contrib/Circuits/MULTIPLIER/LemPrelim.vo</code></li>
-              <li>18 K <code>lib/coq/user-contrib/Circuits/ADDER/FullAdder.vo</code></li>
-              <li>18 K <code>lib/coq/user-contrib/Circuits/BLOCK/Fill_spec.glob</code></li>
-              <li>18 K <code>lib/coq/user-contrib/Circuits/BLOCK/Fill_proof.vo</code></li>
-              <li>16 K <code>lib/coq/user-contrib/Circuits/BLOCK/Fill_defs.vo</code></li>
-              <li>15 K <code>lib/coq/user-contrib/Circuits/BLOCK/Fill_proof.glob</code></li>
-              <li>14 K <code>lib/coq/user-contrib/Circuits/GENE/Lists_field.v</code></li>
-              <li>14 K <code>lib/coq/user-contrib/Circuits/ADDER/HalfAdder.vo</code></li>
-              <li>13 K <code>lib/coq/user-contrib/Circuits/GENE/Memo.vo</code></li>
-              <li>12 K <code>lib/coq/user-contrib/Circuits/MULTIPLIER/MultSeq.v</code></li>
-              <li>10 K <code>lib/coq/user-contrib/Circuits/GENE/Lists_replace.glob</code></li>
-              <li>10 K <code>lib/coq/user-contrib/Circuits/ADDER/FullAdder.glob</code></li>
-              <li>10 K <code>lib/coq/user-contrib/Circuits/GENE/Bool_compl.vo</code></li>
-              <li>10 K <code>lib/coq/user-contrib/Circuits/GENE/BV.glob</code></li>
-              <li>9 K <code>lib/coq/user-contrib/Circuits/ADDER/IncrDecr.glob</code></li>
-              <li>9 K <code>lib/coq/user-contrib/Circuits/BLOCK/Fill_impl.v</code></li>
-              <li>8 K <code>lib/coq/user-contrib/Circuits/GENE/Lists_compl.v</code></li>
-              <li>8 K <code>lib/coq/user-contrib/Circuits/GENE/Bool_compl.glob</code></li>
-              <li>8 K <code>lib/coq/user-contrib/Circuits/ADDER/Adder.v</code></li>
-              <li>8 K <code>lib/coq/user-contrib/Circuits/GENE/Arith_compl.v</code></li>
-              <li>7 K <code>lib/coq/user-contrib/Circuits/MULTIPLIER/Definitions.v</code></li>
-              <li>6 K <code>lib/coq/user-contrib/Circuits/ADDER/AdderProof.v</code></li>
-              <li>5 K <code>lib/coq/user-contrib/Circuits/BLOCK/Fill_spec.v</code></li>
-              <li>5 K <code>lib/coq/user-contrib/Circuits/BLOCK/Fill_defs.glob</code></li>
-              <li>5 K <code>lib/coq/user-contrib/Circuits/GENE/Lists_replace.v</code></li>
-              <li>5 K <code>lib/coq/user-contrib/Circuits/ADDER/FullAdder.v</code></li>
-              <li>5 K <code>lib/coq/user-contrib/Circuits/ADDER/IncrDecr.v</code></li>
-              <li>5 K <code>lib/coq/user-contrib/Circuits/MULTIPLIER/LemPrelim.v</code></li>
-              <li>4 K <code>lib/coq/user-contrib/Circuits/GENE/BV.v</code></li>
-              <li>4 K <code>lib/coq/user-contrib/Circuits/BLOCK/Fill_proof.v</code></li>
-              <li>4 K <code>lib/coq/user-contrib/Circuits/GENE/Bool_compl.v</code></li>
-              <li>3 K <code>lib/coq/user-contrib/Circuits/ADDER/HalfAdder.glob</code></li>
-              <li>3 K <code>lib/coq/user-contrib/Circuits/GENE/Memo.glob</code></li>
-              <li>3 K <code>lib/coq/user-contrib/Circuits/BLOCK/Fill_defs.v</code></li>
-              <li>3 K <code>lib/coq/user-contrib/Circuits/ADDER/HalfAdder.v</code></li>
-              <li>3 K <code>lib/coq/user-contrib/Circuits/GENE/Memo.v</code></li>
-              <li>1 K <code>install/coq-circuits.install</code></li>
-              <li>0 K <code>lib/coq-circuits/opam.config</code></li>
-            </ul>
+            <p>No files were installed.</p>
             <h2>Uninstall</h2>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>opam remove -y coq-circuits.8.6.0</code></dd>
+              <dd><code>true</code></dd>
               <dt>Return code</dt>
               <dd>0</dd>
               <dt>Missing removes</dt>

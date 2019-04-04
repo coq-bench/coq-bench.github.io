@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>pocklington: 1 m 17 s</title>
+    <title>pocklington: Lint error</title>
     <link rel="shortcut icon" type="image/png" href="../../../../../favicon.png" />
     <link href="../../../../../bootstrap.min.css" rel="stylesheet">
     <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
@@ -38,10 +38,10 @@
               pocklington
               <small>
                 8.6.0
-                <span class="label label-success">1 m 17 s</span>
+                <span class="label label-danger">Lint error</span>
               </small>
             </h1>
-            <p><em><script>document.write(moment("2019-03-31 18:05:58 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2019-03-31 18:05:58 UTC)</em><p>
+            <p><em><script>document.write(moment("2019-04-04 04:38:34 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2019-04-04 04:38:34 UTC)</em><p>
             <h2>Context</h2>
             <pre># Installed packages for system:
 base-bigarray   base  Bigarray library distributed with the OCaml compiler
@@ -54,7 +54,7 @@ coq            8.6.1  Formal proof management system.
 num                0  The Num library for arbitrary-precision integer and ration
 ocamlfind      1.8.0  A library manager for OCaml
 # opam file:
-opam-version: &quot;1.2&quot;
+opam-version: &quot;2.0&quot;
 maintainer: &quot;Hugo.Herbelin@inria.fr&quot;
 homepage: &quot;https://github.com/coq-contribs/pocklington&quot;
 license: &quot;LGPL 2.1&quot;
@@ -62,25 +62,41 @@ build: [make &quot;-j%{jobs}%&quot;]
 install: [make &quot;install&quot;]
 remove: [&quot;rm&quot; &quot;-R&quot; &quot;%{lib}%/coq/user-contrib/Pocklington&quot;]
 depends: [
+  &quot;ocaml&quot;
   &quot;coq&quot; {&gt;= &quot;8.6&quot; &amp; &lt; &quot;8.7~&quot;}
 ]
 tags: [ &quot;keyword: pocklington&quot; &quot;keyword: number theory&quot; &quot;keyword: prime numbers&quot; &quot;keyword: primality&quot; &quot;keyword: fermat&#39;s little theorem&quot; &quot;category: Mathematics/Arithmetic and Number Theory/Number theory&quot; &quot;date: 2000-11&quot; ]
 authors: [ &quot;Olga Caprotti&quot; &quot;Martijn Oostdijk&quot; ]
 bug-reports: &quot;https://github.com/coq-contribs/pocklington/issues&quot;
-dev-repo: &quot;https://github.com/coq-contribs/pocklington.git&quot;
+dev-repo: &quot;git+https://github.com/coq-contribs/pocklington.git&quot;
+synopsis: &quot;Pocklington&#39;s criterion&quot;
+description: &quot;&quot;&quot;
+Pocklington&#39;s criterion for checking primality for
+large natural numbers. Includes a proof of Fermat&#39;s
+little theorem.&quot;&quot;&quot;
+flags: light-uninstall
+url {
+  src: &quot;https://github.com/coq-contribs/pocklington/archive/v8.6.0.tar.gz&quot;
+  checksum: &quot;md5=a6db55e6fe051bd6a8a874054c2e2e83&quot;
+}
 </pre>
             <h2>Lint</h2>
             <dl class="dl-horizontal">
               <dt>Command</dt>
               <dd><code>ruby lint.rb released opam-coq-archive/released/packages/coq-pocklington/coq-pocklington.8.6.0</code></dd>
               <dt>Return code</dt>
-              <dd>0</dd>
+              <dd>256</dd>
+              <dt>Output</dt>
+              <dd><pre>lint.rb:11:in `read&#39;: No such file or directory @ rb_sysopen - opam-coq-archive/released/packages/coq-pocklington/coq-pocklington.8.6.0/descr (Errno::ENOENT)
+	from lint.rb:11:in `lint&#39;
+	from lint.rb:52:in `&lt;main&gt;&#39;
+</pre></dd>
             </dl>
             <h2>Dry install</h2>
             <p>Dry install with the current Coq version:</p>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>opam install -y --show-action coq-pocklington.8.6.0 coq.8.6.1</code></dd>
+              <dd><code>true</code></dd>
               <dt>Return code</dt>
               <dd>0</dd>
             </dl>
@@ -94,73 +110,27 @@ dev-repo: &quot;https://github.com/coq-contribs/pocklington.git&quot;
             <h2>Install dependencies</h2>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>opam list; ulimit -Sv 4000000; timeout 30m opam install -y --deps-only coq-pocklington.8.6.0</code></dd>
+              <dd><code>true</code></dd>
               <dt>Return code</dt>
               <dd>0</dd>
               <dt>Duration</dt>
-              <dd>51 s</dd>
+              <dd>0 s</dd>
             </dl>
             <h2>Install</h2>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>opam list; ulimit -Sv 4000000; timeout 30m opam install -j1 -y -v coq-pocklington.8.6.0</code></dd>
+              <dd><code>true</code></dd>
               <dt>Return code</dt>
               <dd>0</dd>
               <dt>Duration</dt>
-              <dd>1 m 17 s</dd>
+              <dd>0 s</dd>
             </dl>
             <h2>Installation size</h2>
-            <p>Total: 1,267 K</p>
-            <ul>
-              <li>76 K <code>lib/coq/user-contrib/Pocklington/modulo.glob</code></li>
-              <li>75 K <code>lib/coq/user-contrib/Pocklington/fermat.glob</code></li>
-              <li>69 K <code>lib/coq/user-contrib/Pocklington/fermat.vo</code></li>
-              <li>67 K <code>lib/coq/user-contrib/Pocklington/list.vo</code></li>
-              <li>60 K <code>lib/coq/user-contrib/Pocklington/modulo.vo</code></li>
-              <li>58 K <code>lib/coq/user-contrib/Pocklington/divides.vo</code></li>
-              <li>50 K <code>lib/coq/user-contrib/Pocklington/divides.glob</code></li>
-              <li>47 K <code>lib/coq/user-contrib/Pocklington/lemmas.vo</code></li>
-              <li>45 K <code>lib/coq/user-contrib/Pocklington/gcd.vo</code></li>
-              <li>44 K <code>lib/coq/user-contrib/Pocklington/prime.vo</code></li>
-              <li>44 K <code>lib/coq/user-contrib/Pocklington/list.glob</code></li>
-              <li>42 K <code>lib/coq/user-contrib/Pocklington/dec.vo</code></li>
-              <li>42 K <code>lib/coq/user-contrib/Pocklington/pock.vo</code></li>
-              <li>41 K <code>lib/coq/user-contrib/Pocklington/modprime.vo</code></li>
-              <li>38 K <code>lib/coq/user-contrib/Pocklington/natZ.vo</code></li>
-              <li>36 K <code>lib/coq/user-contrib/Pocklington/lemmas.glob</code></li>
-              <li>36 K <code>lib/coq/user-contrib/Pocklington/exp.vo</code></li>
-              <li>34 K <code>lib/coq/user-contrib/Pocklington/order.vo</code></li>
-              <li>31 K <code>lib/coq/user-contrib/Pocklington/gcd.glob</code></li>
-              <li>28 K <code>lib/coq/user-contrib/Pocklington/pock.glob</code></li>
-              <li>26 K <code>lib/coq/user-contrib/Pocklington/Pocklington.vo</code></li>
-              <li>23 K <code>lib/coq/user-contrib/Pocklington/modprime.glob</code></li>
-              <li>22 K <code>lib/coq/user-contrib/Pocklington/natZ.glob</code></li>
-              <li>22 K <code>lib/coq/user-contrib/Pocklington/prime.glob</code></li>
-              <li>21 K <code>lib/coq/user-contrib/Pocklington/fermat.v</code></li>
-              <li>21 K <code>lib/coq/user-contrib/Pocklington/dec.glob</code></li>
-              <li>17 K <code>lib/coq/user-contrib/Pocklington/list.v</code></li>
-              <li>17 K <code>lib/coq/user-contrib/Pocklington/modulo.v</code></li>
-              <li>15 K <code>lib/coq/user-contrib/Pocklington/exp.glob</code></li>
-              <li>15 K <code>lib/coq/user-contrib/Pocklington/divides.v</code></li>
-              <li>12 K <code>lib/coq/user-contrib/Pocklington/order.glob</code></li>
-              <li>11 K <code>lib/coq/user-contrib/Pocklington/lemmas.v</code></li>
-              <li>10 K <code>lib/coq/user-contrib/Pocklington/dec.v</code></li>
-              <li>9 K <code>lib/coq/user-contrib/Pocklington/gcd.v</code></li>
-              <li>8 K <code>lib/coq/user-contrib/Pocklington/pock.v</code></li>
-              <li>8 K <code>lib/coq/user-contrib/Pocklington/prime.v</code></li>
-              <li>8 K <code>lib/coq/user-contrib/Pocklington/modprime.v</code></li>
-              <li>8 K <code>lib/coq/user-contrib/Pocklington/natZ.v</code></li>
-              <li>5 K <code>lib/coq/user-contrib/Pocklington/exp.v</code></li>
-              <li>4 K <code>lib/coq/user-contrib/Pocklington/order.v</code></li>
-              <li>1 K <code>lib/coq/user-contrib/Pocklington/Pocklington.v</code></li>
-              <li>1 K <code>lib/coq/user-contrib/Pocklington/Pocklington.glob</code></li>
-              <li>1 K <code>install/coq-pocklington.install</code></li>
-              <li>0 K <code>lib/coq-pocklington/opam.config</code></li>
-            </ul>
+            <p>No files were installed.</p>
             <h2>Uninstall</h2>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>opam remove -y coq-pocklington.8.6.0</code></dd>
+              <dd><code>true</code></dd>
               <dt>Return code</dt>
               <dd>0</dd>
               <dt>Missing removes</dt>

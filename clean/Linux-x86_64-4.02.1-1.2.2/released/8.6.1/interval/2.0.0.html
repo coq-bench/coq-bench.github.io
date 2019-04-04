@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>interval: Error with dependencies</title>
+    <title>interval: Lint error</title>
     <link rel="shortcut icon" type="image/png" href="../../../../../favicon.png" />
     <link href="../../../../../bootstrap.min.css" rel="stylesheet">
     <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
@@ -38,10 +38,10 @@
               interval
               <small>
                 2.0.0
-                <span class="label label-warning">Error with dependencies</span>
+                <span class="label label-danger">Lint error</span>
               </small>
             </h1>
-            <p><em><script>document.write(moment("2019-03-31 18:05:58 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2019-03-31 18:05:58 UTC)</em><p>
+            <p><em><script>document.write(moment("2019-04-04 04:38:34 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2019-04-04 04:38:34 UTC)</em><p>
             <h2>Context</h2>
             <pre># Installed packages for system:
 base-bigarray   base  Bigarray library distributed with the OCaml compiler
@@ -54,7 +54,7 @@ coq            8.6.1  Formal proof management system.
 num                0  The Num library for arbitrary-precision integer and ration
 ocamlfind      1.8.0  A library manager for OCaml
 # opam file:
-opam-version: &quot;1.2&quot;
+opam-version: &quot;2.0&quot;
 maintainer: &quot;guillaume.melquiond@inria.fr&quot;
 homepage: &quot;http://coq-interval.gforge.inria.fr/&quot;
 license: &quot;CeCILL-C&quot;
@@ -65,6 +65,7 @@ build: [
 ]
 remove: [&quot;rm&quot; &quot;-R&quot; &quot;%{lib}%/coq/user-contrib/Interval&quot;]
 depends: [
+  &quot;ocaml&quot;
   &quot;coq&quot; {&gt;= &quot;8.4pl4&quot;}
   &quot;coq-flocq&quot; {&gt;= &quot;2.4.0&quot; &amp; &lt; &quot;2.5.0&quot;}
   &quot;coq-ssreflect&quot; {&gt;= &quot;1.5.0&quot;}
@@ -72,53 +73,40 @@ depends: [
 ]
 tags: [ &quot;keyword:interval arithmetic&quot; &quot;keyword:decision procedure&quot; &quot;keyword:floating point arithmetic&quot; &quot;keyword:reflexive tactic&quot; &quot;keyword:taylor models&quot; &quot;category:Mathematics/Real Calculus and Topology&quot; &quot;category:Computer Science/Decision Procedures and Certified Algorithms/Decision procedures&quot; ]
 authors: [ &quot;Guillaume Melquiond &lt;guillaume.melquiond@inria.fr&gt;&quot; ]
+synopsis: &quot;A Coq tactic for proving bounds on real-valued expressions automatically&quot;
+flags: light-uninstall
+url {
+  src:
+    &quot;https://gforge.inria.fr/frs/download.php/file/34294/interval-2.0.0.tar.gz&quot;
+  checksum: &quot;md5=73f131634b5cacc8b5e97d9ecfd88de2&quot;
+}
 </pre>
             <h2>Lint</h2>
             <dl class="dl-horizontal">
               <dt>Command</dt>
               <dd><code>ruby lint.rb released opam-coq-archive/released/packages/coq-interval/coq-interval.2.0.0</code></dd>
               <dt>Return code</dt>
-              <dd>0</dd>
+              <dd>256</dd>
+              <dt>Output</dt>
+              <dd><pre>lint.rb:11:in `read&#39;: No such file or directory @ rb_sysopen - opam-coq-archive/released/packages/coq-interval/coq-interval.2.0.0/descr (Errno::ENOENT)
+	from lint.rb:11:in `lint&#39;
+	from lint.rb:52:in `&lt;main&gt;&#39;
+</pre></dd>
             </dl>
             <h2>Dry install</h2>
             <p>Dry install with the current Coq version:</p>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>opam install -y --show-action coq-interval.2.0.0 coq.8.6.1</code></dd>
+              <dd><code>true</code></dd>
               <dt>Return code</dt>
-              <dd>768</dd>
-              <dt>Output</dt>
-              <dd><pre>[NOTE] Package coq is already installed (current version is 8.6.1).
-The following dependencies couldn&#39;t be met:
-  - coq-interval -&gt; coq-math-comp &gt;= 1.5.0
-Your request can&#39;t be satisfied:
-  - No package named coq-math-comp found.
-No solution found, exiting
-</pre></dd>
+              <dd>0</dd>
             </dl>
             <p>Dry install without Coq, to test if the problem was incompatibility with the current Coq version:</p>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>opam remove -y coq; opam install -y --show-action coq-interval.2.0.0</code></dd>
+              <dd><code>true</code></dd>
               <dt>Return code</dt>
-              <dd>768</dd>
-              <dt>Output</dt>
-              <dd><pre>The following actions will be performed:
-  - remove coq 8.6.1
-=-=- Gathering sources =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
-[coq: from default] Command started
-[coq: from default] Command started
-[default] https://opam.ocaml.org/1.2.2/archives/coq.8.6.1+opam.tar.gz downloaded
-=-=- Processing actions -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
-[coq: rm] Command started
--&gt; removed   coq.8.6.1
-Done.
-The following dependencies couldn&#39;t be met:
-  - coq-interval -&gt; coq-math-comp &gt;= 1.5.0
-Your request can&#39;t be satisfied:
-  - No package named coq-math-comp found.
-No solution found, exiting
-</pre></dd>
+              <dd>0</dd>
             </dl>
             <h2>Install dependencies</h2>
             <dl class="dl-horizontal">

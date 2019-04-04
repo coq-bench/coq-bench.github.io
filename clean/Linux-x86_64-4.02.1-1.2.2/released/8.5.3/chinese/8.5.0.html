@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>chinese: 1 m 12 s</title>
+    <title>chinese: Lint error</title>
     <link rel="shortcut icon" type="image/png" href="../../../../../favicon.png" />
     <link href="../../../../../bootstrap.min.css" rel="stylesheet">
     <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
@@ -38,10 +38,10 @@
               chinese
               <small>
                 8.5.0
-                <span class="label label-success">1 m 12 s</span>
+                <span class="label label-danger">Lint error</span>
               </small>
             </h1>
-            <p><em><script>document.write(moment("2019-03-29 02:32:46 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2019-03-29 02:32:46 UTC)</em><p>
+            <p><em><script>document.write(moment("2019-04-04 06:16:02 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2019-04-04 06:16:02 UTC)</em><p>
             <h2>Context</h2>
             <pre># Installed packages for system:
 base-bigarray   base  Bigarray library distributed with the OCaml compiler
@@ -52,7 +52,7 @@ camlp5          7.06  Preprocessor-pretty-printer of OCaml
 coq            8.5.3  Formal proof management system.
 num                0  The Num library for arbitrary-precision integer and ration
 # opam file:
-opam-version: &quot;1.2&quot;
+opam-version: &quot;2.0&quot;
 maintainer: &quot;matej.kosik@inria.fr&quot;
 homepage: &quot;https://github.com/coq-contribs/chinese&quot;
 license: &quot;Proprietary&quot;
@@ -60,25 +60,39 @@ build: [make &quot;-j%{jobs}%&quot;]
 install: [make &quot;install&quot;]
 remove: [&quot;rm&quot; &quot;-R&quot; &quot;%{lib}%/coq/user-contrib/Chinese&quot;]
 depends: [
+  &quot;ocaml&quot;
   &quot;coq&quot; {&gt;= &quot;8.5&quot; &amp; &lt; &quot;8.6~&quot;}
 ]
 tags: [ &quot;keyword:number theory&quot; &quot;keyword:chinese remainder&quot; &quot;keyword:primality&quot; &quot;keyword:prime numbers&quot; &quot;category:Mathematics/Arithmetic and Number Theory/Number theory&quot; ]
 authors: [ &quot;Valérie Ménissier-Morain &lt;&gt;&quot; ]
 bug-reports: &quot;https://github.com/coq-contribs/chinese/issues&quot;
-dev-repo: &quot;https://github.com/coq-contribs/chinese.git&quot;
+dev-repo: &quot;git+https://github.com/coq-contribs/chinese.git&quot;
+synopsis: &quot;A proof of the Chinese Remainder Lemma&quot;
+description:
+  &quot;This is a rewriting of the contribution chinese-lemma using Zarith&quot;
+flags: light-uninstall
+url {
+  src: &quot;https://github.com/coq-contribs/chinese/archive/v8.5.0.tar.gz&quot;
+  checksum: &quot;md5=b6e251c230ce200767af2efeb55613ba&quot;
+}
 </pre>
             <h2>Lint</h2>
             <dl class="dl-horizontal">
               <dt>Command</dt>
               <dd><code>ruby lint.rb released opam-coq-archive/released/packages/coq-chinese/coq-chinese.8.5.0</code></dd>
               <dt>Return code</dt>
-              <dd>0</dd>
+              <dd>256</dd>
+              <dt>Output</dt>
+              <dd><pre>lint.rb:11:in `read&#39;: No such file or directory @ rb_sysopen - opam-coq-archive/released/packages/coq-chinese/coq-chinese.8.5.0/descr (Errno::ENOENT)
+	from lint.rb:11:in `lint&#39;
+	from lint.rb:52:in `&lt;main&gt;&#39;
+</pre></dd>
             </dl>
             <h2>Dry install</h2>
             <p>Dry install with the current Coq version:</p>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>opam install -y --show-action coq-chinese.8.5.0 coq.8.5.3</code></dd>
+              <dd><code>true</code></dd>
               <dt>Return code</dt>
               <dd>0</dd>
             </dl>
@@ -92,73 +106,27 @@ dev-repo: &quot;https://github.com/coq-contribs/chinese.git&quot;
             <h2>Install dependencies</h2>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>opam list; ulimit -Sv 4000000; timeout 30m opam install -y --deps-only coq-chinese.8.5.0</code></dd>
+              <dd><code>true</code></dd>
               <dt>Return code</dt>
               <dd>0</dd>
               <dt>Duration</dt>
-              <dd>51 s</dd>
+              <dd>0 s</dd>
             </dl>
             <h2>Install</h2>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>opam list; ulimit -Sv 4000000; timeout 30m opam install -j1 -y -v coq-chinese.8.5.0</code></dd>
+              <dd><code>true</code></dd>
               <dt>Return code</dt>
               <dd>0</dd>
               <dt>Duration</dt>
-              <dd>1 m 12 s</dd>
+              <dd>0 s</dd>
             </dl>
             <h2>Installation size</h2>
-            <p>Total: 759 K</p>
-            <ul>
-              <li>101 K <code>lib/coq/user-contrib/Chinese/Zmult.glob</code></li>
-              <li>66 K <code>lib/coq/user-contrib/Chinese/Zmult.vo</code></li>
-              <li>54 K <code>lib/coq/user-contrib/Chinese/Zgcd.vo</code></li>
-              <li>52 K <code>lib/coq/user-contrib/Chinese/rings.vo</code></li>
-              <li>47 K <code>lib/coq/user-contrib/Chinese/Zgcd.glob</code></li>
-              <li>41 K <code>lib/coq/user-contrib/Chinese/Zadd.vo</code></li>
-              <li>30 K <code>lib/coq/user-contrib/Chinese/Zdiv.vo</code></li>
-              <li>30 K <code>lib/coq/user-contrib/Chinese/Zle.vo</code></li>
-              <li>30 K <code>lib/coq/user-contrib/Chinese/Zrec.vo</code></li>
-              <li>27 K <code>lib/coq/user-contrib/Chinese/rings.glob</code></li>
-              <li>26 K <code>lib/coq/user-contrib/Chinese/Z_succ_pred.vo</code></li>
-              <li>26 K <code>lib/coq/user-contrib/Chinese/Nat_complements.vo</code></li>
-              <li>24 K <code>lib/coq/user-contrib/Chinese/Z.vo</code></li>
-              <li>23 K <code>lib/coq/user-contrib/Chinese/Zadd.glob</code></li>
-              <li>22 K <code>lib/coq/user-contrib/Chinese/Zmult.v</code></li>
-              <li>13 K <code>lib/coq/user-contrib/Chinese/groups.vo</code></li>
-              <li>11 K <code>lib/coq/user-contrib/Chinese/Zgcd.v</code></li>
-              <li>11 K <code>lib/coq/user-contrib/Chinese/rings.v</code></li>
-              <li>10 K <code>lib/coq/user-contrib/Chinese/Zdiv.glob</code></li>
-              <li>9 K <code>lib/coq/user-contrib/Chinese/Zadd.v</code></li>
-              <li>8 K <code>lib/coq/user-contrib/Chinese/groups.glob</code></li>
-              <li>8 K <code>lib/coq/user-contrib/Chinese/Zrec.glob</code></li>
-              <li>7 K <code>lib/coq/user-contrib/Chinese/Zle.glob</code></li>
-              <li>6 K <code>lib/coq/user-contrib/Chinese/Lci.glob</code></li>
-              <li>6 K <code>lib/coq/user-contrib/Chinese/Zbase.vo</code></li>
-              <li>6 K <code>lib/coq/user-contrib/Chinese/Lci.vo</code></li>
-              <li>5 K <code>lib/coq/user-contrib/Chinese/Nat_complements.glob</code></li>
-              <li>4 K <code>lib/coq/user-contrib/Chinese/groups.v</code></li>
-              <li>4 K <code>lib/coq/user-contrib/Chinese/misc.vo</code></li>
-              <li>4 K <code>lib/coq/user-contrib/Chinese/Zle.v</code></li>
-              <li>4 K <code>lib/coq/user-contrib/Chinese/Zrec.v</code></li>
-              <li>3 K <code>lib/coq/user-contrib/Chinese/misc.glob</code></li>
-              <li>3 K <code>lib/coq/user-contrib/Chinese/Zdiv.v</code></li>
-              <li>3 K <code>lib/coq/user-contrib/Chinese/Zbase.glob</code></li>
-              <li>3 K <code>lib/coq/user-contrib/Chinese/Z_succ_pred.glob</code></li>
-              <li>2 K <code>lib/coq/user-contrib/Chinese/Z_succ_pred.v</code></li>
-              <li>2 K <code>lib/coq/user-contrib/Chinese/Lci.v</code></li>
-              <li>2 K <code>lib/coq/user-contrib/Chinese/Zbase.v</code></li>
-              <li>2 K <code>lib/coq/user-contrib/Chinese/Nat_complements.v</code></li>
-              <li>2 K <code>lib/coq/user-contrib/Chinese/misc.v</code></li>
-              <li>1 K <code>lib/coq/user-contrib/Chinese/Z.v</code></li>
-              <li>1 K <code>lib/coq/user-contrib/Chinese/Z.glob</code></li>
-              <li>1 K <code>install/coq-chinese.install</code></li>
-              <li>0 K <code>lib/coq-chinese/opam.config</code></li>
-            </ul>
+            <p>No files were installed.</p>
             <h2>Uninstall</h2>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>opam remove -y coq-chinese.8.5.0</code></dd>
+              <dd><code>true</code></dd>
               <dt>Return code</dt>
               <dd>0</dd>
               <dt>Missing removes</dt>

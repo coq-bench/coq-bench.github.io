@@ -41,7 +41,7 @@
                 <span class="label label-danger">Lint error</span>
               </small>
             </h1>
-            <p><em><script>document.write(moment("2019-03-29 02:32:46 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2019-03-29 02:32:46 UTC)</em><p>
+            <p><em><script>document.write(moment("2019-04-04 06:16:02 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2019-04-04 06:16:02 UTC)</em><p>
             <h2>Context</h2>
             <pre># Installed packages for system:
 base-bigarray   base  Bigarray library distributed with the OCaml compiler
@@ -52,11 +52,11 @@ camlp5          7.06  Preprocessor-pretty-printer of OCaml
 coq            8.5.3  Formal proof management system.
 num                0  The Num library for arbitrary-precision integer and ration
 # opam file:
-opam-version: &quot;1.2&quot;
+opam-version: &quot;2.0&quot;
 maintainer: &quot;pierre-yves@strub.nu&quot;
 homepage: &quot;https://github.com/math-comp/multinomials-ssr&quot;
 bug-reports: &quot;https://github.com/math-comp/multinomials-ssr/issues&quot;
-dev-repo: &quot;https://github.com/math-comp/multinomials.git&quot;
+dev-repo: &quot;git+https://github.com/math-comp/multinomials.git&quot;
 license: &quot;CeCILL-B&quot;
 authors: [&quot;Pierre-Yves Strub&quot;]
 build: [
@@ -68,9 +68,10 @@ install: [
 ]
 remove: [&quot;rm&quot; &quot;-R&quot; &quot;%{lib}%/coq/user-contrib/SsrMultinomials&quot;]
 depends: [
+  &quot;ocaml&quot;
   &quot;coq&quot; {&gt;= &quot;8.5&quot; &amp; &lt; &quot;8.8~&quot;}
   &quot;coq-mathcomp-ssreflect&quot; {&gt;= &quot;1.6&quot; &amp; &lt; &quot;1.8.0~&quot;}
-  &quot;coq-mathcomp-algebra&quot;   {&gt;= &quot;1.6&quot; &amp; &lt; &quot;1.8.0~&quot;}
+  &quot;coq-mathcomp-algebra&quot; {&gt;= &quot;1.6&quot; &amp; &lt; &quot;1.8.0~&quot;}
 ]
 tags: [
   &quot;keyword:multinomials&quot;
@@ -80,7 +81,12 @@ tags: [
   &quot;date:2016&quot;
   &quot;logpath:SsrMultinomials&quot;
 ]
-synopsis: &quot;A multivariate polynomial library for the Mathematical Components Library.&quot;
+synopsis: &quot;A multivariate polynomial library for the Mathematical Components Library&quot;
+flags: light-uninstall
+url {
+  src: &quot;https://github.com/math-comp/multinomials/archive/1.0.tar.gz&quot;
+  checksum: &quot;md5=2af0c4fad88969e70bcf60ba988f4e08&quot;
+}
 </pre>
             <h2>Lint</h2>
             <dl class="dl-horizontal">
@@ -89,8 +95,9 @@ synopsis: &quot;A multivariate polynomial library for the Mathematical Component
               <dt>Return code</dt>
               <dd>256</dd>
               <dt>Output</dt>
-              <dd><pre>Errors found in ~/run/opam-coq-archive/released/packages/coq-mathcomp-multinomials/coq-mathcomp-multinomials.1.0/opam:
-            error  3: Invalid field: synopsis
+              <dd><pre>lint.rb:11:in `read&#39;: No such file or directory @ rb_sysopen - opam-coq-archive/released/packages/coq-mathcomp-multinomials/coq-mathcomp-multinomials.1.0/descr (Errno::ENOENT)
+	from lint.rb:11:in `lint&#39;
+	from lint.rb:52:in `&lt;main&gt;&#39;
 </pre></dd>
             </dl>
             <h2>Dry install</h2>

@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>mutual-exclusion: Error with dependencies</title>
+    <title>mutual-exclusion: Lint error</title>
     <link rel="shortcut icon" type="image/png" href="../../../../../favicon.png" />
     <link href="../../../../../bootstrap.min.css" rel="stylesheet">
     <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
@@ -38,10 +38,10 @@
               mutual-exclusion
               <small>
                 8.7.0
-                <span class="label label-warning">Error with dependencies</span>
+                <span class="label label-danger">Lint error</span>
               </small>
             </h1>
-            <p><em><script>document.write(moment("2019-03-31 18:05:58 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2019-03-31 18:05:58 UTC)</em><p>
+            <p><em><script>document.write(moment("2019-04-04 04:38:34 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2019-04-04 04:38:34 UTC)</em><p>
             <h2>Context</h2>
             <pre># Installed packages for system:
 base-bigarray   base  Bigarray library distributed with the OCaml compiler
@@ -54,7 +54,7 @@ coq            8.6.1  Formal proof management system.
 num                0  The Num library for arbitrary-precision integer and ration
 ocamlfind      1.8.0  A library manager for OCaml
 # opam file:
-opam-version: &quot;1.2&quot;
+opam-version: &quot;2.0&quot;
 maintainer: &quot;Hugo.Herbelin@inria.fr&quot;
 homepage: &quot;https://github.com/coq-contribs/mutual-exclusion&quot;
 license: &quot;LGPL 2.1&quot;
@@ -62,59 +62,52 @@ build: [make &quot;-j%{jobs}%&quot;]
 install: [make &quot;install&quot;]
 remove: [&quot;rm&quot; &quot;-R&quot; &quot;%{lib}%/coq/user-contrib/MutualExclusion&quot;]
 depends: [
+  &quot;ocaml&quot;
   &quot;coq&quot; {&gt;= &quot;8.7&quot; &amp; &lt; &quot;8.8~&quot;}
 ]
 tags: [ &quot;keyword: mutual exclusion&quot; &quot;keyword: concurrency&quot; &quot;keyword: Peterson&#39;s algorithm&quot; &quot;keyword: co-inductive types&quot; &quot;keyword: co-induction&quot; &quot;category: Computer Science/Concurrent Systems and Protocols/Correctness of specific protocols&quot; &quot;category: Miscellaneous/Extracted Programs/Automata and protocols&quot; ]
 authors: [ &quot;Eduardo Giménez&quot; ]
 bug-reports: &quot;https://github.com/coq-contribs/mutual-exclusion/issues&quot;
-dev-repo: &quot;https://github.com/coq-contribs/mutual-exclusion.git&quot;
+dev-repo: &quot;git+https://github.com/coq-contribs/mutual-exclusion.git&quot;
+synopsis: &quot;A certification of Peterson&#39;s algorithm for managing mutual exclusion&quot;
+description: &quot;&quot;&quot;
+This is a proof of certification of Peterson&#39;s algorithm
+for managing mutual exclusion. The case of two processes is treated
+in the directory called ``binary&#39;&#39; (see the README file in this
+directory). The case of n processes will be available soon.&quot;&quot;&quot;
+flags: light-uninstall
+url {
+  src:
+    &quot;https://github.com/coq-contribs/mutual-exclusion/archive/v8.7.0.tar.gz&quot;
+  checksum: &quot;md5=d0939763de7803b2b1678319232451c5&quot;
+}
 </pre>
             <h2>Lint</h2>
             <dl class="dl-horizontal">
               <dt>Command</dt>
               <dd><code>ruby lint.rb released opam-coq-archive/released/packages/coq-mutual-exclusion/coq-mutual-exclusion.8.7.0</code></dd>
               <dt>Return code</dt>
-              <dd>0</dd>
+              <dd>256</dd>
+              <dt>Output</dt>
+              <dd><pre>lint.rb:11:in `read&#39;: No such file or directory @ rb_sysopen - opam-coq-archive/released/packages/coq-mutual-exclusion/coq-mutual-exclusion.8.7.0/descr (Errno::ENOENT)
+	from lint.rb:11:in `lint&#39;
+	from lint.rb:52:in `&lt;main&gt;&#39;
+</pre></dd>
             </dl>
             <h2>Dry install</h2>
             <p>Dry install with the current Coq version:</p>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>opam install -y --show-action coq-mutual-exclusion.8.7.0 coq.8.6.1</code></dd>
+              <dd><code>true</code></dd>
               <dt>Return code</dt>
-              <dd>768</dd>
-              <dt>Output</dt>
-              <dd><pre>[NOTE] Package coq is already installed (current version is 8.6.1).
-The following dependencies couldn&#39;t be met:
-  - coq-mutual-exclusion -&gt; coq &gt;= 8.7
-Your request can&#39;t be satisfied:
-  - coq&gt;=8.7 is not available because your system doesn&#39;t comply with ocaml-version &gt;= &quot;4.02.3&quot;.
-No solution found, exiting
-</pre></dd>
+              <dd>0</dd>
             </dl>
             <p>Dry install without Coq, to test if the problem was incompatibility with the current Coq version:</p>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>opam remove -y coq; opam install -y --show-action coq-mutual-exclusion.8.7.0</code></dd>
+              <dd><code>true</code></dd>
               <dt>Return code</dt>
-              <dd>768</dd>
-              <dt>Output</dt>
-              <dd><pre>The following actions will be performed:
-  - remove coq 8.6.1
-=-=- Gathering sources =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
-[coq: from default] Command started
-[coq: from default] Command started
-[default] https://opam.ocaml.org/1.2.2/archives/coq.8.6.1+opam.tar.gz downloaded
-=-=- Processing actions -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
-[coq: rm] Command started
--&gt; removed   coq.8.6.1
-Done.
-The following dependencies couldn&#39;t be met:
-  - coq-mutual-exclusion -&gt; coq &gt;= 8.7
-Your request can&#39;t be satisfied:
-  - coq&gt;=8.7 is not available because your system doesn&#39;t comply with ocaml-version &gt;= &quot;4.02.3&quot;.
-No solution found, exiting
-</pre></dd>
+              <dd>0</dd>
             </dl>
             <h2>Install dependencies</h2>
             <dl class="dl-horizontal">

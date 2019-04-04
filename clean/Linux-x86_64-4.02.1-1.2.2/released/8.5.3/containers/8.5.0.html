@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>containers: 8 m 1 s</title>
+    <title>containers: Lint error</title>
     <link rel="shortcut icon" type="image/png" href="../../../../../favicon.png" />
     <link href="../../../../../bootstrap.min.css" rel="stylesheet">
     <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
@@ -38,10 +38,10 @@
               containers
               <small>
                 8.5.0
-                <span class="label label-success">8 m 1 s</span>
+                <span class="label label-danger">Lint error</span>
               </small>
             </h1>
-            <p><em><script>document.write(moment("2019-03-29 02:32:46 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2019-03-29 02:32:46 UTC)</em><p>
+            <p><em><script>document.write(moment("2019-04-04 06:16:02 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2019-04-04 06:16:02 UTC)</em><p>
             <h2>Context</h2>
             <pre># Installed packages for system:
 base-bigarray   base  Bigarray library distributed with the OCaml compiler
@@ -52,7 +52,7 @@ camlp5          7.06  Preprocessor-pretty-printer of OCaml
 coq            8.5.3  Formal proof management system.
 num                0  The Num library for arbitrary-precision integer and ration
 # opam file:
-opam-version: &quot;1.2&quot;
+opam-version: &quot;2.0&quot;
 maintainer: &quot;matej.kosik@inria.fr&quot;
 homepage: &quot;https://github.com/coq-contribs/containers&quot;
 license: &quot;Proprietary&quot;
@@ -60,25 +60,39 @@ build: [make &quot;-j%{jobs}%&quot;]
 install: [make &quot;install&quot;]
 remove: [&quot;rm&quot; &quot;-R&quot; &quot;%{lib}%/coq/user-contrib/Containers&quot;]
 depends: [
+  &quot;ocaml&quot;
   &quot;coq&quot; {&gt;= &quot;8.5&quot; &amp; &lt; &quot;8.6~&quot;}
 ]
 tags: [ &quot;keyword:data structures&quot; &quot;keyword:type classes&quot; &quot;category:Computer Science/Data Types and Data Structures&quot; ]
 authors: [ &quot;Stéphane Lescuyer &lt;&gt;&quot; ]
 bug-reports: &quot;https://github.com/coq-contribs/containers/issues&quot;
-dev-repo: &quot;https://github.com/coq-contribs/containers.git&quot;
+dev-repo: &quot;git+https://github.com/coq-contribs/containers.git&quot;
+synopsis: &quot;Containers: a typeclass-based library of finite sets/maps&quot;
+description:
+  &quot;This is a reimplementation of the FSets/FMaps library from the standard library, using typeclasses. See tests files for usage. A new vernacular command is provided by Generate.v and the plugin to automatically generate ordered types for user-defined inductive types.&quot;
+flags: light-uninstall
+url {
+  src: &quot;https://github.com/coq-contribs/containers/archive/v8.5.0.tar.gz&quot;
+  checksum: &quot;md5=40b794fa49d1ad0710690650e1d18f8c&quot;
+}
 </pre>
             <h2>Lint</h2>
             <dl class="dl-horizontal">
               <dt>Command</dt>
               <dd><code>ruby lint.rb released opam-coq-archive/released/packages/coq-containers/coq-containers.8.5.0</code></dd>
               <dt>Return code</dt>
-              <dd>0</dd>
+              <dd>256</dd>
+              <dt>Output</dt>
+              <dd><pre>lint.rb:11:in `read&#39;: No such file or directory @ rb_sysopen - opam-coq-archive/released/packages/coq-containers/coq-containers.8.5.0/descr (Errno::ENOENT)
+	from lint.rb:11:in `lint&#39;
+	from lint.rb:52:in `&lt;main&gt;&#39;
+</pre></dd>
             </dl>
             <h2>Dry install</h2>
             <p>Dry install with the current Coq version:</p>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>opam install -y --show-action coq-containers.8.5.0 coq.8.5.3</code></dd>
+              <dd><code>true</code></dd>
               <dt>Return code</dt>
               <dd>0</dd>
             </dl>
@@ -92,64 +106,27 @@ dev-repo: &quot;https://github.com/coq-contribs/containers.git&quot;
             <h2>Install dependencies</h2>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>opam list; ulimit -Sv 4000000; timeout 30m opam install -y --deps-only coq-containers.8.5.0</code></dd>
+              <dd><code>true</code></dd>
               <dt>Return code</dt>
               <dd>0</dd>
               <dt>Duration</dt>
-              <dd>51 s</dd>
+              <dd>0 s</dd>
             </dl>
             <h2>Install</h2>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>opam list; ulimit -Sv 4000000; timeout 30m opam install -j1 -y -v coq-containers.8.5.0</code></dd>
+              <dd><code>true</code></dd>
               <dt>Return code</dt>
               <dd>0</dd>
               <dt>Duration</dt>
-              <dd>8 m 1 s</dd>
+              <dd>0 s</dd>
             </dl>
             <h2>Installation size</h2>
-            <p>Total: 8,445 K</p>
-            <ul>
-              <li>2,349 K <code>lib/coq/user-contrib/Containers/MapAVL.vo</code></li>
-              <li>1,220 K <code>lib/coq/user-contrib/Containers/SetAVL.vo</code></li>
-              <li>757 K <code>lib/coq/user-contrib/Containers/MapList.vo</code></li>
-              <li>520 K <code>lib/coq/user-contrib/Containers/CMapPositive.vo</code></li>
-              <li>477 K <code>lib/coq/user-contrib/Containers/MapFacts.vo</code></li>
-              <li>338 K <code>lib/coq/user-contrib/Containers/SetList.vo</code></li>
-              <li>322 K <code>lib/coq/user-contrib/Containers/containers_plugin.cmxs</code></li>
-              <li>278 K <code>lib/coq/user-contrib/Containers/MapPositive.vo</code></li>
-              <li>278 K <code>lib/coq/user-contrib/Containers/SetProperties.vo</code></li>
-              <li>225 K <code>lib/coq/user-contrib/Containers/OrderedTypeEx.vo</code></li>
-              <li>210 K <code>lib/coq/user-contrib/Containers/SetInterface.vo</code></li>
-              <li>189 K <code>lib/coq/user-contrib/Containers/SetConstructs.vo</code></li>
-              <li>181 K <code>lib/coq/user-contrib/Containers/MapInterface.vo</code></li>
-              <li>155 K <code>lib/coq/user-contrib/Containers/SetEqProperties.vo</code></li>
-              <li>127 K <code>lib/coq/user-contrib/Containers/Maps.vo</code></li>
-              <li>126 K <code>lib/coq/user-contrib/Containers/SetFacts.vo</code></li>
-              <li>123 K <code>lib/coq/user-contrib/Containers/OrderedType.vo</code></li>
-              <li>95 K <code>lib/coq/user-contrib/Containers/containers_plugin.cma</code></li>
-              <li>63 K <code>lib/coq/user-contrib/Containers/SetDecide.vo</code></li>
-              <li>52 K <code>lib/coq/user-contrib/Containers/SetAVLInstance.vo</code></li>
-              <li>52 K <code>lib/coq/user-contrib/Containers/SetListInstance.vo</code></li>
-              <li>49 K <code>lib/coq/user-contrib/Containers/MapAVLInstance.vo</code></li>
-              <li>49 K <code>lib/coq/user-contrib/Containers/MapListInstance.vo</code></li>
-              <li>43 K <code>lib/coq/user-contrib/Containers/CMapPositiveInstance.vo</code></li>
-              <li>43 K <code>lib/coq/user-contrib/Containers/MapPositiveInstance.vo</code></li>
-              <li>31 K <code>lib/coq/user-contrib/Containers/Sets.vo</code></li>
-              <li>28 K <code>lib/coq/user-contrib/Containers/Tactics.vo</code></li>
-              <li>23 K <code>lib/coq/user-contrib/Containers/generate.cmi</code></li>
-              <li>10 K <code>lib/coq/user-contrib/Containers/MapNotations.vo</code></li>
-              <li>9 K <code>lib/coq/user-contrib/Containers/Generate.vo</code></li>
-              <li>2 K <code>lib/coq/user-contrib/Containers/containers_plugin_mod.cmi</code></li>
-              <li>1 K <code>lib/coq/user-contrib/Containers/printing.cmi</code></li>
-              <li>1 K <code>lib/coq/user-contrib/Containers/Bridge.vo</code></li>
-              <li>1 K <code>install/coq-containers.install</code></li>
-              <li>0 K <code>lib/coq-containers/opam.config</code></li>
-            </ul>
+            <p>No files were installed.</p>
             <h2>Uninstall</h2>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>opam remove -y coq-containers.8.5.0</code></dd>
+              <dd><code>true</code></dd>
               <dt>Return code</dt>
               <dd>0</dd>
               <dt>Missing removes</dt>

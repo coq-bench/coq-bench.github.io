@@ -41,7 +41,7 @@
                 <span class="label label-danger">Lint error</span>
               </small>
             </h1>
-            <p><em><script>document.write(moment("2019-03-31 18:05:58 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2019-03-31 18:05:58 UTC)</em><p>
+            <p><em><script>document.write(moment("2019-04-04 04:38:34 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2019-04-04 04:38:34 UTC)</em><p>
             <h2>Context</h2>
             <pre># Installed packages for system:
 base-bigarray   base  Bigarray library distributed with the OCaml compiler
@@ -54,19 +54,20 @@ coq            8.6.1  Formal proof management system.
 num                0  The Num library for arbitrary-precision integer and ration
 ocamlfind      1.8.0  A library manager for OCaml
 # opam file:
-opam-version: &quot;1.2&quot;
+opam-version: &quot;2.0&quot;
 synopsis: &quot;Paramcoq&quot;
 name: &quot;coq-paramcoq&quot;
 version: &quot;1.1.1+coq8.9&quot;
 maintainer: &quot;Pierre Roux &lt;pierre.roux@onera.fr&gt;&quot;
 homepage: &quot;https://github.com/coq-community/paramcoq&quot;
-dev-repo: &quot;https://github.com/coq-community/paramcoq.git&quot;
+dev-repo: &quot;git+https://github.com/coq-community/paramcoq.git&quot;
 bug-reports: &quot;https://github.com/coq-community/paramcoq/issues&quot;
 license: &quot;MIT&quot;
 build: [make &quot;-j%{jobs}%&quot;]
 install: [make &quot;install&quot;]
 remove: [&quot;rm&quot; &quot;-R&quot; &quot;%{lib}%/coq/user-contrib/Param&quot;]
 depends: [
+  &quot;ocaml&quot;
   &quot;coq&quot; {&gt;= &quot;8.9&quot; &amp; &lt; &quot;8.10~&quot;}
 ]
 tags: [
@@ -86,6 +87,12 @@ authors: [
   &quot;Cyril Cohen&quot;
   &quot;Matthieu Sozeau&quot;
 ]
+flags: light-uninstall
+url {
+  src:
+    &quot;https://github.com/coq-community/paramcoq/archive/v1.1.1+coq8.9.tar.gz&quot;
+  checksum: &quot;md5=e0ca9436a81fd47e676541254d28e8bb&quot;
+}
 </pre>
             <h2>Lint</h2>
             <dl class="dl-horizontal">
@@ -94,8 +101,9 @@ authors: [
               <dt>Return code</dt>
               <dd>256</dd>
               <dt>Output</dt>
-              <dd><pre>Errors found in ~/run/opam-coq-archive/released/packages/coq-paramcoq/coq-paramcoq.1.1.1+coq8.9/opam:
-            error  3: Invalid field: synopsis
+              <dd><pre>lint.rb:11:in `read&#39;: No such file or directory @ rb_sysopen - opam-coq-archive/released/packages/coq-paramcoq/coq-paramcoq.1.1.1+coq8.9/descr (Errno::ENOENT)
+	from lint.rb:11:in `lint&#39;
+	from lint.rb:52:in `&lt;main&gt;&#39;
 </pre></dd>
             </dl>
             <h2>Dry install</h2>

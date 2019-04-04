@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>high-school-geometry: Not compatible with this Coq</title>
+    <title>high-school-geometry: Lint error</title>
     <link rel="shortcut icon" type="image/png" href="../../../../../favicon.png" />
     <link href="../../../../../bootstrap.min.css" rel="stylesheet">
     <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
@@ -38,10 +38,10 @@
               high-school-geometry
               <small>
                 8.6.0
-                <span class="label label-info">Not compatible with this Coq</span>
+                <span class="label label-danger">Lint error</span>
               </small>
             </h1>
-            <p><em><script>document.write(moment("2019-03-29 02:32:46 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2019-03-29 02:32:46 UTC)</em><p>
+            <p><em><script>document.write(moment("2019-04-04 06:16:02 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2019-04-04 06:16:02 UTC)</em><p>
             <h2>Context</h2>
             <pre># Installed packages for system:
 base-bigarray   base  Bigarray library distributed with the OCaml compiler
@@ -52,7 +52,7 @@ camlp5          7.06  Preprocessor-pretty-printer of OCaml
 coq            8.5.3  Formal proof management system.
 num                0  The Num library for arbitrary-precision integer and ration
 # opam file:
-opam-version: &quot;1.2&quot;
+opam-version: &quot;2.0&quot;
 maintainer: &quot;Hugo.Herbelin@inria.fr&quot;
 homepage: &quot;https://github.com/coq-contribs/high-school-geometry&quot;
 license: &quot;LGPL 2.1&quot;
@@ -60,40 +60,48 @@ build: [make &quot;-j%{jobs}%&quot;]
 install: [make &quot;install&quot;]
 remove: [&quot;rm&quot; &quot;-R&quot; &quot;%{lib}%/coq/user-contrib/HighSchoolGeometry&quot;]
 depends: [
+  &quot;ocaml&quot;
   &quot;coq&quot; {&gt;= &quot;8.6&quot; &amp; &lt; &quot;8.7~&quot;}
 ]
 tags: [ &quot;keyword: geometry&quot; &quot;keyword: teaching&quot; &quot;keyword: high-school&quot; &quot;category: Mathematics/Geometry/General&quot; &quot;date: 2004-01&quot; ]
 authors: [ &quot;Frédérique Guilhot &lt;Frederique.Guilhot@sophia.inria.fr&gt; [http://www-sop.inria.fr/lemme/Frederique.Guilhot/index.html]&quot; ]
 bug-reports: &quot;https://github.com/coq-contribs/high-school-geometry/issues&quot;
-dev-repo: &quot;https://github.com/coq-contribs/high-school-geometry.git&quot;
+dev-repo: &quot;git+https://github.com/coq-contribs/high-school-geometry.git&quot;
+synopsis: &quot;Geometry for French high-school&quot;
+description: &quot;&quot;&quot;
+This library is dedicated to high-shool geometry teaching.
+The axiomatisation for affine euclidean space is in a non analytic setting.&quot;&quot;&quot;
+flags: light-uninstall
+url {
+  src:
+    &quot;https://github.com/coq-contribs/high-school-geometry/archive/v8.6.0.tar.gz&quot;
+  checksum: &quot;md5=13e7473956daec17fac8316e8e01a436&quot;
+}
 </pre>
             <h2>Lint</h2>
             <dl class="dl-horizontal">
               <dt>Command</dt>
               <dd><code>ruby lint.rb released opam-coq-archive/released/packages/coq-high-school-geometry/coq-high-school-geometry.8.6.0</code></dd>
               <dt>Return code</dt>
-              <dd>0</dd>
+              <dd>256</dd>
+              <dt>Output</dt>
+              <dd><pre>lint.rb:11:in `read&#39;: No such file or directory @ rb_sysopen - opam-coq-archive/released/packages/coq-high-school-geometry/coq-high-school-geometry.8.6.0/descr (Errno::ENOENT)
+	from lint.rb:11:in `lint&#39;
+	from lint.rb:52:in `&lt;main&gt;&#39;
+</pre></dd>
             </dl>
             <h2>Dry install</h2>
             <p>Dry install with the current Coq version:</p>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>opam install -y --show-action coq-high-school-geometry.8.6.0 coq.8.5.3</code></dd>
+              <dd><code>true</code></dd>
               <dt>Return code</dt>
-              <dd>768</dd>
-              <dt>Output</dt>
-              <dd><pre>[NOTE] Package coq is already installed (current version is 8.5.3).
-The following dependencies couldn&#39;t be met:
-  - coq-high-school-geometry -&gt; coq &gt;= 8.6
-Your request can&#39;t be satisfied:
-  - Conflicting version constraints for coq
-No solution found, exiting
-</pre></dd>
+              <dd>0</dd>
             </dl>
             <p>Dry install without Coq, to test if the problem was incompatibility with the current Coq version:</p>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>opam remove -y coq; opam install -y --show-action coq-high-school-geometry.8.6.0</code></dd>
+              <dd><code>true</code></dd>
               <dt>Return code</dt>
               <dd>0</dd>
             </dl>

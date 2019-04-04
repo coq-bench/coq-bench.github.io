@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>switch: Error with dependencies</title>
+    <title>switch: Lint error</title>
     <link rel="shortcut icon" type="image/png" href="../../../../../favicon.png" />
     <link href="../../../../../bootstrap.min.css" rel="stylesheet">
     <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
@@ -38,10 +38,10 @@
               switch
               <small>
                 1.0.0
-                <span class="label label-warning">Error with dependencies</span>
+                <span class="label label-danger">Lint error</span>
               </small>
             </h1>
-            <p><em><script>document.write(moment("2019-03-31 18:05:58 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2019-03-31 18:05:58 UTC)</em><p>
+            <p><em><script>document.write(moment("2019-04-04 04:38:34 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2019-04-04 04:38:34 UTC)</em><p>
             <h2>Context</h2>
             <pre># Installed packages for system:
 base-bigarray   base  Bigarray library distributed with the OCaml compiler
@@ -54,11 +54,11 @@ coq            8.6.1  Formal proof management system.
 num                0  The Num library for arbitrary-precision integer and ration
 ocamlfind      1.8.0  A library manager for OCaml
 # opam file:
-opam-version: &quot;1.2&quot;
+opam-version: &quot;2.0&quot;
 version: &quot;1.0.0&quot;
 maintainer: &quot;vzaliva@cmu.edu&quot;
 homepage: &quot;https://github.com/vzaliva/coq-switch&quot;
-dev-repo: &quot;https://github.com/vzaliva/coq-switch.git&quot;
+dev-repo: &quot;git+https://github.com/vzaliva/coq-switch.git&quot;
 bug-reports: &quot;https://github.com/vzaliva/coq-switch/issues&quot;
 authors: [&quot;Vadim Zaliva &lt;vzaliva@cmu.edu&gt;&quot;]
 license: &quot;MIT&quot;
@@ -70,6 +70,7 @@ install: [
 ]
 remove: [&quot;rm&quot; &quot;-R&quot; &quot;%{lib}%/coq/user-contrib/Switch&quot;]
 depends: [
+  &quot;ocaml&quot;
   &quot;coq&quot; {&gt;= &quot;8.8&quot;}
   &quot;coq-template-coq&quot; {&gt;= &quot;2.1~beta3&quot;}
 ]
@@ -77,53 +78,47 @@ tags: [
   &quot;category:Miscellaneous/Coq Extensions&quot;
   &quot;date:2018-09-27&quot;
 ]
+synopsis:
+  &quot;A plugin to implement functionality similar to `switch` statement in C&quot;
+description: &quot;&quot;&quot;
+language.
+It allows easier dispatch on several constant values of a type with
+decidable equality. Given a type, boolean equality predicate, and list
+of choices, it will generate (using TemplateCoq) an inductive type
+with constructors, one for each of the choices, and a function mapping
+values to this type.&quot;&quot;&quot;
+flags: light-uninstall
+url {
+  src: &quot;https://github.com/vzaliva/coq-switch/archive/v1.0.0.tar.gz&quot;
+  checksum: &quot;md5=304f2910d30ec4a03124a8ba35b3187a&quot;
+}
 </pre>
             <h2>Lint</h2>
             <dl class="dl-horizontal">
               <dt>Command</dt>
               <dd><code>ruby lint.rb released opam-coq-archive/released/packages/coq-switch/coq-switch.1.0.0</code></dd>
               <dt>Return code</dt>
-              <dd>0</dd>
+              <dd>256</dd>
+              <dt>Output</dt>
+              <dd><pre>lint.rb:11:in `read&#39;: No such file or directory @ rb_sysopen - opam-coq-archive/released/packages/coq-switch/coq-switch.1.0.0/descr (Errno::ENOENT)
+	from lint.rb:11:in `lint&#39;
+	from lint.rb:52:in `&lt;main&gt;&#39;
+</pre></dd>
             </dl>
             <h2>Dry install</h2>
             <p>Dry install with the current Coq version:</p>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>opam install -y --show-action coq-switch.1.0.0 coq.8.6.1</code></dd>
+              <dd><code>true</code></dd>
               <dt>Return code</dt>
-              <dd>768</dd>
-              <dt>Output</dt>
-              <dd><pre>[NOTE] Package coq is already installed (current version is 8.6.1).
-The following dependencies couldn&#39;t be met:
-  - coq-switch -&gt; coq-template-coq &gt;= 2.1~beta3
-Your request can&#39;t be satisfied:
-  - coq-template-coq&gt;=2.1~beta3 is not available because your system doesn&#39;t comply with ocaml-version &gt; &quot;4.02.3&quot;.
-No solution found, exiting
-</pre></dd>
+              <dd>0</dd>
             </dl>
             <p>Dry install without Coq, to test if the problem was incompatibility with the current Coq version:</p>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>opam remove -y coq; opam install -y --show-action coq-switch.1.0.0</code></dd>
+              <dd><code>true</code></dd>
               <dt>Return code</dt>
-              <dd>768</dd>
-              <dt>Output</dt>
-              <dd><pre>The following actions will be performed:
-  - remove coq 8.6.1
-=-=- Gathering sources =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
-[coq: from default] Command started
-[coq: from default] Command started
-[default] https://opam.ocaml.org/1.2.2/archives/coq.8.6.1+opam.tar.gz downloaded
-=-=- Processing actions -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
-[coq: rm] Command started
--&gt; removed   coq.8.6.1
-Done.
-The following dependencies couldn&#39;t be met:
-  - coq-switch -&gt; coq-template-coq &gt;= 2.1~beta3
-Your request can&#39;t be satisfied:
-  - coq-template-coq&gt;=2.1~beta3 is not available because your system doesn&#39;t comply with ocaml-version &gt; &quot;4.02.3&quot;.
-No solution found, exiting
-</pre></dd>
+              <dd>0</dd>
             </dl>
             <h2>Install dependencies</h2>
             <dl class="dl-horizontal">

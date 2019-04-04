@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>abp: 1 m 3 s</title>
+    <title>abp: Lint error</title>
     <link rel="shortcut icon" type="image/png" href="../../../../../favicon.png" />
     <link href="../../../../../bootstrap.min.css" rel="stylesheet">
     <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
@@ -38,10 +38,10 @@
               abp
               <small>
                 8.6.0
-                <span class="label label-success">1 m 3 s</span>
+                <span class="label label-danger">Lint error</span>
               </small>
             </h1>
-            <p><em><script>document.write(moment("2019-03-31 18:05:58 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2019-03-31 18:05:58 UTC)</em><p>
+            <p><em><script>document.write(moment("2019-04-04 04:38:34 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2019-04-04 04:38:34 UTC)</em><p>
             <h2>Context</h2>
             <pre># Installed packages for system:
 base-bigarray   base  Bigarray library distributed with the OCaml compiler
@@ -54,7 +54,7 @@ coq            8.6.1  Formal proof management system.
 num                0  The Num library for arbitrary-precision integer and ration
 ocamlfind      1.8.0  A library manager for OCaml
 # opam file:
-opam-version: &quot;1.2&quot;
+opam-version: &quot;2.0&quot;
 maintainer: &quot;Hugo.Herbelin@inria.fr&quot;
 homepage: &quot;https://github.com/coq-contribs/abp&quot;
 license: &quot;LGPL 2.1&quot;
@@ -62,25 +62,37 @@ build: [make &quot;-j%{jobs}%&quot;]
 install: [make &quot;install&quot;]
 remove: [&quot;rm&quot; &quot;-R&quot; &quot;%{lib}%/coq/user-contrib/ABP&quot;]
 depends: [
+  &quot;ocaml&quot;
   &quot;coq&quot; {&gt;= &quot;8.6&quot; &amp; &lt; &quot;8.7~&quot;}
 ]
 tags: [ &quot;keyword: alternating bit protocol&quot; &quot;keyword: process calculi&quot; &quot;keyword: reactive systems&quot; &quot;keyword: co-inductive types&quot; &quot;keyword: co-induction&quot; &quot;category: Computer Science/Concurrent Systems and Protocols/Correctness of specific protocols&quot; ]
 authors: [ &quot;Eduardo Giménez&quot; ]
 bug-reports: &quot;https://github.com/coq-contribs/abp/issues&quot;
-dev-repo: &quot;https://github.com/coq-contribs/abp.git&quot;
+dev-repo: &quot;git+https://github.com/coq-contribs/abp.git&quot;
+synopsis: &quot;A verification of the alternating bit protocol expressed in CBS&quot;
+flags: light-uninstall
+url {
+  src: &quot;https://github.com/coq-contribs/abp/archive/v8.6.0.tar.gz&quot;
+  checksum: &quot;md5=8cf5c60e71404a027f66f1e38d357e64&quot;
+}
 </pre>
             <h2>Lint</h2>
             <dl class="dl-horizontal">
               <dt>Command</dt>
               <dd><code>ruby lint.rb released opam-coq-archive/released/packages/coq-abp/coq-abp.8.6.0</code></dd>
               <dt>Return code</dt>
-              <dd>0</dd>
+              <dd>256</dd>
+              <dt>Output</dt>
+              <dd><pre>lint.rb:11:in `read&#39;: No such file or directory @ rb_sysopen - opam-coq-archive/released/packages/coq-abp/coq-abp.8.6.0/descr (Errno::ENOENT)
+	from lint.rb:11:in `lint&#39;
+	from lint.rb:52:in `&lt;main&gt;&#39;
+</pre></dd>
             </dl>
             <h2>Dry install</h2>
             <p>Dry install with the current Coq version:</p>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>opam install -y --show-action coq-abp.8.6.0 coq.8.6.1</code></dd>
+              <dd><code>true</code></dd>
               <dt>Return code</dt>
               <dd>0</dd>
             </dl>
@@ -94,73 +106,27 @@ dev-repo: &quot;https://github.com/coq-contribs/abp.git&quot;
             <h2>Install dependencies</h2>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>opam list; ulimit -Sv 4000000; timeout 30m opam install -y --deps-only coq-abp.8.6.0</code></dd>
+              <dd><code>true</code></dd>
               <dt>Return code</dt>
               <dd>0</dd>
               <dt>Duration</dt>
-              <dd>50 s</dd>
+              <dd>0 s</dd>
             </dl>
             <h2>Install</h2>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>opam list; ulimit -Sv 4000000; timeout 30m opam install -j1 -y -v coq-abp.8.6.0</code></dd>
+              <dd><code>true</code></dd>
               <dt>Return code</dt>
               <dd>0</dd>
               <dt>Duration</dt>
-              <dd>1 m 3 s</dd>
+              <dd>0 s</dd>
             </dl>
             <h2>Installation size</h2>
-            <p>Total: 2,628 K</p>
-            <ul>
-              <li>892 K <code>lib/coq/user-contrib/ABP/ABP/TRACES/Lemmas.vo</code></li>
-              <li>826 K <code>lib/coq/user-contrib/ABP/ABP/BISIMULATION/Lemmas.vo</code></li>
-              <li>114 K <code>lib/coq/user-contrib/ABP/ABP/TRACES/Lemmas.glob</code></li>
-              <li>105 K <code>lib/coq/user-contrib/ABP/ABP/BISIMULATION/Lemmas.glob</code></li>
-              <li>101 K <code>lib/coq/user-contrib/ABP/INTERPRETER/Interpreter.vo</code></li>
-              <li>45 K <code>lib/coq/user-contrib/ABP/ABP/TRACES/Processes.glob</code></li>
-              <li>43 K <code>lib/coq/user-contrib/ABP/ABP/TRACES/Processes.vo</code></li>
-              <li>40 K <code>lib/coq/user-contrib/ABP/ABP/TRACES/Unique.vo</code></li>
-              <li>39 K <code>lib/coq/user-contrib/ABP/ABP/BISIMULATION/Processes.glob</code></li>
-              <li>29 K <code>lib/coq/user-contrib/ABP/ABP/TRACES/Evt.vo</code></li>
-              <li>28 K <code>lib/coq/user-contrib/ABP/ABP/BISIMULATION/Processes.vo</code></li>
-              <li>27 K <code>lib/coq/user-contrib/ABP/ABP/TRACES/Lemmas.v</code></li>
-              <li>25 K <code>lib/coq/user-contrib/ABP/INTERPRETER/Interpreter.glob</code></li>
-              <li>25 K <code>lib/coq/user-contrib/ABP/INTERPRETER/Processes.glob</code></li>
-              <li>23 K <code>lib/coq/user-contrib/ABP/INTERPRETER/Processes.vo</code></li>
-              <li>22 K <code>lib/coq/user-contrib/ABP/ABP/BISIMULATION/Correctness.glob</code></li>
-              <li>19 K <code>lib/coq/user-contrib/ABP/ABP/BISIMULATION/Lemmas.v</code></li>
-              <li>18 K <code>lib/coq/user-contrib/ABP/ABP/TRACES/Evt.glob</code></li>
-              <li>14 K <code>lib/coq/user-contrib/ABP/ABP/TRACES/Hypotheses.vo</code></li>
-              <li>14 K <code>lib/coq/user-contrib/ABP/ABP/TRACES/Unique.glob</code></li>
-              <li>14 K <code>lib/coq/user-contrib/ABP/ABP/TRACES/Hypotheses.glob</code></li>
-              <li>12 K <code>lib/coq/user-contrib/ABP/ABP/BISIMULATION/Correctness.vo</code></li>
-              <li>12 K <code>lib/coq/user-contrib/ABP/ABP/BISIMULATION/Protocol.vo</code></li>
-              <li>12 K <code>lib/coq/user-contrib/ABP/ABP/TRACES/Protocol.vo</code></li>
-              <li>10 K <code>lib/coq/user-contrib/ABP/ABP/TRACES/Processes.v</code></li>
-              <li>9 K <code>lib/coq/user-contrib/ABP/ABP/BISIMULATION/Protocol.glob</code></li>
-              <li>9 K <code>lib/coq/user-contrib/ABP/ABP/BISIMULATION/Processes.v</code></li>
-              <li>8 K <code>lib/coq/user-contrib/ABP/ABP/TRACES/Protocol.glob</code></li>
-              <li>8 K <code>lib/coq/user-contrib/ABP/ABP/BISIMULATION/Hypotheses.vo</code></li>
-              <li>7 K <code>lib/coq/user-contrib/ABP/ABP/TRACES/Unique.v</code></li>
-              <li>7 K <code>lib/coq/user-contrib/ABP/ABP/TRACES/Evt.v</code></li>
-              <li>7 K <code>lib/coq/user-contrib/ABP/ABP/BISIMULATION/Correctness.v</code></li>
-              <li>6 K <code>lib/coq/user-contrib/ABP/ABP/TRACES/Correction.vo</code></li>
-              <li>6 K <code>lib/coq/user-contrib/ABP/ABP/TRACES/Hypotheses.v</code></li>
-              <li>5 K <code>lib/coq/user-contrib/ABP/INTERPRETER/Interpreter.v</code></li>
-              <li>5 K <code>lib/coq/user-contrib/ABP/ABP/TRACES/Correction.glob</code></li>
-              <li>5 K <code>lib/coq/user-contrib/ABP/ABP/TRACES/Protocol.v</code></li>
-              <li>5 K <code>lib/coq/user-contrib/ABP/INTERPRETER/Processes.v</code></li>
-              <li>4 K <code>lib/coq/user-contrib/ABP/ABP/BISIMULATION/Hypotheses.v</code></li>
-              <li>4 K <code>lib/coq/user-contrib/ABP/ABP/BISIMULATION/Protocol.v</code></li>
-              <li>3 K <code>lib/coq/user-contrib/ABP/ABP/TRACES/Correction.v</code></li>
-              <li>3 K <code>lib/coq/user-contrib/ABP/ABP/BISIMULATION/Hypotheses.glob</code></li>
-              <li>1 K <code>install/coq-abp.install</code></li>
-              <li>0 K <code>lib/coq-abp/opam.config</code></li>
-            </ul>
+            <p>No files were installed.</p>
             <h2>Uninstall</h2>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>opam remove -y coq-abp.8.6.0</code></dd>
+              <dd><code>true</code></dd>
               <dt>Return code</dt>
               <dd>0</dd>
               <dt>Missing removes</dt>

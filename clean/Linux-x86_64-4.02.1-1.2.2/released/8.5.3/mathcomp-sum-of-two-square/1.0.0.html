@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>mathcomp-sum-of-two-square: Error with dependencies</title>
+    <title>mathcomp-sum-of-two-square: Lint error</title>
     <link rel="shortcut icon" type="image/png" href="../../../../../favicon.png" />
     <link href="../../../../../bootstrap.min.css" rel="stylesheet">
     <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
@@ -38,10 +38,10 @@
               mathcomp-sum-of-two-square
               <small>
                 1.0.0
-                <span class="label label-warning">Error with dependencies</span>
+                <span class="label label-danger">Lint error</span>
               </small>
             </h1>
-            <p><em><script>document.write(moment("2019-03-29 02:32:46 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2019-03-29 02:32:46 UTC)</em><p>
+            <p><em><script>document.write(moment("2019-04-04 06:16:02 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2019-04-04 06:16:02 UTC)</em><p>
             <h2>Context</h2>
             <pre># Installed packages for system:
 base-bigarray   base  Bigarray library distributed with the OCaml compiler
@@ -52,8 +52,7 @@ camlp5          7.06  Preprocessor-pretty-printer of OCaml
 coq            8.5.3  Formal proof management system.
 num                0  The Num library for arbitrary-precision integer and ration
 # opam file:
-opam-version: &quot;1.2&quot;
-author: &quot;Laurent Théry&quot;
+opam-version: &quot;2.0&quot;
 maintainer: &quot;Laurent.Thery@inria.fr&quot;
 homepage: &quot;https://github.com/thery/twoSquare&quot;
 bug-reports: &quot;https://github.com/thery/twoSquare/issues&quot;
@@ -68,25 +67,56 @@ remove: [
   [&quot;sh&quot; &quot;-c&quot; &quot;rmdir %{lib}%/coq/user-contrib/mathcomp/contrib || true&quot;]
 ]
 depends: [
+  &quot;ocaml&quot;
   &quot;coq&quot; {&gt;= &quot;8.5&quot;}
- (&quot;coq-math-comp&quot; {&gt;= &quot;1.6&quot; &amp; &lt; &quot;1.7&quot;} |
-   (&quot;coq-mathcomp-ssreflect&quot; {&gt;= &quot;1.6&quot; &amp; &lt; &quot;1.7&quot;} &amp;
-    (&quot;coq-mathcomp-algebra&quot;   {&gt;= &quot;1.6&quot; &amp; &lt; &quot;1.7&quot;} &amp;
-     &quot;coq-mathcomp-field&quot;   {&gt;= &quot;1.6&quot; &amp; &lt; &quot;1.7&quot;})))
+  &quot;coq-math-comp&quot; {&gt;= &quot;1.6&quot; &amp; &lt; &quot;1.7&quot;} |
+  (&quot;coq-mathcomp-ssreflect&quot; {&gt;= &quot;1.6&quot; &amp; &lt; &quot;1.7&quot;} &amp;
+   (&quot;coq-mathcomp-algebra&quot; {&gt;= &quot;1.6&quot; &amp; &lt; &quot;1.7&quot;} &amp;
+    &quot;coq-mathcomp-field&quot; {&gt;= &quot;1.6&quot; &amp; &lt; &quot;1.7&quot;}))
 ]
+synopsis:
+  &quot;A proof of Fermat&#39;s theorem on sum of two squares. It is the proof that uses gaussian integers. This is done in ssreflect. It contains two file :&quot;
+description: &quot;&quot;&quot;
+gauss_int.v : the definition of gaussian integers
+fermat2.v : the proof of Fermat&#39;s theorem
+The final statement reads:
+===================================================
+From mathcomp
+Require Import all_ssreflect.
+From mathcomp.contrib.sum_of_two_square
+Require Import gauss_int fermat2.
+Check sum2stest.
+sum2stest
+     : forall n : nat,
+       reflect
+         (forall p : nat,
+          prime p -&gt;
+          odd p -&gt; p %| n -&gt; odd (logn p n) -&gt; p %% 4 = 1)
+         (n \\is a sum_of_two_square)
+===================================================&quot;&quot;&quot;
+authors: &quot;Laurent Théry&quot;
+url {
+  src: &quot;https://github.com/thery/twoSquare/archive/v1.0.0.zip&quot;
+  checksum: &quot;md5=98739e31fac7fcda2cb52f40e5901257&quot;
+}
 </pre>
             <h2>Lint</h2>
             <dl class="dl-horizontal">
               <dt>Command</dt>
               <dd><code>ruby lint.rb released opam-coq-archive/released/packages/coq-mathcomp-sum-of-two-square/coq-mathcomp-sum-of-two-square.1.0.0</code></dd>
               <dt>Return code</dt>
-              <dd>0</dd>
+              <dd>256</dd>
+              <dt>Output</dt>
+              <dd><pre>lint.rb:11:in `read&#39;: No such file or directory @ rb_sysopen - opam-coq-archive/released/packages/coq-mathcomp-sum-of-two-square/coq-mathcomp-sum-of-two-square.1.0.0/descr (Errno::ENOENT)
+	from lint.rb:11:in `lint&#39;
+	from lint.rb:52:in `&lt;main&gt;&#39;
+</pre></dd>
             </dl>
             <h2>Dry install</h2>
             <p>Dry install with the current Coq version:</p>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>opam install -y --show-action coq-mathcomp-sum-of-two-square.1.0.0 coq.8.5.3</code></dd>
+              <dd><code>true</code></dd>
               <dt>Return code</dt>
               <dd>0</dd>
             </dl>
@@ -100,58 +130,11 @@ depends: [
             <h2>Install dependencies</h2>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>opam list; ulimit -Sv 4000000; timeout 30m opam install -y --deps-only coq-mathcomp-sum-of-two-square.1.0.0</code></dd>
+              <dd><code>true</code></dd>
               <dt>Return code</dt>
-              <dd>31744</dd>
+              <dd>0</dd>
               <dt>Duration</dt>
-              <dd>30 m 0 s</dd>
-              <dt>Output</dt>
-              <dd><pre># Installed packages for system:
-base-bigarray   base  Bigarray library distributed with the OCaml compiler
-base-num        base  Num library distributed with the OCaml compiler
-base-threads    base  Threads library distributed with the OCaml compiler
-base-unix       base  Unix library distributed with the OCaml compiler
-camlp5          7.06  Preprocessor-pretty-printer of OCaml
-coq            8.5.3  Formal proof management system.
-num                0  The Num library for arbitrary-precision integer and ration
-The following actions will be performed:
-  - install coq-mathcomp-ssreflect 1.6.4
-  - install coq-mathcomp-fingroup  1.6.4
-  - install coq-mathcomp-algebra   1.6.4
-  - install coq-mathcomp-solvable  1.6.4
-  - install coq-mathcomp-field     1.6.4
-===== 5 to install =====
-=-=- Gathering sources =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
-[coq-mathcomp-algebra: http] Command started
-[coq-mathcomp-field: http] Command started
-[coq-mathcomp-fingroup: http] Command started
-[coq-mathcomp-fingroup: http] Command started
-[coq-mathcomp-fingroup.1.6.4] http://github.com/math-comp/math-comp/archive/mathcomp-1.6.4.tar.gz downloaded
-[coq-mathcomp-solvable: http] Command started
-[coq-mathcomp-field: http] Command started
-[coq-mathcomp-field.1.6.4] http://github.com/math-comp/math-comp/archive/mathcomp-1.6.4.tar.gz downloaded
-[coq-mathcomp-ssreflect: http] Command started
-[coq-mathcomp-algebra: http] Command started
-[coq-mathcomp-algebra.1.6.4] http://github.com/math-comp/math-comp/archive/mathcomp-1.6.4.tar.gz downloaded
-[coq-mathcomp-solvable: http] Command started
-[coq-mathcomp-solvable.1.6.4] http://github.com/math-comp/math-comp/archive/mathcomp-1.6.4.tar.gz downloaded
-[coq-mathcomp-ssreflect: http] Command started
-[coq-mathcomp-ssreflect.1.6.4] http://github.com/math-comp/math-comp/archive/mathcomp-1.6.4.tar.gz downloaded
-=-=- Processing actions -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
-[coq-mathcomp-ssreflect: make 4] Command started
-[coq-mathcomp-ssreflect: make install] Command started
--&gt; installed coq-mathcomp-ssreflect.1.6.4
-[coq-mathcomp-fingroup: make 4] Command started
-[coq-mathcomp-fingroup: make install] Command started
--&gt; installed coq-mathcomp-fingroup.1.6.4
-[coq-mathcomp-algebra: make 4] Command started
-[coq-mathcomp-algebra: make install] Command started
--&gt; installed coq-mathcomp-algebra.1.6.4
-[coq-mathcomp-solvable: make 4] Command started
-[coq-mathcomp-solvable: make install] Command started
--&gt; installed coq-mathcomp-solvable.1.6.4
-[coq-mathcomp-field: make 4] Command started
-</pre></dd>
+              <dd>0 s</dd>
             </dl>
             <h2>Install</h2>
             <dl class="dl-horizontal">

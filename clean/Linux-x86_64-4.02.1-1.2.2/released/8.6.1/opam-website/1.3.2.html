@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>opam-website: Not compatible with this Coq</title>
+    <title>opam-website: Lint error</title>
     <link rel="shortcut icon" type="image/png" href="../../../../../favicon.png" />
     <link href="../../../../../bootstrap.min.css" rel="stylesheet">
     <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
@@ -38,10 +38,10 @@
               opam-website
               <small>
                 1.3.2
-                <span class="label label-info">Not compatible with this Coq</span>
+                <span class="label label-danger">Lint error</span>
               </small>
             </h1>
-            <p><em><script>document.write(moment("2019-03-31 18:05:58 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2019-03-31 18:05:58 UTC)</em><p>
+            <p><em><script>document.write(moment("2019-04-04 04:38:34 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2019-04-04 04:38:34 UTC)</em><p>
             <h2>Context</h2>
             <pre># Installed packages for system:
 base-bigarray   base  Bigarray library distributed with the OCaml compiler
@@ -54,10 +54,10 @@ coq            8.6.1  Formal proof management system.
 num                0  The Num library for arbitrary-precision integer and ration
 ocamlfind      1.8.0  A library manager for OCaml
 # opam file:
-opam-version: &quot;1.2&quot;
+opam-version: &quot;2.0&quot;
 maintainer: &quot;dev@clarus.me&quot;
 homepage: &quot;https://github.com/clarus/coq-opam-website&quot;
-dev-repo: &quot;https://github.com/clarus/coq-opam-website.git&quot;
+dev-repo: &quot;git+https://github.com/clarus/coq-opam-website.git&quot;
 bug-reports: &quot;https://github.com/clarus/coq-opam-website/issues&quot;
 authors: [&quot;Guillaume Claret&quot;]
 license: &quot;MIT&quot;
@@ -67,40 +67,43 @@ build: [
   [&quot;sh&quot; &quot;-c&quot; &quot;cd extraction &amp;&amp; make&quot;]
 ]
 depends: [
+  &quot;ocaml&quot;
   &quot;coq&quot; {&gt;= &quot;8.4pl4&quot;}
   &quot;coq-io&quot; {&gt;= &quot;3.1.0&quot;}
   &quot;coq-io-exception&quot; {&gt;= &quot;1.0.0&quot;}
   &quot;coq-io-system&quot; {&gt;= &quot;2.3.0&quot;}
   &quot;coq-list-string&quot; {&gt;= &quot;2.1.0&quot;}
 ]
+synopsis: &quot;Generation of a Coq website for OPAM: http://coq.io/opam/ &quot;
+url {
+  src: &quot;https://github.com/coq-io/opam-website/archive/1.3.2.tar.gz&quot;
+  checksum: &quot;md5=861185b02cdb15a15a1de3127abe0454&quot;
+}
 </pre>
             <h2>Lint</h2>
             <dl class="dl-horizontal">
               <dt>Command</dt>
               <dd><code>ruby lint.rb released opam-coq-archive/released/packages/coq-opam-website/coq-opam-website.1.3.2</code></dd>
               <dt>Return code</dt>
-              <dd>0</dd>
+              <dd>256</dd>
+              <dt>Output</dt>
+              <dd><pre>lint.rb:11:in `read&#39;: No such file or directory @ rb_sysopen - opam-coq-archive/released/packages/coq-opam-website/coq-opam-website.1.3.2/descr (Errno::ENOENT)
+	from lint.rb:11:in `lint&#39;
+	from lint.rb:52:in `&lt;main&gt;&#39;
+</pre></dd>
             </dl>
             <h2>Dry install</h2>
             <p>Dry install with the current Coq version:</p>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>opam install -y --show-action coq-opam-website.1.3.2 coq.8.6.1</code></dd>
+              <dd><code>true</code></dd>
               <dt>Return code</dt>
-              <dd>768</dd>
-              <dt>Output</dt>
-              <dd><pre>[NOTE] Package coq is already installed (current version is 8.6.1).
-The following dependencies couldn&#39;t be met:
-  - coq-opam-website -&gt; coq-io-exception &gt;= 1.0.0 -&gt; coq &lt; 8.5~
-Your request can&#39;t be satisfied:
-  - Conflicting version constraints for coq
-No solution found, exiting
-</pre></dd>
+              <dd>0</dd>
             </dl>
             <p>Dry install without Coq, to test if the problem was incompatibility with the current Coq version:</p>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>opam remove -y coq; opam install -y --show-action coq-opam-website.1.3.2</code></dd>
+              <dd><code>true</code></dd>
               <dt>Return code</dt>
               <dd>0</dd>
             </dl>
