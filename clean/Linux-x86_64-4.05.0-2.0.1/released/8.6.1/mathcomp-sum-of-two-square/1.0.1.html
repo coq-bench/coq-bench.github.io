@@ -41,7 +41,7 @@
                 <span class="label label-info">Not compatible with this Coq</span>
               </small>
             </h1>
-            <p><em><script>document.write(moment("2019-03-30 10:44:15 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2019-03-30 10:44:15 UTC)</em><p>
+            <p><em><script>document.write(moment("2019-04-05 10:49:36 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2019-04-05 10:49:36 UTC)</em><p>
             <h2>Context</h2>
             <pre># Packages matching: installed
 # Name        # Installed       # Synopsis
@@ -58,8 +58,7 @@ ocaml-config  1                 OCaml Switch Configuration
 ocaml-system  4.05.0            The OCaml compiler (system version, from outside of opam)
 ocamlfind     1.8.0             A library manager for OCaml
 # opam file:
-opam-version: &quot;1.2&quot;
-author: &quot;Laurent Thery&quot;
+opam-version: &quot;2.0&quot;
 maintainer: &quot;Laurent.Thery@inria.fr&quot;
 homepage: &quot;https://github.com/thery/twoSquare&quot;
 bug-reports: &quot;https://github.com/thery/twoSquare/issues&quot;
@@ -74,12 +73,37 @@ remove: [
   [&quot;sh&quot; &quot;-c&quot; &quot;rmdir %{lib}%/coq/user-contrib/mathcomp/contrib || true&quot;]
 ]
 depends: [
+  &quot;ocaml&quot;
   &quot;coq&quot; {&gt;= &quot;8.8&quot;}
- (&quot;coq-math-comp&quot; {&gt;= &quot;1.7&quot;} |
-   (&quot;coq-mathcomp-ssreflect&quot; {&gt;= &quot;1.7&quot;} &amp;
-    (&quot;coq-mathcomp-algebra&quot;   {&gt;= &quot;1.7&quot;} &amp;
-     &quot;coq-mathcomp-field&quot;   {&gt;= &quot;1.7&quot;})))
+  &quot;coq-math-comp&quot; {&gt;= &quot;1.7&quot;} |
+  (&quot;coq-mathcomp-ssreflect&quot; {&gt;= &quot;1.7&quot;} &amp;
+   (&quot;coq-mathcomp-algebra&quot; {&gt;= &quot;1.7&quot;} &amp; &quot;coq-mathcomp-field&quot; {&gt;= &quot;1.7&quot;}))
 ]
+synopsis:
+  &quot;A proof of Fermat&#39;s theorem on sum of two squares. It is the proof that uses gaussian integers. This is done in ssreflect. It contains two file :&quot;
+description: &quot;&quot;&quot;
+gauss_int.v : the definition of gaussian integers
+fermat2.v : the proof of Fermat&#39;s theorem
+The final statement reads:
+===================================================
+From mathcomp
+Require Import all_ssreflect.
+From mathcomp.contrib.sum_of_two_square
+Require Import gauss_int fermat2.
+Check sum2stest.
+sum2stest
+     : forall n : nat,
+       reflect
+         (forall p : nat,
+          prime p -&gt;
+          odd p -&gt; p %| n -&gt; odd (logn p n) -&gt; p %% 4 = 1)
+         (n \\is a sum_of_two_square)
+===================================================&quot;&quot;&quot;
+authors: &quot;Laurent Thery&quot;
+url {
+  src: &quot;https://github.com/thery/twoSquare/archive/v1.0.1.zip&quot;
+  checksum: &quot;md5=1633745a81e8e3941d00ffb7e6e89883&quot;
+}
 </pre>
             <h2>Lint</h2>
             <dl class="dl-horizontal">

@@ -41,7 +41,7 @@
                 <span class="label label-info">Not compatible with this Coq</span>
               </small>
             </h1>
-            <p><em><script>document.write(moment("2019-03-30 10:44:15 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2019-03-30 10:44:15 UTC)</em><p>
+            <p><em><script>document.write(moment("2019-04-05 10:49:36 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2019-04-05 10:49:36 UTC)</em><p>
             <h2>Context</h2>
             <pre># Packages matching: installed
 # Name        # Installed       # Synopsis
@@ -58,7 +58,7 @@ ocaml-config  1                 OCaml Switch Configuration
 ocaml-system  4.05.0            The OCaml compiler (system version, from outside of opam)
 ocamlfind     1.8.0             A library manager for OCaml
 # opam file:
-opam-version: &quot;1.2&quot;
+opam-version: &quot;2.0&quot;
 maintainer: &quot;Hugo.Herbelin@inria.fr&quot;
 homepage: &quot;https://github.com/coq-contribs/zfc&quot;
 license: &quot;LGPL 2.1&quot;
@@ -66,12 +66,35 @@ build: [make &quot;-j%{jobs}%&quot;]
 install: [make &quot;install&quot;]
 remove: [&quot;rm&quot; &quot;-R&quot; &quot;%{lib}%/coq/user-contrib/ZFC&quot;]
 depends: [
+  &quot;ocaml&quot;
   &quot;coq&quot; {&gt;= &quot;8.8&quot; &amp; &lt; &quot;8.9~&quot;}
 ]
 tags: [ &quot;keyword: Set Theory&quot; &quot;keyword: Zermelo-Fraenkel&quot; &quot;keyword: Calculus of Inductive Constructions&quot; &quot;category: Mathematics/Logic/Set theory&quot; ]
 authors: [ &quot;Benjamin Werner&quot; ]
 bug-reports: &quot;https://github.com/coq-contribs/zfc/issues&quot;
-dev-repo: &quot;https://github.com/coq-contribs/zfc.git&quot;
+dev-repo: &quot;git+https://github.com/coq-contribs/zfc.git&quot;
+synopsis: &quot;An encoding of Zermelo-Fraenkel Set Theory in Coq&quot;
+description: &quot;&quot;&quot;
+The encoding of Zermelo-Fraenkel Set Theory is largely inspired by
+Peter Aczel&#39;s work dating back to the eighties. A type Ens is defined,
+which represents sets. Two predicates IN and EQ stand for membership
+and extensional equality between sets. The axioms of ZFC are then
+proved and thus appear as theorems in the development.
+  A main motivation for this work is the comparison of the respective
+expressive power of Coq and ZFC.
+  A non-computational type-theoretical axiom of choice is necessary to
+prove the replacement schemata and the set-theoretical AC.
+  The main difference between this work and Peter Aczel&#39;s is that
+propositions are defined on the impredicative level Prop. Since the
+definition of Ens is, however, still unchanged, I also added most of
+Peter Aczel&#39;s definition. The main advantage of Aczel&#39;s approach is a
+more constructive vision of the existential quantifier (which gives
+the set-theoretical axiom of choice for free).&quot;&quot;&quot;
+flags: light-uninstall
+url {
+  src: &quot;https://github.com/coq-contribs/zfc/archive/v8.8.0.tar.gz&quot;
+  checksum: &quot;md5=69691e2c36cf1059f8655ec7ba029d90&quot;
+}
 </pre>
             <h2>Lint</h2>
             <dl class="dl-horizontal">

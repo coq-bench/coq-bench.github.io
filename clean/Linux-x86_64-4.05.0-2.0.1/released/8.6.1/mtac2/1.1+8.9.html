@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>mtac2: Not compatible with this Coq</title>
+    <title>mtac2: Error with dependencies</title>
     <link rel="shortcut icon" type="image/png" href="../../../../../favicon.png" />
     <link href="../../../../../bootstrap.min.css" rel="stylesheet">
     <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
@@ -38,10 +38,10 @@
               mtac2
               <small>
                 1.1+8.9
-                <span class="label label-info">Not compatible with this Coq</span>
+                <span class="label label-warning">Error with dependencies</span>
               </small>
             </h1>
-            <p><em><script>document.write(moment("2019-03-30 10:44:15 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2019-03-30 10:44:15 UTC)</em><p>
+            <p><em><script>document.write(moment("2019-04-05 10:49:36 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2019-04-05 10:49:36 UTC)</em><p>
             <h2>Context</h2>
             <pre># Packages matching: installed
 # Name        # Installed       # Synopsis
@@ -58,10 +58,10 @@ ocaml-config  1                 OCaml Switch Configuration
 ocaml-system  4.05.0            The OCaml compiler (system version, from outside of opam)
 ocamlfind     1.8.0             A library manager for OCaml
 # opam file:
-opam-version: &quot;1.2&quot;
+opam-version: &quot;2.0&quot;
 maintainer: &quot;beta.ziliani@gmail.com&quot;
 homepage: &quot;https://github.com/Mtac2/Mtac2&quot;
-dev-repo: &quot;https://github.com/Mtac2/Mtac2.git&quot;
+dev-repo: &quot;git+https://github.com/Mtac2/Mtac2.git&quot;
 bug-reports: &quot;https://github.com/Mtac2/Mtac2/issues&quot;
 authors: [&quot;Beta Ziliani &lt;beta.ziliani@gmail.com&gt;&quot; &quot;Jan-Oliver Kaiser &lt;janno@mpi-sws.org&gt;&quot; &quot;Robbert Krebbers &lt;mail@robbertkrebbers.nl&gt;&quot; &quot;Yann Régis-Gianas &lt;yrg@pps.univ-paris-diderot.fr&gt;&quot; &quot;Derek Dreyer &lt;dreyer@mpi-sws.org&gt;&quot;]
 license: &quot;MIT&quot;
@@ -74,9 +74,16 @@ install: [
 ]
 remove: [&quot;rm&quot; &quot;-R&quot; &quot;%{lib}%/coq/user-contrib/Mtac2&quot;]
 depends: [
+  &quot;ocaml&quot;
   &quot;coq&quot; {&gt;= &quot;8.9.0&quot; &amp; &lt; &quot;8.10~&quot;}
   &quot;coq-unicoq&quot; {&gt;= &quot;1.3~&quot; &amp; &lt; &quot;2~&quot;}
 ]
+synopsis: &quot;Mtac2: Typed Tactics for Coq&quot;
+flags: light-uninstall
+url {
+  src: &quot;https://github.com/Mtac2/Mtac2/archive/v1.1-coq8.9.tar.gz&quot;
+  checksum: &quot;md5=a29c1a05d6064f7c25f1b7c2b341b772&quot;
+}
 </pre>
             <h2>Lint</h2>
             <dl class="dl-horizontal">
@@ -106,7 +113,46 @@ No solution found, exiting
               <dt>Command</dt>
               <dd><code>opam remove -y coq; opam install -y --show-action coq-mtac2.1.1+8.9</code></dd>
               <dt>Return code</dt>
-              <dd>0</dd>
+              <dd>5120</dd>
+              <dt>Output</dt>
+              <dd><pre>The following actions will be performed:
+  - remove coq 8.6.1
+&lt;&gt;&lt;&gt; Processing actions &lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;
+[WARNING] While removing coq.8.6.1: not removing files that changed since:
+            - share/emacs/site-lisp/gallina.el
+            - share/emacs/site-lisp/gallina-syntax.el
+            - share/emacs/site-lisp/gallina-db.el
+            - share/emacs/site-lisp/coqdoc.sty
+            - share/emacs/site-lisp/coq-inferior.el
+            - share/emacs/site-lisp/coq-font-lock.el
+            - man/man1/gallina.1
+            - man/man1/coqwc.1
+            - man/man1/coqtop.opt.1
+            - man/man1/coqtop.byte.1
+            - man/man1/coqtop.1
+            - man/man1/coqmktop.1
+            - man/man1/coqide.1
+            - man/man1/coqdoc.1
+            - man/man1/coqdep.1
+            - man/man1/coqchk.1
+            - man/man1/coqc.1
+            - man/man1/coq_makefile.1
+            - man/man1/coq-tex.1
+            - bin/coqtop.byte
+[NOTE] While removing coq.8.6.1: not removing non-empty directories:
+         - share/emacs/site-lisp
+-&gt; removed   coq.8.6.1
+Done.
+# Run eval $(opam env) to update the current shell environment
+The following dependencies couldn&#39;t be met:
+  - coq-mtac2 -&gt; coq (&gt;= 8.9.0 &amp; &lt; 8.10~) -&gt; ocaml &lt; 4.05.0
+      base of this switch (use `--unlock-base&#39; to force)
+  - coq-mtac2 -&gt; coq-unicoq &gt;= 1.3~ -&gt; coq &lt; 8.7~ -&gt; ocaml &lt; 4.05.0
+      base of this switch (use `--unlock-base&#39; to force)
+Your request can&#39;t be satisfied:
+  - No available version of coq satisfies the constraints
+No solution found, exiting
+</pre></dd>
             </dl>
             <h2>Install dependencies</h2>
             <dl class="dl-horizontal">

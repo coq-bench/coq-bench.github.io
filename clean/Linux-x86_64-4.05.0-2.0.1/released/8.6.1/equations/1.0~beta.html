@@ -41,7 +41,7 @@
                 <span class="label label-danger">Error</span>
               </small>
             </h1>
-            <p><em><script>document.write(moment("2019-03-30 10:44:15 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2019-03-30 10:44:15 UTC)</em><p>
+            <p><em><script>document.write(moment("2019-04-05 10:49:36 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2019-04-05 10:49:36 UTC)</em><p>
             <h2>Context</h2>
             <pre># Packages matching: installed
 # Name        # Installed       # Synopsis
@@ -58,9 +58,9 @@ ocaml-config  1                 OCaml Switch Configuration
 ocaml-system  4.05.0            The OCaml compiler (system version, from outside of opam)
 ocamlfind     1.8.0             A library manager for OCaml
 # opam file:
-opam-version: &quot;1.2&quot;
+opam-version: &quot;2.0&quot;
 authors: [ &quot;Matthieu Sozeau &lt;matthieu.sozeau@inria.fr&gt;&quot; &quot;Cyprien Mangin &lt;cyprien.mangin@m4x.org&gt;&quot; ]
-dev-repo: &quot;https://github.com/mattam82/Coq-Equations.git&quot;
+dev-repo: &quot;git+https://github.com/mattam82/Coq-Equations.git&quot;
 maintainer: &quot;matthieu.sozeau@inria.fr&quot;
 homepage: &quot;https://mattam82.github.io/Coq-Equations&quot;
 bug-reports: &quot;https://github.com/mattam82/Coq-Equations/issues&quot;
@@ -74,9 +74,15 @@ install: [
 ]
 remove: [&quot;rm&quot; &quot;-R&quot; &quot;%{lib}%/coq/user-contrib/Equations&quot;]
 depends: [
+  &quot;ocaml&quot; {&gt; &quot;4.02.3&quot;}
   &quot;coq&quot; {&gt;= &quot;8.6&quot; &amp; &lt; &quot;8.7&quot;}
 ]
-available: [ocaml-version &gt; &quot;4.02.3&quot;]
+synopsis: &quot;A function definition package for Coq&quot;
+flags: light-uninstall
+url {
+  src: &quot;https://github.com/mattam82/Coq-Equations/archive/v1.0-beta.tar.gz&quot;
+  checksum: &quot;md5=5527222d6486c8448f863dfa6f8bb3fd&quot;
+}
 </pre>
             <h2>Lint</h2>
             <dl class="dl-horizontal">
@@ -146,12 +152,12 @@ Processing  1/2: [coq-equations: make]
 - CAMLDEP src/simplify.mli
 - CAMLDEP src/noconf.mli
 - CAMLDEP src/equations.mli
-- CAMLDEP src/principles.mli
 - CAMLDEP src/principles_proofs.mli
+- CAMLDEP src/principles.mli
 - CAMLDEP src/splitting.mli
-- CAMLDEP src/covering.mli
 - CAMLDEP src/syntax.mli
 - CAMLDEP src/depelim.mli
+- CAMLDEP src/covering.mli
 - CAMLDEP src/eqdec.mli
 - CAMLDEP src/subterm.mli
 - CAMLDEP src/sigma_types.mli
@@ -168,12 +174,12 @@ Processing  1/2: [coq-equations: make]
 - CAMLDEP src/covering.ml
 - CAMLDEP src/syntax.ml
 - CAMLDEP src/depelim.ml
-- CAMLDEP src/eqdec.ml
 - *** Warning: equations_plugin.mllib already found in src (discarding src/equations_plugin.mllib)
+- CAMLDEP src/eqdec.ml
 - CAMLDEP src/subterm.ml
 - CAMLDEP src/sigma_types.ml
-- CAMLDEP src/derive.ml
 - CAMLDEP src/equations_common.ml
+- CAMLDEP src/derive.ml
 - CAMLDEP -pp src/g_equations.ml4
 - COQDEP examples/string_matching.v
 - COQDEP examples/RoseTree.v
@@ -196,8 +202,8 @@ Processing  1/2: [coq-equations: make]
 - COQDEP theories/DepElimDec.v
 - COQDEP theories/DepElim.v
 - COQDEP theories/HSets.v
-- COQDEP theories/EqDec.v
 - COQDEP theories/Signature.v
+- COQDEP theories/EqDec.v
 - COQDEP theories/Classes.v
 - COQDEP theories/Init.v
 - CAMLC -c src/equations_common.mli
@@ -213,8 +219,8 @@ Processing  1/2: [coq-equations: make]
 - findlib: [WARNING] Interface derive.cmi occurs in several directories: /home/bench/.opam/default/lib/coq/plugins/derive, src
 - findlib: [WARNING] Interface derive.cmi occurs in several directories: /home/bench/.opam/default/lib/coq/plugins/derive, src
 - CAMLC -c src/equations_common.ml
-- CAMLC -c src/eqdec.mli
 - CAMLC -c src/syntax.mli
+- CAMLC -c src/eqdec.mli
 - CAMLOPT -c src/equations_common.ml
 - findlib: [WARNING] Interface derive.cmi occurs in several directories: /home/bench/.opam/default/lib/coq/plugins/derive, src
 - findlib: [WARNING] Interface derive.cmi occurs in several directories: /home/bench/.opam/default/lib/coq/plugins/derive, src
@@ -239,8 +245,8 @@ Processing  1/2: [coq-equations: make]
 - CAMLC -c src/sigma_types.ml
 - findlib: [WARNING] Interface derive.cmi occurs in several directories: /home/bench/.opam/default/lib/coq/plugins/derive, src
 - CAMLC -c src/subterm.ml
-- findlib: [WARNING] Interface derive.cmi occurs in several directories: /home/bench/.opam/default/lib/coq/plugins/derive, src
 - CAMLC -c src/noconf.ml
+- findlib: [WARNING] Interface derive.cmi occurs in several directories: /home/bench/.opam/default/lib/coq/plugins/derive, src
 - findlib: [WARNING] Interface derive.cmi occurs in several directories: /home/bench/.opam/default/lib/coq/plugins/derive, src
 - CAMLC -c src/simplify.ml
 - findlib: [WARNING] Interface derive.cmi occurs in several directories: /home/bench/.opam/default/lib/coq/plugins/derive, src
@@ -249,20 +255,22 @@ Processing  1/2: [coq-equations: make]
 - CAMLC -c src/principles_proofs.mli
 - findlib: [WARNING] Interface derive.cmi occurs in several directories: /home/bench/.opam/default/lib/coq/plugins/derive, src
 - CAMLC -c src/depelim.ml
-- CAMLC -c src/equations.mli
 - findlib: [WARNING] Interface derive.cmi occurs in several directories: /home/bench/.opam/default/lib/coq/plugins/derive, src
+- CAMLC -c src/equations.mli
 - findlib: [WARNING] Interface derive.cmi occurs in several directories: /home/bench/.opam/default/lib/coq/plugins/derive, src
 - CAMLC -c src/principles_proofs.ml
 - CAMLC -c src/principles.mli
-- findlib: [WARNING] Interface derive.cmi occurs in several directories: /home/bench/.opam/default/lib/coq/plugins/derive, src
-- CAMLC -pp -c src/g_equations.ml4
-- findlib: [WARNING] Interface derive.cmi occurs in several directories: /home/bench/.opam/default/lib/coq/plugins/derive, src
-- findlib: [WARNING] Interface derive.cmi occurs in several directories: /home/bench/.opam/default/lib/coq/plugins/derive, src
 - CAMLOPT -c src/syntax.ml
+- findlib: [WARNING] Interface derive.cmi occurs in several directories: /home/bench/.opam/default/lib/coq/plugins/derive, src
+- findlib: [WARNING] Interface derive.cmi occurs in several directories: /home/bench/.opam/default/lib/coq/plugins/derive, src
 - findlib: [WARNING] Interface derive.cmi occurs in several directories: /home/bench/.opam/default/lib/coq/plugins/derive, src
 - CAMLOPT -c src/eqdec.ml
 - findlib: [WARNING] Interface derive.cmi occurs in several directories: /home/bench/.opam/default/lib/coq/plugins/derive, src
 - CAMLC -c src/principles.ml
+- findlib: [WARNING] Interface derive.cmi occurs in several directories: /home/bench/.opam/default/lib/coq/plugins/derive, src
+- CAMLC -c src/equations.ml
+- findlib: [WARNING] Interface derive.cmi occurs in several directories: /home/bench/.opam/default/lib/coq/plugins/derive, src
+- CAMLC -pp -c src/g_equations.ml4
 - findlib: [WARNING] Interface derive.cmi occurs in several directories: /home/bench/.opam/default/lib/coq/plugins/derive, src
 - File &quot;src/principles_proofs.ml&quot;, line 1:
 - Error: The implementation src/principles_proofs.ml
@@ -295,8 +303,8 @@ Processing  1/2: [coq-equations: make]
 # path                 ~/.opam/default/.opam-switch/build/coq-equations.1.0~beta
 # command              /usr/bin/make -j7
 # exit-code            2
-# env-file             ~/.opam/log/coq-equations-11468-865888.env
-# output-file          ~/.opam/log/coq-equations-11468-865888.out
+# env-file             ~/.opam/log/coq-equations-8509-865888.env
+# output-file          ~/.opam/log/coq-equations-8509-865888.out
 ### output ###
 # Error: The implementation src/principles_proofs.ml
 # [...]

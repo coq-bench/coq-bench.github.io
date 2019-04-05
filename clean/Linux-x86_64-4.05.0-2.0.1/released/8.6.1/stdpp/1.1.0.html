@@ -41,7 +41,7 @@
                 <span class="label label-success">2 m 29 s</span>
               </small>
             </h1>
-            <p><em><script>document.write(moment("2019-03-30 10:44:15 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2019-03-30 10:44:15 UTC)</em><p>
+            <p><em><script>document.write(moment("2019-04-05 10:49:36 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2019-04-05 10:49:36 UTC)</em><p>
             <h2>Context</h2>
             <pre># Packages matching: installed
 # Name        # Installed       # Synopsis
@@ -58,20 +58,46 @@ ocaml-config  1                 OCaml Switch Configuration
 ocaml-system  4.05.0            The OCaml compiler (system version, from outside of opam)
 ocamlfind     1.8.0             A library manager for OCaml
 # opam file:
-opam-version: &quot;1.2&quot;
+opam-version: &quot;2.0&quot;
 name: &quot;coq-stdpp&quot;
 maintainer: &quot;Ralf Jung &lt;jung@mpi-sws.org&gt;&quot;
 homepage: &quot;https://gitlab.mpi-sws.org/robbertkrebbers/coq-stdpp&quot;
 authors: &quot;Robbert Krebbers, Jacques-Henri Jourdan, Ralf Jung&quot;
 bug-reports: &quot;https://gitlab.mpi-sws.org/robbertkrebbers/coq-stdpp/issues&quot;
 license: &quot;BSD&quot;
-dev-repo: &quot;https://gitlab.mpi-sws.org/robbertkrebbers/coq-stdpp.git&quot;
+dev-repo: &quot;git+https://gitlab.mpi-sws.org/robbertkrebbers/coq-stdpp.git&quot;
 build: [make &quot;-j%{jobs}%&quot;]
 install: [make &quot;install&quot;]
 remove: [&quot;rm&quot; &quot;-rf&quot; &quot;%{lib}%/coq/user-contrib/stdpp&quot;]
 depends: [
-  &quot;coq&quot; { (&gt;= &quot;8.6&quot; &amp; &lt; &quot;8.9~&quot;) | (= &quot;dev&quot;) }
+  &quot;ocaml&quot;
+  &quot;coq&quot; {(&gt;= &quot;8.6&quot; &amp; &lt; &quot;8.9~&quot;) | (= &quot;dev&quot;)}
 ]
+synopsis: &quot;This project contains an extended \&quot;Standard Library\&quot; for Coq called coq-std++&quot;
+description: &quot;&quot;&quot;
+The key features of this library are as follows:
+- It provides a great number of definitions and lemmas for common data
+  structures such as lists, finite maps, finite sets, and finite multisets.
+- It uses type classes for common notations (like `∅`, `∪`, and Haskell-style
+  monad notations) so that these can be overloaded for different data structures.
+- It uses type classes to keep track of common properties of types, like it
+  having decidable equality or being countable or finite.
+- Most data structures are represented in canonical ways so that Leibniz
+  equality can be used as much as possible (for example, for maps we have
+  `m1 = m2` iff `∀ i, m1 !! i = m2 !! i`). On top of that, the library provides
+  setoid instances for most types and operations.
+- It provides various tactics for common tasks, like an ssreflect inspired
+  `done` tactic for finishing trivial goals, a simple breadth-first solver
+  `naive_solver`, an equality simplifier `simplify_eq`, a solver `solve_proper`
+  for proving compatibility of functions with respect to relations, and a solver
+  `set_solver` for goals involving set operations.
+- It is entirely dependency- and axiom-free.&quot;&quot;&quot;
+flags: light-uninstall
+url {
+  src:
+    &quot;https://gitlab.mpi-sws.org/robbertkrebbers/coq-stdpp/repository/coq-stdpp-1.1.0/archive.tar.gz&quot;
+  checksum: &quot;md5=2a24643f073f0975597dfbe6cbbc63e5&quot;
+}
 </pre>
             <h2>Lint</h2>
             <dl class="dl-horizontal">

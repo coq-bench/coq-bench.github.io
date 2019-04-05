@@ -41,7 +41,7 @@
                 <span class="label label-info">Not compatible with this Coq</span>
               </small>
             </h1>
-            <p><em><script>document.write(moment("2019-03-30 10:44:15 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2019-03-30 10:44:15 UTC)</em><p>
+            <p><em><script>document.write(moment("2019-04-05 10:49:36 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2019-04-05 10:49:36 UTC)</em><p>
             <h2>Context</h2>
             <pre># Packages matching: installed
 # Name        # Installed       # Synopsis
@@ -58,7 +58,7 @@ ocaml-config  1                 OCaml Switch Configuration
 ocaml-system  4.05.0            The OCaml compiler (system version, from outside of opam)
 ocamlfind     1.8.0             A library manager for OCaml
 # opam file:
-opam-version: &quot;1.2&quot;
+opam-version: &quot;2.0&quot;
 maintainer: &quot;matej.kosik@inria.fr&quot;
 homepage: &quot;https://github.com/coq-contribs/ergo&quot;
 license: &quot;Proprietary&quot;
@@ -66,6 +66,7 @@ build: [make &quot;-j%{jobs}%&quot;]
 install: [make &quot;install&quot;]
 remove: [&quot;rm&quot; &quot;-R&quot; &quot;%{lib}%/coq/user-contrib/Ergo&quot;]
 depends: [
+  &quot;ocaml&quot;
   &quot;coq&quot; {&gt;= &quot;8.5&quot; &amp; &lt; &quot;8.6~&quot;}
   &quot;coq-containers&quot; {= &quot;8.5.0&quot;}
   &quot;coq-counting&quot; {= &quot;8.5.0&quot;}
@@ -74,7 +75,15 @@ depends: [
 tags: [ &quot;keyword:reflexive tactic&quot; &quot;keyword:decision procedure&quot; &quot;keyword:satisfiability modulo theories&quot; &quot;category:Computer Science/Decision Procedures and Certified Algorithms/Decision procedures&quot; ]
 authors: [ &quot;Stéphane Lescuyer &lt;&gt;&quot; ]
 bug-reports: &quot;https://github.com/coq-contribs/ergo/issues&quot;
-dev-repo: &quot;https://github.com/coq-contribs/ergo.git&quot;
+dev-repo: &quot;git+https://github.com/coq-contribs/ergo.git&quot;
+synopsis: &quot;Ergo: a Coq plugin for reification of term with arbitrary signature&quot;
+description:
+  &quot;This library provides a tactic that performs SMT solving (SAT + congruence closure + arithmetic).&quot;
+flags: light-uninstall
+url {
+  src: &quot;https://github.com/coq-contribs/ergo/archive/v8.5.0.tar.gz&quot;
+  checksum: &quot;md5=f9ba7d7c9c1aa8ff439b2b0636e80df8&quot;
+}
 </pre>
             <h2>Lint</h2>
             <dl class="dl-horizontal">
@@ -93,7 +102,7 @@ dev-repo: &quot;https://github.com/coq-contribs/ergo.git&quot;
               <dt>Output</dt>
               <dd><pre>[NOTE] Package coq is already installed (current version is 8.6.1).
 The following dependencies couldn&#39;t be met:
-  - coq-ergo -&gt; coq-containers &lt; 8.6.0 -&gt; coq &lt; 8.6~ -&gt; ocaml &lt; 4.05.0
+  - coq-ergo -&gt; coq &lt; 8.6~ -&gt; ocaml &lt; 4.05.0
       base of this switch (use `--unlock-base&#39; to force)
 Your request can&#39;t be satisfied:
   - No available version of coq satisfies the constraints
