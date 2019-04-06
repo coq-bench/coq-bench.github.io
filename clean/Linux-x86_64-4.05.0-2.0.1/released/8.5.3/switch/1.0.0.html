@@ -41,7 +41,7 @@
                 <span class="label label-info">Not compatible with this Coq</span>
               </small>
             </h1>
-            <p><em><script>document.write(moment("2019-03-31 18:57:01 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2019-03-31 18:57:01 UTC)</em><p>
+            <p><em><script>document.write(moment("2019-04-06 16:30:16 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2019-04-06 16:30:16 UTC)</em><p>
             <h2>Context</h2>
             <pre># Packages matching: installed
 # Name        # Installed       # Synopsis
@@ -56,11 +56,11 @@ ocaml         4.05.0            The OCaml compiler (virtual package)
 ocaml-config  1                 OCaml Switch Configuration
 ocaml-system  4.05.0            The OCaml compiler (system version, from outside of opam)
 # opam file:
-opam-version: &quot;1.2&quot;
+opam-version: &quot;2.0&quot;
 version: &quot;1.0.0&quot;
 maintainer: &quot;vzaliva@cmu.edu&quot;
 homepage: &quot;https://github.com/vzaliva/coq-switch&quot;
-dev-repo: &quot;https://github.com/vzaliva/coq-switch.git&quot;
+dev-repo: &quot;git+https://github.com/vzaliva/coq-switch.git&quot;
 bug-reports: &quot;https://github.com/vzaliva/coq-switch/issues&quot;
 authors: [&quot;Vadim Zaliva &lt;vzaliva@cmu.edu&gt;&quot;]
 license: &quot;MIT&quot;
@@ -72,6 +72,7 @@ install: [
 ]
 remove: [&quot;rm&quot; &quot;-R&quot; &quot;%{lib}%/coq/user-contrib/Switch&quot;]
 depends: [
+  &quot;ocaml&quot;
   &quot;coq&quot; {&gt;= &quot;8.8&quot;}
   &quot;coq-template-coq&quot; {&gt;= &quot;2.1~beta3&quot;}
 ]
@@ -79,6 +80,20 @@ tags: [
   &quot;category:Miscellaneous/Coq Extensions&quot;
   &quot;date:2018-09-27&quot;
 ]
+synopsis:
+  &quot;A plugin to implement functionality similar to `switch` statement in C&quot;
+description: &quot;&quot;&quot;
+language.
+It allows easier dispatch on several constant values of a type with
+decidable equality. Given a type, boolean equality predicate, and list
+of choices, it will generate (using TemplateCoq) an inductive type
+with constructors, one for each of the choices, and a function mapping
+values to this type.&quot;&quot;&quot;
+flags: light-uninstall
+url {
+  src: &quot;https://github.com/vzaliva/coq-switch/archive/v1.0.0.tar.gz&quot;
+  checksum: &quot;md5=304f2910d30ec4a03124a8ba35b3187a&quot;
+}
 </pre>
             <h2>Lint</h2>
             <dl class="dl-horizontal">
@@ -97,7 +112,7 @@ tags: [
               <dt>Output</dt>
               <dd><pre>[NOTE] Package coq is already installed (current version is 8.5.3).
 The following dependencies couldn&#39;t be met:
-  - coq-switch -&gt; coq-template-coq &gt;= 2.1~beta3 -&gt; coq &gt;= 8.8
+  - coq-switch -&gt; coq &gt;= 8.8
 Your request can&#39;t be satisfied:
   - No available version of coq satisfies the constraints
 No solution found, exiting

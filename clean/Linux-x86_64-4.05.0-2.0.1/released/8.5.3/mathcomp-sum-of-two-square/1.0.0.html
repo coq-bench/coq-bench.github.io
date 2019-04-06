@@ -41,7 +41,7 @@
                 <span class="label label-warning">Error with dependencies</span>
               </small>
             </h1>
-            <p><em><script>document.write(moment("2019-03-31 18:57:01 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2019-03-31 18:57:01 UTC)</em><p>
+            <p><em><script>document.write(moment("2019-04-06 16:30:16 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2019-04-06 16:30:16 UTC)</em><p>
             <h2>Context</h2>
             <pre># Packages matching: installed
 # Name        # Installed       # Synopsis
@@ -56,8 +56,7 @@ ocaml         4.05.0            The OCaml compiler (virtual package)
 ocaml-config  1                 OCaml Switch Configuration
 ocaml-system  4.05.0            The OCaml compiler (system version, from outside of opam)
 # opam file:
-opam-version: &quot;1.2&quot;
-author: &quot;Laurent Théry&quot;
+opam-version: &quot;2.0&quot;
 maintainer: &quot;Laurent.Thery@inria.fr&quot;
 homepage: &quot;https://github.com/thery/twoSquare&quot;
 bug-reports: &quot;https://github.com/thery/twoSquare/issues&quot;
@@ -72,12 +71,38 @@ remove: [
   [&quot;sh&quot; &quot;-c&quot; &quot;rmdir %{lib}%/coq/user-contrib/mathcomp/contrib || true&quot;]
 ]
 depends: [
+  &quot;ocaml&quot;
   &quot;coq&quot; {&gt;= &quot;8.5&quot;}
- (&quot;coq-math-comp&quot; {&gt;= &quot;1.6&quot; &amp; &lt; &quot;1.7&quot;} |
-   (&quot;coq-mathcomp-ssreflect&quot; {&gt;= &quot;1.6&quot; &amp; &lt; &quot;1.7&quot;} &amp;
-    (&quot;coq-mathcomp-algebra&quot;   {&gt;= &quot;1.6&quot; &amp; &lt; &quot;1.7&quot;} &amp;
-     &quot;coq-mathcomp-field&quot;   {&gt;= &quot;1.6&quot; &amp; &lt; &quot;1.7&quot;})))
+  &quot;coq-math-comp&quot; {&gt;= &quot;1.6&quot; &amp; &lt; &quot;1.7&quot;} |
+  (&quot;coq-mathcomp-ssreflect&quot; {&gt;= &quot;1.6&quot; &amp; &lt; &quot;1.7&quot;} &amp;
+   (&quot;coq-mathcomp-algebra&quot; {&gt;= &quot;1.6&quot; &amp; &lt; &quot;1.7&quot;} &amp;
+    &quot;coq-mathcomp-field&quot; {&gt;= &quot;1.6&quot; &amp; &lt; &quot;1.7&quot;}))
 ]
+synopsis:
+  &quot;A proof of Fermat&#39;s theorem on sum of two squares. It is the proof that uses gaussian integers. This is done in ssreflect. It contains two file :&quot;
+description: &quot;&quot;&quot;
+gauss_int.v : the definition of gaussian integers
+fermat2.v : the proof of Fermat&#39;s theorem
+The final statement reads:
+===================================================
+From mathcomp
+Require Import all_ssreflect.
+From mathcomp.contrib.sum_of_two_square
+Require Import gauss_int fermat2.
+Check sum2stest.
+sum2stest
+     : forall n : nat,
+       reflect
+         (forall p : nat,
+          prime p -&gt;
+          odd p -&gt; p %| n -&gt; odd (logn p n) -&gt; p %% 4 = 1)
+         (n \\is a sum_of_two_square)
+===================================================&quot;&quot;&quot;
+authors: &quot;Laurent Théry&quot;
+url {
+  src: &quot;https://github.com/thery/twoSquare/archive/v1.0.0.zip&quot;
+  checksum: &quot;md5=98739e31fac7fcda2cb52f40e5901257&quot;
+}
 </pre>
             <h2>Lint</h2>
             <dl class="dl-horizontal">
@@ -130,8 +155,8 @@ The following actions will be performed:
   - install coq-mathcomp-field     1.6.4
 ===== 5 to install =====
 &lt;&gt;&lt;&gt; Gathering sources &gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;
-[coq-mathcomp-algebra.1.6.4] downloaded from http://github.com/math-comp/math-comp/archive/mathcomp-1.6.4.tar.gz
 [coq-mathcomp-field.1.6.4] downloaded from http://github.com/math-comp/math-comp/archive/mathcomp-1.6.4.tar.gz
+[coq-mathcomp-algebra.1.6.4] downloaded from http://github.com/math-comp/math-comp/archive/mathcomp-1.6.4.tar.gz
 [coq-mathcomp-fingroup.1.6.4] downloaded from http://github.com/math-comp/math-comp/archive/mathcomp-1.6.4.tar.gz
 [coq-mathcomp-solvable.1.6.4] found in cache
 [coq-mathcomp-ssreflect.1.6.4] found in cache

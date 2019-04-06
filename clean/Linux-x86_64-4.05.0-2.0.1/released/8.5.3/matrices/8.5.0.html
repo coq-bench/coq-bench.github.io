@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>matrices: 17 s</title>
+    <title>matrices: 16 s</title>
     <link rel="shortcut icon" type="image/png" href="../../../../../favicon.png" />
     <link href="../../../../../bootstrap.min.css" rel="stylesheet">
     <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
@@ -38,10 +38,10 @@
               matrices
               <small>
                 8.5.0
-                <span class="label label-success">17 s</span>
+                <span class="label label-success">16 s</span>
               </small>
             </h1>
-            <p><em><script>document.write(moment("2019-03-31 18:57:01 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2019-03-31 18:57:01 UTC)</em><p>
+            <p><em><script>document.write(moment("2019-04-06 16:30:16 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2019-04-06 16:30:16 UTC)</em><p>
             <h2>Context</h2>
             <pre># Packages matching: installed
 # Name        # Installed       # Synopsis
@@ -56,7 +56,7 @@ ocaml         4.05.0            The OCaml compiler (virtual package)
 ocaml-config  1                 OCaml Switch Configuration
 ocaml-system  4.05.0            The OCaml compiler (system version, from outside of opam)
 # opam file:
-opam-version: &quot;1.2&quot;
+opam-version: &quot;2.0&quot;
 maintainer: &quot;matej.kosik@inria.fr&quot;
 homepage: &quot;https://github.com/coq-contribs/matrices&quot;
 license: &quot;LGPL 2&quot;
@@ -64,12 +64,33 @@ build: [make &quot;-j%{jobs}%&quot;]
 install: [make &quot;install&quot;]
 remove: [&quot;rm&quot; &quot;-R&quot; &quot;%{lib}%/coq/user-contrib/Matrices&quot;]
 depends: [
+  &quot;ocaml&quot;
   &quot;coq&quot; {&gt;= &quot;8.5&quot; &amp; &lt; &quot;8.6~&quot;}
 ]
 tags: [ &quot;keyword:matrices&quot; &quot;keyword:vectors&quot; &quot;keyword:linear algebra&quot; &quot;keyword:coq modules&quot; &quot;category:Mathematics/Algebra&quot; &quot;date:2003-03&quot; ]
 authors: [ &quot;Nicolas Magaud &lt;&gt;&quot; ]
 bug-reports: &quot;https://github.com/coq-contribs/matrices/issues&quot;
-dev-repo: &quot;https://github.com/coq-contribs/matrices.git&quot;
+dev-repo: &quot;git+https://github.com/coq-contribs/matrices.git&quot;
+synopsis: &quot;Ring properties for square matrices &quot;
+description: &quot;&quot;&quot;
+This contribution contains an operational formalization of square matrices.
+(m,n)-Matrices are represented as vectors of length n. Each vector
+(a row) is itself a vector whose length is m.
+Vectors are actually implemented as dependent lists.
+We define basic operations for this datatype (addition, product, neutral
+elements O_n and I_n). We then prove the ring properties for these
+operations. The development uses Coq modules to specify the interface
+(the ring structure properties) as a signature.
+This development deals with dependent types and partial functions.
+Most of the functions are defined by dependent case analysis
+and some functions such as getting a column require
+the use of preconditions (to check whether we are within the
+bounds of the matrix).&quot;&quot;&quot;
+flags: light-uninstall
+url {
+  src: &quot;https://github.com/coq-contribs/matrices/archive/v8.5.0.tar.gz&quot;
+  checksum: &quot;md5=29685b178fbf91fddc6198940b186c27&quot;
+}
 </pre>
             <h2>Lint</h2>
             <dl class="dl-horizontal">
@@ -109,7 +130,7 @@ dev-repo: &quot;https://github.com/coq-contribs/matrices.git&quot;
               <dt>Return code</dt>
               <dd>0</dd>
               <dt>Duration</dt>
-              <dd>17 s</dd>
+              <dd>16 s</dd>
             </dl>
             <h2>Installation size</h2>
             <p>Total: 704 K</p>
