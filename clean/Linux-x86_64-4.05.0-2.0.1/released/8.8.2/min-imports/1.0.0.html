@@ -41,7 +41,7 @@
                 <span class="label label-danger">Uninstallation error</span>
               </small>
             </h1>
-            <p><em><script>document.write(moment("2019-04-01 20:54:18 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2019-04-01 20:54:18 UTC)</em><p>
+            <p><em><script>document.write(moment("2019-04-09 04:57:55 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2019-04-09 04:57:55 UTC)</em><p>
             <h2>Context</h2>
             <pre># Packages matching: installed
 # Name        # Installed       # Synopsis
@@ -51,17 +51,17 @@ base-threads  base
 base-unix     base
 camlp5        7.06.10-g84ce6cc4 Preprocessor-pretty-printer of OCaml
 conf-m4       1                 Virtual package relying on m4
-coq           8.8.2             Formal proof management system.
+coq           8.8.2             Formal proof management system
 num           0                 The Num library for arbitrary-precision integer and rational arithmetic
 ocaml         4.05.0            The OCaml compiler (virtual package)
 ocaml-config  1                 OCaml Switch Configuration
 ocaml-system  4.05.0            The OCaml compiler (system version, from outside of opam)
 ocamlfind     1.8.0             A library manager for OCaml
 # opam file:
-opam-version: &quot;1.2&quot;
+opam-version: &quot;2.0&quot;
 maintainer: &quot;lord@crocodile.org&quot;
 homepage: &quot;https://github.com/vzaliva/coq-min-imports&quot;
-dev-repo: &quot;https://github.com/vzaliva/coq-min-imports.git&quot;
+dev-repo: &quot;git+https://github.com/vzaliva/coq-min-imports.git&quot;
 bug-reports: &quot;https://github.com/vzaliva/coq-min-imports/issues&quot;
 authors: [&quot;Vadim Zaliva&quot;]
 license: &quot;MIT&quot;
@@ -75,6 +75,7 @@ remove: [
   [&quot;rm&quot; &quot;%{bin}%/coq_min_imports&quot;]
 ]
 depends: [
+  &quot;ocaml&quot;
   &quot;coq&quot; {&gt;= &quot;8.5&quot;}
   &quot;extlib&quot;
   &quot;batteries&quot;
@@ -83,7 +84,19 @@ depends: [
 tags: [
   &quot;category:Miscellaneous/Coq Extensions&quot;
   &quot;date:2017-01-04&quot;
-]</pre>
+]
+synopsis:
+  &quot;This script will try to remove unnecessary module imports from Coq&quot;
+description: &quot;&quot;&quot;
+sources. It examines modules listed in &quot;Require Import&quot; statements one
+by one and tries to recompile to see if their removal would cause
+compilation errors.&quot;&quot;&quot;
+flags: light-uninstall
+url {
+  src: &quot;https://github.com/vzaliva/coq-min-imports/archive/v1.0.0.tar.gz&quot;
+  checksum: &quot;md5=5d66474c9d71dbc46b44c786fb6fef00&quot;
+}
+</pre>
             <h2>Lint</h2>
             <dl class="dl-horizontal">
               <dt>Command</dt>
@@ -113,7 +126,7 @@ tags: [
               <dt>Return code</dt>
               <dd>0</dd>
               <dt>Duration</dt>
-              <dd>1 m 43 s</dd>
+              <dd>1 m 38 s</dd>
             </dl>
             <h2>Install</h2>
             <dl class="dl-horizontal">

@@ -41,7 +41,7 @@
                 <span class="label label-info">Not compatible with this Coq</span>
               </small>
             </h1>
-            <p><em><script>document.write(moment("2019-04-01 20:54:18 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2019-04-01 20:54:18 UTC)</em><p>
+            <p><em><script>document.write(moment("2019-04-09 04:57:55 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2019-04-09 04:57:55 UTC)</em><p>
             <h2>Context</h2>
             <pre># Packages matching: installed
 # Name        # Installed       # Synopsis
@@ -51,14 +51,14 @@ base-threads  base
 base-unix     base
 camlp5        7.06.10-g84ce6cc4 Preprocessor-pretty-printer of OCaml
 conf-m4       1                 Virtual package relying on m4
-coq           8.8.2             Formal proof management system.
+coq           8.8.2             Formal proof management system
 num           0                 The Num library for arbitrary-precision integer and rational arithmetic
 ocaml         4.05.0            The OCaml compiler (virtual package)
 ocaml-config  1                 OCaml Switch Configuration
 ocaml-system  4.05.0            The OCaml compiler (system version, from outside of opam)
 ocamlfind     1.8.0             A library manager for OCaml
 # opam file:
-opam-version: &quot;1.2&quot;
+opam-version: &quot;2.0&quot;
 maintainer: &quot;matej.kosik@inria.fr&quot;
 homepage: &quot;https://github.com/coq-contribs/smc&quot;
 license: &quot;LGPL 2&quot;
@@ -66,13 +66,23 @@ build: [make &quot;-j%{jobs}%&quot;]
 install: [make &quot;install&quot;]
 remove: [&quot;rm&quot; &quot;-R&quot; &quot;%{lib}%/coq/user-contrib/SMC&quot;]
 depends: [
+  &quot;ocaml&quot;
   &quot;coq&quot; {&gt;= &quot;8.5&quot; &amp; &lt; &quot;8.6~&quot;}
   &quot;coq-int-map&quot; {= &quot;8.5.0&quot;}
 ]
 tags: [ &quot;keyword:binary decision diagrams&quot; &quot;keyword:classical logic&quot; &quot;keyword:propositional logic&quot; &quot;keyword:garbage collection&quot; &quot;keyword:modal mu calculus&quot; &quot;keyword:model checking&quot; &quot;keyword:symbolic model checking&quot; &quot;keyword:reflection&quot; &quot;category:Computer Science/Decision Procedures and Certified Algorithms/Decision procedures&quot; &quot;date:2002-11&quot; ]
 authors: [ &quot;Kumar Neeraj Verma &lt;verma@lsv.ens-cachan.fr&gt;&quot; ]
 bug-reports: &quot;https://github.com/coq-contribs/smc/issues&quot;
-dev-repo: &quot;https://github.com/coq-contribs/smc.git&quot;
+dev-repo: &quot;git+https://github.com/coq-contribs/smc.git&quot;
+synopsis: &quot;BDD based symbolic model checker for the modal mu-calculus&quot;
+description: &quot;&quot;&quot;
+Provides BDD algorithms, a symbolic model checker for the modal
+mu-calculus based on it, together with a garbage collector&quot;&quot;&quot;
+flags: light-uninstall
+url {
+  src: &quot;https://github.com/coq-contribs/smc/archive/v8.5.0.tar.gz&quot;
+  checksum: &quot;md5=b9718819e730da0ad2dc3febeef09107&quot;
+}
 </pre>
             <h2>Lint</h2>
             <dl class="dl-horizontal">
@@ -91,7 +101,7 @@ dev-repo: &quot;https://github.com/coq-contribs/smc.git&quot;
               <dt>Output</dt>
               <dd><pre>[NOTE] Package coq is already installed (current version is 8.8.2).
 The following dependencies couldn&#39;t be met:
-  - coq-smc -&gt; coq &lt; 8.6~ -&gt; ocaml &lt; 4.05.0
+  - coq-smc -&gt; coq-int-map &lt; 8.6.0 -&gt; coq &lt; 8.6~ -&gt; ocaml &lt; 4.05.0
       base of this switch (use `--unlock-base&#39; to force)
 Your request can&#39;t be satisfied:
   - No available version of coq satisfies the constraints

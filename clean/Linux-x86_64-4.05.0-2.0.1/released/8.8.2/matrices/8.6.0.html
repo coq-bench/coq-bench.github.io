@@ -41,7 +41,7 @@
                 <span class="label label-info">Not compatible with this Coq</span>
               </small>
             </h1>
-            <p><em><script>document.write(moment("2019-04-01 20:54:18 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2019-04-01 20:54:18 UTC)</em><p>
+            <p><em><script>document.write(moment("2019-04-09 04:57:55 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2019-04-09 04:57:55 UTC)</em><p>
             <h2>Context</h2>
             <pre># Packages matching: installed
 # Name        # Installed       # Synopsis
@@ -51,14 +51,14 @@ base-threads  base
 base-unix     base
 camlp5        7.06.10-g84ce6cc4 Preprocessor-pretty-printer of OCaml
 conf-m4       1                 Virtual package relying on m4
-coq           8.8.2             Formal proof management system.
+coq           8.8.2             Formal proof management system
 num           0                 The Num library for arbitrary-precision integer and rational arithmetic
 ocaml         4.05.0            The OCaml compiler (virtual package)
 ocaml-config  1                 OCaml Switch Configuration
 ocaml-system  4.05.0            The OCaml compiler (system version, from outside of opam)
 ocamlfind     1.8.0             A library manager for OCaml
 # opam file:
-opam-version: &quot;1.2&quot;
+opam-version: &quot;2.0&quot;
 maintainer: &quot;Hugo.Herbelin@inria.fr&quot;
 homepage: &quot;https://github.com/coq-contribs/matrices&quot;
 license: &quot;LGPL 2.1&quot;
@@ -66,12 +66,33 @@ build: [make &quot;-j%{jobs}%&quot;]
 install: [make &quot;install&quot;]
 remove: [&quot;rm&quot; &quot;-R&quot; &quot;%{lib}%/coq/user-contrib/Matrices&quot;]
 depends: [
+  &quot;ocaml&quot;
   &quot;coq&quot; {&gt;= &quot;8.6&quot; &amp; &lt; &quot;8.7~&quot;}
 ]
 tags: [ &quot;keyword: matrices&quot; &quot;keyword: vectors&quot; &quot;keyword: linear algebra&quot; &quot;keyword: Coq modules&quot; &quot;category: Mathematics/Algebra&quot; &quot;date: 2003-03&quot; ]
 authors: [ &quot;Nicolas Magaud&quot; ]
 bug-reports: &quot;https://github.com/coq-contribs/matrices/issues&quot;
-dev-repo: &quot;https://github.com/coq-contribs/matrices.git&quot;
+dev-repo: &quot;git+https://github.com/coq-contribs/matrices.git&quot;
+synopsis: &quot;Ring properties for square matrices&quot;
+description: &quot;&quot;&quot;
+This contribution contains an operational formalization of square matrices.
+(m,n)-Matrices are represented as vectors of length n. Each vector
+(a row) is itself a vector whose length is m.
+Vectors are actually implemented as dependent lists.
+We define basic operations for this datatype (addition, product, neutral
+elements O_n and I_n). We then prove the ring properties for these
+operations. The development uses Coq modules to specify the interface
+(the ring structure properties) as a signature.
+This development deals with dependent types and partial functions.
+Most of the functions are defined by dependent case analysis
+and some functions such as getting a column require
+the use of preconditions (to check whether we are within the
+bounds of the matrix).&quot;&quot;&quot;
+flags: light-uninstall
+url {
+  src: &quot;https://github.com/coq-contribs/matrices/archive/v8.6.0.tar.gz&quot;
+  checksum: &quot;md5=c5305637678c9c652ad61755a6523ae4&quot;
+}
 </pre>
             <h2>Lint</h2>
             <dl class="dl-horizontal">

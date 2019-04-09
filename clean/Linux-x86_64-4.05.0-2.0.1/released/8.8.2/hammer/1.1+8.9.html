@@ -41,7 +41,7 @@
                 <span class="label label-info">Not compatible with this Coq</span>
               </small>
             </h1>
-            <p><em><script>document.write(moment("2019-04-01 20:54:18 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2019-04-01 20:54:18 UTC)</em><p>
+            <p><em><script>document.write(moment("2019-04-09 04:57:55 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2019-04-09 04:57:55 UTC)</em><p>
             <h2>Context</h2>
             <pre># Packages matching: installed
 # Name        # Installed       # Synopsis
@@ -51,27 +51,30 @@ base-threads  base
 base-unix     base
 camlp5        7.06.10-g84ce6cc4 Preprocessor-pretty-printer of OCaml
 conf-m4       1                 Virtual package relying on m4
-coq           8.8.2             Formal proof management system.
+coq           8.8.2             Formal proof management system
 num           0                 The Num library for arbitrary-precision integer and rational arithmetic
 ocaml         4.05.0            The OCaml compiler (virtual package)
 ocaml-config  1                 OCaml Switch Configuration
 ocaml-system  4.05.0            The OCaml compiler (system version, from outside of opam)
 ocamlfind     1.8.0             A library manager for OCaml
 # opam file:
-opam-version: &quot;1.2&quot;
+opam-version: &quot;2.0&quot;
 maintainer: &quot;palmskog@gmail.com&quot;
 homepage: &quot;https://github.com/lukaszcz/coqhammer&quot;
-dev-repo: &quot;https://github.com/lukaszcz/coqhammer.git&quot;
+dev-repo: &quot;git+https://github.com/lukaszcz/coqhammer.git&quot;
 bug-reports: &quot;https://github.com/lukaszcz/coqhammer/issues&quot;
 license: &quot;LGPL-2.1-only&quot;
-build: [ make &quot;-j%{jobs}%&quot; ]
-build-test: [ make &quot;tests&quot; ]
+build: [
+  [make &quot;-j%{jobs}%&quot;]
+  [make &quot;tests&quot;] {with-test}
+]
 install: [ make &quot;install&quot; ]
 remove: [
   [&quot;sh&quot; &quot;-c&quot; &quot;rm -rf &#39;%{lib}%/coq/user-contrib/Hammer&#39;&quot;]
   [&quot;sh&quot; &quot;-c&quot; &quot;rm -f &#39;%{bin}%/predict&#39; &#39;%{bin}%/htimeout&#39;&quot;]
 ]
 depends: [
+  &quot;ocaml&quot;
   &quot;coq&quot; {&gt;= &quot;8.9&quot; &amp; &lt; &quot;8.10~&quot;}
 ]
 tags: [
@@ -86,6 +89,11 @@ authors: [
   &quot;Cezary Kaliszyk &lt;cezary.kaliszyk@uibk.ac.at&gt;&quot;
   &quot;Burak Ekici &lt;burak.ekici@uibk.ac.at&gt;&quot;
 ]
+synopsis: &quot;Automation for Dependent Type Theory&quot;
+url {
+  src: &quot;https://github.com/lukaszcz/coqhammer/archive/v1.1-coq8.9.tar.gz&quot;
+  checksum: &quot;md5=76a72dd942b2f6d4f6392b0a9f44af02&quot;
+}
 </pre>
             <h2>Lint</h2>
             <dl class="dl-horizontal">

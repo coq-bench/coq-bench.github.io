@@ -41,7 +41,7 @@
                 <span class="label label-success">29 s</span>
               </small>
             </h1>
-            <p><em><script>document.write(moment("2019-04-01 20:54:18 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2019-04-01 20:54:18 UTC)</em><p>
+            <p><em><script>document.write(moment("2019-04-09 04:57:55 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2019-04-09 04:57:55 UTC)</em><p>
             <h2>Context</h2>
             <pre># Packages matching: installed
 # Name        # Installed       # Synopsis
@@ -51,14 +51,14 @@ base-threads  base
 base-unix     base
 camlp5        7.06.10-g84ce6cc4 Preprocessor-pretty-printer of OCaml
 conf-m4       1                 Virtual package relying on m4
-coq           8.8.2             Formal proof management system.
+coq           8.8.2             Formal proof management system
 num           0                 The Num library for arbitrary-precision integer and rational arithmetic
 ocaml         4.05.0            The OCaml compiler (virtual package)
 ocaml-config  1                 OCaml Switch Configuration
 ocaml-system  4.05.0            The OCaml compiler (system version, from outside of opam)
 ocamlfind     1.8.0             A library manager for OCaml
 # opam file:
-opam-version: &quot;1.2&quot;
+opam-version: &quot;2.0&quot;
 maintainer: &quot;Hugo.Herbelin@inria.fr&quot;
 homepage: &quot;https://github.com/coq-contribs/pts&quot;
 license: &quot;Unknown&quot;
@@ -66,12 +66,29 @@ build: [make &quot;-j%{jobs}%&quot;]
 install: [make &quot;install&quot;]
 remove: [&quot;rm&quot; &quot;-R&quot; &quot;%{lib}%/coq/user-contrib/PTS&quot;]
 depends: [
+  &quot;ocaml&quot;
   &quot;coq&quot; {&gt;= &quot;8.8&quot; &amp; &lt; &quot;8.9~&quot;}
 ]
 tags: [ &quot;keyword: calculus of constructions&quot; &quot;keyword: coq&quot; &quot;keyword: PTS&quot; &quot;keyword: pure type systems&quot; &quot;keyword: metatheory&quot; &quot;category: Computer Science/Lambda Calculi&quot; &quot;date: 2007-03&quot; ]
 authors: [ &quot;Bruno Barras&quot; ]
 bug-reports: &quot;https://github.com/coq-contribs/pts/issues&quot;
-dev-repo: &quot;https://github.com/coq-contribs/pts.git&quot;
+dev-repo: &quot;git+https://github.com/coq-contribs/pts.git&quot;
+synopsis: &quot;A formalisation of Pure Type Systems&quot;
+description: &quot;&quot;&quot;
+This contrib is a formalization of Pure Type Systems. It includes most
+of the basic metatheoretical properties: weakening, substitution,
+subject-reduction, decidability of type-checking (for strongly normalizing
+PTSs). Strengtheningis not proven here.
+The kernel of a very simple proof checker is automatically generated from
+the proofs. A small interface allows interacting with this kernel, making
+up a standalone proof system.
+The Makefile has a special target &quot;html&quot; that produces html files from the
+sources and main.html that gives a short overview.&quot;&quot;&quot;
+flags: light-uninstall
+url {
+  src: &quot;https://github.com/coq-contribs/pts/archive/v8.8.0.tar.gz&quot;
+  checksum: &quot;md5=7a1bd9d674d59dcb3cfa5a99160d7c5d&quot;
+}
 </pre>
             <h2>Lint</h2>
             <dl class="dl-horizontal">

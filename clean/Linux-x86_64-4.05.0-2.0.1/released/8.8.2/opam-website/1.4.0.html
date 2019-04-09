@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>opam-website: Not compatible with this Coq</title>
+    <title>opam-website: Error with dependencies</title>
     <link rel="shortcut icon" type="image/png" href="../../../../../favicon.png" />
     <link href="../../../../../bootstrap.min.css" rel="stylesheet">
     <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
@@ -38,10 +38,10 @@
               opam-website
               <small>
                 1.4.0
-                <span class="label label-info">Not compatible with this Coq</span>
+                <span class="label label-warning">Error with dependencies</span>
               </small>
             </h1>
-            <p><em><script>document.write(moment("2019-04-01 20:54:18 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2019-04-01 20:54:18 UTC)</em><p>
+            <p><em><script>document.write(moment("2019-04-09 04:57:55 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2019-04-09 04:57:55 UTC)</em><p>
             <h2>Context</h2>
             <pre># Packages matching: installed
 # Name        # Installed       # Synopsis
@@ -51,17 +51,17 @@ base-threads  base
 base-unix     base
 camlp5        7.06.10-g84ce6cc4 Preprocessor-pretty-printer of OCaml
 conf-m4       1                 Virtual package relying on m4
-coq           8.8.2             Formal proof management system.
+coq           8.8.2             Formal proof management system
 num           0                 The Num library for arbitrary-precision integer and rational arithmetic
 ocaml         4.05.0            The OCaml compiler (virtual package)
 ocaml-config  1                 OCaml Switch Configuration
 ocaml-system  4.05.0            The OCaml compiler (system version, from outside of opam)
 ocamlfind     1.8.0             A library manager for OCaml
 # opam file:
-opam-version: &quot;1.2&quot;
+opam-version: &quot;2.0&quot;
 maintainer: &quot;dev@clarus.me&quot;
 homepage: &quot;https://github.com/clarus/coq-opam-website&quot;
-dev-repo: &quot;https://github.com/clarus/coq-opam-website.git&quot;
+dev-repo: &quot;git+https://github.com/clarus/coq-opam-website.git&quot;
 bug-reports: &quot;https://github.com/clarus/coq-opam-website/issues&quot;
 authors: [&quot;Guillaume Claret&quot;]
 license: &quot;MIT&quot;
@@ -71,12 +71,18 @@ build: [
   [&quot;sh&quot; &quot;-c&quot; &quot;cd extraction &amp;&amp; make&quot;]
 ]
 depends: [
+  &quot;ocaml&quot;
   &quot;coq&quot; {&gt;= &quot;8.4pl4&quot;}
   &quot;coq-io&quot; {&gt;= &quot;3.1.0&quot;}
   &quot;coq-io-exception&quot; {&gt;= &quot;1.0.0&quot;}
   &quot;coq-io-system&quot; {&gt;= &quot;2.3.0&quot;}
   &quot;coq-list-string&quot; {&gt;= &quot;2.1.0&quot;}
 ]
+synopsis: &quot;Generation of a Coq website for OPAM: http://coq.io/opam/ &quot;
+url {
+  src: &quot;https://github.com/coq-io/opam-website/archive/1.4.0.tar.gz&quot;
+  checksum: &quot;md5=fffbf90822efc72938c0d1d1f6e92100&quot;
+}
 </pre>
             <h2>Lint</h2>
             <dl class="dl-horizontal">
@@ -95,10 +101,8 @@ depends: [
               <dt>Output</dt>
               <dd><pre>[NOTE] Package coq is already installed (current version is 8.8.2).
 The following dependencies couldn&#39;t be met:
-  - coq-opam-website -&gt; coq-io-exception -&gt; coq &lt; 8.5~ -&gt; ocaml &lt; 4.05.0
-      base of this switch (use `--unlock-base&#39; to force)
-Your request can&#39;t be satisfied:
-  - No available version of coq satisfies the constraints
+  - coq-opam-website -&gt; coq-list-string &gt;= 2.1.0
+      no matching version
 No solution found, exiting
 </pre></dd>
             </dl>
@@ -107,7 +111,23 @@ No solution found, exiting
               <dt>Command</dt>
               <dd><code>opam remove -y coq; opam install -y --show-action coq-opam-website.1.4.0</code></dd>
               <dt>Return code</dt>
-              <dd>0</dd>
+              <dd>5120</dd>
+              <dt>Output</dt>
+              <dd><pre>The following actions will be performed:
+  - remove coq 8.8.2
+&lt;&gt;&lt;&gt; Processing actions &lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;
+[WARNING] While removing coq.8.8.2: not removing files that changed since:
+            - share/emacs/site-lisp/inferior-coq.el
+[NOTE] While removing coq.8.8.2: not removing non-empty directories:
+         - share/emacs/site-lisp
+-&gt; removed   coq.8.8.2
+Done.
+# Run eval $(opam env) to update the current shell environment
+The following dependencies couldn&#39;t be met:
+  - coq-opam-website -&gt; coq-list-string &gt;= 2.1.0
+      no matching version
+No solution found, exiting
+</pre></dd>
             </dl>
             <h2>Install dependencies</h2>
             <dl class="dl-horizontal">
