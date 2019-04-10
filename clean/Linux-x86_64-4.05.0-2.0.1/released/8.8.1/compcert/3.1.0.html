@@ -41,7 +41,7 @@
                 <span class="label label-info">Not compatible with this Coq</span>
               </small>
             </h1>
-            <p><em><script>document.write(moment("2019-04-02 22:45:44 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2019-04-02 22:45:44 UTC)</em><p>
+            <p><em><script>document.write(moment("2019-04-10 05:11:53 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2019-04-10 05:11:53 UTC)</em><p>
             <h2>Context</h2>
             <pre># Packages matching: installed
 # Name        # Installed       # Synopsis
@@ -58,19 +58,24 @@ ocaml-config  1                 OCaml Switch Configuration
 ocaml-system  4.05.0            The OCaml compiler (system version, from outside of opam)
 ocamlfind     1.8.0             A library manager for OCaml
 # opam file:
-opam-version: &quot;1.2&quot;
-author: &quot;Xavier Leroy &lt;xavier.leroy@inria.fr&gt;&quot;
+opam-version: &quot;2.0&quot;
 maintainer: &quot;Matej Košík &lt;matej.kosik@inria.fr&gt;&quot;
 homepage: &quot;http://compcert.inria.fr/&quot;
-dev-repo: &quot;https://github.com/AbsInt/CompCert.git&quot;
+dev-repo: &quot;git+https://github.com/AbsInt/CompCert.git&quot;
 bug-reports: &quot;https://github.com/AbsInt/CompCert/issues&quot;
 license: &quot;INRIA Non-Commercial License Agreement&quot;
 build: [
-  [&quot;./configure&quot; &quot;ia32-linux&quot; {os = &quot;linux&quot;}
-  		 &quot;ia32-macosx&quot; {os = &quot;darwin&quot;}
-		 &quot;ia32-cygwin&quot; {os = &quot;cygwin&quot;}
-		 &quot;-bindir&quot; &quot;%{bin}%&quot; &quot;-libdir&quot; &quot;%{lib}%/compcert&quot;
-		 &quot;-clightgen&quot;]
+  [
+    &quot;./configure&quot;
+    &quot;ia32-linux&quot; {os = &quot;linux&quot;}
+    &quot;ia32-macosx&quot; {os = &quot;macos&quot;}
+    &quot;ia32-cygwin&quot; {os = &quot;cygwin&quot;}
+    &quot;-bindir&quot;
+    &quot;%{bin}%&quot;
+    &quot;-libdir&quot;
+    &quot;%{lib}%/compcert&quot;
+    &quot;-clightgen&quot;
+  ]
   [make &quot;-j%{jobs}%&quot;]
 ]
 install: [
@@ -85,9 +90,16 @@ remove: [
   [&quot;sh&quot; &quot;-c&quot; &quot;rmdir -p %{share}%/man/man1 || true&quot;]
 ]
 depends: [
+  &quot;ocaml&quot;
   &quot;coq&quot; {&gt;= &quot;8.6&quot; &amp; &lt; &quot;8.7~&quot;}
   &quot;menhir&quot; {&gt;= &quot;20160303&quot; &amp; &lt; &quot;20180530&quot;}
 ]
+synopsis: &quot;The CompCert C compiler&quot;
+authors: &quot;Xavier Leroy &lt;xavier.leroy@inria.fr&gt;&quot;
+url {
+  src: &quot;https://github.com/AbsInt/CompCert/archive/v3.1.tar.gz&quot;
+  checksum: &quot;md5=e7efc9e44a52ffa8340789ae1bac6624&quot;
+}
 </pre>
             <h2>Lint</h2>
             <dl class="dl-horizontal">
