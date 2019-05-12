@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>compcert: Not compatible with this Coq</title>
+    <title>compcert: Not compatible</title>
     <link rel="shortcut icon" type="image/png" href="../../../../../favicon.png" />
     <link href="../../../../../bootstrap.min.css" rel="stylesheet">
     <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
@@ -38,10 +38,10 @@
               compcert
               <small>
                 2.7.1
-                <span class="label label-info">Not compatible with this Coq</span>
+                <span class="label label-info">Not compatible</span>
               </small>
             </h1>
-            <p><em><script>document.write(moment("2019-04-01 20:54:18 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2019-04-01 20:54:18 UTC)</em><p>
+            <p><em><script>document.write(moment("2019-05-12 17:31:52 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2019-05-12 17:31:52 UTC)</em><p>
             <h2>Context</h2>
             <pre># Packages matching: installed
 # Name        # Installed       # Synopsis
@@ -51,42 +51,49 @@ base-threads  base
 base-unix     base
 camlp5        7.06.10-g84ce6cc4 Preprocessor-pretty-printer of OCaml
 conf-m4       1                 Virtual package relying on m4
-coq           8.8.2             Formal proof management system.
+coq           8.8.2             Formal proof management system
 num           0                 The Num library for arbitrary-precision integer and rational arithmetic
 ocaml         4.05.0            The OCaml compiler (virtual package)
 ocaml-config  1                 OCaml Switch Configuration
 ocaml-system  4.05.0            The OCaml compiler (system version, from outside of opam)
 ocamlfind     1.8.0             A library manager for OCaml
 # opam file:
-opam-version: &quot;1.2&quot;
+opam-version: &quot;2.0&quot;
 maintainer: &quot;Maxime Dénès &lt;mail@maximedenes.fr&gt;&quot;
-author: &quot;Xavier Leroy &lt;xavier.leroy@inria.fr&gt;&quot;
 homepage: &quot;http://compcert.inria.fr/&quot;
-dev-repo: &quot;https://github.com/AbsInt/CompCert.git&quot;
+dev-repo: &quot;git+https://github.com/AbsInt/CompCert.git&quot;
 bug-reports: &quot;https://github.com/AbsInt/CompCert/issues&quot;
 license: &quot;INRIA Non-Commercial License Agreement&quot;
 build: [
-  [&quot;./configure&quot; &quot;ia32-linux&quot; {os = &quot;linux&quot;}
-  		 &quot;ia32-macosx&quot; {os = &quot;darwin&quot;}
-		 &quot;ia32-cygwin&quot; {os = &quot;cygwin&quot;}
-		 &quot;-bindir&quot; &quot;%{bin}%&quot; &quot;-libdir&quot; &quot;%{lib}%/compcert&quot;
-		 &quot;-clightgen&quot;]
+  [
+    &quot;./configure&quot;
+    &quot;ia32-linux&quot; {os = &quot;linux&quot;}
+    &quot;ia32-macosx&quot; {os = &quot;macos&quot;}
+    &quot;ia32-cygwin&quot; {os = &quot;cygwin&quot;}
+    &quot;-bindir&quot;
+    &quot;%{bin}%&quot;
+    &quot;-libdir&quot;
+    &quot;%{lib}%/compcert&quot;
+    &quot;-clightgen&quot;
+  ]
   [make &quot;-j%{jobs}%&quot;]
 ]
 install: [
   [make &quot;install&quot;]
 ]
-remove: [
-  [&quot;rm&quot; &quot;%{bin}%/ccomp&quot;]
-  [&quot;rm&quot; &quot;%{bin}%/clightgen&quot;]
-  [&quot;rm&quot; &quot;-R&quot; &quot;%{lib}%/compcert&quot;]
-  [&quot;rm&quot; &quot;%{share}%/compcert.ini&quot;]
-]
 depends: [
+  &quot;ocaml&quot;
   &quot;coq&quot; {&gt;= &quot;8.5.2&quot; &amp; &lt; &quot;8.6~&quot;}
   &quot;menhir&quot; {&gt;= &quot;20160303&quot; &amp; &lt; &quot;20180530&quot;}
 ]
 patches: &quot;fix-coq-version.patch&quot;
+synopsis: &quot;The CompCert C compiler&quot;
+authors: &quot;Xavier Leroy &lt;xavier.leroy@inria.fr&gt;&quot;
+extra-files: [&quot;fix-coq-version.patch&quot; &quot;md5=00fcc55512084b421a97922fb1eb4422&quot;]
+url {
+  src: &quot;https://github.com/AbsInt/CompCert/archive/v2.7.1.tar.gz&quot;
+  checksum: &quot;md5=e1a36bad26870384912de4b4e9eb43b0&quot;
+}
 </pre>
             <h2>Lint</h2>
             <dl class="dl-horizontal">
@@ -112,10 +119,10 @@ Your request can&#39;t be satisfied:
 No solution found, exiting
 </pre></dd>
             </dl>
-            <p>Dry install without Coq, to test if the problem was incompatibility with the current Coq version:</p>
+            <p>Dry install without Coq/switch base, to test if the problem was incompatibility with the current Coq/OCaml version:</p>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>opam remove -y coq; opam install -y --show-action coq-compcert.2.7.1</code></dd>
+              <dd><code>opam remove -y coq; opam install -y --show-action --unlock-base coq-compcert.2.7.1</code></dd>
               <dt>Return code</dt>
               <dd>0</dd>
             </dl>
