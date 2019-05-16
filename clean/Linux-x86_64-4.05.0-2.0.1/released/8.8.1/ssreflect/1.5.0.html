@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>ssreflect: Not compatible with this Coq</title>
+    <title>ssreflect: Not compatible</title>
     <link rel="shortcut icon" type="image/png" href="../../../../../favicon.png" />
     <link href="../../../../../bootstrap.min.css" rel="stylesheet">
     <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
@@ -38,10 +38,10 @@
               ssreflect
               <small>
                 1.5.0
-                <span class="label label-info">Not compatible with this Coq</span>
+                <span class="label label-info">Not compatible</span>
               </small>
             </h1>
-            <p><em><script>document.write(moment("2019-04-02 22:45:44 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2019-04-02 22:45:44 UTC)</em><p>
+            <p><em><script>document.write(moment("2019-05-16 21:59:32 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2019-05-16 21:59:32 UTC)</em><p>
             <h2>Context</h2>
             <pre># Packages matching: installed
 # Name        # Installed       # Synopsis
@@ -58,22 +58,27 @@ ocaml-config  1                 OCaml Switch Configuration
 ocaml-system  4.05.0            The OCaml compiler (system version, from outside of opam)
 ocamlfind     1.8.0             A library manager for OCaml
 # opam file:
-opam-version: &quot;1.2&quot;
+opam-version: &quot;2.0&quot;
 authors: [ &quot;Jeremy Avigad &lt;&gt;&quot; &quot;Andrea Asperti &lt;&gt;&quot; &quot;Stephane Le Roux &lt;&gt;&quot; &quot;Yves Bertot &lt;&gt;&quot; &quot;Laurence Rideau &lt;&gt;&quot; &quot;Enrico Tassi &lt;&gt;&quot; &quot;Ioana Pasca &lt;&gt;&quot; &quot;Georges Gonthier &lt;&gt;&quot; &quot;Sidi Ould Biha &lt;&gt;&quot; &quot;Cyril Cohen &lt;&gt;&quot; &quot;Francois Garillot &lt;&gt;&quot; &quot;Alexey Solovyev &lt;&gt;&quot; &quot;Russell O&#39;Connor &lt;&gt;&quot; &quot;Laurent Théry &lt;&gt;&quot; &quot;Assia Mahboubi &lt;&gt;&quot; ]
 maintainer: &quot;thomas.braibant@gmail.com&quot;
 homepage: &quot;http://ssr.msr-inria.inria.fr/&quot;
 license: &quot;CeCILL-B&quot;
 build: [
   [make &quot;-j%{jobs}%&quot;]
-  [make &quot;install&quot;]
 ]
-remove: [&quot;rm&quot; &quot;-R&quot; &quot;%{lib}%/coq/user-contrib/Ssreflect&quot;]
+install: [make &quot;install&quot;]
 depends: [
+  &quot;ocaml&quot;
   &quot;coq&quot; {&gt;= &quot;8.4pl4&quot; &amp; &lt; &quot;8.5~&quot; &amp; != &quot;8.4.6~camlp4&quot;}
 ]
 conflicts: [
   &quot;coq-mathcomp-ssreflect&quot;
 ]
+synopsis: &quot;The Small Scale Reflection extension&quot;
+url {
+  src: &quot;https://github.com/math-comp/math-comp/releases/download/archive/ssreflect-1.5.tar.gz&quot;
+  checksum: &quot;md5=19155108bd73f5af98add53b9e418f5a&quot;
+}
 </pre>
             <h2>Lint</h2>
             <dl class="dl-horizontal">
@@ -92,17 +97,15 @@ conflicts: [
               <dt>Output</dt>
               <dd><pre>[NOTE] Package coq is already installed (current version is 8.8.1).
 The following dependencies couldn&#39;t be met:
-  - coq-ssreflect -&gt; coq &lt; 8.5~ -&gt; ocaml &lt; 4.05.0
+  - coq-ssreflect -&gt; coq &lt; 8.5~ -&gt; ocaml &lt; 4.03.0
       base of this switch (use `--unlock-base&#39; to force)
-Your request can&#39;t be satisfied:
-  - No available version of coq satisfies the constraints
 No solution found, exiting
 </pre></dd>
             </dl>
-            <p>Dry install without Coq, to test if the problem was incompatibility with the current Coq version:</p>
+            <p>Dry install without Coq/switch base, to test if the problem was incompatibility with the current Coq/OCaml version:</p>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>opam remove -y coq; opam install -y --show-action coq-ssreflect.1.5.0</code></dd>
+              <dd><code>opam remove -y coq; opam install -y --show-action --unlock-base coq-ssreflect.1.5.0</code></dd>
               <dt>Return code</dt>
               <dd>0</dd>
             </dl>

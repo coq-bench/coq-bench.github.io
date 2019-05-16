@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>legacy-ring: Not compatible with this Coq</title>
+    <title>legacy-ring: Not compatible</title>
     <link rel="shortcut icon" type="image/png" href="../../../../../favicon.png" />
     <link href="../../../../../bootstrap.min.css" rel="stylesheet">
     <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
@@ -38,10 +38,10 @@
               legacy-ring
               <small>
                 8.6.0
-                <span class="label label-info">Not compatible with this Coq</span>
+                <span class="label label-info">Not compatible</span>
               </small>
             </h1>
-            <p><em><script>document.write(moment("2019-04-02 22:45:44 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2019-04-02 22:45:44 UTC)</em><p>
+            <p><em><script>document.write(moment("2019-05-16 21:59:32 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2019-05-16 21:59:32 UTC)</em><p>
             <h2>Context</h2>
             <pre># Packages matching: installed
 # Name        # Installed       # Synopsis
@@ -58,20 +58,29 @@ ocaml-config  1                 OCaml Switch Configuration
 ocaml-system  4.05.0            The OCaml compiler (system version, from outside of opam)
 ocamlfind     1.8.0             A library manager for OCaml
 # opam file:
-opam-version: &quot;1.2&quot;
+opam-version: &quot;2.0&quot;
 maintainer: &quot;Hugo.Herbelin@inria.fr&quot;
 homepage: &quot;https://github.com/coq-contribs/legacy-ring&quot;
 license: &quot;Unknown&quot;
 build: [make &quot;-j%{jobs}%&quot;]
 install: [make &quot;install&quot;]
-remove: [&quot;rm&quot; &quot;-R&quot; &quot;%{lib}%/coq/user-contrib/LegacyRing&quot;]
 depends: [
+  &quot;ocaml&quot;
   &quot;coq&quot; {&gt;= &quot;8.6&quot; &amp; &lt; &quot;8.7~&quot;}
 ]
 tags: [ &quot;date: 1998-5&quot; ]
 authors: [ &quot;Patrick Loiseleur&quot; ]
 bug-reports: &quot;https://github.com/coq-contribs/legacy-ring/issues&quot;
-dev-repo: &quot;https://github.com/coq-contribs/legacy-ring.git&quot;
+dev-repo: &quot;git+https://github.com/coq-contribs/legacy-ring.git&quot;
+synopsis: &quot;The former implementation of the ring tactic&quot;
+description: &quot;&quot;&quot;
+Tactics to decide equality and simplify polynomial
+expressions over an arbitrary commutative ring. This generalizes a
+previous tactics by Samuel Boutin.&quot;&quot;&quot;
+url {
+  src: &quot;https://github.com/coq-contribs/legacy-ring/archive/v8.6.0.tar.gz&quot;
+  checksum: &quot;md5=6c54ffd5bf1e4f816c5d404ca87d079b&quot;
+}
 </pre>
             <h2>Lint</h2>
             <dl class="dl-horizontal">
@@ -90,17 +99,17 @@ dev-repo: &quot;https://github.com/coq-contribs/legacy-ring.git&quot;
               <dt>Output</dt>
               <dd><pre>[NOTE] Package coq is already installed (current version is 8.8.1).
 The following dependencies couldn&#39;t be met:
-  - coq-legacy-ring -&gt; coq &lt; 8.7~ -&gt; ocaml &lt; 4.05.0
+  - coq-legacy-ring -&gt; coq &lt; 8.7~ -&gt; ocaml &lt; 4.03.0
       base of this switch (use `--unlock-base&#39; to force)
 Your request can&#39;t be satisfied:
   - No available version of coq satisfies the constraints
 No solution found, exiting
 </pre></dd>
             </dl>
-            <p>Dry install without Coq, to test if the problem was incompatibility with the current Coq version:</p>
+            <p>Dry install without Coq/switch base, to test if the problem was incompatibility with the current Coq/OCaml version:</p>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>opam remove -y coq; opam install -y --show-action coq-legacy-ring.8.6.0</code></dd>
+              <dd><code>opam remove -y coq; opam install -y --show-action --unlock-base coq-legacy-ring.8.6.0</code></dd>
               <dt>Return code</dt>
               <dd>0</dd>
             </dl>
