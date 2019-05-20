@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>unimath-dedekind: Error with dependencies</title>
+    <title>unimath-dedekind: Not compatible</title>
     <link rel="shortcut icon" type="image/png" href="../../../../../favicon.png" />
     <link href="../../../../../bootstrap.min.css" rel="stylesheet">
     <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
@@ -38,10 +38,10 @@
               unimath-dedekind
               <small>
                 0.1.0
-                <span class="label label-warning">Error with dependencies</span>
+                <span class="label label-info">Not compatible</span>
               </small>
             </h1>
-            <p><em><script>document.write(moment("2019-04-01 20:54:18 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2019-04-01 20:54:18 UTC)</em><p>
+            <p><em><script>document.write(moment("2019-05-19 12:54:39 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2019-05-19 12:54:39 UTC)</em><p>
             <h2>Context</h2>
             <pre># Packages matching: installed
 # Name        # Installed       # Synopsis
@@ -51,17 +51,17 @@ base-threads  base
 base-unix     base
 camlp5        7.06.10-g84ce6cc4 Preprocessor-pretty-printer of OCaml
 conf-m4       1                 Virtual package relying on m4
-coq           8.8.2             Formal proof management system.
+coq           8.8.2             Formal proof management system
 num           0                 The Num library for arbitrary-precision integer and rational arithmetic
 ocaml         4.05.0            The OCaml compiler (virtual package)
 ocaml-config  1                 OCaml Switch Configuration
 ocaml-system  4.05.0            The OCaml compiler (system version, from outside of opam)
 ocamlfind     1.8.0             A library manager for OCaml
 # opam file:
-opam-version: &quot;1.2&quot;
+opam-version: &quot;2.0&quot;
 maintainer: &quot;opam@clarus.me&quot;
 homepage: &quot;https://github.com/UniMath/UniMath&quot;
-dev-repo: &quot;https://github.com/UniMath/UniMath.git&quot;
+dev-repo: &quot;git+https://github.com/UniMath/UniMath.git&quot;
 bug-reports: &quot;https://github.com/UniMath/UniMath/issues&quot;
 license: &quot;Kind of MIT&quot;
 authors: [&quot;The UniMath Development Team&quot;]
@@ -72,12 +72,18 @@ build: [
 install: [
   [make &quot;install&quot;]
 ]
-remove: [&quot;rm&quot; &quot;-R&quot; &quot;%{lib}%/coq/user-contrib/UniMath/Dedekind&quot;]
 depends: [
-  &quot;coq&quot; {&gt;= &quot;8.5.0&quot;}
+  &quot;ocaml&quot;
+  &quot;coq&quot; {&gt;= &quot;8.5.0&quot; &amp; &lt; &quot;8.6&quot;}
   &quot;coq-unimath-foundations&quot;
   &quot;coq-unimath-ktheory&quot;
 ]
+synopsis: &quot;Aims to formalize a substantial body of mathematics using the univalent point of view&quot;
+extra-files: [&quot;Make&quot; &quot;md5=a0fc39047261f4494c06264fc9801eb6&quot;]
+url {
+  src: &quot;https://github.com/UniMath/UniMath/archive/v0.1.tar.gz&quot;
+  checksum: &quot;md5=1ed57c1028e227a309f428a6dc5f0866&quot;
+}
 </pre>
             <h2>Lint</h2>
             <dl class="dl-horizontal">
@@ -92,77 +98,32 @@ depends: [
               <dt>Command</dt>
               <dd><code>opam install -y --show-action coq-unimath-dedekind.0.1.0 coq.8.8.2</code></dd>
               <dt>Return code</dt>
-              <dd>0</dd>
+              <dd>5120</dd>
+              <dt>Output</dt>
+              <dd><pre>[NOTE] Package coq is already installed (current version is 8.8.2).
+The following dependencies couldn&#39;t be met:
+  - coq-unimath-dedekind -&gt; coq-unimath-foundations -&gt; coq &lt; 8.6 -&gt; ocaml &lt; 4.03.0
+      base of this switch (use `--unlock-base&#39; to force)
+Your request can&#39;t be satisfied:
+  - No available version of coq satisfies the constraints
+No solution found, exiting
+</pre></dd>
             </dl>
-            <p>Dry install without Coq, to test if the problem was incompatibility with the current Coq version:</p>
+            <p>Dry install without Coq/switch base, to test if the problem was incompatibility with the current Coq/OCaml version:</p>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>true</code></dd>
+              <dd><code>opam remove -y coq; opam install -y --show-action --unlock-base coq-unimath-dedekind.0.1.0</code></dd>
               <dt>Return code</dt>
               <dd>0</dd>
             </dl>
             <h2>Install dependencies</h2>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>opam list; ulimit -Sv 4000000; timeout 30m opam install -y --deps-only coq-unimath-dedekind.0.1.0</code></dd>
+              <dd><code>true</code></dd>
               <dt>Return code</dt>
-              <dd>7936</dd>
+              <dd>0</dd>
               <dt>Duration</dt>
-              <dd>10 s</dd>
-              <dt>Output</dt>
-              <dd><pre># Packages matching: installed
-# Name        # Installed       # Synopsis
-base-bigarray base
-base-num      base              Num library distributed with the OCaml compiler
-base-threads  base
-base-unix     base
-camlp5        7.06.10-g84ce6cc4 Preprocessor-pretty-printer of OCaml
-conf-m4       1                 Virtual package relying on m4
-coq           8.8.2             Formal proof management system.
-num           0                 The Num library for arbitrary-precision integer and rational arithmetic
-ocaml         4.05.0            The OCaml compiler (virtual package)
-ocaml-config  1                 OCaml Switch Configuration
-ocaml-system  4.05.0            The OCaml compiler (system version, from outside of opam)
-ocamlfind     1.8.0             A library manager for OCaml
-The following actions will be performed:
-  - install coq-unimath-foundations     0.1.0
-  - install coq-unimath-category-theory 0.1.0
-  - install coq-unimath-ktheory         0.1.0
-===== 3 to install =====
-&lt;&gt;&lt;&gt; Gathering sources &gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;
-[coq-unimath-category-theory.0.1.0] downloaded from https://github.com/UniMath/UniMath/archive/v0.1.tar.gz
-[coq-unimath-foundations.0.1.0] downloaded from https://github.com/UniMath/UniMath/archive/v0.1.tar.gz
-[coq-unimath-ktheory.0.1.0] downloaded from https://github.com/UniMath/UniMath/archive/v0.1.tar.gz
-&lt;&gt;&lt;&gt; Processing actions &lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;
-[ERROR] The compilation of coq-unimath-foundations failed at &quot;/usr/bin/make -j7&quot;.
-#=== ERROR while compiling coq-unimath-foundations.0.1.0 ======================#
-# context              2.0.1 | linux/x86_64 | ocaml-system.4.05.0 | file:///home/bench/run/opam-coq-archive/released
-# path                 ~/.opam/default/.opam-switch/build/coq-unimath-foundations.0.1.0
-# command              /usr/bin/make -j7
-# exit-code            2
-# env-file             ~/.opam/log/coq-unimath-foundations-4864-4f1270.env
-# output-file          ~/.opam/log/coq-unimath-foundations-4864-4f1270.out
-### output ###
-# [...]
-# X : UU
-# P : X -&gt; UU
-# Q : X -&gt; UU
-# The term &quot;P&quot; has type &quot;X -&gt; UU&quot; while it is expected to have type
-#  &quot;∀ x : X, ?P x&quot; (unable to find a well-typed instantiation for 
-# &quot;?P&quot;: cannot ensure that &quot;X -&gt; Type&quot; is a subtype of 
-# &quot;X -&gt; UU&quot;).
-# 
-# Makefile:656: recipe for target &#39;UniMath/Foundations/Basics/PartA.vo&#39; failed
-# make[1]: *** [UniMath/Foundations/Basics/PartA.vo] Error 1
-# Makefile:317: recipe for target &#39;all&#39; failed
-# make: *** [all] Error 2
-&lt;&gt;&lt;&gt; Error report &lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;
-+- The following actions failed
-| - build coq-unimath-foundations 0.1.0
-+- 
-- No changes have been performed
-# Run eval $(opam env) to update the current shell environment
-</pre></dd>
+              <dd>0 s</dd>
             </dl>
             <h2>Install</h2>
             <dl class="dl-horizontal">
