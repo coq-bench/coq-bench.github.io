@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>izf: Not compatible with this Coq</title>
+    <title>izf: Not compatible</title>
     <link rel="shortcut icon" type="image/png" href="../../../../../favicon.png" />
     <link href="../../../../../bootstrap.min.css" rel="stylesheet">
     <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
@@ -38,10 +38,10 @@
               izf
               <small>
                 8.6.0
-                <span class="label label-info">Not compatible with this Coq</span>
+                <span class="label label-info">Not compatible</span>
               </small>
             </h1>
-            <p><em><script>document.write(moment("2019-04-04 06:21:06 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2019-04-04 06:21:06 UTC)</em><p>
+            <p><em><script>document.write(moment("2019-05-22 13:01:47 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2019-05-22 13:01:47 UTC)</em><p>
             <h2>Context</h2>
             <pre># Packages matching: installed
 # Name        # Installed       # Synopsis
@@ -58,20 +58,32 @@ ocaml-config  1                 OCaml Switch Configuration
 ocaml-system  4.05.0            The OCaml compiler (system version, from outside of opam)
 ocamlfind     1.8.0             A library manager for OCaml
 # opam file:
-opam-version: &quot;1.2&quot;
+opam-version: &quot;2.0&quot;
 maintainer: &quot;Hugo.Herbelin@inria.fr&quot;
 homepage: &quot;https://github.com/coq-contribs/izf&quot;
 license: &quot;LGPL 2.1&quot;
 build: [make &quot;-j%{jobs}%&quot;]
 install: [make &quot;install&quot;]
-remove: [&quot;rm&quot; &quot;-R&quot; &quot;%{lib}%/coq/user-contrib/IZF&quot;]
 depends: [
+  &quot;ocaml&quot;
   &quot;coq&quot; {&gt;= &quot;8.6&quot; &amp; &lt; &quot;8.7~&quot;}
 ]
 tags: [ &quot;keyword: Intuitionistic set theory&quot; &quot;keyword: pointed graphs&quot; &quot;keyword: type theory&quot; &quot;keyword: intuitionistic choice operator&quot; &quot;keyword: set theory&quot; &quot;keyword: Zermelo-Fraenkel&quot; &quot;category: Mathematics/Logic/Set theory&quot; &quot;date: 2003-02&quot; ]
 authors: [ &quot;Alexandre Miquel &lt;Alexandre.Miquel@pps.jussieu.fr&gt; [http://www.pps.jussieu.fr/~miquel]&quot; ]
 bug-reports: &quot;https://github.com/coq-contribs/izf/issues&quot;
-dev-repo: &quot;https://github.com/coq-contribs/izf.git&quot;
+dev-repo: &quot;git+https://github.com/coq-contribs/izf.git&quot;
+synopsis: &quot;Intuitionistic Zermelo-Fraenkel Set Theory in Coq&quot;
+description: &quot;&quot;&quot;
+This development contains the set-as-pointed-graph
+interpretation of Intuitionistic Zermelo Frankel set theory in system
+F_omega.2++ (F_omega + one extra universe + intuitionistic choice
+operator), which is described in chapter 9 of the author&#39;s PhD
+thesis (for IZ) and in the author&#39;s CSL&#39;03 paper (for the extension
+IZ -&gt; IZF).&quot;&quot;&quot;
+url {
+  src: &quot;https://github.com/coq-contribs/izf/archive/v8.6.0.tar.gz&quot;
+  checksum: &quot;md5=8d053efae698a9ebf32f332a527ef5f7&quot;
+}
 </pre>
             <h2>Lint</h2>
             <dl class="dl-horizontal">
@@ -90,17 +102,17 @@ dev-repo: &quot;https://github.com/coq-contribs/izf.git&quot;
               <dt>Output</dt>
               <dd><pre>[NOTE] Package coq is already installed (current version is 8.7.2).
 The following dependencies couldn&#39;t be met:
-  - coq-izf -&gt; coq &lt; 8.7~ -&gt; ocaml &lt; 4.05.0
+  - coq-izf -&gt; coq &lt; 8.7~ -&gt; ocaml &lt; 4.03.0
       base of this switch (use `--unlock-base&#39; to force)
 Your request can&#39;t be satisfied:
   - No available version of coq satisfies the constraints
 No solution found, exiting
 </pre></dd>
             </dl>
-            <p>Dry install without Coq, to test if the problem was incompatibility with the current Coq version:</p>
+            <p>Dry install without Coq/switch base, to test if the problem was incompatibility with the current Coq/OCaml version:</p>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>opam remove -y coq; opam install -y --show-action coq-izf.8.6.0</code></dd>
+              <dd><code>opam remove -y coq; opam install -y --show-action --unlock-base coq-izf.8.6.0</code></dd>
               <dt>Return code</dt>
               <dd>0</dd>
             </dl>

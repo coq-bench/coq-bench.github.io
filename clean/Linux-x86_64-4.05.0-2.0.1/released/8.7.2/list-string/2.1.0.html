@@ -41,7 +41,7 @@
                 <span class="label label-success">14 s</span>
               </small>
             </h1>
-            <p><em><script>document.write(moment("2019-04-04 06:21:06 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2019-04-04 06:21:06 UTC)</em><p>
+            <p><em><script>document.write(moment("2019-05-22 13:01:47 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2019-05-22 13:01:47 UTC)</em><p>
             <h2>Context</h2>
             <pre># Packages matching: installed
 # Name        # Installed       # Synopsis
@@ -58,10 +58,10 @@ ocaml-config  1                 OCaml Switch Configuration
 ocaml-system  4.05.0            The OCaml compiler (system version, from outside of opam)
 ocamlfind     1.8.0             A library manager for OCaml
 # opam file:
-opam-version: &quot;1.2&quot;
+opam-version: &quot;2.0&quot;
 maintainer: &quot;dev@clarus.me&quot;
 homepage: &quot;https://github.com/clarus/coq-list-string&quot;
-dev-repo: &quot;https://github.com/clarus/coq-list-string.git&quot;
+dev-repo: &quot;git+https://github.com/clarus/coq-list-string.git&quot;
 bug-reports: &quot;https://github.com/clarus/coq-list-string/issues&quot;
 authors: [&quot;Guillaume Claret&quot;]
 license: &quot;MIT&quot;
@@ -73,12 +73,23 @@ build: [
 install: [
   [make &quot;install&quot;]
 ]
-remove: [&quot;rm&quot; &quot;-R&quot; &quot;%{lib}%/coq/user-contrib/ListString&quot;]
 depends: [
-  &quot;coq&quot; {&gt;= &quot;8.4pl4&quot;}
+  &quot;conf-ruby&quot; {build}
   &quot;coq-error-handlers&quot;
   &quot;coq-list-plus&quot;
+  &quot;coq&quot; {&gt;= &quot;8.4pl4&quot;}
+  &quot;ocaml&quot;
 ]
+tags: [
+  &quot;category:Computer Science/Data Types and Data Structures&quot;
+  &quot;date:2015-03-23&quot;
+  &quot;logpath:ListString&quot;
+]
+synopsis: &quot;Strings implemented as lists&quot;
+url {
+  src: &quot;https://github.com/clarus/coq-list-string/archive/2.1.0.tar.gz&quot;
+  checksum: &quot;md5=ded335c4340aeae01a80d046ac636f3a&quot;
+}
 </pre>
             <h2>Lint</h2>
             <dl class="dl-horizontal">
@@ -95,7 +106,7 @@ depends: [
               <dt>Return code</dt>
               <dd>0</dd>
             </dl>
-            <p>Dry install without Coq, to test if the problem was incompatibility with the current Coq version:</p>
+            <p>Dry install without Coq/switch base, to test if the problem was incompatibility with the current Coq/OCaml version:</p>
             <dl class="dl-horizontal">
               <dt>Command</dt>
               <dd><code>true</code></dd>
