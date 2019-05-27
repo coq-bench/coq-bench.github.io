@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>smt-check: 11 s</title>
+    <title>smt-check: Error with dependencies</title>
     <link rel="shortcut icon" type="image/png" href="../../../../../favicon.png" />
     <link href="../../../../../bootstrap.min.css" rel="stylesheet">
     <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
@@ -38,10 +38,10 @@
               smt-check
               <small>
                 2.0.0
-                <span class="label label-success">11 s</span>
+                <span class="label label-warning">Error with dependencies</span>
               </small>
             </h1>
-            <p><em><script>document.write(moment("2019-05-10 13:05:26 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2019-05-10 13:05:26 UTC)</em><p>
+            <p><em><script>document.write(moment("2019-05-25 23:10:48 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2019-05-25 23:10:48 UTC)</em><p>
             <h2>Context</h2>
             <pre># Packages matching: installed
 # Name        # Installed       # Synopsis
@@ -106,37 +106,72 @@ url {
               <dt>Command</dt>
               <dd><code>opam list; ulimit -Sv 4000000; timeout 30m opam install -y --deps-only coq-smt-check.2.0.0</code></dd>
               <dt>Return code</dt>
-              <dd>0</dd>
+              <dd>7936</dd>
               <dt>Duration</dt>
-              <dd>9 s</dd>
+              <dd>8 s</dd>
+              <dt>Output</dt>
+              <dd><pre># Packages matching: installed
+# Name        # Installed       # Synopsis
+base-bigarray base
+base-num      base              Num library distributed with the OCaml compiler
+base-threads  base
+base-unix     base
+camlp5        7.06.10-g84ce6cc4 Preprocessor-pretty-printer of OCaml
+coq           8.5.3             Formal proof management system.
+num           0                 The Num library for arbitrary-precision integer and rational arithmetic
+ocaml         4.05.0            The OCaml compiler (virtual package)
+ocaml-config  1                 OCaml Switch Configuration
+ocaml-system  4.05.0            The OCaml compiler (system version, from outside of opam)
+The following actions will be performed:
+  - install coq-plugin-utils 1.2.0
+&lt;&gt;&lt;&gt; Gathering sources &gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;
+[coq-plugin-utils.1.2.0] downloaded from https://github.com/gmalecha/coq-plugin-utils/archive/v1.2.0.tar.gz
+&lt;&gt;&lt;&gt; Processing actions &lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;
+[ERROR] The compilation of coq-plugin-utils failed at &quot;/home/bench/.opam/opam-init/hooks/sandbox.sh build make install&quot;.
+#=== ERROR while compiling coq-plugin-utils.1.2.0 =============================#
+# context              2.0.1 | linux/x86_64 | ocaml-system.4.05.0 | file:///home/bench/run/opam-coq-archive/released
+# path                 ~/.opam/default/.opam-switch/build/coq-plugin-utils.1.2.0
+# command              ~/.opam/opam-init/hooks/sandbox.sh build make install
+# exit-code            2
+# env-file             ~/.opam/log/coq-plugin-utils-20326-6cc03f.env
+# output-file          ~/.opam/log/coq-plugin-utils-20326-6cc03f.out
+### output ###
+# [...]
+# make[1]: Entering directory &#39;/home/bench/.opam/default/.opam-switch/build/coq-plugin-utils.1.2.0&#39;
+# install -d &quot;&quot;&quot;/home/bench/.opam/default/lib/coq/user-contrib&quot;/PluginUtils; \
+# for i in src/plugin_utils.cmxs ; do \
+#  install -m 0755 $i &quot;&quot;&quot;/home/bench/.opam/default/lib/coq/user-contrib&quot;/PluginUtils/`basename $i`; \
+# done
+# install: cannot change permissions of &#39;/home/bench/.opam/default/lib/coq/user-contrib/PluginUtils&#39;: No such file or directory
+# install: cannot create regular file &#39;/home/bench/.opam/default/lib/coq/user-contrib/PluginUtils/plugin_utils.cmxs&#39;: No such file or directory
+# Makefile.coq:322: recipe for target &#39;install-natdynlink&#39; failed
+# make[1]: *** [install-natdynlink] Error 1
+# make[1]: Leaving directory &#39;/home/bench/.opam/default/.opam-switch/build/coq-plugin-utils.1.2.0&#39;
+# Makefile:12: recipe for target &#39;install&#39; failed
+# make: *** [install] Error 2
+&lt;&gt;&lt;&gt; Error report &lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;
++- The following actions failed
+| - build coq-plugin-utils 1.2.0
++- 
+- No changes have been performed
+# Run eval $(opam env) to update the current shell environment
+</pre></dd>
             </dl>
             <h2>Install</h2>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>opam list; ulimit -Sv 4000000; timeout 30m opam install -j1 -y -v coq-smt-check.2.0.0</code></dd>
+              <dd><code>true</code></dd>
               <dt>Return code</dt>
               <dd>0</dd>
               <dt>Duration</dt>
-              <dd>11 s</dd>
+              <dd>0 s</dd>
             </dl>
             <h2>Installation size</h2>
-            <p>Total: 286 K</p>
-            <ul>
-              <li>161 K <code>../default/lib/coq/user-contrib/SMTC/smtTactic.cmxs</code></li>
-              <li>41 K <code>../default/lib/coq/user-contrib/SMTC/smtTactic.cma</code></li>
-              <li>32 K <code>../default/lib/coq/user-contrib/SMTC/polyaSolver.cmxs</code></li>
-              <li>22 K <code>../default/lib/coq/user-contrib/SMTC/Tactic.vo</code></li>
-              <li>6 K <code>../default/lib/coq/user-contrib/SMTC/polyaSolver.cmo</code></li>
-              <li>4 K <code>../default/lib/coq/user-contrib/SMTC/solver.cmi</code></li>
-              <li>4 K <code>../default/lib/coq/user-contrib/SMTC/z3Solver.cmi</code></li>
-              <li>4 K <code>../default/lib/coq/user-contrib/SMTC/polyaSolver.cmi</code></li>
-              <li>4 K <code>../default/lib/coq/user-contrib/SMTC/tactic.cmi</code></li>
-              <li>4 K <code>../default/lib/coq/user-contrib/SMTC/cvc4Solver.cmi</code></li>
-            </ul>
+            <p>No files were installed.</p>
             <h2>Uninstall</h2>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>opam remove -y coq-smt-check.2.0.0</code></dd>
+              <dd><code>true</code></dd>
               <dt>Return code</dt>
               <dd>0</dd>
               <dt>Missing removes</dt>

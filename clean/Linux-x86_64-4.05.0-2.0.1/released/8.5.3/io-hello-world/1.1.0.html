@@ -41,7 +41,7 @@
                 <span class="label label-success">11 s</span>
               </small>
             </h1>
-            <p><em><script>document.write(moment("2019-03-31 18:57:01 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2019-03-31 18:57:01 UTC)</em><p>
+            <p><em><script>document.write(moment("2019-05-25 23:10:48 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2019-05-25 23:10:48 UTC)</em><p>
             <h2>Context</h2>
             <pre># Packages matching: installed
 # Name        # Installed       # Synopsis
@@ -56,22 +56,36 @@ ocaml         4.05.0            The OCaml compiler (virtual package)
 ocaml-config  1                 OCaml Switch Configuration
 ocaml-system  4.05.0            The OCaml compiler (system version, from outside of opam)
 # opam file:
-opam-version: &quot;1.2&quot;
+opam-version: &quot;2.0&quot;
 maintainer: &quot;dev@clarus.me&quot;
 homepage: &quot;https://github.com/clarus/coq-hello-world&quot;
-dev-repo: &quot;https://github.com/clarus/coq-hello-world.git&quot;
+dev-repo: &quot;git+https://github.com/clarus/coq-hello-world.git&quot;
 bug-reports: &quot;https://github.com/clarus/coq-hello-world/issues&quot;
 authors: [&quot;Guillaume Claret&quot;]
 license: &quot;MIT&quot;
 build: [
   [&quot;./configure.sh&quot;]
   [make &quot;-j%{jobs}%&quot;]
-  [&quot;sh&quot; &quot;-c&quot; &quot;cd extraction &amp;&amp; make&quot;]
+  [make &quot;-C&quot; &quot;extraction&quot;]
 ]
 depends: [
-  &quot;coq&quot; {&gt;= &quot;8.4pl4&quot;}
+  &quot;ocaml&quot;
+  &quot;coq&quot; {&gt;= &quot;8.4pl4&quot; &amp; &lt; &quot;8.9&quot;}
   &quot;coq-io-system&quot; {&gt;= &quot;2.3.0&quot;}
 ]
+tags: [
+  &quot;date:2015-06-14&quot;
+  &quot;keyword:effects&quot;
+  &quot;keyword:extraction&quot;
+]
+synopsis: &quot;A Hello World program in Coq&quot;
+extra-files: [
+  &quot;coq-io-hello-world.install&quot; &quot;md5=63d2dca2628eb17acf4b57b72d248663&quot;
+]
+url {
+  src: &quot;https://github.com/coq-io/hello-world/archive/1.1.0.tar.gz&quot;
+  checksum: &quot;md5=2d044c1840d7a661ceb8e8a432a50559&quot;
+}
 </pre>
             <h2>Lint</h2>
             <dl class="dl-horizontal">
@@ -88,7 +102,7 @@ depends: [
               <dt>Return code</dt>
               <dd>0</dd>
             </dl>
-            <p>Dry install without Coq, to test if the problem was incompatibility with the current Coq version:</p>
+            <p>Dry install without Coq/switch base, to test if the problem was incompatibility with the current Coq/OCaml version:</p>
             <dl class="dl-horizontal">
               <dt>Command</dt>
               <dd><code>true</code></dd>
@@ -102,7 +116,7 @@ depends: [
               <dt>Return code</dt>
               <dd>0</dd>
               <dt>Duration</dt>
-              <dd>1 m 59 s</dd>
+              <dd>2 m 10 s</dd>
             </dl>
             <h2>Install</h2>
             <dl class="dl-horizontal">
@@ -114,9 +128,9 @@ depends: [
               <dd>11 s</dd>
             </dl>
             <h2>Installation size</h2>
-            <p>Total: 2,713 K</p>
+            <p>Total: 3,286 K</p>
             <ul>
-              <li>2,713 K <code>../default/bin/helloWorld</code></li>
+              <li>3,286 K <code>../default/bin/helloWorld</code></li>
             </ul>
             <h2>Uninstall</h2>
             <dl class="dl-horizontal">

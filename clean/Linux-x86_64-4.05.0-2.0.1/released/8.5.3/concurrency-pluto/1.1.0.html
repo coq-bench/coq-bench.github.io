@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>concurrency-pluto: 16 s</title>
+    <title>concurrency-pluto: 17 s</title>
     <link rel="shortcut icon" type="image/png" href="../../../../../favicon.png" />
     <link href="../../../../../bootstrap.min.css" rel="stylesheet">
     <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
@@ -38,10 +38,10 @@
               concurrency-pluto
               <small>
                 1.1.0
-                <span class="label label-success">16 s</span>
+                <span class="label label-success">17 s</span>
               </small>
             </h1>
-            <p><em><script>document.write(moment("2019-03-31 18:57:01 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2019-03-31 18:57:01 UTC)</em><p>
+            <p><em><script>document.write(moment("2019-05-25 23:10:48 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2019-05-25 23:10:48 UTC)</em><p>
             <h2>Context</h2>
             <pre># Packages matching: installed
 # Name        # Installed       # Synopsis
@@ -56,19 +56,20 @@ ocaml         4.05.0            The OCaml compiler (virtual package)
 ocaml-config  1                 OCaml Switch Configuration
 ocaml-system  4.05.0            The OCaml compiler (system version, from outside of opam)
 # opam file:
-opam-version: &quot;1.2&quot;
+opam-version: &quot;2.0&quot;
 maintainer: &quot;dev@clarus.me&quot;
 homepage: &quot;https://github.com/coq-concurrency/pluto&quot;
-dev-repo: &quot;https://github.com/coq-concurrency/pluto.git&quot;
+dev-repo: &quot;git+https://github.com/coq-concurrency/pluto.git&quot;
 bug-reports: &quot;https://github.com/coq-concurrency/pluto/issues&quot;
 authors: [&quot;Guillaume Claret&quot;]
 license: &quot;MIT&quot;
 build: [
   [&quot;./configure.sh&quot;]
   [make &quot;-j%{jobs}%&quot;]
-  [&quot;sh&quot; &quot;-c&quot; &quot;cd extraction &amp;&amp; make&quot;]
+  [make &quot;-C&quot; &quot;extraction&quot;]
 ]
 depends: [
+  &quot;ocaml&quot;
   &quot;coq&quot; {&gt;= &quot;8.4pl4&quot;}
   &quot;coq-error-handlers&quot;
   &quot;coq-function-ninjas&quot;
@@ -79,6 +80,14 @@ depends: [
   &quot;coq-concurrency-system&quot; {&gt;= &quot;1.1.0&quot;}
   &quot;base64&quot; {= &quot;1.0.0&quot;}
 ]
+synopsis: &quot;A web server written in Coq&quot;
+extra-files: [
+  &quot;coq-concurrency-pluto.install&quot; &quot;md5=c191e439136807d785f0d582e0b8783e&quot;
+]
+url {
+  src: &quot;https://github.com/coq-concurrency/pluto/archive/1.1.0.tar.gz&quot;
+  checksum: &quot;md5=8e141f1b8981f5a018c31adb90052b0a&quot;
+}
 </pre>
             <h2>Lint</h2>
             <dl class="dl-horizontal">
@@ -95,7 +104,7 @@ depends: [
               <dt>Return code</dt>
               <dd>0</dd>
             </dl>
-            <p>Dry install without Coq, to test if the problem was incompatibility with the current Coq version:</p>
+            <p>Dry install without Coq/switch base, to test if the problem was incompatibility with the current Coq/OCaml version:</p>
             <dl class="dl-horizontal">
               <dt>Command</dt>
               <dd><code>true</code></dd>
@@ -109,7 +118,7 @@ depends: [
               <dt>Return code</dt>
               <dd>0</dd>
               <dt>Duration</dt>
-              <dd>1 m 41 s</dd>
+              <dd>2 m 8 s</dd>
             </dl>
             <h2>Install</h2>
             <dl class="dl-horizontal">
@@ -118,12 +127,12 @@ depends: [
               <dt>Return code</dt>
               <dd>0</dd>
               <dt>Duration</dt>
-              <dd>16 s</dd>
+              <dd>17 s</dd>
             </dl>
             <h2>Installation size</h2>
-            <p>Total: 2,103 K</p>
+            <p>Total: 2,476 K</p>
             <ul>
-              <li>1,776 K <code>../default/bin/pluto.native</code></li>
+              <li>2,149 K <code>../default/bin/pluto.native</code></li>
               <li>326 K <code>../default/bin/pluto.byte</code></li>
             </ul>
             <h2>Uninstall</h2>
