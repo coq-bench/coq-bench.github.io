@@ -41,7 +41,7 @@
                 <span class="label label-danger">Error</span>
               </small>
             </h1>
-            <p><em><script>document.write(moment("2019-05-23 17:16:37 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2019-05-23 17:16:37 UTC)</em><p>
+            <p><em><script>document.write(moment("2019-05-30 02:12:10 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2019-05-30 02:12:10 UTC)</em><p>
             <h2>Context</h2>
             <pre># Packages matching: installed
 # Name        # Installed       # Synopsis
@@ -63,12 +63,23 @@ homepage: &quot;https://github.com/coq-contribs/semantics&quot;
 license: &quot;LGPL&quot;
 build: [make &quot;-j%{jobs}%&quot;]
 install: [make &quot;install&quot;]
-remove: [&quot;rm&quot; &quot;-R&quot; &quot;%{lib}%/coq/user-contrib/Semantics&quot;]
 depends: [
   &quot;ocaml&quot;
+  &quot;ocamlbuild&quot; {build}
   &quot;coq&quot; {&gt;= &quot;8.7&quot; &amp; &lt; &quot;8.8~&quot;}
 ]
-tags: [ &quot;keyword: natural semantics&quot; &quot;keyword: denotational semantics&quot; &quot;keyword: axiomatic semantics&quot; &quot;keyword: Hoare logic&quot; &quot;keyword: Dijkstra weakest pre-condition calculus&quot; &quot;keyword: abstract interpretation&quot; &quot;keyword: intervals&quot; &quot;category: Computer Science/Semantics and Compilation/Semantics&quot; &quot;date: 2007-07-5&quot; ]
+tags: [
+  &quot;keyword: natural semantics&quot;
+  &quot;keyword: denotational semantics&quot;
+  &quot;keyword: axiomatic semantics&quot;
+  &quot;keyword: Hoare logic&quot;
+  &quot;keyword: Dijkstra weakest pre-condition calculus&quot;
+  &quot;keyword: abstract interpretation&quot;
+  &quot;keyword: intervals&quot;
+  &quot;category: Computer Science/Semantics and Compilation/Semantics&quot;
+  &quot;date: 2007-07-5&quot;
+  &quot;logpath:Semantics&quot;
+]
 authors: [ &quot;Yves Bertot &lt;Yves.Bertot@sophia.inria.fr&gt; [http://www-sop.inria.fr/marelle/Yves.Bertot]&quot; ]
 bug-reports: &quot;https://github.com/coq-contribs/semantics/issues&quot;
 dev-repo: &quot;git+https://github.com/coq-contribs/semantics.git&quot;
@@ -84,7 +95,6 @@ available for proof by reflection, and the code can also be extracted
 and connected to a yacc-based parser, thanks to the use of a functor
 parameterized by a module type of strings. A hand-written parser is
 also provided in Coq, but there are no proofs associated.&quot;&quot;&quot;
-flags: light-uninstall
 url {
   src: &quot;https://github.com/coq-contribs/semantics/archive/v8.7.0.tar.gz&quot;
   checksum: &quot;md5=64a71ef039d1c6a155918c23d92c31c1&quot;
@@ -119,7 +129,7 @@ url {
               <dt>Return code</dt>
               <dd>0</dd>
               <dt>Duration</dt>
-              <dd>5 s</dd>
+              <dd>19 s</dd>
             </dl>
             <h2>Install</h2>
             <dl class="dl-horizontal">
@@ -128,7 +138,7 @@ url {
               <dt>Return code</dt>
               <dd>7936</dd>
               <dt>Duration</dt>
-              <dd>59 s</dd>
+              <dd>58 s</dd>
               <dt>Output</dt>
               <dd><pre># Packages matching: installed
 # Name        # Installed       # Synopsis
@@ -142,6 +152,7 @@ num           1.1               The legacy Num library for arbitrary-precision i
 ocaml         4.07.1            The OCaml compiler (virtual package)
 ocaml-config  1                 OCaml Switch Configuration
 ocaml-system  4.07.1            The OCaml compiler (system version, from outside of opam)
+ocamlbuild    0.14.0            OCamlbuild is a build system with builtin rules to easily build most OCaml projects.
 ocamlfind     1.8.0             A library manager for OCaml
 The following actions will be performed:
   - install coq-semantics 8.7.0
@@ -163,8 +174,8 @@ Processing  1/2: [coq-semantics: make]
 - COQDEP little_w_string.v
 - COQDEP little.v
 - COQDEP intervals.v
-- COQDEP extract_interpret.v
 - COQDEP function_cpo.v
+- COQDEP extract_interpret.v
 - COQDEP ex_i.v
 - COQDEP example.v
 - COQDEP example2.v
@@ -181,6 +192,9 @@ Processing  1/2: [coq-semantics: make]
 - COQC function_cpo.v
 - COQC intervals.v
 - COQC context_sqrt.v
+- File &quot;./intervals.v&quot;, line 2, characters 0-45:
+- Warning: Option Standard Proposition Elimination Names is deprecated
+- [deprecated-option,deprecated]
 - File &quot;./syntax.v&quot;, line 34, characters 0-32:
 - Warning: Implicit Arguments is deprecated; use Arguments instead
 - [deprecated-implicit-arguments,deprecated]
@@ -190,9 +204,6 @@ Processing  1/2: [coq-semantics: make]
 - File &quot;./syntax.v&quot;, line 36, characters 0-34:
 - Warning: Implicit Arguments is deprecated; use Arguments instead
 - [deprecated-implicit-arguments,deprecated]
-- File &quot;./intervals.v&quot;, line 2, characters 0-45:
-- Warning: Option Standard Proposition Elimination Names is deprecated
-- [deprecated-option,deprecated]
 - File &quot;./function_cpo.v&quot;, line 7, characters 0-32:
 - Warning: Implicit Arguments is deprecated; use Arguments instead
 - [deprecated-implicit-arguments,deprecated]
@@ -338,9 +349,31 @@ Processing  1/2: [coq-semantics: make]
 -   0 &lt;= n /\ 0 = 0
 - make -f Makefile.coq little.native
 - ocamlbuild -no-hygiene -classic-display -libs nums little.native
-- make[3]: ocamlbuild: Command not found
+- ocamldep.opt -modules little.ml &gt; little.ml.depends
+- ocamldep.opt -modules interp.mli &gt; interp.mli.depends
+- ocamllex.opt -q llex.mll
+- ocamldep.opt -modules llex.ml &gt; llex.ml.depends
+- ocamlyacc parse_little.mly
+- ocamldep.opt -modules parse_little.mli &gt; parse_little.mli.depends
+- ocamlc.opt -c -o interp.cmi interp.mli
+- ocamlc.opt -c -o parse_little.cmi parse_little.mli
+- + ocamlc.opt -c -o parse_little.cmi parse_little.mli
+- File &quot;parse_little.mli&quot;, line 25, characters 12-27:
+- Error: Unbound module Big_int
+- Command exited with code 2.
+- Hint: Recursive traversal of subdirectories was not enabled for this build,
+-   as the working directory does not look like an ocamlbuild project (no
+-   &#39;_tags&#39; or &#39;myocamlbuild.ml&#39; file). If you have modules in subdirectories,
+-   you should add the option &quot;-r&quot; or create an empty &#39;_tags&#39; file.
+-   
+-   To enable recursive traversal for some subdirectories only, you can use the
+-   following &#39;_tags&#39; file:
+-   
+-       true: -traverse
+-       &lt;dir1&gt; or &lt;dir2&gt;: traverse
+-       
 - Makefile.coq.conf:70: recipe for target &#39;little.native&#39; failed
-- make[3]: *** [little.native] Error 127
+- make[3]: *** [little.native] Error 10
 - Makefile.coq.conf:66: recipe for target &#39;post-all&#39; failed
 - make[2]: *** [post-all] Error 2
 - Makefile.coq:318: recipe for target &#39;all&#39; failed
@@ -354,15 +387,15 @@ Processing  1/2: [coq-semantics: make]
 # path                 ~/.opam/default/.opam-switch/build/coq-semantics.8.7.0
 # command              ~/.opam/opam-init/hooks/sandbox.sh build make -j7
 # exit-code            2
-# env-file             ~/.opam/log/coq-semantics-7334-d0f245.env
-# output-file          ~/.opam/log/coq-semantics-7334-d0f245.out
+# env-file             ~/.opam/log/coq-semantics-19133-d0f245.env
+# output-file          ~/.opam/log/coq-semantics-19133-d0f245.out
 ### output ###
+# Hint: Recursive traversal of subdirectories was not enabled for this build,
 # [...]
-# make -f Makefile.coq little.native
-# ocamlbuild -no-hygiene -classic-display -libs nums little.native
-# make[3]: ocamlbuild: Command not found
+#       &lt;dir1&gt; or &lt;dir2&gt;: traverse
+#       
 # Makefile.coq.conf:70: recipe for target &#39;little.native&#39; failed
-# make[3]: *** [little.native] Error 127
+# make[3]: *** [little.native] Error 10
 # Makefile.coq.conf:66: recipe for target &#39;post-all&#39; failed
 # make[2]: *** [post-all] Error 2
 # Makefile.coq:318: recipe for target &#39;all&#39; failed
