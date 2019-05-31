@@ -41,7 +41,7 @@
                 <span class="label label-danger">Error</span>
               </small>
             </h1>
-            <p><em><script>document.write(moment("2019-05-20 20:35:44 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2019-05-20 20:35:44 UTC)</em><p>
+            <p><em><script>document.write(moment("2019-05-30 16:46:55 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2019-05-30 16:46:55 UTC)</em><p>
             <h2>Context</h2>
             <pre># Packages matching: installed
 # Name        # Installed       # Synopsis
@@ -66,18 +66,17 @@ license: &quot;MIT&quot;
 build: [
   [&quot;./configure.sh&quot;]
   [make &quot;-j%{jobs}%&quot;]
-  [make &quot;install&quot;]
 ]
-remove: [
-  [&quot;rm&quot; &quot;-R&quot; &quot;%{lib}%/coq/user-contrib/mathcomp/contrib/sum_of_two_square&quot;]
-  [&quot;sh&quot; &quot;-c&quot; &quot;rmdir %{lib}%/coq/user-contrib/mathcomp/contrib || true&quot;]
-]
+install: [make &quot;install&quot;]
 depends: [
   &quot;ocaml&quot;
   &quot;coq&quot; {&gt;= &quot;8.8&quot;}
-  &quot;coq-math-comp&quot; {&gt;= &quot;1.7&quot;} |
-  (&quot;coq-mathcomp-ssreflect&quot; {&gt;= &quot;1.7&quot;} &amp;
-   (&quot;coq-mathcomp-algebra&quot; {&gt;= &quot;1.7&quot;} &amp; &quot;coq-mathcomp-field&quot; {&gt;= &quot;1.7&quot;}))
+  &quot;coq-mathcomp-ssreflect&quot; {&gt;= &quot;1.7&quot;}
+  &quot;coq-mathcomp-algebra&quot; {&gt;= &quot;1.7&quot;}
+  &quot;coq-mathcomp-field&quot; {&gt;= &quot;1.7&quot;}
+]
+tags: [
+  &quot;logpath:mathcomp.contrib.sum_of_two_square&quot;
 ]
 synopsis:
   &quot;A proof of Fermat&#39;s theorem on sum of two squares. It is the proof that uses gaussian integers. This is done in ssreflect. It contains two file :&quot;
@@ -134,7 +133,7 @@ url {
               <dt>Return code</dt>
               <dd>0</dd>
               <dt>Duration</dt>
-              <dd>27 m 43 s</dd>
+              <dd>27 m 49 s</dd>
             </dl>
             <h2>Install</h2>
             <dl class="dl-horizontal">
@@ -143,7 +142,7 @@ url {
               <dt>Return code</dt>
               <dd>7936</dd>
               <dt>Duration</dt>
-              <dd>51 s</dd>
+              <dd>39 s</dd>
               <dt>Output</dt>
               <dd><pre># Packages matching: installed
 # Name                 # Installed       # Synopsis
@@ -154,11 +153,11 @@ base-unix              base
 camlp5                 7.06.10-g84ce6cc4 Preprocessor-pretty-printer of OCaml
 conf-m4                1                 Virtual package relying on m4
 coq                    8.8.1             Formal proof management system.
-coq-mathcomp-algebra   1.8.0             Mathematical Components Library on Algebra
-coq-mathcomp-field     1.8.0             Mathematical Components Library on Fields
-coq-mathcomp-fingroup  1.8.0             Mathematical Components Library on finite groups
-coq-mathcomp-solvable  1.8.0             Mathematical Components Library on finite groups (II)
-coq-mathcomp-ssreflect 1.8.0             Small Scale Reflection
+coq-mathcomp-algebra   1.9.0             Mathematical Components Library on Algebra
+coq-mathcomp-field     1.9.0             Mathematical Components Library on Fields
+coq-mathcomp-fingroup  1.9.0             Mathematical Components Library on finite groups
+coq-mathcomp-solvable  1.9.0             Mathematical Components Library on finite groups (II)
+coq-mathcomp-ssreflect 1.9.0             Small Scale Reflection
 num                    0                 The Num library for arbitrary-precision integer and rational arithmetic
 ocaml                  4.05.0            The OCaml compiler (virtual package)
 ocaml-config           1                 OCaml Switch Configuration
@@ -177,6 +176,24 @@ Processing  1/2: [coq-mathcomp-sum-of-two-square: make]
 + /home/bench/.opam/opam-init/hooks/sandbox.sh &quot;build&quot; &quot;make&quot; &quot;-j7&quot; (CWD=/home/bench/.opam/default/.opam-switch/build/coq-mathcomp-sum-of-two-square.1.0.1)
 - COQDEP VFILES
 - COQC gauss_int.v
+- File &quot;./gauss_int.v&quot;, line 1, characters 0-65:
+- Warning: Notation [ rel _ _ | _ ] was already used in scope fun_scope.
+- [notation-overridden,parsing]
+- File &quot;./gauss_int.v&quot;, line 1, characters 0-65:
+- Warning: Notation [ rel _ _ : _ | _ ] was already used in scope fun_scope.
+- [notation-overridden,parsing]
+- File &quot;./gauss_int.v&quot;, line 1, characters 0-65:
+- Warning: Notation [ rel _ _ in _ &amp; _ | _ ] was already used in scope
+- fun_scope. [notation-overridden,parsing]
+- File &quot;./gauss_int.v&quot;, line 1, characters 0-65:
+- Warning: Notation [ rel _ _ in _ &amp; _ ] was already used in scope fun_scope.
+- [notation-overridden,parsing]
+- File &quot;./gauss_int.v&quot;, line 1, characters 0-65:
+- Warning: Notation [ rel _ _ in _ | _ ] was already used in scope fun_scope.
+- [notation-overridden,parsing]
+- File &quot;./gauss_int.v&quot;, line 1, characters 0-65:
+- Warning: Notation [ rel _ _ in _ ] was already used in scope fun_scope.
+- [notation-overridden,parsing]
 - File &quot;./gauss_int.v&quot;, line 1, characters 0-65:
 - Warning: Notation _ + _ was already used in scope nat_scope.
 - [notation-overridden,parsing]
@@ -213,70 +230,35 @@ Processing  1/2: [coq-mathcomp-sum-of-two-square: make]
 - File &quot;./gauss_int.v&quot;, line 237, characters 0-44:
 - Warning: Ignoring canonical projection to Cint_GI by algGIP in ImGI:
 - redundant with ReGI [redundant-canonical-projection,typechecker]
-- File &quot;./gauss_int.v&quot;, line 1856, characters 0-18:
-- Warning: Ignoring canonical projection to Cint_GI by algGIP in ImGI:
-- redundant with ReGI [redundant-canonical-projection,typechecker]
-- COQC fermat2.v
-- File &quot;./fermat2.v&quot;, line 1, characters 0-65:
-- Warning: Notation _ + _ was already used in scope nat_scope.
-- [notation-overridden,parsing]
-- File &quot;./fermat2.v&quot;, line 1, characters 0-65:
-- Warning: Notation _ - _ was already used in scope nat_scope.
-- [notation-overridden,parsing]
-- File &quot;./fermat2.v&quot;, line 1, characters 0-65:
-- Warning: Notation _ &lt;= _ was already used in scope nat_scope.
-- [notation-overridden,parsing]
-- File &quot;./fermat2.v&quot;, line 1, characters 0-65:
-- Warning: Notation _ &lt; _ was already used in scope nat_scope.
-- [notation-overridden,parsing]
-- File &quot;./fermat2.v&quot;, line 1, characters 0-65:
-- Warning: Notation _ &gt;= _ was already used in scope nat_scope.
-- [notation-overridden,parsing]
-- File &quot;./fermat2.v&quot;, line 1, characters 0-65:
-- Warning: Notation _ &gt; _ was already used in scope nat_scope.
-- [notation-overridden,parsing]
-- File &quot;./fermat2.v&quot;, line 1, characters 0-65:
-- Warning: Notation _ &lt;= _ &lt;= _ was already used in scope nat_scope.
-- [notation-overridden,parsing]
-- File &quot;./fermat2.v&quot;, line 1, characters 0-65:
-- Warning: Notation _ &lt; _ &lt;= _ was already used in scope nat_scope.
-- [notation-overridden,parsing]
-- File &quot;./fermat2.v&quot;, line 1, characters 0-65:
-- Warning: Notation _ &lt;= _ &lt; _ was already used in scope nat_scope.
-- [notation-overridden,parsing]
-- File &quot;./fermat2.v&quot;, line 1, characters 0-65:
-- Warning: Notation _ &lt; _ &lt; _ was already used in scope nat_scope.
-- [notation-overridden,parsing]
-- File &quot;./fermat2.v&quot;, line 1, characters 0-65:
-- Warning: Notation _ * _ was already used in scope nat_scope.
-- [notation-overridden,parsing]
-Processing  1/2: [coq-mathcomp-sum-of-two-square: make install]
-+ /home/bench/.opam/opam-init/hooks/sandbox.sh &quot;build&quot; &quot;make&quot; &quot;install&quot; (CWD=/home/bench/.opam/default/.opam-switch/build/coq-mathcomp-sum-of-two-square.1.0.1)
-- install: cannot create directory &#39;/home/bench/.opam/default/lib/coq/user-contrib/mathcomp/contrib&#39;: Read-only file system
-- install: cannot create directory &#39;/home/bench/.opam/default/lib/coq/user-contrib/mathcomp/contrib&#39;: Read-only file system
-- install: cannot create directory &#39;/home/bench/.opam/default/lib/coq/user-contrib/mathcomp/contrib&#39;: Read-only file system
-- install: cannot create directory &#39;/home/bench/.opam/default/lib/coq/user-contrib/mathcomp/contrib&#39;: Read-only file system
-- install: cannot create directory &#39;/home/bench/.opam/default/lib/coq/user-contrib/mathcomp/contrib&#39;: Read-only file system
-- install: cannot create directory &#39;/home/bench/.opam/default/lib/coq/user-contrib/mathcomp/contrib&#39;: Read-only file system
-- Makefile:471: recipe for target &#39;install&#39; failed
-- make: *** [install] Error 1
-[ERROR] The compilation of coq-mathcomp-sum-of-two-square failed at &quot;/home/bench/.opam/opam-init/hooks/sandbox.sh build make install&quot;.
+- File &quot;./gauss_int.v&quot;, line 1779, characters 0-69:
+- Error: No applicable tactic.
+- 
+- Makefile:656: recipe for target &#39;gauss_int.vo&#39; failed
+- make[1]: *** [gauss_int.vo] Error 1
+- Makefile:317: recipe for target &#39;all&#39; failed
+- make: *** [all] Error 2
+[ERROR] The compilation of coq-mathcomp-sum-of-two-square failed at &quot;/home/bench/.opam/opam-init/hooks/sandbox.sh build make -j7&quot;.
 #=== ERROR while compiling coq-mathcomp-sum-of-two-square.1.0.1 ===============#
 # context              2.0.1 | linux/x86_64 | ocaml-system.4.05.0 | file:///home/bench/run/opam-coq-archive/released
 # path                 ~/.opam/default/.opam-switch/build/coq-mathcomp-sum-of-two-square.1.0.1
-# command              ~/.opam/opam-init/hooks/sandbox.sh build make install
+# command              ~/.opam/opam-init/hooks/sandbox.sh build make -j7
 # exit-code            2
-# env-file             ~/.opam/log/coq-mathcomp-sum-of-two-square-27909-865888.env
-# output-file          ~/.opam/log/coq-mathcomp-sum-of-two-square-27909-865888.out
+# env-file             ~/.opam/log/coq-mathcomp-sum-of-two-square-16787-6cc03f.env
+# output-file          ~/.opam/log/coq-mathcomp-sum-of-two-square-16787-6cc03f.out
 ### output ###
-# install: cannot create directory &#39;/home/bench/.opam/default/lib/coq/user-contrib/mathcomp/contrib&#39;: Read-only file system
-# install: cannot create directory &#39;/home/bench/.opam/default/lib/coq/user-contrib/mathcomp/contrib&#39;: Read-only file system
-# install: cannot create directory &#39;/home/bench/.opam/default/lib/coq/user-contrib/mathcomp/contrib&#39;: Read-only file system
-# install: cannot create directory &#39;/home/bench/.opam/default/lib/coq/user-contrib/mathcomp/contrib&#39;: Read-only file system
-# install: cannot create directory &#39;/home/bench/.opam/default/lib/coq/user-contrib/mathcomp/contrib&#39;: Read-only file system
-# install: cannot create directory &#39;/home/bench/.opam/default/lib/coq/user-contrib/mathcomp/contrib&#39;: Read-only file system
-# Makefile:471: recipe for target &#39;install&#39; failed
-# make: *** [install] Error 1
+# [...]
+# Warning: Notation _ * _ was already used in scope nat_scope.
+# [notation-overridden,parsing]
+# File &quot;./gauss_int.v&quot;, line 237, characters 0-44:
+# Warning: Ignoring canonical projection to Cint_GI by algGIP in ImGI:
+# redundant with ReGI [redundant-canonical-projection,typechecker]
+# File &quot;./gauss_int.v&quot;, line 1779, characters 0-69:
+# Error: No applicable tactic.
+# 
+# Makefile:656: recipe for target &#39;gauss_int.vo&#39; failed
+# make[1]: *** [gauss_int.vo] Error 1
+# Makefile:317: recipe for target &#39;all&#39; failed
+# make: *** [all] Error 2
 &lt;&gt;&lt;&gt; Error report &lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;
 +- The following actions failed
 | - build coq-mathcomp-sum-of-two-square 1.0.1

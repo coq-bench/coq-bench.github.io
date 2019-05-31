@@ -41,7 +41,7 @@
                 <span class="label label-info">Not compatible</span>
               </small>
             </h1>
-            <p><em><script>document.write(moment("2019-05-20 20:35:44 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2019-05-20 20:35:44 UTC)</em><p>
+            <p><em><script>document.write(moment("2019-05-30 16:46:55 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2019-05-30 16:46:55 UTC)</em><p>
             <h2>Context</h2>
             <pre># Packages matching: installed
 # Name        # Installed       # Synopsis
@@ -66,19 +66,17 @@ license: &quot;MIT&quot;
 build: [
   [&quot;./configure.sh&quot;]
   [make &quot;-j%{jobs}%&quot;]
-  [make &quot;install&quot;]
 ]
-remove: [
-  [&quot;rm&quot; &quot;-R&quot; &quot;%{lib}%/coq/user-contrib/mathcomp/contrib/sum_of_two_square&quot;]
-  [&quot;sh&quot; &quot;-c&quot; &quot;rmdir %{lib}%/coq/user-contrib/mathcomp/contrib || true&quot;]
-]
+install: [make &quot;install&quot;]
 depends: [
   &quot;ocaml&quot;
   &quot;coq&quot; {&gt;= &quot;8.5&quot;}
-  &quot;coq-math-comp&quot; {&gt;= &quot;1.6&quot; &amp; &lt; &quot;1.7&quot;} |
-  (&quot;coq-mathcomp-ssreflect&quot; {&gt;= &quot;1.6&quot; &amp; &lt; &quot;1.7&quot;} &amp;
-   (&quot;coq-mathcomp-algebra&quot; {&gt;= &quot;1.6&quot; &amp; &lt; &quot;1.7&quot;} &amp;
-    &quot;coq-mathcomp-field&quot; {&gt;= &quot;1.6&quot; &amp; &lt; &quot;1.7&quot;}))
+  &quot;coq-mathcomp-ssreflect&quot; {&gt;= &quot;1.6&quot; &amp; &lt; &quot;1.7&quot;}
+  &quot;coq-mathcomp-algebra&quot; {&gt;= &quot;1.6&quot; &amp; &lt; &quot;1.7&quot;}
+  &quot;coq-mathcomp-field&quot; {&gt;= &quot;1.6&quot; &amp; &lt; &quot;1.7&quot;}
+]
+tags: [
+  &quot;logpath:mathcomp.contrib.sum_of_two_square&quot;
 ]
 synopsis:
   &quot;A proof of Fermat&#39;s theorem on sum of two squares. It is the proof that uses gaussian integers. This is done in ssreflect. It contains two file :&quot;
