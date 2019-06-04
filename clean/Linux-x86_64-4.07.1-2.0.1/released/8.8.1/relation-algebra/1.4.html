@@ -41,7 +41,7 @@
                 <span class="label label-info">Not compatible</span>
               </small>
             </h1>
-            <p><em><script>document.write(moment("2019-05-28 09:34:16 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2019-05-28 09:34:16 UTC)</em><p>
+            <p><em><script>document.write(moment("2019-06-04 03:16:06 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2019-06-04 03:16:06 UTC)</em><p>
             <h2>Context</h2>
             <pre># Packages matching: installed
 # Name        # Installed       # Synopsis
@@ -64,19 +64,28 @@ license: &quot;LGPL&quot;
 build: [
   [&quot;coq_makefile&quot; &quot;-f&quot; &quot;Make&quot; &quot;-o&quot; &quot;Makefile&quot;]
   [make &quot;-j%{jobs}%&quot;]
-  [make &quot;install&quot;]
 ]
-remove: [&quot;rm&quot; &quot;-R&quot; &quot;%{lib}%/coq/user-contrib/RelationAlgebra&quot;]
+install: [make &quot;install&quot;]
 depends: [
   &quot;ocaml&quot;
   &quot;coq&quot; {&gt;= &quot;8.5&quot; &amp; &lt; &quot;8.5.1&quot;}
 ]
-tags: [ &quot;keyword:relation algebra&quot; &quot;keyword:kleene algebra with tests&quot; &quot;keyword:kat&quot; &quot;keyword:allegories&quot; &quot;keyword:residuated structures&quot; &quot;keyword:automata&quot; &quot;keyword:regular expressions&quot; &quot;keyword:matrices&quot; &quot;category:Mathematics/Algebra&quot; ]
+tags: [
+  &quot;keyword:relation algebra&quot;
+  &quot;keyword:kleene algebra with tests&quot;
+  &quot;keyword:kat&quot;
+  &quot;keyword:allegories&quot;
+  &quot;keyword:residuated structures&quot;
+  &quot;keyword:automata&quot;
+  &quot;keyword:regular expressions&quot;
+  &quot;keyword:matrices&quot;
+  &quot;category:Mathematics/Algebra&quot;
+  &quot;logpath:RelationAlgebra&quot;
+]
 authors: [ &quot;Damien Pous &lt;Damien.Pous@ens-lyon.fr&gt;&quot; ]
 synopsis: &quot;Relation Algebra and KAT&quot;
 description:
   &quot;A modular library about relation algebra, from idempotent semirings to residuated Kleene allegories, including a decision tactic for Kleene algebra with Tests (KAT).&quot;
-flags: light-uninstall
 url {
   src: &quot;https://github.com/damien-pous/relation-algebra/archive/v1.4.tar.gz&quot;
   checksum: &quot;md5=131ddcaf000cb5ebab381037651e17a5&quot;
