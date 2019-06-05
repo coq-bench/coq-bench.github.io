@@ -41,7 +41,7 @@
                 <span class="label label-info">Not compatible</span>
               </small>
             </h1>
-            <p><em><script>document.write(moment("2019-05-30 02:12:10 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2019-05-30 02:12:10 UTC)</em><p>
+            <p><em><script>document.write(moment("2019-06-05 21:03:07 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2019-06-05 21:03:07 UTC)</em><p>
             <h2>Context</h2>
             <pre># Packages matching: installed
 # Name        # Installed       # Synopsis
@@ -65,18 +65,19 @@ license: &quot;MIT&quot;
 build: [
   [&quot;./configure.sh&quot;]
   [make &quot;-j%{jobs}%&quot;]
-  [make &quot;install&quot;]
 ]
-remove: [&quot;rm&quot; &quot;-R&quot; &quot;%{lib}%/coq/user-contrib/Plouffe&quot;]
+install: [make &quot;install&quot;]
 depends: [
   &quot;ocaml&quot;
   &quot;coq&quot; {&gt;= &quot;8.4pl4&quot;}
   &quot;coq-ssreflect&quot;
   &quot;coq-coquelicot&quot; {= &quot;2.0.1&quot;}
 ]
+tags: [
+  &quot;logpath:Plouffe&quot;
+]
 synopsis: &quot;A Coq formalization of Plouffe formula&quot;
 authors: &quot;Laurent Thery&quot;
-flags: light-uninstall
 url {
   src: &quot;https://github.com/thery/Plouffe/archive/v1.0.0.tar.gz&quot;
   checksum: &quot;md5=b877d0f05c0264b4684664d6cc090829&quot;
@@ -99,7 +100,7 @@ url {
               <dt>Output</dt>
               <dd><pre>[NOTE] Package coq is already installed (current version is 8.7.2).
 The following dependencies couldn&#39;t be met:
-  - coq-plouffe -&gt; coq-ssreflect -&gt; coq &lt; 8.5~ -&gt; ocaml &lt; 4.03.0
+  - coq-plouffe -&gt; coq-coquelicot &lt; 2.1.0 -&gt; coq &lt; 8.5~ -&gt; ocaml &lt; 4.03.0
       base of this switch (use `--unlock-base&#39; to force)
 No solution found, exiting
 </pre></dd>

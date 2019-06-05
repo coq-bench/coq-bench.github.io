@@ -41,7 +41,7 @@
                 <span class="label label-info">Not compatible</span>
               </small>
             </h1>
-            <p><em><script>document.write(moment("2019-05-30 02:12:10 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2019-05-30 02:12:10 UTC)</em><p>
+            <p><em><script>document.write(moment("2019-06-05 21:03:07 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2019-06-05 21:03:07 UTC)</em><p>
             <h2>Context</h2>
             <pre># Packages matching: installed
 # Name        # Installed       # Synopsis
@@ -64,21 +64,19 @@ homepage: &quot;https://github.com/karmaki/coq-dpdgraph&quot;
 build: [
   [&quot;./configure&quot;]
   [make]
-  [make &quot;install&quot; &quot;BINDIR=%{bin}%&quot;]
- ]
-remove: [
-  [&quot;rm&quot; &quot;%{bin}%/dpd2dot&quot;]
-  [&quot;rm&quot; &quot;-R&quot; &quot;%{lib}%/coq/user-contrib/dpdgraph&quot;]
 ]
+install: [make &quot;install&quot; &quot;BINDIR=%{bin}%&quot;]
 depends: [
   &quot;ocaml&quot;
   &quot;coq&quot; {&gt;= &quot;8.5&quot; &amp; &lt; &quot;8.6~&quot;}
   &quot;ocamlgraph&quot;
 ]
 authors: [ &quot;Anne Pacalet&quot; &quot;Yves Bertot&quot;]
+tags: [
+  &quot;logpath:dpdgraph&quot;
+]
 synopsis: &quot;Compute dependencies between Coq objects (definitions, theorems)&quot;
 description: &quot;and produce graphs&quot;
-flags: light-uninstall
 url {
   src:
     &quot;https://github.com/ybertot/coq-dpdgraph/archive/coq-dpdgraph-0.5.rc3.zip&quot;
