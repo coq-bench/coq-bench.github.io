@@ -41,7 +41,7 @@
                 <span class="label label-info">Not compatible</span>
               </small>
             </h1>
-            <p><em><script>document.write(moment("2019-05-31 03:04:35 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2019-05-31 03:04:35 UTC)</em><p>
+            <p><em><script>document.write(moment("2019-06-06 22:24:00 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2019-06-06 22:24:00 UTC)</em><p>
             <h2>Context</h2>
             <pre># Packages matching: installed
 # Name        # Installed       # Synopsis
@@ -64,20 +64,25 @@ license: &quot;LGPL 2&quot;
 build: [
   [&quot;./configure.sh&quot;]
   [make &quot;-j%{jobs}%&quot;]
-  [make &quot;install&quot;]
 ]
-remove: [&quot;rm&quot; &quot;-R&quot; &quot;%{lib}%/coq/user-contrib/HighSchoolGeometry&quot;]
+install: [make &quot;install&quot;]
 depends: [
   &quot;ocaml&quot;
   &quot;coq&quot; {&gt;= &quot;8.5&quot; &amp; &lt; &quot;8.6~&quot;}
 ]
-tags: [ &quot;keyword:geometry&quot; &quot;keyword:teaching&quot; &quot;keyword:high school&quot; &quot;category:Mathematics/Geometry/General&quot; &quot;date:2004-01&quot; ]
+tags: [
+  &quot;keyword:geometry&quot;
+  &quot;keyword:teaching&quot;
+  &quot;keyword:high school&quot;
+  &quot;category:Mathematics/Geometry/General&quot;
+  &quot;date:2004-01&quot;
+  &quot;logpath:HighSchoolGeometry&quot;
+]
 authors: [ &quot;Frédérique Guilhot &lt;Frederique.Guilhot@sophia.inria.fr&gt;&quot; ]
 synopsis: &quot;Geometry for French high-school&quot;
 description: &quot;&quot;&quot;
 This library is dedicated to high-shool geometry teaching.
 The axiomatisation for affine euclidean space is in a non analytic setting.&quot;&quot;&quot;
-flags: light-uninstall
 url {
   src: &quot;https://github.com/thery/HighSchoolGeometry/archive/v1.0.0.tar.gz&quot;
   checksum: &quot;md5=cf03f84a71cee31d4fe870fa567cc3dd&quot;
