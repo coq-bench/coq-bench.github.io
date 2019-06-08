@@ -41,7 +41,7 @@
                 <span class="label label-info">Not compatible</span>
               </small>
             </h1>
-            <p><em><script>document.write(moment("2019-06-01 04:19:57 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2019-06-01 04:19:57 UTC)</em><p>
+            <p><em><script>document.write(moment("2019-06-08 00:39:37 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2019-06-08 00:39:37 UTC)</em><p>
             <h2>Context</h2>
             <pre># Packages matching: installed
 # Name        # Installed       # Synopsis
@@ -66,16 +66,17 @@ license: &quot;GPL 2&quot;
 build: [
   [&quot;./configure.sh&quot;]
   [make &quot;-j%{jobs}%&quot;]
-  [make &quot;install&quot;]
 ]
-remove: [&quot;rm&quot; &quot;-R&quot; &quot;%{lib}%/coq/user-contrib/CoRN&quot;]
+install: [make &quot;install&quot;]
 depends: [
   &quot;ocaml&quot;
   &quot;coq&quot; {&gt;= &quot;8.4pl4&quot; &amp; &lt; &quot;8.5~&quot;}
   &quot;coq-math-classes&quot;
 ]
+tags: [
+  &quot;logpath:CoRN&quot;
+]
 synopsis: &quot;The CoRN library&quot;
-flags: light-uninstall
 url {
   src:
     &quot;https://github.com/c-corn/corn/archive/e9162eaba7e705e793aad4dbbffdb606aba9b3bb.tar.gz&quot;

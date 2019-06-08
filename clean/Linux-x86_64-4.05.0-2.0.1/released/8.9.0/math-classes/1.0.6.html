@@ -41,7 +41,7 @@
                 <span class="label label-info">Not compatible</span>
               </small>
             </h1>
-            <p><em><script>document.write(moment("2019-05-27 21:58:41 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2019-05-27 21:58:41 UTC)</em><p>
+            <p><em><script>document.write(moment("2019-06-06 23:24:14 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2019-06-06 23:24:14 UTC)</em><p>
             <h2>Context</h2>
             <pre># Packages matching: installed
 # Name        # Installed       # Synopsis
@@ -71,15 +71,16 @@ license: &quot;Public Domain&quot;
 build: [
   [ &quot;./configure.sh&quot; ]
   [ make &quot;-j%{jobs}%&quot; ]
-  [ make &quot;install&quot; ]
 ]
-remove: [&quot;rm&quot; &quot;-R&quot; &quot;%{lib}%/coq/user-contrib/MathClasses&quot;]
+install: [ make &quot;install&quot; ]
 depends: [
   &quot;ocaml&quot;
   &quot;coq&quot; {&gt;= &quot;8.6&quot; &amp; &lt; &quot;8.7&quot;}
 ]
+tags: [
+  &quot;logpath:MathClasses&quot;
+]
 synopsis: &quot;A library of abstract interfaces for mathematical structures in Coq&quot;
-flags: light-uninstall
 url {
   src: &quot;https://github.com/math-classes/math-classes/archive/1.0.6.tar.gz&quot;
   checksum: &quot;md5=20d85db5271da7f39d0a2005d766f1a9&quot;
