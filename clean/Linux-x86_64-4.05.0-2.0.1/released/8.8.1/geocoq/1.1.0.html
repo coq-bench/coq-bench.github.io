@@ -41,7 +41,7 @@
                 <span class="label label-info">Not compatible</span>
               </small>
             </h1>
-            <p><em><script>document.write(moment("2019-05-30 16:46:55 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2019-05-30 16:46:55 UTC)</em><p>
+            <p><em><script>document.write(moment("2019-06-09 23:05:16 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2019-06-09 23:05:16 UTC)</em><p>
             <h2>Context</h2>
             <pre># Packages matching: installed
 # Name        # Installed       # Synopsis
@@ -67,15 +67,16 @@ license: &quot;LGPL 3&quot;
 build: [
   [&quot;./configure.sh&quot;]
   [make &quot;-j%{jobs}%&quot;]
-  [make &quot;install&quot;]
 ]
-remove: [&quot;rm&quot; &quot;-R&quot; &quot;%{lib}%/coq/user-contrib/GeoCoq&quot;]
+install: [make &quot;install&quot;]
 depends: [
   &quot;ocaml&quot;
   &quot;coq&quot; {&gt;= &quot;8.4pl4&quot; &amp; &lt; &quot;8.5~&quot;}
 ]
+tags: [
+  &quot;logpath:GeoCoq&quot;
+]
 synopsis: &quot;A formalization of geometry in Coq based on Tarski&#39;s axiom system&quot;
-flags: light-uninstall
 url {
   src: &quot;https://github.com/GeoCoq/GeoCoq/archive/1.1.0.tar.gz&quot;
   checksum: &quot;md5=397b83bc884a6c07a005412e9a2e5b1f&quot;
