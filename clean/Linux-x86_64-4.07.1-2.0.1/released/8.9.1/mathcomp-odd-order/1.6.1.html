@@ -41,7 +41,7 @@
                 <span class="label label-info">Not compatible</span>
               </small>
             </h1>
-            <p><em><script>document.write(moment("2019-06-21 15:07:07 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2019-06-21 15:07:07 UTC)</em><p>
+            <p><em><script>document.write(moment("2019-07-01 02:21:19 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2019-07-01 02:21:19 UTC)</em><p>
             <h2>Context</h2>
             <pre># Packages matching: installed
 # Name              # Installed       # Synopsis
@@ -51,7 +51,7 @@ base-unix           base
 camlp5              7.06.10-g84ce6cc4 Preprocessor-pretty-printer of OCaml
 conf-m4             1                 Virtual package relying on m4
 coq                 8.9.1             Formal proof management system
-num                 1.1               The legacy Num library for arbitrary-precision integer and rational arithmetic
+num                 1.2               The legacy Num library for arbitrary-precision integer and rational arithmetic
 ocaml               4.07.1            The OCaml compiler (virtual package)
 ocaml-base-compiler 4.07.1            Official release 4.07.1
 ocaml-config        1                 OCaml Switch Configuration
@@ -65,21 +65,15 @@ homepage: &quot;http://ssr.msr-inria.inria.fr/&quot;
 bug-reports: &quot;Mathematical Components &lt;mathcomp-dev@sympa.inria.fr&gt;&quot;
 license: &quot;CeCILL-B&quot;
 build: [ 
-     [make &quot;-C&quot; &quot;mathcomp/field&quot; &quot;-j&quot; &quot;%{jobs}%&quot;]
-     [make &quot;-C&quot; &quot;mathcomp/field&quot; &quot;install&quot;]
-     [make &quot;-C&quot; &quot;mathcomp/odd_order&quot; &quot;-j&quot; &quot;%{jobs}%&quot;]
+  [make &quot;-C&quot; &quot;mathcomp/odd_order&quot; &quot;-j&quot; &quot;%{jobs}%&quot;]
 ]
 install: [ make &quot;-C&quot; &quot;mathcomp/odd_order&quot; &quot;install&quot; ]
-remove: [ 
-     [&quot;sh&quot; &quot;-c&quot; &quot;rm -rf &#39;%{lib}%/coq/user-contrib/mathcomp/odd_order&#39;&quot;]
-     [&quot;sh&quot; &quot;-c&quot; &quot;rm -rf &#39;%{lib}%/coq/user-contrib/mathcomp/field/finfield.v&#39;&quot;]
-     [&quot;sh&quot; &quot;-c&quot; &quot;rm -rf &#39;%{lib}%/coq/user-contrib/mathcomp/field/finfield.vo&#39;&quot;]
-]
 depends: [
   &quot;ocaml&quot;
   &quot;coq-mathcomp-algebra&quot; {= &quot;1.6.1&quot;}
   &quot;coq-mathcomp-character&quot; {= &quot;1.6.1&quot;}
   &quot;coq-mathcomp-field&quot; {= &quot;1.6.1&quot;}
+  &quot;coq-mathcomp-field-extra&quot; {= &quot;1.6.1&quot;}
   &quot;coq-mathcomp-fingroup&quot; {= &quot;1.6.1&quot;}
   &quot;coq-mathcomp-solvable&quot; {= &quot;1.6.1&quot;}
   &quot;coq-mathcomp-ssreflect&quot; {= &quot;1.6.1&quot;}
