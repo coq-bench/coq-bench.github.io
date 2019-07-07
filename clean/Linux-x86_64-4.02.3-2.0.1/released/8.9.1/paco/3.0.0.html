@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>paco: 53 s</title>
+    <link rel="shortcut icon" type="image/png" href="../../../../../favicon.png" />
+    <link href="../../../../../bootstrap.min.css" rel="stylesheet">
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+    <script src="../../../../../moment.min.js"></script>
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="container">
+      <div class="navbar navbar-default" role="navigation">
+        <div class="container-fluid">
+          <div class="navbar-header">
+            <a class="navbar-brand" href="../../../../.."><i class="fa fa-lg fa-flag-checkered"></i> Coq bench</a>
+          </div>
+          <div id="navbar" class="collapse navbar-collapse">
+            <ul class="nav navbar-nav">
+              <li><a href="../..">clean / released</a></li>
+              <li class="active"><a href="">8.9.1 / paco - 3.0.0</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="article">
+        <div class="row">
+          <div class="col-md-12">
+            <a href="../..">« Up</a>
+            <h1>
+              paco
+              <small>
+                3.0.0
+                <span class="label label-success">53 s</span>
+              </small>
+            </h1>
+            <p><em><script>document.write(moment("2019-07-07 20:26:08 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2019-07-07 20:26:08 UTC)</em><p>
+            <h2>Context</h2>
+            <pre># Packages matching: installed
+# Name              # Installed       # Synopsis
+base-bigarray       base
+base-num            base              Num library distributed with the OCaml compiler
+base-ocamlbuild     base              OCamlbuild binary and libraries distributed with the OCaml compiler
+base-threads        base
+base-unix           base
+camlp5              7.06.10-g84ce6cc4 Preprocessor-pretty-printer of OCaml
+conf-m4             1                 Virtual package relying on m4
+coq                 8.9.1             Formal proof management system
+num                 0                 The Num library for arbitrary-precision integer and rational arithmetic
+ocaml               4.02.3            The OCaml compiler (virtual package)
+ocaml-base-compiler 4.02.3            Official 4.02.3 release
+ocaml-config        1                 OCaml Switch Configuration
+ocamlfind           1.8.0             A library manager for OCaml
+# opam file:
+opam-version: &quot;2.0&quot;
+name: &quot;coq-paco&quot;
+version: &quot;3.0.0&quot;
+maintainer: &quot;paco@sf.snu.ac.kr&quot;
+synopsis: &quot;Coq library implementing parameterized coinduction&quot;
+homepage: &quot;https://github.com/snu-sf/paco/&quot;
+dev-repo: &quot;git+https://github.com/snu-sf/paco.git&quot;
+bug-reports: &quot;https://github.com/snu-sf/paco/issues/&quot;
+authors: [
+  &quot;Chung-Kil Hur &lt;gil.hur@sf.snu.ac.kr&gt;&quot;
+  &quot;Georg Neis &lt;neis@mpi-sws.org&gt;&quot;
+  &quot;Derek Dreyer &lt;dreyer@mpi-sws.org&gt;&quot;
+  &quot;Viktor Vafeiadis &lt;viktor@mpi-sws.org&gt;&quot;
+  &quot;Minki Cho &lt;minki.cho@sf.snu.ac.kr&gt;&quot;
+]
+license: &quot;BSD-3&quot;
+build: [make &quot;-C&quot; &quot;src&quot; &quot;all&quot; &quot;-j%{jobs}%&quot;]
+install: [make &quot;-C&quot; &quot;src&quot; &quot;-f&quot; &quot;Makefile.coq&quot; &quot;install&quot;]
+remove: [&quot;rm&quot; &quot;-r&quot; &quot;-f&quot; &quot;%{lib}%/coq/user-contrib/Paco&quot;]
+depends: [
+  &quot;coq&quot; {&gt;= &quot;8.6&quot; &amp; &lt; &quot;8.10&quot;}
+]
+tags: [
+  &quot;date:2019-03-25&quot;
+  &quot;category:Programming Languages/Formal Definitions and Theory&quot;
+  &quot;category:Mathematical Logic and Foramal Languages/Mathematical Logic&quot;
+  &quot;keyword:coinduction&quot;
+  &quot;keyword:simulation&quot;
+  &quot;keyword:parameterized greatest fixed point&quot;
+]
+url {
+  http: &quot;https://github.com/snu-sf/paco/archive/v3.0.0.tar.gz&quot;
+  checksum: &quot;3d67b9f416d61263e26f296e6fc4f564&quot;
+}
+</pre>
+            <h2>Lint</h2>
+            <dl class="dl-horizontal">
+              <dt>Command</dt>
+              <dd><code>true</code></dd>
+              <dt>Return code</dt>
+              <dd>0</dd>
+            </dl>
+            <h2>Dry install</h2>
+            <p>Dry install with the current Coq version:</p>
+            <dl class="dl-horizontal">
+              <dt>Command</dt>
+              <dd><code>opam install -y --show-action coq-paco.3.0.0 coq.8.9.1</code></dd>
+              <dt>Return code</dt>
+              <dd>0</dd>
+            </dl>
+            <p>Dry install without Coq/switch base, to test if the problem was incompatibility with the current Coq/OCaml version:</p>
+            <dl class="dl-horizontal">
+              <dt>Command</dt>
+              <dd><code>true</code></dd>
+              <dt>Return code</dt>
+              <dd>0</dd>
+            </dl>
+            <h2>Install dependencies</h2>
+            <dl class="dl-horizontal">
+              <dt>Command</dt>
+              <dd><code>opam list; echo; ulimit -Sv 4000000; timeout 30m opam install -y --deps-only coq-paco.3.0.0</code></dd>
+              <dt>Return code</dt>
+              <dd>0</dd>
+              <dt>Duration</dt>
+              <dd>6 s</dd>
+            </dl>
+            <h2>Install</h2>
+            <dl class="dl-horizontal">
+              <dt>Command</dt>
+              <dd><code>opam list; echo; ulimit -Sv 4000000; timeout 30m opam install -j1 -y -v coq-paco.3.0.0</code></dd>
+              <dt>Return code</dt>
+              <dd>0</dd>
+              <dt>Duration</dt>
+              <dd>53 s</dd>
+            </dl>
+            <h2>Installation size</h2>
+            <p>Total: 8 M</p>
+            <ul>
+              <li>534 K <code>../ocaml-base-compiler.4.02.3/lib/coq/user-contrib/Paco/cpn14.vo</code></li>
+              <li>467 K <code>../ocaml-base-compiler.4.02.3/lib/coq/user-contrib/Paco/cpn13.vo</code></li>
+              <li>406 K <code>../ocaml-base-compiler.4.02.3/lib/coq/user-contrib/Paco/cpn12.vo</code></li>
+              <li>351 K <code>../ocaml-base-compiler.4.02.3/lib/coq/user-contrib/Paco/cpn11.vo</code></li>
+              <li>301 K <code>../ocaml-base-compiler.4.02.3/lib/coq/user-contrib/Paco/cpn10.vo</code></li>
+              <li>256 K <code>../ocaml-base-compiler.4.02.3/lib/coq/user-contrib/Paco/cpn9.vo</code></li>
+              <li>216 K <code>../ocaml-base-compiler.4.02.3/lib/coq/user-contrib/Paco/cpn8.vo</code></li>
+              <li>212 K <code>../ocaml-base-compiler.4.02.3/lib/coq/user-contrib/Paco/pacotac_internal.vo</code></li>
+              <li>180 K <code>../ocaml-base-compiler.4.02.3/lib/coq/user-contrib/Paco/cpn7.vo</code></li>
+              <li>157 K <code>../ocaml-base-compiler.4.02.3/lib/coq/user-contrib/Paco/paco14.vo</code></li>
+              <li>149 K <code>../ocaml-base-compiler.4.02.3/lib/coq/user-contrib/Paco/cpn6.vo</code></li>
+              <li>142 K <code>../ocaml-base-compiler.4.02.3/lib/coq/user-contrib/Paco/paco13.vo</code></li>
+              <li>127 K <code>../ocaml-base-compiler.4.02.3/lib/coq/user-contrib/Paco/paco12.vo</code></li>
+              <li>122 K <code>../ocaml-base-compiler.4.02.3/lib/coq/user-contrib/Paco/cpn5.vo</code></li>
+              <li>115 K <code>../ocaml-base-compiler.4.02.3/lib/coq/user-contrib/Paco/paconotation_internal.vo</code></li>
+              <li>114 K <code>../ocaml-base-compiler.4.02.3/lib/coq/user-contrib/Paco/paco11.vo</code></li>
+              <li>114 K <code>../ocaml-base-compiler.4.02.3/lib/coq/user-contrib/Paco/examples.vo</code></li>
+              <li>102 K <code>../ocaml-base-compiler.4.02.3/lib/coq/user-contrib/Paco/paco10.vo</code></li>
+              <li>98 K <code>../ocaml-base-compiler.4.02.3/lib/coq/user-contrib/Paco/cpn4.vo</code></li>
+              <li>96 K <code>../ocaml-base-compiler.4.02.3/lib/coq/user-contrib/Paco/paconotation.vo</code></li>
+              <li>91 K <code>../ocaml-base-compiler.4.02.3/lib/coq/user-contrib/Paco/gcpn14.vo</code></li>
+              <li>90 K <code>../ocaml-base-compiler.4.02.3/lib/coq/user-contrib/Paco/paco9.vo</code></li>
+              <li>86 K <code>../ocaml-base-compiler.4.02.3/lib/coq/user-contrib/Paco/paconotation.glob</code></li>
+              <li>85 K <code>../ocaml-base-compiler.4.02.3/lib/coq/user-contrib/Paco/gcpn13.vo</code></li>
+              <li>79 K <code>../ocaml-base-compiler.4.02.3/lib/coq/user-contrib/Paco/gcpn12.vo</code></li>
+              <li>79 K <code>../ocaml-base-compiler.4.02.3/lib/coq/user-contrib/Paco/paco8.vo</code></li>
+              <li>78 K <code>../ocaml-base-compiler.4.02.3/lib/coq/user-contrib/Paco/cpn3.vo</code></li>
+              <li>74 K <code>../ocaml-base-compiler.4.02.3/lib/coq/user-contrib/Paco/gcpn11.vo</code></li>
+              <li>73 K <code>../ocaml-base-compiler.4.02.3/lib/coq/user-contrib/Paco/cpntac.vo</code></li>
+              <li>71 K <code>../ocaml-base-compiler.4.02.3/lib/coq/user-contrib/Paco/tutorial.vo</code></li>
+              <li>69 K <code>../ocaml-base-compiler.4.02.3/lib/coq/user-contrib/Paco/paco7.vo</code></li>
+              <li>68 K <code>../ocaml-base-compiler.4.02.3/lib/coq/user-contrib/Paco/gcpn10.vo</code></li>
+              <li>64 K <code>../ocaml-base-compiler.4.02.3/lib/coq/user-contrib/Paco/paco14.glob</code></li>
+              <li>63 K <code>../ocaml-base-compiler.4.02.3/lib/coq/user-contrib/Paco/gcpn9.vo</code></li>
+              <li>61 K <code>../ocaml-base-compiler.4.02.3/lib/coq/user-contrib/Paco/cpn2.vo</code></li>
+              <li>59 K <code>../ocaml-base-compiler.4.02.3/lib/coq/user-contrib/Paco/paco6.vo</code></li>
+              <li>59 K <code>../ocaml-base-compiler.4.02.3/lib/coq/user-contrib/Paco/paco13.glob</code></li>
+              <li>58 K <code>../ocaml-base-compiler.4.02.3/lib/coq/user-contrib/Paco/gcpn8.vo</code></li>
+              <li>54 K <code>../ocaml-base-compiler.4.02.3/lib/coq/user-contrib/Paco/paco12.glob</code></li>
+              <li>52 K <code>../ocaml-base-compiler.4.02.3/lib/coq/user-contrib/Paco/gcpn7.vo</code></li>
+              <li>51 K <code>../ocaml-base-compiler.4.02.3/lib/coq/user-contrib/Paco/paco5.vo</code></li>
+              <li>50 K <code>../ocaml-base-compiler.4.02.3/lib/coq/user-contrib/Paco/cpn14.glob</code></li>
+              <li>50 K <code>../ocaml-base-compiler.4.02.3/lib/coq/user-contrib/Paco/paco11.glob</code></li>
+              <li>47 K <code>../ocaml-base-compiler.4.02.3/lib/coq/user-contrib/Paco/gcpn6.vo</code></li>
+              <li>46 K <code>../ocaml-base-compiler.4.02.3/lib/coq/user-contrib/Paco/cpn1.vo</code></li>
+              <li>46 K <code>../ocaml-base-compiler.4.02.3/lib/coq/user-contrib/Paco/cpn13.glob</code></li>
+              <li>46 K <code>../ocaml-base-compiler.4.02.3/lib/coq/user-contrib/Paco/paco10.glob</code></li>
+              <li>44 K <code>../ocaml-base-compiler.4.02.3/lib/coq/user-contrib/Paco/pacotac.vo</code></li>
+              <li>43 K <code>../ocaml-base-compiler.4.02.3/lib/coq/user-contrib/Paco/paco4.vo</code></li>
+              <li>43 K <code>../ocaml-base-compiler.4.02.3/lib/coq/user-contrib/Paco/cpn12.glob</code></li>
+              <li>42 K <code>../ocaml-base-compiler.4.02.3/lib/coq/user-contrib/Paco/pacotac_internal.v</code></li>
+              <li>42 K <code>../ocaml-base-compiler.4.02.3/lib/coq/user-contrib/Paco/gcpn5.vo</code></li>
+              <li>41 K <code>../ocaml-base-compiler.4.02.3/lib/coq/user-contrib/Paco/paconotation_internal.glob</code></li>
+              <li>40 K <code>../ocaml-base-compiler.4.02.3/lib/coq/user-contrib/Paco/paco9.glob</code></li>
+              <li>40 K <code>../ocaml-base-compiler.4.02.3/lib/coq/user-contrib/Paco/cpn11.glob</code></li>
+              <li>38 K <code>../ocaml-base-compiler.4.02.3/lib/coq/user-contrib/Paco/cpn10.glob</code></li>
+              <li>37 K <code>../ocaml-base-compiler.4.02.3/lib/coq/user-contrib/Paco/paco8.glob</code></li>
+              <li>36 K <code>../ocaml-base-compiler.4.02.3/lib/coq/user-contrib/Paco/gcpn4.vo</code></li>
+              <li>36 K <code>../ocaml-base-compiler.4.02.3/lib/coq/user-contrib/Paco/paco3.vo</code></li>
+              <li>35 K <code>../ocaml-base-compiler.4.02.3/lib/coq/user-contrib/Paco/paco7.glob</code></li>
+              <li>34 K <code>../ocaml-base-compiler.4.02.3/lib/coq/user-contrib/Paco/gcpntac.vo</code></li>
+              <li>34 K <code>../ocaml-base-compiler.4.02.3/lib/coq/user-contrib/Paco/cpn0.vo</code></li>
+              <li>34 K <code>../ocaml-base-compiler.4.02.3/lib/coq/user-contrib/Paco/cpn9.glob</code></li>
+              <li>33 K <code>../ocaml-base-compiler.4.02.3/lib/coq/user-contrib/Paco/pacotac_internal.glob</code></li>
+              <li>33 K <code>../ocaml-base-compiler.4.02.3/lib/coq/user-contrib/Paco/gcpn14.glob</code></li>
+              <li>32 K <code>../ocaml-base-compiler.4.02.3/lib/coq/user-contrib/Paco/cpn8.glob</code></li>
+              <li>32 K <code>../ocaml-base-compiler.4.02.3/lib/coq/user-contrib/Paco/paco6.glob</code></li>
+              <li>32 K <code>../ocaml-base-compiler.4.02.3/lib/coq/user-contrib/Paco/gcpn3.vo</code></li>
+              <li>31 K <code>../ocaml-base-compiler.4.02.3/lib/coq/user-contrib/Paco/cpn7.glob</code></li>
+              <li>30 K <code>../ocaml-base-compiler.4.02.3/lib/coq/user-contrib/Paco/paco5.glob</code></li>
+              <li>30 K <code>../ocaml-base-compiler.4.02.3/lib/coq/user-contrib/Paco/paco2.vo</code></li>
+              <li>30 K <code>../ocaml-base-compiler.4.02.3/lib/coq/user-contrib/Paco/cpn6.glob</code></li>
+              <li>29 K <code>../ocaml-base-compiler.4.02.3/lib/coq/user-contrib/Paco/gcpn13.glob</code></li>
+              <li>28 K <code>../ocaml-base-compiler.4.02.3/lib/coq/user-contrib/Paco/cpn5.glob</code></li>
+              <li>28 K <code>../ocaml-base-compiler.4.02.3/lib/coq/user-contrib/Paco/paco4.glob</code></li>
+              <li>28 K <code>../ocaml-base-compiler.4.02.3/lib/coq/user-contrib/Paco/cpn4.glob</code></li>
+              <li>27 K <code>../ocaml-base-compiler.4.02.3/lib/coq/user-contrib/Paco/gcpn2.vo</code></li>
+              <li>27 K <code>../ocaml-base-compiler.4.02.3/lib/coq/user-contrib/Paco/cpn3.glob</code></li>
+              <li>26 K <code>../ocaml-base-compiler.4.02.3/lib/coq/user-contrib/Paco/gcpn12.glob</code></li>
+              <li>26 K <code>../ocaml-base-compiler.4.02.3/lib/coq/user-contrib/Paco/cpn2.glob</code></li>
+              <li>26 K <code>../ocaml-base-compiler.4.02.3/lib/coq/user-contrib/Paco/paco3.glob</code></li>
+              <li>26 K <code>../ocaml-base-compiler.4.02.3/lib/coq/user-contrib/Paco/tutorial.glob</code></li>
+              <li>26 K <code>../ocaml-base-compiler.4.02.3/lib/coq/user-contrib/Paco/cpn1.glob</code></li>
+              <li>25 K <code>../ocaml-base-compiler.4.02.3/lib/coq/user-contrib/Paco/cpn0.glob</code></li>
+              <li>24 K <code>../ocaml-base-compiler.4.02.3/lib/coq/user-contrib/Paco/tutorial.v</code></li>
+              <li>24 K <code>../ocaml-base-compiler.4.02.3/lib/coq/user-contrib/Paco/paco1.vo</code></li>
+              <li>24 K <code>../ocaml-base-compiler.4.02.3/lib/coq/user-contrib/Paco/paco2.glob</code></li>
+              <li>24 K <code>../ocaml-base-compiler.4.02.3/lib/coq/user-contrib/Paco/gcpn11.glob</code></li>
+              <li>23 K <code>../ocaml-base-compiler.4.02.3/lib/coq/user-contrib/Paco/cpntac.glob</code></li>
+              <li>22 K <code>../ocaml-base-compiler.4.02.3/lib/coq/user-contrib/Paco/paco1.glob</code></li>
+              <li>22 K <code>../ocaml-base-compiler.4.02.3/lib/coq/user-contrib/Paco/gcpn1.vo</code></li>
+              <li>22 K <code>../ocaml-base-compiler.4.02.3/lib/coq/user-contrib/Paco/gcpn10.glob</code></li>
+              <li>21 K <code>../ocaml-base-compiler.4.02.3/lib/coq/user-contrib/Paco/paco0.glob</code></li>
+              <li>19 K <code>../ocaml-base-compiler.4.02.3/lib/coq/user-contrib/Paco/examples.glob</code></li>
+              <li>19 K <code>../ocaml-base-compiler.4.02.3/lib/coq/user-contrib/Paco/gcpn9.glob</code></li>
+              <li>19 K <code>../ocaml-base-compiler.4.02.3/lib/coq/user-contrib/Paco/paco0.vo</code></li>
+              <li>18 K <code>../ocaml-base-compiler.4.02.3/lib/coq/user-contrib/Paco/paco_internal.vo</code></li>
+              <li>18 K <code>../ocaml-base-compiler.4.02.3/lib/coq/user-contrib/Paco/cpntac.v</code></li>
+              <li>18 K <code>../ocaml-base-compiler.4.02.3/lib/coq/user-contrib/Paco/gcpn0.vo</code></li>
+              <li>18 K <code>../ocaml-base-compiler.4.02.3/lib/coq/user-contrib/Paco/gcpn8.glob</code></li>
+              <li>16 K <code>../ocaml-base-compiler.4.02.3/lib/coq/user-contrib/Paco/gcpn7.glob</code></li>
+              <li>15 K <code>../ocaml-base-compiler.4.02.3/lib/coq/user-contrib/Paco/gcpn6.glob</code></li>
+              <li>15 K <code>../ocaml-base-compiler.4.02.3/lib/coq/user-contrib/Paco/paconotation.v</code></li>
+              <li>14 K <code>../ocaml-base-compiler.4.02.3/lib/coq/user-contrib/Paco/gcpn5.glob</code></li>
+              <li>14 K <code>../ocaml-base-compiler.4.02.3/lib/coq/user-contrib/Paco/gcpn4.glob</code></li>
+              <li>13 K <code>../ocaml-base-compiler.4.02.3/lib/coq/user-contrib/Paco/hpattern.vo</code></li>
+              <li>13 K <code>../ocaml-base-compiler.4.02.3/lib/coq/user-contrib/Paco/gcpn3.glob</code></li>
+              <li>13 K <code>../ocaml-base-compiler.4.02.3/lib/coq/user-contrib/Paco/gcpntac.glob</code></li>
+              <li>13 K <code>../ocaml-base-compiler.4.02.3/lib/coq/user-contrib/Paco/cpn14.v</code></li>
+              <li>13 K <code>../ocaml-base-compiler.4.02.3/lib/coq/user-contrib/Paco/gcpn2.glob</code></li>
+              <li>13 K <code>../ocaml-base-compiler.4.02.3/lib/coq/user-contrib/Paco/cpn13.v</code></li>
+              <li>13 K <code>../ocaml-base-compiler.4.02.3/lib/coq/user-contrib/Paco/gcpn1.glob</code></li>
+              <li>13 K <code>../ocaml-base-compiler.4.02.3/lib/coq/user-contrib/Paco/paco14.v</code></li>
+              <li>12 K <code>../ocaml-base-compiler.4.02.3/lib/coq/user-contrib/Paco/gcpn0.glob</code></li>
+              <li>12 K <code>../ocaml-base-compiler.4.02.3/lib/coq/user-contrib/Paco/cpn12.v</code></li>
+              <li>12 K <code>../ocaml-base-compiler.4.02.3/lib/coq/user-contrib/Paco/paco_internal.glob</code></li>
+              <li>12 K <code>../ocaml-base-compiler.4.02.3/lib/coq/user-contrib/Paco/paco13.v</code></li>
+              <li>12 K <code>../ocaml-base-compiler.4.02.3/lib/coq/user-contrib/Paco/cpn11.v</code></li>
+              <li>12 K <code>../ocaml-base-compiler.4.02.3/lib/coq/user-contrib/Paco/cpn10.v</code></li>
+              <li>11 K <code>../ocaml-base-compiler.4.02.3/lib/coq/user-contrib/Paco/paco12.v</code></li>
+              <li>11 K <code>../ocaml-base-compiler.4.02.3/lib/coq/user-contrib/Paco/cpn9.v</code></li>
+              <li>11 K <code>../ocaml-base-compiler.4.02.3/lib/coq/user-contrib/Paco/cpn8.v</code></li>
+              <li>11 K <code>../ocaml-base-compiler.4.02.3/lib/coq/user-contrib/Paco/paco11.v</code></li>
+              <li>10 K <code>../ocaml-base-compiler.4.02.3/lib/coq/user-contrib/Paco/cpn7.v</code></li>
+              <li>10 K <code>../ocaml-base-compiler.4.02.3/lib/coq/user-contrib/Paco/cpn6.v</code></li>
+              <li>10 K <code>../ocaml-base-compiler.4.02.3/lib/coq/user-contrib/Paco/cpn5.v</code></li>
+              <li>10 K <code>../ocaml-base-compiler.4.02.3/lib/coq/user-contrib/Paco/paco10.v</code></li>
+              <li>10 K <code>../ocaml-base-compiler.4.02.3/lib/coq/user-contrib/Paco/cpn4.v</code></li>
+              <li>10 K <code>../ocaml-base-compiler.4.02.3/lib/coq/user-contrib/Paco/gcpntac.v</code></li>
+              <li>10 K <code>../ocaml-base-compiler.4.02.3/lib/coq/user-contrib/Paco/cpn3.v</code></li>
+              <li>10 K <code>../ocaml-base-compiler.4.02.3/lib/coq/user-contrib/Paco/cpn2.v</code></li>
+              <li>9 K <code>../ocaml-base-compiler.4.02.3/lib/coq/user-contrib/Paco/cpn1.v</code></li>
+              <li>9 K <code>../ocaml-base-compiler.4.02.3/lib/coq/user-contrib/Paco/cpn0.v</code></li>
+              <li>9 K <code>../ocaml-base-compiler.4.02.3/lib/coq/user-contrib/Paco/paconotation_internal.v</code></li>
+              <li>9 K <code>../ocaml-base-compiler.4.02.3/lib/coq/user-contrib/Paco/paco9.v</code></li>
+              <li>9 K <code>../ocaml-base-compiler.4.02.3/lib/coq/user-contrib/Paco/paco8.v</code></li>
+              <li>8 K <code>../ocaml-base-compiler.4.02.3/lib/coq/user-contrib/Paco/examples.v</code></li>
+              <li>8 K <code>../ocaml-base-compiler.4.02.3/lib/coq/user-contrib/Paco/paco7.v</code></li>
+              <li>8 K <code>../ocaml-base-compiler.4.02.3/lib/coq/user-contrib/Paco/paco6.v</code></li>
+              <li>8 K <code>../ocaml-base-compiler.4.02.3/lib/coq/user-contrib/Paco/gcpn14.v</code></li>
+              <li>8 K <code>../ocaml-base-compiler.4.02.3/lib/coq/user-contrib/Paco/paco5.v</code></li>
+              <li>7 K <code>../ocaml-base-compiler.4.02.3/lib/coq/user-contrib/Paco/paco4.v</code></li>
+              <li>7 K <code>../ocaml-base-compiler.4.02.3/lib/coq/user-contrib/Paco/gcpn13.v</code></li>
+              <li>7 K <code>../ocaml-base-compiler.4.02.3/lib/coq/user-contrib/Paco/paco3.v</code></li>
+              <li>7 K <code>../ocaml-base-compiler.4.02.3/lib/coq/user-contrib/Paco/paco2.v</code></li>
+              <li>7 K <code>../ocaml-base-compiler.4.02.3/lib/coq/user-contrib/Paco/gcpn12.v</code></li>
+              <li>7 K <code>../ocaml-base-compiler.4.02.3/lib/coq/user-contrib/Paco/paco1.v</code></li>
+              <li>7 K <code>../ocaml-base-compiler.4.02.3/lib/coq/user-contrib/Paco/gcpn11.v</code></li>
+              <li>7 K <code>../ocaml-base-compiler.4.02.3/lib/coq/user-contrib/Paco/paco0.v</code></li>
+              <li>6 K <code>../ocaml-base-compiler.4.02.3/lib/coq/user-contrib/Paco/gcpn10.v</code></li>
+              <li>6 K <code>../ocaml-base-compiler.4.02.3/lib/coq/user-contrib/Paco/paco.vo</code></li>
+              <li>6 K <code>../ocaml-base-compiler.4.02.3/lib/coq/user-contrib/Paco/pacotac.v</code></li>
+              <li>6 K <code>../ocaml-base-compiler.4.02.3/lib/coq/user-contrib/Paco/gcpn9.v</code></li>
+              <li>6 K <code>../ocaml-base-compiler.4.02.3/lib/coq/user-contrib/Paco/gcpn8.v</code></li>
+              <li>6 K <code>../ocaml-base-compiler.4.02.3/lib/coq/user-contrib/Paco/pacotac.glob</code></li>
+              <li>5 K <code>../ocaml-base-compiler.4.02.3/lib/coq/user-contrib/Paco/gcpn7.v</code></li>
+              <li>5 K <code>../ocaml-base-compiler.4.02.3/lib/coq/user-contrib/Paco/gcpnall.vo</code></li>
+              <li>5 K <code>../ocaml-base-compiler.4.02.3/lib/coq/user-contrib/Paco/gcpn6.v</code></li>
+              <li>5 K <code>../ocaml-base-compiler.4.02.3/lib/coq/user-contrib/Paco/gcpn5.v</code></li>
+              <li>5 K <code>../ocaml-base-compiler.4.02.3/lib/coq/user-contrib/Paco/gcpn4.v</code></li>
+              <li>5 K <code>../ocaml-base-compiler.4.02.3/lib/coq/user-contrib/Paco/gcpn3.v</code></li>
+              <li>5 K <code>../ocaml-base-compiler.4.02.3/lib/coq/user-contrib/Paco/gcpn2.v</code></li>
+              <li>5 K <code>../ocaml-base-compiler.4.02.3/lib/coq/user-contrib/Paco/gcpn1.v</code></li>
+              <li>5 K <code>../ocaml-base-compiler.4.02.3/lib/coq/user-contrib/Paco/gcpn0.v</code></li>
+              <li>4 K <code>../ocaml-base-compiler.4.02.3/lib/coq/user-contrib/Paco/hpattern.v</code></li>
+              <li>4 K <code>../ocaml-base-compiler.4.02.3/lib/coq/user-contrib/Paco/cpnall.vo</code></li>
+              <li>4 K <code>../ocaml-base-compiler.4.02.3/lib/coq/user-contrib/Paco/paco_internal.v</code></li>
+              <li>3 K <code>../ocaml-base-compiler.4.02.3/lib/coq/user-contrib/Paco/pacoall.vo</code></li>
+              <li>1 K <code>../ocaml-base-compiler.4.02.3/lib/coq/user-contrib/Paco/hpattern.glob</code></li>
+              <li>1 K <code>../ocaml-base-compiler.4.02.3/lib/coq/user-contrib/Paco/gcpnall.glob</code></li>
+              <li>1 K <code>../ocaml-base-compiler.4.02.3/lib/coq/user-contrib/Paco/pacoall.glob</code></li>
+              <li>1 K <code>../ocaml-base-compiler.4.02.3/lib/coq/user-contrib/Paco/cpnall.glob</code></li>
+              <li>1 K <code>../ocaml-base-compiler.4.02.3/lib/coq/user-contrib/Paco/pacoall.v</code></li>
+              <li>1 K <code>../ocaml-base-compiler.4.02.3/lib/coq/user-contrib/Paco/gcpnall.v</code></li>
+              <li>1 K <code>../ocaml-base-compiler.4.02.3/lib/coq/user-contrib/Paco/cpnall.v</code></li>
+              <li>1 K <code>../ocaml-base-compiler.4.02.3/lib/coq/user-contrib/Paco/paco.glob</code></li>
+              <li>1 K <code>../ocaml-base-compiler.4.02.3/lib/coq/user-contrib/Paco/paco.v</code></li>
+            </ul>
+            <h2>Uninstall</h2>
+            <dl class="dl-horizontal">
+              <dt>Command</dt>
+              <dd><code>opam remove -y coq-paco.3.0.0</code></dd>
+              <dt>Return code</dt>
+              <dd>0</dd>
+              <dt>Missing removes</dt>
+              <dd>
+                none
+              </dd>
+              <dt>Wrong removes</dt>
+              <dd>
+                none
+              </dd>
+            </dl>
+          </div>
+        </div>
+      </div>
+      <hr/>
+      <div class="footer">
+        <p class="text-center">
+          <small>Sources are on <a href="https://github.com/coq-bench">GitHub</a>. © Guillaume Claret.</small>
+        </p>
+      </div>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="../../../../../bootstrap.min.js"></script>
+  </body>
+</html>
