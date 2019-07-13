@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>reglang: 18 s</title>
+    <link rel="shortcut icon" type="image/png" href="../../../../../favicon.png" />
+    <link href="../../../../../bootstrap.min.css" rel="stylesheet">
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+    <script src="../../../../../moment.min.js"></script>
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="container">
+      <div class="navbar navbar-default" role="navigation">
+        <div class="container-fluid">
+          <div class="navbar-header">
+            <a class="navbar-brand" href="../../../../.."><i class="fa fa-lg fa-flag-checkered"></i> Coq bench</a>
+          </div>
+          <div id="navbar" class="collapse navbar-collapse">
+            <ul class="nav navbar-nav">
+              <li><a href="../..">clean / released</a></li>
+              <li class="active"><a href="">8.8.1 / reglang - 1</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="article">
+        <div class="row">
+          <div class="col-md-12">
+            <a href="../..">« Up</a>
+            <h1>
+              reglang
+              <small>
+                1
+                <span class="label label-success">18 s</span>
+              </small>
+            </h1>
+            <p><em><script>document.write(moment("2019-07-13 06:52:23 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2019-07-13 06:52:23 UTC)</em><p>
+            <h2>Context</h2>
+            <pre># Packages matching: installed
+# Name              # Installed       # Synopsis
+base-bigarray       base
+base-num            base              Num library distributed with the OCaml compiler
+base-ocamlbuild     base              OCamlbuild binary and libraries distributed with the OCaml compiler
+base-threads        base
+base-unix           base
+camlp5              7.06.10-g84ce6cc4 Preprocessor-pretty-printer of OCaml
+conf-m4             1                 Virtual package relying on m4
+coq                 8.8.1             Formal proof management system.
+num                 0                 The Num library for arbitrary-precision integer and rational arithmetic
+ocaml               4.02.3            The OCaml compiler (virtual package)
+ocaml-base-compiler 4.02.3            Official 4.02.3 release
+ocaml-config        1                 OCaml Switch Configuration
+ocamlfind           1.8.0             A library manager for OCaml
+# opam file:
+opam-version: &quot;2.0&quot;
+name: &quot;coq-reglang&quot;              
+version: &quot;1&quot;
+maintainer: &quot;Christian Doczkal &lt;christian.doczkal@ens-lyon.fr&gt;&quot;
+homepage: &quot;https://github.com/chdoc/coq-reglang&quot;
+dev-repo: &quot;git+https://github.com/chdoc/coq-reglang.git&quot;
+bug-reports: &quot;https://github.com/chdoc/coq-reglang/issues&quot;
+license: &quot;CeCILL-B&quot;
+build: [ make &quot;-j%{jobs}%&quot; &quot;-C&quot; &quot;theories&quot; ]
+install: [ make &quot;-C&quot; &quot;theories&quot; &quot;install&quot; ]
+remove: [ &quot;sh&quot; &quot;-c&quot; &quot;rm -rf &#39;%{lib}%/coq/user-contrib/RegLang&#39;&quot; ]
+depends: [
+  &quot;ocaml&quot;
+  &quot;coq&quot; {&gt;= &quot;8.6&quot; &amp; &lt; &quot;8.10~&quot;}
+  &quot;coq-mathcomp-ssreflect&quot; {&gt;= &quot;1.6&quot; &amp; &lt; &quot;1.8~&quot;}
+]
+tags: [
+  &quot;keyword:regular languages&quot;
+  &quot;keyword:regular expressions&quot;
+  &quot;keyword:finite automata&quot;
+  &quot;keyword:two-way automata&quot;
+  &quot;keyword:monadic second-order logic&quot;
+  &quot;category:Computer Science/Formal Languages Theory and Automata&quot;
+  &quot;logpath:RegLang&quot;
+]
+authors: [
+  &quot;Christian Doczkal &lt;christian.doczkal@ens-lyon.fr&gt;&quot;
+  &quot;Gert Smolka &lt;&gt;&quot;
+]
+synopsis:
+  &quot;Regular Language Representations in the Constructive Type Theory of Coq&quot;
+description: &quot;&quot;&quot;
+We verify translations between different representations of regular
+languages: various forms of automata (deterministic, nondeterministic,
+one-way, two-way), regular expressions, and the logic WS1S. We also
+show various decidability results and closure properties.&quot;&quot;&quot;
+url {
+  src: &quot;https://github.com/chdoc/coq-reglang/archive/v1.0.tar.gz&quot;
+  checksum: &quot;md5=3e4be5fe3ab7bbaaa73016d5e81a8193&quot;
+}
+</pre>
+            <h2>Lint</h2>
+            <dl class="dl-horizontal">
+              <dt>Command</dt>
+              <dd><code>true</code></dd>
+              <dt>Return code</dt>
+              <dd>0</dd>
+            </dl>
+            <h2>Dry install</h2>
+            <p>Dry install with the current Coq version:</p>
+            <dl class="dl-horizontal">
+              <dt>Command</dt>
+              <dd><code>opam install -y --show-action coq-reglang.1 coq.8.8.1</code></dd>
+              <dt>Return code</dt>
+              <dd>0</dd>
+            </dl>
+            <p>Dry install without Coq/switch base, to test if the problem was incompatibility with the current Coq/OCaml version:</p>
+            <dl class="dl-horizontal">
+              <dt>Command</dt>
+              <dd><code>true</code></dd>
+              <dt>Return code</dt>
+              <dd>0</dd>
+            </dl>
+            <h2>Install dependencies</h2>
+            <dl class="dl-horizontal">
+              <dt>Command</dt>
+              <dd><code>opam list; echo; ulimit -Sv 4000000; timeout 60m opam install -y --deps-only coq-reglang.1</code></dd>
+              <dt>Return code</dt>
+              <dd>0</dd>
+              <dt>Duration</dt>
+              <dd>41 s</dd>
+            </dl>
+            <h2>Install</h2>
+            <dl class="dl-horizontal">
+              <dt>Command</dt>
+              <dd><code>opam list; echo; ulimit -Sv 4000000; timeout 60m opam install -j1 -y -v coq-reglang.1</code></dd>
+              <dt>Return code</dt>
+              <dd>0</dd>
+              <dt>Duration</dt>
+              <dd>18 s</dd>
+            </dl>
+            <h2>Installation size</h2>
+            <p>Total: 16 M</p>
+            <ul>
+              <li>13 M <code>../ocaml-base-compiler.4.02.3/lib/coq/user-contrib/RegLang/shepherdson.vo</code></li>
+              <li>414 K <code>../ocaml-base-compiler.4.02.3/lib/coq/user-contrib/RegLang/wmso.vo</code></li>
+              <li>233 K <code>../ocaml-base-compiler.4.02.3/lib/coq/user-contrib/RegLang/regexp.vo</code></li>
+              <li>223 K <code>../ocaml-base-compiler.4.02.3/lib/coq/user-contrib/RegLang/wmso.glob</code></li>
+              <li>201 K <code>../ocaml-base-compiler.4.02.3/lib/coq/user-contrib/RegLang/nfa.vo</code></li>
+              <li>165 K <code>../ocaml-base-compiler.4.02.3/lib/coq/user-contrib/RegLang/dfa.vo</code></li>
+              <li>147 K <code>../ocaml-base-compiler.4.02.3/lib/coq/user-contrib/RegLang/shepherdson.glob</code></li>
+              <li>126 K <code>../ocaml-base-compiler.4.02.3/lib/coq/user-contrib/RegLang/two_way.vo</code></li>
+              <li>121 K <code>../ocaml-base-compiler.4.02.3/lib/coq/user-contrib/RegLang/minimization.vo</code></li>
+              <li>118 K <code>../ocaml-base-compiler.4.02.3/lib/coq/user-contrib/RegLang/vardi.vo</code></li>
+              <li>109 K <code>../ocaml-base-compiler.4.02.3/lib/coq/user-contrib/RegLang/regexp.glob</code></li>
+              <li>102 K <code>../ocaml-base-compiler.4.02.3/lib/coq/user-contrib/RegLang/misc.vo</code></li>
+              <li>92 K <code>../ocaml-base-compiler.4.02.3/lib/coq/user-contrib/RegLang/dfa.glob</code></li>
+              <li>79 K <code>../ocaml-base-compiler.4.02.3/lib/coq/user-contrib/RegLang/myhill_nerode.vo</code></li>
+              <li>74 K <code>../ocaml-base-compiler.4.02.3/lib/coq/user-contrib/RegLang/languages.vo</code></li>
+              <li>65 K <code>../ocaml-base-compiler.4.02.3/lib/coq/user-contrib/RegLang/nfa.glob</code></li>
+              <li>61 K <code>../ocaml-base-compiler.4.02.3/lib/coq/user-contrib/RegLang/vardi.glob</code></li>
+              <li>56 K <code>../ocaml-base-compiler.4.02.3/lib/coq/user-contrib/RegLang/two_way.glob</code></li>
+              <li>53 K <code>../ocaml-base-compiler.4.02.3/lib/coq/user-contrib/RegLang/minimization.glob</code></li>
+              <li>49 K <code>../ocaml-base-compiler.4.02.3/lib/coq/user-contrib/RegLang/misc.glob</code></li>
+              <li>47 K <code>../ocaml-base-compiler.4.02.3/lib/coq/user-contrib/RegLang/setoid_leq.vo</code></li>
+              <li>37 K <code>../ocaml-base-compiler.4.02.3/lib/coq/user-contrib/RegLang/wmso.v</code></li>
+              <li>25 K <code>../ocaml-base-compiler.4.02.3/lib/coq/user-contrib/RegLang/languages.glob</code></li>
+              <li>23 K <code>../ocaml-base-compiler.4.02.3/lib/coq/user-contrib/RegLang/myhill_nerode.glob</code></li>
+              <li>18 K <code>../ocaml-base-compiler.4.02.3/lib/coq/user-contrib/RegLang/regexp.v</code></li>
+              <li>18 K <code>../ocaml-base-compiler.4.02.3/lib/coq/user-contrib/RegLang/dfa.v</code></li>
+              <li>17 K <code>../ocaml-base-compiler.4.02.3/lib/coq/user-contrib/RegLang/shepherdson.v</code></li>
+              <li>15 K <code>../ocaml-base-compiler.4.02.3/lib/coq/user-contrib/RegLang/nfa.v</code></li>
+              <li>11 K <code>../ocaml-base-compiler.4.02.3/lib/coq/user-contrib/RegLang/minimization.v</code></li>
+              <li>9 K <code>../ocaml-base-compiler.4.02.3/lib/coq/user-contrib/RegLang/misc.v</code></li>
+              <li>8 K <code>../ocaml-base-compiler.4.02.3/lib/coq/user-contrib/RegLang/setoid_leq.glob</code></li>
+              <li>8 K <code>../ocaml-base-compiler.4.02.3/lib/coq/user-contrib/RegLang/two_way.v</code></li>
+              <li>7 K <code>../ocaml-base-compiler.4.02.3/lib/coq/user-contrib/RegLang/myhill_nerode.v</code></li>
+              <li>6 K <code>../ocaml-base-compiler.4.02.3/lib/coq/user-contrib/RegLang/vardi.v</code></li>
+              <li>5 K <code>../ocaml-base-compiler.4.02.3/lib/coq/user-contrib/RegLang/languages.v</code></li>
+              <li>2 K <code>../ocaml-base-compiler.4.02.3/lib/coq/user-contrib/RegLang/setoid_leq.v</code></li>
+            </ul>
+            <h2>Uninstall</h2>
+            <dl class="dl-horizontal">
+              <dt>Command</dt>
+              <dd><code>opam remove -y coq-reglang.1</code></dd>
+              <dt>Return code</dt>
+              <dd>0</dd>
+              <dt>Missing removes</dt>
+              <dd>
+                none
+              </dd>
+              <dt>Wrong removes</dt>
+              <dd>
+                none
+              </dd>
+            </dl>
+          </div>
+        </div>
+      </div>
+      <hr/>
+      <div class="footer">
+        <p class="text-center">
+          <small>Sources are on <a href="https://github.com/coq-bench">GitHub</a>. © Guillaume Claret.</small>
+        </p>
+      </div>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="../../../../../bootstrap.min.js"></script>
+  </body>
+</html>
