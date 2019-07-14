@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>vst: Error with dependencies</title>
+    <title>vst: Not compatible</title>
     <link rel="shortcut icon" type="image/png" href="../../../../../favicon.png" />
     <link href="../../../../../bootstrap.min.css" rel="stylesheet">
     <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
@@ -38,10 +38,10 @@
               vst
               <small>
                 2.2
-                <span class="label label-warning">Error with dependencies</span>
+                <span class="label label-info">Not compatible</span>
               </small>
             </h1>
-            <p><em><script>document.write(moment("2019-07-07 03:39:07 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2019-07-07 03:39:07 UTC)</em><p>
+            <p><em><script>document.write(moment("2019-07-14 10:57:44 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2019-07-14 10:57:44 UTC)</em><p>
             <h2>Context</h2>
             <pre># Packages matching: installed
 # Name              # Installed       # Synopsis
@@ -115,83 +115,30 @@ url {
               <dt>Command</dt>
               <dd><code>opam install -y --show-action coq-vst.2.2 coq.8.7.2</code></dd>
               <dt>Return code</dt>
-              <dd>0</dd>
+              <dd>5120</dd>
+              <dt>Output</dt>
+              <dd><pre>[NOTE] Package coq is already installed (current version is 8.7.2).
+The following dependencies couldn&#39;t be met:
+  - coq-vst -&gt; coq-compcert = 3.3.0 -&gt; ocaml &lt; 4.07.0
+      base of this switch (use `--unlock-base&#39; to force)
+No solution found, exiting
+</pre></dd>
             </dl>
             <p>Dry install without Coq/switch base, to test if the problem was incompatibility with the current Coq/OCaml version:</p>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>true</code></dd>
+              <dd><code>opam remove -y coq; opam install -y --show-action --unlock-base coq-vst.2.2</code></dd>
               <dt>Return code</dt>
               <dd>0</dd>
             </dl>
             <h2>Install dependencies</h2>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>opam list; echo; ulimit -Sv 4000000; timeout 30m opam install -y --deps-only coq-vst.2.2</code></dd>
+              <dd><code>true</code></dd>
               <dt>Return code</dt>
-              <dd>7936</dd>
+              <dd>0</dd>
               <dt>Duration</dt>
-              <dd>16 m 6 s</dd>
-              <dt>Output</dt>
-              <dd><pre># Packages matching: installed
-# Name              # Installed       # Synopsis
-base-bigarray       base
-base-threads        base
-base-unix           base
-camlp5              7.06.10-g84ce6cc4 Preprocessor-pretty-printer of OCaml
-conf-m4             1                 Virtual package relying on m4
-coq                 8.7.2             Formal proof management system.
-num                 1.2               The legacy Num library for arbitrary-precision integer and rational arithmetic
-ocaml               4.07.1            The OCaml compiler (virtual package)
-ocaml-base-compiler 4.07.1            Official release 4.07.1
-ocaml-config        1                 OCaml Switch Configuration
-ocamlfind           1.8.0             A library manager for OCaml
-The following actions will be performed:
-  - install ocamlbuild   0.14.0
-  - install menhir       20180528
-  - install coq-compcert 3.3.0
-===== 3 to install =====
-&lt;&gt;&lt;&gt; Gathering sources &gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;
-[ocamlbuild.0.14.0] downloaded from cache at https://opam.ocaml.org/cache
-[menhir.20180528] downloaded from cache at https://opam.ocaml.org/cache
-[coq-compcert.3.3.0] downloaded from https://github.com/AbsInt/CompCert/archive/v3.3.tar.gz
-&lt;&gt;&lt;&gt; Processing actions &lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;
--&gt; installed ocamlbuild.0.14.0
--&gt; installed menhir.20180528
-[ERROR] The compilation of coq-compcert failed at &quot;/home/bench/.opam/opam-init/hooks/sandbox.sh build make -j7&quot;.
-#=== ERROR while compiling coq-compcert.3.3.0 =================================#
-# context              2.0.1 | linux/x86_64 | ocaml-base-compiler.4.07.1 | file:///home/bench/run/opam-coq-archive/released
-# path                 ~/.opam/ocaml-base-compiler.4.07.1/.opam-switch/build/coq-compcert.3.3.0
-# command              ~/.opam/opam-init/hooks/sandbox.sh build make -j7
-# exit-code            2
-# env-file             ~/.opam/log/coq-compcert-363-f589c9.env
-# output-file          ~/.opam/log/coq-compcert-363-f589c9.out
-### output ###
-# [...]
-# OCAMLC   extraction/Op.mli
-# OCAMLOPT extraction/Kildall.ml
-# Makefile.extr:119: recipe for target &#39;lib/Camlcoq.cmo&#39; failed
-# make[2]: *** [lib/Camlcoq.cmo] Error 2
-# make[2]: *** Waiting for unfinished jobs....
-# OCAMLC   extraction/Memdata.mli
-# make[2]: Leaving directory &#39;/home/bench/.opam/ocaml-base-compiler.4.07.1/.opam-switch/build/coq-compcert.3.3.0&#39;
-# Makefile:164: recipe for target &#39;ccomp&#39; failed
-# make[1]: *** [ccomp] Error 2
-# make[1]: Leaving directory &#39;/home/bench/.opam/ocaml-base-compiler.4.07.1/.opam-switch/build/coq-compcert.3.3.0&#39;
-# Makefile:136: recipe for target &#39;all&#39; failed
-# make: *** [all] Error 2
-&lt;&gt;&lt;&gt; Error report &lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;
-+- The following actions failed
-| - build coq-compcert 3.3.0
-+- 
-+- The following changes have been performed
-| - install menhir     20180528
-| - install ocamlbuild 0.14.0
-+- 
-# Run eval $(opam env) to update the current shell environment
-The former state can be restored with:
-    opam switch import &quot;/home/bench/.opam/ocaml-base-compiler.4.07.1/.opam-switch/backup/state-20190705090501.export&quot;
-</pre></dd>
+              <dd>0 s</dd>
             </dl>
             <h2>Install</h2>
             <dl class="dl-horizontal">
