@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>equations: Error</title>
+    <title>equations: Not compatible</title>
     <link rel="shortcut icon" type="image/png" href="../../../../../favicon.png" />
     <link href="../../../../../bootstrap.min.css" rel="stylesheet">
     <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
@@ -38,10 +38,10 @@
               equations
               <small>
                 1.2~beta+8.8
-                <span class="label label-danger">Error</span>
+                <span class="label label-info">Not compatible</span>
               </small>
             </h1>
-            <p><em><script>document.write(moment("2019-07-13 21:42:20 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2019-07-13 21:42:20 UTC)</em><p>
+            <p><em><script>document.write(moment("2019-07-17 15:22:11 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2019-07-17 15:22:11 UTC)</em><p>
             <h2>Context</h2>
             <pre># Packages matching: installed
 # Name              # Installed       # Synopsis
@@ -74,7 +74,7 @@ install: [
 remove: [&quot;rm&quot; &quot;-R&quot; &quot;%{lib}%/coq/user-contrib/Equations&quot;]
 depends: [
   &quot;ocaml&quot;
-  &quot;coq&quot; {&gt;= &quot;8.8&quot; &amp; &lt; &quot;8.9&quot;}
+  &quot;coq&quot; {&gt;= &quot;8.8.1&quot; &amp; &lt; &quot;8.9&quot;}
 ]
 synopsis: &quot;A function definition package for Coq&quot;
 description: &quot;&quot;&quot;
@@ -103,208 +103,40 @@ url {
               <dt>Command</dt>
               <dd><code>opam install -y --show-action coq-equations.1.2~beta+8.8 coq.8.8.0</code></dd>
               <dt>Return code</dt>
-              <dd>0</dd>
+              <dd>5120</dd>
+              <dt>Output</dt>
+              <dd><pre>[NOTE] Package coq is already installed (current version is 8.8.0).
+The following dependencies couldn&#39;t be met:
+  - coq-equations -&gt; coq &gt;= 8.8.1
+Your request can&#39;t be satisfied:
+  - No available version of coq satisfies the constraints
+No solution found, exiting
+</pre></dd>
             </dl>
             <p>Dry install without Coq/switch base, to test if the problem was incompatibility with the current Coq/OCaml version:</p>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>true</code></dd>
+              <dd><code>opam remove -y coq; opam install -y --show-action --unlock-base coq-equations.1.2~beta+8.8</code></dd>
               <dt>Return code</dt>
               <dd>0</dd>
             </dl>
             <h2>Install dependencies</h2>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>opam list; echo; ulimit -Sv 4000000; timeout 60m opam install -y --deps-only coq-equations.1.2~beta+8.8</code></dd>
+              <dd><code>true</code></dd>
               <dt>Return code</dt>
               <dd>0</dd>
               <dt>Duration</dt>
-              <dd>3 s</dd>
+              <dd>0 s</dd>
             </dl>
             <h2>Install</h2>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>opam list; echo; ulimit -Sv 4000000; timeout 60m opam install -j1 -y -v coq-equations.1.2~beta+8.8</code></dd>
+              <dd><code>true</code></dd>
               <dt>Return code</dt>
-              <dd>7936</dd>
+              <dd>0</dd>
               <dt>Duration</dt>
-              <dd>11 s</dd>
-              <dt>Output</dt>
-              <dd><pre># Packages matching: installed
-# Name              # Installed       # Synopsis
-base-bigarray       base
-base-threads        base
-base-unix           base
-camlp5              7.06.10-g84ce6cc4 Preprocessor-pretty-printer of OCaml
-conf-m4             1                 Virtual package relying on m4
-coq                 8.8.0             Formal proof management system.
-num                 1.2               The legacy Num library for arbitrary-precision integer and rational arithmetic
-ocaml               4.07.1            The OCaml compiler (virtual package)
-ocaml-base-compiler 4.07.1            Official release 4.07.1
-ocaml-config        1                 OCaml Switch Configuration
-ocamlfind           1.8.0             A library manager for OCaml
-The following actions will be performed:
-  - install coq-equations 1.2~beta+8.8
-&lt;&gt;&lt;&gt; Gathering sources &gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;
-Processing  1/1: [coq-equations.1.2~beta+8.8: http]
-[coq-equations.1.2~beta+8.8] downloaded from https://github.com/mattam82/Coq-Equations/archive/v1.2-beta-8.8.tar.gz
-Processing  1/1:
-&lt;&gt;&lt;&gt; Processing actions &lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;
-Processing  1/2: [coq-equations: coq_makefile _CoqProject]
-+ /home/bench/.opam/opam-init/hooks/sandbox.sh &quot;build&quot; &quot;coq_makefile&quot; &quot;-f&quot; &quot;_CoqProject&quot; &quot;-o&quot; &quot;Makefile&quot; (CWD=/home/bench/.opam/ocaml-base-compiler.4.07.1/.opam-switch/build/coq-equations.1.2~beta+8.8)
-Processing  1/2: [coq-equations: make]
-+ /home/bench/.opam/opam-init/hooks/sandbox.sh &quot;build&quot; &quot;make&quot; &quot;-j7&quot; (CWD=/home/bench/.opam/ocaml-base-compiler.4.07.1/.opam-switch/build/coq-equations.1.2~beta+8.8)
-- CAMLDEP src/noconf.mli
-- CAMLDEP src/extra_tactics.mli
-- CAMLDEP src/equations.mli
-- COQDEP VFILES
-- CAMLDEP src/principles.mli
-- CAMLDEP src/noconf_hom.mli
-- CAMLDEP src/principles_proofs.mli
-- CAMLDEP src/simplify.mli
-- CAMLDEP src/covering.mli
-- CAMLDEP src/splitting.mli
-- CAMLDEP src/context_map.mli
-- CAMLDEP src/syntax.mli
-- CAMLDEP src/depelim.mli
-- *** Warning: extra_tactics.mli already found in src (discarding src/extra_tactics.mli)
-- *** Warning: noconf_hom.mli already found in src (discarding src/noconf_hom.mli)
-- *** Warning: noconf.mli already found in src (discarding src/noconf.mli)
-- *** Warning: equations.mli already found in src (discarding src/equations.mli)
-- *** Warning: principles.mli already found in src (discarding src/principles.mli)
-- *** Warning: principles_proofs.mli already found in src (discarding src/principles_proofs.mli)
-- *** Warning: covering.mli already found in src (discarding src/covering.mli)
-- *** Warning: splitting.mli already found in src (discarding src/splitting.mli)
-- *** Warning: simplify.mli already found in src (discarding src/simplify.mli)
-- *** Warning: context_map.mli already found in src (discarding src/context_map.mli)
-- *** Warning: syntax.mli already found in src (discarding src/syntax.mli)
-- *** Warning: depelim.mli already found in src (discarding src/depelim.mli)
-- *** Warning: eqdec.mli already found in src (discarding src/eqdec.mli)
-- *** Warning: subterm.mli already found in src (discarding src/subterm.mli)
-- *** Warning: sigma_types.mli already found in src (discarding src/sigma_types.mli)
-- *** Warning: ederive.mli already found in src (discarding src/ederive.mli)
-- *** Warning: equations_common.mli already found in src (discarding src/equations_common.mli)
-- *** Warning: equations_plugin.mllib already found in src (discarding src/equations_plugin.mllib)
-- *** Warning: equations_plugin_mod.ml already found in src (discarding src/equations_plugin_mod.ml)
-- *** Warning: extra_tactics.ml already found in src (discarding src/extra_tactics.ml)
-- *** Warning: noconf_hom.ml already found in src (discarding src/noconf_hom.ml)
-- *** Warning: noconf.ml already found in src (discarding src/noconf.ml)
-- *** Warning: equations.ml already found in src (discarding src/equations.ml)
-- *** Warning: principles.ml already found in src (discarding src/principles.ml)
-- *** Warning: principles_proofs.ml already found in src (discarding src/principles_proofs.ml)
-- *** Warning: covering.ml already found in src (discarding src/covering.ml)
-- *** Warning: splitting.ml already found in src (discarding src/splitting.ml)
-- *** Warning: simplify.ml already found in src (discarding src/simplify.ml)
-- *** Warning: context_map.ml already found in src (discarding src/context_map.ml)
-- *** Warning: syntax.ml already found in src (discarding src/syntax.ml)
-- *** Warning: depelim.ml already found in src (discarding src/depelim.ml)
-- *** Warning: eqdec.ml already found in src (discarding src/eqdec.ml)
-- *** Warning: subterm.ml already found in src (discarding src/subterm.ml)
-- *** Warning: sigma_types.ml already found in src (discarding src/sigma_types.ml)
-- *** Warning: ederive.ml already found in src (discarding src/ederive.ml)
-- *** Warning: equations_common.ml already found in src (discarding src/equations_common.ml)
-- *** Warning: g_equations.ml4 already found in src (discarding src/g_equations.ml4)
-- CAMLDEP src/eqdec.mli
-- CAMLDEP src/ederive.mli
-- CAMLDEP src/subterm.mli
-- CAMLDEP src/sigma_types.mli
-- COQDEP src/equations_plugin.mllib
-- CAMLDEP src/equations_common.mli
-- CAMLDEP src/equations_plugin_mod.ml
-- CAMLDEP src/extra_tactics.ml
-- CAMLDEP src/noconf_hom.ml
-- CAMLDEP src/noconf.ml
-- CAMLDEP src/equations.ml
-- *** Warning: equations_plugin.mllib already found in src (discarding src/equations_plugin.mllib)
-- CAMLDEP src/covering.ml
-- CAMLDEP src/principles.ml
-- CAMLDEP src/principles_proofs.ml
-- CAMLDEP src/splitting.ml
-- CAMLDEP src/simplify.ml
-- CAMLDEP src/context_map.ml
-- CAMLDEP src/syntax.ml
-- CAMLDEP src/subterm.ml
-- CAMLDEP src/eqdec.ml
-- CAMLDEP src/depelim.ml
-- CAMLDEP src/sigma_types.ml
-- CAMLDEP src/ederive.ml
-- CAMLDEP src/equations_common.ml
-- CAMLDEP -pp src/g_equations.ml4
-- cd test-suite &amp;&amp; coq_makefile -f _CoqProject -o Makefile
-- CAMLC -c src/noconf_hom.mli
-- CAMLC -c src/equations_common.mli
-- CAMLC -c src/subterm.mli
-- CAMLC -c src/ederive.mli
-- CAMLC -c src/noconf.mli
-- CAMLOPT -c  src/equations_plugin_mod.ml
-- CAMLC -c src/extra_tactics.mli
-- COQC theories/Classes.v
-- CAMLOPT -c  src/ederive.ml
-- CAMLC -c src/syntax.mli
-- CAMLOPT -c  src/equations_common.ml
-- CAMLC -c src/eqdec.mli
-- CAMLC -c src/depelim.mli
-- CAMLC -c src/context_map.mli
-- CAMLC -c src/sigma_types.mli
-- CAMLC -c src/simplify.mli
-- CAMLC -c src/splitting.mli
-- CAMLC -c src/equations.mli
-- CAMLC -c src/covering.mli
-- CAMLC -c src/principles_proofs.mli
-- CAMLC -c src/principles.mli
-- CAMLOPT -c  src/eqdec.ml
-- CAMLOPT -c  src/syntax.ml
-- CAMLOPT -c  src/extra_tactics.ml
-- CAMLOPT -c  src/context_map.ml
-- CAMLOPT -c  src/sigma_types.ml
-- CAMLOPT -c  src/simplify.ml
-- CAMLOPT -c  src/noconf.ml
-- CAMLOPT -c  src/subterm.ml
-- CAMLOPT -c  src/splitting.ml
-- CAMLOPT -c  src/covering.ml
-- CAMLOPT -c  src/depelim.ml
-- CAMLOPT -c  src/noconf_hom.ml
-- CAMLOPT -c  src/principles_proofs.ml
-- CAMLOPT -c  src/principles.ml
-- File &quot;src/principles.ml&quot;, line 1402, characters 6-43:
-- Error: This function has type
--          (Misctypes.lident * bool * Names.inductive * Sorts.family) list -&gt;
--          unit
--        It is applied to too many arguments; maybe you forgot a `;&#39;.
-- Makefile:604: recipe for target &#39;src/principles.cmx&#39; failed
-- make[1]: *** [src/principles.cmx] Error 2
-- Makefile:317: recipe for target &#39;all&#39; failed
-- make: *** [all] Error 2
-[ERROR] The compilation of coq-equations failed at &quot;/home/bench/.opam/opam-init/hooks/sandbox.sh build make -j7&quot;.
-#=== ERROR while compiling coq-equations.1.2~beta+8.8 =========================#
-# context              2.0.1 | linux/x86_64 | ocaml-base-compiler.4.07.1 | file:///home/bench/run/opam-coq-archive/released
-# path                 ~/.opam/ocaml-base-compiler.4.07.1/.opam-switch/build/coq-equations.1.2~beta+8.8
-# command              ~/.opam/opam-init/hooks/sandbox.sh build make -j7
-# exit-code            2
-# env-file             ~/.opam/log/coq-equations-18819-6cc03f.env
-# output-file          ~/.opam/log/coq-equations-18819-6cc03f.out
-### output ###
-# [...]
-# CAMLOPT -c  src/noconf_hom.ml
-# CAMLOPT -c  src/principles_proofs.ml
-# CAMLOPT -c  src/principles.ml
-# File &quot;src/principles.ml&quot;, line 1402, characters 6-43:
-# Error: This function has type
-#          (Misctypes.lident * bool * Names.inductive * Sorts.family) list -&gt;
-#          unit
-#        It is applied to too many arguments; maybe you forgot a `;&#39;.
-# Makefile:604: recipe for target &#39;src/principles.cmx&#39; failed
-# make[1]: *** [src/principles.cmx] Error 2
-# Makefile:317: recipe for target &#39;all&#39; failed
-# make: *** [all] Error 2
-&lt;&gt;&lt;&gt; Error report &lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;
-+- The following actions failed
-| - build coq-equations 1.2~beta+8.8
-+- 
-- No changes have been performed
-# Run eval $(opam env) to update the current shell environment
-&#39;opam install -j1 -y -v coq-equations.1.2~beta+8.8&#39; failed.
-</pre></dd>
+              <dd>0 s</dd>
             </dl>
             <h2>Installation size</h2>
             <p>No files were installed.</p>
