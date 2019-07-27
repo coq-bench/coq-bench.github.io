@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>paramcoq: Error</title>
+    <title>paramcoq: Not compatible</title>
     <link rel="shortcut icon" type="image/png" href="../../../../../favicon.png" />
     <link href="../../../../../bootstrap.min.css" rel="stylesheet">
     <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
@@ -38,10 +38,10 @@
               paramcoq
               <small>
                 1.1.0
-                <span class="label label-danger">Error</span>
+                <span class="label label-info">Not compatible</span>
               </small>
             </h1>
-            <p><em><script>document.write(moment("2019-07-20 15:15:40 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2019-07-20 15:15:40 UTC)</em><p>
+            <p><em><script>document.write(moment("2019-07-27 12:02:57 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2019-07-27 12:02:57 UTC)</em><p>
             <h2>Context</h2>
             <pre># Packages matching: installed
 # Name              # Installed       # Synopsis
@@ -74,7 +74,7 @@ install: [
 remove: [&quot;rm&quot; &quot;-R&quot; &quot;%{lib}%/coq/user-contrib/Param&quot;]
 depends: [
   &quot;ocaml&quot;
-  &quot;coq&quot; {(&gt;= &quot;8.7&quot; | = &quot;dev&quot;)}
+  &quot;coq&quot; {(&gt;= &quot;8.7.2&quot; | = &quot;dev&quot;)}
 ]
 synopsis: &quot;Coq Parametricity Plugin&quot;
 description: &quot;&quot;&quot;
@@ -99,132 +99,41 @@ url {
               <dt>Command</dt>
               <dd><code>opam install -y --show-action coq-paramcoq.1.1.0 coq.8.7.1+2</code></dd>
               <dt>Return code</dt>
-              <dd>0</dd>
+              <dd>5120</dd>
+              <dt>Output</dt>
+              <dd><pre>[NOTE] Package coq is already installed (current version is 8.7.1+2).
+The following dependencies couldn&#39;t be met:
+  - coq-paramcoq -&gt; coq &gt;= dev
+      no matching version
+Your request can&#39;t be satisfied:
+  - No available version of coq satisfies the constraints
+No solution found, exiting
+</pre></dd>
             </dl>
             <p>Dry install without Coq/switch base, to test if the problem was incompatibility with the current Coq/OCaml version:</p>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>true</code></dd>
+              <dd><code>opam remove -y coq; opam install -y --show-action --unlock-base coq-paramcoq.1.1.0</code></dd>
               <dt>Return code</dt>
               <dd>0</dd>
             </dl>
             <h2>Install dependencies</h2>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>opam list; echo; ulimit -Sv 4000000; timeout 60m opam install -y --deps-only coq-paramcoq.1.1.0</code></dd>
+              <dd><code>true</code></dd>
               <dt>Return code</dt>
               <dd>0</dd>
               <dt>Duration</dt>
-              <dd>1 s</dd>
+              <dd>0 s</dd>
             </dl>
             <h2>Install</h2>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>opam list; echo; ulimit -Sv 4000000; timeout 60m opam install -j1 -y -v coq-paramcoq.1.1.0</code></dd>
+              <dd><code>true</code></dd>
               <dt>Return code</dt>
-              <dd>7936</dd>
+              <dd>0</dd>
               <dt>Duration</dt>
-              <dd>3 s</dd>
-              <dt>Output</dt>
-              <dd><pre># Packages matching: installed
-# Name              # Installed       # Synopsis
-base-bigarray       base
-base-num            base              Num library distributed with the OCaml compiler
-base-threads        base
-base-unix           base
-camlp5              7.06.10-g84ce6cc4 Preprocessor-pretty-printer of OCaml
-conf-m4             1                 Virtual package relying on m4
-coq                 8.7.1+2           Formal proof management system.
-num                 0                 The Num library for arbitrary-precision integer and rational arithmetic
-ocaml               4.05.0            The OCaml compiler (virtual package)
-ocaml-base-compiler 4.05.0            Official 4.05.0 release
-ocaml-config        1                 OCaml Switch Configuration
-ocamlfind           1.8.0             A library manager for OCaml
-The following actions will be performed:
-  - install coq-paramcoq 1.1.0
-&lt;&gt;&lt;&gt; Gathering sources &gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;
-Processing  1/1: [coq-paramcoq.1.1.0: http]
-[coq-paramcoq.1.1.0] downloaded from https://github.com/aa755/paramcoq/archive/v1.1.0.tar.gz
-Processing  1/1:
-&lt;&gt;&lt;&gt; Processing actions &lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;
-Processing  1/2: [coq-paramcoq: make]
-+ /home/bench/.opam/opam-init/hooks/sandbox.sh &quot;build&quot; &quot;make&quot; &quot;-j7&quot; (CWD=/home/bench/.opam/ocaml-base-compiler.4.05.0/.opam-switch/build/coq-paramcoq.1.1.0)
-- sed -e &quot;s/\([^ ]\{1,\}\)/let _=Mltop.add_known_module\&quot;\1\&quot; /g&quot; src.8.7/paramcoq.mlpack &gt; src.8.7/paramcoq_mod.ml
-- sed -e &quot;s/src.version/src.8.7/&quot; Make.cfg &gt; Make.cfg.local
-- echo &quot;let _=Mltop.add_known_module\&quot;paramcoq\&quot;&quot; &gt;&gt; src.8.7/paramcoq_mod.ml
-- /home/bench/.opam/ocaml-base-compiler.4.05.0/bin/coq_makefile  -f Make.cfg.local -o Makefile.coq
-- make -f Makefile.coq 
-- make[1]: Entering directory &#39;/home/bench/.opam/ocaml-base-compiler.4.05.0/.opam-switch/build/coq-paramcoq.1.1.0&#39;
-- COQDEP src.8.7/paramcoq.mlpack
-- CAMLDEP src.8.7/declare_translation.ml
-- CAMLDEP src.8.7/relations.ml
-- CAMLDEP src.8.7/parametricity.ml
-- CAMLDEP src.8.7/debug.ml
-- CAMLDEP src.8.7/paramcoq_mod.ml
-- CAMLDEP -pp src.8.7/abstraction.ml4
-- File &quot;src.8.7/declare_translation.ml&quot;, line 325, characters 38-40:
-- Warning 14: illegal backslash escape in string.
-- CAMLOPT -c -for-pack Paramcoq src.8.7/debug.ml
-- CAMLOPT -c -for-pack Paramcoq src.8.7/paramcoq_mod.ml
-- CAMLOPT -c -for-pack Paramcoq src.8.7/relations.ml
-- File &quot;src.8.7/relations.ml&quot;, line 19, characters 0-9:
-- Warning 33: unused open Term.
-- File &quot;src.8.7/debug.ml&quot;, line 147, characters 3-7:
-- Warning 40: Sort was selected from type Constr.kind_of_term.
-- It is not visible in the current scope, and will not 
-- be selected if the type becomes unknown.
-- File &quot;src.8.7/debug.ml&quot;, line 16, characters 0-16:
-- Warning 33: unused open Ltac_plugin.
-- File &quot;src.8.7/debug.ml&quot;, line 18, characters 0-9:
-- Warning 33: unused open Vars.
-- File &quot;src.8.7/debug.ml&quot;, line 19, characters 0-12:
-- Warning 33: unused open Environ.
-- File &quot;src.8.7/debug.ml&quot;, line 20, characters 0-12:
-- Warning 33: unused open Context.
-- CAMLOPT -c -for-pack Paramcoq src.8.7/parametricity.ml
-- File &quot;src.8.7/parametricity.ml&quot;, line 150, characters 8-13:
-- Warning 39: unused rec flag.
-- File &quot;src.8.7/parametricity.ml&quot;, line 609, characters 37-39:
-- Error: This expression has type EConstr.t array
--        but an expression was expected of type Constr.types array
--        Type EConstr.t is not compatible with type Constr.types = Constr.t 
-- Makefile.coq:592: recipe for target &#39;src.8.7/parametricity.cmx&#39; failed
-- make[2]: *** [src.8.7/parametricity.cmx] Error 2
-- Makefile.coq:317: recipe for target &#39;all&#39; failed
-- make[1]: *** [all] Error 2
-- make[1]: Leaving directory &#39;/home/bench/.opam/ocaml-base-compiler.4.05.0/.opam-switch/build/coq-paramcoq.1.1.0&#39;
-- Makefile.common:67: recipe for target &#39;this-build&#39; failed
-- make: *** [this-build] Error 2
-[ERROR] The compilation of coq-paramcoq failed at &quot;/home/bench/.opam/opam-init/hooks/sandbox.sh build make -j7&quot;.
-#=== ERROR while compiling coq-paramcoq.1.1.0 =================================#
-# context              2.0.1 | linux/x86_64 | ocaml-base-compiler.4.05.0 | file:///home/bench/run/opam-coq-archive/released
-# path                 ~/.opam/ocaml-base-compiler.4.05.0/.opam-switch/build/coq-paramcoq.1.1.0
-# command              ~/.opam/opam-init/hooks/sandbox.sh build make -j7
-# exit-code            2
-# env-file             ~/.opam/log/coq-paramcoq-2845-d0f245.env
-# output-file          ~/.opam/log/coq-paramcoq-2845-d0f245.out
-### output ###
-# [...]
-# Warning 39: unused rec flag.
-# File &quot;src.8.7/parametricity.ml&quot;, line 609, characters 37-39:
-# Error: This expression has type EConstr.t array
-#        but an expression was expected of type Constr.types array
-#        Type EConstr.t is not compatible with type Constr.types = Constr.t 
-# Makefile.coq:592: recipe for target &#39;src.8.7/parametricity.cmx&#39; failed
-# make[2]: *** [src.8.7/parametricity.cmx] Error 2
-# Makefile.coq:317: recipe for target &#39;all&#39; failed
-# make[1]: *** [all] Error 2
-# make[1]: Leaving directory &#39;/home/bench/.opam/ocaml-base-compiler.4.05.0/.opam-switch/build/coq-paramcoq.1.1.0&#39;
-# Makefile.common:67: recipe for target &#39;this-build&#39; failed
-# make: *** [this-build] Error 2
-&lt;&gt;&lt;&gt; Error report &lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;
-+- The following actions failed
-| - build coq-paramcoq 1.1.0
-+- 
-- No changes have been performed
-# Run eval $(opam env) to update the current shell environment
-&#39;opam install -j1 -y -v coq-paramcoq.1.1.0&#39; failed.
-</pre></dd>
+              <dd>0 s</dd>
             </dl>
             <h2>Installation size</h2>
             <p>No files were installed.</p>
