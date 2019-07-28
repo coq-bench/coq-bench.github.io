@@ -1,0 +1,796 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>mirror-core: Error</title>
+    <link rel="shortcut icon" type="image/png" href="../../../../../favicon.png" />
+    <link href="../../../../../bootstrap.min.css" rel="stylesheet">
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+    <script src="../../../../../moment.min.js"></script>
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="container">
+      <div class="navbar navbar-default" role="navigation">
+        <div class="container-fluid">
+          <div class="navbar-header">
+            <a class="navbar-brand" href="../../../../.."><i class="fa fa-lg fa-flag-checkered"></i> Coq bench</a>
+          </div>
+          <div id="navbar" class="collapse navbar-collapse">
+            <ul class="nav navbar-nav">
+              <li><a href="../..">clean / released</a></li>
+              <li class="active"><a href="">8.5.2~camlp4 / mirror-core - 1.0.1</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="article">
+        <div class="row">
+          <div class="col-md-12">
+            <a href="../..">« Up</a>
+            <h1>
+              mirror-core
+              <small>
+                1.0.1
+                <span class="label label-danger">Error</span>
+              </small>
+            </h1>
+            <p><em><script>document.write(moment("2019-07-28 03:18:04 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2019-07-28 03:18:04 UTC)</em><p>
+            <h2>Context</h2>
+            <pre># Packages matching: installed
+# Name              # Installed  # Synopsis
+base-bigarray       base
+base-num            base         Num library distributed with the OCaml compiler
+base-threads        base
+base-unix           base
+camlp4              4.05+1       Camlp4 is a system for writing extensible parsers for programming languages
+coq                 8.5.2~camlp4 Formal proof management system.
+num                 0            The Num library for arbitrary-precision integer and rational arithmetic
+ocaml               4.05.0       The OCaml compiler (virtual package)
+ocaml-base-compiler 4.05.0       Official 4.05.0 release
+ocaml-config        1            OCaml Switch Configuration
+ocamlbuild          0.14.0       OCamlbuild is a build system with builtin rules to easily build most OCaml projects.
+# opam file:
+opam-version: &quot;2.0&quot;
+maintainer: &quot;gmalecha@gmail.com&quot;
+homepage: &quot;https://github.com/gmalecha/mirror-core&quot;
+dev-repo: &quot;git+https://github.com/gmalecha/mirror-core.git&quot;
+bug-reports: &quot;https://github.com/gmalecha/mirror-core/issues&quot;
+authors: [&quot;Gregory Malecha&quot;]
+license: &quot;BSD&quot;
+build: [
+  [make &quot;-j%{jobs}%&quot;]
+]
+install: [
+  [make &quot;install&quot;]
+]
+remove: [
+  [&quot;rm&quot; &quot;-R&quot; &quot;%{lib}%/coq/user-contrib/MirrorCore&quot;]
+  [&quot;rm&quot; &quot;-R&quot; &quot;%{lib}%/coq/user-contrib/McExamples&quot;]
+]
+depends: [
+  &quot;ocaml&quot;
+  &quot;coq&quot; {&gt;= &quot;8.5.0&quot; &amp; &lt; &quot;8.5.2&quot;}
+  &quot;coq-ext-lib&quot; {&gt;= &quot;0.9.2&quot;}
+  &quot;coq-plugin-utils&quot;
+]
+synopsis: &quot;A framework for computational reflection&quot;
+flags: light-uninstall
+url {
+  src: &quot;https://github.com/gmalecha/mirror-core/archive/v1.0.1.tar.gz&quot;
+  checksum: &quot;md5=3c61f6c8134ec6b5d3ea0af826d5156f&quot;
+}
+</pre>
+            <h2>Lint</h2>
+            <dl class="dl-horizontal">
+              <dt>Command</dt>
+              <dd><code>true</code></dd>
+              <dt>Return code</dt>
+              <dd>0</dd>
+            </dl>
+            <h2>Dry install</h2>
+            <p>Dry install with the current Coq version:</p>
+            <dl class="dl-horizontal">
+              <dt>Command</dt>
+              <dd><code>opam install -y --show-action coq-mirror-core.1.0.1 coq.8.5.2~camlp4</code></dd>
+              <dt>Return code</dt>
+              <dd>0</dd>
+            </dl>
+            <p>Dry install without Coq/switch base, to test if the problem was incompatibility with the current Coq/OCaml version:</p>
+            <dl class="dl-horizontal">
+              <dt>Command</dt>
+              <dd><code>true</code></dd>
+              <dt>Return code</dt>
+              <dd>0</dd>
+            </dl>
+            <h2>Install dependencies</h2>
+            <dl class="dl-horizontal">
+              <dt>Command</dt>
+              <dd><code>opam list; echo; ulimit -Sv 4000000; timeout 60m opam install -y --deps-only coq-mirror-core.1.0.1</code></dd>
+              <dt>Return code</dt>
+              <dd>0</dd>
+              <dt>Duration</dt>
+              <dd>9 s</dd>
+            </dl>
+            <h2>Install</h2>
+            <dl class="dl-horizontal">
+              <dt>Command</dt>
+              <dd><code>opam list; echo; ulimit -Sv 4000000; timeout 60m opam install -j1 -y -v coq-mirror-core.1.0.1</code></dd>
+              <dt>Return code</dt>
+              <dd>7936</dd>
+              <dt>Duration</dt>
+              <dd>3 m 54 s</dd>
+              <dt>Output</dt>
+              <dd><pre># Packages matching: installed
+# Name              # Installed  # Synopsis
+base-bigarray       base
+base-num            base         Num library distributed with the OCaml compiler
+base-threads        base
+base-unix           base
+camlp4              4.05+1       Camlp4 is a system for writing extensible parsers for programming languages
+coq                 8.5.2~camlp4 Formal proof management system.
+coq-ext-lib         0.9.4        A library of Coq definitions, theorems, and tactics
+coq-plugin-utils    1.2.0        Utility functions for implementing Coq plugins
+num                 0            The Num library for arbitrary-precision integer and rational arithmetic
+ocaml               4.05.0       The OCaml compiler (virtual package)
+ocaml-base-compiler 4.05.0       Official 4.05.0 release
+ocaml-config        1            OCaml Switch Configuration
+ocamlbuild          0.14.0       OCamlbuild is a build system with builtin rules to easily build most OCaml projects.
+The following actions will be performed:
+  - install coq-mirror-core 1.0.1
+&lt;&gt;&lt;&gt; Gathering sources &gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;
+Processing  1/1: [coq-mirror-core.1.0.1: http]
+[coq-mirror-core.1.0.1] downloaded from https://github.com/gmalecha/mirror-core/archive/v1.0.1.tar.gz
+Processing  1/1:
+&lt;&gt;&lt;&gt; Processing actions &lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;
+Processing  1/2: [coq-mirror-core: make]
++ /home/bench/.opam/opam-init/hooks/sandbox.sh &quot;build&quot; &quot;make&quot; &quot;-j7&quot; (CWD=/home/bench/.opam/ocaml-base-compiler.4.05.0/.opam-switch/build/coq-mirror-core.1.0.1)
+- # Generating _CoqProject
+- # including: _CoqConfig
+- coq_makefile -f _CoqProject -o Makefile.coq
+- Warning: -Q options don&#39;t have a correct common prefix,
+-  install-doc will put anything in $INSTALLDEFAULTROOT
+- make -f Makefile.coq
+- make[1]: Entering directory &#39;/home/bench/.opam/ocaml-base-compiler.4.05.0/.opam-switch/build/coq-mirror-core.1.0.1&#39;
+- &quot;coqdep&quot; -c -I &quot;src&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq//user-contrib/PluginUtils&quot; -c &quot;src/reify_Lambda_plugin.mllib&quot; &gt; &quot;src/reify_Lambda_plugin.mllib.d&quot; || ( RV=$?; rm -f &quot;src/reify_Lambda_plugin.mllib.d&quot;; exit ${RV} )
+- /home/bench/.opam/ocaml-base-compiler.4.05.0/bin/ocamldep.opt -slash -I &quot;src&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq//user-contrib/PluginUtils&quot; -pp &#39;/home/bench/.opam/ocaml-base-compiler.4.05.0/bin/camlp4orf -I /home/bench/.opam/ocaml-base-compiler.4.05.0/lib/ocaml/ -I /home/bench/.opam/ocaml-base-compiler.4.05.0/lib/ocaml/threads/ -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq/kernel&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq/lib&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq/library&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq/parsing&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq/pretyping&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq/interp&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq/printing&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq/intf&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq/proofs&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq/tactics&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq/tools&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq/toplevel&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq/stm&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq/grammar&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq/config&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq//plugins/btauto&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq//plugins/cc&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq//plugins/decl_mode&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq//plugins/derive&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq//plugins/extraction&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq//plugins/firstorder&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq//plugins/fourier&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq//plugins/funind&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq//plugins/micromega&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq//plugins/nsatz&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq//plugins/omega&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq//plugins/quote&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq//plugins/romega&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq//plugins/rtauto&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq//plugins/setoid_ring&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq//plugins/syntax&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq//plugins/xml&quot; compat5.cmo threads.cma grammar.cma -loc loc -impl&#39; -impl &quot;src/reify_Lambda_shell.ml4&quot; &gt; &quot;src/reify_Lambda_shell.ml4.d&quot; || ( RV=$?; rm -f &quot;src/reify_Lambda_shell.ml4.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -Q &quot;theories&quot; MirrorCore -Q &quot;examples&quot; McExamples -I &quot;src&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq//user-contrib/PluginUtils&quot; &quot;examples/AutoRewrite/DemoQuantPullLtac.v&quot; &gt; &quot;examples/AutoRewrite/DemoQuantPullLtac.v.d&quot; || ( RV=$?; rm -f &quot;examples/AutoRewrite/DemoQuantPullLtac.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -Q &quot;theories&quot; MirrorCore -Q &quot;examples&quot; McExamples -I &quot;src&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq//user-contrib/PluginUtils&quot; &quot;examples/AutoRewrite/DemoQuantPullRtac.v&quot; &gt; &quot;examples/AutoRewrite/DemoQuantPullRtac.v.d&quot; || ( RV=$?; rm -f &quot;examples/AutoRewrite/DemoQuantPullRtac.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -Q &quot;theories&quot; MirrorCore -Q &quot;examples&quot; McExamples -I &quot;src&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq//user-contrib/PluginUtils&quot; &quot;examples/AutoRewrite/QuantPullRtac.v&quot; &gt; &quot;examples/AutoRewrite/QuantPullRtac.v.d&quot; || ( RV=$?; rm -f &quot;examples/AutoRewrite/QuantPullRtac.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -Q &quot;theories&quot; MirrorCore -Q &quot;examples&quot; McExamples -I &quot;src&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq//user-contrib/PluginUtils&quot; &quot;examples/RTac/Demo.v&quot; &gt; &quot;examples/RTac/Demo.v.d&quot; || ( RV=$?; rm -f &quot;examples/RTac/Demo.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -Q &quot;theories&quot; MirrorCore -Q &quot;examples&quot; McExamples -I &quot;src&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq//user-contrib/PluginUtils&quot; &quot;examples/Reify/ModularReify.v&quot; &gt; &quot;examples/Reify/ModularReify.v.d&quot; || ( RV=$?; rm -f &quot;examples/Reify/ModularReify.v.d&quot;; exit ${RV} )
+- *** Warning: reify_Lambda_plugin.mllib already found in src (discarding src/reify_Lambda_plugin.mllib)
+- &quot;coqdep&quot; -c -Q &quot;theories&quot; MirrorCore -Q &quot;examples&quot; McExamples -I &quot;src&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq//user-contrib/PluginUtils&quot; &quot;examples/Simple/FoldTest.v&quot; &gt; &quot;examples/Simple/FoldTest.v.d&quot; || ( RV=$?; rm -f &quot;examples/Simple/FoldTest.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -Q &quot;theories&quot; MirrorCore -Q &quot;examples&quot; McExamples -I &quot;src&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq//user-contrib/PluginUtils&quot; &quot;examples/Simple/SimpleExt.v&quot; &gt; &quot;examples/Simple/SimpleExt.v.d&quot; || ( RV=$?; rm -f &quot;examples/Simple/SimpleExt.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -Q &quot;theories&quot; MirrorCore -Q &quot;examples&quot; McExamples -I &quot;src&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq//user-contrib/PluginUtils&quot; &quot;examples/Simple/SimpleReify.v&quot; &gt; &quot;examples/Simple/SimpleReify.v.d&quot; || ( RV=$?; rm -f &quot;examples/Simple/SimpleReify.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -Q &quot;theories&quot; MirrorCore -Q &quot;examples&quot; McExamples -I &quot;src&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq//user-contrib/PluginUtils&quot; &quot;examples/Simple/Simple.v&quot; &gt; &quot;examples/Simple/Simple.v.d&quot; || ( RV=$?; rm -f &quot;examples/Simple/Simple.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -Q &quot;theories&quot; MirrorCore -Q &quot;examples&quot; McExamples -I &quot;src&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq//user-contrib/PluginUtils&quot; &quot;examples/Hoare/Tests.v&quot; &gt; &quot;examples/Hoare/Tests.v.d&quot; || ( RV=$?; rm -f &quot;examples/Hoare/Tests.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -Q &quot;theories&quot; MirrorCore -Q &quot;examples&quot; McExamples -I &quot;src&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq//user-contrib/PluginUtils&quot; &quot;examples/Hoare/Verify.v&quot; &gt; &quot;examples/Hoare/Verify.v.d&quot; || ( RV=$?; rm -f &quot;examples/Hoare/Verify.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -Q &quot;theories&quot; MirrorCore -Q &quot;examples&quot; McExamples -I &quot;src&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq//user-contrib/PluginUtils&quot; &quot;examples/Hoare/ImpSyntax.v&quot; &gt; &quot;examples/Hoare/ImpSyntax.v.d&quot; || ( RV=$?; rm -f &quot;examples/Hoare/ImpSyntax.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -Q &quot;theories&quot; MirrorCore -Q &quot;examples&quot; McExamples -I &quot;src&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq//user-contrib/PluginUtils&quot; &quot;examples/Hoare/ImpMetaTheory.v&quot; &gt; &quot;examples/Hoare/ImpMetaTheory.v.d&quot; || ( RV=$?; rm -f &quot;examples/Hoare/ImpMetaTheory.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -Q &quot;theories&quot; MirrorCore -Q &quot;examples&quot; McExamples -I &quot;src&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq//user-contrib/PluginUtils&quot; &quot;examples/Hoare/Imp.v&quot; &gt; &quot;examples/Hoare/Imp.v.d&quot; || ( RV=$?; rm -f &quot;examples/Hoare/Imp.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -Q &quot;theories&quot; MirrorCore -Q &quot;examples&quot; McExamples -I &quot;src&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq//user-contrib/PluginUtils&quot; &quot;examples/Hoare/LogicTac.v&quot; &gt; &quot;examples/Hoare/LogicTac.v.d&quot; || ( RV=$?; rm -f &quot;examples/Hoare/LogicTac.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -Q &quot;theories&quot; MirrorCore -Q &quot;examples&quot; McExamples -I &quot;src&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq//user-contrib/PluginUtils&quot; &quot;examples/Hoare/ILogicFunc.v&quot; &gt; &quot;examples/Hoare/ILogicFunc.v.d&quot; || ( RV=$?; rm -f &quot;examples/Hoare/ILogicFunc.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -Q &quot;theories&quot; MirrorCore -Q &quot;examples&quot; McExamples -I &quot;src&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq//user-contrib/PluginUtils&quot; &quot;examples/Hoare/ILogic.v&quot; &gt; &quot;examples/Hoare/ILogic.v.d&quot; || ( RV=$?; rm -f &quot;examples/Hoare/ILogic.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -Q &quot;theories&quot; MirrorCore -Q &quot;examples&quot; McExamples -I &quot;src&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq//user-contrib/PluginUtils&quot; &quot;examples/Cancel/RtacDemo.v&quot; &gt; &quot;examples/Cancel/RtacDemo.v.d&quot; || ( RV=$?; rm -f &quot;examples/Cancel/RtacDemo.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -Q &quot;theories&quot; MirrorCore -Q &quot;examples&quot; McExamples -I &quot;src&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq//user-contrib/PluginUtils&quot; &quot;examples/Cancel/LtacDemo.v&quot; &gt; &quot;examples/Cancel/LtacDemo.v.d&quot; || ( RV=$?; rm -f &quot;examples/Cancel/LtacDemo.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -Q &quot;theories&quot; MirrorCore -Q &quot;examples&quot; McExamples -I &quot;src&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq//user-contrib/PluginUtils&quot; &quot;examples/Cancel/MonoidSyntaxModular.v&quot; &gt; &quot;examples/Cancel/MonoidSyntaxModular.v.d&quot; || ( RV=$?; rm -f &quot;examples/Cancel/MonoidSyntaxModular.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -Q &quot;theories&quot; MirrorCore -Q &quot;examples&quot; McExamples -I &quot;src&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq//user-contrib/PluginUtils&quot; &quot;examples/Cancel/MonoidSyntaxWithConst.v&quot; &gt; &quot;examples/Cancel/MonoidSyntaxWithConst.v.d&quot; || ( RV=$?; rm -f &quot;examples/Cancel/MonoidSyntaxWithConst.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -Q &quot;theories&quot; MirrorCore -Q &quot;examples&quot; McExamples -I &quot;src&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq//user-contrib/PluginUtils&quot; &quot;examples/Cancel/MonoidSyntaxNoDec.v&quot; &gt; &quot;examples/Cancel/MonoidSyntaxNoDec.v.d&quot; || ( RV=$?; rm -f &quot;examples/Cancel/MonoidSyntaxNoDec.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -Q &quot;theories&quot; MirrorCore -Q &quot;examples&quot; McExamples -I &quot;src&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq//user-contrib/PluginUtils&quot; &quot;examples/Cancel/MonoidSyntaxSimple.v&quot; &gt; &quot;examples/Cancel/MonoidSyntaxSimple.v.d&quot; || ( RV=$?; rm -f &quot;examples/Cancel/MonoidSyntaxSimple.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -Q &quot;theories&quot; MirrorCore -Q &quot;examples&quot; McExamples -I &quot;src&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq//user-contrib/PluginUtils&quot; &quot;examples/Cancel/Monoid.v&quot; &gt; &quot;examples/Cancel/Monoid.v.d&quot; || ( RV=$?; rm -f &quot;examples/Cancel/Monoid.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -Q &quot;theories&quot; MirrorCore -Q &quot;examples&quot; McExamples -I &quot;src&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq//user-contrib/PluginUtils&quot; &quot;theories/Reify/Reify.v&quot; &gt; &quot;theories/Reify/Reify.v.d&quot; || ( RV=$?; rm -f &quot;theories/Reify/Reify.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -Q &quot;theories&quot; MirrorCore -Q &quot;examples&quot; McExamples -I &quot;src&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq//user-contrib/PluginUtils&quot; &quot;theories/Reify/Patterns.v&quot; &gt; &quot;theories/Reify/Patterns.v.d&quot; || ( RV=$?; rm -f &quot;theories/Reify/Patterns.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -Q &quot;theories&quot; MirrorCore -Q &quot;examples&quot; McExamples -I &quot;src&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq//user-contrib/PluginUtils&quot; &quot;theories/RTac/RTac.v&quot; &gt; &quot;theories/RTac/RTac.v.d&quot; || ( RV=$?; rm -f &quot;theories/RTac/RTac.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -Q &quot;theories&quot; MirrorCore -Q &quot;examples&quot; McExamples -I &quot;src&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq//user-contrib/PluginUtils&quot; &quot;theories/RTac/Auto.v&quot; &gt; &quot;theories/RTac/Auto.v.d&quot; || ( RV=$?; rm -f &quot;theories/RTac/Auto.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -Q &quot;theories&quot; MirrorCore -Q &quot;examples&quot; McExamples -I &quot;src&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq//user-contrib/PluginUtils&quot; &quot;theories/RTac/Interface.v&quot; &gt; &quot;theories/RTac/Interface.v.d&quot; || ( RV=$?; rm -f &quot;theories/RTac/Interface.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -Q &quot;theories&quot; MirrorCore -Q &quot;examples&quot; McExamples -I &quot;src&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq//user-contrib/PluginUtils&quot; &quot;theories/RTac/Reduce.v&quot; &gt; &quot;theories/RTac/Reduce.v.d&quot; || ( RV=$?; rm -f &quot;theories/RTac/Reduce.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -Q &quot;theories&quot; MirrorCore -Q &quot;examples&quot; McExamples -I &quot;src&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq//user-contrib/PluginUtils&quot; &quot;theories/RTac/AtGoal.v&quot; &gt; &quot;theories/RTac/AtGoal.v.d&quot; || ( RV=$?; rm -f &quot;theories/RTac/AtGoal.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -Q &quot;theories&quot; MirrorCore -Q &quot;examples&quot; McExamples -I &quot;src&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq//user-contrib/PluginUtils&quot; &quot;theories/RTac/Minify.v&quot; &gt; &quot;theories/RTac/Minify.v.d&quot; || ( RV=$?; rm -f &quot;theories/RTac/Minify.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -Q &quot;theories&quot; MirrorCore -Q &quot;examples&quot; McExamples -I &quot;src&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq//user-contrib/PluginUtils&quot; &quot;theories/RTac/Instantiate.v&quot; &gt; &quot;theories/RTac/Instantiate.v.d&quot; || ( RV=$?; rm -f &quot;theories/RTac/Instantiate.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -Q &quot;theories&quot; MirrorCore -Q &quot;examples&quot; McExamples -I &quot;src&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq//user-contrib/PluginUtils&quot; &quot;theories/RTac/Simplify.v&quot; &gt; &quot;theories/RTac/Simplify.v.d&quot; || ( RV=$?; rm -f &quot;theories/RTac/Simplify.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -Q &quot;theories&quot; MirrorCore -Q &quot;examples&quot; McExamples -I &quot;src&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq//user-contrib/PluginUtils&quot; &quot;theories/RTac/EApply.v&quot; &gt; &quot;theories/RTac/EApply.v.d&quot; || ( RV=$?; rm -f &quot;theories/RTac/EApply.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -Q &quot;theories&quot; MirrorCore -Q &quot;examples&quot; McExamples -I &quot;src&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq//user-contrib/PluginUtils&quot; &quot;theories/RTac/Apply.v&quot; &gt; &quot;theories/RTac/Apply.v.d&quot; || ( RV=$?; rm -f &quot;theories/RTac/Apply.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -Q &quot;theories&quot; MirrorCore -Q &quot;examples&quot; McExamples -I &quot;src&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq//user-contrib/PluginUtils&quot; &quot;theories/RTac/Intro.v&quot; &gt; &quot;theories/RTac/Intro.v.d&quot; || ( RV=$?; rm -f &quot;theories/RTac/Intro.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -Q &quot;theories&quot; MirrorCore -Q &quot;examples&quot; McExamples -I &quot;src&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq//user-contrib/PluginUtils&quot; &quot;theories/RTac/Assumption.v&quot; &gt; &quot;theories/RTac/Assumption.v.d&quot; || ( RV=$?; rm -f &quot;theories/RTac/Assumption.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -Q &quot;theories&quot; MirrorCore -Q &quot;examples&quot; McExamples -I &quot;src&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq//user-contrib/PluginUtils&quot; &quot;theories/RTac/runTacK.v&quot; &gt; &quot;theories/RTac/runTacK.v.d&quot; || ( RV=$?; rm -f &quot;theories/RTac/runTacK.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -Q &quot;theories&quot; MirrorCore -Q &quot;examples&quot; McExamples -I &quot;src&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq//user-contrib/PluginUtils&quot; &quot;theories/RTac/IdtacK.v&quot; &gt; &quot;theories/RTac/IdtacK.v.d&quot; || ( RV=$?; rm -f &quot;theories/RTac/IdtacK.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -Q &quot;theories&quot; MirrorCore -Q &quot;examples&quot; McExamples -I &quot;src&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq//user-contrib/PluginUtils&quot; &quot;theories/RTac/ThenK.v&quot; &gt; &quot;theories/RTac/ThenK.v.d&quot; || ( RV=$?; rm -f &quot;theories/RTac/ThenK.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -Q &quot;theories&quot; MirrorCore -Q &quot;examples&quot; McExamples -I &quot;src&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq//user-contrib/PluginUtils&quot; &quot;theories/RTac/SolveK.v&quot; &gt; &quot;theories/RTac/SolveK.v.d&quot; || ( RV=$?; rm -f &quot;theories/RTac/SolveK.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -Q &quot;theories&quot; MirrorCore -Q &quot;examples&quot; McExamples -I &quot;src&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq//user-contrib/PluginUtils&quot; &quot;theories/RTac/Solve.v&quot; &gt; &quot;theories/RTac/Solve.v.d&quot; || ( RV=$?; rm -f &quot;theories/RTac/Solve.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -Q &quot;theories&quot; MirrorCore -Q &quot;examples&quot; McExamples -I &quot;src&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq//user-contrib/PluginUtils&quot; &quot;theories/RTac/Fail.v&quot; &gt; &quot;theories/RTac/Fail.v.d&quot; || ( RV=$?; rm -f &quot;theories/RTac/Fail.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -Q &quot;theories&quot; MirrorCore -Q &quot;examples&quot; McExamples -I &quot;src&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq//user-contrib/PluginUtils&quot; &quot;theories/RTac/First.v&quot; &gt; &quot;theories/RTac/First.v.d&quot; || ( RV=$?; rm -f &quot;theories/RTac/First.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -Q &quot;theories&quot; MirrorCore -Q &quot;examples&quot; McExamples -I &quot;src&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq//user-contrib/PluginUtils&quot; &quot;theories/RTac/Idtac.v&quot; &gt; &quot;theories/RTac/Idtac.v.d&quot; || ( RV=$?; rm -f &quot;theories/RTac/Idtac.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -Q &quot;theories&quot; MirrorCore -Q &quot;examples&quot; McExamples -I &quot;src&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq//user-contrib/PluginUtils&quot; &quot;theories/RTac/Rec.v&quot; &gt; &quot;theories/RTac/Rec.v.d&quot; || ( RV=$?; rm -f &quot;theories/RTac/Rec.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -Q &quot;theories&quot; MirrorCore -Q &quot;examples&quot; McExamples -I &quot;src&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq//user-contrib/PluginUtils&quot; &quot;theories/RTac/Repeat.v&quot; &gt; &quot;theories/RTac/Repeat.v.d&quot; || ( RV=$?; rm -f &quot;theories/RTac/Repeat.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -Q &quot;theories&quot; MirrorCore -Q &quot;examples&quot; McExamples -I &quot;src&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq//user-contrib/PluginUtils&quot; &quot;theories/RTac/Try.v&quot; &gt; &quot;theories/RTac/Try.v.d&quot; || ( RV=$?; rm -f &quot;theories/RTac/Try.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -Q &quot;theories&quot; MirrorCore -Q &quot;examples&quot; McExamples -I &quot;src&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq//user-contrib/PluginUtils&quot; &quot;theories/RTac/Then.v&quot; &gt; &quot;theories/RTac/Then.v.d&quot; || ( RV=$?; rm -f &quot;theories/RTac/Then.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -Q &quot;theories&quot; MirrorCore -Q &quot;examples&quot; McExamples -I &quot;src&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq//user-contrib/PluginUtils&quot; &quot;theories/RTac/RunOnGoals_list.v&quot; &gt; &quot;theories/RTac/RunOnGoals_list.v.d&quot; || ( RV=$?; rm -f &quot;theories/RTac/RunOnGoals_list.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -Q &quot;theories&quot; MirrorCore -Q &quot;examples&quot; McExamples -I &quot;src&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq//user-contrib/PluginUtils&quot; &quot;theories/RTac/RunOnGoals.v&quot; &gt; &quot;theories/RTac/RunOnGoals.v.d&quot; || ( RV=$?; rm -f &quot;theories/RTac/RunOnGoals.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -Q &quot;theories&quot; MirrorCore -Q &quot;examples&quot; McExamples -I &quot;src&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq//user-contrib/PluginUtils&quot; &quot;theories/RTac/SpecLemmas.v&quot; &gt; &quot;theories/RTac/SpecLemmas.v.d&quot; || ( RV=$?; rm -f &quot;theories/RTac/SpecLemmas.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -Q &quot;theories&quot; MirrorCore -Q &quot;examples&quot; McExamples -I &quot;src&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq//user-contrib/PluginUtils&quot; &quot;theories/RTac/IsSolved.v&quot; &gt; &quot;theories/RTac/IsSolved.v.d&quot; || ( RV=$?; rm -f &quot;theories/RTac/IsSolved.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -Q &quot;theories&quot; MirrorCore -Q &quot;examples&quot; McExamples -I &quot;src&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq//user-contrib/PluginUtils&quot; &quot;theories/RTac/CoreK.v&quot; &gt; &quot;theories/RTac/CoreK.v.d&quot; || ( RV=$?; rm -f &quot;theories/RTac/CoreK.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -Q &quot;theories&quot; MirrorCore -Q &quot;examples&quot; McExamples -I &quot;src&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq//user-contrib/PluginUtils&quot; &quot;theories/RTac/Core.v&quot; &gt; &quot;theories/RTac/Core.v.d&quot; || ( RV=$?; rm -f &quot;theories/RTac/Core.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -Q &quot;theories&quot; MirrorCore -Q &quot;examples&quot; McExamples -I &quot;src&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq//user-contrib/PluginUtils&quot; &quot;theories/RTac/Ctx.v&quot; &gt; &quot;theories/RTac/Ctx.v.d&quot; || ( RV=$?; rm -f &quot;theories/RTac/Ctx.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -Q &quot;theories&quot; MirrorCore -Q &quot;examples&quot; McExamples -I &quot;src&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq//user-contrib/PluginUtils&quot; &quot;theories/RTac/BIMap.v&quot; &gt; &quot;theories/RTac/BIMap.v.d&quot; || ( RV=$?; rm -f &quot;theories/RTac/BIMap.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -Q &quot;theories&quot; MirrorCore -Q &quot;examples&quot; McExamples -I &quot;src&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq//user-contrib/PluginUtils&quot; &quot;theories/Views/EqView.v&quot; &gt; &quot;theories/Views/EqView.v.d&quot; || ( RV=$?; rm -f &quot;theories/Views/EqView.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -Q &quot;theories&quot; MirrorCore -Q &quot;examples&quot; McExamples -I &quot;src&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq//user-contrib/PluginUtils&quot; &quot;theories/Views/ApplicativeView.v&quot; &gt; &quot;theories/Views/ApplicativeView.v.d&quot; || ( RV=$?; rm -f &quot;theories/Views/ApplicativeView.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -Q &quot;theories&quot; MirrorCore -Q &quot;examples&quot; McExamples -I &quot;src&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq//user-contrib/PluginUtils&quot; &quot;theories/Views/ProdView.v&quot; &gt; &quot;theories/Views/ProdView.v.d&quot; || ( RV=$?; rm -f &quot;theories/Views/ProdView.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -Q &quot;theories&quot; MirrorCore -Q &quot;examples&quot; McExamples -I &quot;src&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq//user-contrib/PluginUtils&quot; &quot;theories/Views/BoolView.v&quot; &gt; &quot;theories/Views/BoolView.v.d&quot; || ( RV=$?; rm -f &quot;theories/Views/BoolView.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -Q &quot;theories&quot; MirrorCore -Q &quot;examples&quot; McExamples -I &quot;src&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq//user-contrib/PluginUtils&quot; &quot;theories/Views/StringView.v&quot; &gt; &quot;theories/Views/StringView.v.d&quot; || ( RV=$?; rm -f &quot;theories/Views/StringView.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -Q &quot;theories&quot; MirrorCore -Q &quot;examples&quot; McExamples -I &quot;src&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq//user-contrib/PluginUtils&quot; &quot;theories/Views/NatView.v&quot; &gt; &quot;theories/Views/NatView.v.d&quot; || ( RV=$?; rm -f &quot;theories/Views/NatView.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -Q &quot;theories&quot; MirrorCore -Q &quot;examples&quot; McExamples -I &quot;src&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq//user-contrib/PluginUtils&quot; &quot;theories/Views/ListView.v&quot; &gt; &quot;theories/Views/ListView.v.d&quot; || ( RV=$?; rm -f &quot;theories/Views/ListView.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -Q &quot;theories&quot; MirrorCore -Q &quot;examples&quot; McExamples -I &quot;src&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq//user-contrib/PluginUtils&quot; &quot;theories/Views/ViewSumN.v&quot; &gt; &quot;theories/Views/ViewSumN.v.d&quot; || ( RV=$?; rm -f &quot;theories/Views/ViewSumN.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -Q &quot;theories&quot; MirrorCore -Q &quot;examples&quot; McExamples -I &quot;src&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq//user-contrib/PluginUtils&quot; &quot;theories/Views/ViewSum.v&quot; &gt; &quot;theories/Views/ViewSum.v.d&quot; || ( RV=$?; rm -f &quot;theories/Views/ViewSum.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -Q &quot;theories&quot; MirrorCore -Q &quot;examples&quot; McExamples -I &quot;src&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq//user-contrib/PluginUtils&quot; &quot;theories/Views/Ptrns2.v&quot; &gt; &quot;theories/Views/Ptrns2.v.d&quot; || ( RV=$?; rm -f &quot;theories/Views/Ptrns2.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -Q &quot;theories&quot; MirrorCore -Q &quot;examples&quot; McExamples -I &quot;src&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq//user-contrib/PluginUtils&quot; &quot;theories/Views/Ptrns.v&quot; &gt; &quot;theories/Views/Ptrns.v.d&quot; || ( RV=$?; rm -f &quot;theories/Views/Ptrns.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -Q &quot;theories&quot; MirrorCore -Q &quot;examples&quot; McExamples -I &quot;src&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq//user-contrib/PluginUtils&quot; &quot;theories/Views/FuncView.v&quot; &gt; &quot;theories/Views/FuncView.v.d&quot; || ( RV=$?; rm -f &quot;theories/Views/FuncView.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -Q &quot;theories&quot; MirrorCore -Q &quot;examples&quot; McExamples -I &quot;src&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq//user-contrib/PluginUtils&quot; &quot;theories/Views/TypeView.v&quot; &gt; &quot;theories/Views/TypeView.v.d&quot; || ( RV=$?; rm -f &quot;theories/Views/TypeView.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -Q &quot;theories&quot; MirrorCore -Q &quot;examples&quot; McExamples -I &quot;src&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq//user-contrib/PluginUtils&quot; &quot;theories/Views/View.v&quot; &gt; &quot;theories/Views/View.v.d&quot; || ( RV=$?; rm -f &quot;theories/Views/View.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -Q &quot;theories&quot; MirrorCore -Q &quot;examples&quot; McExamples -I &quot;src&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq//user-contrib/PluginUtils&quot; &quot;theories/Lambda/Reify.v&quot; &gt; &quot;theories/Lambda/Reify.v.d&quot; || ( RV=$?; rm -f &quot;theories/Lambda/Reify.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -Q &quot;theories&quot; MirrorCore -Q &quot;examples&quot; McExamples -I &quot;src&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq//user-contrib/PluginUtils&quot; &quot;theories/Lambda/Rtac.v&quot; &gt; &quot;theories/Lambda/Rtac.v.d&quot; || ( RV=$?; rm -f &quot;theories/Lambda/Rtac.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -Q &quot;theories&quot; MirrorCore -Q &quot;examples&quot; McExamples -I &quot;src&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq//user-contrib/PluginUtils&quot; &quot;theories/Lambda/Ptrns.v&quot; &gt; &quot;theories/Lambda/Ptrns.v.d&quot; || ( RV=$?; rm -f &quot;theories/Lambda/Ptrns.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -Q &quot;theories&quot; MirrorCore -Q &quot;examples&quot; McExamples -I &quot;src&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq//user-contrib/PluginUtils&quot; &quot;theories/Lambda/RewriteRelations.v&quot; &gt; &quot;theories/Lambda/RewriteRelations.v.d&quot; || ( RV=$?; rm -f &quot;theories/Lambda/RewriteRelations.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -Q &quot;theories&quot; MirrorCore -Q &quot;examples&quot; McExamples -I &quot;src&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq//user-contrib/PluginUtils&quot; &quot;theories/Lambda/AutoSetoidRewriteRtac.v&quot; &gt; &quot;theories/Lambda/AutoSetoidRewriteRtac.v.d&quot; || ( RV=$?; rm -f &quot;theories/Lambda/AutoSetoidRewriteRtac.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -Q &quot;theories&quot; MirrorCore -Q &quot;examples&quot; McExamples -I &quot;src&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq//user-contrib/PluginUtils&quot; &quot;theories/Lambda/ExprVariables.v&quot; &gt; &quot;theories/Lambda/ExprVariables.v.d&quot; || ( RV=$?; rm -f &quot;theories/Lambda/ExprVariables.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -Q &quot;theories&quot; MirrorCore -Q &quot;examples&quot; McExamples -I &quot;src&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq//user-contrib/PluginUtils&quot; &quot;theories/Lambda/AppN.v&quot; &gt; &quot;theories/Lambda/AppN.v.d&quot; || ( RV=$?; rm -f &quot;theories/Lambda/AppN.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -Q &quot;theories&quot; MirrorCore -Q &quot;examples&quot; McExamples -I &quot;src&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq//user-contrib/PluginUtils&quot; &quot;theories/Lambda/ExprSubstitute.v&quot; &gt; &quot;theories/Lambda/ExprSubstitute.v.d&quot; || ( RV=$?; rm -f &quot;theories/Lambda/ExprSubstitute.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -Q &quot;theories&quot; MirrorCore -Q &quot;examples&quot; McExamples -I &quot;src&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq//user-contrib/PluginUtils&quot; &quot;theories/Lambda/ExprSubst.v&quot; &gt; &quot;theories/Lambda/ExprSubst.v.d&quot; || ( RV=$?; rm -f &quot;theories/Lambda/ExprSubst.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -Q &quot;theories&quot; MirrorCore -Q &quot;examples&quot; McExamples -I &quot;src&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq//user-contrib/PluginUtils&quot; &quot;theories/Lambda/ExprUnify.v&quot; &gt; &quot;theories/Lambda/ExprUnify.v.d&quot; || ( RV=$?; rm -f &quot;theories/Lambda/ExprUnify.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -Q &quot;theories&quot; MirrorCore -Q &quot;examples&quot; McExamples -I &quot;src&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq//user-contrib/PluginUtils&quot; &quot;theories/Lambda/ExprUnify_simul.v&quot; &gt; &quot;theories/Lambda/ExprUnify_simul.v.d&quot; || ( RV=$?; rm -f &quot;theories/Lambda/ExprUnify_simul.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -Q &quot;theories&quot; MirrorCore -Q &quot;examples&quot; McExamples -I &quot;src&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq//user-contrib/PluginUtils&quot; &quot;theories/Lambda/ExprUnify_simple.v&quot; &gt; &quot;theories/Lambda/ExprUnify_simple.v.d&quot; || ( RV=$?; rm -f &quot;theories/Lambda/ExprUnify_simple.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -Q &quot;theories&quot; MirrorCore -Q &quot;examples&quot; McExamples -I &quot;src&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq//user-contrib/PluginUtils&quot; &quot;theories/Lambda/ExprUnify_common.v&quot; &gt; &quot;theories/Lambda/ExprUnify_common.v.d&quot; || ( RV=$?; rm -f &quot;theories/Lambda/ExprUnify_common.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -Q &quot;theories&quot; MirrorCore -Q &quot;examples&quot; McExamples -I &quot;src&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq//user-contrib/PluginUtils&quot; &quot;theories/Lambda/Lemma.v&quot; &gt; &quot;theories/Lambda/Lemma.v.d&quot; || ( RV=$?; rm -f &quot;theories/Lambda/Lemma.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -Q &quot;theories&quot; MirrorCore -Q &quot;examples&quot; McExamples -I &quot;src&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq//user-contrib/PluginUtils&quot; &quot;theories/Lambda/StrongFoldApp.v&quot; &gt; &quot;theories/Lambda/StrongFoldApp.v.d&quot; || ( RV=$?; rm -f &quot;theories/Lambda/StrongFoldApp.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -Q &quot;theories&quot; MirrorCore -Q &quot;examples&quot; McExamples -I &quot;src&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq//user-contrib/PluginUtils&quot; &quot;theories/Lambda/FoldApp.v&quot; &gt; &quot;theories/Lambda/FoldApp.v.d&quot; || ( RV=$?; rm -f &quot;theories/Lambda/FoldApp.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -Q &quot;theories&quot; MirrorCore -Q &quot;examples&quot; McExamples -I &quot;src&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq//user-contrib/PluginUtils&quot; &quot;theories/Lambda/TypedFoldApp.v&quot; &gt; &quot;theories/Lambda/TypedFoldApp.v.d&quot; || ( RV=$?; rm -f &quot;theories/Lambda/TypedFoldApp.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -Q &quot;theories&quot; MirrorCore -Q &quot;examples&quot; McExamples -I &quot;src&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq//user-contrib/PluginUtils&quot; &quot;theories/Lambda/TypedFoldLazy.v&quot; &gt; &quot;theories/Lambda/TypedFoldLazy.v.d&quot; || ( RV=$?; rm -f &quot;theories/Lambda/TypedFoldLazy.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -Q &quot;theories&quot; MirrorCore -Q &quot;examples&quot; McExamples -I &quot;src&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq//user-contrib/PluginUtils&quot; &quot;theories/Lambda/TypedFoldEager.v&quot; &gt; &quot;theories/Lambda/TypedFoldEager.v.d&quot; || ( RV=$?; rm -f &quot;theories/Lambda/TypedFoldEager.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -Q &quot;theories&quot; MirrorCore -Q &quot;examples&quot; McExamples -I &quot;src&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq//user-contrib/PluginUtils&quot; &quot;theories/Lambda/RedAll.v&quot; &gt; &quot;theories/Lambda/RedAll.v.d&quot; || ( RV=$?; rm -f &quot;theories/Lambda/RedAll.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -Q &quot;theories&quot; MirrorCore -Q &quot;examples&quot; McExamples -I &quot;src&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq//user-contrib/PluginUtils&quot; &quot;theories/Lambda/Red.v&quot; &gt; &quot;theories/Lambda/Red.v.d&quot; || ( RV=$?; rm -f &quot;theories/Lambda/Red.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -Q &quot;theories&quot; MirrorCore -Q &quot;examples&quot; McExamples -I &quot;src&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq//user-contrib/PluginUtils&quot; &quot;theories/Lambda/ExprLift.v&quot; &gt; &quot;theories/Lambda/ExprLift.v.d&quot; || ( RV=$?; rm -f &quot;theories/Lambda/ExprLift.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -Q &quot;theories&quot; MirrorCore -Q &quot;examples&quot; McExamples -I &quot;src&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq//user-contrib/PluginUtils&quot; &quot;theories/Lambda/Expr.v&quot; &gt; &quot;theories/Lambda/Expr.v.d&quot; || ( RV=$?; rm -f &quot;theories/Lambda/Expr.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -Q &quot;theories&quot; MirrorCore -Q &quot;examples&quot; McExamples -I &quot;src&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq//user-contrib/PluginUtils&quot; &quot;theories/Lambda/ExprTac.v&quot; &gt; &quot;theories/Lambda/ExprTac.v.d&quot; || ( RV=$?; rm -f &quot;theories/Lambda/ExprTac.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -Q &quot;theories&quot; MirrorCore -Q &quot;examples&quot; McExamples -I &quot;src&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq//user-contrib/PluginUtils&quot; &quot;theories/Lambda/ExprDFacts.v&quot; &gt; &quot;theories/Lambda/ExprDFacts.v.d&quot; || ( RV=$?; rm -f &quot;theories/Lambda/ExprDFacts.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -Q &quot;theories&quot; MirrorCore -Q &quot;examples&quot; McExamples -I &quot;src&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq//user-contrib/PluginUtils&quot; &quot;theories/Lambda/ExprD.v&quot; &gt; &quot;theories/Lambda/ExprD.v.d&quot; || ( RV=$?; rm -f &quot;theories/Lambda/ExprD.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -Q &quot;theories&quot; MirrorCore -Q &quot;examples&quot; McExamples -I &quot;src&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq//user-contrib/PluginUtils&quot; &quot;theories/Lambda/ExprDsimul.v&quot; &gt; &quot;theories/Lambda/ExprDsimul.v.d&quot; || ( RV=$?; rm -f &quot;theories/Lambda/ExprDsimul.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -Q &quot;theories&quot; MirrorCore -Q &quot;examples&quot; McExamples -I &quot;src&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq//user-contrib/PluginUtils&quot; &quot;theories/Lambda/ExprDI.v&quot; &gt; &quot;theories/Lambda/ExprDI.v.d&quot; || ( RV=$?; rm -f &quot;theories/Lambda/ExprDI.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -Q &quot;theories&quot; MirrorCore -Q &quot;examples&quot; McExamples -I &quot;src&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq//user-contrib/PluginUtils&quot; &quot;theories/Lambda/ExprCore.v&quot; &gt; &quot;theories/Lambda/ExprCore.v.d&quot; || ( RV=$?; rm -f &quot;theories/Lambda/ExprCore.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -Q &quot;theories&quot; MirrorCore -Q &quot;examples&quot; McExamples -I &quot;src&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq//user-contrib/PluginUtils&quot; &quot;theories/syms/SymSimple.v&quot; &gt; &quot;theories/syms/SymSimple.v.d&quot; || ( RV=$?; rm -f &quot;theories/syms/SymSimple.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -Q &quot;theories&quot; MirrorCore -Q &quot;examples&quot; McExamples -I &quot;src&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq//user-contrib/PluginUtils&quot; &quot;theories/syms/SymOneOf.v&quot; &gt; &quot;theories/syms/SymOneOf.v.d&quot; || ( RV=$?; rm -f &quot;theories/syms/SymOneOf.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -Q &quot;theories&quot; MirrorCore -Q &quot;examples&quot; McExamples -I &quot;src&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq//user-contrib/PluginUtils&quot; &quot;theories/syms/SymProd.v&quot; &gt; &quot;theories/syms/SymProd.v.d&quot; || ( RV=$?; rm -f &quot;theories/syms/SymProd.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -Q &quot;theories&quot; MirrorCore -Q &quot;examples&quot; McExamples -I &quot;src&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq//user-contrib/PluginUtils&quot; &quot;theories/syms/SymSum.v&quot; &gt; &quot;theories/syms/SymSum.v.d&quot; || ( RV=$?; rm -f &quot;theories/syms/SymSum.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -Q &quot;theories&quot; MirrorCore -Q &quot;examples&quot; McExamples -I &quot;src&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq//user-contrib/PluginUtils&quot; &quot;theories/syms/SymPolyEnv.v&quot; &gt; &quot;theories/syms/SymPolyEnv.v.d&quot; || ( RV=$?; rm -f &quot;theories/syms/SymPolyEnv.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -Q &quot;theories&quot; MirrorCore -Q &quot;examples&quot; McExamples -I &quot;src&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq//user-contrib/PluginUtils&quot; &quot;theories/syms/SymEnv.v&quot; &gt; &quot;theories/syms/SymEnv.v.d&quot; || ( RV=$?; rm -f &quot;theories/syms/SymEnv.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -Q &quot;theories&quot; MirrorCore -Q &quot;examples&quot; McExamples -I &quot;src&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq//user-contrib/PluginUtils&quot; &quot;theories/Util/Compat.v&quot; &gt; &quot;theories/Util/Compat.v.d&quot; || ( RV=$?; rm -f &quot;theories/Util/Compat.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -Q &quot;theories&quot; MirrorCore -Q &quot;examples&quot; McExamples -I &quot;src&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq//user-contrib/PluginUtils&quot; &quot;theories/Util/HListBuild.v&quot; &gt; &quot;theories/Util/HListBuild.v.d&quot; || ( RV=$?; rm -f &quot;theories/Util/HListBuild.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -Q &quot;theories&quot; MirrorCore -Q &quot;examples&quot; McExamples -I &quot;src&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq//user-contrib/PluginUtils&quot; &quot;theories/Util/Nat.v&quot; &gt; &quot;theories/Util/Nat.v.d&quot; || ( RV=$?; rm -f &quot;theories/Util/Nat.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -Q &quot;theories&quot; MirrorCore -Q &quot;examples&quot; McExamples -I &quot;src&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq//user-contrib/PluginUtils&quot; &quot;theories/Util/Quant.v&quot; &gt; &quot;theories/Util/Quant.v.d&quot; || ( RV=$?; rm -f &quot;theories/Util/Quant.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -Q &quot;theories&quot; MirrorCore -Q &quot;examples&quot; McExamples -I &quot;src&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq//user-contrib/PluginUtils&quot; &quot;theories/Util/Forwardy.v&quot; &gt; &quot;theories/Util/Forwardy.v.d&quot; || ( RV=$?; rm -f &quot;theories/Util/Forwardy.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -Q &quot;theories&quot; MirrorCore -Q &quot;examples&quot; McExamples -I &quot;src&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq//user-contrib/PluginUtils&quot; &quot;theories/Util/ListMapT.v&quot; &gt; &quot;theories/Util/ListMapT.v.d&quot; || ( RV=$?; rm -f &quot;theories/Util/ListMapT.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -Q &quot;theories&quot; MirrorCore -Q &quot;examples&quot; McExamples -I &quot;src&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq//user-contrib/PluginUtils&quot; &quot;theories/Util/Iteration.v&quot; &gt; &quot;theories/Util/Iteration.v.d&quot; || ( RV=$?; rm -f &quot;theories/Util/Iteration.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -Q &quot;theories&quot; MirrorCore -Q &quot;examples&quot; McExamples -I &quot;src&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq//user-contrib/PluginUtils&quot; &quot;theories/Util/Approx.v&quot; &gt; &quot;theories/Util/Approx.v.d&quot; || ( RV=$?; rm -f &quot;theories/Util/Approx.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -Q &quot;theories&quot; MirrorCore -Q &quot;examples&quot; McExamples -I &quot;src&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq//user-contrib/PluginUtils&quot; &quot;theories/MTypes/BaseType.v&quot; &gt; &quot;theories/MTypes/BaseType.v.d&quot; || ( RV=$?; rm -f &quot;theories/MTypes/BaseType.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -Q &quot;theories&quot; MirrorCore -Q &quot;examples&quot; McExamples -I &quot;src&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq//user-contrib/PluginUtils&quot; &quot;theories/MTypes/ListType.v&quot; &gt; &quot;theories/MTypes/ListType.v.d&quot; || ( RV=$?; rm -f &quot;theories/MTypes/ListType.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -Q &quot;theories&quot; MirrorCore -Q &quot;examples&quot; McExamples -I &quot;src&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq//user-contrib/PluginUtils&quot; &quot;theories/MTypes/ProdType.v&quot; &gt; &quot;theories/MTypes/ProdType.v.d&quot; || ( RV=$?; rm -f &quot;theories/MTypes/ProdType.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -Q &quot;theories&quot; MirrorCore -Q &quot;examples&quot; McExamples -I &quot;src&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq//user-contrib/PluginUtils&quot; &quot;theories/MTypes/TSyms.v&quot; &gt; &quot;theories/MTypes/TSyms.v.d&quot; || ( RV=$?; rm -f &quot;theories/MTypes/TSyms.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -Q &quot;theories&quot; MirrorCore -Q &quot;examples&quot; McExamples -I &quot;src&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq//user-contrib/PluginUtils&quot; &quot;theories/MTypes/GenericTypes.v&quot; &gt; &quot;theories/MTypes/GenericTypes.v.d&quot; || ( RV=$?; rm -f &quot;theories/MTypes/GenericTypes.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -Q &quot;theories&quot; MirrorCore -Q &quot;examples&quot; McExamples -I &quot;src&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq//user-contrib/PluginUtils&quot; &quot;theories/MTypes/ModularTypes.v&quot; &gt; &quot;theories/MTypes/ModularTypes.v.d&quot; || ( RV=$?; rm -f &quot;theories/MTypes/ModularTypes.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -Q &quot;theories&quot; MirrorCore -Q &quot;examples&quot; McExamples -I &quot;src&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq//user-contrib/PluginUtils&quot; &quot;theories/Subst/FMapSubst.v&quot; &gt; &quot;theories/Subst/FMapSubst.v.d&quot; || ( RV=$?; rm -f &quot;theories/Subst/FMapSubst.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -Q &quot;theories&quot; MirrorCore -Q &quot;examples&quot; McExamples -I &quot;src&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq//user-contrib/PluginUtils&quot; &quot;theories/Subst/UVarMap.v&quot; &gt; &quot;theories/Subst/UVarMap.v.d&quot; || ( RV=$?; rm -f &quot;theories/Subst/UVarMap.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -Q &quot;theories&quot; MirrorCore -Q &quot;examples&quot; McExamples -I &quot;src&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq//user-contrib/PluginUtils&quot; &quot;theories/Simple.v&quot; &gt; &quot;theories/Simple.v.d&quot; || ( RV=$?; rm -f &quot;theories/Simple.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -Q &quot;theories&quot; MirrorCore -Q &quot;examples&quot; McExamples -I &quot;src&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq//user-contrib/PluginUtils&quot; &quot;theories/LemmaApply.v&quot; &gt; &quot;theories/LemmaApply.v.d&quot; || ( RV=$?; rm -f &quot;theories/LemmaApply.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -Q &quot;theories&quot; MirrorCore -Q &quot;examples&quot; McExamples -I &quot;src&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq//user-contrib/PluginUtils&quot; &quot;theories/Lemma.v&quot; &gt; &quot;theories/Lemma.v.d&quot; || ( RV=$?; rm -f &quot;theories/Lemma.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -Q &quot;theories&quot; MirrorCore -Q &quot;examples&quot; McExamples -I &quot;src&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq//user-contrib/PluginUtils&quot; &quot;theories/VarsToUVars.v&quot; &gt; &quot;theories/VarsToUVars.v.d&quot; || ( RV=$?; rm -f &quot;theories/VarsToUVars.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -Q &quot;theories&quot; MirrorCore -Q &quot;examples&quot; McExamples -I &quot;src&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq//user-contrib/PluginUtils&quot; &quot;theories/Instantiate.v&quot; &gt; &quot;theories/Instantiate.v.d&quot; || ( RV=$?; rm -f &quot;theories/Instantiate.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -Q &quot;theories&quot; MirrorCore -Q &quot;examples&quot; McExamples -I &quot;src&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq//user-contrib/PluginUtils&quot; &quot;theories/SubstI.v&quot; &gt; &quot;theories/SubstI.v.d&quot; || ( RV=$?; rm -f &quot;theories/SubstI.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -Q &quot;theories&quot; MirrorCore -Q &quot;examples&quot; McExamples -I &quot;src&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq//user-contrib/PluginUtils&quot; &quot;theories/SymI.v&quot; &gt; &quot;theories/SymI.v.d&quot; || ( RV=$?; rm -f &quot;theories/SymI.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -Q &quot;theories&quot; MirrorCore -Q &quot;examples&quot; McExamples -I &quot;src&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq//user-contrib/PluginUtils&quot; &quot;theories/ExprDAs.v&quot; &gt; &quot;theories/ExprDAs.v.d&quot; || ( RV=$?; rm -f &quot;theories/ExprDAs.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -Q &quot;theories&quot; MirrorCore -Q &quot;examples&quot; McExamples -I &quot;src&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq//user-contrib/PluginUtils&quot; &quot;theories/ExprSem.v&quot; &gt; &quot;theories/ExprSem.v.d&quot; || ( RV=$?; rm -f &quot;theories/ExprSem.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -Q &quot;theories&quot; MirrorCore -Q &quot;examples&quot; McExamples -I &quot;src&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq//user-contrib/PluginUtils&quot; &quot;theories/ExprProp.v&quot; &gt; &quot;theories/ExprProp.v.d&quot; || ( RV=$?; rm -f &quot;theories/ExprProp.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -Q &quot;theories&quot; MirrorCore -Q &quot;examples&quot; McExamples -I &quot;src&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq//user-contrib/PluginUtils&quot; &quot;theories/UnifyI.v&quot; &gt; &quot;theories/UnifyI.v.d&quot; || ( RV=$?; rm -f &quot;theories/UnifyI.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -Q &quot;theories&quot; MirrorCore -Q &quot;examples&quot; McExamples -I &quot;src&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq//user-contrib/PluginUtils&quot; &quot;theories/AbsAppI.v&quot; &gt; &quot;theories/AbsAppI.v.d&quot; || ( RV=$?; rm -f &quot;theories/AbsAppI.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -Q &quot;theories&quot; MirrorCore -Q &quot;examples&quot; McExamples -I &quot;src&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq//user-contrib/PluginUtils&quot; &quot;theories/VariablesI.v&quot; &gt; &quot;theories/VariablesI.v.d&quot; || ( RV=$?; rm -f &quot;theories/VariablesI.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -Q &quot;theories&quot; MirrorCore -Q &quot;examples&quot; McExamples -I &quot;src&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq//user-contrib/PluginUtils&quot; &quot;theories/SubstituteI.v&quot; &gt; &quot;theories/SubstituteI.v.d&quot; || ( RV=$?; rm -f &quot;theories/SubstituteI.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -Q &quot;theories&quot; MirrorCore -Q &quot;examples&quot; McExamples -I &quot;src&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq//user-contrib/PluginUtils&quot; &quot;theories/Generic.v&quot; &gt; &quot;theories/Generic.v.d&quot; || ( RV=$?; rm -f &quot;theories/Generic.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -Q &quot;theories&quot; MirrorCore -Q &quot;examples&quot; McExamples -I &quot;src&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq//user-contrib/PluginUtils&quot; &quot;theories/OpenT.v&quot; &gt; &quot;theories/OpenT.v.d&quot; || ( RV=$?; rm -f &quot;theories/OpenT.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -Q &quot;theories&quot; MirrorCore -Q &quot;examples&quot; McExamples -I &quot;src&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq//user-contrib/PluginUtils&quot; &quot;theories/EnvI.v&quot; &gt; &quot;theories/EnvI.v.d&quot; || ( RV=$?; rm -f &quot;theories/EnvI.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -Q &quot;theories&quot; MirrorCore -Q &quot;examples&quot; McExamples -I &quot;src&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq//user-contrib/PluginUtils&quot; &quot;theories/TypesI.v&quot; &gt; &quot;theories/TypesI.v.d&quot; || ( RV=$?; rm -f &quot;theories/TypesI.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -Q &quot;theories&quot; MirrorCore -Q &quot;examples&quot; McExamples -I &quot;src&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq//user-contrib/PluginUtils&quot; &quot;theories/CtxLogic.v&quot; &gt; &quot;theories/CtxLogic.v.d&quot; || ( RV=$?; rm -f &quot;theories/CtxLogic.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -Q &quot;theories&quot; MirrorCore -Q &quot;examples&quot; McExamples -I &quot;src&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq//user-contrib/PluginUtils&quot; &quot;theories/ExprI.v&quot; &gt; &quot;theories/ExprI.v.d&quot; || ( RV=$?; rm -f &quot;theories/ExprI.v.d&quot;; exit ${RV} )
+- &quot;coqc&quot;  -q  -Q &quot;theories&quot; MirrorCore -Q &quot;examples&quot; McExamples -I &quot;src&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq//user-contrib/PluginUtils&quot;   theories/Util/Compat.v
+- &quot;coqc&quot;  -q  -Q &quot;theories&quot; MirrorCore -Q &quot;examples&quot; McExamples -I &quot;src&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq//user-contrib/PluginUtils&quot;   theories/Generic.v
+- &quot;coqc&quot;  -q  -Q &quot;theories&quot; MirrorCore -Q &quot;examples&quot; McExamples -I &quot;src&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq//user-contrib/PluginUtils&quot;   theories/Util/ListMapT.v
+- &quot;coqc&quot;  -q  -Q &quot;theories&quot; MirrorCore -Q &quot;examples&quot; McExamples -I &quot;src&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq//user-contrib/PluginUtils&quot;   theories/Util/HListBuild.v
+- &quot;coqc&quot;  -q  -Q &quot;theories&quot; MirrorCore -Q &quot;examples&quot; McExamples -I &quot;src&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq//user-contrib/PluginUtils&quot;   theories/Util/Forwardy.v
+- &quot;coqc&quot;  -q  -Q &quot;theories&quot; MirrorCore -Q &quot;examples&quot; McExamples -I &quot;src&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq//user-contrib/PluginUtils&quot;   theories/Views/Ptrns.v
+- &quot;coqc&quot;  -q  -Q &quot;theories&quot; MirrorCore -Q &quot;examples&quot; McExamples -I &quot;src&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq//user-contrib/PluginUtils&quot;   theories/Util/Approx.v
+- &lt;W&gt; Grammar extension: in [tactic:simple_tactic] some rule has been masked
+- &lt;W&gt; Grammar extension: in [tactic:simple_tactic] some rule has been masked
+- &quot;coqc&quot;  -q  -Q &quot;theories&quot; MirrorCore -Q &quot;examples&quot; McExamples -I &quot;src&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq//user-contrib/PluginUtils&quot;   theories/Util/Iteration.v
+- &quot;coqc&quot;  -q  -Q &quot;theories&quot; MirrorCore -Q &quot;examples&quot; McExamples -I &quot;src&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq//user-contrib/PluginUtils&quot;   theories/Util/Nat.v
+- &quot;coqc&quot;  -q  -Q &quot;theories&quot; MirrorCore -Q &quot;examples&quot; McExamples -I &quot;src&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq//user-contrib/PluginUtils&quot;   theories/Lambda/ExprCore.v
+- &quot;coqc&quot;  -q  -Q &quot;theories&quot; MirrorCore -Q &quot;examples&quot; McExamples -I &quot;src&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq//user-contrib/PluginUtils&quot;   theories/Reify/Patterns.v
+- /home/bench/.opam/ocaml-base-compiler.4.05.0/bin/ocamlc.opt -c -rectypes -thread  -I &quot;src&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq//user-contrib/PluginUtils&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq/kernel&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq/lib&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq/library&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq/parsing&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq/pretyping&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq/interp&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq/printing&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq/intf&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq/proofs&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq/tactics&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq/tools&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq/toplevel&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq/stm&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq/grammar&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq/config&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq//plugins/btauto&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq//plugins/cc&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq//plugins/decl_mode&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq//plugins/derive&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq//plugins/extraction&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq//plugins/firstorder&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq//plugins/fourier&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq//plugins/funind&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq//plugins/micromega&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq//plugins/nsatz&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq//plugins/omega&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq//plugins/quote&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq//plugins/romega&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq//plugins/rtauto&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq//plugins/setoid_ring&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq//plugins/syntax&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq//plugins/xml&quot; -I /home/bench/.opam/ocaml-base-compiler.4.05.0/lib/ocaml/camlp4 -pp &#39;/home/bench/.opam/ocaml-base-compiler.4.05.0/bin/camlp4orf -I /home/bench/.opam/ocaml-base-compiler.4.05.0/lib/ocaml/ -I /home/bench/.opam/ocaml-base-compiler.4.05.0/lib/ocaml/threads/ -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq/kernel&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq/lib&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq/library&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq/parsing&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq/pretyping&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq/interp&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq/printing&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq/intf&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq/proofs&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq/tactics&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq/tools&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq/toplevel&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq/stm&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq/grammar&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq/config&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq//plugins/btauto&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq//plugins/cc&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq//plugins/decl_mode&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq//plugins/derive&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq//plugins/extraction&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq//plugins/firstorder&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq//plugins/fourier&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq//plugins/funind&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq//plugins/micromega&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq//plugins/nsatz&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq//plugins/omega&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq//plugins/quote&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq//plugins/romega&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq//plugins/rtauto&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq//plugins/setoid_ring&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq//plugins/syntax&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq//plugins/xml&quot; compat5.cmo threads.cma grammar.cma -loc loc -impl&#39; -impl src/reify_Lambda_shell.ml4
+- /home/bench/.opam/ocaml-base-compiler.4.05.0/bin/ocamlopt.opt -c -rectypes -thread  -I &quot;src&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq//user-contrib/PluginUtils&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq/kernel&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq/lib&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq/library&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq/parsing&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq/pretyping&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq/interp&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq/printing&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq/intf&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq/proofs&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq/tactics&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq/tools&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq/toplevel&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq/stm&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq/grammar&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq/config&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq//plugins/btauto&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq//plugins/cc&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq//plugins/decl_mode&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq//plugins/derive&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq//plugins/extraction&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq//plugins/firstorder&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq//plugins/fourier&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq//plugins/funind&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq//plugins/micromega&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq//plugins/nsatz&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq//plugins/omega&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq//plugins/quote&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq//plugins/romega&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq//plugins/rtauto&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq//plugins/setoid_ring&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq//plugins/syntax&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq//plugins/xml&quot; -I /home/bench/.opam/ocaml-base-compiler.4.05.0/lib/ocaml/camlp4 -pp &#39;/home/bench/.opam/ocaml-base-compiler.4.05.0/bin/camlp4orf -I /home/bench/.opam/ocaml-base-compiler.4.05.0/lib/ocaml/ -I /home/bench/.opam/ocaml-base-compiler.4.05.0/lib/ocaml/threads/ -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq/kernel&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq/lib&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq/library&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq/parsing&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq/pretyping&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq/interp&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq/printing&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq/intf&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq/proofs&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq/tactics&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq/tools&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq/toplevel&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq/stm&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq/grammar&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq/config&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq//plugins/btauto&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq//plugins/cc&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq//plugins/decl_mode&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq//plugins/derive&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq//plugins/extraction&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq//plugins/firstorder&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq//plugins/fourier&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq//plugins/funind&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq//plugins/micromega&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq//plugins/nsatz&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq//plugins/omega&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq//plugins/quote&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq//plugins/romega&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq//plugins/rtauto&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq//plugins/setoid_ring&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq//plugins/syntax&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq//plugins/xml&quot; compat5.cmo threads.cma grammar.cma -loc loc -impl&#39; -impl src/reify_Lambda_shell.ml4
+- &quot;coqc&quot;  -q  -Q &quot;theories&quot; MirrorCore -Q &quot;examples&quot; McExamples -I &quot;src&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq//user-contrib/PluginUtils&quot;   theories/Views/Ptrns2.v
+- &quot;coqc&quot;  -q  -Q &quot;theories&quot; MirrorCore -Q &quot;examples&quot; McExamples -I &quot;src&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq//user-contrib/PluginUtils&quot;   examples/Cancel/Monoid.v
+- &lt;W&gt; Grammar extension: in [tactic:simple_tactic] some rule has been masked
+- &lt;W&gt; Grammar extension: in [tactic:simple_tactic] some rule has been masked
+- &quot;coqc&quot;  -q  -Q &quot;theories&quot; MirrorCore -Q &quot;examples&quot; McExamples -I &quot;src&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq//user-contrib/PluginUtils&quot;   examples/Hoare/ILogic.v
+- &quot;coqc&quot;  -q  -Q &quot;theories&quot; MirrorCore -Q &quot;examples&quot; McExamples -I &quot;src&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq//user-contrib/PluginUtils&quot;   examples/AutoRewrite/DemoQuantPullLtac.v
+- &quot;coqc&quot;  -q  -Q &quot;theories&quot; MirrorCore -Q &quot;examples&quot; McExamples -I &quot;src&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq//user-contrib/PluginUtils&quot;   theories/TypesI.v
+- File &quot;src/reify_Lambda_shell.ml4&quot;, line 635, characters 12-13:
+- Warning 11: this match case is unused.
+- File &quot;src/reify_Lambda_shell.ml4&quot;, line 1125, characters 8-18:
+- Warning 26: unused variable init_table.
+- &quot;coqc&quot;  -q  -Q &quot;theories&quot; MirrorCore -Q &quot;examples&quot; McExamples -I &quot;src&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq//user-contrib/PluginUtils&quot;   examples/Cancel/LtacDemo.v
+- &quot;coqc&quot;  -q  -Q &quot;theories&quot; MirrorCore -Q &quot;examples&quot; McExamples -I &quot;src&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq//user-contrib/PluginUtils&quot;   examples/Hoare/Imp.v
+- /home/bench/.opam/ocaml-base-compiler.4.05.0/bin/ocamlc.opt -rectypes -thread  -I &quot;src&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq//user-contrib/PluginUtils&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq/kernel&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq/lib&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq/library&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq/parsing&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq/pretyping&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq/interp&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq/printing&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq/intf&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq/proofs&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq/tactics&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq/tools&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq/toplevel&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq/stm&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq/grammar&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq/config&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq//plugins/btauto&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq//plugins/cc&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq//plugins/decl_mode&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq//plugins/derive&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq//plugins/extraction&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq//plugins/firstorder&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq//plugins/fourier&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq//plugins/funind&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq//plugins/micromega&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq//plugins/nsatz&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq//plugins/omega&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq//plugins/quote&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq//plugins/romega&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq//plugins/rtauto&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq//plugins/setoid_ring&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq//plugins/syntax&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq//plugins/xml&quot; -I /home/bench/.opam/ocaml-base-compiler.4.05.0/lib/ocaml/camlp4 -a -o src/reify_Lambda_plugin.cma src/reify_Lambda_shell.cmo
+- File &quot;src/reify_Lambda_shell.ml4&quot;, line 635, characters 12-13:
+- Warning 11: this match case is unused.
+- File &quot;src/reify_Lambda_shell.ml4&quot;, line 1125, characters 8-18:
+- Warning 26: unused variable init_table.
+- Finished transaction in 0.087 secs (0.067u,0.019s) (successful)
+- Finished transaction in 0.013 secs (0.009u,0.003s) (successful)
+- Axioms:
+- refl : forall a : M, a %is a
+- plus_comm_c : forall c b a : M, c %is a &amp; b -&gt; c %is b &amp; a
+- plus_cancel : forall d c b a : M, a %is c -&gt; b %is d -&gt; a &amp; b %is c &amp; d
+- R : M -&gt; M -&gt; Prop
+- P : M -&gt; M -&gt; M
+- N : nat -&gt; M
+- M : Type
+- File &quot;_none_&quot;, line 1:
+- Warning 58: no cmx file was found in path for module CEphemeron, and its interface was not compiled with -opaque
+- File &quot;_none_&quot;, line 1:
+- Warning 58: no cmx file was found in path for module CList, and its interface was not compiled with -opaque
+- File &quot;_none_&quot;, line 1:
+- Warning 58: no cmx file was found in path for module Constrarg, and its interface was not compiled with -opaque
+- File &quot;_none_&quot;, line 1:
+- Warning 58: no cmx file was found in path for module Constrintern, and its interface was not compiled with -opaque
+- File &quot;_none_&quot;, line 1:
+- Warning 58: no cmx file was found in path for module Declare, and its interface was not compiled with -opaque
+- File &quot;_none_&quot;, line 1:
+- Warning 58: no cmx file was found in path for module Egramml, and its interface was not compiled with -opaque
+- File &quot;_none_&quot;, line 1:
+- Warning 58: no cmx file was found in path for module Environ, and its interface was not compiled with -opaque
+- File &quot;_none_&quot;, line 1:
+- Warning 58: no cmx file was found in path for module Errors, and its interface was not compiled with -opaque
+- File &quot;_none_&quot;, line 1:
+- Warning 58: no cmx file was found in path for module Evd, and its interface was not compiled with -opaque
+- File &quot;_none_&quot;, line 1:
+- Warning 58: no cmx file was found in path for module Genarg, and its interface was not compiled with -opaque
+- File &quot;_none_&quot;, line 1:
+- Warning 58: no cmx file was found in path for module Global, and its interface was not compiled with -opaque
+- File &quot;_none_&quot;, line 1:
+- Warning 58: no cmx file was found in path for module Int, and its interface was not compiled with -opaque
+- File &quot;_none_&quot;, line 1:
+- Warning 58: no cmx file was found in path for module Lemmas, and its interface was not compiled with -opaque
+- File &quot;_none_&quot;, line 1:
+- Warning 58: no cmx file was found in path for module Lib, and its interface was not compiled with -opaque
+- File &quot;_none_&quot;, line 1:
+- Warning 58: no cmx file was found in path for module Libobject, and its interface was not compiled with -opaque
+- File &quot;_none_&quot;, line 1:
+- Warning 58: no cmx file was found in path for module Loc, and its interface was not compiled with -opaque
+- File &quot;_none_&quot;, line 1:
+- Warning 58: no cmx file was found in path for module Metasyntax, and its interface was not compiled with -opaque
+- File &quot;_none_&quot;, line 1:
+- Warning 58: no cmx file was found in path for module Mltop, and its interface was not compiled with -opaque
+- File &quot;_none_&quot;, line 1:
+- Warning 58: no cmx file was found in path for module Mod_subst, and its interface was not compiled with -opaque
+- File &quot;_none_&quot;, line 1:
+- Warning 58: no cmx file was found in path for module Names, and its interface was not compiled with -opaque
+- File &quot;_none_&quot;, line 1:
+- Warning 58: no cmx file was found in path for module Plugin_utils, and its interface was not compiled with -opaque
+- File &quot;_none_&quot;, line 1:
+- Warning 58: no cmx file was found in path for module Pp, and its interface was not compiled with -opaque
+- File &quot;_none_&quot;, line 1:
+- Warning 58: no cmx file was found in path for module Pptactic, and its interface was not compiled with -opaque
+- File &quot;_none_&quot;, line 1:
+- Warning 58: no cmx file was found in path for module Printer, and its interface was not compiled with -opaque
+- File &quot;_none_&quot;, line 1:
+- Warning 58: no cmx file was found in path for module Proofview, and its interface was not compiled with -opaque
+- File &quot;_none_&quot;, line 1:
+- Warning 58: no cmx file was found in path for module Reductionops, and its interface was not compiled with -opaque
+- File &quot;_none_&quot;, line 1:
+- Warning 58: no cmx file was found in path for module Stdarg, and its interface was not compiled with -opaque
+- File &quot;_none_&quot;, line 1:
+- Warning 58: no cmx file was found in path for module Summary, and its interface was not compiled with -opaque
+- File &quot;_none_&quot;, line 1:
+- Warning 58: no cmx file was found in path for module Tacenv, and its interface was not compiled with -opaque
+- File &quot;_none_&quot;, line 1:
+- Warning 58: no cmx file was found in path for module Tacticals, and its interface was not compiled with -opaque
+- File &quot;_none_&quot;, line 1:
+- Warning 58: no cmx file was found in path for module Term, and its interface was not compiled with -opaque
+- File &quot;_none_&quot;, line 1:
+- Warning 58: no cmx file was found in path for module Typing, and its interface was not compiled with -opaque
+- File &quot;_none_&quot;, line 1:
+- Warning 58: no cmx file was found in path for module Univ, and its interface was not compiled with -opaque
+- File &quot;_none_&quot;, line 1:
+- Warning 58: no cmx file was found in path for module Universes, and its interface was not compiled with -opaque
+- File &quot;_none_&quot;, line 1:
+- Warning 58: no cmx file was found in path for module Vars, and its interface was not compiled with -opaque
+- File &quot;_none_&quot;, line 1:
+- Warning 58: no cmx file was found in path for module Vernac_classifier, and its interface was not compiled with -opaque
+- File &quot;_none_&quot;, line 1:
+- Warning 58: no cmx file was found in path for module Vernacinterp, and its interface was not compiled with -opaque
+- /home/bench/.opam/ocaml-base-compiler.4.05.0/bin/ocamlopt.opt -rectypes -thread  -I &quot;src&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq//user-contrib/PluginUtils&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq/kernel&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq/lib&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq/library&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq/parsing&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq/pretyping&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq/interp&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq/printing&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq/intf&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq/proofs&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq/tactics&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq/tools&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq/toplevel&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq/stm&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq/grammar&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq/config&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq//plugins/btauto&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq//plugins/cc&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq//plugins/decl_mode&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq//plugins/derive&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq//plugins/extraction&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq//plugins/firstorder&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq//plugins/fourier&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq//plugins/funind&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq//plugins/micromega&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq//plugins/nsatz&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq//plugins/omega&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq//plugins/quote&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq//plugins/romega&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq//plugins/rtauto&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq//plugins/setoid_ring&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq//plugins/syntax&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq//plugins/xml&quot; -I /home/bench/.opam/ocaml-base-compiler.4.05.0/lib/ocaml/camlp4 -a -o src/reify_Lambda_plugin.cmxa src/reify_Lambda_shell.cmx
+- /home/bench/.opam/ocaml-base-compiler.4.05.0/bin/ocamlopt.opt -rectypes -thread  -I &quot;src&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq//user-contrib/PluginUtils&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq/kernel&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq/lib&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq/library&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq/parsing&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq/pretyping&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq/interp&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq/printing&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq/intf&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq/proofs&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq/tactics&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq/tools&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq/toplevel&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq/stm&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq/grammar&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq/config&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq//plugins/btauto&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq//plugins/cc&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq//plugins/decl_mode&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq//plugins/derive&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq//plugins/extraction&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq//plugins/firstorder&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq//plugins/fourier&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq//plugins/funind&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq//plugins/micromega&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq//plugins/nsatz&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq//plugins/omega&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq//plugins/quote&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq//plugins/romega&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq//plugins/rtauto&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq//plugins/setoid_ring&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq//plugins/syntax&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq//plugins/xml&quot; -I /home/bench/.opam/ocaml-base-compiler.4.05.0/lib/ocaml/camlp4 -linkall -shared -o src/reify_Lambda_plugin.cmxs src/reify_Lambda_plugin.cmxa
+- &quot;coqc&quot;  -q  -Q &quot;theories&quot; MirrorCore -Q &quot;examples&quot; McExamples -I &quot;src&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq//user-contrib/PluginUtils&quot;   examples/Hoare/ImpMetaTheory.v
+- &quot;coqc&quot;  -q  -Q &quot;theories&quot; MirrorCore -Q &quot;examples&quot; McExamples -I &quot;src&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq//user-contrib/PluginUtils&quot;   examples/Hoare/Tests.v
+- &quot;coqc&quot;  -q  -Q &quot;theories&quot; MirrorCore -Q &quot;examples&quot; McExamples -I &quot;src&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq//user-contrib/PluginUtils&quot;   theories/EnvI.v
+- &quot;coqc&quot;  -q  -Q &quot;theories&quot; MirrorCore -Q &quot;examples&quot; McExamples -I &quot;src&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq//user-contrib/PluginUtils&quot;   theories/SymI.v
+- &quot;coqc&quot;  -q  -Q &quot;theories&quot; MirrorCore -Q &quot;examples&quot; McExamples -I &quot;src&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq//user-contrib/PluginUtils&quot;   theories/syms/SymSimple.v
+- &quot;coqc&quot;  -q  -Q &quot;theories&quot; MirrorCore -Q &quot;examples&quot; McExamples -I &quot;src&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq//user-contrib/PluginUtils&quot;   theories/syms/SymProd.v
+- &quot;coqc&quot;  -q  -Q &quot;theories&quot; MirrorCore -Q &quot;examples&quot; McExamples -I &quot;src&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq//user-contrib/PluginUtils&quot;   theories/syms/SymEnv.v
+- &quot;coqc&quot;  -q  -Q &quot;theories&quot; MirrorCore -Q &quot;examples&quot; McExamples -I &quot;src&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq//user-contrib/PluginUtils&quot;   theories/syms/SymPolyEnv.v
+- &quot;coqc&quot;  -q  -Q &quot;theories&quot; MirrorCore -Q &quot;examples&quot; McExamples -I &quot;src&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq//user-contrib/PluginUtils&quot;   theories/syms/SymSum.v
+- &quot;coqc&quot;  -q  -Q &quot;theories&quot; MirrorCore -Q &quot;examples&quot; McExamples -I &quot;src&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq//user-contrib/PluginUtils&quot;   theories/syms/SymOneOf.v
+- &lt;W&gt; Grammar extension: in [tactic:simple_tactic] some rule has been masked
+- &lt;W&gt; Grammar extension: in [tactic:simple_tactic] some rule has been masked
+- &lt;W&gt; Grammar extension: in [tactic:simple_tactic] some rule has been masked
+- &lt;W&gt; Grammar extension: in [tactic:simple_tactic] some rule has been masked
+- &lt;W&gt; Grammar extension: in [tactic:simple_tactic] some rule has been masked
+- &lt;W&gt; Grammar extension: in [tactic:simple_tactic] some rule has been masked
+- &lt;W&gt; Grammar extension: in [tactic:simple_tactic] some rule has been masked
+- &lt;W&gt; Grammar extension: in [tactic:simple_tactic] some rule has been masked
+- &lt;W&gt; Grammar extension: in [tactic:simple_tactic] some rule has been masked
+- &lt;W&gt; Grammar extension: in [tactic:simple_tactic] some rule has been masked
+- &quot;coqc&quot;  -q  -Q &quot;theories&quot; MirrorCore -Q &quot;examples&quot; McExamples -I &quot;src&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq//user-contrib/PluginUtils&quot;   examples/Hoare/ILogicFunc.v
+- &quot;coqc&quot;  -q  -Q &quot;theories&quot; MirrorCore -Q &quot;examples&quot; McExamples -I &quot;src&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq//user-contrib/PluginUtils&quot;   theories/OpenT.v
+- &quot;coqc&quot;  -q  -Q &quot;theories&quot; MirrorCore -Q &quot;examples&quot; McExamples -I &quot;src&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq//user-contrib/PluginUtils&quot;   theories/Simple.v
+- &quot;coqc&quot;  -q  -Q &quot;theories&quot; MirrorCore -Q &quot;examples&quot; McExamples -I &quot;src&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq//user-contrib/PluginUtils&quot;   theories/Views/View.v
+- &quot;coqc&quot;  -q  -Q &quot;theories&quot; MirrorCore -Q &quot;examples&quot; McExamples -I &quot;src&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq//user-contrib/PluginUtils&quot;   theories/Lambda/TypedFoldEager.v
+- &quot;coqc&quot;  -q  -Q &quot;theories&quot; MirrorCore -Q &quot;examples&quot; McExamples -I &quot;src&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq//user-contrib/PluginUtils&quot;   theories/Lambda/TypedFoldLazy.v
+- &quot;coqc&quot;  -q  -Q &quot;theories&quot; MirrorCore -Q &quot;examples&quot; McExamples -I &quot;src&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq//user-contrib/PluginUtils&quot;   theories/Lambda/TypedFoldApp.v
+- &lt;W&gt; Grammar extension: in [tactic:simple_tactic] some rule has been masked
+- &lt;W&gt; Grammar extension: in [tactic:simple_tactic] some rule has been masked
+- &lt;W&gt; Grammar extension: in [tactic:simple_tactic] some rule has been masked
+- &lt;W&gt; Grammar extension: in [tactic:simple_tactic] some rule has been masked
+- &lt;W&gt; Grammar extension: in [tactic:simple_tactic] some rule has been masked
+- &quot;coqc&quot;  -q  -Q &quot;theories&quot; MirrorCore -Q &quot;examples&quot; McExamples -I &quot;src&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq//user-contrib/PluginUtils&quot;   theories/Views/TypeView.v
+- &quot;coqc&quot;  -q  -Q &quot;theories&quot; MirrorCore -Q &quot;examples&quot; McExamples -I &quot;src&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq//user-contrib/PluginUtils&quot;   theories/Views/FuncView.v
+- &quot;coqc&quot;  -q  -Q &quot;theories&quot; MirrorCore -Q &quot;examples&quot; McExamples -I &quot;src&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq//user-contrib/PluginUtils&quot;   theories/Util/Quant.v
+- &quot;coqc&quot;  -q  -Q &quot;theories&quot; MirrorCore -Q &quot;examples&quot; McExamples -I &quot;src&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq//user-contrib/PluginUtils&quot;   theories/ExprI.v
+- &quot;coqc&quot;  -q  -Q &quot;theories&quot; MirrorCore -Q &quot;examples&quot; McExamples -I &quot;src&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq//user-contrib/PluginUtils&quot;   theories/MTypes/ModularTypes.v
+- &quot;coqc&quot;  -q  -Q &quot;theories&quot; MirrorCore -Q &quot;examples&quot; McExamples -I &quot;src&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq//user-contrib/PluginUtils&quot;   theories/Views/ViewSum.v
+- &quot;coqc&quot;  -q  -Q &quot;theories&quot; MirrorCore -Q &quot;examples&quot; McExamples -I &quot;src&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq//user-contrib/PluginUtils&quot;   theories/Views/ViewSumN.v
+- Finished transaction in 3.421 secs (3.414u,0.008s) (successful)
+- &quot;coqc&quot;  -q  -Q &quot;theories&quot; MirrorCore -Q &quot;examples&quot; McExamples -I &quot;src&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq//user-contrib/PluginUtils&quot;   theories/MTypes/GenericTypes.v
+- &quot;coqc&quot;  -q  -Q &quot;theories&quot; MirrorCore -Q &quot;examples&quot; McExamples -I &quot;src&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq//user-contrib/PluginUtils&quot;   theories/MTypes/TSyms.v
+- &quot;coqc&quot;  -q  -Q &quot;theories&quot; MirrorCore -Q &quot;examples&quot; McExamples -I &quot;src&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq//user-contrib/PluginUtils&quot;   theories/MTypes/ProdType.v
+- &quot;coqc&quot;  -q  -Q &quot;theories&quot; MirrorCore -Q &quot;examples&quot; McExamples -I &quot;src&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq//user-contrib/PluginUtils&quot;   theories/MTypes/ListType.v
+- &quot;coqc&quot;  -q  -Q &quot;theories&quot; MirrorCore -Q &quot;examples&quot; McExamples -I &quot;src&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq//user-contrib/PluginUtils&quot;   theories/MTypes/BaseType.v
+-      = dcons (pcons nat (pcons bool pnil))
+-          (dnil (fun n : nat =&gt; plist (type_for_arity n)) 1)
+-      : dlist (fun n : nat =&gt; plist (type_for_arity n)) 0
+- &quot;coqc&quot;  -q  -Q &quot;theories&quot; MirrorCore -Q &quot;examples&quot; McExamples -I &quot;src&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq//user-contrib/PluginUtils&quot;   theories/CtxLogic.v
+- &quot;coqc&quot;  -q  -Q &quot;theories&quot; MirrorCore -Q &quot;examples&quot; McExamples -I &quot;src&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq//user-contrib/PluginUtils&quot;   theories/AbsAppI.v
+- &quot;coqc&quot;  -q  -Q &quot;theories&quot; MirrorCore -Q &quot;examples&quot; McExamples -I &quot;src&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq//user-contrib/PluginUtils&quot;   theories/ExprProp.v
+- &quot;coqc&quot;  -q  -Q &quot;theories&quot; MirrorCore -Q &quot;examples&quot; McExamples -I &quot;src&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq//user-contrib/PluginUtils&quot;   theories/ExprSem.v
+- &quot;coqc&quot;  -q  -Q &quot;theories&quot; MirrorCore -Q &quot;examples&quot; McExamples -I &quot;src&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq//user-contrib/PluginUtils&quot;   theories/ExprDAs.v
+- &quot;coqc&quot;  -q  -Q &quot;theories&quot; MirrorCore -Q &quot;examples&quot; McExamples -I &quot;src&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq//user-contrib/PluginUtils&quot;   theories/Subst/UVarMap.v
+- &quot;coqc&quot;  -q  -Q &quot;theories&quot; MirrorCore -Q &quot;examples&quot; McExamples -I &quot;src&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq//user-contrib/PluginUtils&quot;   examples/Simple/Simple.v
+- &lt;W&gt; Grammar extension: in [tactic:simple_tactic] some rule has been masked
+- &lt;W&gt; Grammar extension: in [tactic:simple_tactic] some rule has been masked
+- &lt;W&gt; Grammar extension: in [tactic:simple_tactic] some rule has been masked
+- &lt;W&gt; Grammar extension: in [tactic:simple_tactic] some rule has been masked
+- &lt;W&gt; Grammar extension: in [tactic:simple_tactic] some rule has been masked
+- &quot;coqc&quot;  -q  -Q &quot;theories&quot; MirrorCore -Q &quot;examples&quot; McExamples -I &quot;src&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq//user-contrib/PluginUtils&quot;   theories/SubstituteI.v
+- &quot;coqc&quot;  -q  -Q &quot;theories&quot; MirrorCore -Q &quot;examples&quot; McExamples -I &quot;src&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq//user-contrib/PluginUtils&quot;   theories/VariablesI.v
+- &quot;coqc&quot;  -q  -Q &quot;theories&quot; MirrorCore -Q &quot;examples&quot; McExamples -I &quot;src&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq//user-contrib/PluginUtils&quot;   theories/Instantiate.v
+- &quot;coqc&quot;  -q  -Q &quot;theories&quot; MirrorCore -Q &quot;examples&quot; McExamples -I &quot;src&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq//user-contrib/PluginUtils&quot;   theories/Lambda/ExprDI.v
+- &quot;coqc&quot;  -q  -Q &quot;theories&quot; MirrorCore -Q &quot;examples&quot; McExamples -I &quot;src&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq//user-contrib/PluginUtils&quot;   theories/Lemma.v
+- &quot;coqc&quot;  -q  -Q &quot;theories&quot; MirrorCore -Q &quot;examples&quot; McExamples -I &quot;src&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq//user-contrib/PluginUtils&quot;   theories/VarsToUVars.v
+- &quot;coqc&quot;  -q  -Q &quot;theories&quot; MirrorCore -Q &quot;examples&quot; McExamples -I &quot;src&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq//user-contrib/PluginUtils&quot;   theories/SubstI.v
+- &quot;coqc&quot;  -q  -Q &quot;theories&quot; MirrorCore -Q &quot;examples&quot; McExamples -I &quot;src&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq//user-contrib/PluginUtils&quot;   theories/Lambda/ExprDsimul.v
+- &quot;coqc&quot;  -q  -Q &quot;theories&quot; MirrorCore -Q &quot;examples&quot; McExamples -I &quot;src&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq//user-contrib/PluginUtils&quot;   theories/Lambda/ExprDFacts.v
+- &quot;coqc&quot;  -q  -Q &quot;theories&quot; MirrorCore -Q &quot;examples&quot; McExamples -I &quot;src&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq//user-contrib/PluginUtils&quot;   theories/Reify/Reify.v
+- &quot;coqc&quot;  -q  -Q &quot;theories&quot; MirrorCore -Q &quot;examples&quot; McExamples -I &quot;src&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq//user-contrib/PluginUtils&quot;   theories/Lambda/Reify.v
+- &quot;coqc&quot;  -q  -Q &quot;theories&quot; MirrorCore -Q &quot;examples&quot; McExamples -I &quot;src&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq//user-contrib/PluginUtils&quot;   examples/Simple/SimpleReify.v
+- &quot;coqc&quot;  -q  -Q &quot;theories&quot; MirrorCore -Q &quot;examples&quot; McExamples -I &quot;src&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq//user-contrib/PluginUtils&quot;   examples/Simple/SimpleExt.v
+- &quot;coqc&quot;  -q  -Q &quot;theories&quot; MirrorCore -Q &quot;examples&quot; McExamples -I &quot;src&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq//user-contrib/PluginUtils&quot;   examples/Reify/ModularReify.v
+- Total reification time = 8.00000000001e-06
+- 
+- Total reification time = 5.99999999995e-06
+- 
+- Total reification time = 2.99999999998e-06
+- 
+- Total reification time = 4e-06
+- 
+- Total reification time = 1.3e-05
+- 
+- test_typ = tyArr tyNat tyNat
+-      : typ
+- Total reification time = 1.80000000001e-05
+- 
+- test_typ_2 = 
+- tyArr (tyArr tyNat tyNat)
+-   (tyArr tyNat (tyArr tyNat (tyArr tyNat (tyArr tyNat tyNat))))
+-      : typ
+- Total reification time = 2.49999999999e-05
+- 
+- test_1 = 
+- App (App (Inj (Eq tyNat)) (Inj (N 0))) (Inj (N 0))
+-      : expr typ func
+- Total reification time = 2.60000000001e-05
+- 
+- test_2 = 
+- App (App (Inj (Eq tyBool)) (App (App (Inj Lt) (Inj (N 0))) (Inj (N 1))))
+-   (App (App (Inj Lt) (Inj (N 0))) (Inj (N 0)))
+-      : expr typ func
+- Total reification time = 2.20000000001e-05
+- 
+- test_3 = App (Abs tyNat (Var 0)) (Inj (N 1))
+-      : expr typ func
+- Total reification time = 2e-05
+- 
+- test_4 = App (Abs tyNat (Var 0)) (Inj (N 1))
+-      : expr typ func
+- Total reification time = 2.6e-05
+- 
+- test_5 = 
+- App (App (Abs tyNat (Abs tyNat (Var 1))) (Inj (N 1))) (Inj (N 3))
+-      : expr typ func
+- Total reification time = 2.7e-05
+- 
+- test_6 = 
+- App (App (Inj (Eq (tyArr tyNat tyNat))) (Abs tyNat (Var 0)))
+-   (Abs tyNat (Var 0))
+-      : expr typ func
+- Total reification time = 0.000337
+- 
+- test_7 = 
+- App (Inj (All tyNat)) (Abs tyNat (otherFunc BinNums.xH))
+-      : expr typ func
+- Total reification time = 2.79999999999e-05
+- 
+- test_fail = App (otherFunc BinNums.xH) (Inj (N 0))
+-      : expr typ func
+- Total reification time = 1.1e-05
+- 
+- test_table = otherFunc BinNums.xH
+-      : expr typ func
+- Total reification time = 3.50000000001e-05
+- 
+- tbl
+- test_1 = 
+- let x := 0 in
+- let tbl :=
+-   FMapPositive.PositiveMap.Node
+-     (FMapPositive.PositiveMap.Leaf
+-        (SymEnv.function Simple.typ Simple.RType_typ))
+-     (Some (map_ctor Simple.tyNat x))
+-     (FMapPositive.PositiveMap.Leaf
+-        (SymEnv.function Simple.typ Simple.RType_typ)) in
+- App (App (Inj (inl (Simple.Eq Simple.tyNat))) (Inj (inl (Simple.N 0))))
+-   (other 1%positive)
+-      : expr typ func
+- &quot;coqc&quot;  -q  -Q &quot;theories&quot; MirrorCore -Q &quot;examples&quot; McExamples -I &quot;src&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq//user-contrib/PluginUtils&quot;   theories/UnifyI.v
+- &quot;coqc&quot;  -q  -Q &quot;theories&quot; MirrorCore -Q &quot;examples&quot; McExamples -I &quot;src&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq//user-contrib/PluginUtils&quot;   theories/Subst/FMapSubst.v
+- &quot;coqc&quot;  -q  -Q &quot;theories&quot; MirrorCore -Q &quot;examples&quot; McExamples -I &quot;src&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq//user-contrib/PluginUtils&quot;   theories/LemmaApply.v
+- &quot;coqc&quot;  -q  -Q &quot;theories&quot; MirrorCore -Q &quot;examples&quot; McExamples -I &quot;src&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq//user-contrib/PluginUtils&quot;   theories/Lambda/ExprD.v
+- &quot;coqc&quot;  -q  -Q &quot;theories&quot; MirrorCore -Q &quot;examples&quot; McExamples -I &quot;src&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq//user-contrib/PluginUtils&quot;   theories/Lambda/ExprLift.v
+- &quot;coqc&quot;  -q  -Q &quot;theories&quot; MirrorCore -Q &quot;examples&quot; McExamples -I &quot;src&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq//user-contrib/PluginUtils&quot;   theories/RTac/BIMap.v
+- &quot;coqc&quot;  -q  -Q &quot;theories&quot; MirrorCore -Q &quot;examples&quot; McExamples -I &quot;src&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq//user-contrib/PluginUtils&quot;   theories/Lambda/Red.v
+- &quot;coqc&quot;  -q  -Q &quot;theories&quot; MirrorCore -Q &quot;examples&quot; McExamples -I &quot;src&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq//user-contrib/PluginUtils&quot;   theories/Lambda/ExprSubstitute.v
+- &quot;coqc&quot;  -q  -Q &quot;theories&quot; MirrorCore -Q &quot;examples&quot; McExamples -I &quot;src&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq//user-contrib/PluginUtils&quot;   theories/RTac/Ctx.v
+- &quot;coqc&quot;  -q  -Q &quot;theories&quot; MirrorCore -Q &quot;examples&quot; McExamples -I &quot;src&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq//user-contrib/PluginUtils&quot;   theories/Lambda/ExprTac.v
+- &quot;coqc&quot;  -q  -Q &quot;theories&quot; MirrorCore -Q &quot;examples&quot; McExamples -I &quot;src&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq//user-contrib/PluginUtils&quot;   theories/Lambda/ExprSubst.v
+- &quot;coqc&quot;  -q  -Q &quot;theories&quot; MirrorCore -Q &quot;examples&quot; McExamples -I &quot;src&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq//user-contrib/PluginUtils&quot;   theories/RTac/Core.v
+- &quot;coqc&quot;  -q  -Q &quot;theories&quot; MirrorCore -Q &quot;examples&quot; McExamples -I &quot;src&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq//user-contrib/PluginUtils&quot;   theories/Lambda/Expr.v
+- &lt;W&gt; Grammar extension: in [constr:operconstr] some rule has been masked
+- &lt;W&gt; Grammar extension: in [constr:pattern] some rule has been masked
+- &quot;coqc&quot;  -q  -Q &quot;theories&quot; MirrorCore -Q &quot;examples&quot; McExamples -I &quot;src&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq//user-contrib/PluginUtils&quot;   theories/RTac/CoreK.v
+- &quot;coqc&quot;  -q  -Q &quot;theories&quot; MirrorCore -Q &quot;examples&quot; McExamples -I &quot;src&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq//user-contrib/PluginUtils&quot;   theories/RTac/IsSolved.v
+- &quot;coqc&quot;  -q  -Q &quot;theories&quot; MirrorCore -Q &quot;examples&quot; McExamples -I &quot;src&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq//user-contrib/PluginUtils&quot;   theories/RTac/Idtac.v
+- &quot;coqc&quot;  -q  -Q &quot;theories&quot; MirrorCore -Q &quot;examples&quot; McExamples -I &quot;src&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq//user-contrib/PluginUtils&quot;   theories/RTac/Fail.v
+- &quot;coqc&quot;  -q  -Q &quot;theories&quot; MirrorCore -Q &quot;examples&quot; McExamples -I &quot;src&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq//user-contrib/PluginUtils&quot;   theories/RTac/Try.v
+- &quot;coqc&quot;  -q  -Q &quot;theories&quot; MirrorCore -Q &quot;examples&quot; McExamples -I &quot;src&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq//user-contrib/PluginUtils&quot;   theories/RTac/Assumption.v
+- &lt;W&gt; Grammar extension: in [constr:operconstr] some rule has been masked
+- &lt;W&gt; Grammar extension: in [constr:pattern] some rule has been masked
+- &lt;W&gt; Grammar extension: in [constr:operconstr] some rule has been masked
+- &lt;W&gt; Grammar extension: in [constr:pattern] some rule has been masked
+- &lt;W&gt; Grammar extension: in [constr:operconstr] some rule has been masked
+- &lt;W&gt; Grammar extension: in [constr:pattern] some rule has been masked
+- &lt;W&gt; Grammar extension: in [constr:operconstr] some rule has been masked
+- &lt;W&gt; Grammar extension: in [constr:pattern] some rule has been masked
+- &lt;W&gt; Grammar extension: in [constr:operconstr] some rule has been masked
+- &lt;W&gt; Grammar extension: in [constr:pattern] some rule has been masked
+- &lt;W&gt; Grammar extension: in [constr:operconstr] some rule has been masked
+- &lt;W&gt; Grammar extension: in [constr:pattern] some rule has been masked
+- &quot;coqc&quot;  -q  -Q &quot;theories&quot; MirrorCore -Q &quot;examples&quot; McExamples -I &quot;src&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq//user-contrib/PluginUtils&quot;   theories/RTac/Intro.v
+- &quot;coqc&quot;  -q  -Q &quot;theories&quot; MirrorCore -Q &quot;examples&quot; McExamples -I &quot;src&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq//user-contrib/PluginUtils&quot;   theories/RTac/Simplify.v
+- &quot;coqc&quot;  -q  -Q &quot;theories&quot; MirrorCore -Q &quot;examples&quot; McExamples -I &quot;src&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq//user-contrib/PluginUtils&quot;   theories/RTac/AtGoal.v
+- &lt;W&gt; Grammar extension: in [constr:operconstr] some rule has been masked
+- &lt;W&gt; Grammar extension: in [constr:pattern] some rule has been masked
+- &lt;W&gt; Grammar extension: in [constr:operconstr] some rule has been masked
+- &lt;W&gt; Grammar extension: in [constr:pattern] some rule has been masked
+- &lt;W&gt; Grammar extension: in [constr:operconstr] some rule has been masked
+- &lt;W&gt; Grammar extension: in [constr:pattern] some rule has been masked
+- &quot;coqc&quot;  -q  -Q &quot;theories&quot; MirrorCore -Q &quot;examples&quot; McExamples -I &quot;src&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq//user-contrib/PluginUtils&quot;   theories/RTac/Instantiate.v
+- &quot;coqc&quot;  -q  -Q &quot;theories&quot; MirrorCore -Q &quot;examples&quot; McExamples -I &quot;src&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq//user-contrib/PluginUtils&quot;   theories/RTac/Solve.v
+- &lt;W&gt; Grammar extension: in [constr:operconstr] some rule has been masked
+- &lt;W&gt; Grammar extension: in [constr:pattern] some rule has been masked
+- &lt;W&gt; Grammar extension: in [constr:operconstr] some rule has been masked
+- &lt;W&gt; Grammar extension: in [constr:pattern] some rule has been masked
+- &quot;coqc&quot;  -q  -Q &quot;theories&quot; MirrorCore -Q &quot;examples&quot; McExamples -I &quot;src&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq//user-contrib/PluginUtils&quot;   theories/RTac/SolveK.v
+- &quot;coqc&quot;  -q  -Q &quot;theories&quot; MirrorCore -Q &quot;examples&quot; McExamples -I &quot;src&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq//user-contrib/PluginUtils&quot;   theories/RTac/IdtacK.v
+- &quot;coqc&quot;  -q  -Q &quot;theories&quot; MirrorCore -Q &quot;examples&quot; McExamples -I &quot;src&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq//user-contrib/PluginUtils&quot;   theories/RTac/First.v
+- &quot;coqc&quot;  -q  -Q &quot;theories&quot; MirrorCore -Q &quot;examples&quot; McExamples -I &quot;src&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq//user-contrib/PluginUtils&quot;   theories/RTac/Then.v
+- &quot;coqc&quot;  -q  -Q &quot;theories&quot; MirrorCore -Q &quot;examples&quot; McExamples -I &quot;src&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq//user-contrib/PluginUtils&quot;   theories/RTac/SpecLemmas.v
+- &quot;coqc&quot;  -q  -Q &quot;theories&quot; MirrorCore -Q &quot;examples&quot; McExamples -I &quot;src&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq//user-contrib/PluginUtils&quot;   theories/RTac/Rec.v
+- &lt;W&gt; Grammar extension: in [constr:operconstr] some rule has been masked
+- &lt;W&gt; Grammar extension: in [constr:pattern] some rule has been masked
+- &quot;coqc&quot;  -q  -Q &quot;theories&quot; MirrorCore -Q &quot;examples&quot; McExamples -I &quot;src&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq//user-contrib/PluginUtils&quot;   theories/RTac/Reduce.v
+- &lt;W&gt; Grammar extension: in [constr:operconstr] some rule has been masked
+- &lt;W&gt; Grammar extension: in [constr:pattern] some rule has been masked
+- &quot;coqc&quot;  -q  -Q &quot;theories&quot; MirrorCore -Q &quot;examples&quot; McExamples -I &quot;src&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq//user-contrib/PluginUtils&quot;   theories/RTac/runTacK.v
+- &lt;W&gt; Grammar extension: in [constr:operconstr] some rule has been masked
+- &lt;W&gt; Grammar extension: in [constr:pattern] some rule has been masked
+- &lt;W&gt; Grammar extension: in [constr:operconstr] some rule has been masked
+- &lt;W&gt; Grammar extension: in [constr:pattern] some rule has been masked
+- &lt;W&gt; Grammar extension: in [constr:operconstr] some rule has been masked
+- &lt;W&gt; Grammar extension: in [constr:pattern] some rule has been masked
+- &lt;W&gt; Grammar extension: in [constr:operconstr] some rule has been masked
+- &lt;W&gt; Grammar extension: in [constr:pattern] some rule has been masked
+- &quot;coqc&quot;  -q  -Q &quot;theories&quot; MirrorCore -Q &quot;examples&quot; McExamples -I &quot;src&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq//user-contrib/PluginUtils&quot;   theories/RTac/Interface.v
+- &quot;coqc&quot;  -q  -Q &quot;theories&quot; MirrorCore -Q &quot;examples&quot; McExamples -I &quot;src&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq//user-contrib/PluginUtils&quot;   examples/Cancel/MonoidSyntaxSimple.v
+- &quot;coqc&quot;  -q  -Q &quot;theories&quot; MirrorCore -Q &quot;examples&quot; McExamples -I &quot;src&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq//user-contrib/PluginUtils&quot;   examples/Cancel/MonoidSyntaxNoDec.v
+- &quot;coqc&quot;  -q  -Q &quot;theories&quot; MirrorCore -Q &quot;examples&quot; McExamples -I &quot;src&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq//user-contrib/PluginUtils&quot;   examples/Cancel/MonoidSyntaxWithConst.v
+- &lt;W&gt; Grammar extension: in [constr:operconstr] some rule has been masked
+- &lt;W&gt; Grammar extension: in [constr:pattern] some rule has been masked
+- &lt;W&gt; Grammar extension: in [constr:operconstr] some rule has been masked
+- &lt;W&gt; Grammar extension: in [constr:pattern] some rule has been masked
+- &quot;coqc&quot;  -q  -Q &quot;theories&quot; MirrorCore -Q &quot;examples&quot; McExamples -I &quot;src&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq//user-contrib/PluginUtils&quot;   examples/Cancel/MonoidSyntaxModular.v
+- &lt;W&gt; Grammar extension: in [constr:operconstr] some rule has been masked
+- &lt;W&gt; Grammar extension: in [constr:pattern] some rule has been masked
+- &quot;coqc&quot;  -q  -Q &quot;theories&quot; MirrorCore -Q &quot;examples&quot; McExamples -I &quot;src&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq//user-contrib/PluginUtils&quot;   theories/Lambda/AppN.v
+- &quot;coqc&quot;  -q  -Q &quot;theories&quot; MirrorCore -Q &quot;examples&quot; McExamples -I &quot;src&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq//user-contrib/PluginUtils&quot;   theories/Lambda/Lemma.v
+- &quot;coqc&quot;  -q  -Q &quot;theories&quot; MirrorCore -Q &quot;examples&quot; McExamples -I &quot;src&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq//user-contrib/PluginUtils&quot;   theories/Lambda/ExprVariables.v
+- &quot;coqc&quot;  -q  -Q &quot;theories&quot; MirrorCore -Q &quot;examples&quot; McExamples -I &quot;src&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq//user-contrib/PluginUtils&quot;   theories/Lambda/RewriteRelations.v
+- &quot;coqc&quot;  -q  -Q &quot;theories&quot; MirrorCore -Q &quot;examples&quot; McExamples -I &quot;src&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq//user-contrib/PluginUtils&quot;   theories/Lambda/Ptrns.v
+- &quot;coqc&quot;  -q  -Q &quot;theories&quot; MirrorCore -Q &quot;examples&quot; McExamples -I &quot;src&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq//user-contrib/PluginUtils&quot;   theories/Lambda/ExprUnify_common.v
+- &quot;coqc&quot;  -q  -Q &quot;theories&quot; MirrorCore -Q &quot;examples&quot; McExamples -I &quot;src&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq//user-contrib/PluginUtils&quot;   theories/RTac/EApply.v
+- &quot;coqc&quot;  -q  -Q &quot;theories&quot; MirrorCore -Q &quot;examples&quot; McExamples -I &quot;src&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq//user-contrib/PluginUtils&quot;   theories/RTac/Minify.v
+- &quot;coqc&quot;  -q  -Q &quot;theories&quot; MirrorCore -Q &quot;examples&quot; McExamples -I &quot;src&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq//user-contrib/PluginUtils&quot;   theories/Lambda/ExprUnify_simple.v
+- &lt;W&gt; Grammar extension: in [constr:operconstr] some rule has been masked
+- &lt;W&gt; Grammar extension: in [constr:pattern] some rule has been masked
+- &lt;W&gt; Grammar extension: in [constr:operconstr] some rule has been masked
+- &lt;W&gt; Grammar extension: in [constr:pattern] some rule has been masked
+- &quot;coqc&quot;  -q  -Q &quot;theories&quot; MirrorCore -Q &quot;examples&quot; McExamples -I &quot;src&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq//user-contrib/PluginUtils&quot;   theories/Lambda/ExprUnify_simul.v
+- &quot;coqc&quot;  -q  -Q &quot;theories&quot; MirrorCore -Q &quot;examples&quot; McExamples -I &quot;src&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq//user-contrib/PluginUtils&quot;   theories/Views/ListView.v
+- &quot;coqc&quot;  -q  -Q &quot;theories&quot; MirrorCore -Q &quot;examples&quot; McExamples -I &quot;src&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq//user-contrib/PluginUtils&quot;   theories/Views/NatView.v
+- &quot;coqc&quot;  -q  -Q &quot;theories&quot; MirrorCore -Q &quot;examples&quot; McExamples -I &quot;src&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq//user-contrib/PluginUtils&quot;   theories/Views/StringView.v
+- &quot;coqc&quot;  -q  -Q &quot;theories&quot; MirrorCore -Q &quot;examples&quot; McExamples -I &quot;src&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq//user-contrib/PluginUtils&quot;   theories/Views/BoolView.v
+- &quot;coqc&quot;  -q  -Q &quot;theories&quot; MirrorCore -Q &quot;examples&quot; McExamples -I &quot;src&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq//user-contrib/PluginUtils&quot;   theories/Views/ApplicativeView.v
+- &quot;coqc&quot;  -q  -Q &quot;theories&quot; MirrorCore -Q &quot;examples&quot; McExamples -I &quot;src&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq//user-contrib/PluginUtils&quot;   theories/Views/EqView.v
+- &quot;coqc&quot;  -q  -Q &quot;theories&quot; MirrorCore -Q &quot;examples&quot; McExamples -I &quot;src&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq//user-contrib/PluginUtils&quot;   examples/Simple/FoldTest.v
+- &quot;coqc&quot;  -q  -Q &quot;theories&quot; MirrorCore -Q &quot;examples&quot; McExamples -I &quot;src&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq//user-contrib/PluginUtils&quot;   theories/Lambda/RedAll.v
+-      = Some
+-          (fun _ : unit =&gt;
+-           Some (App (App (Inj Plus) (Inj (N 10))) (Inj (N 1))))
+-      : option (Lazy (expr typ func))
+- &quot;coqc&quot;  -q  -Q &quot;theories&quot; MirrorCore -Q &quot;examples&quot; McExamples -I &quot;src&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq//user-contrib/PluginUtils&quot;   theories/Lambda/FoldApp.v
+- &quot;coqc&quot;  -q  -Q &quot;theories&quot; MirrorCore -Q &quot;examples&quot; McExamples -I &quot;src&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq//user-contrib/PluginUtils&quot;   theories/Lambda/StrongFoldApp.v
+- &quot;coqc&quot;  -q  -Q &quot;theories&quot; MirrorCore -Q &quot;examples&quot; McExamples -I &quot;src&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq//user-contrib/PluginUtils&quot;   theories/RTac/Apply.v
+- &lt;W&gt; Grammar extension: in [constr:operconstr] some rule has been masked
+- &lt;W&gt; Grammar extension: in [constr:pattern] some rule has been masked
+- &quot;coqc&quot;  -q  -Q &quot;theories&quot; MirrorCore -Q &quot;examples&quot; McExamples -I &quot;src&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq//user-contrib/PluginUtils&quot;   theories/RTac/RunOnGoals.v
+- &quot;coqc&quot;  -q  -Q &quot;theories&quot; MirrorCore -Q &quot;examples&quot; McExamples -I &quot;src&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq//user-contrib/PluginUtils&quot;   theories/RTac/RunOnGoals_list.v
+- &lt;W&gt; Grammar extension: in [constr:operconstr] some rule has been masked
+- &lt;W&gt; Grammar extension: in [constr:pattern] some rule has been masked
+- &lt;W&gt; Grammar extension: in [constr:operconstr] some rule has been masked
+- &lt;W&gt; Grammar extension: in [constr:pattern] some rule has been masked
+- &quot;coqc&quot;  -q  -Q &quot;theories&quot; MirrorCore -Q &quot;examples&quot; McExamples -I &quot;src&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq//user-contrib/PluginUtils&quot;   theories/RTac/Repeat.v
+- &quot;coqc&quot;  -q  -Q &quot;theories&quot; MirrorCore -Q &quot;examples&quot; McExamples -I &quot;src&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq//user-contrib/PluginUtils&quot;   theories/RTac/ThenK.v
+- &quot;coqc&quot;  -q  -Q &quot;theories&quot; MirrorCore -Q &quot;examples&quot; McExamples -I &quot;src&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq//user-contrib/PluginUtils&quot;   theories/RTac/Auto.v
+- &quot;coqc&quot;  -q  -Q &quot;theories&quot; MirrorCore -Q &quot;examples&quot; McExamples -I &quot;src&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq//user-contrib/PluginUtils&quot;   theories/Views/ProdView.v
+- &lt;W&gt; Grammar extension: in [constr:operconstr] some rule has been masked
+- &lt;W&gt; Grammar extension: in [constr:pattern] some rule has been masked
+- &lt;W&gt; Grammar extension: in [constr:operconstr] some rule has been masked
+- &lt;W&gt; Grammar extension: in [constr:pattern] some rule has been masked
+- &lt;W&gt; Grammar extension: in [constr:operconstr] some rule has been masked
+- &lt;W&gt; Grammar extension: in [constr:pattern] some rule has been masked
+- &quot;coqc&quot;  -q  -Q &quot;theories&quot; MirrorCore -Q &quot;examples&quot; McExamples -I &quot;src&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq//user-contrib/PluginUtils&quot;   theories/Lambda/ExprUnify.v
+- &quot;coqc&quot;  -q  -Q &quot;theories&quot; MirrorCore -Q &quot;examples&quot; McExamples -I &quot;src&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq//user-contrib/PluginUtils&quot;   theories/Lambda/AutoSetoidRewriteRtac.v
+- &lt;W&gt; Grammar extension: in [tactic:simple_tactic] some rule has been masked
+- &lt;W&gt; Grammar extension: in [tactic:simple_tactic] some rule has been masked
+- &lt;W&gt; Grammar extension: in [tactic:simple_tactic] some rule has been masked
+- &lt;W&gt; Grammar extension: in [tactic:simple_tactic] some rule has been masked
+- &lt;W&gt; Grammar extension: in [tactic:simple_tactic] some rule has been masked
+- &lt;W&gt; Grammar extension: in [constr:operconstr] some rule has been masked
+- &lt;W&gt; Grammar extension: in [constr:pattern] some rule has been masked
+- &quot;coqc&quot;  -q  -Q &quot;theories&quot; MirrorCore -Q &quot;examples&quot; McExamples -I &quot;src&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq//user-contrib/PluginUtils&quot;   theories/RTac/RTac.v
+- &lt;W&gt; Grammar extension: in [constr:operconstr] some rule has been masked
+- &lt;W&gt; Grammar extension: in [constr:pattern] some rule has been masked
+- &quot;coqc&quot;  -q  -Q &quot;theories&quot; MirrorCore -Q &quot;examples&quot; McExamples -I &quot;src&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq//user-contrib/PluginUtils&quot;   theories/Lambda/Rtac.v
+- &quot;coqc&quot;  -q  -Q &quot;theories&quot; MirrorCore -Q &quot;examples&quot; McExamples -I &quot;src&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq//user-contrib/PluginUtils&quot;   examples/Hoare/ImpSyntax.v
+- &lt;W&gt; Grammar extension: in [tactic:simple_tactic] some rule has been masked
+- &lt;W&gt; Grammar extension: in [tactic:simple_tactic] some rule has been masked
+- &lt;W&gt; Grammar extension: in [tactic:simple_tactic] some rule has been masked
+- &lt;W&gt; Grammar extension: in [tactic:simple_tactic] some rule has been masked
+- &lt;W&gt; Grammar extension: in [tactic:simple_tactic] some rule has been masked
+- &lt;W&gt; Grammar extension: in [constr:operconstr] some rule has been masked
+- &lt;W&gt; Grammar extension: in [constr:pattern] some rule has been masked
+- File &quot;./examples/Hoare/ImpSyntax.v&quot;, line 392, characters 6-32:
+- Error: No such goal.
+- Makefile.coq:557: recipe for target &#39;examples/Hoare/ImpSyntax.vo&#39; failed
+- make[1]: *** [examples/Hoare/ImpSyntax.vo] Error 1
+- make[1]: *** Waiting for unfinished jobs....
+- Finished transaction in 5.228 secs (5.228u,0.s) (successful)
+- Finished transaction in 8.873 secs (8.875u,0.s) (successful)
+- Finished transaction in 10.109 secs (10.11u,0.s) (successful)
+- Finished transaction in 1.148 secs (1.149u,0.s) (successful)
+- make[1]: Leaving directory &#39;/home/bench/.opam/ocaml-base-compiler.4.05.0/.opam-switch/build/coq-mirror-core.1.0.1&#39;
+- Makefile:2: recipe for target &#39;coq&#39; failed
+- make: *** [coq] Error 2
+[ERROR] The compilation of coq-mirror-core failed at &quot;/home/bench/.opam/opam-init/hooks/sandbox.sh build make -j7&quot;.
+#=== ERROR while compiling coq-mirror-core.1.0.1 ==============================#
+# context              2.0.1 | linux/x86_64 | ocaml-base-compiler.4.05.0 | file:///home/bench/run/opam-coq-archive/released
+# path                 ~/.opam/ocaml-base-compiler.4.05.0/.opam-switch/build/coq-mirror-core.1.0.1
+# command              ~/.opam/opam-init/hooks/sandbox.sh build make -j7
+# exit-code            2
+# env-file             ~/.opam/log/coq-mirror-core-11639-d0f245.env
+# output-file          ~/.opam/log/coq-mirror-core-11639-d0f245.out
+### output ###
+# [...]
+# File &quot;./examples/Hoare/ImpSyntax.v&quot;, line 392, characters 6-32:
+# Error: No such goal.
+# Makefile.coq:557: recipe for target &#39;examples/Hoare/ImpSyntax.vo&#39; failed
+# make[1]: *** [examples/Hoare/ImpSyntax.vo] Error 1
+# make[1]: *** Waiting for unfinished jobs....
+# Finished transaction in 5.228 secs (5.228u,0.s) (successful)
+# Finished transaction in 8.873 secs (8.875u,0.s) (successful)
+# Finished transaction in 10.109 secs (10.11u,0.s) (successful)
+# Finished transaction in 1.148 secs (1.149u,0.s) (successful)
+# make[1]: Leaving directory &#39;/home/bench/.opam/ocaml-base-compiler.4.05.0/.opam-switch/build/coq-mirror-core.1.0.1&#39;
+# Makefile:2: recipe for target &#39;coq&#39; failed
+# make: *** [coq] Error 2
+&lt;&gt;&lt;&gt; Error report &lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;
++- The following actions failed
+| - build coq-mirror-core 1.0.1
++- 
+- No changes have been performed
+# Run eval $(opam env) to update the current shell environment
+&#39;opam install -j1 -y -v coq-mirror-core.1.0.1&#39; failed.
+</pre></dd>
+            </dl>
+            <h2>Installation size</h2>
+            <p>No files were installed.</p>
+            <h2>Uninstall</h2>
+            <dl class="dl-horizontal">
+              <dt>Command</dt>
+              <dd><code>true</code></dd>
+              <dt>Return code</dt>
+              <dd>0</dd>
+              <dt>Missing removes</dt>
+              <dd>
+                none
+              </dd>
+              <dt>Wrong removes</dt>
+              <dd>
+                none
+              </dd>
+            </dl>
+          </div>
+        </div>
+      </div>
+      <hr/>
+      <div class="footer">
+        <p class="text-center">
+          <small>Sources are on <a href="https://github.com/coq-bench">GitHub</a>. © Guillaume Claret.</small>
+        </p>
+      </div>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="../../../../../bootstrap.min.js"></script>
+  </body>
+</html>
