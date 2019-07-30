@@ -1,0 +1,679 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>metacoq-checker: Error</title>
+    <link rel="shortcut icon" type="image/png" href="../../../../../favicon.png" />
+    <link href="../../../../../bootstrap.min.css" rel="stylesheet">
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+    <script src="../../../../../moment.min.js"></script>
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="container">
+      <div class="navbar navbar-default" role="navigation">
+        <div class="container-fluid">
+          <div class="navbar-header">
+            <a class="navbar-brand" href="../../../../.."><i class="fa fa-lg fa-flag-checkered"></i> Coq bench</a>
+          </div>
+          <div id="navbar" class="collapse navbar-collapse">
+            <ul class="nav navbar-nav">
+              <li><a href="../..">clean / extra-dev</a></li>
+              <li class="active"><a href="">8.8.dev / metacoq-checker - 8.8.dev</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="article">
+        <div class="row">
+          <div class="col-md-12">
+            <a href="../..">« Up</a>
+            <h1>
+              metacoq-checker
+              <small>
+                8.8.dev
+                <span class="label label-danger">Error</span>
+              </small>
+            </h1>
+            <p><em><script>document.write(moment("2019-07-30 22:17:50 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2019-07-30 22:17:50 UTC)</em><p>
+            <h2>Context</h2>
+            <pre># Packages matching: installed
+# Name              # Installed       # Synopsis
+base-bigarray       base
+base-threads        base
+base-unix           base
+camlp5              7.06.10-g84ce6cc4 Preprocessor-pretty-printer of OCaml
+conf-m4             1                 Virtual package relying on m4
+coq                 8.8.dev           Formal proof management system.
+num                 1.2               The legacy Num library for arbitrary-precision integer and rational arithmetic
+ocaml               4.07.1            The OCaml compiler (virtual package)
+ocaml-base-compiler 4.07.1            Official release 4.07.1
+ocaml-config        1                 OCaml Switch Configuration
+ocamlfind           1.8.1             A library manager for OCaml
+# opam file:
+opam-version: &quot;2.0&quot;
+maintainer: &quot;palmskog@gmail.com&quot;
+homepage: &quot;https://metacoq.github.io/metacoq&quot;
+dev-repo: &quot;git+https://github.com/MetaCoq/metacoq.git#coq-8.8&quot;
+bug-reports: &quot;https://github.com/MetaCoq/metacoq/issues&quot;
+authors: [
+  &quot;Abhishek Anand &lt;aa755@cs.cornell.edu&gt;&quot;
+  &quot;Simon Boulier &lt;simon.boulier@inria.fr&gt;&quot;
+  &quot;Cyril Cohen &lt;cyril.cohen@inria.fr&gt;&quot;
+  &quot;Yannick Forster &lt;forster@ps.uni-saarland.de&gt;&quot;
+  &quot;Fabian Kunze &lt;fkunze@fakusb.de&gt;&quot;
+  &quot;Gregory Malecha &lt;gmalecha@gmail.com&gt;&quot;
+  &quot;Matthieu Sozeau &lt;matthieu.sozeau@inria.fr&gt;&quot;
+  &quot;Nicolas Tabareau &lt;nicolas.tabareau@inria.fr&gt;&quot;
+  &quot;Théo Winterhalter &lt;theo.winterhalter@inria.fr&gt;&quot;
+]
+license: &quot;MIT&quot;
+build: [
+  [make &quot;-j%{jobs}%&quot; &quot;checker&quot;]
+]
+install: [
+  [make &quot;-C&quot; &quot;checker&quot; &quot;install&quot;]
+]
+depends: [
+  &quot;ocaml&quot; {&gt;= &quot;4.04.0&quot;}
+  &quot;coq&quot; {&gt;= &quot;8.8&quot; &amp; &lt; &quot;8.9~&quot;}
+  &quot;coq-metacoq-template&quot; {= version}
+]
+synopsis: &quot;Specification of Coq&#39;s type theory and reference checker implementation&quot;
+description: &quot;&quot;&quot;
+MetaCoq is a meta-programming framework for Coq.
+The Checker module provides a complete specification of Coq&#39;s typing and conversion
+relation along with a reference type-checker that is extracted to a pluging.
+This provides a command: `MetaCoq Check [global_reference]` that can be used
+to typecheck a Coq definition using the verified type-checker.
+&quot;&quot;&quot;
+url {
+   src: &quot;git+https://github.com/MetaCoq/metacoq.git#coq-8.8&quot;
+}
+</pre>
+            <h2>Lint</h2>
+            <dl class="dl-horizontal">
+              <dt>Command</dt>
+              <dd><code>true</code></dd>
+              <dt>Return code</dt>
+              <dd>0</dd>
+            </dl>
+            <h2>Dry install</h2>
+            <p>Dry install with the current Coq version:</p>
+            <dl class="dl-horizontal">
+              <dt>Command</dt>
+              <dd><code>opam install -y --show-action coq-metacoq-checker.8.8.dev coq.8.8.dev</code></dd>
+              <dt>Return code</dt>
+              <dd>0</dd>
+            </dl>
+            <p>Dry install without Coq/switch base, to test if the problem was incompatibility with the current Coq/OCaml version:</p>
+            <dl class="dl-horizontal">
+              <dt>Command</dt>
+              <dd><code>true</code></dd>
+              <dt>Return code</dt>
+              <dd>0</dd>
+            </dl>
+            <h2>Install dependencies</h2>
+            <dl class="dl-horizontal">
+              <dt>Command</dt>
+              <dd><code>opam list; echo; ulimit -Sv 4000000; timeout 60m opam install -y --deps-only coq-metacoq-checker.8.8.dev</code></dd>
+              <dt>Return code</dt>
+              <dd>0</dd>
+              <dt>Duration</dt>
+              <dd>44 s</dd>
+            </dl>
+            <h2>Install</h2>
+            <dl class="dl-horizontal">
+              <dt>Command</dt>
+              <dd><code>opam list; echo; ulimit -Sv 4000000; timeout 60m opam install -j1 -y -v coq-metacoq-checker.8.8.dev</code></dd>
+              <dt>Return code</dt>
+              <dd>7936</dd>
+              <dt>Duration</dt>
+              <dd>32 s</dd>
+              <dt>Output</dt>
+              <dd><pre># Packages matching: installed
+# Name               # Installed       # Synopsis
+base-bigarray        base
+base-threads         base
+base-unix            base
+camlp5               7.06.10-g84ce6cc4 Preprocessor-pretty-printer of OCaml
+conf-m4              1                 Virtual package relying on m4
+coq                  8.8.dev           Formal proof management system.
+coq-metacoq-template 8.8.dev           A quoting and unquoting library for Coq in Coq
+num                  1.2               The legacy Num library for arbitrary-precision integer and rational arithmetic
+ocaml                4.07.1            The OCaml compiler (virtual package)
+ocaml-base-compiler  4.07.1            Official release 4.07.1
+ocaml-config         1                 OCaml Switch Configuration
+ocamlfind            1.8.1             A library manager for OCaml
+The following actions will be performed:
+  - install coq-metacoq-checker 8.8.dev
+&lt;&gt;&lt;&gt; Gathering sources &gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;
+Processing  1/1: [coq-metacoq-checker.8.8.dev: git]
+[coq-metacoq-checker.8.8.dev] synchronised from git+https://github.com/MetaCoq/metacoq.git#coq-8.8
+&lt;&gt;&lt;&gt; Processing actions &lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;
+Processing  1/2: [coq-metacoq-checker: make checker]
++ /home/bench/.opam/opam-init/hooks/sandbox.sh &quot;build&quot; &quot;make&quot; &quot;-j7&quot; &quot;checker&quot; (CWD=/home/bench/.opam/ocaml-base-compiler.4.07.1/.opam-switch/build/coq-metacoq-checker.8.8.dev)
+- make -C template-coq
+- make[1]: Entering directory &#39;/home/bench/.opam/ocaml-base-compiler.4.07.1/.opam-switch/build/coq-metacoq-checker.8.8.dev/template-coq&#39;
+- coq_makefile -f _CoqProject -o Makefile.coq
+- coq_makefile -f _TemplateCoqProject -o Makefile.template
+- coq_makefile -f _PluginProject -o Makefile.plugin
+- make -f Makefile.coq
+- `which gsed || which sed` -e s/coqdeps/coqdeps.template/g -i Makefile.template
+- make[2]: Entering directory &#39;/home/bench/.opam/ocaml-base-compiler.4.07.1/.opam-switch/build/coq-metacoq-checker.8.8.dev/template-coq&#39;
+- Warning: no common logical root
+- Warning: in such case INSTALLDEFAULTROOT must be defined
+- Warning: the install-doc target is going to install files
+- Warning: in orphan_Test_MetaCoq.Template
+- `which gsed || which sed` -e s/coqdeps/coqdeps.plugin/g -i Makefile.plugin
+- COQDEP VFILES
+- COQC theories/utils.v
+- COQC theories/config.v
+- COQC theories/BasicAst.v
+- COQC theories/monad_utils.v
+- COQC theories/Universes.v
+- COQC theories/Ast.v
+- COQC theories/AstUtils.v
+- COQC theories/TemplateMonad/Common.v
+- COQC theories/Induction.v
+- COQC theories/TemplateMonad/Core.v
+- COQC theories/TemplateMonad/Extractable.v
+- COQC theories/TemplateMonad/Monad.v
+- COQC theories/LiftSubst.v
+- COQC theories/TemplateMonad.v
+- COQC theories/UnivSubst.v
+- COQC theories/Pretty.v
+- COQC theories/Extraction.v
+- ./update_plugin.sh
+- Updating gen-src from src
+- Copying from src to gen-src
+- Renaming files to camelCase
+- Moving  Ascii.ml to ascii.ml
+- Moving  Ascii.mli to ascii.mli
+- Moving  Ast0.ml to ast0.ml
+- Moving  Ast0.mli to ast0.mli
+- Moving  AstUtils.ml to astUtils.ml
+- Moving  AstUtils.mli to astUtils.mli
+- Moving  BasicAst.ml to basicAst.ml
+- Moving  BasicAst.mli to basicAst.mli
+- Moving  Basics.ml to basics.ml
+- Moving  Basics.mli to basics.mli
+- Moving  BinInt.ml to binInt.ml
+- Moving  BinInt.mli to binInt.mli
+- Moving  BinNat.ml to binNat.ml
+- Moving  BinNat.mli to binNat.mli
+- Moving  BinNums.ml to binNums.ml
+- Moving  BinNums.mli to binNums.mli
+- Moving  BinPos.ml to binPos.ml
+- Moving  BinPos.mli to binPos.mli
+- Moving  BinPosDef.ml to binPosDef.ml
+- Moving  BinPosDef.mli to binPosDef.mli
+- Moving  Bool.ml to bool.ml
+- Moving  Bool.mli to bool.mli
+- Moving  CRelationClasses.ml to cRelationClasses.ml
+- Moving  CRelationClasses.mli to cRelationClasses.mli
+- Moving  Common0.ml to common0.ml
+- Moving  Common0.mli to common0.mli
+- Moving  Datatypes.ml to datatypes.ml
+- Moving  Datatypes.mli to datatypes.mli
+- Moving  Decimal.ml to decimal.ml
+- Moving  Decimal.mli to decimal.mli
+- Moving  Equalities.ml to equalities.ml
+- Moving  Equalities.mli to equalities.mli
+- Moving  Equality0.ml to equality0.ml
+- Moving  Equality0.mli to equality0.mli
+- Moving  Extractable.ml to extractable.ml
+- Moving  Extractable.mli to extractable.mli
+- Moving  LiftSubst.ml to liftSubst.ml
+- Moving  LiftSubst.mli to liftSubst.mli
+- Moving  List0.ml to list0.ml
+- Moving  List0.mli to list0.mli
+- Moving  Logic0.ml to logic0.ml
+- Moving  Logic0.mli to logic0.mli
+- Moving  MSetDecide.ml to mSetDecide.ml
+- Moving  MSetDecide.mli to mSetDecide.mli
+- Moving  MSetFacts.ml to mSetFacts.ml
+- Moving  MSetFacts.mli to mSetFacts.mli
+- Moving  MSetInterface.ml to mSetInterface.ml
+- Moving  MSetInterface.mli to mSetInterface.mli
+- Moving  MSetProperties.ml to mSetProperties.ml
+- Moving  MSetProperties.mli to mSetProperties.mli
+- Moving  MSetWeakList.ml to mSetWeakList.ml
+- Moving  MSetWeakList.mli to mSetWeakList.mli
+- Moving  Nat0.ml to nat0.ml
+- Moving  Nat0.mli to nat0.mli
+- Moving  OrderedType0.ml to orderedType0.ml
+- Moving  OrderedType0.mli to orderedType0.mli
+- Moving  Orders.ml to orders.ml
+- Moving  Orders.mli to orders.mli
+- Moving  OrdersFacts.ml to ordersFacts.ml
+- Moving  OrdersFacts.mli to ordersFacts.mli
+- Moving  OrdersLists.ml to ordersLists.ml
+- Moving  OrdersLists.mli to ordersLists.mli
+- Moving  OrdersTac.ml to ordersTac.ml
+- Moving  OrdersTac.mli to ordersTac.mli
+- Moving  PeanoNat.ml to peanoNat.ml
+- Moving  PeanoNat.mli to peanoNat.mli
+- Moving  Pretty.ml to pretty.ml
+- Moving  Pretty.mli to pretty.mli
+- Moving  Specif.ml to specif.ml
+- Moving  Specif.mli to specif.mli
+- Moving  String0.ml to string0.ml
+- Moving  String0.mli to string0.mli
+- Moving  UnivSubst0.ml to univSubst0.ml
+- Moving  UnivSubst0.mli to univSubst0.mli
+- Moving  Universes0.ml to universes0.ml
+- Moving  Universes0.mli to universes0.mli
+- patching file gen-src/cRelationClasses.mli
+- make[2]: Leaving directory &#39;/home/bench/.opam/ocaml-base-compiler.4.07.1/.opam-switch/build/coq-metacoq-checker.8.8.dev/template-coq&#39;
+- make -f Makefile.template optfiles
+- make[2]: Entering directory &#39;/home/bench/.opam/ocaml-base-compiler.4.07.1/.opam-switch/build/coq-metacoq-checker.8.8.dev/template-coq&#39;
+- CAMLDEP src/plugin_core.mli
+- CAMLDEP src/template_monad.mli
+- CAMLDEP src/run_template_monad.mli
+- COQDEP src/template_coq.mlpack
+- CAMLDEP src/plugin_core.ml
+- COQDEP VFILES
+- CAMLDEP src/run_template_monad.ml
+- CAMLDEP src/denote.ml
+- CAMLDEP src/constr_denoter.ml
+- CAMLDEP src/template_monad.ml
+- CAMLDEP src/denoter.ml
+- CAMLDEP src/constr_quoter.ml
+- CAMLDEP src/quoter.ml
+- CAMLDEP src/constr_quoted.ml
+- CAMLDEP src/quoted.ml
+- CAMLDEP src/tm_util.ml
+- CAMLDEP -pp src/g_template_coq.ml4
+- CAMLOPT -c -for-pack Template_coq src/tm_util.ml
+- CAMLOPT -c -for-pack Template_coq src/quoted.ml
+- CAMLC -c src/template_monad.mli
+- CAMLC -c src/plugin_core.mli
+- CAMLC -c src/run_template_monad.mli
+- CAMLOPT -c -for-pack Template_coq src/denoter.ml
+- CAMLOPT -c -for-pack Template_coq src/quoter.ml
+- CAMLOPT -c -for-pack Template_coq src/template_monad.ml
+- CAMLOPT -c -for-pack Template_coq src/constr_quoted.ml
+- CAMLOPT -c -for-pack Template_coq src/denote.ml
+- File &quot;src/constr_quoted.ml&quot;, line 1, characters 0-9:
+- Warning 33: unused open Univ.
+- File &quot;src/constr_quoted.ml&quot;, line 2, characters 0-12:
+- Warning 33: unused open Entries.
+- File &quot;src/constr_quoted.ml&quot;, line 3, characters 0-10:
+- Warning 33: unused open Names.
+- File &quot;src/constr_quoted.ml&quot;, line 4, characters 0-7:
+- Warning 33: unused open Pp.
+- File &quot;src/constr_quoted.ml&quot;, line 6, characters 0-11:
+- Warning 33: unused open Quoted.
+- CAMLOPT -c -for-pack Template_coq src/constr_denoter.ml
+- CAMLOPT -c -for-pack Template_coq src/constr_quoter.ml
+- CAMLOPT -c -for-pack Template_coq src/plugin_core.ml
+- CAMLOPT -c -for-pack Template_coq src/run_template_monad.ml
+- File &quot;src/run_template_monad.ml&quot;, line 125, characters 4-19:
+- Warning 32: unused value denote_ucontext.
+- CAMLOPT -pp -c -for-pack Template_coq src/g_template_coq.ml4
+- CAMLOPT -pack -o src/template_coq.cmx
+- CAMLOPT -a -o src/template_coq.cmxa
+- CAMLOPT -shared -o src/template_coq.cmxs
+- make[2]: Leaving directory &#39;/home/bench/.opam/ocaml-base-compiler.4.07.1/.opam-switch/build/coq-metacoq-checker.8.8.dev/template-coq&#39;
+- cp src/template_coq.cm* build/
+- make -f Makefile.template
+- make[2]: Entering directory &#39;/home/bench/.opam/ocaml-base-compiler.4.07.1/.opam-switch/build/coq-metacoq-checker.8.8.dev/template-coq&#39;
+- COQC theories/Loader.v
+- COQC theories/All.v
+- make[2]: Leaving directory &#39;/home/bench/.opam/ocaml-base-compiler.4.07.1/.opam-switch/build/coq-metacoq-checker.8.8.dev/template-coq&#39;
+- make -f Makefile.plugin
+- make[2]: Entering directory &#39;/home/bench/.opam/ocaml-base-compiler.4.07.1/.opam-switch/build/coq-metacoq-checker.8.8.dev/template-coq&#39;
+- COQDEP VFILES
+- CAMLDEP gen-src/run_extractable.mli
+- CAMLDEP gen-src/plugin_core.mli
+- CAMLDEP gen-src/pretty.mli
+- CAMLDEP gen-src/univSubst0.mli
+- CAMLDEP gen-src/liftSubst.mli
+- CAMLDEP gen-src/utils.mli
+- CAMLDEP gen-src/astUtils.mli
+- CAMLDEP gen-src/equality0.mli
+- CAMLDEP gen-src/ast0.mli
+- CAMLDEP gen-src/basicAst.mli
+- CAMLDEP gen-src/universes0.mli
+- CAMLDEP gen-src/config0.mli
+- CAMLDEP gen-src/cRelationClasses.mli
+- CAMLDEP gen-src/string0.mli
+- CAMLDEP gen-src/specif.mli
+- CAMLDEP gen-src/peanoNat.mli
+- CAMLDEP gen-src/mSetWeakList.mli
+- CAMLDEP gen-src/mSetProperties.mli
+- CAMLDEP gen-src/mSetInterface.mli
+- CAMLDEP gen-src/mSetFacts.mli
+- CAMLDEP gen-src/ordersLists.mli
+- CAMLDEP gen-src/mSetDecide.mli
+- CAMLDEP gen-src/ordersFacts.mli
+- CAMLDEP gen-src/orderedType0.mli
+- CAMLDEP gen-src/ordersTac.mli
+- CAMLDEP gen-src/orders.mli
+- CAMLDEP gen-src/logic0.mli
+- CAMLDEP gen-src/nat0.mli
+- CAMLDEP gen-src/list0.mli
+- CAMLDEP gen-src/extractable.mli
+- CAMLDEP gen-src/equalities.mli
+- CAMLDEP gen-src/datatypes.mli
+- CAMLDEP gen-src/decimal.mli
+- CAMLDEP gen-src/common0.mli
+- CAMLDEP gen-src/binPosDef.mli
+- CAMLDEP gen-src/binPos.mli
+- CAMLDEP gen-src/bool.mli
+- CAMLDEP gen-src/binNat.mli
+- CAMLDEP gen-src/binInt.mli
+- CAMLDEP gen-src/binNums.mli
+- CAMLDEP gen-src/basics.mli
+- CAMLDEP gen-src/ascii.mli
+- COQDEP gen-src/metacoq_template_plugin.mlpack
+- CAMLDEP gen-src/run_extractable.ml
+- CAMLDEP gen-src/ast_denoter.ml
+- CAMLDEP gen-src/ast_quoter.ml
+- CAMLDEP gen-src/plugin_core.ml
+- CAMLDEP gen-src/denote.ml
+- CAMLDEP gen-src/denoter.ml
+- CAMLDEP gen-src/quoter.ml
+- CAMLDEP gen-src/quoted.ml
+- CAMLDEP gen-src/tm_util.ml
+- CAMLDEP gen-src/pretty.ml
+- CAMLDEP gen-src/univSubst0.ml
+- CAMLDEP gen-src/liftSubst.ml
+- CAMLDEP gen-src/equality0.ml
+- CAMLDEP gen-src/utils.ml
+- CAMLDEP gen-src/astUtils.ml
+- CAMLDEP gen-src/ast0.ml
+- CAMLDEP gen-src/universes0.ml
+- CAMLDEP gen-src/config0.ml
+- CAMLDEP gen-src/basicAst.ml
+- CAMLDEP gen-src/cRelationClasses.ml
+- CAMLDEP gen-src/string0.ml
+- CAMLDEP gen-src/specif.ml
+- CAMLDEP gen-src/peanoNat.ml
+- CAMLDEP gen-src/mSetWeakList.ml
+- CAMLDEP gen-src/mSetProperties.ml
+- CAMLDEP gen-src/mSetInterface.ml
+- CAMLDEP gen-src/mSetFacts.ml
+- CAMLDEP gen-src/mSetDecide.ml
+- CAMLDEP gen-src/ordersLists.ml
+- CAMLDEP gen-src/ordersFacts.ml
+- CAMLDEP gen-src/orderedType0.ml
+- CAMLDEP gen-src/ordersTac.ml
+- CAMLDEP gen-src/orders.ml
+- CAMLDEP gen-src/nat0.ml
+- CAMLDEP gen-src/logic0.ml
+- CAMLDEP gen-src/list0.ml
+- CAMLDEP gen-src/extractable.ml
+- CAMLDEP gen-src/equalities.ml
+- CAMLDEP gen-src/datatypes.ml
+- CAMLDEP gen-src/common0.ml
+- CAMLDEP gen-src/decimal.ml
+- CAMLDEP gen-src/bool.ml
+- CAMLDEP gen-src/binPos.ml
+- CAMLDEP gen-src/binPosDef.ml
+- CAMLDEP gen-src/binNums.ml
+- CAMLDEP gen-src/basics.ml
+- CAMLDEP gen-src/binInt.ml
+- CAMLDEP gen-src/binNat.ml
+- CAMLDEP gen-src/ascii.ml
+- CAMLC -c gen-src/datatypes.mli
+- CAMLC -c gen-src/bool.mli
+- CAMLC -c gen-src/basics.mli
+- CAMLC -c gen-src/decimal.mli
+- CAMLC -c gen-src/equality0.mli
+- CAMLC -c gen-src/config0.mli
+- CAMLC -c gen-src/binNums.mli
+- CAMLOPT -c -for-pack Metacoq_template_plugin gen-src/quoted.ml
+- CAMLC -c gen-src/logic0.mli
+- CAMLOPT -c -for-pack Metacoq_template_plugin gen-src/tm_util.ml
+- CAMLC -c gen-src/plugin_core.mli
+- CAMLC -c gen-src/tm_util.ml
+- CAMLC -c gen-src/quoted.ml
+- CAMLOPT -c -for-pack Metacoq_template_plugin gen-src/datatypes.ml
+- CAMLOPT -c -for-pack Metacoq_template_plugin gen-src/bool.ml
+- CAMLC -c gen-src/equalities.mli
+- CAMLC -c gen-src/nat0.mli
+- CAMLOPT -c -for-pack Metacoq_template_plugin gen-src/decimal.ml
+- CAMLC -c gen-src/specif.mli
+- CAMLC -c gen-src/peanoNat.mli
+- CAMLOPT -c -for-pack Metacoq_template_plugin gen-src/basics.ml
+- CAMLC -c gen-src/string0.mli
+- CAMLC -c gen-src/orders.mli
+- CAMLOPT -c -for-pack Metacoq_template_plugin gen-src/binNums.ml
+- CAMLC -c gen-src/cRelationClasses.mli
+- CAMLOPT -c -for-pack Metacoq_template_plugin gen-src/equality0.ml
+- CAMLC -c gen-src/basicAst.mli
+- CAMLOPT -c -for-pack Metacoq_template_plugin gen-src/config0.ml
+- CAMLOPT -c -for-pack Metacoq_template_plugin gen-src/denoter.ml
+- CAMLOPT -c -for-pack Metacoq_template_plugin gen-src/logic0.ml
+- CAMLOPT -c -for-pack Metacoq_template_plugin gen-src/quoter.ml
+- CAMLC -c gen-src/quoter.ml
+- CAMLOPT -c -for-pack Metacoq_template_plugin gen-src/equalities.ml
+- CAMLOPT -c -for-pack Metacoq_template_plugin gen-src/nat0.ml
+- CAMLOPT -c -for-pack Metacoq_template_plugin gen-src/specif.ml
+- CAMLC -c gen-src/list0.mli
+- CAMLOPT -c -for-pack Metacoq_template_plugin gen-src/peanoNat.ml
+- CAMLC -c gen-src/binPosDef.mli
+- CAMLOPT -c -for-pack Metacoq_template_plugin gen-src/string0.ml
+- CAMLOPT -c -for-pack Metacoq_template_plugin gen-src/orders.ml
+- CAMLC -c gen-src/ordersTac.mli
+- CAMLC -c gen-src/ordersLists.mli
+- CAMLOPT -c -for-pack Metacoq_template_plugin gen-src/cRelationClasses.ml
+- CAMLOPT -c -for-pack Metacoq_template_plugin gen-src/basicAst.ml
+- CAMLOPT -c -for-pack Metacoq_template_plugin gen-src/denote.ml
+- CAMLOPT -c -for-pack Metacoq_template_plugin gen-src/list0.ml
+- CAMLOPT -c -for-pack Metacoq_template_plugin gen-src/binPosDef.ml
+- CAMLC -c gen-src/binPos.mli
+- CAMLOPT -c -for-pack Metacoq_template_plugin gen-src/ordersTac.ml
+- CAMLC -c gen-src/ordersFacts.mli
+- CAMLOPT -c -for-pack Metacoq_template_plugin gen-src/ordersLists.ml
+- CAMLC -c gen-src/orderedType0.mli
+- CAMLC -c gen-src/mSetWeakList.mli
+- CAMLOPT -c -for-pack Metacoq_template_plugin gen-src/plugin_core.ml
+- CAMLC -c gen-src/binNat.mli
+- CAMLOPT -c -for-pack Metacoq_template_plugin gen-src/ordersFacts.ml
+- CAMLC -c gen-src/binInt.mli
+- CAMLC -c gen-src/ascii.mli
+- CAMLC -c gen-src/mSetInterface.mli
+- CAMLOPT -c -for-pack Metacoq_template_plugin gen-src/orderedType0.ml
+- CAMLOPT -c -for-pack Metacoq_template_plugin gen-src/mSetWeakList.ml
+- CAMLC -c gen-src/utils.mli
+- CAMLOPT -c -for-pack Metacoq_template_plugin gen-src/binPos.ml
+- File &quot;gen-src/binPos.ml&quot;, line 16, characters 10-14:
+- Warning 39: unused rec flag.
+- File &quot;gen-src/binPos.ml&quot;, line 184, characters 10-13:
+- Warning 39: unused rec flag.
+- File &quot;gen-src/binPos.ml&quot;, line 254, characters 10-22:
+- Warning 39: unused rec flag.
+- CAMLC -c gen-src/mSetFacts.mli
+- CAMLOPT -c -for-pack Metacoq_template_plugin gen-src/mSetInterface.ml
+- CAMLOPT -c -for-pack Metacoq_template_plugin gen-src/utils.ml
+- CAMLC -c gen-src/mSetDecide.mli
+- File &quot;gen-src/mSetInterface.ml&quot;, line 467, characters 2-22:
+- Warning 32: unused value isok.
+- File &quot;gen-src/mSetInterface.ml&quot;, line 628, characters 2-22:
+- Warning 32: unused value isok.
+- File &quot;gen-src/mSetInterface.ml&quot;, line 845, characters 2-22:
+- Warning 32: unused value isok.
+- File &quot;gen-src/mSetInterface.ml&quot;, line 1027, characters 2-22:
+- Warning 32: unused value isok.
+- File &quot;gen-src/mSetInterface.ml&quot;, line 1175, characters 2-8:
+- Warning 34: unused type t.
+- CAMLC -c gen-src/mSetProperties.mli
+- CAMLOPT -c -for-pack Metacoq_template_plugin gen-src/mSetFacts.ml
+- CAMLC -c gen-src/universes0.mli
+- CAMLOPT -c -for-pack Metacoq_template_plugin gen-src/binNat.ml
+- CAMLC -c gen-src/ast0.mli
+- File &quot;gen-src/mSetFacts.ml&quot;, line 12, characters 2-15:
+- Warning 32: unused value empty.
+- File &quot;gen-src/mSetFacts.ml&quot;, line 14, characters 2-26:
+- Warning 32: unused value is_empty.
+- File &quot;gen-src/mSetFacts.ml&quot;, line 16, characters 2-28:
+- Warning 32: unused value mem.
+- File &quot;gen-src/mSetFacts.ml&quot;, line 18, characters 2-25:
+- Warning 32: unused value add.
+- File &quot;gen-src/mSetFacts.ml&quot;, line 20, characters 2-26:
+- Warning 32: unused value singleton.
+- File &quot;gen-src/mSetFacts.ml&quot;, line 22, characters 2-28:
+- Warning 32: unused value remove.
+- File &quot;gen-src/mSetFacts.ml&quot;, line 24, characters 2-25:
+- Warning 32: unused value union.
+- File &quot;gen-src/mSetFacts.ml&quot;, line 26, characters 2-25:
+- Warning 32: unused value inter.
+- File &quot;gen-src/mSetFacts.ml&quot;, line 28, characters 2-24:
+- Warning 32: unused value diff.
+- File &quot;gen-src/mSetFacts.ml&quot;, line 30, characters 2-28:
+- Warning 32: unused value equal.
+- File &quot;gen-src/mSetFacts.ml&quot;, line 32, characters 2-29:
+- Warning 32: unused value subset.
+- File &quot;gen-src/mSetFacts.ml&quot;, line 34, characters 2-51:
+- Warning 32: unused value fold.
+- File &quot;gen-src/mSetFacts.ml&quot;, line 36, characters 2-42:
+- Warning 32: unused value for_all.
+- File &quot;gen-src/mSetFacts.ml&quot;, line 38, characters 2-42:
+- Warning 32: unused value exists_.
+- File &quot;gen-src/mSetFacts.ml&quot;, line 40, characters 2-38:
+- Warning 32: unused value filter.
+- File &quot;gen-src/mSetFacts.ml&quot;, line 42, characters 2-45:
+- Warning 32: unused value partition.
+- File &quot;gen-src/mSetFacts.ml&quot;, line 44, characters 2-25:
+- Warning 32: unused value cardinal.
+- File &quot;gen-src/mSetFacts.ml&quot;, line 46, characters 2-30:
+- Warning 32: unused value elements.
+- File &quot;gen-src/mSetFacts.ml&quot;, line 48, characters 2-30:
+- Warning 32: unused value choose.
+- File &quot;gen-src/mSetFacts.ml&quot;, line 50, characters 2-29:
+- Warning 32: unused value eq_dec.
+- CAMLOPT -c -for-pack Metacoq_template_plugin gen-src/mSetDecide.ml
+- File &quot;gen-src/binNat.ml&quot;, line 78, characters 10-13:
+- Warning 39: unused rec flag.
+- File &quot;gen-src/binNat.ml&quot;, line 314, characters 10-15:
+- Warning 39: unused rec flag.
+- CAMLC -c gen-src/astUtils.mli
+- CAMLC -c gen-src/ast_quoter.ml
+- CAMLC -c gen-src/common0.mli
+- CAMLC -c gen-src/univSubst0.mli
+- CAMLOPT -c -for-pack Metacoq_template_plugin gen-src/mSetProperties.ml
+- CAMLC -c gen-src/liftSubst.mli
+- CAMLOPT -c -for-pack Metacoq_template_plugin gen-src/ascii.ml
+- CAMLC -c gen-src/extractable.mli
+- CAMLOPT -c -for-pack Metacoq_template_plugin gen-src/binInt.ml
+- CAMLC -c gen-src/pretty.mli
+- CAMLC -c gen-src/run_extractable.mli
+- File &quot;gen-src/binInt.ml&quot;, line 174, characters 10-13:
+- Warning 39: unused rec flag.
+- CAMLOPT -c -for-pack Metacoq_template_plugin gen-src/universes0.ml
+- findlib: [WARNING] Interface pretty.cmi occurs in several directories: /home/bench/.opam/ocaml-base-compiler.4.07.1/lib/camlp5, gen-src
+- CAMLOPT -c -for-pack Metacoq_template_plugin gen-src/ast0.ml
+- findlib: [WARNING] Interface pretty.cmi occurs in several directories: /home/bench/.opam/ocaml-base-compiler.4.07.1/lib/camlp5, gen-src
+- CAMLOPT -c -for-pack Metacoq_template_plugin gen-src/astUtils.ml
+- CAMLOPT -c -for-pack Metacoq_template_plugin gen-src/common0.ml
+- CAMLOPT -c -for-pack Metacoq_template_plugin gen-src/ast_quoter.ml
+- findlib: [WARNING] Interface pretty.cmi occurs in several directories: /home/bench/.opam/ocaml-base-compiler.4.07.1/lib/camlp5, gen-src
+- findlib: [WARNING] Interface pretty.cmi occurs in several directories: /home/bench/.opam/ocaml-base-compiler.4.07.1/lib/camlp5, gen-src
+- findlib: [WARNING] Interface pretty.cmi occurs in several directories: /home/bench/.opam/ocaml-base-compiler.4.07.1/lib/camlp5, gen-src
+- CAMLOPT -c -for-pack Metacoq_template_plugin gen-src/liftSubst.ml
+- CAMLOPT -c -for-pack Metacoq_template_plugin gen-src/univSubst0.ml
+- CAMLOPT -c -for-pack Metacoq_template_plugin gen-src/extractable.ml
+- findlib: [WARNING] Interface pretty.cmi occurs in several directories: /home/bench/.opam/ocaml-base-compiler.4.07.1/lib/camlp5, gen-src
+- findlib: [WARNING] Interface pretty.cmi occurs in several directories: /home/bench/.opam/ocaml-base-compiler.4.07.1/lib/camlp5, gen-src
+- findlib: [WARNING] Interface pretty.cmi occurs in several directories: /home/bench/.opam/ocaml-base-compiler.4.07.1/lib/camlp5, gen-src
+- CAMLOPT -c -for-pack Metacoq_template_plugin gen-src/ast_denoter.ml
+- findlib: [WARNING] Interface pretty.cmi occurs in several directories: /home/bench/.opam/ocaml-base-compiler.4.07.1/lib/camlp5, gen-src
+- CAMLOPT -c -for-pack Metacoq_template_plugin gen-src/pretty.ml
+- findlib: [WARNING] Interface pretty.cmi occurs in several directories: /home/bench/.opam/ocaml-base-compiler.4.07.1/lib/camlp5, gen-src
+- CAMLOPT -c -for-pack Metacoq_template_plugin gen-src/run_extractable.ml
+- findlib: [WARNING] Interface pretty.cmi occurs in several directories: /home/bench/.opam/ocaml-base-compiler.4.07.1/lib/camlp5, gen-src
+- File &quot;gen-src/run_extractable.ml&quot;, line 161, characters 8-20:
+- Warning 39: unused rec flag.
+- File &quot;gen-src/run_extractable.ml&quot;, line 39, characters 4-13:
+- Warning 32: unused value of_qualid.
+- File &quot;gen-src/run_extractable.ml&quot;, line 149, characters 4-10:
+- Warning 32: unused value of_nat.
+- File &quot;gen-src/run_extractable.ml&quot;, line 152, characters 4-16:
+- Warning 32: unused value of_cast_kind.
+- CAMLOPT -pack -o gen-src/metacoq_template_plugin.cmx
+- findlib: [WARNING] Interface pretty.cmi occurs in several directories: /home/bench/.opam/ocaml-base-compiler.4.07.1/lib/camlp5, gen-src
+- CAMLOPT -a -o gen-src/metacoq_template_plugin.cmxa
+- findlib: [WARNING] Interface pretty.cmi occurs in several directories: /home/bench/.opam/ocaml-base-compiler.4.07.1/lib/camlp5, gen-src
+- CAMLOPT -shared -o gen-src/metacoq_template_plugin.cmxs
+- findlib: [WARNING] Interface pretty.cmi occurs in several directories: /home/bench/.opam/ocaml-base-compiler.4.07.1/lib/camlp5, gen-src
+- COQC theories/ExtractableLoader.v
+- cp gen-src/metacoq_template_plugin.cm* build/
+- make[2]: Leaving directory &#39;/home/bench/.opam/ocaml-base-compiler.4.07.1/.opam-switch/build/coq-metacoq-checker.8.8.dev/template-coq&#39;
+- make[1]: Leaving directory &#39;/home/bench/.opam/ocaml-base-compiler.4.07.1/.opam-switch/build/coq-metacoq-checker.8.8.dev/template-coq&#39;
+- make -C checker
+- make[1]: Entering directory &#39;/home/bench/.opam/ocaml-base-compiler.4.07.1/.opam-switch/build/coq-metacoq-checker.8.8.dev/checker&#39;
+- make[1]: *** No rule to make target &#39;metacoq-config&#39;, needed by &#39;_CoqProject&#39;.  Stop.
+- make[1]: Leaving directory &#39;/home/bench/.opam/ocaml-base-compiler.4.07.1/.opam-switch/build/coq-metacoq-checker.8.8.dev/checker&#39;
+- Makefile:57: recipe for target &#39;checker&#39; failed
+- make: *** [checker] Error 2
+[ERROR] The compilation of coq-metacoq-checker failed at &quot;/home/bench/.opam/opam-init/hooks/sandbox.sh build make -j7 checker&quot;.
+#=== ERROR while compiling coq-metacoq-checker.8.8.dev ========================#
+# context              2.0.1 | linux/x86_64 | ocaml-base-compiler.4.07.1 | file:///home/bench/run/opam-coq-archive/extra-dev
+# path                 ~/.opam/ocaml-base-compiler.4.07.1/.opam-switch/build/coq-metacoq-checker.8.8.dev
+# command              ~/.opam/opam-init/hooks/sandbox.sh build make -j7 checker
+# exit-code            2
+# env-file             ~/.opam/log/coq-metacoq-checker-13789-a00279.env
+# output-file          ~/.opam/log/coq-metacoq-checker-13789-a00279.out
+### output ###
+# [...]
+# CAMLOPT -shared -o gen-src/metacoq_template_plugin.cmxs
+# findlib: [WARNING] Interface pretty.cmi occurs in several directories: /home/bench/.opam/ocaml-base-compiler.4.07.1/lib/camlp5, gen-src
+# COQC theories/ExtractableLoader.v
+# cp gen-src/metacoq_template_plugin.cm* build/
+# make[2]: Leaving directory &#39;/home/bench/.opam/ocaml-base-compiler.4.07.1/.opam-switch/build/coq-metacoq-checker.8.8.dev/template-coq&#39;
+# make[1]: Leaving directory &#39;/home/bench/.opam/ocaml-base-compiler.4.07.1/.opam-switch/build/coq-metacoq-checker.8.8.dev/template-coq&#39;
+# make -C checker
+# make[1]: Entering directory &#39;/home/bench/.opam/ocaml-base-compiler.4.07.1/.opam-switch/build/coq-metacoq-checker.8.8.dev/checker&#39;
+# make[1]: *** No rule to make target &#39;metacoq-config&#39;, needed by &#39;_CoqProject&#39;.  Stop.
+# make[1]: Leaving directory &#39;/home/bench/.opam/ocaml-base-compiler.4.07.1/.opam-switch/build/coq-metacoq-checker.8.8.dev/checker&#39;
+# Makefile:57: recipe for target &#39;checker&#39; failed
+# make: *** [checker] Error 2
+&lt;&gt;&lt;&gt; Error report &lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;
++- The following actions failed
+| - build coq-metacoq-checker 8.8.dev
++- 
+- No changes have been performed
+# Run eval $(opam env) to update the current shell environment
+&#39;opam install -j1 -y -v coq-metacoq-checker.8.8.dev&#39; failed.
+</pre></dd>
+            </dl>
+            <h2>Installation size</h2>
+            <p>No files were installed.</p>
+            <h2>Uninstall</h2>
+            <dl class="dl-horizontal">
+              <dt>Command</dt>
+              <dd><code>true</code></dd>
+              <dt>Return code</dt>
+              <dd>0</dd>
+              <dt>Missing removes</dt>
+              <dd>
+                none
+              </dd>
+              <dt>Wrong removes</dt>
+              <dd>
+                none
+              </dd>
+            </dl>
+          </div>
+        </div>
+      </div>
+      <hr/>
+      <div class="footer">
+        <p class="text-center">
+          <small>Sources are on <a href="https://github.com/coq-bench">GitHub</a>. © Guillaume Claret.</small>
+        </p>
+      </div>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="../../../../../bootstrap.min.js"></script>
+  </body>
+</html>
