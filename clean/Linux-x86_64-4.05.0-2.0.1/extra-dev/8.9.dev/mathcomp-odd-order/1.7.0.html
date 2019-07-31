@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>mathcomp-odd-order: 22 m 2 s</title>
+    <link rel="shortcut icon" type="image/png" href="../../../../../favicon.png" />
+    <link href="../../../../../bootstrap.min.css" rel="stylesheet">
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+    <script src="../../../../../moment.min.js"></script>
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="container">
+      <div class="navbar navbar-default" role="navigation">
+        <div class="container-fluid">
+          <div class="navbar-header">
+            <a class="navbar-brand" href="../../../../.."><i class="fa fa-lg fa-flag-checkered"></i> Coq bench</a>
+          </div>
+          <div id="navbar" class="collapse navbar-collapse">
+            <ul class="nav navbar-nav">
+              <li><a href="../..">clean / extra-dev</a></li>
+              <li class="active"><a href="">8.9.dev / mathcomp-odd-order - 1.7.0</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="article">
+        <div class="row">
+          <div class="col-md-12">
+            <a href="../..">« Up</a>
+            <h1>
+              mathcomp-odd-order
+              <small>
+                1.7.0
+                <span class="label label-success">22 m 2 s</span>
+              </small>
+            </h1>
+            <p><em><script>document.write(moment("2019-07-31 22:33:13 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2019-07-31 22:33:13 UTC)</em><p>
+            <h2>Context</h2>
+            <pre># Packages matching: installed
+# Name              # Installed       # Synopsis
+base-bigarray       base
+base-num            base              Num library distributed with the OCaml compiler
+base-threads        base
+base-unix           base
+camlp5              7.06.10-g84ce6cc4 Preprocessor-pretty-printer of OCaml
+conf-m4             1                 Virtual package relying on m4
+coq                 8.9.dev           Formal proof management system
+num                 0                 The Num library for arbitrary-precision integer and rational arithmetic
+ocaml               4.05.0            The OCaml compiler (virtual package)
+ocaml-base-compiler 4.05.0            Official 4.05.0 release
+ocaml-config        1                 OCaml Switch Configuration
+ocamlfind           1.8.1             A library manager for OCaml
+# opam file:
+opam-version: &quot;2.0&quot;
+name: &quot;coq-mathcomp-odd-order&quot;
+version: &quot;1.7.0&quot;
+maintainer: &quot;Mathematical Components &lt;mathcomp-dev@sympa.inria.fr&gt;&quot;
+homepage: &quot;http://math-comp.github.io/math-comp/&quot;
+bug-reports: &quot;Mathematical Components &lt;mathcomp-dev@sympa.inria.fr&gt;&quot;
+license: &quot;CeCILL-B&quot;
+build: [ 
+     [make &quot;-j&quot; &quot;%{jobs}%&quot;]
+]
+install: [ make &quot;install&quot; ]
+remove: [ 
+     [&quot;sh&quot; &quot;-c&quot; &quot;rm -rf &#39;%{lib}%/coq/user-contrib/mathcomp/odd_order&#39;&quot;]
+]
+depends: [
+  &quot;ocaml&quot;
+  &quot;coq-mathcomp-algebra&quot; {= &quot;1.7.0&quot;}
+  &quot;coq-mathcomp-character&quot; {= &quot;1.7.0&quot;}
+  &quot;coq-mathcomp-field&quot; {= &quot;1.7.0&quot;}
+  &quot;coq-mathcomp-fingroup&quot; {= &quot;1.7.0&quot;}
+  &quot;coq-mathcomp-solvable&quot; {= &quot;1.7.0&quot;}
+  &quot;coq-mathcomp-ssreflect&quot; {= &quot;1.7.0&quot;}
+]
+tags: [ &quot;keyword:finite groups&quot; &quot;keyword:Feit Thompson theorem&quot; &quot;keyword:small scale reflection&quot; &quot;keyword:mathematical components&quot; &quot;keyword:odd order theorem&quot; ]
+authors: [ &quot;Jeremy Avigad &lt;&gt;&quot; &quot;Andrea Asperti &lt;&gt;&quot; &quot;Stephane Le Roux &lt;&gt;&quot; &quot;Yves Bertot &lt;&gt;&quot; &quot;Laurence Rideau &lt;&gt;&quot; &quot;Enrico Tassi &lt;&gt;&quot; &quot;Ioana Pasca &lt;&gt;&quot; &quot;Georges Gonthier &lt;&gt;&quot; &quot;Sidi Ould Biha &lt;&gt;&quot; &quot;Cyril Cohen &lt;&gt;&quot; &quot;Francois Garillot &lt;&gt;&quot; &quot;Alexey Solovyev &lt;&gt;&quot; &quot;Russell O&#39;Connor &lt;&gt;&quot; &quot;Laurent Théry &lt;&gt;&quot; &quot;Assia Mahboubi &lt;&gt;&quot; ]
+synopsis: &quot;The formal proof of the Feit-Thompson theorem&quot;
+description: &quot;&quot;&quot;
+The formal proof of the Feit-Thompson theorem.
+From mathcomp Require Import all_ssreflect all_fingroup all_solvable PFsection14.
+Check Feit_Thompson.
+   : forall (gT : finGroupType) (G : {group gT}), odd #|G| -&gt; solvable G
+From mathcomp Require Import all_ssreflect all_fingroup 
+                             all_solvable stripped_odd_order_theorem.
+Check stripped_Odd_Order.
+   : forall (T : Type) (mul : T -&gt; T -&gt; T) (one : T) (inv : T -&gt; T)
+         (G : T -&gt; Type) (n : natural),
+       group_axioms T mul one inv -&gt;
+       group T mul one inv G -&gt;
+       finite_of_order T G n -&gt; odd n -&gt; solvable_group T mul one inv G&quot;&quot;&quot;
+url {
+  src:
+    &quot;https://github.com/math-comp/odd-order/archive/mathcomp-odd-order.1.7.0.tar.gz&quot;
+  checksum: &quot;md5=e7a90d25223e257a604a8574a06a3e3c&quot;
+}
+</pre>
+            <h2>Lint</h2>
+            <dl class="dl-horizontal">
+              <dt>Command</dt>
+              <dd><code>true</code></dd>
+              <dt>Return code</dt>
+              <dd>0</dd>
+            </dl>
+            <h2>Dry install</h2>
+            <p>Dry install with the current Coq version:</p>
+            <dl class="dl-horizontal">
+              <dt>Command</dt>
+              <dd><code>opam install -y --show-action coq-mathcomp-odd-order.1.7.0 coq.8.9.dev</code></dd>
+              <dt>Return code</dt>
+              <dd>0</dd>
+            </dl>
+            <p>Dry install without Coq/switch base, to test if the problem was incompatibility with the current Coq/OCaml version:</p>
+            <dl class="dl-horizontal">
+              <dt>Command</dt>
+              <dd><code>true</code></dd>
+              <dt>Return code</dt>
+              <dd>0</dd>
+            </dl>
+            <h2>Install dependencies</h2>
+            <dl class="dl-horizontal">
+              <dt>Command</dt>
+              <dd><code>opam list; echo; ulimit -Sv 4000000; timeout 300m opam install -y --deps-only coq-mathcomp-odd-order.1.7.0</code></dd>
+              <dt>Return code</dt>
+              <dd>0</dd>
+              <dt>Duration</dt>
+              <dd>22 m 55 s</dd>
+            </dl>
+            <h2>Install</h2>
+            <dl class="dl-horizontal">
+              <dt>Command</dt>
+              <dd><code>opam list; echo; ulimit -Sv 4000000; timeout 300m opam install -j1 -y -v coq-mathcomp-odd-order.1.7.0</code></dd>
+              <dt>Return code</dt>
+              <dd>0</dd>
+              <dt>Duration</dt>
+              <dd>22 m 2 s</dd>
+            </dl>
+            <h2>Installation size</h2>
+            <p>Total: 72 M</p>
+            <ul>
+              <li>21 M <code>../ocaml-base-compiler.4.05.0/lib/coq/user-contrib/odd_order/PFsection3.vo</code></li>
+              <li>3 M <code>../ocaml-base-compiler.4.05.0/lib/coq/user-contrib/odd_order/BGsection14.vo</code></li>
+              <li>2 M <code>../ocaml-base-compiler.4.05.0/lib/coq/user-contrib/odd_order/PFsection9.vo</code></li>
+              <li>2 M <code>../ocaml-base-compiler.4.05.0/lib/coq/user-contrib/odd_order/PFsection13.vo</code></li>
+              <li>2 M <code>../ocaml-base-compiler.4.05.0/lib/coq/user-contrib/odd_order/BGsection12.vo</code></li>
+              <li>2 M <code>../ocaml-base-compiler.4.05.0/lib/coq/user-contrib/odd_order/BGsection15.vo</code></li>
+              <li>1 M <code>../ocaml-base-compiler.4.05.0/lib/coq/user-contrib/odd_order/PFsection12.vo</code></li>
+              <li>1 M <code>../ocaml-base-compiler.4.05.0/lib/coq/user-contrib/odd_order/BGsection16.vo</code></li>
+              <li>1 M <code>../ocaml-base-compiler.4.05.0/lib/coq/user-contrib/odd_order/PFsection5.vo</code></li>
+              <li>1 M <code>../ocaml-base-compiler.4.05.0/lib/coq/user-contrib/odd_order/PFsection14.vo</code></li>
+              <li>1 M <code>../ocaml-base-compiler.4.05.0/lib/coq/user-contrib/odd_order/PFsection6.vo</code></li>
+              <li>1 M <code>../ocaml-base-compiler.4.05.0/lib/coq/user-contrib/odd_order/PFsection9.glob</code></li>
+              <li>1 M <code>../ocaml-base-compiler.4.05.0/lib/coq/user-contrib/odd_order/PFsection10.vo</code></li>
+              <li>1 M <code>../ocaml-base-compiler.4.05.0/lib/coq/user-contrib/odd_order/PFsection13.glob</code></li>
+              <li>1 M <code>../ocaml-base-compiler.4.05.0/lib/coq/user-contrib/odd_order/BGsection3.vo</code></li>
+              <li>1 M <code>../ocaml-base-compiler.4.05.0/lib/coq/user-contrib/odd_order/PFsection11.vo</code></li>
+              <li>1024 K <code>../ocaml-base-compiler.4.05.0/lib/coq/user-contrib/odd_order/BGsection12.glob</code></li>
+              <li>1018 K <code>../ocaml-base-compiler.4.05.0/lib/coq/user-contrib/odd_order/PFsection8.vo</code></li>
+              <li>916 K <code>../ocaml-base-compiler.4.05.0/lib/coq/user-contrib/odd_order/BGsection14.glob</code></li>
+              <li>893 K <code>../ocaml-base-compiler.4.05.0/lib/coq/user-contrib/odd_order/PFsection4.vo</code></li>
+              <li>891 K <code>../ocaml-base-compiler.4.05.0/lib/coq/user-contrib/odd_order/BGsection2.vo</code></li>
+              <li>889 K <code>../ocaml-base-compiler.4.05.0/lib/coq/user-contrib/odd_order/BGsection4.vo</code></li>
+              <li>843 K <code>../ocaml-base-compiler.4.05.0/lib/coq/user-contrib/odd_order/BGsection3.glob</code></li>
+              <li>826 K <code>../ocaml-base-compiler.4.05.0/lib/coq/user-contrib/odd_order/BGsection13.vo</code></li>
+              <li>808 K <code>../ocaml-base-compiler.4.05.0/lib/coq/user-contrib/odd_order/BGsection10.vo</code></li>
+              <li>765 K <code>../ocaml-base-compiler.4.05.0/lib/coq/user-contrib/odd_order/PFsection6.glob</code></li>
+              <li>764 K <code>../ocaml-base-compiler.4.05.0/lib/coq/user-contrib/odd_order/wielandt_fixpoint.vo</code></li>
+              <li>733 K <code>../ocaml-base-compiler.4.05.0/lib/coq/user-contrib/odd_order/BGappendixC.vo</code></li>
+              <li>701 K <code>../ocaml-base-compiler.4.05.0/lib/coq/user-contrib/odd_order/PFsection7.vo</code></li>
+              <li>699 K <code>../ocaml-base-compiler.4.05.0/lib/coq/user-contrib/odd_order/BGsection4.glob</code></li>
+              <li>695 K <code>../ocaml-base-compiler.4.05.0/lib/coq/user-contrib/odd_order/PFsection3.glob</code></li>
+              <li>678 K <code>../ocaml-base-compiler.4.05.0/lib/coq/user-contrib/odd_order/PFsection12.glob</code></li>
+              <li>663 K <code>../ocaml-base-compiler.4.05.0/lib/coq/user-contrib/odd_order/PFsection5.glob</code></li>
+              <li>630 K <code>../ocaml-base-compiler.4.05.0/lib/coq/user-contrib/odd_order/PFsection10.glob</code></li>
+              <li>628 K <code>../ocaml-base-compiler.4.05.0/lib/coq/user-contrib/odd_order/PFsection2.vo</code></li>
+              <li>618 K <code>../ocaml-base-compiler.4.05.0/lib/coq/user-contrib/odd_order/PFsection14.glob</code></li>
+              <li>603 K <code>../ocaml-base-compiler.4.05.0/lib/coq/user-contrib/odd_order/BGsection1.vo</code></li>
+              <li>590 K <code>../ocaml-base-compiler.4.05.0/lib/coq/user-contrib/odd_order/PFsection11.glob</code></li>
+              <li>587 K <code>../ocaml-base-compiler.4.05.0/lib/coq/user-contrib/odd_order/BGappendixC.glob</code></li>
+              <li>564 K <code>../ocaml-base-compiler.4.05.0/lib/coq/user-contrib/odd_order/BGsection1.glob</code></li>
+              <li>560 K <code>../ocaml-base-compiler.4.05.0/lib/coq/user-contrib/odd_order/BGsection10.glob</code></li>
+              <li>549 K <code>../ocaml-base-compiler.4.05.0/lib/coq/user-contrib/odd_order/BGsection15.glob</code></li>
+              <li>525 K <code>../ocaml-base-compiler.4.05.0/lib/coq/user-contrib/odd_order/BGsection2.glob</code></li>
+              <li>498 K <code>../ocaml-base-compiler.4.05.0/lib/coq/user-contrib/odd_order/PFsection1.vo</code></li>
+              <li>458 K <code>../ocaml-base-compiler.4.05.0/lib/coq/user-contrib/odd_order/BGsection16.glob</code></li>
+              <li>448 K <code>../ocaml-base-compiler.4.05.0/lib/coq/user-contrib/odd_order/BGsection7.vo</code></li>
+              <li>435 K <code>../ocaml-base-compiler.4.05.0/lib/coq/user-contrib/odd_order/PFsection7.glob</code></li>
+              <li>417 K <code>../ocaml-base-compiler.4.05.0/lib/coq/user-contrib/odd_order/BGsection13.glob</code></li>
+              <li>415 K <code>../ocaml-base-compiler.4.05.0/lib/coq/user-contrib/odd_order/PFsection4.glob</code></li>
+              <li>378 K <code>../ocaml-base-compiler.4.05.0/lib/coq/user-contrib/odd_order/PFsection8.glob</code></li>
+              <li>374 K <code>../ocaml-base-compiler.4.05.0/lib/coq/user-contrib/odd_order/BGsection7.glob</code></li>
+              <li>341 K <code>../ocaml-base-compiler.4.05.0/lib/coq/user-contrib/odd_order/PFsection1.glob</code></li>
+              <li>318 K <code>../ocaml-base-compiler.4.05.0/lib/coq/user-contrib/odd_order/wielandt_fixpoint.glob</code></li>
+              <li>312 K <code>../ocaml-base-compiler.4.05.0/lib/coq/user-contrib/odd_order/PFsection2.glob</code></li>
+              <li>304 K <code>../ocaml-base-compiler.4.05.0/lib/coq/user-contrib/odd_order/BGsection5.vo</code></li>
+              <li>279 K <code>../ocaml-base-compiler.4.05.0/lib/coq/user-contrib/odd_order/BGappendixAB.vo</code></li>
+              <li>260 K <code>../ocaml-base-compiler.4.05.0/lib/coq/user-contrib/odd_order/BGsection9.vo</code></li>
+              <li>241 K <code>../ocaml-base-compiler.4.05.0/lib/coq/user-contrib/odd_order/BGsection5.glob</code></li>
+              <li>232 K <code>../ocaml-base-compiler.4.05.0/lib/coq/user-contrib/odd_order/BGsection11.vo</code></li>
+              <li>231 K <code>../ocaml-base-compiler.4.05.0/lib/coq/user-contrib/odd_order/BGappendixAB.glob</code></li>
+              <li>218 K <code>../ocaml-base-compiler.4.05.0/lib/coq/user-contrib/odd_order/BGsection8.vo</code></li>
+              <li>174 K <code>../ocaml-base-compiler.4.05.0/lib/coq/user-contrib/odd_order/BGsection6.vo</code></li>
+              <li>167 K <code>../ocaml-base-compiler.4.05.0/lib/coq/user-contrib/odd_order/BGsection9.glob</code></li>
+              <li>160 K <code>../ocaml-base-compiler.4.05.0/lib/coq/user-contrib/odd_order/BGsection8.glob</code></li>
+              <li>158 K <code>../ocaml-base-compiler.4.05.0/lib/coq/user-contrib/odd_order/BGsection11.glob</code></li>
+              <li>141 K <code>../ocaml-base-compiler.4.05.0/lib/coq/user-contrib/odd_order/BGsection12.v</code></li>
+              <li>134 K <code>../ocaml-base-compiler.4.05.0/lib/coq/user-contrib/odd_order/BGsection14.v</code></li>
+              <li>133 K <code>../ocaml-base-compiler.4.05.0/lib/coq/user-contrib/odd_order/BGsection6.glob</code></li>
+              <li>128 K <code>../ocaml-base-compiler.4.05.0/lib/coq/user-contrib/odd_order/stripped_odd_order_theorem.vo</code></li>
+              <li>125 K <code>../ocaml-base-compiler.4.05.0/lib/coq/user-contrib/odd_order/PFsection9.v</code></li>
+              <li>112 K <code>../ocaml-base-compiler.4.05.0/lib/coq/user-contrib/odd_order/PFsection13.v</code></li>
+              <li>98 K <code>../ocaml-base-compiler.4.05.0/lib/coq/user-contrib/odd_order/BGsection3.v</code></li>
+              <li>87 K <code>../ocaml-base-compiler.4.05.0/lib/coq/user-contrib/odd_order/PFsection3.v</code></li>
+              <li>82 K <code>../ocaml-base-compiler.4.05.0/lib/coq/user-contrib/odd_order/BGsection15.v</code></li>
+              <li>78 K <code>../ocaml-base-compiler.4.05.0/lib/coq/user-contrib/odd_order/PFsection5.v</code></li>
+              <li>77 K <code>../ocaml-base-compiler.4.05.0/lib/coq/user-contrib/odd_order/PFsection6.v</code></li>
+              <li>76 K <code>../ocaml-base-compiler.4.05.0/lib/coq/user-contrib/odd_order/BGsection4.v</code></li>
+              <li>72 K <code>../ocaml-base-compiler.4.05.0/lib/coq/user-contrib/odd_order/BGsection10.v</code></li>
+              <li>71 K <code>../ocaml-base-compiler.4.05.0/lib/coq/user-contrib/odd_order/PFsection12.v</code></li>
+              <li>65 K <code>../ocaml-base-compiler.4.05.0/lib/coq/user-contrib/odd_order/BGsection16.v</code></li>
+              <li>64 K <code>../ocaml-base-compiler.4.05.0/lib/coq/user-contrib/odd_order/PFsection11.v</code></li>
+              <li>64 K <code>../ocaml-base-compiler.4.05.0/lib/coq/user-contrib/odd_order/PFsection10.v</code></li>
+              <li>64 K <code>../ocaml-base-compiler.4.05.0/lib/coq/user-contrib/odd_order/PFsection14.v</code></li>
+              <li>63 K <code>../ocaml-base-compiler.4.05.0/lib/coq/user-contrib/odd_order/BGsection1.v</code></li>
+              <li>62 K <code>../ocaml-base-compiler.4.05.0/lib/coq/user-contrib/odd_order/BGsection13.v</code></li>
+              <li>59 K <code>../ocaml-base-compiler.4.05.0/lib/coq/user-contrib/odd_order/BGsection2.v</code></li>
+              <li>53 K <code>../ocaml-base-compiler.4.05.0/lib/coq/user-contrib/odd_order/PFsection8.v</code></li>
+              <li>48 K <code>../ocaml-base-compiler.4.05.0/lib/coq/user-contrib/odd_order/PFsection4.v</code></li>
+              <li>48 K <code>../ocaml-base-compiler.4.05.0/lib/coq/user-contrib/odd_order/stripped_odd_order_theorem.glob</code></li>
+              <li>45 K <code>../ocaml-base-compiler.4.05.0/lib/coq/user-contrib/odd_order/BGsection7.v</code></li>
+              <li>42 K <code>../ocaml-base-compiler.4.05.0/lib/coq/user-contrib/odd_order/PFsection7.v</code></li>
+              <li>38 K <code>../ocaml-base-compiler.4.05.0/lib/coq/user-contrib/odd_order/BGappendixC.v</code></li>
+              <li>37 K <code>../ocaml-base-compiler.4.05.0/lib/coq/user-contrib/odd_order/wielandt_fixpoint.v</code></li>
+              <li>37 K <code>../ocaml-base-compiler.4.05.0/lib/coq/user-contrib/odd_order/PFsection2.v</code></li>
+              <li>35 K <code>../ocaml-base-compiler.4.05.0/lib/coq/user-contrib/odd_order/PFsection1.v</code></li>
+              <li>27 K <code>../ocaml-base-compiler.4.05.0/lib/coq/user-contrib/odd_order/BGsection5.v</code></li>
+              <li>24 K <code>../ocaml-base-compiler.4.05.0/lib/coq/user-contrib/odd_order/BGsection9.v</code></li>
+              <li>24 K <code>../ocaml-base-compiler.4.05.0/lib/coq/user-contrib/odd_order/BGappendixAB.v</code></li>
+              <li>22 K <code>../ocaml-base-compiler.4.05.0/lib/coq/user-contrib/odd_order/BGsection11.v</code></li>
+              <li>20 K <code>../ocaml-base-compiler.4.05.0/lib/coq/user-contrib/odd_order/BGsection8.v</code></li>
+              <li>14 K <code>../ocaml-base-compiler.4.05.0/lib/coq/user-contrib/odd_order/BGsection6.v</code></li>
+              <li>9 K <code>../ocaml-base-compiler.4.05.0/lib/coq/user-contrib/odd_order/stripped_odd_order_theorem.v</code></li>
+            </ul>
+            <h2>Uninstall</h2>
+            <dl class="dl-horizontal">
+              <dt>Command</dt>
+              <dd><code>opam remove -y coq-mathcomp-odd-order.1.7.0</code></dd>
+              <dt>Return code</dt>
+              <dd>0</dd>
+              <dt>Missing removes</dt>
+              <dd>
+                none
+              </dd>
+              <dt>Wrong removes</dt>
+              <dd>
+                none
+              </dd>
+            </dl>
+          </div>
+        </div>
+      </div>
+      <hr/>
+      <div class="footer">
+        <p class="text-center">
+          <small>Sources are on <a href="https://github.com/coq-bench">GitHub</a>. © Guillaume Claret.</small>
+        </p>
+      </div>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="../../../../../bootstrap.min.js"></script>
+  </body>
+</html>
