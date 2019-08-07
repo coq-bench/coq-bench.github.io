@@ -1,0 +1,886 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>fiat-crypto: Error</title>
+    <link rel="shortcut icon" type="image/png" href="../../../../../favicon.png" />
+    <link href="../../../../../bootstrap.min.css" rel="stylesheet">
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+    <script src="../../../../../moment.min.js"></script>
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="container">
+      <div class="navbar navbar-default" role="navigation">
+        <div class="container-fluid">
+          <div class="navbar-header">
+            <a class="navbar-brand" href="../../../../.."><i class="fa fa-lg fa-flag-checkered"></i> Coq bench</a>
+          </div>
+          <div id="navbar" class="collapse navbar-collapse">
+            <ul class="nav navbar-nav">
+              <li><a href="../..">clean / extra-dev</a></li>
+              <li class="active"><a href="">8.8.dev / fiat-crypto - 8.8.dev</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="article">
+        <div class="row">
+          <div class="col-md-12">
+            <a href="../..">« Up</a>
+            <h1>
+              fiat-crypto
+              <small>
+                8.8.dev
+                <span class="label label-danger">Error</span>
+              </small>
+            </h1>
+            <p><em><script>document.write(moment("2019-08-06 22:51:00 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2019-08-06 22:51:00 UTC)</em><p>
+            <h2>Context</h2>
+            <pre># Packages matching: installed
+# Name              # Installed       # Synopsis
+base-bigarray       base
+base-num            base              Num library distributed with the OCaml compiler
+base-threads        base
+base-unix           base
+camlp5              7.06.10-g84ce6cc4 Preprocessor-pretty-printer of OCaml
+conf-m4             1                 Virtual package relying on m4
+coq                 8.8.dev           Formal proof management system.
+num                 0                 The Num library for arbitrary-precision integer and rational arithmetic
+ocaml               4.05.0            The OCaml compiler (virtual package)
+ocaml-base-compiler 4.05.0            Official 4.05.0 release
+ocaml-config        1                 OCaml Switch Configuration
+ocamlfind           1.8.1             A library manager for OCaml
+# opam file:
+opam-version: &quot;2.0&quot;
+authors: [
+  &quot;Andres Erbsen &lt;andreser@mit.edu&gt;&quot;
+  &quot;Google Inc.&quot;
+  &quot;Jade Philipoom &lt;jadep@mit.edu&gt; &lt;jade.philipoom@gmail.com&gt;&quot;
+  &quot;Massachusetts Institute of Technology&quot;
+]
+maintainer: &quot;Jason Gross &lt;jgross@mit.edu&gt;&quot;
+homepage: &quot;https://github.com/mit-plv/fiat-crypto&quot;
+bug-reports: &quot;https://github.com/mit-plv/fiat-crypto/issues&quot;
+license: &quot;MIT&quot;
+build: [
+  [&quot;git&quot; &quot;submodule&quot; &quot;update&quot; &quot;--init&quot; &quot;--recursive&quot;]
+  [make &quot;-j%{jobs}%&quot; &quot;coq&quot; &quot;coqprime-all&quot;]
+]
+install: [make &quot;install&quot;]
+remove: [&quot;rm&quot; &quot;-r&quot; &quot;-f&quot; &quot;%{lib}%/coq/user-contrib/Crypto&quot;]
+depends: [
+  &quot;ocaml&quot;
+  &quot;coq&quot; {= &quot;8.8.dev&quot;}
+  &quot;coq-bignums&quot;
+]
+dev-repo: &quot;git+https://github.com/mit-plv/fiat-crypto.git&quot;
+synopsis: &quot;Cryptographic Primitive Code Generation in Fiat.&quot;
+flags: light-uninstall
+url {
+  src: &quot;git+https://github.com/mit-plv/fiat-crypto.git#master&quot;
+}
+</pre>
+            <h2>Lint</h2>
+            <dl class="dl-horizontal">
+              <dt>Command</dt>
+              <dd><code>true</code></dd>
+              <dt>Return code</dt>
+              <dd>0</dd>
+            </dl>
+            <h2>Dry install</h2>
+            <p>Dry install with the current Coq version:</p>
+            <dl class="dl-horizontal">
+              <dt>Command</dt>
+              <dd><code>opam install -y --show-action coq-fiat-crypto.8.8.dev coq.8.8.dev</code></dd>
+              <dt>Return code</dt>
+              <dd>0</dd>
+            </dl>
+            <p>Dry install without Coq/switch base, to test if the problem was incompatibility with the current Coq/OCaml version:</p>
+            <dl class="dl-horizontal">
+              <dt>Command</dt>
+              <dd><code>true</code></dd>
+              <dt>Return code</dt>
+              <dd>0</dd>
+            </dl>
+            <h2>Install dependencies</h2>
+            <dl class="dl-horizontal">
+              <dt>Command</dt>
+              <dd><code>opam list; echo; ulimit -Sv 4000000; timeout 60m opam install -y --deps-only coq-fiat-crypto.8.8.dev</code></dd>
+              <dt>Return code</dt>
+              <dd>0</dd>
+              <dt>Duration</dt>
+              <dd>1 m 34 s</dd>
+            </dl>
+            <h2>Install</h2>
+            <dl class="dl-horizontal">
+              <dt>Command</dt>
+              <dd><code>opam list; echo; ulimit -Sv 4000000; timeout 60m opam install -j1 -y -v coq-fiat-crypto.8.8.dev</code></dd>
+              <dt>Return code</dt>
+              <dd>7936</dd>
+              <dt>Duration</dt>
+              <dd>37 m 3 s</dd>
+              <dt>Output</dt>
+              <dd><pre># Packages matching: installed
+# Name              # Installed       # Synopsis
+base-bigarray       base
+base-num            base              Num library distributed with the OCaml compiler
+base-threads        base
+base-unix           base
+camlp5              7.06.10-g84ce6cc4 Preprocessor-pretty-printer of OCaml
+conf-m4             1                 Virtual package relying on m4
+coq                 8.8.dev           Formal proof management system.
+coq-bignums         8.8.dev           Bignums, the Coq library of arbitrary large numbers
+num                 0                 The Num library for arbitrary-precision integer and rational arithmetic
+ocaml               4.05.0            The OCaml compiler (virtual package)
+ocaml-base-compiler 4.05.0            Official 4.05.0 release
+ocaml-config        1                 OCaml Switch Configuration
+ocamlfind           1.8.1             A library manager for OCaml
+The following actions will be performed:
+  - install coq-fiat-crypto 8.8.dev
+&lt;&gt;&lt;&gt; Gathering sources &gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;
+Processing  1/1: [coq-fiat-crypto.8.8.dev: git]
+[coq-fiat-crypto.8.8.dev] synchronised from git+https://github.com/mit-plv/fiat-crypto.git#master
+&lt;&gt;&lt;&gt; Processing actions &lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;
+Processing  1/2: [coq-fiat-crypto: git submodule]
++ /home/bench/.opam/opam-init/hooks/sandbox.sh &quot;build&quot; &quot;git&quot; &quot;submodule&quot; &quot;update&quot; &quot;--init&quot; &quot;--recursive&quot; (CWD=/home/bench/.opam/ocaml-base-compiler.4.05.0/.opam-switch/build/coq-fiat-crypto.8.8.dev)
+Processing  1/2: [coq-fiat-crypto: make coq]
++ /home/bench/.opam/opam-init/hooks/sandbox.sh &quot;build&quot; &quot;make&quot; &quot;-j7&quot; &quot;coq&quot; &quot;coqprime-all&quot; (CWD=/home/bench/.opam/ocaml-base-compiler.4.05.0/.opam-switch/build/coq-fiat-crypto.8.8.dev)
+- Makefile:385: src/Rewriter/PerfTesting/Specific/generated/primes.mk: No such file or directory
+- ./src/Rewriter/PerfTesting/Specific/make.py primes.txt
+- COQ_MAKEFILE -f _CoqProject &gt; Makefile.coq
+- COQDEP VFILES
+- *** Warning: in file src/Util/NumTheoryUtil.v, library Coqprime.PrimalityTest.Euler is required and has not been found in the loadpath!
+- *** Warning: in file src/Util/NumTheoryUtil.v, library Coqprime.PrimalityTest.Zp is required and has not been found in the loadpath!
+- *** Warning: in file src/Util/NumTheoryUtil.v, library Coqprime.PrimalityTest.IGroup is required and has not been found in the loadpath!
+- *** Warning: in file src/Util/NumTheoryUtil.v, library Coqprime.PrimalityTest.EGroup is required and has not been found in the loadpath!
+- *** Warning: in file src/Util/NumTheoryUtil.v, library Coqprime.PrimalityTest.FGroup is required and has not been found in the loadpath!
+- *** Warning: in file src/Util/NumTheoryUtil.v, library Coqprime.List.UList is required and has not been found in the loadpath!
+- *** Warning: in file src/Util/NumTheoryUtil.v, library Coqprime.PrimalityTest.Euler is required and has not been found in the loadpath!
+- *** Warning: in file src/Util/NumTheoryUtil.v, library Coqprime.PrimalityTest.Zp is required and has not been found in the loadpath!
+- *** Warning: in file src/Util/NumTheoryUtil.v, library Coqprime.PrimalityTest.IGroup is required and has not been found in the loadpath!
+- *** Warning: in file src/Util/NumTheoryUtil.v, library Coqprime.PrimalityTest.EGroup is required and has not been found in the loadpath!
+- *** Warning: in file src/Util/NumTheoryUtil.v, library Coqprime.PrimalityTest.FGroup is required and has not been found in the loadpath!
+- *** Warning: in file src/Util/NumTheoryUtil.v, library Coqprime.List.UList is required and has not been found in the loadpath!
+- (cd coqprime &amp;&amp; coq_makefile -f _CoqProject -o Makefile)
+- make --no-print-directory -C coqprime src/Coqprime/PrimalityTest/Zp.vo
+- COQDEP VFILES
+- COQC src/Coqprime/N/NatAux.v
+- COQC src/Coqprime/Tactic/Tactic.v
+- COQC src/Coqprime/Z/ZCAux.v
+- COQC src/Coqprime/List/ListAux.v
+- COQC src/Coqprime/List/Permutation.v
+- COQC src/Coqprime/List/UList.v
+- COQC src/Coqprime/List/Iterator.v
+- COQC src/Coqprime/PrimalityTest/Root.v
+- COQC src/Coqprime/PrimalityTest/FGroup.v
+- COQC src/Coqprime/List/ZProgression.v
+- COQC src/Coqprime/PrimalityTest/Lagrange.v
+- COQC src/Coqprime/PrimalityTest/IGroup.v
+- COQC src/Coqprime/Z/ZSum.v
+- COQC src/Coqprime/PrimalityTest/EGroup.v
+- COQC src/Coqprime/PrimalityTest/Euler.v
+- COQC src/Coqprime/PrimalityTest/Cyclic.v
+- COQC src/Coqprime/PrimalityTest/Zp.v
+- COQC src/Util/NatUtil.v
+- COQC src/Util/Pointed.v
+- COQC src/Util/Isomorphism.v
+- COQC src/Util/Tactics/Test.v
+- COQC src/Util/HProp.v
+- COQC src/Util/GlobalSettings.v
+- COQC src/Util/IffT.v
+- COQC src/Util/Tactics/ConstrFail.v
+- COQC src/Util/ListUtil/FoldBool.v
+- File &quot;./src/Util/GlobalSettings.v&quot;, line 9, characters 0-40:
+- Warning: There is no option Uniform Inductive Parameters.
+- [unknown-option,option]
+- File &quot;./src/Util/GlobalSettings.v&quot;, line 30, characters 0-30:
+- Warning: There is no option Fast Name Printing. [unknown-option,option]
+- COQC src/Util/Comparison.v
+- COQC src/Util/Tactics/GetGoal.v
+- COQC src/Util/Bool.v
+- COQC src/Util/Tactics/DebugPrint.v
+- COQC src/Util/ZUtil/Tactics/SplitMinMax.v
+- COQC src/Util/ZUtil/Hints/Core.v
+- COQC src/Util/ZUtil/Tactics/ReplaceNegWithPos.v
+- COQC src/Util/ZUtil/Tactics/CompareToSgn.v
+- COQC src/Util/ZUtil/Tactics/PrimeBound.v
+- COQC src/Util/PER.v
+- COQC src/Util/ZUtil/Lnot.v
+- COQC src/Util/ZUtil/Pow2.v
+- COQC src/Util/Tactics/Contains.v
+- COQC src/Util/Bool/Equality.v
+- COQC src/Util/Tactics/HasBody.v
+- COQC src/Util/Strings/HexString.v
+- COQC src/Util/Tactics/EvarNormalize.v
+- COQC src/Util/Tactics/TransparentAssert.v
+- COQC src/Util/Tactics/CPSId.v
+- COQC src/Util/Sigma/Related.v
+- COQC src/Util/Tactics/SetEvars.v
+- COQC src/Util/Tactics/SubstEvars.v
+- COQC src/Util/Tactics/NormalizeCommutativeIdentifier.v
+- COQC src/Util/Strings/OctalString.v
+- COQC src/Algebra/Nsatz.v
+- COQC src/Util/ZUtil/Tactics/DivideExistsMul.v
+- COQC src/Util/ZUtil/Odd.v
+- COQC src/Util/Tactics/OnSubterms.v
+- COQC src/Util/Tactics/Revert.v
+- COQC src/Util/Factorize.v
+- COQC src/Util/Decidable/Bool2Prop.v
+- COQC src/Util/Tactics/SimplifyRepeatedIfs.v
+- COQC src/TAPSort.v
+- COQC src/Util/ZUtil/ModInv.v
+- COQC src/Util/Tactics/SetoidSubst.v
+- COQC src/Util/Loops.v
+- COQC src/PushButtonSynthesis/InvertHighLow.v
+- COQC src/Util/Strings/BinaryString.v
+- COQC src/Util/ChangeInAll.v
+- COQC src/Util/Tactics/ChangeInAll.v
+- COQC src/Util/DefaultedTypes.v
+- COQC src/Util/Pos.v
+- COQC src/Util/Sumbool.v
+- COQC src/Util/Tactics/ClearAll.v
+- COQC src/Util/Tactics/ClearDuplicates.v
+- COQC src/Util/Tactics/ClearbodyAll.v
+- COQC src/Util/Tactics/ConvoyDestruct.v
+- COQC src/Util/Tactics/DestructTrivial.v
+- COQC src/Util/Tactics/ESpecialize.v
+- COQC src/Util/Tactics/ETransitivity.v
+- COQC src/Util/Tactics/EvarExists.v
+- COQC src/Util/Tactics/Forward.v
+- COQC src/Util/Tactics/PoseTermWithName.v
+- COQC src/Util/Tactics/PrintContext.v
+- COQC src/Util/Tactics/SideConditionsBeforeToAfter.v
+- COQC src/Util/Tactics/SimplifyProjections.v
+- COQC src/Util/Tactics/SubstLet.v
+- COQC src/Util/Tactics/UnfoldArg.v
+- COQC src/Util/Tactics/UnifyAbstractReflexivity.v
+- COQC src/Util/Tactics/VM.v
+- COQC src/Util/Unit.v
+- COQC src/Util/Bool/IsTrue.v
+- COQC src/Util/ZUtil/DistrIf.v
+- COQC src/Util/ZUtil/Ge.v
+- COQC src/Util/ZUtil/Mul.v
+- COQC src/Util/ZUtil/N2Z.v
+- COQC src/Util/ZUtil/Sgn.v
+- COQC src/Util/ZUtil/Sorting.v
+- COQC src/Util/ZUtil/Z2Nat.v
+- COQC src/Util/SideConditions/CorePackages.v
+- COQC src/Util/SideConditions/AdmitPackage.v
+- COQC src/Util/Logic/ImplAnd.v
+- COQC src/Util/Sigma/Associativity.v
+- COQC src/Util/Sigma/Lift.v
+- COQC src/Util/Sigma/MapProjections.v
+- COQC src/Util/Strings/String_as_OT.v
+- make --no-print-directory -C coqprime
+- COQC src/Util/Equality.v
+- COQC src/Util/FixCoqMistakes.v
+- COQC src/Util/Tactics/Not.v
+- COQC src/Util/ZUtil/Tactics/LtbToLt.v
+- COQC src/Util/ZUtil/Div/Bootstrap.v
+- COQC src/Util/ZUtil/Modulo/Bootstrap.v
+- COQC src/Coqprime/Z/ZCmisc.v
+- COQC src/Util/ZUtil/Tactics/PeelLe.v
+- COQC src/Util/ZUtil/ZSimplify/Simple.v
+- COQC src/Util/ZUtil/ZSimplify/Core.v
+- COQC src/Util/ZUtil/Hints/ZArith.v
+- COQC src/Util/ZUtil/Hints/PullPush.v
+- COQC src/Util/ZUtil/Hints/Ztestbit.v
+- COQC src/Util/Tactics/SplitInContext.v
+- COQC src/Util/Logic/ProdForall.v
+- COQC src/Util/ZUtil/Pow.v
+- COQC src/Util/ZUtil/Tactics/LinearSubstitute.v
+- COQC src/Util/Tactics/CacheTerm.v
+- COQC src/Util/Logic.v
+- COQC src/Util/ZUtil/Opp.v
+- COQC src/Util/Curry.v
+- COQC src/Util/Tower.v
+- COQC src/Util/Tactics/HeadUnderBinders.v
+- COQC src/Util/Strings/StringMap.v
+- COQC src/Coqprime/Z/Zmod.v
+- COQC src/Util/Prod.v
+- COQC src/Util/Sigma.v
+- COQC src/Util/Tactics/Head.v
+- COQC src/Util/Tactics/DestructHyps.v
+- COQC src/Util/Tactics/SpecializeBy.v
+- COQC src/Util/Tactics/DoWithHyp.v
+- COQC src/Util/Notations.v
+- COQC src/Util/PrimitiveProd.v
+- COQC src/Util/Tactics/RunTacticAsConstr.v
+- COQC src/Util/Tactics/UniquePose.v
+- COQC src/Util/ZUtil/Tactics/DivModToQuotRem.v
+- COQC src/Util/ZUtil/Modulo/PullPush.v
+- COQC src/Coqprime/Z/Ppow.v
+- COQC src/Util/ZUtil/Le.v
+- COQC src/Util/ZUtil/Hints.v
+- COQC src/Util/PointedProp.v
+- COQC src/Util/ErrorT.v
+- COQC src/Util/Strings/Equality.v
+- COQC src/Coqprime/PrimalityTest/PGroup.v
+- COQC src/Util/PrimitiveHList.v
+- COQC src/Util/PrimitiveSigma.v
+- COQC src/Util/Relations.v
+- COQC src/Arithmetic/BarrettReduction/RidiculousFish.v
+- COQC src/Util/AutoRewrite.v
+- COQC src/Util/ParseTaps.v
+- COQC src/Util/TagList.v
+- COQC src/Util/SideConditions/RingPackage.v
+- COQC src/Util/Decidable.v
+- COQC src/Util/Tactics/BreakMatch.v
+- COQC src/Util/Tactics/DestructHead.v
+- COQC src/Util/Tactics/RewriteHyp.v
+- COQC src/Util/ZUtil/Notations.v
+- COQC src/Util/LetIn.v
+- COQC src/Util/CPSNotations.v
+- COQC src/Util/Tactics/SpecializeAllWays.v
+- COQC src/Util/ZUtil/ZSimplify/Autogenerated.v
+- COQC src/Util/ZUtil/Tactics/PullPush/Modulo.v
+- COQC src/Util/ZUtil/Div.v
+- COQC src/Coqprime/PrimalityTest/Pocklington.v
+- COQC src/Coqprime/elliptic/SMain.v
+- COQC src/Util/ZUtil/Tactics/RewriteModSmall.v
+- COQC src/Util/ZUtil/Log2.v
+- COQC src/Util/NUtil/WithoutReferenceToZ.v
+- Finished transaction in 0.133 secs (0.025u,0.s) (successful)
+- Finished transaction in 0.31 secs (0.058u,0.s) (successful)
+- Finished transaction in 0.41 secs (0.069u,0.002s) (successful)
+- COQC src/Util/Strings/Ascii.v
+- COQC src/Util/Strings/Decimal.v
+- COQC src/Util/Logic/ExistsEqAnd.v
+- Finished transaction in 0.901 secs (0.291u,0.s) (successful)
+- COQC src/Util/FMapPositive/Equality.v
+- COQC src/Util/MSetPositive/Equality.v
+- COQC src/Util/ListUtil/ForallIn.v
+- COQC src/Algebra/Hierarchy.v
+- COQC src/Util/ZUtil/Peano.v
+- COQC src/Util/LetInMonad.v
+- COQC src/Coqprime/num/Bits.v
+- COQC src/Util/PartiallyReifiedProp.v
+- COQC src/Util/Tactics/MoveLetIn.v
+- COQC src/Util/ZUtil/Tactics/PullPush.v
+- Finished transaction in 6.87 secs (1.581u,0.014s) (successful)
+- COQC src/Coqprime/num/W.v
+- COQC src/Util/SideConditions/ReductionPackages.v
+- COQC src/Util/ListUtil.v
+- COQC src/Util/Option.v
+- COQC src/Coqprime/num/Mod_op.v
+- COQC src/Util/ZUtil/Definitions.v
+- COQC src/Util/Sum.v
+- COQC src/Util/OptionList.v
+- COQC src/Util/ZUtil/Modulo.v
+- Finished transaction in 0.664 secs (0.155u,0.003s) (successful)
+- COQC src/Util/ZUtil/AddGetCarry.v
+- Finished transaction in 2.093 secs (0.475u,0.s) (successful)
+- Finished transaction in 1.032 secs (0.38u,0.s) (successful)
+- Finished transaction in 2.15 secs (0.618u,0.007s) (successful)
+- COQC src/Util/ZUtil/AddModulo.v
+- COQC src/Util/ZUtil/Tactics/ZeroBounds.v
+- Finished transaction in 6.489 secs (1.337u,0.008s) (successful)
+- COQC src/Util/ZUtil/MulSplit.v
+- Finished transaction in 3.857 secs (0.877u,0.003s) (successful)
+- COQC src/Util/ZUtil/Zselect.v
+- COQC src/Util/ListUtil/Forall.v
+- COQC src/Coqprime/num/montgomery.v
+-      = 1740564225 :: 343969132 :: 6812243 :: nil
+-      : number
+-      = 0 :: 1 :: nil
+-      : number
+- File &quot;./src/Coqprime/num/montgomery.v&quot;, line 50, characters 0-31:
+- Warning: wB is declared as a local definition [local-declaration,scope]
+-      = 31415926535897932384626433%Z
+-      : Z
+- COQC src/Util/ZUtil/Testbit.v
+- COQC src/Util/ZUtil/Ones.v
+- COQC src/Util/ZUtil/Land.v
+- COQC src/Util/ZUtil/Combine.v
+- COQC src/Util/Strings/String.v
+- COQC src/Util/ListUtil/SetoidList.v
+- File &quot;./src/Util/ListUtil/SetoidList.v&quot;, line 30, characters 2-53:
+- Warning: Unused introduction pattern: IHys [unused-intro-pattern,tactics]
+- File &quot;./src/Util/ListUtil/SetoidList.v&quot;, line 30, characters 2-53:
+- Warning: Unused introduction pattern: IHys [unused-intro-pattern,tactics]
+- COQC src/Util/Strings/ParseArithmetic.v
+- COQC src/Util/ZUtil/Divide.v
+- COQC src/Algebra/Monoid.v
+- COQC src/Util/ZUtil/Pow2Mod.v
+- File &quot;./src/Util/Strings/ParseArithmetic.v&quot;, line 213, characters 0-39:
+- Warning: Variable x does not occur in the right-hand side. The notation will
+- not be used for printing as it is not reversible.
+- [non-reversible-notation,parsing]
+- COQC src/Util/ZUtil/Tactics/SimplifyFractionsLe.v
+- COQC src/Spec/MxDH.v
+- COQC src/Util/Tactics.v
+- COQC src/Util/ZUtil/CPS.v
+- COQC src/Util/ZUtil/Tactics/Ztestbit.v
+- COQC src/Util/SideConditions/ModInvPackage.v
+- COQC src/Util/Tuple.v
+- COQC src/Util/Bool/Reflect.v
+- COQC src/Util/ZUtil/ZSimplify.v
+- COQC src/Coqprime/Z/Pmod.v
+- COQC src/Util/ZUtil/CC.v
+- COQC src/Util/ZUtil/Rshi.v
+- COQC src/Util/ZUtil/Stabilization.v
+- COQC src/Util/ZUtil/LandLorShiftBounds.v
+- COQC src/Util/Strings/Show.v
+- COQC src/Util/MSetPositive/Facts.v
+- COQC src/Util/Strings/ParseArithmeticToTaps.v
+- COQC src/Util/NumTheoryUtil.v
+- COQC src/Algebra/Group.v
+- COQC src/Util/ZUtil/EquivModulo.v
+- COQC src/Util/ZUtil/Shift.v
+- COQC src/Arithmetic/BarrettReduction/Generalized.v
+- COQC src/Coqprime/PrimalityTest/LucasLehmer.v
+- COQC src/Arithmetic/BarrettReduction/HAC.v
+- COQC src/Arithmetic/BarrettReduction/Wikipedia.v
+- COQC src/Coqprime/PrimalityTest/Pepin.v
+- COQC src/Util/IdfunWithAlt.v
+- COQC src/Fancy/Spec.v
+- COQC src/Coqprime/PrimalityTest/PocklingtonCertificat.v
+- COQC src/Util/Arg.v
+- COQC src/Util/HList.v
+- COQC src/Util/ZUtil/Quot.v
+- COQC src/Util/ZUtil/Tactics.v
+- COQC src/Util/Decidable/Decidable2Bool.v
+- COQC src/Util/SideConditions/Autosolve.v
+- COQC src/Util/ZRange.v
+- COQC src/Util/ZUtil/LandLorBounds.v
+- COQC src/Arithmetic/ModularArithmeticPre.v
+- COQC src/Algebra/ScalarMult.v
+- COQC src/Algebra/Ring.v
+- COQC src/Arithmetic/MontgomeryReduction/Definition.v
+- COQC src/Util/CPSUtil.v
+- COQC src/Util/ZBounded.v
+- COQC src/Util/ZRange/Operations.v
+- COQC src/Coqprime/PrimalityTest/Proth.v
+- COQC src/Util/ZRange/Show.v
+- COQC src/Spec/ModularArithmetic.v
+- COQC src/Arithmetic/MontgomeryReduction/Proofs.v
+- COQC src/Util/AdditionChainExponentiation.v
+- COQC src/PreLanguage.v
+- COQC src/Util/ZRange/BasicLemmas.v
+- COQC src/Coqprime/elliptic/GZnZ.v
+- COQC src/Spec/Test/X25519.v
+- COQC src/Coqprime/num/Lucas.v
+- COQC src/Language.v
+- COQC src/Util/ZRange/SplitBounds.v
+- File &quot;./src/Language.v&quot;, line 812, characters 10-27:
+- Warning: Trying to mask the absolute name &quot;type_base&quot;!
+- [masking-absolute-name,deprecated]
+- File &quot;./src/Language.v&quot;, line 878, characters 8-25:
+- Warning: Trying to mask the absolute name &quot;type_base&quot;!
+- [masking-absolute-name,deprecated]
+- COQC src/Util/ZRange/CornersMonotoneBounds.v
+- COQC src/IdentifiersLibrary.v
+- COQC src/MiscCompilerPasses.v
+- COQC src/RewriterRules.v
+- COQC src/UnderLets.v
+- COQC src/LanguageInversion.v
+- COQC src/Util/ZUtil/Morphisms.v
+- COQC src/Rewriter.v
+- COQC src/Coqprime/elliptic/ZEll.v
+- COQC src/IdentifiersGenerate.v
+- COQC src/Algebra/IntegralDomain.v
+- COQC src/Algebra/SubsetoidRing.v
+- COQC src/Arithmetic/Primitives.v
+- COQC src/AbstractInterpretation.v
+- COQC src/RewriterReify.v
+- COQC src/IdentifiersGENERATED.v
+- COQC src/Coqprime/num/NEll.v
+- Building all_idents...
+- Building ident_index...
+- COQC src/Algebra/Field.v
+- Building eta_ident_cps_gen...
+- Building eta_ident_cps_gen_expand_literal...
+- Building eta_ident_cps...
+- COQC src/LanguageStringification.v
+- Building simple_idents...
+- Building all_raw_idents...
+- COQC src/Util/QUtil.v
+- Building raw_ident_index...
+- Building raw_ident_index_idempotent...
+- Building eta_raw_ident_cps_gen...
+- Building raw_ident_to_ident...
+- Building raw_ident_infos_of...
+- COQC src/Util/ZUtil.v
+- Building split_raw_ident_gen...
+- COQC src/Util/ZRange/LandLorBounds.v
+- COQC src/IR.v
+- Building invert_bind_args...
+- Building invert_bind_args_unknown...
+- Building all_pattern_idents...
+- Building eta_pattern_ident_cps_gen...
+- Building eta_pattern_ident_cps_gen_expand_literal...
+- Building split_types...
+- Building add_types_from_raw_sig...
+- Building to_type_split_types_subst_default_eq...
+- Building projT1_add_types_from_raw_sig_eq...
+- Building arg_types_unfolded...
+- Building type_of_list_arg_types_beq_unfolded...
+- Building to_typed_unfolded...
+- Building of_typed_ident_unfolded...
+- Building arg_types_of_typed_ident_unfolded...
+- Building unify...
+- Building unify_unknown...
+- Building final ident package...
+- Finished transaction in 85.846 secs (19.732u,0.095s) (successful)
+- COQC src/Demo.v
+-      = true
+-      : bool
+- Finished transaction in 0.269 secs (0.07u,0.s) (successful)
+-      = true
+-      : bool
+- Finished transaction in 1.403 secs (0.293u,0.s) (successful)
+- COQC src/Coqprime/num/MEll.v
+- COQC src/Coqprime/num/Pock.v
+- COQC src/Util/ZRange/OperationsBounds.v
+- COQC src/Arithmetic/ModularArithmeticTheorems.v
+- COQC src/Algebra/Field_test.v
+- COQC src/Curves/Edwards/Pre.v
+- COQC src/Spec/MontgomeryCurve.v
+- COQC src/Coqprime/examples/BasePrimes.v
+- COQC src/Spec/WeierstrassCurve.v
+- COQC src/Util/FsatzAutoLemmas.v
+- COQC src/Primitives/MxDHRepChange.v
+- COQC src/Arithmetic/Core.v
+- COQC src/Arithmetic/PrimeFieldTheorems.v
+- COQC src/Coqprime/examples/PocklingtonRefl.v
+- File &quot;./src/Arithmetic/PrimeFieldTheorems.v&quot;, line 170, characters 6-13:
+- Warning: The Focus command is deprecated; use &#39;2: {&#39; instead
+- [deprecated-focus,deprecated]
+- File &quot;./src/Arithmetic/PrimeFieldTheorems.v&quot;, line 183, characters 8-15:
+- Warning: The Unfocus command is deprecated [deprecated-unfocus,deprecated]
+- COQC src/CStringification.v
+- COQC src/ArithmeticCPS/Core.v
+- COQC src/Spec/CompleteEdwardsCurve.v
+- COQC src/Curves/Montgomery/Affine.v
+- COQC src/Curves/Weierstrass/Affine.v
+- COQC src/Curves/Weierstrass/Jacobian.v
+- COQC src/Curves/Weierstrass/Projective.v
+- COQC src/RustStringification.v
+- COQC src/ArithmeticCPS/ModOps.v
+- COQC src/Curves/Edwards/AffineProofs.v
+- COQC src/Curves/Weierstrass/AffineProofs.v
+- Finished transaction in 8.19 secs (2.707u,0.002s) (successful)
+- COQC src/Curves/Montgomery/XZ.v
+- COQC src/LanguageWf.v
+- COQC src/IdentifiersLibraryProofs.v
+- Finished transaction in 14.352 secs (2.577u,0.s) (successful)
+- Finished transaction in 5.253 secs (1.119u,0.s) (successful)
+- Finished transaction in 0.815 secs (0.165u,0.s) (successful)
+- Finished transaction in 11.898 secs (2.04u,0.003s) (successful)
+- COQC src/Curves/Edwards/XYZT/Basic.v
+- COQC src/IdentifiersGenerateProofs.v
+- COQC src/IdentifiersGENERATEDProofs.v
+- Proving is_simple_correct0...
+- Tactic call ran for 6.819 secs (1.422u,0.007s) (success)
+- Proving invert_bind_args_raw_to_typed...
+- Tactic call ran for 2.448 secs (0.652u,0.s) (success)
+- Proving fold_invert_bind_args...
+- Tactic call ran for 1.917 secs (0.51u,0.s) (success)
+- Proving split_ident_to_ident...
+- Tactic call ran for 1.12 secs (0.173u,0.s) (success)
+- Proving eq_indep_types_of_eq_types...
+- Tactic call ran for 8.854 secs (1.477u,0.007s) (success)
+- Proving fold_eta_ident_cps...
+- Tactic call ran for 0.028 secs (0.001u,0.s) (success)
+- Proving fold_unify...
+- Tactic call ran for 0.001 secs (0.001u,0.s) (success)
+- Proving to_typed_of_typed_ident...
+- Tactic call ran for 12.851 secs (2.093u,0.003s) (success)
+- Proving eq_invert_bind_args_unknown...
+- Tactic call ran for 0.001 secs (0.001u,0.s) (success)
+- Proving eq_unify_unknown...
+- Tactic call ran for 0.022 secs (0.002u,0.s) (success)
+- COQC src/Arithmetic/ModOps.v
+- COQC src/Arithmetic/Partition.v
+- COQC src/UnsaturatedSolinasHeuristics.v
+- COQC src/ArithmeticCPS/Saturated.v
+- COQC src/Curves/Edwards/XYZT/Precomputed.v
+- COQC src/Arithmetic/Saturated.v
+- COQC src/Arithmetic/UniformWeight.v
+- COQC src/ArithmeticCPS/BaseConversion.v
+- COQC src/ArithmeticCPS/Freeze.v
+- COQC src/ArithmeticCPS/WordByWordMontgomery.v
+- COQC src/UnderLetsProofs.v
+- COQC src/AbstractInterpretationZRangeProofs.v
+- Finished transaction in 95.3 secs (26.426u,0.046s) (successful)
+- COQC src/MiscCompilerPassesProofs.v
+- File &quot;./src/AbstractInterpretationZRangeProofs.v&quot;, line 234, characters 10-12776:
+- Warning: Collision between bound variables of name x
+- [variable-collision,ltac]
+- File &quot;./src/AbstractInterpretationZRangeProofs.v&quot;, line 234, characters 10-12776:
+- Warning: Collision between bound variables of name y
+- [variable-collision,ltac]
+- COQC src/RewriterRulesProofs.v
+- Finished transaction in 31.834 secs (8.431u,0.023s) (successful)
+- Finished transaction in 5.222 secs (1.846u,0.011s) (successful)
+- COQC src/PushButtonSynthesis/ReificationCache.v
+- COQC src/Fancy/Compiler.v
+- Finished transaction in 58.462 secs (13.719u,0.032s) (successful)
+- Finished transaction in 3.482 secs (0.702u,0.008s) (successful)
+- Finished transaction in 0.219 secs (0.035u,0.s) (successful)
+- COQC src/Arithmetic/BaseConversion.v
+- Finished transaction in 27.239 secs (8.149u,0.02s) (successful)
+- COQC src/PushButtonSynthesis/SaturatedSolinasReificationCache.v
+- Finished transaction in 14.325 secs (3.74u,0.01s) (successful)
+- Finished transaction in 3.97 secs (1.408u,0.006s) (successful)
+- COQC src/Arithmetic/BarrettReduction.v
+- COQC src/Arithmetic/FancyMontgomeryReduction.v
+- Finished transaction in 86.759 secs (22.483u,0.079s) (successful)
+- COQC src/Arithmetic/Freeze.v
+- File &quot;./src/Arithmetic/Freeze.v&quot;, line 168, characters 2-73:
+- Warning: This notation contains Ltac expressions: it will not be used for
+- printing. [non-reversible-notation,parsing]
+- COQC src/Arithmetic/WordByWordMontgomery.v
+- COQC src/PushButtonSynthesis/UnsaturatedSolinasReificationCache.v
+- Finished transaction in 11.536 secs (2.901u,0.024s) (successful)
+- COQC src/AbstractInterpretationWf.v
+- Finished transaction in 2.726 secs (1.082u,0.s) (successful)
+- Finished transaction in 14.006 secs (4.389u,0.013s) (successful)
+- Finished transaction in 4.266 secs (1.799u,0.014s) (successful)
+- Finished transaction in 13.883 secs (4.631u,0.02s) (successful)
+- Finished transaction in 4.703 secs (2.196u,0.s) (successful)
+- Finished transaction in 4.783 secs (1.73u,0.s) (successful)
+- Finished transaction in 1.814 secs (0.689u,0.s) (successful)
+- Finished transaction in 6.042 secs (2.08u,0.s) (successful)
+- Finished transaction in 1.968 secs (0.688u,0.s) (successful)
+- Finished transaction in 1.492 secs (0.404u,0.s) (successful)
+- Finished transaction in 0.783 secs (0.181u,0.s) (successful)
+- Finished transaction in 13.728 secs (4.635u,0.011s) (successful)
+- Finished transaction in 7.257 secs (1.938u,0.s) (successful)
+- COQC src/RewriterWf1.v
+- Finished transaction in 18.305 secs (5.769u,0.003s) (successful)
+- Finished transaction in 3.095 secs (1.792u,0.s) (successful)
+- Finished transaction in 6.197 secs (2.246u,0.s) (successful)
+- Finished transaction in 1.693 secs (0.721u,0.s) (successful)
+- Finished transaction in 6.829 secs (2.142u,0.s) (successful)
+- COQC src/COperationSpecifications.v
+- Finished transaction in 1.709 secs (0.736u,0.s) (successful)
+- Finished transaction in 9.437 secs (2.323u,0.s) (successful)
+- Finished transaction in 1.8 secs (0.78u,0.s) (successful)
+- Finished transaction in 6.186 secs (3.329u,0.s) (successful)
+- Finished transaction in 3.866 secs (1.144u,0.s) (successful)
+- COQC src/PushButtonSynthesis/WordByWordMontgomeryReificationCache.v
+- Finished transaction in 200.215 secs (69.432u,0.03s) (successful)
+- Finished transaction in 4.302 secs (1.247u,0.011s) (successful)
+- Finished transaction in 0.914 secs (0.375u,0.s) (successful)
+- COQC src/PushButtonSynthesis/BarrettReductionReificationCache.v
+- COQC src/PushButtonSynthesis/FancyMontgomeryReductionReificationCache.v
+- Finished transaction in 77.462 secs (30.374u,0.142s) (successful)
+- COQC src/AbstractInterpretationProofs.v
+- COQC src/RewriterWf1Tactics.v
+- COQC src/RewriterWf2.v
+- Finished transaction in 134.967 secs (45.856u,0.342s) (successful)
+- Finished transaction in 55.908 secs (16.722u,0.027s) (successful)
+- COQC src/RewriterInterpProofs1.v
+- Finished transaction in 33.607 secs (10.55u,0.012s) (successful)
+- Finished transaction in 7.981 secs (2.082u,0.004s) (successful)
+- Finished transaction in 2.244 secs (0.765u,0.004s) (successful)
+- Finished transaction in 7.169 secs (2.066u,0.s) (successful)
+- Finished transaction in 0.812 secs (0.684u,0.s) (successful)
+- Finished transaction in 7.054 secs (4.351u,0.s) (successful)
+- Finished transaction in 1.814 secs (1.238u,0.s) (successful)
+- Finished transaction in 3.269 secs (1.436u,0.s) (successful)
+- Finished transaction in 1.101 secs (0.471u,0.s) (successful)
+- Finished transaction in 4.602 secs (1.416u,0.005s) (successful)
+- Finished transaction in 1.554 secs (0.455u,0.004s) (successful)
+- Finished transaction in 0.044 secs (0.016u,0.s) (successful)
+- Finished transaction in 0.024 secs (0.008u,0.s) (successful)
+- Finished transaction in 124.43 secs (49.383u,0.057s) (successful)
+- Finished transaction in 28.705 secs (10.664u,0.003s) (successful)
+- COQC src/Fancy/Prod.v
+- Finished transaction in 126.701 secs (53.074u,0.102s) (successful)
+- Finished transaction in 474.904 secs (169.529u,0.234s) (successful)
+- Finished transaction in 16.804 secs (10.166u,0.s) (successful)
+- Finished transaction in 5.356 secs (2.517u,0.007s) (successful)
+- Finished transaction in 1307.541 secs (134.551u,0.989s) (successful)
+- Finished transaction in 91.999 secs (50.89u,0.038s) (successful)
+- Finished transaction in 27.117 secs (10.592u,0.004s) (successful)
+- Finished transaction in 0.138 secs (0.039u,0.s) (successful)
+- Finished transaction in 0.053 secs (0.017u,0.s) (successful)
+- Finished transaction in 0.125 secs (0.041u,0.s) (successful)
+- Finished transaction in 0.054 secs (0.018u,0.s) (successful)
+- Finished transaction in 89.977 secs (46.287u,0.042s) (successful)
+- COQC src/RewriterAllTactics.v
+- COQC src/Rewriter/NBE.v
+- COQC src/Rewriter/Arith.v
+- COQC src/Rewriter/ToFancy.v
+- COQC src/Rewriter/StripLiteralCasts.v
+- COQC src/Rewriter/ArithWithCasts.v
+- Reifying...
+- Reifying...
+- Reifying...
+- Compiling decision tree...
+- Splitting rewrite rules...
+- Reifying...
+- Reifying...
+- Compiling decision tree...
+- Splitting rewrite rules...
+- Assembling rewrite_head...
+- Assembling rewrite_head...
+- Reducing rewrite_head...
+- Tactic call ran for 0.121 secs (0.037u,0.s) (success)
+- Tactic call ran for 0.006 secs (0.006u,0.s) (success)
+- Reducing rewrite_head...
+- Tactic call ran for 0.062 secs (0.022u,0.s) (success)
+- Tactic call ran for 0.006 secs (0.006u,0.s) (success)
+- Tactic call ran for 0.202 secs (0.074u,0.s) (success)
+- Tactic call ran for 0.237 secs (0.073u,0.s) (success)
+- Proving Rewriter_Wf...
+- Tactic call ran for 0.044 secs (0.02u,0.s) (success)
+- Tactic call ran for 0.029 secs (0.008u,0.s) (success)
+- Proving Rewriter_Interp...
+- Proving Rewriter_Wf...
+- Tactic call ran for 0.058 secs (0.018u,0.s) (success)
+- Tactic call ran for 0. secs (0.u,0.s) (success)
+- Proving Rewriter_Interp...
+- Tactic call ran for 0.521 secs (0.288u,0.s) (success)
+- Tactic call ran for 0.003 secs (0.003u,0.s) (success)
+- Tactic call ran for 0.483 secs (0.215u,0.s) (success)
+- Tactic call ran for 0. secs (0.u,0.s) (success)
+- COQC src/Rewriter/ToFancyWithCasts.v
+- COQC src/RewriterExamples.v
+- Reifying...
+- Reifying...
+- Compiling decision tree...
+- Splitting rewrite rules...
+- Compiling decision tree...
+- Splitting rewrite rules...
+- Compiling decision tree...
+- Splitting rewrite rules...
+- Assembling rewrite_head...
+- Reducing rewrite_head...
+- Compiling decision tree...
+- Splitting rewrite rules...
+- Tactic call ran for 7.156 secs (2.403u,0.s) (success)
+- Assembling rewrite_head...
+- Reducing rewrite_head...
+- Tactic call ran for 2.662 secs (1.781u,0.004s) (success)
+- Assembling rewrite_head...
+- Reducing rewrite_head...
+- Assembling rewrite_head...
+- Reducing rewrite_head...
+- Finished transaction in 164.982 secs (72.372u,0.016s) (successful)
+- Tactic call ran for 14.206 secs (6.087u,0.061s) (success)
+- Tactic call ran for 0.602 secs (0.15u,0.s) (success)
+- Compiling decision tree...
+- Splitting rewrite rules...
+- Tactic call ran for 9.666 secs (2.717u,0.s) (success)
+- Proving Rewriter_Wf...
+- Tactic call ran for 11.975 secs (2.946u,0.s) (success)
+- Tactic call ran for 2.403 secs (0.624u,0.s) (success)
+- Tactic call ran for 14.852 secs (3.736u,0.s) (success)
+- Tactic call ran for 32.945 secs (7.185u,0.073s) (success)
+- Assembling rewrite_head...
+- Tactic call ran for 1.342 secs (0.248u,0.s) (success)
+- Reducing rewrite_head...
+- Tactic call ran for 25.974 secs (6.906u,0.107s) (success)
+- Tactic call ran for 0.737 secs (0.196u,0.s) (success)
+- Proving Rewriter_Interp...
+- Proving Rewriter_Wf...
+- Tactic call ran for 12.362 secs (2.527u,0.004s) (success)
+- Proving Rewriter_Wf...
+- Tactic call ran for 5.313 secs (1.12u,0.s) (success)
+- Tactic call ran for 5.3 secs (0.945u,0.003s) (success)
+- Tactic call ran for 4.356 secs (0.841u,0.s) (success)
+- Proving Rewriter_Interp...
+- Fatal error: out of memory.
+- Makefile.coq:656: recipe for target &#39;src/Curves/Weierstrass/AffineProofs.vo&#39; failed
+- make: *** [src/Curves/Weierstrass/AffineProofs.vo] Error 2
+- make: *** Waiting for unfinished jobs....
+- Tactic call ran for 30.81 secs (6.98u,0.012s) (success)
+- Tactic call ran for 24.048 secs (6.111u,0.004s) (success)
+- Tactic call ran for 21.299 secs (5.207u,0.032s) (success)
+- Tactic call ran for 10.722 secs (3.017u,0.015s) (success)
+- Tactic call ran for 2.77 secs (1.02u,0.s) (success)
+- Success: (dlet y0 : Z := e1 + e2 in
+-           [y; y + 1; y + 2; y + y0; y + (y0 + 1)])
+- Success: [x1; x1; x1; x2; x2; x2; x3; x3; x3]
+- Tactic call ran for 43.377 secs (10.518u,0.155s) (success)
+- Tactic call ran for 0.466 secs (0.238u,0.s) (success)
+- Proving Rewriter_Interp...
+- Proving Rewriter_Wf...
+- Tactic call ran for 3.841 secs (1.14u,0.s) (success)
+- Tactic call ran for 86.708 secs (22.909u,0.098s) (success)
+- Tactic call ran for 1.211 secs (0.347u,0.s) (success)
+- Finished transaction in 311.085 secs (122.781u,0.095s) (successful)
+- Proving Rewriter_Wf...
+- Tactic call ran for 2.631 secs (1.667u,0.s) (success)
+- Tactic call ran for 14.029 secs (7.764u,0.01s) (success)
+- Tactic call ran for 4.41 secs (3.103u,0.s) (success)
+- Proving Rewriter_Interp...
+- Proving Rewriter_Interp...
+- Tactic call ran for 31.07 secs (18.575u,0.044s) (success)
+- Tactic call ran for 18.233 secs (8.884u,0.005s) (success)
+- Tactic call ran for 22.294 secs (11.034u,0.052s) (success)
+- Tactic call ran for 11.228 secs (5.704u,0.s) (success)
+- Tactic call ran for 41.409 secs (27.82u,0.005s) (success)
+- Tactic call ran for 14.969 secs (12.634u,0.004s) (success)
+[ERROR] The compilation of coq-fiat-crypto failed at &quot;/home/bench/.opam/opam-init/hooks/sandbox.sh build make -j7 coq coqprime-all&quot;.
+#=== ERROR while compiling coq-fiat-crypto.8.8.dev ============================#
+# context              2.0.1 | linux/x86_64 | ocaml-base-compiler.4.05.0 | file:///home/bench/run/opam-coq-archive/extra-dev
+# path                 ~/.opam/ocaml-base-compiler.4.05.0/.opam-switch/build/coq-fiat-crypto.8.8.dev
+# command              ~/.opam/opam-init/hooks/sandbox.sh build make -j7 coq coqprime-all
+# exit-code            2
+# env-file             ~/.opam/log/coq-fiat-crypto-25362-865888.env
+# output-file          ~/.opam/log/coq-fiat-crypto-25362-865888.out
+### output ###
+# [...]
+# Proving Rewriter_Wf...
+# Tactic call ran for 2.631 secs (1.667u,0.s) (success)
+# Tactic call ran for 14.029 secs (7.764u,0.01s) (success)
+# Tactic call ran for 4.41 secs (3.103u,0.s) (success)
+# Proving Rewriter_Interp...
+# Proving Rewriter_Interp...
+# Tactic call ran for 31.07 secs (18.575u,0.044s) (success)
+# Tactic call ran for 18.233 secs (8.884u,0.005s) (success)
+# Tactic call ran for 22.294 secs (11.034u,0.052s) (success)
+# Tactic call ran for 11.228 secs (5.704u,0.s) (success)
+# Tactic call ran for 41.409 secs (27.82u,0.005s) (success)
+# Tactic call ran for 14.969 secs (12.634u,0.004s) (success)
+&lt;&gt;&lt;&gt; Error report &lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;
++- The following actions failed
+| - build coq-fiat-crypto 8.8.dev
++- 
+- No changes have been performed
+# Run eval $(opam env) to update the current shell environment
+&#39;opam install -j1 -y -v coq-fiat-crypto.8.8.dev&#39; failed.
+</pre></dd>
+            </dl>
+            <h2>Installation size</h2>
+            <p>No files were installed.</p>
+            <h2>Uninstall</h2>
+            <dl class="dl-horizontal">
+              <dt>Command</dt>
+              <dd><code>true</code></dd>
+              <dt>Return code</dt>
+              <dd>0</dd>
+              <dt>Missing removes</dt>
+              <dd>
+                none
+              </dd>
+              <dt>Wrong removes</dt>
+              <dd>
+                none
+              </dd>
+            </dl>
+          </div>
+        </div>
+      </div>
+      <hr/>
+      <div class="footer">
+        <p class="text-center">
+          <small>Sources are on <a href="https://github.com/coq-bench">GitHub</a>. © Guillaume Claret.</small>
+        </p>
+      </div>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="../../../../../bootstrap.min.js"></script>
+  </body>
+</html>
