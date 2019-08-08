@@ -1,0 +1,2349 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>concat: Error</title>
+    <link rel="shortcut icon" type="image/png" href="../../../../../favicon.png" />
+    <link href="../../../../../bootstrap.min.css" rel="stylesheet">
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+    <script src="../../../../../moment.min.js"></script>
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="container">
+      <div class="navbar navbar-default" role="navigation">
+        <div class="container-fluid">
+          <div class="navbar-header">
+            <a class="navbar-brand" href="../../../../.."><i class="fa fa-lg fa-flag-checkered"></i> Coq bench</a>
+          </div>
+          <div id="navbar" class="collapse navbar-collapse">
+            <ul class="nav navbar-nav">
+              <li><a href="../..">clean / extra-dev</a></li>
+              <li class="active"><a href="">dev / concat - dev</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="article">
+        <div class="row">
+          <div class="col-md-12">
+            <a href="../..">« Up</a>
+            <h1>
+              concat
+              <small>
+                dev
+                <span class="label label-danger">Error</span>
+              </small>
+            </h1>
+            <p><em><script>document.write(moment("2019-08-07 23:23:00 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2019-08-07 23:23:00 UTC)</em><p>
+            <h2>Context</h2>
+            <pre># Packages matching: installed
+# Name              # Installed # Synopsis
+base-bigarray       base
+base-threads        base
+base-unix           base
+conf-m4             1           Virtual package relying on m4
+coq                 dev         Formal proof management system
+num                 1.2         The legacy Num library for arbitrary-precision integer and rational arithmetic
+ocaml               4.07.1      The OCaml compiler (virtual package)
+ocaml-base-compiler 4.07.1      Official release 4.07.1
+ocaml-config        1           OCaml Switch Configuration
+ocamlfind           1.8.1       A library manager for OCaml
+# opam file:
+opam-version: &quot;2.0&quot;
+maintainer: &quot;dev@clarus.me&quot;
+homepage: &quot;https://github.com/coq-contribs/concat&quot;
+license: &quot;LGPL 2&quot;
+build: [
+  [&quot;coq_makefile&quot; &quot;-f&quot; &quot;Make&quot; &quot;-o&quot; &quot;Makefile&quot;]
+  [make &quot;-j%{jobs}%&quot;]
+  [make &quot;install&quot;]
+]
+remove: [&quot;rm&quot; &quot;-R&quot; &quot;%{lib}%/coq/user-contrib/ConCaT&quot;]
+depends: [
+  &quot;ocaml&quot;
+  &quot;coq&quot; {= &quot;dev&quot;}
+]
+tags: [ &quot;keyword:category theory&quot; &quot;category:Mathematics/Category Theory&quot; ]
+authors: [ &quot;Amokrane Saïbi &lt;&gt;&quot; ]
+synopsis: &quot;Constructive Category Theory.&quot;
+flags: light-uninstall
+url {
+  src: &quot;git+https://github.com/coq-contribs/concat.git#master&quot;
+}
+</pre>
+            <h2>Lint</h2>
+            <dl class="dl-horizontal">
+              <dt>Command</dt>
+              <dd><code>true</code></dd>
+              <dt>Return code</dt>
+              <dd>0</dd>
+            </dl>
+            <h2>Dry install</h2>
+            <p>Dry install with the current Coq version:</p>
+            <dl class="dl-horizontal">
+              <dt>Command</dt>
+              <dd><code>opam install -y --show-action coq-concat.dev coq.dev</code></dd>
+              <dt>Return code</dt>
+              <dd>0</dd>
+            </dl>
+            <p>Dry install without Coq/switch base, to test if the problem was incompatibility with the current Coq/OCaml version:</p>
+            <dl class="dl-horizontal">
+              <dt>Command</dt>
+              <dd><code>true</code></dd>
+              <dt>Return code</dt>
+              <dd>0</dd>
+            </dl>
+            <h2>Install dependencies</h2>
+            <dl class="dl-horizontal">
+              <dt>Command</dt>
+              <dd><code>opam list; echo; ulimit -Sv 4000000; timeout 60m opam install -y --deps-only coq-concat.dev</code></dd>
+              <dt>Return code</dt>
+              <dd>0</dd>
+              <dt>Duration</dt>
+              <dd>2 s</dd>
+            </dl>
+            <h2>Install</h2>
+            <dl class="dl-horizontal">
+              <dt>Command</dt>
+              <dd><code>opam list; echo; ulimit -Sv 4000000; timeout 60m opam install -j1 -y -v coq-concat.dev</code></dd>
+              <dt>Return code</dt>
+              <dd>7936</dd>
+              <dt>Duration</dt>
+              <dd>22 s</dd>
+              <dt>Output</dt>
+              <dd><pre># Packages matching: installed
+# Name              # Installed # Synopsis
+base-bigarray       base
+base-threads        base
+base-unix           base
+conf-m4             1           Virtual package relying on m4
+coq                 dev         Formal proof management system
+num                 1.2         The legacy Num library for arbitrary-precision integer and rational arithmetic
+ocaml               4.07.1      The OCaml compiler (virtual package)
+ocaml-base-compiler 4.07.1      Official release 4.07.1
+ocaml-config        1           OCaml Switch Configuration
+ocamlfind           1.8.1       A library manager for OCaml
+The following actions will be performed:
+  - install coq-concat dev
+&lt;&gt;&lt;&gt; Gathering sources &gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;
+Processing  1/1: [coq-concat.dev: git]
+[coq-concat.dev] synchronised from git+https://github.com/coq-contribs/concat.git#master
+&lt;&gt;&lt;&gt; Processing actions &lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;
+Processing  1/2: [coq-concat: coq_makefile Make]
++ /home/bench/.opam/opam-init/hooks/sandbox.sh &quot;build&quot; &quot;coq_makefile&quot; &quot;-f&quot; &quot;Make&quot; &quot;-o&quot; &quot;Makefile&quot; (CWD=/home/bench/.opam/ocaml-base-compiler.4.07.1/.opam-switch/build/coq-concat.dev)
+Processing  1/2: [coq-concat: make]
++ /home/bench/.opam/opam-init/hooks/sandbox.sh &quot;build&quot; &quot;make&quot; &quot;-j7&quot; (CWD=/home/bench/.opam/ocaml-base-compiler.4.07.1/.opam-switch/build/coq-concat.dev)
+- COQDEP VFILES
+- COQC RELATIONS/Relations.v
+- COQC SETOID/BasicTypes.v
+- File &quot;./RELATIONS/Relations.v&quot;, line 86, characters 0-22:
+- Warning: Adding and removing hints in the core database implicitly is
+- deprecated. Please specify a hint database.
+- [implicit-core-hint-db,deprecated]
+- File &quot;./RELATIONS/Relations.v&quot;, line 87, characters 0-23:
+- Warning: Adding and removing hints in the core database implicitly is
+- deprecated. Please specify a hint database.
+- [implicit-core-hint-db,deprecated]
+- File &quot;./RELATIONS/Relations.v&quot;, line 88, characters 0-26:
+- Warning: Adding and removing hints in the core database implicitly is
+- deprecated. Please specify a hint database.
+- [implicit-core-hint-db,deprecated]
+- File &quot;./RELATIONS/Relations.v&quot;, line 89, characters 0-22:
+- Warning: Adding and removing hints in the core database implicitly is
+- deprecated. Please specify a hint database.
+- [implicit-core-hint-db,deprecated]
+- File &quot;./RELATIONS/Relations.v&quot;, line 90, characters 0-21:
+- Warning: Adding and removing hints in the core database implicitly is
+- deprecated. Please specify a hint database.
+- [implicit-core-hint-db,deprecated]
+- File &quot;./RELATIONS/Relations.v&quot;, line 91, characters 0-26:
+- Warning: Adding and removing hints in the core database implicitly is
+- deprecated. Please specify a hint database.
+- [implicit-core-hint-db,deprecated]
+- File &quot;./RELATIONS/Relations.v&quot;, line 92, characters 0-28:
+- Warning: Adding and removing hints in the core database implicitly is
+- deprecated. Please specify a hint database.
+- [implicit-core-hint-db,deprecated]
+- File &quot;./RELATIONS/Relations.v&quot;, line 93, characters 0-25:
+- Warning: Adding and removing hints in the core database implicitly is
+- deprecated. Please specify a hint database.
+- [implicit-core-hint-db,deprecated]
+- File &quot;./RELATIONS/Relations.v&quot;, line 94, characters 0-31:
+- Warning: Adding and removing hints in the core database implicitly is
+- deprecated. Please specify a hint database.
+- [implicit-core-hint-db,deprecated]
+- File &quot;./RELATIONS/Relations.v&quot;, line 95, characters 0-39:
+- Warning: Adding and removing hints in the core database implicitly is
+- deprecated. Please specify a hint database.
+- [implicit-core-hint-db,deprecated]
+- File &quot;./SETOID/BasicTypes.v&quot;, line 38, characters 0-17:
+- Warning: Adding and removing hints in the core database implicitly is
+- deprecated. Please specify a hint database.
+- [implicit-core-hint-db,deprecated]
+- COQC SETOID/Setoid.v
+- COQC RELATIONS/Noetherian.v
+- COQC CATEGORY_THEORY/FUNCTOR/Setoid_dup1.v
+- COQC RELATIONS/CONFLUENCE/Confluence.v
+- COQC CATEGORY_THEORY/NT/Setoid_dup2.v
+- File &quot;./RELATIONS/Noetherian.v&quot;, line 49, characters 0-30:
+- Warning: Adding and removing hints in the core database implicitly is
+- deprecated. Please specify a hint database.
+- [implicit-core-hint-db,deprecated]
+- File &quot;./CATEGORY_THEORY/FUNCTOR/Setoid_dup1.v&quot;, line 166, characters 0-46:
+- Warning:
+- New coercion path [Map2&#39;_Map&#39;; Ap&#39;] : Map2&#39; &gt;-&gt; Funclass is ambiguous with existing 
+- [Ap2&#39;] : Map2&#39; &gt;-&gt; Funclass. [ambiguous-paths,typechecker]
+- COQC CATEGORY_THEORY/FUNCTOR/Category_dup1.v
+- File &quot;./RELATIONS/CONFLUENCE/Confluence.v&quot;, line 73, characters 0-21:
+- Warning: Adding and removing hints in the core database implicitly is
+- deprecated. Please specify a hint database.
+- [implicit-core-hint-db,deprecated]
+- File &quot;./RELATIONS/CONFLUENCE/Confluence.v&quot;, line 74, characters 0-22:
+- Warning: Adding and removing hints in the core database implicitly is
+- deprecated. Please specify a hint database.
+- [implicit-core-hint-db,deprecated]
+- File &quot;./RELATIONS/CONFLUENCE/Confluence.v&quot;, line 75, characters 0-22:
+- Warning: Adding and removing hints in the core database implicitly is
+- deprecated. Please specify a hint database.
+- [implicit-core-hint-db,deprecated]
+- File &quot;./RELATIONS/CONFLUENCE/Confluence.v&quot;, line 76, characters 0-21:
+- Warning: Adding and removing hints in the core database implicitly is
+- deprecated. Please specify a hint database.
+- [implicit-core-hint-db,deprecated]
+- COQC SETOID/Map.v
+- COQC SETOID/Single.v
+- COQC RELATIONS/CONFLUENCE/Coherence.v
+- File &quot;./CATEGORY_THEORY/FUNCTOR/Category_dup1.v&quot;, line 18, characters 0-27:
+- Warning:
+- New coercion path [Map2&#39;_Map&#39;; Ap&#39;] : Map2&#39; &gt;-&gt; Funclass is ambiguous with existing 
+- [Ap2&#39;] : Map2&#39; &gt;-&gt; Funclass. [ambiguous-paths,typechecker]
+- File &quot;./CATEGORY_THEORY/NT/Setoid_dup2.v&quot;, line 167, characters 0-50:
+- Warning:
+- New coercion path [Map2&#39;&#39;_Map&#39;&#39;; Ap&#39;&#39;] : Map2&#39;&#39; &gt;-&gt; Funclass is ambiguous with existing 
+- [Ap2&#39;&#39;] : Map2&#39;&#39; &gt;-&gt; Funclass. [ambiguous-paths,typechecker]
+- COQC SETOID/SetoidPROD.v
+- COQC SETOID/MapProperty.v
+- COQC SETOID/Setoid_prop.v
+- COQC CATEGORY_THEORY/NT/YONEDA_LEMMA/Map0_dup1.v
+- COQC CATEGORY_THEORY/NT/Category_dup2.v
+- File &quot;./SETOID/Single.v&quot;, line 49, characters 0-17:
+- Warning: Adding and removing hints in the core database implicitly is
+- deprecated. Please specify a hint database.
+- [implicit-core-hint-db,deprecated]
+- File &quot;./RELATIONS/CONFLUENCE/Coherence.v&quot;, line 33, characters 0-24:
+- Warning: Adding and removing hints in the core database implicitly is
+- deprecated. Please specify a hint database.
+- [implicit-core-hint-db,deprecated]
+- File &quot;./CATEGORY_THEORY/NT/Category_dup2.v&quot;, line 19, characters 0-27:
+- Warning:
+- New coercion path [Map2&#39;&#39;_Map&#39;&#39;; Ap&#39;&#39;] : Map2&#39;&#39; &gt;-&gt; Funclass is ambiguous with existing 
+- [Ap2&#39;&#39;] : Map2&#39;&#39; &gt;-&gt; Funclass. [ambiguous-paths,typechecker]
+- File &quot;./RELATIONS/CONFLUENCE/Coherence.v&quot;, line 145, characters 0-32:
+- Warning: Adding and removing hints in the core database implicitly is
+- deprecated. Please specify a hint database.
+- [implicit-core-hint-db,deprecated]
+- File &quot;./SETOID/SetoidPROD.v&quot;, line 82, characters 0-69:
+- Warning: Projection value has no head constant: Sprod_l : SPROD -&gt; A in
+- canonical instance Proj1_SPROD of Ap, ignoring it.
+- [projection-no-head-constant,typechecker]
+- COQC RELATIONS/CONFLUENCE/NEWMAN/Newman.v
+- COQC RELATIONS/CONFLUENCE/TAIT/Tait.v
+- File &quot;./SETOID/SetoidPROD.v&quot;, line 92, characters 0-69:
+- Warning: Projection value has no head constant: Sprod_r : SPROD -&gt; B in
+- canonical instance Proj2_SPROD of Ap, ignoring it.
+- [projection-no-head-constant,typechecker]
+- File &quot;./SETOID/SetoidPROD.v&quot;, line 94, characters 0-11:
+- Warning: Projection value has no head constant:
+- Sprod_l (B:=B) : SPROD A B -&gt; A in canonical instance Proj1_SPROD of Ap,
+- ignoring it. [projection-no-head-constant,typechecker]
+- File &quot;./SETOID/SetoidPROD.v&quot;, line 94, characters 0-11:
+- Warning: Projection value has no head constant:
+- Sprod_r (B:=B) : SPROD A B -&gt; B in canonical instance Proj2_SPROD of Ap,
+- ignoring it. [projection-no-head-constant,typechecker]
+- COQC SETOID/Map2.v
+- File &quot;./CATEGORY_THEORY/NT/YONEDA_LEMMA/Map0_dup1.v&quot;, line 19, characters 0-27:
+- Warning:
+- New coercion path [Map2&#39;&#39;_Map&#39;&#39;; Ap&#39;&#39;] : Map2&#39;&#39; &gt;-&gt; Funclass is ambiguous with existing 
+- [Ap2&#39;&#39;] : Map2&#39;&#39; &gt;-&gt; Funclass. [ambiguous-paths,typechecker]
+- File &quot;./SETOID/Map2.v&quot;, line 107, characters 0-42:
+- Warning:
+- New coercion path [Map2_Map; Ap] : Map2 &gt;-&gt; Funclass is ambiguous with existing 
+- [Ap2] : Map2 &gt;-&gt; Funclass. [ambiguous-paths,typechecker]
+- COQC CATEGORY_THEORY/CATEGORY/Category.v
+- COQC SETOID/STRUCTURE/Monoid.v
+- File &quot;./CATEGORY_THEORY/CATEGORY/Category.v&quot;, line 29, characters 0-20:
+- Warning:
+- New coercion path [Map2_Map; Ap] : Map2 &gt;-&gt; Funclass is ambiguous with existing 
+- [Ap2] : Map2 &gt;-&gt; Funclass. [ambiguous-paths,typechecker]
+- File &quot;./SETOID/STRUCTURE/Monoid.v&quot;, line 33, characters 0-20:
+- Warning:
+- New coercion path [Map2_Map; Ap] : Map2 &gt;-&gt; Funclass is ambiguous with existing 
+- [Ap2] : Map2 &gt;-&gt; Funclass. [ambiguous-paths,typechecker]
+- COQC SETOID/STRUCTURE/FreeMonoid.v
+- COQC SETOID/STRUCTURE/Group.v
+- COQC CATEGORY_THEORY/CATEGORY/Dual.v
+- COQC CATEGORY_THEORY/CATEGORY/SET.v
+- COQC CATEGORY_THEORY/CATEGORY/Hom_Equality.v
+- COQC CATEGORY_THEORY/NT/YONEDA_LEMMA/Functor_dup1.v
+- COQC CATEGORY_THEORY/CATEGORY/ONE.v
+- File &quot;./SETOID/STRUCTURE/Group.v&quot;, line 32, characters 0-22:
+- Warning:
+- New coercion path [Map2_Map; Ap] : Map2 &gt;-&gt; Funclass is ambiguous with existing 
+- [Ap2] : Map2 &gt;-&gt; Funclass. [ambiguous-paths,typechecker]
+- File &quot;./SETOID/STRUCTURE/FreeMonoid.v&quot;, line 29, characters 0-22:
+- Warning:
+- New coercion path [Map2_Map; Ap] : Map2 &gt;-&gt; Funclass is ambiguous with existing 
+- [Ap2] : Map2 &gt;-&gt; Funclass. [ambiguous-paths,typechecker]
+- COQC CATEGORY_THEORY/CATEGORY/FullSubCat.v
+- File &quot;./CATEGORY_THEORY/CATEGORY/SET.v&quot;, line 29, characters 0-24:
+- Warning:
+- New coercion path [Map2_Map; Ap] : Map2 &gt;-&gt; Funclass is ambiguous with existing 
+- [Ap2] : Map2 &gt;-&gt; Funclass. [ambiguous-paths,typechecker]
+- File &quot;./CATEGORY_THEORY/CATEGORY/ONE.v&quot;, line 30, characters 0-24:
+- Warning:
+- New coercion path [Map2_Map; Ap] : Map2 &gt;-&gt; Funclass is ambiguous with existing 
+- [Ap2] : Map2 &gt;-&gt; Funclass. [ambiguous-paths,typechecker]
+- File &quot;./CATEGORY_THEORY/CATEGORY/Dual.v&quot;, line 27, characters 0-24:
+- Warning:
+- New coercion path [Map2_Map; Ap] : Map2 &gt;-&gt; Funclass is ambiguous with existing 
+- [Ap2] : Map2 &gt;-&gt; Funclass. [ambiguous-paths,typechecker]
+- File &quot;./SETOID/STRUCTURE/FreeMonoid.v&quot;, line 160, characters 0-40:
+- Warning:
+- New coercion path [FreeMonoid; Mcarrier; Prf_equiv; Prf_pequiv; Build_PSetoid] : Setoid &gt;-&gt; PSetoid is ambiguous with existing 
+- [Prf_equiv; Prf_pequiv; Build_PSetoid] : Setoid &gt;-&gt; PSetoid.
+- New coercion path [Mcarrier; FreeMonoid; Mcarrier; Prf_equiv; Prf_pequiv;
+-                    Build_PSetoid] : Monoid &gt;-&gt; PSetoid is ambiguous with existing 
+- [Mcarrier; Prf_equiv; Prf_pequiv; Build_PSetoid] : Monoid &gt;-&gt; PSetoid.
+- New coercion path [Mcarrier; FreeMonoid; Mcarrier; Prf_equiv; Prf_pequiv] : Monoid &gt;-&gt; Partial_equivalence is ambiguous with existing 
+- [Mcarrier; Prf_equiv; Prf_pequiv] : Monoid &gt;-&gt; Partial_equivalence.
+- New coercion path [Mcarrier; FreeMonoid; Mcarrier; Prf_equiv] : Monoid &gt;-&gt; Equivalence is ambiguous with existing 
+- [Mcarrier; Prf_equiv] : Monoid &gt;-&gt; Equivalence.
+- New coercion path [Mcarrier; FreeMonoid; Mcarrier; Prf_equiv; Equiv_preorder] : Monoid &gt;-&gt; Preorder is ambiguous with existing 
+- [Mcarrier; Prf_equiv; Equiv_preorder] : Monoid &gt;-&gt; Preorder.
+- New coercion path [Mcarrier; FreeMonoid; Mcarrier; Carrier] : Monoid &gt;-&gt; Sortclass is ambiguous with existing 
+- [Mcarrier; Carrier] : Monoid &gt;-&gt; Sortclass.
+- New coercion path [FreeMonoid; Mcarrier; Prf_equiv; Prf_pequiv] : Setoid &gt;-&gt; Partial_equivalence is ambiguous with existing 
+- [Prf_equiv; Prf_pequiv] : Setoid &gt;-&gt; Partial_equivalence.
+- New coercion path [FreeMonoid; Mcarrier; Prf_equiv] : Setoid &gt;-&gt; Equivalence is ambiguous with existing 
+- [Prf_equiv] : Setoid &gt;-&gt; Equivalence.
+- New coercion path [FreeMonoid; Mcarrier; Prf_equiv; Equiv_preorder] : Setoid &gt;-&gt; Preorder is ambiguous with existing 
+- [Prf_equiv; Equiv_preorder] : Setoid &gt;-&gt; Preorder.
+- New coercion path [FreeMonoid; Mcarrier; Carrier] : Setoid &gt;-&gt; Sortclass is ambiguous with existing 
+- [Carrier] : Setoid &gt;-&gt; Sortclass.
+- New coercion path [Build_Setoid; FreeMonoid; Mcarrier; Prf_equiv; Prf_pequiv;
+-                    Build_PSetoid] : Equivalence &gt;-&gt; PSetoid is ambiguous with existing 
+- [Prf_pequiv; Build_PSetoid] : Equivalence &gt;-&gt; PSetoid.
+- New coercion path [Build_Setoid; FreeMonoid; Mcarrier] : Equivalence &gt;-&gt; Setoid is ambiguous with existing 
+- [Build_Setoid] : Equivalence &gt;-&gt; Setoid.
+- New coercion path [Build_Setoid; FreeMonoid; Mcarrier; Prf_equiv; Prf_pequiv] : Equivalence &gt;-&gt; Partial_equivalence is ambiguous with existing 
+- [Prf_pequiv] : Equivalence &gt;-&gt; Partial_equivalence.
+- New coercion path [Build_Setoid; FreeMonoid; Mcarrier; Prf_equiv] : Equivalence &gt;-&gt; Equivalence is ambiguous with existing 
+- [Build_Setoid; Prf_equiv] : Equivalence &gt;-&gt; Equivalence.
+- New coercion path [Build_Setoid; FreeMonoid; Mcarrier; Prf_equiv;
+-                    Equiv_preorder] : Equivalence &gt;-&gt; Preorder is ambiguous with existing 
+- [Equiv_preorder] : Equivalence &gt;-&gt; Preorder.
+- New coercion path [Build_Setoid; FreeMonoid; Mcarrier; Carrier] : Equivalence &gt;-&gt; Sortclass is ambiguous with existing 
+- [Build_Setoid; Carrier] : Equivalence &gt;-&gt; Sortclass.
+- [ambiguous-paths,typechecker]
+- File &quot;./CATEGORY_THEORY/CATEGORY/Hom_Equality.v&quot;, line 27, characters 0-24:
+- Warning:
+- New coercion path [Map2_Map; Ap] : Map2 &gt;-&gt; Funclass is ambiguous with existing 
+- [Ap2] : Map2 &gt;-&gt; Funclass. [ambiguous-paths,typechecker]
+- File &quot;./CATEGORY_THEORY/CATEGORY/Hom_Equality.v&quot;, line 36, characters 0-29:
+- Warning: Adding and removing hints in the core database implicitly is
+- deprecated. Please specify a hint database.
+- [implicit-core-hint-db,deprecated]
+- File &quot;./CATEGORY_THEORY/NT/YONEDA_LEMMA/Functor_dup1.v&quot;, line 18, characters 0-24:
+- Warning:
+- New coercion path [Map2_Map; Ap] : Map2 &gt;-&gt; Funclass is ambiguous with existing 
+- [Ap2] : Map2 &gt;-&gt; Funclass. [ambiguous-paths,typechecker]
+- COQC CATEGORY_THEORY/CATEGORY/PROD.v
+- COQC CATEGORY_THEORY/CATEGORY/CONSTRUCTIONS/Products.v
+- File &quot;./CATEGORY_THEORY/CATEGORY/Hom_Equality.v&quot;, line 71, characters 0-28:
+- Warning: Adding and removing hints in the core database implicitly is
+- deprecated. Please specify a hint database.
+- [implicit-core-hint-db,deprecated]
+- File &quot;./CATEGORY_THEORY/CATEGORY/Hom_Equality.v&quot;, line 72, characters 0-27:
+- Warning: Adding and removing hints in the core database implicitly is
+- deprecated. Please specify a hint database.
+- [implicit-core-hint-db,deprecated]
+- COQC CATEGORY_THEORY/CATEGORY/CONSTRUCTIONS/Binary_Products.v
+- COQC CATEGORY_THEORY/LIMITS/Discr.v
+- File &quot;./CATEGORY_THEORY/CATEGORY/FullSubCat.v&quot;, line 29, characters 0-24:
+- Warning:
+- New coercion path [Map2_Map; Ap] : Map2 &gt;-&gt; Funclass is ambiguous with existing 
+- [Ap2] : Map2 &gt;-&gt; Funclass. [ambiguous-paths,typechecker]
+- File &quot;./CATEGORY_THEORY/NT/YONEDA_LEMMA/Functor_dup1.v&quot;, line 19, characters 0-29:
+- Warning:
+- New coercion path [Map2&#39;&#39;_Map&#39;&#39;; Ap&#39;&#39;] : Map2&#39;&#39; &gt;-&gt; Funclass is ambiguous with existing 
+- [Ap2&#39;&#39;] : Map2&#39;&#39; &gt;-&gt; Funclass. [ambiguous-paths,typechecker]
+- COQC CATEGORY_THEORY/LIMITS/PULB.v
+- COQC CATEGORY_THEORY/LIMITS/PA.v
+- COQC SETOID/STRUCTURE/Inverses_Group.v
+- File &quot;./CATEGORY_THEORY/LIMITS/Discr.v&quot;, line 29, characters 0-24:
+- Warning:
+- New coercion path [Map2_Map; Ap] : Map2 &gt;-&gt; Funclass is ambiguous with existing 
+- [Ap2] : Map2 &gt;-&gt; Funclass. [ambiguous-paths,typechecker]
+- COQC CATEGORY_THEORY/FUNCTOR/Functor.v
+- File &quot;./CATEGORY_THEORY/CATEGORY/CONSTRUCTIONS/Binary_Products.v&quot;, line 29, characters 0-24:
+- Warning:
+- New coercion path [Map2_Map; Ap] : Map2 &gt;-&gt; Funclass is ambiguous with existing 
+- [Ap2] : Map2 &gt;-&gt; Funclass. [ambiguous-paths,typechecker]
+- File &quot;./CATEGORY_THEORY/FUNCTOR/Functor.v&quot;, line 27, characters 0-27:
+- Warning:
+- New coercion path [Map2&#39;_Map&#39;; Ap&#39;] : Map2&#39; &gt;-&gt; Funclass is ambiguous with existing 
+- [Ap2&#39;] : Map2&#39; &gt;-&gt; Funclass. [ambiguous-paths,typechecker]
+- File &quot;./CATEGORY_THEORY/FUNCTOR/Functor.v&quot;, line 28, characters 0-28:
+- Warning:
+- New coercion path [Map2_Map; Ap] : Map2 &gt;-&gt; Funclass is ambiguous with existing 
+- [Ap2] : Map2 &gt;-&gt; Funclass. [ambiguous-paths,typechecker]
+- File &quot;./CATEGORY_THEORY/CATEGORY/PROD.v&quot;, line 28, characters 0-24:
+- Warning:
+- New coercion path [Map2_Map; Ap] : Map2 &gt;-&gt; Funclass is ambiguous with existing 
+- [Ap2] : Map2 &gt;-&gt; Funclass. [ambiguous-paths,typechecker]
+- COQC CATEGORY_THEORY/CATEGORY/CONSTRUCTIONS/CatProperty.v
+- File &quot;./CATEGORY_THEORY/CATEGORY/CONSTRUCTIONS/Products.v&quot;, line 29, characters 0-24:
+- Warning:
+- New coercion path [Map2_Map; Ap] : Map2 &gt;-&gt; Funclass is ambiguous with existing 
+- [Ap2] : Map2 &gt;-&gt; Funclass. [ambiguous-paths,typechecker]
+- COQC CATEGORY_THEORY/CATEGORY/MON.v
+- File &quot;./CATEGORY_THEORY/LIMITS/PULB.v&quot;, line 30, characters 0-24:
+- Warning:
+- New coercion path [Map2_Map; Ap] : Map2 &gt;-&gt; Funclass is ambiguous with existing 
+- [Ap2] : Map2 &gt;-&gt; Funclass. [ambiguous-paths,typechecker]
+- File &quot;./SETOID/STRUCTURE/Inverses_Group.v&quot;, line 32, characters 0-21:
+- Warning:
+- New coercion path [Map2_Map; Ap] : Map2 &gt;-&gt; Funclass is ambiguous with existing 
+- [Ap2] : Map2 &gt;-&gt; Funclass. [ambiguous-paths,typechecker]
+- File &quot;./CATEGORY_THEORY/LIMITS/PA.v&quot;, line 31, characters 0-24:
+- Warning:
+- New coercion path [Map2_Map; Ap] : Map2 &gt;-&gt; Funclass is ambiguous with existing 
+- [Ap2] : Map2 &gt;-&gt; Funclass. [ambiguous-paths,typechecker]
+- COQC CATEGORY_THEORY/CATEGORY/CONSTRUCTIONS/Exponents.v
+- COQC CATEGORY_THEORY/CATEGORY/CONSTRUCTIONS/SET_BinProds.v
+- COQC CATEGORY_THEORY/FUNCTOR/Comma.v
+- File &quot;./CATEGORY_THEORY/CATEGORY/CONSTRUCTIONS/CatProperty.v&quot;, line 28, characters 0-20:
+- Warning:
+- New coercion path [Map2_Map; Ap] : Map2 &gt;-&gt; Funclass is ambiguous with existing 
+- [Ap2] : Map2 &gt;-&gt; Funclass. [ambiguous-paths,typechecker]
+- File &quot;./CATEGORY_THEORY/CATEGORY/MON.v&quot;, line 29, characters 0-19:
+- Warning:
+- New coercion path [Map2_Map; Ap] : Map2 &gt;-&gt; Funclass is ambiguous with existing 
+- [Ap2] : Map2 &gt;-&gt; Funclass. [ambiguous-paths,typechecker]
+- COQC CATEGORY_THEORY/FUNCTOR/Dual_Functor.v
+- COQC CATEGORY_THEORY/FUNCTOR/IdCAT.v
+- File &quot;./CATEGORY_THEORY/CATEGORY/CONSTRUCTIONS/Exponents.v&quot;, line 29, characters 0-31:
+- Warning:
+- New coercion path [Map2_Map; Ap] : Map2 &gt;-&gt; Funclass is ambiguous with existing 
+- [Ap2] : Map2 &gt;-&gt; Funclass. [ambiguous-paths,typechecker]
+- File &quot;./CATEGORY_THEORY/FUNCTOR/Comma.v&quot;, line 29, characters 0-23:
+- Warning:
+- New coercion path [Map2&#39;_Map&#39;; Ap&#39;] : Map2&#39; &gt;-&gt; Funclass is ambiguous with existing 
+- [Ap2&#39;] : Map2&#39; &gt;-&gt; Funclass. [ambiguous-paths,typechecker]
+- File &quot;./CATEGORY_THEORY/FUNCTOR/Comma.v&quot;, line 29, characters 0-23:
+- Warning:
+- New coercion path [Map2_Map; Ap] : Map2 &gt;-&gt; Funclass is ambiguous with existing 
+- [Ap2] : Map2 &gt;-&gt; Funclass. [ambiguous-paths,typechecker]
+- COQC CATEGORY_THEORY/FUNCTOR/PROD_proj.v
+- COQC CATEGORY_THEORY/LIMITS/Const.v
+- File &quot;./CATEGORY_THEORY/CATEGORY/CONSTRUCTIONS/SET_BinProds.v&quot;, line 30, characters 0-31:
+- Warning:
+- New coercion path [Map2_Map; Ap] : Map2 &gt;-&gt; Funclass is ambiguous with existing 
+- [Ap2] : Map2 &gt;-&gt; Funclass. [ambiguous-paths,typechecker]
+- COQC CATEGORY_THEORY/LIMITS/UniversalArrow.v
+- COQC CATEGORY_THEORY/ADJUNCTION/CCC/FunOne.v
+- COQC CATEGORY_THEORY/ADJUNCTION/CCC/Diagonal.v
+- File &quot;./CATEGORY_THEORY/FUNCTOR/PROD_proj.v&quot;, line 27, characters 0-20:
+- Warning:
+- New coercion path [Map2_Map; Ap] : Map2 &gt;-&gt; Funclass is ambiguous with existing 
+- [Ap2] : Map2 &gt;-&gt; Funclass. [ambiguous-paths,typechecker]
+- File &quot;./CATEGORY_THEORY/FUNCTOR/PROD_proj.v&quot;, line 27, characters 0-20:
+- Warning:
+- New coercion path [Map2_Map; Pres; Build_Map; Ap] : Map2 &gt;-&gt; Funclass is ambiguous with existing 
+- [Ap2] : Map2 &gt;-&gt; Funclass.
+- New coercion path [Map2_Map; Pres; Build_Map] : Map2 &gt;-&gt; Map is ambiguous with existing 
+- [Map2_Map] : Map2 &gt;-&gt; Map. [ambiguous-paths,typechecker]
+- File &quot;./CATEGORY_THEORY/FUNCTOR/PROD_proj.v&quot;, line 28, characters 0-23:
+- Warning:
+- New coercion path [Map2&#39;_Map&#39;; Ap&#39;] : Map2&#39; &gt;-&gt; Funclass is ambiguous with existing 
+- [Ap2&#39;] : Map2&#39; &gt;-&gt; Funclass. [ambiguous-paths,typechecker]
+- File &quot;./CATEGORY_THEORY/ADJUNCTION/CCC/FunOne.v&quot;, line 30, characters 0-19:
+- Warning:
+- New coercion path [Map2_Map; Ap] : Map2 &gt;-&gt; Funclass is ambiguous with existing 
+- [Ap2] : Map2 &gt;-&gt; Funclass. [ambiguous-paths,typechecker]
+- File &quot;./CATEGORY_THEORY/ADJUNCTION/CCC/FunOne.v&quot;, line 31, characters 0-23:
+- Warning:
+- New coercion path [Map2&#39;_Map&#39;; Ap&#39;] : Map2&#39; &gt;-&gt; Funclass is ambiguous with existing 
+- [Ap2&#39;] : Map2&#39; &gt;-&gt; Funclass. [ambiguous-paths,typechecker]
+- COQC CATEGORY_THEORY/ADJUNCTION/CCC/FunProd.v
+- File &quot;./CATEGORY_THEORY/FUNCTOR/IdCAT.v&quot;, line 30, characters 0-23:
+- Warning:
+- New coercion path [Map2&#39;_Map&#39;; Ap&#39;] : Map2&#39; &gt;-&gt; Funclass is ambiguous with existing 
+- [Ap2&#39;] : Map2&#39; &gt;-&gt; Funclass. [ambiguous-paths,typechecker]
+- File &quot;./CATEGORY_THEORY/FUNCTOR/Dual_Functor.v&quot;, line 27, characters 0-20:
+- Warning:
+- New coercion path [Map2_Map; Ap] : Map2 &gt;-&gt; Funclass is ambiguous with existing 
+- [Ap2] : Map2 &gt;-&gt; Funclass. [ambiguous-paths,typechecker]
+- File &quot;./CATEGORY_THEORY/LIMITS/Const.v&quot;, line 29, characters 0-23:
+- Warning:
+- New coercion path [Map2&#39;_Map&#39;; Ap&#39;] : Map2&#39; &gt;-&gt; Funclass is ambiguous with existing 
+- [Ap2&#39;] : Map2&#39; &gt;-&gt; Funclass. [ambiguous-paths,typechecker]
+- COQC CATEGORY_THEORY/ADJUNCTION/HomFunctor2.v
+- File &quot;./CATEGORY_THEORY/FUNCTOR/IdCAT.v&quot;, line 30, characters 0-23:
+- Warning:
+- New coercion path [Map2_Map; Ap] : Map2 &gt;-&gt; Funclass is ambiguous with existing 
+- [Ap2] : Map2 &gt;-&gt; Funclass. [ambiguous-paths,typechecker]
+- File &quot;./CATEGORY_THEORY/FUNCTOR/Dual_Functor.v&quot;, line 28, characters 0-23:
+- Warning:
+- New coercion path [Map2&#39;_Map&#39;; Ap&#39;] : Map2&#39; &gt;-&gt; Funclass is ambiguous with existing 
+- [Ap2&#39;] : Map2&#39; &gt;-&gt; Funclass. [ambiguous-paths,typechecker]
+- File &quot;./CATEGORY_THEORY/LIMITS/Const.v&quot;, line 29, characters 0-23:
+- Warning:
+- New coercion path [Map2_Map; Ap] : Map2 &gt;-&gt; Funclass is ambiguous with existing 
+- [Ap2] : Map2 &gt;-&gt; Funclass. [ambiguous-paths,typechecker]
+- COQC CATEGORY_THEORY/ADJUNCTION/FREYD_THEOREM/FAFT_SSC2.v
+- COQC CATEGORY_THEORY/FUNCTOR/HomFunctor.v
+- COQC CATEGORY_THEORY/NT/Ntransformation.v
+- File &quot;./CATEGORY_THEORY/ADJUNCTION/CCC/Diagonal.v&quot;, line 29, characters 0-20:
+- Warning:
+- New coercion path [Map2_Map; Ap] : Map2 &gt;-&gt; Funclass is ambiguous with existing 
+- [Ap2] : Map2 &gt;-&gt; Funclass. [ambiguous-paths,typechecker]
+- File &quot;./CATEGORY_THEORY/ADJUNCTION/CCC/Diagonal.v&quot;, line 29, characters 0-20:
+- Warning:
+- New coercion path [Map2_Map; Pres; Build_Map; Ap] : Map2 &gt;-&gt; Funclass is ambiguous with existing 
+- [Ap2] : Map2 &gt;-&gt; Funclass.
+- New coercion path [Map2_Map; Pres; Build_Map] : Map2 &gt;-&gt; Map is ambiguous with existing 
+- [Map2_Map] : Map2 &gt;-&gt; Map. [ambiguous-paths,typechecker]
+- File &quot;./CATEGORY_THEORY/ADJUNCTION/CCC/Diagonal.v&quot;, line 30, characters 0-23:
+- Warning:
+- New coercion path [Map2&#39;_Map&#39;; Ap&#39;] : Map2&#39; &gt;-&gt; Funclass is ambiguous with existing 
+- [Ap2&#39;] : Map2&#39; &gt;-&gt; Funclass. [ambiguous-paths,typechecker]
+- File &quot;./CATEGORY_THEORY/LIMITS/UniversalArrow.v&quot;, line 29, characters 0-27:
+- Warning:
+- New coercion path [Map2_Map; Ap] : Map2 &gt;-&gt; Funclass is ambiguous with existing 
+- [Ap2] : Map2 &gt;-&gt; Funclass. [ambiguous-paths,typechecker]
+- File &quot;./CATEGORY_THEORY/LIMITS/UniversalArrow.v&quot;, line 30, characters 0-23:
+- Warning:
+- New coercion path [Map2&#39;_Map&#39;; Ap&#39;] : Map2&#39; &gt;-&gt; Funclass is ambiguous with existing 
+- [Ap2&#39;] : Map2&#39; &gt;-&gt; Funclass. [ambiguous-paths,typechecker]
+- COQC CATEGORY_THEORY/CATEGORY/PermCat.v
+- File &quot;./CATEGORY_THEORY/ADJUNCTION/CCC/FunProd.v&quot;, line 29, characters 0-31:
+- Warning:
+- New coercion path [Map2_Map; Ap] : Map2 &gt;-&gt; Funclass is ambiguous with existing 
+- [Ap2] : Map2 &gt;-&gt; Funclass. [ambiguous-paths,typechecker]
+- File &quot;./CATEGORY_THEORY/ADJUNCTION/HomFunctor2.v&quot;, line 28, characters 0-19:
+- Warning:
+- New coercion path [Map2_Map; Ap] : Map2 &gt;-&gt; Funclass is ambiguous with existing 
+- [Ap2] : Map2 &gt;-&gt; Funclass. [ambiguous-paths,typechecker]
+- File &quot;./CATEGORY_THEORY/ADJUNCTION/HomFunctor2.v&quot;, line 31, characters 0-23:
+- Warning:
+- New coercion path [Prf_equiv&#39;; Build_Setoid; Carrier] : Setoid&#39; &gt;-&gt; Sortclass is ambiguous with existing 
+- [Carrier&#39;] : Setoid&#39; &gt;-&gt; Sortclass. [ambiguous-paths,typechecker]
+- File &quot;./CATEGORY_THEORY/ADJUNCTION/FREYD_THEOREM/FAFT_SSC2.v&quot;, line 30, characters 0-23:
+- Warning:
+- New coercion path [Map2&#39;_Map&#39;; Ap&#39;] : Map2&#39; &gt;-&gt; Funclass is ambiguous with existing 
+- [Ap2&#39;] : Map2&#39; &gt;-&gt; Funclass. [ambiguous-paths,typechecker]
+- File &quot;./CATEGORY_THEORY/FUNCTOR/HomFunctor.v&quot;, line 27, characters 0-19:
+- Warning:
+- New coercion path [Map2_Map; Ap] : Map2 &gt;-&gt; Funclass is ambiguous with existing 
+- [Ap2] : Map2 &gt;-&gt; Funclass. [ambiguous-paths,typechecker]
+- File &quot;./CATEGORY_THEORY/FUNCTOR/HomFunctor.v&quot;, line 28, characters 0-23:
+- Warning:
+- New coercion path [Prf_equiv&#39;; Build_Setoid; Carrier] : Setoid&#39; &gt;-&gt; Sortclass is ambiguous with existing 
+- [Carrier&#39;] : Setoid&#39; &gt;-&gt; Sortclass. [ambiguous-paths,typechecker]
+- File &quot;./CATEGORY_THEORY/ADJUNCTION/CCC/FunProd.v&quot;, line 30, characters 0-23:
+- Warning:
+- New coercion path [Map2&#39;_Map&#39;; Ap&#39;] : Map2&#39; &gt;-&gt; Funclass is ambiguous with existing 
+- [Ap2&#39;] : Map2&#39; &gt;-&gt; Funclass. [ambiguous-paths,typechecker]
+- File &quot;./CATEGORY_THEORY/ADJUNCTION/HomFunctor2.v&quot;, line 31, characters 0-23:
+- Warning:
+- New coercion path [Build_Setoid&#39;; Prf_equiv&#39;; Build_Setoid] : Equivalence &gt;-&gt; Setoid is ambiguous with existing 
+- [Build_Setoid] : Equivalence &gt;-&gt; Setoid.
+- New coercion path [Prf_equiv&#39;; Build_Setoid&#39;; Prf_equiv&#39;; Build_Setoid] : Setoid&#39; &gt;-&gt; Setoid is ambiguous with existing 
+- [Prf_equiv&#39;; Build_Setoid] : Setoid&#39; &gt;-&gt; Setoid.
+- [ambiguous-paths,typechecker]
+- File &quot;./CATEGORY_THEORY/ADJUNCTION/HomFunctor2.v&quot;, line 31, characters 0-23:
+- Warning:
+- New coercion path [Map2&#39;_Map&#39;; Ap&#39;] : Map2&#39; &gt;-&gt; Funclass is ambiguous with existing 
+- [Ap2&#39;] : Map2&#39; &gt;-&gt; Funclass. [ambiguous-paths,typechecker]
+- File &quot;./CATEGORY_THEORY/ADJUNCTION/FREYD_THEOREM/FAFT_SSC2.v&quot;, line 30, characters 0-23:
+- Warning:
+- New coercion path [Map2_Map; Ap] : Map2 &gt;-&gt; Funclass is ambiguous with existing 
+- [Ap2] : Map2 &gt;-&gt; Funclass. [ambiguous-paths,typechecker]
+- File &quot;./CATEGORY_THEORY/FUNCTOR/HomFunctor.v&quot;, line 28, characters 0-23:
+- Warning:
+- New coercion path [Build_Setoid&#39;; Prf_equiv&#39;; Build_Setoid] : Equivalence &gt;-&gt; Setoid is ambiguous with existing 
+- [Build_Setoid] : Equivalence &gt;-&gt; Setoid.
+- New coercion path [Prf_equiv&#39;; Build_Setoid&#39;; Prf_equiv&#39;; Build_Setoid] : Setoid&#39; &gt;-&gt; Setoid is ambiguous with existing 
+- [Prf_equiv&#39;; Build_Setoid] : Setoid&#39; &gt;-&gt; Setoid.
+- [ambiguous-paths,typechecker]
+- File &quot;./CATEGORY_THEORY/FUNCTOR/HomFunctor.v&quot;, line 28, characters 0-23:
+- Warning:
+- New coercion path [Map2&#39;_Map&#39;; Ap&#39;] : Map2&#39; &gt;-&gt; Funclass is ambiguous with existing 
+- [Ap2&#39;] : Map2&#39; &gt;-&gt; Funclass. [ambiguous-paths,typechecker]
+- File &quot;./CATEGORY_THEORY/NT/Ntransformation.v&quot;, line 27, characters 0-23:
+- Warning:
+- New coercion path [Map2&#39;_Map&#39;; Ap&#39;] : Map2&#39; &gt;-&gt; Funclass is ambiguous with existing 
+- [Ap2&#39;] : Map2&#39; &gt;-&gt; Funclass. [ambiguous-paths,typechecker]
+- File &quot;./CATEGORY_THEORY/NT/Ntransformation.v&quot;, line 27, characters 0-23:
+- Warning:
+- New coercion path [Map2_Map; Ap] : Map2 &gt;-&gt; Funclass is ambiguous with existing 
+- [Ap2] : Map2 &gt;-&gt; Funclass. [ambiguous-paths,typechecker]
+- File &quot;./CATEGORY_THEORY/NT/Ntransformation.v&quot;, line 28, characters 0-27:
+- Warning:
+- New coercion path [Map2&#39;&#39;_Map&#39;&#39;; Ap&#39;&#39;] : Map2&#39;&#39; &gt;-&gt; Funclass is ambiguous with existing 
+- [Ap2&#39;&#39;] : Map2&#39;&#39; &gt;-&gt; Funclass. [ambiguous-paths,typechecker]
+- COQC CATEGORY_THEORY/CATEGORY/CONSTRUCTIONS/Pullbacks.v
+- COQC CATEGORY_THEORY/CATEGORY/CONSTRUCTIONS/Equalizers.v
+- COQC CATEGORY_THEORY/CATEGORY/CONSTRUCTIONS/SET_Terminal.v
+- File &quot;./CATEGORY_THEORY/CATEGORY/PermCat.v&quot;, line 32, characters 0-30:
+- Warning:
+- New coercion path [Map2_Map; Ap] : Map2 &gt;-&gt; Funclass is ambiguous with existing 
+- [Ap2] : Map2 &gt;-&gt; Funclass. [ambiguous-paths,typechecker]
+- COQC CATEGORY_THEORY/CATEGORY/CONSTRUCTIONS/CCC.v
+- COQC CATEGORY_THEORY/CATEGORY/CONSTRUCTIONS/SET_Exponents.v
+- COQC CATEGORY_THEORY/CATEGORY/CONSTRUCTIONS/SETProperty.v
+- File &quot;./CATEGORY_THEORY/CATEGORY/CONSTRUCTIONS/SET_Terminal.v&quot;, line 29, characters 0-19:
+- Warning:
+- New coercion path [Map2_Map; Ap] : Map2 &gt;-&gt; Funclass is ambiguous with existing 
+- [Ap2] : Map2 &gt;-&gt; Funclass. [ambiguous-paths,typechecker]
+- File &quot;./CATEGORY_THEORY/CATEGORY/CONSTRUCTIONS/Equalizers.v&quot;, line 29, characters 0-27:
+- Warning:
+- New coercion path [Map2_Map; Ap] : Map2 &gt;-&gt; Funclass is ambiguous with existing 
+- [Ap2] : Map2 &gt;-&gt; Funclass. [ambiguous-paths,typechecker]
+- COQC CATEGORY_THEORY/FUNCTOR/Comma_proj.v
+- File &quot;./CATEGORY_THEORY/CATEGORY/CONSTRUCTIONS/Pullbacks.v&quot;, line 29, characters 0-27:
+- Warning:
+- New coercion path [Map2_Map; Ap] : Map2 &gt;-&gt; Funclass is ambiguous with existing 
+- [Ap2] : Map2 &gt;-&gt; Funclass. [ambiguous-paths,typechecker]
+- COQC CATEGORY_THEORY/FUNCTOR/FunForget.v
+- File &quot;./CATEGORY_THEORY/CATEGORY/CONSTRUCTIONS/SET_Exponents.v&quot;, line 29, characters 0-28:
+- Warning:
+- New coercion path [Map2_Map; Ap] : Map2 &gt;-&gt; Funclass is ambiguous with existing 
+- [Ap2] : Map2 &gt;-&gt; Funclass. [ambiguous-paths,typechecker]
+- File &quot;./CATEGORY_THEORY/CATEGORY/CONSTRUCTIONS/SETProperty.v&quot;, line 28, characters 0-19:
+- Warning:
+- New coercion path [Map2_Map; Ap] : Map2 &gt;-&gt; Funclass is ambiguous with existing 
+- [Ap2] : Map2 &gt;-&gt; Funclass. [ambiguous-paths,typechecker]
+- COQC CATEGORY_THEORY/FUNCTOR/FunFreeMon.v
+- File &quot;./CATEGORY_THEORY/CATEGORY/CONSTRUCTIONS/CCC.v&quot;, line 29, characters 0-25:
+- Warning:
+- New coercion path [Map2_Map; Ap] : Map2 &gt;-&gt; Funclass is ambiguous with existing 
+- [Ap2] : Map2 &gt;-&gt; Funclass. [ambiguous-paths,typechecker]
+- COQC CATEGORY_THEORY/FUNCTOR/FunctorProperty.v
+- File &quot;./CATEGORY_THEORY/CATEGORY/CONSTRUCTIONS/SETProperty.v&quot;, line 107, characters 0-47:
+- Warning:
+- New coercion path [Inj_monic; Monic_inj; Build_Inj] : Inj_law &gt;-&gt; Inj is ambiguous with existing 
+- [Build_Inj] : Inj_law &gt;-&gt; Inj.
+- New coercion path [Inj_monic; Monic_inj; Inj_monic;
+-                    Id_SET_Monic_law_Monic_law] : Inj_law &gt;-&gt; Monic_law is ambiguous with existing 
+- [Inj_monic; Id_SET_Monic_law_Monic_law] : Inj_law &gt;-&gt; Monic_law.
+- New coercion path [Inj_monic; Monic_inj; Inj_monic;
+-                    Id_SET_Monic_law_Monic_law; Build_Monic] : Inj_law &gt;-&gt; Monic is ambiguous with existing 
+- [Inj_monic; Id_SET_Monic_law_Monic_law; Build_Monic] : Inj_law &gt;-&gt; Monic.
+- New coercion path [Inj_monic; Monic_inj] : Inj_law &gt;-&gt; Inj_law is ambiguous with existing 
+- [Build_Inj; Prf_isInj] : Inj_law &gt;-&gt; Inj_law.
+- New coercion path [Monic_inj; Inj_monic; Id_SET_Monic_law_Monic_law] : SET_Monic_law &gt;-&gt; Monic_law is ambiguous with existing 
+- [Id_SET_Monic_law_Monic_law] : SET_Monic_law &gt;-&gt; Monic_law.
+- New coercion path [Monic_inj; Inj_monic; Id_SET_Monic_law_Monic_law;
+-                    Build_Monic] : SET_Monic_law &gt;-&gt; Monic is ambiguous with existing 
+- [Id_SET_Monic_law_Monic_law; Build_Monic] : SET_Monic_law &gt;-&gt; Monic.
+- New coercion path [Prf_isInj; Inj_monic; Monic_inj; Inj_monic] : Inj &gt;-&gt; SET_Monic_law is ambiguous with existing 
+- [Prf_isInj; Inj_monic] : Inj &gt;-&gt; SET_Monic_law.
+- New coercion path [Prf_isInj; Inj_monic; Monic_inj; Build_Inj] : Inj &gt;-&gt; Inj is ambiguous with existing 
+- [Prf_isInj; Build_Inj] : Inj &gt;-&gt; Inj.
+- New coercion path [Prf_isInj; Inj_monic; Monic_inj; Inj_monic;
+-                    Id_SET_Monic_law_Monic_law] : Inj &gt;-&gt; Monic_law is ambiguous with existing 
+- [Prf_isInj; Inj_monic; Id_SET_Monic_law_Monic_law] : Inj &gt;-&gt; Monic_law.
+- New coercion path [Prf_isInj; Inj_monic; Monic_inj; Inj_monic;
+-                    Id_SET_Monic_law_Monic_law; Build_Monic] : Inj &gt;-&gt; Monic is ambiguous with existing 
+- [Prf_isInj; Inj_monic; Id_SET_Monic_law_Monic_law; Build_Monic] : Inj &gt;-&gt; Monic.
+- New coercion path [Prf_isInj; Inj_monic; Monic_inj] : Inj &gt;-&gt; Inj_law is ambiguous with existing 
+- [Prf_isInj] : Inj &gt;-&gt; Inj_law. [ambiguous-paths,typechecker]
+- File &quot;./CATEGORY_THEORY/CATEGORY/CONSTRUCTIONS/CCC.v&quot;, line 46, characters 0-76:
+- Warning:
+- New coercion path [Prf_isCCC; CCC_isCar; Car_BP] : CCC &gt;-&gt; HasBinProd is ambiguous with existing 
+- [CCC_Car; Prf_isCartesian; Car_BP] : CCC &gt;-&gt; HasBinProd.
+- New coercion path [Prf_isCCC; CCC_isCar] : CCC &gt;-&gt; IsCartesian is ambiguous with existing 
+- [CCC_Car; Prf_isCartesian] : CCC &gt;-&gt; IsCartesian.
+- New coercion path [Prf_isCCC; CCC_isCar; Car_terminal; Prf_isTerminal] : CCC &gt;-&gt; IsTerminal is ambiguous with existing 
+- [CCC_Car; Prf_isCartesian; Car_terminal; Prf_isTerminal] : CCC &gt;-&gt; IsTerminal.
+- New coercion path [Prf_isCCC; CCC_isCar; Car_terminal] : CCC &gt;-&gt; Terminal is ambiguous with existing 
+- [CCC_Car; Prf_isCartesian; Car_terminal] : CCC &gt;-&gt; Terminal.
+- [ambiguous-paths,typechecker]
+- COQC CATEGORY_THEORY/FUNCTOR/CAT.v
+- File &quot;./CATEGORY_THEORY/FUNCTOR/Comma_proj.v&quot;, line 29, characters 0-21:
+- Warning:
+- New coercion path [Map2&#39;_Map&#39;; Ap&#39;] : Map2&#39; &gt;-&gt; Funclass is ambiguous with existing 
+- [Ap2&#39;] : Map2&#39; &gt;-&gt; Funclass. [ambiguous-paths,typechecker]
+- COQC CATEGORY_THEORY/LIMITS/Comma_UA.v
+- COQC CATEGORY_THEORY/LIMITS/CoUniversalArrow.v
+- File &quot;./CATEGORY_THEORY/FUNCTOR/Comma_proj.v&quot;, line 29, characters 0-21:
+- Warning:
+- New coercion path [Map2_Map; Ap] : Map2 &gt;-&gt; Funclass is ambiguous with existing 
+- [Ap2] : Map2 &gt;-&gt; Funclass. [ambiguous-paths,typechecker]
+- File &quot;./CATEGORY_THEORY/FUNCTOR/FunForget.v&quot;, line 29, characters 0-19:
+- Warning:
+- New coercion path [Map2_Map; Ap] : Map2 &gt;-&gt; Funclass is ambiguous with existing 
+- [Ap2] : Map2 &gt;-&gt; Funclass. [ambiguous-paths,typechecker]
+- File &quot;./CATEGORY_THEORY/FUNCTOR/FunForget.v&quot;, line 30, characters 0-23:
+- Warning:
+- New coercion path [Prf_equiv&#39;; Build_Setoid; Carrier] : Setoid&#39; &gt;-&gt; Sortclass is ambiguous with existing 
+- [Carrier&#39;] : Setoid&#39; &gt;-&gt; Sortclass. [ambiguous-paths,typechecker]
+- File &quot;./CATEGORY_THEORY/FUNCTOR/FunForget.v&quot;, line 30, characters 0-23:
+- Warning:
+- New coercion path [Build_Setoid&#39;; Prf_equiv&#39;; Build_Setoid] : Equivalence &gt;-&gt; Setoid is ambiguous with existing 
+- [Build_Setoid] : Equivalence &gt;-&gt; Setoid.
+- New coercion path [Prf_equiv&#39;; Build_Setoid&#39;; Prf_equiv&#39;; Build_Setoid] : Setoid&#39; &gt;-&gt; Setoid is ambiguous with existing 
+- [Prf_equiv&#39;; Build_Setoid] : Setoid&#39; &gt;-&gt; Setoid.
+- New coercion path [Mcarrier; Prf_equiv; Build_Setoid&#39;; Prf_equiv&#39;;
+-                    Build_Setoid] : Monoid &gt;-&gt; Setoid is ambiguous with existing 
+- [Mcarrier] : Monoid &gt;-&gt; Setoid. [ambiguous-paths,typechecker]
+- File &quot;./CATEGORY_THEORY/FUNCTOR/FunForget.v&quot;, line 30, characters 0-23:
+- Warning:
+- New coercion path [Map2&#39;_Map&#39;; Ap&#39;] : Map2&#39; &gt;-&gt; Funclass is ambiguous with existing 
+- [Ap2&#39;] : Map2&#39; &gt;-&gt; Funclass. [ambiguous-paths,typechecker]
+- File &quot;./CATEGORY_THEORY/FUNCTOR/FunFreeMon.v&quot;, line 29, characters 0-26:
+- Warning:
+- New coercion path [Map2_Map; Ap] : Map2 &gt;-&gt; Funclass is ambiguous with existing 
+- [Ap2] : Map2 &gt;-&gt; Funclass. [ambiguous-paths,typechecker]
+- File &quot;./CATEGORY_THEORY/FUNCTOR/FunFreeMon.v&quot;, line 29, characters 0-26:
+- Warning:
+- New coercion path [FreeMonoid; Mcarrier; Prf_equiv; Prf_pequiv; Build_PSetoid] : Setoid &gt;-&gt; PSetoid is ambiguous with existing 
+- [Prf_equiv; Prf_pequiv; Build_PSetoid] : Setoid &gt;-&gt; PSetoid.
+- New coercion path [Mcarrier; FreeMonoid; Mcarrier; Prf_equiv; Prf_pequiv;
+-                    Build_PSetoid] : Monoid &gt;-&gt; PSetoid is ambiguous with existing 
+- [Mcarrier; Prf_equiv; Prf_pequiv; Build_PSetoid] : Monoid &gt;-&gt; PSetoid.
+- New coercion path [Mcarrier; FreeMonoid; Mcarrier; Prf_equiv; Prf_pequiv] : Monoid &gt;-&gt; Partial_equivalence is ambiguous with existing 
+- [Mcarrier; Prf_equiv; Prf_pequiv] : Monoid &gt;-&gt; Partial_equivalence.
+- New coercion path [Mcarrier; FreeMonoid; Mcarrier; Prf_equiv] : Monoid &gt;-&gt; Equivalence is ambiguous with existing 
+- [Mcarrier; Prf_equiv] : Monoid &gt;-&gt; Equivalence.
+- New coercion path [Mcarrier; FreeMonoid; Mcarrier; Prf_equiv; Equiv_preorder] : Monoid &gt;-&gt; Preorder is ambiguous with existing 
+- [Mcarrier; Prf_equiv; Equiv_preorder] : Monoid &gt;-&gt; Preorder.
+- New coercion path [Mcarrier; FreeMonoid; Mcarrier; Carrier] : Monoid &gt;-&gt; Sortclass is ambiguous with existing 
+- [Mcarrier; Carrier] : Monoid &gt;-&gt; Sortclass.
+- New coercion path [FreeMonoid; Mcarrier; Prf_equiv; Prf_pequiv] : Setoid &gt;-&gt; Partial_equivalence is ambiguous with existing 
+- [Prf_equiv; Prf_pequiv] : Setoid &gt;-&gt; Partial_equivalence.
+- New coercion path [FreeMonoid; Mcarrier; Prf_equiv] : Setoid &gt;-&gt; Equivalence is ambiguous with existing 
+- [Prf_equiv] : Setoid &gt;-&gt; Equivalence.
+- New coercion path [FreeMonoid; Mcarrier; Prf_equiv; Equiv_preorder] : Setoid &gt;-&gt; Preorder is ambiguous with existing 
+- [Prf_equiv; Equiv_preorder] : Setoid &gt;-&gt; Preorder.
+- New coercion path [FreeMonoid; Mcarrier; Carrier] : Setoid &gt;-&gt; Sortclass is ambiguous with existing 
+- [Carrier] : Setoid &gt;-&gt; Sortclass.
+- New coercion path [Build_Setoid; FreeMonoid; Mcarrier; Prf_equiv; Prf_pequiv;
+-                    Build_PSetoid] : Equivalence &gt;-&gt; PSetoid is ambiguous with existing 
+- [Prf_pequiv; Build_PSetoid] : Equivalence &gt;-&gt; PSetoid.
+- New coercion path [Build_Setoid; FreeMonoid; Mcarrier] : Equivalence &gt;-&gt; Setoid is ambiguous with existing 
+- [Build_Setoid] : Equivalence &gt;-&gt; Setoid.
+- New coercion path [Build_Setoid; FreeMonoid; Mcarrier; Prf_equiv; Prf_pequiv] : Equivalence &gt;-&gt; Partial_equivalence is ambiguous with existing 
+- [Prf_pequiv] : Equivalence &gt;-&gt; Partial_equivalence.
+- New coercion path [Build_Setoid; FreeMonoid; Mcarrier; Prf_equiv] : Equivalence &gt;-&gt; Equivalence is ambiguous with existing 
+- [Build_Setoid; Prf_equiv] : Equivalence &gt;-&gt; Equivalence.
+- New coercion path [Build_Setoid; FreeMonoid; Mcarrier; Prf_equiv;
+-                    Equiv_preorder] : Equivalence &gt;-&gt; Preorder is ambiguous with existing 
+- [Equiv_preorder] : Equivalence &gt;-&gt; Preorder.
+- New coercion path [Build_Setoid; FreeMonoid; Mcarrier; Carrier] : Equivalence &gt;-&gt; Sortclass is ambiguous with existing 
+- [Build_Setoid; Carrier] : Equivalence &gt;-&gt; Sortclass.
+- [ambiguous-paths,typechecker]
+- COQC CATEGORY_THEORY/NT/CatFunct.v
+- COQC CATEGORY_THEORY/NT/HomFunctor_NT.v
+- File &quot;./CATEGORY_THEORY/FUNCTOR/FunctorProperty.v&quot;, line 27, characters 0-23:
+- Warning:
+- New coercion path [Map2&#39;_Map&#39;; Ap&#39;] : Map2&#39; &gt;-&gt; Funclass is ambiguous with existing 
+- [Ap2&#39;] : Map2&#39; &gt;-&gt; Funclass. [ambiguous-paths,typechecker]
+- File &quot;./CATEGORY_THEORY/FUNCTOR/FunctorProperty.v&quot;, line 27, characters 0-23:
+- Warning:
+- New coercion path [Map2_Map; Ap] : Map2 &gt;-&gt; Funclass is ambiguous with existing 
+- [Ap2] : Map2 &gt;-&gt; Funclass. [ambiguous-paths,typechecker]
+- File &quot;./CATEGORY_THEORY/FUNCTOR/FunFreeMon.v&quot;, line 30, characters 0-23:
+- Warning:
+- New coercion path [Mcarrier; Prf_equiv; Build_Setoid&#39;; Prf_equiv&#39;;
+-                    Build_Setoid] : Monoid &gt;-&gt; Setoid is ambiguous with existing 
+- [Mcarrier] : Monoid &gt;-&gt; Setoid.
+- New coercion path [Prf_equiv; Build_Setoid&#39;; Prf_equiv&#39;; Build_Setoid;
+-                    FreeMonoid] : Setoid &gt;-&gt; Monoid is ambiguous with existing 
+- [FreeMonoid] : Setoid &gt;-&gt; Monoid. [ambiguous-paths,typechecker]
+- File &quot;./CATEGORY_THEORY/FUNCTOR/FunFreeMon.v&quot;, line 30, characters 0-23:
+- Warning:
+- New coercion path [Map2&#39;_Map&#39;; Ap&#39;] : Map2&#39; &gt;-&gt; Funclass is ambiguous with existing 
+- [Ap2&#39;] : Map2&#39; &gt;-&gt; Funclass. [ambiguous-paths,typechecker]
+- File &quot;./CATEGORY_THEORY/NT/HomFunctor_NT.v&quot;, line 27, characters 0-26:
+- Warning:
+- New coercion path [Map2&#39;_Map&#39;; Ap&#39;] : Map2&#39; &gt;-&gt; Funclass is ambiguous with existing 
+- [Ap2&#39;] : Map2&#39; &gt;-&gt; Funclass. [ambiguous-paths,typechecker]
+- File &quot;./CATEGORY_THEORY/NT/HomFunctor_NT.v&quot;, line 27, characters 0-26:
+- Warning:
+- New coercion path [Prf_equiv&#39;; Build_Setoid; Prf_equiv; Prf_pequiv] : Setoid&#39; &gt;-&gt; Partial_equivalence is ambiguous with existing 
+- [Prf_equiv&#39;; Prf_pequiv] : Setoid&#39; &gt;-&gt; Partial_equivalence.
+- New coercion path [Prf_equiv&#39;; Build_Setoid; Prf_equiv; Equiv_preorder] : Setoid&#39; &gt;-&gt; Preorder is ambiguous with existing 
+- [Prf_equiv&#39;; Equiv_preorder] : Setoid&#39; &gt;-&gt; Preorder.
+- New coercion path [Prf_equiv&#39;; Build_Setoid; Prf_equiv] : Setoid&#39; &gt;-&gt; Equivalence is ambiguous with existing 
+- [Prf_equiv&#39;] : Setoid&#39; &gt;-&gt; Equivalence.
+- New coercion path [Prf_equiv&#39;; Build_Setoid; Carrier] : Setoid&#39; &gt;-&gt; Sortclass is ambiguous with existing 
+- [Carrier&#39;] : Setoid&#39; &gt;-&gt; Sortclass. [ambiguous-paths,typechecker]
+- File &quot;./CATEGORY_THEORY/NT/HomFunctor_NT.v&quot;, line 27, characters 0-26:
+- Warning:
+- New coercion path [Map2_Map; Ap] : Map2 &gt;-&gt; Funclass is ambiguous with existing 
+- [Ap2] : Map2 &gt;-&gt; Funclass. [ambiguous-paths,typechecker]
+- File &quot;./CATEGORY_THEORY/NT/HomFunctor_NT.v&quot;, line 28, characters 0-31:
+- Warning:
+- New coercion path [Build_Setoid&#39;&#39;; Prf_equiv&#39;&#39;; Build_Setoid] : Equivalence &gt;-&gt; Setoid is ambiguous with existing 
+- [Build_Setoid] : Equivalence &gt;-&gt; Setoid.
+- New coercion path [Prf_equiv&#39;&#39;; Build_Setoid&#39;&#39;; Prf_equiv&#39;&#39;; Build_Setoid] : Setoid&#39;&#39; &gt;-&gt; Setoid is ambiguous with existing 
+- [Prf_equiv&#39;&#39;; Build_Setoid] : Setoid&#39;&#39; &gt;-&gt; Setoid.
+- New coercion path [Prf_equiv&#39;; Build_Setoid&#39;&#39;; Prf_equiv&#39;&#39;; Build_Setoid] : Setoid&#39; &gt;-&gt; Setoid is ambiguous with existing 
+- [Prf_equiv&#39;; Build_Setoid] : Setoid&#39; &gt;-&gt; Setoid.
+- [ambiguous-paths,typechecker]
+- File &quot;./CATEGORY_THEORY/NT/HomFunctor_NT.v&quot;, line 28, characters 0-31:
+- Warning:
+- New coercion path [Map2&#39;&#39;_Map&#39;&#39;; Ap&#39;&#39;] : Map2&#39;&#39; &gt;-&gt; Funclass is ambiguous with existing 
+- [Ap2&#39;&#39;] : Map2&#39;&#39; &gt;-&gt; Funclass. [ambiguous-paths,typechecker]
+- COQC CATEGORY_THEORY/CATEGORY/CONSTRUCTIONS/SET_Equalizer.v
+- File &quot;./CATEGORY_THEORY/LIMITS/CoUniversalArrow.v&quot;, line 30, characters 0-30:
+- Warning:
+- New coercion path [Map2&#39;_Map&#39;; Ap&#39;] : Map2&#39; &gt;-&gt; Funclass is ambiguous with existing 
+- [Ap2&#39;] : Map2&#39; &gt;-&gt; Funclass. [ambiguous-paths,typechecker]
+- File &quot;./CATEGORY_THEORY/FUNCTOR/CAT.v&quot;, line 43, characters 0-21:
+- Warning:
+- New coercion path [Map2&#39;_Map&#39;; Ap&#39;] : Map2&#39; &gt;-&gt; Funclass is ambiguous with existing 
+- [Ap2&#39;] : Map2&#39; &gt;-&gt; Funclass. [ambiguous-paths,typechecker]
+- File &quot;./CATEGORY_THEORY/FUNCTOR/CAT.v&quot;, line 43, characters 0-21:
+- Warning:
+- New coercion path [Map2_Map; Ap] : Map2 &gt;-&gt; Funclass is ambiguous with existing 
+- [Ap2] : Map2 &gt;-&gt; Funclass. [ambiguous-paths,typechecker]
+- File &quot;./CATEGORY_THEORY/LIMITS/CoUniversalArrow.v&quot;, line 30, characters 0-30:
+- Warning:
+- New coercion path [Map2_Map; Ap] : Map2 &gt;-&gt; Funclass is ambiguous with existing 
+- [Ap2] : Map2 &gt;-&gt; Funclass. [ambiguous-paths,typechecker]
+- COQC CATEGORY_THEORY/CATEGORY/CONSTRUCTIONS/SET_Pullback.v
+- COQC CATEGORY_THEORY/CATEGORY/CONSTRUCTIONS/SET_CCC.v
+- File &quot;./CATEGORY_THEORY/LIMITS/Comma_UA.v&quot;, line 29, characters 0-21:
+- Warning:
+- New coercion path [Map2&#39;_Map&#39;; Ap&#39;] : Map2&#39; &gt;-&gt; Funclass is ambiguous with existing 
+- [Ap2&#39;] : Map2&#39; &gt;-&gt; Funclass. [ambiguous-paths,typechecker]
+- File &quot;./CATEGORY_THEORY/CATEGORY/CONSTRUCTIONS/SET_Equalizer.v&quot;, line 29, characters 0-26:
+- Warning:
+- New coercion path [Map2_Map; Ap] : Map2 &gt;-&gt; Funclass is ambiguous with existing 
+- [Ap2] : Map2 &gt;-&gt; Funclass. [ambiguous-paths,typechecker]
+- File &quot;./CATEGORY_THEORY/LIMITS/Comma_UA.v&quot;, line 29, characters 0-21:
+- Warning:
+- New coercion path [Map2_Map; Ap] : Map2 &gt;-&gt; Funclass is ambiguous with existing 
+- [Ap2] : Map2 &gt;-&gt; Funclass. [ambiguous-paths,typechecker]
+- COQC CATEGORY_THEORY/LIMITS/FunForget_UA.v
+- COQC CATEGORY_THEORY/FUNCTOR/FSC_inc.v
+- File &quot;./CATEGORY_THEORY/NT/CatFunct.v&quot;, line 28, characters 0-31:
+- Warning:
+- New coercion path [Map2&#39;_Map&#39;; Ap&#39;] : Map2&#39; &gt;-&gt; Funclass is ambiguous with existing 
+- [Ap2&#39;] : Map2&#39; &gt;-&gt; Funclass. [ambiguous-paths,typechecker]
+- File &quot;./CATEGORY_THEORY/NT/CatFunct.v&quot;, line 28, characters 0-31:
+- Warning:
+- New coercion path [Map2_Map; Ap] : Map2 &gt;-&gt; Funclass is ambiguous with existing 
+- [Ap2] : Map2 &gt;-&gt; Funclass. [ambiguous-paths,typechecker]
+- File &quot;./CATEGORY_THEORY/CATEGORY/CONSTRUCTIONS/SET_CCC.v&quot;, line 29, characters 0-28:
+- Warning:
+- New coercion path [Map2_Map; Ap] : Map2 &gt;-&gt; Funclass is ambiguous with existing 
+- [Ap2] : Map2 &gt;-&gt; Funclass. [ambiguous-paths,typechecker]
+- File &quot;./CATEGORY_THEORY/CATEGORY/CONSTRUCTIONS/SET_CCC.v&quot;, line 31, characters 0-19:
+- Warning:
+- New coercion path [Prf_isCCC; CCC_isCar; Car_BP] : CCC &gt;-&gt; HasBinProd is ambiguous with existing 
+- [CCC_Car; Prf_isCartesian; Car_BP] : CCC &gt;-&gt; HasBinProd.
+- New coercion path [Prf_isCCC; CCC_isCar] : CCC &gt;-&gt; IsCartesian is ambiguous with existing 
+- [CCC_Car; Prf_isCartesian] : CCC &gt;-&gt; IsCartesian.
+- New coercion path [Prf_isCCC; CCC_isCar; Car_terminal; Prf_isTerminal] : CCC &gt;-&gt; IsTerminal is ambiguous with existing 
+- [CCC_Car; Prf_isCartesian; Car_terminal; Prf_isTerminal] : CCC &gt;-&gt; IsTerminal.
+- New coercion path [Prf_isCCC; CCC_isCar; Car_terminal] : CCC &gt;-&gt; Terminal is ambiguous with existing 
+- [CCC_Car; Prf_isCartesian; Car_terminal] : CCC &gt;-&gt; Terminal.
+- [ambiguous-paths,typechecker]
+- COQC CATEGORY_THEORY/LIMITS/Limit.v
+- File &quot;./CATEGORY_THEORY/NT/CatFunct.v&quot;, line 28, characters 0-31:
+- Warning:
+- New coercion path [Map2&#39;&#39;_Map&#39;&#39;; Ap&#39;&#39;] : Map2&#39;&#39; &gt;-&gt; Funclass is ambiguous with existing 
+- [Ap2&#39;&#39;] : Map2&#39;&#39; &gt;-&gt; Funclass. [ambiguous-paths,typechecker]
+- File &quot;./CATEGORY_THEORY/CATEGORY/CONSTRUCTIONS/SET_Pullback.v&quot;, line 29, characters 0-25:
+- Warning:
+- New coercion path [Map2_Map; Ap] : Map2 &gt;-&gt; Funclass is ambiguous with existing 
+- [Ap2] : Map2 &gt;-&gt; Funclass. [ambiguous-paths,typechecker]
+- File &quot;./CATEGORY_THEORY/FUNCTOR/FSC_inc.v&quot;, line 29, characters 0-26:
+- Warning:
+- New coercion path [Map2_Map; Ap] : Map2 &gt;-&gt; Funclass is ambiguous with existing 
+- [Ap2] : Map2 &gt;-&gt; Funclass. [ambiguous-paths,typechecker]
+- File &quot;./CATEGORY_THEORY/FUNCTOR/FSC_inc.v&quot;, line 30, characters 0-31:
+- Warning:
+- New coercion path [Map2&#39;_Map&#39;; Ap&#39;] : Map2&#39; &gt;-&gt; Funclass is ambiguous with existing 
+- [Ap2&#39;] : Map2&#39; &gt;-&gt; Funclass. [ambiguous-paths,typechecker]
+- File &quot;./CATEGORY_THEORY/LIMITS/FunForget_UA.v&quot;, line 31, characters 0-25:
+- Warning:
+- New coercion path [Map2&#39;_Map&#39;; Ap&#39;] : Map2&#39; &gt;-&gt; Funclass is ambiguous with existing 
+- [Ap2&#39;] : Map2&#39; &gt;-&gt; Funclass. [ambiguous-paths,typechecker]
+- COQC CATEGORY_THEORY/NT/NatIso.v
+- COQC CATEGORY_THEORY/NT/InterChangeLaw.v
+- COQC CATEGORY_THEORY/NT/YONEDA_LEMMA/YonedaEmbedding.v
+- COQC CATEGORY_THEORY/NT/YONEDA_LEMMA/YonedaLemma.v
+- File &quot;./CATEGORY_THEORY/LIMITS/FunForget_UA.v&quot;, line 31, characters 0-25:
+- Warning:
+- New coercion path [Prf_equiv&#39;; Build_Setoid; Prf_equiv; Prf_pequiv] : Setoid&#39; &gt;-&gt; Partial_equivalence is ambiguous with existing 
+- [Prf_equiv&#39;; Prf_pequiv] : Setoid&#39; &gt;-&gt; Partial_equivalence.
+- New coercion path [Prf_equiv&#39;; Build_Setoid; Prf_equiv; Equiv_preorder] : Setoid&#39; &gt;-&gt; Preorder is ambiguous with existing 
+- [Prf_equiv&#39;; Equiv_preorder] : Setoid&#39; &gt;-&gt; Preorder.
+- New coercion path [Prf_equiv&#39;; Build_Setoid; Prf_equiv] : Setoid&#39; &gt;-&gt; Equivalence is ambiguous with existing 
+- [Prf_equiv&#39;] : Setoid&#39; &gt;-&gt; Equivalence.
+- New coercion path [Prf_equiv&#39;; Build_Setoid; Carrier] : Setoid&#39; &gt;-&gt; Sortclass is ambiguous with existing 
+- [Carrier&#39;] : Setoid&#39; &gt;-&gt; Sortclass.
+- New coercion path [Mcarrier; Prf_equiv; Build_Setoid] : Monoid &gt;-&gt; Setoid is ambiguous with existing 
+- [Mcarrier] : Monoid &gt;-&gt; Setoid. [ambiguous-paths,typechecker]
+- File &quot;./CATEGORY_THEORY/LIMITS/FunForget_UA.v&quot;, line 31, characters 0-25:
+- Warning:
+- New coercion path [MonMap; Pres; Build_Map] : MonMor &gt;-&gt; Map is ambiguous with existing 
+- [MonMap] : MonMor &gt;-&gt; Map. [ambiguous-paths,typechecker]
+- File &quot;./CATEGORY_THEORY/LIMITS/FunForget_UA.v&quot;, line 31, characters 0-25:
+- Warning:
+- New coercion path [Map2_Map; Ap] : Map2 &gt;-&gt; Funclass is ambiguous with existing 
+- [Ap2] : Map2 &gt;-&gt; Funclass.
+- New coercion path [Id_BinOp_Map2; Map2_Map; Ap] : BinOp &gt;-&gt; Funclass is ambiguous with existing 
+- [Id_BinOp_Map2; Ap2] : BinOp &gt;-&gt; Funclass. [ambiguous-paths,typechecker]
+- File &quot;./CATEGORY_THEORY/LIMITS/Limit.v&quot;, line 29, characters 0-21:
+- Warning:
+- New coercion path [Map2&#39;_Map&#39;; Ap&#39;] : Map2&#39; &gt;-&gt; Funclass is ambiguous with existing 
+- [Ap2&#39;] : Map2&#39; &gt;-&gt; Funclass. [ambiguous-paths,typechecker]
+- File &quot;./CATEGORY_THEORY/LIMITS/FunForget_UA.v&quot;, line 32, characters 0-26:
+- Warning:
+- New coercion path [Build_Setoid; FreeMonoid; Mcarrier; Prf_equiv; Prf_pequiv;
+-                    Build_PSetoid] : Equivalence &gt;-&gt; PSetoid is ambiguous with existing 
+- [Prf_pequiv; Build_PSetoid] : Equivalence &gt;-&gt; PSetoid.
+- New coercion path [Build_Setoid; FreeMonoid; Mcarrier; Prf_equiv; Prf_pequiv] : Equivalence &gt;-&gt; Partial_equivalence is ambiguous with existing 
+- [Prf_pequiv] : Equivalence &gt;-&gt; Partial_equivalence.
+- New coercion path [Build_Setoid; FreeMonoid; Mcarrier; Prf_equiv;
+-                    Equiv_preorder] : Equivalence &gt;-&gt; Preorder is ambiguous with existing 
+- [Equiv_preorder] : Equivalence &gt;-&gt; Preorder.
+- New coercion path [Build_Setoid; FreeMonoid; Mcarrier; Prf_equiv] : Equivalence &gt;-&gt; Equivalence is ambiguous with existing 
+- [Build_Setoid&#39;; Prf_equiv&#39;] : Equivalence &gt;-&gt; Equivalence.
+- New coercion path [Build_Setoid; FreeMonoid; Mcarrier; Prf_equiv;
+-                    Build_Setoid&#39;] : Equivalence &gt;-&gt; Setoid&#39; is ambiguous with existing 
+- [Build_Setoid&#39;] : Equivalence &gt;-&gt; Setoid&#39;.
+- New coercion path [Build_Setoid; FreeMonoid; Mcarrier] : Equivalence &gt;-&gt; Setoid is ambiguous with existing 
+- [Build_Setoid] : Equivalence &gt;-&gt; Setoid.
+- New coercion path [Build_Setoid; FreeMonoid; Mcarrier; Carrier] : Equivalence &gt;-&gt; Sortclass is ambiguous with existing 
+- [Build_Setoid&#39;; Carrier&#39;] : Equivalence &gt;-&gt; Sortclass.
+- New coercion path [Prf_equiv&#39;; Build_Setoid; FreeMonoid; Mcarrier; Prf_equiv;
+-                    Prf_pequiv; Build_PSetoid] : Setoid&#39; &gt;-&gt; PSetoid is ambiguous with existing 
+- [Prf_equiv&#39;; Prf_pequiv; Build_PSetoid] : Setoid&#39; &gt;-&gt; PSetoid.
+- New coercion path [Prf_equiv&#39;; Build_Setoid; FreeMonoid; Mcarrier; Prf_equiv;
+-                    Prf_pequiv] : Setoid&#39; &gt;-&gt; Partial_equivalence is ambiguous with existing 
+- [Prf_equiv&#39;; Prf_pequiv] : Setoid&#39; &gt;-&gt; Partial_equivalence.
+- New coercion path [Prf_equiv&#39;; Build_Setoid; FreeMonoid; Mcarrier; Prf_equiv;
+-                    Equiv_preorder] : Setoid&#39; &gt;-&gt; Preorder is ambiguous with existing 
+- [Prf_equiv&#39;; Equiv_preorder] : Setoid&#39; &gt;-&gt; Preorder.
+- New coercion path [Prf_equiv&#39;; Build_Setoid; FreeMonoid; Mcarrier; Prf_equiv] : Setoid&#39; &gt;-&gt; Equivalence is ambiguous with existing 
+- [Prf_equiv&#39;] : Setoid&#39; &gt;-&gt; Equivalence.
+- New coercion path [Prf_equiv&#39;; Build_Setoid; FreeMonoid; Mcarrier] : Setoid&#39; &gt;-&gt; Setoid is ambiguous with existing 
+- [Prf_equiv&#39;; Build_Setoid] : Setoid&#39; &gt;-&gt; Setoid.
+- New coercion path [Prf_equiv&#39;; Build_Setoid; FreeMonoid; Mcarrier; Carrier] : Setoid&#39; &gt;-&gt; Sortclass is ambiguous with existing 
+- [Carrier&#39;] : Setoid&#39; &gt;-&gt; Sortclass.
+- New coercion path [FreeMonoid; Mcarrier; Prf_equiv; Prf_pequiv; Build_PSetoid] : Setoid &gt;-&gt; PSetoid is ambiguous with existing 
+- [Prf_equiv; Prf_pequiv; Build_PSetoid] : Setoid &gt;-&gt; PSetoid.
+- New coercion path [FreeMonoid; Mcarrier; Prf_equiv; Prf_pequiv] : Setoid &gt;-&gt; Partial_equivalence is ambiguous with existing 
+- [Prf_equiv; Prf_pequiv] : Setoid &gt;-&gt; Partial_equivalence.
+- New coercion path [FreeMonoid; Mcarrier; Prf_equiv; Equiv_preorder] : Setoid &gt;-&gt; Preorder is ambiguous with existing 
+- [Prf_equiv; Equiv_preorder] : Setoid &gt;-&gt; Preorder.
+- New coercion path [FreeMonoid; Mcarrier; Prf_equiv] : Setoid &gt;-&gt; Equivalence is ambiguous with existing 
+- [Prf_equiv] : Setoid &gt;-&gt; Equivalence.
+- New coercion path [FreeMonoid; Mcarrier; Prf_equiv; Build_Setoid&#39;] : Setoid &gt;-&gt; Setoid&#39; is ambiguous with existing 
+- [Prf_equiv; Build_Setoid&#39;] : Setoid &gt;-&gt; Setoid&#39;.
+- New coercion path [Mcarrier; FreeMonoid; Mcarrier; Prf_equiv; Prf_pequiv;
+-                    Build_PSetoid] : Monoid &gt;-&gt; PSetoid is ambiguous with existing 
+- [Mcarrier; Prf_equiv; Prf_pequiv; Build_PSetoid] : Monoid &gt;-&gt; PSetoid.
+- New coercion path [Mcarrier; FreeMonoid; Mcarrier; Prf_equiv; Prf_pequiv] : Monoid &gt;-&gt; Partial_equivalence is ambiguous with existing 
+- [Mcarrier; Prf_equiv; Prf_pequiv] : Monoid &gt;-&gt; Partial_equivalence.
+- New coercion path [Mcarrier; FreeMonoid; Mcarrier; Prf_equiv; Equiv_preorder] : Monoid &gt;-&gt; Preorder is ambiguous with existing 
+- [Mcarrier; Prf_equiv; Equiv_preorder] : Monoid &gt;-&gt; Preorder.
+- New coercion path [Mcarrier; FreeMonoid; Mcarrier; Prf_equiv] : Monoid &gt;-&gt; Equivalence is ambiguous with existing 
+- [Mcarrier; Prf_equiv] : Monoid &gt;-&gt; Equivalence.
+- New coercion path [Mcarrier; FreeMonoid; Mcarrier; Prf_equiv; Build_Setoid&#39;] : Monoid &gt;-&gt; Setoid&#39; is ambiguous with existing 
+- [Mcarrier; Prf_equiv; Build_Setoid&#39;] : Monoid &gt;-&gt; Setoid&#39;.
+- New coercion path [Mcarrier; FreeMonoid; Mcarrier; Carrier] : Monoid &gt;-&gt; Sortclass is ambiguous with existing 
+- [Mcarrier; Carrier] : Monoid &gt;-&gt; Sortclass.
+- New coercion path [FreeMonoid; Mcarrier; Carrier] : Setoid &gt;-&gt; Sortclass is ambiguous with existing 
+- [Carrier] : Setoid &gt;-&gt; Sortclass. [ambiguous-paths,typechecker]
+- File &quot;./CATEGORY_THEORY/LIMITS/Limit.v&quot;, line 29, characters 0-21:
+- Warning:
+- New coercion path [Map2_Map; Ap] : Map2 &gt;-&gt; Funclass is ambiguous with existing 
+- [Ap2] : Map2 &gt;-&gt; Funclass. [ambiguous-paths,typechecker]
+- File &quot;./CATEGORY_THEORY/LIMITS/Limit.v&quot;, line 31, characters 0-31:
+- Warning:
+- New coercion path [Map2&#39;&#39;_Map&#39;&#39;; Ap&#39;&#39;] : Map2&#39;&#39; &gt;-&gt; Funclass is ambiguous with existing 
+- [Ap2&#39;&#39;] : Map2&#39;&#39; &gt;-&gt; Funclass. [ambiguous-paths,typechecker]
+- COQC CATEGORY_THEORY/LIMITS/Products1.v
+- COQC CATEGORY_THEORY/LIMIT_CONSTRUCTIONS/Pres_Limits.v
+- COQC CATEGORY_THEORY/LIMIT_CONSTRUCTIONS/SET_Complete.v
+- File &quot;./CATEGORY_THEORY/NT/NatIso.v&quot;, line 30, characters 0-27:
+- Warning:
+- New coercion path [Map2_Map; Ap] : Map2 &gt;-&gt; Funclass is ambiguous with existing 
+- [Ap2] : Map2 &gt;-&gt; Funclass. [ambiguous-paths,typechecker]
+- File &quot;./CATEGORY_THEORY/LIMITS/Products1.v&quot;, line 30, characters 0-21:
+- Warning:
+- New coercion path [Map2&#39;_Map&#39;; Ap&#39;] : Map2&#39; &gt;-&gt; Funclass is ambiguous with existing 
+- [Ap2&#39;] : Map2&#39; &gt;-&gt; Funclass. [ambiguous-paths,typechecker]
+- File &quot;./CATEGORY_THEORY/NT/NatIso.v&quot;, line 31, characters 0-24:
+- Warning:
+- New coercion path [Map2&#39;_Map&#39;; Ap&#39;] : Map2&#39; &gt;-&gt; Funclass is ambiguous with existing 
+- [Ap2&#39;] : Map2&#39; &gt;-&gt; Funclass. [ambiguous-paths,typechecker]
+- File &quot;./CATEGORY_THEORY/LIMITS/Products1.v&quot;, line 30, characters 0-21:
+- Warning:
+- New coercion path [Map2_Map; Ap] : Map2 &gt;-&gt; Funclass is ambiguous with existing 
+- [Ap2] : Map2 &gt;-&gt; Funclass. [ambiguous-paths,typechecker]
+- File &quot;./CATEGORY_THEORY/NT/NatIso.v&quot;, line 31, characters 0-24:
+- Warning:
+- New coercion path [Map2&#39;&#39;_Map&#39;&#39;; Ap&#39;&#39;] : Map2&#39;&#39; &gt;-&gt; Funclass is ambiguous with existing 
+- [Ap2&#39;&#39;] : Map2&#39;&#39; &gt;-&gt; Funclass. [ambiguous-paths,typechecker]
+- File &quot;./CATEGORY_THEORY/LIMITS/Products1.v&quot;, line 30, characters 0-21:
+- Warning:
+- New coercion path [Map2&#39;&#39;_Map&#39;&#39;; Ap&#39;&#39;] : Map2&#39;&#39; &gt;-&gt; Funclass is ambiguous with existing 
+- [Ap2&#39;&#39;] : Map2&#39;&#39; &gt;-&gt; Funclass. [ambiguous-paths,typechecker]
+- File &quot;./CATEGORY_THEORY/NT/InterChangeLaw.v&quot;, line 27, characters 0-24:
+- Warning:
+- New coercion path [Map2&#39;_Map&#39;; Ap&#39;] : Map2&#39; &gt;-&gt; Funclass is ambiguous with existing 
+- [Ap2&#39;] : Map2&#39; &gt;-&gt; Funclass. [ambiguous-paths,typechecker]
+- File &quot;./CATEGORY_THEORY/NT/YONEDA_LEMMA/YonedaLemma.v&quot;, line 30, characters 0-29:
+- Warning:
+- New coercion path [Map2&#39;_Map&#39;; Ap&#39;] : Map2&#39; &gt;-&gt; Funclass is ambiguous with existing 
+- [Ap2&#39;] : Map2&#39; &gt;-&gt; Funclass. [ambiguous-paths,typechecker]
+- File &quot;./CATEGORY_THEORY/NT/InterChangeLaw.v&quot;, line 27, characters 0-24:
+- Warning:
+- New coercion path [Map2_Map; Ap] : Map2 &gt;-&gt; Funclass is ambiguous with existing 
+- [Ap2] : Map2 &gt;-&gt; Funclass. [ambiguous-paths,typechecker]
+- File &quot;./CATEGORY_THEORY/NT/YONEDA_LEMMA/YonedaEmbedding.v&quot;, line 28, characters 0-29:
+- Warning:
+- New coercion path [Map2&#39;_Map&#39;; Ap&#39;] : Map2&#39; &gt;-&gt; Funclass is ambiguous with existing 
+- [Ap2&#39;] : Map2&#39; &gt;-&gt; Funclass. [ambiguous-paths,typechecker]
+- File &quot;./CATEGORY_THEORY/NT/YONEDA_LEMMA/YonedaEmbedding.v&quot;, line 28, characters 0-29:
+- Warning:
+- New coercion path [Prf_equiv&#39;; Build_Setoid; Prf_equiv] : Setoid&#39; &gt;-&gt; Relations.Equivalence is ambiguous with existing 
+- [Prf_equiv&#39;] : Setoid&#39; &gt;-&gt; Relations.Equivalence.
+- New coercion path [Prf_equiv&#39;; Build_Setoid; Carrier] : Setoid&#39; &gt;-&gt; Sortclass is ambiguous with existing 
+- [Carrier&#39;] : Setoid&#39; &gt;-&gt; Sortclass. [ambiguous-paths,typechecker]
+- File &quot;./CATEGORY_THEORY/NT/YONEDA_LEMMA/YonedaLemma.v&quot;, line 30, characters 0-29:
+- Warning:
+- New coercion path [Prf_equiv&#39;; Build_Setoid; Prf_equiv] : Setoid&#39; &gt;-&gt; Relations.Equivalence is ambiguous with existing 
+- [Prf_equiv&#39;] : Setoid&#39; &gt;-&gt; Relations.Equivalence.
+- New coercion path [Prf_equiv&#39;; Build_Setoid; Carrier] : Setoid&#39; &gt;-&gt; Sortclass is ambiguous with existing 
+- [Carrier&#39;] : Setoid&#39; &gt;-&gt; Sortclass. [ambiguous-paths,typechecker]
+- File &quot;./CATEGORY_THEORY/NT/YONEDA_LEMMA/YonedaEmbedding.v&quot;, line 28, characters 0-29:
+- Warning:
+- New coercion path [Map2_Map; Ap] : Map2 &gt;-&gt; Funclass is ambiguous with existing 
+- [Ap2] : Map2 &gt;-&gt; Funclass. [ambiguous-paths,typechecker]
+- File &quot;./CATEGORY_THEORY/NT/YONEDA_LEMMA/YonedaLemma.v&quot;, line 30, characters 0-29:
+- Warning:
+- New coercion path [Map2_Map; Ap] : Map2 &gt;-&gt; Funclass is ambiguous with existing 
+- [Ap2] : Map2 &gt;-&gt; Funclass. [ambiguous-paths,typechecker]
+- COQC CATEGORY_THEORY/LIMITS/Equalizers1.v
+- File &quot;./CATEGORY_THEORY/NT/YONEDA_LEMMA/YonedaEmbedding.v&quot;, line 28, characters 0-29:
+- Warning:
+- New coercion path [Build_Setoid&#39;&#39;; Prf_equiv&#39;&#39;; Build_Setoid] : Equivalence &gt;-&gt; Setoid is ambiguous with existing 
+- [Build_Setoid] : Equivalence &gt;-&gt; Setoid.
+- New coercion path [Prf_equiv&#39;&#39;; Build_Setoid&#39;&#39;; Prf_equiv&#39;&#39;; Build_Setoid] : Setoid&#39;&#39; &gt;-&gt; Setoid is ambiguous with existing 
+- [Prf_equiv&#39;&#39;; Build_Setoid] : Setoid&#39;&#39; &gt;-&gt; Setoid.
+- New coercion path [Prf_equiv&#39;; Build_Setoid&#39;&#39;; Prf_equiv&#39;&#39;; Build_Setoid] : Setoid&#39; &gt;-&gt; Setoid is ambiguous with existing 
+- [Prf_equiv&#39;; Build_Setoid] : Setoid&#39; &gt;-&gt; Setoid.
+- [ambiguous-paths,typechecker]
+- File &quot;./CATEGORY_THEORY/NT/YONEDA_LEMMA/YonedaEmbedding.v&quot;, line 28, characters 0-29:
+- Warning:
+- New coercion path [Map2&#39;&#39;_Map&#39;&#39;; Ap&#39;&#39;] : Map2&#39;&#39; &gt;-&gt; Funclass is ambiguous with existing 
+- [Ap2&#39;&#39;] : Map2&#39;&#39; &gt;-&gt; Funclass. [ambiguous-paths,typechecker]
+- File &quot;./CATEGORY_THEORY/NT/InterChangeLaw.v&quot;, line 27, characters 0-24:
+- Warning:
+- New coercion path [Map2&#39;&#39;_Map&#39;&#39;; Ap&#39;&#39;] : Map2&#39;&#39; &gt;-&gt; Funclass is ambiguous with existing 
+- [Ap2&#39;&#39;] : Map2&#39;&#39; &gt;-&gt; Funclass. [ambiguous-paths,typechecker]
+- File &quot;./CATEGORY_THEORY/NT/YONEDA_LEMMA/YonedaLemma.v&quot;, line 30, characters 0-29:
+- Warning:
+- New coercion path [Build_Setoid&#39;&#39;; Prf_equiv&#39;&#39;; Build_Setoid] : Equivalence &gt;-&gt; Setoid is ambiguous with existing 
+- [Build_Setoid] : Equivalence &gt;-&gt; Setoid.
+- New coercion path [Prf_equiv&#39;&#39;; Build_Setoid&#39;&#39;; Prf_equiv&#39;&#39;; Build_Setoid] : Setoid&#39;&#39; &gt;-&gt; Setoid is ambiguous with existing 
+- [Prf_equiv&#39;&#39;; Build_Setoid] : Setoid&#39;&#39; &gt;-&gt; Setoid.
+- New coercion path [Prf_equiv&#39;; Build_Setoid&#39;&#39;; Prf_equiv&#39;&#39;; Build_Setoid] : Setoid&#39; &gt;-&gt; Setoid is ambiguous with existing 
+- [Prf_equiv&#39;; Build_Setoid] : Setoid&#39; &gt;-&gt; Setoid.
+- [ambiguous-paths,typechecker]
+- File &quot;./CATEGORY_THEORY/NT/YONEDA_LEMMA/YonedaLemma.v&quot;, line 30, characters 0-29:
+- Warning:
+- New coercion path [Map2&#39;&#39;_Map&#39;&#39;; Ap&#39;&#39;] : Map2&#39;&#39; &gt;-&gt; Funclass is ambiguous with existing 
+- [Ap2&#39;&#39;] : Map2&#39;&#39; &gt;-&gt; Funclass. [ambiguous-paths,typechecker]
+- COQC CATEGORY_THEORY/LIMITS/Pullbacks1.v
+- File &quot;./CATEGORY_THEORY/LIMIT_CONSTRUCTIONS/Pres_Limits.v&quot;, line 30, characters 0-21:
+- Warning:
+- New coercion path [Map2&#39;_Map&#39;; Ap&#39;] : Map2&#39; &gt;-&gt; Funclass is ambiguous with existing 
+- [Ap2&#39;] : Map2&#39; &gt;-&gt; Funclass. [ambiguous-paths,typechecker]
+- File &quot;./CATEGORY_THEORY/LIMIT_CONSTRUCTIONS/Pres_Limits.v&quot;, line 30, characters 0-21:
+- Warning:
+- New coercion path [Map2_Map; Ap] : Map2 &gt;-&gt; Funclass is ambiguous with existing 
+- [Ap2] : Map2 &gt;-&gt; Funclass. [ambiguous-paths,typechecker]
+- File &quot;./CATEGORY_THEORY/LIMIT_CONSTRUCTIONS/Pres_Limits.v&quot;, line 30, characters 0-21:
+- Warning:
+- New coercion path [Map2&#39;&#39;_Map&#39;&#39;; Ap&#39;&#39;] : Map2&#39;&#39; &gt;-&gt; Funclass is ambiguous with existing 
+- [Ap2&#39;&#39;] : Map2&#39;&#39; &gt;-&gt; Funclass. [ambiguous-paths,typechecker]
+- File &quot;./CATEGORY_THEORY/LIMITS/Equalizers1.v&quot;, line 29, characters 0-26:
+- Warning:
+- New coercion path [Map2_Map; Ap] : Map2 &gt;-&gt; Funclass is ambiguous with existing 
+- [Ap2] : Map2 &gt;-&gt; Funclass. [ambiguous-paths,typechecker]
+- COQC CATEGORY_THEORY/LIMITS/CoLimit.v
+- File &quot;./CATEGORY_THEORY/LIMITS/Equalizers1.v&quot;, line 31, characters 0-21:
+- Warning:
+- New coercion path [Map2&#39;_Map&#39;; Ap&#39;] : Map2&#39; &gt;-&gt; Funclass is ambiguous with existing 
+- [Ap2&#39;] : Map2&#39; &gt;-&gt; Funclass. [ambiguous-paths,typechecker]
+- File &quot;./CATEGORY_THEORY/LIMIT_CONSTRUCTIONS/SET_Complete.v&quot;, line 30, characters 0-19:
+- Warning:
+- New coercion path [Map2_Map; Ap] : Map2 &gt;-&gt; Funclass is ambiguous with existing 
+- [Ap2] : Map2 &gt;-&gt; Funclass. [ambiguous-paths,typechecker]
+- File &quot;./CATEGORY_THEORY/LIMIT_CONSTRUCTIONS/SET_Complete.v&quot;, line 32, characters 0-21:
+- Warning:
+- New coercion path [Prf_equiv&#39;; Build_Setoid; Carrier] : Setoid&#39; &gt;-&gt; Sortclass is ambiguous with existing 
+- [Carrier&#39;] : Setoid&#39; &gt;-&gt; Sortclass. [ambiguous-paths,typechecker]
+- File &quot;./CATEGORY_THEORY/LIMIT_CONSTRUCTIONS/SET_Complete.v&quot;, line 32, characters 0-21:
+- Warning:
+- New coercion path [Build_Setoid&#39;; Prf_equiv&#39;; Build_Setoid] : Equivalence &gt;-&gt; Setoid is ambiguous with existing 
+- [Build_Setoid] : Equivalence &gt;-&gt; Setoid.
+- New coercion path [Prf_equiv&#39;; Build_Setoid&#39;; Prf_equiv&#39;; Build_Setoid] : Setoid&#39; &gt;-&gt; Setoid is ambiguous with existing 
+- [Prf_equiv&#39;; Build_Setoid] : Setoid&#39; &gt;-&gt; Setoid.
+- [ambiguous-paths,typechecker]
+- File &quot;./CATEGORY_THEORY/LIMITS/Equalizers1.v&quot;, line 31, characters 0-21:
+- Warning:
+- New coercion path [Map2&#39;&#39;_Map&#39;&#39;; Ap&#39;&#39;] : Map2&#39;&#39; &gt;-&gt; Funclass is ambiguous with existing 
+- [Ap2&#39;&#39;] : Map2&#39;&#39; &gt;-&gt; Funclass. [ambiguous-paths,typechecker]
+- File &quot;./CATEGORY_THEORY/LIMIT_CONSTRUCTIONS/SET_Complete.v&quot;, line 32, characters 0-21:
+- Warning:
+- New coercion path [Map2&#39;_Map&#39;; Ap&#39;] : Map2&#39; &gt;-&gt; Funclass is ambiguous with existing 
+- [Ap2&#39;] : Map2&#39; &gt;-&gt; Funclass. [ambiguous-paths,typechecker]
+- File &quot;./CATEGORY_THEORY/LIMIT_CONSTRUCTIONS/SET_Complete.v&quot;, line 32, characters 0-21:
+- Warning:
+- New coercion path [Prf_equiv&#39;&#39;; Build_Setoid; Carrier] : Setoid&#39;&#39; &gt;-&gt; Sortclass is ambiguous with existing 
+- [Carrier&#39;&#39;] : Setoid&#39;&#39; &gt;-&gt; Sortclass. [ambiguous-paths,typechecker]
+- File &quot;./CATEGORY_THEORY/LIMIT_CONSTRUCTIONS/SET_Complete.v&quot;, line 32, characters 0-21:
+- Warning:
+- New coercion path [Build_Setoid&#39;&#39;; Prf_equiv&#39;&#39;; Build_Setoid] : Equivalence &gt;-&gt; Setoid is ambiguous with existing 
+- [Build_Setoid] : Equivalence &gt;-&gt; Setoid.
+- New coercion path [Prf_equiv&#39;&#39;; Build_Setoid&#39;&#39;; Prf_equiv&#39;&#39;; Build_Setoid] : Setoid&#39;&#39; &gt;-&gt; Setoid is ambiguous with existing 
+- [Prf_equiv&#39;&#39;; Build_Setoid] : Setoid&#39;&#39; &gt;-&gt; Setoid.
+- New coercion path [Prf_equiv&#39;; Build_Setoid&#39;&#39;; Prf_equiv&#39;&#39;; Build_Setoid] : Setoid&#39; &gt;-&gt; Setoid is ambiguous with existing 
+- [Prf_equiv&#39;; Build_Setoid] : Setoid&#39; &gt;-&gt; Setoid.
+- [ambiguous-paths,typechecker]
+- File &quot;./CATEGORY_THEORY/LIMIT_CONSTRUCTIONS/SET_Complete.v&quot;, line 32, characters 0-21:
+- Warning:
+- New coercion path [Map2&#39;&#39;_Map&#39;&#39;; Ap&#39;&#39;] : Map2&#39;&#39; &gt;-&gt; Funclass is ambiguous with existing 
+- [Ap2&#39;&#39;] : Map2&#39;&#39; &gt;-&gt; Funclass. [ambiguous-paths,typechecker]
+- COQC CATEGORY_THEORY/LIMITS/Iso_Limit.v
+- File &quot;./CATEGORY_THEORY/LIMITS/Pullbacks1.v&quot;, line 30, characters 0-21:
+- Warning:
+- New coercion path [Map2&#39;_Map&#39;; Ap&#39;] : Map2&#39; &gt;-&gt; Funclass is ambiguous with existing 
+- [Ap2&#39;] : Map2&#39; &gt;-&gt; Funclass. [ambiguous-paths,typechecker]
+- File &quot;./CATEGORY_THEORY/LIMITS/Pullbacks1.v&quot;, line 30, characters 0-21:
+- Warning:
+- New coercion path [Map2_Map; Ap] : Map2 &gt;-&gt; Funclass is ambiguous with existing 
+- [Ap2] : Map2 &gt;-&gt; Funclass. [ambiguous-paths,typechecker]
+- File &quot;./CATEGORY_THEORY/LIMITS/CoLimit.v&quot;, line 29, characters 0-21:
+- Warning:
+- New coercion path [Map2&#39;_Map&#39;; Ap&#39;] : Map2&#39; &gt;-&gt; Funclass is ambiguous with existing 
+- [Ap2&#39;] : Map2&#39; &gt;-&gt; Funclass. [ambiguous-paths,typechecker]
+- File &quot;./CATEGORY_THEORY/LIMITS/Pullbacks1.v&quot;, line 30, characters 0-21:
+- Warning:
+- New coercion path [Map2&#39;&#39;_Map&#39;&#39;; Ap&#39;&#39;] : Map2&#39;&#39; &gt;-&gt; Funclass is ambiguous with existing 
+- [Ap2&#39;&#39;] : Map2&#39;&#39; &gt;-&gt; Funclass. [ambiguous-paths,typechecker]
+- File &quot;./CATEGORY_THEORY/LIMITS/CoLimit.v&quot;, line 29, characters 0-21:
+- Warning:
+- New coercion path [Map2_Map; Ap] : Map2 &gt;-&gt; Funclass is ambiguous with existing 
+- [Ap2] : Map2 &gt;-&gt; Funclass. [ambiguous-paths,typechecker]
+- COQC CATEGORY_THEORY/ADJUNCTION/Adjunction.v
+- File &quot;./CATEGORY_THEORY/LIMITS/CoLimit.v&quot;, line 29, characters 0-21:
+- Warning:
+- New coercion path [Map2&#39;&#39;_Map&#39;&#39;; Ap&#39;&#39;] : Map2&#39;&#39; &gt;-&gt; Funclass is ambiguous with existing 
+- [Ap2&#39;&#39;] : Map2&#39;&#39; &gt;-&gt; Funclass. [ambiguous-paths,typechecker]
+- File &quot;./CATEGORY_THEORY/LIMITS/CoLimit.v&quot;, line 64, characters 1-15:
+- Warning: Ignoring canonical projection to _ by ApNT in Build_CoCone:
+- redundant with Build_Cone [redundant-canonical-projection,typechecker]
+- COQC CATEGORY_THEORY/LIMIT_CONSTRUCTIONS/Th_Initial.v
+- File &quot;./CATEGORY_THEORY/LIMITS/CoLimit.v&quot;, line 92, characters 0-15:
+- Warning: Ignoring canonical projection to _ by ApNT in Build_CoCone:
+- redundant with Build_Cone [redundant-canonical-projection,typechecker]
+- File &quot;./CATEGORY_THEORY/LIMITS/Iso_Limit.v&quot;, line 29, characters 0-19:
+- Warning:
+- New coercion path [Map2_Map; Ap] : Map2 &gt;-&gt; Funclass is ambiguous with existing 
+- [Ap2] : Map2 &gt;-&gt; Funclass. [ambiguous-paths,typechecker]
+- File &quot;./CATEGORY_THEORY/ADJUNCTION/Adjunction.v&quot;, line 30, characters 0-22:
+- Warning:
+- New coercion path [Map2&#39;_Map&#39;; Ap&#39;] : Map2&#39; &gt;-&gt; Funclass is ambiguous with existing 
+- [Ap2&#39;] : Map2&#39; &gt;-&gt; Funclass. [ambiguous-paths,typechecker]
+- File &quot;./CATEGORY_THEORY/ADJUNCTION/Adjunction.v&quot;, line 30, characters 0-22:
+- Warning:
+- New coercion path [Map2_Map; Ap] : Map2 &gt;-&gt; Funclass is ambiguous with existing 
+- [Ap2] : Map2 &gt;-&gt; Funclass. [ambiguous-paths,typechecker]
+- COQC CATEGORY_THEORY/LIMIT_CONSTRUCTIONS/Comma_Complete.v
+- File &quot;./CATEGORY_THEORY/LIMITS/Iso_Limit.v&quot;, line 30, characters 0-21:
+- Warning:
+- New coercion path [Prf_equiv&#39;; Build_Setoid; Carrier] : Setoid&#39; &gt;-&gt; Sortclass is ambiguous with existing 
+- [Carrier&#39;] : Setoid&#39; &gt;-&gt; Sortclass. [ambiguous-paths,typechecker]
+- File &quot;./CATEGORY_THEORY/LIMITS/Iso_Limit.v&quot;, line 30, characters 0-21:
+- Warning:
+- New coercion path [Build_Setoid&#39;; Prf_equiv&#39;; Build_Setoid] : Equivalence &gt;-&gt; Setoid is ambiguous with existing 
+- [Build_Setoid] : Equivalence &gt;-&gt; Setoid.
+- New coercion path [Prf_equiv&#39;; Build_Setoid&#39;; Prf_equiv&#39;; Build_Setoid] : Setoid&#39; &gt;-&gt; Setoid is ambiguous with existing 
+- [Prf_equiv&#39;; Build_Setoid] : Setoid&#39; &gt;-&gt; Setoid.
+- [ambiguous-paths,typechecker]
+- File &quot;./CATEGORY_THEORY/LIMITS/Iso_Limit.v&quot;, line 30, characters 0-21:
+- Warning:
+- New coercion path [Map2&#39;_Map&#39;; Ap&#39;] : Map2&#39; &gt;-&gt; Funclass is ambiguous with existing 
+- [Ap2&#39;] : Map2&#39; &gt;-&gt; Funclass. [ambiguous-paths,typechecker]
+- File &quot;./CATEGORY_THEORY/LIMITS/Iso_Limit.v&quot;, line 30, characters 0-21:
+- Warning:
+- New coercion path [Prf_equiv&#39;&#39;; Build_Setoid; Carrier] : Setoid&#39;&#39; &gt;-&gt; Sortclass is ambiguous with existing 
+- [Carrier&#39;&#39;] : Setoid&#39;&#39; &gt;-&gt; Sortclass. [ambiguous-paths,typechecker]
+- File &quot;./CATEGORY_THEORY/ADJUNCTION/Adjunction.v&quot;, line 30, characters 0-22:
+- Warning:
+- New coercion path [Map2&#39;&#39;_Map&#39;&#39;; Ap&#39;&#39;] : Map2&#39;&#39; &gt;-&gt; Funclass is ambiguous with existing 
+- [Ap2&#39;&#39;] : Map2&#39;&#39; &gt;-&gt; Funclass. [ambiguous-paths,typechecker]
+- File &quot;./CATEGORY_THEORY/LIMITS/Iso_Limit.v&quot;, line 30, characters 0-21:
+- Warning:
+- New coercion path [Build_Setoid&#39;&#39;; Prf_equiv&#39;&#39;; Build_Setoid] : Equivalence &gt;-&gt; Setoid is ambiguous with existing 
+- [Build_Setoid] : Equivalence &gt;-&gt; Setoid.
+- New coercion path [Prf_equiv&#39;&#39;; Build_Setoid&#39;&#39;; Prf_equiv&#39;&#39;; Build_Setoid] : Setoid&#39;&#39; &gt;-&gt; Setoid is ambiguous with existing 
+- [Prf_equiv&#39;&#39;; Build_Setoid] : Setoid&#39;&#39; &gt;-&gt; Setoid.
+- New coercion path [Prf_equiv&#39;; Build_Setoid&#39;&#39;; Prf_equiv&#39;&#39;; Build_Setoid] : Setoid&#39; &gt;-&gt; Setoid is ambiguous with existing 
+- [Prf_equiv&#39;; Build_Setoid] : Setoid&#39; &gt;-&gt; Setoid.
+- [ambiguous-paths,typechecker]
+- File &quot;./CATEGORY_THEORY/LIMITS/Iso_Limit.v&quot;, line 30, characters 0-21:
+- Warning:
+- New coercion path [Map2&#39;&#39;_Map&#39;&#39;; Ap&#39;&#39;] : Map2&#39;&#39; &gt;-&gt; Funclass is ambiguous with existing 
+- [Ap2&#39;&#39;] : Map2&#39;&#39; &gt;-&gt; Funclass. [ambiguous-paths,typechecker]
+- File &quot;./CATEGORY_THEORY/LIMITS/Iso_Limit.v&quot;, line 73, characters 1-73:
+- Warning: Ignoring canonical projection to Prf_Cone_nt_law by Prf_NT_law in
+- PhiCone_1_fun: redundant with Build_Cone
+- [redundant-canonical-projection,typechecker]
+- File &quot;./CATEGORY_THEORY/LIMITS/Iso_Limit.v&quot;, line 75, characters 1-23:
+- Warning: Ignoring canonical projection to Prf_Cone_nt_law by Prf_NT_law in
+- PhiCone_1_fun: redundant with Build_Cone
+- [redundant-canonical-projection,typechecker]
+- File &quot;./CATEGORY_THEORY/LIMITS/Iso_Limit.v&quot;, line 104, characters 0-13:
+- Warning: Ignoring canonical projection to Prf_Cone_nt_law by Prf_NT_law in
+- PhiCone_1_fun: redundant with Build_Cone
+- [redundant-canonical-projection,typechecker]
+- COQC CATEGORY_THEORY/LIMIT_CONSTRUCTIONS/HomFunctor_Continuous.v
+- COQC CATEGORY_THEORY/LIMIT_CONSTRUCTIONS/Th_Limits.v
+- COQC CATEGORY_THEORY/ADJUNCTION/Adj_UA.v
+- File &quot;./CATEGORY_THEORY/LIMIT_CONSTRUCTIONS/Th_Initial.v&quot;, line 30, characters 0-25:
+- Warning:
+- New coercion path [Map2&#39;_Map&#39;; Ap&#39;] : Map2&#39; &gt;-&gt; Funclass is ambiguous with existing 
+- [Ap2&#39;] : Map2&#39; &gt;-&gt; Funclass. [ambiguous-paths,typechecker]
+- File &quot;./CATEGORY_THEORY/LIMIT_CONSTRUCTIONS/Th_Initial.v&quot;, line 30, characters 0-25:
+- Warning:
+- New coercion path [Map2&#39;&#39;_Map&#39;&#39;; Ap&#39;&#39;] : Map2&#39;&#39; &gt;-&gt; Funclass is ambiguous with existing 
+- [Ap2&#39;&#39;] : Map2&#39;&#39; &gt;-&gt; Funclass. [ambiguous-paths,typechecker]
+- File &quot;./CATEGORY_THEORY/LIMIT_CONSTRUCTIONS/Th_Initial.v&quot;, line 30, characters 0-25:
+- Warning:
+- New coercion path [Map2_Map; Ap] : Map2 &gt;-&gt; Funclass is ambiguous with existing 
+- [Ap2] : Map2 &gt;-&gt; Funclass. [ambiguous-paths,typechecker]
+- File &quot;./CATEGORY_THEORY/LIMIT_CONSTRUCTIONS/Comma_Complete.v&quot;, line 29, characters 0-27:
+- Warning:
+- New coercion path [Map2&#39;_Map&#39;; Ap&#39;] : Map2&#39; &gt;-&gt; Funclass is ambiguous with existing 
+- [Ap2&#39;] : Map2&#39; &gt;-&gt; Funclass. [ambiguous-paths,typechecker]
+- File &quot;./CATEGORY_THEORY/LIMIT_CONSTRUCTIONS/Comma_Complete.v&quot;, line 29, characters 0-27:
+- Warning:
+- New coercion path [Map2_Map; Ap] : Map2 &gt;-&gt; Funclass is ambiguous with existing 
+- [Ap2] : Map2 &gt;-&gt; Funclass. [ambiguous-paths,typechecker]
+- File &quot;./CATEGORY_THEORY/LIMIT_CONSTRUCTIONS/Comma_Complete.v&quot;, line 29, characters 0-27:
+- Warning:
+- New coercion path [Map2&#39;&#39;_Map&#39;&#39;; Ap&#39;&#39;] : Map2&#39;&#39; &gt;-&gt; Funclass is ambiguous with existing 
+- [Ap2&#39;&#39;] : Map2&#39;&#39; &gt;-&gt; Funclass. [ambiguous-paths,typechecker]
+- File &quot;./CATEGORY_THEORY/LIMIT_CONSTRUCTIONS/Th_Limits.v&quot;, line 29, characters 0-27:
+- Warning:
+- New coercion path [Map2&#39;_Map&#39;; Ap&#39;] : Map2&#39; &gt;-&gt; Funclass is ambiguous with existing 
+- [Ap2&#39;] : Map2&#39; &gt;-&gt; Funclass. [ambiguous-paths,typechecker]
+- File &quot;./CATEGORY_THEORY/LIMIT_CONSTRUCTIONS/Th_Limits.v&quot;, line 29, characters 0-27:
+- Warning:
+- New coercion path [Map2_Map; Ap] : Map2 &gt;-&gt; Funclass is ambiguous with existing 
+- [Ap2] : Map2 &gt;-&gt; Funclass. [ambiguous-paths,typechecker]
+- File &quot;./CATEGORY_THEORY/LIMIT_CONSTRUCTIONS/HomFunctor_Continuous.v&quot;, line 30, characters 0-26:
+- Warning:
+- New coercion path [Map2&#39;_Map&#39;; Ap&#39;] : Map2&#39; &gt;-&gt; Funclass is ambiguous with existing 
+- [Ap2&#39;] : Map2&#39; &gt;-&gt; Funclass. [ambiguous-paths,typechecker]
+- File &quot;./CATEGORY_THEORY/LIMIT_CONSTRUCTIONS/Th_Limits.v&quot;, line 29, characters 0-27:
+- Warning:
+- New coercion path [Map2&#39;&#39;_Map&#39;&#39;; Ap&#39;&#39;] : Map2&#39;&#39; &gt;-&gt; Funclass is ambiguous with existing 
+- [Ap2&#39;&#39;] : Map2&#39;&#39; &gt;-&gt; Funclass. [ambiguous-paths,typechecker]
+- File &quot;./CATEGORY_THEORY/LIMIT_CONSTRUCTIONS/HomFunctor_Continuous.v&quot;, line 30, characters 0-26:
+- Warning:
+- New coercion path [Prf_equiv&#39;; Build_Setoid; Prf_equiv; Prf_pequiv] : Setoid&#39; &gt;-&gt; Partial_equivalence is ambiguous with existing 
+- [Prf_equiv&#39;; Prf_pequiv] : Setoid&#39; &gt;-&gt; Partial_equivalence.
+- New coercion path [Prf_equiv&#39;; Build_Setoid; Prf_equiv; Equiv_preorder] : Setoid&#39; &gt;-&gt; Preorder is ambiguous with existing 
+- [Prf_equiv&#39;; Equiv_preorder] : Setoid&#39; &gt;-&gt; Preorder.
+- New coercion path [Prf_equiv&#39;; Build_Setoid; Prf_equiv] : Setoid&#39; &gt;-&gt; Equivalence is ambiguous with existing 
+- [Prf_equiv&#39;] : Setoid&#39; &gt;-&gt; Equivalence.
+- New coercion path [Prf_equiv&#39;; Build_Setoid; Carrier] : Setoid&#39; &gt;-&gt; Sortclass is ambiguous with existing 
+- [Carrier&#39;] : Setoid&#39; &gt;-&gt; Sortclass. [ambiguous-paths,typechecker]
+- File &quot;./CATEGORY_THEORY/LIMIT_CONSTRUCTIONS/HomFunctor_Continuous.v&quot;, line 30, characters 0-26:
+- Warning:
+- New coercion path [Map2_Map; Ap] : Map2 &gt;-&gt; Funclass is ambiguous with existing 
+- [Ap2] : Map2 &gt;-&gt; Funclass. [ambiguous-paths,typechecker]
+- File &quot;./CATEGORY_THEORY/ADJUNCTION/Adj_UA.v&quot;, line 29, characters 0-32:
+- Warning:
+- New coercion path [Map2&#39;_Map&#39;; Ap&#39;] : Map2&#39; &gt;-&gt; Funclass is ambiguous with existing 
+- [Ap2&#39;] : Map2&#39; &gt;-&gt; Funclass. [ambiguous-paths,typechecker]
+- File &quot;./CATEGORY_THEORY/ADJUNCTION/Adj_UA.v&quot;, line 29, characters 0-32:
+- Warning:
+- New coercion path [Map2_Map; Ap] : Map2 &gt;-&gt; Funclass is ambiguous with existing 
+- [Ap2] : Map2 &gt;-&gt; Funclass. [ambiguous-paths,typechecker]
+- File &quot;./CATEGORY_THEORY/LIMIT_CONSTRUCTIONS/HomFunctor_Continuous.v&quot;, line 31, characters 0-27:
+- Warning:
+- New coercion path [Build_Setoid&#39;&#39;; Prf_equiv&#39;&#39;; Build_Setoid] : Equivalence &gt;-&gt; Setoid is ambiguous with existing 
+- [Build_Setoid] : Equivalence &gt;-&gt; Setoid.
+- New coercion path [Prf_equiv&#39;&#39;; Build_Setoid&#39;&#39;; Prf_equiv&#39;&#39;; Build_Setoid] : Setoid&#39;&#39; &gt;-&gt; Setoid is ambiguous with existing 
+- [Prf_equiv&#39;&#39;; Build_Setoid] : Setoid&#39;&#39; &gt;-&gt; Setoid.
+- New coercion path [Prf_equiv&#39;; Build_Setoid&#39;&#39;; Prf_equiv&#39;&#39;; Build_Setoid] : Setoid&#39; &gt;-&gt; Setoid is ambiguous with existing 
+- [Prf_equiv&#39;; Build_Setoid] : Setoid&#39; &gt;-&gt; Setoid.
+- [ambiguous-paths,typechecker]
+- File &quot;./CATEGORY_THEORY/LIMIT_CONSTRUCTIONS/HomFunctor_Continuous.v&quot;, line 31, characters 0-27:
+- Warning:
+- New coercion path [Map2&#39;&#39;_Map&#39;&#39;; Ap&#39;&#39;] : Map2&#39;&#39; &gt;-&gt; Funclass is ambiguous with existing 
+- [Ap2&#39;&#39;] : Map2&#39;&#39; &gt;-&gt; Funclass. [ambiguous-paths,typechecker]
+- File &quot;./CATEGORY_THEORY/ADJUNCTION/Adj_UA.v&quot;, line 30, characters 0-26:
+- Warning:
+- New coercion path [Build_Setoid&#39;&#39;; Prf_equiv&#39;&#39;; Build_Setoid] : Equivalence &gt;-&gt; Setoid is ambiguous with existing 
+- [Build_Setoid] : Equivalence &gt;-&gt; Setoid.
+- New coercion path [Prf_equiv&#39;&#39;; Build_Setoid&#39;&#39;; Prf_equiv&#39;&#39;; Build_Setoid] : Setoid&#39;&#39; &gt;-&gt; Setoid is ambiguous with existing 
+- [Prf_equiv&#39;&#39;; Build_Setoid] : Setoid&#39;&#39; &gt;-&gt; Setoid.
+- New coercion path [Prf_equiv&#39;; Build_Setoid&#39;&#39;; Prf_equiv&#39;&#39;; Build_Setoid] : Setoid&#39; &gt;-&gt; Setoid is ambiguous with existing 
+- [Prf_equiv&#39;; Build_Setoid] : Setoid&#39; &gt;-&gt; Setoid.
+- [ambiguous-paths,typechecker]
+- File &quot;./CATEGORY_THEORY/ADJUNCTION/Adj_UA.v&quot;, line 30, characters 0-26:
+- Warning:
+- New coercion path [Map2&#39;&#39;_Map&#39;&#39;; Ap&#39;&#39;] : Map2&#39;&#39; &gt;-&gt; Funclass is ambiguous with existing 
+- [Ap2&#39;&#39;] : Map2&#39;&#39; &gt;-&gt; Funclass. [ambiguous-paths,typechecker]
+- COQC CATEGORY_THEORY/ADJUNCTION/Adjunction1.v
+- COQC CATEGORY_THEORY/ADJUNCTION/Th_Adjoint.v
+- COQC CATEGORY_THEORY/ADJUNCTION/Limit_Adj.v
+- COQC CATEGORY_THEORY/ADJUNCTION/CCC/Terminal1.v
+- COQC CATEGORY_THEORY/ADJUNCTION/FREYD_THEOREM/FAFT_Part1.v
+- COQC CATEGORY_THEORY/ADJUNCTION/Th_CoAdjoint.v
+- File &quot;./CATEGORY_THEORY/ADJUNCTION/Adjunction1.v&quot;, line 29, characters 0-21:
+- Warning:
+- New coercion path [Map2&#39;_Map&#39;; Ap&#39;] : Map2&#39; &gt;-&gt; Funclass is ambiguous with existing 
+- [Ap2&#39;] : Map2&#39; &gt;-&gt; Funclass. [ambiguous-paths,typechecker]
+- File &quot;./CATEGORY_THEORY/ADJUNCTION/Adjunction1.v&quot;, line 29, characters 0-21:
+- Warning:
+- New coercion path [Map2_Map; Ap] : Map2 &gt;-&gt; Funclass is ambiguous with existing 
+- [Ap2] : Map2 &gt;-&gt; Funclass. [ambiguous-paths,typechecker]
+- File &quot;./CATEGORY_THEORY/ADJUNCTION/Adjunction1.v&quot;, line 30, characters 0-22:
+- Warning:
+- New coercion path [Build_Setoid&#39;&#39;; Prf_equiv&#39;&#39;; Build_Setoid] : Equivalence &gt;-&gt; Setoid is ambiguous with existing 
+- [Build_Setoid] : Equivalence &gt;-&gt; Setoid.
+- New coercion path [Prf_equiv&#39;&#39;; Build_Setoid&#39;&#39;; Prf_equiv&#39;&#39;; Build_Setoid] : Setoid&#39;&#39; &gt;-&gt; Setoid is ambiguous with existing 
+- [Prf_equiv&#39;&#39;; Build_Setoid] : Setoid&#39;&#39; &gt;-&gt; Setoid.
+- New coercion path [Prf_equiv&#39;; Build_Setoid&#39;&#39;; Prf_equiv&#39;&#39;; Build_Setoid] : Setoid&#39; &gt;-&gt; Setoid is ambiguous with existing 
+- [Prf_equiv&#39;; Build_Setoid] : Setoid&#39; &gt;-&gt; Setoid.
+- [ambiguous-paths,typechecker]
+- File &quot;./CATEGORY_THEORY/ADJUNCTION/Adjunction1.v&quot;, line 30, characters 0-22:
+- Warning:
+- New coercion path [Map2&#39;&#39;_Map&#39;&#39;; Ap&#39;&#39;] : Map2&#39;&#39; &gt;-&gt; Funclass is ambiguous with existing 
+- [Ap2&#39;&#39;] : Map2&#39;&#39; &gt;-&gt; Funclass. [ambiguous-paths,typechecker]
+- File &quot;./CATEGORY_THEORY/ADJUNCTION/CCC/Terminal1.v&quot;, line 30, characters 0-22:
+- Warning:
+- New coercion path [Map2&#39;_Map&#39;; Ap&#39;] : Map2&#39; &gt;-&gt; Funclass is ambiguous with existing 
+- [Ap2&#39;] : Map2&#39; &gt;-&gt; Funclass. [ambiguous-paths,typechecker]
+- File &quot;./CATEGORY_THEORY/ADJUNCTION/Th_Adjoint.v&quot;, line 29, characters 0-22:
+- Warning:
+- New coercion path [Map2&#39;&#39;_Map&#39;&#39;; Ap&#39;&#39;] : Map2&#39;&#39; &gt;-&gt; Funclass is ambiguous with existing 
+- [Ap2&#39;&#39;] : Map2&#39;&#39; &gt;-&gt; Funclass. [ambiguous-paths,typechecker]
+- File &quot;./CATEGORY_THEORY/ADJUNCTION/CCC/Terminal1.v&quot;, line 30, characters 0-22:
+- Warning:
+- New coercion path [Map2_Map; Ap] : Map2 &gt;-&gt; Funclass is ambiguous with existing 
+- [Ap2] : Map2 &gt;-&gt; Funclass. [ambiguous-paths,typechecker]
+- File &quot;./CATEGORY_THEORY/ADJUNCTION/Th_Adjoint.v&quot;, line 29, characters 0-22:
+- Warning:
+- New coercion path [Map2&#39;_Map&#39;; Ap&#39;] : Map2&#39; &gt;-&gt; Funclass is ambiguous with existing 
+- [Ap2&#39;] : Map2&#39; &gt;-&gt; Funclass. [ambiguous-paths,typechecker]
+- File &quot;./CATEGORY_THEORY/ADJUNCTION/Limit_Adj.v&quot;, line 29, characters 0-22:
+- Warning:
+- New coercion path [Map2&#39;&#39;_Map&#39;&#39;; Ap&#39;&#39;] : Map2&#39;&#39; &gt;-&gt; Funclass is ambiguous with existing 
+- [Ap2&#39;&#39;] : Map2&#39;&#39; &gt;-&gt; Funclass. [ambiguous-paths,typechecker]
+- File &quot;./CATEGORY_THEORY/ADJUNCTION/FREYD_THEOREM/FAFT_Part1.v&quot;, line 30, characters 0-21:
+- Warning:
+- New coercion path [Map2&#39;_Map&#39;; Ap&#39;] : Map2&#39; &gt;-&gt; Funclass is ambiguous with existing 
+- [Ap2&#39;] : Map2&#39; &gt;-&gt; Funclass. [ambiguous-paths,typechecker]
+- File &quot;./CATEGORY_THEORY/ADJUNCTION/Th_Adjoint.v&quot;, line 29, characters 0-22:
+- Warning:
+- New coercion path [Prf_equiv&#39;; Build_Setoid; Prf_equiv; Prf_pequiv] : Setoid&#39; &gt;-&gt; Partial_equivalence is ambiguous with existing 
+- [Prf_equiv&#39;; Prf_pequiv] : Setoid&#39; &gt;-&gt; Partial_equivalence.
+- New coercion path [Prf_equiv&#39;; Build_Setoid; Prf_equiv; Equiv_preorder] : Setoid&#39; &gt;-&gt; Preorder is ambiguous with existing 
+- [Prf_equiv&#39;; Equiv_preorder] : Setoid&#39; &gt;-&gt; Preorder.
+- New coercion path [Prf_equiv&#39;; Build_Setoid; Prf_equiv] : Setoid&#39; &gt;-&gt; Equivalence is ambiguous with existing 
+- [Prf_equiv&#39;] : Setoid&#39; &gt;-&gt; Equivalence.
+- New coercion path [Prf_equiv&#39;; Build_Setoid; Prf_equiv; Build_Setoid&#39;&#39;] : Setoid&#39; &gt;-&gt; Setoid&#39;&#39; is ambiguous with existing 
+- [Prf_equiv&#39;; Build_Setoid&#39;&#39;] : Setoid&#39; &gt;-&gt; Setoid&#39;&#39;.
+- New coercion path [Prf_equiv&#39;; Build_Setoid; Carrier] : Setoid&#39; &gt;-&gt; Sortclass is ambiguous with existing 
+- [Carrier&#39;] : Setoid&#39; &gt;-&gt; Sortclass.
+- New coercion path [Prf_equiv&#39;&#39;; Build_Setoid; Prf_equiv; Prf_pequiv] : Setoid&#39;&#39; &gt;-&gt; Partial_equivalence is ambiguous with existing 
+- [Prf_equiv&#39;&#39;; Prf_pequiv] : Setoid&#39;&#39; &gt;-&gt; Partial_equivalence.
+- New coercion path [Prf_equiv&#39;&#39;; Build_Setoid; Prf_equiv; Equiv_preorder] : Setoid&#39;&#39; &gt;-&gt; Preorder is ambiguous with existing 
+- [Prf_equiv&#39;&#39;; Equiv_preorder] : Setoid&#39;&#39; &gt;-&gt; Preorder.
+- New coercion path [Prf_equiv&#39;&#39;; Build_Setoid; Prf_equiv; Build_Setoid&#39;] : Setoid&#39;&#39; &gt;-&gt; Setoid&#39; is ambiguous with existing 
+- [Prf_equiv&#39;&#39;; Build_Setoid&#39;] : Setoid&#39;&#39; &gt;-&gt; Setoid&#39;.
+- New coercion path [Prf_equiv&#39;&#39;; Build_Setoid; Prf_equiv] : Setoid&#39;&#39; &gt;-&gt; Equivalence is ambiguous with existing 
+- [Prf_equiv&#39;&#39;] : Setoid&#39;&#39; &gt;-&gt; Equivalence.
+- New coercion path [Prf_equiv&#39;&#39;; Build_Setoid; Carrier] : Setoid&#39;&#39; &gt;-&gt; Sortclass is ambiguous with existing 
+- [Carrier&#39;&#39;] : Setoid&#39;&#39; &gt;-&gt; Sortclass. [ambiguous-paths,typechecker]
+- File &quot;./CATEGORY_THEORY/ADJUNCTION/CCC/Terminal1.v&quot;, line 31, characters 0-22:
+- Warning:
+- New coercion path [Build_Setoid&#39;&#39;; Prf_equiv&#39;&#39;; Build_Setoid] : Equivalence &gt;-&gt; Setoid is ambiguous with existing 
+- [Build_Setoid] : Equivalence &gt;-&gt; Setoid.
+- New coercion path [Prf_equiv&#39;&#39;; Build_Setoid&#39;&#39;; Prf_equiv&#39;&#39;; Build_Setoid] : Setoid&#39;&#39; &gt;-&gt; Setoid is ambiguous with existing 
+- [Prf_equiv&#39;&#39;; Build_Setoid] : Setoid&#39;&#39; &gt;-&gt; Setoid.
+- New coercion path [Prf_equiv&#39;; Build_Setoid&#39;&#39;; Prf_equiv&#39;&#39;; Build_Setoid] : Setoid&#39; &gt;-&gt; Setoid is ambiguous with existing 
+- [Prf_equiv&#39;; Build_Setoid] : Setoid&#39; &gt;-&gt; Setoid.
+- [ambiguous-paths,typechecker]
+- File &quot;./CATEGORY_THEORY/ADJUNCTION/Th_CoAdjoint.v&quot;, line 29, characters 0-22:
+- Warning:
+- New coercion path [Map2&#39;&#39;_Map&#39;&#39;; Ap&#39;&#39;] : Map2&#39;&#39; &gt;-&gt; Funclass is ambiguous with existing 
+- [Ap2&#39;&#39;] : Map2&#39;&#39; &gt;-&gt; Funclass. [ambiguous-paths,typechecker]
+- File &quot;./CATEGORY_THEORY/ADJUNCTION/CCC/Terminal1.v&quot;, line 31, characters 0-22:
+- Warning:
+- New coercion path [Map2&#39;&#39;_Map&#39;&#39;; Ap&#39;&#39;] : Map2&#39;&#39; &gt;-&gt; Funclass is ambiguous with existing 
+- [Ap2&#39;&#39;] : Map2&#39;&#39; &gt;-&gt; Funclass. [ambiguous-paths,typechecker]
+- File &quot;./CATEGORY_THEORY/ADJUNCTION/FREYD_THEOREM/FAFT_Part1.v&quot;, line 30, characters 0-21:
+- Warning:
+- New coercion path [Map2_Map; Ap] : Map2 &gt;-&gt; Funclass is ambiguous with existing 
+- [Ap2] : Map2 &gt;-&gt; Funclass. [ambiguous-paths,typechecker]
+- File &quot;./CATEGORY_THEORY/ADJUNCTION/Th_Adjoint.v&quot;, line 29, characters 0-22:
+- Warning:
+- New coercion path [Map2_Map; Ap] : Map2 &gt;-&gt; Funclass is ambiguous with existing 
+- [Ap2] : Map2 &gt;-&gt; Funclass. [ambiguous-paths,typechecker]
+- File &quot;./CATEGORY_THEORY/ADJUNCTION/Limit_Adj.v&quot;, line 29, characters 0-22:
+- Warning:
+- New coercion path [Map2&#39;_Map&#39;; Ap&#39;] : Map2&#39; &gt;-&gt; Funclass is ambiguous with existing 
+- [Ap2&#39;] : Map2&#39; &gt;-&gt; Funclass. [ambiguous-paths,typechecker]
+- File &quot;./CATEGORY_THEORY/ADJUNCTION/Th_CoAdjoint.v&quot;, line 29, characters 0-22:
+- Warning:
+- New coercion path [Map2&#39;_Map&#39;; Ap&#39;] : Map2&#39; &gt;-&gt; Funclass is ambiguous with existing 
+- [Ap2&#39;] : Map2&#39; &gt;-&gt; Funclass. [ambiguous-paths,typechecker]
+- File &quot;./CATEGORY_THEORY/ADJUNCTION/Limit_Adj.v&quot;, line 29, characters 0-22:
+- Warning:
+- New coercion path [Prf_equiv&#39;; Build_Setoid; Prf_equiv; Prf_pequiv] : Setoid&#39; &gt;-&gt; Partial_equivalence is ambiguous with existing 
+- [Prf_equiv&#39;; Prf_pequiv] : Setoid&#39; &gt;-&gt; Partial_equivalence.
+- New coercion path [Prf_equiv&#39;; Build_Setoid; Prf_equiv; Equiv_preorder] : Setoid&#39; &gt;-&gt; Preorder is ambiguous with existing 
+- [Prf_equiv&#39;; Equiv_preorder] : Setoid&#39; &gt;-&gt; Preorder.
+- New coercion path [Prf_equiv&#39;; Build_Setoid; Prf_equiv] : Setoid&#39; &gt;-&gt; Equivalence is ambiguous with existing 
+- [Prf_equiv&#39;] : Setoid&#39; &gt;-&gt; Equivalence.
+- New coercion path [Prf_equiv&#39;; Build_Setoid; Prf_equiv; Build_Setoid&#39;&#39;] : Setoid&#39; &gt;-&gt; Setoid&#39;&#39; is ambiguous with existing 
+- [Prf_equiv&#39;; Build_Setoid&#39;&#39;] : Setoid&#39; &gt;-&gt; Setoid&#39;&#39;.
+- New coercion path [Prf_equiv&#39;; Build_Setoid; Carrier] : Setoid&#39; &gt;-&gt; Sortclass is ambiguous with existing 
+- [Carrier&#39;] : Setoid&#39; &gt;-&gt; Sortclass.
+- New coercion path [Prf_equiv&#39;&#39;; Build_Setoid; Prf_equiv; Prf_pequiv] : Setoid&#39;&#39; &gt;-&gt; Partial_equivalence is ambiguous with existing 
+- [Prf_equiv&#39;&#39;; Prf_pequiv] : Setoid&#39;&#39; &gt;-&gt; Partial_equivalence.
+- New coercion path [Prf_equiv&#39;&#39;; Build_Setoid; Prf_equiv; Equiv_preorder] : Setoid&#39;&#39; &gt;-&gt; Preorder is ambiguous with existing 
+- [Prf_equiv&#39;&#39;; Equiv_preorder] : Setoid&#39;&#39; &gt;-&gt; Preorder.
+- New coercion path [Prf_equiv&#39;&#39;; Build_Setoid; Prf_equiv; Build_Setoid&#39;] : Setoid&#39;&#39; &gt;-&gt; Setoid&#39; is ambiguous with existing 
+- [Prf_equiv&#39;&#39;; Build_Setoid&#39;] : Setoid&#39;&#39; &gt;-&gt; Setoid&#39;.
+- New coercion path [Prf_equiv&#39;&#39;; Build_Setoid; Prf_equiv] : Setoid&#39;&#39; &gt;-&gt; Equivalence is ambiguous with existing 
+- [Prf_equiv&#39;&#39;] : Setoid&#39;&#39; &gt;-&gt; Equivalence.
+- New coercion path [Prf_equiv&#39;&#39;; Build_Setoid; Carrier] : Setoid&#39;&#39; &gt;-&gt; Sortclass is ambiguous with existing 
+- [Carrier&#39;&#39;] : Setoid&#39;&#39; &gt;-&gt; Sortclass. [ambiguous-paths,typechecker]
+- COQC CATEGORY_THEORY/ADJUNCTION/CCC/Cartesian1.v
+- File &quot;./CATEGORY_THEORY/ADJUNCTION/Limit_Adj.v&quot;, line 29, characters 0-22:
+- Warning:
+- New coercion path [Map2_Map; Ap] : Map2 &gt;-&gt; Funclass is ambiguous with existing 
+- [Ap2] : Map2 &gt;-&gt; Funclass. [ambiguous-paths,typechecker]
+- File &quot;./CATEGORY_THEORY/ADJUNCTION/Th_CoAdjoint.v&quot;, line 29, characters 0-22:
+- Warning:
+- New coercion path [Prf_equiv&#39;; Build_Setoid; Prf_equiv; Prf_pequiv] : Setoid&#39; &gt;-&gt; Partial_equivalence is ambiguous with existing 
+- [Prf_equiv&#39;; Prf_pequiv] : Setoid&#39; &gt;-&gt; Partial_equivalence.
+- New coercion path [Prf_equiv&#39;; Build_Setoid; Prf_equiv; Equiv_preorder] : Setoid&#39; &gt;-&gt; Preorder is ambiguous with existing 
+- [Prf_equiv&#39;; Equiv_preorder] : Setoid&#39; &gt;-&gt; Preorder.
+- New coercion path [Prf_equiv&#39;; Build_Setoid; Prf_equiv] : Setoid&#39; &gt;-&gt; Equivalence is ambiguous with existing 
+- [Prf_equiv&#39;] : Setoid&#39; &gt;-&gt; Equivalence.
+- New coercion path [Prf_equiv&#39;; Build_Setoid; Prf_equiv; Build_Setoid&#39;&#39;] : Setoid&#39; &gt;-&gt; Setoid&#39;&#39; is ambiguous with existing 
+- [Prf_equiv&#39;; Build_Setoid&#39;&#39;] : Setoid&#39; &gt;-&gt; Setoid&#39;&#39;.
+- New coercion path [Prf_equiv&#39;; Build_Setoid; Carrier] : Setoid&#39; &gt;-&gt; Sortclass is ambiguous with existing 
+- [Carrier&#39;] : Setoid&#39; &gt;-&gt; Sortclass.
+- New coercion path [Prf_equiv&#39;&#39;; Build_Setoid; Prf_equiv; Prf_pequiv] : Setoid&#39;&#39; &gt;-&gt; Partial_equivalence is ambiguous with existing 
+- [Prf_equiv&#39;&#39;; Prf_pequiv] : Setoid&#39;&#39; &gt;-&gt; Partial_equivalence.
+- New coercion path [Prf_equiv&#39;&#39;; Build_Setoid; Prf_equiv; Equiv_preorder] : Setoid&#39;&#39; &gt;-&gt; Preorder is ambiguous with existing 
+- [Prf_equiv&#39;&#39;; Equiv_preorder] : Setoid&#39;&#39; &gt;-&gt; Preorder.
+- New coercion path [Prf_equiv&#39;&#39;; Build_Setoid; Prf_equiv; Build_Setoid&#39;] : Setoid&#39;&#39; &gt;-&gt; Setoid&#39; is ambiguous with existing 
+- [Prf_equiv&#39;&#39;; Build_Setoid&#39;] : Setoid&#39;&#39; &gt;-&gt; Setoid&#39;.
+- New coercion path [Prf_equiv&#39;&#39;; Build_Setoid; Prf_equiv] : Setoid&#39;&#39; &gt;-&gt; Equivalence is ambiguous with existing 
+- [Prf_equiv&#39;&#39;] : Setoid&#39;&#39; &gt;-&gt; Equivalence.
+- New coercion path [Prf_equiv&#39;&#39;; Build_Setoid; Carrier] : Setoid&#39;&#39; &gt;-&gt; Sortclass is ambiguous with existing 
+- [Carrier&#39;&#39;] : Setoid&#39;&#39; &gt;-&gt; Sortclass. [ambiguous-paths,typechecker]
+- File &quot;./CATEGORY_THEORY/ADJUNCTION/FREYD_THEOREM/FAFT_Part1.v&quot;, line 30, characters 0-21:
+- Warning:
+- New coercion path [Map2&#39;&#39;_Map&#39;&#39;; Ap&#39;&#39;] : Map2&#39;&#39; &gt;-&gt; Funclass is ambiguous with existing 
+- [Ap2&#39;&#39;] : Map2&#39;&#39; &gt;-&gt; Funclass. [ambiguous-paths,typechecker]
+- File &quot;./CATEGORY_THEORY/ADJUNCTION/Th_CoAdjoint.v&quot;, line 29, characters 0-22:
+- Warning:
+- New coercion path [Map2_Map; Ap] : Map2 &gt;-&gt; Funclass is ambiguous with existing 
+- [Ap2] : Map2 &gt;-&gt; Funclass. [ambiguous-paths,typechecker]
+- File &quot;./CATEGORY_THEORY/ADJUNCTION/Adjunction1.v&quot;, line 353, characters 0-36:
+- Warning:
+- New coercion path [Adj_r; Adj_to_Adj1; Adj1_to_Adj; Adj_to_Adj1] : RightAdj &gt;-&gt; Adj1 is ambiguous with existing 
+- [Adj_r; Adj_to_Adj1] : RightAdj &gt;-&gt; Adj1.
+- New coercion path [Adj_r; Adj_to_Adj1; Adj1_to_Adj; Id_Adj_NatIso; Prf_NatIso] : RightAdj &gt;-&gt; AreNatIsos is ambiguous with existing 
+- [Adj_r; Id_Adj_NatIso; Prf_NatIso] : RightAdj &gt;-&gt; AreNatIsos.
+- New coercion path [Adj_r; Adj_to_Adj1; Adj1_to_Adj; Id_Adj_NatIso] : RightAdj &gt;-&gt; NatIso is ambiguous with existing 
+- [Adj_r; Id_Adj_NatIso] : RightAdj &gt;-&gt; NatIso.
+- New coercion path [Adj_r; Adj_to_Adj1; Adj1_to_Adj; Id_Adj_NatIso;
+-                    NatIso_mor; Prf_NT_law] : RightAdj &gt;-&gt; NT_law is ambiguous with existing 
+- [Adj_r; Id_Adj_NatIso; NatIso_mor; Prf_NT_law] : RightAdj &gt;-&gt; NT_law.
+- New coercion path [Adj_r; Adj_to_Adj1; Adj1_to_Adj; Id_Adj_NatIso; NatIso_mor] : RightAdj &gt;-&gt; NT is ambiguous with existing 
+- [Adj_r; Id_Adj_NatIso; NatIso_mor] : RightAdj &gt;-&gt; NT.
+- New coercion path [Adj_r; Adj_to_Adj1; Adj1_to_Adj; Id_Adj_NatIso;
+-                    NatIso_mor; ApNT] : RightAdj &gt;-&gt; Funclass is ambiguous with existing 
+- [Adj_r; Id_Adj_NatIso; NatIso_mor; ApNT] : RightAdj &gt;-&gt; Funclass.
+- New coercion path [Adj_r; Adj_to_Adj1; Adj1_to_Adj] : RightAdj &gt;-&gt; Adj is ambiguous with existing 
+- [Adj_r] : RightAdj &gt;-&gt; Adj.
+- New coercion path [Adj_l; Adj_to_Adj1; Adj1_to_Adj; Adj_to_Adj1] : LeftAdj &gt;-&gt; Adj1 is ambiguous with existing 
+- [Adj_l; Adj_to_Adj1] : LeftAdj &gt;-&gt; Adj1.
+- New coercion path [Adj_l; Adj_to_Adj1; Adj1_to_Adj; Id_Adj_NatIso; Prf_NatIso] : LeftAdj &gt;-&gt; AreNatIsos is ambiguous with existing 
+- [Adj_l; Id_Adj_NatIso; Prf_NatIso] : LeftAdj &gt;-&gt; AreNatIsos.
+- New coercion path [Adj_l; Adj_to_Adj1; Adj1_to_Adj; Id_Adj_NatIso] : LeftAdj &gt;-&gt; NatIso is ambiguous with existing 
+- [Adj_l; Id_Adj_NatIso] : LeftAdj &gt;-&gt; NatIso.
+- New coercion path [Adj_l; Adj_to_Adj1; Adj1_to_Adj; Id_Adj_NatIso;
+-                    NatIso_mor; Prf_NT_law] : LeftAdj &gt;-&gt; NT_law is ambiguous with existing 
+- [Adj_l; Id_Adj_NatIso; NatIso_mor; Prf_NT_law] : LeftAdj &gt;-&gt; NT_law.
+- New coercion path [Adj_l; Adj_to_Adj1; Adj1_to_Adj; Id_Adj_NatIso; NatIso_mor] : LeftAdj &gt;-&gt; NT is ambiguous with existing 
+- [Adj_l; Id_Adj_NatIso; NatIso_mor] : LeftAdj &gt;-&gt; NT.
+- New coercion path [Adj_l; Adj_to_Adj1; Adj1_to_Adj; Id_Adj_NatIso;
+-                    NatIso_mor; ApNT] : LeftAdj &gt;-&gt; Funclass is ambiguous with existing 
+- [Adj_l; Id_Adj_NatIso; NatIso_mor; ApNT] : LeftAdj &gt;-&gt; Funclass.
+- New coercion path [Adj_l; Adj_to_Adj1; Adj1_to_Adj] : LeftAdj &gt;-&gt; Adj is ambiguous with existing 
+- [Adj_l] : LeftAdj &gt;-&gt; Adj.
+- New coercion path [Adj_to_Adj1; Adj1_to_Adj; Id_Adj_NatIso; Prf_NatIso] : Adj &gt;-&gt; AreNatIsos is ambiguous with existing 
+- [Id_Adj_NatIso; Prf_NatIso] : Adj &gt;-&gt; AreNatIsos.
+- New coercion path [Adj_to_Adj1; Adj1_to_Adj; Id_Adj_NatIso] : Adj &gt;-&gt; NatIso is ambiguous with existing 
+- [Id_Adj_NatIso] : Adj &gt;-&gt; NatIso.
+- New coercion path [Adj_to_Adj1; Adj1_to_Adj; Id_Adj_NatIso; NatIso_mor;
+-                    Prf_NT_law] : Adj &gt;-&gt; NT_law is ambiguous with existing 
+- [Id_Adj_NatIso; NatIso_mor; Prf_NT_law] : Adj &gt;-&gt; NT_law.
+- New coercion path [Adj_to_Adj1; Adj1_to_Adj; Id_Adj_NatIso; NatIso_mor] : Adj &gt;-&gt; NT is ambiguous with existing 
+- [Id_Adj_NatIso; NatIso_mor] : Adj &gt;-&gt; NT.
+- New coercion path [Adj_to_Adj1; Adj1_to_Adj; Id_Adj_NatIso; NatIso_mor; ApNT] : Adj &gt;-&gt; Funclass is ambiguous with existing 
+- [Id_Adj_NatIso; NatIso_mor; ApNT] : Adj &gt;-&gt; Funclass.
+- [ambiguous-paths,typechecker]
+- File &quot;./CATEGORY_THEORY/ADJUNCTION/CCC/Cartesian1.v&quot;, line 29, characters 0-24:
+- Warning:
+- New coercion path [Map2&#39;_Map&#39;; Ap&#39;] : Map2&#39; &gt;-&gt; Funclass is ambiguous with existing 
+- [Ap2&#39;] : Map2&#39; &gt;-&gt; Funclass. [ambiguous-paths,typechecker]
+- File &quot;./CATEGORY_THEORY/ADJUNCTION/CCC/Cartesian1.v&quot;, line 29, characters 0-24:
+- Warning:
+- New coercion path [Map2_Map; Ap] : Map2 &gt;-&gt; Funclass is ambiguous with existing 
+- [Ap2] : Map2 &gt;-&gt; Funclass. [ambiguous-paths,typechecker]
+- File &quot;./CATEGORY_THEORY/ADJUNCTION/CCC/Cartesian1.v&quot;, line 30, characters 0-19:
+- Warning:
+- New coercion path [Prf_isCCC; CCC_isCar; Car_BP] : CCC &gt;-&gt; HasBinProd is ambiguous with existing 
+- [CCC_Car; Prf_isCartesian; Car_BP] : CCC &gt;-&gt; HasBinProd.
+- New coercion path [Prf_isCCC; CCC_isCar] : CCC &gt;-&gt; IsCartesian is ambiguous with existing 
+- [CCC_Car; Prf_isCartesian] : CCC &gt;-&gt; IsCartesian.
+- New coercion path [Prf_isCCC; CCC_isCar; Car_terminal; Prf_isTerminal] : CCC &gt;-&gt; IsTerminal is ambiguous with existing 
+- [CCC_Car; Prf_isCartesian; Car_terminal; Prf_isTerminal] : CCC &gt;-&gt; IsTerminal.
+- New coercion path [Prf_isCCC; CCC_isCar; Car_terminal] : CCC &gt;-&gt; Terminal is ambiguous with existing 
+- [CCC_Car; Prf_isCartesian; Car_terminal] : CCC &gt;-&gt; Terminal.
+- [ambiguous-paths,typechecker]
+- File &quot;./CATEGORY_THEORY/ADJUNCTION/CCC/Cartesian1.v&quot;, line 31, characters 0-25:
+- Warning:
+- New coercion path [Build_Setoid&#39;&#39;; Prf_equiv&#39;&#39;; Build_Setoid] : Equivalence &gt;-&gt; Setoid is ambiguous with existing 
+- [Build_Setoid] : Equivalence &gt;-&gt; Setoid.
+- New coercion path [Prf_equiv&#39;&#39;; Build_Setoid&#39;&#39;; Prf_equiv&#39;&#39;; Build_Setoid] : Setoid&#39;&#39; &gt;-&gt; Setoid is ambiguous with existing 
+- [Prf_equiv&#39;&#39;; Build_Setoid] : Setoid&#39;&#39; &gt;-&gt; Setoid.
+- New coercion path [Prf_equiv&#39;; Build_Setoid&#39;&#39;; Prf_equiv&#39;&#39;; Build_Setoid] : Setoid&#39; &gt;-&gt; Setoid is ambiguous with existing 
+- [Prf_equiv&#39;; Build_Setoid] : Setoid&#39; &gt;-&gt; Setoid.
+- [ambiguous-paths,typechecker]
+- File &quot;./CATEGORY_THEORY/ADJUNCTION/CCC/Cartesian1.v&quot;, line 31, characters 0-25:
+- Warning:
+- New coercion path [Map2&#39;&#39;_Map&#39;&#39;; Ap&#39;&#39;] : Map2&#39;&#39; &gt;-&gt; Funclass is ambiguous with existing 
+- [Ap2&#39;&#39;] : Map2&#39;&#39; &gt;-&gt; Funclass. [ambiguous-paths,typechecker]
+- COQC CATEGORY_THEORY/ADJUNCTION/LeftAdj_Iso.v
+- File &quot;./CATEGORY_THEORY/ADJUNCTION/CCC/Cartesian1.v&quot;, line 44, characters 0-91:
+- Warning:
+- New coercion path [Car_BP1; Id_HasBinProd1_RightAdj] : IsCartesian1 &gt;-&gt; RightAdj is ambiguous with existing 
+- [Car_terminal1; Id_Terminal1_RightAdj] : IsCartesian1 &gt;-&gt; RightAdj.
+- New coercion path [Car_BP1; Id_HasBinProd1_RightAdj; Adj_r] : IsCartesian1 &gt;-&gt; Adj is ambiguous with existing 
+- [Car_terminal1; Id_Terminal1_RightAdj; Adj_r] : IsCartesian1 &gt;-&gt; Adj.
+- New coercion path [Car_BP1; Id_HasBinProd1_RightAdj; Adj_r; Id_Adj_NatIso;
+-                    Prf_NatIso] : IsCartesian1 &gt;-&gt; AreNatIsos is ambiguous with existing 
+- [Car_terminal1; Id_Terminal1_RightAdj; Adj_r; Id_Adj_NatIso; Prf_NatIso] : IsCartesian1 &gt;-&gt; AreNatIsos.
+- New coercion path [Car_BP1; Id_HasBinProd1_RightAdj; Adj_r; Id_Adj_NatIso] : IsCartesian1 &gt;-&gt; NatIso is ambiguous with existing 
+- [Car_terminal1; Id_Terminal1_RightAdj; Adj_r; Id_Adj_NatIso] : IsCartesian1 &gt;-&gt; NatIso.
+- New coercion path [Car_BP1; Id_HasBinProd1_RightAdj; Adj_r; Id_Adj_NatIso;
+-                    NatIso_mor; Prf_NT_law] : IsCartesian1 &gt;-&gt; NT_law is ambiguous with existing 
+- [Car_terminal1; Id_Terminal1_RightAdj; Adj_r; Id_Adj_NatIso; NatIso_mor;
+-  Prf_NT_law] : IsCartesian1 &gt;-&gt; NT_law.
+- New coercion path [Car_BP1; Id_HasBinProd1_RightAdj; Adj_r; Id_Adj_NatIso;
+-                    NatIso_mor] : IsCartesian1 &gt;-&gt; NT is ambiguous with existing 
+- [Car_terminal1; Id_Terminal1_RightAdj; Adj_r; Id_Adj_NatIso; NatIso_mor] : IsCartesian1 &gt;-&gt; NT.
+- New coercion path [Car_BP1; Id_HasBinProd1_RightAdj; Adj_r; Id_Adj_NatIso;
+-                    NatIso_mor; ApNT] : IsCartesian1 &gt;-&gt; Funclass is ambiguous with existing 
+- [Car_terminal1; Id_Terminal1_RightAdj; Adj_r; Id_Adj_NatIso; NatIso_mor; ApNT] : IsCartesian1 &gt;-&gt; Funclass.
+- [ambiguous-paths,typechecker]
+- File &quot;./CATEGORY_THEORY/ADJUNCTION/LeftAdj_Iso.v&quot;, line 29, characters 0-27:
+- Warning:
+- New coercion path [Map2&#39;&#39;_Map&#39;&#39;; Ap&#39;&#39;] : Map2&#39;&#39; &gt;-&gt; Funclass is ambiguous with existing 
+- [Ap2&#39;&#39;] : Map2&#39;&#39; &gt;-&gt; Funclass. [ambiguous-paths,typechecker]
+- File &quot;./CATEGORY_THEORY/ADJUNCTION/LeftAdj_Iso.v&quot;, line 29, characters 0-27:
+- Warning:
+- New coercion path [Map2&#39;_Map&#39;; Ap&#39;] : Map2&#39; &gt;-&gt; Funclass is ambiguous with existing 
+- [Ap2&#39;] : Map2&#39; &gt;-&gt; Funclass. [ambiguous-paths,typechecker]
+- File &quot;./CATEGORY_THEORY/ADJUNCTION/LeftAdj_Iso.v&quot;, line 29, characters 0-27:
+- Warning:
+- New coercion path [Prf_equiv&#39;; Build_Setoid; Prf_equiv; Prf_pequiv] : Setoid&#39; &gt;-&gt; Partial_equivalence is ambiguous with existing 
+- [Prf_equiv&#39;; Prf_pequiv] : Setoid&#39; &gt;-&gt; Partial_equivalence.
+- New coercion path [Prf_equiv&#39;; Build_Setoid; Prf_equiv; Equiv_preorder] : Setoid&#39; &gt;-&gt; Preorder is ambiguous with existing 
+- [Prf_equiv&#39;; Equiv_preorder] : Setoid&#39; &gt;-&gt; Preorder.
+- New coercion path [Prf_equiv&#39;; Build_Setoid; Prf_equiv] : Setoid&#39; &gt;-&gt; Equivalence is ambiguous with existing 
+- [Prf_equiv&#39;] : Setoid&#39; &gt;-&gt; Equivalence.
+- New coercion path [Prf_equiv&#39;; Build_Setoid; Prf_equiv; Build_Setoid&#39;&#39;] : Setoid&#39; &gt;-&gt; Setoid&#39;&#39; is ambiguous with existing 
+- [Prf_equiv&#39;; Build_Setoid&#39;&#39;] : Setoid&#39; &gt;-&gt; Setoid&#39;&#39;.
+- New coercion path [Prf_equiv&#39;; Build_Setoid; Carrier] : Setoid&#39; &gt;-&gt; Sortclass is ambiguous with existing 
+- [Carrier&#39;] : Setoid&#39; &gt;-&gt; Sortclass.
+- New coercion path [Prf_equiv&#39;&#39;; Build_Setoid; Prf_equiv; Prf_pequiv] : Setoid&#39;&#39; &gt;-&gt; Partial_equivalence is ambiguous with existing 
+- [Prf_equiv&#39;&#39;; Prf_pequiv] : Setoid&#39;&#39; &gt;-&gt; Partial_equivalence.
+- New coercion path [Prf_equiv&#39;&#39;; Build_Setoid; Prf_equiv; Equiv_preorder] : Setoid&#39;&#39; &gt;-&gt; Preorder is ambiguous with existing 
+- [Prf_equiv&#39;&#39;; Equiv_preorder] : Setoid&#39;&#39; &gt;-&gt; Preorder.
+- New coercion path [Prf_equiv&#39;&#39;; Build_Setoid; Prf_equiv; Build_Setoid&#39;] : Setoid&#39;&#39; &gt;-&gt; Setoid&#39; is ambiguous with existing 
+- [Prf_equiv&#39;&#39;; Build_Setoid&#39;] : Setoid&#39;&#39; &gt;-&gt; Setoid&#39;.
+- New coercion path [Prf_equiv&#39;&#39;; Build_Setoid; Prf_equiv] : Setoid&#39;&#39; &gt;-&gt; Equivalence is ambiguous with existing 
+- [Prf_equiv&#39;&#39;] : Setoid&#39;&#39; &gt;-&gt; Equivalence.
+- New coercion path [Prf_equiv&#39;&#39;; Build_Setoid; Carrier] : Setoid&#39;&#39; &gt;-&gt; Sortclass is ambiguous with existing 
+- [Carrier&#39;&#39;] : Setoid&#39;&#39; &gt;-&gt; Sortclass. [ambiguous-paths,typechecker]
+- File &quot;./CATEGORY_THEORY/ADJUNCTION/CCC/Cartesian1.v&quot;, line 145, characters 0-18:
+- Warning:
+- New coercion path [Car_BP1; Id_HasBinProd1_RightAdj] : IsCartesian1 &gt;-&gt; RightAdj is ambiguous with existing 
+- [Car_terminal1; Id_Terminal1_RightAdj] : IsCartesian1 &gt;-&gt; RightAdj.
+- New coercion path [Car_BP1; Id_HasBinProd1_RightAdj; Adj_r] : IsCartesian1 &gt;-&gt; Adj is ambiguous with existing 
+- [Car_terminal1; Id_Terminal1_RightAdj; Adj_r] : IsCartesian1 &gt;-&gt; Adj.
+- New coercion path [Car_BP1; Id_HasBinProd1_RightAdj; Adj_r; Id_Adj_NatIso;
+-                    Prf_NatIso] : IsCartesian1 &gt;-&gt; AreNatIsos is ambiguous with existing 
+- [Car_terminal1; Id_Terminal1_RightAdj; Adj_r; Id_Adj_NatIso; Prf_NatIso] : IsCartesian1 &gt;-&gt; AreNatIsos.
+- New coercion path [Car_BP1; Id_HasBinProd1_RightAdj; Adj_r; Id_Adj_NatIso] : IsCartesian1 &gt;-&gt; NatIso is ambiguous with existing 
+- [Car_terminal1; Id_Terminal1_RightAdj; Adj_r; Id_Adj_NatIso] : IsCartesian1 &gt;-&gt; NatIso.
+- New coercion path [Car_BP1; Id_HasBinProd1_RightAdj; Adj_r; Id_Adj_NatIso;
+-                    NatIso_mor; Prf_NT_law] : IsCartesian1 &gt;-&gt; NT_law is ambiguous with existing 
+- [Car_terminal1; Id_Terminal1_RightAdj; Adj_r; Id_Adj_NatIso; NatIso_mor;
+-  Prf_NT_law] : IsCartesian1 &gt;-&gt; NT_law.
+- New coercion path [Car_BP1; Id_HasBinProd1_RightAdj; Adj_r; Id_Adj_NatIso;
+-                    NatIso_mor] : IsCartesian1 &gt;-&gt; NT is ambiguous with existing 
+- [Car_terminal1; Id_Terminal1_RightAdj; Adj_r; Id_Adj_NatIso; NatIso_mor] : IsCartesian1 &gt;-&gt; NT.
+- New coercion path [Car_BP1; Id_HasBinProd1_RightAdj; Adj_r; Id_Adj_NatIso;
+-                    NatIso_mor; ApNT] : IsCartesian1 &gt;-&gt; Funclass is ambiguous with existing 
+- [Car_terminal1; Id_Terminal1_RightAdj; Adj_r; Id_Adj_NatIso; NatIso_mor; ApNT] : IsCartesian1 &gt;-&gt; Funclass.
+- [ambiguous-paths,typechecker]
+- File &quot;./CATEGORY_THEORY/ADJUNCTION/LeftAdj_Iso.v&quot;, line 29, characters 0-27:
+- Warning:
+- New coercion path [Map2_Map; Ap] : Map2 &gt;-&gt; Funclass is ambiguous with existing 
+- [Ap2] : Map2 &gt;-&gt; Funclass. [ambiguous-paths,typechecker]
+- COQC CATEGORY_THEORY/ADJUNCTION/CCC/CCC1.v
+- File &quot;./CATEGORY_THEORY/ADJUNCTION/LeftAdj_Iso.v&quot;, line 29, characters 0-27:
+- Warning:
+- New coercion path [Adj_r; Adj_to_Adj1; Adj1_to_Adj; Adj_to_Adj1] : RightAdj &gt;-&gt; Adj1 is ambiguous with existing 
+- [Adj_r; Adj_to_Adj1] : RightAdj &gt;-&gt; Adj1.
+- New coercion path [Adj_r; Adj_to_Adj1; Adj1_to_Adj; Id_Adj_NatIso; Prf_NatIso] : RightAdj &gt;-&gt; AreNatIsos is ambiguous with existing 
+- [Adj_r; Id_Adj_NatIso; Prf_NatIso] : RightAdj &gt;-&gt; AreNatIsos.
+- New coercion path [Adj_r; Adj_to_Adj1; Adj1_to_Adj; Id_Adj_NatIso] : RightAdj &gt;-&gt; NatIso is ambiguous with existing 
+- [Adj_r; Id_Adj_NatIso] : RightAdj &gt;-&gt; NatIso.
+- New coercion path [Adj_r; Adj_to_Adj1; Adj1_to_Adj; Id_Adj_NatIso;
+-                    NatIso_mor; Prf_NT_law] : RightAdj &gt;-&gt; NT_law is ambiguous with existing 
+- [Adj_r; Id_Adj_NatIso; NatIso_mor; Prf_NT_law] : RightAdj &gt;-&gt; NT_law.
+- New coercion path [Adj_r; Adj_to_Adj1; Adj1_to_Adj; Id_Adj_NatIso; NatIso_mor] : RightAdj &gt;-&gt; NT is ambiguous with existing 
+- [Adj_r; Id_Adj_NatIso; NatIso_mor] : RightAdj &gt;-&gt; NT.
+- New coercion path [Adj_r; Adj_to_Adj1; Adj1_to_Adj; Id_Adj_NatIso;
+-                    NatIso_mor; ApNT] : RightAdj &gt;-&gt; Funclass is ambiguous with existing 
+- [Adj_r; Id_Adj_NatIso; NatIso_mor; ApNT] : RightAdj &gt;-&gt; Funclass.
+- New coercion path [Adj_r; Adj_to_Adj1; Adj1_to_Adj] : RightAdj &gt;-&gt; Adj is ambiguous with existing 
+- [Adj_r] : RightAdj &gt;-&gt; Adj.
+- New coercion path [Adj_l; Adj_to_Adj1; Adj1_to_Adj; Adj_to_Adj1] : LeftAdj &gt;-&gt; Adj1 is ambiguous with existing 
+- [Adj_l; Adj_to_Adj1] : LeftAdj &gt;-&gt; Adj1.
+- New coercion path [Adj_l; Adj_to_Adj1; Adj1_to_Adj; Id_Adj_NatIso; Prf_NatIso] : LeftAdj &gt;-&gt; AreNatIsos is ambiguous with existing 
+- [Adj_l; Id_Adj_NatIso; Prf_NatIso] : LeftAdj &gt;-&gt; AreNatIsos.
+- New coercion path [Adj_l; Adj_to_Adj1; Adj1_to_Adj; Id_Adj_NatIso] : LeftAdj &gt;-&gt; NatIso is ambiguous with existing 
+- [Adj_l; Id_Adj_NatIso] : LeftAdj &gt;-&gt; NatIso.
+- New coercion path [Adj_l; Adj_to_Adj1; Adj1_to_Adj; Id_Adj_NatIso;
+-                    NatIso_mor; Prf_NT_law] : LeftAdj &gt;-&gt; NT_law is ambiguous with existing 
+- [Adj_l; Id_Adj_NatIso; NatIso_mor; Prf_NT_law] : LeftAdj &gt;-&gt; NT_law.
+- New coercion path [Adj_l; Adj_to_Adj1; Adj1_to_Adj; Id_Adj_NatIso; NatIso_mor] : LeftAdj &gt;-&gt; NT is ambiguous with existing 
+- [Adj_l; Id_Adj_NatIso; NatIso_mor] : LeftAdj &gt;-&gt; NT.
+- New coercion path [Adj_l; Adj_to_Adj1; Adj1_to_Adj; Id_Adj_NatIso;
+-                    NatIso_mor; ApNT] : LeftAdj &gt;-&gt; Funclass is ambiguous with existing 
+- [Adj_l; Id_Adj_NatIso; NatIso_mor; ApNT] : LeftAdj &gt;-&gt; Funclass.
+- New coercion path [Adj_l; Adj_to_Adj1; Adj1_to_Adj] : LeftAdj &gt;-&gt; Adj is ambiguous with existing 
+- [Adj_l] : LeftAdj &gt;-&gt; Adj.
+- New coercion path [Adj_to_Adj1; Adj1_to_Adj; Id_Adj_NatIso; Prf_NatIso] : Adj &gt;-&gt; AreNatIsos is ambiguous with existing 
+- [Id_Adj_NatIso; Prf_NatIso] : Adj &gt;-&gt; AreNatIsos.
+- New coercion path [Adj_to_Adj1; Adj1_to_Adj; Id_Adj_NatIso] : Adj &gt;-&gt; NatIso is ambiguous with existing 
+- [Id_Adj_NatIso] : Adj &gt;-&gt; NatIso.
+- New coercion path [Adj_to_Adj1; Adj1_to_Adj; Id_Adj_NatIso; NatIso_mor;
+-                    Prf_NT_law] : Adj &gt;-&gt; NT_law is ambiguous with existing 
+- [Id_Adj_NatIso; NatIso_mor; Prf_NT_law] : Adj &gt;-&gt; NT_law.
+- New coercion path [Adj_to_Adj1; Adj1_to_Adj; Id_Adj_NatIso; NatIso_mor] : Adj &gt;-&gt; NT is ambiguous with existing 
+- [Id_Adj_NatIso; NatIso_mor] : Adj &gt;-&gt; NT.
+- New coercion path [Adj_to_Adj1; Adj1_to_Adj; Id_Adj_NatIso; NatIso_mor; ApNT] : Adj &gt;-&gt; Funclass is ambiguous with existing 
+- [Id_Adj_NatIso; NatIso_mor; ApNT] : Adj &gt;-&gt; Funclass.
+- [ambiguous-paths,typechecker]
+- COQC CATEGORY_THEORY/ADJUNCTION/FREYD_THEOREM/FAFT_Part2_Proof2.v
+- COQC CATEGORY_THEORY/ADJUNCTION/FREYD_THEOREM/FAFT_Part2_Proof1.v
+- File &quot;./CATEGORY_THEORY/ADJUNCTION/CCC/CCC1.v&quot;, line 30, characters 0-26:
+- Warning:
+- New coercion path [Prf_isCCC; CCC_isCar; Car_BP] : CCC &gt;-&gt; HasBinProd is ambiguous with existing 
+- [CCC_Car; Prf_isCartesian; Car_BP] : CCC &gt;-&gt; HasBinProd.
+- New coercion path [Prf_isCCC; CCC_isCar; Car_terminal] : CCC &gt;-&gt; CatProperty.Terminal is ambiguous with existing 
+- [CCC_Car; Prf_isCartesian; Car_terminal] : CCC &gt;-&gt; CatProperty.Terminal.
+- New coercion path [Prf_isCCC; CCC_isCar] : CCC &gt;-&gt; IsCartesian is ambiguous with existing 
+- [CCC_Car; Prf_isCartesian] : CCC &gt;-&gt; IsCartesian.
+- [ambiguous-paths,typechecker]
+- File &quot;./CATEGORY_THEORY/ADJUNCTION/CCC/CCC1.v&quot;, line 30, characters 0-26:
+- Warning:
+- New coercion path [CCC_Car; Prf_isCartesian; Car_terminal; Prf_isTerminal;
+-                    Build_Terminal] : CCC &gt;-&gt; Terminal is ambiguous with existing 
+- [CCC_Car; Prf_isCartesian; Car_terminal] : CCC &gt;-&gt; Terminal.
+- New coercion path [CCC_isCar; Car_terminal; Prf_isTerminal; Build_Terminal] : IsCCC &gt;-&gt; Terminal is ambiguous with existing 
+- [CCC_isCar; Car_terminal] : IsCCC &gt;-&gt; Terminal.
+- New coercion path [Prf_isCartesian; Car_terminal; Prf_isTerminal;
+-                    Build_Terminal] : Cartesian &gt;-&gt; Terminal is ambiguous with existing 
+- [Prf_isCartesian; Car_terminal] : Cartesian &gt;-&gt; Terminal.
+- New coercion path [Car_terminal; Prf_isTerminal; Build_Terminal] : IsCartesian &gt;-&gt; Terminal is ambiguous with existing 
+- [Car_terminal] : IsCartesian &gt;-&gt; Terminal. [ambiguous-paths,typechecker]
+- File &quot;./CATEGORY_THEORY/ADJUNCTION/CCC/CCC1.v&quot;, line 30, characters 0-26:
+- Warning:
+- New coercion path [Map2&#39;&#39;_Map&#39;&#39;; Ap&#39;&#39;] : Map2&#39;&#39; &gt;-&gt; Funclass is ambiguous with existing 
+- [Ap2&#39;&#39;] : Map2&#39;&#39; &gt;-&gt; Funclass. [ambiguous-paths,typechecker]
+- COQC CATEGORY_THEORY/ADJUNCTION/Adj_FunFreeMon.v
+- File &quot;./CATEGORY_THEORY/ADJUNCTION/CCC/CCC1.v&quot;, line 30, characters 0-26:
+- Warning:
+- New coercion path [Map2&#39;_Map&#39;; Ap&#39;] : Map2&#39; &gt;-&gt; Funclass is ambiguous with existing 
+- [Ap2&#39;] : Map2&#39; &gt;-&gt; Funclass. [ambiguous-paths,typechecker]
+- File &quot;./CATEGORY_THEORY/ADJUNCTION/CCC/CCC1.v&quot;, line 30, characters 0-26:
+- Warning:
+- New coercion path [Prf_equiv&#39;; Build_Setoid; Prf_equiv; Prf_pequiv] : Setoid&#39; &gt;-&gt; Partial_equivalence is ambiguous with existing 
+- [Prf_equiv&#39;; Prf_pequiv] : Setoid&#39; &gt;-&gt; Partial_equivalence.
+- New coercion path [Prf_equiv&#39;; Build_Setoid; Prf_equiv; Equiv_preorder] : Setoid&#39; &gt;-&gt; Preorder is ambiguous with existing 
+- [Prf_equiv&#39;; Equiv_preorder] : Setoid&#39; &gt;-&gt; Preorder.
+- New coercion path [Prf_equiv&#39;; Build_Setoid; Prf_equiv] : Setoid&#39; &gt;-&gt; Equivalence is ambiguous with existing 
+- [Prf_equiv&#39;] : Setoid&#39; &gt;-&gt; Equivalence.
+- New coercion path [Prf_equiv&#39;; Build_Setoid; Prf_equiv; Build_Setoid&#39;&#39;] : Setoid&#39; &gt;-&gt; Setoid&#39;&#39; is ambiguous with existing 
+- [Prf_equiv&#39;; Build_Setoid&#39;&#39;] : Setoid&#39; &gt;-&gt; Setoid&#39;&#39;.
+- New coercion path [Prf_equiv&#39;; Build_Setoid; Carrier] : Setoid&#39; &gt;-&gt; Sortclass is ambiguous with existing 
+- [Carrier&#39;] : Setoid&#39; &gt;-&gt; Sortclass.
+- New coercion path [Prf_equiv&#39;&#39;; Build_Setoid; Prf_equiv; Prf_pequiv] : Setoid&#39;&#39; &gt;-&gt; Partial_equivalence is ambiguous with existing 
+- [Prf_equiv&#39;&#39;; Prf_pequiv] : Setoid&#39;&#39; &gt;-&gt; Partial_equivalence.
+- New coercion path [Prf_equiv&#39;&#39;; Build_Setoid; Prf_equiv; Equiv_preorder] : Setoid&#39;&#39; &gt;-&gt; Preorder is ambiguous with existing 
+- [Prf_equiv&#39;&#39;; Equiv_preorder] : Setoid&#39;&#39; &gt;-&gt; Preorder.
+- New coercion path [Prf_equiv&#39;&#39;; Build_Setoid; Prf_equiv; Build_Setoid&#39;] : Setoid&#39;&#39; &gt;-&gt; Setoid&#39; is ambiguous with existing 
+- [Prf_equiv&#39;&#39;; Build_Setoid&#39;] : Setoid&#39;&#39; &gt;-&gt; Setoid&#39;.
+- New coercion path [Prf_equiv&#39;&#39;; Build_Setoid; Prf_equiv] : Setoid&#39;&#39; &gt;-&gt; Equivalence is ambiguous with existing 
+- [Prf_equiv&#39;&#39;] : Setoid&#39;&#39; &gt;-&gt; Equivalence.
+- New coercion path [Prf_equiv&#39;&#39;; Build_Setoid; Carrier] : Setoid&#39;&#39; &gt;-&gt; Sortclass is ambiguous with existing 
+- [Carrier&#39;&#39;] : Setoid&#39;&#39; &gt;-&gt; Sortclass. [ambiguous-paths,typechecker]
+- File &quot;./CATEGORY_THEORY/ADJUNCTION/CCC/CCC1.v&quot;, line 30, characters 0-26:
+- Warning:
+- New coercion path [Map2_Map; Ap] : Map2 &gt;-&gt; Funclass is ambiguous with existing 
+- [Ap2] : Map2 &gt;-&gt; Funclass. [ambiguous-paths,typechecker]
+- File &quot;./CATEGORY_THEORY/ADJUNCTION/CCC/CCC1.v&quot;, line 30, characters 0-26:
+- Warning:
+- New coercion path [Car_BP1; Id_HasBinProd1_RightAdj] : IsCartesian1 &gt;-&gt; RightAdj is ambiguous with existing 
+- [Car_terminal1; Id_Terminal1_RightAdj] : IsCartesian1 &gt;-&gt; RightAdj.
+- New coercion path [Car_BP1; Id_HasBinProd1_RightAdj; Adj_r] : IsCartesian1 &gt;-&gt; Adj is ambiguous with existing 
+- [Car_terminal1; Id_Terminal1_RightAdj; Adj_r] : IsCartesian1 &gt;-&gt; Adj.
+- New coercion path [Car_BP1; Id_HasBinProd1_RightAdj; Adj_r; Id_Adj_NatIso;
+-                    Prf_NatIso] : IsCartesian1 &gt;-&gt; AreNatIsos is ambiguous with existing 
+- [Car_terminal1; Id_Terminal1_RightAdj; Adj_r; Id_Adj_NatIso; Prf_NatIso] : IsCartesian1 &gt;-&gt; AreNatIsos.
+- New coercion path [Car_BP1; Id_HasBinProd1_RightAdj; Adj_r; Id_Adj_NatIso] : IsCartesian1 &gt;-&gt; NatIso is ambiguous with existing 
+- [Car_terminal1; Id_Terminal1_RightAdj; Adj_r; Id_Adj_NatIso] : IsCartesian1 &gt;-&gt; NatIso.
+- New coercion path [Car_BP1; Id_HasBinProd1_RightAdj; Adj_r; Id_Adj_NatIso;
+-                    NatIso_mor; Prf_NT_law] : IsCartesian1 &gt;-&gt; NT_law is ambiguous with existing 
+- [Car_terminal1; Id_Terminal1_RightAdj; Adj_r; Id_Adj_NatIso; NatIso_mor;
+-  Prf_NT_law] : IsCartesian1 &gt;-&gt; NT_law.
+- New coercion path [Car_BP1; Id_HasBinProd1_RightAdj; Adj_r; Id_Adj_NatIso;
+-                    NatIso_mor] : IsCartesian1 &gt;-&gt; NT is ambiguous with existing 
+- [Car_terminal1; Id_Terminal1_RightAdj; Adj_r; Id_Adj_NatIso; NatIso_mor] : IsCartesian1 &gt;-&gt; NT.
+- New coercion path [Car_BP1; Id_HasBinProd1_RightAdj; Adj_r; Id_Adj_NatIso;
+-                    NatIso_mor; ApNT] : IsCartesian1 &gt;-&gt; Funclass is ambiguous with existing 
+- [Car_terminal1; Id_Terminal1_RightAdj; Adj_r; Id_Adj_NatIso; NatIso_mor; ApNT] : IsCartesian1 &gt;-&gt; Funclass.
+- [ambiguous-paths,typechecker]
+- File &quot;./CATEGORY_THEORY/ADJUNCTION/FREYD_THEOREM/FAFT_Part2_Proof1.v&quot;, line 30, characters 0-23:
+- Warning:
+- New coercion path [Map2&#39;_Map&#39;; Ap&#39;] : Map2&#39; &gt;-&gt; Funclass is ambiguous with existing 
+- [Ap2&#39;] : Map2&#39; &gt;-&gt; Funclass. [ambiguous-paths,typechecker]
+- File &quot;./CATEGORY_THEORY/ADJUNCTION/FREYD_THEOREM/FAFT_Part2_Proof2.v&quot;, line 30, characters 0-26:
+- Warning:
+- New coercion path [Map2&#39;&#39;_Map&#39;&#39;; Ap&#39;&#39;] : Map2&#39;&#39; &gt;-&gt; Funclass is ambiguous with existing 
+- [Ap2&#39;&#39;] : Map2&#39;&#39; &gt;-&gt; Funclass. [ambiguous-paths,typechecker]
+- File &quot;./CATEGORY_THEORY/ADJUNCTION/FREYD_THEOREM/FAFT_Part2_Proof1.v&quot;, line 30, characters 0-23:
+- Warning:
+- New coercion path [Map2_Map; Ap] : Map2 &gt;-&gt; Funclass is ambiguous with existing 
+- [Ap2] : Map2 &gt;-&gt; Funclass. [ambiguous-paths,typechecker]
+- File &quot;./CATEGORY_THEORY/ADJUNCTION/FREYD_THEOREM/FAFT_Part2_Proof2.v&quot;, line 30, characters 0-26:
+- Warning:
+- New coercion path [Map2&#39;_Map&#39;; Ap&#39;] : Map2&#39; &gt;-&gt; Funclass is ambiguous with existing 
+- [Ap2&#39;] : Map2&#39; &gt;-&gt; Funclass. [ambiguous-paths,typechecker]
+- File &quot;./CATEGORY_THEORY/ADJUNCTION/FREYD_THEOREM/FAFT_Part2_Proof2.v&quot;, line 30, characters 0-26:
+- Warning:
+- New coercion path [Prf_equiv&#39;; Build_Setoid; Prf_equiv; Prf_pequiv] : Setoid&#39; &gt;-&gt; Partial_equivalence is ambiguous with existing 
+- [Prf_equiv&#39;; Prf_pequiv] : Setoid&#39; &gt;-&gt; Partial_equivalence.
+- New coercion path [Prf_equiv&#39;; Build_Setoid; Prf_equiv; Equiv_preorder] : Setoid&#39; &gt;-&gt; Preorder is ambiguous with existing 
+- [Prf_equiv&#39;; Equiv_preorder] : Setoid&#39; &gt;-&gt; Preorder.
+- New coercion path [Prf_equiv&#39;; Build_Setoid; Prf_equiv] : Setoid&#39; &gt;-&gt; Equivalence is ambiguous with existing 
+- [Prf_equiv&#39;] : Setoid&#39; &gt;-&gt; Equivalence.
+- New coercion path [Prf_equiv&#39;; Build_Setoid; Prf_equiv; Build_Setoid&#39;&#39;] : Setoid&#39; &gt;-&gt; Setoid&#39;&#39; is ambiguous with existing 
+- [Prf_equiv&#39;; Build_Setoid&#39;&#39;] : Setoid&#39; &gt;-&gt; Setoid&#39;&#39;.
+- New coercion path [Prf_equiv&#39;; Build_Setoid; Carrier] : Setoid&#39; &gt;-&gt; Sortclass is ambiguous with existing 
+- [Carrier&#39;] : Setoid&#39; &gt;-&gt; Sortclass.
+- New coercion path [Prf_equiv&#39;&#39;; Build_Setoid; Prf_equiv; Prf_pequiv] : Setoid&#39;&#39; &gt;-&gt; Partial_equivalence is ambiguous with existing 
+- [Prf_equiv&#39;&#39;; Prf_pequiv] : Setoid&#39;&#39; &gt;-&gt; Partial_equivalence.
+- New coercion path [Prf_equiv&#39;&#39;; Build_Setoid; Prf_equiv; Equiv_preorder] : Setoid&#39;&#39; &gt;-&gt; Preorder is ambiguous with existing 
+- [Prf_equiv&#39;&#39;; Equiv_preorder] : Setoid&#39;&#39; &gt;-&gt; Preorder.
+- New coercion path [Prf_equiv&#39;&#39;; Build_Setoid; Prf_equiv; Build_Setoid&#39;] : Setoid&#39;&#39; &gt;-&gt; Setoid&#39; is ambiguous with existing 
+- [Prf_equiv&#39;&#39;; Build_Setoid&#39;] : Setoid&#39;&#39; &gt;-&gt; Setoid&#39;.
+- New coercion path [Prf_equiv&#39;&#39;; Build_Setoid; Prf_equiv] : Setoid&#39;&#39; &gt;-&gt; Equivalence is ambiguous with existing 
+- [Prf_equiv&#39;&#39;] : Setoid&#39;&#39; &gt;-&gt; Equivalence.
+- New coercion path [Prf_equiv&#39;&#39;; Build_Setoid; Carrier] : Setoid&#39;&#39; &gt;-&gt; Sortclass is ambiguous with existing 
+- [Carrier&#39;&#39;] : Setoid&#39;&#39; &gt;-&gt; Sortclass. [ambiguous-paths,typechecker]
+- File &quot;./CATEGORY_THEORY/ADJUNCTION/FREYD_THEOREM/FAFT_Part2_Proof2.v&quot;, line 30, characters 0-26:
+- Warning:
+- New coercion path [Map2_Map; Ap] : Map2 &gt;-&gt; Funclass is ambiguous with existing 
+- [Ap2] : Map2 &gt;-&gt; Funclass. [ambiguous-paths,typechecker]
+- File &quot;./CATEGORY_THEORY/ADJUNCTION/FREYD_THEOREM/FAFT_Part2_Proof1.v&quot;, line 33, characters 0-26:
+- Warning:
+- New coercion path [Build_Setoid&#39;&#39;; Prf_equiv&#39;&#39;; Build_Setoid] : Equivalence &gt;-&gt; Setoid is ambiguous with existing 
+- [Build_Setoid] : Equivalence &gt;-&gt; Setoid.
+- New coercion path [Prf_equiv&#39;&#39;; Build_Setoid&#39;&#39;; Prf_equiv&#39;&#39;; Build_Setoid] : Setoid&#39;&#39; &gt;-&gt; Setoid is ambiguous with existing 
+- [Prf_equiv&#39;&#39;; Build_Setoid] : Setoid&#39;&#39; &gt;-&gt; Setoid.
+- New coercion path [Prf_equiv&#39;; Build_Setoid&#39;&#39;; Prf_equiv&#39;&#39;; Build_Setoid] : Setoid&#39; &gt;-&gt; Setoid is ambiguous with existing 
+- [Prf_equiv&#39;; Build_Setoid] : Setoid&#39; &gt;-&gt; Setoid.
+- [ambiguous-paths,typechecker]
+- File &quot;./CATEGORY_THEORY/ADJUNCTION/FREYD_THEOREM/FAFT_Part2_Proof1.v&quot;, line 33, characters 0-26:
+- Warning:
+- New coercion path [Map2&#39;&#39;_Map&#39;&#39;; Ap&#39;&#39;] : Map2&#39;&#39; &gt;-&gt; Funclass is ambiguous with existing 
+- [Ap2&#39;&#39;] : Map2&#39;&#39; &gt;-&gt; Funclass. [ambiguous-paths,typechecker]
+- File &quot;./CATEGORY_THEORY/ADJUNCTION/Adj_FunFreeMon.v&quot;, line 30, characters 0-26:
+- Warning:
+- New coercion path [Map2&#39;_Map&#39;; Ap&#39;] : Map2&#39; &gt;-&gt; Funclass is ambiguous with existing 
+- [Ap2&#39;] : Map2&#39; &gt;-&gt; Funclass. [ambiguous-paths,typechecker]
+- File &quot;./CATEGORY_THEORY/ADJUNCTION/Adj_FunFreeMon.v&quot;, line 30, characters 0-26:
+- Warning:
+- New coercion path [Prf_equiv&#39;; Build_Setoid; Prf_equiv; Prf_pequiv] : Setoid&#39; &gt;-&gt; Partial_equivalence is ambiguous with existing 
+- [Prf_equiv&#39;; Prf_pequiv] : Setoid&#39; &gt;-&gt; Partial_equivalence.
+- New coercion path [Prf_equiv&#39;; Build_Setoid; Prf_equiv; Equiv_preorder] : Setoid&#39; &gt;-&gt; Preorder is ambiguous with existing 
+- [Prf_equiv&#39;; Equiv_preorder] : Setoid&#39; &gt;-&gt; Preorder.
+- New coercion path [Prf_equiv&#39;; Build_Setoid; Prf_equiv] : Setoid&#39; &gt;-&gt; Equivalence is ambiguous with existing 
+- [Prf_equiv&#39;] : Setoid&#39; &gt;-&gt; Equivalence.
+- New coercion path [Prf_equiv&#39;; Build_Setoid; Carrier] : Setoid&#39; &gt;-&gt; Sortclass is ambiguous with existing 
+- [Carrier&#39;] : Setoid&#39; &gt;-&gt; Sortclass.
+- New coercion path [Prf_equiv; Build_Setoid; FreeMonoid] : Setoid &gt;-&gt; Monoid.Monoid is ambiguous with existing 
+- [FreeMonoid] : Setoid &gt;-&gt; Monoid.Monoid. [ambiguous-paths,typechecker]
+- File &quot;./CATEGORY_THEORY/ADJUNCTION/Adj_FunFreeMon.v&quot;, line 30, characters 0-26:
+- Warning:
+- New coercion path [Map2_Map; Ap] : Map2 &gt;-&gt; Funclass is ambiguous with existing 
+- [Ap2] : Map2 &gt;-&gt; Funclass. [ambiguous-paths,typechecker]
+- File &quot;./CATEGORY_THEORY/ADJUNCTION/FREYD_THEOREM/FAFT_Part2_Proof2.v&quot;, line 87, characters 2-19:
+- Warning: Projection value has no head constant:
+- fun i : SSC2_I (s x) =&gt;
+- {|
+- Ob_com_ob := SSC2_a (s:=s x) i;
+- Mor_com_ob := (fun i0 : SSC2_I (s x) =&gt; SSC2_f (s:=s x) i0) i |} in canonical
+- instance SSC2_1 of SSC1_k, ignoring it.
+- [projection-no-head-constant,typechecker]
+- File &quot;./CATEGORY_THEORY/ADJUNCTION/Adj_FunFreeMon.v&quot;, line 30, characters 0-26:
+- Warning:
+- New coercion path [Build_Setoid; FreeMonoid; Mcarrier; Prf_equiv; Prf_pequiv;
+-                    Build_PSetoid] : Equivalence &gt;-&gt; PSetoid is ambiguous with existing 
+- [Prf_pequiv; Build_PSetoid] : Equivalence &gt;-&gt; PSetoid.
+- New coercion path [Build_Setoid; FreeMonoid; Mcarrier; Prf_equiv; Prf_pequiv] : Equivalence &gt;-&gt; Partial_equivalence is ambiguous with existing 
+- [Prf_pequiv] : Equivalence &gt;-&gt; Partial_equivalence.
+- New coercion path [Build_Setoid; FreeMonoid; Mcarrier; Prf_equiv;
+-                    Equiv_preorder] : Equivalence &gt;-&gt; Preorder is ambiguous with existing 
+- [Equiv_preorder] : Equivalence &gt;-&gt; Preorder.
+- New coercion path [Build_Setoid; FreeMonoid; Mcarrier; Prf_equiv] : Equivalence &gt;-&gt; Equivalence is ambiguous with existing 
+- [Build_Setoid&#39;; Prf_equiv&#39;] : Equivalence &gt;-&gt; Equivalence.
+- New coercion path [Build_Setoid; FreeMonoid; Mcarrier; Prf_equiv;
+-                    Build_Setoid&#39;] : Equivalence &gt;-&gt; Setoid&#39; is ambiguous with existing 
+- [Build_Setoid&#39;] : Equivalence &gt;-&gt; Setoid&#39;.
+- New coercion path [Build_Setoid; FreeMonoid; Mcarrier; FreeMonoid] : Equivalence &gt;-&gt; Monoid is ambiguous with existing 
+- [Build_Setoid; FreeMonoid] : Equivalence &gt;-&gt; Monoid.
+- New coercion path [Build_Setoid; FreeMonoid; Mcarrier; Carrier] : Equivalence &gt;-&gt; Sortclass is ambiguous with existing 
+- [Build_Setoid&#39;; Carrier&#39;] : Equivalence &gt;-&gt; Sortclass.
+- New coercion path [Build_Setoid; FreeMonoid; Mcarrier] : Equivalence &gt;-&gt; Setoid is ambiguous with existing 
+- [Build_Setoid] : Equivalence &gt;-&gt; Setoid.
+- New coercion path [Prf_equiv&#39;; Build_Setoid; FreeMonoid; Mcarrier; Prf_equiv;
+-                    Prf_pequiv; Build_PSetoid] : Setoid&#39; &gt;-&gt; PSetoid is ambiguous with existing 
+- [Prf_equiv&#39;; Prf_pequiv; Build_PSetoid] : Setoid&#39; &gt;-&gt; PSetoid.
+- New coercion path [Prf_equiv&#39;; Build_Setoid; FreeMonoid; Mcarrier; Prf_equiv;
+-                    Prf_pequiv] : Setoid&#39; &gt;-&gt; Partial_equivalence is ambiguous with existing 
+- [Prf_equiv&#39;; Prf_pequiv] : Setoid&#39; &gt;-&gt; Partial_equivalence.
+- New coercion path [Prf_equiv&#39;; Build_Setoid; FreeMonoid; Mcarrier; Prf_equiv;
+-                    Equiv_preorder] : Setoid&#39; &gt;-&gt; Preorder is ambiguous with existing 
+- [Prf_equiv&#39;; Equiv_preorder] : Setoid&#39; &gt;-&gt; Preorder.
+- New coercion path [Prf_equiv&#39;; Build_Setoid; FreeMonoid; Mcarrier; Prf_equiv] : Setoid&#39; &gt;-&gt; Equivalence is ambiguous with existing 
+- [Prf_equiv&#39;] : Setoid&#39; &gt;-&gt; Equivalence.
+- New coercion path [Prf_equiv&#39;; Build_Setoid; FreeMonoid; Mcarrier; FreeMonoid] : Setoid&#39; &gt;-&gt; Monoid is ambiguous with existing 
+- [Prf_equiv&#39;; Build_Setoid; FreeMonoid] : Setoid&#39; &gt;-&gt; Monoid.
+- New coercion path [Prf_equiv&#39;; Build_Setoid; FreeMonoid; Mcarrier; Carrier] : Setoid&#39; &gt;-&gt; Sortclass is ambiguous with existing 
+- [Carrier&#39;] : Setoid&#39; &gt;-&gt; Sortclass.
+- New coercion path [Prf_equiv&#39;; Build_Setoid; FreeMonoid; Mcarrier] : Setoid&#39; &gt;-&gt; Setoid is ambiguous with existing 
+- [Prf_equiv&#39;; Build_Setoid] : Setoid&#39; &gt;-&gt; Setoid.
+- New coercion path [FreeMonoid; Mcarrier; Prf_equiv; Prf_pequiv; Build_PSetoid] : Setoid &gt;-&gt; PSetoid is ambiguous with existing 
+- [Prf_equiv; Prf_pequiv; Build_PSetoid] : Setoid &gt;-&gt; PSetoid.
+- New coercion path [FreeMonoid; Mcarrier; Prf_equiv; Prf_pequiv] : Setoid &gt;-&gt; Partial_equivalence is ambiguous with existing 
+- [Prf_equiv; Prf_pequiv] : Setoid &gt;-&gt; Partial_equivalence.
+- New coercion path [FreeMonoid; Mcarrier; Prf_equiv; Equiv_preorder] : Setoid &gt;-&gt; Preorder is ambiguous with existing 
+- [Prf_equiv; Equiv_preorder] : Setoid &gt;-&gt; Preorder.
+- New coercion path [FreeMonoid; Mcarrier; Prf_equiv] : Setoid &gt;-&gt; Equivalence is ambiguous with existing 
+- [Prf_equiv] : Setoid &gt;-&gt; Equivalence.
+- New coercion path [FreeMonoid; Mcarrier; Prf_equiv; Build_Setoid&#39;] : Setoid &gt;-&gt; Setoid&#39; is ambiguous with existing 
+- [Prf_equiv; Build_Setoid&#39;] : Setoid &gt;-&gt; Setoid&#39;.
+- New coercion path [FreeMonoid; Mcarrier; Carrier] : Setoid &gt;-&gt; Sortclass is ambiguous with existing 
+- [Carrier] : Setoid &gt;-&gt; Sortclass. [ambiguous-paths,typechecker]
+- File &quot;./CATEGORY_THEORY/ADJUNCTION/FREYD_THEOREM/FAFT_Part2_Proof2.v&quot;, line 92, characters 1-11:
+- Warning: Projection value has no head constant:
+- fun i : SSC2_I (s x) =&gt;
+- {|
+- Ob_com_ob := SSC2_a (s:=s x) i;
+- Mor_com_ob := (fun i0 : SSC2_I (s x) =&gt; SSC2_f (s:=s x) i0) i |} in canonical
+- instance SSC2_1 of SSC1_k, ignoring it.
+- [projection-no-head-constant,typechecker]
+- File &quot;./CATEGORY_THEORY/ADJUNCTION/FREYD_THEOREM/FAFT_Part2_Proof2.v&quot;, line 97, characters 0-16:
+- Warning: Projection value has no head constant:
+- fun i : SSC2_I (s x) =&gt;
+- {|
+- Ob_com_ob := SSC2_a (s:=s x) i;
+- Mor_com_ob := (fun i0 : SSC2_I (s x) =&gt; SSC2_f (s:=s x) i0) i |} in canonical
+- instance SSC2_1 of SSC1_k, ignoring it.
+- [projection-no-head-constant,typechecker]
+- File &quot;./CATEGORY_THEORY/ADJUNCTION/Adj_FunFreeMon.v&quot;, line 32, characters 0-26:
+- Warning:
+- New coercion path [Prf_equiv&#39;&#39;; Build_Setoid&#39;&#39;; Prf_equiv&#39;&#39;; Build_Setoid;
+-                    FreeMonoid] : Setoid&#39;&#39; &gt;-&gt; Monoid is ambiguous with existing 
+- [Prf_equiv&#39;&#39;; Build_Setoid; FreeMonoid] : Setoid&#39;&#39; &gt;-&gt; Monoid.
+- New coercion path [Prf_equiv&#39;&#39;; Build_Setoid&#39;&#39;; Prf_equiv&#39;&#39;; Build_Setoid] : Setoid&#39;&#39; &gt;-&gt; Setoid is ambiguous with existing 
+- [Prf_equiv&#39;&#39;; Build_Setoid] : Setoid&#39;&#39; &gt;-&gt; Setoid.
+- New coercion path [Build_Setoid&#39;&#39;; Prf_equiv&#39;&#39;; Build_Setoid; FreeMonoid] : Equivalence &gt;-&gt; Monoid is ambiguous with existing 
+- [Build_Setoid; FreeMonoid] : Equivalence &gt;-&gt; Monoid.
+- New coercion path [Build_Setoid&#39;&#39;; Prf_equiv&#39;&#39;; Build_Setoid] : Equivalence &gt;-&gt; Setoid is ambiguous with existing 
+- [Build_Setoid] : Equivalence &gt;-&gt; Setoid.
+- New coercion path [Prf_equiv&#39;; Build_Setoid&#39;&#39;; Prf_equiv&#39;&#39;; Build_Setoid;
+-                    FreeMonoid] : Setoid&#39; &gt;-&gt; Monoid is ambiguous with existing 
+- [Prf_equiv&#39;; Build_Setoid; FreeMonoid] : Setoid&#39; &gt;-&gt; Monoid.
+- New coercion path [Prf_equiv&#39;; Build_Setoid&#39;&#39;; Prf_equiv&#39;&#39;; Build_Setoid] : Setoid&#39; &gt;-&gt; Setoid is ambiguous with existing 
+- [Prf_equiv&#39;; Build_Setoid] : Setoid&#39; &gt;-&gt; Setoid.
+- New coercion path [Mcarrier; Prf_equiv; Build_Setoid&#39;&#39;; Prf_equiv&#39;&#39;;
+-                    Build_Setoid] : Monoid &gt;-&gt; Setoid is ambiguous with existing 
+- [Mcarrier] : Monoid &gt;-&gt; Setoid.
+- New coercion path [Prf_equiv; Build_Setoid&#39;&#39;; Prf_equiv&#39;&#39;; Build_Setoid;
+-                    FreeMonoid] : Setoid &gt;-&gt; Monoid is ambiguous with existing 
+- [FreeMonoid] : Setoid &gt;-&gt; Monoid. [ambiguous-paths,typechecker]
+- File &quot;./CATEGORY_THEORY/ADJUNCTION/Adj_FunFreeMon.v&quot;, line 32, characters 0-26:
+- Warning:
+- New coercion path [Map2&#39;&#39;_Map&#39;&#39;; Ap&#39;&#39;] : Map2&#39;&#39; &gt;-&gt; Funclass is ambiguous with existing 
+- [Ap2&#39;&#39;] : Map2&#39;&#39; &gt;-&gt; Funclass. [ambiguous-paths,typechecker]
+- File &quot;./CATEGORY_THEORY/ADJUNCTION/FREYD_THEOREM/FAFT_Part2_Proof1.v&quot;, line 233, characters 2-54:
+- Warning: Ignoring canonical projection to Comp by Mor_com_arrow in FT_c2:
+- redundant with FT_c1 [redundant-canonical-projection,typechecker]
+- File &quot;./CATEGORY_THEORY/ADJUNCTION/FREYD_THEOREM/FAFT_Part2_Proof1.v&quot;, line 286, characters 2-69:
+- Warning: Ignoring canonical projection to Comp by Mor_com_arrow in FT_c3:
+- redundant with FT_c1 [redundant-canonical-projection,typechecker]
+- File &quot;./CATEGORY_THEORY/ADJUNCTION/FREYD_THEOREM/FAFT_Part2_Proof1.v&quot;, line 319, characters 2-17:
+- Warning: Ignoring canonical projection to Comp by Mor_com_arrow in FT_c2:
+- redundant with FT_c1 [redundant-canonical-projection,typechecker]
+- File &quot;./CATEGORY_THEORY/ADJUNCTION/FREYD_THEOREM/FAFT_Part2_Proof1.v&quot;, line 319, characters 2-17:
+- Warning: Ignoring canonical projection to Comp by Mor_com_arrow in FT_c3:
+- redundant with FT_c1 [redundant-canonical-projection,typechecker]
+- File &quot;./CATEGORY_THEORY/ADJUNCTION/FREYD_THEOREM/FAFT_Part2_Proof1.v&quot;, line 324, characters 1-10:
+- Warning: Ignoring canonical projection to Comp by Mor_com_arrow in FT_c2:
+- redundant with FT_c1 [redundant-canonical-projection,typechecker]
+- File &quot;./CATEGORY_THEORY/ADJUNCTION/FREYD_THEOREM/FAFT_Part2_Proof1.v&quot;, line 324, characters 1-10:
+- Warning: Ignoring canonical projection to Comp by Mor_com_arrow in FT_c3:
+- redundant with FT_c1 [redundant-canonical-projection,typechecker]
+- File &quot;./CATEGORY_THEORY/ADJUNCTION/FREYD_THEOREM/FAFT_Part2_Proof1.v&quot;, line 328, characters 0-15:
+- Warning: Ignoring canonical projection to Comp by Mor_com_arrow in FT_c2:
+- redundant with FT_c1 [redundant-canonical-projection,typechecker]
+- File &quot;./CATEGORY_THEORY/ADJUNCTION/FREYD_THEOREM/FAFT_Part2_Proof1.v&quot;, line 328, characters 0-15:
+- Warning: Ignoring canonical projection to Comp by Mor_com_arrow in FT_c3:
+- redundant with FT_c1 [redundant-canonical-projection,typechecker]
+Processing  1/2: [coq-concat: make install]
++ /home/bench/.opam/opam-init/hooks/sandbox.sh &quot;build&quot; &quot;make&quot; &quot;install&quot; (CWD=/home/bench/.opam/ocaml-base-compiler.4.07.1/.opam-switch/build/coq-concat.dev)
+- install: cannot create directory &#39;/home/bench/.opam/ocaml-base-compiler.4.07.1/lib/coq//user-contrib/ConCaT&#39;: Read-only file system
+- install: cannot create directory &#39;/home/bench/.opam/ocaml-base-compiler.4.07.1/lib/coq//user-contrib/ConCaT&#39;: Read-only file system
+- install: cannot create directory &#39;/home/bench/.opam/ocaml-base-compiler.4.07.1/lib/coq//user-contrib/ConCaT&#39;: Read-only file system
+- install: cannot create directory &#39;/home/bench/.opam/ocaml-base-compiler.4.07.1/lib/coq//user-contrib/ConCaT&#39;: Read-only file system
+- install: cannot create directory &#39;/home/bench/.opam/ocaml-base-compiler.4.07.1/lib/coq//user-contrib/ConCaT&#39;: Read-only file system
+- install: cannot create directory &#39;/home/bench/.opam/ocaml-base-compiler.4.07.1/lib/coq//user-contrib/ConCaT&#39;: Read-only file system
+- install: cannot create directory &#39;/home/bench/.opam/ocaml-base-compiler.4.07.1/lib/coq//user-contrib/ConCaT&#39;: Read-only file system
+- install: cannot create directory &#39;/home/bench/.opam/ocaml-base-compiler.4.07.1/lib/coq//user-contrib/ConCaT&#39;: Read-only file system
+- install: cannot create directory &#39;/home/bench/.opam/ocaml-base-compiler.4.07.1/lib/coq//user-contrib/ConCaT&#39;: Read-only file system
+- install: cannot create directory &#39;/home/bench/.opam/ocaml-base-compiler.4.07.1/lib/coq//user-contrib/ConCaT&#39;: Read-only file system
+- install: cannot create directory &#39;/home/bench/.opam/ocaml-base-compiler.4.07.1/lib/coq//user-contrib/ConCaT&#39;: Read-only file system
+- install: cannot create directory &#39;/home/bench/.opam/ocaml-base-compiler.4.07.1/lib/coq//user-contrib/ConCaT&#39;: Read-only file system
+- install: cannot create directory &#39;/home/bench/.opam/ocaml-base-compiler.4.07.1/lib/coq//user-contrib/ConCaT&#39;: Read-only file system
+- install: cannot create directory &#39;/home/bench/.opam/ocaml-base-compiler.4.07.1/lib/coq//user-contrib/ConCaT&#39;: Read-only file system
+- install: cannot create directory &#39;/home/bench/.opam/ocaml-base-compiler.4.07.1/lib/coq//user-contrib/ConCaT&#39;: Read-only file system
+- install: cannot create directory &#39;/home/bench/.opam/ocaml-base-compiler.4.07.1/lib/coq//user-contrib/ConCaT&#39;: Read-only file system
+- install: cannot create directory &#39;/home/bench/.opam/ocaml-base-compiler.4.07.1/lib/coq//user-contrib/ConCaT&#39;: Read-only file system
+- install: cannot create directory &#39;/home/bench/.opam/ocaml-base-compiler.4.07.1/lib/coq//user-contrib/ConCaT&#39;: Read-only file system
+- install: cannot create directory &#39;/home/bench/.opam/ocaml-base-compiler.4.07.1/lib/coq//user-contrib/ConCaT&#39;: Read-only file system
+- install: cannot create directory &#39;/home/bench/.opam/ocaml-base-compiler.4.07.1/lib/coq//user-contrib/ConCaT&#39;: Read-only file system
+- install: cannot create directory &#39;/home/bench/.opam/ocaml-base-compiler.4.07.1/lib/coq//user-contrib/ConCaT&#39;: Read-only file system
+- install: cannot create directory &#39;/home/bench/.opam/ocaml-base-compiler.4.07.1/lib/coq//user-contrib/ConCaT&#39;: Read-only file system
+- install: cannot create directory &#39;/home/bench/.opam/ocaml-base-compiler.4.07.1/lib/coq//user-contrib/ConCaT&#39;: Read-only file system
+- install: cannot create directory &#39;/home/bench/.opam/ocaml-base-compiler.4.07.1/lib/coq//user-contrib/ConCaT&#39;: Read-only file system
+- install: cannot create directory &#39;/home/bench/.opam/ocaml-base-compiler.4.07.1/lib/coq//user-contrib/ConCaT&#39;: Read-only file system
+- install: cannot create directory &#39;/home/bench/.opam/ocaml-base-compiler.4.07.1/lib/coq//user-contrib/ConCaT&#39;: Read-only file system
+- install: cannot create directory &#39;/home/bench/.opam/ocaml-base-compiler.4.07.1/lib/coq//user-contrib/ConCaT&#39;: Read-only file system
+- install: cannot create directory &#39;/home/bench/.opam/ocaml-base-compiler.4.07.1/lib/coq//user-contrib/ConCaT&#39;: Read-only file system
+- install: cannot create directory &#39;/home/bench/.opam/ocaml-base-compiler.4.07.1/lib/coq//user-contrib/ConCaT&#39;: Read-only file system
+- install: cannot create directory &#39;/home/bench/.opam/ocaml-base-compiler.4.07.1/lib/coq//user-contrib/ConCaT&#39;: Read-only file system
+- install: cannot create directory &#39;/home/bench/.opam/ocaml-base-compiler.4.07.1/lib/coq//user-contrib/ConCaT&#39;: Read-only file system
+- install: cannot create directory &#39;/home/bench/.opam/ocaml-base-compiler.4.07.1/lib/coq//user-contrib/ConCaT&#39;: Read-only file system
+- install: cannot create directory &#39;/home/bench/.opam/ocaml-base-compiler.4.07.1/lib/coq//user-contrib/ConCaT&#39;: Read-only file system
+- install: cannot create directory &#39;/home/bench/.opam/ocaml-base-compiler.4.07.1/lib/coq//user-contrib/ConCaT&#39;: Read-only file system
+- install: cannot create directory &#39;/home/bench/.opam/ocaml-base-compiler.4.07.1/lib/coq//user-contrib/ConCaT&#39;: Read-only file system
+- install: cannot create directory &#39;/home/bench/.opam/ocaml-base-compiler.4.07.1/lib/coq//user-contrib/ConCaT&#39;: Read-only file system
+- install: cannot create directory &#39;/home/bench/.opam/ocaml-base-compiler.4.07.1/lib/coq//user-contrib/ConCaT&#39;: Read-only file system
+- install: cannot create directory &#39;/home/bench/.opam/ocaml-base-compiler.4.07.1/lib/coq//user-contrib/ConCaT&#39;: Read-only file system
+- install: cannot create directory &#39;/home/bench/.opam/ocaml-base-compiler.4.07.1/lib/coq//user-contrib/ConCaT&#39;: Read-only file system
+- install: cannot create directory &#39;/home/bench/.opam/ocaml-base-compiler.4.07.1/lib/coq//user-contrib/ConCaT&#39;: Read-only file system
+- install: cannot create directory &#39;/home/bench/.opam/ocaml-base-compiler.4.07.1/lib/coq//user-contrib/ConCaT&#39;: Read-only file system
+- install: cannot create directory &#39;/home/bench/.opam/ocaml-base-compiler.4.07.1/lib/coq//user-contrib/ConCaT&#39;: Read-only file system
+- install: cannot create directory &#39;/home/bench/.opam/ocaml-base-compiler.4.07.1/lib/coq//user-contrib/ConCaT&#39;: Read-only file system
+- install: cannot create directory &#39;/home/bench/.opam/ocaml-base-compiler.4.07.1/lib/coq//user-contrib/ConCaT&#39;: Read-only file system
+- install: cannot create directory &#39;/home/bench/.opam/ocaml-base-compiler.4.07.1/lib/coq//user-contrib/ConCaT&#39;: Read-only file system
+- install: cannot create directory &#39;/home/bench/.opam/ocaml-base-compiler.4.07.1/lib/coq//user-contrib/ConCaT&#39;: Read-only file system
+- install: cannot create directory &#39;/home/bench/.opam/ocaml-base-compiler.4.07.1/lib/coq//user-contrib/ConCaT&#39;: Read-only file system
+- install: cannot create directory &#39;/home/bench/.opam/ocaml-base-compiler.4.07.1/lib/coq//user-contrib/ConCaT&#39;: Read-only file system
+- install: cannot create directory &#39;/home/bench/.opam/ocaml-base-compiler.4.07.1/lib/coq//user-contrib/ConCaT&#39;: Read-only file system
+- install: cannot create directory &#39;/home/bench/.opam/ocaml-base-compiler.4.07.1/lib/coq//user-contrib/ConCaT&#39;: Read-only file system
+- install: cannot create directory &#39;/home/bench/.opam/ocaml-base-compiler.4.07.1/lib/coq//user-contrib/ConCaT&#39;: Read-only file system
+- install: cannot create directory &#39;/home/bench/.opam/ocaml-base-compiler.4.07.1/lib/coq//user-contrib/ConCaT&#39;: Read-only file system
+- install: cannot create directory &#39;/home/bench/.opam/ocaml-base-compiler.4.07.1/lib/coq//user-contrib/ConCaT&#39;: Read-only file system
+- install: cannot create directory &#39;/home/bench/.opam/ocaml-base-compiler.4.07.1/lib/coq//user-contrib/ConCaT&#39;: Read-only file system
+- install: cannot create directory &#39;/home/bench/.opam/ocaml-base-compiler.4.07.1/lib/coq//user-contrib/ConCaT&#39;: Read-only file system
+- install: cannot create directory &#39;/home/bench/.opam/ocaml-base-compiler.4.07.1/lib/coq//user-contrib/ConCaT&#39;: Read-only file system
+- install: cannot create directory &#39;/home/bench/.opam/ocaml-base-compiler.4.07.1/lib/coq//user-contrib/ConCaT&#39;: Read-only file system
+- install: cannot create directory &#39;/home/bench/.opam/ocaml-base-compiler.4.07.1/lib/coq//user-contrib/ConCaT&#39;: Read-only file system
+- install: cannot create directory &#39;/home/bench/.opam/ocaml-base-compiler.4.07.1/lib/coq//user-contrib/ConCaT&#39;: Read-only file system
+- install: cannot create directory &#39;/home/bench/.opam/ocaml-base-compiler.4.07.1/lib/coq//user-contrib/ConCaT&#39;: Read-only file system
+- install: cannot create directory &#39;/home/bench/.opam/ocaml-base-compiler.4.07.1/lib/coq//user-contrib/ConCaT&#39;: Read-only file system
+- install: cannot create directory &#39;/home/bench/.opam/ocaml-base-compiler.4.07.1/lib/coq//user-contrib/ConCaT&#39;: Read-only file system
+- install: cannot create directory &#39;/home/bench/.opam/ocaml-base-compiler.4.07.1/lib/coq//user-contrib/ConCaT&#39;: Read-only file system
+- install: cannot create directory &#39;/home/bench/.opam/ocaml-base-compiler.4.07.1/lib/coq//user-contrib/ConCaT&#39;: Read-only file system
+- install: cannot create directory &#39;/home/bench/.opam/ocaml-base-compiler.4.07.1/lib/coq//user-contrib/ConCaT&#39;: Read-only file system
+- install: cannot create directory &#39;/home/bench/.opam/ocaml-base-compiler.4.07.1/lib/coq//user-contrib/ConCaT&#39;: Read-only file system
+- install: cannot create directory &#39;/home/bench/.opam/ocaml-base-compiler.4.07.1/lib/coq//user-contrib/ConCaT&#39;: Read-only file system
+- install: cannot create directory &#39;/home/bench/.opam/ocaml-base-compiler.4.07.1/lib/coq//user-contrib/ConCaT&#39;: Read-only file system
+- install: cannot create directory &#39;/home/bench/.opam/ocaml-base-compiler.4.07.1/lib/coq//user-contrib/ConCaT&#39;: Read-only file system
+- install: cannot create directory &#39;/home/bench/.opam/ocaml-base-compiler.4.07.1/lib/coq//user-contrib/ConCaT&#39;: Read-only file system
+- install: cannot create directory &#39;/home/bench/.opam/ocaml-base-compiler.4.07.1/lib/coq//user-contrib/ConCaT&#39;: Read-only file system
+- install: cannot create directory &#39;/home/bench/.opam/ocaml-base-compiler.4.07.1/lib/coq//user-contrib/ConCaT&#39;: Read-only file system
+- install: cannot create directory &#39;/home/bench/.opam/ocaml-base-compiler.4.07.1/lib/coq//user-contrib/ConCaT&#39;: Read-only file system
+- install: cannot create directory &#39;/home/bench/.opam/ocaml-base-compiler.4.07.1/lib/coq//user-contrib/ConCaT&#39;: Read-only file system
+- install: cannot create directory &#39;/home/bench/.opam/ocaml-base-compiler.4.07.1/lib/coq//user-contrib/ConCaT&#39;: Read-only file system
+- install: cannot create directory &#39;/home/bench/.opam/ocaml-base-compiler.4.07.1/lib/coq//user-contrib/ConCaT&#39;: Read-only file system
+- install: cannot create directory &#39;/home/bench/.opam/ocaml-base-compiler.4.07.1/lib/coq//user-contrib/ConCaT&#39;: Read-only file system
+- install: cannot create directory &#39;/home/bench/.opam/ocaml-base-compiler.4.07.1/lib/coq//user-contrib/ConCaT&#39;: Read-only file system
+- install: cannot create directory &#39;/home/bench/.opam/ocaml-base-compiler.4.07.1/lib/coq//user-contrib/ConCaT&#39;: Read-only file system
+- install: cannot create directory &#39;/home/bench/.opam/ocaml-base-compiler.4.07.1/lib/coq//user-contrib/ConCaT&#39;: Read-only file system
+- install: cannot create directory &#39;/home/bench/.opam/ocaml-base-compiler.4.07.1/lib/coq//user-contrib/ConCaT&#39;: Read-only file system
+- install: cannot create directory &#39;/home/bench/.opam/ocaml-base-compiler.4.07.1/lib/coq//user-contrib/ConCaT&#39;: Read-only file system
+- install: cannot create directory &#39;/home/bench/.opam/ocaml-base-compiler.4.07.1/lib/coq//user-contrib/ConCaT&#39;: Read-only file system
+- install: cannot create directory &#39;/home/bench/.opam/ocaml-base-compiler.4.07.1/lib/coq//user-contrib/ConCaT&#39;: Read-only file system
+- install: cannot create directory &#39;/home/bench/.opam/ocaml-base-compiler.4.07.1/lib/coq//user-contrib/ConCaT&#39;: Read-only file system
+- install: cannot create directory &#39;/home/bench/.opam/ocaml-base-compiler.4.07.1/lib/coq//user-contrib/ConCaT&#39;: Read-only file system
+- install: cannot create directory &#39;/home/bench/.opam/ocaml-base-compiler.4.07.1/lib/coq//user-contrib/ConCaT&#39;: Read-only file system
+- install: cannot create directory &#39;/home/bench/.opam/ocaml-base-compiler.4.07.1/lib/coq//user-contrib/ConCaT&#39;: Read-only file system
+- install: cannot create directory &#39;/home/bench/.opam/ocaml-base-compiler.4.07.1/lib/coq//user-contrib/ConCaT&#39;: Read-only file system
+- install: cannot create directory &#39;/home/bench/.opam/ocaml-base-compiler.4.07.1/lib/coq//user-contrib/ConCaT&#39;: Read-only file system
+- install: cannot create directory &#39;/home/bench/.opam/ocaml-base-compiler.4.07.1/lib/coq//user-contrib/ConCaT&#39;: Read-only file system
+- install: cannot create directory &#39;/home/bench/.opam/ocaml-base-compiler.4.07.1/lib/coq//user-contrib/ConCaT&#39;: Read-only file system
+- install: cannot create directory &#39;/home/bench/.opam/ocaml-base-compiler.4.07.1/lib/coq//user-contrib/ConCaT&#39;: Read-only file system
+- install: cannot create directory &#39;/home/bench/.opam/ocaml-base-compiler.4.07.1/lib/coq//user-contrib/ConCaT&#39;: Read-only file system
+- install: cannot create directory &#39;/home/bench/.opam/ocaml-base-compiler.4.07.1/lib/coq//user-contrib/ConCaT&#39;: Read-only file system
+- install: cannot create directory &#39;/home/bench/.opam/ocaml-base-compiler.4.07.1/lib/coq//user-contrib/ConCaT&#39;: Read-only file system
+- install: cannot create directory &#39;/home/bench/.opam/ocaml-base-compiler.4.07.1/lib/coq//user-contrib/ConCaT&#39;: Read-only file system
+- install: cannot create directory &#39;/home/bench/.opam/ocaml-base-compiler.4.07.1/lib/coq//user-contrib/ConCaT&#39;: Read-only file system
+- install: cannot create directory &#39;/home/bench/.opam/ocaml-base-compiler.4.07.1/lib/coq//user-contrib/ConCaT&#39;: Read-only file system
+- install: cannot create directory &#39;/home/bench/.opam/ocaml-base-compiler.4.07.1/lib/coq//user-contrib/ConCaT&#39;: Read-only file system
+- install: cannot create directory &#39;/home/bench/.opam/ocaml-base-compiler.4.07.1/lib/coq//user-contrib/ConCaT&#39;: Read-only file system
+- install: cannot create directory &#39;/home/bench/.opam/ocaml-base-compiler.4.07.1/lib/coq//user-contrib/ConCaT&#39;: Read-only file system
+- install: cannot create directory &#39;/home/bench/.opam/ocaml-base-compiler.4.07.1/lib/coq//user-contrib/ConCaT&#39;: Read-only file system
+- install: cannot create directory &#39;/home/bench/.opam/ocaml-base-compiler.4.07.1/lib/coq//user-contrib/ConCaT&#39;: Read-only file system
+- install: cannot create directory &#39;/home/bench/.opam/ocaml-base-compiler.4.07.1/lib/coq//user-contrib/ConCaT&#39;: Read-only file system
+- install: cannot create directory &#39;/home/bench/.opam/ocaml-base-compiler.4.07.1/lib/coq//user-contrib/ConCaT&#39;: Read-only file system
+- install: cannot create directory &#39;/home/bench/.opam/ocaml-base-compiler.4.07.1/lib/coq//user-contrib/ConCaT&#39;: Read-only file system
+- install: cannot create directory &#39;/home/bench/.opam/ocaml-base-compiler.4.07.1/lib/coq//user-contrib/ConCaT&#39;: Read-only file system
+- install: cannot create directory &#39;/home/bench/.opam/ocaml-base-compiler.4.07.1/lib/coq//user-contrib/ConCaT&#39;: Read-only file system
+- install: cannot create directory &#39;/home/bench/.opam/ocaml-base-compiler.4.07.1/lib/coq//user-contrib/ConCaT&#39;: Read-only file system
+- install: cannot create directory &#39;/home/bench/.opam/ocaml-base-compiler.4.07.1/lib/coq//user-contrib/ConCaT&#39;: Read-only file system
+- install: cannot create directory &#39;/home/bench/.opam/ocaml-base-compiler.4.07.1/lib/coq//user-contrib/ConCaT&#39;: Read-only file system
+- install: cannot create directory &#39;/home/bench/.opam/ocaml-base-compiler.4.07.1/lib/coq//user-contrib/ConCaT&#39;: Read-only file system
+- install: cannot create directory &#39;/home/bench/.opam/ocaml-base-compiler.4.07.1/lib/coq//user-contrib/ConCaT&#39;: Read-only file system
+- install: cannot create directory &#39;/home/bench/.opam/ocaml-base-compiler.4.07.1/lib/coq//user-contrib/ConCaT&#39;: Read-only file system
+- install: cannot create directory &#39;/home/bench/.opam/ocaml-base-compiler.4.07.1/lib/coq//user-contrib/ConCaT&#39;: Read-only file system
+- install: cannot create directory &#39;/home/bench/.opam/ocaml-base-compiler.4.07.1/lib/coq//user-contrib/ConCaT&#39;: Read-only file system
+- install: cannot create directory &#39;/home/bench/.opam/ocaml-base-compiler.4.07.1/lib/coq//user-contrib/ConCaT&#39;: Read-only file system
+- install: cannot create directory &#39;/home/bench/.opam/ocaml-base-compiler.4.07.1/lib/coq//user-contrib/ConCaT&#39;: Read-only file system
+- install: cannot create directory &#39;/home/bench/.opam/ocaml-base-compiler.4.07.1/lib/coq//user-contrib/ConCaT&#39;: Read-only file system
+- install: cannot create directory &#39;/home/bench/.opam/ocaml-base-compiler.4.07.1/lib/coq//user-contrib/ConCaT&#39;: Read-only file system
+- install: cannot create directory &#39;/home/bench/.opam/ocaml-base-compiler.4.07.1/lib/coq//user-contrib/ConCaT&#39;: Read-only file system
+- install: cannot create directory &#39;/home/bench/.opam/ocaml-base-compiler.4.07.1/lib/coq//user-contrib/ConCaT&#39;: Read-only file system
+- install: cannot create directory &#39;/home/bench/.opam/ocaml-base-compiler.4.07.1/lib/coq//user-contrib/ConCaT&#39;: Read-only file system
+- install: cannot create directory &#39;/home/bench/.opam/ocaml-base-compiler.4.07.1/lib/coq//user-contrib/ConCaT&#39;: Read-only file system
+- install: cannot create directory &#39;/home/bench/.opam/ocaml-base-compiler.4.07.1/lib/coq//user-contrib/ConCaT&#39;: Read-only file system
+- install: cannot create directory &#39;/home/bench/.opam/ocaml-base-compiler.4.07.1/lib/coq//user-contrib/ConCaT&#39;: Read-only file system
+- install: cannot create directory &#39;/home/bench/.opam/ocaml-base-compiler.4.07.1/lib/coq//user-contrib/ConCaT&#39;: Read-only file system
+- install: cannot create directory &#39;/home/bench/.opam/ocaml-base-compiler.4.07.1/lib/coq//user-contrib/ConCaT&#39;: Read-only file system
+- install: cannot create directory &#39;/home/bench/.opam/ocaml-base-compiler.4.07.1/lib/coq//user-contrib/ConCaT&#39;: Read-only file system
+- install: cannot create directory &#39;/home/bench/.opam/ocaml-base-compiler.4.07.1/lib/coq//user-contrib/ConCaT&#39;: Read-only file system
+- install: cannot create directory &#39;/home/bench/.opam/ocaml-base-compiler.4.07.1/lib/coq//user-contrib/ConCaT&#39;: Read-only file system
+- install: cannot create directory &#39;/home/bench/.opam/ocaml-base-compiler.4.07.1/lib/coq//user-contrib/ConCaT&#39;: Read-only file system
+- install: cannot create directory &#39;/home/bench/.opam/ocaml-base-compiler.4.07.1/lib/coq//user-contrib/ConCaT&#39;: Read-only file system
+- install: cannot create directory &#39;/home/bench/.opam/ocaml-base-compiler.4.07.1/lib/coq//user-contrib/ConCaT&#39;: Read-only file system
+- install: cannot create directory &#39;/home/bench/.opam/ocaml-base-compiler.4.07.1/lib/coq//user-contrib/ConCaT&#39;: Read-only file system
+- install: cannot create directory &#39;/home/bench/.opam/ocaml-base-compiler.4.07.1/lib/coq//user-contrib/ConCaT&#39;: Read-only file system
+- install: cannot create directory &#39;/home/bench/.opam/ocaml-base-compiler.4.07.1/lib/coq//user-contrib/ConCaT&#39;: Read-only file system
+- install: cannot create directory &#39;/home/bench/.opam/ocaml-base-compiler.4.07.1/lib/coq//user-contrib/ConCaT&#39;: Read-only file system
+- install: cannot create directory &#39;/home/bench/.opam/ocaml-base-compiler.4.07.1/lib/coq//user-contrib/ConCaT&#39;: Read-only file system
+- install: cannot create directory &#39;/home/bench/.opam/ocaml-base-compiler.4.07.1/lib/coq//user-contrib/ConCaT&#39;: Read-only file system
+- install: cannot create directory &#39;/home/bench/.opam/ocaml-base-compiler.4.07.1/lib/coq//user-contrib/ConCaT&#39;: Read-only file system
+- install: cannot create directory &#39;/home/bench/.opam/ocaml-base-compiler.4.07.1/lib/coq//user-contrib/ConCaT&#39;: Read-only file system
+- install: cannot create directory &#39;/home/bench/.opam/ocaml-base-compiler.4.07.1/lib/coq//user-contrib/ConCaT&#39;: Read-only file system
+- install: cannot create directory &#39;/home/bench/.opam/ocaml-base-compiler.4.07.1/lib/coq//user-contrib/ConCaT&#39;: Read-only file system
+- install: cannot create directory &#39;/home/bench/.opam/ocaml-base-compiler.4.07.1/lib/coq//user-contrib/ConCaT&#39;: Read-only file system
+- install: cannot create directory &#39;/home/bench/.opam/ocaml-base-compiler.4.07.1/lib/coq//user-contrib/ConCaT&#39;: Read-only file system
+- install: cannot create directory &#39;/home/bench/.opam/ocaml-base-compiler.4.07.1/lib/coq//user-contrib/ConCaT&#39;: Read-only file system
+- install: cannot create directory &#39;/home/bench/.opam/ocaml-base-compiler.4.07.1/lib/coq//user-contrib/ConCaT&#39;: Read-only file system
+- install: cannot create directory &#39;/home/bench/.opam/ocaml-base-compiler.4.07.1/lib/coq//user-contrib/ConCaT&#39;: Read-only file system
+- install: cannot create directory &#39;/home/bench/.opam/ocaml-base-compiler.4.07.1/lib/coq//user-contrib/ConCaT&#39;: Read-only file system
+- install: cannot create directory &#39;/home/bench/.opam/ocaml-base-compiler.4.07.1/lib/coq//user-contrib/ConCaT&#39;: Read-only file system
+- install: cannot create directory &#39;/home/bench/.opam/ocaml-base-compiler.4.07.1/lib/coq//user-contrib/ConCaT&#39;: Read-only file system
+- install: cannot create directory &#39;/home/bench/.opam/ocaml-base-compiler.4.07.1/lib/coq//user-contrib/ConCaT&#39;: Read-only file system
+- install: cannot create directory &#39;/home/bench/.opam/ocaml-base-compiler.4.07.1/lib/coq//user-contrib/ConCaT&#39;: Read-only file system
+- install: cannot create directory &#39;/home/bench/.opam/ocaml-base-compiler.4.07.1/lib/coq//user-contrib/ConCaT&#39;: Read-only file system
+- install: cannot create directory &#39;/home/bench/.opam/ocaml-base-compiler.4.07.1/lib/coq//user-contrib/ConCaT&#39;: Read-only file system
+- install: cannot create directory &#39;/home/bench/.opam/ocaml-base-compiler.4.07.1/lib/coq//user-contrib/ConCaT&#39;: Read-only file system
+- install: cannot create directory &#39;/home/bench/.opam/ocaml-base-compiler.4.07.1/lib/coq//user-contrib/ConCaT&#39;: Read-only file system
+- install: cannot create directory &#39;/home/bench/.opam/ocaml-base-compiler.4.07.1/lib/coq//user-contrib/ConCaT&#39;: Read-only file system
+- install: cannot create directory &#39;/home/bench/.opam/ocaml-base-compiler.4.07.1/lib/coq//user-contrib/ConCaT&#39;: Read-only file system
+- install: cannot create directory &#39;/home/bench/.opam/ocaml-base-compiler.4.07.1/lib/coq//user-contrib/ConCaT&#39;: Read-only file system
+- install: cannot create directory &#39;/home/bench/.opam/ocaml-base-compiler.4.07.1/lib/coq//user-contrib/ConCaT&#39;: Read-only file system
+- install: cannot create directory &#39;/home/bench/.opam/ocaml-base-compiler.4.07.1/lib/coq//user-contrib/ConCaT&#39;: Read-only file system
+- install: cannot create directory &#39;/home/bench/.opam/ocaml-base-compiler.4.07.1/lib/coq//user-contrib/ConCaT&#39;: Read-only file system
+- install: cannot create directory &#39;/home/bench/.opam/ocaml-base-compiler.4.07.1/lib/coq//user-contrib/ConCaT&#39;: Read-only file system
+- install: cannot create directory &#39;/home/bench/.opam/ocaml-base-compiler.4.07.1/lib/coq//user-contrib/ConCaT&#39;: Read-only file system
+- install: cannot create directory &#39;/home/bench/.opam/ocaml-base-compiler.4.07.1/lib/coq//user-contrib/ConCaT&#39;: Read-only file system
+- install: cannot create directory &#39;/home/bench/.opam/ocaml-base-compiler.4.07.1/lib/coq//user-contrib/ConCaT&#39;: Read-only file system
+- install: cannot create directory &#39;/home/bench/.opam/ocaml-base-compiler.4.07.1/lib/coq//user-contrib/ConCaT&#39;: Read-only file system
+- install: cannot create directory &#39;/home/bench/.opam/ocaml-base-compiler.4.07.1/lib/coq//user-contrib/ConCaT&#39;: Read-only file system
+- install: cannot create directory &#39;/home/bench/.opam/ocaml-base-compiler.4.07.1/lib/coq//user-contrib/ConCaT&#39;: Read-only file system
+- install: cannot create directory &#39;/home/bench/.opam/ocaml-base-compiler.4.07.1/lib/coq//user-contrib/ConCaT&#39;: Read-only file system
+- install: cannot create directory &#39;/home/bench/.opam/ocaml-base-compiler.4.07.1/lib/coq//user-contrib/ConCaT&#39;: Read-only file system
+- install: cannot create directory &#39;/home/bench/.opam/ocaml-base-compiler.4.07.1/lib/coq//user-contrib/ConCaT&#39;: Read-only file system
+- install: cannot create directory &#39;/home/bench/.opam/ocaml-base-compiler.4.07.1/lib/coq//user-contrib/ConCaT&#39;: Read-only file system
+- install: cannot create directory &#39;/home/bench/.opam/ocaml-base-compiler.4.07.1/lib/coq//user-contrib/ConCaT&#39;: Read-only file system
+- install: cannot create directory &#39;/home/bench/.opam/ocaml-base-compiler.4.07.1/lib/coq//user-contrib/ConCaT&#39;: Read-only file system
+- install: cannot create directory &#39;/home/bench/.opam/ocaml-base-compiler.4.07.1/lib/coq//user-contrib/ConCaT&#39;: Read-only file system
+- install: cannot create directory &#39;/home/bench/.opam/ocaml-base-compiler.4.07.1/lib/coq//user-contrib/ConCaT&#39;: Read-only file system
+- install: cannot create directory &#39;/home/bench/.opam/ocaml-base-compiler.4.07.1/lib/coq//user-contrib/ConCaT&#39;: Read-only file system
+- install: cannot create directory &#39;/home/bench/.opam/ocaml-base-compiler.4.07.1/lib/coq//user-contrib/ConCaT&#39;: Read-only file system
+- install: cannot create directory &#39;/home/bench/.opam/ocaml-base-compiler.4.07.1/lib/coq//user-contrib/ConCaT&#39;: Read-only file system
+- install: cannot create directory &#39;/home/bench/.opam/ocaml-base-compiler.4.07.1/lib/coq//user-contrib/ConCaT&#39;: Read-only file system
+- install: cannot create directory &#39;/home/bench/.opam/ocaml-base-compiler.4.07.1/lib/coq//user-contrib/ConCaT&#39;: Read-only file system
+- install: cannot create directory &#39;/home/bench/.opam/ocaml-base-compiler.4.07.1/lib/coq//user-contrib/ConCaT&#39;: Read-only file system
+- install: cannot create directory &#39;/home/bench/.opam/ocaml-base-compiler.4.07.1/lib/coq//user-contrib/ConCaT&#39;: Read-only file system
+- install: cannot create directory &#39;/home/bench/.opam/ocaml-base-compiler.4.07.1/lib/coq//user-contrib/ConCaT&#39;: Read-only file system
+- install: cannot create directory &#39;/home/bench/.opam/ocaml-base-compiler.4.07.1/lib/coq//user-contrib/ConCaT&#39;: Read-only file system
+- install: cannot create directory &#39;/home/bench/.opam/ocaml-base-compiler.4.07.1/lib/coq//user-contrib/ConCaT&#39;: Read-only file system
+- install: cannot create directory &#39;/home/bench/.opam/ocaml-base-compiler.4.07.1/lib/coq//user-contrib/ConCaT&#39;: Read-only file system
+- install: cannot create directory &#39;/home/bench/.opam/ocaml-base-compiler.4.07.1/lib/coq//user-contrib/ConCaT&#39;: Read-only file system
+- install: cannot create directory &#39;/home/bench/.opam/ocaml-base-compiler.4.07.1/lib/coq//user-contrib/ConCaT&#39;: Read-only file system
+- install: cannot create directory &#39;/home/bench/.opam/ocaml-base-compiler.4.07.1/lib/coq//user-contrib/ConCaT&#39;: Read-only file system
+- install: cannot create directory &#39;/home/bench/.opam/ocaml-base-compiler.4.07.1/lib/coq//user-contrib/ConCaT&#39;: Read-only file system
+- install: cannot create directory &#39;/home/bench/.opam/ocaml-base-compiler.4.07.1/lib/coq//user-contrib/ConCaT&#39;: Read-only file system
+- install: cannot create directory &#39;/home/bench/.opam/ocaml-base-compiler.4.07.1/lib/coq//user-contrib/ConCaT&#39;: Read-only file system
+- install: cannot create directory &#39;/home/bench/.opam/ocaml-base-compiler.4.07.1/lib/coq//user-contrib/ConCaT&#39;: Read-only file system
+- install: cannot create directory &#39;/home/bench/.opam/ocaml-base-compiler.4.07.1/lib/coq//user-contrib/ConCaT&#39;: Read-only file system
+- install: cannot create directory &#39;/home/bench/.opam/ocaml-base-compiler.4.07.1/lib/coq//user-contrib/ConCaT&#39;: Read-only file system
+- install: cannot create directory &#39;/home/bench/.opam/ocaml-base-compiler.4.07.1/lib/coq//user-contrib/ConCaT&#39;: Read-only file system
+- install: cannot create directory &#39;/home/bench/.opam/ocaml-base-compiler.4.07.1/lib/coq//user-contrib/ConCaT&#39;: Read-only file system
+- install: cannot create directory &#39;/home/bench/.opam/ocaml-base-compiler.4.07.1/lib/coq//user-contrib/ConCaT&#39;: Read-only file system
+- install: cannot create directory &#39;/home/bench/.opam/ocaml-base-compiler.4.07.1/lib/coq//user-contrib/ConCaT&#39;: Read-only file system
+- install: cannot create directory &#39;/home/bench/.opam/ocaml-base-compiler.4.07.1/lib/coq//user-contrib/ConCaT&#39;: Read-only file system
+- install: cannot create directory &#39;/home/bench/.opam/ocaml-base-compiler.4.07.1/lib/coq//user-contrib/ConCaT&#39;: Read-only file system
+- install: cannot create directory &#39;/home/bench/.opam/ocaml-base-compiler.4.07.1/lib/coq//user-contrib/ConCaT&#39;: Read-only file system
+- install: cannot create directory &#39;/home/bench/.opam/ocaml-base-compiler.4.07.1/lib/coq//user-contrib/ConCaT&#39;: Read-only file system
+- install: cannot create directory &#39;/home/bench/.opam/ocaml-base-compiler.4.07.1/lib/coq//user-contrib/ConCaT&#39;: Read-only file system
+- install: cannot create directory &#39;/home/bench/.opam/ocaml-base-compiler.4.07.1/lib/coq//user-contrib/ConCaT&#39;: Read-only file system
+- install: cannot create directory &#39;/home/bench/.opam/ocaml-base-compiler.4.07.1/lib/coq//user-contrib/ConCaT&#39;: Read-only file system
+- install: cannot create directory &#39;/home/bench/.opam/ocaml-base-compiler.4.07.1/lib/coq//user-contrib/ConCaT&#39;: Read-only file system
+- install: cannot create directory &#39;/home/bench/.opam/ocaml-base-compiler.4.07.1/lib/coq//user-contrib/ConCaT&#39;: Read-only file system
+- install: cannot create directory &#39;/home/bench/.opam/ocaml-base-compiler.4.07.1/lib/coq//user-contrib/ConCaT&#39;: Read-only file system
+- install: cannot create directory &#39;/home/bench/.opam/ocaml-base-compiler.4.07.1/lib/coq//user-contrib/ConCaT&#39;: Read-only file system
+- install: cannot create directory &#39;/home/bench/.opam/ocaml-base-compiler.4.07.1/lib/coq//user-contrib/ConCaT&#39;: Read-only file system
+- install: cannot create directory &#39;/home/bench/.opam/ocaml-base-compiler.4.07.1/lib/coq//user-contrib/ConCaT&#39;: Read-only file system
+- install: cannot create directory &#39;/home/bench/.opam/ocaml-base-compiler.4.07.1/lib/coq//user-contrib/ConCaT&#39;: Read-only file system
+- install: cannot create directory &#39;/home/bench/.opam/ocaml-base-compiler.4.07.1/lib/coq//user-contrib/ConCaT&#39;: Read-only file system
+- install: cannot create directory &#39;/home/bench/.opam/ocaml-base-compiler.4.07.1/lib/coq//user-contrib/ConCaT&#39;: Read-only file system
+- install: cannot create directory &#39;/home/bench/.opam/ocaml-base-compiler.4.07.1/lib/coq//user-contrib/ConCaT&#39;: Read-only file system
+- install: cannot create directory &#39;/home/bench/.opam/ocaml-base-compiler.4.07.1/lib/coq//user-contrib/ConCaT&#39;: Read-only file system
+- install: cannot create directory &#39;/home/bench/.opam/ocaml-base-compiler.4.07.1/lib/coq//user-contrib/ConCaT&#39;: Read-only file system
+- install: cannot create directory &#39;/home/bench/.opam/ocaml-base-compiler.4.07.1/lib/coq//user-contrib/ConCaT&#39;: Read-only file system
+- install: cannot create directory &#39;/home/bench/.opam/ocaml-base-compiler.4.07.1/lib/coq//user-contrib/ConCaT&#39;: Read-only file system
+- install: cannot create directory &#39;/home/bench/.opam/ocaml-base-compiler.4.07.1/lib/coq//user-contrib/ConCaT&#39;: Read-only file system
+- install: cannot create directory &#39;/home/bench/.opam/ocaml-base-compiler.4.07.1/lib/coq//user-contrib/ConCaT&#39;: Read-only file system
+- install: cannot create directory &#39;/home/bench/.opam/ocaml-base-compiler.4.07.1/lib/coq//user-contrib/ConCaT&#39;: Read-only file system
+- install: cannot create directory &#39;/home/bench/.opam/ocaml-base-compiler.4.07.1/lib/coq//user-contrib/ConCaT&#39;: Read-only file system
+- install: cannot create directory &#39;/home/bench/.opam/ocaml-base-compiler.4.07.1/lib/coq//user-contrib/ConCaT&#39;: Read-only file system
+- install: cannot create directory &#39;/home/bench/.opam/ocaml-base-compiler.4.07.1/lib/coq//user-contrib/ConCaT&#39;: Read-only file system
+- install: cannot create directory &#39;/home/bench/.opam/ocaml-base-compiler.4.07.1/lib/coq//user-contrib/ConCaT&#39;: Read-only file system
+- install: cannot create directory &#39;/home/bench/.opam/ocaml-base-compiler.4.07.1/lib/coq//user-contrib/ConCaT&#39;: Read-only file system
+- install: cannot create directory &#39;/home/bench/.opam/ocaml-base-compiler.4.07.1/lib/coq//user-contrib/ConCaT&#39;: Read-only file system
+- install: cannot create directory &#39;/home/bench/.opam/ocaml-base-compiler.4.07.1/lib/coq//user-contrib/ConCaT&#39;: Read-only file system
+- install: cannot create directory &#39;/home/bench/.opam/ocaml-base-compiler.4.07.1/lib/coq//user-contrib/ConCaT&#39;: Read-only file system
+- install: cannot create directory &#39;/home/bench/.opam/ocaml-base-compiler.4.07.1/lib/coq//user-contrib/ConCaT&#39;: Read-only file system
+- install: cannot create directory &#39;/home/bench/.opam/ocaml-base-compiler.4.07.1/lib/coq//user-contrib/ConCaT&#39;: Read-only file system
+- install: cannot create directory &#39;/home/bench/.opam/ocaml-base-compiler.4.07.1/lib/coq//user-contrib/ConCaT&#39;: Read-only file system
+- install: cannot create directory &#39;/home/bench/.opam/ocaml-base-compiler.4.07.1/lib/coq//user-contrib/ConCaT&#39;: Read-only file system
+- install: cannot create directory &#39;/home/bench/.opam/ocaml-base-compiler.4.07.1/lib/coq//user-contrib/ConCaT&#39;: Read-only file system
+- install: cannot create directory &#39;/home/bench/.opam/ocaml-base-compiler.4.07.1/lib/coq//user-contrib/ConCaT&#39;: Read-only file system
+- install: cannot create directory &#39;/home/bench/.opam/ocaml-base-compiler.4.07.1/lib/coq//user-contrib/ConCaT&#39;: Read-only file system
+- install: cannot create directory &#39;/home/bench/.opam/ocaml-base-compiler.4.07.1/lib/coq//user-contrib/ConCaT&#39;: Read-only file system
+- install: cannot create directory &#39;/home/bench/.opam/ocaml-base-compiler.4.07.1/lib/coq//user-contrib/ConCaT&#39;: Read-only file system
+- install: cannot create directory &#39;/home/bench/.opam/ocaml-base-compiler.4.07.1/lib/coq//user-contrib/ConCaT&#39;: Read-only file system
+- install: cannot create directory &#39;/home/bench/.opam/ocaml-base-compiler.4.07.1/lib/coq//user-contrib/ConCaT&#39;: Read-only file system
+- install: cannot create directory &#39;/home/bench/.opam/ocaml-base-compiler.4.07.1/lib/coq//user-contrib/ConCaT&#39;: Read-only file system
+- install: cannot create directory &#39;/home/bench/.opam/ocaml-base-compiler.4.07.1/lib/coq//user-contrib/ConCaT&#39;: Read-only file system
+- install: cannot create directory &#39;/home/bench/.opam/ocaml-base-compiler.4.07.1/lib/coq//user-contrib/ConCaT&#39;: Read-only file system
+- install: cannot create directory &#39;/home/bench/.opam/ocaml-base-compiler.4.07.1/lib/coq//user-contrib/ConCaT&#39;: Read-only file system
+- install: cannot create directory &#39;/home/bench/.opam/ocaml-base-compiler.4.07.1/lib/coq//user-contrib/ConCaT&#39;: Read-only file system
+- install: cannot create directory &#39;/home/bench/.opam/ocaml-base-compiler.4.07.1/lib/coq//user-contrib/ConCaT&#39;: Read-only file system
+- install: cannot create directory &#39;/home/bench/.opam/ocaml-base-compiler.4.07.1/lib/coq//user-contrib/ConCaT&#39;: Read-only file system
+- install: cannot create directory &#39;/home/bench/.opam/ocaml-base-compiler.4.07.1/lib/coq//user-contrib/ConCaT&#39;: Read-only file system
+- install: cannot create directory &#39;/home/bench/.opam/ocaml-base-compiler.4.07.1/lib/coq//user-contrib/ConCaT&#39;: Read-only file system
+- install: cannot create directory &#39;/home/bench/.opam/ocaml-base-compiler.4.07.1/lib/coq//user-contrib/ConCaT&#39;: Read-only file system
+- install: cannot create directory &#39;/home/bench/.opam/ocaml-base-compiler.4.07.1/lib/coq//user-contrib/ConCaT&#39;: Read-only file system
+- install: cannot create directory &#39;/home/bench/.opam/ocaml-base-compiler.4.07.1/lib/coq//user-contrib/ConCaT&#39;: Read-only file system
+- install: cannot create directory &#39;/home/bench/.opam/ocaml-base-compiler.4.07.1/lib/coq//user-contrib/ConCaT&#39;: Read-only file system
+- install: cannot create directory &#39;/home/bench/.opam/ocaml-base-compiler.4.07.1/lib/coq//user-contrib/ConCaT&#39;: Read-only file system
+- install: cannot create directory &#39;/home/bench/.opam/ocaml-base-compiler.4.07.1/lib/coq//user-contrib/ConCaT&#39;: Read-only file system
+- install: cannot create directory &#39;/home/bench/.opam/ocaml-base-compiler.4.07.1/lib/coq//user-contrib/ConCaT&#39;: Read-only file system
+- install: cannot create directory &#39;/home/bench/.opam/ocaml-base-compiler.4.07.1/lib/coq//user-contrib/ConCaT&#39;: Read-only file system
+- install: cannot create directory &#39;/home/bench/.opam/ocaml-base-compiler.4.07.1/lib/coq//user-contrib/ConCaT&#39;: Read-only file system
+- install: cannot create directory &#39;/home/bench/.opam/ocaml-base-compiler.4.07.1/lib/coq//user-contrib/ConCaT&#39;: Read-only file system
+- install: cannot create directory &#39;/home/bench/.opam/ocaml-base-compiler.4.07.1/lib/coq//user-contrib/ConCaT&#39;: Read-only file system
+- install: cannot create directory &#39;/home/bench/.opam/ocaml-base-compiler.4.07.1/lib/coq//user-contrib/ConCaT&#39;: Read-only file system
+- install: cannot create directory &#39;/home/bench/.opam/ocaml-base-compiler.4.07.1/lib/coq//user-contrib/ConCaT&#39;: Read-only file system
+- install: cannot create directory &#39;/home/bench/.opam/ocaml-base-compiler.4.07.1/lib/coq//user-contrib/ConCaT&#39;: Read-only file system
+- install: cannot create directory &#39;/home/bench/.opam/ocaml-base-compiler.4.07.1/lib/coq//user-contrib/ConCaT&#39;: Read-only file system
+- install: cannot create directory &#39;/home/bench/.opam/ocaml-base-compiler.4.07.1/lib/coq//user-contrib/ConCaT&#39;: Read-only file system
+- install: cannot create directory &#39;/home/bench/.opam/ocaml-base-compiler.4.07.1/lib/coq//user-contrib/ConCaT&#39;: Read-only file system
+- install: cannot create directory &#39;/home/bench/.opam/ocaml-base-compiler.4.07.1/lib/coq//user-contrib/ConCaT&#39;: Read-only file system
+- install: cannot create directory &#39;/home/bench/.opam/ocaml-base-compiler.4.07.1/lib/coq//user-contrib/ConCaT&#39;: Read-only file system
+- install: cannot create directory &#39;/home/bench/.opam/ocaml-base-compiler.4.07.1/lib/coq//user-contrib/ConCaT&#39;: Read-only file system
+- install: cannot create directory &#39;/home/bench/.opam/ocaml-base-compiler.4.07.1/lib/coq//user-contrib/ConCaT&#39;: Read-only file system
+- install: cannot create directory &#39;/home/bench/.opam/ocaml-base-compiler.4.07.1/lib/coq//user-contrib/ConCaT&#39;: Read-only file system
+- install: cannot create directory &#39;/home/bench/.opam/ocaml-base-compiler.4.07.1/lib/coq//user-contrib/ConCaT&#39;: Read-only file system
+- install: cannot create directory &#39;/home/bench/.opam/ocaml-base-compiler.4.07.1/lib/coq//user-contrib/ConCaT&#39;: Read-only file system
+- install: cannot create directory &#39;/home/bench/.opam/ocaml-base-compiler.4.07.1/lib/coq//user-contrib/ConCaT&#39;: Read-only file system
+- install: cannot create directory &#39;/home/bench/.opam/ocaml-base-compiler.4.07.1/lib/coq//user-contrib/ConCaT&#39;: Read-only file system
+- install: cannot create directory &#39;/home/bench/.opam/ocaml-base-compiler.4.07.1/lib/coq//user-contrib/ConCaT&#39;: Read-only file system
+- install: cannot create directory &#39;/home/bench/.opam/ocaml-base-compiler.4.07.1/lib/coq//user-contrib/ConCaT&#39;: Read-only file system
+- install: cannot create directory &#39;/home/bench/.opam/ocaml-base-compiler.4.07.1/lib/coq//user-contrib/ConCaT&#39;: Read-only file system
+- install: cannot create directory &#39;/home/bench/.opam/ocaml-base-compiler.4.07.1/lib/coq//user-contrib/ConCaT&#39;: Read-only file system
+- install: cannot create directory &#39;/home/bench/.opam/ocaml-base-compiler.4.07.1/lib/coq//user-contrib/ConCaT&#39;: Read-only file system
+- install: cannot create directory &#39;/home/bench/.opam/ocaml-base-compiler.4.07.1/lib/coq//user-contrib/ConCaT&#39;: Read-only file system
+- install: cannot create directory &#39;/home/bench/.opam/ocaml-base-compiler.4.07.1/lib/coq//user-contrib/ConCaT&#39;: Read-only file system
+- install: cannot create directory &#39;/home/bench/.opam/ocaml-base-compiler.4.07.1/lib/coq//user-contrib/ConCaT&#39;: Read-only file system
+- install: cannot create directory &#39;/home/bench/.opam/ocaml-base-compiler.4.07.1/lib/coq//user-contrib/ConCaT&#39;: Read-only file system
+- install: cannot create directory &#39;/home/bench/.opam/ocaml-base-compiler.4.07.1/lib/coq//user-contrib/ConCaT&#39;: Read-only file system
+- install: cannot create directory &#39;/home/bench/.opam/ocaml-base-compiler.4.07.1/lib/coq//user-contrib/ConCaT&#39;: Read-only file system
+- install: cannot create directory &#39;/home/bench/.opam/ocaml-base-compiler.4.07.1/lib/coq//user-contrib/ConCaT&#39;: Read-only file system
+- install: cannot create directory &#39;/home/bench/.opam/ocaml-base-compiler.4.07.1/lib/coq//user-contrib/ConCaT&#39;: Read-only file system
+- install: cannot create directory &#39;/home/bench/.opam/ocaml-base-compiler.4.07.1/lib/coq//user-contrib/ConCaT&#39;: Read-only file system
+- install: cannot create directory &#39;/home/bench/.opam/ocaml-base-compiler.4.07.1/lib/coq//user-contrib/ConCaT&#39;: Read-only file system
+- install: cannot create directory &#39;/home/bench/.opam/ocaml-base-compiler.4.07.1/lib/coq//user-contrib/ConCaT&#39;: Read-only file system
+- install: cannot create directory &#39;/home/bench/.opam/ocaml-base-compiler.4.07.1/lib/coq//user-contrib/ConCaT&#39;: Read-only file system
+- install: cannot create directory &#39;/home/bench/.opam/ocaml-base-compiler.4.07.1/lib/coq//user-contrib/ConCaT&#39;: Read-only file system
+- install: cannot create directory &#39;/home/bench/.opam/ocaml-base-compiler.4.07.1/lib/coq//user-contrib/ConCaT&#39;: Read-only file system
+- install: cannot create directory &#39;/home/bench/.opam/ocaml-base-compiler.4.07.1/lib/coq//user-contrib/ConCaT&#39;: Read-only file system
+- install: cannot create directory &#39;/home/bench/.opam/ocaml-base-compiler.4.07.1/lib/coq//user-contrib/ConCaT&#39;: Read-only file system
+- install: cannot create directory &#39;/home/bench/.opam/ocaml-base-compiler.4.07.1/lib/coq//user-contrib/ConCaT&#39;: Read-only file system
+- install: cannot create directory &#39;/home/bench/.opam/ocaml-base-compiler.4.07.1/lib/coq//user-contrib/ConCaT&#39;: Read-only file system
+- install: cannot create directory &#39;/home/bench/.opam/ocaml-base-compiler.4.07.1/lib/coq//user-contrib/ConCaT&#39;: Read-only file system
+- install: cannot create directory &#39;/home/bench/.opam/ocaml-base-compiler.4.07.1/lib/coq//user-contrib/ConCaT&#39;: Read-only file system
+- install: cannot create directory &#39;/home/bench/.opam/ocaml-base-compiler.4.07.1/lib/coq//user-contrib/ConCaT&#39;: Read-only file system
+- install: cannot create directory &#39;/home/bench/.opam/ocaml-base-compiler.4.07.1/lib/coq//user-contrib/ConCaT&#39;: Read-only file system
+- install: cannot create directory &#39;/home/bench/.opam/ocaml-base-compiler.4.07.1/lib/coq//user-contrib/ConCaT&#39;: Read-only file system
+- install: cannot create directory &#39;/home/bench/.opam/ocaml-base-compiler.4.07.1/lib/coq//user-contrib/ConCaT&#39;: Read-only file system
+- install: cannot create directory &#39;/home/bench/.opam/ocaml-base-compiler.4.07.1/lib/coq//user-contrib/ConCaT&#39;: Read-only file system
+- install: cannot create directory &#39;/home/bench/.opam/ocaml-base-compiler.4.07.1/lib/coq//user-contrib/ConCaT&#39;: Read-only file system
+- install: cannot create directory &#39;/home/bench/.opam/ocaml-base-compiler.4.07.1/lib/coq//user-contrib/ConCaT&#39;: Read-only file system
+- install: cannot create directory &#39;/home/bench/.opam/ocaml-base-compiler.4.07.1/lib/coq//user-contrib/ConCaT&#39;: Read-only file system
+- Makefile:472: recipe for target &#39;install&#39; failed
+- make: *** [install] Error 1
+[ERROR] The compilation of coq-concat failed at &quot;/home/bench/.opam/opam-init/hooks/sandbox.sh build make install&quot;.
+#=== ERROR while compiling coq-concat.dev =====================================#
+# context              2.0.1 | linux/x86_64 | ocaml-base-compiler.4.07.1 | file:///home/bench/run/opam-coq-archive/extra-dev
+# path                 ~/.opam/ocaml-base-compiler.4.07.1/.opam-switch/build/coq-concat.dev
+# command              ~/.opam/opam-init/hooks/sandbox.sh build make install
+# exit-code            2
+# env-file             ~/.opam/log/coq-concat-19140-6cc03f.env
+# output-file          ~/.opam/log/coq-concat-19140-6cc03f.out
+### output ###
+# [...]
+# install: cannot create directory &#39;/home/bench/.opam/ocaml-base-compiler.4.07.1/lib/coq//user-contrib/ConCaT&#39;: Read-only file system
+# install: cannot create directory &#39;/home/bench/.opam/ocaml-base-compiler.4.07.1/lib/coq//user-contrib/ConCaT&#39;: Read-only file system
+# install: cannot create directory &#39;/home/bench/.opam/ocaml-base-compiler.4.07.1/lib/coq//user-contrib/ConCaT&#39;: Read-only file system
+# install: cannot create directory &#39;/home/bench/.opam/ocaml-base-compiler.4.07.1/lib/coq//user-contrib/ConCaT&#39;: Read-only file system
+# install: cannot create directory &#39;/home/bench/.opam/ocaml-base-compiler.4.07.1/lib/coq//user-contrib/ConCaT&#39;: Read-only file system
+# install: cannot create directory &#39;/home/bench/.opam/ocaml-base-compiler.4.07.1/lib/coq//user-contrib/ConCaT&#39;: Read-only file system
+# install: cannot create directory &#39;/home/bench/.opam/ocaml-base-compiler.4.07.1/lib/coq//user-contrib/ConCaT&#39;: Read-only file system
+# install: cannot create directory &#39;/home/bench/.opam/ocaml-base-compiler.4.07.1/lib/coq//user-contrib/ConCaT&#39;: Read-only file system
+# install: cannot create directory &#39;/home/bench/.opam/ocaml-base-compiler.4.07.1/lib/coq//user-contrib/ConCaT&#39;: Read-only file system
+# install: cannot create directory &#39;/home/bench/.opam/ocaml-base-compiler.4.07.1/lib/coq//user-contrib/ConCaT&#39;: Read-only file system
+# Makefile:472: recipe for target &#39;install&#39; failed
+# make: *** [install] Error 1
+&lt;&gt;&lt;&gt; Error report &lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;
++- The following actions failed
+| - build coq-concat dev
++- 
+- No changes have been performed
+# Run eval $(opam env) to update the current shell environment
+&#39;opam install -j1 -y -v coq-concat.dev&#39; failed.
+</pre></dd>
+            </dl>
+            <h2>Installation size</h2>
+            <p>No files were installed.</p>
+            <h2>Uninstall</h2>
+            <dl class="dl-horizontal">
+              <dt>Command</dt>
+              <dd><code>true</code></dd>
+              <dt>Return code</dt>
+              <dd>0</dd>
+              <dt>Missing removes</dt>
+              <dd>
+                none
+              </dd>
+              <dt>Wrong removes</dt>
+              <dd>
+                none
+              </dd>
+            </dl>
+          </div>
+        </div>
+      </div>
+      <hr/>
+      <div class="footer">
+        <p class="text-center">
+          <small>Sources are on <a href="https://github.com/coq-bench">GitHub</a>. © Guillaume Claret.</small>
+        </p>
+      </div>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="../../../../../bootstrap.min.js"></script>
+  </body>
+</html>
