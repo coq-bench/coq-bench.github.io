@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>io-system: Error</title>
+    <title>io-system: Not compatible</title>
     <link rel="shortcut icon" type="image/png" href="../../../../../favicon.png" />
     <link href="../../../../../bootstrap.min.css" rel="stylesheet">
     <link href="../../../../../bootstrap-custom.css" rel="stylesheet">
@@ -39,25 +39,24 @@
               io-system
               <small>
                 2.4.0
-                <span class="label label-danger">Error</span>
+                <span class="label label-info">Not compatible</span>
               </small>
             </h1>
-            <p><em><script>document.write(moment("2019-07-24 05:53:39 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2019-07-24 05:53:39 UTC)</em><p>
+            <p><em><script>document.write(moment("2019-08-12 22:55:33 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2019-08-12 22:55:33 UTC)</em><p>
             <h2>Context</h2>
             <pre># Packages matching: installed
-# Name              # Installed       # Synopsis
+# Name              # Installed # Synopsis
 base-bigarray       base
-base-num            base              Num library distributed with the OCaml compiler
 base-threads        base
 base-unix           base
-camlp5              7.06.10-g84ce6cc4 Preprocessor-pretty-printer of OCaml
-conf-m4             1                 Virtual package relying on m4
-coq                 8.9.1             Formal proof management system
-num                 0                 The Num library for arbitrary-precision integer and rational arithmetic
-ocaml               4.05.0            The OCaml compiler (virtual package)
-ocaml-base-compiler 4.05.0            Official 4.05.0 release
-ocaml-config        1                 OCaml Switch Configuration
-ocamlfind           1.8.0             A library manager for OCaml
+camlp5              7.08        Preprocessor-pretty-printer of OCaml
+conf-m4             1           Virtual package relying on m4
+coq                 8.9.1       Formal proof management system
+num                 1.2         The legacy Num library for arbitrary-precision integer and rational arithmetic
+ocaml               4.07.1      The OCaml compiler (virtual package)
+ocaml-base-compiler 4.07.1      Official release 4.07.1
+ocaml-config        1           OCaml Switch Configuration
+ocamlfind           1.8.1       A library manager for OCaml
 # opam file:
 opam-version: &quot;2.0&quot;
 maintainer: &quot;dev@clarus.me&quot;
@@ -78,14 +77,14 @@ depends: [
   &quot;coq&quot; {&gt;= &quot;8.4pl4&quot;}
   &quot;coq-function-ninjas&quot;
   &quot;coq-list-string&quot; {&gt;= &quot;2.0.0&quot;}
-  &quot;coq-io&quot; {&gt;= &quot;3.2.0&quot;}
+  &quot;coq-io&quot; {&gt;= &quot;3.2.0&quot; &amp; &lt; &quot;4&quot;}
   &quot;coq-io-system-ocaml&quot; {&gt;= &quot;2.2.0&quot;}
 ]
 tags: [
   &quot;date:2015-07-04&quot;
   &quot;keyword:effects&quot;
   &quot;keyword:extraction&quot;
-  &quot;logpath:Io/System&quot;
+  &quot;logpath:Io.System&quot;
 ]
 synopsis: &quot;System effects for Coq&quot;
 url {
@@ -106,109 +105,41 @@ url {
               <dt>Command</dt>
               <dd><code>opam install -y --show-action coq-io-system.2.4.0 coq.8.9.1</code></dd>
               <dt>Return code</dt>
-              <dd>0</dd>
+              <dd>5120</dd>
+              <dt>Output</dt>
+              <dd><pre>[NOTE] Package coq is already installed (current version is 8.9.1).
+The following dependencies couldn&#39;t be met:
+  - coq-io-system -&gt; coq-io (&gt;= 3.2.0 &amp; &lt; 4) -&gt; coq &lt; 8.6~ -&gt; ocaml &lt; 4.06.0
+      base of this switch (use `--unlock-base&#39; to force)
+Your request can&#39;t be satisfied:
+  - No available version of coq-io satisfies the constraints
+No solution found, exiting
+</pre></dd>
             </dl>
             <p>Dry install without Coq/switch base, to test if the problem was incompatibility with the current Coq/OCaml version:</p>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>true</code></dd>
+              <dd><code>opam remove -y coq; opam install -y --show-action --unlock-base coq-io-system.2.4.0</code></dd>
               <dt>Return code</dt>
               <dd>0</dd>
             </dl>
             <h2>Install dependencies</h2>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>opam list; echo; ulimit -Sv 4000000; timeout 60m opam install -y --deps-only coq-io-system.2.4.0</code></dd>
+              <dd><code>true</code></dd>
               <dt>Return code</dt>
               <dd>0</dd>
               <dt>Duration</dt>
-              <dd>37 s</dd>
+              <dd>0 s</dd>
             </dl>
             <h2>Install</h2>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>opam list; echo; ulimit -Sv 4000000; timeout 60m opam install -j1 -y -v coq-io-system.2.4.0</code></dd>
+              <dd><code>true</code></dd>
               <dt>Return code</dt>
-              <dd>7936</dd>
+              <dd>0</dd>
               <dt>Duration</dt>
-              <dd>3 s</dd>
-              <dt>Output</dt>
-              <dd><pre># Packages matching: installed
-# Name              # Installed       # Synopsis
-base-bigarray       base
-base-num            base              Num library distributed with the OCaml compiler
-base-threads        base
-base-unix           base
-camlp5              7.06.10-g84ce6cc4 Preprocessor-pretty-printer of OCaml
-conf-m4             1                 Virtual package relying on m4
-coq                 8.9.1             Formal proof management system
-coq-cunit           1.0.0             Convenience functions for unit testing in Coq
-coq-error-handlers  1.2.0             Simple and robust error handling functions
-coq-function-ninjas 1.0.0             Simple functional combinators
-coq-io              4.0.0             A library for effects in Coq
-coq-io-system-ocaml 2.3.0             Extraction to OCaml of system effects
-coq-list-plus       1.1.0             More functions on lists
-coq-list-string     2.1.2             Strings implemented as lists
-cppo                1.6.6             Code preprocessor like cpp for OCaml
-dune                1.11.0            Fast, portable and opinionated build system
-lwt                 4.2.1             Promises and event-driven I/O
-mmap                1.1.0             File mapping functionality
-num                 0                 The Num library for arbitrary-precision integer and rational arithmetic
-ocaml               4.05.0            The OCaml compiler (virtual package)
-ocaml-base-compiler 4.05.0            Official 4.05.0 release
-ocaml-config        1                 OCaml Switch Configuration
-ocamlbuild          0.14.0            OCamlbuild is a build system with builtin rules to easily build most OCaml projects.
-ocamlfind           1.8.0             A library manager for OCaml
-result              1.4               Compatibility Result module
-seq                 0.1               Compatibility package for OCaml&#39;s standard iterator type starting from 4.07.
-The following actions will be performed:
-  - install coq-io-system 2.4.0
-&lt;&gt;&lt;&gt; Gathering sources &gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;
-Processing  1/1: [coq-io-system.2.4.0: http]
-[coq-io-system.2.4.0] downloaded from https://github.com/coq-io/system/archive/2.4.0.tar.gz
-Processing  1/1:
-&lt;&gt;&lt;&gt; Processing actions &lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;
-Processing  1/2: [coq-io-system: ./configure.sh]
-+ /home/bench/.opam/opam-init/hooks/sandbox.sh &quot;build&quot; &quot;./configure.sh&quot; (CWD=/home/bench/.opam/ocaml-base-compiler.4.05.0/.opam-switch/build/coq-io-system.2.4.0)
-Processing  1/2: [coq-io-system: make]
-+ /home/bench/.opam/opam-init/hooks/sandbox.sh &quot;build&quot; &quot;make&quot; &quot;-j7&quot; (CWD=/home/bench/.opam/ocaml-base-compiler.4.05.0/.opam-switch/build/coq-io-system.2.4.0)
-- COQDEP VFILES
-- COQC src/System.v
-- COQC src/Extraction.v
-- File &quot;./src/Extraction.v&quot;, line 180, characters 8-19:
-- Error: The constructor @C.I.Ret (in type C.I.t) expects 1 argument.
-- 
-- Makefile:662: recipe for target &#39;src/Extraction.vo&#39; failed
-- make[1]: *** [src/Extraction.vo] Error 1
-- Makefile:326: recipe for target &#39;all&#39; failed
-- make: *** [all] Error 2
-[ERROR] The compilation of coq-io-system failed at &quot;/home/bench/.opam/opam-init/hooks/sandbox.sh build make -j7&quot;.
-#=== ERROR while compiling coq-io-system.2.4.0 ================================#
-# context              2.0.1 | linux/x86_64 | ocaml-base-compiler.4.05.0 | file:///home/bench/run/opam-coq-archive/released
-# path                 ~/.opam/ocaml-base-compiler.4.05.0/.opam-switch/build/coq-io-system.2.4.0
-# command              ~/.opam/opam-init/hooks/sandbox.sh build make -j7
-# exit-code            2
-# env-file             ~/.opam/log/coq-io-system-19525-6cc03f.env
-# output-file          ~/.opam/log/coq-io-system-19525-6cc03f.out
-### output ###
-# COQDEP VFILES
-# COQC src/System.v
-# COQC src/Extraction.v
-# File &quot;./src/Extraction.v&quot;, line 180, characters 8-19:
-# Error: The constructor @C.I.Ret (in type C.I.t) expects 1 argument.
-# 
-# Makefile:662: recipe for target &#39;src/Extraction.vo&#39; failed
-# make[1]: *** [src/Extraction.vo] Error 1
-# Makefile:326: recipe for target &#39;all&#39; failed
-# make: *** [all] Error 2
-&lt;&gt;&lt;&gt; Error report &lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;
-+- The following actions failed
-| - build coq-io-system 2.4.0
-+- 
-- No changes have been performed
-# Run eval $(opam env) to update the current shell environment
-&#39;opam install -j1 -y -v coq-io-system.2.4.0&#39; failed.
-</pre></dd>
+              <dd>0 s</dd>
             </dl>
             <h2>Installation size</h2>
             <p>No files were installed.</p>
