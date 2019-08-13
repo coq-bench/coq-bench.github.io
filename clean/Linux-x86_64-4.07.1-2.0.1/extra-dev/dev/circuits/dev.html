@@ -42,7 +42,7 @@
                 <span class="label label-danger">Error</span>
               </small>
             </h1>
-            <p><em><script>document.write(moment("2019-08-07 23:23:00 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2019-08-07 23:23:00 UTC)</em><p>
+            <p><em><script>document.write(moment("2019-08-13 10:42:07 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2019-08-13 10:42:07 UTC)</em><p>
             <h2>Context</h2>
             <pre># Packages matching: installed
 # Name              # Installed # Synopsis
@@ -108,7 +108,7 @@ url {
             <h2>Install dependencies</h2>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>opam list; echo; ulimit -Sv 4000000; timeout 60m opam install -y --deps-only coq-circuits.dev</code></dd>
+              <dd><code>opam list; echo; ulimit -Sv 4000000; timeout 60m opam install -y --deps-only coq-circuits.dev coq.dev</code></dd>
               <dt>Return code</dt>
               <dd>0</dd>
               <dt>Duration</dt>
@@ -117,11 +117,11 @@ url {
             <h2>Install</h2>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>opam list; echo; ulimit -Sv 4000000; timeout 60m opam install -j1 -y -v coq-circuits.dev</code></dd>
+              <dd><code>opam list; echo; ulimit -Sv 4000000; timeout 60m opam install -j1 -y -v coq-circuits.dev coq.dev</code></dd>
               <dt>Return code</dt>
               <dd>7936</dd>
               <dt>Duration</dt>
-              <dd>20 s</dd>
+              <dd>12 s</dd>
               <dt>Output</dt>
               <dd><pre># Packages matching: installed
 # Name              # Installed # Synopsis
@@ -135,6 +135,7 @@ ocaml               4.07.1      The OCaml compiler (virtual package)
 ocaml-base-compiler 4.07.1      Official release 4.07.1
 ocaml-config        1           OCaml Switch Configuration
 ocamlfind           1.8.1       A library manager for OCaml
+[NOTE] Package coq is already installed (current version is dev).
 The following actions will be performed:
   - install coq-circuits dev
 &lt;&gt;&lt;&gt; Gathering sources &gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;
@@ -146,8 +147,8 @@ Processing  1/2: [coq-circuits: coq_makefile Make]
 Processing  1/2: [coq-circuits: make]
 + /home/bench/.opam/opam-init/hooks/sandbox.sh &quot;build&quot; &quot;make&quot; &quot;-j7&quot; (CWD=/home/bench/.opam/ocaml-base-compiler.4.07.1/.opam-switch/build/coq-circuits.dev)
 - COQDEP VFILES
-- COQC GENE/Bool_compl.v
 - COQC GENE/Arith_compl.v
+- COQC GENE/Bool_compl.v
 - File &quot;./GENE/Bool_compl.v&quot;, line 38, characters 5-25:
 - Warning: Adding and removing hints in the core database implicitly is
 - deprecated. Please specify a hint database.
@@ -212,8 +213,8 @@ Processing  1/2: [coq-circuits: make]
 - Warning: Adding and removing hints in the core database implicitly is
 - deprecated. Please specify a hint database.
 - [implicit-core-hint-db,deprecated]
-- COQC ADDER/HalfAdder.v
 - COQC GENE/Lists_compl.v
+- COQC ADDER/HalfAdder.v
 - File &quot;./ADDER/HalfAdder.v&quot;, line 48, characters 5-37:
 - Warning: Adding and removing hints in the core database implicitly is
 - deprecated. Please specify a hint database.
@@ -223,6 +224,10 @@ Processing  1/2: [coq-circuits: make]
 - deprecated. Please specify a hint database.
 - [implicit-core-hint-db,deprecated]
 - File &quot;./ADDER/HalfAdder.v&quot;, line 57, characters 5-39:
+- Warning: Adding and removing hints in the core database implicitly is
+- deprecated. Please specify a hint database.
+- [implicit-core-hint-db,deprecated]
+- File &quot;./GENE/Lists_compl.v&quot;, line 56, characters 0-30:
 - Warning: Adding and removing hints in the core database implicitly is
 - deprecated. Please specify a hint database.
 - [implicit-core-hint-db,deprecated]
@@ -238,15 +243,11 @@ Processing  1/2: [coq-circuits: make]
 - Warning: Adding and removing hints in the core database implicitly is
 - deprecated. Please specify a hint database.
 - [implicit-core-hint-db,deprecated]
-- COQC ADDER/FullAdder.v
-- File &quot;./GENE/Lists_compl.v&quot;, line 56, characters 0-30:
-- Warning: Adding and removing hints in the core database implicitly is
-- deprecated. Please specify a hint database.
-- [implicit-core-hint-db,deprecated]
 - File &quot;./GENE/Lists_compl.v&quot;, line 74, characters 5-28:
 - Warning: Adding and removing hints in the core database implicitly is
 - deprecated. Please specify a hint database.
 - [implicit-core-hint-db,deprecated]
+- COQC ADDER/FullAdder.v
 - File &quot;./GENE/Lists_compl.v&quot;, line 130, characters 5-29:
 - Warning: Adding and removing hints in the core database implicitly is
 - deprecated. Please specify a hint database.
@@ -259,11 +260,12 @@ Processing  1/2: [coq-circuits: make]
 - Warning: Adding and removing hints in the core database implicitly is
 - deprecated. Please specify a hint database.
 - [implicit-core-hint-db,deprecated]
-- File &quot;./ADDER/FullAdder.v&quot;, line 51, characters 5-38:
+- File &quot;./GENE/Lists_compl.v&quot;, line 264, characters 0-23:
 - Warning: Adding and removing hints in the core database implicitly is
 - deprecated. Please specify a hint database.
 - [implicit-core-hint-db,deprecated]
-- File &quot;./GENE/Lists_compl.v&quot;, line 264, characters 0-23:
+- COQC GENE/Lists_field.v
+- File &quot;./ADDER/FullAdder.v&quot;, line 51, characters 5-38:
 - Warning: Adding and removing hints in the core database implicitly is
 - deprecated. Please specify a hint database.
 - [implicit-core-hint-db,deprecated]
@@ -283,7 +285,6 @@ Processing  1/2: [coq-circuits: make]
 - Warning: Adding and removing hints in the core database implicitly is
 - deprecated. Please specify a hint database.
 - [implicit-core-hint-db,deprecated]
-- COQC GENE/Lists_field.v
 - File &quot;./ADDER/FullAdder.v&quot;, line 100, characters 5-40:
 - Warning: Adding and removing hints in the core database implicitly is
 - deprecated. Please specify a hint database.
@@ -436,10 +437,10 @@ Processing  1/2: [coq-circuits: make]
 - [implicit-core-hint-db,deprecated]
 - COQC MULTIPLIER/LemPrelim.v
 - COQC ADDER/IncrDecr.v
-- COQC BLOCK/Fill_defs.v
 - COQC MULTIPLIER/MultSeq.v
-- COQC BLOCK/Fill_impl.v
+- COQC BLOCK/Fill_defs.v
 - COQC BLOCK/Fill_spec.v
+- COQC BLOCK/Fill_impl.v
 - File &quot;./BLOCK/Fill_spec.v&quot;, line 52, characters 0-1331:
 - Warning: Not a fully mutually defined fixpoint
 - (e.g., di depends on cx but not conversely).
@@ -518,8 +519,8 @@ Processing  1/2: [coq-circuits: make install]
 # path                 ~/.opam/ocaml-base-compiler.4.07.1/.opam-switch/build/coq-circuits.dev
 # command              ~/.opam/opam-init/hooks/sandbox.sh build make install
 # exit-code            2
-# env-file             ~/.opam/log/coq-circuits-836-6cc03f.env
-# output-file          ~/.opam/log/coq-circuits-836-6cc03f.out
+# env-file             ~/.opam/log/coq-circuits-18763-6cc03f.env
+# output-file          ~/.opam/log/coq-circuits-18763-6cc03f.out
 ### output ###
 # [...]
 # install: cannot create directory &#39;/home/bench/.opam/ocaml-base-compiler.4.07.1/lib/coq//user-contrib/Circuits&#39;: Read-only file system
@@ -540,7 +541,7 @@ Processing  1/2: [coq-circuits: make install]
 +- 
 - No changes have been performed
 # Run eval $(opam env) to update the current shell environment
-&#39;opam install -j1 -y -v coq-circuits.dev&#39; failed.
+&#39;opam install -j1 -y -v coq-circuits.dev coq.dev&#39; failed.
 </pre></dd>
             </dl>
             <h2>Installation size</h2>
