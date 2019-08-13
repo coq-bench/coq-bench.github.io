@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>bdds: Black list</title>
+    <link rel="shortcut icon" type="image/png" href="../../../../../favicon.png" />
+    <link href="../../../../../bootstrap.min.css" rel="stylesheet">
+    <link href="../../../../../bootstrap-custom.css" rel="stylesheet">
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+    <script src="../../../../../moment.min.js"></script>
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="container">
+      <div class="navbar navbar-default" role="navigation">
+        <div class="container-fluid">
+          <div class="navbar-header">
+            <a class="navbar-brand" href="../../../../.."><i class="fa fa-lg fa-flag-checkered"></i> Coq bench</a>
+          </div>
+          <div id="navbar" class="collapse navbar-collapse">
+            <ul class="nav navbar-nav">
+              <li><a href="../..">clean / released</a></li>
+              <li class="active"><a href="">8.5.1 / bdds - 8.5.0</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="article">
+        <div class="row">
+          <div class="col-md-12">
+            <a href="../..">« Up</a>
+            <h1>
+              bdds
+              <small>
+                8.5.0
+                <span class="label label-default">Black list</span>
+              </small>
+            </h1>
+            <p><em><script>document.write(moment("2019-08-13 06:24:47 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2019-08-13 06:24:47 UTC)</em><p>
+            <div class="alert alert-info" role="alert">
+              <p>This result is black-listed as it is considered as too hard to reproduce / to solve. If you find a way to fix this package, please make a pull-request to <a class="alert-link" href="https://github.com/coq/opam-coq-archive">github.com/coq/opam-coq-archive</a>. The list of black-listed packages is in <a class="alert-link" href="https://github.com/coq-bench/make-html/blob/master/black_list.rb">black_list.rb</a>.</p>
+            </div>
+            <h2>Context</h2>
+            <pre># Packages matching: installed
+# Name              # Installed # Synopsis
+base-bigarray       base
+base-num            base        Num library distributed with the OCaml compiler
+base-threads        base
+base-unix           base
+camlp5              7.08        Preprocessor-pretty-printer of OCaml
+coq                 8.5.1       Formal proof management system.
+num                 0           The Num library for arbitrary-precision integer and rational arithmetic
+ocaml               4.05.0      The OCaml compiler (virtual package)
+ocaml-base-compiler 4.05.0      Official 4.05.0 release
+ocaml-config        1           OCaml Switch Configuration
+# opam file:
+opam-version: &quot;2.0&quot;
+maintainer: &quot;matej.kosik@inria.fr&quot;
+homepage: &quot;https://github.com/coq-contribs/bdds&quot;
+license: &quot;LGPL 2&quot;
+build: [make &quot;-j%{jobs}%&quot;]
+install: [make &quot;install&quot;]
+remove: [&quot;rm&quot; &quot;-R&quot; &quot;%{lib}%/coq/user-contrib/BDDs&quot;]
+depends: [
+  &quot;ocaml&quot;
+  &quot;coq&quot; {&gt;= &quot;8.5&quot; &amp; &lt; &quot;8.6~&quot;}
+  &quot;coq-int-map&quot; {= &quot;8.5.0&quot;}
+]
+tags: [ &quot;keyword:binary decision diagrams&quot; &quot;keyword:classical logic&quot; &quot;keyword:propositional logic&quot; &quot;keyword:validity&quot; &quot;keyword:satisfiability&quot; &quot;keyword:model checking&quot; &quot;keyword:reflection&quot; &quot;category:Computer Science/Decision Procedures and Certified Algorithms/Decision procedures&quot; &quot;category:Miscellaneous/Extracted Programs/Decision procedures&quot; &quot;date:May-July 1999&quot; ]
+authors: [ &quot;Kumar Neeraj Verma &lt;&gt;&quot; ]
+bug-reports: &quot;https://github.com/coq-contribs/bdds/issues&quot;
+dev-repo: &quot;git+https://github.com/coq-contribs/bdds.git&quot;
+synopsis: &quot;BDD algorithms and proofs in Coq, by reflection&quot;
+description: &quot;&quot;&quot;
+Provides BDD algorithms running under Coq.
+(BDD are Binary Decision Diagrams.)
+Allows one to do classical validity checking by
+reflection in Coq using BDDs, can also be used
+to get certified BDD algorithms by extraction.
+First step towards actual symbolic model-checkers
+in Coq. See file README for operation.&quot;&quot;&quot;
+flags: light-uninstall
+url {
+  src: &quot;https://github.com/coq-contribs/bdds/archive/v8.5.0.tar.gz&quot;
+  checksum: &quot;md5=272a58a6de30a9ebcba234ab5c9e8661&quot;
+}
+</pre>
+            <h2>Lint</h2>
+            <dl class="dl-horizontal">
+              <dt>Command</dt>
+              <dd><code>true</code></dd>
+              <dt>Return code</dt>
+              <dd>0</dd>
+            </dl>
+            <h2>Dry install</h2>
+            <p>Dry install with the current Coq version:</p>
+            <dl class="dl-horizontal">
+              <dt>Command</dt>
+              <dd><code>opam install -y --show-action coq-bdds.8.5.0 coq.8.5.1</code></dd>
+              <dt>Return code</dt>
+              <dd>0</dd>
+            </dl>
+            <p>Dry install without Coq/switch base, to test if the problem was incompatibility with the current Coq/OCaml version:</p>
+            <dl class="dl-horizontal">
+              <dt>Command</dt>
+              <dd><code>true</code></dd>
+              <dt>Return code</dt>
+              <dd>0</dd>
+            </dl>
+            <h2>Install dependencies</h2>
+            <dl class="dl-horizontal">
+              <dt>Command</dt>
+              <dd><code>opam list; echo; ulimit -Sv 4000000; timeout 60m opam install -y --deps-only coq-bdds.8.5.0 coq.8.5.1</code></dd>
+              <dt>Return code</dt>
+              <dd>0</dd>
+              <dt>Duration</dt>
+              <dd>16 s</dd>
+            </dl>
+            <h2>Install</h2>
+            <dl class="dl-horizontal">
+              <dt>Command</dt>
+              <dd><code>opam list; echo; ulimit -Sv 4000000; timeout 60m opam install -j1 -y -v coq-bdds.8.5.0 coq.8.5.1</code></dd>
+              <dt>Return code</dt>
+              <dd>7936</dd>
+              <dt>Duration</dt>
+              <dd>38 s</dd>
+              <dt>Output</dt>
+              <dd><pre># Packages matching: installed
+# Name              # Installed # Synopsis
+base-bigarray       base
+base-num            base        Num library distributed with the OCaml compiler
+base-threads        base
+base-unix           base
+camlp5              7.08        Preprocessor-pretty-printer of OCaml
+coq                 8.5.1       Formal proof management system.
+coq-int-map         8.5.0       Maps indexed by binary integers : IntMap
+num                 0           The Num library for arbitrary-precision integer and rational arithmetic
+ocaml               4.05.0      The OCaml compiler (virtual package)
+ocaml-base-compiler 4.05.0      Official 4.05.0 release
+ocaml-config        1           OCaml Switch Configuration
+[NOTE] Package coq is already installed (current version is 8.5.1).
+The following actions will be performed:
+  - install coq-bdds 8.5.0
+&lt;&gt;&lt;&gt; Gathering sources &gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;
+Processing  1/1: [coq-bdds.8.5.0: http]
+[coq-bdds.8.5.0] downloaded from https://github.com/coq-contribs/bdds/archive/v8.5.0.tar.gz
+Processing  1/1:
+&lt;&gt;&lt;&gt; Processing actions &lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;
+Processing  1/2: [coq-bdds: make]
++ /home/bench/.opam/opam-init/hooks/sandbox.sh &quot;build&quot; &quot;make&quot; &quot;-j7&quot; (CWD=/home/bench/.opam/ocaml-base-compiler.4.05.0/.opam-switch/build/coq-bdds.8.5.0)
+- make: Circular Make &lt;- Makefile.coq dependency dropped.
+- coq_makefile -f Make -o Makefile.coq -R `coqtop -where`/user-contrib/IntMap IntMap
+- Warning: install rule assumes that -R/-Q . _ is the only -R/-Q option
+- Warning: install rule assumes that -R/-Q . _ is the only -R/-Q option
+- Warning: -R/-Q options don&#39;t have a correct common prefix,
+-  install-doc will put anything in $INSTALLDEFAULTROOT
+- make -f Makefile.coq Makefile
+- make[1]: Entering directory &#39;/home/bench/.opam/ocaml-base-compiler.4.05.0/.opam-switch/build/coq-bdds.8.5.0&#39;
+- &quot;coqdep&quot; -c -R &quot;.&quot; BDDs -R &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq/user-contrib/IntMap&quot; IntMap &quot;extract.v&quot; &gt; &quot;extract.v.d&quot; || ( RV=$?; rm -f &quot;extract.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; BDDs -R &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq/user-contrib/IntMap&quot; IntMap &quot;werner.v&quot; &gt; &quot;werner.v.d&quot; || ( RV=$?; rm -f &quot;werner.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; BDDs -R &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq/user-contrib/IntMap&quot; IntMap &quot;u.v&quot; &gt; &quot;u.v.d&quot; || ( RV=$?; rm -f &quot;u.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; BDDs -R &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq/user-contrib/IntMap&quot; IntMap &quot;tauto.v&quot; &gt; &quot;tauto.v.d&quot; || ( RV=$?; rm -f &quot;tauto.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; BDDs -R &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq/user-contrib/IntMap&quot; IntMap &quot;rip08.v&quot; &gt; &quot;rip08.v.d&quot; || ( RV=$?; rm -f &quot;rip08.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; BDDs -R &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq/user-contrib/IntMap&quot; IntMap &quot;rip06.v&quot; &gt; &quot;rip06.v.d&quot; || ( RV=$?; rm -f &quot;rip06.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; BDDs -R &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq/user-contrib/IntMap&quot; IntMap &quot;pigtest.v&quot; &gt; &quot;pigtest.v.d&quot; || ( RV=$?; rm -f &quot;pigtest.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; BDDs -R &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq/user-contrib/IntMap&quot; IntMap &quot;mul08.v&quot; &gt; &quot;mul08.v.d&quot; || ( RV=$?; rm -f &quot;mul08.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; BDDs -R &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq/user-contrib/IntMap&quot; IntMap &quot;mul07.v&quot; &gt; &quot;mul07.v.d&quot; || ( RV=$?; rm -f &quot;mul07.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; BDDs -R &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq/user-contrib/IntMap&quot; IntMap &quot;mul06.v&quot; &gt; &quot;mul06.v.d&quot; || ( RV=$?; rm -f &quot;mul06.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; BDDs -R &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq/user-contrib/IntMap&quot; IntMap &quot;imecaux.v&quot; &gt; &quot;imecaux.v.d&quot; || ( RV=$?; rm -f &quot;imecaux.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; BDDs -R &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq/user-contrib/IntMap&quot; IntMap &quot;d3.v&quot; &gt; &quot;d3.v.d&quot; || ( RV=$?; rm -f &quot;d3.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; BDDs -R &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq/user-contrib/IntMap&quot; IntMap &quot;bdds.v&quot; &gt; &quot;bdds.v.d&quot; || ( RV=$?; rm -f &quot;bdds.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; BDDs -R &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq/user-contrib/IntMap&quot; IntMap &quot;bdd9.v&quot; &gt; &quot;bdd9.v.d&quot; || ( RV=$?; rm -f &quot;bdd9.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; BDDs -R &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq/user-contrib/IntMap&quot; IntMap &quot;bdd8.v&quot; &gt; &quot;bdd8.v.d&quot; || ( RV=$?; rm -f &quot;bdd8.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; BDDs -R &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq/user-contrib/IntMap&quot; IntMap &quot;bdd7.v&quot; &gt; &quot;bdd7.v.d&quot; || ( RV=$?; rm -f &quot;bdd7.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; BDDs -R &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq/user-contrib/IntMap&quot; IntMap &quot;bdd6.v&quot; &gt; &quot;bdd6.v.d&quot; || ( RV=$?; rm -f &quot;bdd6.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; BDDs -R &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq/user-contrib/IntMap&quot; IntMap &quot;bdd5_2.v&quot; &gt; &quot;bdd5_2.v.d&quot; || ( RV=$?; rm -f &quot;bdd5_2.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; BDDs -R &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq/user-contrib/IntMap&quot; IntMap &quot;bdd5_1.v&quot; &gt; &quot;bdd5_1.v.d&quot; || ( RV=$?; rm -f &quot;bdd5_1.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; BDDs -R &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq/user-contrib/IntMap&quot; IntMap &quot;bdd4.v&quot; &gt; &quot;bdd4.v.d&quot; || ( RV=$?; rm -f &quot;bdd4.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; BDDs -R &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq/user-contrib/IntMap&quot; IntMap &quot;bdd3.v&quot; &gt; &quot;bdd3.v.d&quot; || ( RV=$?; rm -f &quot;bdd3.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; BDDs -R &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq/user-contrib/IntMap&quot; IntMap &quot;bdd2.v&quot; &gt; &quot;bdd2.v.d&quot; || ( RV=$?; rm -f &quot;bdd2.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; BDDs -R &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq/user-contrib/IntMap&quot; IntMap &quot;bdd11.v&quot; &gt; &quot;bdd11.v.d&quot; || ( RV=$?; rm -f &quot;bdd11.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; BDDs -R &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq/user-contrib/IntMap&quot; IntMap &quot;bdd10.v&quot; &gt; &quot;bdd10.v.d&quot; || ( RV=$?; rm -f &quot;bdd10.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; BDDs -R &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq/user-contrib/IntMap&quot; IntMap &quot;bdd1.v&quot; &gt; &quot;bdd1.v.d&quot; || ( RV=$?; rm -f &quot;bdd1.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; BDDs -R &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq/user-contrib/IntMap&quot; IntMap &quot;BDDvar_ad_nat.v&quot; &gt; &quot;BDDvar_ad_nat.v.d&quot; || ( RV=$?; rm -f &quot;BDDvar_ad_nat.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; BDDs -R &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq/user-contrib/IntMap&quot; IntMap &quot;BDDdummy_lemma_4.v&quot; &gt; &quot;BDDdummy_lemma_4.v.d&quot; || ( RV=$?; rm -f &quot;BDDdummy_lemma_4.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; BDDs -R &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq/user-contrib/IntMap&quot; IntMap &quot;BDDdummy_lemma_3.v&quot; &gt; &quot;BDDdummy_lemma_3.v.d&quot; || ( RV=$?; rm -f &quot;BDDdummy_lemma_3.v.d&quot;; exit ${RV} )
+- &quot;coqdep&quot; -c -R &quot;.&quot; BDDs -R &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq/user-contrib/IntMap&quot; IntMap &quot;BDDdummy_lemma_2.v&quot; &gt; &quot;BDDdummy_lemma_2.v.d&quot; || ( RV=$?; rm -f &quot;BDDdummy_lemma_2.v.d&quot;; exit ${RV} )
+- make[1]: Nothing to be done for &#39;Makefile&#39;.
+- make[1]: Leaving directory &#39;/home/bench/.opam/ocaml-base-compiler.4.05.0/.opam-switch/build/coq-bdds.8.5.0&#39;
+- make -f Makefile.coq all
+- make[1]: Entering directory &#39;/home/bench/.opam/ocaml-base-compiler.4.05.0/.opam-switch/build/coq-bdds.8.5.0&#39;
+- &quot;coqc&quot;  -q  -R &quot;.&quot; BDDs -R &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq/user-contrib/IntMap&quot; IntMap   BDDvar_ad_nat
+- &quot;coqc&quot;  -q  -R &quot;.&quot; BDDs -R &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq/user-contrib/IntMap&quot; IntMap   bdd1
+- &quot;coqc&quot;  -q  -R &quot;.&quot; BDDs -R &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq/user-contrib/IntMap&quot; IntMap   bdd2
+- &quot;coqc&quot;  -q  -R &quot;.&quot; BDDs -R &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq/user-contrib/IntMap&quot; IntMap   bdd3
+- &quot;coqc&quot;  -q  -R &quot;.&quot; BDDs -R &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq/user-contrib/IntMap&quot; IntMap   bdd4
+- &quot;coqc&quot;  -q  -R &quot;.&quot; BDDs -R &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq/user-contrib/IntMap&quot; IntMap   bdd5_1
+- &quot;coqc&quot;  -q  -R &quot;.&quot; BDDs -R &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq/user-contrib/IntMap&quot; IntMap   bdd5_2
+- &quot;coqc&quot;  -q  -R &quot;.&quot; BDDs -R &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq/user-contrib/IntMap&quot; IntMap   bdd6
+- &quot;coqc&quot;  -q  -R &quot;.&quot; BDDs -R &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq/user-contrib/IntMap&quot; IntMap   bdd7
+- &quot;coqc&quot;  -q  -R &quot;.&quot; BDDs -R &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq/user-contrib/IntMap&quot; IntMap   BDDdummy_lemma_2
+- &quot;coqc&quot;  -q  -R &quot;.&quot; BDDs -R &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq/user-contrib/IntMap&quot; IntMap   BDDdummy_lemma_3
+- &quot;coqc&quot;  -q  -R &quot;.&quot; BDDs -R &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq/user-contrib/IntMap&quot; IntMap   BDDdummy_lemma_4
+- &quot;coqc&quot;  -q  -R &quot;.&quot; BDDs -R &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq/user-contrib/IntMap&quot; IntMap   bdd8
+- &quot;coqc&quot;  -q  -R &quot;.&quot; BDDs -R &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq/user-contrib/IntMap&quot; IntMap   bdd9
+- &quot;coqc&quot;  -q  -R &quot;.&quot; BDDs -R &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq/user-contrib/IntMap&quot; IntMap   bdd10
+- &quot;coqc&quot;  -q  -R &quot;.&quot; BDDs -R &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq/user-contrib/IntMap&quot; IntMap   bdd11
+- &quot;coqc&quot;  -q  -R &quot;.&quot; BDDs -R &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq/user-contrib/IntMap&quot; IntMap   tauto
+- &quot;coqc&quot;  -q  -R &quot;.&quot; BDDs -R &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq/user-contrib/IntMap&quot; IntMap   bdds
+- &quot;coqc&quot;  -q  -R &quot;.&quot; BDDs -R &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq/user-contrib/IntMap&quot; IntMap   d3
+- &quot;coqc&quot;  -q  -R &quot;.&quot; BDDs -R &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq/user-contrib/IntMap&quot; IntMap   imecaux
+- &quot;coqc&quot;  -q  -R &quot;.&quot; BDDs -R &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq/user-contrib/IntMap&quot; IntMap   mul06
+- &quot;coqc&quot;  -q  -R &quot;.&quot; BDDs -R &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq/user-contrib/IntMap&quot; IntMap   mul07
+- &quot;coqc&quot;  -q  -R &quot;.&quot; BDDs -R &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq/user-contrib/IntMap&quot; IntMap   mul08
+- &quot;coqc&quot;  -q  -R &quot;.&quot; BDDs -R &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq/user-contrib/IntMap&quot; IntMap   pigtest
+- &quot;coqc&quot;  -q  -R &quot;.&quot; BDDs -R &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq/user-contrib/IntMap&quot; IntMap   rip06
+- &quot;coqc&quot;  -q  -R &quot;.&quot; BDDs -R &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq/user-contrib/IntMap&quot; IntMap   rip08
+- &quot;coqc&quot;  -q  -R &quot;.&quot; BDDs -R &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq/user-contrib/IntMap&quot; IntMap   u
+- &quot;coqc&quot;  -q  -R &quot;.&quot; BDDs -R &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq/user-contrib/IntMap&quot; IntMap   werner
+- &quot;coqc&quot;  -q  -R &quot;.&quot; BDDs -R &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq/user-contrib/IntMap&quot; IntMap   extract
+- (make -C extraction all)
+- make[2]: Entering directory &#39;/home/bench/.opam/ocaml-base-compiler.4.05.0/.opam-switch/build/coq-bdds.8.5.0/extraction&#39;
+- ocamlopt -c dyade.mli
+- ocamlyacc parser.mly
+- ocamlopt -c dyade.ml	 
+- ocamllex lexer.mll
+- ocamlyacc parser.mly
+- 22 states, 358 transitions, table size 1564 bytes
+- ocamlopt -c parser.ml	 
+- ocamlopt -c parser.mli
+- File &quot;parser.ml&quot;, line 1:
+- Error: Could not find the .cmi file for interface parser.mli.
+- Makefile:34: recipe for target &#39;parser.cmx&#39; failed
+- make[2]: *** [parser.cmx] Error 2
+- make[2]: *** Waiting for unfinished jobs....
+- make[2]: Leaving directory &#39;/home/bench/.opam/ocaml-base-compiler.4.05.0/.opam-switch/build/coq-bdds.8.5.0/extraction&#39;
+- Makefile.coq:208: recipe for target &#39;extraction/dyade&#39; failed
+- make[1]: *** [extraction/dyade] Error 2
+- make[1]: *** Waiting for unfinished jobs....
+- make[1]: Leaving directory &#39;/home/bench/.opam/ocaml-base-compiler.4.05.0/.opam-switch/build/coq-bdds.8.5.0&#39;
+- Makefile:2: recipe for target &#39;all&#39; failed
+- make: *** [all] Error 2
+[ERROR] The compilation of coq-bdds failed at &quot;/home/bench/.opam/opam-init/hooks/sandbox.sh build make -j7&quot;.
+#=== ERROR while compiling coq-bdds.8.5.0 =====================================#
+# context              2.0.1 | linux/x86_64 | ocaml-base-compiler.4.05.0 | file:///home/bench/run/opam-coq-archive/released
+# path                 ~/.opam/ocaml-base-compiler.4.05.0/.opam-switch/build/coq-bdds.8.5.0
+# command              ~/.opam/opam-init/hooks/sandbox.sh build make -j7
+# exit-code            2
+# env-file             ~/.opam/log/coq-bdds-25000-d0f245.env
+# output-file          ~/.opam/log/coq-bdds-25000-d0f245.out
+### output ###
+# [...]
+# File &quot;parser.ml&quot;, line 1:
+# Error: Could not find the .cmi file for interface parser.mli.
+# Makefile:34: recipe for target &#39;parser.cmx&#39; failed
+# make[2]: *** [parser.cmx] Error 2
+# make[2]: *** Waiting for unfinished jobs....
+# make[2]: Leaving directory &#39;/home/bench/.opam/ocaml-base-compiler.4.05.0/.opam-switch/build/coq-bdds.8.5.0/extraction&#39;
+# Makefile.coq:208: recipe for target &#39;extraction/dyade&#39; failed
+# make[1]: *** [extraction/dyade] Error 2
+# make[1]: *** Waiting for unfinished jobs....
+# make[1]: Leaving directory &#39;/home/bench/.opam/ocaml-base-compiler.4.05.0/.opam-switch/build/coq-bdds.8.5.0&#39;
+# Makefile:2: recipe for target &#39;all&#39; failed
+# make: *** [all] Error 2
+&lt;&gt;&lt;&gt; Error report &lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;
++- The following actions failed
+| - build coq-bdds 8.5.0
++- 
+- No changes have been performed
+# Run eval $(opam env) to update the current shell environment
+&#39;opam install -j1 -y -v coq-bdds.8.5.0 coq.8.5.1&#39; failed.
+</pre></dd>
+            </dl>
+            <h2>Installation size</h2>
+            <p>No files were installed.</p>
+            <h2>Uninstall</h2>
+            <dl class="dl-horizontal">
+              <dt>Command</dt>
+              <dd><code>true</code></dd>
+              <dt>Return code</dt>
+              <dd>0</dd>
+              <dt>Missing removes</dt>
+              <dd>
+                none
+              </dd>
+              <dt>Wrong removes</dt>
+              <dd>
+                none
+              </dd>
+            </dl>
+          </div>
+        </div>
+      </div>
+      <hr/>
+      <div class="footer">
+        <p class="text-center">
+          <small>Sources are on <a href="https://github.com/coq-bench">GitHub</a>. © Guillaume Claret.</small>
+        </p>
+      </div>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="../../../../../bootstrap.min.js"></script>
+  </body>
+</html>
