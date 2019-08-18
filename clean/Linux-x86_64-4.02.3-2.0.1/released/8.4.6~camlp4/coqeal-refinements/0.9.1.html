@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>coqeal-refinements: Error with dependencies</title>
+    <title>coqeal-refinements: Not compatible</title>
     <link rel="shortcut icon" type="image/png" href="../../../../../favicon.png" />
     <link href="../../../../../bootstrap.min.css" rel="stylesheet">
     <link href="../../../../../bootstrap-custom.css" rel="stylesheet">
@@ -39,10 +39,10 @@
               coqeal-refinements
               <small>
                 0.9.1
-                <span class="label label-warning">Error with dependencies</span>
+                <span class="label label-info">Not compatible</span>
               </small>
             </h1>
-            <p><em><script>document.write(moment("2019-08-08 00:27:35 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2019-08-08 00:27:35 UTC)</em><p>
+            <p><em><script>document.write(moment("2019-08-17 07:31:38 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2019-08-17 07:31:38 UTC)</em><p>
             <h2>Context</h2>
             <pre># Packages matching: installed
 # Name              # Installed  # Synopsis
@@ -98,80 +98,32 @@ url {
               <dt>Command</dt>
               <dd><code>opam install -y --show-action coq-coqeal-refinements.0.9.1 coq.8.4.6~camlp4</code></dd>
               <dt>Return code</dt>
-              <dd>0</dd>
+              <dd>5120</dd>
+              <dt>Output</dt>
+              <dd><pre>[NOTE] Package coq is already installed (current version is 8.4.6~camlp4).
+The following dependencies couldn&#39;t be met:
+  - coq-coqeal-refinements -&gt; coq-coqeal-theory -&gt; coq-mathcomp-ssreflect -&gt; coq != 8.4.6~camlp4 -&gt; ocaml &lt; 4.02.0
+      base of this switch (use `--unlock-base&#39; to force)
+Your request can&#39;t be satisfied:
+  - No available version of coq satisfies the constraints
+No solution found, exiting
+</pre></dd>
             </dl>
             <p>Dry install without Coq/switch base, to test if the problem was incompatibility with the current Coq/OCaml version:</p>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>true</code></dd>
+              <dd><code>opam remove -y coq; opam install -y --show-action --unlock-base coq-coqeal-refinements.0.9.1</code></dd>
               <dt>Return code</dt>
               <dd>0</dd>
             </dl>
             <h2>Install dependencies</h2>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>opam list; echo; ulimit -Sv 4000000; timeout 60m opam install -y --deps-only coq-coqeal-refinements.0.9.1</code></dd>
+              <dd><code>true</code></dd>
               <dt>Return code</dt>
-              <dd>7936</dd>
+              <dd>0</dd>
               <dt>Duration</dt>
-              <dd>8 s</dd>
-              <dt>Output</dt>
-              <dd><pre># Packages matching: installed
-# Name              # Installed  # Synopsis
-base-bigarray       base
-base-num            base         Num library distributed with the OCaml compiler
-base-ocamlbuild     base         OCamlbuild binary and libraries distributed with the OCaml compiler
-base-threads        base
-base-unix           base
-camlp4              4.02+7       Camlp4 is a system for writing extensible parsers for programming languages
-conf-which          1            Virtual package relying on which
-coq                 8.4.6~camlp4 Formal proof management system.
-num                 0            The Num library for arbitrary-precision integer and rational arithmetic
-ocaml               4.02.3       The OCaml compiler (virtual package)
-ocaml-base-compiler 4.02.3       Official 4.02.3 release
-ocaml-config        1            OCaml Switch Configuration
-ocamlbuild          0            Build system distributed with the OCaml compiler since OCaml 3.10.0
-The following actions will be performed:
-  - install coq-mathcomp-ssreflect 1.6.1
-  - install coq-mathcomp-fingroup  1.6.1
-  - install coq-mathcomp-algebra   1.6.1
-  - install coq-coqeal-theory      0.9.1
-===== 4 to install =====
-&lt;&gt;&lt;&gt; Gathering sources &gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;
-[coq-coqeal-theory.0.9.1] downloaded from https://github.com/Barbichu/CoqEAL/raw/master/release/CoqEAL_theory.0.9.1.tgz
-[coq-mathcomp-fingroup.1.6.1] downloaded from http://github.com/math-comp/math-comp/archive/mathcomp-1.6.1.tar.gz
-[coq-mathcomp-algebra.1.6.1] downloaded from http://github.com/math-comp/math-comp/archive/mathcomp-1.6.1.tar.gz
-[coq-mathcomp-ssreflect.1.6.1] downloaded from http://github.com/math-comp/math-comp/archive/mathcomp-1.6.1.tar.gz
-&lt;&gt;&lt;&gt; Processing actions &lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;
-[ERROR] The compilation of coq-mathcomp-ssreflect failed at &quot;/home/bench/.opam/opam-init/hooks/sandbox.sh build make -C mathcomp/ssreflect -j 7&quot;.
-#=== ERROR while compiling coq-mathcomp-ssreflect.1.6.1 =======================#
-# context              2.0.1 | linux/x86_64 | ocaml-base-compiler.4.02.3 | file:///home/bench/run/opam-coq-archive/released
-# path                 ~/.opam/ocaml-base-compiler.4.02.3/.opam-switch/build/coq-mathcomp-ssreflect.1.6.1
-# command              ~/.opam/opam-init/hooks/sandbox.sh build make -C mathcomp/ssreflect -j 7
-# exit-code            2
-# env-file             ~/.opam/log/coq-mathcomp-ssreflect-12921-062a54.env
-# output-file          ~/.opam/log/coq-mathcomp-ssreflect-12921-062a54.out
-### output ###
-# [...]
-# ocamlc -c -rectypes  -I . -I &quot;/home/bench/.opam/ocaml-base-compiler.4.02.3/lib/coq/kernel&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.02.3/lib/coq/lib&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.02.3/lib/coq/library&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.02.3/lib/coq/parsing&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.02.3/lib/coq/pretyping&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.[...]
-# File &quot;ssrmatching.ml4&quot;, line 909, characters 0-7:
-# Parse error: Deprecated syntax, use EXTEND MyGramModule ... END instead
-# File &quot;ssrmatching.ml4&quot;, line 1:
-# Error: Error while running external preprocessor
-# Command line: &quot;/home/bench/.opam/ocaml-base-compiler.4.02.3/bin/camlp4o&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.02.3/lib/ocaml/&quot; -I . -I &quot;/home/bench/.opam/ocaml-base-compiler.4.02.3/lib/coq/kernel&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.02.3/lib/coq/lib&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.02.3/lib/coq/library&quot; -I &quot;/home/bench/.opam/ocaml-base-compiler.4.02.3/lib/coq/parsin[...]
-# 
-# Makefile.coq:314: recipe for target &#39;ssrmatching.cmo&#39; failed
-# make[1]: *** [ssrmatching.cmo] Error 2
-# Makefile:24: recipe for target &#39;all&#39; failed
-# make: *** [all] Error 2
-# make: Leaving directory &#39;/home/bench/.opam/ocaml-base-compiler.4.02.3/.opam-switch/build/coq-mathcomp-ssreflect.1.6.1/mathcomp/ssreflect&#39;
-&lt;&gt;&lt;&gt; Error report &lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;
-+- The following actions failed
-| - build coq-mathcomp-ssreflect 1.6.1
-+- 
-- No changes have been performed
-# Run eval $(opam env) to update the current shell environment
-</pre></dd>
+              <dd>0 s</dd>
             </dl>
             <h2>Install</h2>
             <dl class="dl-horizontal">
