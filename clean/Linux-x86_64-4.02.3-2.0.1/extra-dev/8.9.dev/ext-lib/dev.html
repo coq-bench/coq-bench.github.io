@@ -42,7 +42,7 @@
                 <span class="label label-danger">Error</span>
               </small>
             </h1>
-            <p><em><script>document.write(moment("2019-08-09 04:15:16 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2019-08-09 04:15:16 UTC)</em><p>
+            <p><em><script>document.write(moment("2019-08-25 07:11:42 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2019-08-25 07:11:42 UTC)</em><p>
             <h2>Context</h2>
             <pre># Packages matching: installed
 # Name              # Installed # Synopsis
@@ -111,7 +111,7 @@ url {
             <h2>Install dependencies</h2>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>opam list; echo; ulimit -Sv 4000000; timeout 60m opam install -y --deps-only coq-ext-lib.dev</code></dd>
+              <dd><code>opam list; echo; ulimit -Sv 4000000; timeout 60m opam install -y --deps-only coq-ext-lib.dev coq.8.9.dev</code></dd>
               <dt>Return code</dt>
               <dd>0</dd>
               <dt>Duration</dt>
@@ -120,11 +120,11 @@ url {
             <h2>Install</h2>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>opam list; echo; ulimit -Sv 4000000; timeout 60m opam install -j1 -y -v coq-ext-lib.dev</code></dd>
+              <dd><code>opam list; echo; ulimit -Sv 4000000; timeout 1h opam install -y coq-ext-lib.dev coq.8.9.dev</code></dd>
               <dt>Return code</dt>
               <dd>7936</dd>
               <dt>Duration</dt>
-              <dd>14 s</dd>
+              <dd>15 s</dd>
               <dt>Output</dt>
               <dd><pre># Packages matching: installed
 # Name              # Installed # Synopsis
@@ -141,56 +141,29 @@ ocaml               4.02.3      The OCaml compiler (virtual package)
 ocaml-base-compiler 4.02.3      Official 4.02.3 release
 ocaml-config        1           OCaml Switch Configuration
 ocamlfind           1.8.1       A library manager for OCaml
+[NOTE] Package coq is already installed (current version is 8.9.dev).
 The following actions will be performed:
   - install coq-ext-lib dev
 &lt;&gt;&lt;&gt; Gathering sources &gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;
-Processing  1/1: [coq-ext-lib.dev: git]
 [coq-ext-lib.dev] synchronised from git+https://github.com/coq-ext-lib/coq-ext-lib
 &lt;&gt;&lt;&gt; Processing actions &lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;
-Processing  1/2: [coq-ext-lib: make]
-+ /home/bench/.opam/opam-init/hooks/sandbox.sh &quot;build&quot; &quot;make&quot; &quot;-j7&quot; (CWD=/home/bench/.opam/ocaml-base-compiler.4.02.3/.opam-switch/build/coq-ext-lib.dev)
-- coq_makefile -f _CoqProject -o Makefile.coq
-- make -f Makefile.coq
-- make[1]: Entering directory &#39;/home/bench/.opam/ocaml-base-compiler.4.02.3/.opam-switch/build/coq-ext-lib.dev&#39;
-- COQDEP VFILES
-- COQC theories/Core/RelDec.v
-- COQC theories/Tactics/Injection.v
-- COQC theories/Core/Any.v
-- COQC theories/Tactics/Forward.v
-- COQC theories/Structures/Proper.v
-- COQC theories/Core/EquivDec.v
-- COQC theories/Structures/Applicative.v
-- COQC theories/Structures/BinOps.v
-- COQC theories/Structures/CoMonad.v
-- File &quot;./theories/Structures/Applicative.v&quot;, line 20, characters 0-46:
-- Error: Unknown attribute universes
-- 
-- Makefile.coq:662: recipe for target &#39;theories/Structures/Applicative.vo&#39; failed
-- make[2]: *** [theories/Structures/Applicative.vo] Error 1
-- make[2]: *** Waiting for unfinished jobs....
-- COQC theories/Structures/Functor.v
-- Makefile.coq:326: recipe for target &#39;all&#39; failed
-- make[1]: *** [all] Error 2
-- make[1]: Leaving directory &#39;/home/bench/.opam/ocaml-base-compiler.4.02.3/.opam-switch/build/coq-ext-lib.dev&#39;
-- Makefile:4: recipe for target &#39;theories&#39; failed
-- make: *** [theories] Error 2
 [ERROR] The compilation of coq-ext-lib failed at &quot;/home/bench/.opam/opam-init/hooks/sandbox.sh build make -j7&quot;.
 #=== ERROR while compiling coq-ext-lib.dev ====================================#
 # context              2.0.1 | linux/x86_64 | ocaml-base-compiler.4.02.3 | file:///home/bench/run/opam-coq-archive/extra-dev
 # path                 ~/.opam/ocaml-base-compiler.4.02.3/.opam-switch/build/coq-ext-lib.dev
 # command              ~/.opam/opam-init/hooks/sandbox.sh build make -j7
 # exit-code            2
-# env-file             ~/.opam/log/coq-ext-lib-21861-a00279.env
-# output-file          ~/.opam/log/coq-ext-lib-21861-a00279.out
+# env-file             ~/.opam/log/coq-ext-lib-6620-a00279.env
+# output-file          ~/.opam/log/coq-ext-lib-6620-a00279.out
 ### output ###
 # [...]
+# COQC theories/Structures/BinOps.v
 # File &quot;./theories/Structures/Applicative.v&quot;, line 20, characters 0-46:
 # Error: Unknown attribute universes
 # 
 # Makefile.coq:662: recipe for target &#39;theories/Structures/Applicative.vo&#39; failed
 # make[2]: *** [theories/Structures/Applicative.vo] Error 1
 # make[2]: *** Waiting for unfinished jobs....
-# COQC theories/Structures/Functor.v
 # Makefile.coq:326: recipe for target &#39;all&#39; failed
 # make[1]: *** [all] Error 2
 # make[1]: Leaving directory &#39;/home/bench/.opam/ocaml-base-compiler.4.02.3/.opam-switch/build/coq-ext-lib.dev&#39;
@@ -202,7 +175,6 @@ Processing  1/2: [coq-ext-lib: make]
 +- 
 - No changes have been performed
 # Run eval $(opam env) to update the current shell environment
-&#39;opam install -j1 -y -v coq-ext-lib.dev&#39; failed.
 </pre></dd>
             </dl>
             <h2>Installation size</h2>
