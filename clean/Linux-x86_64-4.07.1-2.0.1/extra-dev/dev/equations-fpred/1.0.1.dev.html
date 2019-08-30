@@ -42,7 +42,7 @@
                 <span class="label label-warning">Error with dependencies</span>
               </small>
             </h1>
-            <p><em><script>document.write(moment("2019-08-13 10:42:07 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2019-08-13 10:42:07 UTC)</em><p>
+            <p><em><script>document.write(moment("2019-08-30 07:35:03 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2019-08-30 07:35:03 UTC)</em><p>
             <h2>Context</h2>
             <pre># Packages matching: installed
 # Name              # Installed # Synopsis
@@ -104,8 +104,8 @@ url {
               <dt>Output</dt>
               <dd><pre>[NOTE] Package coq is already installed (current version is dev).
 The following dependencies couldn&#39;t be met:
-  - coq-equations-fpred -&gt; coq = 8.5.dev -&gt; ocaml &lt; 4.05.0
-      base of this switch (use `--unlock-base&#39; to force)
+  - coq-equations-fpred -&gt; coq-equations = 8.5.dev
+      no matching version
 No solution found, exiting
 </pre></dd>
             </dl>
@@ -1226,6 +1226,12 @@ No solution found, exiting
             - lib/coq/theories/Reals/Cos_plus.vo
             - lib/coq/theories/Reals/Cos_plus.v
             - lib/coq/theories/Reals/Cos_plus.glob
+            - lib/coq/theories/Reals/ConstructiveRealsLUB.vo
+            - lib/coq/theories/Reals/ConstructiveRealsLUB.v
+            - lib/coq/theories/Reals/ConstructiveRealsLUB.glob
+            - lib/coq/theories/Reals/ConstructiveReals.vo
+            - lib/coq/theories/Reals/ConstructiveReals.v
+            - lib/coq/theories/Reals/ConstructiveReals.glob
             - lib/coq/theories/Reals/ConstructiveRcomplete.vo
             - lib/coq/theories/Reals/ConstructiveRcomplete.v
             - lib/coq/theories/Reals/ConstructiveRcomplete.glob
@@ -1482,6 +1488,14 @@ No solution found, exiting
             - lib/coq/theories/Reals/.coq-native/NCoq_Reals_Cos_plus.cmxs
             - lib/coq/theories/Reals/.coq-native/NCoq_Reals_Cos_plus.cmx
             - lib/coq/theories/Reals/.coq-native/NCoq_Reals_Cos_plus.cmi
+            - lib/coq/theories/Reals/.coq-native/NCoq_Reals_ConstructiveRealsLUB.o
+            - lib/coq/theories/Reals/.coq-native/NCoq_Reals_ConstructiveRealsLUB.cmxs
+            - lib/coq/theories/Reals/.coq-native/NCoq_Reals_ConstructiveRealsLUB.cmx
+            - lib/coq/theories/Reals/.coq-native/NCoq_Reals_ConstructiveRealsLUB.cmi
+            - lib/coq/theories/Reals/.coq-native/NCoq_Reals_ConstructiveReals.o
+            - lib/coq/theories/Reals/.coq-native/NCoq_Reals_ConstructiveReals.cmxs
+            - lib/coq/theories/Reals/.coq-native/NCoq_Reals_ConstructiveReals.cmx
+            - lib/coq/theories/Reals/.coq-native/NCoq_Reals_ConstructiveReals.cmi
             - lib/coq/theories/Reals/.coq-native/NCoq_Reals_ConstructiveRcomplete.o
             - lib/coq/theories/Reals/.coq-native/NCoq_Reals_ConstructiveRcomplete.cmxs
             - lib/coq/theories/Reals/.coq-native/NCoq_Reals_ConstructiveRcomplete.cmx
@@ -3305,8 +3319,12 @@ No solution found, exiting
             - lib/coq/tactics/redops.cmi
             - lib/coq/tactics/redexpr.cmx
             - lib/coq/tactics/redexpr.cmi
+            - lib/coq/tactics/proof_global.cmx
+            - lib/coq/tactics/proof_global.cmi
             - lib/coq/tactics/ppred.cmx
             - lib/coq/tactics/ppred.cmi
+            - lib/coq/tactics/pfedit.cmx
+            - lib/coq/tactics/pfedit.cmi
             - lib/coq/tactics/leminv.cmx
             - lib/coq/tactics/leminv.cmi
             - lib/coq/tactics/inv.cmx
@@ -3386,14 +3404,10 @@ No solution found, exiting
             - lib/coq/proofs/proofs.cmxa
             - lib/coq/proofs/proofs.cma
             - lib/coq/proofs/proofs.a
-            - lib/coq/proofs/proof_global.cmx
-            - lib/coq/proofs/proof_global.cmi
             - lib/coq/proofs/proof_bullet.cmx
             - lib/coq/proofs/proof_bullet.cmi
             - lib/coq/proofs/proof.cmx
             - lib/coq/proofs/proof.cmi
-            - lib/coq/proofs/pfedit.cmx
-            - lib/coq/proofs/pfedit.cmi
             - lib/coq/proofs/miscprint.cmx
             - lib/coq/proofs/miscprint.cmi
             - lib/coq/proofs/logic.cmx
@@ -3464,6 +3478,8 @@ No solution found, exiting
             - lib/coq/pretyping/locusops.cmi
             - lib/coq/pretyping/locus.cmx
             - lib/coq/pretyping/locus.cmi
+            - lib/coq/pretyping/keys.cmx
+            - lib/coq/pretyping/keys.cmi
             - lib/coq/pretyping/inferCumulativity.cmx
             - lib/coq/pretyping/inferCumulativity.cmi
             - lib/coq/pretyping/inductiveops.cmx
@@ -4400,8 +4416,6 @@ No solution found, exiting
             - lib/coq/library/libnames.cmi
             - lib/coq/library/lib.cmx
             - lib/coq/library/lib.cmi
-            - lib/coq/library/keys.cmx
-            - lib/coq/library/keys.cmi
             - lib/coq/library/goptions.cmx
             - lib/coq/library/goptions.cmi
             - lib/coq/library/globnames.cmx
@@ -4410,8 +4424,6 @@ No solution found, exiting
             - lib/coq/library/global.cmi
             - lib/coq/library/declaremods.cmx
             - lib/coq/library/declaremods.cmi
-            - lib/coq/library/decl_kinds.cmx
-            - lib/coq/library/decl_kinds.cmi
             - lib/coq/library/coqlib.cmx
             - lib/coq/library/coqlib.cmi
             - lib/coq/lib/xml_datatype.cmi
