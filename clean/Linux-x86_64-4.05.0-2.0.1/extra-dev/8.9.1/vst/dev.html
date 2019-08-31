@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>vst: Error with dependencies</title>
+    <title>vst: Error</title>
     <link rel="shortcut icon" type="image/png" href="../../../../../favicon.png" />
     <link href="../../../../../bootstrap.min.css" rel="stylesheet">
     <link href="../../../../../bootstrap-custom.css" rel="stylesheet">
@@ -39,10 +39,10 @@
               vst
               <small>
                 dev
-                <span class="label label-warning">Error with dependencies</span>
+                <span class="label label-danger">Error</span>
               </small>
             </h1>
-            <p><em><script>document.write(moment("2019-08-26 02:31:37 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2019-08-26 02:31:37 UTC)</em><p>
+            <p><em><script>document.write(moment("2019-08-31 21:37:24 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2019-08-31 21:37:24 UTC)</em><p>
             <h2>Context</h2>
             <pre># Packages matching: installed
 # Name              # Installed # Synopsis
@@ -50,7 +50,7 @@ base-bigarray       base
 base-num            base        Num library distributed with the OCaml compiler
 base-threads        base
 base-unix           base
-camlp5              7.08        Preprocessor-pretty-printer of OCaml
+camlp5              7.10        Preprocessor-pretty-printer of OCaml
 conf-m4             1           Virtual package relying on m4
 coq                 8.9.1       Formal proof management system
 num                 0           The Num library for arbitrary-precision integer and rational arithmetic
@@ -131,9 +131,18 @@ url {
               <dt>Command</dt>
               <dd><code>opam list; echo; ulimit -Sv 4000000; timeout 60m opam install -y --deps-only coq-vst.dev coq.8.9.1</code></dd>
               <dt>Return code</dt>
+              <dd>0</dd>
+              <dt>Duration</dt>
+              <dd>10 m 8 s</dd>
+            </dl>
+            <h2>Install</h2>
+            <dl class="dl-horizontal">
+              <dt>Command</dt>
+              <dd><code>opam list; echo; ulimit -Sv 4000000; timeout 2h opam install -y coq-vst.dev coq.8.9.1</code></dd>
+              <dt>Return code</dt>
               <dd>7936</dd>
               <dt>Duration</dt>
-              <dd>12 m 47 s</dd>
+              <dd>1 m 5 s</dd>
               <dt>Output</dt>
               <dd><pre># Packages matching: installed
 # Name              # Installed # Synopsis
@@ -141,69 +150,52 @@ base-bigarray       base
 base-num            base        Num library distributed with the OCaml compiler
 base-threads        base
 base-unix           base
-camlp5              7.08        Preprocessor-pretty-printer of OCaml
+camlp5              7.10        Preprocessor-pretty-printer of OCaml
 conf-m4             1           Virtual package relying on m4
 coq                 8.9.1       Formal proof management system
+coq-compcert        3.5         The CompCert C compiler
+menhir              20181113    An LR(1) parser generator
 num                 0           The Num library for arbitrary-precision integer and rational arithmetic
 ocaml               4.05.0      The OCaml compiler (virtual package)
 ocaml-base-compiler 4.05.0      Official 4.05.0 release
 ocaml-config        1           OCaml Switch Configuration
+ocamlbuild          0.14.0      OCamlbuild is a build system with builtin rules to easily build most OCaml projects.
 ocamlfind           1.8.1       A library manager for OCaml
+[NOTE] Package coq is already installed (current version is 8.9.1).
 The following actions will be performed:
-  - install ocamlbuild   0.14.0
-  - install menhir       20181113
-  - install coq-compcert 3.5
-===== 3 to install =====
+  - install coq-vst dev
 &lt;&gt;&lt;&gt; Gathering sources &gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;
-[ocamlbuild.0.14.0] downloaded from cache at https://opam.ocaml.org/cache
-[coq-compcert.3.5] downloaded from https://github.com/AbsInt/CompCert/archive/v3.5.tar.gz
-[menhir.20181113] downloaded from cache at https://opam.ocaml.org/cache
+[coq-vst.dev] synchronised from git+https://github.com/PrincetonUniversity/VST.git#master
 &lt;&gt;&lt;&gt; Processing actions &lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;
--&gt; installed ocamlbuild.0.14.0
--&gt; installed menhir.20181113
-[ERROR] The compilation of coq-compcert failed at &quot;/home/bench/.opam/opam-init/hooks/sandbox.sh build make -j7&quot;.
-#=== ERROR while compiling coq-compcert.3.5 ===================================#
-# context              2.0.1 | linux/x86_64 | ocaml-base-compiler.4.05.0 | file:///home/bench/run/opam-coq-archive/released
-# path                 ~/.opam/ocaml-base-compiler.4.05.0/.opam-switch/build/coq-compcert.3.5
-# command              ~/.opam/opam-init/hooks/sandbox.sh build make -j7
+[ERROR] The compilation of coq-vst failed at &quot;/home/bench/.opam/opam-init/hooks/sandbox.sh build make IGNORECOQVERSION=true -j7 COMPCERT=/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq/user-contrib/compcert floyd progs&quot;.
+#=== ERROR while compiling coq-vst.dev ========================================#
+# context              2.0.1 | linux/x86_64 | ocaml-base-compiler.4.05.0 | file:///home/bench/run/opam-coq-archive/extra-dev
+# path                 ~/.opam/ocaml-base-compiler.4.05.0/.opam-switch/build/coq-vst.dev
+# command              ~/.opam/opam-init/hooks/sandbox.sh build make IGNORECOQVERSION=true -j7 COMPCERT=/home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq/user-contrib/compcert floyd progs
 # exit-code            2
-# env-file             ~/.opam/log/coq-compcert-28640-09b4f7.env
-# output-file          ~/.opam/log/coq-compcert-28640-09b4f7.out
+# env-file             ~/.opam/log/coq-vst-8332-e4db2f.env
+# output-file          ~/.opam/log/coq-vst-8332-e4db2f.out
 ### output ###
 # [...]
-# Error: Corrupted compiled interface
-# lib/Camlcoq.cmi
-# Makefile.extr:116: recipe for target &#39;debug/DebugInformation.cmi&#39; failed
-# make[2]: *** [debug/DebugInformation.cmi] Error 2
-# make[2]: *** Waiting for unfinished jobs....
-# OCAMLC   extraction/Linear.mli
-# make[2]: Leaving directory &#39;/home/bench/.opam/ocaml-base-compiler.4.05.0/.opam-switch/build/coq-compcert.3.5&#39;
-# Makefile:164: recipe for target &#39;ccomp&#39; failed
-# make[1]: *** [ccomp] Error 2
-# make[1]: Leaving directory &#39;/home/bench/.opam/ocaml-base-compiler.4.05.0/.opam-switch/build/coq-compcert.3.5&#39;
-# Makefile:136: recipe for target &#39;all&#39; failed
-# make: *** [all] Error 2
+# COQC veric/val_lemmas.v
+# COQC floyd/sublist.v
+# COQC veric/Memory.v
+# COQC sepcomp/mem_lemmas.v
+# COQC msl/psepalg.v
+# File &quot;./veric/val_lemmas.v&quot;, line 156, characters 8-27:
+# Error: The reference Zbits.Ztestbit_succ was not found in the current
+# environment.
+# 
+# Makefile:404: recipe for target &#39;veric/val_lemmas.vo&#39; failed
+# make: *** [veric/val_lemmas.vo] Error 1
+# make: *** Waiting for unfinished jobs....
 &lt;&gt;&lt;&gt; Error report &lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;
 +- The following actions failed
-| - build coq-compcert 3.5
+| - build coq-vst dev
 +- 
-+- The following changes have been performed
-| - install menhir     20181113
-| - install ocamlbuild 0.14.0
-+- 
+- No changes have been performed
 # Run eval $(opam env) to update the current shell environment
-The former state can be restored with:
-    opam switch import &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/.opam-switch/backup/state-20190825061432.export&quot;
 </pre></dd>
-            </dl>
-            <h2>Install</h2>
-            <dl class="dl-horizontal">
-              <dt>Command</dt>
-              <dd><code>true</code></dd>
-              <dt>Return code</dt>
-              <dd>0</dd>
-              <dt>Duration</dt>
-              <dd>0 s</dd>
             </dl>
             <h2>Installation size</h2>
             <p>No files were installed.</p>
