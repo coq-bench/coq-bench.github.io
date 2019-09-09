@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>pi-agm: Error</title>
+    <link rel="shortcut icon" type="image/png" href="../../../../../favicon.png" />
+    <link href="../../../../../bootstrap.min.css" rel="stylesheet">
+    <link href="../../../../../bootstrap-custom.css" rel="stylesheet">
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+    <script src="../../../../../moment.min.js"></script>
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="container">
+      <div class="navbar navbar-default" role="navigation">
+        <div class="container-fluid">
+          <div class="navbar-header">
+            <a class="navbar-brand" href="../../../../.."><i class="fa fa-lg fa-flag-checkered"></i> Coq bench</a>
+          </div>
+          <div id="navbar" class="collapse navbar-collapse">
+            <ul class="nav navbar-nav">
+              <li><a href="../..">clean / extra-dev</a></li>
+              <li class="active"><a href="">8.10.dev / pi-agm - 1.2.3</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="article">
+        <div class="row">
+          <div class="col-md-12">
+            <a href="../..">« Up</a>
+            <h1>
+              pi-agm
+              <small>
+                1.2.3
+                <span class="label label-danger">Error</span>
+              </small>
+            </h1>
+            <p><em><script>document.write(moment("2019-09-09 04:22:27 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2019-09-09 04:22:27 UTC)</em><p>
+            <h2>Context</h2>
+            <pre># Packages matching: installed
+# Name              # Installed # Synopsis
+base-bigarray       base
+base-num            base        Num library distributed with the OCaml compiler
+base-threads        base
+base-unix           base
+conf-m4             1           Virtual package relying on m4
+coq                 8.10.dev    Formal proof management system
+num                 0           The Num library for arbitrary-precision integer and rational arithmetic
+ocaml               4.05.0      The OCaml compiler (virtual package)
+ocaml-base-compiler 4.05.0      Official 4.05.0 release
+ocaml-config        1           OCaml Switch Configuration
+ocamlfind           1.8.1       A library manager for OCaml
+# opam file:
+opam-version: &quot;2.0&quot;
+name: &quot;coq-pi-agm&quot;
+version: &quot;1.2.3&quot;
+maintainer: &quot;yves.bertot@inria.fr&quot;
+homepage: &quot;http://www-sop.inria.fr/members/Yves.Bertot/&quot;
+bug-reports: &quot;yves.bertot@inria.fr&quot;
+license: &quot;CeCILL-B&quot;
+build: [[&quot;coq_makefile&quot; &quot;-f&quot; &quot;_CoqProject&quot; &quot;-o&quot; &quot;Makefile&quot; ]
+       [ make &quot;-j&quot; &quot;%{jobs}%&quot; ]]
+install: [ make &quot;install&quot; &quot;DEST=&#39;%{lib}%/coq/user-contrib/pi_agm&#39;&quot; ]
+remove: [ &quot;sh&quot; &quot;-c&quot; &quot;rm -rf &#39;%{lib}%/coq/user-contrib/pi_agm&#39;&quot; ]
+depends: [
+  &quot;ocaml&quot;
+  &quot;coq&quot; {&gt;= &quot;8.9&quot;}
+  &quot;coq-coquelicot&quot; {&gt;= &quot;3&quot; &amp; &lt; &quot;4~&quot;}
+  &quot;coq-interval&quot; {&gt;= &quot;3.1&quot;}
+]
+tags: [ &quot;keyword:real analysis&quot; &quot;keyword:pi&quot; &quot;category:Mathematics/Real Calculus and Topology&quot; ]
+authors: [ &quot;Yves Bertot &lt;yves.bertot@inria.fr&gt;&quot; ]
+synopsis:
+  &quot;Computing thousands or millions of digits of PI with arithmetic-geometric means&quot;
+description: &quot;&quot;&quot;
+This is a proof of correctness for two algorithms to compute PI to high
+precision using arithmetic-geometric means.  A first file contains
+the calculus-based proofs for an abstract view of the algorithm, where all
+numbers are real numbers.  A second file describes how to approximate all
+computations using large integers.  Other files describe the second algorithm
+which is close to the one used in mpfr, for instance.
+The whole development can be used to produce mathematically proved and
+formally verified approximations of PI.&quot;&quot;&quot;
+url {
+  src: &quot;https://github.com/ybertot/pi-agm/archive/v1.2.3.zip&quot;
+  checksum: &quot;md5=2772bb7581b79dded0fde1f1d3b2143c&quot;
+}
+</pre>
+            <h2>Lint</h2>
+            <dl class="dl-horizontal">
+              <dt>Command</dt>
+              <dd><code>true</code></dd>
+              <dt>Return code</dt>
+              <dd>0</dd>
+            </dl>
+            <h2>Dry install</h2>
+            <p>Dry install with the current Coq version:</p>
+            <dl class="dl-horizontal">
+              <dt>Command</dt>
+              <dd><code>opam install -y --show-action coq-pi-agm.1.2.3 coq.8.10.dev</code></dd>
+              <dt>Return code</dt>
+              <dd>0</dd>
+            </dl>
+            <p>Dry install without Coq/switch base, to test if the problem was incompatibility with the current Coq/OCaml version:</p>
+            <dl class="dl-horizontal">
+              <dt>Command</dt>
+              <dd><code>true</code></dd>
+              <dt>Return code</dt>
+              <dd>0</dd>
+            </dl>
+            <h2>Install dependencies</h2>
+            <dl class="dl-horizontal">
+              <dt>Command</dt>
+              <dd><code>opam list; echo; ulimit -Sv 4000000; timeout 300m opam install -y --deps-only coq-pi-agm.1.2.3 coq.8.10.dev</code></dd>
+              <dt>Return code</dt>
+              <dd>0</dd>
+              <dt>Duration</dt>
+              <dd>15 m 44 s</dd>
+            </dl>
+            <h2>Install</h2>
+            <dl class="dl-horizontal">
+              <dt>Command</dt>
+              <dd><code>opam list; echo; ulimit -Sv 4000000; timeout 1h opam install -y -v coq-pi-agm.1.2.3 coq.8.10.dev</code></dd>
+              <dt>Return code</dt>
+              <dd>7936</dd>
+              <dt>Duration</dt>
+              <dd>23 s</dd>
+              <dt>Output</dt>
+              <dd><pre># Packages matching: installed
+# Name                 # Installed # Synopsis
+base-bigarray          base
+base-num               base        Num library distributed with the OCaml compiler
+base-threads           base
+base-unix              base
+conf-m4                1           Virtual package relying on m4
+coq                    8.10.dev    Formal proof management system
+coq-bignums            8.10+beta1  Bignums, the Coq library of arbitrary large numbers
+coq-coquelicot         3.0.3       A Coq formalization of real analysis compatible with the standard library
+coq-flocq              3.2.0       A floating-point formalization for the Coq system
+coq-interval           3.4.1       A Coq tactic for proving bounds on real-valued expressions automatically
+coq-mathcomp-ssreflect dev         Small Scale Reflection
+num                    0           The Num library for arbitrary-precision integer and rational arithmetic
+ocaml                  4.05.0      The OCaml compiler (virtual package)
+ocaml-base-compiler    4.05.0      Official 4.05.0 release
+ocaml-config           1           OCaml Switch Configuration
+ocamlfind              1.8.1       A library manager for OCaml
+[NOTE] Package coq is already installed (current version is 8.10.dev).
+The following actions will be performed:
+  - install coq-pi-agm 1.2.3
+&lt;&gt;&lt;&gt; Gathering sources &gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;
+Processing  1/1: [coq-pi-agm.1.2.3: http]
+[coq-pi-agm.1.2.3] downloaded from https://github.com/ybertot/pi-agm/archive/v1.2.3.zip
+Processing  1/1:
+&lt;&gt;&lt;&gt; Processing actions &lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;
+Processing  1/2: [coq-pi-agm: coq_makefile _CoqProject]
++ /home/bench/.opam/opam-init/hooks/sandbox.sh &quot;build&quot; &quot;coq_makefile&quot; &quot;-f&quot; &quot;_CoqProject&quot; &quot;-o&quot; &quot;Makefile&quot; (CWD=/home/bench/.opam/ocaml-base-compiler.4.05.0/.opam-switch/build/coq-pi-agm.1.2.3)
+Processing  1/2: [coq-pi-agm: make 7]
++ /home/bench/.opam/opam-init/hooks/sandbox.sh &quot;build&quot; &quot;make&quot; &quot;-j&quot; &quot;7&quot; (CWD=/home/bench/.opam/ocaml-base-compiler.4.05.0/.opam-switch/build/coq-pi-agm.1.2.3)
+- COQDEP VFILES
+- COQC filter_Rlt.v
+- COQC atan_derivative_improper_integral.v
+- COQC arcsinh.v
+- COQC rounding_big.v
+- File &quot;./filter_Rlt.v&quot;, line 28, characters 23-30:
+- Warning: Tactic fourier is deprecated since 8.9.0. Use lra instead.
+- [deprecated-tactic,deprecated]
+- File &quot;./filter_Rlt.v&quot;, line 34, characters 0-7:
+- Warning: Tactic fourier is deprecated since 8.9.0. Use lra instead.
+- [deprecated-tactic,deprecated]
+- File &quot;./filter_Rlt.v&quot;, line 42, characters 24-31:
+- Warning: Tactic fourier is deprecated since 8.9.0. Use lra instead.
+- [deprecated-tactic,deprecated]
+- File &quot;./filter_Rlt.v&quot;, line 48, characters 2-9:
+- Warning: Tactic fourier is deprecated since 8.9.0. Use lra instead.
+- [deprecated-tactic,deprecated]
+- File &quot;./filter_Rlt.v&quot;, line 56, characters 23-30:
+- Warning: Tactic fourier is deprecated since 8.9.0. Use lra instead.
+- [deprecated-tactic,deprecated]
+- File &quot;./filter_Rlt.v&quot;, line 65, characters 21-28:
+- Warning: Tactic fourier is deprecated since 8.9.0. Use lra instead.
+- [deprecated-tactic,deprecated]
+- File &quot;./filter_Rlt.v&quot;, line 71, characters 36-43:
+- Warning: Tactic fourier is deprecated since 8.9.0. Use lra instead.
+- [deprecated-tactic,deprecated]
+- COQC computing.v
+- File &quot;./atan_derivative_improper_integral.v&quot;, line 43, characters 35-42:
+- Warning: Tactic fourier is deprecated since 8.9.0. Use lra instead.
+- [deprecated-tactic,deprecated]
+- File &quot;./atan_derivative_improper_integral.v&quot;, line 44, characters 2-9:
+- Warning: Tactic fourier is deprecated since 8.9.0. Use lra instead.
+- [deprecated-tactic,deprecated]
+- File &quot;./filter_Rlt.v&quot;, line 92, characters 31-38:
+- Warning: Tactic fourier is deprecated since 8.9.0. Use lra instead.
+- [deprecated-tactic,deprecated]
+- File &quot;./atan_derivative_improper_integral.v&quot;, line 52, characters 38-45:
+- Warning: Tactic fourier is deprecated since 8.9.0. Use lra instead.
+- [deprecated-tactic,deprecated]
+- File &quot;./atan_derivative_improper_integral.v&quot;, line 58, characters 2-9:
+- Warning: Tactic fourier is deprecated since 8.9.0. Use lra instead.
+- [deprecated-tactic,deprecated]
+- File &quot;./atan_derivative_improper_integral.v&quot;, line 65, characters 27-34:
+- Warning: Tactic fourier is deprecated since 8.9.0. Use lra instead.
+- [deprecated-tactic,deprecated]
+- File &quot;./atan_derivative_improper_integral.v&quot;, line 66, characters 35-42:
+- Warning: Tactic fourier is deprecated since 8.9.0. Use lra instead.
+- [deprecated-tactic,deprecated]
+- File &quot;./filter_Rlt.v&quot;, line 94, characters 54-61:
+- Warning: Tactic fourier is deprecated since 8.9.0. Use lra instead.
+- [deprecated-tactic,deprecated]
+- File &quot;./filter_Rlt.v&quot;, line 98, characters 33-40:
+- Warning: Tactic fourier is deprecated since 8.9.0. Use lra instead.
+- [deprecated-tactic,deprecated]
+- File &quot;./atan_derivative_improper_integral.v&quot;, line 77, characters 38-45:
+- Warning: Tactic fourier is deprecated since 8.9.0. Use lra instead.
+- [deprecated-tactic,deprecated]
+- File &quot;./atan_derivative_improper_integral.v&quot;, line 83, characters 2-9:
+- Warning: Tactic fourier is deprecated since 8.9.0. Use lra instead.
+- [deprecated-tactic,deprecated]
+- File &quot;./filter_Rlt.v&quot;, line 99, characters 70-77:
+- Warning: Tactic fourier is deprecated since 8.9.0. Use lra instead.
+- [deprecated-tactic,deprecated]
+- File &quot;./filter_Rlt.v&quot;, line 100, characters 26-33:
+- Warning: Tactic fourier is deprecated since 8.9.0. Use lra instead.
+- [deprecated-tactic,deprecated]
+- File &quot;./atan_derivative_improper_integral.v&quot;, line 90, characters 27-34:
+- Warning: Tactic fourier is deprecated since 8.9.0. Use lra instead.
+- [deprecated-tactic,deprecated]
+- File &quot;./atan_derivative_improper_integral.v&quot;, line 91, characters 36-43:
+- Warning: Tactic fourier is deprecated since 8.9.0. Use lra instead.
+- [deprecated-tactic,deprecated]
+- File &quot;./filter_Rlt.v&quot;, line 102, characters 28-35:
+- Warning: Tactic fourier is deprecated since 8.9.0. Use lra instead.
+- [deprecated-tactic,deprecated]
+- File &quot;./filter_Rlt.v&quot;, line 103, characters 64-71:
+- Warning: Tactic fourier is deprecated since 8.9.0. Use lra instead.
+- [deprecated-tactic,deprecated]
+- File &quot;./filter_Rlt.v&quot;, line 110, characters 31-38:
+- Warning: Tactic fourier is deprecated since 8.9.0. Use lra instead.
+- [deprecated-tactic,deprecated]
+- File &quot;./filter_Rlt.v&quot;, line 111, characters 68-75:
+- Warning: Tactic fourier is deprecated since 8.9.0. Use lra instead.
+- [deprecated-tactic,deprecated]
+- File &quot;./filter_Rlt.v&quot;, line 112, characters 24-31:
+- Warning: Tactic fourier is deprecated since 8.9.0. Use lra instead.
+- [deprecated-tactic,deprecated]
+- File &quot;./filter_Rlt.v&quot;, line 114, characters 26-33:
+- Warning: Tactic fourier is deprecated since 8.9.0. Use lra instead.
+- [deprecated-tactic,deprecated]
+- File &quot;./filter_Rlt.v&quot;, line 115, characters 62-69:
+- Warning: Tactic fourier is deprecated since 8.9.0. Use lra instead.
+- [deprecated-tactic,deprecated]
+- File &quot;./filter_Rlt.v&quot;, line 140, characters 56-63:
+- Warning: Tactic fourier is deprecated since 8.9.0. Use lra instead.
+- [deprecated-tactic,deprecated]
+- File &quot;./filter_Rlt.v&quot;, line 145, characters 54-61:
+- Warning: Tactic fourier is deprecated since 8.9.0. Use lra instead.
+- [deprecated-tactic,deprecated]
+- File &quot;./filter_Rlt.v&quot;, line 153, characters 31-38:
+- Warning: Tactic fourier is deprecated since 8.9.0. Use lra instead.
+- [deprecated-tactic,deprecated]
+- File &quot;./filter_Rlt.v&quot;, line 155, characters 54-61:
+- Warning: Tactic fourier is deprecated since 8.9.0. Use lra instead.
+- [deprecated-tactic,deprecated]
+- File &quot;./filter_Rlt.v&quot;, line 159, characters 33-40:
+- Warning: Tactic fourier is deprecated since 8.9.0. Use lra instead.
+- [deprecated-tactic,deprecated]
+- File &quot;./filter_Rlt.v&quot;, line 160, characters 70-77:
+- Warning: Tactic fourier is deprecated since 8.9.0. Use lra instead.
+- [deprecated-tactic,deprecated]
+- File &quot;./filter_Rlt.v&quot;, line 161, characters 26-33:
+- Warning: Tactic fourier is deprecated since 8.9.0. Use lra instead.
+- [deprecated-tactic,deprecated]
+- File &quot;./filter_Rlt.v&quot;, line 163, characters 28-35:
+- Warning: Tactic fourier is deprecated since 8.9.0. Use lra instead.
+- [deprecated-tactic,deprecated]
+- File &quot;./filter_Rlt.v&quot;, line 164, characters 64-71:
+- Warning: Tactic fourier is deprecated since 8.9.0. Use lra instead.
+- [deprecated-tactic,deprecated]
+- File &quot;./filter_Rlt.v&quot;, line 171, characters 31-38:
+- Warning: Tactic fourier is deprecated since 8.9.0. Use lra instead.
+- [deprecated-tactic,deprecated]
+- File &quot;./filter_Rlt.v&quot;, line 172, characters 68-75:
+- Warning: Tactic fourier is deprecated since 8.9.0. Use lra instead.
+- [deprecated-tactic,deprecated]
+- File &quot;./filter_Rlt.v&quot;, line 173, characters 24-31:
+- Warning: Tactic fourier is deprecated since 8.9.0. Use lra instead.
+- [deprecated-tactic,deprecated]
+- File &quot;./filter_Rlt.v&quot;, line 175, characters 26-33:
+- Warning: Tactic fourier is deprecated since 8.9.0. Use lra instead.
+- [deprecated-tactic,deprecated]
+- File &quot;./filter_Rlt.v&quot;, line 176, characters 62-69:
+- Warning: Tactic fourier is deprecated since 8.9.0. Use lra instead.
+- [deprecated-tactic,deprecated]
+-      = 31415926535897932384626433832795028841971693993751058209749445923078164062862089986280348253421170679821480865132823066470938446095505822317253594081284811174502841027019385211055596446229489549303819644288109756659334461284756482337867831652712019091456485669234603486104543266482133936072602491412737245870066063155881748815209209628292540917153643678925903600113305305488204665213841469519415116094330572703657595919530921861173819326117931051185480744623799627495673518857527248912279381830119491298336733624406566430860213949463952247371907021798609437027705392171762931767523846748184676694051320005681271452635608277857713427577896091736371787214684409012249534301465495853710507922796892589235420199561121290219608640344181598136297747713099605187072113499999983729780499510597317328160963185950244594553469083026425223082533446850352619311881710100031378387528865875332083814206171776691473035982534904287554687311595628638823537875937519577818577805321712268066130019278766111959092164201967%bigZ
+-      : BigZ.t_
+- File &quot;./filter_Rlt.v&quot;, line 375, characters 60-67:
+- Warning: Tactic fourier is deprecated since 8.9.0. Use lra instead.
+- [deprecated-tactic,deprecated]
+- File &quot;./filter_Rlt.v&quot;, line 388, characters 19-26:
+- Warning: Tactic fourier is deprecated since 8.9.0. Use lra instead.
+- [deprecated-tactic,deprecated]
+- File &quot;./filter_Rlt.v&quot;, line 389, characters 55-62:
+- Warning: Tactic fourier is deprecated since 8.9.0. Use lra instead.
+- [deprecated-tactic,deprecated]
+- File &quot;./filter_Rlt.v&quot;, line 390, characters 42-49:
+- Warning: Tactic fourier is deprecated since 8.9.0. Use lra instead.
+- [deprecated-tactic,deprecated]
+- File &quot;./filter_Rlt.v&quot;, line 395, characters 62-69:
+- Warning: Tactic fourier is deprecated since 8.9.0. Use lra instead.
+- [deprecated-tactic,deprecated]
+- File &quot;./filter_Rlt.v&quot;, line 397, characters 43-50:
+- Warning: Tactic fourier is deprecated since 8.9.0. Use lra instead.
+- [deprecated-tactic,deprecated]
+- File &quot;./filter_Rlt.v&quot;, line 400, characters 46-53:
+- Warning: Tactic fourier is deprecated since 8.9.0. Use lra instead.
+- [deprecated-tactic,deprecated]
+- File &quot;./filter_Rlt.v&quot;, line 401, characters 27-34:
+- Warning: Tactic fourier is deprecated since 8.9.0. Use lra instead.
+- [deprecated-tactic,deprecated]
+- File &quot;./filter_Rlt.v&quot;, line 402, characters 51-58:
+- Warning: Tactic fourier is deprecated since 8.9.0. Use lra instead.
+- [deprecated-tactic,deprecated]
+- File &quot;./filter_Rlt.v&quot;, line 403, characters 51-58:
+- Warning: Tactic fourier is deprecated since 8.9.0. Use lra instead.
+- [deprecated-tactic,deprecated]
+- File &quot;./filter_Rlt.v&quot;, line 406, characters 38-45:
+- Warning: Tactic fourier is deprecated since 8.9.0. Use lra instead.
+- [deprecated-tactic,deprecated]
+- File &quot;./filter_Rlt.v&quot;, line 407, characters 70-77:
+- Warning: Tactic fourier is deprecated since 8.9.0. Use lra instead.
+- [deprecated-tactic,deprecated]
+- File &quot;./filter_Rlt.v&quot;, line 415, characters 35-42:
+- Warning: Tactic fourier is deprecated since 8.9.0. Use lra instead.
+- [deprecated-tactic,deprecated]
+- File &quot;./filter_Rlt.v&quot;, line 418, characters 36-43:
+- Warning: Tactic fourier is deprecated since 8.9.0. Use lra instead.
+- [deprecated-tactic,deprecated]
+- File &quot;./filter_Rlt.v&quot;, line 443, characters 72-79:
+- Warning: Tactic fourier is deprecated since 8.9.0. Use lra instead.
+- [deprecated-tactic,deprecated]
+- File &quot;./filter_Rlt.v&quot;, line 444, characters 47-54:
+- Warning: Tactic fourier is deprecated since 8.9.0. Use lra instead.
+- [deprecated-tactic,deprecated]
+- File &quot;./filter_Rlt.v&quot;, line 445, characters 59-66:
+- Warning: Tactic fourier is deprecated since 8.9.0. Use lra instead.
+- [deprecated-tactic,deprecated]
+- File &quot;./filter_Rlt.v&quot;, line 447, characters 48-55:
+- Warning: Tactic fourier is deprecated since 8.9.0. Use lra instead.
+- [deprecated-tactic,deprecated]
+- File &quot;./filter_Rlt.v&quot;, line 449, characters 38-45:
+- Warning: Tactic fourier is deprecated since 8.9.0. Use lra instead.
+- [deprecated-tactic,deprecated]
+- File &quot;./filter_Rlt.v&quot;, line 451, characters 6-13:
+- Warning: Tactic fourier is deprecated since 8.9.0. Use lra instead.
+- [deprecated-tactic,deprecated]
+- File &quot;./filter_Rlt.v&quot;, line 481, characters 60-67:
+- Warning: Tactic fourier is deprecated since 8.9.0. Use lra instead.
+- [deprecated-tactic,deprecated]
+- File &quot;./filter_Rlt.v&quot;, line 494, characters 19-26:
+- Warning: Tactic fourier is deprecated since 8.9.0. Use lra instead.
+- [deprecated-tactic,deprecated]
+- File &quot;./filter_Rlt.v&quot;, line 495, characters 55-62:
+- Warning: Tactic fourier is deprecated since 8.9.0. Use lra instead.
+- [deprecated-tactic,deprecated]
+- File &quot;./filter_Rlt.v&quot;, line 496, characters 42-49:
+- Warning: Tactic fourier is deprecated since 8.9.0. Use lra instead.
+- [deprecated-tactic,deprecated]
+- File &quot;./filter_Rlt.v&quot;, line 501, characters 62-69:
+- Warning: Tactic fourier is deprecated since 8.9.0. Use lra instead.
+- [deprecated-tactic,deprecated]
+- File &quot;./filter_Rlt.v&quot;, line 503, characters 43-50:
+- Warning: Tactic fourier is deprecated since 8.9.0. Use lra instead.
+- [deprecated-tactic,deprecated]
+- File &quot;./filter_Rlt.v&quot;, line 506, characters 46-53:
+- Warning: Tactic fourier is deprecated since 8.9.0. Use lra instead.
+- [deprecated-tactic,deprecated]
+- File &quot;./filter_Rlt.v&quot;, line 507, characters 27-34:
+- Warning: Tactic fourier is deprecated since 8.9.0. Use lra instead.
+- [deprecated-tactic,deprecated]
+- File &quot;./filter_Rlt.v&quot;, line 508, characters 51-58:
+- Warning: Tactic fourier is deprecated since 8.9.0. Use lra instead.
+- [deprecated-tactic,deprecated]
+- File &quot;./filter_Rlt.v&quot;, line 509, characters 51-58:
+- Warning: Tactic fourier is deprecated since 8.9.0. Use lra instead.
+- [deprecated-tactic,deprecated]
+- File &quot;./filter_Rlt.v&quot;, line 512, characters 38-45:
+- Warning: Tactic fourier is deprecated since 8.9.0. Use lra instead.
+- [deprecated-tactic,deprecated]
+- File &quot;./filter_Rlt.v&quot;, line 513, characters 70-77:
+- Warning: Tactic fourier is deprecated since 8.9.0. Use lra instead.
+- [deprecated-tactic,deprecated]
+- File &quot;./filter_Rlt.v&quot;, line 520, characters 37-44:
+- Warning: Tactic fourier is deprecated since 8.9.0. Use lra instead.
+- [deprecated-tactic,deprecated]
+- File &quot;./filter_Rlt.v&quot;, line 522, characters 68-75:
+- Warning: Tactic fourier is deprecated since 8.9.0. Use lra instead.
+- [deprecated-tactic,deprecated]
+- File &quot;./filter_Rlt.v&quot;, line 548, characters 71-78:
+- Warning: Tactic fourier is deprecated since 8.9.0. Use lra instead.
+- [deprecated-tactic,deprecated]
+- File &quot;./filter_Rlt.v&quot;, line 549, characters 47-54:
+- Warning: Tactic fourier is deprecated since 8.9.0. Use lra instead.
+- [deprecated-tactic,deprecated]
+- File &quot;./filter_Rlt.v&quot;, line 550, characters 50-57:
+- Warning: Tactic fourier is deprecated since 8.9.0. Use lra instead.
+- [deprecated-tactic,deprecated]
+- File &quot;./filter_Rlt.v&quot;, line 553, characters 48-55:
+- Warning: Tactic fourier is deprecated since 8.9.0. Use lra instead.
+- [deprecated-tactic,deprecated]
+- File &quot;./filter_Rlt.v&quot;, line 555, characters 40-47:
+- Warning: Tactic fourier is deprecated since 8.9.0. Use lra instead.
+- [deprecated-tactic,deprecated]
+- File &quot;./filter_Rlt.v&quot;, line 558, characters 6-13:
+- Warning: Tactic fourier is deprecated since 8.9.0. Use lra instead.
+- [deprecated-tactic,deprecated]
+- File &quot;./filter_Rlt.v&quot;, line 606, characters 53-60:
+- Warning: Tactic fourier is deprecated since 8.9.0. Use lra instead.
+- [deprecated-tactic,deprecated]
+- File &quot;./filter_Rlt.v&quot;, line 607, characters 53-60:
+- Warning: Tactic fourier is deprecated since 8.9.0. Use lra instead.
+- [deprecated-tactic,deprecated]
+- File &quot;./filter_Rlt.v&quot;, line 608, characters 53-60:
+- Warning: Tactic fourier is deprecated since 8.9.0. Use lra instead.
+- [deprecated-tactic,deprecated]
+- File &quot;./filter_Rlt.v&quot;, line 610, characters 51-58:
+- Warning: Tactic fourier is deprecated since 8.9.0. Use lra instead.
+- [deprecated-tactic,deprecated]
+- File &quot;./filter_Rlt.v&quot;, line 612, characters 59-66:
+- Warning: Tactic fourier is deprecated since 8.9.0. Use lra instead.
+- [deprecated-tactic,deprecated]
+- File &quot;./filter_Rlt.v&quot;, line 639, characters 30-37:
+- Warning: Tactic fourier is deprecated since 8.9.0. Use lra instead.
+- [deprecated-tactic,deprecated]
+- File &quot;./filter_Rlt.v&quot;, line 645, characters 30-37:
+- Warning: Tactic fourier is deprecated since 8.9.0. Use lra instead.
+- [deprecated-tactic,deprecated]
+- COQC generalities.v
+- COQC elliptic_integral.v
+- File &quot;./elliptic_integral.v&quot;, line 641, characters 4-45:
+- Error: Rdiv does not occur.
+- 
+- Makefile:658: recipe for target &#39;elliptic_integral.vo&#39; failed
+- make[1]: *** [elliptic_integral.vo] Error 1
+- Makefile:320: recipe for target &#39;all&#39; failed
+- make: *** [all] Error 2
+[ERROR] The compilation of coq-pi-agm failed at &quot;/home/bench/.opam/opam-init/hooks/sandbox.sh build make -j 7&quot;.
+#=== ERROR while compiling coq-pi-agm.1.2.3 ===================================#
+# context              2.0.1 | linux/x86_64 | ocaml-base-compiler.4.05.0 | file:///home/bench/run/opam-coq-archive/released
+# path                 ~/.opam/ocaml-base-compiler.4.05.0/.opam-switch/build/coq-pi-agm.1.2.3
+# command              ~/.opam/opam-init/hooks/sandbox.sh build make -j 7
+# exit-code            2
+# env-file             ~/.opam/log/coq-pi-agm-8660-6cc03f.env
+# output-file          ~/.opam/log/coq-pi-agm-8660-6cc03f.out
+### output ###
+# [...]
+# File &quot;./filter_Rlt.v&quot;, line 645, characters 30-37:
+# Warning: Tactic fourier is deprecated since 8.9.0. Use lra instead.
+# [deprecated-tactic,deprecated]
+# COQC generalities.v
+# COQC elliptic_integral.v
+# File &quot;./elliptic_integral.v&quot;, line 641, characters 4-45:
+# Error: Rdiv does not occur.
+# 
+# Makefile:658: recipe for target &#39;elliptic_integral.vo&#39; failed
+# make[1]: *** [elliptic_integral.vo] Error 1
+# Makefile:320: recipe for target &#39;all&#39; failed
+# make: *** [all] Error 2
+&lt;&gt;&lt;&gt; Error report &lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;
++- The following actions failed
+| - build coq-pi-agm 1.2.3
++- 
+- No changes have been performed
+# Run eval $(opam env) to update the current shell environment
+&#39;opam install -y -v coq-pi-agm.1.2.3 coq.8.10.dev&#39; failed.
+</pre></dd>
+            </dl>
+            <h2>Installation size</h2>
+            <p>No files were installed.</p>
+            <h2>Uninstall</h2>
+            <dl class="dl-horizontal">
+              <dt>Command</dt>
+              <dd><code>true</code></dd>
+              <dt>Return code</dt>
+              <dd>0</dd>
+              <dt>Missing removes</dt>
+              <dd>
+                none
+              </dd>
+              <dt>Wrong removes</dt>
+              <dd>
+                none
+              </dd>
+            </dl>
+          </div>
+        </div>
+      </div>
+      <hr/>
+      <div class="footer">
+        <p class="text-center">
+          <small>Sources are on <a href="https://github.com/coq-bench">GitHub</a>. © Guillaume Claret.</small>
+        </p>
+      </div>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="../../../../../bootstrap.min.js"></script>
+  </body>
+</html>
