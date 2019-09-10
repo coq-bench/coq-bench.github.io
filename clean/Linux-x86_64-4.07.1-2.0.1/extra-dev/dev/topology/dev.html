@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>topology: Error with dependencies</title>
+    <title>topology: Error</title>
     <link rel="shortcut icon" type="image/png" href="../../../../../favicon.png" />
     <link href="../../../../../bootstrap.min.css" rel="stylesheet">
     <link href="../../../../../bootstrap-custom.css" rel="stylesheet">
@@ -39,10 +39,10 @@
               topology
               <small>
                 dev
-                <span class="label label-warning">Error with dependencies</span>
+                <span class="label label-danger">Error</span>
               </small>
             </h1>
-            <p><em><script>document.write(moment("2019-09-04 19:40:09 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2019-09-04 19:40:09 UTC)</em><p>
+            <p><em><script>document.write(moment("2019-09-10 17:27:06 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2019-09-10 17:27:06 UTC)</em><p>
             <h2>Context</h2>
             <pre># Packages matching: installed
 # Name              # Installed # Synopsis
@@ -109,9 +109,18 @@ url {
               <dt>Command</dt>
               <dd><code>opam list; echo; ulimit -Sv 4000000; timeout 60m opam install -y --deps-only coq-topology.dev coq.dev</code></dd>
               <dt>Return code</dt>
+              <dd>0</dd>
+              <dt>Duration</dt>
+              <dd>23 s</dd>
+            </dl>
+            <h2>Install</h2>
+            <dl class="dl-horizontal">
+              <dt>Command</dt>
+              <dd><code>opam list; echo; ulimit -Sv 4000000; timeout 1h opam install -y coq-topology.dev coq.dev</code></dd>
+              <dt>Return code</dt>
               <dd>7936</dd>
               <dt>Duration</dt>
-              <dd>18 s</dd>
+              <dd>33 s</dd>
               <dt>Output</dt>
               <dd><pre># Packages matching: installed
 # Name              # Installed # Synopsis
@@ -120,54 +129,47 @@ base-threads        base
 base-unix           base
 conf-m4             1           Virtual package relying on m4
 coq                 dev         Formal proof management system
+coq-zorns-lemma     dev         Zorn&#39;s Lemma.
 num                 1.2         The legacy Num library for arbitrary-precision integer and rational arithmetic
 ocaml               4.07.1      The OCaml compiler (virtual package)
 ocaml-base-compiler 4.07.1      Official release 4.07.1
 ocaml-config        1           OCaml Switch Configuration
 ocamlfind           1.8.1       A library manager for OCaml
+[NOTE] Package coq is already installed (current version is dev).
 The following actions will be performed:
-  - install coq-zorns-lemma dev
+  - install coq-topology dev
 &lt;&gt;&lt;&gt; Gathering sources &gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;
-[coq-zorns-lemma.dev] synchronised from git+https://github.com/coq-contribs/zorns-lemma.git#master
+[coq-topology.dev] synchronised from git+https://github.com/coq-contribs/topology.git#master
 &lt;&gt;&lt;&gt; Processing actions &lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;
-[ERROR] The compilation of coq-zorns-lemma failed at &quot;/home/bench/.opam/opam-init/hooks/sandbox.sh build make install&quot;.
-#=== ERROR while compiling coq-zorns-lemma.dev ================================#
+[ERROR] The compilation of coq-topology failed at &quot;/home/bench/.opam/opam-init/hooks/sandbox.sh build make -j7&quot;.
+#=== ERROR while compiling coq-topology.dev ===================================#
 # context              2.0.1 | linux/x86_64 | ocaml-base-compiler.4.07.1 | file:///home/bench/run/opam-coq-archive/extra-dev
-# path                 ~/.opam/ocaml-base-compiler.4.07.1/.opam-switch/build/coq-zorns-lemma.dev
-# command              ~/.opam/opam-init/hooks/sandbox.sh build make install
+# path                 ~/.opam/ocaml-base-compiler.4.07.1/.opam-switch/build/coq-topology.dev
+# command              ~/.opam/opam-init/hooks/sandbox.sh build make -j7
 # exit-code            2
-# env-file             ~/.opam/log/coq-zorns-lemma-27489-6cc03f.env
-# output-file          ~/.opam/log/coq-zorns-lemma-27489-6cc03f.out
+# env-file             ~/.opam/log/coq-topology-24362-d0f245.env
+# output-file          ~/.opam/log/coq-topology-24362-d0f245.out
 ### output ###
 # [...]
-# install: cannot change permissions of &#39;/home/bench/.opam/ocaml-base-compiler.4.07.1/lib/coq//user-contrib/ZornsLemma/&#39;: No such file or directory
-# install: cannot change permissions of &#39;/home/bench/.opam/ocaml-base-compiler.4.07.1/lib/coq//user-contrib/ZornsLemma/&#39;: No such file or directory
-# install: cannot change permissions of &#39;/home/bench/.opam/ocaml-base-compiler.4.07.1/lib/coq//user-contrib/ZornsLemma/&#39;: No such file or directory
-# install: cannot change permissions of &#39;/home/bench/.opam/ocaml-base-compiler.4.07.1/lib/coq//user-contrib/ZornsLemma/&#39;: No such file or directory
-# install: cannot change permissions of &#39;/home/bench/.opam/ocaml-base-compiler.4.07.1/lib/coq//user-contrib/ZornsLemma/&#39;: No such file or directory
-# install: cannot change permissions of &#39;/home/bench/.opam/ocaml-base-compiler.4.07.1/lib/coq//user-contrib/ZornsLemma/&#39;: No such file or directory
-# install: cannot change permissions of &#39;/home/bench/.opam/ocaml-base-compiler.4.07.1/lib/coq//user-contrib/ZornsLemma/&#39;: No such file or directory
-# install: cannot change permissions of &#39;/home/bench/.opam/ocaml-base-compiler.4.07.1/lib/coq//user-contrib/ZornsLemma/&#39;: No such file or directory
-# install: cannot change permissions of &#39;/home/bench/.opam/ocaml-base-compiler.4.07.1/lib/coq//user-contrib/ZornsLemma/&#39;: No such file or directory
-# install: cannot change permissions of &#39;/home/bench/.opam/ocaml-base-compiler.4.07.1/lib/coq//user-contrib/ZornsLemma/&#39;: No such file or directory
-# Makefile:472: recipe for target &#39;install&#39; failed
-# make: *** [install] Error 1
+# [deprecated-tactic,deprecated]
+# File &quot;./RFuncContinuity.v&quot;, line 461, characters 14-21:
+# Warning: Tactic fourier is deprecated since 8.9.0. Use lra instead.
+# [deprecated-tactic,deprecated]
+# File &quot;./RFuncContinuity.v&quot;, line 465, characters 0-7:
+# Warning: Tactic fourier is deprecated since 8.9.0. Use lra instead.
+# [deprecated-tactic,deprecated]
+# File &quot;./RFuncContinuity.v&quot;, line 472, characters 14-21:
+# Warning: Tactic fourier is deprecated since 8.9.0. Use lra instead.
+# [deprecated-tactic,deprecated]
+# Makefile:320: recipe for target &#39;all&#39; failed
+# make: *** [all] Error 2
 &lt;&gt;&lt;&gt; Error report &lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;
 +- The following actions failed
-| - build coq-zorns-lemma dev
+| - build coq-topology dev
 +- 
 - No changes have been performed
 # Run eval $(opam env) to update the current shell environment
 </pre></dd>
-            </dl>
-            <h2>Install</h2>
-            <dl class="dl-horizontal">
-              <dt>Command</dt>
-              <dd><code>true</code></dd>
-              <dt>Return code</dt>
-              <dd>0</dd>
-              <dt>Duration</dt>
-              <dd>0 s</dd>
             </dl>
             <h2>Installation size</h2>
             <p>No files were installed.</p>
