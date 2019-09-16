@@ -42,7 +42,7 @@
                 <span class="label label-info">Not compatible</span>
               </small>
             </h1>
-            <p><em><script>document.write(moment("2019-08-29 01:33:30 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2019-08-29 01:33:30 UTC)</em><p>
+            <p><em><script>document.write(moment("2019-09-16 12:46:55 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2019-09-16 12:46:55 UTC)</em><p>
             <h2>Context</h2>
             <pre># Packages matching: installed
 # Name              # Installed # Synopsis
@@ -69,7 +69,7 @@ license: &quot;LGPL 2.1&quot;
 build: [
   [&quot;sed&quot; &quot;-i&quot; &quot;s|usr\\/local|%{prefix}%|g&quot; &quot;_CoqProject&quot;]
   [&quot;coq_makefile&quot; &quot;-f&quot; &quot;_CoqProject&quot; &quot;-o&quot; &quot;Makefile&quot;]
-  [make &quot;-j%{jobs}%&quot;]
+  [make]
 ]
 install: [
   [make &quot;install&quot;]
@@ -80,6 +80,7 @@ remove: [
 ]
 depends: [
   &quot;ocaml&quot;
+  &quot;conf-g++&quot; {build}
   &quot;coq&quot; {(&gt;= &quot;8.6&quot; &amp; &lt; &quot;8.7~&quot;)}
 ]
 tags: [ &quot;keyword:automation&quot;
