@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>coqutil: 1 m 9 s</title>
+    <title>coqutil: 1 m 21 s</title>
     <link rel="shortcut icon" type="image/png" href="../../../../../favicon.png" />
     <link href="../../../../../bootstrap.min.css" rel="stylesheet">
     <link href="../../../../../bootstrap-custom.css" rel="stylesheet">
@@ -39,10 +39,10 @@
               coqutil
               <small>
                 dev
-                <span class="label label-success">1 m 9 s</span>
+                <span class="label label-success">1 m 21 s</span>
               </small>
             </h1>
-            <p><em><script>document.write(moment("2019-10-01 00:52:12 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2019-10-01 00:52:12 UTC)</em><p>
+            <p><em><script>document.write(moment("2019-10-04 06:01:54 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2019-10-04 06:01:54 UTC)</em><p>
             <h2>Context</h2>
             <pre># Packages matching: installed
 # Name              # Installed # Synopsis
@@ -76,6 +76,18 @@ depends: [
 ]
 dev-repo: &quot;git+https://github.com/mit-plv/coqutil.git&quot;
 synopsis: &quot;Coq library for tactics, basic definitions, sets, maps&quot;
+description: &quot;&quot;&quot;
+### coqutil -- Various Coq Utilities
+Contents:
+* [Datatypes](https://github.com/mit-plv/coqutil/tree/master/src/coqutil/Datatypes): Some utilities for existing datatypes, and new datatypes.
+* [Decidable](https://github.com/mit-plv/coqutil/blob/master/src/coqutil/Decidable.v): `BoolSpec`-based decidability typeclasses. Allows one to write `if MyType_eqb a b then ... else ...` where `MyType_eqb a b` returns a `bool`, instead of writing `if MyType_eq_dec a b then ... else ...` where `MyType_eq_dec a b` returns a `sumbool`, while still getting `a = b` and `a &lt;&gt; b` as hypotheses (as opposed to `MyType_eqb a b = true` and `MyType_eqb a b = false`) after destructing the `if` (need to use [`destr`](https://github.com/mit-plv/coqutil/blob/master/src/coqutil/Tactics/destr.v) instead of `destruct`). So one gets the benefits of `Sumbool` without getting its disadvantage of having to carry around proof terms, which can cause a blow-up under reduction if one is not careful.
+* [Map](https://github.com/mit-plv/coqutil/tree/master/src/coqutil/Map): A typeclass based map library allowing one to abstract over the concrete implementation of maps. The implementations have to be extensional, which excludes certain efficient implementations, but simplifies proofs, because one can `replace mapA with mapB` if one can prove that `mapA` and `mapB` have the same contents. Comes with a [solver](https://github.com/mit-plv/coqutil/blob/master/src/coqutil/Map/Solver.v) which works reasonably fast on most map goals we have encountered so far.
+* [Tactics](https://github.com/mit-plv/coqutil/tree/master/src/coqutil/Tactics): A collection of useful general-purpose tactics.
+* [Word](https://github.com/mit-plv/coqutil/tree/master/src/coqutil/Word): Fixed width words for any width, in the same typeclass based style as the map library. Designed for the case where all words have the same (potentially abstract) bit width. Therefore, it does not provide functions to concatenate and split words, which is better addressed by [bbv](https://github.com/mit-plv/bbv/).
+* [Z](https://github.com/mit-plv/coqutil/tree/master/src/coqutil/Z): Utilities to work with the `Z` type from Coq&#39;s standard library, including a tactic to prove `Z` equalities by splitting the equality into equalities on bit index ranges, a tactic to make `lia` capable of reasoning about goals with division and modulo, and a tactic to simplify expressions containing nested occurrences of `mod`, and more misc utilities.
+* Various macros, notations, and desirable default settings.
+Each feature is intended to be as minimal and as independent of the other features as possible, so that users can pick just what they need.
+&quot;&quot;&quot;
 flags: light-uninstall
 url {
   src: &quot;git+https://github.com/mit-plv/coqutil.git#master&quot;
@@ -119,7 +131,7 @@ url {
               <dt>Return code</dt>
               <dd>0</dd>
               <dt>Duration</dt>
-              <dd>1 m 9 s</dd>
+              <dd>1 m 21 s</dd>
             </dl>
             <h2>Installation size</h2>
             <p>Total: 3 M</p>
@@ -139,16 +151,17 @@ url {
               <li>69 K <code>../ocaml-base-compiler.4.05.0/lib/coq/user-contrib/coqutil/Map/Interface.vo</code></li>
               <li>66 K <code>../ocaml-base-compiler.4.05.0/lib/coq/user-contrib/coqutil/Word/LittleEndian.vo</code></li>
               <li>65 K <code>../ocaml-base-compiler.4.05.0/lib/coq/user-contrib/coqutil/Map/TestLemmas.vo</code></li>
-              <li>58 K <code>../ocaml-base-compiler.4.05.0/lib/coq/user-contrib/coqutil/Datatypes/List.vo</code></li>
+              <li>60 K <code>../ocaml-base-compiler.4.05.0/lib/coq/user-contrib/coqutil/Datatypes/List.vo</code></li>
               <li>55 K <code>../ocaml-base-compiler.4.05.0/lib/coq/user-contrib/coqutil/Map/SlowGoals.vo</code></li>
               <li>52 K <code>../ocaml-base-compiler.4.05.0/lib/coq/user-contrib/coqutil/Map/TestGoals.glob</code></li>
+              <li>50 K <code>../ocaml-base-compiler.4.05.0/lib/coq/user-contrib/coqutil/Word/DebugWordEq.vo</code></li>
               <li>48 K <code>../ocaml-base-compiler.4.05.0/lib/coq/user-contrib/coqutil/Map/SortedListWord.vo</code></li>
               <li>47 K <code>../ocaml-base-compiler.4.05.0/lib/coq/user-contrib/coqutil/Map/Funext.vo</code></li>
               <li>45 K <code>../ocaml-base-compiler.4.05.0/lib/coq/user-contrib/coqutil/Datatypes/PropSet.vo</code></li>
               <li>43 K <code>../ocaml-base-compiler.4.05.0/lib/coq/user-contrib/coqutil/Map/Z_keyed_SortedListMap.vo</code></li>
               <li>42 K <code>../ocaml-base-compiler.4.05.0/lib/coq/user-contrib/coqutil/Map/Empty_set_keyed_map.vo</code></li>
               <li>41 K <code>../ocaml-base-compiler.4.05.0/lib/coq/user-contrib/coqutil/Tactics/Tactics.vo</code></li>
-              <li>40 K <code>../ocaml-base-compiler.4.05.0/lib/coq/user-contrib/coqutil/Map/SortedListString.vo</code></li>
+              <li>41 K <code>../ocaml-base-compiler.4.05.0/lib/coq/user-contrib/coqutil/Map/SortedListString.vo</code></li>
               <li>39 K <code>../ocaml-base-compiler.4.05.0/lib/coq/user-contrib/coqutil/Z/div_mod_to_equations.vo</code></li>
               <li>38 K <code>../ocaml-base-compiler.4.05.0/lib/coq/user-contrib/coqutil/Z/Lia.vo</code></li>
               <li>38 K <code>../ocaml-base-compiler.4.05.0/lib/coq/user-contrib/coqutil/Map/SortedListString_test.vo</code></li>
@@ -174,9 +187,9 @@ url {
               <li>15 K <code>../ocaml-base-compiler.4.05.0/lib/coq/user-contrib/coqutil/Map/Interface.glob</code></li>
               <li>15 K <code>../ocaml-base-compiler.4.05.0/lib/coq/user-contrib/coqutil/Datatypes/PropSet.glob</code></li>
               <li>14 K <code>../ocaml-base-compiler.4.05.0/lib/coq/user-contrib/coqutil/Z/div_mod_to_equations.glob</code></li>
+              <li>13 K <code>../ocaml-base-compiler.4.05.0/lib/coq/user-contrib/coqutil/Datatypes/List.glob</code></li>
               <li>11 K <code>../ocaml-base-compiler.4.05.0/lib/coq/user-contrib/coqutil/Map/SlowGoals.glob</code></li>
               <li>11 K <code>../ocaml-base-compiler.4.05.0/lib/coq/user-contrib/coqutil/Map/TestGoals.v</code></li>
-              <li>10 K <code>../ocaml-base-compiler.4.05.0/lib/coq/user-contrib/coqutil/Datatypes/List.glob</code></li>
               <li>10 K <code>../ocaml-base-compiler.4.05.0/lib/coq/user-contrib/coqutil/Tactics/syntactic_unify.vo</code></li>
               <li>10 K <code>../ocaml-base-compiler.4.05.0/lib/coq/user-contrib/coqutil/Map/TestLemmas.glob</code></li>
               <li>9 K <code>../ocaml-base-compiler.4.05.0/lib/coq/user-contrib/coqutil/Datatypes/Option.glob</code></li>
@@ -200,11 +213,13 @@ url {
               <li>4 K <code>../ocaml-base-compiler.4.05.0/lib/coq/user-contrib/coqutil/Word/Interface.v</code></li>
               <li>4 K <code>../ocaml-base-compiler.4.05.0/lib/coq/user-contrib/coqutil/Map/Funext.glob</code></li>
               <li>4 K <code>../ocaml-base-compiler.4.05.0/lib/coq/user-contrib/coqutil/Tactics/eabstract.vo</code></li>
+              <li>3 K <code>../ocaml-base-compiler.4.05.0/lib/coq/user-contrib/coqutil/Datatypes/List.v</code></li>
               <li>3 K <code>../ocaml-base-compiler.4.05.0/lib/coq/user-contrib/coqutil/Decidable.glob</code></li>
               <li>3 K <code>../ocaml-base-compiler.4.05.0/lib/coq/user-contrib/coqutil/Tactics/syntactic_unify.v</code></li>
               <li>3 K <code>../ocaml-base-compiler.4.05.0/lib/coq/user-contrib/coqutil/Map/Interface.v</code></li>
               <li>3 K <code>../ocaml-base-compiler.4.05.0/lib/coq/user-contrib/coqutil/Tactics/letexists.vo</code></li>
               <li>3 K <code>../ocaml-base-compiler.4.05.0/lib/coq/user-contrib/coqutil/Datatypes/PropSet.v</code></li>
+              <li>3 K <code>../ocaml-base-compiler.4.05.0/lib/coq/user-contrib/coqutil/Word/DebugWordEq.glob</code></li>
               <li>3 K <code>../ocaml-base-compiler.4.05.0/lib/coq/user-contrib/coqutil/Tactics/rdelta.vo</code></li>
               <li>3 K <code>../ocaml-base-compiler.4.05.0/lib/coq/user-contrib/coqutil/Tactics/simpl_rewrite.v</code></li>
               <li>3 K <code>../ocaml-base-compiler.4.05.0/lib/coq/user-contrib/coqutil/Tactics/autoforward.vo</code></li>
@@ -212,7 +227,6 @@ url {
               <li>2 K <code>../ocaml-base-compiler.4.05.0/lib/coq/user-contrib/coqutil/Datatypes/Option.v</code></li>
               <li>2 K <code>../ocaml-base-compiler.4.05.0/lib/coq/user-contrib/coqutil/Map/Z_keyed_SortedListMap.glob</code></li>
               <li>2 K <code>../ocaml-base-compiler.4.05.0/lib/coq/user-contrib/coqutil/sanity.vo</code></li>
-              <li>2 K <code>../ocaml-base-compiler.4.05.0/lib/coq/user-contrib/coqutil/Datatypes/List.v</code></li>
               <li>2 K <code>../ocaml-base-compiler.4.05.0/lib/coq/user-contrib/coqutil/Tactics/Tactics.glob</code></li>
               <li>2 K <code>../ocaml-base-compiler.4.05.0/lib/coq/user-contrib/coqutil/Datatypes/Prod.v</code></li>
               <li>2 K <code>../ocaml-base-compiler.4.05.0/lib/coq/user-contrib/coqutil/dlet.vo</code></li>
@@ -226,10 +240,11 @@ url {
               <li>2 K <code>../ocaml-base-compiler.4.05.0/lib/coq/user-contrib/coqutil/Datatypes/PrimitivePair.glob</code></li>
               <li>2 K <code>../ocaml-base-compiler.4.05.0/lib/coq/user-contrib/coqutil/Datatypes/String.glob</code></li>
               <li>2 K <code>../ocaml-base-compiler.4.05.0/lib/coq/user-contrib/coqutil/Map/SlowGoals.v</code></li>
+              <li>1 K <code>../ocaml-base-compiler.4.05.0/lib/coq/user-contrib/coqutil/Map/SortedListString.glob</code></li>
               <li>1 K <code>../ocaml-base-compiler.4.05.0/lib/coq/user-contrib/coqutil/sanity.v</code></li>
               <li>1 K <code>../ocaml-base-compiler.4.05.0/lib/coq/user-contrib/coqutil/Map/Funext.v</code></li>
-              <li>1 K <code>../ocaml-base-compiler.4.05.0/lib/coq/user-contrib/coqutil/Map/SortedListString.glob</code></li>
               <li>1 K <code>../ocaml-base-compiler.4.05.0/lib/coq/user-contrib/coqutil/Macros/symmetry.v</code></li>
+              <li>1 K <code>../ocaml-base-compiler.4.05.0/lib/coq/user-contrib/coqutil/Word/DebugWordEq.v</code></li>
               <li>1 K <code>../ocaml-base-compiler.4.05.0/lib/coq/user-contrib/coqutil/Map/SortedListWord.v</code></li>
               <li>1 K <code>../ocaml-base-compiler.4.05.0/lib/coq/user-contrib/coqutil/Map/SortedListString_test.v</code></li>
               <li>1 K <code>../ocaml-base-compiler.4.05.0/lib/coq/user-contrib/coqutil/Map/Empty_set_keyed_map.glob</code></li>
@@ -244,8 +259,8 @@ url {
               <li>1 K <code>../ocaml-base-compiler.4.05.0/lib/coq/user-contrib/coqutil/Datatypes/String.v</code></li>
               <li>1 K <code>../ocaml-base-compiler.4.05.0/lib/coq/user-contrib/coqutil/Tactics/letexists.v</code></li>
               <li>1 K <code>../ocaml-base-compiler.4.05.0/lib/coq/user-contrib/coqutil/Map/Empty_set_keyed_map.v</code></li>
-              <li>1 K <code>../ocaml-base-compiler.4.05.0/lib/coq/user-contrib/coqutil/Tactics/rdelta.v</code></li>
               <li>1 K <code>../ocaml-base-compiler.4.05.0/lib/coq/user-contrib/coqutil/Map/SortedListString.v</code></li>
+              <li>1 K <code>../ocaml-base-compiler.4.05.0/lib/coq/user-contrib/coqutil/Tactics/rdelta.v</code></li>
               <li>1 K <code>../ocaml-base-compiler.4.05.0/lib/coq/user-contrib/coqutil/Z/HexNotation.v</code></li>
               <li>1 K <code>../ocaml-base-compiler.4.05.0/lib/coq/user-contrib/coqutil/dlet.glob</code></li>
               <li>1 K <code>../ocaml-base-compiler.4.05.0/lib/coq/user-contrib/coqutil/Tactics/autoforward.v</code></li>
