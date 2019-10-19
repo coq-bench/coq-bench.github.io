@@ -42,7 +42,7 @@
                 <span class="label label-info">Not compatible</span>
               </small>
             </h1>
-            <p><em><script>document.write(moment("2019-10-12 08:52:15 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2019-10-12 08:52:15 UTC)</em><p>
+            <p><em><script>document.write(moment("2019-10-19 16:57:12 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2019-10-19 16:57:12 UTC)</em><p>
             <h2>Context</h2>
             <pre># Packages matching: installed
 # Name              # Installed # Synopsis
@@ -72,7 +72,10 @@ license: &quot;LGPL 3&quot;
 homepage: &quot;http://geocoq.github.io/GeoCoq/&quot;
 bug-reports: &quot;https://github.com/GeoCoq/GeoCoq/issues&quot;
 dev-repo: &quot;git+https://github.com/GeoCoq/GeoCoq.git&quot;
-depends: [ &quot;coq-geocoq-coinc&quot; { = &quot;2.4.0&quot; } ]
+depends: [
+  &quot;coq&quot; {&gt;= &quot;8.7&quot;}
+  &quot;coq-geocoq-coinc&quot; { = &quot;2.4.0&quot; }
+]
 build: [
   [&quot;./configure-axioms.sh&quot;]
   [make &quot;-j%{jobs}%&quot;]
@@ -93,7 +96,8 @@ extra-files : [[&quot;Make.in&quot; &quot;md5=4012b8ca78abe89ced161b10c93efdc9&q
 url {
   src: &quot;https://github.com/GeoCoq/GeoCoq/archive/v2.4.0.tar.gz&quot;
   checksum: &quot;md5=4a4ad33b4cad9b815a9b5c6308524c63&quot;
-}</pre>
+}
+</pre>
             <h2>Lint</h2>
             <dl class="dl-horizontal">
               <dt>Command</dt>
@@ -111,7 +115,8 @@ url {
               <dt>Output</dt>
               <dd><pre>[NOTE] Package coq is already installed (current version is 8.5.2).
 The following dependencies couldn&#39;t be met:
-  - coq-geocoq-axioms -&gt; coq-geocoq-coinc -&gt; coq &gt;= 8.6.1
+  - coq-geocoq-axioms -&gt; coq-geocoq-coinc -&gt; coq &gt;= 8.6.1 -&gt; ocaml &gt;= 4.05.0
+      base of this switch (use `--unlock-base&#39; to force)
 Your request can&#39;t be satisfied:
   - No available version of coq satisfies the constraints
 No solution found, exiting
