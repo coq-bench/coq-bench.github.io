@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>pi-agm: Error with dependencies</title>
+    <title>pi-agm: Not compatible</title>
     <link rel="shortcut icon" type="image/png" href="../../../../../favicon.png" />
     <link href="../../../../../bootstrap.min.css" rel="stylesheet">
     <link href="../../../../../bootstrap-custom.css" rel="stylesheet">
@@ -39,10 +39,10 @@
               pi-agm
               <small>
                 1.2.3
-                <span class="label label-warning">Error with dependencies</span>
+                <span class="label label-info">Not compatible</span>
               </small>
             </h1>
-            <p><em><script>document.write(moment("2019-10-06 16:29:08 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2019-10-06 16:29:08 UTC)</em><p>
+            <p><em><script>document.write(moment("2019-10-19 02:02:12 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2019-10-19 02:02:12 UTC)</em><p>
             <h2>Context</h2>
             <pre># Packages matching: installed
 # Name              # Installed # Synopsis
@@ -70,7 +70,7 @@ install: [ make &quot;install&quot; &quot;DEST=&#39;%{lib}%/coq/user-contrib/pi_
 remove: [ &quot;sh&quot; &quot;-c&quot; &quot;rm -rf &#39;%{lib}%/coq/user-contrib/pi_agm&#39;&quot; ]
 depends: [
   &quot;ocaml&quot;
-  &quot;coq&quot; {&gt;= &quot;8.9&quot;}
+  &quot;coq&quot; {&gt;= &quot;8.9&quot; &amp; &lt; &quot;8.10~&quot;}
   &quot;coq-coquelicot&quot; {&gt;= &quot;3&quot; &amp; &lt; &quot;4~&quot;}
   &quot;coq-interval&quot; {&gt;= &quot;3.1&quot;}
 ]
@@ -105,94 +105,32 @@ url {
               <dt>Command</dt>
               <dd><code>opam install -y --show-action coq-pi-agm.1.2.3 coq.dev</code></dd>
               <dt>Return code</dt>
-              <dd>0</dd>
+              <dd>5120</dd>
+              <dt>Output</dt>
+              <dd><pre>[NOTE] Package coq is already installed (current version is dev).
+The following dependencies couldn&#39;t be met:
+  - coq-pi-agm -&gt; coq &lt; 8.10~ -&gt; ocaml &lt; 4.06.0
+      base of this switch (use `--unlock-base&#39; to force)
+Your request can&#39;t be satisfied:
+  - No available version of coq satisfies the constraints
+No solution found, exiting
+</pre></dd>
             </dl>
             <p>Dry install without Coq/switch base, to test if the problem was incompatibility with the current Coq/OCaml version:</p>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>true</code></dd>
+              <dd><code>opam remove -y coq; opam install -y --show-action --unlock-base coq-pi-agm.1.2.3</code></dd>
               <dt>Return code</dt>
               <dd>0</dd>
             </dl>
             <h2>Install dependencies</h2>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>opam list; echo; ulimit -Sv 4000000; timeout 300m opam install -y --deps-only coq-pi-agm.1.2.3 coq.dev</code></dd>
+              <dd><code>true</code></dd>
               <dt>Return code</dt>
-              <dd>7936</dd>
+              <dd>0</dd>
               <dt>Duration</dt>
-              <dd>8 m 37 s</dd>
-              <dt>Output</dt>
-              <dd><pre># Packages matching: installed
-# Name              # Installed # Synopsis
-base-bigarray       base
-base-threads        base
-base-unix           base
-conf-m4             1           Virtual package relying on m4
-coq                 dev         Formal proof management system
-num                 1.2         The legacy Num library for arbitrary-precision integer and rational arithmetic
-ocaml               4.07.1      The OCaml compiler (virtual package)
-ocaml-base-compiler 4.07.1      Official release 4.07.1
-ocaml-config        1           OCaml Switch Configuration
-ocamlfind           1.8.1       A library manager for OCaml
-The following actions will be performed:
-  - install coq-mathcomp-ssreflect dev
-  - install coq-flocq              dev
-  - install dune                   1.11.3
-  - install coq-coquelicot         3.0.3
-  - install coq-bignums            dev
-  - install coq-interval           3.4.1
-===== 6 to install =====
-&lt;&gt;&lt;&gt; Gathering sources &gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;
-[coq-coquelicot.3.0.3] downloaded from https://gforge.inria.fr/frs/download.php/file/38105/coquelicot-3.0.3.tar.gz
-[coq-interval.3.4.1] downloaded from https://gforge.inria.fr/frs/download.php/file/38104/interval-3.4.1.tar.gz
-[coq-bignums.dev] synchronised from git+https://github.com/coq/bignums.git#master
-[dune.1.11.3] downloaded from cache at https://opam.ocaml.org/cache
-[coq-mathcomp-ssreflect.dev] synchronised from git+https://github.com/math-comp/math-comp.git#master
-[coq-flocq.dev] synchronised from git+https://gitlab.inria.fr/flocq/flocq.git#master
-&lt;&gt;&lt;&gt; Processing actions &lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;
--&gt; installed dune.1.11.3
--&gt; installed coq-mathcomp-ssreflect.dev
--&gt; installed coq-bignums.dev
--&gt; installed coq-coquelicot.3.0.3
--&gt; installed coq-flocq.dev
-[ERROR] The compilation of coq-interval failed at &quot;/home/bench/.opam/opam-init/hooks/sandbox.sh build ./remake -j7&quot;.
-#=== ERROR while compiling coq-interval.3.4.1 =================================#
-# context              2.0.1 | linux/x86_64 | ocaml-base-compiler.4.07.1 | file:///home/bench/run/opam-coq-archive/released
-# path                 ~/.opam/ocaml-base-compiler.4.07.1/.opam-switch/build/coq-interval.3.4.1
-# command              ~/.opam/opam-init/hooks/sandbox.sh build ./remake -j7
-# exit-code            1
-# env-file             ~/.opam/log/coq-interval-845-bb9cac.env
-# output-file          ~/.opam/log/coq-interval-845-bb9cac.out
-### output ###
-# [...]
-# [deprecated-tactic,deprecated]
-# File &quot;./src/Interval_transcend.v&quot;, line 805, characters 2-17:
-# Warning: Tactic Fourier.fourier is deprecated since 8.9.0. Use lra instead.
-# [deprecated-tactic,deprecated]
-# File &quot;./src/Interval_transcend.v&quot;, line 813, characters 2-17:
-# Warning: Tactic Fourier.fourier is deprecated since 8.9.0. Use lra instead.
-# [deprecated-tactic,deprecated]
-# File &quot;./src/Interval_transcend.v&quot;, line 819, characters 2-17:
-# Warning: Tactic Fourier.fourier is deprecated since 8.9.0. Use lra instead.
-# [deprecated-tactic,deprecated]
-# Finished src/Interval_transcend.vo
-# Finished src/Interval_interval_float_full.vo
-&lt;&gt;&lt;&gt; Error report &lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;
-+- The following actions failed
-| - build coq-interval 3.4.1
-+- 
-+- The following changes have been performed
-| - install coq-bignums            dev
-| - install coq-coquelicot         3.0.3
-| - install coq-flocq              dev
-| - install coq-mathcomp-ssreflect dev
-| - install dune                   1.11.3
-+- 
-# Run eval $(opam env) to update the current shell environment
-The former state can be restored with:
-    opam switch import &quot;/home/bench/.opam/ocaml-base-compiler.4.07.1/.opam-switch/backup/state-20191006014200.export&quot;
-</pre></dd>
+              <dd>0 s</dd>
             </dl>
             <h2>Install</h2>
             <dl class="dl-horizontal">
