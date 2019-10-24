@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>fiat-crypto: Error with dependencies</title>
+    <title>fiat-crypto: Error</title>
     <link rel="shortcut icon" type="image/png" href="../../../../../favicon.png" />
     <link href="../../../../../bootstrap.min.css" rel="stylesheet">
     <link href="../../../../../bootstrap-custom.css" rel="stylesheet">
@@ -39,10 +39,10 @@
               fiat-crypto
               <small>
                 dev
-                <span class="label label-warning">Error with dependencies</span>
+                <span class="label label-danger">Error</span>
               </small>
             </h1>
-            <p><em><script>document.write(moment("2019-10-14 23:13:55 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2019-10-14 23:13:55 UTC)</em><p>
+            <p><em><script>document.write(moment("2019-10-24 07:00:35 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2019-10-24 07:00:35 UTC)</em><p>
             <h2>Context</h2>
             <pre># Packages matching: installed
 # Name              # Installed # Synopsis
@@ -73,7 +73,6 @@ build: [
   [make &quot;-j%{jobs}%&quot; &quot;EXTERNAL_DEPENDENCIES=1&quot; &quot;coq&quot; &quot;standalone-ocaml&quot;]
 ]
 install: [make &quot;EXTERNAL_DEPENDENCIES=1&quot; &quot;install&quot; &quot;install-standalone-ocaml&quot;]
-remove: [&quot;rm&quot; &quot;-r&quot; &quot;-f&quot; &quot;%{lib}%/coq/user-contrib/Crypto&quot;]
 depends: [
   &quot;ocaml&quot;
   &quot;coq&quot; {&gt;= &quot;8.9~&quot;}
@@ -82,7 +81,7 @@ depends: [
 ]
 dev-repo: &quot;git+https://github.com/mit-plv/fiat-crypto.git&quot;
 synopsis: &quot;Cryptographic Primitive Code Generation in Fiat.&quot;
-flags: light-uninstall
+tags: [&quot;logpath:Crypto&quot;]
 url {
   src: &quot;git+https://github.com/mit-plv/fiat-crypto.git#master&quot;
 }
@@ -114,9 +113,18 @@ url {
               <dt>Command</dt>
               <dd><code>opam list; echo; ulimit -Sv 4000000; timeout 2h opam install -y --deps-only coq-fiat-crypto.dev coq.8.9.dev</code></dd>
               <dt>Return code</dt>
+              <dd>0</dd>
+              <dt>Duration</dt>
+              <dd>12 m 27 s</dd>
+            </dl>
+            <h2>Install</h2>
+            <dl class="dl-horizontal">
+              <dt>Command</dt>
+              <dd><code>opam list; echo; ulimit -Sv 4000000; timeout 1h opam install -y coq-fiat-crypto.dev coq.8.9.dev</code></dd>
+              <dt>Return code</dt>
               <dd>7936</dd>
               <dt>Duration</dt>
-              <dd>4 m 11 s</dd>
+              <dd>1 m 22 s</dd>
               <dt>Output</dt>
               <dd><pre># Packages matching: installed
 # Name              # Installed # Synopsis
@@ -126,70 +134,50 @@ base-unix           base
 camlp5              7.10        Preprocessor-pretty-printer of OCaml
 conf-m4             1           Virtual package relying on m4
 coq                 8.9.dev     Formal proof management system
+coq-bedrock2        dev         A work-in-progress language and compiler for verified low-level programming
+coq-bignums         8.9.0       Bignums, the Coq library of arbitrary large numbers
+coq-coqprime        dev         Certifying prime numbers in Coq
+coq-coqutil         dev         Coq library for tactics, basic definitions, sets, maps
 num                 1.2         The legacy Num library for arbitrary-precision integer and rational arithmetic
 ocaml               4.07.1      The OCaml compiler (virtual package)
 ocaml-base-compiler 4.07.1      Official release 4.07.1
 ocaml-config        1           OCaml Switch Configuration
 ocamlfind           1.8.1       A library manager for OCaml
+[NOTE] Package coq is already installed (current version is 8.9.dev).
 The following actions will be performed:
-  - install coq-bignums  8.9.0
-  - install coq-coqutil  dev
-  - install coq-coqprime dev
-  - install coq-bedrock2 dev
-===== 4 to install =====
+  - install coq-fiat-crypto dev
 &lt;&gt;&lt;&gt; Gathering sources &gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;
-[coq-bignums.8.9.0] downloaded from https://github.com/coq/bignums/archive/V8.9.0.tar.gz
-[coq-coqutil.dev] synchronised from git+https://github.com/mit-plv/coqutil.git#master
-[coq-coqprime.dev] synchronised from git+https://github.com/thery/coqprime.git
-[coq-bedrock2.dev] synchronised from git+https://github.com/mit-plv/bedrock2.git#master
+[coq-fiat-crypto.dev] synchronised from git+https://github.com/mit-plv/fiat-crypto.git#master
 &lt;&gt;&lt;&gt; Processing actions &lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;
--&gt; installed coq-bignums.8.9.0
--&gt; installed coq-coqutil.dev
-[ERROR] The installation of coq-bedrock2 failed at &quot;make EXTERNAL_DEPENDENCIES=1 install_bedrock2&quot;.
--&gt; installed coq-coqprime.dev
-#=== ERROR while installing coq-bedrock2.dev ==================================#
+[ERROR] The compilation of coq-fiat-crypto failed at &quot;/home/bench/.opam/opam-init/hooks/sandbox.sh build make -j7 EXTERNAL_DEPENDENCIES=1 coq standalone-ocaml&quot;.
+#=== ERROR while compiling coq-fiat-crypto.dev ================================#
 # context              2.0.1 | linux/x86_64 | ocaml-base-compiler.4.07.1 | file:///home/bench/run/opam-coq-archive/extra-dev
-# path                 ~/.opam/ocaml-base-compiler.4.07.1/.opam-switch/build/coq-bedrock2.dev
-# command              ~/.opam/opam-init/hooks/sandbox.sh install make EXTERNAL_DEPENDENCIES=1 install_bedrock2
+# path                 ~/.opam/ocaml-base-compiler.4.07.1/.opam-switch/build/coq-fiat-crypto.dev
+# command              ~/.opam/opam-init/hooks/sandbox.sh build make -j7 EXTERNAL_DEPENDENCIES=1 coq standalone-ocaml
 # exit-code            2
-# env-file             ~/.opam/log/coq-bedrock2-19543-e80101.env
-# output-file          ~/.opam/log/coq-bedrock2-19543-e80101.out
+# env-file             ~/.opam/log/coq-fiat-crypto-7864-e4db2f.env
+# output-file          ~/.opam/log/coq-fiat-crypto-7864-e4db2f.out
 ### output ###
 # [...]
-# make -C /home/bench/.opam/ocaml-base-compiler.4.07.1/.opam-switch/build/coq-bedrock2.dev/bedrock2 install
-# make[1]: Entering directory &#39;/home/bench/.opam/ocaml-base-compiler.4.07.1/.opam-switch/build/coq-bedrock2.dev/bedrock2&#39;
-# make -f Makefile.coq.noex install
-# make[2]: Entering directory &#39;/home/bench/.opam/ocaml-base-compiler.4.07.1/.opam-switch/build/coq-bedrock2.dev/bedrock2&#39;
-# make[2]: Makefile.coq.noex: No such file or directory
-# make[2]: *** No rule to make target &#39;Makefile.coq.noex&#39;.  Stop.
-# make[2]: Leaving directory &#39;/home/bench/.opam/ocaml-base-compiler.4.07.1/.opam-switch/build/coq-bedrock2.dev/bedrock2&#39;
-# Makefile:74: recipe for target &#39;install&#39; failed
-# make[1]: *** [install] Error 2
-# make[1]: Leaving directory &#39;/home/bench/.opam/ocaml-base-compiler.4.07.1/.opam-switch/build/coq-bedrock2.dev/bedrock2&#39;
-# Makefile:69: recipe for target &#39;install_bedrock2&#39; failed
-# make: *** [install_bedrock2] Error 2
+# COQC src/Util/Tactics/DestructHead.v
+# COQC src/Util/Strings/Ascii.v
+# COQC src/Util/Strings/Decimal.v
+# File &quot;./src/Util/LetIn.v&quot;, line 5, characters 8-27:
+# Error:
+# Cannot find a physical path bound to logical path matching suffix
+# Rewriter.Util.
+# 
+# COQC src/Util/Decidable.v
+# Makefile.coq:662: recipe for target &#39;src/Util/LetIn.vo&#39; failed
+# make: *** [src/Util/LetIn.vo] Error 1
+# make: *** Waiting for unfinished jobs....
 &lt;&gt;&lt;&gt; Error report &lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;
 +- The following actions failed
-| - install coq-bedrock2 dev
+| - build coq-fiat-crypto dev
 +- 
-+- The following changes have been performed
-| - install coq-bignums  8.9.0
-| - install coq-coqprime dev
-| - install coq-coqutil  dev
-+- 
+- No changes have been performed
 # Run eval $(opam env) to update the current shell environment
-The former state can be restored with:
-    opam switch import &quot;/home/bench/.opam/ocaml-base-compiler.4.07.1/.opam-switch/backup/state-20191014190146.export&quot;
 </pre></dd>
-            </dl>
-            <h2>Install</h2>
-            <dl class="dl-horizontal">
-              <dt>Command</dt>
-              <dd><code>true</code></dd>
-              <dt>Return code</dt>
-              <dd>0</dd>
-              <dt>Duration</dt>
-              <dd>0 s</dd>
             </dl>
             <h2>Installation size</h2>
             <p>No files were installed.</p>
