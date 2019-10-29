@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>euclidean-geometry: Not compatible</title>
+    <link rel="shortcut icon" type="image/png" href="../../../../../favicon.png" />
+    <link href="../../../../../bootstrap.min.css" rel="stylesheet">
+    <link href="../../../../../bootstrap-custom.css" rel="stylesheet">
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+    <script src="../../../../../moment.min.js"></script>
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="container">
+      <div class="navbar navbar-default" role="navigation">
+        <div class="container-fluid">
+          <div class="navbar-header">
+            <a class="navbar-brand" href="../../../../.."><i class="fa fa-lg fa-flag-checkered"></i> Coq bench</a>
+          </div>
+          <div id="navbar" class="collapse navbar-collapse">
+            <ul class="nav navbar-nav">
+              <li><a href="../..">clean / released</a></li>
+              <li class="active"><a href="">8.10.1 / euclidean-geometry - 8.8.0</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="article">
+        <div class="row">
+          <div class="col-md-12">
+            <a href="../..">« Up</a>
+            <h1>
+              euclidean-geometry
+              <small>
+                8.8.0
+                <span class="label label-info">Not compatible</span>
+              </small>
+            </h1>
+            <p><em><script>document.write(moment("2019-10-29 12:35:14 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2019-10-29 12:35:14 UTC)</em><p>
+            <h2>Context</h2>
+            <pre># Packages matching: installed
+# Name              # Installed # Synopsis
+base-bigarray       base
+base-threads        base
+base-unix           base
+conf-findutils      1           Virtual package relying on findutils
+conf-m4             1           Virtual package relying on m4
+coq                 8.10.1      Formal proof management system
+num                 1.2         The legacy Num library for arbitrary-precision integer and rational arithmetic
+ocaml               4.09.0      The OCaml compiler (virtual package)
+ocaml-base-compiler 4.09.0      Official release 4.09.0
+ocaml-config        1           OCaml Switch Configuration
+ocamlfind           1.8.1       A library manager for OCaml
+# opam file:
+opam-version: &quot;2.0&quot;
+maintainer: &quot;Hugo.Herbelin@inria.fr&quot;
+homepage: &quot;https://github.com/coq-contribs/euclidean-geometry&quot;
+license: &quot;LGPL&quot;
+build: [make &quot;-j%{jobs}%&quot;]
+install: [make &quot;install&quot;]
+remove: [&quot;rm&quot; &quot;-R&quot; &quot;%{lib}%/coq/user-contrib/EuclideanGeometry&quot;]
+depends: [
+  &quot;ocaml&quot;
+  &quot;coq&quot; {&gt;= &quot;8.8&quot; &amp; &lt; &quot;8.9~&quot;}
+]
+tags: [ &quot;keyword: plane geometry&quot; &quot;keyword: Euclid&quot; &quot;keyword: ruler and compass&quot; &quot;category: Mathematics/Geometry/General&quot; ]
+authors: [ &quot;Jean Duprat &lt;Jean.Duprat@ens-lyon.fr&gt;&quot; ]
+bug-reports: &quot;https://github.com/coq-contribs/euclidean-geometry/issues&quot;
+dev-repo: &quot;git+https://github.com/coq-contribs/euclidean-geometry.git&quot;
+synopsis: &quot;Basis of the Euclid&#39;s plane geometry&quot;
+description: &quot;&quot;&quot;
+This is a more recent version of the basis of Euclid&#39;s plane geometry, the previous version was the contribution intitled RulerCompassGeometry.
+The plane geometry is defined as a set of points, with two predicates : Clokwise for the orientation and Equidistant for the metric and three constructors, Ruler for the lines, Compass for the circles and Intersection for the points.
+For using it, we suggest to compile the files the name of which begin by a capital letter and a number from A1 to N7 in the lexicographic order and to keep modifiable the files of tacics (from Tactic1 to Tactic4) and the files of examples (Hilbert and Bolyai).&quot;&quot;&quot;
+flags: light-uninstall
+url {
+  src:
+    &quot;https://github.com/coq-contribs/euclidean-geometry/archive/v8.8.0.tar.gz&quot;
+  checksum: &quot;md5=d1341193f9fd7a8aa5c1d87ceda9ed61&quot;
+}
+</pre>
+            <h2>Lint</h2>
+            <dl class="dl-horizontal">
+              <dt>Command</dt>
+              <dd><code>true</code></dd>
+              <dt>Return code</dt>
+              <dd>0</dd>
+            </dl>
+            <h2>Dry install</h2>
+            <p>Dry install with the current Coq version:</p>
+            <dl class="dl-horizontal">
+              <dt>Command</dt>
+              <dd><code>opam install -y --show-action coq-euclidean-geometry.8.8.0 coq.8.10.1</code></dd>
+              <dt>Return code</dt>
+              <dd>5120</dd>
+              <dt>Output</dt>
+              <dd><pre>[NOTE] Package coq is already installed (current version is 8.10.1).
+The following dependencies couldn&#39;t be met:
+  - coq-euclidean-geometry -&gt; coq &lt; 8.9~ -&gt; ocaml &lt; 4.06.0
+      base of this switch (use `--unlock-base&#39; to force)
+Your request can&#39;t be satisfied:
+  - No available version of coq satisfies the constraints
+No solution found, exiting
+</pre></dd>
+            </dl>
+            <p>Dry install without Coq/switch base, to test if the problem was incompatibility with the current Coq/OCaml version:</p>
+            <dl class="dl-horizontal">
+              <dt>Command</dt>
+              <dd><code>opam remove -y coq; opam install -y --show-action --unlock-base coq-euclidean-geometry.8.8.0</code></dd>
+              <dt>Return code</dt>
+              <dd>0</dd>
+            </dl>
+            <h2>Install dependencies</h2>
+            <dl class="dl-horizontal">
+              <dt>Command</dt>
+              <dd><code>true</code></dd>
+              <dt>Return code</dt>
+              <dd>0</dd>
+              <dt>Duration</dt>
+              <dd>0 s</dd>
+            </dl>
+            <h2>Install</h2>
+            <dl class="dl-horizontal">
+              <dt>Command</dt>
+              <dd><code>true</code></dd>
+              <dt>Return code</dt>
+              <dd>0</dd>
+              <dt>Duration</dt>
+              <dd>0 s</dd>
+            </dl>
+            <h2>Installation size</h2>
+            <p>No files were installed.</p>
+            <h2>Uninstall</h2>
+            <dl class="dl-horizontal">
+              <dt>Command</dt>
+              <dd><code>true</code></dd>
+              <dt>Return code</dt>
+              <dd>0</dd>
+              <dt>Missing removes</dt>
+              <dd>
+                none
+              </dd>
+              <dt>Wrong removes</dt>
+              <dd>
+                none
+              </dd>
+            </dl>
+          </div>
+        </div>
+      </div>
+      <hr/>
+      <div class="footer">
+        <p class="text-center">
+          <small>Sources are on <a href="https://github.com/coq-bench">GitHub</a>. © Guillaume Claret.</small>
+        </p>
+      </div>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="../../../../../bootstrap.min.js"></script>
+  </body>
+</html>
