@@ -42,7 +42,7 @@
                 <span class="label label-danger">Error</span>
               </small>
             </h1>
-            <p><em><script>document.write(moment("2019-09-29 00:11:24 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2019-09-29 00:11:24 UTC)</em><p>
+            <p><em><script>document.write(moment("2019-10-29 02:22:09 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2019-10-29 02:22:09 UTC)</em><p>
             <h2>Context</h2>
             <pre># Packages matching: installed
 # Name              # Installed # Synopsis
@@ -107,11 +107,11 @@ url {
             <h2>Install dependencies</h2>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>opam list; echo; ulimit -Sv 4000000; timeout 60m opam install -y --deps-only coq-cfml.20181201 coq.dev</code></dd>
+              <dd><code>opam list; echo; ulimit -Sv 4000000; timeout 2h opam install -y --deps-only coq-cfml.20181201 coq.dev</code></dd>
               <dt>Return code</dt>
               <dd>0</dd>
               <dt>Duration</dt>
-              <dd>1 m 1 s</dd>
+              <dd>56 s</dd>
             </dl>
             <h2>Install</h2>
             <dl class="dl-horizontal">
@@ -120,7 +120,7 @@ url {
               <dt>Return code</dt>
               <dd>7936</dd>
               <dt>Duration</dt>
-              <dd>22 s</dd>
+              <dd>25 s</dd>
               <dt>Output</dt>
               <dd><pre># Packages matching: installed
 # Name              # Installed # Synopsis
@@ -166,8 +166,8 @@ Processing  1/2: [coq-cfml: make]
 - ocamlfind ocamldep -package pprint -modules coq.ml &gt; coq.ml.depends
 - ocamlfind ocamldep -package pprint -modules mytools.mli &gt; mytools.mli.depends
 - ocamlfind ocamldep -package pprint -modules parsing/location.mli &gt; parsing/location.mli.depends
-- ocamlfind ocamldep -package pprint -modules utils/warnings.mli &gt; utils/warnings.mli.depends
 - Compiling Shared...
+- ocamlfind ocamldep -package pprint -modules utils/warnings.mli &gt; utils/warnings.mli.depends
 - ocamlfind ocamlc -c -g -package pprint -I utils -I lex -I parsing -I typing -o utils/warnings.cmi utils/warnings.mli
 - ocamlfind ocamlc -c -g -package pprint -I parsing -I lex -I utils -I typing -o parsing/location.cmi parsing/location.mli
 - ocamlfind ocamldep -package pprint -modules renaming.ml &gt; renaming.ml.depends
@@ -219,28 +219,32 @@ Processing  1/2: [coq-cfml: make]
 - ocamlfind ocamlc -c -g -package pprint -I lex -I utils -I parsing -I typing -o print_coq.cmi print_coq.mli
 - ocamlfind ocamlc -c -g -package pprint -I lex -I utils -I parsing -I typing -o print_past.cmi print_past.mli
 - ocamlfind ocamlc -c -g -package pprint -I lex -I utils -I parsing -I typing -o print_tast.cmi print_tast.mli
+- ocamlfind ocamlc -c -g -package pprint -I lex -I utils -I parsing -I typing -o settings.cmi settings.mli
 - File &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/.opam-switch/build/coq-cfml.20181201/lib/coq/Shared.v&quot;, line 8, characters 0-45:
 - Warning:
 - New coercion path [total_order_to_total_preorder; total_preorder_to_preorder] : total_order &gt;-&gt; preorder is ambiguous with existing 
 - [total_order_order; order_to_preorder] : total_order &gt;-&gt; preorder.
 - [ambiguous-paths,typechecker]
+- ocamlfind ocamlc -c -g -package pprint -I typing -I lex -I utils -I parsing -o typing/typetexp.cmi typing/typetexp.mli
 - File &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/.opam-switch/build/coq-cfml.20181201/lib/coq/Shared.v&quot;, line 10, characters 0-22:
 - Warning: Adding and removing hints in the core database implicitly is
 - deprecated. Please specify a hint database.
 - [implicit-core-hint-db,deprecated]
-- ocamlfind ocamlc -c -g -package pprint -I lex -I utils -I parsing -I typing -o settings.cmi settings.mli
-- ocamlfind ocamlc -c -g -package pprint -I typing -I lex -I utils -I parsing -o typing/typetexp.cmi typing/typetexp.mli
 - ocamlfind ocamlc -c -g -package pprint -I lex -I utils -I parsing -I typing -o main.cmo main.ml
-- ocamlfind ocamldep -package pprint -modules characteristic.ml &gt; characteristic.ml.depends
 - File &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/.opam-switch/build/coq-cfml.20181201/lib/coq/Shared.v&quot;, line 206, characters 0-64:
 - Warning: Declaring a scope implicitly is deprecated; use in advance an
 - explicit &quot;Declare Scope blocker_scope.&quot;. [undeclared-scope,deprecated]
+- ocamlfind ocamldep -package pprint -modules characteristic.ml &gt; characteristic.ml.depends
 - ocamlfind ocamldep -package pprint -modules utils/clflags.ml &gt; utils/clflags.ml.depends
 - ocamlfind ocamldep -package pprint -modules utils/config.ml &gt; utils/config.ml.depends
 - ocamlfind ocamldep -package pprint -modules utils/config.mli &gt; utils/config.mli.depends
 - ocamlfind ocamlc -c -g -package pprint -I utils -I lex -I parsing -I typing -o utils/config.cmi utils/config.mli
 - ocamlfind ocamlopt -c -g -package pprint -I utils -I lex -I parsing -I typing -o utils/config.cmx utils/config.ml
 - ocamlfind ocamldep -package pprint -modules mytools.ml &gt; mytools.ml.depends
+- ocamlfind ocamldep -package pprint -modules parsing/location.ml &gt; parsing/location.ml.depends
+- /home/bench/.opam/ocaml-base-compiler.4.05.0/bin/ocamllex.opt -q parsing/linenum.mll
+- ocamlfind ocamldep -package pprint -modules parsing/linenum.ml &gt; parsing/linenum.ml.depends
+- ocamlfind ocamldep -package pprint -modules parsing/linenum.mli &gt; parsing/linenum.mli.depends
 - File &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/.opam-switch/build/coq-cfml.20181201/lib/coq/Shared.v&quot;, line 353, characters 0-83:
 - Warning: Declaring a scope implicitly is deprecated; use in advance an
 - explicit &quot;Declare Scope func.&quot;. [undeclared-scope,deprecated]
@@ -248,32 +252,28 @@ Processing  1/2: [coq-cfml: make]
 - Warning: Adding and removing hints in the core database implicitly is
 - deprecated. Please specify a hint database.
 - [implicit-core-hint-db,deprecated]
-- ocamlfind ocamldep -package pprint -modules parsing/location.ml &gt; parsing/location.ml.depends
+- ocamlfind ocamlc -c -g -package pprint -I parsing -I lex -I utils -I typing -o parsing/linenum.cmi parsing/linenum.mli
 - File &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/.opam-switch/build/coq-cfml.20181201/lib/coq/Shared.v&quot;, line 377, characters 0-28:
 - Warning: Adding and removing hints in the core database implicitly is
 - deprecated. Please specify a hint database.
 - [implicit-core-hint-db,deprecated]
-- /home/bench/.opam/ocaml-base-compiler.4.05.0/bin/ocamllex.opt -q parsing/linenum.mll
-- ocamlfind ocamldep -package pprint -modules parsing/linenum.ml &gt; parsing/linenum.ml.depends
 - File &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/.opam-switch/build/coq-cfml.20181201/lib/coq/Shared.v&quot;, line 401, characters 0-22:
 - Warning: Adding and removing hints in the core database implicitly is
 - deprecated. Please specify a hint database.
 - [implicit-core-hint-db,deprecated]
-- ocamlfind ocamldep -package pprint -modules parsing/linenum.mli &gt; parsing/linenum.mli.depends
+- ocamlfind ocamldep -package pprint -modules utils/misc.ml &gt; utils/misc.ml.depends
 - File &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/.opam-switch/build/coq-cfml.20181201/lib/coq/Shared.v&quot;, line 406, characters 0-33:
 - Warning: Adding and removing hints in the core database implicitly is
 - deprecated. Please specify a hint database.
 - [implicit-core-hint-db,deprecated]
-- ocamlfind ocamlc -c -g -package pprint -I parsing -I lex -I utils -I typing -o parsing/linenum.cmi parsing/linenum.mli
+- ocamlfind ocamldep -package pprint -modules utils/misc.mli &gt; utils/misc.mli.depends
 - File &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/.opam-switch/build/coq-cfml.20181201/lib/coq/Shared.v&quot;, line 434, characters 0-24:
 - Warning: Adding and removing hints in the core database implicitly is
 - deprecated. Please specify a hint database.
 - [implicit-core-hint-db,deprecated]
-- ocamlfind ocamldep -package pprint -modules utils/misc.ml &gt; utils/misc.ml.depends
-- ocamlfind ocamldep -package pprint -modules utils/misc.mli &gt; utils/misc.mli.depends
 - ocamlfind ocamlc -c -g -package pprint -I utils -I lex -I parsing -I typing -o utils/misc.cmi utils/misc.mli
-- Compiling CFHeaps...
 - ocamlfind ocamlopt -c -g -package pprint -I utils -I lex -I parsing -I typing -o utils/misc.cmx utils/misc.ml
+- Compiling CFHeaps...
 - + ocamlfind ocamlopt -c -g -package pprint -I utils -I lex -I parsing -I typing -o utils/misc.cmx utils/misc.ml
 - File &quot;utils/misc.ml&quot;, line 95, characters 14-33:
 - Warning 3: deprecated: String.uncapitalize
@@ -329,13 +329,13 @@ Processing  1/2: [coq-cfml: make]
 - ocamlfind ocamldep -package pprint -modules typing/ctype.ml &gt; typing/ctype.ml.depends
 - ocamlfind ocamldep -package pprint -modules typing/ctype.mli &gt; typing/ctype.mli.depends
 - ocamlfind ocamlc -c -g -package pprint -I typing -I lex -I utils -I parsing -o typing/ctype.cmi typing/ctype.mli
+- ocamlfind ocamldep -package pprint -modules typing/btype.ml &gt; typing/btype.ml.depends
+- ocamlfind ocamldep -package pprint -modules typing/btype.mli &gt; typing/btype.mli.depends
 - File &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/.opam-switch/build/coq-cfml.20181201/lib/coq/CFHeaps.v&quot;, line 2, characters 0-54:
 - Warning:
 - New coercion path [total_order_to_total_preorder; total_preorder_to_preorder] : total_order &gt;-&gt; preorder is ambiguous with existing 
 - [total_order_order; order_to_preorder] : total_order &gt;-&gt; preorder.
 - [ambiguous-paths,typechecker]
-- ocamlfind ocamldep -package pprint -modules typing/btype.ml &gt; typing/btype.ml.depends
-- ocamlfind ocamldep -package pprint -modules typing/btype.mli &gt; typing/btype.mli.depends
 - ocamlfind ocamlc -c -g -package pprint -I typing -I lex -I utils -I parsing -o typing/btype.cmi typing/btype.mli
 - ocamlfind ocamldep -package pprint -modules typing/types.ml &gt; typing/types.ml.depends
 - ocamlfind ocamldep -package pprint -modules typing/primitive.ml &gt; typing/primitive.ml.depends
@@ -351,26 +351,18 @@ Processing  1/2: [coq-cfml: make]
 - ocamlfind ocamldep -package pprint -modules typing/predef.mli &gt; typing/predef.mli.depends
 - ocamlfind ocamlc -c -g -package pprint -I typing -I lex -I utils -I parsing -o typing/predef.cmi typing/predef.mli
 - ocamlfind ocamlopt -c -g -package pprint -I typing -I lex -I utils -I parsing -o typing/predef.cmx typing/predef.ml
-- File &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/.opam-switch/build/coq-cfml.20181201/lib/coq/CFHeaps.v&quot;, line 139, characters 0-124:
-- Warning: Declaring a scope implicitly is deprecated; use in advance an
-- explicit &quot;Declare Scope state_scope.&quot;. [undeclared-scope,deprecated]
 - ocamlfind ocamldep -package pprint -modules parsing/longident.ml &gt; parsing/longident.ml.depends
 - ocamlfind ocamldep -package pprint -modules typing/subst.ml &gt; typing/subst.ml.depends
 - ocamlfind ocamldep -package pprint -modules typing/subst.mli &gt; typing/subst.mli.depends
-- File &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/.opam-switch/build/coq-cfml.20181201/lib/coq/CFHeaps.v&quot;, line 187, characters 0-78:
-- Warning: Adding and removing hints in the core database implicitly is
-- deprecated. Please specify a hint database.
-- [implicit-core-hint-db,deprecated]
 - ocamlfind ocamlc -c -g -package pprint -I typing -I lex -I utils -I parsing -o typing/subst.cmi typing/subst.mli
 - ocamlfind ocamldep -package pprint -modules utils/tbl.ml &gt; utils/tbl.ml.depends
 - ocamlfind ocamldep -package pprint -modules utils/tbl.mli &gt; utils/tbl.mli.depends
+- File &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/.opam-switch/build/coq-cfml.20181201/lib/coq/CFHeaps.v&quot;, line 139, characters 0-124:
+- Warning: Declaring a scope implicitly is deprecated; use in advance an
+- explicit &quot;Declare Scope state_scope.&quot;. [undeclared-scope,deprecated]
 - ocamlfind ocamlc -c -g -package pprint -I utils -I lex -I parsing -I typing -o utils/tbl.cmi utils/tbl.mli
-- File &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/.opam-switch/build/coq-cfml.20181201/lib/coq/CFHeaps.v&quot;, line 256, characters 0-57:
-- Warning: Adding and removing hints in the core database implicitly is
-- deprecated. Please specify a hint database.
-- [implicit-core-hint-db,deprecated]
 - ocamlfind ocamlopt -c -g -package pprint -I utils -I lex -I parsing -I typing -o utils/tbl.cmx utils/tbl.ml
-- File &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/.opam-switch/build/coq-cfml.20181201/lib/coq/CFHeaps.v&quot;, line 365, characters 0-75:
+- File &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/.opam-switch/build/coq-cfml.20181201/lib/coq/CFHeaps.v&quot;, line 187, characters 0-78:
 - Warning: Adding and removing hints in the core database implicitly is
 - deprecated. Please specify a hint database.
 - [implicit-core-hint-db,deprecated]
@@ -378,7 +370,11 @@ Processing  1/2: [coq-cfml: make]
 - ocamlfind ocamlopt -c -g -package pprint -I typing -I lex -I utils -I parsing -o typing/datarepr.cmx typing/datarepr.ml
 - ocamlfind ocamlopt -c -g -package pprint -I parsing -I lex -I utils -I typing -o parsing/longident.cmx parsing/longident.ml
 - ocamlfind ocamlopt -c -g -package pprint -I typing -I lex -I utils -I parsing -o typing/subst.cmx typing/subst.ml
-- File &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/.opam-switch/build/coq-cfml.20181201/lib/coq/CFHeaps.v&quot;, line 456, characters 0-55:
+- File &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/.opam-switch/build/coq-cfml.20181201/lib/coq/CFHeaps.v&quot;, line 256, characters 0-57:
+- Warning: Adding and removing hints in the core database implicitly is
+- deprecated. Please specify a hint database.
+- [implicit-core-hint-db,deprecated]
+- File &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/.opam-switch/build/coq-cfml.20181201/lib/coq/CFHeaps.v&quot;, line 365, characters 0-75:
 - Warning: Adding and removing hints in the core database implicitly is
 - deprecated. Please specify a hint database.
 - [implicit-core-hint-db,deprecated]
@@ -387,6 +383,10 @@ Processing  1/2: [coq-cfml: make]
 - Warning 3: deprecated: Array.create
 - Use Array.make instead.
 - ocamlfind ocamlopt -c -g -package pprint -I typing -I lex -I utils -I parsing -o typing/env.cmx typing/env.ml
+- File &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/.opam-switch/build/coq-cfml.20181201/lib/coq/CFHeaps.v&quot;, line 456, characters 0-55:
+- Warning: Adding and removing hints in the core database implicitly is
+- deprecated. Please specify a hint database.
+- [implicit-core-hint-db,deprecated]
 - File &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/.opam-switch/build/coq-cfml.20181201/lib/coq/CFHeaps.v&quot;, line 535, characters 0-62:
 - Warning: Declaring a scope implicitly is deprecated; use in advance an
 - explicit &quot;Declare Scope heap_scope.&quot;. [undeclared-scope,deprecated]
@@ -509,16 +509,17 @@ Processing  1/2: [coq-cfml: make]
 - ocamlfind ocamldep -package pprint -modules typing/typeclass.ml &gt; typing/typeclass.ml.depends
 - ocamlfind ocamldep -package pprint -modules typing/typeclass.mli &gt; typing/typeclass.mli.depends
 - ocamlfind ocamlc -c -g -package pprint -I typing -I lex -I utils -I parsing -o typing/typeclass.cmi typing/typeclass.mli
+- File &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/.opam-switch/build/coq-cfml.20181201/lib/coq/CFHeaps.v&quot;, line 2588, characters 0-28:
+- Warning: Adding and removing hints in the core database implicitly is
+- deprecated. Please specify a hint database.
+- [implicit-core-hint-db,deprecated]
 - ocamlfind ocamldep -package pprint -modules typing/typedecl.ml &gt; typing/typedecl.ml.depends
 - ocamlfind ocamldep -package pprint -modules typing/typedecl.mli &gt; typing/typedecl.mli.depends
 - ocamlfind ocamlc -c -g -package pprint -I typing -I lex -I utils -I parsing -o typing/typedecl.cmi typing/typedecl.mli
 - ocamlfind ocamlopt -c -g -package pprint -I typing -I lex -I utils -I parsing -o typing/typedecl.cmx typing/typedecl.ml
 - ocamlfind ocamlopt -c -g -package pprint -I typing -I lex -I utils -I parsing -o typing/includemod.cmx typing/includemod.ml
 - ocamlfind ocamlopt -c -g -package pprint -I typing -I lex -I utils -I parsing -o typing/typeclass.cmx typing/typeclass.ml
-- File &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/.opam-switch/build/coq-cfml.20181201/lib/coq/CFHeaps.v&quot;, line 2588, characters 0-28:
-- Warning: Adding and removing hints in the core database implicitly is
-- deprecated. Please specify a hint database.
-- [implicit-core-hint-db,deprecated]
+- Compiling CFApp...
 - ocamlfind ocamlopt -c -g -package pprint -I utils -I lex -I parsing -I typing -o utils/ccomp.cmx utils/ccomp.ml
 - ocamlfind ocamlopt -c -g -package pprint -I parsing -I lex -I utils -I typing -o parsing/parse.cmx parsing/parse.ml
 - ocamlfind ocamlopt -c -g -package pprint -I typing -I lex -I utils -I parsing -o typing/typemod.cmx typing/typemod.ml
@@ -532,25 +533,24 @@ Processing  1/2: [coq-cfml: make]
 - ocamlfind ocamlopt -c -g -package pprint -I lex -I utils -I parsing -I typing -o characteristic.cmx characteristic.ml
 - ocamlfind ocamlopt -c -g -package pprint -I lex -I utils -I parsing -I typing -o formula_to_coq.cmx formula_to_coq.ml
 - ocamlfind ocamlopt -c -g -package pprint -I lex -I utils -I parsing -I typing -o normalize.cmx normalize.ml
-- Compiling CFApp...
 - ocamlfind ocamlopt -c -g -package pprint -I lex -I utils -I parsing -I typing -o parse_type.cmx parse_type.ml
 - ocamlfind ocamlopt -c -g -package pprint -I lex -I utils -I parsing -I typing -o print_coq.cmx print_coq.ml
 - ocamlfind ocamlopt -c -g -package pprint -I lex -I utils -I parsing -I typing -o settings.cmx settings.ml
-- ocamlfind ocamlopt -c -g -package pprint -I lex -I utils -I parsing -I typing -o main.cmx main.ml
-- ocamlfind ocamlopt -g -linkpkg -package pprint -I utils -I parsing -I typing cfml_config.cmx utils/misc.cmx parsing/linenum.cmx utils/terminfo.cmx utils/warnings.cmx parsing/location.cmx mytools.cmx typing/ident.cmx typing/path.cmx utils/config.cmx utils/clflags.cmx renaming.cmx coq.cmx formula.cmx parsing/longident.cmx typing/primitive.cmx typing/types.cmx print_past.cmx typing/btype.cmx typing/predef.cmx typing/datarepr.cmx utils/tbl.cmx typing/subst.cmx utils/consistbl.cmx typing/env.cmx typing/ctype.cmx typing/oprint.cmx typing/printtyp.cmx typing/typedtree.cmx print_type.cmx print_tast.cmx typing/parmatch.cmx typing/stypes.cmx typing/typetexp.cmx typing/typecore.cmx characteristic.cmx formula_to_coq.cmx normalize.cmx parsing/syntaxerr.cmx parsing/parser.cmx parsing/lexer.cmx parsing/parse.cmx typing/includeclass.cmx typing/includecore.cmx typing/mtype.cmx typing/includemod.cmx typing/typedecl.cmx typing/typeclass.cmx typing/typemod.cmx utils/ccomp.cmx parse_type.cmx print_coq.cmx settings.cmx main.cmx -o main.native
-- ocamlfind ocamldep -package pprint -modules makecmj.ml &gt; makecmj.ml.depends
-- ocamlfind ocamlc -c -g -package pprint -I lex -I utils -I parsing -I typing -o makecmj.cmo makecmj.ml
 - File &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/.opam-switch/build/coq-cfml.20181201/lib/coq/CFApp.v&quot;, line 2, characters 0-41:
 - Warning:
 - New coercion path [total_order_to_total_preorder; total_preorder_to_preorder] : total_order &gt;-&gt; preorder is ambiguous with existing 
 - [total_order_order; order_to_preorder] : total_order &gt;-&gt; preorder.
 - [ambiguous-paths,typechecker]
-- ocamlfind ocamlopt -c -g -package pprint -I lex -I utils -I parsing -I typing -o makecmj.cmx makecmj.ml
-- ocamlfind ocamlopt -g -linkpkg -package pprint -I utils -I parsing -I typing cfml_config.cmx utils/misc.cmx parsing/linenum.cmx utils/terminfo.cmx utils/warnings.cmx parsing/location.cmx mytools.cmx parsing/longident.cmx typing/ident.cmx typing/path.cmx utils/config.cmx utils/clflags.cmx renaming.cmx typing/primitive.cmx typing/types.cmx normalize.cmx parsing/syntaxerr.cmx parsing/parser.cmx parsing/lexer.cmx parsing/parse.cmx typing/btype.cmx typing/predef.cmx typing/datarepr.cmx utils/tbl.cmx typing/subst.cmx utils/consistbl.cmx typing/env.cmx typing/ctype.cmx typing/oprint.cmx typing/printtyp.cmx typing/includeclass.cmx typing/typedtree.cmx typing/includecore.cmx typing/mtype.cmx typing/includemod.cmx typing/parmatch.cmx typing/stypes.cmx typing/typetexp.cmx typing/typecore.cmx typing/typedecl.cmx typing/typeclass.cmx typing/typemod.cmx utils/ccomp.cmx parse_type.cmx settings.cmx makecmj.cmx -o makecmj.native
+- ocamlfind ocamlopt -c -g -package pprint -I lex -I utils -I parsing -I typing -o main.cmx main.ml
+- ocamlfind ocamlopt -g -linkpkg -package pprint -I utils -I parsing -I typing cfml_config.cmx utils/misc.cmx parsing/linenum.cmx utils/terminfo.cmx utils/warnings.cmx parsing/location.cmx mytools.cmx typing/ident.cmx typing/path.cmx utils/config.cmx utils/clflags.cmx renaming.cmx coq.cmx formula.cmx parsing/longident.cmx typing/primitive.cmx typing/types.cmx print_past.cmx typing/btype.cmx typing/predef.cmx typing/datarepr.cmx utils/tbl.cmx typing/subst.cmx utils/consistbl.cmx typing/env.cmx typing/ctype.cmx typing/oprint.cmx typing/printtyp.cmx typing/typedtree.cmx print_type.cmx print_tast.cmx typing/parmatch.cmx typing/stypes.cmx typing/typetexp.cmx typing/typecore.cmx characteristic.cmx formula_to_coq.cmx normalize.cmx parsing/syntaxerr.cmx parsing/parser.cmx parsing/lexer.cmx parsing/parse.cmx typing/includeclass.cmx typing/includecore.cmx typing/mtype.cmx typing/includemod.cmx typing/typedecl.cmx typing/typeclass.cmx typing/typemod.cmx utils/ccomp.cmx parse_type.cmx print_coq.cmx settings.cmx main.cmx -o main.native
 - File &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/.opam-switch/build/coq-cfml.20181201/lib/coq/CFApp.v&quot;, line 5, characters 0-49:
 - Warning: Adding and removing hints in the core database implicitly is
 - deprecated. Please specify a hint database.
 - [implicit-core-hint-db,deprecated]
+- ocamlfind ocamldep -package pprint -modules makecmj.ml &gt; makecmj.ml.depends
+- ocamlfind ocamlc -c -g -package pprint -I lex -I utils -I parsing -I typing -o makecmj.cmo makecmj.ml
+- ocamlfind ocamlopt -c -g -package pprint -I lex -I utils -I parsing -I typing -o makecmj.cmx makecmj.ml
+- ocamlfind ocamlopt -g -linkpkg -package pprint -I utils -I parsing -I typing cfml_config.cmx utils/misc.cmx parsing/linenum.cmx utils/terminfo.cmx utils/warnings.cmx parsing/location.cmx mytools.cmx parsing/longident.cmx typing/ident.cmx typing/path.cmx utils/config.cmx utils/clflags.cmx renaming.cmx typing/primitive.cmx typing/types.cmx normalize.cmx parsing/syntaxerr.cmx parsing/parser.cmx parsing/lexer.cmx parsing/parse.cmx typing/btype.cmx typing/predef.cmx typing/datarepr.cmx utils/tbl.cmx typing/subst.cmx utils/consistbl.cmx typing/env.cmx typing/ctype.cmx typing/oprint.cmx typing/printtyp.cmx typing/includeclass.cmx typing/typedtree.cmx typing/includecore.cmx typing/mtype.cmx typing/includemod.cmx typing/parmatch.cmx typing/stypes.cmx typing/typetexp.cmx typing/typecore.cmx typing/typedecl.cmx typing/typeclass.cmx typing/typemod.cmx utils/ccomp.cmx parse_type.cmx settings.cmx makecmj.cmx -o makecmj.native
 - # Parallel statistics: { count(total): 13(194), max: 10, min: 2, average(total): 3.692(1.180) }
 - make[1]: Leaving directory &#39;/home/bench/.opam/ocaml-base-compiler.4.05.0/.opam-switch/build/coq-cfml.20181201/generator&#39;
 - File &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/.opam-switch/build/coq-cfml.20181201/lib/coq/CFApp.v&quot;, line 116, characters 0-29:
@@ -579,36 +579,36 @@ Processing  1/2: [coq-cfml: make]
 - File &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/.opam-switch/build/coq-cfml.20181201/lib/coq/CFPrint.v&quot;, line 180, characters 0-75:
 - Warning: Declaring a scope implicitly is deprecated; use in advance an
 - explicit &quot;Declare Scope tag_scope.&quot;. [undeclared-scope,deprecated]
-- Compiling CFTactics...
 - Compiling CFHeader...
+- Compiling CFTactics...
 - Compiling CFBuiltin...
 - File &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/.opam-switch/build/coq-cfml.20181201/lib/coq/CFHeader.v&quot;, line 12, characters 0-133:
 - Warning: Declaring a scope implicitly is deprecated; use in advance an
 - explicit &quot;Declare Scope cfheader_scope.&quot;. [undeclared-scope,deprecated]
-- File &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/.opam-switch/build/coq-cfml.20181201/lib/coq/CFBuiltin.v&quot;, line 2, characters 0-23:
+- File &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/.opam-switch/build/coq-cfml.20181201/lib/coq/CFTactics.v&quot;, line 2, characters 0-38:
 - Warning:
 - New coercion path [total_order_to_total_preorder; total_preorder_to_preorder] : total_order &gt;-&gt; preorder is ambiguous with existing 
 - [total_order_order; order_to_preorder] : total_order &gt;-&gt; preorder.
 - [ambiguous-paths,typechecker]
-- File &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/.opam-switch/build/coq-cfml.20181201/lib/coq/CFTactics.v&quot;, line 2, characters 0-38:
+- File &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/.opam-switch/build/coq-cfml.20181201/lib/coq/CFBuiltin.v&quot;, line 2, characters 0-23:
 - Warning:
 - New coercion path [total_order_to_total_preorder; total_preorder_to_preorder] : total_order &gt;-&gt; preorder is ambiguous with existing 
 - [total_order_order; order_to_preorder] : total_order &gt;-&gt; preorder.
 - [ambiguous-paths,typechecker]
 - Compiling CFDemos...
 - Compiling CFLib...
-- File &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/.opam-switch/build/coq-cfml.20181201/lib/coq/CFLib.v&quot;, line 1, characters 0-64:
-- Warning:
-- New coercion path [total_order_to_total_preorder; total_preorder_to_preorder] : total_order &gt;-&gt; preorder is ambiguous with existing 
-- [total_order_order; order_to_preorder] : total_order &gt;-&gt; preorder.
-- [ambiguous-paths,typechecker]
 - File &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/.opam-switch/build/coq-cfml.20181201/lib/coq/CFDemos.v&quot;, line 2, characters 0-38:
 - Warning:
 - New coercion path [total_order_to_total_preorder; total_preorder_to_preorder] : total_order &gt;-&gt; preorder is ambiguous with existing 
 - [total_order_order; order_to_preorder] : total_order &gt;-&gt; preorder.
 - [ambiguous-paths,typechecker]
-- Compiling CFLibCredits...
+- File &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/.opam-switch/build/coq-cfml.20181201/lib/coq/CFLib.v&quot;, line 1, characters 0-64:
+- Warning:
+- New coercion path [total_order_to_total_preorder; total_preorder_to_preorder] : total_order &gt;-&gt; preorder is ambiguous with existing 
+- [total_order_order; order_to_preorder] : total_order &gt;-&gt; preorder.
+- [ambiguous-paths,typechecker]
 - Compiling CFAsymptoticsDemos...
+- Compiling CFLibCredits...
 - File &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/.opam-switch/build/coq-cfml.20181201/lib/coq/CFLibCredits.v&quot;, line 1, characters 0-21:
 - Warning:
 - New coercion path [total_order_to_total_preorder; total_preorder_to_preorder] : total_order &gt;-&gt; preorder is ambiguous with existing 
@@ -627,13 +627,75 @@ Processing  1/2: [coq-cfml: make]
 - /home/bench/.opam/ocaml-base-compiler.4.05.0/.opam-switch/build/coq-cfml.20181201/generator/main.native  -nostdlib -I . /home/bench/.opam/ocaml-base-compiler.4.05.0/.opam-switch/build/coq-cfml.20181201/lib/stdlib/Sys.ml || (rm -f /home/bench/.opam/ocaml-base-compiler.4.05.0/.opam-switch/build/coq-cfml.20181201/lib/stdlib/Sys.cmj; exit 1)
 - /home/bench/.opam/ocaml-base-compiler.4.05.0/.opam-switch/build/coq-cfml.20181201/generator/main.native  -nostdlib -I . /home/bench/.opam/ocaml-base-compiler.4.05.0/.opam-switch/build/coq-cfml.20181201/lib/stdlib/Array.ml || (rm -f /home/bench/.opam/ocaml-base-compiler.4.05.0/.opam-switch/build/coq-cfml.20181201/lib/stdlib/Array.cmj; exit 1)
 - make[2]: Entering directory &#39;/home/bench/.opam/ocaml-base-compiler.4.05.0/.opam-switch/build/coq-cfml.20181201/lib/stdlib&#39;
-- Compiling Sys_ml...
 - Compiling List_ml...
 - Compiling Pervasives_ml...
-- File &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/.opam-switch/build/coq-cfml.20181201/lib/stdlib/List_ml.v&quot;, line 137, characters 0-65:
+- Compiling Sys_ml...
+- File &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/.opam-switch/build/coq-cfml.20181201/lib/stdlib/Pervasives_ml.v&quot;, line 62, characters 0-59:
 - Warning: Adding and removing hints in the core database implicitly is
 - deprecated. Please specify a hint database.
 - [implicit-core-hint-db,deprecated]
+- File &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/.opam-switch/build/coq-cfml.20181201/lib/stdlib/Pervasives_ml.v&quot;, line 108, characters 0-85:
+- Warning: Adding and removing hints in the core database implicitly is
+- deprecated. Please specify a hint database.
+- [implicit-core-hint-db,deprecated]
+- File &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/.opam-switch/build/coq-cfml.20181201/lib/stdlib/Pervasives_ml.v&quot;, line 170, characters 0-59:
+- Warning: Adding and removing hints in the core database implicitly is
+- deprecated. Please specify a hint database.
+- [implicit-core-hint-db,deprecated]
+- File &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/.opam-switch/build/coq-cfml.20181201/lib/stdlib/Pervasives_ml.v&quot;, line 220, characters 0-59:
+- Warning: Adding and removing hints in the core database implicitly is
+- deprecated. Please specify a hint database.
+- [implicit-core-hint-db,deprecated]
+- File &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/.opam-switch/build/coq-cfml.20181201/lib/stdlib/Pervasives_ml.v&quot;, line 261, characters 0-61:
+- Warning: Adding and removing hints in the core database implicitly is
+- deprecated. Please specify a hint database.
+- [implicit-core-hint-db,deprecated]
+- File &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/.opam-switch/build/coq-cfml.20181201/lib/stdlib/Pervasives_ml.v&quot;, line 286, characters 0-61:
+- Warning: Adding and removing hints in the core database implicitly is
+- deprecated. Please specify a hint database.
+- [implicit-core-hint-db,deprecated]
+- File &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/.opam-switch/build/coq-cfml.20181201/lib/stdlib/Pervasives_ml.v&quot;, line 337, characters 0-59:
+- Warning: Adding and removing hints in the core database implicitly is
+- deprecated. Please specify a hint database.
+- [implicit-core-hint-db,deprecated]
+- File &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/.opam-switch/build/coq-cfml.20181201/lib/stdlib/Pervasives_ml.v&quot;, line 380, characters 0-59:
+- Warning: Adding and removing hints in the core database implicitly is
+- deprecated. Please specify a hint database.
+- [implicit-core-hint-db,deprecated]
+- File &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/.opam-switch/build/coq-cfml.20181201/lib/stdlib/Pervasives_ml.v&quot;, line 408, characters 0-79:
+- Warning: Adding and removing hints in the core database implicitly is
+- deprecated. Please specify a hint database.
+- [implicit-core-hint-db,deprecated]
+- File &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/.opam-switch/build/coq-cfml.20181201/lib/stdlib/Pervasives_ml.v&quot;, line 441, characters 0-85:
+- Warning: Adding and removing hints in the core database implicitly is
+- deprecated. Please specify a hint database.
+- [implicit-core-hint-db,deprecated]
+- File &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/.opam-switch/build/coq-cfml.20181201/lib/stdlib/Pervasives_ml.v&quot;, line 487, characters 0-61:
+- Warning: Adding and removing hints in the core database implicitly is
+- deprecated. Please specify a hint database.
+- [implicit-core-hint-db,deprecated]
+- File &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/.opam-switch/build/coq-cfml.20181201/lib/stdlib/Pervasives_ml.v&quot;, line 533, characters 0-61:
+- Warning: Adding and removing hints in the core database implicitly is
+- deprecated. Please specify a hint database.
+- [implicit-core-hint-db,deprecated]
+- File &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/.opam-switch/build/coq-cfml.20181201/lib/stdlib/Pervasives_ml.v&quot;, line 590, characters 0-59:
+- Warning: Adding and removing hints in the core database implicitly is
+- deprecated. Please specify a hint database.
+- [implicit-core-hint-db,deprecated]
+- File &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/.opam-switch/build/coq-cfml.20181201/lib/stdlib/Pervasives_ml.v&quot;, line 647, characters 0-59:
+- Warning: Adding and removing hints in the core database implicitly is
+- deprecated. Please specify a hint database.
+- [implicit-core-hint-db,deprecated]
+- File &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/.opam-switch/build/coq-cfml.20181201/lib/stdlib/Pervasives_ml.v&quot;, line 675, characters 0-65:
+- Warning: Adding and removing hints in the core database implicitly is
+- deprecated. Please specify a hint database.
+- [implicit-core-hint-db,deprecated]
+- File &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/.opam-switch/build/coq-cfml.20181201/lib/stdlib/Pervasives_ml.v&quot;, line 772, characters 0-73:
+- Warning: Adding and removing hints in the core database implicitly is
+- deprecated. Please specify a hint database.
+- [implicit-core-hint-db,deprecated]
+- Compiling Array_ml...
+- Compiling Pervasives_proof...
 - File &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/.opam-switch/build/coq-cfml.20181201/lib/stdlib/Sys_ml.v&quot;, line 20, characters 0-73:
 - Warning: Adding and removing hints in the core database implicitly is
 - deprecated. Please specify a hint database.
@@ -650,15 +712,12 @@ Processing  1/2: [coq-cfml: make]
 - Warning: Adding and removing hints in the core database implicitly is
 - deprecated. Please specify a hint database.
 - [implicit-core-hint-db,deprecated]
+- Compiling Sys_proof...
+- File &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/.opam-switch/build/coq-cfml.20181201/lib/stdlib/List_ml.v&quot;, line 137, characters 0-65:
+- Warning: Adding and removing hints in the core database implicitly is
+- deprecated. Please specify a hint database.
+- [implicit-core-hint-db,deprecated]
 - File &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/.opam-switch/build/coq-cfml.20181201/lib/stdlib/List_ml.v&quot;, line 378, characters 0-59:
-- Warning: Adding and removing hints in the core database implicitly is
-- deprecated. Please specify a hint database.
-- [implicit-core-hint-db,deprecated]
-- File &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/.opam-switch/build/coq-cfml.20181201/lib/stdlib/Pervasives_ml.v&quot;, line 62, characters 0-59:
-- Warning: Adding and removing hints in the core database implicitly is
-- deprecated. Please specify a hint database.
-- [implicit-core-hint-db,deprecated]
-- File &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/.opam-switch/build/coq-cfml.20181201/lib/stdlib/Pervasives_ml.v&quot;, line 108, characters 0-85:
 - Warning: Adding and removing hints in the core database implicitly is
 - deprecated. Please specify a hint database.
 - [implicit-core-hint-db,deprecated]
@@ -670,19 +729,7 @@ Processing  1/2: [coq-cfml: make]
 - Warning: Adding and removing hints in the core database implicitly is
 - deprecated. Please specify a hint database.
 - [implicit-core-hint-db,deprecated]
-- File &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/.opam-switch/build/coq-cfml.20181201/lib/stdlib/Pervasives_ml.v&quot;, line 170, characters 0-59:
-- Warning: Adding and removing hints in the core database implicitly is
-- deprecated. Please specify a hint database.
-- [implicit-core-hint-db,deprecated]
-- File &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/.opam-switch/build/coq-cfml.20181201/lib/stdlib/Pervasives_ml.v&quot;, line 220, characters 0-59:
-- Warning: Adding and removing hints in the core database implicitly is
-- deprecated. Please specify a hint database.
-- [implicit-core-hint-db,deprecated]
 - File &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/.opam-switch/build/coq-cfml.20181201/lib/stdlib/List_ml.v&quot;, line 622, characters 0-73:
-- Warning: Adding and removing hints in the core database implicitly is
-- deprecated. Please specify a hint database.
-- [implicit-core-hint-db,deprecated]
-- File &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/.opam-switch/build/coq-cfml.20181201/lib/stdlib/Pervasives_ml.v&quot;, line 261, characters 0-61:
 - Warning: Adding and removing hints in the core database implicitly is
 - deprecated. Please specify a hint database.
 - [implicit-core-hint-db,deprecated]
@@ -690,28 +737,7 @@ Processing  1/2: [coq-cfml: make]
 - Warning: Adding and removing hints in the core database implicitly is
 - deprecated. Please specify a hint database.
 - [implicit-core-hint-db,deprecated]
-- File &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/.opam-switch/build/coq-cfml.20181201/lib/stdlib/Pervasives_ml.v&quot;, line 286, characters 0-61:
-- Warning: Adding and removing hints in the core database implicitly is
-- deprecated. Please specify a hint database.
-- [implicit-core-hint-db,deprecated]
-- File &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/.opam-switch/build/coq-cfml.20181201/lib/stdlib/Pervasives_ml.v&quot;, line 337, characters 0-59:
-- Warning: Adding and removing hints in the core database implicitly is
-- deprecated. Please specify a hint database.
-- [implicit-core-hint-db,deprecated]
 - File &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/.opam-switch/build/coq-cfml.20181201/lib/stdlib/List_ml.v&quot;, line 781, characters 0-65:
-- Warning: Adding and removing hints in the core database implicitly is
-- deprecated. Please specify a hint database.
-- [implicit-core-hint-db,deprecated]
-- File &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/.opam-switch/build/coq-cfml.20181201/lib/stdlib/Pervasives_ml.v&quot;, line 380, characters 0-59:
-- Warning: Adding and removing hints in the core database implicitly is
-- deprecated. Please specify a hint database.
-- [implicit-core-hint-db,deprecated]
-- Compiling Sys_proof...
-- File &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/.opam-switch/build/coq-cfml.20181201/lib/stdlib/Pervasives_ml.v&quot;, line 408, characters 0-79:
-- Warning: Adding and removing hints in the core database implicitly is
-- deprecated. Please specify a hint database.
-- [implicit-core-hint-db,deprecated]
-- File &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/.opam-switch/build/coq-cfml.20181201/lib/stdlib/Pervasives_ml.v&quot;, line 441, characters 0-85:
 - Warning: Adding and removing hints in the core database implicitly is
 - deprecated. Please specify a hint database.
 - [implicit-core-hint-db,deprecated]
@@ -719,35 +745,11 @@ Processing  1/2: [coq-cfml: make]
 - Warning: Adding and removing hints in the core database implicitly is
 - deprecated. Please specify a hint database.
 - [implicit-core-hint-db,deprecated]
-- File &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/.opam-switch/build/coq-cfml.20181201/lib/stdlib/Pervasives_ml.v&quot;, line 487, characters 0-61:
-- Warning: Adding and removing hints in the core database implicitly is
-- deprecated. Please specify a hint database.
-- [implicit-core-hint-db,deprecated]
-- File &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/.opam-switch/build/coq-cfml.20181201/lib/stdlib/Pervasives_ml.v&quot;, line 533, characters 0-61:
-- Warning: Adding and removing hints in the core database implicitly is
-- deprecated. Please specify a hint database.
-- [implicit-core-hint-db,deprecated]
-- File &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/.opam-switch/build/coq-cfml.20181201/lib/stdlib/Pervasives_ml.v&quot;, line 590, characters 0-59:
-- Warning: Adding and removing hints in the core database implicitly is
-- deprecated. Please specify a hint database.
-- [implicit-core-hint-db,deprecated]
 - File &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/.opam-switch/build/coq-cfml.20181201/lib/stdlib/List_ml.v&quot;, line 1052, characters 0-63:
 - Warning: Adding and removing hints in the core database implicitly is
 - deprecated. Please specify a hint database.
 - [implicit-core-hint-db,deprecated]
-- File &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/.opam-switch/build/coq-cfml.20181201/lib/stdlib/Pervasives_ml.v&quot;, line 647, characters 0-59:
-- Warning: Adding and removing hints in the core database implicitly is
-- deprecated. Please specify a hint database.
-- [implicit-core-hint-db,deprecated]
-- File &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/.opam-switch/build/coq-cfml.20181201/lib/stdlib/Pervasives_ml.v&quot;, line 675, characters 0-65:
-- Warning: Adding and removing hints in the core database implicitly is
-- deprecated. Please specify a hint database.
-- [implicit-core-hint-db,deprecated]
 - File &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/.opam-switch/build/coq-cfml.20181201/lib/stdlib/List_ml.v&quot;, line 1182, characters 0-59:
-- Warning: Adding and removing hints in the core database implicitly is
-- deprecated. Please specify a hint database.
-- [implicit-core-hint-db,deprecated]
-- File &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/.opam-switch/build/coq-cfml.20181201/lib/stdlib/Pervasives_ml.v&quot;, line 772, characters 0-73:
 - Warning: Adding and removing hints in the core database implicitly is
 - deprecated. Please specify a hint database.
 - [implicit-core-hint-db,deprecated]
@@ -759,8 +761,6 @@ Processing  1/2: [coq-cfml: make]
 - Warning: Adding and removing hints in the core database implicitly is
 - deprecated. Please specify a hint database.
 - [implicit-core-hint-db,deprecated]
-- Compiling Pervasives_proof...
-- Compiling Array_ml...
 - File &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/.opam-switch/build/coq-cfml.20181201/lib/stdlib/List_ml.v&quot;, line 1621, characters 0-73:
 - Warning: Adding and removing hints in the core database implicitly is
 - deprecated. Please specify a hint database.
@@ -801,20 +801,15 @@ Processing  1/2: [coq-cfml: make]
 - Warning: Adding and removing hints in the core database implicitly is
 - deprecated. Please specify a hint database.
 - [implicit-core-hint-db,deprecated]
-- File &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/.opam-switch/build/coq-cfml.20181201/lib/stdlib/List_ml.v&quot;, line 3682, characters 0-69:
-- Warning: Adding and removing hints in the core database implicitly is
-- deprecated. Please specify a hint database.
-- [implicit-core-hint-db,deprecated]
 - File &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/.opam-switch/build/coq-cfml.20181201/lib/stdlib/Sys_proof.v&quot;, line 2, characters 0-21:
 - Warning:
 - New coercion path [total_order_to_total_preorder; total_preorder_to_preorder] : total_order &gt;-&gt; preorder is ambiguous with existing 
 - [total_order_order; order_to_preorder] : total_order &gt;-&gt; preorder.
 - [ambiguous-paths,typechecker]
-- File &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/.opam-switch/build/coq-cfml.20181201/lib/stdlib/Pervasives_proof.v&quot;, line 2, characters 0-21:
-- Warning:
-- New coercion path [total_order_to_total_preorder; total_preorder_to_preorder] : total_order &gt;-&gt; preorder is ambiguous with existing 
-- [total_order_order; order_to_preorder] : total_order &gt;-&gt; preorder.
-- [ambiguous-paths,typechecker]
+- File &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/.opam-switch/build/coq-cfml.20181201/lib/stdlib/List_ml.v&quot;, line 3682, characters 0-69:
+- Warning: Adding and removing hints in the core database implicitly is
+- deprecated. Please specify a hint database.
+- [implicit-core-hint-db,deprecated]
 - File &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/.opam-switch/build/coq-cfml.20181201/lib/stdlib/Array_ml.v&quot;, line 230, characters 0-61:
 - Warning: Adding and removing hints in the core database implicitly is
 - deprecated. Please specify a hint database.
@@ -835,15 +830,12 @@ Processing  1/2: [coq-cfml: make]
 - Warning: Adding and removing hints in the core database implicitly is
 - deprecated. Please specify a hint database.
 - [implicit-core-hint-db,deprecated]
+- File &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/.opam-switch/build/coq-cfml.20181201/lib/stdlib/Pervasives_proof.v&quot;, line 2, characters 0-21:
+- Warning:
+- New coercion path [total_order_to_total_preorder; total_preorder_to_preorder] : total_order &gt;-&gt; preorder is ambiguous with existing 
+- [total_order_order; order_to_preorder] : total_order &gt;-&gt; preorder.
+- [ambiguous-paths,typechecker]
 - File &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/.opam-switch/build/coq-cfml.20181201/lib/stdlib/Array_ml.v&quot;, line 1559, characters 0-61:
-- Warning: Adding and removing hints in the core database implicitly is
-- deprecated. Please specify a hint database.
-- [implicit-core-hint-db,deprecated]
-- File &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/.opam-switch/build/coq-cfml.20181201/lib/stdlib/Pervasives_proof.v&quot;, line 18, characters 0-53:
-- Warning: Adding and removing hints in the core database implicitly is
-- deprecated. Please specify a hint database.
-- [implicit-core-hint-db,deprecated]
-- File &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/.opam-switch/build/coq-cfml.20181201/lib/stdlib/Pervasives_proof.v&quot;, line 40, characters 0-75:
 - Warning: Adding and removing hints in the core database implicitly is
 - deprecated. Please specify a hint database.
 - [implicit-core-hint-db,deprecated]
@@ -867,6 +859,23 @@ Processing  1/2: [coq-cfml: make]
 - Warning: Adding and removing hints in the core database implicitly is
 - deprecated. Please specify a hint database.
 - [implicit-core-hint-db,deprecated]
+- File &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/.opam-switch/build/coq-cfml.20181201/lib/stdlib/Array_ml.v&quot;, line 2464, characters 0-71:
+- Warning: Adding and removing hints in the core database implicitly is
+- deprecated. Please specify a hint database.
+- [implicit-core-hint-db,deprecated]
+- File &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/.opam-switch/build/coq-cfml.20181201/lib/stdlib/Array_ml.v&quot;, line 2616, characters 0-73:
+- Warning: Adding and removing hints in the core database implicitly is
+- deprecated. Please specify a hint database.
+- [implicit-core-hint-db,deprecated]
+- Compiling Array_proof...
+- File &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/.opam-switch/build/coq-cfml.20181201/lib/stdlib/Pervasives_proof.v&quot;, line 18, characters 0-53:
+- Warning: Adding and removing hints in the core database implicitly is
+- deprecated. Please specify a hint database.
+- [implicit-core-hint-db,deprecated]
+- File &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/.opam-switch/build/coq-cfml.20181201/lib/stdlib/Pervasives_proof.v&quot;, line 40, characters 0-75:
+- Warning: Adding and removing hints in the core database implicitly is
+- deprecated. Please specify a hint database.
+- [implicit-core-hint-db,deprecated]
 - File &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/.opam-switch/build/coq-cfml.20181201/lib/stdlib/Pervasives_proof.v&quot;, line 57, characters 0-81:
 - Warning: Adding and removing hints in the core database implicitly is
 - deprecated. Please specify a hint database.
@@ -879,15 +888,6 @@ Processing  1/2: [coq-cfml: make]
 - Warning: Adding and removing hints in the core database implicitly is
 - deprecated. Please specify a hint database.
 - [implicit-core-hint-db,deprecated]
-- File &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/.opam-switch/build/coq-cfml.20181201/lib/stdlib/Array_ml.v&quot;, line 2464, characters 0-71:
-- Warning: Adding and removing hints in the core database implicitly is
-- deprecated. Please specify a hint database.
-- [implicit-core-hint-db,deprecated]
-- File &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/.opam-switch/build/coq-cfml.20181201/lib/stdlib/Array_ml.v&quot;, line 2616, characters 0-73:
-- Warning: Adding and removing hints in the core database implicitly is
-- deprecated. Please specify a hint database.
-- [implicit-core-hint-db,deprecated]
-- Compiling Array_proof...
 - File &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/.opam-switch/build/coq-cfml.20181201/lib/stdlib/Pervasives_proof.v&quot;, line 93, characters 0-53:
 - Warning: Adding and removing hints in the core database implicitly is
 - deprecated. Please specify a hint database.
@@ -928,6 +928,11 @@ Processing  1/2: [coq-cfml: make]
 - Warning: Adding and removing hints in the core database implicitly is
 - deprecated. Please specify a hint database.
 - [implicit-core-hint-db,deprecated]
+- File &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/.opam-switch/build/coq-cfml.20181201/lib/stdlib/Array_proof.v&quot;, line 2, characters 0-21:
+- Warning:
+- New coercion path [total_order_to_total_preorder; total_preorder_to_preorder] : total_order &gt;-&gt; preorder is ambiguous with existing 
+- [total_order_order; order_to_preorder] : total_order &gt;-&gt; preorder.
+- [ambiguous-paths,typechecker]
 - File &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/.opam-switch/build/coq-cfml.20181201/lib/stdlib/Pervasives_proof.v&quot;, line 187, characters 0-55:
 - Warning: Adding and removing hints in the core database implicitly is
 - deprecated. Please specify a hint database.
@@ -984,19 +989,6 @@ Processing  1/2: [coq-cfml: make]
 - Warning: Adding and removing hints in the core database implicitly is
 - deprecated. Please specify a hint database.
 - [implicit-core-hint-db,deprecated]
-- File &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/.opam-switch/build/coq-cfml.20181201/lib/stdlib/Array_proof.v&quot;, line 2, characters 0-21:
-- Warning:
-- New coercion path [total_order_to_total_preorder; total_preorder_to_preorder] : total_order &gt;-&gt; preorder is ambiguous with existing 
-- [total_order_order; order_to_preorder] : total_order &gt;-&gt; preorder.
-- [ambiguous-paths,typechecker]
-- File &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/.opam-switch/build/coq-cfml.20181201/lib/stdlib/Pervasives_proof.v&quot;, line 311, characters 0-55:
-- Warning: Adding and removing hints in the core database implicitly is
-- deprecated. Please specify a hint database.
-- [implicit-core-hint-db,deprecated]
-- File &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/.opam-switch/build/coq-cfml.20181201/lib/stdlib/Pervasives_proof.v&quot;, line 312, characters 0-55:
-- Warning: Adding and removing hints in the core database implicitly is
-- deprecated. Please specify a hint database.
-- [implicit-core-hint-db,deprecated]
 - File &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/.opam-switch/build/coq-cfml.20181201/lib/stdlib/Array_proof.v&quot;, line 64, characters 0-70:
 - Warning: Adding and removing hints in the core database implicitly is
 - deprecated. Please specify a hint database.
@@ -1030,6 +1022,14 @@ Processing  1/2: [coq-cfml: make]
 - /home/bench/.opam/ocaml-base-compiler.4.05.0/lib/coq/user-contrib/TLC/Makefile.coq:114: recipe for target &#39;/home/bench/.opam/ocaml-base-compiler.4.05.0/.opam-switch/build/coq-cfml.20181201/lib/stdlib/Array_proof.vo&#39; failed
 - make[2]: *** [/home/bench/.opam/ocaml-base-compiler.4.05.0/.opam-switch/build/coq-cfml.20181201/lib/stdlib/Array_proof.vo] Error 1
 - make[2]: *** Waiting for unfinished jobs....
+- File &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/.opam-switch/build/coq-cfml.20181201/lib/stdlib/Pervasives_proof.v&quot;, line 311, characters 0-55:
+- Warning: Adding and removing hints in the core database implicitly is
+- deprecated. Please specify a hint database.
+- [implicit-core-hint-db,deprecated]
+- File &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/.opam-switch/build/coq-cfml.20181201/lib/stdlib/Pervasives_proof.v&quot;, line 312, characters 0-55:
+- Warning: Adding and removing hints in the core database implicitly is
+- deprecated. Please specify a hint database.
+- [implicit-core-hint-db,deprecated]
 - File &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/.opam-switch/build/coq-cfml.20181201/lib/stdlib/Pervasives_proof.v&quot;, line 360, characters 0-53:
 - Warning: Adding and removing hints in the core database implicitly is
 - deprecated. Please specify a hint database.
@@ -1054,8 +1054,8 @@ Processing  1/2: [coq-cfml: make]
 # path                 ~/.opam/ocaml-base-compiler.4.05.0/.opam-switch/build/coq-cfml.20181201
 # command              ~/.opam/opam-init/hooks/sandbox.sh build make -j7
 # exit-code            2
-# env-file             ~/.opam/log/coq-cfml-31211-865888.env
-# output-file          ~/.opam/log/coq-cfml-31211-865888.out
+# env-file             ~/.opam/log/coq-cfml-2302-865888.env
+# output-file          ~/.opam/log/coq-cfml-2302-865888.out
 ### output ###
 # [...]
 # deprecated. Please specify a hint database.
