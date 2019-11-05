@@ -42,7 +42,7 @@
                 <span class="label label-danger">Error</span>
               </small>
             </h1>
-            <p><em><script>document.write(moment("2019-10-22 20:53:13 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2019-10-22 20:53:13 UTC)</em><p>
+            <p><em><script>document.write(moment("2019-11-05 17:07:47 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2019-11-05 17:07:47 UTC)</em><p>
             <h2>Context</h2>
             <pre># Packages matching: installed
 # Name              # Installed # Synopsis
@@ -72,16 +72,17 @@ build: [
   [make &quot;-j%{jobs}%&quot; &quot;EXTERNAL_DEPENDENCIES=1&quot; &quot;coq&quot; &quot;standalone-ocaml&quot;]
 ]
 install: [make &quot;EXTERNAL_DEPENDENCIES=1&quot; &quot;install&quot; &quot;install-standalone-ocaml&quot;]
-remove: [&quot;rm&quot; &quot;-r&quot; &quot;-f&quot; &quot;%{lib}%/coq/user-contrib/Crypto&quot;]
 depends: [
-  &quot;ocaml&quot;
+  &quot;ocaml&quot; {build}
+  &quot;ocamlfind&quot; {build}
   &quot;coq&quot; {&gt;= &quot;8.9~&quot;}
   &quot;coq-coqprime&quot;
   &quot;coq-bedrock2&quot;
+  &quot;coq-rewriter&quot;
 ]
 dev-repo: &quot;git+https://github.com/mit-plv/fiat-crypto.git&quot;
 synopsis: &quot;Cryptographic Primitive Code Generation in Fiat.&quot;
-flags: light-uninstall
+tags: [&quot;logpath:Crypto&quot;]
 url {
   src: &quot;git+https://github.com/mit-plv/fiat-crypto.git#master&quot;
 }
@@ -115,7 +116,7 @@ url {
               <dt>Return code</dt>
               <dd>0</dd>
               <dt>Duration</dt>
-              <dd>12 m 46 s</dd>
+              <dd>21 m 50 s</dd>
             </dl>
             <h2>Install</h2>
             <dl class="dl-horizontal">
@@ -137,7 +138,7 @@ coq-bedrock2        dev         A work-in-progress language and compiler for ver
 coq-bignums         dev         Bignums, the Coq library of arbitrary large numbers
 coq-coqprime        dev         Certifying prime numbers in Coq
 coq-coqutil         dev         Coq library for tactics, basic definitions, sets, maps
-dune                1.11.4      Fast, portable and opinionated build system
+coq-rewriter        dev         Reflective PHOAS rewriting/pattern-matching-compilation framework for simply-typed equalities and let-lifting
 num                 1.2         The legacy Num library for arbitrary-precision integer and rational arithmetic
 ocaml               4.07.1      The OCaml compiler (virtual package)
 ocaml-base-compiler 4.07.1      Official release 4.07.1
