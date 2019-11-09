@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>mi-cho-coq: Error</title>
+    <title>mi-cho-coq: Error with dependencies</title>
     <link rel="shortcut icon" type="image/png" href="../../../../../favicon.png" />
     <link href="../../../../../bootstrap.min.css" rel="stylesheet">
     <link href="../../../../../bootstrap-custom.css" rel="stylesheet">
@@ -39,10 +39,10 @@
               mi-cho-coq
               <small>
                 dev
-                <span class="label label-danger">Error</span>
+                <span class="label label-warning">Error with dependencies</span>
               </small>
             </h1>
-            <p><em><script>document.write(moment("2019-10-25 20:06:42 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2019-10-25 20:06:42 UTC)</em><p>
+            <p><em><script>document.write(moment("2019-11-09 17:58:12 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2019-11-09 17:58:12 UTC)</em><p>
             <h2>Context</h2>
             <pre># Packages matching: installed
 # Name              # Installed # Synopsis
@@ -73,9 +73,12 @@ install: [
   make &quot;install&quot;
 ]
 depends: [
-  &quot;ocaml&quot;
-  &quot;coq&quot; {&gt;= &quot;8.8&quot;}
+  &quot;coq-menhirlib&quot; {&gt;= &quot;20190626&quot;}
   &quot;coq-ott&quot; {&gt;= &quot;0.29&quot;}
+  &quot;coq&quot; {&gt;= &quot;8.8&quot;}
+  &quot;menhir&quot;
+  &quot;zarith&quot;
+  &quot;ocaml&quot; {&gt;= &quot;4.07.1&quot;}
   &quot;ott&quot; {build &amp; &gt;= &quot;0.29&quot;}
 ]
 synopsis: &quot;A specification of Michelson in Coq to prove properties about smart contracts in Tezos&quot;
@@ -125,18 +128,9 @@ url {
               <dt>Command</dt>
               <dd><code>opam list; echo; ulimit -Sv 4000000; timeout 2h opam install -y --deps-only coq-mi-cho-coq.dev coq.8.10.0</code></dd>
               <dt>Return code</dt>
-              <dd>0</dd>
-              <dt>Duration</dt>
-              <dd>31 s</dd>
-            </dl>
-            <h2>Install</h2>
-            <dl class="dl-horizontal">
-              <dt>Command</dt>
-              <dd><code>opam list; echo; ulimit -Sv 4000000; timeout 1h opam install -y coq-mi-cho-coq.dev coq.8.10.0</code></dd>
-              <dt>Return code</dt>
               <dd>7936</dd>
               <dt>Duration</dt>
-              <dd>10 s</dd>
+              <dd>1 m 27 s</dd>
               <dt>Output</dt>
               <dd><pre># Packages matching: installed
 # Name              # Installed # Synopsis
@@ -146,48 +140,76 @@ base-unix           base
 conf-findutils      1           Virtual package relying on findutils
 conf-m4             1           Virtual package relying on m4
 coq                 8.10.0      Formal proof management system
-coq-ott             dev         Auxiliary Coq library for Ott, a tool for writing definitions of programming languages and calculi
 num                 1.2         The legacy Num library for arbitrary-precision integer and rational arithmetic
 ocaml               4.09.0      The OCaml compiler (virtual package)
 ocaml-base-compiler 4.09.0      Official release 4.09.0
 ocaml-config        1           OCaml Switch Configuration
 ocamlfind           1.8.1       A library manager for OCaml
-ott                 0.29        A tool for writing definitions of programming languages and calculi
-[NOTE] Package coq is already installed (current version is 8.10.0).
 The following actions will be performed:
-  - install coq-mi-cho-coq dev
+  - install ott           0.29
+  - install conf-gmp      1
+  - install conf-perl     1
+  - install ocamlbuild    0.14.0
+  - install coq-menhirlib 20190924
+  - install coq-ott       dev
+  - install zarith        1.9.1
+  - install menhir        20190924
+===== 8 to install =====
 &lt;&gt;&lt;&gt; Gathering sources &gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;
-[coq-mi-cho-coq.dev] synchronised from git+https://gitlab.com/nomadic-labs/mi-cho-coq.git#master
+[coq-menhirlib.20190924] downloaded from https://gitlab.inria.fr/fpottier/menhir/repository/20190924/archive.tar.gz
+[ocamlbuild.0.14.0] downloaded from cache at https://opam.ocaml.org/cache
+[menhir.20190924] downloaded from cache at https://opam.ocaml.org/cache
+[coq-ott.dev] synchronised from git+https://github.com/ott-lang/ott.git#master
+[zarith.1.9.1] downloaded from cache at https://opam.ocaml.org/cache
+[ott.0.29] downloaded from cache at https://opam.ocaml.org/cache
 &lt;&gt;&lt;&gt; Processing actions &lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;
-[ERROR] The compilation of coq-mi-cho-coq failed at &quot;/home/bench/.opam/opam-init/hooks/sandbox.sh build make -j4&quot;.
-#=== ERROR while compiling coq-mi-cho-coq.dev =================================#
-# context              2.0.5 | linux/x86_64 | ocaml-base-compiler.4.09.0 | file:///home/bench/run/opam-coq-archive/extra-dev
-# path                 ~/.opam/ocaml-base-compiler.4.09.0/.opam-switch/build/coq-mi-cho-coq.dev
-# command              ~/.opam/opam-init/hooks/sandbox.sh build make -j4
-# exit-code            2
-# env-file             ~/.opam/log/coq-mi-cho-coq-8933-0a5907.env
-# output-file          ~/.opam/log/coq-mi-cho-coq-8933-0a5907.out
+[ERROR] The compilation of conf-gmp failed at &quot;/home/bench/.opam/opam-init/hooks/sandbox.sh build sh -exc cc -c $CFLAGS -I/usr/local/include test.c&quot;.
+-&gt; installed conf-perl.1
+-&gt; installed coq-ott.dev
+-&gt; installed ocamlbuild.0.14.0
+-&gt; installed ott.0.29
+-&gt; installed coq-menhirlib.20190924
+-&gt; installed menhir.20190924
+#=== ERROR while compiling conf-gmp.1 =========================================#
+# context              2.0.5 | linux/x86_64 | ocaml-base-compiler.4.09.0 | https://opam.ocaml.org#d1d32c95
+# path                 ~/.opam/ocaml-base-compiler.4.09.0/.opam-switch/build/conf-gmp.1
+# command              ~/.opam/opam-init/hooks/sandbox.sh build sh -exc cc -c $CFLAGS -I/usr/local/include test.c
+# exit-code            1
+# env-file             ~/.opam/log/conf-gmp-5820-777834.env
+# output-file          ~/.opam/log/conf-gmp-5820-777834.out
 ### output ###
-# [...]
-# Makefile:658: recipe for target &#39;comparable.vo&#39; failed
-# make[5]: *** [comparable.vo] Error 1
-# Makefile:320: recipe for target &#39;all&#39; failed
-# make[4]: *** [all] Error 2
-# Makefile.conf:66: recipe for target &#39;post-all&#39; failed
-# make[3]: *** [post-all] Error 2
-# Makefile:320: recipe for target &#39;all&#39; failed
-# make[2]: *** [all] Error 2
-# Makefile.conf:64: recipe for target &#39;post-all&#39; failed
-# make[1]: *** [post-all] Error 2
-# Makefile:320: recipe for target &#39;all&#39; failed
-# make: *** [all] Error 2
+# + cc -c -I/usr/local/include test.c
+# test.c:1:10: fatal error: gmp.h: No such file or directory
+#  #include &lt;gmp.h&gt;
+#           ^~~~~~~
+# compilation terminated.
 &lt;&gt;&lt;&gt; Error report &lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;
 +- The following actions failed
-| - build coq-mi-cho-coq dev
+| - build conf-gmp 1
 +- 
-- No changes have been performed
++- The following changes have been performed (the rest was aborted)
+| - install conf-perl     1
+| - install coq-menhirlib 20190924
+| - install coq-ott       dev
+| - install menhir        20190924
+| - install ocamlbuild    0.14.0
+| - install ott           0.29
++- 
+The packages you requested declare the following system dependencies. Please make sure they are installed before retrying:
+    libgmp-dev
 # Run eval $(opam env) to update the current shell environment
+The former state can be restored with:
+    opam switch import &quot;/home/bench/.opam/ocaml-base-compiler.4.09.0/.opam-switch/backup/state-20191109055834.export&quot;
 </pre></dd>
+            </dl>
+            <h2>Install</h2>
+            <dl class="dl-horizontal">
+              <dt>Command</dt>
+              <dd><code>true</code></dd>
+              <dt>Return code</dt>
+              <dd>0</dd>
+              <dt>Duration</dt>
+              <dd>0 s</dd>
             </dl>
             <h2>Installation size</h2>
             <p>No files were installed.</p>
