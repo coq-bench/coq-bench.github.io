@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>itree: Error</title>
+    <title>itree: 2 m 23 s</title>
     <link rel="shortcut icon" type="image/png" href="../../../../../favicon.png" />
     <link href="../../../../../bootstrap.min.css" rel="stylesheet">
     <link href="../../../../../bootstrap-custom.css" rel="stylesheet">
@@ -39,10 +39,10 @@
               itree
               <small>
                 dev
-                <span class="label label-danger">Error</span>
+                <span class="label label-success">2 m 23 s</span>
               </small>
             </h1>
-            <p><em><script>document.write(moment("2019-10-19 05:03:00 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2019-10-19 05:03:00 UTC)</em><p>
+            <p><em><script>document.write(moment("2019-11-10 05:45:17 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2019-11-10 05:45:17 UTC)</em><p>
             <h2>Context</h2>
             <pre># Packages matching: installed
 # Name              # Installed # Synopsis
@@ -51,6 +51,7 @@ base-num            base        Num library distributed with the OCaml compiler
 base-threads        base
 base-unix           base
 camlp5              7.10        Preprocessor-pretty-printer of OCaml
+conf-findutils      1           Virtual package relying on findutils
 conf-m4             1           Virtual package relying on m4
 coq                 8.9.1       Formal proof management system
 num                 0           The Num library for arbitrary-precision integer and rational arithmetic
@@ -75,7 +76,7 @@ run-test: [ make &quot;-j%{jobs}%&quot; &quot;all&quot; ]
 depends: [
   &quot;coq&quot; {&gt;= &quot;8.8&quot; &amp; &lt; &quot;8.10~&quot;}
   &quot;coq-ext-lib&quot;
-  &quot;coq-paco&quot; {&gt;= &quot;2.1.0&quot; &amp; &lt; &quot;2.2&quot;}
+  &quot;coq-paco&quot; {&gt;= &quot;4.0.0&quot;}
   &quot;ocamlbuild&quot; {with-test}
 ]
 authors: [
@@ -122,75 +123,178 @@ url {
               <dt>Return code</dt>
               <dd>0</dd>
               <dt>Duration</dt>
-              <dd>1 m 11 s</dd>
+              <dd>1 m 32 s</dd>
             </dl>
             <h2>Install</h2>
             <dl class="dl-horizontal">
               <dt>Command</dt>
               <dd><code>opam list; echo; ulimit -Sv 4000000; timeout 1h opam install -y coq-itree.dev coq.8.9.1</code></dd>
               <dt>Return code</dt>
-              <dd>7936</dd>
+              <dd>0</dd>
               <dt>Duration</dt>
-              <dd>1 m 9 s</dd>
-              <dt>Output</dt>
-              <dd><pre># Packages matching: installed
-# Name              # Installed # Synopsis
-base-bigarray       base
-base-num            base        Num library distributed with the OCaml compiler
-base-threads        base
-base-unix           base
-camlp5              7.10        Preprocessor-pretty-printer of OCaml
-conf-m4             1           Virtual package relying on m4
-coq                 8.9.1       Formal proof management system
-coq-ext-lib         dev         A library of Coq definitions, theorems, and tactics.
-coq-paco            2.1.0       Coq library implementing parameterized coinduction
-num                 0           The Num library for arbitrary-precision integer and rational arithmetic
-ocaml               4.05.0      The OCaml compiler (virtual package)
-ocaml-base-compiler 4.05.0      Official 4.05.0 release
-ocaml-config        1           OCaml Switch Configuration
-ocamlfind           1.8.1       A library manager for OCaml
-[NOTE] Package coq is already installed (current version is 8.9.1).
-The following actions will be performed:
-  - install coq-itree dev
-&lt;&gt;&lt;&gt; Gathering sources &gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;
-[coq-itree.dev] synchronised from git+https://github.com/DeepSpec/InteractionTrees
-&lt;&gt;&lt;&gt; Processing actions &lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;
-[ERROR] The compilation of coq-itree failed at &quot;/home/bench/.opam/opam-init/hooks/sandbox.sh build make -j7&quot;.
-#=== ERROR while compiling coq-itree.dev ======================================#
-# context              2.0.1 | linux/x86_64 | ocaml-base-compiler.4.05.0 | file:///home/bench/run/opam-coq-archive/extra-dev
-# path                 ~/.opam/ocaml-base-compiler.4.05.0/.opam-switch/build/coq-itree.dev
-# command              ~/.opam/opam-init/hooks/sandbox.sh build make -j7
-# exit-code            2
-# env-file             ~/.opam/log/coq-itree-9547-6cc03f.env
-# output-file          ~/.opam/log/coq-itree-9547-6cc03f.out
-### output ###
-# [...]
-# COQC theories/Basics/CategoryFunctor.v
-# File &quot;./theories/Eq/Eq.v&quot;, line 179, characters 15-20:
-# Error: The reference pstep was not found in the current environment.
-# 
-# Makefile.coq:662: recipe for target &#39;theories/Eq/Eq.vo&#39; failed
-# make[2]: *** [theories/Eq/Eq.vo] Error 1
-# make[2]: *** Waiting for unfinished jobs....
-# Makefile.coq:326: recipe for target &#39;all&#39; failed
-# make[1]: *** [all] Error 2
-# make[1]: Leaving directory &#39;/home/bench/.opam/ocaml-base-compiler.4.05.0/.opam-switch/build/coq-itree.dev&#39;
-# common.mk:6: recipe for target &#39;coq&#39; failed
-# make: *** [coq] Error 2
-&lt;&gt;&lt;&gt; Error report &lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;
-+- The following actions failed
-| - build coq-itree dev
-+- 
-- No changes have been performed
-# Run eval $(opam env) to update the current shell environment
-</pre></dd>
+              <dd>2 m 23 s</dd>
             </dl>
             <h2>Installation size</h2>
-            <p>No files were installed.</p>
+            <p>Total: 6 M</p>
+            <ul>
+              <li>529 K <code>../ocaml-base-compiler.4.05.0/lib/coq/user-contrib/ITree/Eq/Eq.vo</code></li>
+              <li>382 K <code>../ocaml-base-compiler.4.05.0/lib/coq/user-contrib/ITree/Basics/CategoryFacts.vo</code></li>
+              <li>292 K <code>../ocaml-base-compiler.4.05.0/lib/coq/user-contrib/ITree/Interp/HandlerFacts.vo</code></li>
+              <li>285 K <code>../ocaml-base-compiler.4.05.0/lib/coq/user-contrib/ITree/Eq/UpToTaus.vo</code></li>
+              <li>263 K <code>../ocaml-base-compiler.4.05.0/lib/coq/user-contrib/ITree/Eq/SimUpToTaus.vo</code></li>
+              <li>250 K <code>../ocaml-base-compiler.4.05.0/lib/coq/user-contrib/ITree/Core/KTreeFacts.vo</code></li>
+              <li>243 K <code>../ocaml-base-compiler.4.05.0/lib/coq/user-contrib/ITree/Interp/InterpFacts.vo</code></li>
+              <li>217 K <code>../ocaml-base-compiler.4.05.0/lib/coq/user-contrib/ITree/Events/StateFacts.vo</code></li>
+              <li>187 K <code>../ocaml-base-compiler.4.05.0/lib/coq/user-contrib/ITree/Interp/TranslateFacts.vo</code></li>
+              <li>165 K <code>../ocaml-base-compiler.4.05.0/lib/coq/user-contrib/ITree/Interp/RecursionFacts.vo</code></li>
+              <li>148 K <code>../ocaml-base-compiler.4.05.0/lib/coq/user-contrib/ITree/Basics/CategoryTheory.vo</code></li>
+              <li>139 K <code>../ocaml-base-compiler.4.05.0/lib/coq/user-contrib/ITree/Events/MapDefaultFacts.vo</code></li>
+              <li>133 K <code>../ocaml-base-compiler.4.05.0/lib/coq/user-contrib/ITree/Interp/Traces.vo</code></li>
+              <li>121 K <code>../ocaml-base-compiler.4.05.0/lib/coq/user-contrib/ITree/Events/StateKleisli.vo</code></li>
+              <li>121 K <code>../ocaml-base-compiler.4.05.0/lib/coq/user-contrib/ITree/Interp/HandlerFacts.glob</code></li>
+              <li>111 K <code>../ocaml-base-compiler.4.05.0/lib/coq/user-contrib/ITree/Basics/CategoryKleisliFacts.vo</code></li>
+              <li>107 K <code>../ocaml-base-compiler.4.05.0/lib/coq/user-contrib/ITree/Simple.vo</code></li>
+              <li>106 K <code>../ocaml-base-compiler.4.05.0/lib/coq/user-contrib/ITree/Eq/Eq.glob</code></li>
+              <li>97 K <code>../ocaml-base-compiler.4.05.0/lib/coq/user-contrib/ITree/Basics/CategoryFacts.glob</code></li>
+              <li>72 K <code>../ocaml-base-compiler.4.05.0/lib/coq/user-contrib/ITree/Eq/UpToTaus.glob</code></li>
+              <li>67 K <code>../ocaml-base-compiler.4.05.0/lib/coq/user-contrib/ITree/Basics/CategorySub.vo</code></li>
+              <li>63 K <code>../ocaml-base-compiler.4.05.0/lib/coq/user-contrib/ITree/Basics/CategoryKleisliFacts.glob</code></li>
+              <li>54 K <code>../ocaml-base-compiler.4.05.0/lib/coq/user-contrib/ITree/Simple.glob</code></li>
+              <li>52 K <code>../ocaml-base-compiler.4.05.0/lib/coq/user-contrib/ITree/Basics/CategoryTheory.glob</code></li>
+              <li>48 K <code>../ocaml-base-compiler.4.05.0/lib/coq/user-contrib/ITree/Events/StateFacts.glob</code></li>
+              <li>43 K <code>../ocaml-base-compiler.4.05.0/lib/coq/user-contrib/ITree/Basics/Basics.vo</code></li>
+              <li>41 K <code>../ocaml-base-compiler.4.05.0/lib/coq/user-contrib/ITree/Interp/InterpFacts.glob</code></li>
+              <li>39 K <code>../ocaml-base-compiler.4.05.0/lib/coq/user-contrib/ITree/Events/StateKleisli.glob</code></li>
+              <li>39 K <code>../ocaml-base-compiler.4.05.0/lib/coq/user-contrib/ITree/Basics/CategoryOps.vo</code></li>
+              <li>38 K <code>../ocaml-base-compiler.4.05.0/lib/coq/user-contrib/ITree/Events/Map.vo</code></li>
+              <li>38 K <code>../ocaml-base-compiler.4.05.0/lib/coq/user-contrib/ITree/Events/Reader.vo</code></li>
+              <li>38 K <code>../ocaml-base-compiler.4.05.0/lib/coq/user-contrib/ITree/Interp/Handler.vo</code></li>
+              <li>36 K <code>../ocaml-base-compiler.4.05.0/lib/coq/user-contrib/ITree/Events/Concurrency.vo</code></li>
+              <li>35 K <code>../ocaml-base-compiler.4.05.0/lib/coq/user-contrib/ITree/Events/State.vo</code></li>
+              <li>34 K <code>../ocaml-base-compiler.4.05.0/lib/coq/user-contrib/ITree/Events.vo</code></li>
+              <li>34 K <code>../ocaml-base-compiler.4.05.0/lib/coq/user-contrib/ITree/Events/Writer.vo</code></li>
+              <li>32 K <code>../ocaml-base-compiler.4.05.0/lib/coq/user-contrib/ITree/Events/Nondeterminism.vo</code></li>
+              <li>32 K <code>../ocaml-base-compiler.4.05.0/lib/coq/user-contrib/ITree/Eq/Eq.v</code></li>
+              <li>32 K <code>../ocaml-base-compiler.4.05.0/lib/coq/user-contrib/ITree/Core/KTreeFacts.glob</code></li>
+              <li>31 K <code>../ocaml-base-compiler.4.05.0/lib/coq/user-contrib/ITree/Eq/Shallow.vo</code></li>
+              <li>30 K <code>../ocaml-base-compiler.4.05.0/lib/coq/user-contrib/ITree/Core/ITreeDefinition.vo</code></li>
+              <li>29 K <code>../ocaml-base-compiler.4.05.0/lib/coq/user-contrib/ITree/Basics/CategorySub.glob</code></li>
+              <li>28 K <code>../ocaml-base-compiler.4.05.0/lib/coq/user-contrib/ITree/Core/ITreeMonad.vo</code></li>
+              <li>27 K <code>../ocaml-base-compiler.4.05.0/lib/coq/user-contrib/ITree/Interp/Recursion.vo</code></li>
+              <li>26 K <code>../ocaml-base-compiler.4.05.0/lib/coq/user-contrib/ITree/Events/MapDefault.vo</code></li>
+              <li>26 K <code>../ocaml-base-compiler.4.05.0/lib/coq/user-contrib/ITree/Interp/RecursionFacts.glob</code></li>
+              <li>25 K <code>../ocaml-base-compiler.4.05.0/lib/coq/user-contrib/ITree/Basics/CategoryOps.glob</code></li>
+              <li>25 K <code>../ocaml-base-compiler.4.05.0/lib/coq/user-contrib/ITree/Interp/Traces.glob</code></li>
+              <li>24 K <code>../ocaml-base-compiler.4.05.0/lib/coq/user-contrib/ITree/Eq/UpToTaus.v</code></li>
+              <li>23 K <code>../ocaml-base-compiler.4.05.0/lib/coq/user-contrib/ITree/Core/Subevent.vo</code></li>
+              <li>23 K <code>../ocaml-base-compiler.4.05.0/lib/coq/user-contrib/ITree/ITreeFacts.vo</code></li>
+              <li>22 K <code>../ocaml-base-compiler.4.05.0/lib/coq/user-contrib/ITree/Eq/EqAxiom.vo</code></li>
+              <li>22 K <code>../ocaml-base-compiler.4.05.0/lib/coq/user-contrib/ITree/ITree.vo</code></li>
+              <li>22 K <code>../ocaml-base-compiler.4.05.0/lib/coq/user-contrib/ITree/Core/KTree.vo</code></li>
+              <li>22 K <code>../ocaml-base-compiler.4.05.0/lib/coq/user-contrib/ITree/Basics/Basics.glob</code></li>
+              <li>21 K <code>../ocaml-base-compiler.4.05.0/lib/coq/user-contrib/ITree/Interp/TranslateFacts.glob</code></li>
+              <li>20 K <code>../ocaml-base-compiler.4.05.0/lib/coq/user-contrib/ITree/Eq.vo</code></li>
+              <li>20 K <code>../ocaml-base-compiler.4.05.0/lib/coq/user-contrib/ITree/Eq/SimUpToTaus.glob</code></li>
+              <li>20 K <code>../ocaml-base-compiler.4.05.0/lib/coq/user-contrib/ITree/Indexed/Function.vo</code></li>
+              <li>19 K <code>../ocaml-base-compiler.4.05.0/lib/coq/user-contrib/ITree/Events/MapDefaultFacts.glob</code></li>
+              <li>19 K <code>../ocaml-base-compiler.4.05.0/lib/coq/user-contrib/ITree/Basics/CategoryFacts.v</code></li>
+              <li>17 K <code>../ocaml-base-compiler.4.05.0/lib/coq/user-contrib/ITree/Basics/FunctionFacts.vo</code></li>
+              <li>16 K <code>../ocaml-base-compiler.4.05.0/lib/coq/user-contrib/ITree/Eq/Shallow.glob</code></li>
+              <li>16 K <code>../ocaml-base-compiler.4.05.0/lib/coq/user-contrib/ITree/Events/Dependent.vo</code></li>
+              <li>15 K <code>../ocaml-base-compiler.4.05.0/lib/coq/user-contrib/ITree/Indexed/FunctionFacts.vo</code></li>
+              <li>15 K <code>../ocaml-base-compiler.4.05.0/lib/coq/user-contrib/ITree/Basics/MonadTheory.vo</code></li>
+              <li>15 K <code>../ocaml-base-compiler.4.05.0/lib/coq/user-contrib/ITree/Basics/CategoryKleisli.vo</code></li>
+              <li>15 K <code>../ocaml-base-compiler.4.05.0/lib/coq/user-contrib/ITree/Events/Exception.vo</code></li>
+              <li>15 K <code>../ocaml-base-compiler.4.05.0/lib/coq/user-contrib/ITree/Core/ITreeDefinition.glob</code></li>
+              <li>15 K <code>../ocaml-base-compiler.4.05.0/lib/coq/user-contrib/ITree/Simple.v</code></li>
+              <li>14 K <code>../ocaml-base-compiler.4.05.0/lib/coq/user-contrib/ITree/Indexed/Relation.vo</code></li>
+              <li>14 K <code>../ocaml-base-compiler.4.05.0/lib/coq/user-contrib/ITree/Basics/CategoryTheory.v</code></li>
+              <li>14 K <code>../ocaml-base-compiler.4.05.0/lib/coq/user-contrib/ITree/Events/State.glob</code></li>
+              <li>13 K <code>../ocaml-base-compiler.4.05.0/lib/coq/user-contrib/ITree/Indexed/Sum.vo</code></li>
+              <li>13 K <code>../ocaml-base-compiler.4.05.0/lib/coq/user-contrib/ITree/Basics/CategoryFunctor.vo</code></li>
+              <li>11 K <code>../ocaml-base-compiler.4.05.0/lib/coq/user-contrib/ITree/Basics/CategoryOps.v</code></li>
+              <li>11 K <code>../ocaml-base-compiler.4.05.0/lib/coq/user-contrib/ITree/Interp/Interp.vo</code></li>
+              <li>11 K <code>../ocaml-base-compiler.4.05.0/lib/coq/user-contrib/ITree/Interp/HandlerFacts.v</code></li>
+              <li>11 K <code>../ocaml-base-compiler.4.05.0/lib/coq/user-contrib/ITree/Interp/InterpFacts.v</code></li>
+              <li>10 K <code>../ocaml-base-compiler.4.05.0/lib/coq/user-contrib/ITree/Core/ITreeDefinition.v</code></li>
+              <li>10 K <code>../ocaml-base-compiler.4.05.0/lib/coq/user-contrib/ITree/Interp/Recursion.glob</code></li>
+              <li>10 K <code>../ocaml-base-compiler.4.05.0/lib/coq/user-contrib/ITree/Basics/Function.vo</code></li>
+              <li>10 K <code>../ocaml-base-compiler.4.05.0/lib/coq/user-contrib/ITree/Events/StateKleisli.v</code></li>
+              <li>9 K <code>../ocaml-base-compiler.4.05.0/lib/coq/user-contrib/ITree/Basics/CategoryKleisliFacts.v</code></li>
+              <li>9 K <code>../ocaml-base-compiler.4.05.0/lib/coq/user-contrib/ITree/Interp/Handler.glob</code></li>
+              <li>8 K <code>../ocaml-base-compiler.4.05.0/lib/coq/user-contrib/ITree/Core/KTreeFacts.v</code></li>
+              <li>8 K <code>../ocaml-base-compiler.4.05.0/lib/coq/user-contrib/ITree/Events/MapDefault.glob</code></li>
+              <li>8 K <code>../ocaml-base-compiler.4.05.0/lib/coq/user-contrib/ITree/Events/StateFacts.v</code></li>
+              <li>8 K <code>../ocaml-base-compiler.4.05.0/lib/coq/user-contrib/ITree/Interp/Traces.v</code></li>
+              <li>7 K <code>../ocaml-base-compiler.4.05.0/lib/coq/user-contrib/ITree/Interp/RecursionFacts.v</code></li>
+              <li>7 K <code>../ocaml-base-compiler.4.05.0/lib/coq/user-contrib/ITree/Eq/SimUpToTaus.v</code></li>
+              <li>7 K <code>../ocaml-base-compiler.4.05.0/lib/coq/user-contrib/ITree/Indexed/Relation.glob</code></li>
+              <li>7 K <code>../ocaml-base-compiler.4.05.0/lib/coq/user-contrib/ITree/Basics/CategoryFunctor.glob</code></li>
+              <li>7 K <code>../ocaml-base-compiler.4.05.0/lib/coq/user-contrib/ITree/Events/Map.glob</code></li>
+              <li>6 K <code>../ocaml-base-compiler.4.05.0/lib/coq/user-contrib/ITree/Events/Writer.glob</code></li>
+              <li>6 K <code>../ocaml-base-compiler.4.05.0/lib/coq/user-contrib/ITree/Events/MapDefaultFacts.v</code></li>
+              <li>6 K <code>../ocaml-base-compiler.4.05.0/lib/coq/user-contrib/ITree/Events/Concurrency.glob</code></li>
+              <li>6 K <code>../ocaml-base-compiler.4.05.0/lib/coq/user-contrib/ITree/Basics/CategoryKleisli.glob</code></li>
+              <li>6 K <code>../ocaml-base-compiler.4.05.0/lib/coq/user-contrib/ITree/Basics/CategorySub.v</code></li>
+              <li>6 K <code>../ocaml-base-compiler.4.05.0/lib/coq/user-contrib/ITree/Basics/Basics.v</code></li>
+              <li>6 K <code>../ocaml-base-compiler.4.05.0/lib/coq/user-contrib/ITree/Core/Subevent.glob</code></li>
+              <li>6 K <code>../ocaml-base-compiler.4.05.0/lib/coq/user-contrib/ITree/Interp/TranslateFacts.v</code></li>
+              <li>5 K <code>../ocaml-base-compiler.4.05.0/lib/coq/user-contrib/ITree/Events/Nondeterminism.glob</code></li>
+              <li>5 K <code>../ocaml-base-compiler.4.05.0/lib/coq/user-contrib/ITree/Basics/MonadTheory.glob</code></li>
+              <li>5 K <code>../ocaml-base-compiler.4.05.0/lib/coq/user-contrib/ITree/Interp/Recursion.v</code></li>
+              <li>4 K <code>../ocaml-base-compiler.4.05.0/lib/coq/user-contrib/ITree/Eq/Shallow.v</code></li>
+              <li>4 K <code>../ocaml-base-compiler.4.05.0/lib/coq/user-contrib/ITree/Basics/FunctionFacts.glob</code></li>
+              <li>4 K <code>../ocaml-base-compiler.4.05.0/lib/coq/user-contrib/ITree/Events/State.v</code></li>
+              <li>4 K <code>../ocaml-base-compiler.4.05.0/lib/coq/user-contrib/ITree/Interp/Interp.glob</code></li>
+              <li>3 K <code>../ocaml-base-compiler.4.05.0/lib/coq/user-contrib/ITree/Interp/Handler.v</code></li>
+              <li>3 K <code>../ocaml-base-compiler.4.05.0/lib/coq/user-contrib/ITree/Indexed/Function.glob</code></li>
+              <li>3 K <code>../ocaml-base-compiler.4.05.0/lib/coq/user-contrib/ITree/Basics/Category.vo</code></li>
+              <li>3 K <code>../ocaml-base-compiler.4.05.0/lib/coq/user-contrib/ITree/Interp/Interp.v</code></li>
+              <li>3 K <code>../ocaml-base-compiler.4.05.0/lib/coq/user-contrib/ITree/Basics/Function.glob</code></li>
+              <li>3 K <code>../ocaml-base-compiler.4.05.0/lib/coq/user-contrib/ITree/Core/Subevent.v</code></li>
+              <li>2 K <code>../ocaml-base-compiler.4.05.0/lib/coq/user-contrib/ITree/Events/Reader.glob</code></li>
+              <li>2 K <code>../ocaml-base-compiler.4.05.0/lib/coq/user-contrib/ITree/Events/Concurrency.v</code></li>
+              <li>2 K <code>../ocaml-base-compiler.4.05.0/lib/coq/user-contrib/ITree/Events/MapDefault.v</code></li>
+              <li>2 K <code>../ocaml-base-compiler.4.05.0/lib/coq/user-contrib/ITree/Basics/CategoryKleisli.v</code></li>
+              <li>2 K <code>../ocaml-base-compiler.4.05.0/lib/coq/user-contrib/ITree/Core/ITreeMonad.glob</code></li>
+              <li>2 K <code>../ocaml-base-compiler.4.05.0/lib/coq/user-contrib/ITree/Indexed/Relation.v</code></li>
+              <li>2 K <code>../ocaml-base-compiler.4.05.0/lib/coq/user-contrib/ITree/Events/Writer.v</code></li>
+              <li>2 K <code>../ocaml-base-compiler.4.05.0/lib/coq/user-contrib/ITree/Indexed/FunctionFacts.glob</code></li>
+              <li>2 K <code>../ocaml-base-compiler.4.05.0/lib/coq/user-contrib/ITree/Events/Dependent.glob</code></li>
+              <li>2 K <code>../ocaml-base-compiler.4.05.0/lib/coq/user-contrib/ITree/Events/Nondeterminism.v</code></li>
+              <li>2 K <code>../ocaml-base-compiler.4.05.0/lib/coq/user-contrib/ITree/Events/Map.v</code></li>
+              <li>2 K <code>../ocaml-base-compiler.4.05.0/lib/coq/user-contrib/ITree/Core/KTree.v</code></li>
+              <li>2 K <code>../ocaml-base-compiler.4.05.0/lib/coq/user-contrib/ITree/Core/KTree.glob</code></li>
+              <li>1 K <code>../ocaml-base-compiler.4.05.0/lib/coq/user-contrib/ITree/Basics/MonadTheory.v</code></li>
+              <li>1 K <code>../ocaml-base-compiler.4.05.0/lib/coq/user-contrib/ITree/Indexed/Function.v</code></li>
+              <li>1 K <code>../ocaml-base-compiler.4.05.0/lib/coq/user-contrib/ITree/Basics/FunctionFacts.v</code></li>
+              <li>1 K <code>../ocaml-base-compiler.4.05.0/lib/coq/user-contrib/ITree/Basics/CategoryFunctor.v</code></li>
+              <li>1 K <code>../ocaml-base-compiler.4.05.0/lib/coq/user-contrib/ITree/Events/Exception.glob</code></li>
+              <li>1 K <code>../ocaml-base-compiler.4.05.0/lib/coq/user-contrib/ITree/Basics/Function.v</code></li>
+              <li>1 K <code>../ocaml-base-compiler.4.05.0/lib/coq/user-contrib/ITree/Eq/EqAxiom.glob</code></li>
+              <li>1 K <code>../ocaml-base-compiler.4.05.0/lib/coq/user-contrib/ITree/Events.v</code></li>
+              <li>1 K <code>../ocaml-base-compiler.4.05.0/lib/coq/user-contrib/ITree/Events/Dependent.v</code></li>
+              <li>1 K <code>../ocaml-base-compiler.4.05.0/lib/coq/user-contrib/ITree/Core/ITreeMonad.v</code></li>
+              <li>1 K <code>../ocaml-base-compiler.4.05.0/lib/coq/user-contrib/ITree/Indexed/Sum.glob</code></li>
+              <li>1 K <code>../ocaml-base-compiler.4.05.0/lib/coq/user-contrib/ITree/Indexed/Sum.v</code></li>
+              <li>1 K <code>../ocaml-base-compiler.4.05.0/lib/coq/user-contrib/ITree/Events/Reader.v</code></li>
+              <li>1 K <code>../ocaml-base-compiler.4.05.0/lib/coq/user-contrib/ITree/Eq/EqAxiom.v</code></li>
+              <li>1 K <code>../ocaml-base-compiler.4.05.0/lib/coq/user-contrib/ITree/ITreeFacts.glob</code></li>
+              <li>1 K <code>../ocaml-base-compiler.4.05.0/lib/coq/user-contrib/ITree/Indexed/FunctionFacts.v</code></li>
+              <li>1 K <code>../ocaml-base-compiler.4.05.0/lib/coq/user-contrib/ITree/Events/Exception.v</code></li>
+              <li>1 K <code>../ocaml-base-compiler.4.05.0/lib/coq/user-contrib/ITree/ITree.glob</code></li>
+              <li>1 K <code>../ocaml-base-compiler.4.05.0/lib/coq/user-contrib/ITree/ITreeFacts.v</code></li>
+              <li>1 K <code>../ocaml-base-compiler.4.05.0/lib/coq/user-contrib/ITree/ITree.v</code></li>
+              <li>1 K <code>../ocaml-base-compiler.4.05.0/lib/coq/user-contrib/ITree/Events.glob</code></li>
+              <li>1 K <code>../ocaml-base-compiler.4.05.0/lib/coq/user-contrib/ITree/Basics/Category.glob</code></li>
+              <li>1 K <code>../ocaml-base-compiler.4.05.0/lib/coq/user-contrib/ITree/Eq.glob</code></li>
+              <li>1 K <code>../ocaml-base-compiler.4.05.0/lib/coq/user-contrib/ITree/Basics/Category.v</code></li>
+              <li>1 K <code>../ocaml-base-compiler.4.05.0/lib/coq/user-contrib/ITree/Eq.v</code></li>
+            </ul>
             <h2>Uninstall</h2>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>true</code></dd>
+              <dd><code>opam remove -y coq-itree.dev</code></dd>
               <dt>Return code</dt>
               <dd>0</dd>
               <dt>Missing removes</dt>

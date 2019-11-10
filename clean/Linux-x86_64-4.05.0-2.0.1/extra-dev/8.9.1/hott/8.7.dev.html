@@ -42,7 +42,7 @@
                 <span class="label label-info">Not compatible</span>
               </small>
             </h1>
-            <p><em><script>document.write(moment("2019-10-19 05:03:00 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2019-10-19 05:03:00 UTC)</em><p>
+            <p><em><script>document.write(moment("2019-11-10 05:45:17 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2019-11-10 05:45:17 UTC)</em><p>
             <h2>Context</h2>
             <pre># Packages matching: installed
 # Name              # Installed # Synopsis
@@ -51,6 +51,7 @@ base-num            base        Num library distributed with the OCaml compiler
 base-threads        base
 base-unix           base
 camlp5              7.10        Preprocessor-pretty-printer of OCaml
+conf-findutils      1           Virtual package relying on findutils
 conf-m4             1           Virtual package relying on m4
 coq                 8.9.1       Formal proof management system
 num                 0           The Num library for arbitrary-precision integer and rational arithmetic
@@ -63,15 +64,14 @@ opam-version: &quot;2.0&quot;
 maintainer: &quot;Jason Gross &lt;jgross@mit.edu&gt;&quot;
 homepage: &quot;http://homotopytypetheory.org/&quot;
 bug-reports: &quot;https://github.com/HoTT/HoTT/issues&quot;
-license: &quot;BSD 2-clause&quot;
+license: &quot;BSD-2-Clause&quot;
 build: [
   [&quot;rm&quot; &quot;.gitmodules&quot;]
   [&quot;bash&quot; &quot;-c&quot; &quot;./autogen.sh || :&quot;]
   [&quot;./configure&quot; &quot;COQBIN=%{bin}%&quot; &quot;--prefix=%{prefix}%&quot;]
-  [&quot;%{make}%&quot; &quot;-j%{jobs}%&quot;]
+  [make &quot;-j%{jobs}%&quot;]
 ]
-install: [&quot;%{make}%&quot; &quot;install&quot;]
-remove: [&quot;rm&quot; &quot;-r&quot; &quot;-f&quot; &quot;%{share}%/hott&quot;]
+install: [make &quot;install&quot;]
 depends: [
   &quot;ocaml&quot;
   &quot;ocamlfind&quot; {build}
@@ -79,8 +79,8 @@ depends: [
 ]
 authors: [&quot;The Coq-HoTT Development Team&quot;]
 dev-repo: &quot;git+https://github.com/HoTT/HoTT.git&quot;
-synopsis: &quot;The Homotopy Type Theory library.&quot;
-flags: light-uninstall
+synopsis: &quot;The Homotopy Type Theory library&quot;
+tags: [&quot;logpath:HoTT&quot;]
 url {
   src: &quot;git+https://github.com/HoTT/HoTT.git#V8.7&quot;
 }
