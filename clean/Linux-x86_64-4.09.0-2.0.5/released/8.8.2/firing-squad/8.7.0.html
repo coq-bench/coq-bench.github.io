@@ -42,7 +42,7 @@
                 <span class="label label-info">Not compatible</span>
               </small>
             </h1>
-            <p><em><script>document.write(moment("2019-10-27 06:21:14 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2019-10-27 06:21:14 UTC)</em><p>
+            <p><em><script>document.write(moment("2019-11-11 03:55:36 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2019-11-11 03:55:36 UTC)</em><p>
             <h2>Context</h2>
             <pre># Packages matching: installed
 # Name              # Installed # Synopsis
@@ -50,6 +50,7 @@ base-bigarray       base
 base-threads        base
 base-unix           base
 camlp5              7.10        Preprocessor-pretty-printer of OCaml
+conf-findutils      1           Virtual package relying on findutils
 conf-m4             1           Virtual package relying on m4
 coq                 8.8.2       Formal proof management system.
 num                 1.2         The legacy Num library for arbitrary-precision integer and rational arithmetic
@@ -66,8 +67,8 @@ build: [make &quot;-j%{jobs}%&quot;]
 install: [make &quot;install&quot;]
 remove: [&quot;rm&quot; &quot;-R&quot; &quot;%{lib}%/coq/user-contrib/FiringSquad&quot;]
 depends: [
-  &quot;ocaml&quot;
   &quot;coq&quot; {&gt;= &quot;8.7&quot; &amp; &lt; &quot;8.8~&quot;}
+  &quot;ocaml&quot; {&lt; &quot;4.09&quot;}
 ]
 tags: [ &quot;keyword: concurrency&quot; &quot;keyword: synchronization&quot; &quot;keyword: finite-state machines&quot; &quot;category: Computer Science/Concurrent Systems and Protocols/Correctness of specific protocols&quot; &quot;category: Miscellaneous/Extracted Programs/Automata and protocols&quot; ]
 authors: [ &quot;Jean Duprat&quot; ]
@@ -100,10 +101,8 @@ url {
               <dt>Output</dt>
               <dd><pre>[NOTE] Package coq is already installed (current version is 8.8.2).
 The following dependencies couldn&#39;t be met:
-  - coq-firing-squad -&gt; coq &lt; 8.8~ -&gt; ocaml &lt; 4.06.0
+  - coq-firing-squad -&gt; ocaml &lt; 4.09
       base of this switch (use `--unlock-base&#39; to force)
-Your request can&#39;t be satisfied:
-  - No available version of coq satisfies the constraints
 No solution found, exiting
 </pre></dd>
             </dl>
