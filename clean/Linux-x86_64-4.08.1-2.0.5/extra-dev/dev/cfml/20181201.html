@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>cfml: Error</title>
+    <title>cfml: Not compatible</title>
     <link rel="shortcut icon" type="image/png" href="../../../../../favicon.png" />
     <link href="../../../../../bootstrap.min.css" rel="stylesheet">
     <link href="../../../../../bootstrap-custom.css" rel="stylesheet">
@@ -39,10 +39,10 @@
               cfml
               <small>
                 20181201
-                <span class="label label-danger">Error</span>
+                <span class="label label-info">Not compatible</span>
               </small>
             </h1>
-            <p><em><script>document.write(moment("2019-10-27 17:02:17 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2019-10-27 17:02:17 UTC)</em><p>
+            <p><em><script>document.write(moment("2019-11-12 03:51:19 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2019-11-12 03:51:19 UTC)</em><p>
             <h2>Context</h2>
             <pre># Packages matching: installed
 # Name              # Installed # Synopsis
@@ -68,7 +68,7 @@ build: [make &quot;-j%{jobs}%&quot;]
 install: [make &quot;install&quot;]
 synopsis: &quot;A tool for proving OCaml programs in Separation Logic&quot;
 depends: [
-  &quot;ocaml&quot; {&gt;= &quot;4.03.0&quot;}
+  &quot;ocaml&quot; {&gt;= &quot;4.03.0&quot; &amp; &lt; &quot;4.08.0&quot;}
   &quot;ocamlbuild&quot; {build}
   &quot;pprint&quot;
   &quot;base-bytes&quot;
@@ -94,476 +94,39 @@ url {
               <dt>Command</dt>
               <dd><code>opam install -y --show-action coq-cfml.20181201 coq.dev</code></dd>
               <dt>Return code</dt>
-              <dd>0</dd>
+              <dd>5120</dd>
+              <dt>Output</dt>
+              <dd><pre>[NOTE] Package coq is already installed (current version is dev).
+The following dependencies couldn&#39;t be met:
+  - coq-cfml -&gt; ocaml &lt; 4.08.0
+      base of this switch (use `--unlock-base&#39; to force)
+No solution found, exiting
+</pre></dd>
             </dl>
             <p>Dry install without Coq/switch base, to test if the problem was incompatibility with the current Coq/OCaml version:</p>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>true</code></dd>
+              <dd><code>opam remove -y coq; opam install -y --show-action --unlock-base coq-cfml.20181201</code></dd>
               <dt>Return code</dt>
               <dd>0</dd>
             </dl>
             <h2>Install dependencies</h2>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>opam list; echo; ulimit -Sv 4000000; timeout 2h opam install -y --deps-only coq-cfml.20181201 coq.dev</code></dd>
+              <dd><code>true</code></dd>
               <dt>Return code</dt>
               <dd>0</dd>
               <dt>Duration</dt>
-              <dd>1 m 52 s</dd>
+              <dd>0 s</dd>
             </dl>
             <h2>Install</h2>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>opam list; echo; ulimit -Sv 4000000; timeout 1h opam install -y -v coq-cfml.20181201 coq.dev</code></dd>
+              <dd><code>true</code></dd>
               <dt>Return code</dt>
-              <dd>7936</dd>
+              <dd>0</dd>
               <dt>Duration</dt>
-              <dd>36 s</dd>
-              <dt>Output</dt>
-              <dd><pre># Packages matching: installed
-# Name              # Installed # Synopsis
-base-bigarray       base
-base-bytes          base        Bytes library distributed with the OCaml compiler
-base-threads        base
-base-unix           base
-conf-m4             1           Virtual package relying on m4
-coq                 dev         Formal proof management system
-coq-tlc             20181116    A general-purpose alternative to Coq&#39;s standard library
-num                 1.2         The legacy Num library for arbitrary-precision integer and rational arithmetic
-ocaml               4.08.1      The OCaml compiler (virtual package)
-ocaml-base-compiler 4.08.1      Official release 4.08.1
-ocaml-config        1           OCaml Switch Configuration
-ocamlbuild          0.14.0      OCamlbuild is a build system with builtin rules to easily build most OCaml projects.
-ocamlfind           1.8.1       A library manager for OCaml
-pprint              20180528    A pretty-printing combinator library and rendering engine
-[NOTE] Package coq is already installed (current version is dev).
-The following actions will be performed:
-  - install coq-cfml 20181201
-&lt;&gt;&lt;&gt; Gathering sources &gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;
-Processing  1/1: [coq-cfml.20181201: http]
-[coq-cfml.20181201] downloaded from https://gitlab.inria.fr/charguer/cfml/repository/20181201/archive.tar.gz
-Processing  1/1:
-&lt;&gt;&lt;&gt; Processing actions &lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;
-Processing  1/2: [coq-cfml: make]
-+ /home/bench/.opam/opam-init/hooks/sandbox.sh &quot;build&quot; &quot;make&quot; &quot;-j4&quot; (CWD=/home/bench/.opam/ocaml-base-compiler.4.08.1/.opam-switch/build/coq-cfml.20181201)
-- make CFML=/home/bench/.opam/ocaml-base-compiler.4.08.1/.opam-switch/build/coq-cfml.20181201 -C lib/coq proof
-- rm -f generator/cfml_config.ml
-- sed -e &#39;s|@@PREFIX@@|/home/bench/.opam/ocaml-base-compiler.4.08.1|&#39; \
--     -e &#39;s|@@BINDIR@@|/home/bench/.opam/ocaml-base-compiler.4.08.1/bin|&#39; \
--     -e &#39;s|@@LIBDIR@@|/home/bench/.opam/ocaml-base-compiler.4.08.1/lib/cfml|&#39; \
--     generator/cfml_config.ml.in &gt; generator/cfml_config.ml
-- make[1]: Entering directory &#39;/home/bench/.opam/ocaml-base-compiler.4.08.1/.opam-switch/build/coq-cfml.20181201/lib/coq&#39;
-- make -C generator
-- make[1]: Entering directory &#39;/home/bench/.opam/ocaml-base-compiler.4.08.1/.opam-switch/build/coq-cfml.20181201/generator&#39;
-- ocamlbuild -j 4 -classic-display -I lex -I parsing -I typing -I utils -cflags &quot;-g&quot; -lflags &quot;-g&quot; -use-ocamlfind -package pprint main.native makecmj.native
-- ocamlfind ocamldep -package pprint -modules main.ml &gt; main.ml.depends
-- ocamlfind ocamldep -package pprint -modules cfml_config.ml &gt; cfml_config.ml.depends
-- ocamlfind ocamldep -package pprint -modules characteristic.mli &gt; characteristic.mli.depends
-- ocamlfind ocamldep -package pprint -modules formula.mli &gt; formula.mli.depends
-- ocamlfind ocamldep -package pprint -modules coq.ml &gt; coq.ml.depends
-- ocamlfind ocamldep -package pprint -modules mytools.mli &gt; mytools.mli.depends
-- ocamlfind ocamldep -package pprint -modules parsing/location.mli &gt; parsing/location.mli.depends
-- ocamlfind ocamldep -package pprint -modules utils/warnings.mli &gt; utils/warnings.mli.depends
-- ocamlfind ocamlc -c -g -package pprint -I utils -I lex -I parsing -I typing -o utils/warnings.cmi utils/warnings.mli
-- ocamlfind ocamlc -c -g -package pprint -I parsing -I lex -I utils -I typing -o parsing/location.cmi parsing/location.mli
-- Compiling Shared...
-- ocamlfind ocamldep -package pprint -modules renaming.ml &gt; renaming.ml.depends
-- ocamlfind ocamldep -package pprint -modules utils/clflags.mli &gt; utils/clflags.mli.depends
-- ocamlfind ocamldep -package pprint -modules typing/ident.mli &gt; typing/ident.mli.depends
-- ocamlfind ocamlc -c -g -package pprint -I lex -I utils -I parsing -I typing -o mytools.cmi mytools.mli
-- ocamlfind ocamldep -package pprint -modules typing/path.mli &gt; typing/path.mli.depends
-- ocamlfind ocamlc -c -g -package pprint -I typing -I lex -I utils -I parsing -o typing/ident.cmi typing/ident.mli
-- ocamlfind ocamlc -c -g -package pprint -I utils -I lex -I parsing -I typing -o utils/clflags.cmi utils/clflags.mli
-- ocamlfind ocamlc -c -g -package pprint -I typing -I lex -I utils -I parsing -o typing/path.cmi typing/path.mli
-- ocamlfind ocamlc -c -g -package pprint -I lex -I utils -I parsing -I typing -o renaming.cmo renaming.ml
-- + ocamlfind ocamlc -c -g -package pprint -I lex -I utils -I parsing -I typing -o renaming.cmo renaming.ml
-- File &quot;renaming.ml&quot;, line 241, characters 4-20:
-- 241 |    (String.uppercase name) ^ &quot;_&quot;
--           ^^^^^^^^^^^^^^^^
-- Alert deprecated: Stdlib.String.uppercase
-- Use String.uppercase_ascii instead.
-- ocamlfind ocamlc -c -g -package pprint -I lex -I utils -I parsing -I typing -o coq.cmo coq.ml
-- ocamlfind ocamldep -package pprint -modules typing/typedtree.mli &gt; typing/typedtree.mli.depends
-- ocamlfind ocamldep -package pprint -modules parsing/asttypes.mli &gt; parsing/asttypes.mli.depends
-- ocamlfind ocamldep -package pprint -modules typing/env.mli &gt; typing/env.mli.depends
-- ocamlfind ocamldep -package pprint -modules typing/annot.mli &gt; typing/annot.mli.depends
-- ocamlfind ocamldep -package pprint -modules utils/consistbl.mli &gt; utils/consistbl.mli.depends
-- ocamlfind ocamldep -package pprint -modules parsing/longident.mli &gt; parsing/longident.mli.depends
-- ocamlfind ocamldep -package pprint -modules typing/types.mli &gt; typing/types.mli.depends
-- ocamlfind ocamlc -c -g -package pprint -I parsing -I lex -I utils -I typing -o parsing/asttypes.cmi parsing/asttypes.mli
-- ocamlfind ocamldep -package pprint -modules typing/primitive.mli &gt; typing/primitive.mli.depends
-- ocamlfind ocamlc -c -g -package pprint -I typing -I lex -I utils -I parsing -o typing/primitive.cmi typing/primitive.mli
-- ocamlfind ocamlc -c -g -package pprint -I typing -I lex -I utils -I parsing -o typing/annot.cmi typing/annot.mli
-- ocamlfind ocamlc -c -g -package pprint -I utils -I lex -I parsing -I typing -o utils/consistbl.cmi utils/consistbl.mli
-- ocamlfind ocamlc -c -g -package pprint -I parsing -I lex -I utils -I typing -o parsing/longident.cmi parsing/longident.mli
-- ocamlfind ocamlc -c -g -package pprint -I typing -I lex -I utils -I parsing -o typing/types.cmi typing/types.mli
-- ocamlfind ocamlc -c -g -package pprint -I typing -I lex -I utils -I parsing -o typing/env.cmi typing/env.mli
-- ocamlfind ocamlc -c -g -package pprint -I lex -I utils -I parsing -I typing -o formula.cmi formula.mli
-- ocamlfind ocamlc -c -g -package pprint -I typing -I lex -I utils -I parsing -o typing/typedtree.cmi typing/typedtree.mli
-- ocamlfind ocamldep -package pprint -modules formula_to_coq.mli &gt; formula_to_coq.mli.depends
-- ocamlfind ocamldep -package pprint -modules normalize.mli &gt; normalize.mli.depends
-- ocamlfind ocamldep -package pprint -modules parsing/parsetree.mli &gt; parsing/parsetree.mli.depends
-- File &quot;/home/bench/.opam/ocaml-base-compiler.4.08.1/.opam-switch/build/coq-cfml.20181201/lib/coq/Shared.v&quot;, line 8, characters 0-45:
-- Warning:
-- New coercion path [total_order_to_total_preorder; total_preorder_to_preorder] : total_order &gt;-&gt; preorder is ambiguous with existing 
-- [total_order_order; order_to_preorder] : total_order &gt;-&gt; preorder.
-- [ambiguous-paths,typechecker]
-- ocamlfind ocamlc -c -g -package pprint -I parsing -I lex -I utils -I typing -o parsing/parsetree.cmi parsing/parsetree.mli
-- File &quot;/home/bench/.opam/ocaml-base-compiler.4.08.1/.opam-switch/build/coq-cfml.20181201/lib/coq/Shared.v&quot;, line 10, characters 0-22:
-- Warning: Adding and removing hints in the core database implicitly is
-- deprecated. Please specify a hint database.
-- [implicit-core-hint-db,deprecated]
-- ocamlfind ocamldep -package pprint -modules parse_type.mli &gt; parse_type.mli.depends
-- ocamlfind ocamldep -package pprint -modules print_coq.mli &gt; print_coq.mli.depends
-- ocamlfind ocamldep -package pprint -modules print_past.mli &gt; print_past.mli.depends
-- File &quot;/home/bench/.opam/ocaml-base-compiler.4.08.1/.opam-switch/build/coq-cfml.20181201/lib/coq/Shared.v&quot;, line 206, characters 0-64:
-- Warning: Declaring a scope implicitly is deprecated; use in advance an
-- explicit &quot;Declare Scope blocker_scope.&quot;. [undeclared-scope,deprecated]
-- ocamlfind ocamldep -package pprint -modules print_tast.mli &gt; print_tast.mli.depends
-- ocamlfind ocamldep -package pprint -modules settings.mli &gt; settings.mli.depends
-- ocamlfind ocamldep -package pprint -modules typing/typetexp.mli &gt; typing/typetexp.mli.depends
-- ocamlfind ocamlc -c -g -package pprint -I lex -I utils -I parsing -I typing -o cfml_config.cmo cfml_config.ml
-- ocamlfind ocamlc -c -g -package pprint -I lex -I utils -I parsing -I typing -o characteristic.cmi characteristic.mli
-- ocamlfind ocamlc -c -g -package pprint -I lex -I utils -I parsing -I typing -o formula_to_coq.cmi formula_to_coq.mli
-- ocamlfind ocamlc -c -g -package pprint -I lex -I utils -I parsing -I typing -o normalize.cmi normalize.mli
-- File &quot;/home/bench/.opam/ocaml-base-compiler.4.08.1/.opam-switch/build/coq-cfml.20181201/lib/coq/Shared.v&quot;, line 353, characters 0-83:
-- Warning: Declaring a scope implicitly is deprecated; use in advance an
-- explicit &quot;Declare Scope func.&quot;. [undeclared-scope,deprecated]
-- File &quot;/home/bench/.opam/ocaml-base-compiler.4.08.1/.opam-switch/build/coq-cfml.20181201/lib/coq/Shared.v&quot;, line 358, characters 0-28:
-- Warning: Adding and removing hints in the core database implicitly is
-- deprecated. Please specify a hint database.
-- [implicit-core-hint-db,deprecated]
-- File &quot;/home/bench/.opam/ocaml-base-compiler.4.08.1/.opam-switch/build/coq-cfml.20181201/lib/coq/Shared.v&quot;, line 377, characters 0-28:
-- Warning: Adding and removing hints in the core database implicitly is
-- deprecated. Please specify a hint database.
-- [implicit-core-hint-db,deprecated]
-- ocamlfind ocamlc -c -g -package pprint -I lex -I utils -I parsing -I typing -o parse_type.cmi parse_type.mli
-- ocamlfind ocamlc -c -g -package pprint -I lex -I utils -I parsing -I typing -o print_coq.cmi print_coq.mli
-- ocamlfind ocamlc -c -g -package pprint -I lex -I utils -I parsing -I typing -o print_past.cmi print_past.mli
-- ocamlfind ocamlc -c -g -package pprint -I lex -I utils -I parsing -I typing -o print_tast.cmi print_tast.mli
-- File &quot;/home/bench/.opam/ocaml-base-compiler.4.08.1/.opam-switch/build/coq-cfml.20181201/lib/coq/Shared.v&quot;, line 401, characters 0-22:
-- Warning: Adding and removing hints in the core database implicitly is
-- deprecated. Please specify a hint database.
-- [implicit-core-hint-db,deprecated]
-- ocamlfind ocamlc -c -g -package pprint -I lex -I utils -I parsing -I typing -o settings.cmi settings.mli
-- ocamlfind ocamlc -c -g -package pprint -I typing -I lex -I utils -I parsing -o typing/typetexp.cmi typing/typetexp.mli
-- File &quot;/home/bench/.opam/ocaml-base-compiler.4.08.1/.opam-switch/build/coq-cfml.20181201/lib/coq/Shared.v&quot;, line 406, characters 0-33:
-- Warning: Adding and removing hints in the core database implicitly is
-- deprecated. Please specify a hint database.
-- [implicit-core-hint-db,deprecated]
-- File &quot;/home/bench/.opam/ocaml-base-compiler.4.08.1/.opam-switch/build/coq-cfml.20181201/lib/coq/Shared.v&quot;, line 434, characters 0-24:
-- Warning: Adding and removing hints in the core database implicitly is
-- deprecated. Please specify a hint database.
-- [implicit-core-hint-db,deprecated]
-- ocamlfind ocamlc -c -g -package pprint -I lex -I utils -I parsing -I typing -o main.cmo main.ml
-- Compiling CFHeaps...
-- ocamlfind ocamldep -package pprint -modules characteristic.ml &gt; characteristic.ml.depends
-- ocamlfind ocamldep -package pprint -modules utils/clflags.ml &gt; utils/clflags.ml.depends
-- ocamlfind ocamldep -package pprint -modules utils/config.ml &gt; utils/config.ml.depends
-- ocamlfind ocamldep -package pprint -modules utils/config.mli &gt; utils/config.mli.depends
-- ocamlfind ocamlc -c -g -package pprint -I utils -I lex -I parsing -I typing -o utils/config.cmi utils/config.mli
-- ocamlfind ocamlopt -c -g -package pprint -I utils -I lex -I parsing -I typing -o utils/config.cmx utils/config.ml
-- ocamlfind ocamldep -package pprint -modules mytools.ml &gt; mytools.ml.depends
-- ocamlfind ocamldep -package pprint -modules parsing/location.ml &gt; parsing/location.ml.depends
-- /home/bench/.opam/ocaml-base-compiler.4.08.1/bin/ocamllex.opt -q parsing/linenum.mll
-- ocamlfind ocamldep -package pprint -modules parsing/linenum.ml &gt; parsing/linenum.ml.depends
-- ocamlfind ocamldep -package pprint -modules parsing/linenum.mli &gt; parsing/linenum.mli.depends
-- ocamlfind ocamlc -c -g -package pprint -I parsing -I lex -I utils -I typing -o parsing/linenum.cmi parsing/linenum.mli
-- ocamlfind ocamldep -package pprint -modules utils/misc.ml &gt; utils/misc.ml.depends
-- ocamlfind ocamldep -package pprint -modules utils/misc.mli &gt; utils/misc.mli.depends
-- ocamlfind ocamlc -c -g -package pprint -I utils -I lex -I parsing -I typing -o utils/misc.cmi utils/misc.mli
-- ocamlfind ocamlopt -c -g -package pprint -I utils -I lex -I parsing -I typing -o utils/misc.cmx utils/misc.ml
-- + ocamlfind ocamlopt -c -g -package pprint -I utils -I lex -I parsing -I typing -o utils/misc.cmx utils/misc.ml
-- File &quot;utils/misc.ml&quot;, line 95, characters 14-33:
-- 95 |   let uname = String.uncapitalize name in
--                    ^^^^^^^^^^^^^^^^^^^
-- Alert deprecated: Stdlib.String.uncapitalize
-- Use String.uncapitalize_ascii instead.
-- File &quot;utils/misc.ml&quot;, line 131, characters 13-26:
-- 131 |   let buff = String.create 0x1000 in
--                    ^^^^^^^^^^^^^
-- Alert deprecated: Stdlib.String.create
-- Use Bytes.create instead.
-- File &quot;utils/misc.ml&quot;, line 138, characters 13-26:
-- 138 |   let buff = String.create 0x1000 in
--                    ^^^^^^^^^^^^^
-- Alert deprecated: Stdlib.String.create
-- Use Bytes.create instead.
-- ocamlfind ocamldep -package pprint -modules utils/terminfo.ml &gt; utils/terminfo.ml.depends
-- ocamlfind ocamldep -package pprint -modules utils/terminfo.mli &gt; utils/terminfo.mli.depends
-- ocamlfind ocamlc -c -g -package pprint -I utils -I lex -I parsing -I typing -o utils/terminfo.cmi utils/terminfo.mli
-- ocamlfind ocamldep -package pprint -modules utils/warnings.ml &gt; utils/warnings.ml.depends
-- ocamlfind ocamlopt -c -g -package pprint -I parsing -I lex -I utils -I typing -o parsing/linenum.cmx parsing/linenum.ml
-- ocamlfind ocamlopt -c -g -package pprint -I utils -I lex -I parsing -I typing -o utils/terminfo.cmx utils/terminfo.ml
-- ocamlfind ocamlopt -c -g -package pprint -I utils -I lex -I parsing -I typing -o utils/warnings.cmx utils/warnings.ml
-- + ocamlfind ocamlopt -c -g -package pprint -I utils -I lex -I parsing -I typing -o utils/warnings.cmx utils/warnings.ml
-- File &quot;utils/warnings.ml&quot;, line 159, characters 30-44:
-- 159 |        List.iter set (letter (Char.lowercase s.[i]));
--                                     ^^^^^^^^^^^^^^
-- Alert deprecated: Stdlib.Char.lowercase
-- Use Char.lowercase_ascii instead.
-- File &quot;utils/warnings.ml&quot;, line 176, characters 32-46:
-- 176 |        List.iter myset (letter (Char.lowercase s.[i]));
--                                       ^^^^^^^^^^^^^^
-- Alert deprecated: Stdlib.Char.lowercase
-- Use Char.lowercase_ascii instead.
-- File &quot;utils/warnings.ml&quot;, line 275, characters 4-48:
-- 275 |     Format.pp_get_all_formatter_output_functions ppf ()
--           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-- Alert deprecated: Stdlib.Format.pp_get_all_formatter_output_functions
-- Use Format.pp_get_formatter_out_functions instead.
-- File &quot;utils/warnings.ml&quot;, line 278, characters 2-46:
-- 278 |   Format.pp_set_all_formatter_output_functions ppf out flush countnewline space;
--         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-- Alert deprecated: Stdlib.Format.pp_set_all_formatter_output_functions
-- Use Format.pp_set_formatter_out_functions instead.
-- File &quot;utils/warnings.ml&quot;, line 281, characters 2-46:
-- 281 |   Format.pp_set_all_formatter_output_functions ppf out flush newline space;
--         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-- Alert deprecated: Stdlib.Format.pp_set_all_formatter_output_functions
-- Use Format.pp_set_formatter_out_functions instead.
-- ocamlfind ocamlopt -c -g -package pprint -I parsing -I lex -I utils -I typing -o parsing/location.cmx parsing/location.ml
-- ocamlfind ocamlopt -c -g -package pprint -I utils -I lex -I parsing -I typing -o utils/clflags.cmx utils/clflags.ml
-- ocamlfind ocamldep -package pprint -modules typing/ident.ml &gt; typing/ident.ml.depends
-- ocamlfind ocamlopt -c -g -package pprint -I lex -I utils -I parsing -I typing -o mytools.cmx mytools.ml
-- + ocamlfind ocamlopt -c -g -package pprint -I lex -I utils -I parsing -I typing -o mytools.cmx mytools.ml
-- File &quot;mytools.ml&quot;, line 140, characters 19-33:
-- 140 |    Bytes.set s&#39; 0 (Char.uppercase s.[0]);
--                          ^^^^^^^^^^^^^^
-- Alert deprecated: Stdlib.Char.uppercase
-- Use Char.uppercase_ascii instead.
-- File &quot;mytools.ml&quot;, line 146, characters 19-33:
-- 146 |    Bytes.set s&#39; 1 (Char.uppercase s.[1]);
--                          ^^^^^^^^^^^^^^
-- Alert deprecated: Stdlib.Char.uppercase
-- Use Char.uppercase_ascii instead.
-- ocamlfind ocamldep -package pprint -modules typing/path.ml &gt; typing/path.ml.depends
-- ocamlfind ocamlopt -c -g -package pprint -I typing -I lex -I utils -I parsing -o typing/ident.cmx typing/ident.ml
-- File &quot;/home/bench/.opam/ocaml-base-compiler.4.08.1/.opam-switch/build/coq-cfml.20181201/lib/coq/CFHeaps.v&quot;, line 2, characters 0-54:
-- Warning:
-- New coercion path [total_order_to_total_preorder; total_preorder_to_preorder] : total_order &gt;-&gt; preorder is ambiguous with existing 
-- [total_order_order; order_to_preorder] : total_order &gt;-&gt; preorder.
-- [ambiguous-paths,typechecker]
-- ocamlfind ocamlopt -c -g -package pprint -I typing -I lex -I utils -I parsing -o typing/path.cmx typing/path.ml
-- ocamlfind ocamlopt -c -g -package pprint -I lex -I utils -I parsing -I typing -o renaming.cmx renaming.ml
-- + ocamlfind ocamlopt -c -g -package pprint -I lex -I utils -I parsing -I typing -o renaming.cmx renaming.ml
-- File &quot;renaming.ml&quot;, line 241, characters 4-20:
-- 241 |    (String.uppercase name) ^ &quot;_&quot;
--           ^^^^^^^^^^^^^^^^
-- Alert deprecated: Stdlib.String.uppercase
-- Use String.uppercase_ascii instead.
-- ocamlfind ocamldep -package pprint -modules typing/ctype.ml &gt; typing/ctype.ml.depends
-- ocamlfind ocamldep -package pprint -modules typing/ctype.mli &gt; typing/ctype.mli.depends
-- ocamlfind ocamlc -c -g -package pprint -I typing -I lex -I utils -I parsing -o typing/ctype.cmi typing/ctype.mli
-- ocamlfind ocamldep -package pprint -modules typing/btype.ml &gt; typing/btype.ml.depends
-- ocamlfind ocamldep -package pprint -modules typing/btype.mli &gt; typing/btype.mli.depends
-- ocamlfind ocamlc -c -g -package pprint -I typing -I lex -I utils -I parsing -o typing/btype.cmi typing/btype.mli
-- ocamlfind ocamldep -package pprint -modules typing/types.ml &gt; typing/types.ml.depends
-- File &quot;/home/bench/.opam/ocaml-base-compiler.4.08.1/.opam-switch/build/coq-cfml.20181201/lib/coq/CFHeaps.v&quot;, line 139, characters 0-124:
-- Warning: Declaring a scope implicitly is deprecated; use in advance an
-- explicit &quot;Declare Scope state_scope.&quot;. [undeclared-scope,deprecated]
-- ocamlfind ocamldep -package pprint -modules typing/primitive.ml &gt; typing/primitive.ml.depends
-- File &quot;/home/bench/.opam/ocaml-base-compiler.4.08.1/.opam-switch/build/coq-cfml.20181201/lib/coq/CFHeaps.v&quot;, line 187, characters 0-78:
-- Warning: Adding and removing hints in the core database implicitly is
-- deprecated. Please specify a hint database.
-- [implicit-core-hint-db,deprecated]
-- ocamlfind ocamlopt -c -g -package pprint -I typing -I lex -I utils -I parsing -o typing/primitive.cmx typing/primitive.ml
-- File &quot;/home/bench/.opam/ocaml-base-compiler.4.08.1/.opam-switch/build/coq-cfml.20181201/lib/coq/CFHeaps.v&quot;, line 256, characters 0-57:
-- Warning: Adding and removing hints in the core database implicitly is
-- deprecated. Please specify a hint database.
-- [implicit-core-hint-db,deprecated]
-- ocamlfind ocamlopt -c -g -package pprint -I typing -I lex -I utils -I parsing -o typing/types.cmx typing/types.ml
-- File &quot;/home/bench/.opam/ocaml-base-compiler.4.08.1/.opam-switch/build/coq-cfml.20181201/lib/coq/CFHeaps.v&quot;, line 365, characters 0-75:
-- Warning: Adding and removing hints in the core database implicitly is
-- deprecated. Please specify a hint database.
-- [implicit-core-hint-db,deprecated]
-- ocamlfind ocamldep -package pprint -modules typing/env.ml &gt; typing/env.ml.depends
-- ocamlfind ocamlopt -c -g -package pprint -I typing -I lex -I utils -I parsing -o typing/btype.cmx typing/btype.ml
-- File &quot;/home/bench/.opam/ocaml-base-compiler.4.08.1/.opam-switch/build/coq-cfml.20181201/lib/coq/CFHeaps.v&quot;, line 456, characters 0-55:
-- Warning: Adding and removing hints in the core database implicitly is
-- deprecated. Please specify a hint database.
-- [implicit-core-hint-db,deprecated]
-- File &quot;/home/bench/.opam/ocaml-base-compiler.4.08.1/.opam-switch/build/coq-cfml.20181201/lib/coq/CFHeaps.v&quot;, line 535, characters 0-62:
-- Warning: Declaring a scope implicitly is deprecated; use in advance an
-- explicit &quot;Declare Scope heap_scope.&quot;. [undeclared-scope,deprecated]
-- File &quot;/home/bench/.opam/ocaml-base-compiler.4.08.1/.opam-switch/build/coq-cfml.20181201/lib/coq/CFHeaps.v&quot;, line 658, characters 0-56:
-- Warning: Adding and removing hints in the core database implicitly is
-- deprecated. Please specify a hint database.
-- [implicit-core-hint-db,deprecated]
-- ocamlfind ocamldep -package pprint -modules utils/consistbl.ml &gt; utils/consistbl.ml.depends
-- ocamlfind ocamldep -package pprint -modules typing/datarepr.ml &gt; typing/datarepr.ml.depends
-- ocamlfind ocamldep -package pprint -modules typing/datarepr.mli &gt; typing/datarepr.mli.depends
-- ocamlfind ocamlc -c -g -package pprint -I typing -I lex -I utils -I parsing -o typing/datarepr.cmi typing/datarepr.mli
-- ocamlfind ocamldep -package pprint -modules typing/predef.ml &gt; typing/predef.ml.depends
-- ocamlfind ocamldep -package pprint -modules typing/predef.mli &gt; typing/predef.mli.depends
-- ocamlfind ocamlc -c -g -package pprint -I typing -I lex -I utils -I parsing -o typing/predef.cmi typing/predef.mli
-- ocamlfind ocamlopt -c -g -package pprint -I typing -I lex -I utils -I parsing -o typing/predef.cmx typing/predef.ml
-- ocamlfind ocamldep -package pprint -modules parsing/longident.ml &gt; parsing/longident.ml.depends
-- ocamlfind ocamldep -package pprint -modules typing/subst.ml &gt; typing/subst.ml.depends
-- ocamlfind ocamldep -package pprint -modules typing/subst.mli &gt; typing/subst.mli.depends
-- ocamlfind ocamlc -c -g -package pprint -I typing -I lex -I utils -I parsing -o typing/subst.cmi typing/subst.mli
-- ocamlfind ocamldep -package pprint -modules utils/tbl.ml &gt; utils/tbl.ml.depends
-- ocamlfind ocamldep -package pprint -modules utils/tbl.mli &gt; utils/tbl.mli.depends
-- ocamlfind ocamlc -c -g -package pprint -I utils -I lex -I parsing -I typing -o utils/tbl.cmi utils/tbl.mli
-- ocamlfind ocamlopt -c -g -package pprint -I utils -I lex -I parsing -I typing -o utils/tbl.cmx utils/tbl.ml
-- ocamlfind ocamlopt -c -g -package pprint -I utils -I lex -I parsing -I typing -o utils/consistbl.cmx utils/consistbl.ml
-- ocamlfind ocamlopt -c -g -package pprint -I typing -I lex -I utils -I parsing -o typing/datarepr.cmx typing/datarepr.ml
-- ocamlfind ocamlopt -c -g -package pprint -I parsing -I lex -I utils -I typing -o parsing/longident.cmx parsing/longident.ml
-- ocamlfind ocamlopt -c -g -package pprint -I typing -I lex -I utils -I parsing -o typing/subst.cmx typing/subst.ml
-- + ocamlfind ocamlopt -c -g -package pprint -I typing -I lex -I utils -I parsing -o typing/datarepr.cmx typing/datarepr.ml
-- File &quot;typing/datarepr.ml&quot;, line 73, characters 19-31:
-- 73 |   let all_labels = Array.create (List.length lbls) dummy_label in
--                         ^^^^^^^^^^^^
-- Alert deprecated: Stdlib.Array.create
-- Use Array.make instead.
-- ocamlfind ocamlopt -c -g -package pprint -I typing -I lex -I utils -I parsing -o typing/env.cmx typing/env.ml
-- ocamlfind ocamldep -package pprint -modules formula.ml &gt; formula.ml.depends
-- ocamlfind ocamlopt -c -g -package pprint -I lex -I utils -I parsing -I typing -o coq.cmx coq.ml
-- ocamlfind ocamldep -package pprint -modules print_tast.ml &gt; print_tast.ml.depends
-- ocamlfind ocamldep -package pprint -modules print_past.ml &gt; print_past.ml.depends
-- ocamlfind ocamldep -package pprint -modules print_type.ml &gt; print_type.ml.depends
-- ocamlfind ocamldep -package pprint -modules print_type.mli &gt; print_type.mli.depends
-- ocamlfind ocamlc -c -g -package pprint -I lex -I utils -I parsing -I typing -o print_type.cmi print_type.mli
-- ocamlfind ocamlopt -c -g -package pprint -I typing -I lex -I utils -I parsing -o typing/ctype.cmx typing/ctype.ml
-- + ocamlfind ocamlopt -c -g -package pprint -I typing -I lex -I utils -I parsing -o typing/ctype.cmx typing/ctype.ml
-- File &quot;typing/ctype.ml&quot;, line 241, characters 5-14:
-- 241 |     (Sort.list (fun (n, _, _) (n&#39;, _, _) -&gt; n &lt; n&#39;) l, r)
--            ^^^^^^^^^
-- Error: Unbound module Sort
-- Command exited with code 2.
-- Hint: Recursive traversal of subdirectories was not enabled for this build,
--   as the working directory does not look like an ocamlbuild project (no
--   &#39;_tags&#39; or &#39;myocamlbuild.ml&#39; file). If you have modules in subdirectories,
--   you should add the option &quot;-r&quot; or create an empty &#39;_tags&#39; file.
--   
--   To enable recursive traversal for some subdirectories only, you can use the
--   following &#39;_tags&#39; file:
--   
--       true: -traverse
--       &lt;dir1&gt; or &lt;dir2&gt;: traverse
--       
-- Makefile:10: recipe for target &#39;all&#39; failed
-- make[1]: *** [all] Error 10
-- make[1]: Leaving directory &#39;/home/bench/.opam/ocaml-base-compiler.4.08.1/.opam-switch/build/coq-cfml.20181201/generator&#39;
-- Makefile:28: recipe for target &#39;generator&#39; failed
-- make: *** [generator] Error 2
-- make: *** Waiting for unfinished jobs....
-- File &quot;/home/bench/.opam/ocaml-base-compiler.4.08.1/.opam-switch/build/coq-cfml.20181201/lib/coq/CFHeaps.v&quot;, line 2204, characters 0-29:
-- Warning: Adding and removing hints in the core database implicitly is
-- deprecated. Please specify a hint database.
-- [implicit-core-hint-db,deprecated]
-- File &quot;/home/bench/.opam/ocaml-base-compiler.4.08.1/.opam-switch/build/coq-cfml.20181201/lib/coq/CFHeaps.v&quot;, line 2588, characters 0-28:
-- Warning: Adding and removing hints in the core database implicitly is
-- deprecated. Please specify a hint database.
-- [implicit-core-hint-db,deprecated]
-- Compiling CFApp...
-- File &quot;/home/bench/.opam/ocaml-base-compiler.4.08.1/.opam-switch/build/coq-cfml.20181201/lib/coq/CFApp.v&quot;, line 2, characters 0-41:
-- Warning:
-- New coercion path [total_order_to_total_preorder; total_preorder_to_preorder] : total_order &gt;-&gt; preorder is ambiguous with existing 
-- [total_order_order; order_to_preorder] : total_order &gt;-&gt; preorder.
-- [ambiguous-paths,typechecker]
-- File &quot;/home/bench/.opam/ocaml-base-compiler.4.08.1/.opam-switch/build/coq-cfml.20181201/lib/coq/CFApp.v&quot;, line 5, characters 0-49:
-- Warning: Adding and removing hints in the core database implicitly is
-- deprecated. Please specify a hint database.
-- [implicit-core-hint-db,deprecated]
-- File &quot;/home/bench/.opam/ocaml-base-compiler.4.08.1/.opam-switch/build/coq-cfml.20181201/lib/coq/CFApp.v&quot;, line 116, characters 0-29:
-- Warning: Adding and removing hints in the core database implicitly is
-- deprecated. Please specify a hint database.
-- [implicit-core-hint-db,deprecated]
-- File &quot;/home/bench/.opam/ocaml-base-compiler.4.08.1/.opam-switch/build/coq-cfml.20181201/lib/coq/CFApp.v&quot;, line 127, characters 0-77:
-- Warning: Declaring a scope implicitly is deprecated; use in advance an
-- explicit &quot;Declare Scope dynlist.&quot;. [undeclared-scope,deprecated]
-- File &quot;/home/bench/.opam/ocaml-base-compiler.4.08.1/.opam-switch/build/coq-cfml.20181201/lib/coq/CFApp.v&quot;, line 162, characters 0-144:
-- Warning: Declaring a scope implicitly is deprecated; use in advance an
-- explicit &quot;Declare Scope charac.&quot;. [undeclared-scope,deprecated]
-- File &quot;/home/bench/.opam/ocaml-base-compiler.4.08.1/.opam-switch/build/coq-cfml.20181201/lib/coq/CFApp.v&quot;, line 281, characters 0-23:
-- Warning: Adding and removing hints in the core database implicitly is
-- deprecated. Please specify a hint database.
-- [implicit-core-hint-db,deprecated]
-- File &quot;/home/bench/.opam/ocaml-base-compiler.4.08.1/.opam-switch/build/coq-cfml.20181201/lib/coq/CFApp.v&quot;, line 492, characters 0-98:
-- Warning: Declaring a scope implicitly is deprecated; use in advance an
-- explicit &quot;Declare Scope record_scope.&quot;. [undeclared-scope,deprecated]
-- Compiling CFPrint...
-- File &quot;/home/bench/.opam/ocaml-base-compiler.4.08.1/.opam-switch/build/coq-cfml.20181201/lib/coq/CFPrint.v&quot;, line 2, characters 0-23:
-- Warning:
-- New coercion path [total_order_to_total_preorder; total_preorder_to_preorder] : total_order &gt;-&gt; preorder is ambiguous with existing 
-- [total_order_order; order_to_preorder] : total_order &gt;-&gt; preorder.
-- [ambiguous-paths,typechecker]
-- File &quot;/home/bench/.opam/ocaml-base-compiler.4.08.1/.opam-switch/build/coq-cfml.20181201/lib/coq/CFPrint.v&quot;, line 180, characters 0-75:
-- Warning: Declaring a scope implicitly is deprecated; use in advance an
-- explicit &quot;Declare Scope tag_scope.&quot;. [undeclared-scope,deprecated]
-- Compiling CFHeader...
-- Compiling CFTactics...
-- Compiling CFBuiltin...
-- File &quot;/home/bench/.opam/ocaml-base-compiler.4.08.1/.opam-switch/build/coq-cfml.20181201/lib/coq/CFHeader.v&quot;, line 12, characters 0-133:
-- Warning: Declaring a scope implicitly is deprecated; use in advance an
-- explicit &quot;Declare Scope cfheader_scope.&quot;. [undeclared-scope,deprecated]
-- File &quot;/home/bench/.opam/ocaml-base-compiler.4.08.1/.opam-switch/build/coq-cfml.20181201/lib/coq/CFTactics.v&quot;, line 2, characters 0-38:
-- Warning:
-- New coercion path [total_order_to_total_preorder; total_preorder_to_preorder] : total_order &gt;-&gt; preorder is ambiguous with existing 
-- [total_order_order; order_to_preorder] : total_order &gt;-&gt; preorder.
-- [ambiguous-paths,typechecker]
-- File &quot;/home/bench/.opam/ocaml-base-compiler.4.08.1/.opam-switch/build/coq-cfml.20181201/lib/coq/CFBuiltin.v&quot;, line 2, characters 0-23:
-- Warning:
-- New coercion path [total_order_to_total_preorder; total_preorder_to_preorder] : total_order &gt;-&gt; preorder is ambiguous with existing 
-- [total_order_order; order_to_preorder] : total_order &gt;-&gt; preorder.
-- [ambiguous-paths,typechecker]
-- Compiling CFDemos...
-- Compiling CFLib...
-- File &quot;/home/bench/.opam/ocaml-base-compiler.4.08.1/.opam-switch/build/coq-cfml.20181201/lib/coq/CFDemos.v&quot;, line 2, characters 0-38:
-- Warning:
-- New coercion path [total_order_to_total_preorder; total_preorder_to_preorder] : total_order &gt;-&gt; preorder is ambiguous with existing 
-- [total_order_order; order_to_preorder] : total_order &gt;-&gt; preorder.
-- [ambiguous-paths,typechecker]
-- File &quot;/home/bench/.opam/ocaml-base-compiler.4.08.1/.opam-switch/build/coq-cfml.20181201/lib/coq/CFLib.v&quot;, line 1, characters 0-64:
-- Warning:
-- New coercion path [total_order_to_total_preorder; total_preorder_to_preorder] : total_order &gt;-&gt; preorder is ambiguous with existing 
-- [total_order_order; order_to_preorder] : total_order &gt;-&gt; preorder.
-- [ambiguous-paths,typechecker]
-- Compiling CFAsymptoticsDemos...
-- Compiling CFLibCredits...
-- File &quot;/home/bench/.opam/ocaml-base-compiler.4.08.1/.opam-switch/build/coq-cfml.20181201/lib/coq/CFLibCredits.v&quot;, line 1, characters 0-21:
-- Warning:
-- New coercion path [total_order_to_total_preorder; total_preorder_to_preorder] : total_order &gt;-&gt; preorder is ambiguous with existing 
-- [total_order_order; order_to_preorder] : total_order &gt;-&gt; preorder.
-- [ambiguous-paths,typechecker]
-- File &quot;/home/bench/.opam/ocaml-base-compiler.4.08.1/.opam-switch/build/coq-cfml.20181201/lib/coq/CFAsymptoticsDemos.v&quot;, line 2, characters 0-21:
-- Warning:
-- New coercion path [total_order_to_total_preorder; total_preorder_to_preorder] : total_order &gt;-&gt; preorder is ambiguous with existing 
-- [total_order_order; order_to_preorder] : total_order &gt;-&gt; preorder.
-- [ambiguous-paths,typechecker]
-- make[1]: Leaving directory &#39;/home/bench/.opam/ocaml-base-compiler.4.08.1/.opam-switch/build/coq-cfml.20181201/lib/coq&#39;
-[ERROR] The compilation of coq-cfml failed at &quot;/home/bench/.opam/opam-init/hooks/sandbox.sh build make -j4&quot;.
-#=== ERROR while compiling coq-cfml.20181201 ==================================#
-# context              2.0.5 | linux/x86_64 | ocaml-base-compiler.4.08.1 | file:///home/bench/run/opam-coq-archive/released
-# path                 ~/.opam/ocaml-base-compiler.4.08.1/.opam-switch/build/coq-cfml.20181201
-# command              ~/.opam/opam-init/hooks/sandbox.sh build make -j4
-# exit-code            2
-# env-file             ~/.opam/log/coq-cfml-17832-865888.env
-# output-file          ~/.opam/log/coq-cfml-17832-865888.out
-### output ###
-# [...]
-# Compiling CFLibCredits...
-# File &quot;/home/bench/.opam/ocaml-base-compiler.4.08.1/.opam-switch/build/coq-cfml.20181201/lib/coq/CFLibCredits.v&quot;, line 1, characters 0-21:
-# Warning:
-# New coercion path [total_order_to_total_preorder; total_preorder_to_preorder] : total_order &gt;-&gt; preorder is ambiguous with existing 
-# [total_order_order; order_to_preorder] : total_order &gt;-&gt; preorder.
-# [ambiguous-paths,typechecker]
-# File &quot;/home/bench/.opam/ocaml-base-compiler.4.08.1/.opam-switch/build/coq-cfml.20181201/lib/coq/CFAsymptoticsDemos.v&quot;, line 2, characters 0-21:
-# Warning:
-# New coercion path [total_order_to_total_preorder; total_preorder_to_preorder] : total_order &gt;-&gt; preorder is ambiguous with existing 
-# [total_order_order; order_to_preorder] : total_order &gt;-&gt; preorder.
-# [ambiguous-paths,typechecker]
-# make[1]: Leaving directory &#39;/home/bench/.opam/ocaml-base-compiler.4.08.1/.opam-switch/build/coq-cfml.20181201/lib/coq&#39;
-&lt;&gt;&lt;&gt; Error report &lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;
-+- The following actions failed
-| - build coq-cfml 20181201
-+- 
-- No changes have been performed
-# Run eval $(opam env) to update the current shell environment
-&#39;opam install -y -v coq-cfml.20181201 coq.dev&#39; failed.
-</pre></dd>
+              <dd>0 s</dd>
             </dl>
             <h2>Installation size</h2>
             <p>No files were installed.</p>
