@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>disel-examples: Not compatible</title>
+    <title>disel-examples: 1 m 31 s</title>
     <link rel="shortcut icon" type="image/png" href="../../../../../favicon.png" />
     <link href="../../../../../bootstrap.min.css" rel="stylesheet">
     <link href="../../../../../bootstrap-custom.css" rel="stylesheet">
@@ -39,10 +39,10 @@
               disel-examples
               <small>
                 2.1
-                <span class="label label-info">Not compatible</span>
+                <span class="label label-success">1 m 31 s</span>
               </small>
             </h1>
-            <p><em><script>document.write(moment("2019-10-29 15:00:01 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2019-10-29 15:00:01 UTC)</em><p>
+            <p><em><script>document.write(moment("2019-11-14 03:44:31 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2019-11-14 03:44:31 UTC)</em><p>
             <h2>Context</h2>
             <pre># Packages matching: installed
 # Name              # Installed # Synopsis
@@ -69,7 +69,7 @@ build: [make &quot;-j%{jobs}%&quot; &quot;-C&quot; &quot;Examples&quot;]
 install: [make &quot;-C&quot; &quot;Examples&quot; &quot;install&quot;]
 depends: [
   &quot;ocaml&quot;
-  &quot;coq&quot; {&gt;= &quot;8.7&quot; &amp; &lt; &quot;8.10~&quot;}
+  &quot;coq&quot; {&gt;= &quot;8.7&quot; &amp; &lt; &quot;8.11~&quot;}
   &quot;coq-mathcomp-ssreflect&quot; {&gt;= &quot;1.6.2&quot; &amp; &lt; &quot;1.10~&quot;}
   &quot;coq-fcsl-pcm&quot;
   &quot;coq-disel&quot; {= version}
@@ -88,7 +88,7 @@ authors: [
 ]
 url {
   src: &quot;https://github.com/DistributedComponents/disel/archive/v2.1.tar.gz&quot;
-  checksum: &quot;md5=b9fb9752949224bab22006d18039c798&quot;
+  checksum: &quot;sha512=8931a36001c2be3aedb0c8872bb13e3dd2932be3e1e8200a7d9de46dbc1185ea1ba5eb4ea9e7523bc2bd326f2fb4486e3eaf63280c4f7021a87cab0f88829f26&quot;
 }
 </pre>
             <h2>Lint</h2>
@@ -104,48 +104,104 @@ url {
               <dt>Command</dt>
               <dd><code>opam install -y --show-action coq-disel-examples.2.1 coq.8.10.0</code></dd>
               <dt>Return code</dt>
-              <dd>5120</dd>
-              <dt>Output</dt>
-              <dd><pre>[NOTE] Package coq is already installed (current version is 8.10.0).
-The following dependencies couldn&#39;t be met:
-  - coq-disel-examples -&gt; coq-disel = 2.1 -&gt; coq &lt; 8.10~ -&gt; ocaml &lt; 4.06.0
-      base of this switch (use `--unlock-base&#39; to force)
-Your request can&#39;t be satisfied:
-  - No available version of coq satisfies the constraints
-No solution found, exiting
-</pre></dd>
+              <dd>0</dd>
             </dl>
             <p>Dry install without Coq/switch base, to test if the problem was incompatibility with the current Coq/OCaml version:</p>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>opam remove -y coq; opam install -y --show-action --unlock-base coq-disel-examples.2.1</code></dd>
+              <dd><code>true</code></dd>
               <dt>Return code</dt>
               <dd>0</dd>
             </dl>
             <h2>Install dependencies</h2>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>true</code></dd>
+              <dd><code>opam list; echo; ulimit -Sv 4000000; timeout 2h opam install -y --deps-only coq-disel-examples.2.1 coq.8.10.0</code></dd>
               <dt>Return code</dt>
               <dd>0</dd>
               <dt>Duration</dt>
-              <dd>0 s</dd>
+              <dd>1 m 54 s</dd>
             </dl>
             <h2>Install</h2>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>true</code></dd>
+              <dd><code>opam list; echo; ulimit -Sv 4000000; timeout 1h opam install -y -v coq-disel-examples.2.1 coq.8.10.0</code></dd>
               <dt>Return code</dt>
               <dd>0</dd>
               <dt>Duration</dt>
-              <dd>0 s</dd>
+              <dd>1 m 31 s</dd>
             </dl>
             <h2>Installation size</h2>
-            <p>No files were installed.</p>
+            <p>Total: 7 M</p>
+            <ul>
+              <li>720 K <code>../ocaml-base-compiler.4.08.1/lib/coq/user-contrib/DiSeL/Querying/QueryHooked.vo</code></li>
+              <li>659 K <code>../ocaml-base-compiler.4.08.1/lib/coq/user-contrib/DiSeL/TwoPhaseCommit/TwoPhaseInductiveInv.vo</code></li>
+              <li>511 K <code>../ocaml-base-compiler.4.08.1/lib/coq/user-contrib/DiSeL/TwoPhaseCommit/TwoPhaseCoordinator.vo</code></li>
+              <li>405 K <code>../ocaml-base-compiler.4.08.1/lib/coq/user-contrib/DiSeL/TwoPhaseCommit/TwoPhaseInductiveProof.vo</code></li>
+              <li>387 K <code>../ocaml-base-compiler.4.08.1/lib/coq/user-contrib/DiSeL/TwoPhaseCommit/TwoPhaseInductiveInv.glob</code></li>
+              <li>361 K <code>../ocaml-base-compiler.4.08.1/lib/coq/user-contrib/DiSeL/Querying/QueryHooked.glob</code></li>
+              <li>300 K <code>../ocaml-base-compiler.4.08.1/lib/coq/user-contrib/DiSeL/TwoPhaseCommit/TwoPhaseParticipant.vo</code></li>
+              <li>278 K <code>../ocaml-base-compiler.4.08.1/lib/coq/user-contrib/DiSeL/TwoPhaseCommit/TwoPhaseCoordinator.glob</code></li>
+              <li>241 K <code>../ocaml-base-compiler.4.08.1/lib/coq/user-contrib/DiSeL/TwoPhaseCommit/TwoPhaseProtocol.vo</code></li>
+              <li>239 K <code>../ocaml-base-compiler.4.08.1/lib/coq/user-contrib/DiSeL/TwoPhaseCommit/TwoPhaseInductiveProof.glob</code></li>
+              <li>207 K <code>../ocaml-base-compiler.4.08.1/lib/coq/user-contrib/DiSeL/Calculator/SimpleCalculatorServers.vo</code></li>
+              <li>191 K <code>../ocaml-base-compiler.4.08.1/lib/coq/user-contrib/DiSeL/TwoPhaseCommit/TwoPhaseProtocol.glob</code></li>
+              <li>177 K <code>../ocaml-base-compiler.4.08.1/lib/coq/user-contrib/DiSeL/Calculator/CalculatorClientLib.vo</code></li>
+              <li>157 K <code>../ocaml-base-compiler.4.08.1/lib/coq/user-contrib/DiSeL/Greeter/Greeter.vo</code></li>
+              <li>152 K <code>../ocaml-base-compiler.4.08.1/lib/coq/user-contrib/DiSeL/TwoPhaseCommit/TwoPhaseParticipant.glob</code></li>
+              <li>149 K <code>../ocaml-base-compiler.4.08.1/lib/coq/user-contrib/DiSeL/LockResource/LockProtocol.vo</code></li>
+              <li>144 K <code>../ocaml-base-compiler.4.08.1/lib/coq/user-contrib/DiSeL/LockResource/ResourceProtocol.vo</code></li>
+              <li>143 K <code>../ocaml-base-compiler.4.08.1/lib/coq/user-contrib/DiSeL/Calculator/DelegatingCalculatorServer.vo</code></li>
+              <li>131 K <code>../ocaml-base-compiler.4.08.1/lib/coq/user-contrib/DiSeL/Calculator/CalculatorProtocol.vo</code></li>
+              <li>126 K <code>../ocaml-base-compiler.4.08.1/lib/coq/user-contrib/DiSeL/Querying/QueryPlusTPC.vo</code></li>
+              <li>119 K <code>../ocaml-base-compiler.4.08.1/lib/coq/user-contrib/DiSeL/Querying/QueryProtocol.vo</code></li>
+              <li>117 K <code>../ocaml-base-compiler.4.08.1/lib/coq/user-contrib/DiSeL/Calculator/CalculatorServerLib.vo</code></li>
+              <li>102 K <code>../ocaml-base-compiler.4.08.1/lib/coq/user-contrib/DiSeL/Calculator/SimpleCalculatorApp.vo</code></li>
+              <li>97 K <code>../ocaml-base-compiler.4.08.1/lib/coq/user-contrib/DiSeL/LockResource/ResourceProtocol.glob</code></li>
+              <li>93 K <code>../ocaml-base-compiler.4.08.1/lib/coq/user-contrib/DiSeL/TwoPhaseCommit/SimpleTPCApp.vo</code></li>
+              <li>93 K <code>../ocaml-base-compiler.4.08.1/lib/coq/user-contrib/DiSeL/LockResource/LockProtocol.glob</code></li>
+              <li>83 K <code>../ocaml-base-compiler.4.08.1/lib/coq/user-contrib/DiSeL/Calculator/SimpleCalculatorApp.glob</code></li>
+              <li>82 K <code>../ocaml-base-compiler.4.08.1/lib/coq/user-contrib/DiSeL/Calculator/CalculatorProtocol.glob</code></li>
+              <li>81 K <code>../ocaml-base-compiler.4.08.1/lib/coq/user-contrib/DiSeL/Calculator/SimpleCalculatorServers.glob</code></li>
+              <li>74 K <code>../ocaml-base-compiler.4.08.1/lib/coq/user-contrib/DiSeL/Calculator/CalculatorInvariant.vo</code></li>
+              <li>71 K <code>../ocaml-base-compiler.4.08.1/lib/coq/user-contrib/DiSeL/Greeter/Greeter.glob</code></li>
+              <li>68 K <code>../ocaml-base-compiler.4.08.1/lib/coq/user-contrib/DiSeL/Querying/QueryProtocol.glob</code></li>
+              <li>67 K <code>../ocaml-base-compiler.4.08.1/lib/coq/user-contrib/DiSeL/TwoPhaseCommit/TwoPhaseInductiveInv.v</code></li>
+              <li>59 K <code>../ocaml-base-compiler.4.08.1/lib/coq/user-contrib/DiSeL/Calculator/CalculatorClientLib.glob</code></li>
+              <li>55 K <code>../ocaml-base-compiler.4.08.1/lib/coq/user-contrib/DiSeL/Querying/QueryPlusTPC.glob</code></li>
+              <li>54 K <code>../ocaml-base-compiler.4.08.1/lib/coq/user-contrib/DiSeL/TwoPhaseCommit/SimpleTPCApp.glob</code></li>
+              <li>53 K <code>../ocaml-base-compiler.4.08.1/lib/coq/user-contrib/DiSeL/Querying/QueryHooked.v</code></li>
+              <li>45 K <code>../ocaml-base-compiler.4.08.1/lib/coq/user-contrib/DiSeL/TwoPhaseCommit/TwoPhaseInductiveProof.v</code></li>
+              <li>40 K <code>../ocaml-base-compiler.4.08.1/lib/coq/user-contrib/DiSeL/Calculator/CalculatorServerLib.glob</code></li>
+              <li>39 K <code>../ocaml-base-compiler.4.08.1/lib/coq/user-contrib/DiSeL/SeqLib.vo</code></li>
+              <li>38 K <code>../ocaml-base-compiler.4.08.1/lib/coq/user-contrib/DiSeL/TwoPhaseCommit/TwoPhaseCoordinator.v</code></li>
+              <li>37 K <code>../ocaml-base-compiler.4.08.1/lib/coq/user-contrib/DiSeL/Calculator/DelegatingCalculatorServer.glob</code></li>
+              <li>32 K <code>../ocaml-base-compiler.4.08.1/lib/coq/user-contrib/DiSeL/TwoPhaseCommit/TwoPhaseClient.vo</code></li>
+              <li>30 K <code>../ocaml-base-compiler.4.08.1/lib/coq/user-contrib/DiSeL/TwoPhaseCommit/TwoPhaseProtocol.v</code></li>
+              <li>23 K <code>../ocaml-base-compiler.4.08.1/lib/coq/user-contrib/DiSeL/Calculator/CalculatorInvariant.glob</code></li>
+              <li>20 K <code>../ocaml-base-compiler.4.08.1/lib/coq/user-contrib/DiSeL/TwoPhaseCommit/TwoPhaseParticipant.v</code></li>
+              <li>17 K <code>../ocaml-base-compiler.4.08.1/lib/coq/user-contrib/DiSeL/LockResource/LockProtocol.v</code></li>
+              <li>17 K <code>../ocaml-base-compiler.4.08.1/lib/coq/user-contrib/DiSeL/LockResource/ResourceProtocol.v</code></li>
+              <li>14 K <code>../ocaml-base-compiler.4.08.1/lib/coq/user-contrib/DiSeL/Calculator/CalculatorProtocol.v</code></li>
+              <li>13 K <code>../ocaml-base-compiler.4.08.1/lib/coq/user-contrib/DiSeL/Calculator/SimpleCalculatorServers.v</code></li>
+              <li>13 K <code>../ocaml-base-compiler.4.08.1/lib/coq/user-contrib/DiSeL/Greeter/Greeter.v</code></li>
+              <li>13 K <code>../ocaml-base-compiler.4.08.1/lib/coq/user-contrib/DiSeL/Querying/QueryProtocol.v</code></li>
+              <li>11 K <code>../ocaml-base-compiler.4.08.1/lib/coq/user-contrib/DiSeL/Calculator/SimpleCalculatorApp.v</code></li>
+              <li>10 K <code>../ocaml-base-compiler.4.08.1/lib/coq/user-contrib/DiSeL/Calculator/CalculatorClientLib.v</code></li>
+              <li>9 K <code>../ocaml-base-compiler.4.08.1/lib/coq/user-contrib/DiSeL/SeqLib.glob</code></li>
+              <li>9 K <code>../ocaml-base-compiler.4.08.1/lib/coq/user-contrib/DiSeL/Querying/QueryPlusTPC.v</code></li>
+              <li>7 K <code>../ocaml-base-compiler.4.08.1/lib/coq/user-contrib/DiSeL/TwoPhaseCommit/SimpleTPCApp.v</code></li>
+              <li>7 K <code>../ocaml-base-compiler.4.08.1/lib/coq/user-contrib/DiSeL/Calculator/CalculatorServerLib.v</code></li>
+              <li>6 K <code>../ocaml-base-compiler.4.08.1/lib/coq/user-contrib/DiSeL/Calculator/DelegatingCalculatorServer.v</code></li>
+              <li>5 K <code>../ocaml-base-compiler.4.08.1/lib/coq/user-contrib/DiSeL/Calculator/CalculatorInvariant.v</code></li>
+              <li>3 K <code>../ocaml-base-compiler.4.08.1/lib/coq/user-contrib/DiSeL/TwoPhaseCommit/TwoPhaseClient.v</code></li>
+              <li>1 K <code>../ocaml-base-compiler.4.08.1/lib/coq/user-contrib/DiSeL/SeqLib.v</code></li>
+              <li>1 K <code>../ocaml-base-compiler.4.08.1/lib/coq/user-contrib/DiSeL/TwoPhaseCommit/TwoPhaseClient.glob</code></li>
+            </ul>
             <h2>Uninstall</h2>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>true</code></dd>
+              <dd><code>opam remove -y coq-disel-examples.2.1</code></dd>
               <dt>Return code</dt>
               <dd>0</dd>
               <dt>Missing removes</dt>
