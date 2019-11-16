@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>coqeal: Not compatible</title>
+    <title>coqeal: Error with dependencies</title>
     <link rel="shortcut icon" type="image/png" href="../../../../../favicon.png" />
     <link href="../../../../../bootstrap.min.css" rel="stylesheet">
     <link href="../../../../../bootstrap-custom.css" rel="stylesheet">
@@ -39,10 +39,10 @@
               coqeal
               <small>
                 1.0.0
-                <span class="label label-info">Not compatible</span>
+                <span class="label label-warning">Error with dependencies</span>
               </small>
             </h1>
-            <p><em><script>document.write(moment("2019-11-01 20:43:13 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2019-11-01 20:43:13 UTC)</em><p>
+            <p><em><script>document.write(moment("2019-11-16 18:27:45 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2019-11-16 18:27:45 UTC)</em><p>
             <h2>Context</h2>
             <pre># Packages matching: installed
 # Name              # Installed # Synopsis
@@ -110,31 +110,104 @@ url {
               <dt>Command</dt>
               <dd><code>opam install -y --show-action coq-coqeal.1.0.0 coq.8.7.0</code></dd>
               <dt>Return code</dt>
-              <dd>5120</dd>
-              <dt>Output</dt>
-              <dd><pre>[NOTE] Package coq is already installed (current version is 8.7.0).
-The following dependencies couldn&#39;t be met:
-  - coq-coqeal -&gt; coq-paramcoq &gt;= 1.1.1 -&gt; coq &gt;= 8.7.2
-Your request can&#39;t be satisfied:
-  - No available version of coq satisfies the constraints
-No solution found, exiting
-</pre></dd>
+              <dd>0</dd>
             </dl>
             <p>Dry install without Coq/switch base, to test if the problem was incompatibility with the current Coq/OCaml version:</p>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>opam remove -y coq; opam install -y --show-action --unlock-base coq-coqeal.1.0.0</code></dd>
+              <dd><code>true</code></dd>
               <dt>Return code</dt>
               <dd>0</dd>
             </dl>
             <h2>Install dependencies</h2>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>true</code></dd>
+              <dd><code>opam list; echo; ulimit -Sv 4000000; timeout 2h opam install -y --deps-only coq-coqeal.1.0.0 coq.8.7.0</code></dd>
               <dt>Return code</dt>
-              <dd>0</dd>
+              <dd>7936</dd>
               <dt>Duration</dt>
-              <dd>0 s</dd>
+              <dd>5 m 39 s</dd>
+              <dt>Output</dt>
+              <dd><pre># Packages matching: installed
+# Name              # Installed # Synopsis
+base-bigarray       base
+base-threads        base
+base-unix           base
+camlp5              7.10        Preprocessor-pretty-printer of OCaml
+conf-findutils      1           Virtual package relying on findutils
+conf-m4             1           Virtual package relying on m4
+coq                 8.7.0       Formal proof management system.
+num                 1.2         The legacy Num library for arbitrary-precision integer and rational arithmetic
+ocaml               4.09.0      The OCaml compiler (virtual package)
+ocaml-base-compiler 4.09.0      Official release 4.09.0
+ocaml-config        1           OCaml Switch Configuration
+ocamlfind           1.8.1       A library manager for OCaml
+The following actions will be performed:
+  - install coq-mathcomp-ssreflect    1.8.0
+  - install coq-bignums               8.7.0
+  - install coq-paramcoq              1.1.2+coq8.7
+  - install coq-mathcomp-fingroup     1.8.0
+  - install coq-mathcomp-bigenough    1.0.0
+  - install coq-mathcomp-algebra      1.8.0
+  - install coq-mathcomp-finmap       1.2.1
+  - install coq-mathcomp-multinomials 1.3
+===== 8 to install =====
+&lt;&gt;&lt;&gt; Gathering sources &gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;
+[coq-mathcomp-bigenough.1.0.0] downloaded from https://github.com/math-comp/bigenough/archive/1.0.0.tar.gz
+[coq-bignums.8.7.0] downloaded from https://github.com/coq/bignums/archive/V8.7.0.tar.gz
+[coq-mathcomp-algebra.1.8.0] downloaded from http://github.com/math-comp/math-comp/archive/mathcomp-1.8.0.tar.gz
+[coq-mathcomp-finmap.1.2.1] downloaded from https://github.com/math-comp/finmap/archive/1.2.1.tar.gz
+[coq-mathcomp-ssreflect.1.8.0] found in cache
+[coq-mathcomp-fingroup.1.8.0] downloaded from http://github.com/math-comp/math-comp/archive/mathcomp-1.8.0.tar.gz
+[coq-mathcomp-multinomials.1.3] downloaded from https://github.com/math-comp/multinomials/archive/1.3.tar.gz
+[coq-paramcoq.1.1.2+coq8.7] downloaded from https://github.com/coq-community/paramcoq/archive/v1.1.2+coq8.7.tar.gz
+&lt;&gt;&lt;&gt; Processing actions &lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;
+[ERROR] The compilation of coq-paramcoq failed at &quot;/home/bench/.opam/opam-init/hooks/sandbox.sh build make -j4&quot;.
+-&gt; installed coq-mathcomp-ssreflect.1.8.0
+-&gt; installed coq-mathcomp-bigenough.1.0.0
+-&gt; installed coq-mathcomp-finmap.1.2.1
+-&gt; installed coq-bignums.8.7.0
+-&gt; installed coq-mathcomp-fingroup.1.8.0
+-&gt; installed coq-mathcomp-algebra.1.8.0
+-&gt; installed coq-mathcomp-multinomials.1.3
+#=== ERROR while compiling coq-paramcoq.1.1.2+coq8.7 ==========================#
+# context              2.0.5 | linux/x86_64 | ocaml-base-compiler.4.09.0 | file:///home/bench/run/opam-coq-archive/released
+# path                 ~/.opam/ocaml-base-compiler.4.09.0/.opam-switch/build/coq-paramcoq.1.1.2+coq8.7
+# command              ~/.opam/opam-init/hooks/sandbox.sh build make -j4
+# exit-code            2
+# env-file             ~/.opam/log/coq-paramcoq-820-f6c0a8.env
+# output-file          ~/.opam/log/coq-paramcoq-820-f6c0a8.out
+### output ###
+# [...]
+# 609 |   let env_rec = push_rec_types (lna, tl, bl) env in
+#                                            ^^
+# Error: This expression has type EConstr.t array
+#        but an expression was expected of type Constr.types array
+#        Type EConstr.t is not compatible with type Constr.types = Constr.t 
+# Makefile.coq:587: recipe for target &#39;src/parametricity.cmx&#39; failed
+# make[2]: *** [src/parametricity.cmx] Error 2
+# Makefile.coq:312: recipe for target &#39;all&#39; failed
+# make[1]: *** [all] Error 2
+# make[1]: Leaving directory &#39;/home/bench/.opam/ocaml-base-compiler.4.09.0/.opam-switch/build/coq-paramcoq.1.1.2+coq8.7&#39;
+# Makefile:5: recipe for target &#39;coq&#39; failed
+# make: *** [coq] Error 2
+&lt;&gt;&lt;&gt; Error report &lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;
++- The following actions failed
+| - build coq-paramcoq 1.1.2+coq8.7
++- 
++- The following changes have been performed
+| - install coq-bignums               8.7.0
+| - install coq-mathcomp-algebra      1.8.0
+| - install coq-mathcomp-bigenough    1.0.0
+| - install coq-mathcomp-fingroup     1.8.0
+| - install coq-mathcomp-finmap       1.2.1
+| - install coq-mathcomp-multinomials 1.3
+| - install coq-mathcomp-ssreflect    1.8.0
++- 
+# Run eval $(opam env) to update the current shell environment
+The former state can be restored with:
+    opam switch import &quot;/home/bench/.opam/ocaml-base-compiler.4.09.0/.opam-switch/backup/state-20191116162019.export&quot;
+</pre></dd>
             </dl>
             <h2>Install</h2>
             <dl class="dl-horizontal">
