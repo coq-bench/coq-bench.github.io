@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>io-system-ocaml: 6 s</title>
+    <title>io-system-ocaml: Error with dependencies</title>
     <link rel="shortcut icon" type="image/png" href="../../../../../favicon.png" />
     <link href="../../../../../bootstrap.min.css" rel="stylesheet">
     <link href="../../../../../bootstrap-custom.css" rel="stylesheet">
@@ -39,10 +39,10 @@
               io-system-ocaml
               <small>
                 2.0.0
-                <span class="label label-success">6 s</span>
+                <span class="label label-warning">Error with dependencies</span>
               </small>
             </h1>
-            <p><em><script>document.write(moment("2019-11-14 16:16:03 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2019-11-14 16:16:03 UTC)</em><p>
+            <p><em><script>document.write(moment("2019-11-28 10:14:01 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2019-11-28 10:14:01 UTC)</em><p>
             <h2>Context</h2>
             <pre># Packages matching: installed
 # Name              # Installed # Synopsis
@@ -115,34 +115,131 @@ url {
               <dt>Command</dt>
               <dd><code>opam list; echo; ulimit -Sv 4000000; timeout 2h opam install -y --deps-only coq-io-system-ocaml.2.0.0 coq.8.5.2</code></dd>
               <dt>Return code</dt>
-              <dd>0</dd>
+              <dd>7936</dd>
               <dt>Duration</dt>
-              <dd>2 m 16 s</dd>
+              <dd>7 m 23 s</dd>
+              <dt>Output</dt>
+              <dd><pre># Packages matching: installed
+# Name              # Installed # Synopsis
+base-bigarray       base
+base-num            base        Num library distributed with the OCaml compiler
+base-ocamlbuild     base        OCamlbuild binary and libraries distributed with the OCaml compiler
+base-threads        base
+base-unix           base
+camlp5              7.10        Preprocessor-pretty-printer of OCaml
+conf-findutils      1           Virtual package relying on findutils
+coq                 8.5.2       Formal proof management system.
+num                 0           The Num library for arbitrary-precision integer and rational arithmetic
+ocaml               4.02.3      The OCaml compiler (virtual package)
+ocaml-base-compiler 4.02.3      Official 4.02.3 release
+ocaml-config        1           OCaml Switch Configuration
+The following actions will be performed:
+  - install ocaml-secondary-compiler 4.08.1
+  - install ocamlbuild               0
+  - install jbuilder                 1.0+beta20
+  - install conf-m4                  1
+  - install cppo                     1.6.5
+  - install ocamlfind                1.8.1
+  - install ocamlfind-secondary      1.8.1
+  - install base-bytes               base
+  - install dune                     2.0.0
+  - install ocplib-endian            1.0
+  - install seq                      0.2
+  - install result                   1.4
+  - install mmap                     1.1.0
+  - install dune-private-libs        2.0.0
+  - install dune-configurator        2.0.0
+  - install lwt                      4.4.0
+===== 16 to install =====
+&lt;&gt;&lt;&gt; Gathering sources &gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;
+[cppo.1.6.5] downloaded from cache at https://opam.ocaml.org/cache
+[dune.2.0.0] downloaded from cache at https://opam.ocaml.org/cache
+[jbuilder.1.0+beta20] downloaded from cache at https://opam.ocaml.org/cache
+[dune-private-libs.2.0.0] downloaded from cache at https://opam.ocaml.org/cache
+[mmap.1.1.0] downloaded from cache at https://opam.ocaml.org/cache
+[lwt.4.4.0] downloaded from cache at https://opam.ocaml.org/cache
+[dune-configurator.2.0.0] downloaded from cache at https://opam.ocaml.org/cache
+[ocamlfind.1.8.1] downloaded from cache at https://opam.ocaml.org/cache
+[ocamlfind-secondary.1.8.1] found in cache
+[result.1.4] downloaded from cache at https://opam.ocaml.org/cache
+[ocplib-endian.1.0] downloaded from cache at https://opam.ocaml.org/cache
+[seq.0.2] downloaded from cache at https://opam.ocaml.org/cache
+[ocaml-secondary-compiler.4.08.1] downloaded from cache at https://opam.ocaml.org/cache
+&lt;&gt;&lt;&gt; Processing actions &lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;
+-&gt; installed ocamlbuild.0
+-&gt; installed conf-m4.1
+-&gt; installed ocamlfind.1.8.1
+-&gt; installed base-bytes.base
+-&gt; installed jbuilder.1.0+beta20
+-&gt; installed cppo.1.6.5
+-&gt; installed ocplib-endian.1.0
+-&gt; installed ocaml-secondary-compiler.4.08.1
+-&gt; installed ocamlfind-secondary.1.8.1
+-&gt; installed dune.2.0.0
+-&gt; installed mmap.1.1.0
+-&gt; installed result.1.4
+-&gt; installed seq.0.2
+[ERROR] The compilation of dune-private-libs failed at &quot;/home/bench/.opam/opam-init/hooks/sandbox.sh build dune build -p dune-private-libs -j 7 @install&quot;.
+#=== ERROR while compiling dune-private-libs.2.0.0 ============================#
+# context              2.0.1 | linux/x86_64 | ocaml-base-compiler.4.02.3 | https://opam.ocaml.org#e5c475eb
+# path                 ~/.opam/ocaml-base-compiler.4.02.3/.opam-switch/build/dune-private-libs.2.0.0
+# command              ~/.opam/opam-init/hooks/sandbox.sh build dune build -p dune-private-libs -j 7 @install
+# exit-code            1
+# env-file             ~/.opam/log/dune-private-libs-11838-b7b179.env
+# output-file          ~/.opam/log/dune-private-libs-11838-b7b179.out
+### output ###
+# Error: Syntax error: operator expected.
+# [...]
+# (cd _build/default &amp;&amp; /home/bench/.opam/ocaml-base-compiler.4.02.3/bin/ocamlc.opt -w -40 -g -bin-annot -I src/stdune/.stdune.objs/byte -I src/stdune/caml/.dune_caml.objs/byte -I src/stdune/caml/.dune_caml.objs/native -no-alias-deps -open Stdune__ -o src/stdune/.stdune.objs/byte/stdune__Result.cmi -c -intf src/stdune/result.pp.mli)
+# File &quot;src/stdune/result.mli&quot;, line 3, characters 22-41:
+# Error: Unbound type constructor result
+#     ocamlopt src/stdune/.stdune.objs/native/stdune__Univ_map.{cmx,o} (exit 2)
+# (cd _build/default &amp;&amp; /home/bench/.opam/ocaml-base-compiler.4.02.3/bin/ocamlopt.opt -w -40 -g -I src/stdune/.stdune.objs/byte -I src/stdune/.stdune.objs/native -I src/stdune/caml/.dune_caml.objs/byte -I src/stdune/caml/.dune_caml.objs/native -intf-suffix .ml -no-alias-deps -open Stdune__ -o src/stdune/.stdune.objs/native/stdune__Univ_map.cmx -c -impl src/stdune/univ_map.pp.ml)
+# File &quot;src/stdune/univ_map.ml&quot;, line 40, characters 17-18:
+# Error: Syntax error: operator expected.
+#       ocamlc src/stdune/.stdune.objs/byte/stdune__Univ_map.{cmo,cmt} (exit 2)
+# (cd _build/default &amp;&amp; /home/bench/.opam/ocaml-base-compiler.4.02.3/bin/ocamlc.opt -w -40 -g -bin-annot -I src/stdune/.stdune.objs/byte -I src/stdune/caml/.dune_caml.objs/byte -I src/stdune/caml/.dune_caml.objs/native -intf-suffix .ml -no-alias-deps -open Stdune__ -o src/stdune/.stdune.objs/byte/stdune__Univ_map.cmo -c -impl src/stdune/univ_map.pp.ml)
+# File &quot;src/stdune/univ_map.ml&quot;, line 40, characters 17-18:
+# Error: Syntax error: operator expected.
+&lt;&gt;&lt;&gt; Error report &lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;
++- The following actions failed
+| - build dune-private-libs 2.0.0
++- 
++- The following changes have been performed (the rest was aborted)
+| - install base-bytes               base
+| - install conf-m4                  1
+| - install cppo                     1.6.5
+| - install dune                     2.0.0
+| - install jbuilder                 1.0+beta20
+| - install mmap                     1.1.0
+| - install ocaml-secondary-compiler 4.08.1
+| - install ocamlbuild               0
+| - install ocamlfind                1.8.1
+| - install ocamlfind-secondary      1.8.1
+| - install ocplib-endian            1.0
+| - install result                   1.4
+| - install seq                      0.2
++- 
+# Run eval $(opam env) to update the current shell environment
+The former state can be restored with:
+    opam switch import &quot;/home/bench/.opam/ocaml-base-compiler.4.02.3/.opam-switch/backup/state-20191128001252.export&quot;
+</pre></dd>
             </dl>
             <h2>Install</h2>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>opam list; echo; ulimit -Sv 4000000; timeout 1h opam install -y -v coq-io-system-ocaml.2.0.0 coq.8.5.2</code></dd>
+              <dd><code>true</code></dd>
               <dt>Return code</dt>
               <dd>0</dd>
               <dt>Duration</dt>
-              <dd>6 s</dd>
+              <dd>0 s</dd>
             </dl>
             <h2>Installation size</h2>
-            <p>Total: 25 K</p>
-            <ul>
-              <li>17 K <code>../ocaml-base-compiler.4.02.3/lib/io-system/ioSystem.a</code></li>
-              <li>3 K <code>../ocaml-base-compiler.4.02.3/lib/io-system/ioSystem.cma</code></li>
-              <li>2 K <code>../ocaml-base-compiler.4.02.3/lib/io-system/ioSystem.cmi</code></li>
-              <li>1 K <code>../ocaml-base-compiler.4.02.3/lib/io-system/ioSystem.cmx</code></li>
-              <li>1 K <code>../ocaml-base-compiler.4.02.3/lib/io-system/ioSystem.cmxa</code></li>
-              <li>1 K <code>../ocaml-base-compiler.4.02.3/lib/io-system/META</code></li>
-              <li>1 K <code>../ocaml-base-compiler.4.02.3/lib/io-system/ioSystem.mllib</code></li>
-            </ul>
+            <p>No files were installed.</p>
             <h2>Uninstall</h2>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>opam remove -y coq-io-system-ocaml.2.0.0</code></dd>
+              <dd><code>true</code></dd>
               <dt>Return code</dt>
               <dd>0</dd>
               <dt>Missing removes</dt>
