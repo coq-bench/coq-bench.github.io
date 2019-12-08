@@ -1,0 +1,715 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>template-coq: Error</title>
+    <link rel="shortcut icon" type="image/png" href="../../../../../favicon.png" />
+    <link href="../../../../../bootstrap.min.css" rel="stylesheet">
+    <link href="../../../../../bootstrap-custom.css" rel="stylesheet">
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+    <script src="../../../../../moment.min.js"></script>
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="container">
+      <div class="navbar navbar-default" role="navigation">
+        <div class="container-fluid">
+          <div class="navbar-header">
+            <a class="navbar-brand" href="../../../../.."><i class="fa fa-lg fa-flag-checkered"></i> Coq bench</a>
+          </div>
+          <div id="navbar" class="collapse navbar-collapse">
+            <ul class="nav navbar-nav">
+              <li><a href="../..">clean / released</a></li>
+              <li class="active"><a href="">8.8.2 / template-coq - 2.1~beta3</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="article">
+        <div class="row">
+          <div class="col-md-12">
+            <a href="../..">« Up</a>
+            <h1>
+              template-coq
+              <small>
+                2.1~beta3
+                <span class="label label-danger">Error</span>
+              </small>
+            </h1>
+            <p><em><script>document.write(moment("2019-12-08 23:33:30 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2019-12-08 23:33:30 UTC)</em><p>
+            <h2>Context</h2>
+            <pre># Packages matching: installed
+# Name              # Installed # Synopsis
+base-bigarray       base
+base-num            base        Num library distributed with the OCaml compiler
+base-threads        base
+base-unix           base
+camlp5              7.10        Preprocessor-pretty-printer of OCaml
+conf-findutils      1           Virtual package relying on findutils
+conf-m4             1           Virtual package relying on m4
+coq                 8.8.2       Formal proof management system.
+num                 0           The Num library for arbitrary-precision integer and rational arithmetic
+ocaml               4.03.0      The OCaml compiler (virtual package)
+ocaml-base-compiler 4.03.0      Official 4.03.0 release
+ocaml-config        1           OCaml Switch Configuration
+ocamlfind           1.8.1       A library manager for OCaml
+# opam file:
+opam-version: &quot;2.0&quot;
+version: &quot;2.1~beta3&quot;
+maintainer: &quot;matthieu.sozeau@inria.fr&quot;
+homepage: &quot;https://template-coq.github.io/template-coq&quot;
+dev-repo: &quot;git+https://github.com/Template-Coq/template-coq.git#coq-8.8&quot;
+bug-reports: &quot;https://github.com/Template-Coq/template-coq/issues&quot;
+authors: [&quot;Abhishek Anand &lt;aa755@cs.cornell.edu&gt;&quot;
+          &quot;Simon Boulier &lt;simon.boulier@inria.fr&gt;&quot;
+          &quot;Cyril Cohen &lt;cyril.cohen@inria.fr&gt;&quot;
+          &quot;Gregory Malecha &lt;gmalecha@gmail.com&gt;&quot;
+          &quot;Matthieu Sozeau &lt;matthieu.sozeau@inria.fr&gt;&quot;
+          &quot;Nicolas Tabareau &lt;nicolas.tabareau@inria.fr&gt;&quot;]
+license: &quot;MIT&quot;
+build: [
+  [make &quot;-j%{jobs}%&quot;]
+]
+install: [
+  [make &quot;install&quot;]
+]
+remove: [
+  [&quot;rm&quot; &quot;-R&quot; &quot;%{lib}%/coq/user-contrib/Template&quot;]
+  [&quot;rm&quot; &quot;-R&quot; &quot;%{lib}%/coq/user-contrib/TemplateChecker&quot;]
+  [&quot;rm&quot; &quot;-R&quot; &quot;%{lib}%/coq/user-contrib/TemplateExtraction&quot;]
+]
+depends: [
+  &quot;ocaml&quot; {&gt; &quot;4.02.3&quot;}
+  &quot;coq&quot; {&gt;= &quot;8.8&quot; &amp; &lt; &quot;8.9~&quot;}
+]
+synopsis: &quot;A quoting and unquoting library for Coq in Coq&quot;
+description: &quot;&quot;&quot;
+Template Coq is a quoting library for Coq. It takes Coq terms and
+constructs a representation of their syntax tree as a Coq inductive data
+type. The representation is based on the kernel&#39;s term representation.
+In addition to a complete reification and denotation of CIC terms,
+Template Coq includes:
+- Reification of the environment structures, for constant and inductive declarations.
+- Denotation of terms and global declarations
+- A monad for manipulating global declarations, calling the type
+  checker, and inserting them in the global environment, in the style of
+  MetaCoq/MTac.
+- A partial type-checker for the Calculus of Inductive Constructions,
+  runnable as a plugin.
+- Example plugins built on top of this.&quot;&quot;&quot;
+flags: light-uninstall
+url {
+  src: &quot;https://github.com/MetaCoq/metacoq/archive/v2.1-beta3.tar.gz&quot;
+  checksum: &quot;md5=e81b8ecabef788a10337a39b095d54f3&quot;
+}
+</pre>
+            <h2>Lint</h2>
+            <dl class="dl-horizontal">
+              <dt>Command</dt>
+              <dd><code>true</code></dd>
+              <dt>Return code</dt>
+              <dd>0</dd>
+            </dl>
+            <h2>Dry install</h2>
+            <p>Dry install with the current Coq version:</p>
+            <dl class="dl-horizontal">
+              <dt>Command</dt>
+              <dd><code>opam install -y --show-action coq-template-coq.2.1~beta3 coq.8.8.2</code></dd>
+              <dt>Return code</dt>
+              <dd>0</dd>
+            </dl>
+            <p>Dry install without Coq/switch base, to test if the problem was incompatibility with the current Coq/OCaml version:</p>
+            <dl class="dl-horizontal">
+              <dt>Command</dt>
+              <dd><code>true</code></dd>
+              <dt>Return code</dt>
+              <dd>0</dd>
+            </dl>
+            <h2>Install dependencies</h2>
+            <dl class="dl-horizontal">
+              <dt>Command</dt>
+              <dd><code>opam list; echo; ulimit -Sv 4000000; timeout 2h opam install -y --deps-only coq-template-coq.2.1~beta3 coq.8.8.2</code></dd>
+              <dt>Return code</dt>
+              <dd>0</dd>
+              <dt>Duration</dt>
+              <dd>4 s</dd>
+            </dl>
+            <h2>Install</h2>
+            <dl class="dl-horizontal">
+              <dt>Command</dt>
+              <dd><code>opam list; echo; ulimit -Sv 4000000; timeout 1h opam install -y -v coq-template-coq.2.1~beta3 coq.8.8.2</code></dd>
+              <dt>Return code</dt>
+              <dd>7936</dd>
+              <dt>Duration</dt>
+              <dd>1 m 33 s</dd>
+              <dt>Output</dt>
+              <dd><pre># Packages matching: installed
+# Name              # Installed # Synopsis
+base-bigarray       base
+base-num            base        Num library distributed with the OCaml compiler
+base-threads        base
+base-unix           base
+camlp5              7.10        Preprocessor-pretty-printer of OCaml
+conf-findutils      1           Virtual package relying on findutils
+conf-m4             1           Virtual package relying on m4
+coq                 8.8.2       Formal proof management system.
+num                 0           The Num library for arbitrary-precision integer and rational arithmetic
+ocaml               4.03.0      The OCaml compiler (virtual package)
+ocaml-base-compiler 4.03.0      Official 4.03.0 release
+ocaml-config        1           OCaml Switch Configuration
+ocamlfind           1.8.1       A library manager for OCaml
+[NOTE] Package coq is already installed (current version is 8.8.2).
+The following actions will be performed:
+  - install coq-template-coq 2.1~beta3
+&lt;&gt;&lt;&gt; Gathering sources &gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;
+Processing  1/1: [coq-template-coq.2.1~beta3: http]
+[coq-template-coq.2.1~beta3] downloaded from https://github.com/MetaCoq/metacoq/archive/v2.1-beta3.tar.gz
+Processing  1/1:
+&lt;&gt;&lt;&gt; Processing actions &lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;
+Processing  1/2: [coq-template-coq: make]
++ /home/bench/.opam/opam-init/hooks/sandbox.sh &quot;build&quot; &quot;make&quot; &quot;-j4&quot; (CWD=/home/bench/.opam/ocaml-base-compiler.4.03.0/.opam-switch/build/coq-template-coq.2.1~beta3)
+- make -C template-coq
+- make[1]: Entering directory &#39;/home/bench/.opam/ocaml-base-compiler.4.03.0/.opam-switch/build/coq-template-coq.2.1~beta3/template-coq&#39;
+- coq_makefile -f _CoqProject -o Makefile.coq
+- make -f Makefile.coq
+- make[2]: Entering directory &#39;/home/bench/.opam/ocaml-base-compiler.4.03.0/.opam-switch/build/coq-template-coq.2.1~beta3/template-coq&#39;
+- COQDEP VFILES
+- CAMLDEP src/denote.ml
+- COQDEP src/template_coq.mlpack
+- CAMLDEP src/constr_quoter.ml
+- CAMLDEP src/quoter.ml
+- CAMLDEP -pp src/g_template_coq.ml4
+- COQC theories/config.v
+- COQC theories/utils.v
+- CAMLOPT -c -for-pack Template_coq src/quoter.ml
+- COQC theories/monad_utils.v
+- CAMLOPT -c -for-pack Template_coq src/constr_quoter.ml
+- CAMLOPT -c -for-pack Template_coq src/denote.ml
+- CAMLOPT -pp -c -for-pack Template_coq src/g_template_coq.ml4
+- CAMLOPT -pack -o src/template_coq.cmx
+- CAMLOPT -a -o src/template_coq.cmxa
+- CAMLOPT -shared -o src/template_coq.cmxs
+- COQC theories/kernel/univ.v
+- COQC theories/kernel/uGraph.v
+- COQC theories/Ast.v
+- COQC theories/Induction.v
+- COQC theories/AstUtils.v
+- COQC theories/TemplateMonad/Core.v
+- COQC theories/LiftSubst.v
+- COQC theories/TemplateMonad/Monad.v
+- COQC theories/TemplateMonad.v
+- COQC theories/Loader.v
+- COQC theories/UnivSubst.v
+- COQC theories/Typing.v
+- COQC theories/MetaTheory.v
+- COQC theories/WeakSubst.v
+- COQC theories/WcbvEval.v
+- COQC theories/Checker.v
+- COQC theories/Retyping.v
+- COQC theories/All.v
+- COQC theories/Extraction.v
+- File &quot;./theories/Extraction.v&quot;, line 24, characters 0-37:
+- Warning: The following logical axioms were
+- encountered: Typing.conv_refl Checker.cumul_spec Typing.wf_graph_prop_set
+-              Checker.cumul_reduce_to_product Checker.leq_universe_refl
+-              Checker.cumul_convert_leq Checker.cumul_reduce_to_sort
+-              Checker.eq_ind_refl Typing.cumul_trans Typing.cumul_refl&#39;
+-              Checker.conv_spec Checker.infer_complete Typing.congr_cumul_prod
+-              Checker.cumul_reduce_to_ind Checker.reduce_cumul.
+- Having invalid
+- logical axiom in the environment when extracting may lead to incorrect or
+- non-terminating ML terms.
+-  [extraction-logical-axiom,extraction]
+- File &quot;./theories/Extraction.v&quot;, line 25, characters 0-38:
+- Warning: The following logical axioms were
+- encountered: Typing.conv_refl Checker.cumul_spec Typing.wf_graph_prop_set
+-              Checker.cumul_reduce_to_product Checker.leq_universe_refl
+-              Checker.cumul_convert_leq Checker.cumul_reduce_to_sort
+-              Checker.eq_ind_refl Typing.cumul_trans Typing.cumul_refl&#39;
+-              Checker.conv_spec Checker.infer_complete Typing.congr_cumul_prod
+-              Checker.cumul_reduce_to_ind Checker.reduce_cumul.
+- Having invalid
+- logical axiom in the environment when extracting may lead to incorrect or
+- non-terminating ML terms.
+-  [extraction-logical-axiom,extraction]
+- make[2]: Leaving directory &#39;/home/bench/.opam/ocaml-base-compiler.4.03.0/.opam-switch/build/coq-template-coq.2.1~beta3/template-coq&#39;
+- make[1]: Leaving directory &#39;/home/bench/.opam/ocaml-base-compiler.4.03.0/.opam-switch/build/coq-template-coq.2.1~beta3/template-coq&#39;
+- ./movefiles.sh
+- make -C checker
+- make[1]: Entering directory &#39;/home/bench/.opam/ocaml-base-compiler.4.03.0/.opam-switch/build/coq-template-coq.2.1~beta3/checker&#39;
+- coq_makefile -f _CoqProject -o Makefile.coq
+- Warning: no common logical root
+- Warning: in such case INSTALLDEFAULTROOT must be defined
+- Warning: the install-doc target is going to install files
+- Warning: in orphan_TemplateChecker_Template_TemplateChecker
+- make -f Makefile.coq
+- make[2]: Entering directory &#39;/home/bench/.opam/ocaml-base-compiler.4.03.0/.opam-switch/build/coq-template-coq.2.1~beta3/checker&#39;
+- COQDEP VFILES
+- CAMLDEP src/retyping0.mli
+- CAMLDEP src/string0.mli
+- CAMLDEP src/liftSubst.mli
+- CAMLDEP src/typing0.mli
+- CAMLDEP src/binInt.mli
+- CAMLDEP src/monad_utils.mli
+- CAMLDEP src/uGraph0.mli
+- CAMLDEP src/astUtils.mli
+- CAMLDEP src/ast0.mli
+- CAMLDEP src/induction.mli
+- CAMLDEP src/ordersTac.mli
+- CAMLDEP src/orderedType0.mli
+- CAMLDEP src/orders.mli
+- CAMLDEP src/binPosDef.mli
+- CAMLDEP src/binPos.mli
+- *** Warning: in file theories/Loader.v, 
+-     required library Loader matches several files in path
+-     (found Loader.v in ../template-coq/theories and theories; used the latter)
+- *** Warning: in file theories/Loader.v, 
+-     required library Loader matches several files in path
+-     (found Loader.v in ../template-coq/theories and theories; used the latter)
+- CAMLDEP src/binNums.mli
+- CAMLDEP src/ascii.mli
+- CAMLDEP src/fMapWeakList.mli
+- CAMLDEP src/decidableType.mli
+- CAMLDEP src/binNat.mli
+- CAMLDEP src/fSetWeakList.mli
+- CAMLDEP src/basics.mli
+- CAMLDEP src/equalities.mli
+- CAMLDEP src/specif.mli
+- CAMLDEP src/list0.mli
+- CAMLDEP src/mSetWeakList.mli
+- CAMLDEP src/univ0.mli
+- CAMLDEP src/nat0.mli
+- CAMLDEP src/univSubst0.mli
+- CAMLDEP src/utils.mli
+- CAMLDEP src/config0.mli
+- CAMLDEP src/checker0.mli
+- CAMLDEP src/bool.mli
+- CAMLDEP src/datatypes.mli
+- CAMLDEP src/peanoNat.mli
+- CAMLDEP src/decimal.mli
+- CAMLDEP src/retyping0.ml
+- CAMLDEP src/term_quoter.ml
+- COQDEP src/template_coq_checker_plugin.mlpack
+- CAMLDEP src/liftSubst.ml
+- CAMLDEP src/string0.ml
+- CAMLDEP src/monad_utils.ml
+- CAMLDEP src/typing0.ml
+- CAMLDEP src/binInt.ml
+- CAMLDEP src/uGraph0.ml
+- CAMLDEP src/astUtils.ml
+- CAMLDEP src/ast0.ml
+- CAMLDEP src/induction.ml
+- CAMLDEP src/orderedType0.ml
+- CAMLDEP src/ordersTac.ml
+- CAMLDEP src/binPosDef.ml
+- CAMLDEP src/orders.ml
+- CAMLDEP src/binPos.ml
+- CAMLDEP src/binNat.ml
+- CAMLDEP src/binNums.ml
+- CAMLDEP src/ascii.ml
+- CAMLDEP src/fMapWeakList.ml
+- CAMLDEP src/decidableType.ml
+- CAMLDEP src/fSetWeakList.ml
+- CAMLDEP src/basics.ml
+- CAMLDEP src/specif.ml
+- CAMLDEP src/list0.ml
+- CAMLDEP src/equalities.ml
+- CAMLDEP src/mSetWeakList.ml
+- CAMLDEP src/nat0.ml
+- CAMLDEP src/univ0.ml
+- CAMLDEP src/univSubst0.ml
+- CAMLDEP src/config0.ml
+- CAMLDEP src/utils.ml
+- CAMLDEP src/checker0.ml
+- CAMLDEP src/bool.ml
+- CAMLDEP src/datatypes.ml
+- CAMLDEP src/peanoNat.ml
+- CAMLDEP -pp src/g_template_checker.ml4
+- CAMLDEP src/decimal.ml
+- CAMLC -c src/decimal.mli
+- CAMLC -c src/datatypes.mli
+- CAMLC -c src/bool.mli
+- CAMLC -c src/basics.mli
+- CAMLC -c src/binNums.mli
+- CAMLC -c src/config0.mli
+- CAMLOPT -c -for-pack Template_coq_checker_plugin src/decimal.ml
+- CAMLOPT -c -for-pack Template_coq_checker_plugin src/bool.ml
+- CAMLC -c src/equalities.mli
+- CAMLOPT -c -for-pack Template_coq_checker_plugin src/basics.ml
+- CAMLC -c src/nat0.mli
+- CAMLOPT -c -for-pack Template_coq_checker_plugin src/binNums.ml
+- CAMLC -c src/string0.mli
+- CAMLC -c src/orders.mli
+- CAMLOPT -c -for-pack Template_coq_checker_plugin src/config0.ml
+- CAMLC -c src/monad_utils.mli
+- CAMLOPT -c -for-pack Template_coq_checker_plugin src/datatypes.ml
+- CAMLC -c src/peanoNat.mli
+- CAMLC -c src/specif.mli
+- CAMLOPT -c -for-pack Template_coq_checker_plugin src/equalities.ml
+- CAMLC -c src/decidableType.mli
+- CAMLC -c src/binPosDef.mli
+- CAMLC -c src/ordersTac.mli
+- CAMLOPT -c -for-pack Template_coq_checker_plugin src/peanoNat.ml
+- File &quot;src/binPosDef.mli&quot;, line 3, characters 0-9:
+- CAMLOPT -c -for-pack Template_coq_checker_plugin src/specif.ml
+- Warning 33: unused open Nat0.
+- CAMLC -c src/list0.mli
+- CAMLOPT -c -for-pack Template_coq_checker_plugin src/nat0.ml
+- CAMLC -c src/binPos.mli
+- CAMLOPT -c -for-pack Template_coq_checker_plugin src/string0.ml
+- File &quot;src/binPos.mli&quot;, line 5, characters 0-9:
+- Warning 33: unused open Nat0.
+- CAMLOPT -c -for-pack Template_coq_checker_plugin src/orders.ml
+- CAMLC -c src/orderedType0.mli
+- CAMLOPT -c -for-pack Template_coq_checker_plugin src/monad_utils.ml
+- File &quot;src/orderedType0.mli&quot;, line 1, characters 0-14:
+- Warning 33: unused open OrdersTac.
+- CAMLOPT -c -for-pack Template_coq_checker_plugin src/list0.ml
+- CAMLOPT -c -for-pack Template_coq_checker_plugin src/decidableType.ml
+- CAMLC -c src/mSetWeakList.mli
+- CAMLC -c src/fMapWeakList.mli
+- File &quot;src/mSetWeakList.mli&quot;, line 1, characters 0-11:
+- Warning 33: unused open Basics.
+- File &quot;src/mSetWeakList.mli&quot;, line 4, characters 0-10:
+- CAMLOPT -c -for-pack Template_coq_checker_plugin src/binPosDef.ml
+- Warning 33: unused open List0.
+- CAMLC -c src/binNat.mli
+- CAMLOPT -c -for-pack Template_coq_checker_plugin src/ordersTac.ml
+- File &quot;src/ordersTac.ml&quot;, line 1, characters 0-14:
+- Warning 33: unused open Datatypes.
+- File &quot;src/fMapWeakList.mli&quot;, line 2, characters 0-10:
+- Warning 33: unused open List0.
+- CAMLC -c src/utils.mli
+- CAMLOPT -c -for-pack Template_coq_checker_plugin src/mSetWeakList.ml
+- File &quot;src/binNat.mli&quot;, line 1, characters 0-11:
+- Warning 33: unused open BinPos.
+- CAMLC -c src/fSetWeakList.mli
+- CAMLOPT -c -for-pack Template_coq_checker_plugin src/fMapWeakList.ml
+- File &quot;src/binPosDef.ml&quot;, line 3, characters 0-9:
+- Warning 33: unused open Nat0.
+- File &quot;src/fSetWeakList.mli&quot;, line 2, characters 0-17:
+- Warning 33: unused open MSetWeakList.
+- CAMLC -c src/binInt.mli
+- File &quot;src/binInt.mli&quot;, line 1, characters 0-11:
+- Warning 33: unused open BinNat.
+- File &quot;src/binInt.mli&quot;, line 2, characters 0-11:
+- Warning 33: unused open BinPos.
+- CAMLC -c src/ascii.mli
+- CAMLOPT -c -for-pack Template_coq_checker_plugin src/orderedType0.ml
+- File &quot;src/ascii.mli&quot;, line 1, characters 0-11:
+- Warning 33: unused open BinNat.
+- CAMLOPT -c -for-pack Template_coq_checker_plugin src/fSetWeakList.ml
+- CAMLC -c src/univ0.mli
+- File &quot;src/fSetWeakList.ml&quot;, line 1, characters 0-14:
+- Warning 33: unused open Datatypes.
+- File &quot;src/univ0.mli&quot;, line 1, characters 0-9:
+- Warning 33: unused open Bool.
+- File &quot;src/univ0.mli&quot;, line 3, characters 0-17:
+- Warning 33: unused open FMapWeakList.
+- File &quot;src/univ0.mli&quot;, line 4, characters 0-17:
+- Warning 33: unused open FSetWeakList.
+- File &quot;src/univ0.mli&quot;, line 5, characters 0-10:
+- Warning 33: unused open List0.
+- File &quot;src/univ0.mli&quot;, line 6, characters 0-17:
+- Warning 33: unused open MSetWeakList.
+- File &quot;src/univ0.mli&quot;, line 7, characters 0-9:
+- Warning 33: unused open Nat0.
+- File &quot;src/univ0.mli&quot;, line 8, characters 0-13:
+- Warning 33: unused open PeanoNat.
+- File &quot;src/univ0.mli&quot;, line 9, characters 0-12:
+- Warning 33: unused open String0.
+- File &quot;src/univ0.mli&quot;, line 10, characters 0-10:
+- Warning 33: unused open Utils.
+- CAMLOPT -c -for-pack Template_coq_checker_plugin src/utils.ml
+- CAMLOPT -c -for-pack Template_coq_checker_plugin src/binPos.ml
+- CAMLC -c src/uGraph0.mli
+- File &quot;src/binPos.ml&quot;, line 16, characters 10-14:
+- Warning 39: unused rec flag.
+- File &quot;src/binPos.ml&quot;, line 184, characters 10-13:
+- Warning 39: unused rec flag.
+- File &quot;src/binPos.ml&quot;, line 254, characters 10-22:
+- Warning 39: unused rec flag.
+- File &quot;src/uGraph0.mli&quot;, line 1, characters 0-11:
+- Warning 33: unused open BinInt.
+- File &quot;src/uGraph0.mli&quot;, line 2, characters 0-14:
+- Warning 33: unused open Datatypes.
+- File &quot;src/uGraph0.mli&quot;, line 3, characters 0-10:
+- Warning 33: unused open List0.
+- CAMLC -c src/ast0.mli
+- CAMLOPT -c -for-pack Template_coq_checker_plugin src/univ0.ml
+- File &quot;src/binPos.ml&quot;, line 5, characters 0-9:
+- Warning 33: unused open Nat0.
+- CAMLC -c src/astUtils.mli
+- CAMLC -c src/induction.mli
+- File &quot;src/induction.mli&quot;, line 2, characters 0-14:
+- Warning 33: unused open Datatypes.
+- CAMLC -c src/liftSubst.mli
+- CAMLOPT -c -for-pack Template_coq_checker_plugin src/binNat.ml
+- File &quot;src/liftSubst.mli&quot;, line 3, characters 0-14:
+- Warning 33: unused open Induction.
+- File &quot;src/liftSubst.mli&quot;, line 4, characters 0-10:
+- Warning 33: unused open List0.
+- File &quot;src/liftSubst.mli&quot;, line 5, characters 0-9:
+- Warning 33: unused open Nat0.
+- File &quot;src/univ0.ml&quot;, line 1, characters 0-9:
+- Warning 33: unused open Bool.
+- File &quot;src/univ0.ml&quot;, line 3, characters 0-17:
+- Warning 33: unused open FMapWeakList.
+- File &quot;src/univ0.ml&quot;, line 4, characters 0-17:
+- Warning 33: unused open FSetWeakList.
+- File &quot;src/astUtils.mli&quot;, line 3, characters 0-10:
+- Warning 33: unused open List0.
+- File &quot;src/astUtils.mli&quot;, line 4, characters 0-13:
+- Warning 33: unused open PeanoNat.
+- File &quot;src/astUtils.mli&quot;, line 5, characters 0-12:
+- Warning 33: unused open String0.
+- File &quot;src/astUtils.mli&quot;, line 6, characters 0-10:
+- Warning 33: unused open Utils.
+- CAMLC -c src/univSubst0.mli
+- File &quot;src/binNat.ml&quot;, line 78, characters 10-13:
+- Warning 39: unused rec flag.
+- File &quot;src/binNat.ml&quot;, line 314, characters 10-15:
+- Warning 39: unused rec flag.
+- File &quot;src/univSubst0.mli&quot;, line 2, characters 0-13:
+- Warning 33: unused open AstUtils.
+- File &quot;src/univSubst0.mli&quot;, line 3, characters 0-14:
+- Warning 33: unused open Induction.
+- File &quot;src/univSubst0.mli&quot;, line 4, characters 0-10:
+- Warning 33: unused open List0.
+- CAMLC -c src/typing0.mli
+- File &quot;src/typing0.mli&quot;, line 4, characters 0-14:
+- Warning 33: unused open LiftSubst.
+- File &quot;src/typing0.mli&quot;, line 5, characters 0-10:
+- Warning 33: unused open List0.
+- File &quot;src/typing0.mli&quot;, line 6, characters 0-9:
+- Warning 33: unused open Nat0.
+- File &quot;src/typing0.mli&quot;, line 7, characters 0-13:
+- Warning 33: unused open PeanoNat.
+- File &quot;src/typing0.mli&quot;, line 9, characters 0-12:
+- Warning 33: unused open String0.
+- File &quot;src/typing0.mli&quot;, line 10, characters 0-15:
+- Warning 33: unused open UnivSubst0.
+- File &quot;src/typing0.mli&quot;, line 14, characters 0-10:
+- Warning 33: unused open Utils.
+- CAMLC -c src/checker0.mli
+- File &quot;src/checker0.mli&quot;, line 2, characters 0-13:
+- Warning 33: unused open AstUtils.
+- File &quot;src/checker0.mli&quot;, line 4, characters 0-14:
+- Warning 33: unused open Induction.
+- File &quot;src/checker0.mli&quot;, line 5, characters 0-14:
+- Warning 33: unused open LiftSubst.
+- File &quot;src/checker0.mli&quot;, line 6, characters 0-10:
+- Warning 33: unused open List0.
+- File &quot;src/checker0.mli&quot;, line 7, characters 0-13:
+- Warning 33: unused open PeanoNat.
+- File &quot;src/checker0.mli&quot;, line 8, characters 0-12:
+- Warning 33: unused open String0.
+- File &quot;src/checker0.mli&quot;, line 10, characters 0-15:
+- Warning 33: unused open UnivSubst0.
+- CAMLC -c src/retyping0.mli
+- CAMLOPT -c -for-pack Template_coq_checker_plugin src/binInt.ml
+- CAMLOPT -c -for-pack Template_coq_checker_plugin src/ascii.ml
+- File &quot;src/retyping0.mli&quot;, line 3, characters 0-14:
+- Warning 33: unused open Datatypes.
+- File &quot;src/retyping0.mli&quot;, line 4, characters 0-14:
+- Warning 33: unused open LiftSubst.
+- File &quot;src/retyping0.mli&quot;, line 5, characters 0-10:
+- Warning 33: unused open List0.
+- File &quot;src/retyping0.mli&quot;, line 6, characters 0-16:
+- Warning 33: unused open Monad_utils.
+- File &quot;src/binInt.ml&quot;, line 174, characters 10-13:
+- Warning 39: unused rec flag.
+- CAMLOPT -c -for-pack Template_coq_checker_plugin src/uGraph0.ml
+- CAMLOPT -c -for-pack Template_coq_checker_plugin src/ast0.ml
+- CAMLOPT -c -for-pack Template_coq_checker_plugin src/astUtils.ml
+- CAMLOPT -c -for-pack Template_coq_checker_plugin src/term_quoter.ml
+- CAMLOPT -c -for-pack Template_coq_checker_plugin src/induction.ml
+- CAMLOPT -c -for-pack Template_coq_checker_plugin src/liftSubst.ml
+- CAMLOPT -c -for-pack Template_coq_checker_plugin src/univSubst0.ml
+- CAMLOPT -c -for-pack Template_coq_checker_plugin src/typing0.ml
+- File &quot;src/typing0.ml&quot;, line 11, characters 0-12:
+- Warning 33: unused open Config0.
+- CAMLOPT -c -for-pack Template_coq_checker_plugin src/checker0.ml
+- File &quot;src/checker0.ml&quot;, line 1869, characters 53-55:
+- Warning 20: this argument will not be used by the function.
+- File &quot;src/checker0.ml&quot;, line 1869, characters 56-58:
+- Warning 20: this argument will not be used by the function.
+- File &quot;src/checker0.ml&quot;, line 11, characters 0-12:
+- Warning 33: unused open Config0.
+- CAMLOPT -c -for-pack Template_coq_checker_plugin src/retyping0.ml
+- CAMLOPT -pp -c -for-pack Template_coq_checker_plugin src/g_template_checker.ml4
+- File &quot;src/retyping0.ml&quot;, line 8, characters 0-10:
+- Warning 33: unused open Utils.
+- CAMLOPT -pack -o src/template_coq_checker_plugin.cmx
+- CAMLOPT -a -o src/template_coq_checker_plugin.cmxa
+- CAMLOPT -shared -o src/template_coq_checker_plugin.cmxs
+- COQC theories/Loader.v
+- make[2]: Leaving directory &#39;/home/bench/.opam/ocaml-base-compiler.4.03.0/.opam-switch/build/coq-template-coq.2.1~beta3/checker&#39;
+- make[1]: Leaving directory &#39;/home/bench/.opam/ocaml-base-compiler.4.03.0/.opam-switch/build/coq-template-coq.2.1~beta3/checker&#39;
+- make -C extraction
+- make[1]: Entering directory &#39;/home/bench/.opam/ocaml-base-compiler.4.03.0/.opam-switch/build/coq-template-coq.2.1~beta3/extraction&#39;
+- coq_makefile -f _CoqProject -o Makefile.extraction
+- coq_makefile -f _PluginProject -o Makefile.plugin
+- Warning: ../template-coq/theories (used in -R or -Q) is not a subdirectory of the current directory
+- 
+- Warning: no common logical root
+- Warning: in such case INSTALLDEFAULTROOT must be defined
+- Warning: the install-doc target is going to install files
+- Warning: in orphan_Template_TemplateExtraction
+- make -f Makefile.extraction
+- make[2]: Entering directory &#39;/home/bench/.opam/ocaml-base-compiler.4.03.0/.opam-switch/build/coq-template-coq.2.1~beta3/extraction&#39;
+- COQDEP VFILES
+- COQC theories/Ast.v
+- File &quot;./theories/Ast.v&quot;, line 175, characters 0-67:
+- Warning: Notation _ ,, _ was already used. [notation-overridden,parsing]
+- COQC theories/Induction.v
+- File &quot;./theories/Induction.v&quot;, line 4, characters 0-43:
+- Warning: Notation _ ,, _ was already used. [notation-overridden,parsing]
+- COQC theories/LiftSubst.v
+- File &quot;./theories/LiftSubst.v&quot;, line 4, characters 0-53:
+- Warning: Notation _ ,, _ was already used. [notation-overridden,parsing]
+- COQC theories/UnivSubst.v
+- File &quot;./theories/UnivSubst.v&quot;, line 5, characters 0-63:
+- Warning: Notation _ ,, _ was already used. [notation-overridden,parsing]
+- COQC theories/Typing.v
+- File &quot;./theories/Typing.v&quot;, line 5, characters 0-73:
+- Warning: Notation _ ,, _ was already used. [notation-overridden,parsing]
+- COQC theories/WcbvEval.v
+- File &quot;./theories/WcbvEval.v&quot;, line 5, characters 0-80:
+- Warning: Notation _ ,, _ was already used. [notation-overridden,parsing]
+- COQC theories/Extract.v
+- COQC theories/Extraction.v
+- COQC theories/All.v
+- File &quot;./theories/All.v&quot;, line 1, characters 0-43:
+- Warning: Notation _ ,, _ was already used. [notation-overridden,parsing]
+- File &quot;./theories/Extraction.v&quot;, line 7, characters 0-43:
+- Warning: Notation _ ,, _ was already used. [notation-overridden,parsing]
+- File &quot;./theories/Extraction.v&quot;, line 34, characters 0-27:
+- Warning: The following logical axioms were
+- encountered: Typing.conv_refl Checker.cumul_spec Typing.wf_graph_prop_set
+-              Checker.cumul_reduce_to_product Checker.leq_universe_refl
+-              Checker.cumul_convert_leq Checker.cumul_reduce_to_sort
+-              Checker.eq_ind_refl Typing.cumul_trans Typing.cumul_refl&#39;
+-              Checker.conv_spec Checker.infer_complete Typing.congr_cumul_prod
+-              Checker.cumul_reduce_to_ind Checker.reduce_cumul.
+- Having invalid
+- logical axiom in the environment when extracting may lead to incorrect or
+- non-terminating ML terms.
+-  [extraction-logical-axiom,extraction]
+- make[2]: Leaving directory &#39;/home/bench/.opam/ocaml-base-compiler.4.03.0/.opam-switch/build/coq-template-coq.2.1~beta3/extraction&#39;
+- sh clean_extraction.sh
+- Cleaning result of extraction
+- Moving  Ast1.ml to src/ast1.ml
+- Moving  Ast1.mli to src/ast1.mli
+- Moving  Extract.ml to src/extract.ml
+- Moving  Extract.mli to src/extract.mli
+- Moving  Induction0.ml to src/induction0.ml
+- Moving  Induction0.mli to src/induction0.mli
+- Moving  LiftSubst0.ml to src/liftSubst0.ml
+- Moving  LiftSubst0.mli to src/liftSubst0.mli
+- Moving  Typing1.ml to src/typing1.ml
+- Moving  Typing1.mli to src/typing1.mli
+- Moving  UnivSubst1.ml to src/univSubst1.ml
+- Moving  UnivSubst1.mli to src/univSubst1.mli
+- make -f Makefile.plugin
+- make[2]: Entering directory &#39;/home/bench/.opam/ocaml-base-compiler.4.03.0/.opam-switch/build/coq-template-coq.2.1~beta3/extraction&#39;
+- CAMLDEP src/extract.mli
+- CAMLDEP src/univSubst1.mli
+- CAMLDEP src/liftSubst0.mli
+- CAMLDEP src/typing1.mli
+- CAMLDEP src/ast1.mli
+- COQDEP src/template_coq_extraction_plugin.mlpack
+- CAMLDEP src/induction0.mli
+- CAMLDEP src/extract.ml
+- CAMLDEP src/univSubst1.ml
+- CAMLDEP src/induction0.ml
+- CAMLDEP src/typing1.ml
+- CAMLDEP src/liftSubst0.ml
+- CAMLDEP src/ast1.ml
+- CAMLC -c src/ast1.mli
+- CAMLC -c src/induction0.mli
+- File &quot;command line&quot;, line 1:
+- Error: Unbound module Template_coq_checker_plugin.Typing0
+- Makefile.plugin:588: recipe for target &#39;src/ast1.cmi&#39; failed
+- make[3]: *** [src/ast1.cmi] Error 2
+- make[3]: *** Waiting for unfinished jobs....
+- File &quot;command line&quot;, line 1:
+- Error: Unbound module Template_coq_checker_plugin.Typing0
+- Makefile.plugin:588: recipe for target &#39;src/induction0.cmi&#39; failed
+- make[3]: *** [src/induction0.cmi] Error 2
+- Makefile.plugin:317: recipe for target &#39;all&#39; failed
+- make[2]: *** [all] Error 2
+- make[2]: Leaving directory &#39;/home/bench/.opam/ocaml-base-compiler.4.03.0/.opam-switch/build/coq-template-coq.2.1~beta3/extraction&#39;
+- Makefile:15: recipe for target &#39;plugin&#39; failed
+- make[1]: *** [plugin] Error 2
+- make[1]: Leaving directory &#39;/home/bench/.opam/ocaml-base-compiler.4.03.0/.opam-switch/build/coq-template-coq.2.1~beta3/extraction&#39;
+- Makefile:37: recipe for target &#39;extraction&#39; failed
+- make: *** [extraction] Error 2
+[ERROR] The compilation of coq-template-coq failed at &quot;/home/bench/.opam/opam-init/hooks/sandbox.sh build make -j4&quot;.
+#=== ERROR while compiling coq-template-coq.2.1~beta3 =========================#
+# context              2.0.5 | linux/x86_64 | ocaml-base-compiler.4.03.0 | file:///home/bench/run/opam-coq-archive/released
+# path                 ~/.opam/ocaml-base-compiler.4.03.0/.opam-switch/build/coq-template-coq.2.1~beta3
+# command              ~/.opam/opam-init/hooks/sandbox.sh build make -j4
+# exit-code            2
+# env-file             ~/.opam/log/coq-template-coq-11659-865888.env
+# output-file          ~/.opam/log/coq-template-coq-11659-865888.out
+### output ###
+# [...]
+# File &quot;command line&quot;, line 1:
+# Error: Unbound module Template_coq_checker_plugin.Typing0
+# Makefile.plugin:588: recipe for target &#39;src/induction0.cmi&#39; failed
+# make[3]: *** [src/induction0.cmi] Error 2
+# Makefile.plugin:317: recipe for target &#39;all&#39; failed
+# make[2]: *** [all] Error 2
+# make[2]: Leaving directory &#39;/home/bench/.opam/ocaml-base-compiler.4.03.0/.opam-switch/build/coq-template-coq.2.1~beta3/extraction&#39;
+# Makefile:15: recipe for target &#39;plugin&#39; failed
+# make[1]: *** [plugin] Error 2
+# make[1]: Leaving directory &#39;/home/bench/.opam/ocaml-base-compiler.4.03.0/.opam-switch/build/coq-template-coq.2.1~beta3/extraction&#39;
+# Makefile:37: recipe for target &#39;extraction&#39; failed
+# make: *** [extraction] Error 2
+&lt;&gt;&lt;&gt; Error report &lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;
++- The following actions failed
+| - build coq-template-coq 2.1~beta3
++- 
+- No changes have been performed
+# Run eval $(opam env) to update the current shell environment
+&#39;opam install -y -v coq-template-coq.2.1~beta3 coq.8.8.2&#39; failed.
+</pre></dd>
+            </dl>
+            <h2>Installation size</h2>
+            <p>No files were installed.</p>
+            <h2>Uninstall</h2>
+            <dl class="dl-horizontal">
+              <dt>Command</dt>
+              <dd><code>true</code></dd>
+              <dt>Return code</dt>
+              <dd>0</dd>
+              <dt>Missing removes</dt>
+              <dd>
+                none
+              </dd>
+              <dt>Wrong removes</dt>
+              <dd>
+                none
+              </dd>
+            </dl>
+          </div>
+        </div>
+      </div>
+      <hr/>
+      <div class="footer">
+        <p class="text-center">
+          <small>Sources are on <a href="https://github.com/coq-bench">GitHub</a>. © Guillaume Claret.</small>
+        </p>
+      </div>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="../../../../../bootstrap.min.js"></script>
+  </body>
+</html>
