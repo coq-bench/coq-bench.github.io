@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>mathcomp-odd-order: Not compatible</title>
+    <link rel="shortcut icon" type="image/png" href="../../../../../favicon.png" />
+    <link href="../../../../../bootstrap.min.css" rel="stylesheet">
+    <link href="../../../../../bootstrap-custom.css" rel="stylesheet">
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+    <script src="../../../../../moment.min.js"></script>
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="container">
+      <div class="navbar navbar-default" role="navigation">
+        <div class="container-fluid">
+          <div class="navbar-header">
+            <a class="navbar-brand" href="../../../../.."><i class="fa fa-lg fa-flag-checkered"></i> Coq bench</a>
+          </div>
+          <div id="navbar" class="collapse navbar-collapse">
+            <ul class="nav navbar-nav">
+              <li><a href="../..">clean / released</a></li>
+              <li class="active"><a href="">8.10.0 / mathcomp-odd-order - 1.6.1</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="article">
+        <div class="row">
+          <div class="col-md-12">
+            <a href="../..">« Up</a>
+            <h1>
+              mathcomp-odd-order
+              <small>
+                1.6.1
+                <span class="label label-info">Not compatible</span>
+              </small>
+            </h1>
+            <p><em><script>document.write(moment("2019-12-13 22:51:39 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2019-12-13 22:51:39 UTC)</em><p>
+            <h2>Context</h2>
+            <pre># Packages matching: installed
+# Name              # Installed # Synopsis
+base-bigarray       base
+base-threads        base
+base-unix           base
+conf-findutils      1           Virtual package relying on findutils
+conf-m4             1           Virtual package relying on m4
+coq                 8.10.0      Formal proof management system
+num                 1.3         The legacy Num library for arbitrary-precision integer and rational arithmetic
+ocaml               4.06.1      The OCaml compiler (virtual package)
+ocaml-base-compiler 4.06.1      Official 4.06.1 release
+ocaml-config        1           OCaml Switch Configuration
+ocamlfind           1.8.1       A library manager for OCaml
+# opam file:
+opam-version: &quot;2.0&quot;
+name: &quot;coq-mathcomp-odd-order&quot;
+version: &quot;1.6.1&quot;
+maintainer: &quot;Mathematical Components &lt;mathcomp-dev@sympa.inria.fr&gt;&quot;
+homepage: &quot;http://ssr.msr-inria.inria.fr/&quot;
+bug-reports: &quot;Mathematical Components &lt;mathcomp-dev@sympa.inria.fr&gt;&quot;
+license: &quot;CeCILL-B&quot;
+build: [ 
+  [make &quot;-C&quot; &quot;mathcomp/odd_order&quot; &quot;-j&quot; &quot;%{jobs}%&quot;]
+]
+install: [ make &quot;-C&quot; &quot;mathcomp/odd_order&quot; &quot;install&quot; ]
+depends: [
+  &quot;ocaml&quot;
+  &quot;coq-mathcomp-algebra&quot; {= &quot;1.6.1&quot;}
+  &quot;coq-mathcomp-character&quot; {= &quot;1.6.1&quot;}
+  &quot;coq-mathcomp-field&quot; {= &quot;1.6.1&quot;}
+  &quot;coq-mathcomp-field-extra&quot; {= &quot;1.6.1&quot;}
+  &quot;coq-mathcomp-fingroup&quot; {= &quot;1.6.1&quot;}
+  &quot;coq-mathcomp-solvable&quot; {= &quot;1.6.1&quot;}
+  &quot;coq-mathcomp-ssreflect&quot; {= &quot;1.6.1&quot;}
+]
+tags: [ &quot;keyword:finite groups&quot; &quot;keyword:Feit Thompson theorem&quot; &quot;keyword:small scale reflection&quot; &quot;keyword:mathematical components&quot; &quot;keyword:odd order theorem&quot; ]
+authors: [ &quot;Jeremy Avigad &lt;&gt;&quot; &quot;Andrea Asperti &lt;&gt;&quot; &quot;Stephane Le Roux &lt;&gt;&quot; &quot;Yves Bertot &lt;&gt;&quot; &quot;Laurence Rideau &lt;&gt;&quot; &quot;Enrico Tassi &lt;&gt;&quot; &quot;Ioana Pasca &lt;&gt;&quot; &quot;Georges Gonthier &lt;&gt;&quot; &quot;Sidi Ould Biha &lt;&gt;&quot; &quot;Cyril Cohen &lt;&gt;&quot; &quot;Francois Garillot &lt;&gt;&quot; &quot;Alexey Solovyev &lt;&gt;&quot; &quot;Russell O&#39;Connor &lt;&gt;&quot; &quot;Laurent Théry &lt;&gt;&quot; &quot;Assia Mahboubi &lt;&gt;&quot; ]
+synopsis: &quot;The formal proof of the Feit-Thompson theorem&quot;
+description: &quot;&quot;&quot;
+The formal proof of the Feit-Thompson theorem.
+From mathcomp Require Import all_ssreflect all_fingroup all_solvable PFsection14.
+Check Feit_Thompson.
+   : forall (gT : finGroupType) (G : {group gT}), odd #|G| -&gt; solvable G
+From mathcomp Require Import all_ssreflect all_fingroup 
+                             all_solvable stripped_odd_order_theorem.
+Check stripped_Odd_Order.
+   : forall (T : Type) (mul : T -&gt; T -&gt; T) (one : T) (inv : T -&gt; T)
+         (G : T -&gt; Type) (n : natural),
+       group_axioms T mul one inv -&gt;
+       group T mul one inv G -&gt;
+       finite_of_order T G n -&gt; odd n -&gt; solvable_group T mul one inv G&quot;&quot;&quot;
+url {
+  src:
+    &quot;https://github.com/math-comp/math-comp/archive/mathcomp-odd-order.1.6.1.tar.gz&quot;
+  checksum: &quot;md5=2303f60bbca5eaa24bef7af5d47694b9&quot;
+}
+</pre>
+            <h2>Lint</h2>
+            <dl class="dl-horizontal">
+              <dt>Command</dt>
+              <dd><code>true</code></dd>
+              <dt>Return code</dt>
+              <dd>0</dd>
+            </dl>
+            <h2>Dry install</h2>
+            <p>Dry install with the current Coq version:</p>
+            <dl class="dl-horizontal">
+              <dt>Command</dt>
+              <dd><code>opam install -y --show-action coq-mathcomp-odd-order.1.6.1 coq.8.10.0</code></dd>
+              <dt>Return code</dt>
+              <dd>5120</dd>
+              <dt>Output</dt>
+              <dd><pre>[NOTE] Package coq is already installed (current version is 8.10.0).
+The following dependencies couldn&#39;t be met:
+  - coq-mathcomp-odd-order -&gt; coq-mathcomp-ssreflect = 1.6.1 -&gt; coq &lt; 8.7~ -&gt; ocaml &lt; 4.06.0
+      base of this switch (use `--unlock-base&#39; to force)
+No solution found, exiting
+</pre></dd>
+            </dl>
+            <p>Dry install without Coq/switch base, to test if the problem was incompatibility with the current Coq/OCaml version:</p>
+            <dl class="dl-horizontal">
+              <dt>Command</dt>
+              <dd><code>opam remove -y coq; opam install -y --show-action --unlock-base coq-mathcomp-odd-order.1.6.1</code></dd>
+              <dt>Return code</dt>
+              <dd>0</dd>
+            </dl>
+            <h2>Install dependencies</h2>
+            <dl class="dl-horizontal">
+              <dt>Command</dt>
+              <dd><code>true</code></dd>
+              <dt>Return code</dt>
+              <dd>0</dd>
+              <dt>Duration</dt>
+              <dd>0 s</dd>
+            </dl>
+            <h2>Install</h2>
+            <dl class="dl-horizontal">
+              <dt>Command</dt>
+              <dd><code>true</code></dd>
+              <dt>Return code</dt>
+              <dd>0</dd>
+              <dt>Duration</dt>
+              <dd>0 s</dd>
+            </dl>
+            <h2>Installation size</h2>
+            <p>No files were installed.</p>
+            <h2>Uninstall</h2>
+            <dl class="dl-horizontal">
+              <dt>Command</dt>
+              <dd><code>true</code></dd>
+              <dt>Return code</dt>
+              <dd>0</dd>
+              <dt>Missing removes</dt>
+              <dd>
+                none
+              </dd>
+              <dt>Wrong removes</dt>
+              <dd>
+                none
+              </dd>
+            </dl>
+          </div>
+        </div>
+      </div>
+      <hr/>
+      <div class="footer">
+        <p class="text-center">
+          <small>Sources are on <a href="https://github.com/coq-bench">GitHub</a>. © Guillaume Claret.</small>
+        </p>
+      </div>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="../../../../../bootstrap.min.js"></script>
+  </body>
+</html>
