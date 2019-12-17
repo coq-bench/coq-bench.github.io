@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>generic-environments: Not compatible</title>
+    <link rel="shortcut icon" type="image/png" href="../../../../../favicon.png" />
+    <link href="../../../../../bootstrap.min.css" rel="stylesheet">
+    <link href="../../../../../bootstrap-custom.css" rel="stylesheet">
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+    <script src="../../../../../moment.min.js"></script>
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="container">
+      <div class="navbar navbar-default" role="navigation">
+        <div class="container-fluid">
+          <div class="navbar-header">
+            <a class="navbar-brand" href="../../../../.."><i class="fa fa-lg fa-flag-checkered"></i> Coq bench</a>
+          </div>
+          <div id="navbar" class="collapse navbar-collapse">
+            <ul class="nav navbar-nav">
+              <li><a href="../..">clean / released</a></li>
+              <li class="active"><a href="">8.7.1+1 / generic-environments - 8.9.0</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="article">
+        <div class="row">
+          <div class="col-md-12">
+            <a href="../..">« Up</a>
+            <h1>
+              generic-environments
+              <small>
+                8.9.0
+                <span class="label label-info">Not compatible</span>
+              </small>
+            </h1>
+            <p><em><script>document.write(moment("2019-12-17 21:14:36 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2019-12-17 21:14:36 UTC)</em><p>
+            <h2>Context</h2>
+            <pre># Packages matching: installed
+# Name              # Installed # Synopsis
+base-bigarray       base
+base-threads        base
+base-unix           base
+camlp5              7.10        Preprocessor-pretty-printer of OCaml
+conf-findutils      1           Virtual package relying on findutils
+conf-m4             1           Virtual package relying on m4
+coq                 8.7.1+1     Formal proof management system.
+num                 1.3         The legacy Num library for arbitrary-precision integer and rational arithmetic
+ocaml               4.06.1      The OCaml compiler (virtual package)
+ocaml-base-compiler 4.06.1      Official 4.06.1 release
+ocaml-config        1           OCaml Switch Configuration
+ocamlfind           1.8.1       A library manager for OCaml
+# opam file:
+opam-version: &quot;2.0&quot;
+maintainer: &quot;Hugo.Herbelin@inria.fr&quot;
+homepage: &quot;https://github.com/http://lacl.u-pec.fr/polonowski/Develop/Generic_Env/gen-env.html&quot;
+license: &quot;LGPL&quot;
+build: [make &quot;-j%{jobs}%&quot;]
+install: [make &quot;install&quot;]
+remove: [&quot;rm&quot; &quot;-R&quot; &quot;%{lib}%/coq/user-contrib/GenericEnvironments&quot;]
+depends: [
+  &quot;ocaml&quot;
+  &quot;coq&quot; {&gt;= &quot;8.9&quot; &amp; &lt; &quot;8.10~&quot;}
+]
+tags: [
+  &quot;keyword: generic environments&quot;
+  &quot;keyword: typing&quot;
+  &quot;keyword: type theory&quot;
+  &quot;category: Mathematics/Logic/Type theory&quot;
+]
+authors: [
+  &quot;Emmanuel Polonowski &lt;emmanuel.polonowski@u-pec.fr&gt; [http://lacl.u-pec.fr/polonowski/]&quot;
+]
+bug-reports: &quot;https://github.com/coq-contribs/generic-environments/issues&quot;
+dev-repo: &quot;git+https://github.com/coq-contribs/generic-environments.git&quot;
+synopsis: &quot;Generic_Environments&quot;
+description: &quot;&quot;&quot;
+Generic_Environments is a library which provides an abstract data type of environments, as a functor parameterized by a module defining variables, and a function which builds environments for such variables with any Type of type. Usual operations over environments are defined, along with an extensive set of basic and more advanced properties. Moreover, an implementation using lists satisfying and all the required properties is provided.&quot;&quot;&quot;
+flags: light-uninstall
+url {
+  src: &quot;https://github.com/coq-contribs/generic-environments/archive/v8.9.0.tar.gz&quot;
+  checksum: &quot;md5=788e6b890d773b8b8df665e8bf910994&quot;
+}
+</pre>
+            <h2>Lint</h2>
+            <dl class="dl-horizontal">
+              <dt>Command</dt>
+              <dd><code>true</code></dd>
+              <dt>Return code</dt>
+              <dd>0</dd>
+            </dl>
+            <h2>Dry install</h2>
+            <p>Dry install with the current Coq version:</p>
+            <dl class="dl-horizontal">
+              <dt>Command</dt>
+              <dd><code>opam install -y --show-action coq-generic-environments.8.9.0 coq.8.7.1+1</code></dd>
+              <dt>Return code</dt>
+              <dd>5120</dd>
+              <dt>Output</dt>
+              <dd><pre>[NOTE] Package coq is already installed (current version is 8.7.1+1).
+The following dependencies couldn&#39;t be met:
+  - coq-generic-environments -&gt; coq &gt;= 8.9
+Your request can&#39;t be satisfied:
+  - No available version of coq satisfies the constraints
+No solution found, exiting
+</pre></dd>
+            </dl>
+            <p>Dry install without Coq/switch base, to test if the problem was incompatibility with the current Coq/OCaml version:</p>
+            <dl class="dl-horizontal">
+              <dt>Command</dt>
+              <dd><code>opam remove -y coq; opam install -y --show-action --unlock-base coq-generic-environments.8.9.0</code></dd>
+              <dt>Return code</dt>
+              <dd>0</dd>
+            </dl>
+            <h2>Install dependencies</h2>
+            <dl class="dl-horizontal">
+              <dt>Command</dt>
+              <dd><code>true</code></dd>
+              <dt>Return code</dt>
+              <dd>0</dd>
+              <dt>Duration</dt>
+              <dd>0 s</dd>
+            </dl>
+            <h2>Install</h2>
+            <dl class="dl-horizontal">
+              <dt>Command</dt>
+              <dd><code>true</code></dd>
+              <dt>Return code</dt>
+              <dd>0</dd>
+              <dt>Duration</dt>
+              <dd>0 s</dd>
+            </dl>
+            <h2>Installation size</h2>
+            <p>No files were installed.</p>
+            <h2>Uninstall</h2>
+            <dl class="dl-horizontal">
+              <dt>Command</dt>
+              <dd><code>true</code></dd>
+              <dt>Return code</dt>
+              <dd>0</dd>
+              <dt>Missing removes</dt>
+              <dd>
+                none
+              </dd>
+              <dt>Wrong removes</dt>
+              <dd>
+                none
+              </dd>
+            </dl>
+          </div>
+        </div>
+      </div>
+      <hr/>
+      <div class="footer">
+        <p class="text-center">
+          <small>Sources are on <a href="https://github.com/coq-bench">GitHub</a>. © Guillaume Claret.</small>
+        </p>
+      </div>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="../../../../../bootstrap.min.js"></script>
+  </body>
+</html>
