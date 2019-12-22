@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>chick-blog: Error</title>
+    <title>chick-blog: Not compatible</title>
     <link rel="shortcut icon" type="image/png" href="../../../../../favicon.png" />
     <link href="../../../../../bootstrap.min.css" rel="stylesheet">
     <link href="../../../../../bootstrap-custom.css" rel="stylesheet">
@@ -39,10 +39,10 @@
               chick-blog
               <small>
                 1.0.0
-                <span class="label label-danger">Error</span>
+                <span class="label label-info">Not compatible</span>
               </small>
             </h1>
-            <p><em><script>document.write(moment("2019-12-01 06:54:56 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2019-12-01 06:54:56 UTC)</em><p>
+            <p><em><script>document.write(moment("2019-12-22 14:39:21 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2019-12-22 14:39:21 UTC)</em><p>
             <h2>Context</h2>
             <pre># Packages matching: installed
 # Name              # Installed # Synopsis
@@ -76,10 +76,13 @@ depends: [
   &quot;coq-function-ninjas&quot;
   &quot;coq-list-string&quot;
   &quot;coq-moment&quot;
-  &quot;coq&quot;
+  &quot;coq&quot; {&lt; &quot;8.9~&quot;}
   &quot;lwt&quot;
   &quot;ocaml&quot;
   &quot;ocamlfind&quot; {build}
+]
+conflicts: [
+  &quot;ocaml-secondary-compiler&quot;
 ]
 tags: [
   &quot;date:2019-11-26&quot;
@@ -106,152 +109,41 @@ url {
               <dt>Command</dt>
               <dd><code>opam install -y --show-action coq-chick-blog.1.0.0 coq.8.10.0</code></dd>
               <dt>Return code</dt>
-              <dd>0</dd>
+              <dd>5120</dd>
+              <dt>Output</dt>
+              <dd><pre>[NOTE] Package coq is already installed (current version is 8.10.0).
+The following dependencies couldn&#39;t be met:
+  - coq-chick-blog -&gt; coq &lt; 8.9~ -&gt; ocaml &lt; 4.06.0
+      base of this switch (use `--unlock-base&#39; to force)
+Your request can&#39;t be satisfied:
+  - No available version of coq satisfies the constraints
+No solution found, exiting
+</pre></dd>
             </dl>
             <p>Dry install without Coq/switch base, to test if the problem was incompatibility with the current Coq/OCaml version:</p>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>true</code></dd>
+              <dd><code>opam remove -y coq; opam install -y --show-action --unlock-base coq-chick-blog.1.0.0</code></dd>
               <dt>Return code</dt>
               <dd>0</dd>
             </dl>
             <h2>Install dependencies</h2>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>opam list; echo; ulimit -Sv 4000000; timeout 2h opam install -y --deps-only coq-chick-blog.1.0.0 coq.8.10.0</code></dd>
+              <dd><code>true</code></dd>
               <dt>Return code</dt>
               <dd>0</dd>
               <dt>Duration</dt>
-              <dd>7 m 30 s</dd>
+              <dd>0 s</dd>
             </dl>
             <h2>Install</h2>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>opam list; echo; ulimit -Sv 4000000; timeout 1h opam install -y -v coq-chick-blog.1.0.0 coq.8.10.0</code></dd>
+              <dd><code>true</code></dd>
               <dt>Return code</dt>
-              <dd>7936</dd>
+              <dd>0</dd>
               <dt>Duration</dt>
-              <dd>7 s</dd>
-              <dt>Output</dt>
-              <dd><pre># Packages matching: installed
-# Name                  # Installed # Synopsis
-astring                 0.8.3       Alternative String module for OCaml
-base                    v0.12.2     Full standard library replacement for OCaml
-base-bigarray           base
-base-bytes              base        Bytes library distributed with the OCaml compiler
-base-threads            base
-base-unix               base
-base64                  3.2.0       Base64 encoding for OCaml
-cmdliner                1.0.4       Declarative definition of command line interfaces for OCaml
-cohttp                  2.4.0       An OCaml library for HTTP clients and servers
-cohttp-lwt              2.4.0       CoHTTP implementation using the Lwt concurrency library
-cohttp-lwt-unix         2.4.0       CoHTTP implementation for Unix and Windows using Lwt
-conduit                 2.0.2       A network connection establishment library
-conduit-lwt             2.0.2       A portable network connection establishment library using Lwt
-conduit-lwt-unix        2.0.2       A network connection establishment library for Lwt_unix
-conf-findutils          1           Virtual package relying on findutils
-conf-m4                 1           Virtual package relying on m4
-conf-ruby               1.0.0       Virtual package relying on Ruby
-coq                     8.10.0      Formal proof management system
-coq-cunit               1.0.0       Convenience functions for unit testing in Coq
-coq-error-handlers      1.2.0       Simple and robust error handling functions
-coq-function-ninjas     1.0.0       Simple functional combinators
-coq-list-plus           1.1.0       More functions on lists
-coq-list-string         2.1.2       Strings implemented as lists
-coq-moment              1.1.0       Parse, manipulate and pretty-print times and dates in Coq
-cppo                    1.6.6       Code preprocessor like cpp for OCaml
-domain-name             0.3.0       RFC 1035 Internet domain names
-dune                    2.0.0       Fast, portable, and opinionated build system
-dune-configurator       2.0.0       Helper library for gathering system configuration
-dune-private-libs       2.0.0       Private libraries of Dune
-fieldslib               v0.12.0     Syntax extension to define first class values representing record fields, to get and set record fields, iterate and fold over all fields of a record and create new record values
-fmt                     0.8.8       OCaml Format pretty-printer combinators
-ipaddr                  4.0.0       A library for manipulation of IP (and MAC) address representations
-ipaddr-sexp             4.0.0       A library for manipulation of IP address representations usnig sexp
-jsonm                   1.0.1       Non-blocking streaming JSON codec for OCaml
-logs                    0.7.0       Logging infrastructure for OCaml
-lwt                     4.4.0       Promises and event-driven I/O
-macaddr                 4.0.0       A library for manipulation of MAC address representations
-magic-mime              1.1.2       Map filenames to common MIME types
-mmap                    1.1.0       File mapping functionality
-num                     1.3         The legacy Num library for arbitrary-precision integer and rational arithmetic
-ocaml                   4.06.1      The OCaml compiler (virtual package)
-ocaml-base-compiler     4.06.1      Official 4.06.1 release
-ocaml-compiler-libs     v0.12.1     OCaml compiler libraries repackaged
-ocaml-config            1           OCaml Switch Configuration
-ocaml-migrate-parsetree 1.5.0       Convert OCaml parsetrees between different versions
-ocamlbuild              0.14.0      OCamlbuild is a build system with builtin rules to easily build most OCaml projects.
-ocamlfind               1.8.1       A library manager for OCaml
-ocplib-endian           1.0         Optimised functions to read and write int16/32/64 from strings and bigarrays, based on new primitives added in version 4.01.
-parsexp                 v0.12.0     S-expression parsing library
-ppx_derivers            1.2.1       Shared [@@deriving] plugin registry
-ppx_fields_conv         v0.12.0     Generation of accessor and iteration functions for ocaml records
-ppx_sexp_conv           v0.12.0     [@@deriving] plugin to generate S-expression conversion functions
-ppxlib                  0.8.1       Base library and tools for ppx rewriters
-re                      1.9.0       RE is a regular expression library for OCaml
-result                  1.4         Compatibility Result module
-seq                     0.2         Compatibility package for OCaml&#39;s standard iterator type starting from 4.07
-sexplib                 v0.12.0     Library for serializing OCaml values to and from S-expressions
-sexplib0                v0.12.0     Library containing the definition of S-expressions and some base converters
-stdio                   v0.12.0     Standard IO library for OCaml
-stdlib-shims            0.1.0       Backport some of the new stdlib features to older compiler
-stringext               1.6.0       Extra string functions for OCaml
-topkg                   1.0.1       The transitory OCaml software packager
-uchar                   0.0.2       Compatibility library for OCaml&#39;s Uchar module
-uri                     3.1.0       An RFC3986 URI/URL parsing library
-uri-sexp                3.1.0       An RFC3986 URI/URL parsing library
-uutf                    1.0.2       Non-blocking streaming Unicode codec for OCaml
-[NOTE] Package coq is already installed (current version is 8.10.0).
-The following actions will be performed:
-  - install coq-chick-blog 1.0.0
-&lt;&gt;&lt;&gt; Gathering sources &gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;
-Processing  1/1: [coq-chick-blog.1.0.0: http]
-[coq-chick-blog.1.0.0] downloaded from https://github.com/clarus/coq-chick-blog/archive/1.0.0.tar.gz
-Processing  1/1:
-&lt;&gt;&lt;&gt; Processing actions &lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;
-Processing  1/2: [coq-chick-blog: ./configure.sh]
-+ /home/bench/.opam/opam-init/hooks/sandbox.sh &quot;build&quot; &quot;./configure.sh&quot; (CWD=/home/bench/.opam/ocaml-base-compiler.4.06.1/.opam-switch/build/coq-chick-blog.1.0.0)
-Processing  1/2: [coq-chick-blog: make]
-+ /home/bench/.opam/opam-init/hooks/sandbox.sh &quot;build&quot; &quot;make&quot; &quot;-j4&quot; (CWD=/home/bench/.opam/ocaml-base-compiler.4.06.1/.opam-switch/build/coq-chick-blog.1.0.0)
-- COQDEP VFILES
-- COQC src/Model.v
-- COQC src/Http.v
-- File &quot;./src/Model.v&quot;, line 70, characters 75-77:
-- Error: Expects a single character or a three-digits ascii code.
-- 
-- Makefile:658: recipe for target &#39;src/Model.vo&#39; failed
-- make[1]: *** [src/Model.vo] Error 1
-- make[1]: *** Waiting for unfinished jobs....
-- Makefile:320: recipe for target &#39;all&#39; failed
-- make: *** [all] Error 2
-[ERROR] The compilation of coq-chick-blog failed at &quot;/home/bench/.opam/opam-init/hooks/sandbox.sh build make -j4&quot;.
-#=== ERROR while compiling coq-chick-blog.1.0.0 ===============================#
-# context              2.0.5 | linux/x86_64 | ocaml-base-compiler.4.06.1 | file:///home/bench/run/opam-coq-archive/released
-# path                 ~/.opam/ocaml-base-compiler.4.06.1/.opam-switch/build/coq-chick-blog.1.0.0
-# command              ~/.opam/opam-init/hooks/sandbox.sh build make -j4
-# exit-code            2
-# env-file             ~/.opam/log/coq-chick-blog-22462-2dea01.env
-# output-file          ~/.opam/log/coq-chick-blog-22462-2dea01.out
-### output ###
-# COQDEP VFILES
-# COQC src/Model.v
-# COQC src/Http.v
-# File &quot;./src/Model.v&quot;, line 70, characters 75-77:
-# Error: Expects a single character or a three-digits ascii code.
-# 
-# Makefile:658: recipe for target &#39;src/Model.vo&#39; failed
-# make[1]: *** [src/Model.vo] Error 1
-# make[1]: *** Waiting for unfinished jobs....
-# Makefile:320: recipe for target &#39;all&#39; failed
-# make: *** [all] Error 2
-&lt;&gt;&lt;&gt; Error report &lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;
-+- The following actions failed
-| - build coq-chick-blog 1.0.0
-+- 
-- No changes have been performed
-# Run eval $(opam env) to update the current shell environment
-&#39;opam install -y -v coq-chick-blog.1.0.0 coq.8.10.0&#39; failed.
-</pre></dd>
+              <dd>0 s</dd>
             </dl>
             <h2>Installation size</h2>
             <p>No files were installed.</p>
