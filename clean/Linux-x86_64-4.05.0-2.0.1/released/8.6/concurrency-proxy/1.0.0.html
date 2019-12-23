@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>concurrency-proxy: 5 s</title>
+    <title>concurrency-proxy: Error</title>
     <link rel="shortcut icon" type="image/png" href="../../../../../favicon.png" />
     <link href="../../../../../bootstrap.min.css" rel="stylesheet">
     <link href="../../../../../bootstrap-custom.css" rel="stylesheet">
@@ -39,10 +39,10 @@
               concurrency-proxy
               <small>
                 1.0.0
-                <span class="label label-success">5 s</span>
+                <span class="label label-danger">Error</span>
               </small>
             </h1>
-            <p><em><script>document.write(moment("2019-12-17 08:12:14 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2019-12-17 08:12:14 UTC)</em><p>
+            <p><em><script>document.write(moment("2019-12-23 14:49:21 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2019-12-23 14:49:21 UTC)</em><p>
             <h2>Context</h2>
             <pre># Packages matching: installed
 # Name              # Installed # Synopsis
@@ -123,27 +123,158 @@ url {
               <dt>Return code</dt>
               <dd>0</dd>
               <dt>Duration</dt>
-              <dd>2 m 8 s</dd>
+              <dd>2 m 28 s</dd>
             </dl>
             <h2>Install</h2>
             <dl class="dl-horizontal">
               <dt>Command</dt>
               <dd><code>opam list; echo; ulimit -Sv 4000000; timeout 1h opam install -y -v coq-concurrency-proxy.1.0.0 coq.8.6</code></dd>
               <dt>Return code</dt>
-              <dd>0</dd>
+              <dd>7936</dd>
               <dt>Duration</dt>
-              <dd>5 s</dd>
+              <dd>6 s</dd>
+              <dt>Output</dt>
+              <dd><pre># Packages matching: installed
+# Name              # Installed # Synopsis
+base-bigarray       base
+base-bytes          base        Bytes library distributed with the OCaml compiler
+base-num            base        Num library distributed with the OCaml compiler
+base-threads        base
+base-unix           base
+base64              1.1.0       Base64 encoding and decoding library
+camlp5              7.10        Preprocessor-pretty-printer of OCaml
+conf-findutils      1           Virtual package relying on findutils
+conf-m4             1           Virtual package relying on m4
+coq                 8.6         Formal proof management system.
+cppo                1.6.6       Code preprocessor like cpp for OCaml
+dune                1.11.4      Fast, portable and opinionated build system
+dune-configurator   1.0.0
+lwt                 5.0.0       Promises and event-driven I/O
+mmap                1.1.0       File mapping functionality
+num                 0           The Num library for arbitrary-precision integer and rational arithmetic
+ocaml               4.05.0      The OCaml compiler (virtual package)
+ocaml-base-compiler 4.05.0      Official 4.05.0 release
+ocaml-config        1           OCaml Switch Configuration
+ocamlbuild          0.14.0      OCamlbuild is a build system with builtin rules to easily build most OCaml projects.
+ocamlfind           1.8.1       A library manager for OCaml
+ocplib-endian       1.0         Optimised functions to read and write int16/32/64 from strings and bigarrays, based on new primitives added in version 4.01.
+result              1.4         Compatibility Result module
+seq                 0.2.2       Compatibility package for OCaml&#39;s standard iterator type starting from 4.07
+[NOTE] Package coq is already installed (current version is 8.6).
+The following actions will be performed:
+  - install coq-concurrency-proxy 1.0.0
+&lt;&gt;&lt;&gt; Gathering sources &gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;
+Processing  1/1: [coq-concurrency-proxy.1.0.0: http]
+[coq-concurrency-proxy.1.0.0] downloaded from https://github.com/coq-concurrency/proxy/archive/1.0.0.tar.gz
+Processing  1/1:
+&lt;&gt;&lt;&gt; Processing actions &lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;
+Processing  1/2: [coq-concurrency-proxy: make]
++ /home/bench/.opam/opam-init/hooks/sandbox.sh &quot;build&quot; &quot;make&quot; &quot;-j7&quot; (CWD=/home/bench/.opam/ocaml-base-compiler.4.05.0/.opam-switch/build/coq-concurrency-proxy.1.0.0)
+- ocamlbuild coqConcurrencyProxy.native coqConcurrencyProxy.byte -use-ocamlfind -package base64,lwt,lwt.unix,num,str
+- ocamlfind ocamldep -package base64,lwt,lwt.unix,num,str -modules coqConcurrencyProxy.ml &gt; coqConcurrencyProxy.ml.depends
+- ocamlfind ocamldep -package base64,lwt,lwt.unix,num,str -modules heap.ml &gt; heap.ml.depends
+- ocamlfind ocamlc -c -package base64,lwt,lwt.unix,num,str -o heap.cmo heap.ml
+- + ocamlfind ocamlc -c -package base64,lwt,lwt.unix,num,str -o heap.cmo heap.ml
+- ocamlfind: [WARNING] Package `threads&#39;: Linking problems may arise because of the missing -thread or -vmthread switch
+- File &quot;heap.ml&quot;, line 13, characters 24-39:
+- Warning 52: Code should not depend on the actual values of
+- this constructor&#39;s arguments. They are only for information
+- and may change in future versions. (See manual section 8.5)
+- ocamlfind ocamlc -c -package base64,lwt,lwt.unix,num,str -o coqConcurrencyProxy.cmo coqConcurrencyProxy.ml
+- + ocamlfind ocamlc -c -package base64,lwt,lwt.unix,num,str -o coqConcurrencyProxy.cmo coqConcurrencyProxy.ml
+- ocamlfind: [WARNING] Package `threads&#39;: Linking problems may arise because of the missing -thread or -vmthread switch
+- File &quot;coqConcurrencyProxy.ml&quot;, line 45, characters 25-38:
+- Warning 3: deprecated: String.create
+- Use Bytes.create instead.
+- File &quot;coqConcurrencyProxy.ml&quot;, line 120, characters 12-40:
+- Warning 10: this expression should have type unit.
+- File &quot;coqConcurrencyProxy.ml&quot;, line 115, characters 30-46:
+- Warning 52: Code should not depend on the actual values of
+- this constructor&#39;s arguments. They are only for information
+- and may change in future versions. (See manual section 8.5)
+- File &quot;coqConcurrencyProxy.ml&quot;, line 110, characters 26-41:
+- Warning 52: Code should not depend on the actual values of
+- this constructor&#39;s arguments. They are only for information
+- and may change in future versions. (See manual section 8.5)
+- ocamlfind ocamlopt -c -package base64,lwt,lwt.unix,num,str -o heap.cmx heap.ml
+- + ocamlfind ocamlopt -c -package base64,lwt,lwt.unix,num,str -o heap.cmx heap.ml
+- ocamlfind: [WARNING] Package `threads&#39;: Linking problems may arise because of the missing -thread or -vmthread switch
+- File &quot;heap.ml&quot;, line 13, characters 24-39:
+- Warning 52: Code should not depend on the actual values of
+- this constructor&#39;s arguments. They are only for information
+- and may change in future versions. (See manual section 8.5)
+- ocamlfind ocamlopt -c -package base64,lwt,lwt.unix,num,str -o coqConcurrencyProxy.cmx coqConcurrencyProxy.ml
+- + ocamlfind ocamlopt -c -package base64,lwt,lwt.unix,num,str -o coqConcurrencyProxy.cmx coqConcurrencyProxy.ml
+- ocamlfind: [WARNING] Package `threads&#39;: Linking problems may arise because of the missing -thread or -vmthread switch
+- File &quot;coqConcurrencyProxy.ml&quot;, line 45, characters 25-38:
+- Warning 3: deprecated: String.create
+- Use Bytes.create instead.
+- File &quot;coqConcurrencyProxy.ml&quot;, line 120, characters 12-40:
+- Warning 10: this expression should have type unit.
+- File &quot;coqConcurrencyProxy.ml&quot;, line 115, characters 30-46:
+- Warning 52: Code should not depend on the actual values of
+- this constructor&#39;s arguments. They are only for information
+- and may change in future versions. (See manual section 8.5)
+- File &quot;coqConcurrencyProxy.ml&quot;, line 110, characters 26-41:
+- Warning 52: Code should not depend on the actual values of
+- this constructor&#39;s arguments. They are only for information
+- and may change in future versions. (See manual section 8.5)
+- ocamlfind ocamlopt -linkpkg -package base64,lwt,lwt.unix,num,str heap.cmx coqConcurrencyProxy.cmx -o coqConcurrencyProxy.native
+- + ocamlfind ocamlopt -linkpkg -package base64,lwt,lwt.unix,num,str heap.cmx coqConcurrencyProxy.cmx -o coqConcurrencyProxy.native
+- ocamlfind: [WARNING] Package `threads&#39;: Linking problems may arise because of the missing -thread or -vmthread switch
+- File &quot;_none_&quot;, line 1:
+- Error: No implementations provided for the following modules:
+-          Mutex referenced from /home/bench/.opam/ocaml-base-compiler.4.05.0/lib/lwt/unix/lwt_unix.cmxa(Lwt_main)
+- Command exited with code 2.
+- Hint: Recursive traversal of subdirectories was not enabled for this build,
+-   as the working directory does not look like an ocamlbuild project (no
+-   &#39;_tags&#39; or &#39;myocamlbuild.ml&#39; file). If you have modules in subdirectories,
+-   you should add the option &quot;-r&quot; or create an empty &#39;_tags&#39; file.
+-   
+-   To enable recursive traversal for some subdirectories only, you can use the
+-   following &#39;_tags&#39; file:
+-   
+-       true: -traverse
+-       &lt;dir1&gt; or &lt;dir2&gt;: traverse
+-       
+- make: *** [Makefile:2: default] Error 10
+[ERROR] The compilation of coq-concurrency-proxy failed at &quot;/home/bench/.opam/opam-init/hooks/sandbox.sh build make -j7&quot;.
+#=== ERROR while compiling coq-concurrency-proxy.1.0.0 ========================#
+# context              2.0.1 | linux/x86_64 | ocaml-base-compiler.4.05.0 | file:///home/bench/run/opam-coq-archive/released
+# path                 ~/.opam/ocaml-base-compiler.4.05.0/.opam-switch/build/coq-concurrency-proxy.1.0.0
+# command              ~/.opam/opam-init/hooks/sandbox.sh build make -j7
+# exit-code            2
+# env-file             ~/.opam/log/coq-concurrency-proxy-30014-0a5907.env
+# output-file          ~/.opam/log/coq-concurrency-proxy-30014-0a5907.out
+### output ###
+# [...]
+# Hint: Recursive traversal of subdirectories was not enabled for this build,
+#   as the working directory does not look like an ocamlbuild project (no
+#   &#39;_tags&#39; or &#39;myocamlbuild.ml&#39; file). If you have modules in subdirectories,
+#   you should add the option &quot;-r&quot; or create an empty &#39;_tags&#39; file.
+#   
+#   To enable recursive traversal for some subdirectories only, you can use the
+#   following &#39;_tags&#39; file:
+#   
+#       true: -traverse
+#       &lt;dir1&gt; or &lt;dir2&gt;: traverse
+#       
+# make: *** [Makefile:2: default] Error 10
+&lt;&gt;&lt;&gt; Error report &lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;
++- The following actions failed
+| - build coq-concurrency-proxy 1.0.0
++- 
+- No changes have been performed
+# Run eval $(opam env) to update the current shell environment
+&#39;opam install -y -v coq-concurrency-proxy.1.0.0 coq.8.6&#39; failed.
+</pre></dd>
             </dl>
             <h2>Installation size</h2>
-            <p>Total: 4 M</p>
-            <ul>
-              <li>3 M <code>../ocaml-base-compiler.4.05.0/bin/coqConcurrencyProxy.native</code></li>
-              <li>520 K <code>../ocaml-base-compiler.4.05.0/bin/coqConcurrencyProxy.byte</code></li>
-            </ul>
+            <p>No files were installed.</p>
             <h2>Uninstall</h2>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>opam remove -y coq-concurrency-proxy.1.0.0</code></dd>
+              <dd><code>true</code></dd>
               <dt>Return code</dt>
               <dd>0</dd>
               <dt>Missing removes</dt>
