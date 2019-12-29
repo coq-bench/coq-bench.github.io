@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>mathcomp-finmap: Not compatible</title>
+    <title>mathcomp-finmap: Error</title>
     <link rel="shortcut icon" type="image/png" href="../../../../../favicon.png" />
     <link href="../../../../../bootstrap.min.css" rel="stylesheet">
     <link href="../../../../../bootstrap-custom.css" rel="stylesheet">
@@ -39,10 +39,10 @@
               mathcomp-finmap
               <small>
                 1.2.0
-                <span class="label label-info">Not compatible</span>
+                <span class="label label-danger">Error</span>
               </small>
             </h1>
-            <p><em><script>document.write(moment("2019-12-13 21:25:04 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2019-12-13 21:25:04 UTC)</em><p>
+            <p><em><script>document.write(moment("2019-12-29 08:36:42 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2019-12-29 08:36:42 UTC)</em><p>
             <h2>Context</h2>
             <pre># Packages matching: installed
 # Name              # Installed # Synopsis
@@ -100,41 +100,311 @@ url {
               <dt>Command</dt>
               <dd><code>opam install -y --show-action coq-mathcomp-finmap.1.2.0 coq.8.11.dev</code></dd>
               <dt>Return code</dt>
-              <dd>5120</dd>
-              <dt>Output</dt>
-              <dd><pre>[NOTE] Package coq is already installed (current version is 8.11.dev).
-The following dependencies couldn&#39;t be met:
-  - coq-mathcomp-finmap -&gt; coq-mathcomp-bigenough -&gt; coq-mathcomp-ssreflect &gt;= dev -&gt; coq &lt; 8.10~ -&gt; ocaml &lt; 4.06.0
-      base of this switch (use `--unlock-base&#39; to force)
-Your request can&#39;t be satisfied:
-  - No available version of coq satisfies the constraints
-No solution found, exiting
-</pre></dd>
+              <dd>0</dd>
             </dl>
             <p>Dry install without Coq/switch base, to test if the problem was incompatibility with the current Coq/OCaml version:</p>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>opam remove -y coq; opam install -y --show-action --unlock-base coq-mathcomp-finmap.1.2.0</code></dd>
+              <dd><code>true</code></dd>
               <dt>Return code</dt>
               <dd>0</dd>
             </dl>
             <h2>Install dependencies</h2>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>true</code></dd>
+              <dd><code>opam list; echo; ulimit -Sv 4000000; timeout 2h opam install -y --deps-only coq-mathcomp-finmap.1.2.0 coq.8.11.dev</code></dd>
               <dt>Return code</dt>
               <dd>0</dd>
               <dt>Duration</dt>
-              <dd>0 s</dd>
+              <dd>1 m 49 s</dd>
             </dl>
             <h2>Install</h2>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>true</code></dd>
+              <dd><code>opam list; echo; ulimit -Sv 4000000; timeout 1h opam install -y -v coq-mathcomp-finmap.1.2.0 coq.8.11.dev</code></dd>
               <dt>Return code</dt>
-              <dd>0</dd>
+              <dd>7936</dd>
               <dt>Duration</dt>
-              <dd>0 s</dd>
+              <dd>14 s</dd>
+              <dt>Output</dt>
+              <dd><pre># Packages matching: installed
+# Name                 # Installed # Synopsis
+base-bigarray          base
+base-threads           base
+base-unix              base
+conf-findutils         1           Virtual package relying on findutils
+conf-m4                1           Virtual package relying on m4
+coq                    8.11.dev    Formal proof management system
+coq-mathcomp-bigenough 1.0.0       A small library to do epsilon - N reasonning
+coq-mathcomp-ssreflect dev         Small Scale Reflection
+num                    1.3         The legacy Num library for arbitrary-precision integer and rational arithmetic
+ocaml                  4.09.0      The OCaml compiler (virtual package)
+ocaml-base-compiler    4.09.0      Official release 4.09.0
+ocaml-config           1           OCaml Switch Configuration
+ocamlfind              1.8.1       A library manager for OCaml
+[NOTE] Package coq is already installed (current version is 8.11.dev).
+The following actions will be performed:
+  - install coq-mathcomp-finmap 1.2.0
+&lt;&gt;&lt;&gt; Gathering sources &gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;
+Processing  1/1: [coq-mathcomp-finmap.1.2.0: http]
+[coq-mathcomp-finmap.1.2.0] downloaded from https://github.com/math-comp/finmap/archive/1.2.0.tar.gz
+Processing  1/1:
+&lt;&gt;&lt;&gt; Processing actions &lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;
+Processing  1/2: [coq-mathcomp-finmap: make 4]
++ /home/bench/.opam/opam-init/hooks/sandbox.sh &quot;build&quot; &quot;make&quot; &quot;-j&quot; &quot;4&quot; (CWD=/home/bench/.opam/ocaml-base-compiler.4.09.0/.opam-switch/build/coq-mathcomp-finmap.1.2.0)
+- /home/bench/.opam/ocaml-base-compiler.4.09.0/bin/coq_makefile  -f _CoqProject -o Makefile.coq
+- make -f Makefile.coq 
+- make[1]: Entering directory &#39;/home/bench/.opam/ocaml-base-compiler.4.09.0/.opam-switch/build/coq-mathcomp-finmap.1.2.0&#39;
+- COQDEP VFILES
+- COQC order.v
+- COQC finmap.v
+- File &quot;./finmap.v&quot;, line 3, characters 0-72:
+- Warning: Notation &quot;[ rel _ _ | _ ]&quot; was already used in scope fun_scope.
+- [notation-overridden,parsing]
+- File &quot;./finmap.v&quot;, line 3, characters 0-72:
+- Warning: Notation &quot;[ rel _ _ : _ | _ ]&quot; was already used in scope fun_scope.
+- [notation-overridden,parsing]
+- File &quot;./finmap.v&quot;, line 3, characters 0-72:
+- Warning: Notation &quot;[ rel _ _ in _ &amp; _ | _ ]&quot; was already used in scope
+- fun_scope. [notation-overridden,parsing]
+- File &quot;./finmap.v&quot;, line 3, characters 0-72:
+- Warning: Notation &quot;[ rel _ _ in _ &amp; _ ]&quot; was already used in scope fun_scope.
+- [notation-overridden,parsing]
+- File &quot;./finmap.v&quot;, line 3, characters 0-72:
+- Warning: Notation &quot;[ rel _ _ in _ | _ ]&quot; was already used in scope fun_scope.
+- [notation-overridden,parsing]
+- File &quot;./finmap.v&quot;, line 3, characters 0-72:
+- Warning: Notation &quot;[ rel _ _ in _ ]&quot; was already used in scope fun_scope.
+- [notation-overridden,parsing]
+- File &quot;./finmap.v&quot;, line 3, characters 0-72:
+- Warning: Notation &quot;_ + _&quot; was already used in scope nat_scope.
+- [notation-overridden,parsing]
+- File &quot;./finmap.v&quot;, line 3, characters 0-72:
+- Warning: Notation &quot;_ - _&quot; was already used in scope nat_scope.
+- [notation-overridden,parsing]
+- File &quot;./finmap.v&quot;, line 3, characters 0-72:
+- Warning: Notation &quot;_ &lt;= _&quot; was already used in scope nat_scope.
+- [notation-overridden,parsing]
+- File &quot;./finmap.v&quot;, line 3, characters 0-72:
+- Warning: Notation &quot;_ &lt; _&quot; was already used in scope nat_scope.
+- [notation-overridden,parsing]
+- File &quot;./finmap.v&quot;, line 3, characters 0-72:
+- Warning: Notation &quot;_ &gt;= _&quot; was already used in scope nat_scope.
+- [notation-overridden,parsing]
+- File &quot;./finmap.v&quot;, line 3, characters 0-72:
+- Warning: Notation &quot;_ &gt; _&quot; was already used in scope nat_scope.
+- [notation-overridden,parsing]
+- File &quot;./finmap.v&quot;, line 3, characters 0-72:
+- Warning: Notation &quot;_ &lt;= _ &lt;= _&quot; was already used in scope nat_scope.
+- [notation-overridden,parsing]
+- File &quot;./finmap.v&quot;, line 3, characters 0-72:
+- Warning: Notation &quot;_ &lt; _ &lt;= _&quot; was already used in scope nat_scope.
+- [notation-overridden,parsing]
+- File &quot;./finmap.v&quot;, line 3, characters 0-72:
+- Warning: Notation &quot;_ &lt;= _ &lt; _&quot; was already used in scope nat_scope.
+- [notation-overridden,parsing]
+- File &quot;./finmap.v&quot;, line 3, characters 0-72:
+- Warning: Notation &quot;_ &lt; _ &lt; _&quot; was already used in scope nat_scope.
+- [notation-overridden,parsing]
+- File &quot;./finmap.v&quot;, line 3, characters 0-72:
+- Warning: Notation &quot;_ * _&quot; was already used in scope nat_scope.
+- [notation-overridden,parsing]
+- File &quot;./finmap.v&quot;, line 158, characters 32-50:
+- Error: The reference sort_of_simpl_pred was not found in the current
+- environment.
+- 
+- make[2]: *** [Makefile.coq:673: finmap.vo] Error 1
+- make[2]: *** Waiting for unfinished jobs....
+- File &quot;./order.v&quot;, line 21, characters 0-79:
+- Warning: Notation &quot;[ rel _ _ | _ ]&quot; was already used in scope fun_scope.
+- [notation-overridden,parsing]
+- File &quot;./order.v&quot;, line 21, characters 0-79:
+- Warning: Notation &quot;[ rel _ _ : _ | _ ]&quot; was already used in scope fun_scope.
+- [notation-overridden,parsing]
+- File &quot;./order.v&quot;, line 21, characters 0-79:
+- Warning: Notation &quot;[ rel _ _ in _ &amp; _ | _ ]&quot; was already used in scope
+- fun_scope. [notation-overridden,parsing]
+- File &quot;./order.v&quot;, line 21, characters 0-79:
+- Warning: Notation &quot;[ rel _ _ in _ &amp; _ ]&quot; was already used in scope fun_scope.
+- [notation-overridden,parsing]
+- File &quot;./order.v&quot;, line 21, characters 0-79:
+- Warning: Notation &quot;[ rel _ _ in _ | _ ]&quot; was already used in scope fun_scope.
+- [notation-overridden,parsing]
+- File &quot;./order.v&quot;, line 21, characters 0-79:
+- Warning: Notation &quot;[ rel _ _ in _ ]&quot; was already used in scope fun_scope.
+- [notation-overridden,parsing]
+- File &quot;./order.v&quot;, line 21, characters 0-79:
+- Warning: Notation &quot;_ + _&quot; was already used in scope nat_scope.
+- [notation-overridden,parsing]
+- File &quot;./order.v&quot;, line 21, characters 0-79:
+- Warning: Notation &quot;_ - _&quot; was already used in scope nat_scope.
+- [notation-overridden,parsing]
+- File &quot;./order.v&quot;, line 21, characters 0-79:
+- Warning: Notation &quot;_ &lt;= _&quot; was already used in scope nat_scope.
+- [notation-overridden,parsing]
+- File &quot;./order.v&quot;, line 21, characters 0-79:
+- Warning: Notation &quot;_ &lt; _&quot; was already used in scope nat_scope.
+- [notation-overridden,parsing]
+- File &quot;./order.v&quot;, line 21, characters 0-79:
+- Warning: Notation &quot;_ &gt;= _&quot; was already used in scope nat_scope.
+- [notation-overridden,parsing]
+- File &quot;./order.v&quot;, line 21, characters 0-79:
+- Warning: Notation &quot;_ &gt; _&quot; was already used in scope nat_scope.
+- [notation-overridden,parsing]
+- File &quot;./order.v&quot;, line 21, characters 0-79:
+- Warning: Notation &quot;_ &lt;= _ &lt;= _&quot; was already used in scope nat_scope.
+- [notation-overridden,parsing]
+- File &quot;./order.v&quot;, line 21, characters 0-79:
+- Warning: Notation &quot;_ &lt; _ &lt;= _&quot; was already used in scope nat_scope.
+- [notation-overridden,parsing]
+- File &quot;./order.v&quot;, line 21, characters 0-79:
+- Warning: Notation &quot;_ &lt;= _ &lt; _&quot; was already used in scope nat_scope.
+- [notation-overridden,parsing]
+- File &quot;./order.v&quot;, line 21, characters 0-79:
+- Warning: Notation &quot;_ &lt; _ &lt; _&quot; was already used in scope nat_scope.
+- [notation-overridden,parsing]
+- File &quot;./order.v&quot;, line 21, characters 0-79:
+- Warning: Notation &quot;_ * _&quot; was already used in scope nat_scope.
+- [notation-overridden,parsing]
+- File &quot;./order.v&quot;, line 80, characters 0-33:
+- Warning: Declaring a scope implicitly is deprecated; use in advance an
+- explicit &quot;Declare Scope order_scope.&quot;. [undeclared-scope,deprecated]
+- File &quot;./order.v&quot;, line 365, characters 0-37:
+- Warning: Declaring a scope implicitly is deprecated; use in advance an
+- explicit &quot;Declare Scope cpo_sort.&quot;. [undeclared-scope,deprecated]
+- File &quot;./order.v&quot;, line 1008, characters 0-157:
+- Warning: Notation &quot;[ cblatticeType of _ for _ ]&quot; was already used in scope
+- form_scope. [notation-overridden,parsing]
+- File &quot;./order.v&quot;, line 1010, characters 0-205:
+- Warning: Notation &quot;[ cblatticeType of _ for _ with _ ]&quot; was already used in
+- scope form_scope. [notation-overridden,parsing]
+- File &quot;./order.v&quot;, line 1013, characters 0-135:
+- Warning: Notation &quot;[ cblatticeType of _ ]&quot; was already used in scope
+- form_scope. [notation-overridden,parsing]
+- File &quot;./order.v&quot;, line 1015, characters 0-170:
+- Warning: Notation &quot;[ cblatticeType of _ with _ ]&quot; was already used in scope
+- form_scope. [notation-overridden,parsing]
+- File &quot;./order.v&quot;, line 1022, characters 0-12:
+- Warning: Notation &quot;[ cblatticeType of _ for _ ]&quot; was already used in scope
+- form_scope. [notation-overridden,parsing]
+- File &quot;./order.v&quot;, line 1022, characters 0-12:
+- Warning: Notation &quot;[ cblatticeType of _ for _ with _ ]&quot; was already used in
+- scope form_scope. [notation-overridden,parsing]
+- File &quot;./order.v&quot;, line 1022, characters 0-12:
+- Warning: Notation &quot;[ cblatticeType of _ ]&quot; was already used in scope
+- form_scope. [notation-overridden,parsing]
+- File &quot;./order.v&quot;, line 1022, characters 0-12:
+- Warning: Notation &quot;[ cblatticeType of _ with _ ]&quot; was already used in scope
+- form_scope. [notation-overridden,parsing]
+- File &quot;./order.v&quot;, line 1025, characters 0-26:
+- Warning: Notation &quot;[ cblatticeType of _ for _ ]&quot; was already used in scope
+- form_scope. [notation-overridden,parsing]
+- File &quot;./order.v&quot;, line 1025, characters 0-26:
+- Warning: Notation &quot;[ cblatticeType of _ for _ with _ ]&quot; was already used in
+- scope form_scope. [notation-overridden,parsing]
+- File &quot;./order.v&quot;, line 1025, characters 0-26:
+- Warning: Notation &quot;[ cblatticeType of _ ]&quot; was already used in scope
+- form_scope. [notation-overridden,parsing]
+- File &quot;./order.v&quot;, line 1025, characters 0-26:
+- Warning: Notation &quot;[ cblatticeType of _ with _ ]&quot; was already used in scope
+- form_scope. [notation-overridden,parsing]
+- File &quot;./order.v&quot;, line 1653, characters 0-18:
+- Warning: Adding and removing hints in the core database implicitly is
+- deprecated. Please specify a hint database.
+- [implicit-core-hint-db,deprecated]
+- File &quot;./order.v&quot;, line 1656, characters 0-21:
+- Warning: Adding and removing hints in the core database implicitly is
+- deprecated. Please specify a hint database.
+- [implicit-core-hint-db,deprecated]
+- File &quot;./order.v&quot;, line 1671, characters 0-28:
+- Warning: Adding and removing hints in the core database implicitly is
+- deprecated. Please specify a hint database.
+- [implicit-core-hint-db,deprecated]
+- File &quot;./order.v&quot;, line 1824, characters 0-41:
+- Warning: Adding and removing hints in the core database implicitly is
+- deprecated. Please specify a hint database.
+- [implicit-core-hint-db,deprecated]
+- File &quot;./order.v&quot;, line 2044, characters 0-25:
+- Warning: Adding and removing hints in the core database implicitly is
+- deprecated. Please specify a hint database.
+- [implicit-core-hint-db,deprecated]
+- File &quot;./order.v&quot;, line 2113, characters 0-22:
+- Warning: Adding and removing hints in the core database implicitly is
+- deprecated. Please specify a hint database.
+- [implicit-core-hint-db,deprecated]
+- File &quot;./order.v&quot;, line 2116, characters 0-25:
+- Warning: Adding and removing hints in the core database implicitly is
+- deprecated. Please specify a hint database.
+- [implicit-core-hint-db,deprecated]
+- File &quot;./order.v&quot;, line 2153, characters 0-18:
+- Warning: Adding and removing hints in the core database implicitly is
+- deprecated. Please specify a hint database.
+- [implicit-core-hint-db,deprecated]
+- File &quot;./order.v&quot;, line 2365, characters 0-23:
+- Warning: Adding and removing hints in the core database implicitly is
+- deprecated. Please specify a hint database.
+- [implicit-core-hint-db,deprecated]
+- File &quot;./order.v&quot;, line 2476, characters 0-18:
+- Warning: Adding and removing hints in the core database implicitly is
+- deprecated. Please specify a hint database.
+- [implicit-core-hint-db,deprecated]
+- File &quot;./order.v&quot;, line 2847, characters 0-25:
+- Warning: Notation &quot;[ cblatticeType of _ for _ ]&quot; was already used in scope
+- form_scope. [notation-overridden,parsing]
+- File &quot;./order.v&quot;, line 2847, characters 0-25:
+- Warning: Notation &quot;[ cblatticeType of _ for _ with _ ]&quot; was already used in
+- scope form_scope. [notation-overridden,parsing]
+- File &quot;./order.v&quot;, line 2847, characters 0-25:
+- Warning: Notation &quot;[ cblatticeType of _ ]&quot; was already used in scope
+- form_scope. [notation-overridden,parsing]
+- File &quot;./order.v&quot;, line 2847, characters 0-25:
+- Warning: Notation &quot;[ cblatticeType of _ with _ ]&quot; was already used in scope
+- form_scope. [notation-overridden,parsing]
+- File &quot;./order.v&quot;, line 2849, characters 0-26:
+- Warning: Notation &quot;[ cblatticeType of _ for _ ]&quot; was already used in scope
+- form_scope. [notation-overridden,parsing]
+- File &quot;./order.v&quot;, line 2849, characters 0-26:
+- Warning: Notation &quot;[ cblatticeType of _ for _ with _ ]&quot; was already used in
+- scope form_scope. [notation-overridden,parsing]
+- File &quot;./order.v&quot;, line 2849, characters 0-26:
+- Warning: Notation &quot;[ cblatticeType of _ ]&quot; was already used in scope
+- form_scope. [notation-overridden,parsing]
+- File &quot;./order.v&quot;, line 2849, characters 0-26:
+- Warning: Notation &quot;[ cblatticeType of _ with _ ]&quot; was already used in scope
+- form_scope. [notation-overridden,parsing]
+- make[1]: *** [Makefile.coq:327: all] Error 2
+- make[1]: Leaving directory &#39;/home/bench/.opam/ocaml-base-compiler.4.09.0/.opam-switch/build/coq-mathcomp-finmap.1.2.0&#39;
+- make: *** [Makefile.common:51: this-build] Error 2
+[ERROR] The compilation of coq-mathcomp-finmap failed at &quot;/home/bench/.opam/opam-init/hooks/sandbox.sh build make -j 4&quot;.
+#=== ERROR while compiling coq-mathcomp-finmap.1.2.0 ==========================#
+# context              2.0.5 | linux/x86_64 | ocaml-base-compiler.4.09.0 | file:///home/bench/run/opam-coq-archive/released
+# path                 ~/.opam/ocaml-base-compiler.4.09.0/.opam-switch/build/coq-mathcomp-finmap.1.2.0
+# command              ~/.opam/opam-init/hooks/sandbox.sh build make -j 4
+# exit-code            2
+# env-file             ~/.opam/log/coq-mathcomp-finmap-1118-335865.env
+# output-file          ~/.opam/log/coq-mathcomp-finmap-1118-335865.out
+### output ###
+# [...]
+# File &quot;./order.v&quot;, line 2849, characters 0-26:
+# Warning: Notation &quot;[ cblatticeType of _ for _ with _ ]&quot; was already used in
+# scope form_scope. [notation-overridden,parsing]
+# File &quot;./order.v&quot;, line 2849, characters 0-26:
+# Warning: Notation &quot;[ cblatticeType of _ ]&quot; was already used in scope
+# form_scope. [notation-overridden,parsing]
+# File &quot;./order.v&quot;, line 2849, characters 0-26:
+# Warning: Notation &quot;[ cblatticeType of _ with _ ]&quot; was already used in scope
+# form_scope. [notation-overridden,parsing]
+# make[1]: *** [Makefile.coq:327: all] Error 2
+# make[1]: Leaving directory &#39;/home/bench/.opam/ocaml-base-compiler.4.09.0/.opam-switch/build/coq-mathcomp-finmap.1.2.0&#39;
+# make: *** [Makefile.common:51: this-build] Error 2
+&lt;&gt;&lt;&gt; Error report &lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;
++- The following actions failed
+| - build coq-mathcomp-finmap 1.2.0
++- 
+- No changes have been performed
+# Run eval $(opam env) to update the current shell environment
+&#39;opam install -y -v coq-mathcomp-finmap.1.2.0 coq.8.11.dev&#39; failed.
+</pre></dd>
             </dl>
             <h2>Installation size</h2>
             <p>No files were installed.</p>
