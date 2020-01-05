@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>fcsl-pcm: Not compatible</title>
+    <title>fcsl-pcm: 1 m 3 s</title>
     <link rel="shortcut icon" type="image/png" href="../../../../../favicon.png" />
     <link href="../../../../../bootstrap.min.css" rel="stylesheet">
     <link href="../../../../../bootstrap-custom.css" rel="stylesheet">
@@ -39,10 +39,10 @@
               fcsl-pcm
               <small>
                 dev
-                <span class="label label-info">Not compatible</span>
+                <span class="label label-success">1 m 3 s</span>
               </small>
             </h1>
-            <p><em><script>document.write(moment("2019-12-10 14:37:09 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2019-12-10 14:37:09 UTC)</em><p>
+            <p><em><script>document.write(moment("2020-01-05 01:30:34 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2020-01-05 01:30:34 UTC)</em><p>
             <h2>Context</h2>
             <pre># Packages matching: installed
 # Name              # Installed # Synopsis
@@ -59,7 +59,6 @@ ocaml-config        1           OCaml Switch Configuration
 ocamlfind           1.8.1       A library manager for OCaml
 # opam file:
 opam-version: &quot;2.0&quot;
-name: &quot;coq-fcsl-pcm&quot;
 version: &quot;dev&quot;
 maintainer: &quot;FCSL &lt;fcsl@software.imdea.org&gt;&quot;
 homepage: &quot;http://software.imdea.org/fcsl/&quot;
@@ -70,7 +69,7 @@ build: [ make &quot;-j%{jobs}%&quot; ]
 install: [ make &quot;install&quot; ]
 depends: [
   &quot;ocaml&quot;
-  &quot;coq&quot; {(&gt;= &quot;8.10&quot; &amp; &lt; &quot;8.11~&quot;) | (= &quot;dev&quot;)}
+  &quot;coq&quot; {(&gt;= &quot;8.10&quot; &amp; &lt; &quot;8.12~&quot;) | (= &quot;dev&quot;)}
   &quot;coq-mathcomp-ssreflect&quot; {(= &quot;dev&quot;)}
 ]
 tags: [
@@ -109,48 +108,77 @@ url {
               <dt>Command</dt>
               <dd><code>opam install -y --show-action coq-fcsl-pcm.dev coq.8.11.dev</code></dd>
               <dt>Return code</dt>
-              <dd>5120</dd>
-              <dt>Output</dt>
-              <dd><pre>[NOTE] Package coq is already installed (current version is 8.11.dev).
-The following dependencies couldn&#39;t be met:
-  - coq-fcsl-pcm -&gt; coq (&lt; 8.11~ &amp; = dev) -&gt; ocaml &lt; 4.06.0
-      base of this switch (use `--unlock-base&#39; to force)
-Your request can&#39;t be satisfied:
-  - No available version of coq satisfies the constraints
-No solution found, exiting
-</pre></dd>
+              <dd>0</dd>
             </dl>
             <p>Dry install without Coq/switch base, to test if the problem was incompatibility with the current Coq/OCaml version:</p>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>opam remove -y coq; opam install -y --show-action --unlock-base coq-fcsl-pcm.dev</code></dd>
+              <dd><code>true</code></dd>
               <dt>Return code</dt>
               <dd>0</dd>
             </dl>
             <h2>Install dependencies</h2>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>true</code></dd>
+              <dd><code>opam list; echo; ulimit -Sv 4000000; timeout 2h opam install -y --deps-only coq-fcsl-pcm.dev coq.8.11.dev</code></dd>
               <dt>Return code</dt>
               <dd>0</dd>
               <dt>Duration</dt>
-              <dd>0 s</dd>
+              <dd>1 m 26 s</dd>
             </dl>
             <h2>Install</h2>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>true</code></dd>
+              <dd><code>opam list; echo; ulimit -Sv 4000000; timeout 1h opam install -y coq-fcsl-pcm.dev coq.8.11.dev</code></dd>
               <dt>Return code</dt>
               <dd>0</dd>
               <dt>Duration</dt>
-              <dd>0 s</dd>
+              <dd>1 m 3 s</dd>
             </dl>
             <h2>Installation size</h2>
-            <p>No files were installed.</p>
+            <p>Total: 4 M</p>
+            <ul>
+              <li>595 K <code>../ocaml-base-compiler.4.06.1/lib/coq/user-contrib/fcsl/pcm/unionmap.vo</code></li>
+              <li>468 K <code>../ocaml-base-compiler.4.06.1/lib/coq/user-contrib/fcsl/pcm/unionmap.glob</code></li>
+              <li>411 K <code>../ocaml-base-compiler.4.06.1/lib/coq/user-contrib/fcsl/finmap/finmap.vo</code></li>
+              <li>242 K <code>../ocaml-base-compiler.4.06.1/lib/coq/user-contrib/fcsl/finmap/finmap.glob</code></li>
+              <li>214 K <code>../ocaml-base-compiler.4.06.1/lib/coq/user-contrib/fcsl/pcm/heap.vo</code></li>
+              <li>195 K <code>../ocaml-base-compiler.4.06.1/lib/coq/user-contrib/fcsl/pcm/automap.vo</code></li>
+              <li>157 K <code>../ocaml-base-compiler.4.06.1/lib/coq/user-contrib/fcsl/pcm/natmap.vo</code></li>
+              <li>150 K <code>../ocaml-base-compiler.4.06.1/lib/coq/user-contrib/fcsl/pcm/pred.vo</code></li>
+              <li>128 K <code>../ocaml-base-compiler.4.06.1/lib/coq/user-contrib/fcsl/pcm/heap.glob</code></li>
+              <li>128 K <code>../ocaml-base-compiler.4.06.1/lib/coq/user-contrib/fcsl/pcm/prelude.vo</code></li>
+              <li>111 K <code>../ocaml-base-compiler.4.06.1/lib/coq/user-contrib/fcsl/pcm/natmap.glob</code></li>
+              <li>111 K <code>../ocaml-base-compiler.4.06.1/lib/coq/user-contrib/fcsl/pcm/pcm.vo</code></li>
+              <li>100 K <code>../ocaml-base-compiler.4.06.1/lib/coq/user-contrib/fcsl/pcm/mutex.vo</code></li>
+              <li>92 K <code>../ocaml-base-compiler.4.06.1/lib/coq/user-contrib/fcsl/pcm/automap.glob</code></li>
+              <li>92 K <code>../ocaml-base-compiler.4.06.1/lib/coq/user-contrib/fcsl/finmap/ordtype.vo</code></li>
+              <li>77 K <code>../ocaml-base-compiler.4.06.1/lib/coq/user-contrib/fcsl/pcm/pcm.glob</code></li>
+              <li>74 K <code>../ocaml-base-compiler.4.06.1/lib/coq/user-contrib/fcsl/pcm/unionmap.v</code></li>
+              <li>68 K <code>../ocaml-base-compiler.4.06.1/lib/coq/user-contrib/fcsl/pcm/lift.vo</code></li>
+              <li>63 K <code>../ocaml-base-compiler.4.06.1/lib/coq/user-contrib/fcsl/pcm/pred.glob</code></li>
+              <li>51 K <code>../ocaml-base-compiler.4.06.1/lib/coq/user-contrib/fcsl/pcm/mutex.glob</code></li>
+              <li>50 K <code>../ocaml-base-compiler.4.06.1/lib/coq/user-contrib/fcsl/pcm/prelude.glob</code></li>
+              <li>43 K <code>../ocaml-base-compiler.4.06.1/lib/coq/user-contrib/fcsl/finmap/ordtype.glob</code></li>
+              <li>42 K <code>../ocaml-base-compiler.4.06.1/lib/coq/user-contrib/fcsl/finmap/finmap.v</code></li>
+              <li>29 K <code>../ocaml-base-compiler.4.06.1/lib/coq/user-contrib/fcsl/pcm/automap.v</code></li>
+              <li>26 K <code>../ocaml-base-compiler.4.06.1/lib/coq/user-contrib/fcsl/pcm/axioms.vo</code></li>
+              <li>25 K <code>../ocaml-base-compiler.4.06.1/lib/coq/user-contrib/fcsl/pcm/lift.glob</code></li>
+              <li>24 K <code>../ocaml-base-compiler.4.06.1/lib/coq/user-contrib/fcsl/pcm/heap.v</code></li>
+              <li>21 K <code>../ocaml-base-compiler.4.06.1/lib/coq/user-contrib/fcsl/pcm/pred.v</code></li>
+              <li>21 K <code>../ocaml-base-compiler.4.06.1/lib/coq/user-contrib/fcsl/pcm/natmap.v</code></li>
+              <li>18 K <code>../ocaml-base-compiler.4.06.1/lib/coq/user-contrib/fcsl/pcm/pcm.v</code></li>
+              <li>10 K <code>../ocaml-base-compiler.4.06.1/lib/coq/user-contrib/fcsl/finmap/ordtype.v</code></li>
+              <li>10 K <code>../ocaml-base-compiler.4.06.1/lib/coq/user-contrib/fcsl/pcm/axioms.glob</code></li>
+              <li>9 K <code>../ocaml-base-compiler.4.06.1/lib/coq/user-contrib/fcsl/pcm/mutex.v</code></li>
+              <li>9 K <code>../ocaml-base-compiler.4.06.1/lib/coq/user-contrib/fcsl/pcm/prelude.v</code></li>
+              <li>7 K <code>../ocaml-base-compiler.4.06.1/lib/coq/user-contrib/fcsl/pcm/lift.v</code></li>
+              <li>4 K <code>../ocaml-base-compiler.4.06.1/lib/coq/user-contrib/fcsl/pcm/axioms.v</code></li>
+            </ul>
             <h2>Uninstall</h2>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>true</code></dd>
+              <dd><code>opam remove -y coq-fcsl-pcm.dev</code></dd>
               <dt>Return code</dt>
               <dd>0</dd>
               <dt>Missing removes</dt>
