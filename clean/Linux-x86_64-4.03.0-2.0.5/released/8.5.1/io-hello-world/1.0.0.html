@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>io-hello-world: 8 s</title>
+    <title>io-hello-world: Error with dependencies</title>
     <link rel="shortcut icon" type="image/png" href="../../../../../favicon.png" />
     <link href="../../../../../bootstrap.min.css" rel="stylesheet">
     <link href="../../../../../bootstrap-custom.css" rel="stylesheet">
@@ -39,10 +39,10 @@
               io-hello-world
               <small>
                 1.0.0
-                <span class="label label-success">8 s</span>
+                <span class="label label-warning">Error with dependencies</span>
               </small>
             </h1>
-            <p><em><script>document.write(moment("2019-12-04 01:10:20 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2019-12-04 01:10:20 UTC)</em><p>
+            <p><em><script>document.write(moment("2020-01-07 06:35:08 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2020-01-07 06:35:08 UTC)</em><p>
             <h2>Context</h2>
             <pre># Packages matching: installed
 # Name              # Installed # Synopsis
@@ -116,28 +116,81 @@ url {
               <dt>Command</dt>
               <dd><code>opam list; echo; ulimit -Sv 4000000; timeout 2h opam install -y --deps-only coq-io-hello-world.1.0.0 coq.8.5.1</code></dd>
               <dt>Return code</dt>
-              <dd>0</dd>
+              <dd>10240</dd>
               <dt>Duration</dt>
-              <dd>7 m 0 s</dd>
+              <dd>7 m 48 s</dd>
+              <dt>Output</dt>
+              <dd><pre># Packages matching: installed
+# Name              # Installed # Synopsis
+base-bigarray       base
+base-num            base        Num library distributed with the OCaml compiler
+base-threads        base
+base-unix           base
+camlp5              7.10        Preprocessor-pretty-printer of OCaml
+conf-findutils      1           Virtual package relying on findutils
+coq                 8.5.1       Formal proof management system.
+num                 0           The Num library for arbitrary-precision integer and rational arithmetic
+ocaml               4.03.0      The OCaml compiler (virtual package)
+ocaml-base-compiler 4.03.0      Official 4.03.0 release
+ocaml-config        1           OCaml Switch Configuration
+The following actions will be performed:
+  - install dune                1.11.4
+  - install coq-error-handlers  1.2.0
+  - install conf-m4             1
+  - install coq-list-plus       1.1.0
+  - install coq-cunit           1.0.0
+  - install coq-io              3.0.0
+  - install coq-function-ninjas 1.0.0
+  - install ocamlbuild          0.14.0
+  - install seq                 0.2.2
+  - install result              1.4
+  - install mmap                1.1.0
+  - install dune-configurator   1.0.0
+  - install cppo                1.6.6
+  - install ocamlfind           1.8.1
+  - install coq-list-string     2.1.2
+  - install base-bytes          base
+  - install ocplib-endian       1.0
+  - install lwt                 4.5.0
+  - install coq-io-system-ocaml 2.2.0
+  - install coq-io-system       2.2.0
+===== 20 to install =====
+&lt;&gt;&lt;&gt; Gathering sources &gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;
+[coq-io-system.2.2.0] downloaded from https://github.com/coq-io/system/archive/2.2.0.tar.gz
+[coq-io.3.0.0] downloaded from https://github.com/coq-io/io/archive/3.0.0.tar.gz
+[coq-io-system-ocaml.2.2.0] downloaded from https://github.com/coq-io/system-ocaml/archive/2.2.0.tar.gz
+[cppo.1.6.6] downloaded from cache at https://opam.ocaml.org/cache
+[coq-list-plus.1.1.0] downloaded from https://github.com/clarus/coq-list-plus/archive/1.1.0.tar.gz
+[coq-list-string.2.1.2] downloaded from https://github.com/clarus/coq-list-string/archive/2.1.2.tar.gz
+[mmap.1.1.0] downloaded from cache at https://opam.ocaml.org/cache
+[lwt.4.5.0] downloaded from https://github.com/ocsigen/lwt/archive/4.5.0.tar.gz
+[ocamlfind.1.8.1] downloaded from cache at https://opam.ocaml.org/cache
+[ocplib-endian.1.0] downloaded from cache at https://opam.ocaml.org/cache
+[result.1.4] downloaded from cache at https://opam.ocaml.org/cache
+[seq.0.2.2] downloaded from cache at https://opam.ocaml.org/cache
+[ocamlbuild.0.14.0] downloaded from https://github.com/ocaml/ocamlbuild/archive/0.14.0.tar.gz
+[dune.1.11.4] downloaded from https://github.com/ocaml/dune/releases/download/1.11.4/dune-build-info-1.11.4.tbz
+[ERROR] The sources of the following couldn&#39;t be obtained, aborting:
+          - coq-cunit.1.0.0: Curl failed
+          - coq-error-handlers.1.2.0: Curl failed
+          - coq-function-ninjas.1.0.0: Curl failed
+</pre></dd>
             </dl>
             <h2>Install</h2>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>opam list; echo; ulimit -Sv 4000000; timeout 1h opam install -y -v coq-io-hello-world.1.0.0 coq.8.5.1</code></dd>
+              <dd><code>true</code></dd>
               <dt>Return code</dt>
               <dd>0</dd>
               <dt>Duration</dt>
-              <dd>8 s</dd>
+              <dd>0 s</dd>
             </dl>
             <h2>Installation size</h2>
-            <p>Total: 2 M</p>
-            <ul>
-              <li>2 M <code>../ocaml-base-compiler.4.03.0/bin/helloWorld</code></li>
-            </ul>
+            <p>No files were installed.</p>
             <h2>Uninstall</h2>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>opam remove -y coq-io-hello-world.1.0.0</code></dd>
+              <dd><code>true</code></dd>
               <dt>Return code</dt>
               <dd>0</dd>
               <dt>Missing removes</dt>
