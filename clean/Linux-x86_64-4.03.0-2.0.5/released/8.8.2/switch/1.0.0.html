@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>switch: Error with dependencies</title>
+    <title>switch: Not compatible</title>
     <link rel="shortcut icon" type="image/png" href="../../../../../favicon.png" />
     <link href="../../../../../bootstrap.min.css" rel="stylesheet">
     <link href="../../../../../bootstrap-custom.css" rel="stylesheet">
@@ -39,10 +39,10 @@
               switch
               <small>
                 1.0.0
-                <span class="label label-warning">Error with dependencies</span>
+                <span class="label label-info">Not compatible</span>
               </small>
             </h1>
-            <p><em><script>document.write(moment("2019-12-08 23:33:30 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2019-12-08 23:33:30 UTC)</em><p>
+            <p><em><script>document.write(moment("2020-01-10 16:30:38 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2020-01-10 16:30:38 UTC)</em><p>
             <h2>Context</h2>
             <pre># Packages matching: installed
 # Name              # Installed # Synopsis
@@ -112,73 +112,30 @@ url {
               <dt>Command</dt>
               <dd><code>opam install -y --show-action coq-switch.1.0.0 coq.8.8.2</code></dd>
               <dt>Return code</dt>
-              <dd>0</dd>
+              <dd>5120</dd>
+              <dt>Output</dt>
+              <dd><pre>[NOTE] Package coq is already installed (current version is 8.8.2).
+The following dependencies couldn&#39;t be met:
+  - coq-switch -&gt; coq-template-coq &gt;= 2.1~beta3 -&gt; ocaml &gt;= 4.05
+      base of this switch (use `--unlock-base&#39; to force)
+No solution found, exiting
+</pre></dd>
             </dl>
             <p>Dry install without Coq/switch base, to test if the problem was incompatibility with the current Coq/OCaml version:</p>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>true</code></dd>
+              <dd><code>opam remove -y coq; opam install -y --show-action --unlock-base coq-switch.1.0.0</code></dd>
               <dt>Return code</dt>
               <dd>0</dd>
             </dl>
             <h2>Install dependencies</h2>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>opam list; echo; ulimit -Sv 4000000; timeout 2h opam install -y --deps-only coq-switch.1.0.0 coq.8.8.2</code></dd>
+              <dd><code>true</code></dd>
               <dt>Return code</dt>
-              <dd>7936</dd>
+              <dd>0</dd>
               <dt>Duration</dt>
-              <dd>1 m 34 s</dd>
-              <dt>Output</dt>
-              <dd><pre># Packages matching: installed
-# Name              # Installed # Synopsis
-base-bigarray       base
-base-num            base        Num library distributed with the OCaml compiler
-base-threads        base
-base-unix           base
-camlp5              7.10        Preprocessor-pretty-printer of OCaml
-conf-findutils      1           Virtual package relying on findutils
-conf-m4             1           Virtual package relying on m4
-coq                 8.8.2       Formal proof management system.
-num                 0           The Num library for arbitrary-precision integer and rational arithmetic
-ocaml               4.03.0      The OCaml compiler (virtual package)
-ocaml-base-compiler 4.03.0      Official 4.03.0 release
-ocaml-config        1           OCaml Switch Configuration
-ocamlfind           1.8.1       A library manager for OCaml
-The following actions will be performed:
-  - install coq-template-coq 2.1~beta3
-&lt;&gt;&lt;&gt; Gathering sources &gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;
-[coq-template-coq.2.1~beta3] downloaded from https://github.com/MetaCoq/metacoq/archive/v2.1-beta3.tar.gz
-&lt;&gt;&lt;&gt; Processing actions &lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;
-[ERROR] The compilation of coq-template-coq failed at &quot;/home/bench/.opam/opam-init/hooks/sandbox.sh build make -j4&quot;.
-#=== ERROR while compiling coq-template-coq.2.1~beta3 =========================#
-# context              2.0.5 | linux/x86_64 | ocaml-base-compiler.4.03.0 | file:///home/bench/run/opam-coq-archive/released
-# path                 ~/.opam/ocaml-base-compiler.4.03.0/.opam-switch/build/coq-template-coq.2.1~beta3
-# command              ~/.opam/opam-init/hooks/sandbox.sh build make -j4
-# exit-code            2
-# env-file             ~/.opam/log/coq-template-coq-14836-865888.env
-# output-file          ~/.opam/log/coq-template-coq-14836-865888.out
-### output ###
-# [...]
-# File &quot;command line&quot;, line 1:
-# Error: Unbound module Template_coq_checker_plugin.Typing0
-# Makefile.plugin:588: recipe for target &#39;src/ast1.cmi&#39; failed
-# make[3]: *** [src/ast1.cmi] Error 2
-# Makefile.plugin:317: recipe for target &#39;all&#39; failed
-# make[2]: *** [all] Error 2
-# make[2]: Leaving directory &#39;/home/bench/.opam/ocaml-base-compiler.4.03.0/.opam-switch/build/coq-template-coq.2.1~beta3/extraction&#39;
-# Makefile:15: recipe for target &#39;plugin&#39; failed
-# make[1]: *** [plugin] Error 2
-# make[1]: Leaving directory &#39;/home/bench/.opam/ocaml-base-compiler.4.03.0/.opam-switch/build/coq-template-coq.2.1~beta3/extraction&#39;
-# Makefile:37: recipe for target &#39;extraction&#39; failed
-# make: *** [extraction] Error 2
-&lt;&gt;&lt;&gt; Error report &lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;
-+- The following actions failed
-| - build coq-template-coq 2.1~beta3
-+- 
-- No changes have been performed
-# Run eval $(opam env) to update the current shell environment
-</pre></dd>
+              <dd>0 s</dd>
             </dl>
             <h2>Install</h2>
             <dl class="dl-horizontal">
