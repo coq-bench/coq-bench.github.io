@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>io-system-ocaml: 6 s</title>
+    <title>io-system-ocaml: Error</title>
     <link rel="shortcut icon" type="image/png" href="../../../../../favicon.png" />
     <link href="../../../../../bootstrap.min.css" rel="stylesheet">
     <link href="../../../../../bootstrap-custom.css" rel="stylesheet">
@@ -39,10 +39,10 @@
               io-system-ocaml
               <small>
                 2.3.0
-                <span class="label label-success">6 s</span>
+                <span class="label label-danger">Error</span>
               </small>
             </h1>
-            <p><em><script>document.write(moment("2019-11-30 00:02:31 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2019-11-30 00:02:31 UTC)</em><p>
+            <p><em><script>document.write(moment("2020-01-13 11:03:27 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2020-01-13 11:03:27 UTC)</em><p>
             <h2>Context</h2>
             <pre># Packages matching: installed
 # Name              # Installed # Synopsis
@@ -74,10 +74,13 @@ install: [
   [make &quot;install&quot;]
 ]
 depends: [
-  &quot;lwt&quot; {&gt;= &quot;2.4.7&quot;}
+  &quot;lwt&quot; {&gt;= &quot;2.4.7&quot; &amp; &lt; &quot;5&quot;}
   &quot;ocaml&quot; {&gt;= &quot;4.00.0&quot; &amp; &lt; &quot;4.06.0&quot;}
   &quot;ocamlfind&quot;
   &quot;num&quot;
+]
+conflicts: [
+  &quot;ocaml-secondary-compiler&quot;
 ]
 tags: [
   &quot;date:2015-04-28&quot;
@@ -119,32 +122,78 @@ url {
               <dt>Return code</dt>
               <dd>0</dd>
               <dt>Duration</dt>
-              <dd>9 m 11 s</dd>
+              <dd>2 m 12 s</dd>
             </dl>
             <h2>Install</h2>
             <dl class="dl-horizontal">
               <dt>Command</dt>
               <dd><code>opam list; echo; ulimit -Sv 4000000; timeout 1h opam install -y -v coq-io-system-ocaml.2.3.0 coq.8.9.0</code></dd>
               <dt>Return code</dt>
-              <dd>0</dd>
+              <dd>7936</dd>
               <dt>Duration</dt>
-              <dd>6 s</dd>
+              <dd>5 s</dd>
+              <dt>Output</dt>
+              <dd><pre># Packages matching: installed
+# Name              # Installed # Synopsis
+base-bigarray       base
+base-num            base        Num library distributed with the OCaml compiler
+base-threads        base
+base-unix           base
+camlp5              7.10        Preprocessor-pretty-printer of OCaml
+conf-findutils      1           Virtual package relying on findutils
+conf-m4             1           Virtual package relying on m4
+coq                 8.9.0       Formal proof management system
+cppo                1.6.6       Code preprocessor like cpp for OCaml
+dune                1.11.4      Fast, portable and opinionated build system
+lwt                 4.2.1       Promises and event-driven I/O
+mmap                1.1.0       File mapping functionality
+num                 0           The Num library for arbitrary-precision integer and rational arithmetic
+ocaml               4.03.0      The OCaml compiler (virtual package)
+ocaml-base-compiler 4.03.0      Official 4.03.0 release
+ocaml-config        1           OCaml Switch Configuration
+ocamlfind           1.8.1       A library manager for OCaml
+result              1.4         Compatibility Result module
+seq                 0.2.2       Compatibility package for OCaml&#39;s standard iterator type starting from 4.07
+[NOTE] Package coq is already installed (current version is 8.9.0).
+The following actions will be performed:
+  - install coq-io-system-ocaml 2.3.0
+&lt;&gt;&lt;&gt; Gathering sources &gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;
+Processing  1/1: [coq-io-system-ocaml.2.3.0: http]
+[coq-io-system-ocaml.2.3.0] downloaded from https://github.com/coq-io/system-ocaml/archive/2.3.0.tar.gz
+Processing  1/1:
+&lt;&gt;&lt;&gt; Processing actions &lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;
+Processing  1/2: [coq-io-system-ocaml: make]
++ /home/bench/.opam/opam-init/hooks/sandbox.sh &quot;build&quot; &quot;make&quot; &quot;-j4&quot; (CWD=/home/bench/.opam/ocaml-base-compiler.4.03.0/.opam-switch/build/coq-io-system-ocaml.2.3.0)
+- ocamlbuild ioSystem.cma ioSystem.cmxa -use-ocamlfind -package lwt,lwt.unix,num
+- make: ocamlbuild: Command not found
+- make: *** [Makefile:2: default] Error 127
+[ERROR] The compilation of coq-io-system-ocaml failed at &quot;/home/bench/.opam/opam-init/hooks/sandbox.sh build make -j4&quot;.
+#=== ERROR while compiling coq-io-system-ocaml.2.3.0 ==========================#
+# context              2.0.5 | linux/x86_64 | ocaml-base-compiler.4.03.0 | file:///home/bench/run/opam-coq-archive/released
+# path                 ~/.opam/ocaml-base-compiler.4.03.0/.opam-switch/build/coq-io-system-ocaml.2.3.0
+# command              ~/.opam/opam-init/hooks/sandbox.sh build make -j4
+# exit-code            2
+# env-file             ~/.opam/log/coq-io-system-ocaml-10124-865888.env
+# output-file          ~/.opam/log/coq-io-system-ocaml-10124-865888.out
+### output ###
+# ocamlbuild ioSystem.cma ioSystem.cmxa -use-ocamlfind -package lwt,lwt.unix,num
+# make: ocamlbuild: Command not found
+# make: *** [Makefile:2: default] Error 127
+&lt;&gt;&lt;&gt; Error report &lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;
++- The following actions failed
+| - build coq-io-system-ocaml 2.3.0
++- 
+- No changes have been performed
+# Run eval $(opam env) to update the current shell environment
+&#39;opam install -y -v coq-io-system-ocaml.2.3.0 coq.8.9.0&#39; failed.
+</pre></dd>
             </dl>
             <h2>Installation size</h2>
-            <p>Total: 38 K</p>
-            <ul>
-              <li>28 K <code>../ocaml-base-compiler.4.03.0/lib/io-system/ioSystem.a</code></li>
-              <li>6 K <code>../ocaml-base-compiler.4.03.0/lib/io-system/ioSystem.cma</code></li>
-              <li>3 K <code>../ocaml-base-compiler.4.03.0/lib/io-system/ioSystem.cmi</code></li>
-              <li>1 K <code>../ocaml-base-compiler.4.03.0/lib/io-system/ioSystem.cmx</code></li>
-              <li>1 K <code>../ocaml-base-compiler.4.03.0/lib/io-system/ioSystem.cmxa</code></li>
-              <li>1 K <code>../ocaml-base-compiler.4.03.0/lib/io-system/META</code></li>
-              <li>1 K <code>../ocaml-base-compiler.4.03.0/lib/io-system/ioSystem.mllib</code></li>
-            </ul>
+            <p>No files were installed.</p>
             <h2>Uninstall</h2>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>opam remove -y coq-io-system-ocaml.2.3.0</code></dd>
+              <dd><code>true</code></dd>
               <dt>Return code</dt>
               <dd>0</dd>
               <dt>Missing removes</dt>
