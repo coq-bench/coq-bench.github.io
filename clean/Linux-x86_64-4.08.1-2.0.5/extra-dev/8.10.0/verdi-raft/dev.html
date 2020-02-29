@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>verdi-raft: 28 m 38 s</title>
+    <title>verdi-raft: 30 m 49 s</title>
     <link rel="shortcut icon" type="image/png" href="../../../../../favicon.png" />
     <link href="../../../../../bootstrap.min.css" rel="stylesheet">
     <link href="../../../../../bootstrap-custom.css" rel="stylesheet">
@@ -39,10 +39,10 @@
               verdi-raft
               <small>
                 dev
-                <span class="label label-success">28 m 38 s</span>
+                <span class="label label-success">30 m 49 s</span>
               </small>
             </h1>
-            <p><em><script>document.write(moment("2020-01-30 23:09:41 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2020-01-30 23:09:41 UTC)</em><p>
+            <p><em><script>document.write(moment("2020-02-29 22:51:07 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2020-02-29 22:51:07 UTC)</em><p>
             <h2>Context</h2>
             <pre># Packages matching: installed
 # Name              # Installed # Synopsis
@@ -69,15 +69,15 @@ description: &quot;&quot;&quot;
 Raft is a distributed consensus algorithm that is designed to be easy to understand
 and is equivalent to Paxos in fault tolerance and performance. Verdi Raft is a
 verified implementation of Raft in Coq, constructed using the Verdi framework.
+Included is a verified fault-tolerant key-value store using Raft.
 &quot;&quot;&quot;
 build: [
-  [ &quot;./configure&quot; ]
-  [ make &quot;-j%{jobs}%&quot; ]
+  [&quot;./configure&quot;]
+  [make &quot;-j%{jobs}%&quot;]
 ]
-install: [ make &quot;install&quot; ]
+install: [make &quot;install&quot;]
 depends: [
-  &quot;ocaml&quot;
-  &quot;coq&quot; {(&gt;= &quot;8.7&quot; &amp; &lt; &quot;8.11~&quot;) | (= &quot;dev&quot;)}
+  &quot;coq&quot; {(&gt;= &quot;8.7&quot; &amp; &lt; &quot;8.12~&quot;) | (= &quot;dev&quot;)}
   &quot;coq-verdi&quot; {= &quot;dev&quot;}
   &quot;coq-struct-tact&quot; {= &quot;dev&quot;}
   &quot;coq-cheerios&quot; {= &quot;dev&quot;}
@@ -86,18 +86,20 @@ tags: [
   &quot;category:Computer Science/Concurrent Systems and Protocols/Theory of concurrent systems&quot;
   &quot;keyword:program verification&quot;
   &quot;keyword:distributed algorithms&quot;
+  &quot;keyword:fault tolerance&quot;
   &quot;keyword:raft&quot;
+  &quot;keyword:key-value store&quot;
   &quot;logpath:VerdiRaft&quot;
 ]
 authors: [
-  &quot;James R. Wilcox&quot;
-  &quot;Doug Woos&quot;
+  &quot;Justin Adsuara&quot;
+  &quot;Steve Anton&quot;
+  &quot;Ryan Doenges&quot;
+  &quot;Karl Palmskog&quot;
   &quot;Pavel Panchekha&quot;
   &quot;Zachary Tatlock&quot;
-  &quot;Steve Anton&quot;
-  &quot;Karl Palmskog&quot;
-  &quot;Ryan Doenges&quot;
-  &quot;Justin Adsuara&quot;
+  &quot;James R. Wilcox&quot;
+  &quot;Doug Woos&quot;
 ]
 url {
   src: &quot;git+https://github.com/uwplse/verdi-raft.git#master&quot;
@@ -132,16 +134,16 @@ url {
               <dt>Return code</dt>
               <dd>0</dd>
               <dt>Duration</dt>
-              <dd>3 m 8 s</dd>
+              <dd>4 m 11 s</dd>
             </dl>
             <h2>Install</h2>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>opam list; echo; ulimit -Sv 4000000; timeout 1h opam install -y coq-verdi-raft.dev coq.8.10.0</code></dd>
+              <dd><code>opam list; echo; ulimit -Sv 16000000; timeout 2h opam install -y coq-verdi-raft.dev coq.8.10.0</code></dd>
               <dt>Return code</dt>
               <dd>0</dd>
               <dt>Duration</dt>
-              <dd>28 m 38 s</dd>
+              <dd>30 m 49 s</dd>
             </dl>
             <h2>Installation size</h2>
             <p>Total: 40 M</p>
@@ -404,6 +406,7 @@ url {
               <li>37 K <code>../ocaml-base-compiler.4.08.1/lib/coq/user-contrib/VerdiRaft/UniqueIndicesProof.vo</code></li>
               <li>37 K <code>../ocaml-base-compiler.4.08.1/lib/coq/user-contrib/VerdiRaft/Raft.v</code></li>
               <li>36 K <code>../ocaml-base-compiler.4.08.1/lib/coq/user-contrib/VerdiRaft/EveryEntryWasCreatedHostLogProof.vo</code></li>
+              <li>36 K <code>../ocaml-base-compiler.4.08.1/lib/coq/user-contrib/VerdiRaft/ExtractVarDRaftDebug.vo</code></li>
               <li>36 K <code>../ocaml-base-compiler.4.08.1/lib/coq/user-contrib/VerdiRaft/ExtractVarDRaft.vo</code></li>
               <li>35 K <code>../ocaml-base-compiler.4.08.1/lib/coq/user-contrib/VerdiRaft/AllEntriesLeaderSublogProof.glob</code></li>
               <li>33 K <code>../ocaml-base-compiler.4.08.1/lib/coq/user-contrib/VerdiRaft/AppendEntriesRequestReplyCorrespondenceProof.glob</code></li>
@@ -764,8 +767,10 @@ url {
               <li>1 K <code>../ocaml-base-compiler.4.08.1/lib/coq/user-contrib/VerdiRaft/LastAppliedLeCommitIndexInterface.v</code></li>
               <li>1 K <code>../ocaml-base-compiler.4.08.1/lib/coq/user-contrib/VerdiRaft/NextIndexSafetyInterface.v</code></li>
               <li>1 K <code>../ocaml-base-compiler.4.08.1/lib/coq/user-contrib/VerdiRaft/CurrentTermGtZeroInterface.v</code></li>
+              <li>1 K <code>../ocaml-base-compiler.4.08.1/lib/coq/user-contrib/VerdiRaft/ExtractVarDRaftDebug.glob</code></li>
               <li>1 K <code>../ocaml-base-compiler.4.08.1/lib/coq/user-contrib/VerdiRaft/VarDRaft.v</code></li>
               <li>1 K <code>../ocaml-base-compiler.4.08.1/lib/coq/user-contrib/VerdiRaft/ExtractVarDRaft.glob</code></li>
+              <li>1 K <code>../ocaml-base-compiler.4.08.1/lib/coq/user-contrib/VerdiRaft/ExtractVarDRaftDebug.v</code></li>
               <li>1 K <code>../ocaml-base-compiler.4.08.1/lib/coq/user-contrib/VerdiRaft/ExtractVarDRaft.v</code></li>
             </ul>
             <h2>Uninstall</h2>

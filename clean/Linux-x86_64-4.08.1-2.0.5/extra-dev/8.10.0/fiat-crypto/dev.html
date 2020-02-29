@@ -42,7 +42,7 @@
                 <span class="label label-danger">Error</span>
               </small>
             </h1>
-            <p><em><script>document.write(moment("2020-01-30 23:09:41 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2020-01-30 23:09:41 UTC)</em><p>
+            <p><em><script>document.write(moment("2020-02-29 22:51:07 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2020-02-29 22:51:07 UTC)</em><p>
             <h2>Context</h2>
             <pre># Packages matching: installed
 # Name              # Installed # Synopsis
@@ -70,15 +70,14 @@ homepage: &quot;https://github.com/mit-plv/fiat-crypto&quot;
 bug-reports: &quot;https://github.com/mit-plv/fiat-crypto/issues&quot;
 license: &quot;MIT&quot;
 build: [
-  [make &quot;-j%{jobs}%&quot; &quot;EXTERNAL_DEPENDENCIES=1&quot; &quot;coq&quot; &quot;standalone-ocaml&quot;]
+  [make &quot;-j%{jobs}%&quot; &quot;EXTERNAL_DEPENDENCIES=1&quot; &quot;coq-without-bedrock2&quot; &quot;standalone-ocaml&quot;]
 ]
-install: [make &quot;EXTERNAL_DEPENDENCIES=1&quot; &quot;BINDIR=%{bin}%&quot; &quot;install&quot; &quot;install-standalone-ocaml&quot;]
+install: [make &quot;EXTERNAL_DEPENDENCIES=1&quot; &quot;BINDIR=%{bin}%&quot; &quot;install-without-bedrock2&quot; &quot;install-standalone-ocaml&quot;]
 depends: [
   &quot;ocaml&quot; {build}
   &quot;ocamlfind&quot; {build}
   &quot;coq&quot; {&gt;= &quot;8.9~&quot;}
   &quot;coq-coqprime&quot;
-  &quot;coq-bedrock2&quot;
   &quot;coq-rewriter&quot;
 ]
 dev-repo: &quot;git+https://github.com/mit-plv/fiat-crypto.git&quot;
@@ -117,12 +116,12 @@ url {
               <dt>Return code</dt>
               <dd>0</dd>
               <dt>Duration</dt>
-              <dd>29 m 57 s</dd>
+              <dd>19 m 15 s</dd>
             </dl>
             <h2>Install</h2>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>opam list; echo; ulimit -Sv 4000000; timeout 1h opam install -y coq-fiat-crypto.dev coq.8.10.0</code></dd>
+              <dd><code>opam list; echo; ulimit -Sv 16000000; timeout 2h opam install -y coq-fiat-crypto.dev coq.8.10.0</code></dd>
               <dt>Return code</dt>
               <dd>7936</dd>
               <dt>Duration</dt>
@@ -136,10 +135,8 @@ base-unix           base
 conf-findutils      1           Virtual package relying on findutils
 conf-m4             1           Virtual package relying on m4
 coq                 8.10.0      Formal proof management system
-coq-bedrock2        dev         A work-in-progress language and compiler for verified low-level programming
 coq-bignums         8.10.0      Bignums, the Coq library of arbitrary large numbers
 coq-coqprime        dev         Certifying prime numbers in Coq
-coq-coqutil         dev         Coq library for tactics, basic definitions, sets, maps
 coq-rewriter        dev         Reflective PHOAS rewriting/pattern-matching-compilation framework for simply-typed equalities and let-lifting
 num                 1.3         The legacy Num library for arbitrary-precision integer and rational arithmetic
 ocaml               4.08.1      The OCaml compiler (virtual package)
@@ -152,18 +149,18 @@ The following actions will be performed:
 &lt;&gt;&lt;&gt; Gathering sources &gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;
 [coq-fiat-crypto.dev] synchronised from git+https://github.com/mit-plv/fiat-crypto.git#master
 &lt;&gt;&lt;&gt; Processing actions &lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;
-[ERROR] The compilation of coq-fiat-crypto failed at &quot;/home/bench/.opam/opam-init/hooks/sandbox.sh build make -j4 EXTERNAL_DEPENDENCIES=1 coq standalone-ocaml&quot;.
+[ERROR] The compilation of coq-fiat-crypto failed at &quot;/home/bench/.opam/opam-init/hooks/sandbox.sh build make -j4 EXTERNAL_DEPENDENCIES=1 coq-without-bedrock2 standalone-ocaml&quot;.
 #=== ERROR while compiling coq-fiat-crypto.dev ================================#
 # context              2.0.5 | linux/x86_64 | ocaml-base-compiler.4.08.1 | file:///home/bench/run/opam-coq-archive/extra-dev
 # path                 ~/.opam/ocaml-base-compiler.4.08.1/.opam-switch/build/coq-fiat-crypto.dev
-# command              ~/.opam/opam-init/hooks/sandbox.sh build make -j4 EXTERNAL_DEPENDENCIES=1 coq standalone-ocaml
+# command              ~/.opam/opam-init/hooks/sandbox.sh build make -j4 EXTERNAL_DEPENDENCIES=1 coq-without-bedrock2 standalone-ocaml
 # exit-code            2
-# env-file             ~/.opam/log/coq-fiat-crypto-3367-c743ac.env
-# output-file          ~/.opam/log/coq-fiat-crypto-3367-c743ac.out
+# env-file             ~/.opam/log/coq-fiat-crypto-7647-c743ac.env
+# output-file          ~/.opam/log/coq-fiat-crypto-7647-c743ac.out
 ### output ###
 # ./src/Rewriter/PerfTesting/Specific/make.py primes.txt
 # /usr/bin/env: &#39;python3&#39;: No such file or directory
-# make: *** [Makefile:481: src/Rewriter/PerfTesting/Specific/generated/primes.mk] Error 127
+# make: *** [Makefile:614: src/Rewriter/PerfTesting/Specific/generated/primes.mk] Error 127
 &lt;&gt;&lt;&gt; Error report &lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;
 +- The following actions failed
 | - build coq-fiat-crypto dev
