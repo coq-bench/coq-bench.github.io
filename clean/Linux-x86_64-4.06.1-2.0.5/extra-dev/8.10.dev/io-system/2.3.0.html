@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>io-system: 9 s</title>
+    <title>io-system: Error with dependencies</title>
     <link rel="shortcut icon" type="image/png" href="../../../../../favicon.png" />
     <link href="../../../../../bootstrap.min.css" rel="stylesheet">
     <link href="../../../../../bootstrap-custom.css" rel="stylesheet">
@@ -39,10 +39,10 @@
               io-system
               <small>
                 2.3.0
-                <span class="label label-success">9 s</span>
+                <span class="label label-warning">Error with dependencies</span>
               </small>
             </h1>
-            <p><em><script>document.write(moment("2020-02-09 18:05:28 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2020-02-09 18:05:28 UTC)</em><p>
+            <p><em><script>document.write(moment("2020-03-05 02:46:30 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2020-03-05 02:46:30 UTC)</em><p>
             <h2>Context</h2>
             <pre># Packages matching: installed
 # Name              # Installed # Synopsis
@@ -119,36 +119,69 @@ url {
               <dt>Command</dt>
               <dd><code>opam list; echo; ulimit -Sv 4000000; timeout 2h opam install -y --deps-only coq-io-system.2.3.0 coq.8.10.dev</code></dd>
               <dt>Return code</dt>
-              <dd>0</dd>
+              <dd>10240</dd>
               <dt>Duration</dt>
-              <dd>1 m 56 s</dd>
+              <dd>2 m 15 s</dd>
+              <dt>Output</dt>
+              <dd><pre># Packages matching: installed
+# Name              # Installed # Synopsis
+base-bigarray       base
+base-threads        base
+base-unix           base
+conf-findutils      1           Virtual package relying on findutils
+conf-m4             1           Virtual package relying on m4
+coq                 8.10.dev    Formal proof management system
+num                 1.3         The legacy Num library for arbitrary-precision integer and rational arithmetic
+ocaml               4.06.1      The OCaml compiler (virtual package)
+ocaml-base-compiler 4.06.1      Official 4.06.1 release
+ocaml-config        1           OCaml Switch Configuration
+ocamlfind           1.8.1       A library manager for OCaml
+The following actions will be performed:
+  - install coq-list-plus       1.1.0
+  - install coq-io              3.1.0
+  - install coq-cunit           1.0.0
+  - install jbuilder            1.0+beta20.2
+  - install coq-error-handlers  1.2.0
+  - install coq-function-ninjas 1.0.0
+  - install ocamlbuild          0.14.0
+  - install result              1.3
+  - install cppo                1.6.5
+  - install coq-list-string     2.1.2
+  - install lwt                 4.1.0         For the PPX, please install package lwt_ppx
+                                              For Lwt_log and Lwt_daemon, please install package lwt_log
+  - install coq-io-system-ocaml 2.3.1
+===== 12 to install =====
+&lt;&gt;&lt;&gt; Gathering sources &gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;
+[coq-error-handlers.1.2.0] downloaded from https://github.com/clarus/coq-error-handlers/archive/1.2.0.tar.gz
+[coq-function-ninjas.1.0.0] downloaded from https://github.com/clarus/coq-function-ninjas/archive/1.0.0.tar.gz
+[coq-io-system-ocaml.2.3.1] downloaded from https://github.com/coq-io/system-ocaml/archive/2.3.1.tar.gz
+[coq-io.3.1.0] downloaded from https://github.com/coq-io/io/archive/3.1.0.tar.gz
+[cppo.1.6.5] downloaded from cache at https://opam.ocaml.org/cache
+[jbuilder.1.0+beta20.2] downloaded from cache at https://opam.ocaml.org/cache
+[result.1.3] downloaded from cache at https://opam.ocaml.org/cache
+[lwt.4.1.0] downloaded from cache at https://opam.ocaml.org/cache
+[ocamlbuild.0.14.0] downloaded from cache at https://opam.ocaml.org/cache
+[ERROR] The sources of the following couldn&#39;t be obtained, aborting:
+          - coq-cunit.1.0.0: Curl failed
+          - coq-list-plus.1.1.0: Curl failed
+          - coq-list-string.2.1.2: Curl failed
+</pre></dd>
             </dl>
             <h2>Install</h2>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>opam list; echo; ulimit -Sv 4000000; timeout 1h opam install -y -v coq-io-system.2.3.0 coq.8.10.dev</code></dd>
+              <dd><code>true</code></dd>
               <dt>Return code</dt>
               <dd>0</dd>
               <dt>Duration</dt>
-              <dd>9 s</dd>
+              <dd>0 s</dd>
             </dl>
             <h2>Installation size</h2>
-            <p>Total: 170 K</p>
-            <ul>
-              <li>52 K <code>../ocaml-base-compiler.4.06.1/lib/coq/user-contrib/Io/System/Extraction.vo</code></li>
-              <li>44 K <code>../ocaml-base-compiler.4.06.1/lib/coq/user-contrib/Io/System/System.vo</code></li>
-              <li>37 K <code>../ocaml-base-compiler.4.06.1/lib/coq/user-contrib/Io/System/All.vo</code></li>
-              <li>15 K <code>../ocaml-base-compiler.4.06.1/lib/coq/user-contrib/Io/System/System.glob</code></li>
-              <li>12 K <code>../ocaml-base-compiler.4.06.1/lib/coq/user-contrib/Io/System/Extraction.glob</code></li>
-              <li>5 K <code>../ocaml-base-compiler.4.06.1/lib/coq/user-contrib/Io/System/Extraction.v</code></li>
-              <li>5 K <code>../ocaml-base-compiler.4.06.1/lib/coq/user-contrib/Io/System/System.v</code></li>
-              <li>1 K <code>../ocaml-base-compiler.4.06.1/lib/coq/user-contrib/Io/System/All.glob</code></li>
-              <li>1 K <code>../ocaml-base-compiler.4.06.1/lib/coq/user-contrib/Io/System/All.v</code></li>
-            </ul>
+            <p>No files were installed.</p>
             <h2>Uninstall</h2>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>opam remove -y coq-io-system.2.3.0</code></dd>
+              <dd><code>true</code></dd>
               <dt>Return code</dt>
               <dd>0</dd>
               <dt>Missing removes</dt>
