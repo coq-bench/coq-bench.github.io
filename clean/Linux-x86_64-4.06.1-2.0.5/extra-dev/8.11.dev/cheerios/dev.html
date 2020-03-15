@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>cheerios: Not compatible</title>
+    <title>cheerios: 40 s</title>
     <link rel="shortcut icon" type="image/png" href="../../../../../favicon.png" />
     <link href="../../../../../bootstrap.min.css" rel="stylesheet">
     <link href="../../../../../bootstrap-custom.css" rel="stylesheet">
@@ -39,10 +39,10 @@
               cheerios
               <small>
                 dev
-                <span class="label label-info">Not compatible</span>
+                <span class="label label-success">40 s</span>
               </small>
             </h1>
-            <p><em><script>document.write(moment("2020-01-23 12:10:56 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2020-01-23 12:10:56 UTC)</em><p>
+            <p><em><script>document.write(moment("2020-03-15 04:54:40 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2020-03-15 04:54:40 UTC)</em><p>
             <h2>Context</h2>
             <pre># Packages matching: installed
 # Name              # Installed # Synopsis
@@ -64,20 +64,19 @@ homepage: &quot;https://github.com/uwplse/cheerios&quot;
 dev-repo: &quot;git+https://github.com/uwplse/cheerios.git&quot;
 bug-reports: &quot;https://github.com/uwplse/cheerios/issues&quot;
 license: &quot;BSD-2-Clause&quot;
-synopsis: &quot;Coq library for serialization&quot;
+synopsis: &quot;Coq library for verified serialization&quot;
 description: &quot;&quot;&quot;
-Cheerios is a formally verified serialization library for Coq,
-which defines a typeclass for serializable types and defines instances
-for many built-in types.
+A formally verified serialization library for Coq
+which defines a typeclass for serializable types and instances
+for many standard library types.
 &quot;&quot;&quot;
 build: [
-  [ &quot;./configure&quot; ]
-  [ make &quot;-j%{jobs}%&quot; ]
+  [&quot;./configure&quot;]
+  [make &quot;-j%{jobs}%&quot;]
 ]
-install: [ make &quot;install&quot; ]
+install: [make &quot;install&quot;]
 depends: [
-  &quot;ocaml&quot;
-  &quot;coq&quot; {(&gt;= &quot;8.6.1&quot; &amp; &lt; &quot;8.11~&quot;) | (= &quot;dev&quot;)}
+  &quot;coq&quot; {(&gt;= &quot;8.6.1&quot; &amp; &lt; &quot;8.12~&quot;) | (= &quot;dev&quot;)}
   &quot;coq-struct-tact&quot; {= &quot;dev&quot;}
 ]
 tags: [
@@ -86,11 +85,11 @@ tags: [
   &quot;logpath:Cheerios&quot;
 ]
 authors: [
-  &quot;Keith Simmons&quot;
-  &quot;Doug Woos&quot;
-  &quot;James R. Wilcox&quot;
   &quot;Justin Adsuara&quot;
   &quot;Karl Palmskog&quot;
+  &quot;Keith Simmons&quot;
+  &quot;James R. Wilcox&quot;
+  &quot;Doug Woos&quot;
 ]
 url {
   src: &quot;git+https://github.com/uwplse/cheerios.git#master&quot;
@@ -109,48 +108,92 @@ url {
               <dt>Command</dt>
               <dd><code>opam install -y --show-action coq-cheerios.dev coq.8.11.dev</code></dd>
               <dt>Return code</dt>
-              <dd>5120</dd>
-              <dt>Output</dt>
-              <dd><pre>[NOTE] Package coq is already installed (current version is 8.11.dev).
-The following dependencies couldn&#39;t be met:
-  - coq-cheerios -&gt; coq-struct-tact -&gt; coq (&lt; 8.11~ &amp; = dev) -&gt; ocaml &lt; 4.06.0
-      base of this switch (use `--unlock-base&#39; to force)
-Your request can&#39;t be satisfied:
-  - No available version of coq satisfies the constraints
-No solution found, exiting
-</pre></dd>
+              <dd>0</dd>
             </dl>
             <p>Dry install without Coq/switch base, to test if the problem was incompatibility with the current Coq/OCaml version:</p>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>opam remove -y coq; opam install -y --show-action --unlock-base coq-cheerios.dev</code></dd>
+              <dd><code>true</code></dd>
               <dt>Return code</dt>
               <dd>0</dd>
             </dl>
             <h2>Install dependencies</h2>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>true</code></dd>
+              <dd><code>opam list; echo; ulimit -Sv 4000000; timeout 2h opam install -y --deps-only coq-cheerios.dev coq.8.11.dev</code></dd>
               <dt>Return code</dt>
               <dd>0</dd>
               <dt>Duration</dt>
-              <dd>0 s</dd>
+              <dd>39 s</dd>
             </dl>
             <h2>Install</h2>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>true</code></dd>
+              <dd><code>opam list; echo; ulimit -Sv 16000000; timeout 2h opam install -y coq-cheerios.dev coq.8.11.dev</code></dd>
               <dt>Return code</dt>
               <dd>0</dd>
               <dt>Duration</dt>
-              <dd>0 s</dd>
+              <dd>40 s</dd>
             </dl>
             <h2>Installation size</h2>
-            <p>No files were installed.</p>
+            <p>Total: 1 M</p>
+            <ul>
+              <li>170 K <code>../ocaml-base-compiler.4.06.1/lib/coq/user-contrib/Cheerios/Tree.vo</code></li>
+              <li>127 K <code>../ocaml-base-compiler.4.06.1/lib/coq/user-contrib/Cheerios/ByteDecidable.vo</code></li>
+              <li>111 K <code>../ocaml-base-compiler.4.06.1/lib/coq/user-contrib/Cheerios/Tree.glob</code></li>
+              <li>110 K <code>../ocaml-base-compiler.4.06.1/lib/coq/user-contrib/Cheerios/BasicSerializers.vo</code></li>
+              <li>62 K <code>../ocaml-base-compiler.4.06.1/lib/coq/user-contrib/Cheerios/Combinators.vo</code></li>
+              <li>59 K <code>../ocaml-base-compiler.4.06.1/lib/coq/user-contrib/Cheerios/Types.vo</code></li>
+              <li>54 K <code>../ocaml-base-compiler.4.06.1/lib/coq/user-contrib/Cheerios/Core.vo</code></li>
+              <li>45 K <code>../ocaml-base-compiler.4.06.1/lib/coq/user-contrib/Cheerios/ExtrOcamlCheeriosBasic.vo</code></li>
+              <li>39 K <code>../ocaml-base-compiler.4.06.1/lib/coq/user-contrib/Cheerios/BasicSerializers.glob</code></li>
+              <li>34 K <code>../ocaml-base-compiler.4.06.1/lib/coq/user-contrib/Cheerios/ByteDecidable.glob</code></li>
+              <li>33 K <code>../ocaml-base-compiler.4.06.1/lib/coq/user-contrib/Cheerios/Tree.v</code></li>
+              <li>32 K <code>../ocaml-base-compiler.4.06.1/lib/coq/user-contrib/Cheerios/ExtractTreeSerializer.vo</code></li>
+              <li>32 K <code>../ocaml-base-compiler.4.06.1/lib/coq/user-contrib/Cheerios/ExtractPositiveSerializer.vo</code></li>
+              <li>30 K <code>../ocaml-base-compiler.4.06.1/lib/coq/user-contrib/Cheerios/ExtractTreeSerializerDeps.vo</code></li>
+              <li>30 K <code>../ocaml-base-compiler.4.06.1/lib/coq/user-contrib/Cheerios/ExtrOcamlCheeriosFinInt.vo</code></li>
+              <li>30 K <code>../ocaml-base-compiler.4.06.1/lib/coq/user-contrib/Cheerios/ExtrOcamlCheeriosNatInt.vo</code></li>
+              <li>30 K <code>../ocaml-base-compiler.4.06.1/lib/coq/user-contrib/Cheerios/ExtrOcamlCheeriosString.vo</code></li>
+              <li>30 K <code>../ocaml-base-compiler.4.06.1/lib/coq/user-contrib/Cheerios/ExtractPositiveSerializerDeps.vo</code></li>
+              <li>30 K <code>../ocaml-base-compiler.4.06.1/lib/coq/user-contrib/Cheerios/Cheerios.vo</code></li>
+              <li>28 K <code>../ocaml-base-compiler.4.06.1/lib/coq/user-contrib/Cheerios/Types.glob</code></li>
+              <li>27 K <code>../ocaml-base-compiler.4.06.1/lib/coq/user-contrib/Cheerios/Tactics.vo</code></li>
+              <li>27 K <code>../ocaml-base-compiler.4.06.1/lib/coq/user-contrib/Cheerios/DeserializerMonad.vo</code></li>
+              <li>26 K <code>../ocaml-base-compiler.4.06.1/lib/coq/user-contrib/Cheerios/Core.glob</code></li>
+              <li>21 K <code>../ocaml-base-compiler.4.06.1/lib/coq/user-contrib/Cheerios/Combinators.glob</code></li>
+              <li>13 K <code>../ocaml-base-compiler.4.06.1/lib/coq/user-contrib/Cheerios/BasicSerializers.v</code></li>
+              <li>9 K <code>../ocaml-base-compiler.4.06.1/lib/coq/user-contrib/Cheerios/ByteDecidable.v</code></li>
+              <li>8 K <code>../ocaml-base-compiler.4.06.1/lib/coq/user-contrib/Cheerios/Combinators.v</code></li>
+              <li>8 K <code>../ocaml-base-compiler.4.06.1/lib/coq/user-contrib/Cheerios/Core.v</code></li>
+              <li>5 K <code>../ocaml-base-compiler.4.06.1/lib/coq/user-contrib/Cheerios/ExtrOcamlCheeriosBasic.v</code></li>
+              <li>4 K <code>../ocaml-base-compiler.4.06.1/lib/coq/user-contrib/Cheerios/Types.v</code></li>
+              <li>3 K <code>../ocaml-base-compiler.4.06.1/lib/coq/user-contrib/Cheerios/DeserializerMonad.glob</code></li>
+              <li>1 K <code>../ocaml-base-compiler.4.06.1/lib/coq/user-contrib/Cheerios/DeserializerMonad.v</code></li>
+              <li>1 K <code>../ocaml-base-compiler.4.06.1/lib/coq/user-contrib/Cheerios/ExtractTreeSerializer.glob</code></li>
+              <li>1 K <code>../ocaml-base-compiler.4.06.1/lib/coq/user-contrib/Cheerios/ExtractPositiveSerializer.glob</code></li>
+              <li>1 K <code>../ocaml-base-compiler.4.06.1/lib/coq/user-contrib/Cheerios/Tactics.glob</code></li>
+              <li>1 K <code>../ocaml-base-compiler.4.06.1/lib/coq/user-contrib/Cheerios/ExtractTreeSerializer.v</code></li>
+              <li>1 K <code>../ocaml-base-compiler.4.06.1/lib/coq/user-contrib/Cheerios/ExtractPositiveSerializer.v</code></li>
+              <li>1 K <code>../ocaml-base-compiler.4.06.1/lib/coq/user-contrib/Cheerios/Tactics.v</code></li>
+              <li>1 K <code>../ocaml-base-compiler.4.06.1/lib/coq/user-contrib/Cheerios/Cheerios.glob</code></li>
+              <li>1 K <code>../ocaml-base-compiler.4.06.1/lib/coq/user-contrib/Cheerios/ExtrOcamlCheeriosFinInt.v</code></li>
+              <li>1 K <code>../ocaml-base-compiler.4.06.1/lib/coq/user-contrib/Cheerios/ExtrOcamlCheeriosNatInt.v</code></li>
+              <li>1 K <code>../ocaml-base-compiler.4.06.1/lib/coq/user-contrib/Cheerios/Cheerios.v</code></li>
+              <li>1 K <code>../ocaml-base-compiler.4.06.1/lib/coq/user-contrib/Cheerios/ExtrOcamlCheeriosBasic.glob</code></li>
+              <li>1 K <code>../ocaml-base-compiler.4.06.1/lib/coq/user-contrib/Cheerios/ExtrOcamlCheeriosString.v</code></li>
+              <li>1 K <code>../ocaml-base-compiler.4.06.1/lib/coq/user-contrib/Cheerios/ExtractTreeSerializerDeps.glob</code></li>
+              <li>1 K <code>../ocaml-base-compiler.4.06.1/lib/coq/user-contrib/Cheerios/ExtractPositiveSerializerDeps.glob</code></li>
+              <li>1 K <code>../ocaml-base-compiler.4.06.1/lib/coq/user-contrib/Cheerios/ExtrOcamlCheeriosString.glob</code></li>
+              <li>1 K <code>../ocaml-base-compiler.4.06.1/lib/coq/user-contrib/Cheerios/ExtrOcamlCheeriosFinInt.glob</code></li>
+              <li>1 K <code>../ocaml-base-compiler.4.06.1/lib/coq/user-contrib/Cheerios/ExtrOcamlCheeriosNatInt.glob</code></li>
+              <li>1 K <code>../ocaml-base-compiler.4.06.1/lib/coq/user-contrib/Cheerios/ExtractTreeSerializerDeps.v</code></li>
+              <li>1 K <code>../ocaml-base-compiler.4.06.1/lib/coq/user-contrib/Cheerios/ExtractPositiveSerializerDeps.v</code></li>
+            </ul>
             <h2>Uninstall</h2>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>true</code></dd>
+              <dd><code>opam remove -y coq-cheerios.dev</code></dd>
               <dt>Return code</dt>
               <dd>0</dd>
               <dt>Missing removes</dt>
