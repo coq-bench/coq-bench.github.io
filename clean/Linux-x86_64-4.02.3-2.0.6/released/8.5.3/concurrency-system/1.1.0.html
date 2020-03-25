@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>concurrency-system: 16 s</title>
+    <title>concurrency-system: Error with dependencies</title>
     <link rel="shortcut icon" type="image/png" href="../../../../../favicon.png" />
     <link href="../../../../../bootstrap.min.css" rel="stylesheet">
     <link href="../../../../../bootstrap-custom.css" rel="stylesheet">
@@ -39,10 +39,10 @@
               concurrency-system
               <small>
                 1.1.0
-                <span class="label label-success">16 s</span>
+                <span class="label label-warning">Error with dependencies</span>
               </small>
             </h1>
-            <p><em><script>document.write(moment("2020-02-21 04:40:32 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2020-02-21 04:40:32 UTC)</em><p>
+            <p><em><script>document.write(moment("2020-03-25 09:35:18 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2020-03-25 09:35:18 UTC)</em><p>
             <h2>Context</h2>
             <pre># Packages matching: installed
 # Name              # Installed # Synopsis
@@ -120,33 +120,56 @@ url {
               <dt>Command</dt>
               <dd><code>opam list; echo; ulimit -Sv 4000000; timeout 2h opam install -y --deps-only coq-concurrency-system.1.1.0 coq.8.5.3</code></dd>
               <dt>Return code</dt>
-              <dd>0</dd>
+              <dd>10240</dd>
               <dt>Duration</dt>
-              <dd>23 s</dd>
+              <dd>7 s</dd>
+              <dt>Output</dt>
+              <dd><pre># Packages matching: installed
+# Name              # Installed # Synopsis
+base-bigarray       base
+base-num            base        Num library distributed with the OCaml compiler
+base-ocamlbuild     base        OCamlbuild binary and libraries distributed with the OCaml compiler
+base-threads        base
+base-unix           base
+camlp5              7.11        Preprocessor-pretty-printer of OCaml
+conf-findutils      1           Virtual package relying on findutils
+coq                 8.5.3       Formal proof management system.
+num                 0           The Num library for arbitrary-precision integer and rational arithmetic
+ocaml               4.02.3      The OCaml compiler (virtual package)
+ocaml-base-compiler 4.02.3      Official 4.02.3 release
+ocaml-config        1           OCaml Switch Configuration
+The following actions will be performed:
+  - install coq-list-plus       1.1.0
+  - install conf-ruby           1.0.0
+  - install coq-cunit           1.0.0
+  - install coq-error-handlers  1.2.0
+  - install coq-function-ninjas 1.0.0
+  - install coq-list-string     2.1.2
+===== 6 to install =====
+&lt;&gt;&lt;&gt; Gathering sources &gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;
+[coq-cunit.1.0.0] downloaded from https://github.com/clarus/coq-cunit/archive/1.0.0.tar.gz
+[coq-error-handlers.1.2.0] downloaded from https://github.com/clarus/coq-error-handlers/archive/1.2.0.tar.gz
+[coq-function-ninjas.1.0.0] downloaded from https://github.com/clarus/coq-function-ninjas/archive/1.0.0.tar.gz
+[coq-list-plus.1.1.0] downloaded from https://github.com/clarus/coq-list-plus/archive/1.1.0.tar.gz
+[ERROR] The sources of the following couldn&#39;t be obtained, aborting:
+          - coq-list-string.2.1.2: curl error code 401
+</pre></dd>
             </dl>
             <h2>Install</h2>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>opam list; echo; ulimit -Sv 16000000; timeout 2h opam install -y -v coq-concurrency-system.1.1.0 coq.8.5.3</code></dd>
+              <dd><code>true</code></dd>
               <dt>Return code</dt>
               <dd>0</dd>
               <dt>Duration</dt>
-              <dd>16 s</dd>
+              <dd>0 s</dd>
             </dl>
             <h2>Installation size</h2>
-            <p>Total: 400 K</p>
-            <ul>
-              <li>92 K <code>../ocaml-base-compiler.4.02.3/lib/coq/user-contrib/Concurrency/Extraction.vo</code></li>
-              <li>83 K <code>../ocaml-base-compiler.4.02.3/lib/coq/user-contrib/Concurrency/Events.vo</code></li>
-              <li>71 K <code>../ocaml-base-compiler.4.02.3/lib/coq/user-contrib/Concurrency/Run.vo</code></li>
-              <li>55 K <code>../ocaml-base-compiler.4.02.3/lib/coq/user-contrib/Concurrency/Test.vo</code></li>
-              <li>55 K <code>../ocaml-base-compiler.4.02.3/lib/coq/user-contrib/Concurrency/Computation.vo</code></li>
-              <li>44 K <code>../ocaml-base-compiler.4.02.3/lib/coq/user-contrib/Concurrency/StdLib.vo</code></li>
-            </ul>
+            <p>No files were installed.</p>
             <h2>Uninstall</h2>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>opam remove -y coq-concurrency-system.1.1.0</code></dd>
+              <dd><code>true</code></dd>
               <dt>Return code</dt>
               <dd>0</dd>
               <dt>Missing removes</dt>
