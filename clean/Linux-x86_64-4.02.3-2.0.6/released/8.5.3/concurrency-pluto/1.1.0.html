@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>concurrency-pluto: 15 s</title>
+    <title>concurrency-pluto: Error with dependencies</title>
     <link rel="shortcut icon" type="image/png" href="../../../../../favicon.png" />
     <link href="../../../../../bootstrap.min.css" rel="stylesheet">
     <link href="../../../../../bootstrap-custom.css" rel="stylesheet">
@@ -39,10 +39,10 @@
               concurrency-pluto
               <small>
                 1.1.0
-                <span class="label label-success">15 s</span>
+                <span class="label label-warning">Error with dependencies</span>
               </small>
             </h1>
-            <p><em><script>document.write(moment("2020-02-21 04:40:32 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2020-02-21 04:40:32 UTC)</em><p>
+            <p><em><script>document.write(moment("2020-03-25 09:35:18 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2020-03-25 09:35:18 UTC)</em><p>
             <h2>Context</h2>
             <pre># Packages matching: installed
 # Name              # Installed # Synopsis
@@ -119,29 +119,79 @@ url {
               <dt>Command</dt>
               <dd><code>opam list; echo; ulimit -Sv 4000000; timeout 2h opam install -y --deps-only coq-concurrency-pluto.1.1.0 coq.8.5.3</code></dd>
               <dt>Return code</dt>
-              <dd>0</dd>
+              <dd>10240</dd>
               <dt>Duration</dt>
-              <dd>2 m 6 s</dd>
+              <dd>11 s</dd>
+              <dt>Output</dt>
+              <dd><pre># Packages matching: installed
+# Name              # Installed # Synopsis
+base-bigarray       base
+base-num            base        Num library distributed with the OCaml compiler
+base-ocamlbuild     base        OCamlbuild binary and libraries distributed with the OCaml compiler
+base-threads        base
+base-unix           base
+camlp5              7.11        Preprocessor-pretty-printer of OCaml
+conf-findutils      1           Virtual package relying on findutils
+coq                 8.5.3       Formal proof management system.
+num                 0           The Num library for arbitrary-precision integer and rational arithmetic
+ocaml               4.02.3      The OCaml compiler (virtual package)
+ocaml-base-compiler 4.02.3      Official 4.02.3 release
+ocaml-config        1           OCaml Switch Configuration
+The following actions will be performed:
+  - install coq-error-handlers     1.2.0
+  - install ocamlbuild             0
+  - install conf-m4                1
+  - install coq-list-plus          1.1.0
+  - install conf-ruby              1.0.0
+  - install coq-cunit              1.0.0
+  - install jbuilder               1.0+beta20.2
+  - install coq-function-ninjas    1.0.0
+  - install ocamlfind              1.8.1
+  - install coq-list-string        2.1.2
+  - install result                 1.3
+  - install cppo                   1.6.5
+  - install coq-iterable           1.0.0
+  - install base64                 1.0.0
+  - install coq-moment             1.2.0
+  - install coq-concurrency-system 1.1.0
+  - install lwt                    4.1.0         For the PPX, please install package lwt_ppx
+                                                 For Lwt_log and Lwt_daemon, please install package lwt_log
+  - install coq-concurrency-proxy  1.0.0
+===== 18 to install =====
+&lt;&gt;&lt;&gt; Gathering sources &gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;
+[base64.1.0.0] downloaded from cache at https://opam.ocaml.org/cache
+[coq-cunit.1.0.0] downloaded from https://github.com/clarus/coq-cunit/archive/1.0.0.tar.gz
+[coq-concurrency-system.1.1.0] downloaded from https://github.com/coq-concurrency/system/archive/1.1.0.tar.gz
+[coq-error-handlers.1.2.0] downloaded from https://github.com/clarus/coq-error-handlers/archive/1.2.0.tar.gz
+[coq-function-ninjas.1.0.0] downloaded from https://github.com/clarus/coq-function-ninjas/archive/1.0.0.tar.gz
+[coq-iterable.1.0.0] downloaded from https://github.com/clarus/coq-iterable/archive/1.0.0.tar.gz
+[coq-list-plus.1.1.0] downloaded from https://github.com/clarus/coq-list-plus/archive/1.1.0.tar.gz
+[coq-moment.1.2.0] downloaded from https://github.com/clarus/coq-moment/archive/1.2.0.tar.gz
+[cppo.1.6.5] downloaded from cache at https://opam.ocaml.org/cache
+[jbuilder.1.0+beta20.2] downloaded from cache at https://opam.ocaml.org/cache
+[lwt.4.1.0] downloaded from cache at https://opam.ocaml.org/cache
+[ocamlfind.1.8.1] downloaded from cache at https://opam.ocaml.org/cache
+[result.1.3] downloaded from cache at https://opam.ocaml.org/cache
+[ERROR] The sources of the following couldn&#39;t be obtained, aborting:
+          - coq-concurrency-proxy.1.0.0: curl error code 401
+          - coq-list-string.2.1.2: curl error code 401
+</pre></dd>
             </dl>
             <h2>Install</h2>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>opam list; echo; ulimit -Sv 16000000; timeout 2h opam install -y -v coq-concurrency-pluto.1.1.0 coq.8.5.3</code></dd>
+              <dd><code>true</code></dd>
               <dt>Return code</dt>
               <dd>0</dd>
               <dt>Duration</dt>
-              <dd>15 s</dd>
+              <dd>0 s</dd>
             </dl>
             <h2>Installation size</h2>
-            <p>Total: 2 M</p>
-            <ul>
-              <li>1 M <code>../ocaml-base-compiler.4.02.3/bin/pluto.native</code></li>
-              <li>305 K <code>../ocaml-base-compiler.4.02.3/bin/pluto.byte</code></li>
-            </ul>
+            <p>No files were installed.</p>
             <h2>Uninstall</h2>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>opam remove -y coq-concurrency-pluto.1.1.0</code></dd>
+              <dd><code>true</code></dd>
               <dt>Return code</dt>
               <dd>0</dd>
               <dt>Missing removes</dt>
