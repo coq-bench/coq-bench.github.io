@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>itree: Not compatible</title>
+    <title>itree: Error</title>
     <link rel="shortcut icon" type="image/png" href="../../../../../favicon.png" />
     <link href="../../../../../bootstrap.min.css" rel="stylesheet">
     <link href="../../../../../bootstrap-custom.css" rel="stylesheet">
@@ -39,10 +39,10 @@
               itree
               <small>
                 dev
-                <span class="label label-info">Not compatible</span>
+                <span class="label label-danger">Error</span>
               </small>
             </h1>
-            <p><em><script>document.write(moment("2019-12-14 01:06:24 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2019-12-14 01:06:24 UTC)</em><p>
+            <p><em><script>document.write(moment("2020-04-09 14:50:21 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2020-04-09 14:50:21 UTC)</em><p>
             <h2>Context</h2>
             <pre># Packages matching: installed
 # Name              # Installed # Synopsis
@@ -69,11 +69,10 @@ bug-reports: &quot;https://github.com/DeepSpec/InteractionTrees/issues&quot;
 license: &quot;MIT&quot;
 build: [ make &quot;-j%{jobs}%&quot; ]
 install: [ make &quot;install&quot; ]
-remove: [ make &quot;uninstall&quot; ]
 run-test: [ make &quot;-j%{jobs}%&quot; &quot;all&quot; ]
 depends: [
-  &quot;coq&quot; {&gt;= &quot;8.8&quot; &amp; &lt; &quot;8.10~&quot;}
-  &quot;coq-ext-lib&quot; {= &quot;0.10.2&quot;}
+  &quot;coq&quot; {&gt;= &quot;8.8&quot;}
+  &quot;coq-ext-lib&quot; {&gt;= &quot;0.10.3&quot;}
   &quot;coq-paco&quot; {&gt;= &quot;4.0.0&quot;}
   &quot;ocamlbuild&quot; {with-test}
 ]
@@ -87,7 +86,6 @@ authors: [
   &quot;Benjamin C. Pierce &lt;bcpierce@cis.upenn.edu&gt;&quot;
 ]
 tags: &quot;org:deepspec&quot;
-flags: light-uninstall
 url {
   src: &quot;git+https://github.com/DeepSpec/InteractionTrees&quot;
 }
@@ -105,41 +103,83 @@ url {
               <dt>Command</dt>
               <dd><code>opam install -y --show-action coq-itree.dev coq.dev</code></dd>
               <dt>Return code</dt>
-              <dd>5120</dd>
-              <dt>Output</dt>
-              <dd><pre>[NOTE] Package coq is already installed (current version is dev).
-The following dependencies couldn&#39;t be met:
-  - coq-itree -&gt; coq-ext-lib = 0.10.2 -&gt; coq &lt; 8.10~ -&gt; ocaml &lt; 4.06.0
-      base of this switch (use `--unlock-base&#39; to force)
-Your request can&#39;t be satisfied:
-  - No available version of coq satisfies the constraints
-No solution found, exiting
-</pre></dd>
+              <dd>0</dd>
             </dl>
             <p>Dry install without Coq/switch base, to test if the problem was incompatibility with the current Coq/OCaml version:</p>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>opam remove -y coq; opam install -y --show-action --unlock-base coq-itree.dev</code></dd>
+              <dd><code>true</code></dd>
               <dt>Return code</dt>
               <dd>0</dd>
             </dl>
             <h2>Install dependencies</h2>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>true</code></dd>
+              <dd><code>opam list; echo; ulimit -Sv 4000000; timeout 2h opam install -y --deps-only coq-itree.dev coq.dev</code></dd>
               <dt>Return code</dt>
               <dd>0</dd>
               <dt>Duration</dt>
-              <dd>0 s</dd>
+              <dd>1 m 34 s</dd>
             </dl>
             <h2>Install</h2>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>true</code></dd>
+              <dd><code>opam list; echo; ulimit -Sv 16000000; timeout 2h opam install -y coq-itree.dev coq.dev</code></dd>
               <dt>Return code</dt>
-              <dd>0</dd>
+              <dd>7936</dd>
               <dt>Duration</dt>
-              <dd>0 s</dd>
+              <dd>2 m 19 s</dd>
+              <dt>Output</dt>
+              <dd><pre># Packages matching: installed
+# Name              # Installed # Synopsis
+base-bigarray       base
+base-threads        base
+base-unix           base
+conf-findutils      1           Virtual package relying on findutils
+conf-m4             1           Virtual package relying on m4
+coq                 dev         Formal proof management system
+coq-ext-lib         dev         a library of Coq definitions, theorems, and tactics
+coq-paco            dev         Coq library implementing parameterized coinduction
+num                 1.3         The legacy Num library for arbitrary-precision integer and rational arithmetic
+ocaml               4.08.1      The OCaml compiler (virtual package)
+ocaml-base-compiler 4.08.1      Official release 4.08.1
+ocaml-config        1           OCaml Switch Configuration
+ocamlfind           1.8.1       A library manager for OCaml
+[NOTE] Package coq is already installed (current version is dev).
+The following actions will be performed:
+  - install coq-itree dev
+&lt;&gt;&lt;&gt; Gathering sources &gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;
+[coq-itree.dev] synchronised from git+https://github.com/DeepSpec/InteractionTrees
+&lt;&gt;&lt;&gt; Processing actions &lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;
+[ERROR] The compilation of coq-itree failed at &quot;/home/bench/.opam/opam-init/hooks/sandbox.sh build make -j4&quot;.
+#=== ERROR while compiling coq-itree.dev ======================================#
+# context              2.0.5 | linux/x86_64 | ocaml-base-compiler.4.08.1 | file:///home/bench/run/opam-coq-archive/extra-dev
+# path                 ~/.opam/ocaml-base-compiler.4.08.1/.opam-switch/build/coq-itree.dev
+# command              ~/.opam/opam-init/hooks/sandbox.sh build make -j4
+# exit-code            2
+# env-file             ~/.opam/log/coq-itree-22931-e4db2f.env
+# output-file          ~/.opam/log/coq-itree-22931-e4db2f.out
+### output ###
+# [...]
+# COQC theories/Interp/InterpFacts.v
+# COQC theories/Interp/RecursionFacts.v
+# COQC theories/Simple.v
+# COQC theories/Interp/HandlerFacts.v
+# COQC theories/Events/StateFacts.v
+# File &quot;./theories/Interp/HandlerFacts.v&quot;, line 207, characters 0-442:
+# Error: Cannot find an instance
+# 
+# make[2]: *** [Makefile.coq:699: theories/Interp/HandlerFacts.vo] Error 1
+# make[1]: *** [Makefile.coq:335: all] Error 2
+# make[1]: Leaving directory &#39;/home/bench/.opam/ocaml-base-compiler.4.08.1/.opam-switch/build/coq-itree.dev&#39;
+# make: *** [common.mk:6: coq] Error 2
+&lt;&gt;&lt;&gt; Error report &lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;
++- The following actions failed
+| - build coq-itree dev
++- 
+- No changes have been performed
+# Run eval $(opam env) to update the current shell environment
+</pre></dd>
             </dl>
             <h2>Installation size</h2>
             <p>No files were installed.</p>
