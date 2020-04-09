@@ -42,7 +42,7 @@
                 <span class="label label-danger">Error</span>
               </small>
             </h1>
-            <p><em><script>document.write(moment("2020-04-04 01:14:09 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2020-04-04 01:14:09 UTC)</em><p>
+            <p><em><script>document.write(moment("2020-04-08 18:39:51 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2020-04-08 18:39:51 UTC)</em><p>
             <h2>Context</h2>
             <pre># Packages matching: installed
 # Name              # Installed # Synopsis
@@ -134,7 +134,7 @@ url {
               <dt>Return code</dt>
               <dd>0</dd>
               <dt>Duration</dt>
-              <dd>34 s</dd>
+              <dd>32 s</dd>
             </dl>
             <h2>Install</h2>
             <dl class="dl-horizontal">
@@ -143,7 +143,7 @@ url {
               <dt>Return code</dt>
               <dd>7936</dd>
               <dt>Duration</dt>
-              <dd>3 m 20 s</dd>
+              <dd>3 m 1 s</dd>
               <dt>Output</dt>
               <dd><pre># Packages matching: installed
 # Name              # Installed # Synopsis
@@ -247,11 +247,11 @@ Processing  1/2: [coq-metacoq-template: make template-coq]
 - COQC theories/Ast.v
 - COQC theories/AstUtils.v
 - COQC theories/TemplateMonad/Common.v
-- COQC theories/common/uGraph.v
 - COQC theories/Induction.v
 - COQC theories/WfInv.v
 - COQC theories/TemplateMonad/Core.v
 - COQC theories/TemplateMonad/Extractable.v
+- COQC theories/common/uGraph.v
 - COQC theories/TemplateMonad.v
 - COQC theories/LiftSubst.v
 - COQC theories/Constants.v
@@ -313,7 +313,14 @@ Processing  1/2: [coq-metacoq-template: make template-coq]
 - extraction [extraction-reserved-identifier,extraction]
 - File &quot;./theories/Extraction.v&quot;, line 32, charac
 [...] truncated
-constr_denoter.ml&quot;, line 282, characters 13-29:
+tRef
+- Use Names.GlobRef.ConstRef
+- File &quot;src/constr_denoter.ml&quot;, line 281, characters 13-29:
+- 281 |            | Globnames.IndRef i -&gt; (fst i, unquote_nat  num)
+-                    ^^^^^^^^^^^^^^^^
+- Alert deprecated: IndRef
+- Use Names.GlobRef.IndRef
+- File &quot;src/constr_denoter.ml&quot;, line 282, characters 13-29:
 - 282 |            | Globnames.VarRef _ -&gt; CErrors.user_err (str &quot;the constant is a variable. use tVar : &quot; ++ str s)
 -                    ^^^^^^^^^^^^^^^^
 - Alert deprecated: VarRef
@@ -323,8 +330,6 @@ constr_denoter.ml&quot;, line 282, characters 13-29:
 -                    ^^^^^^^^^^^^^^^^^^^^^^
 - Alert deprecated: ConstructRef
 - Use Names.GlobRef.ConstructRef
-- CAMLOPT -c -for-pack Template_coq src/constr_quoter.ml
-- CAMLOPT -c -for-pack Template_coq src/plugin_core.ml
 - CAMLOPT -c -for-pack Template_coq src/run_template_monad.ml
 - CAMLOPT -c -for-pack Template_coq src/g_template_coq.ml
 - CAMLOPT -pack -o src/template_coq.cmx
@@ -370,8 +375,8 @@ constr_denoter.ml&quot;, line 282, characters 13-29:
 - CAMLDEP gen-src/liftSubst.mli
 - CAMLDEP gen-src/extractable.mli
 - CAMLDEP gen-src/equality0.mli
-- CAMLDEP gen-src/environment.mli
 - CAMLDEP gen-src/equalities.mli
+- CAMLDEP gen-src/environment.mli
 - CAMLDEP gen-src/decimal.mli
 - CAMLDEP gen-src/datatypes.mli
 - CAMLDEP gen-src/cRelationClasses.mli
@@ -427,8 +432,8 @@ constr_denoter.ml&quot;, line 282, characters 13-29:
 - CAMLDEP gen-src/equalities.ml
 - CAMLDEP gen-src/environment.ml
 - CAMLDEP gen-src/denoter.ml
-- CAMLDEP gen-src/decimal.ml
 - CAMLDEP gen-src/denote.ml
+- CAMLDEP gen-src/decimal.ml
 - CAMLDEP gen-src/datatypes.ml
 - CAMLDEP gen-src/cRelationClasses.ml
 - CAMLDEP gen-src/config0.ml
@@ -453,8 +458,6 @@ constr_denoter.ml&quot;, line 282, characters 13-29:
 - CAMLC -c gen-src/basics.mli
 - CAMLC -c gen-src/binNums.mli
 - CAMLC -c gen-src/equality0.mli
-- CAMLC -c gen-src/cRelationClasses.mli
-- CAMLC -c gen-src/compare_dec.mli
 - CAMLC -c gen-src/mCRelations.mli
 - CAMLC -c gen-src/mCOption.mli
 - CAMLC -c gen-src/mCProd.mli
@@ -476,8 +479,8 @@ constr_denoter.ml&quot;, line 282, characters 13-29:
 - CAMLC -c gen-src/orders.mli
 - CAMLOPT -c -for-pack Metacoq_template_plugin gen-src/binNums.ml
 - CAMLOPT -c -for-pack Metacoq_template_plugin gen-src/equality0.ml
-- CAMLOPT -c -for-pack Metacoq_template_plugin gen-src/cRelationClasses.ml
-- CAMLOPT -c -for-pack Metacoq_template_plugin gen-src/compare_dec.ml
+- CAMLC -c gen-src/cRelationClasses.mli
+- CAMLC -c gen-src/compare_dec.mli
 - CAMLOPT -c -for-pack Metacoq_template_plugin gen-src/mCRelations.ml
 - CAMLOPT -c -for-pack Metacoq_template_plugin gen-src/mCOption.ml
 - CAMLOPT -c -for-pack Metacoq_template_plugin gen-src/mCProd.ml
@@ -489,6 +492,7 @@ constr_denoter.ml&quot;, line 282, characters 13-29:
 - CAMLOPT -c -for-pack Metacoq_template_plugin gen-src/quoter.ml
 - CAMLC -c gen-src/quoter.ml
 - CAMLOPT -c -for-pack Metacoq_template_plugin gen-src/equalities.ml
+- CAMLOPT -c -for-pack Metacoq_template_plugin gen-src/decimal.ml
 - File &quot;gen-src/equalities.ml&quot;, line 201, characters 10-11:
 - 201 |  functor (E:Eq) -&gt;
 -                 ^
@@ -505,8 +509,8 @@ constr_denoter.ml&quot;, line 282, characters 13-29:
 - 209 |  functor (F:sig
 -                 ^
 - Error (warning 60): unused module F.
-- CAMLOPT -c -for-pack Metacoq_template_plugin gen-src/decimal.ml
-- make[3]: *** [Makefile.plugin:626: gen-src/equalities.cmx] Error 2
+- CAMLC -c gen-src/nat0.mli
+- make[3]: *** [Makefile.plugin:625: gen-src/equalities.cmx] Error 2
 - make[3]: *** Waiting for unfinished jobs....
 - make[2]: *** [Makefile.plugin:327: all] Error 2
 - make[2]: Leaving directory &#39;/home/bench/.opam/ocaml-base-compiler.4.10.0/.opam-switch/build/coq-metacoq-template.1.0~alpha2+8.11/template-coq&#39;
@@ -519,16 +523,16 @@ constr_denoter.ml&quot;, line 282, characters 13-29:
 # path                 ~/.opam/ocaml-base-compiler.4.10.0/.opam-switch/build/coq-metacoq-template.1.0~alpha2+8.11
 # command              ~/.opam/opam-init/hooks/sandbox.sh build make -j4 template-coq
 # exit-code            2
-# env-file             ~/.opam/log/coq-metacoq-template-28288-2dea01.env
-# output-file          ~/.opam/log/coq-metacoq-template-28288-2dea01.out
+# env-file             ~/.opam/log/coq-metacoq-template-21522-2dea01.env
+# output-file          ~/.opam/log/coq-metacoq-template-21522-2dea01.out
 ### output ###
 # [...]
 # File &quot;gen-src/equalities.ml&quot;, line 209, characters 10-11:
 # 209 |  functor (F:sig
 #                 ^
 # Error (warning 60): unused module F.
-# CAMLOPT -c -for-pack Metacoq_template_plugin gen-src/decimal.ml
-# make[3]: *** [Makefile.plugin:626: gen-src/equalities.cmx] Error 2
+# CAMLC -c gen-src/nat0.mli
+# make[3]: *** [Makefile.plugin:625: gen-src/equalities.cmx] Error 2
 # make[3]: *** Waiting for unfinished jobs....
 # make[2]: *** [Makefile.plugin:327: all] Error 2
 # make[2]: Leaving directory &#39;/home/bench/.opam/ocaml-base-compiler.4.10.0/.opam-switch/build/coq-metacoq-template.1.0~alpha2+8.11/template-coq&#39;
