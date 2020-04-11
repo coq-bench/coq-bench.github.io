@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>metacoq-template: Error</title>
+    <title>metacoq-template: Not compatible</title>
     <link rel="shortcut icon" type="image/png" href="../../../../../favicon.png" />
     <link href="../../../../../bootstrap.min.css" rel="stylesheet">
     <link href="../../../../../bootstrap-custom.css" rel="stylesheet">
@@ -39,10 +39,10 @@
               metacoq-template
               <small>
                 1.0~alpha2+8.11
-                <span class="label label-danger">Error</span>
+                <span class="label label-info">Not compatible</span>
               </small>
             </h1>
-            <p><em><script>document.write(moment("2020-04-07 03:06:37 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2020-04-07 03:06:37 UTC)</em><p>
+            <p><em><script>document.write(moment("2020-04-11 09:48:21 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2020-04-11 09:48:21 UTC)</em><p>
             <h2>Context</h2>
             <pre># Packages matching: installed
 # Name              # Installed # Synopsis
@@ -82,7 +82,7 @@ install: [
   [make &quot;-C&quot; &quot;template-coq&quot; &quot;install&quot;]
 ]
 depends: [
-  &quot;ocaml&quot; {&gt;= &quot;4.07.1&quot;}
+  &quot;ocaml&quot; {&gt;= &quot;4.07.1&quot; &amp; &lt; &quot;4.10&quot;}
   &quot;coq&quot; {&gt;= &quot;8.11&quot; &amp; &lt; &quot;8.12~&quot;}
   &quot;coq-equations&quot; {&gt;= &quot;1.2.1&quot;}
 ]
@@ -118,433 +118,39 @@ url {
               <dt>Command</dt>
               <dd><code>opam install -y --show-action coq-metacoq-template.1.0~alpha2+8.11 coq.8.11.1</code></dd>
               <dt>Return code</dt>
-              <dd>0</dd>
+              <dd>5120</dd>
+              <dt>Output</dt>
+              <dd><pre>[NOTE] Package coq is already installed (current version is 8.11.1).
+The following dependencies couldn&#39;t be met:
+  - coq-metacoq-template -&gt; ocaml &lt; 4.10
+      base of this switch (use `--unlock-base&#39; to force)
+No solution found, exiting
+</pre></dd>
             </dl>
             <p>Dry install without Coq/switch base, to test if the problem was incompatibility with the current Coq/OCaml version:</p>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>true</code></dd>
+              <dd><code>opam remove -y coq; opam install -y --show-action --unlock-base coq-metacoq-template.1.0~alpha2+8.11</code></dd>
               <dt>Return code</dt>
               <dd>0</dd>
             </dl>
             <h2>Install dependencies</h2>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>opam list; echo; ulimit -Sv 4000000; timeout 2h opam install -y --deps-only coq-metacoq-template.1.0~alpha2+8.11 coq.8.11.1</code></dd>
+              <dd><code>true</code></dd>
               <dt>Return code</dt>
               <dd>0</dd>
               <dt>Duration</dt>
-              <dd>1 m 3 s</dd>
+              <dd>0 s</dd>
             </dl>
             <h2>Install</h2>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>opam list; echo; ulimit -Sv 16000000; timeout 2h opam install -y -v coq-metacoq-template.1.0~alpha2+8.11 coq.8.11.1</code></dd>
+              <dd><code>true</code></dd>
               <dt>Return code</dt>
-              <dd>7936</dd>
+              <dd>0</dd>
               <dt>Duration</dt>
-              <dd>2 m 49 s</dd>
-              <dt>Output</dt>
-              <dd><pre># Packages matching: installed
-# Name              # Installed # Synopsis
-base-bigarray       base
-base-threads        base
-base-unix           base
-conf-findutils      1           Virtual package relying on findutils
-conf-m4             1           Virtual package relying on m4
-coq                 8.11.1      Formal proof management system
-coq-equations       1.2.1+8.11  A function definition package for Coq
-num                 1.3         The legacy Num library for arbitrary-precision integer and rational arithmetic
-ocaml               4.10.0      The OCaml compiler (virtual package)
-ocaml-base-compiler 4.10.0      Official release 4.10.0
-ocaml-config        1           OCaml Switch Configuration
-ocamlfind           1.8.1       A library manager for OCaml
-[NOTE] Package coq is already installed (current version is 8.11.1).
-The following actions will be performed:
-  - install coq-metacoq-template 1.0~alpha2+8.11
-&lt;&gt;&lt;&gt; Gathering sources &gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;
-Processing  1/1: [coq-metacoq-template.1.0~alpha2+8.11: http]
-[coq-metacoq-template.1.0~alpha2+8.11] downloaded from https://github.com/MetaCoq/metacoq/archive/v1.0-alpha2-8.11.tar.gz
-Processing  1/1:
-&lt;&gt;&lt;&gt; Processing actions &lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;
-Processing  1/2: [coq-metacoq-template: sh]
-+ /home/bench/.opam/opam-init/hooks/sandbox.sh &quot;build&quot; &quot;sh&quot; &quot;./configure.sh&quot; (CWD=/home/bench/.opam/ocaml-base-compiler.4.10.0/.opam-switch/build/coq-metacoq-template.1.0~alpha2+8.11)
-- make -C template-coq mrproper
-- make[1]: Entering directory &#39;/home/bench/.opam/ocaml-base-compiler.4.10.0/.opam-switch/build/coq-metacoq-template.1.0~alpha2+8.11/template-coq&#39;
-- rm -f Makefile.coq
-- rm -f Makefile.plugin
-- rm -f Makefile.template
-- make[1]: Leaving directory &#39;/home/bench/.opam/ocaml-base-compiler.4.10.0/.opam-switch/build/coq-metacoq-template.1.0~alpha2+8.11/template-coq&#39;
-- make -C pcuic mrproper
-- make[1]: Entering directory &#39;/home/bench/.opam/ocaml-base-compiler.4.10.0/.opam-switch/build/coq-metacoq-template.1.0~alpha2+8.11/pcuic&#39;
-- rm -f metacoq-config
-- rm -f Makefile.plugin _PluginProject
-- rm -f Makefile.pcuic _CoqProject
-- make[1]: Leaving directory &#39;/home/bench/.opam/ocaml-base-compiler.4.10.0/.opam-switch/build/coq-metacoq-template.1.0~alpha2+8.11/pcuic&#39;
-- make -C safechecker mrproper
-- make[1]: Entering directory &#39;/home/bench/.opam/ocaml-base-compiler.4.10.0/.opam-switch/build/coq-metacoq-template.1.0~alpha2+8.11/safechecker&#39;
-- rm -f metacoq-config
-- rm -f Makefile.plugin _PluginProject
-- rm -f Makefile.safechecker _CoqProject
-- make[1]: Leaving directory &#39;/home/bench/.opam/ocaml-base-compiler.4.10.0/.opam-switch/build/coq-metacoq-template.1.0~alpha2+8.11/safechecker&#39;
-- make -C erasure mrproper
-- make[1]: Entering directory &#39;/home/bench/.opam/ocaml-base-compiler.4.10.0/.opam-switch/build/coq-metacoq-template.1.0~alpha2+8.11/erasure&#39;
-- rm -f Makefile.plugin
-- rm -f Makefile.erasure
-- make[1]: Leaving directory &#39;/home/bench/.opam/ocaml-base-compiler.4.10.0/.opam-switch/build/coq-metacoq-template.1.0~alpha2+8.11/erasure&#39;
-- make -C checker mrproper
-- make[1]: Entering directory &#39;/home/bench/.opam/ocaml-base-compiler.4.10.0/.opam-switch/build/coq-metacoq-template.1.0~alpha2+8.11/checker&#39;
-- rm -f Makefile.coq Makefile.plugin _CoqProject _PluginProject
-- make[1]: Leaving directory &#39;/home/bench/.opam/ocaml-base-compiler.4.10.0/.opam-switch/build/coq-metacoq-template.1.0~alpha2+8.11/checker&#39;
-- make -C examples mrproper
-- make[1]: Entering directory &#39;/home/bench/.opam/ocaml-base-compiler.4.10.0/.opam-switch/build/coq-metacoq-template.1.0~alpha2+8.11/examples&#39;
-- rm -f Makefile.coq
-- make[1]: Leaving directory &#39;/home/bench/.opam/ocaml-base-compiler.4.10.0/.opam-switch/build/coq-metacoq-template.1.0~alpha2+8.11/examples&#39;
-- make -C test-suite mrproper
-- make[1]: Entering directory &#39;/home/bench/.opam/ocaml-base-compiler.4.10.0/.opam-switch/build/coq-metacoq-template.1.0~alpha2+8.11/test-suite&#39;
-- rm -f Makefile.coq
-- make[1]: Leaving directory &#39;/home/bench/.opam/ocaml-base-compiler.4.10.0/.opam-switch/build/coq-metacoq-template.1.0~alpha2+8.11/test-suite&#39;
-- make -C translations mrproper
-- make[1]: Entering directory &#39;/home/bench/.opam/ocaml-base-compiler.4.10.0/.opam-switch/build/coq-metacoq-template.1.0~alpha2+8.11/translations&#39;
-- rm -f Makefile.coq
-- make[1]: Leaving directory &#39;/home/bench/.opam/ocaml-base-compiler.4.10.0/.opam-switch/build/coq-metacoq-template.1.0~alpha2+8.11/translations&#39;
-- ./configure.sh: 19: [: unexpected operator
-- Building MetaCoq globally (default)
-Processing  1/2: [coq-metacoq-template: make template-coq]
-+ /home/bench/.opam/opam-init/hooks/sandbox.sh &quot;build&quot; &quot;make&quot; &quot;-j4&quot; &quot;template-coq&quot; (CWD=/home/bench/.opam/ocaml-base-compiler.4.10.0/.opam-switch/build/coq-metacoq-template.1.0~alpha2+8.11)
-- make -C template-coq
-- make[1]: Entering directory &#39;/home/bench/.opam/ocaml-base-compiler.4.10.0/.opam-switch/build/coq-metacoq-template.1.0~alpha2+8.11/template-coq&#39;
-- coq_makefile -f _CoqProject -o Makefile.coq
-- coq_makefile -f _TemplateCoqProject -o Makefile.template
-- coq_makefile -f _PluginProject -o Makefile.plugin
-- `which gsed || which sed` -i -e s/coqdeps/coqdeps.template/g Makefile.template
-- Warning: no common logical root
-- Warning: in such case INSTALLDEFAULTROOT must be defined
-- Warning: the install-doc target is going to install files
-- Warning: in orphan_MetaCoq.Template_Test_MetaCoq.Template
-- `which gsed || which sed` -i -e s/coqdeps/coqdeps.plugin/g Makefile.plugin
-- make -f Makefile.coq
-- make[2]: Entering directory &#39;/home/bench/.opam/ocaml-base-compiler.4.10.0/.opam-switch/build/coq-metacoq-template.1.0~alpha2+8.11/template-coq&#39;
-- COQDEP VFILES
-- COQC theories/utils/MCList.v
-- COQC theories/utils/MCRelations.v
-- COQC theories/utils/MCProd.v
-- COQC theories/utils/MCOption.v
-- COQC theories/utils/MCSquash.v
-- COQC theories/utils/MCArith.v
-- COQC theories/utils/MCCompare.v
-- COQC theories/utils/MCEquality.v
-- COQC theories/utils/LibHypsNaming.v
-- COQC theories/utils/MCString.v
-- COQC theories/monad_utils.v
-- COQC theories/config.v
-- COQC theories/BasicAst.v
-- COQC theories/utils/All_Forall.v
-- COQC theories/utils.v
-- COQC theories/utils/wGraph.v
-- COQC theories/Universes.v
-- COQC theories/Environment.v
-- COQC theories/Ast.v
-- COQC theories/AstUtils.v
-- COQC theories/TemplateMonad/Common.v
-- COQC theories/Induction.v
-- COQC theories/WfInv.v
-- COQC theories/TemplateMonad/Core.v
-- COQC theories/TemplateMonad/Extractable.v
-- COQC theories/common/uGraph.v
-- COQC theories/TemplateMonad.v
-- COQC theories/LiftSubst.v
-- COQC theories/Constants.v
-- COQC theories/Pretty.v
-- COQC theories/UnivSubst.v
-- COQC theories/EnvironmentTyping.v
-- COQC theories/Extraction.v
-- COQC theories/Typing.v
-- File &quot;./theories/Extraction.v&quot;, line 29, characters 0-41:
-- Warning: The identifier t__rect contains __ which is reserved for the
-- extraction [extraction-reserved-identifier,extraction]
-- File &quot;./theories/Extraction.v&quot;, line 29, characters 0-41:
-- Warning: The identifier t__rec contains __ which is reserved for the
-- extraction [extraction-reserved-identifier,extraction]
-- File &quot;./theories/Extraction.v&quot;, line 29, characters 0-41:
-- Warning: The identifier t__rect contains __ which is reserved for the
-- extraction [extraction-reserved-identifier,extraction]
-- File &quot;./theories/Extraction.v&quot;, line 29, characters 0-41:
-- Warning: The identifier t__rec contains __ which is reserved for the
-- extraction [extraction-reserved-identifier,extraction]
-- File &quot;./theories/Extraction.v&quot;, line 29, characters 0-41:
-- Warning: The identifier t__rect contains __ which is reserved for the
-- extraction [extraction-reserved-identifier,extraction]
-- File &quot;./theories/Extraction.v&quot;, line 29, characters 0-41:
-- Warning: The identifier t__rec contains __ which is reserved for the
-- extraction [extraction-reserved-identifier,extraction]
-- File &quot;./theories/Extraction.v&quot;, line 29, characters 0-41:
-- Warning: The identifier t__rect contains __ which is reserved for the
-- extraction [extraction-reserved-identifier,extraction]
-- File &quot;./theories/Extraction.v&quot;, line 29, characters 0-41:
-- Warning: The identifier t__rec contains __ which is reserved for the
-- extraction [extraction-reserved-identifier,extraction]
-- File &quot;./theories/Extraction.v&quot;, line 31, characters 0-29:
-- Warning: The identifier t__rect contains __ which is reserved for the
-- extraction [extraction-reserved-identifier,extraction]
-- File &quot;./theories/Extraction.v&quot;, line 31, characters 0-29:
-- Warning: The identifier t__rec contains __ which is reserved for the
-- extraction [extraction-reserved-identifier,extraction]
-- File &quot;./theories/Extraction.v&quot;, line 31, characters 0-29:
-- Warning: The identifier t__rect contains __ which is reserved for the
-- extraction [extraction-reserved-identifier,extraction]
-- File &quot;./theories/Extraction.v&quot;, line 31, characters 0-29:
-- Warning: The identifier t__rec contains __ which is reserved for the
-- extraction [extraction-reserved-identifier,extraction]
-- File &quot;./theories/Extraction.v&quot;, line 31, characters 0-29:
-- Warning: The identifier t__rect contains __ which is reserved for the
-- extraction [extraction-reserved-identifier,extraction]
-- File &quot;./theories/Extraction.v&quot;, line 31, characters 0-29:
-- Warning: The identifier t__rec contains __ which is reserved for the
-- extraction [extraction-reserved-identifier,extraction]
-- File &quot;./theories/Extraction.v&quot;, line 31, characters 0-29:
-- Warning: The identifier t__rect contains __ which is reserved for the
-- extraction [extraction-reserved-identifier,extraction]
-- File &quot;./theories/Extraction.v&quot;, line 31, characters 0-29:
-- Warning: The identifier t__rec contains __ which is reserved for the
-- extraction [extraction-reserved-identifier,extraction]
-- File &quot;./theories/Extraction.v&quot;, line 32, characters 0-29:
-- Warning: The identifier t__rect contains __ which is reserved for the
-- extraction [extraction-reserved-identifier,extraction]
-- File &quot;./theories/Extraction.v&quot;, line 32, characte
-[...] truncated
-lobnames.ConstructRef _ -&gt; CErrors.user_err (str &quot;the constant is a consructor. use tConstructor : &quot; ++ str s)
--                    ^^^^^^^^^^^^^^^^^^^^^^
-- Alert deprecated: ConstructRef
-- Use Names.GlobRef.ConstructRef
-- CAMLOPT -c -for-pack Template_coq src/constr_quoter.ml
-- CAMLOPT -c -for-pack Template_coq src/plugin_core.ml
-- CAMLOPT -c -for-pack Template_coq src/run_template_monad.ml
-- CAMLOPT -c -for-pack Template_coq src/g_template_coq.ml
-- CAMLOPT -pack -o src/template_coq.cmx
-- CAMLOPT -a -o src/template_coq.cmxa
-- CAMLOPT -shared -o src/template_coq.cmxs
-- make[2]: Leaving directory &#39;/home/bench/.opam/ocaml-base-compiler.4.10.0/.opam-switch/build/coq-metacoq-template.1.0~alpha2+8.11/template-coq&#39;
-- cp src/template_coq.cm* build/
-- make -f Makefile.template
-- make[2]: Entering directory &#39;/home/bench/.opam/ocaml-base-compiler.4.10.0/.opam-switch/build/coq-metacoq-template.1.0~alpha2+8.11/template-coq&#39;
-- COQC theories/Loader.v
-- COQC theories/All.v
-- make[2]: Leaving directory &#39;/home/bench/.opam/ocaml-base-compiler.4.10.0/.opam-switch/build/coq-metacoq-template.1.0~alpha2+8.11/template-coq&#39;
-- make -f Makefile.plugin
-- make[2]: Entering directory &#39;/home/bench/.opam/ocaml-base-compiler.4.10.0/.opam-switch/build/coq-metacoq-template.1.0~alpha2+8.11/template-coq&#39;
-- COQDEP VFILES
-- CAMLDEP gen-src/univSubst0.mli
-- CAMLDEP gen-src/universes0.mli
-- CAMLDEP gen-src/string0.mli
-- CAMLDEP gen-src/specif.mli
-- CAMLDEP gen-src/run_extractable.mli
-- CAMLDEP gen-src/pretty.mli
-- CAMLDEP gen-src/plugin_core.mli
-- CAMLDEP gen-src/peanoNat.mli
-- CAMLDEP gen-src/ordersTac.mli
-- CAMLDEP gen-src/orders.mli
-- CAMLDEP gen-src/ordersLists.mli
-- CAMLDEP gen-src/ordersFacts.mli
-- CAMLDEP gen-src/orderedType0.mli
-- CAMLDEP gen-src/nat0.mli
-- CAMLDEP gen-src/mSetProperties.mli
-- CAMLDEP gen-src/mSetList.mli
-- CAMLDEP gen-src/mSetInterface.mli
-- CAMLDEP gen-src/mSetFacts.mli
-- CAMLDEP gen-src/mSetDecide.mli
-- CAMLDEP gen-src/mCString.mli
-- CAMLDEP gen-src/mCRelations.mli
-- CAMLDEP gen-src/mCProd.mli
-- CAMLDEP gen-src/mCOption.mli
-- CAMLDEP gen-src/mCList.mli
-- CAMLDEP gen-src/mCCompare.mli
-- CAMLDEP gen-src/logic0.mli
-- CAMLDEP gen-src/list0.mli
-- CAMLDEP gen-src/liftSubst.mli
-- CAMLDEP gen-src/extractable.mli
-- CAMLDEP gen-src/equality0.mli
-- CAMLDEP gen-src/equalities.mli
-- CAMLDEP gen-src/environment.mli
-- CAMLDEP gen-src/decimal.mli
-- CAMLDEP gen-src/datatypes.mli
-- CAMLDEP gen-src/cRelationClasses.mli
-- CAMLDEP gen-src/config0.mli
-- CAMLDEP gen-src/compare_dec.mli
-- CAMLDEP gen-src/common0.mli
-- CAMLDEP gen-src/bool.mli
-- CAMLDEP gen-src/binPos.mli
-- CAMLDEP gen-src/binPosDef.mli
-- CAMLDEP gen-src/binNums.mli
-- CAMLDEP gen-src/binNat.mli
-- CAMLDEP gen-src/binInt.mli
-- CAMLDEP gen-src/basics.mli
-- CAMLDEP gen-src/basicAst.mli
-- CAMLDEP gen-src/astUtils.mli
-- CAMLDEP gen-src/ast0.mli
-- CAMLDEP gen-src/ascii.mli
-- CAMLDEP gen-src/all_Forall.mli
-- COQDEP gen-src/metacoq_template_plugin.mlpack
-- CAMLDEP gen-src/univSubst0.ml
-- CAMLDEP gen-src/universes0.ml
-- CAMLDEP gen-src/tm_util.ml
-- CAMLDEP gen-src/string0.ml
-- CAMLDEP gen-src/specif.ml
-- CAMLDEP gen-src/run_extractable.ml
-- CAMLDEP gen-src/quoter.ml
-- CAMLDEP gen-src/quoted.ml
-- CAMLDEP gen-src/pretty.ml
-- CAMLDEP gen-src/plugin_core.ml
-- CAMLDEP gen-src/peanoNat.ml
-- CAMLDEP gen-src/ordersTac.ml
-- CAMLDEP gen-src/orders.ml
-- CAMLDEP gen-src/ordersLists.ml
-- CAMLDEP gen-src/ordersFacts.ml
-- CAMLDEP gen-src/orderedType0.ml
-- CAMLDEP gen-src/nat0.ml
-- CAMLDEP gen-src/mSetProperties.ml
-- CAMLDEP gen-src/mSetList.ml
-- CAMLDEP gen-src/mSetInterface.ml
-- CAMLDEP gen-src/mSetFacts.ml
-- CAMLDEP gen-src/mSetDecide.ml
-- CAMLDEP gen-src/mCString.ml
-- CAMLDEP gen-src/mCRelations.ml
-- CAMLDEP gen-src/mCProd.ml
-- CAMLDEP gen-src/mCOption.ml
-- CAMLDEP gen-src/mCList.ml
-- CAMLDEP gen-src/mCCompare.ml
-- CAMLDEP gen-src/logic0.ml
-- CAMLDEP gen-src/list0.ml
-- CAMLDEP gen-src/liftSubst.ml
-- CAMLDEP gen-src/extractable.ml
-- CAMLDEP gen-src/equality0.ml
-- CAMLDEP gen-src/equalities.ml
-- CAMLDEP gen-src/environment.ml
-- CAMLDEP gen-src/denoter.ml
-- CAMLDEP gen-src/denote.ml
-- CAMLDEP gen-src/decimal.ml
-- CAMLDEP gen-src/datatypes.ml
-- CAMLDEP gen-src/cRelationClasses.ml
-- CAMLDEP gen-src/config0.ml
-- CAMLDEP gen-src/compare_dec.ml
-- CAMLDEP gen-src/common0.ml
-- CAMLDEP gen-src/bool.ml
-- CAMLDEP gen-src/binPos.ml
-- CAMLDEP gen-src/binPosDef.ml
-- CAMLDEP gen-src/binNums.ml
-- CAMLDEP gen-src/binNat.ml
-- CAMLDEP gen-src/binInt.ml
-- CAMLDEP gen-src/basics.ml
-- CAMLDEP gen-src/basicAst.ml
-- CAMLDEP gen-src/astUtils.ml
-- CAMLDEP gen-src/ast_quoter.ml
-- CAMLDEP gen-src/ast_denoter.ml
-- CAMLDEP gen-src/ast0.ml
-- CAMLDEP gen-src/ascii.ml
-- CAMLDEP gen-src/all_Forall.ml
-- CAMLC -c gen-src/datatypes.mli
-- CAMLC -c gen-src/bool.mli
-- CAMLC -c gen-src/basics.mli
-- CAMLC -c gen-src/binNums.mli
-- CAMLC -c gen-src/equality0.mli
-- CAMLC -c gen-src/mCRelations.mli
-- CAMLC -c gen-src/mCOption.mli
-- CAMLC -c gen-src/mCProd.mli
-- CAMLC -c gen-src/mCString.mli
-- CAMLC -c gen-src/config0.mli
-- CAMLC -c gen-src/basicAst.mli
-- CAMLOPT -c -for-pack Metacoq_template_plugin gen-src/quoted.ml
-- CAMLC -c gen-src/logic0.mli
-- CAMLOPT -c -for-pack Metacoq_template_plugin gen-src/tm_util.ml
-- CAMLC -c gen-src/plugin_core.mli
-- CAMLC -c gen-src/tm_util.ml
-- CAMLC -c gen-src/quoted.ml
-- CAMLOPT -c -for-pack Metacoq_template_plugin gen-src/datatypes.ml
-- CAMLOPT -c -for-pack Metacoq_template_plugin gen-src/bool.ml
-- CAMLC -c gen-src/equalities.mli
-- CAMLC -c gen-src/decimal.mli
-- CAMLC -c gen-src/specif.mli
-- CAMLOPT -c -for-pack Metacoq_template_plugin gen-src/basics.ml
-- CAMLOPT -c -for-pack Metacoq_template_plugin gen-src/binNums.ml
-- CAMLOPT -c -for-pack Metacoq_template_plugin gen-src/equality0.ml
-- CAMLC -c gen-src/cRelationClasses.mli
-- CAMLC -c gen-src/compare_dec.mli
-- CAMLOPT -c -for-pack Metacoq_template_plugin gen-src/mCRelations.ml
-- CAMLOPT -c -for-pack Metacoq_template_plugin gen-src/mCOption.ml
-- CAMLOPT -c -for-pack Metacoq_template_plugin gen-src/mCProd.ml
-- CAMLOPT -c -for-pack Metacoq_template_plugin gen-src/mCString.ml
-- CAMLOPT -c -for-pack Metacoq_template_plugin gen-src/config0.ml
-- CAMLOPT -c -for-pack Metacoq_template_plugin gen-src/basicAst.ml
-- CAMLOPT -c -for-pack Metacoq_template_plugin gen-src/denoter.ml
-- CAMLOPT -c -for-pack Metacoq_template_plugin gen-src/logic0.ml
-- CAMLOPT -c -for-pack Metacoq_template_plugin gen-src/quoter.ml
-- CAMLC -c gen-src/quoter.ml
-- CAMLOPT -c -for-pack Metacoq_template_plugin gen-src/equalities.ml
-- CAMLOPT -c -for-pack Metacoq_template_plugin gen-src/decimal.ml
-- File &quot;gen-src/equalities.ml&quot;, line 201, characters 10-11:
-- 201 |  functor (E:Eq) -&gt;
--                 ^
-- Error (warning 60): unused module E.
-- File &quot;gen-src/equalities.ml&quot;, line 202, characters 10-11:
-- 202 |  functor (F:sig
--                 ^
-- Error (warning 60): unused module F.
-- File &quot;gen-src/equalities.ml&quot;, line 208, characters 10-11:
-- 208 |  functor (E:Eq) -&gt;
--                 ^
-- Error (warning 60): unused module E.
-- File &quot;gen-src/equalities.ml&quot;, line 209, characters 10-11:
-- 209 |  functor (F:sig
--                 ^
-- Error (warning 60): unused module F.
-- CAMLC -c gen-src/nat0.mli
-- CAMLOPT -c -for-pack Metacoq_template_plugin gen-src/specif.ml
-- CAMLC -c gen-src/list0.mli
-- CAMLC -c gen-src/peanoNat.mli
-- CAMLC -c gen-src/binPosDef.mli
-- CAMLC -c gen-src/orders.mli
-- CAMLOPT -c -for-pack Metacoq_template_plugin gen-src/cRelationClasses.ml
-- CAMLOPT -c -for-pack Metacoq_template_plugin gen-src/compare_dec.ml
-- CAMLC -c gen-src/mCList.mli
-- CAMLOPT -c -for-pack Metacoq_template_plugin gen-src/denote.ml
-- make[3]: *** [Makefile.plugin:625: gen-src/equalities.cmx] Error 2
-- make[3]: *** Waiting for unfinished jobs....
-- make[2]: *** [Makefile.plugin:327: all] Error 2
-- make[2]: Leaving directory &#39;/home/bench/.opam/ocaml-base-compiler.4.10.0/.opam-switch/build/coq-metacoq-template.1.0~alpha2+8.11/template-coq&#39;
-- make[1]: *** [Makefile:20: plugin] Error 2
-- make[1]: Leaving directory &#39;/home/bench/.opam/ocaml-base-compiler.4.10.0/.opam-switch/build/coq-metacoq-template.1.0~alpha2+8.11/template-coq&#39;
-- make: *** [Makefile:51: template-coq] Error 2
-[ERROR] The compilation of coq-metacoq-template failed at &quot;/home/bench/.opam/opam-init/hooks/sandbox.sh build make -j4 template-coq&quot;.
-#=== ERROR while compiling coq-metacoq-template.1.0~alpha2+8.11 ===============#
-# context              2.0.6 | linux/x86_64 | ocaml-base-compiler.4.10.0 | file:///home/bench/run/opam-coq-archive/released
-# path                 ~/.opam/ocaml-base-compiler.4.10.0/.opam-switch/build/coq-metacoq-template.1.0~alpha2+8.11
-# command              ~/.opam/opam-init/hooks/sandbox.sh build make -j4 template-coq
-# exit-code            2
-# env-file             ~/.opam/log/coq-metacoq-template-2808-2dea01.env
-# output-file          ~/.opam/log/coq-metacoq-template-2808-2dea01.out
-### output ###
-# [...]
-# CAMLC -c gen-src/orders.mli
-# CAMLOPT -c -for-pack Metacoq_template_plugin gen-src/cRelationClasses.ml
-# CAMLOPT -c -for-pack Metacoq_template_plugin gen-src/compare_dec.ml
-# CAMLC -c gen-src/mCList.mli
-# CAMLOPT -c -for-pack Metacoq_template_plugin gen-src/denote.ml
-# make[3]: *** [Makefile.plugin:625: gen-src/equalities.cmx] Error 2
-# make[3]: *** Waiting for unfinished jobs....
-# make[2]: *** [Makefile.plugin:327: all] Error 2
-# make[2]: Leaving directory &#39;/home/bench/.opam/ocaml-base-compiler.4.10.0/.opam-switch/build/coq-metacoq-template.1.0~alpha2+8.11/template-coq&#39;
-# make[1]: *** [Makefile:20: plugin] Error 2
-# make[1]: Leaving directory &#39;/home/bench/.opam/ocaml-base-compiler.4.10.0/.opam-switch/build/coq-metacoq-template.1.0~alpha2+8.11/template-coq&#39;
-# make: *** [Makefile:51: template-coq] Error 2
-&lt;&gt;&lt;&gt; Error report &lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;
-+- The following actions failed
-| - build coq-metacoq-template 1.0~alpha2+8.11
-+- 
-- No changes have been performed
-# Run eval $(opam env) to update the current shell environment
-&#39;opam install -y -v coq-metacoq-template.1.0~alpha2+8.11 coq.8.11.1&#39; failed.
-The middle of the output is truncated (maximum 20000 characters)
-</pre></dd>
+              <dd>0 s</dd>
             </dl>
             <h2>Installation size</h2>
             <p>No files were installed.</p>
