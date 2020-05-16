@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>mathcomp-finmap: Error</title>
+    <title>mathcomp-finmap: Not compatible</title>
     <link rel="shortcut icon" type="image/png" href="../../../../../favicon.png" />
     <link href="../../../../../bootstrap.min.css" rel="stylesheet">
     <link href="../../../../../bootstrap-custom.css" rel="stylesheet">
@@ -39,10 +39,10 @@
               mathcomp-finmap
               <small>
                 1.4.0
-                <span class="label label-danger">Error</span>
+                <span class="label label-info">Not compatible</span>
               </small>
             </h1>
-            <p><em><script>document.write(moment("2020-03-05 23:20:55 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2020-03-05 23:20:55 UTC)</em><p>
+            <p><em><script>document.write(moment("2020-05-14 13:08:33 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2020-05-14 13:08:33 UTC)</em><p>
             <h2>Context</h2>
             <pre># Packages matching: installed
 # Name              # Installed # Synopsis
@@ -59,7 +59,6 @@ ocaml-config        1           OCaml Switch Configuration
 ocamlfind           1.8.1       A library manager for OCaml
 # opam file:
 opam-version: &quot;2.0&quot;
-name: &quot;coq-mathcomp-finmap&quot;
 maintainer: &quot;Cyril Cohen &lt;cyril.cohen@inria.fr&gt;&quot;
 homepage: &quot;https://github.com/math-comp/finmap&quot;
 bug-reports: &quot;https://github.com/math-comp/finmap/issues&quot;
@@ -68,7 +67,7 @@ license: &quot;CeCILL-B&quot;
 build: [ make &quot;-j&quot; &quot;%{jobs}%&quot; ]
 install: [ make &quot;install&quot; ]
 depends: [
-  &quot;coq&quot; { (&gt;= &quot;8.7&quot; &amp; &lt; &quot;8.12~&quot;) }
+  &quot;coq&quot; { (&gt;= &quot;8.7&quot; &amp; &lt; &quot;8.11.1&quot;) }
   &quot;coq-mathcomp-ssreflect&quot; { (&gt;= &quot;1.8.0&quot; &amp; &lt; &quot;1.11~&quot;) }
   &quot;coq-mathcomp-bigenough&quot; { (&gt;= &quot;1.0.0&quot; &amp; &lt; &quot;1.1~&quot;) }
 ]
@@ -99,632 +98,41 @@ url {
               <dt>Command</dt>
               <dd><code>opam install -y --show-action coq-mathcomp-finmap.1.4.0 coq.8.11.dev</code></dd>
               <dt>Return code</dt>
-              <dd>0</dd>
+              <dd>5120</dd>
+              <dt>Output</dt>
+              <dd><pre>[NOTE] Package coq is already installed (current version is 8.11.dev).
+The following dependencies couldn&#39;t be met:
+  - coq-mathcomp-finmap -&gt; coq &lt; 8.11.1 -&gt; ocaml &lt; 4.06.0
+      base of this switch (use `--unlock-base&#39; to force)
+Your request can&#39;t be satisfied:
+  - No available version of coq satisfies the constraints
+No solution found, exiting
+</pre></dd>
             </dl>
             <p>Dry install without Coq/switch base, to test if the problem was incompatibility with the current Coq/OCaml version:</p>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>true</code></dd>
+              <dd><code>opam remove -y coq; opam install -y --show-action --unlock-base coq-mathcomp-finmap.1.4.0</code></dd>
               <dt>Return code</dt>
               <dd>0</dd>
             </dl>
             <h2>Install dependencies</h2>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>opam list; echo; ulimit -Sv 4000000; timeout 2h opam install -y --deps-only coq-mathcomp-finmap.1.4.0 coq.8.11.dev</code></dd>
+              <dd><code>true</code></dd>
               <dt>Return code</dt>
               <dd>0</dd>
               <dt>Duration</dt>
-              <dd>1 m 26 s</dd>
+              <dd>0 s</dd>
             </dl>
             <h2>Install</h2>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>opam list; echo; ulimit -Sv 16000000; timeout 2h opam install -y -v coq-mathcomp-finmap.1.4.0 coq.8.11.dev</code></dd>
+              <dd><code>true</code></dd>
               <dt>Return code</dt>
-              <dd>7936</dd>
+              <dd>0</dd>
               <dt>Duration</dt>
-              <dd>18 s</dd>
-              <dt>Output</dt>
-              <dd><pre># Packages matching: installed
-# Name                 # Installed # Synopsis
-base-bigarray          base
-base-threads           base
-base-unix              base
-conf-findutils         1           Virtual package relying on findutils
-conf-m4                1           Virtual package relying on m4
-coq                    8.11.dev    Formal proof management system
-coq-mathcomp-bigenough 1.0.0       A small library to do epsilon - N reasonning
-coq-mathcomp-ssreflect 1.10.0      Small Scale Reflection
-num                    1.3         The legacy Num library for arbitrary-precision integer and rational arithmetic
-ocaml                  4.08.1      The OCaml compiler (virtual package)
-ocaml-base-compiler    4.08.1      Official release 4.08.1
-ocaml-config           1           OCaml Switch Configuration
-ocamlfind              1.8.1       A library manager for OCaml
-[NOTE] Package coq is already installed (current version is 8.11.dev).
-The following actions will be performed:
-  - install coq-mathcomp-finmap 1.4.0
-&lt;&gt;&lt;&gt; Gathering sources &gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;
-Processing  1/1: [coq-mathcomp-finmap.1.4.0: http]
-[coq-mathcomp-finmap.1.4.0] downloaded from https://github.com/math-comp/finmap/archive/1.4.0.tar.gz
-Processing  1/1:
-&lt;&gt;&lt;&gt; Processing actions &lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;
-Processing  1/2: [coq-mathcomp-finmap: make 4]
-+ /home/bench/.opam/opam-init/hooks/sandbox.sh &quot;build&quot; &quot;make&quot; &quot;-j&quot; &quot;4&quot; (CWD=/home/bench/.opam/ocaml-base-compiler.4.08.1/.opam-switch/build/coq-mathcomp-finmap.1.4.0)
-- /home/bench/.opam/ocaml-base-compiler.4.08.1/bin/coq_makefile  -f _CoqProject -o Makefile.coq
-- make -f Makefile.coq 
-- make[1]: Entering directory &#39;/home/bench/.opam/ocaml-base-compiler.4.08.1/.opam-switch/build/coq-mathcomp-finmap.1.4.0&#39;
-- COQDEP VFILES
-- COQC finmap.v
-- COQC order.v
-- File &quot;./order.v&quot;, line 3, characters 0-79:
-- Warning: Notation &quot;[ rel _ _ | _ ]&quot; was already used in scope fun_scope.
-- [notation-overridden,parsing]
-- File &quot;./order.v&quot;, line 3, characters 0-79:
-- Warning: Notation &quot;[ rel _ _ : _ | _ ]&quot; was already used in scope fun_scope.
-- [notation-overridden,parsing]
-- File &quot;./order.v&quot;, line 3, characters 0-79:
-- Warning: Notation &quot;[ rel _ _ in _ &amp; _ | _ ]&quot; was already used in scope
-- fun_scope. [notation-overridden,parsing]
-- File &quot;./order.v&quot;, line 3, characters 0-79:
-- Warning: Notation &quot;[ rel _ _ in _ &amp; _ ]&quot; was already used in scope fun_scope.
-- [notation-overridden,parsing]
-- File &quot;./order.v&quot;, line 3, characters 0-79:
-- Warning: Notation &quot;[ rel _ _ in _ | _ ]&quot; was already used in scope fun_scope.
-- [notation-overridden,parsing]
-- File &quot;./order.v&quot;, line 3, characters 0-79:
-- Warning: Notation &quot;[ rel _ _ in _ ]&quot; was already used in scope fun_scope.
-- [notation-overridden,parsing]
-- File &quot;./order.v&quot;, line 3, characters 0-79:
-- Warning: Notation &quot;_ + _&quot; was already used in scope nat_scope.
-- [notation-overridden,parsing]
-- File &quot;./order.v&quot;, line 3, characters 0-79:
-- Warning: Notation &quot;_ - _&quot; was already used in scope nat_scope.
-- [notation-overridden,parsing]
-- File &quot;./order.v&quot;, line 3, characters 0-79:
-- Warning: Notation &quot;_ &lt;= _&quot; was already used in scope nat_scope.
-- [notation-overridden,parsing]
-- File &quot;./order.v&quot;, line 3, characters 0-79:
-- Warning: Notation &quot;_ &lt; _&quot; was already used in scope nat_scope.
-- [notation-overridden,parsing]
-- File &quot;./order.v&quot;, line 3, characters 0-79:
-- Warning: Notation &quot;_ &gt;= _&quot; was already used in scope nat_scope.
-- [notation-overridden,parsing]
-- File &quot;./order.v&quot;, line 3, characters 0-79:
-- Warning: Notation &quot;_ &gt; _&quot; was already used in scope nat_scope.
-- [notation-overridden,parsing]
-- File &quot;./order.v&quot;, line 3, characters 0-79:
-- Warning: Notation &quot;_ &lt;= _ &lt;= _&quot; was already used in scope nat_scope.
-- [notation-overridden,parsing]
-- File &quot;./order.v&quot;, line 3, characters 0-79:
-- Warning: Notation &quot;_ &lt; _ &lt;= _&quot; was already used in scope nat_scope.
-- [notation-overridden,parsing]
-- File &quot;./order.v&quot;, line 3, characters 0-79:
-- Warning: Notation &quot;_ &lt;= _ &lt; _&quot; was already used in scope nat_scope.
-- [notation-overridden,parsing]
-- File &quot;./order.v&quot;, line 3, characters 0-79:
-- Warning: Notation &quot;_ &lt; _ &lt; _&quot; was already used in scope nat_scope.
-- [notation-overridden,parsing]
-- File &quot;./order.v&quot;, line 3, characters 0-79:
-- Warning: Notation &quot;_ * _&quot; was already used in scope nat_scope.
-- [notation-overridden,parsing]
-- File &quot;./order.v&quot;, line 354, characters 0-33:
-- Warning: Declaring a scope implicitly is deprecated; use in advance an
-- explicit &quot;Declare Scope order_scope.&quot;. [undeclared-scope,deprecated]
-- File &quot;./finmap.v&quot;, line 3, characters 0-72:
-- Warning: Notation &quot;[ rel _ _ | _ ]&quot; was already used in scope fun_scope.
-- [notation-overridden,parsing]
-- File &quot;./finmap.v&quot;, line 3, characters 0-72:
-- Warning: Notation &quot;[ rel _ _ : _ | _ ]&quot; was already used in scope fun_scope.
-- [notation-overridden,parsing]
-- File &quot;./finmap.v&quot;, line 3, characters 0-72:
-- Warning: Notation &quot;[ rel _ _ in _ &amp; _ | _ ]&quot; was already used in scope
-- fun_scope. [notation-overridden,parsing]
-- File &quot;./finmap.v&quot;, line 3, characters 0-72:
-- Warning: Notation &quot;[ rel _ _ in _ &amp; _ ]&quot; was already used in scope fun_scope.
-- [notation-overridden,parsing]
-- File &quot;./finmap.v&quot;, line 3, characters 0-72:
-- Warning: Notation &quot;[ rel _ _ in _ | _ ]&quot; was already used in scope fun_scope.
-- [notation-overridden,parsing]
-- File &quot;./finmap.v&quot;, line 3, characters 0-72:
-- Warning: Notation &quot;[ rel _ _ in _ ]&quot; was already used in scope fun_scope.
-- [notation-overridden,parsing]
-- File &quot;./finmap.v&quot;, line 3, characters 0-72:
-- Warning: Notation &quot;_ + _&quot; was already used in scope nat_scope.
-- [notation-overridden,parsing]
-- File &quot;./finmap.v&quot;, line 3, characters 0-72:
-- Warning: Notation &quot;_ - _&quot; was already used in scope nat_scope.
-- [notation-overridden,parsing]
-- File &quot;./finmap.v&quot;, line 3, characters 0-72:
-- Warning: Notation &quot;_ &lt;= _&quot; was already used in scope nat_scope.
-- [notation-overridden,parsing]
-- File &quot;./finmap.v&quot;, line 3, characters 0-72:
-- Warning: Notation &quot;_ &lt; _&quot; was already used in scope nat_scope.
-- [notation-overridden,parsing]
-- File &quot;./finmap.v&quot;, line 3, characters 0-72:
-- Warning: Notation &quot;_ &gt;= _&quot; was already used in scope nat_scope.
-- [notation-overridden,parsing]
-- File &quot;./finmap.v&quot;, line 3, characters 0-72:
-- Warning: Notation &quot;_ &gt; _&quot; was already used in scope nat_scope.
-- [notation-overridden,parsing]
-- File &quot;./finmap.v&quot;, line 3, characters 0-72:
-- Warning: Notation &quot;_ &lt;= _ &lt;= _&quot; was already used in scope nat_scope.
-- [notation-overridden,parsing]
-- File &quot;./finmap.v&quot;, line 3, characters 0-72:
-- Warning: Notation &quot;_ &lt; _ &lt;= _&quot; was already used in scope nat_scope.
-- [notation-overridden,parsing]
-- File &quot;./finmap.v&quot;, line 3, characters 0-72:
-- Warning: Notation &quot;_ &lt;= _ &lt; _&quot; was already used in scope nat_scope.
-- [notation-overridden,parsing]
-- File &quot;./finmap.v&quot;, line 3, characters 0-72:
-- Warning: Notation &quot;_ &lt; _ &lt; _&quot; was already used in scope nat_scope.
-- [notation-overridden,parsing]
-- File &quot;./finmap.v&quot;, line 3, characters 0-72:
-- Warning: Notation &quot;_ * _&quot; was already used in scope nat_scope.
-- [notation-overridden,parsing]
-- File &quot;./order.v&quot;, line 990, characters 0-37:
-- Warning: Declaring a scope implicitly is deprecated; use in advance an
-- explicit &quot;Declare Scope cpo_sort.&quot;. [undeclared-scope,deprecated]
-- Warning: perm_eq_sym is deprecated; use perm_sym instead
-- Warning: perm_eq_sym is deprecated; use perm_sym instead
-- Warning: perm_eq_uniq is deprecated; use perm_uniq instead
-- Warning: perm_eq_uniq is deprecated; use perm_uniq instead
-- Warning: perm_eq_mem is deprecated; use perm_mem instead
-- Warning: perm_eq_mem is deprecated; use perm_mem instead
-- Warning: uniq_perm_eq is deprecated; use uniq_perm instead
-- Warning: uniq_perm_eq is deprecated; use uniq_perm instead
-- Warning: uniq_perm_eq is deprecated; use uniq_perm instead
-- Warning: uniq_perm_eq is deprecated; use uniq_perm instead
-- Warning: uniq_perm_eq is deprecated; use uniq_perm instead
-- Warning: perm_eq_sym is deprecated; use perm_sym instead
-- Warning: perm_eq_sym is deprecated; use perm_sym instead
-- Warning: perm_eq_trans is deprecated; use perm_trans instead
-- Warning: perm_eq_trans is deprecated; use perm_trans instead
-- Warning: perm_eq_trans is deprecated; use perm_trans instead
-- File &quot;./finmap.v&quot;, line 225, characters 0-27:
-- Warning: Adding and removing hints in the core database implicitly is
-- deprecated. Please specify a hint database.
-- [implicit-core-hint-db,deprecated]
-- File &quot;./finmap.v&quot;, line 226, characters 0-27:
-- Warning: Adding and removing hints in the core database implicitly is
-- deprecated. Please specify a hint database.
-- [implicit-core-hint-db,deprecated]
-- File &quot;./finmap.v&quot;, line 227, characters 0-24:
-- Warning: Adding and removing hints in the core database implicitly is
-- deprecated. Please specify a hint database.
-- [implicit-core-hint-db,deprecated]
-- Warning: perm_eq_size is deprecated; use perm_size instead
-- Warning: perm_eq_size is deprecated; use perm_size instead
-- Warning: perm_eq_size is deprecated; use perm_size instead
-- File &quot;./finmap.v&quot;, line 372, characters 0-48:
-- Warning: Adding and removing hints in the core database implicitly is
-- deprecated. Please specify a hint database.
-- [implicit-core-hint-db,deprecated]
-- File &quot;./finmap.v&quot;, line 374, characters 0-35:
-- Warning: Declaring a scope implicitly is deprecated; use in advance an
-- explicit &quot;Declare Scope fset_scope.&quot;. [undeclared-scope,deprecated]
-- File &quot;./finmap.v&quot;, line 413, characters 0-28:
-- Warning: Adding and removing hints in the core database implicitly is
-- deprecated. Please specify a hint database.
-- [implicit-core-hint-db,deprecated]
-- File &quot;./finmap.v&quot;, line 414, characters 0-28:
-- Warning: Adding and removing hints in the core database implicitly is
-- deprecated. Please specify a hint database.
-- [implicit-core-hint-db,deprecated]
-- File &quot;./finmap.v&quot;, line 416, characters 0-59:
-- Warning: Ignoring canonical projection to mkFinSet by Sub in finSetSubType:
-- redundant with fsetType [redundant-canonical-projection,typechecker]
-- File &quot;./finmap.v&quot;, line 416, characters 0-59:
-- Warning: Ignoring canonical projection to enum_fset by val in finSetSubType:
-- redundant with fsetType [redundant-canonical-projection,typechecker]
-- File &quot;./finmap.v&quot;, line 416, characters 0-59:
-- Warning: Ignoring canonical projection to finSet by sub_sort in
-- finSetSubType: redundant with fsetType
-- [redundant-canonical-projection,typechecker]
-- File &quot;./finmap.v&quot;, line 418, characters 0-79:
-- Warning: Ignoring canonical projection to finset_of by Equality.sort in
-- finSetEqType: redundant with fset_eqType
-- [redundant-canonical-projection,typechecker]
-- File &quot;./finmap.v&quot;, line 420, characters 0-91:
-- Warning: Ignoring canonical projection to finset_of by Choice.sort in
-- finSetChoiceType: redundant with fset_choiceType
-- [redundant-canonical-projection,typechecker]
-- File &quot;./finmap.v&quot;, line 537, characters 0-126:
-- Warning: Projection value has no head constant: id in canonical instance
-- pred_finpredType of tofinpred, ignoring it.
-- [projection-no-head-constant,typechecker]
-- File &quot;./finmap.v&quot;, line 557, characters 0-21:
-- Warning: Projection value has no head constant: id in canonical instance
-- pred_finpredType of tofinpred, ignoring it.
-- [projection-no-head-constant,typechecker]
-- File &quot;./finmap.v&quot;, line 831, characters 0-154:
-- Error: Notation &quot;[ fset[ _ ] _ | _ : _ , _ : _ ]&quot; is already defined
-- at level 0 with arguments constr Unknown level, constr at level 99, constr
-- at level 99, constr at level 200, constr at level 99, constr Unknown level
-- while it is now required to be at level 0 with arguments constr
-- Unknown level, constr at level 99, constr at level 99, constr Unknown level,
-- constr at level 99, constr Unknown level.
-- 
-- make[2]: *** [Makefile.coq:678: finmap.vo] Error 1
-- make[2]: *** Waiting for unfinished jobs....
-- File &quot;./order.v&quot;, line 4035, characters 0-25:
-- Warning: Ignoring canonical projection to sub_sort by POrder.sort in
-- @sub_POrderType: redundant with @sub_POrderType
-- [redundant-canonical-projection,typechecker]
-- File &quot;./order.v&quot;, line 4036, characters 0-31:
-- Warning: Ignoring canonical projection to sub_sort by DistrLattice.sort in
-- @sub_DistrLatticeType: redundant with @sub_DistrLatticeType
-- [redundant-canonical-projection,typechecker]
-- File &quot;./order.v&quot;, line 4037, characters 0-24:
-- Warning: Ignoring canonical projection to sub_sort by Total.sort in
-- @sub_OrderType: redundant with @sub_OrderType
-- [redundant-canonical-projection,typechecker]
-- File &quot;./order.v&quot;, line 4101, characters 0-21:
-- Warning: Ignoring canonical projection to nat by POrder.sort in porderType:
-- redundant with porderType [redundant-canonical-projection,typechecker]
-- File &quot;./order.v&quot;, line 4102, characters 0-27:
-- Warning: Ignoring canonical projection to nat by DistrLattice.sort in
-- distrLatticeType: redundant with distrLatticeType
-- [redundant-canonical-projection,typechecker]
-- File &quot;./order.v&quot;, line 4103, characters 0-20:
-- Warning: Ignoring canonical projection to nat by Total.sort in orderType:
-- redundant with orderType [redundant-canonical-projection,typechecker]
-- File &quot;./order.v&quot;, line 4104, characters 0-28:
-- Warning: Ignoring canonical projection to nat by BDistrLattice.sort in
-- bDistrLatticeType: redundant with bDistrLatticeType
-- [redundant-canonical-projection,typechecker]
-- File &quot;./order.v&quot;, line 4294, characters 0-17:
-- Warning: Ignoring canonical projection to t by Equality.sort in eqType:
-- redundant with eqType [redundant-canonical-projection,typechecker]
-- File &quot;./order.v&quot;, line 4295, characters 0-21:
-- Warning: Ignoring canonical projection to t by Choice.sort in choiceType:
-- redundant with choiceType [redundant-canonical-projection,typechecker]
-- File &quot;./order.v&quot;, line 4296, characters 0-20:
-- Warning: Ignoring canonical projection to t by Countable.sort in countType:
-- redundant with countType [redundant-canonical-projection,typechecker]
-- File &quot;./order.v&quot;, line 4297, characters 0-21:
-- Warning: Ignoring canonical projection to t by POrder.sort in porderType:
-- redundant with porderType [redundant-canonical-projection,typechecker]
-- File &quot;./order.v&quot;, line 4298, characters 0-27:
-- Warning: Ignoring canonical projection to t by DistrLattice.sort in
-- distrLatticeType: redundant with distrLatticeType
-- [redundant-canonical-projection,typechecker]
-- File &quot;./order.v&quot;, line 4299, characters 0-28:
-- Warning: Ignoring canonical projection to t by BDistrLattice.sort in
-- bDistrLatticeType: redundant with bDistrLatticeType
-- [redundant-canonical-projection,typechecker]
-- File &quot;./order.v&quot;, line 4300, characters 0-29:
-- Warning: Ignoring canonical projection to t by TBDistrLattice.sort in
-- tbDistrLatticeType: redundant with tbDistrLatticeType
-- [redundant-canonical-projection,typechecker]
-- File &quot;./order.v&quot;, line 4367, characters 0-21:
-- Warning: Ignoring canonical projection to bool by POrder.sort in porderType:
-- redundant with porderType [redundant-canonical-projection,typechecker]
-- File &quot;./order.v&quot;, line 4368, characters 0-27:
-- Warning: Ignoring canonical projection to bool by DistrLattice.sort in
-- distrLatticeType: redundant with distrLatticeType
-- [redundant-canonical-projection,typechecker]
-- File &quot;./order.v&quot;, line 4369, characters 0-20:
-- Warning: Ignoring canonical projection to bool by Total.sort in orderType:
-- redundant with orderType [redundant-canonical-projection,typechecker]
-- File &quot;./order.v&quot;, line 4370, characters 0-28:
-- Warning: Ignoring canonical projection to bool by BDistrLattice.sort in
-- bDistrLatticeType: redundant with bDistrLatticeType
-- [redundant-canonical-projection,typechecker]
-- File &quot;./order.v&quot;, line 4371, characters 0-29:
-- Warning: Ignoring canonical projection to bool by CBDistrLattice.sort in
-- cbDistrLatticeType: redundant with cbDistrLatticeType
-- [redundant-canonical-projection,typechecker]
-- File &quot;./order.v&quot;, line 4372, characters 0-29:
-- Warning: Ignoring canonical projection to bool by TBDistrLattice.sort in
-- tbDistrLatticeType: redundant with tbDistrLatticeType
-- [redundant-canonical-projection,typechecker]
-- File &quot;./order.v&quot;, line 4373, characters 0-30:
-- Warning: Ignoring canonical projection to bool by CTBDistrLattice.sort in
-- ctbDistrLatticeType: redundant with ctbDistrLatticeType
-- [redundant-canonical-projection,typechecker]
-- File &quot;./order.v&quot;, line 4374, characters 0-24:
-- Warning: Ignoring canonical projection to bool by FinPOrder.sort in
-- finPOrderType: redundant with finPOrderType
-- [redundant-canonical-projection,typechecker]
-- File &quot;./order.v&quot;, line 4375, characters 0-30:
-- Warning: Ignoring canonical projection to bool by FinDistrLattice.sort in
-- finDistrLatticeType: redundant with finDistrLatticeType
-- [redundant-canonical-projection,typechecker]
-- File &quot;./order.v&quot;, line 4376, characters 0-23:
-- Warning: Ignoring canonical projection to bool by FinTotal.sort in
-- finOrderType: redundant with finOrderType
-- [redundant-canonical-projection,typechecker]
-- File &quot;./order.v&quot;, line 4377, characters 0-31:
-- Warning: Ignoring canonical projection to bool by FinCDistrLattice.sort in
-- finCDistrLatticeType: redundant with finCDistrLatticeType
-- [redundant-canonical-projection,typechecker]
-- File &quot;./order.v&quot;, line 4628, characters 0-58:
-- Warning: Notation &quot;_ * _&quot; was already used in scope type_scope.
-- [notation-overridden,parsing]
-- File &quot;./order.v&quot;, line 4799, characters 0-17:
-- Warning: Ignoring canonical projection to type by Equality.sort in @eqType:
-- redundant with @eqType [redundant-canonical-projection,typechecker]
-- File &quot;./order.v&quot;, line 4800, characters 0-21:
-- Warning: Ignoring canonical projection to type by Choice.sort in @choiceType:
-- redundant with @choiceType [redundant-canonical-projection,typechecker]
-- File &quot;./order.v&quot;, line 4801, characters 0-20:
-- Warning: Ignoring canonical projection to type by Countable.sort in
-- @countType: redundant with @countType
-- [redundant-canonical-projection,typechecker]
-- File &quot;./order.v&quot;, line 4802, characters 0-18:
-- Warning: Ignoring canonical projection to type by Finite.sort in @finType:
-- redundant with @finType [redundant-canonical-projection,typechecker]
-- File &quot;./order.v&quot;, line 4803, characters 0-21:
-- Warning: Ignoring canonical projection to type by POrder.sort in @porderType:
-- redundant with @porderType [redundant-canonical-projection,typechecker]
-- File &quot;./order.v&quot;, line 4804, characters 0-27:
-- Warning: Ignoring canonical projection to type by DistrLattice.sort in
-- @distrLatticeType: redundant with @distrLatticeType
-- [redundant-canonical-projection,typechecker]
-- File &quot;./order.v&quot;, line 4805, characters 0-28:
-- Warning: Ignoring canonical projection to type by BDistrLattice.sort in
-- @bDistrLatticeType: redundant with @bDistrLatticeType
-- [redundant-canonical-projection,typechecker]
-- File &quot;./order.v&quot;, line 4806, characters 0-29:
-- Warning: Ignoring canonical projection to type by TBDistrLattice.sort in
-- @tbDistrLatticeType: redundant with @tbDistrLatticeType
-- [redundant-canonical-projection,typechecker]
-- File &quot;./order.v&quot;, line 4807, characters 0-29:
-- Warning: Ignoring canonical projection to type by CBDistrLattice.sort in
-- @cbDistrLatticeType: redundant with @cbDistrLatticeType
-- [redundant-canonical-projection,typechecker]
-- File &quot;./order.v&quot;, line 4808, characters 0-30:
-- Warning: Ignoring canonical projection to type by CTBDistrLattice.sort in
-- @ctbDistrLatticeType: redundant with @ctbDistrLatticeType
-- [redundant-canonical-projection,typechecker]
-- File &quot;./order.v&quot;, line 4809, characters 0-24:
-- Warning: Ignoring canonical projection to type by FinPOrder.sort in
-- @finPOrderType: redundant with @finPOrderType
-- [redundant-canonical-projection,typechecker]
-- File &quot;./order.v&quot;, line 4810, characters 0-30:
-- Warning: Ignoring canonical projection to type by FinDistrLattice.sort in
-- @finDistrLatticeType: redundant with @finDistrLatticeType
-- [redundant-canonical-projection,typechecker]
-- File &quot;./order.v&quot;, line 4811, characters 0-31:
-- Warning: Ignoring canonical projection to type by FinCDistrLattice.sort in
-- @finCDistrLatticeType: redundant with @finCDistrLatticeType
-- [redundant-canonical-projection,typechecker]
-- File &quot;./order.v&quot;, line 4982, characters 0-21:
-- Warning: Ignoring canonical projection to sigT by POrder.sort in @porderType:
-- redundant with @porderType [redundant-canonical-projection,typechecker]
-- File &quot;./order.v&quot;, line 4983, characters 0-27:
-- Warning: Ignoring canonical projection to sigT by DistrLattice.sort in
-- @distrLatticeType: redundant with @distrLatticeType
-- [redundant-canonical-projection,typechecker]
-- File &quot;./order.v&quot;, line 4984, characters 0-20:
-- Warning: Ignoring canonical projection to sigT by Total.sort in @orderType:
-- redundant with @orderType [redundant-canonical-projection,typechecker]
-- File &quot;./order.v&quot;, line 4985, characters 0-24:
-- Warning: Ignoring canonical projection to sigT by FinPOrder.sort in
-- @finPOrderType: redundant with @finPOrderType
-- [redundant-canonical-projection,typechecker]
-- File &quot;./order.v&quot;, line 4986, characters 0-30:
-- Warning: Ignoring canonical projection to sigT by FinDistrLattice.sort in
-- @finDistrLatticeType: redundant with @finDistrLatticeType
-- [redundant-canonical-projection,typechecker]
-- File &quot;./order.v&quot;, line 4987, characters 0-23:
-- Warning: Ignoring canonical projection to sigT by FinTotal.sort in
-- @finOrderType: redundant with @finOrderType
-- [redundant-canonical-projection,typechecker]
-- File &quot;./order.v&quot;, line 5014, characters 0-58:
-- Warning: Notation &quot;_ * _&quot; was already used in scope type_scope.
-- [notation-overridden,parsing]
-- File &quot;./order.v&quot;, line 5127, characters 0-17:
-- Warning: Ignoring canonical projection to type by Equality.sort in @eqType:
-- redundant with @eqType [redundant-canonical-projection,typechecker]
-- File &quot;./order.v&quot;, line 5128, characters 0-21:
-- Warning: Ignoring canonical projection to type by Choice.sort in @choiceType:
-- redundant with @choiceType [redundant-canonical-projection,typechecker]
-- File &quot;./order.v&quot;, line 5129, characters 0-20:
-- Warning: Ignoring canonical projection to type by Countable.sort in
-- @countType: redundant with @countType
-- [redundant-canonical-projection,typechecker]
-- File &quot;./order.v&quot;, line 5130, characters 0-18:
-- Warning: Ignoring canonical projection to type by Finite.sort in @finType:
-- redundant with @finType [redundant-canonical-projection,typechecker]
-- File &quot;./order.v&quot;, line 5131, characters 0-21:
-- Warning: Ignoring canonical projection to type by POrder.sort in @porderType:
-- redundant with @porderType [redundant-canonical-projection,typechecker]
-- File &quot;./order.v&quot;, line 5132, characters 0-27:
-- Warning: Ignoring canonical projection to type by DistrLattice.sort in
-- @distrLatticeType: redundant with @distrLatticeType
-- [redundant-canonical-projection,typechecker]
-- File &quot;./order.v&quot;, line 5133, characters 0-20:
-- Warning: Ignoring canonical projection to type by Total.sort in @orderType:
-- redundant with @orderType [redundant-canonical-projection,typechecker]
-- File &quot;./order.v&quot;, line 5134, characters 0-28:
-- Warning: Ignoring canonical projection to type by BDistrLattice.sort in
-- @bDistrLatticeType: redundant with @bDistrLatticeType
-- [redundant-canonical-projection,typechecker]
-- File &quot;./order.v&quot;, line 5135, characters 0-29:
-- Warning: Ignoring canonical projection to type by TBDistrLattice.sort in
-- @tbDistrLatticeType: redundant with @tbDistrLatticeType
-- [redundant-canonical-projection,typechecker]
-- File &quot;./order.v&quot;, line 5136, characters 0-24:
-- Warning: Ignoring canonical projection to type by FinPOrder.sort in
-- @finPOrderType: redundant with @finPOrderType
-- [redundant-canonical-projection,typechecker]
-- File &quot;./order.v&quot;, line 5137, characters 0-30:
-- Warning: Ignoring canonical projection to type by FinDistrLattice.sort in
-- @finDistrLatticeType: redundant with @finDistrLatticeType
-- [redundant-canonical-projection,typechecker]
-- File &quot;./order.v&quot;, line 5138, characters 0-23:
-- Warning: Ignoring canonical projection to type by FinTotal.sort in
-- @finOrderType: redundant with @finOrderType
-- [redundant-canonical-projection,typechecker]
-- File &quot;./order.v&quot;, line 5322, characters 0-21:
-- Warning: Ignoring canonical projection to type by POrder.sort in @porderType:
-- redundant with @porderType [redundant-canonical-projection,typechecker]
-- File &quot;./order.v&quot;, line 5323, characters 0-27:
-- Warning: Ignoring canonical projection to type by DistrLattice.sort in
-- @distrLatticeType: redundant with @distrLatticeType
-- [redundant-canonical-projection,typechecker]
-- File &quot;./order.v&quot;, line 5324, characters 0-28:
-- Warning: Ignoring canonical projection to type by BDistrLattice.sort in
-- @bDistrLatticeType: redundant with @bDistrLatticeType
-- [redundant-canonical-projection,typechecker]
-- File &quot;./order.v&quot;, line 5488, characters 0-21:
-- Warning: Ignoring canonical projection to type by POrder.sort in @porderType:
-- redundant with @porderType [redundant-canonical-projection,typechecker]
-- File &quot;./order.v&quot;, line 5489, characters 0-27:
-- Warning: Ignoring canonical projection to type by DistrLattice.sort in
-- @distrLatticeType: redundant with @distrLatticeType
-- [redundant-canonical-projection,typechecker]
-- File &quot;./order.v&quot;, line 5490, characters 0-28:
-- Warning: Ignoring canonical projection to type by BDistrLattice.sort in
-- @bDistrLatticeType: redundant with @bDistrLatticeType
-- [redundant-canonical-projection,typechecker]
-- File &quot;./order.v&quot;, line 5491, characters 0-20:
-- Warning: Ignoring canonical projection to type by Total.sort in @orderType:
-- redundant with @orderType [redundant-canonical-projection,typechecker]
-- File &quot;./order.v&quot;, line 5543, characters 0-58:
-- Warning: Notation &quot;_ .-tuple&quot; was already used in scope type_scope.
-- [notation-overridden,parsing]
-- File &quot;./order.v&quot;, line 5565, characters 0-57:
-- Warning: Duplicate clear of t1 [duplicate-clear,ssr]
-- File &quot;./order.v&quot;, line 5565, characters 0-57:
-- Warning: Duplicate clear of t2 [duplicate-clear,ssr]
-- File &quot;./order.v&quot;, line 5752, characters 0-17:
-- Warning: Ignoring canonical projection to type by Equality.sort in @eqType:
-- redundant with @eqType [redundant-canonical-projection,typechecker]
-- File &quot;./order.v&quot;, line 5753, characters 0-21:
-- Warning: Ignoring canonical projection to type by Choice.sort in @choiceType:
-- redundant with @choiceType [redundant-canonical-projection,typechecker]
-- File &quot;./order.v&quot;, line 5754, characters 0-20:
-- Warning: Ignoring canonical projection to type by Countable.sort in
-- @countType: redundant with @countType
-- [redundant-canonical-projection,typechecker]
-- File &quot;./order.v&quot;, line 5755, characters 0-18:
-- Warning: Ignoring canonical projection to type by Finite.sort in @finType:
-- redundant with @finType [redundant-canonical-projection,typechecker]
-- File &quot;./order.v&quot;, line 5756, characters 0-21:
-- Warning: Ignoring canonical projection to type by POrder.sort in @porderType:
-- redundant with @porderType [redundant-canonical-projection,typechecker]
-- File &quot;./order.v&quot;, line 5757, characters 0-27:
-- Warning: Ignoring canonical projection to type by DistrLattice.sort in
-- @distrLatticeType: redundant with @distrLatticeType
-- [redundant-canonical-projection,typechecker]
-- File &quot;./order.v&quot;, line 5758, characters 0-28:
-- Warning: Ignoring canonical projection to type by BDistrLattice.sort in
-- @bDistrLatticeType: redundant with @bDistrLatticeType
-- [redundant-canonical-projection,typechecker]
-- File &quot;./order.v&quot;, line 5759, characters 0-29:
-- Warning: Ignoring canonical projection to type by TBDistrLattice.sort in
-- @tbDistrLatticeType: redundant with @tbDistrLatticeType
-- [redundant-canonical-projection,typechecker]
-- File &quot;./order.v&quot;, line 5760, characters 0-29:
-- Warning: Ignoring canonical projection to type by CBDistrLattice.sort in
-- @cbDistrLatticeType: redundant with @cbDistrLatticeType
-- [redundant-canonical-projection,typechecker]
-- File &quot;./order.v&quot;, line 5761, characters 0-30:
-- Warning: Ignoring canonical projection to type by CTBDistrLattice.sort in
-- @ctbDistrLatticeType: redundant with @ctbDistrLatticeType
-- [redundant-canonical-projection,typechecker]
-- File &quot;./order.v&quot;, line 5762, characters 0-24:
-- Warning: Ignoring canonical projection to type by FinPOrder.sort in
-- @finPOrderType: redundant with @finPOrderType
-- [redundant-canonical-projection,typechecker]
-- File &quot;./order.v&quot;, line 5763, characters 0-30:
-- Warning: Ignoring canonical projection to type by FinDistrLattice.sort in
-- @finDistrLatticeType: redundant with @finDistrLatticeType
-- [redundant-canonical-projection,typechecker]
-- File &quot;./order.v&quot;, line 5764, characters 0-31:
-- Warning: Ignoring canonical projection to type by FinCDistrLattice.sort in
-- @finCDistrLatticeType: redundant with @finCDistrLatticeType
-- [redundant-canonical-projection,typechecker]
-- File &quot;./order.v&quot;, line 5823, characters 0-58:
-- Warning: Notation &quot;_ .-tuple&quot; was already used in scope type_scope.
-- [notation-overridden,parsing]
-- File &quot;./order.v&quot;, line 5847, characters 0-57:
-- Warning: Duplicate clear of t1 [duplicate-clear,ssr]
-- File &quot;./order.v&quot;, line 5847, characters 0-57:
-- Warning: Duplicate clear of t2 [duplicate-clear,ssr]
-- File &quot;./order.v&quot;, line 5868, characters 0-57:
-- Warning: Duplicate clear of t1 [duplicate-clear,ssr]
-- File &quot;./order.v&quot;, line 5868, characters 0-57:
-- Warning: Duplicate clear of t2 [duplicate-clear,ssr]
-- File &quot;./order.v&quot;, line 5957, characters 0-17:
-- Warning: Ignoring canonical projection to type by Equality.sort in @eqType:
-- redundant with @eqType [redundant-canonical-projection,typechecker]
-- File &quot;./order.v&quot;, line 5958, characters 0-21:
-- Warning: Ignoring canonical projection to type by Choice.sort in @choiceType:
-- redundant with @choiceType [redundant-canonical-projection,typechecker]
-- File &quot;./order.v&quot;, line 5959, characters 0-20:
-- Warning: Ignoring canonical projection to type by Countable.sort in
-- @countType: redundant with @countType
-- [redundant-canonical-projection,typechecker]
-- File &quot;./order.v&quot;, line 5960, characters 0-18:
-- Warning: Ignoring canonical projection to type by Finite.sort in @finType:
-- redundant with @finType [redundant-canonical-projection,typechecker]
-- File &quot;./order.v&quot;, line 5961, characters 0-21:
-- Warning: Ignoring canonical projection to type by POrder.sort in @porderType:
-- redundant with @porderType [redundant-canonical-projection,typechecker]
-- File &quot;./order.v&quot;, line 5962, characters 0-27:
-- Warning: Ignoring canonical projection to type by DistrLattice.sort in
-- @distrLatticeType: redundant with @distrLatticeType
-- [redundant-canonical-projection,typechecker]
-- File &quot;./order.v&quot;, line 5963, characters 0-20:
-- Warning: Ignoring canonical projection to type by Total.sort in @orderType:
-- redundant with @orderType [redundant-canonical-projection,typechecker]
-- File &quot;./order.v&quot;, line 5964, characters 0-28:
-- Warning: Ignoring canonical projection to type by BDistrLattice.sort in
-- @bDistrLatticeType: redundant with @bDistrLatticeType
-- [redundant-canonical-projection,typechecker]
-- File &quot;./order.v&quot;, line 5965, characters 0-29:
-- Warning: Ignoring canonical projection to type by TBDistrLattice.sort in
-- @tbDistrLatticeType: redundant with @tbDistrLatticeType
-- [redundant-canonical-projection,typechecker]
-- File &quot;./order.v&quot;, line 5966, characters 0-24:
-- Warning: Ignoring canonical projection to type by FinPOrder.sort in
-- @finPOrderType: redundant with @finPOrderType
-- [redundant-canonical-projection,typechecker]
-- File &quot;./order.v&quot;, line 5967, characters 0-30:
-- Warning: Ignoring canonical projection to type by FinDistrLattice.sort in
-- @finDistrLatticeType: redundant with @finDistrLatticeType
-- [redundant-canonical-projection,typechecker]
-- File &quot;./order.v&quot;, line 5968, characters 0-23:
-- Warning: Ignoring canonical projection to type by FinTotal.sort in
-- @finOrderType: redundant with @finOrderType
-- [redundant-canonical-projection,typechecker]
-- make[1]: *** [Makefile.coq:327: all] Error 2
-- make[1]: Leaving directory &#39;/home/bench/.opam/ocaml-base-compiler.4.08.1/.opam-switch/build/coq-mathcomp-finmap.1.4.0&#39;
-- make: *** [Makefile.common:51: this-build] Error 2
-[ERROR] The compilation of coq-mathcomp-finmap failed at &quot;/home/bench/.opam/opam-init/hooks/sandbox.sh build make -j 4&quot;.
-#=== ERROR while compiling coq-mathcomp-finmap.1.4.0 ==========================#
-# context              2.0.5 | linux/x86_64 | ocaml-base-compiler.4.08.1 | file:///home/bench/run/opam-coq-archive/released
-# path                 ~/.opam/ocaml-base-compiler.4.08.1/.opam-switch/build/coq-mathcomp-finmap.1.4.0
-# command              ~/.opam/opam-init/hooks/sandbox.sh build make -j 4
-# exit-code            2
-# env-file             ~/.opam/log/coq-mathcomp-finmap-2885-335865.env
-# output-file          ~/.opam/log/coq-mathcomp-finmap-2885-335865.out
-### output ###
-# [...]
-# [redundant-canonical-projection,typechecker]
-# File &quot;./order.v&quot;, line 5967, characters 0-30:
-# Warning: Ignoring canonical projection to type by FinDistrLattice.sort in
-# @finDistrLatticeType: redundant with @finDistrLatticeType
-# [redundant-canonical-projection,typechecker]
-# File &quot;./order.v&quot;, line 5968, characters 0-23:
-# Warning: Ignoring canonical projection to type by FinTotal.sort in
-# @finOrderType: redundant with @finOrderType
-# [redundant-canonical-projection,typechecker]
-# make[1]: *** [Makefile.coq:327: all] Error 2
-# make[1]: Leaving directory &#39;/home/bench/.opam/ocaml-base-compiler.4.08.1/.opam-switch/build/coq-mathcomp-finmap.1.4.0&#39;
-# make: *** [Makefile.common:51: this-build] Error 2
-&lt;&gt;&lt;&gt; Error report &lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;
-+- The following actions failed
-| - build coq-mathcomp-finmap 1.4.0
-+- 
-- No changes have been performed
-# Run eval $(opam env) to update the current shell environment
-&#39;opam install -y -v coq-mathcomp-finmap.1.4.0 coq.8.11.dev&#39; failed.
-</pre></dd>
+              <dd>0 s</dd>
             </dl>
             <h2>Installation size</h2>
             <p>No files were installed.</p>
