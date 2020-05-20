@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>fiat-crypto: Error</title>
+    <title>fiat-crypto: Black list</title>
     <link rel="shortcut icon" type="image/png" href="../../../../../favicon.png" />
     <link href="../../../../../bootstrap.min.css" rel="stylesheet">
     <link href="../../../../../bootstrap-custom.css" rel="stylesheet">
@@ -39,10 +39,13 @@
               fiat-crypto
               <small>
                 dev
-                <span class="label label-danger">Error</span>
+                <span class="label label-default">Black list</span>
               </small>
             </h1>
-            <p><em><script>document.write(moment("2020-05-16 07:39:49 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2020-05-16 07:39:49 UTC)</em><p>
+            <p><em><script>document.write(moment("2020-05-20 02:31:58 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2020-05-20 02:31:58 UTC)</em><p>
+            <div class="alert alert-info" role="alert">
+              <p>This result is black-listed as it is considered as too hard to reproduce / to solve. If you find a way to fix this package, please make a pull-request to <a class="alert-link" href="https://github.com/coq/opam-coq-archive">github.com/coq/opam-coq-archive</a>. The list of black-listed packages is in <a class="alert-link" href="https://github.com/coq-bench/make-html/blob/master/black_list.rb">black_list.rb</a>.</p>
+            </div>
             <h2>Context</h2>
             <pre># Packages matching: installed
 # Name              # Installed # Synopsis
@@ -114,18 +117,9 @@ url {
               <dt>Command</dt>
               <dd><code>opam list; echo; ulimit -Sv 4000000; timeout 2h opam install -y --deps-only coq-fiat-crypto.dev coq.8.11.dev</code></dd>
               <dt>Return code</dt>
-              <dd>0</dd>
+              <dd>10240</dd>
               <dt>Duration</dt>
-              <dd>20 m 56 s</dd>
-            </dl>
-            <h2>Install</h2>
-            <dl class="dl-horizontal">
-              <dt>Command</dt>
-              <dd><code>opam list; echo; ulimit -Sv 16000000; timeout 2h opam install -y coq-fiat-crypto.dev coq.8.11.dev</code></dd>
-              <dt>Return code</dt>
-              <dd>7936</dd>
-              <dt>Duration</dt>
-              <dd>1 m 0 s</dd>
+              <dd>4 m 28 s</dd>
               <dt>Output</dt>
               <dd><pre># Packages matching: installed
 # Name              # Installed # Synopsis
@@ -135,42 +129,39 @@ base-unix           base
 conf-findutils      1           Virtual package relying on findutils
 conf-m4             1           Virtual package relying on m4
 coq                 8.11.dev    Formal proof management system
-coq-bignums         8.11.dev    Bignums, the Coq library of arbitrary large numbers
-coq-coqprime        dev         Certifying prime numbers in Coq
-coq-rewriter        dev         Reflective PHOAS rewriting/pattern-matching-compilation framework for simply-typed equalities and let-lifting
-dune                2.5.1       Fast, portable, and opinionated build system
 num                 1.3         The legacy Num library for arbitrary-precision integer and rational arithmetic
 ocaml               4.10.0      The OCaml compiler (virtual package)
 ocaml-base-compiler 4.10.0      Official release 4.10.0
 ocaml-config        1           OCaml Switch Configuration
 ocamlfind           1.8.1       A library manager for OCaml
-[NOTE] Package coq is already installed (current version is 8.11.dev).
 The following actions will be performed:
-  - install coq-fiat-crypto dev
+  - install dune         2.5.1
+  - install coq-rewriter dev
+  - install coq-bignums  8.11.dev
+  - install coq-coqprime dev
+===== 4 to install =====
 &lt;&gt;&lt;&gt; Gathering sources &gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;
-[coq-fiat-crypto.dev] synchronised from git+https://github.com/mit-plv/fiat-crypto.git#master
-&lt;&gt;&lt;&gt; Processing actions &lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;
-[ERROR] The compilation of coq-fiat-crypto failed at &quot;/home/bench/.opam/opam-init/hooks/sandbox.sh build make -j4 EXTERNAL_DEPENDENCIES=1 coq-without-bedrock2 standalone-ocaml&quot;.
-#=== ERROR while compiling coq-fiat-crypto.dev ================================#
-# context              2.0.6 | linux/x86_64 | ocaml-base-compiler.4.10.0 | file:///home/bench/run/opam-coq-archive/extra-dev
-# path                 ~/.opam/ocaml-base-compiler.4.10.0/.opam-switch/build/coq-fiat-crypto.dev
-# command              ~/.opam/opam-init/hooks/sandbox.sh build make -j4 EXTERNAL_DEPENDENCIES=1 coq-without-bedrock2 standalone-ocaml
-# exit-code            2
-# env-file             ~/.opam/log/coq-fiat-crypto-311-c743ac.env
-# output-file          ~/.opam/log/coq-fiat-crypto-311-c743ac.out
-### output ###
-# ./src/Rewriter/PerfTesting/Specific/make.py primes.txt
-# /usr/bin/env: &#39;python3&#39;: No such file or directory
-# make: *** [Makefile:858: src/Rewriter/PerfTesting/Specific/generated/primes.mk] Error 127
-# make: *** Waiting for unfinished jobs....
-# COQ_MAKEFILE -f _CoqProject &gt; Makefile.coq
-&lt;&gt;&lt;&gt; Error report &lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;
-+- The following actions failed
-| - build coq-fiat-crypto dev
-+- 
-- No changes have been performed
-# Run eval $(opam env) to update the current shell environment
+[ERROR] Could not synchronize /home/bench/.opam/ocaml-base-compiler.4.10.0/.opam-switch/sources/coq-rewriter.dev from &quot;git+https://github.com/mit-plv/rewriter.git#master&quot;:
+        &quot;/usr/bin/git fetch -q&quot; exited with code 128 &quot;fatal: unable to access &#39;https://github.com/mit-plv/rewriter.git/&#39;: Failed to connect to github.com port 443: Connection timed out&quot;
+[ERROR] Could not synchronize /home/bench/.opam/ocaml-base-compiler.4.10.0/.opam-switch/sources/coq-coqprime.dev from &quot;git+https://github.com/thery/coqprime.git&quot;:
+        &quot;/usr/bin/git fetch -q&quot; exited with code 128 &quot;fatal: unable to access &#39;https://github.com/thery/coqprime.git/&#39;: Failed to connect to github.com port 443: Connection timed out&quot;
+[ERROR] Could not synchronize /home/bench/.opam/ocaml-base-compiler.4.10.0/.opam-switch/sources/coq-bignums.8.11.dev from &quot;git+https://github.com/coq/bignums.git#v8.11&quot;:
+        &quot;/usr/bin/git fetch -q&quot; exited with code 128 &quot;fatal: unable to access &#39;https://github.com/coq/bignums.git/&#39;: Failed to connect to github.com port 443: Connection timed out&quot;
+[dune.2.5.1] downloaded from cache at https://opam.ocaml.org/cache
+[ERROR] The sources of the following couldn&#39;t be obtained, aborting:
+          - coq-bignums.8.11.dev
+          - coq-coqprime.dev
+          - coq-rewriter.dev
 </pre></dd>
+            </dl>
+            <h2>Install</h2>
+            <dl class="dl-horizontal">
+              <dt>Command</dt>
+              <dd><code>true</code></dd>
+              <dt>Return code</dt>
+              <dd>0</dd>
+              <dt>Duration</dt>
+              <dd>0 s</dd>
             </dl>
             <h2>Installation size</h2>
             <p>No files were installed.</p>
