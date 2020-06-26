@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>metacoq-erasure: 4 m 26 s</title>
+    <title>metacoq-erasure: Error with dependencies</title>
     <link rel="shortcut icon" type="image/png" href="../../../../../favicon.png" />
     <link href="../../../../../bootstrap.min.css" rel="stylesheet">
     <link href="../../../../../bootstrap-custom.css" rel="stylesheet">
@@ -39,10 +39,10 @@
               metacoq-erasure
               <small>
                 1.0~alpha2+8.11
-                <span class="label label-success">4 m 26 s</span>
+                <span class="label label-warning">Error with dependencies</span>
               </small>
             </h1>
-            <p><em><script>document.write(moment("2020-05-14 13:08:33 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2020-05-14 13:08:33 UTC)</em><p>
+            <p><em><script>document.write(moment("2020-06-26 05:49:41 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2020-06-26 05:49:41 UTC)</em><p>
             <h2>Context</h2>
             <pre># Packages matching: installed
 # Name              # Installed # Synopsis
@@ -131,91 +131,89 @@ url {
               <dt>Command</dt>
               <dd><code>opam list; echo; ulimit -Sv 4000000; timeout 2h opam install -y --deps-only coq-metacoq-erasure.1.0~alpha2+8.11 coq.8.11.dev</code></dd>
               <dt>Return code</dt>
-              <dd>0</dd>
+              <dd>7936</dd>
               <dt>Duration</dt>
-              <dd>34 m 30 s</dd>
+              <dd>9 m 13 s</dd>
+              <dt>Output</dt>
+              <dd><pre># Packages matching: installed
+# Name              # Installed # Synopsis
+base-bigarray       base
+base-threads        base
+base-unix           base
+conf-findutils      1           Virtual package relying on findutils
+conf-m4             1           Virtual package relying on m4
+coq                 8.11.dev    Formal proof management system
+num                 1.3         The legacy Num library for arbitrary-precision integer and rational arithmetic
+ocaml               4.08.1      The OCaml compiler (virtual package)
+ocaml-base-compiler 4.08.1      Official release 4.08.1
+ocaml-config        1           OCaml Switch Configuration
+ocamlfind           1.8.1       A library manager for OCaml
+The following actions will be performed:
+  - install coq-equations           1.2.2+8.11
+  - install coq-metacoq-template    1.0~alpha2+8.11
+  - install coq-metacoq-checker     1.0~alpha2+8.11
+  - install coq-metacoq-pcuic       1.0~alpha2+8.11
+  - install coq-metacoq-safechecker 1.0~alpha2+8.11
+===== 5 to install =====
+&lt;&gt;&lt;&gt; Gathering sources &gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;
+[coq-equations.1.2.2+8.11] downloaded from https://github.com/mattam82/Coq-Equations/archive/v1.2.2-8.11.tar.gz
+[coq-metacoq-checker.1.0~alpha2+8.11] downloaded from https://github.com/MetaCoq/metacoq/archive/v1.0-alpha2-8.11.tar.gz
+[coq-metacoq-pcuic.1.0~alpha2+8.11] downloaded from https://github.com/MetaCoq/metacoq/archive/v1.0-alpha2-8.11.tar.gz
+[coq-metacoq-safechecker.1.0~alpha2+8.11] found in cache
+[coq-metacoq-template.1.0~alpha2+8.11] found in cache
+&lt;&gt;&lt;&gt; Processing actions &lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;
+-&gt; installed coq-equations.1.2.2+8.11
+-&gt; installed coq-metacoq-template.1.0~alpha2+8.11
+[ERROR] The compilation of coq-metacoq-checker failed at &quot;/home/bench/.opam/opam-init/hooks/sandbox.sh build make -j4 checker&quot;.
+#=== ERROR while compiling coq-metacoq-checker.1.0~alpha2+8.11 ================#
+# context              2.0.5 | linux/x86_64 | ocaml-base-compiler.4.08.1 | file:///home/bench/run/opam-coq-archive/released
+# path                 ~/.opam/ocaml-base-compiler.4.08.1/.opam-switch/build/coq-metacoq-checker.1.0~alpha2+8.11
+# command              ~/.opam/opam-init/hooks/sandbox.sh build make -j4 checker
+# exit-code            2
+# env-file             ~/.opam/log/coq-metacoq-checker-17033-af57d6.env
+# output-file          ~/.opam/log/coq-metacoq-checker-17033-af57d6.out
+### output ###
+# [...]
+# COQC theories/Generation.v
+# COQC theories/WcbvEval.v
+# COQC theories/Weakening.v
+# File &quot;./theories/Weakening.v&quot;, line 1161, characters 9-20:
+# Error: No such hypothesis: H
+# 
+# make[3]: *** [Makefile.coq:678: theories/Weakening.vo] Error 1
+# make[2]: *** [Makefile.coq:327: all] Error 2
+# make[2]: Leaving directory &#39;/home/bench/.opam/ocaml-base-compiler.4.08.1/.opam-switch/build/coq-metacoq-checker.1.0~alpha2+8.11/checker&#39;
+# make[1]: *** [Makefile:4: coq] Error 2
+# make[1]: Leaving directory &#39;/home/bench/.opam/ocaml-base-compiler.4.08.1/.opam-switch/build/coq-metacoq-checker.1.0~alpha2+8.11/checker&#39;
+# make: *** [Makefile:63: checker] Error 2
+&lt;&gt;&lt;&gt; Error report &lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;
++- The following actions failed
+| - build coq-metacoq-checker 1.0~alpha2+8.11
++- 
++- The following changes have been performed (the rest was aborted)
+| - install coq-equations        1.2.2+8.11
+| - install coq-metacoq-template 1.0~alpha2+8.11
++- 
+# Run eval $(opam env) to update the current shell environment
+The former state can be restored with:
+    opam switch import &quot;/home/bench/.opam/ocaml-base-compiler.4.08.1/.opam-switch/backup/state-20200625085438.export&quot;
+</pre></dd>
             </dl>
             <h2>Install</h2>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>opam list; echo; ulimit -Sv 16000000; timeout 2h opam install -y -v coq-metacoq-erasure.1.0~alpha2+8.11 coq.8.11.dev</code></dd>
+              <dd><code>true</code></dd>
               <dt>Return code</dt>
               <dd>0</dd>
               <dt>Duration</dt>
-              <dd>4 m 26 s</dd>
+              <dd>0 s</dd>
             </dl>
             <h2>Installation size</h2>
-            <p>Total: 15 M</p>
-            <ul>
-              <li>3 M <code>../ocaml-base-compiler.4.08.1/lib/coq/user-contrib/MetaCoq/Erasure/ErasureFunction.vo</code></li>
-              <li>1 M <code>../ocaml-base-compiler.4.08.1/lib/coq/user-contrib/MetaCoq/Erasure/SafeErasureFunction.vo</code></li>
-              <li>1 M <code>../ocaml-base-compiler.4.08.1/lib/coq/user-contrib/MetaCoq/Erasure/ErasureCorrectness.vo</code></li>
-              <li>1 M <code>../ocaml-base-compiler.4.08.1/lib/coq/user-contrib/MetaCoq/Erasure/ESubstitution.vo</code></li>
-              <li>1 M <code>../ocaml-base-compiler.4.08.1/lib/coq/user-contrib/MetaCoq/Erasure/metacoq_erasure_plugin.cmxs</code></li>
-              <li>1 M <code>../ocaml-base-compiler.4.08.1/lib/coq/user-contrib/MetaCoq/Erasure/Prelim.vo</code></li>
-              <li>1023 K <code>../ocaml-base-compiler.4.08.1/lib/coq/user-contrib/MetaCoq/Erasure/SafeTemplateErasure.vo</code></li>
-              <li>952 K <code>../ocaml-base-compiler.4.08.1/lib/coq/user-contrib/MetaCoq/Erasure/Extraction.vo</code></li>
-              <li>923 K <code>../ocaml-base-compiler.4.08.1/lib/coq/user-contrib/MetaCoq/Erasure/EArities.vo</code></li>
-              <li>890 K <code>../ocaml-base-compiler.4.08.1/lib/coq/user-contrib/MetaCoq/Erasure/EInversion.vo</code></li>
-              <li>381 K <code>../ocaml-base-compiler.4.08.1/lib/coq/user-contrib/MetaCoq/Erasure/ELiftSubst.vo</code></li>
-              <li>247 K <code>../ocaml-base-compiler.4.08.1/lib/coq/user-contrib/MetaCoq/Erasure/metacoq_erasure_plugin.cmi</code></li>
-              <li>205 K <code>../ocaml-base-compiler.4.08.1/lib/coq/user-contrib/MetaCoq/Erasure/Extract.vo</code></li>
-              <li>143 K <code>../ocaml-base-compiler.4.08.1/lib/coq/user-contrib/MetaCoq/Erasure/ErasureCorrectness.glob</code></li>
-              <li>138 K <code>../ocaml-base-compiler.4.08.1/lib/coq/user-contrib/MetaCoq/Erasure/EAll.vo</code></li>
-              <li>131 K <code>../ocaml-base-compiler.4.08.1/lib/coq/user-contrib/MetaCoq/Erasure/EWcbvEval.vo</code></li>
-              <li>126 K <code>../ocaml-base-compiler.4.08.1/lib/coq/user-contrib/MetaCoq/Erasure/ELiftSubst.glob</code></li>
-              <li>112 K <code>../ocaml-base-compiler.4.08.1/lib/coq/user-contrib/MetaCoq/Erasure/ErasureFunction.glob</code></li>
-              <li>108 K <code>../ocaml-base-compiler.4.08.1/lib/coq/user-contrib/MetaCoq/Erasure/EAstUtils.vo</code></li>
-              <li>87 K <code>../ocaml-base-compiler.4.08.1/lib/coq/user-contrib/MetaCoq/Erasure/Loader.vo</code></li>
-              <li>81 K <code>../ocaml-base-compiler.4.08.1/lib/coq/user-contrib/MetaCoq/Erasure/metacoq_erasure_plugin.cmx</code></li>
-              <li>80 K <code>../ocaml-base-compiler.4.08.1/lib/coq/user-contrib/MetaCoq/Erasure/SafeErasureFunction.glob</code></li>
-              <li>77 K <code>../ocaml-base-compiler.4.08.1/lib/coq/user-contrib/MetaCoq/Erasure/EArities.glob</code></li>
-              <li>74 K <code>../ocaml-base-compiler.4.08.1/lib/coq/user-contrib/MetaCoq/Erasure/EPretty.vo</code></li>
-              <li>73 K <code>../ocaml-base-compiler.4.08.1/lib/coq/user-contrib/MetaCoq/Erasure/EAst.vo</code></li>
-              <li>68 K <code>../ocaml-base-compiler.4.08.1/lib/coq/user-contrib/MetaCoq/Erasure/EWcbvEval.glob</code></li>
-              <li>67 K <code>../ocaml-base-compiler.4.08.1/lib/coq/user-contrib/MetaCoq/Erasure/ESubstitution.glob</code></li>
-              <li>65 K <code>../ocaml-base-compiler.4.08.1/lib/coq/user-contrib/MetaCoq/Erasure/ETyping.vo</code></li>
-              <li>53 K <code>../ocaml-base-compiler.4.08.1/lib/coq/user-contrib/MetaCoq/Erasure/EInduction.vo</code></li>
-              <li>49 K <code>../ocaml-base-compiler.4.08.1/lib/coq/user-contrib/MetaCoq/Erasure/Prelim.glob</code></li>
-              <li>49 K <code>../ocaml-base-compiler.4.08.1/lib/coq/user-contrib/MetaCoq/Erasure/ErasureCorrectness.v</code></li>
-              <li>48 K <code>../ocaml-base-compiler.4.08.1/lib/coq/user-contrib/MetaCoq/Erasure/EWndEval.vo</code></li>
-              <li>39 K <code>../ocaml-base-compiler.4.08.1/lib/coq/user-contrib/MetaCoq/Erasure/Extract.glob</code></li>
-              <li>37 K <code>../ocaml-base-compiler.4.08.1/lib/coq/user-contrib/MetaCoq/Erasure/EAstUtils.glob</code></li>
-              <li>30 K <code>../ocaml-base-compiler.4.08.1/lib/coq/user-contrib/MetaCoq/Erasure/ErasureFunction.v</code></li>
-              <li>27 K <code>../ocaml-base-compiler.4.08.1/lib/coq/user-contrib/MetaCoq/Erasure/SafeErasureFunction.v</code></li>
-              <li>26 K <code>../ocaml-base-compiler.4.08.1/lib/coq/user-contrib/MetaCoq/Erasure/SafeTemplateErasure.glob</code></li>
-              <li>25 K <code>../ocaml-base-compiler.4.08.1/lib/coq/user-contrib/MetaCoq/Erasure/EPretty.glob</code></li>
-              <li>23 K <code>../ocaml-base-compiler.4.08.1/lib/coq/user-contrib/MetaCoq/Erasure/EWcbvEval.v</code></li>
-              <li>21 K <code>../ocaml-base-compiler.4.08.1/lib/coq/user-contrib/MetaCoq/Erasure/EArities.v</code></li>
-              <li>17 K <code>../ocaml-base-compiler.4.08.1/lib/coq/user-contrib/MetaCoq/Erasure/ELiftSubst.v</code></li>
-              <li>15 K <code>../ocaml-base-compiler.4.08.1/lib/coq/user-contrib/MetaCoq/Erasure/ESubstitution.v</code></li>
-              <li>13 K <code>../ocaml-base-compiler.4.08.1/lib/coq/user-contrib/MetaCoq/Erasure/EAst.glob</code></li>
-              <li>12 K <code>../ocaml-base-compiler.4.08.1/lib/coq/user-contrib/MetaCoq/Erasure/Prelim.v</code></li>
-              <li>11 K <code>../ocaml-base-compiler.4.08.1/lib/coq/user-contrib/MetaCoq/Erasure/ETyping.glob</code></li>
-              <li>9 K <code>../ocaml-base-compiler.4.08.1/lib/coq/user-contrib/MetaCoq/Erasure/SafeTemplateErasure.v</code></li>
-              <li>8 K <code>../ocaml-base-compiler.4.08.1/lib/coq/user-contrib/MetaCoq/Erasure/EAstUtils.v</code></li>
-              <li>8 K <code>../ocaml-base-compiler.4.08.1/lib/coq/user-contrib/MetaCoq/Erasure/EInduction.glob</code></li>
-              <li>7 K <code>../ocaml-base-compiler.4.08.1/lib/coq/user-contrib/MetaCoq/Erasure/Extract.v</code></li>
-              <li>7 K <code>../ocaml-base-compiler.4.08.1/lib/coq/user-contrib/MetaCoq/Erasure/metacoq_erasure_plugin.cmxa</code></li>
-              <li>6 K <code>../ocaml-base-compiler.4.08.1/lib/coq/user-contrib/MetaCoq/Erasure/EAst.v</code></li>
-              <li>6 K <code>../ocaml-base-compiler.4.08.1/lib/coq/user-contrib/MetaCoq/Erasure/EPretty.v</code></li>
-              <li>3 K <code>../ocaml-base-compiler.4.08.1/lib/coq/user-contrib/MetaCoq/Erasure/EInversion.glob</code></li>
-              <li>3 K <code>../ocaml-base-compiler.4.08.1/lib/coq/user-contrib/MetaCoq/Erasure/ETyping.v</code></li>
-              <li>3 K <code>../ocaml-base-compiler.4.08.1/lib/coq/user-contrib/MetaCoq/Erasure/EWndEval.v</code></li>
-              <li>3 K <code>../ocaml-base-compiler.4.08.1/lib/coq/user-contrib/MetaCoq/Erasure/EWndEval.glob</code></li>
-              <li>3 K <code>../ocaml-base-compiler.4.08.1/lib/coq/user-contrib/MetaCoq/Erasure/EInduction.v</code></li>
-              <li>1 K <code>../ocaml-base-compiler.4.08.1/lib/coq/user-contrib/MetaCoq/Erasure/Extraction.v</code></li>
-              <li>1 K <code>../ocaml-base-compiler.4.08.1/lib/coq/user-contrib/MetaCoq/Erasure/EInversion.v</code></li>
-              <li>1 K <code>../ocaml-base-compiler.4.08.1/lib/coq/user-contrib/MetaCoq/Erasure/Extraction.glob</code></li>
-              <li>1 K <code>../ocaml-base-compiler.4.08.1/lib/coq/user-contrib/MetaCoq/Erasure/EAll.glob</code></li>
-              <li>1 K <code>../ocaml-base-compiler.4.08.1/lib/coq/user-contrib/MetaCoq/Erasure/Loader.glob</code></li>
-              <li>1 K <code>../ocaml-base-compiler.4.08.1/lib/coq/user-contrib/MetaCoq/Erasure/Loader.v</code></li>
-              <li>1 K <code>../ocaml-base-compiler.4.08.1/lib/coq/user-contrib/MetaCoq/Erasure/EAll.v</code></li>
-            </ul>
+            <p>No files were installed.</p>
             <h2>Uninstall</h2>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>opam remove -y coq-metacoq-erasure.1.0~alpha2+8.11</code></dd>
+              <dd><code>true</code></dd>
               <dt>Return code</dt>
               <dd>0</dd>
               <dt>Missing removes</dt>
