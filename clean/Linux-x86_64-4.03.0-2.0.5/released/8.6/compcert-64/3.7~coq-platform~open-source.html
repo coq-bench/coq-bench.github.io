@@ -42,7 +42,7 @@
                 <span class="label label-info">Not compatible</span>
               </small>
             </h1>
-            <p><em><script>document.write(moment("2020-06-30 04:33:12 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2020-06-30 04:33:12 UTC)</em><p>
+            <p><em><script>document.write(moment("2020-07-31 12:58:52 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2020-07-31 12:58:52 UTC)</em><p>
             <h2>Context</h2>
             <pre># Packages matching: installed
 # Name              # Installed # Synopsis
@@ -72,11 +72,10 @@ build: [
   [&quot;./configure&quot; &quot;amd64-linux&quot; {os = &quot;linux&quot;}
   &quot;amd64-macosx&quot; {os = &quot;macos&quot;}
   &quot;amd64-cygwin&quot; {os = &quot;cygwin&quot;}
-  &quot;-bindir&quot; &quot;%{bin}%&quot;
-  &quot;-libdir&quot; &quot;%{lib}%/compcert&quot;
+  &quot;-prefix&quot; &quot;%{prefix}%/variants/compcert64&quot;
   &quot;-install-coqdev&quot;
   &quot;-clightgen&quot;
-  &quot;-coqdevdir&quot; &quot;%{lib}%/coq/user-contrib/compcert64&quot;
+  &quot;-coqdevdir&quot; &quot;%{lib}%/coq-variant/compcert64/compcert&quot;
   &quot;-ignore-coq-version&quot;]
   [make &quot;depend&quot;]
   [make &quot;-j%{jobs}%&quot; {ocaml:version &gt;= &quot;4.06&quot;} &quot;proof_open_source&quot;]
@@ -107,7 +106,19 @@ depends: [
   &quot;menhir&quot; {&gt;= &quot;20190626&quot; &amp; &lt; &quot;20200123&quot;}
   &quot;ocaml&quot; {&gt;= &quot;4.05.0&quot;}
 ]
-synopsis: &quot;The CompCert C compiler (only open source files + using coq-platform)&quot;
+synopsis: &quot;The CompCert C compiler (64 bit, only open source files + using coq-platform)&quot;
+description: &quot;This package installs the 64 bit version of CompCert.
+For coexistence with the 32 bit version, the files are installed in:
+%{prefix}%/variants/compcert64/bin  (ccomp and clightgen binaries)
+%{prefix}%/variants/compcert64/lib/compcert  (C library)
+%{lib}%/coq/user-contrib/compcert64  (Coq library)
+Please note that the coq module path is compcert and not compcert64,
+so the files cannot be directly Required as compcert64.
+Instead -Q or -R options must be used to bind the compcert64 folder
+to the module path compcert. This is more convenient if one development
+uses both 32 and 64 bit versions. Otherwise all files would have to
+be duplicated with module paths compcert and compcert64.
+Please also note that the binary folder is usually not in the path.&quot;
 tags: [
   &quot;category:CS/Semantics and Compilation/Compilation&quot;
   &quot;category:CS/Semantics and Compilation/Semantics&quot;
