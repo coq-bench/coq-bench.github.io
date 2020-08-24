@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>fiat-crypto: Black list</title>
+    <title>fiat-crypto: Error with dependencies</title>
     <link rel="shortcut icon" type="image/png" href="../../../../../favicon.png" />
     <link href="../../../../../bootstrap.min.css" rel="stylesheet">
     <link href="../../../../../bootstrap-custom.css" rel="stylesheet">
@@ -39,13 +39,10 @@
               fiat-crypto
               <small>
                 dev
-                <span class="label label-default">Black list</span>
+                <span class="label label-warning">Error with dependencies</span>
               </small>
             </h1>
-            <p><em><script>document.write(moment("2020-07-13 21:25:54 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2020-07-13 21:25:54 UTC)</em><p>
-            <div class="alert alert-info" role="alert">
-              <p>This result is black-listed as it is considered as too hard to reproduce / to solve. If you find a way to fix this package, please make a pull-request to <a class="alert-link" href="https://github.com/coq/opam-coq-archive">github.com/coq/opam-coq-archive</a>. The list of black-listed packages is in <a class="alert-link" href="https://github.com/coq-bench/make-html/blob/master/black_list.rb">black_list.rb</a>.</p>
-            </div>
+            <p><em><script>document.write(moment("2020-08-24 06:00:58 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2020-08-24 06:00:58 UTC)</em><p>
             <h2>Context</h2>
             <pre># Packages matching: installed
 # Name              # Installed # Synopsis
@@ -73,12 +70,13 @@ homepage: &quot;https://github.com/mit-plv/fiat-crypto&quot;
 bug-reports: &quot;https://github.com/mit-plv/fiat-crypto/issues&quot;
 license: &quot;MIT&quot;
 build: [
-  [make &quot;-j%{jobs}%&quot; &quot;EXTERNAL_DEPENDENCIES=1&quot; &quot;coq-without-bedrock2&quot; &quot;standalone-ocaml&quot;]
+  [make &quot;-j%{jobs}%&quot; &quot;EXTERNAL_DEPENDENCIES=1&quot; &quot;SKIP_BEDROCK2=1&quot; &quot;coq-without-bedrock2&quot; &quot;standalone-ocaml&quot;]
 ]
-install: [make &quot;EXTERNAL_DEPENDENCIES=1&quot; &quot;BINDIR=%{bin}%&quot; &quot;install-without-bedrock2&quot; &quot;install-standalone-ocaml&quot;]
+install: [make &quot;EXTERNAL_DEPENDENCIES=1&quot; &quot;SKIP_BEDROCK2=1&quot; &quot;BINDIR=%{bin}%&quot; &quot;install-without-bedrock2&quot; &quot;install-standalone-ocaml&quot;]
 depends: [
   &quot;ocaml&quot; {build}
   &quot;ocamlfind&quot; {build}
+  &quot;conf-jq&quot; {build}
   &quot;coq&quot; {&gt;= &quot;8.9~&quot;}
   &quot;coq-coqprime&quot;
   &quot;coq-rewriter&quot;
@@ -117,9 +115,9 @@ url {
               <dt>Command</dt>
               <dd><code>opam list; echo; ulimit -Sv 4000000; timeout 2h opam install -y --deps-only coq-fiat-crypto.dev coq.8.10.0</code></dd>
               <dt>Return code</dt>
-              <dd>10240</dd>
+              <dd>7936</dd>
               <dt>Duration</dt>
-              <dd>50 s</dd>
+              <dd>20 m 47 s</dd>
               <dt>Output</dt>
               <dd><pre># Packages matching: installed
 # Name              # Installed # Synopsis
@@ -136,14 +134,42 @@ ocaml-config        1           OCaml Switch Configuration
 ocamlfind           1.8.1       A library manager for OCaml
 The following actions will be performed:
   - install coq-rewriter dev
+  - install conf-jq      1
   - install coq-bignums  8.10.0
   - install coq-coqprime dev
-===== 3 to install =====
+===== 4 to install =====
 &lt;&gt;&lt;&gt; Gathering sources &gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;
+[coq-bignums.8.10.0] downloaded from https://github.com/coq/bignums/archive/V8.10.0.tar.gz
 [coq-coqprime.dev] synchronised from git+https://github.com/thery/coqprime.git
 [coq-rewriter.dev] synchronised from git+https://github.com/mit-plv/rewriter.git#master
-[ERROR] The sources of the following couldn&#39;t be obtained, aborting:
-          - coq-bignums.8.10.0: curl error code 502
+&lt;&gt;&lt;&gt; Processing actions &lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;
+[ERROR] The compilation of conf-jq failed at &quot;/home/bench/.opam/opam-init/hooks/sandbox.sh build jq --version&quot;.
+-&gt; installed coq-bignums.8.10.0
+-&gt; installed coq-coqprime.dev
+-&gt; installed coq-rewriter.dev
+#=== ERROR while compiling conf-jq.1 ==========================================#
+# context              2.0.5 | linux/x86_64 | ocaml-base-compiler.4.06.1 | https://opam.ocaml.org#a33e1dcf
+# path                 ~/.opam/ocaml-base-compiler.4.06.1/.opam-switch/build/conf-jq.1
+# command              ~/.opam/opam-init/hooks/sandbox.sh build jq --version
+# exit-code            1
+# env-file             ~/.opam/log/conf-jq-19989-326a35.env
+# output-file          ~/.opam/log/conf-jq-19989-326a35.out
+### output ###
+# bwrap: execvp jq: No such file or directory
+&lt;&gt;&lt;&gt; Error report &lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;
++- The following actions failed
+| - build conf-jq 1
++- 
++- The following changes have been performed
+| - install coq-bignums  8.10.0
+| - install coq-coqprime dev
+| - install coq-rewriter dev
++- 
+The packages you requested declare the following system dependencies. Please make sure they are installed before retrying:
+    jq
+# Run eval $(opam env) to update the current shell environment
+The former state can be restored with:
+    opam switch import &quot;/home/bench/.opam/ocaml-base-compiler.4.06.1/.opam-switch/backup/state-20200822120418.export&quot;
 </pre></dd>
             </dl>
             <h2>Install</h2>
