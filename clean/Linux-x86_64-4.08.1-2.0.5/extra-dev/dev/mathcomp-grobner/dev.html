@@ -42,7 +42,7 @@
                 <span class="label label-warning">Error with dependencies</span>
               </small>
             </h1>
-            <p><em><script>document.write(moment("2020-04-09 14:50:21 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2020-04-09 14:50:21 UTC)</em><p>
+            <p><em><script>document.write(moment("2020-09-03 13:40:41 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2020-09-03 13:40:41 UTC)</em><p>
             <h2>Context</h2>
             <pre># Packages matching: installed
 # Name              # Installed # Synopsis
@@ -50,13 +50,16 @@ base-bigarray       base
 base-threads        base
 base-unix           base
 conf-findutils      1           Virtual package relying on findutils
+conf-gmp            1           Virtual package relying on a GMP lib system installation
 conf-m4             1           Virtual package relying on m4
+conf-perl           1           Virtual package relying on perl
 coq                 dev         Formal proof management system
 num                 1.3         The legacy Num library for arbitrary-precision integer and rational arithmetic
 ocaml               4.08.1      The OCaml compiler (virtual package)
 ocaml-base-compiler 4.08.1      Official release 4.08.1
 ocaml-config        1           OCaml Switch Configuration
 ocamlfind           1.8.1       A library manager for OCaml
+zarith              1.9.1       Implements arithmetic and logical operations over arbitrary-precision integers
 # opam file:
 opam-version: &quot;2.0&quot;
 maintainer: &quot;Laurent.Thery@inria.fr&quot;
@@ -179,12 +182,12 @@ No solution found, exiting
             - lib/coq/vernac/pvernac.cmi
             - lib/coq/vernac/proof_using.cmx
             - lib/coq/vernac/proof_using.cmi
+            - lib/coq/vernac/printmod.cmx
+            - lib/coq/vernac/printmod.cmi
             - lib/coq/vernac/prettyp.cmx
             - lib/coq/vernac/prettyp.cmi
             - lib/coq/vernac/ppvernac.cmx
             - lib/coq/vernac/ppvernac.cmi
-            - lib/coq/vernac/obligations.cmx
-            - lib/coq/vernac/obligations.cmi
             - lib/coq/vernac/mltop.cmx
             - lib/coq/vernac/mltop.cmi
             - lib/coq/vernac/metasyntax.cmx
@@ -195,8 +198,6 @@ No solution found, exiting
             - lib/coq/vernac/loadpath.cmi
             - lib/coq/vernac/library.cmx
             - lib/coq/vernac/library.cmi
-            - lib/coq/vernac/lemmas.cmx
-            - lib/coq/vernac/lemmas.cmi
             - lib/coq/vernac/indschemes.cmx
             - lib/coq/vernac/indschemes.cmi
             - lib/coq/vernac/himsg.cmx
@@ -213,18 +214,20 @@ No solution found, exiting
             - lib/coq/vernac/declaremods.cmi
             - lib/coq/vernac/declareUniv.cmx
             - lib/coq/vernac/declareUniv.cmi
-            - lib/coq/vernac/declareObl.cmx
-            - lib/coq/vernac/declareObl.cmi
             - lib/coq/vernac/declareInd.cmx
             - lib/coq/vernac/declareInd.cmi
-            - lib/coq/vernac/declareDef.cmx
-            - lib/coq/vernac/declareDef.cmi
+            - lib/coq/vernac/declare.cmx
+            - lib/coq/vernac/declare.cmi
+            - lib/coq/vernac/comSearch.cmx
+            - lib/coq/vernac/comSearch.cmi
             - lib/coq/vernac/comProgramFixpoint.cmx
             - lib/coq/vernac/comProgramFixpoint.cmi
             - lib/coq/vernac/comPrimitive.cmx
             - lib/coq/vernac/comPrimitive.cmi
             - lib/coq/vernac/comInductive.cmx
             - lib/coq/vernac/comInductive.cmi
+            - lib/coq/vernac/comHints.cmx
+            - lib/coq/vernac/comHints.cmi
             - lib/coq/vernac/comFixpoint.cmx
             - lib/coq/vernac/comFixpoint.cmi
             - lib/coq/vernac/comDefinition.cmx
@@ -344,9 +347,9 @@ No solution found, exiting
             - lib/coq/user-contrib/Ltac2/Constr.vo
             - lib/coq/user-contrib/Ltac2/Constr.v
             - lib/coq/user-contrib/Ltac2/Constr.glob
-            - lib/coq/user-contrib/Ltac2/Ch
+            - lib/coq/user-contrib/Ltac2/Char.vos
 [...] truncated
- lib/coq/interp/constrextern.cmi
+erp/constrextern.cmi
             - lib/coq/interp/constrexpr_ops.cmx
             - lib/coq/interp/constrexpr_ops.cmi
             - lib/coq/interp/constrexpr.cmx
@@ -479,8 +482,6 @@ No solution found, exiting
             - lib/coq/clib/cEphemeron.cmi
             - lib/coq/clib/cArray.cmx
             - lib/coq/clib/cArray.cmi
-            - lib/coq/clib/bigint.cmx
-            - lib/coq/clib/bigint.cmi
             - lib/coq/META
             - bin/votour
             - bin/ocamllibdep
@@ -501,6 +502,7 @@ No solution found, exiting
          - lib/coq/toplevel
          - lib/coq/topbin
          - lib/coq/tools/coqdoc
+         - lib/coq/theories/ssrsearch/.coq-native
          - lib/coq/theories/ssrmatching/.coq-native
          - lib/coq/theories/ssr/.coq-native
          - lib/coq/theories/setoid_ring/.coq-native
@@ -508,7 +510,6 @@ No solution found, exiting
          - lib/coq/theories/omega/.coq-native
          - lib/coq/theories/nsatz/.coq-native
          - lib/coq/theories/micromega/.coq-native
-         - lib/coq/theories/ltac/.coq-native
          - lib/coq/theories/funind/.coq-native
          - lib/coq/theories/extraction/.coq-native
          - lib/coq/theories/derive/.coq-native
@@ -551,6 +552,7 @@ No solution found, exiting
          - lib/coq/theories/Compat/.coq-native
          - lib/coq/theories/Classes/.coq-native
          - lib/coq/theories/Bool/.coq-native
+         - lib/coq/theories/Array/.coq-native
          - lib/coq/theories/Arith/.coq-native
          - lib/coq/tactics
          - lib/coq/stm
@@ -558,6 +560,7 @@ No solution found, exiting
          - lib/coq/printing
          - lib/coq/pretyping
          - lib/coq/plugins/syntax
+         - lib/coq/plugins/ssrsearch
          - lib/coq/plugins/ssrmatching
          - lib/coq/plugins/setoid_ring
          - lib/coq/plugins/rtauto
