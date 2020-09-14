@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>bignums: Not compatible</title>
+    <link rel="shortcut icon" type="image/png" href="../../../../../favicon.png" />
+    <link href="../../../../../bootstrap.min.css" rel="stylesheet">
+    <link href="../../../../../bootstrap-custom.css" rel="stylesheet">
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+    <script src="../../../../../moment.min.js"></script>
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="container">
+      <div class="navbar navbar-default" role="navigation">
+        <div class="container-fluid">
+          <div class="navbar-header">
+            <a class="navbar-brand" href="../../../../.."><i class="fa fa-lg fa-flag-checkered"></i> Coq bench</a>
+          </div>
+          <div id="navbar" class="collapse navbar-collapse">
+            <ul class="nav navbar-nav">
+              <li><a href="../..">clean / released</a></li>
+              <li class="active"><a href="">8.8.0 / bignums - 8.12.0</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="article">
+        <div class="row">
+          <div class="col-md-12">
+            <a href="../..">« Up</a>
+            <h1>
+              bignums
+              <small>
+                8.12.0
+                <span class="label label-info">Not compatible</span>
+              </small>
+            </h1>
+            <p><em><script>document.write(moment("2020-09-14 18:10:41 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2020-09-14 18:10:41 UTC)</em><p>
+            <h2>Context</h2>
+            <pre># Packages matching: installed
+# Name              # Installed # Synopsis
+base-bigarray       base
+base-num            base        Num library distributed with the OCaml compiler
+base-threads        base
+base-unix           base
+camlp5              7.13        Preprocessor-pretty-printer of OCaml
+conf-findutils      1           Virtual package relying on findutils
+conf-m4             1           Virtual package relying on m4
+coq                 8.8.0       Formal proof management system.
+num                 0           The Num library for arbitrary-precision integer and rational arithmetic
+ocaml               4.05.0      The OCaml compiler (virtual package)
+ocaml-base-compiler 4.05.0      Official 4.05.0 release
+ocaml-config        1           OCaml Switch Configuration
+ocamlfind           1.8.1       A library manager for OCaml
+# opam file:
+opam-version: &quot;2.0&quot;
+maintainer: &quot;Vincent.Laporte@inria.fr&quot;
+homepage: &quot;https://github.com/coq/bignums&quot;
+dev-repo: &quot;git+https://github.com/coq/bignums.git&quot;
+bug-reports: &quot;https://github.com/coq/bignums/issues&quot;
+authors: [
+  &quot;Laurent Théry&quot;
+  &quot;Benjamin Grégoire&quot;
+  &quot;Arnaud Spiwack&quot;
+  &quot;Evgeny Makarov&quot;
+  &quot;Pierre Letouzey&quot;
+]
+license: &quot;LGPL-2.1-only&quot;
+build: [
+  [make &quot;-j%{jobs}%&quot; {ocaml:version &gt;= &quot;4.06&quot;}]
+]
+install: [
+  [make &quot;install&quot;]
+]
+depends: [
+  &quot;ocaml&quot;
+  &quot;coq&quot; {&gt;= &quot;8.12&quot; &amp; &lt; &quot;8.13~&quot;}
+]
+tags: [
+  &quot;keyword:integer numbers&quot;
+  &quot;keyword:rational numbers&quot;
+  &quot;keyword:arithmetic&quot;
+  &quot;keyword:arbitrary-precision&quot;
+  &quot;category:Miscellaneous/Coq Extensions&quot;
+  &quot;category:Mathematics/Arithmetic and Number Theory/Number theory&quot;
+  &quot;category:Mathematics/Arithmetic and Number Theory/Rational numbers&quot;
+  &quot;logpath:Bignums&quot;
+]
+synopsis: &quot;Bignums, the Coq library of arbitrary large numbers&quot;
+description:
+  &quot;Provides BigN, BigZ, BigQ that used to be part of Coq standard library &lt; 8.7.&quot;
+url {
+  src: &quot;https://github.com/coq/bignums/archive/V8.12.0.tar.gz&quot;
+  checksum: &quot;sha512=8bec000c7b2c0e36e3a51c630132dd8e412c208a3ada22a4ae2aba6300f80ab9550b50803af901819c1ada72a0f77f5555a57fd9448d7ba734092d9fbb32d677&quot;
+}
+</pre>
+            <h2>Lint</h2>
+            <dl class="dl-horizontal">
+              <dt>Command</dt>
+              <dd><code>true</code></dd>
+              <dt>Return code</dt>
+              <dd>0</dd>
+            </dl>
+            <h2>Dry install</h2>
+            <p>Dry install with the current Coq version:</p>
+            <dl class="dl-horizontal">
+              <dt>Command</dt>
+              <dd><code>opam install -y --show-action coq-bignums.8.12.0 coq.8.8.0</code></dd>
+              <dt>Return code</dt>
+              <dd>5120</dd>
+              <dt>Output</dt>
+              <dd><pre>[NOTE] Package coq is already installed (current version is 8.8.0).
+The following dependencies couldn&#39;t be met:
+  - coq-bignums -&gt; coq &gt;= 8.12
+Your request can&#39;t be satisfied:
+  - No available version of coq satisfies the constraints
+No solution found, exiting
+</pre></dd>
+            </dl>
+            <p>Dry install without Coq/switch base, to test if the problem was incompatibility with the current Coq/OCaml version:</p>
+            <dl class="dl-horizontal">
+              <dt>Command</dt>
+              <dd><code>opam remove -y coq; opam install -y --show-action --unlock-base coq-bignums.8.12.0</code></dd>
+              <dt>Return code</dt>
+              <dd>0</dd>
+            </dl>
+            <h2>Install dependencies</h2>
+            <dl class="dl-horizontal">
+              <dt>Command</dt>
+              <dd><code>true</code></dd>
+              <dt>Return code</dt>
+              <dd>0</dd>
+              <dt>Duration</dt>
+              <dd>0 s</dd>
+            </dl>
+            <h2>Install</h2>
+            <dl class="dl-horizontal">
+              <dt>Command</dt>
+              <dd><code>true</code></dd>
+              <dt>Return code</dt>
+              <dd>0</dd>
+              <dt>Duration</dt>
+              <dd>0 s</dd>
+            </dl>
+            <h2>Installation size</h2>
+            <p>No files were installed.</p>
+            <h2>Uninstall</h2>
+            <dl class="dl-horizontal">
+              <dt>Command</dt>
+              <dd><code>true</code></dd>
+              <dt>Return code</dt>
+              <dd>0</dd>
+              <dt>Missing removes</dt>
+              <dd>
+                none
+              </dd>
+              <dt>Wrong removes</dt>
+              <dd>
+                none
+              </dd>
+            </dl>
+          </div>
+        </div>
+      </div>
+      <hr/>
+      <div class="footer">
+        <p class="text-center">
+          <small>Sources are on <a href="https://github.com/coq-bench">GitHub</a>. © Guillaume Claret.</small>
+        </p>
+      </div>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="../../../../../bootstrap.min.js"></script>
+  </body>
+</html>
