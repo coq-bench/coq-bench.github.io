@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>equations: Error</title>
+    <title>equations: Error with dependencies</title>
     <link rel="shortcut icon" type="image/png" href="../../../../../favicon.png" />
     <link href="../../../../../bootstrap.min.css" rel="stylesheet">
     <link href="../../../../../bootstrap-custom.css" rel="stylesheet">
@@ -39,10 +39,10 @@
               equations
               <small>
                 dev+HoTT
-                <span class="label label-danger">Error</span>
+                <span class="label label-warning">Error with dependencies</span>
               </small>
             </h1>
-            <p><em><script>document.write(moment("2020-10-14 19:10:06 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2020-10-14 19:10:06 UTC)</em><p>
+            <p><em><script>document.write(moment("2020-11-11 18:55:22 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2020-11-11 18:55:22 UTC)</em><p>
             <h2>Context</h2>
             <pre># Packages matching: installed
 # Name              # Installed # Synopsis
@@ -125,73 +125,79 @@ url {
               <dt>Command</dt>
               <dd><code>opam list; echo; ulimit -Sv 4000000; timeout 2h opam install -y --deps-only coq-equations.dev+HoTT coq.dev</code></dd>
               <dt>Return code</dt>
-              <dd>0</dd>
-              <dt>Duration</dt>
-              <dd>11 m 50 s</dd>
-            </dl>
-            <h2>Install</h2>
-            <dl class="dl-horizontal">
-              <dt>Command</dt>
-              <dd><code>opam list; echo; ulimit -Sv 16000000; timeout 2h opam install -y coq-equations.dev+HoTT coq.dev</code></dd>
-              <dt>Return code</dt>
               <dd>7936</dd>
               <dt>Duration</dt>
-              <dd>28 s</dd>
+              <dd>4 m 2 s</dd>
               <dt>Output</dt>
               <dd><pre># Packages matching: installed
 # Name              # Installed # Synopsis
 base-bigarray       base
 base-threads        base
 base-unix           base
-conf-autoconf       0.1         Virtual package relying on autoconf installation
 conf-findutils      1           Virtual package relying on findutils
 conf-gmp            2           Virtual package relying on a GMP lib system installation
 conf-m4             1           Virtual package relying on m4
 conf-perl           1           Virtual package relying on perl
-conf-which          1           Virtual package relying on which
 coq                 dev         Formal proof management system
-coq-hott            dev         The Homotopy Type Theory library
 num                 1.3         The legacy Num library for arbitrary-precision integer and rational arithmetic
 ocaml               4.10.1      The OCaml compiler (virtual package)
 ocaml-base-compiler 4.10.1      Official release 4.10.1
 ocaml-config        1           OCaml Switch Configuration
 ocamlfind           1.8.1       A library manager for OCaml
 zarith              1.10        Implements arithmetic and logical operations over arbitrary-precision integers
-[NOTE] Package coq is already installed (current version is dev).
 The following actions will be performed:
-  - install coq-equations dev+HoTT
+  - install conf-which    1
+  - install conf-autoconf 0.1
+  - install coq-hott      dev
+===== 3 to install =====
 &lt;&gt;&lt;&gt; Gathering sources &gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;
-[coq-equations.dev+HoTT] synchronised from git+https://github.com/mattam82/Coq-Equations#hott-logic
+[coq-hott.dev] synchronised from git+https://github.com/HoTT/HoTT.git#master
 &lt;&gt;&lt;&gt; Processing actions &lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;
-[ERROR] The compilation of coq-equations failed at &quot;/home/bench/.opam/opam-init/hooks/sandbox.sh build make -j4&quot;.
-#=== ERROR while compiling coq-equations.dev+HoTT =============================#
+-&gt; installed conf-which.1
+-&gt; installed conf-autoconf.0.1
+[ERROR] The compilation of coq-hott failed at &quot;/home/bench/.opam/opam-init/hooks/sandbox.sh build make -j4&quot;.
+#=== ERROR while compiling coq-hott.dev =======================================#
 # context              2.0.6 | linux/x86_64 | ocaml-base-compiler.4.10.1 | file:///home/bench/run/opam-coq-archive/extra-dev
-# path                 ~/.opam/ocaml-base-compiler.4.10.1/.opam-switch/build/coq-equations.dev+HoTT
+# path                 ~/.opam/ocaml-base-compiler.4.10.1/.opam-switch/build/coq-hott.dev
 # command              ~/.opam/opam-init/hooks/sandbox.sh build make -j4
 # exit-code            2
-# env-file             ~/.opam/log/coq-equations-22676-0a5907.env
-# output-file          ~/.opam/log/coq-equations-22676-0a5907.out
+# env-file             ~/.opam/log/coq-hott-31650-2c871f.env
+# output-file          ~/.opam/log/coq-hott-31650-2c871f.out
 ### output ###
 # [...]
-# CAMLC -c src/ederive.mli
-# CAMLC -c src/subterm.mli
-# CAMLC -c src/noconf_hom.mli
-# CAMLC -c src/noconf.mli
-# File &quot;src/noconf_hom.mli&quot;, line 24, characters 2-10:
-# 24 |   Lemmas.t option
-#        ^^^^^^^^
-# Error: Unbound module LemmasCAMLC -c src/extra_tactics.mli
+# COQC coq/theories/Init/Numeral
+# COQC coq/theories/Unicode/Utf8
+# COQC coq/theories/Init/Nat
+# COQC coq/theories/Init/Peano
+# COQC coq/theories/Init/Prelude
+# File &quot;./coq/theories/Init/Prelude.v&quot;, line 14, characters 0-44:
+# Error:
+# File not found on loadpath : numeral_notation_plugin.cmxs
+# Loadpath: /home/bench/.opam/ocaml-base-compiler.4.10.1/.opam-switch/build/coq-hott.dev:/home/bench/.opam/ocaml-base-compiler.4.10.1/lib/coq/plugins/ring:/home/bench/.opam/ocaml-base-compiler.4.10.1/lib/coq/plugins/ltac:/home/bench/.opam/ocaml-base-compiler.4.10.1/lib/coq/plugins/funind:/home/bench/.opam/ocaml-base-compiler.4.10.1/lib/coq/plugins/firstorder:/home/bench/.opam/ocaml-base-compile[...]
 # 
-# make[1]: *** [Makefile.HoTT:654: src/noconf_hom.cmi] Error 2
-# make[1]: *** Waiting for unfinished jobs....
-# make: *** [Makefile.HoTT:343: all] Error 2
+# make: *** [Makefile:930: coq/theories/Init/Prelude.vo] Error 1
+# make: *** Waiting for unfinished jobs....
 &lt;&gt;&lt;&gt; Error report &lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;
 +- The following actions failed
-| - build coq-equations dev+HoTT
+| - build coq-hott dev
 +- 
-- No changes have been performed
++- The following changes have been performed
+| - install conf-autoconf 0.1
+| - install conf-which    1
++- 
 # Run eval $(opam env) to update the current shell environment
+The former state can be restored with:
+    opam switch import &quot;/home/bench/.opam/ocaml-base-compiler.4.10.1/.opam-switch/backup/state-20201108234947.export&quot;
 </pre></dd>
+            </dl>
+            <h2>Install</h2>
+            <dl class="dl-horizontal">
+              <dt>Command</dt>
+              <dd><code>true</code></dd>
+              <dt>Return code</dt>
+              <dd>0</dd>
+              <dt>Duration</dt>
+              <dd>0 s</dd>
             </dl>
             <h2>Installation size</h2>
             <p>No files were installed.</p>
