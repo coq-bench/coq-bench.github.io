@@ -42,7 +42,7 @@
                 <span class="label label-info">Not compatible</span>
               </small>
             </h1>
-            <p><em><script>document.write(moment("2020-07-20 11:25:34 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2020-07-20 11:25:34 UTC)</em><p>
+            <p><em><script>document.write(moment("2020-11-14 22:53:54 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2020-11-14 22:53:54 UTC)</em><p>
             <h2>Context</h2>
             <pre># Packages matching: installed
 # Name              # Installed # Synopsis
@@ -50,7 +50,7 @@ base-bigarray       base
 base-num            base        Num library distributed with the OCaml compiler
 base-threads        base
 base-unix           base
-camlp5              7.12        Preprocessor-pretty-printer of OCaml
+camlp5              7.13        Preprocessor-pretty-printer of OCaml
 conf-findutils      1           Virtual package relying on findutils
 conf-m4             1           Virtual package relying on m4
 coq                 8.8.1       Formal proof management system.
@@ -72,14 +72,13 @@ authors: [
   &quot;Evgeny Makarov&quot;
   &quot;Pierre Letouzey&quot;
 ]
-license: &quot;LGPL 2&quot;
+license: &quot;LGPL-2.1-only&quot;
 build: [
-  [make]
+  [make &quot;-j%{jobs}%&quot; {ocaml:version &gt;= &quot;4.06&quot;}]
 ]
 install: [
   [make &quot;install&quot;]
 ]
-remove: [&quot;rm&quot; &quot;-R&quot; &quot;%{lib}%/coq/user-contrib/Bignums&quot;]
 depends: [
   &quot;ocaml&quot;
   &quot;coq&quot; {&gt;= &quot;8.7&quot; &amp; &lt; &quot;8.8~&quot;}
@@ -98,7 +97,6 @@ tags: [
 synopsis: &quot;Bignums, the Coq library of arbitrary large numbers&quot;
 description:
   &quot;Provides BigN, BigZ, BigQ that used to be part of Coq standard library &lt; 8.7.&quot;
-flags: light-uninstall
 url {
   src: &quot;https://github.com/coq/bignums/archive/V8.7.0.tar.gz&quot;
   checksum: &quot;md5=1d5f18f15675cfac64df59b3405e64d3&quot;
