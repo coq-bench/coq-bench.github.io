@@ -42,7 +42,7 @@
                 <span class="label label-info">Not compatible</span>
               </small>
             </h1>
-            <p><em><script>document.write(moment("2020-07-16 01:41:04 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2020-07-16 01:41:04 UTC)</em><p>
+            <p><em><script>document.write(moment("2020-11-14 06:03:24 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2020-11-14 06:03:24 UTC)</em><p>
             <h2>Context</h2>
             <pre># Packages matching: installed
 # Name              # Installed # Synopsis
@@ -52,7 +52,7 @@ base-unix           base
 conf-findutils      1           Virtual package relying on findutils
 conf-m4             1           Virtual package relying on m4
 coq                 8.10.0      Formal proof management system
-num                 1.3         The legacy Num library for arbitrary-precision integer and rational arithmetic
+num                 1.4         The legacy Num library for arbitrary-precision integer and rational arithmetic
 ocaml               4.06.1      The OCaml compiler (virtual package)
 ocaml-base-compiler 4.06.1      Official 4.06.1 release
 ocaml-config        1           OCaml Switch Configuration
@@ -64,12 +64,8 @@ homepage: &quot;https://github.com/lukaszcz/coqhammer&quot;
 dev-repo: &quot;git+https://github.com/lukaszcz/coqhammer.git&quot;
 bug-reports: &quot;https://github.com/lukaszcz/coqhammer/issues&quot;
 license: &quot;LGPL 2.1&quot;
-build: [ make ]
+build: [ make &quot;-j%{jobs}%&quot; {ocaml:version &gt;= &quot;4.06&quot;} ]
 install: [ make &quot;install&quot; ]
-remove: [
-  [&quot;sh&quot; &quot;-c&quot; &quot;rm -rf &#39;%{lib}%/coq/user-contrib/Hammer&#39;&quot;]
-  [&quot;sh&quot; &quot;-c&quot; &quot;rm -f &#39;%{bin}%/predict&#39; &#39;%{bin}%/htimeout&#39;&quot;]
-]
 depends: [
   &quot;ocaml&quot;
   &quot;conf-g++&quot; {build}
