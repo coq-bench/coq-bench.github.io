@@ -42,7 +42,7 @@
                 <span class="label label-warning">Error with dependencies</span>
               </small>
             </h1>
-            <p><em><script>document.write(moment("2020-08-28 07:13:22 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2020-08-28 07:13:22 UTC)</em><p>
+            <p><em><script>document.write(moment("2020-11-15 02:07:39 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2020-11-15 02:07:39 UTC)</em><p>
             <h2>Context</h2>
             <pre># Packages matching: installed
 # Name              # Installed # Synopsis
@@ -50,13 +50,16 @@ base-bigarray       base
 base-threads        base
 base-unix           base
 conf-findutils      1           Virtual package relying on findutils
+conf-gmp            2           Virtual package relying on a GMP lib system installation
 conf-m4             1           Virtual package relying on m4
+conf-perl           1           Virtual package relying on perl
 coq                 dev         Formal proof management system
-num                 1.3         The legacy Num library for arbitrary-precision integer and rational arithmetic
+num                 1.4         The legacy Num library for arbitrary-precision integer and rational arithmetic
 ocaml               4.07.1      The OCaml compiler (virtual package)
 ocaml-base-compiler 4.07.1      Official release 4.07.1
 ocaml-config        1           OCaml Switch Configuration
 ocamlfind           1.8.1       A library manager for OCaml
+zarith              1.11        Implements arithmetic and logical operations over arbitrary-precision integers
 # opam file:
 opam-version: &quot;2.0&quot;
 maintainer: &quot;Laurent.Thery@inria.fr&quot;
@@ -215,6 +218,8 @@ No solution found, exiting
             - lib/coq/vernac/declareInd.cmi
             - lib/coq/vernac/declare.cmx
             - lib/coq/vernac/declare.cmi
+            - lib/coq/vernac/comTactic.cmx
+            - lib/coq/vernac/comTactic.cmi
             - lib/coq/vernac/comSearch.cmx
             - lib/coq/vernac/comSearch.cmi
             - lib/coq/vernac/comProgramFixpoint.cmx
@@ -343,10 +348,11 @@ No solution found, exiting
             - lib/coq/user-contrib/Ltac2/Constr.vos
             - lib/coq/user-contrib/Ltac2/Constr.vo
             - lib/coq/user-contrib/Ltac2/Constr.v
-            - lib/coq/user-contrib/Ltac2/Constr.glob
-            - lib/coq/user-contrib/Ltac2/Char.vos
+            - lib/co
 [...] truncated
-     - lib/coq/interp/constrexpr_ops.cmi
+coq/interp/constrextern.cmi
+            - lib/coq/interp/constrexpr_ops.cmx
+            - lib/coq/interp/constrexpr_ops.cmi
             - lib/coq/interp/constrexpr.cmx
             - lib/coq/interp/constrexpr.cmi
             - lib/coq/gramlib/.pack/gramlib__Ploc.cmx
@@ -477,8 +483,6 @@ No solution found, exiting
             - lib/coq/clib/cEphemeron.cmi
             - lib/coq/clib/cArray.cmx
             - lib/coq/clib/cArray.cmi
-            - lib/coq/clib/bigint.cmx
-            - lib/coq/clib/bigint.cmi
             - lib/coq/META
             - bin/votour
             - bin/ocamllibdep
@@ -559,8 +563,8 @@ No solution found, exiting
          - lib/coq/plugins/syntax
          - lib/coq/plugins/ssrsearch
          - lib/coq/plugins/ssrmatching
-         - lib/coq/plugins/setoid_ring
          - lib/coq/plugins/rtauto
+         - lib/coq/plugins/ring
          - lib/coq/plugins/omega
          - lib/coq/plugins/nsatz
          - lib/coq/plugins/micromega
