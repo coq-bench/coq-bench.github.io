@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>hammer-tactics: 25 s</title>
+    <title>hammer-tactics: 1 m 17 s</title>
     <link rel="shortcut icon" type="image/png" href="../../../../../favicon.png" />
     <link href="../../../../../bootstrap.min.css" rel="stylesheet">
     <link href="../../../../../bootstrap-custom.css" rel="stylesheet">
@@ -39,10 +39,10 @@
               hammer-tactics
               <small>
                 dev
-                <span class="label label-success">25 s</span>
+                <span class="label label-success">1 m 17 s</span>
               </small>
             </h1>
-            <p><em><script>document.write(moment("2020-04-17 01:04:38 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2020-04-17 01:04:38 UTC)</em><p>
+            <p><em><script>document.write(moment("2020-12-10 15:35:27 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2020-12-10 15:35:27 UTC)</em><p>
             <h2>Context</h2>
             <pre># Packages matching: installed
 # Name              # Installed # Synopsis
@@ -50,13 +50,16 @@ base-bigarray       base
 base-threads        base
 base-unix           base
 conf-findutils      1           Virtual package relying on findutils
+conf-gmp            2           Virtual package relying on a GMP lib system installation
 conf-m4             1           Virtual package relying on m4
+conf-perl           1           Virtual package relying on perl
 coq                 dev         Formal proof management system
-num                 1.3         The legacy Num library for arbitrary-precision integer and rational arithmetic
+num                 1.4         The legacy Num library for arbitrary-precision integer and rational arithmetic
 ocaml               4.09.1      The OCaml compiler (virtual package)
 ocaml-base-compiler 4.09.1      Official release 4.09.1
 ocaml-config        1           OCaml Switch Configuration
 ocamlfind           1.8.1       A library manager for OCaml
+zarith              1.11        Implements arithmetic and logical operations over arbitrary-precision integers
 # opam file:
 opam-version: &quot;2.0&quot;
 maintainer: &quot;palmskog@gmail.com&quot;
@@ -71,22 +74,26 @@ to reconstruct proofs found by automated theorem provers. When the hammer
 has been successfully applied to a project, only this package needs
 to be installed; the hammer plugin is not required.
 &quot;&quot;&quot;
-build: [make &quot;-j%{jobs}%&quot; &quot;tactics&quot;]
-install: [make &quot;install-tactics&quot;]
+build: [make &quot;-j%{jobs}%&quot; {ocaml:version &gt;= &quot;4.06&quot;} &quot;tactics&quot;]
+install: [
+  [make &quot;install-tactics&quot;]
+  [make &quot;test-tactics&quot;] {with-test}
+]
 depends: [
   &quot;ocaml&quot;
   &quot;coq&quot; {= &quot;dev&quot;}
+]
+conflicts: [
+  &quot;coq-hammer&quot; {!= version}
 ]
 tags: [  
   &quot;keyword:automation&quot;
   &quot;keyword:hammer&quot;
   &quot;keyword:tactics&quot;
-  &quot;logpath:Hammer&quot;
+  &quot;logpath:Hammer.Tactics&quot;
 ]
 authors: [
   &quot;Lukasz Czajka &lt;lukaszcz@mimuw.edu.pl&gt;&quot;
-  &quot;Cezary Kaliszyk &lt;cezary.kaliszyk@uibk.ac.at&gt;&quot;
-  &quot;Burak Ekici &lt;burak.ekici@uibk.ac.at&gt;&quot;
 ]
 url {
   src: &quot;git+https://github.com/lukaszcz/coqhammer.git#master&quot;
@@ -121,7 +128,7 @@ url {
               <dt>Return code</dt>
               <dd>0</dd>
               <dt>Duration</dt>
-              <dd>4 s</dd>
+              <dd>30 s</dd>
             </dl>
             <h2>Install</h2>
             <dl class="dl-horizontal">
@@ -130,33 +137,31 @@ url {
               <dt>Return code</dt>
               <dd>0</dd>
               <dt>Duration</dt>
-              <dd>25 s</dd>
+              <dd>1 m 17 s</dd>
             </dl>
             <h2>Installation size</h2>
             <p>Total: 1 M</p>
             <ul>
-              <li>281 K <code>../ocaml-base-compiler.4.09.1/lib/coq/user-contrib/Hammer/Tactics/Tactics.vo</code></li>
-              <li>243 K <code>../ocaml-base-compiler.4.09.1/lib/coq/user-contrib/Hammer/Tactics/Reconstr.vo</code></li>
-              <li>239 K <code>../ocaml-base-compiler.4.09.1/lib/coq/user-contrib/Hammer/Tactics/hammer_tactics.cmxs</code></li>
-              <li>150 K <code>../ocaml-base-compiler.4.09.1/lib/coq/user-contrib/Hammer/Tactics/hammer_lib.cmxs</code></li>
-              <li>72 K <code>../ocaml-base-compiler.4.09.1/lib/coq/user-contrib/Hammer/Tactics/Tactics.v</code></li>
-              <li>67 K <code>../ocaml-base-compiler.4.09.1/lib/coq/user-contrib/Hammer/Tactics/Tactics.glob</code></li>
-              <li>52 K <code>../ocaml-base-compiler.4.09.1/lib/coq/user-contrib/Hammer/Tactics/Reconstr.glob</code></li>
-              <li>44 K <code>../ocaml-base-compiler.4.09.1/lib/coq/user-contrib/Hammer/Tactics/Reconstr.v</code></li>
-              <li>22 K <code>../ocaml-base-compiler.4.09.1/lib/coq/user-contrib/Hammer/Tactics/hammer_lib.cmxa</code></li>
-              <li>13 K <code>../ocaml-base-compiler.4.09.1/lib/coq/user-contrib/Hammer/Tactics/hhutils.cmi</code></li>
-              <li>13 K <code>../ocaml-base-compiler.4.09.1/lib/coq/user-contrib/Hammer/Tactics/hammer_tactics.cmx</code></li>
-              <li>12 K <code>../ocaml-base-compiler.4.09.1/lib/coq/user-contrib/Hammer/Tactics/hammer_tactics.cmi</code></li>
-              <li>8 K <code>../ocaml-base-compiler.4.09.1/lib/coq/user-contrib/Hammer/Tactics/hhlib.cmi</code></li>
-              <li>8 K <code>../ocaml-base-compiler.4.09.1/lib/coq/user-contrib/Hammer/Tactics/hhutils.cmx</code></li>
-              <li>7 K <code>../ocaml-base-compiler.4.09.1/lib/coq/user-contrib/Hammer/Tactics/g_hammer_lib.cmi</code></li>
+              <li>410 K <code>../ocaml-base-compiler.4.09.1/lib/coq/user-contrib/Hammer/Tactics/hammer_tactics.cmxs</code></li>
+              <li>231 K <code>../ocaml-base-compiler.4.09.1/lib/coq/user-contrib/Hammer/Tactics/Reconstr.vo</code></li>
+              <li>159 K <code>../ocaml-base-compiler.4.09.1/lib/coq/user-contrib/Hammer/Tactics/hammer_lib.cmxs</code></li>
+              <li>147 K <code>../ocaml-base-compiler.4.09.1/lib/coq/user-contrib/Hammer/Tactics/Tactics.vo</code></li>
+              <li>77 K <code>../ocaml-base-compiler.4.09.1/lib/coq/user-contrib/Hammer/Tactics/Reconstr.glob</code></li>
+              <li>61 K <code>../ocaml-base-compiler.4.09.1/lib/coq/user-contrib/Hammer/Tactics/Reflect.vo</code></li>
+              <li>47 K <code>../ocaml-base-compiler.4.09.1/lib/coq/user-contrib/Hammer/Tactics/Reconstr.v</code></li>
+              <li>43 K <code>../ocaml-base-compiler.4.09.1/lib/coq/user-contrib/Hammer/Tactics/Tactics.glob</code></li>
+              <li>40 K <code>../ocaml-base-compiler.4.09.1/lib/coq/user-contrib/Hammer/Tactics/Hints.vo</code></li>
+              <li>33 K <code>../ocaml-base-compiler.4.09.1/lib/coq/user-contrib/Hammer/Tactics/Tactics.v</code></li>
+              <li>27 K <code>../ocaml-base-compiler.4.09.1/lib/coq/user-contrib/Hammer/Tactics/hammer_lib.cmi</code></li>
+              <li>25 K <code>../ocaml-base-compiler.4.09.1/lib/coq/user-contrib/Hammer/Tactics/Reflect.glob</code></li>
+              <li>20 K <code>../ocaml-base-compiler.4.09.1/lib/coq/user-contrib/Hammer/Tactics/hammer_tactics.cmi</code></li>
+              <li>19 K <code>../ocaml-base-compiler.4.09.1/lib/coq/user-contrib/Hammer/Tactics/hammer_tactics.cmx</code></li>
+              <li>16 K <code>../ocaml-base-compiler.4.09.1/lib/coq/user-contrib/Hammer/Tactics/hammer_lib.cmx</code></li>
+              <li>9 K <code>../ocaml-base-compiler.4.09.1/lib/coq/user-contrib/Hammer/Tactics/Reflect.v</code></li>
+              <li>7 K <code>../ocaml-base-compiler.4.09.1/lib/coq/user-contrib/Hammer/Tactics/hammer_lib.cmxa</code></li>
               <li>7 K <code>../ocaml-base-compiler.4.09.1/lib/coq/user-contrib/Hammer/Tactics/hammer_tactics.cmxa</code></li>
-              <li>7 K <code>../ocaml-base-compiler.4.09.1/lib/coq/user-contrib/Hammer/Tactics/g_hammer_lib.cmx</code></li>
-              <li>6 K <code>../ocaml-base-compiler.4.09.1/lib/coq/user-contrib/Hammer/Tactics/lpo.cmx</code></li>
-              <li>3 K <code>../ocaml-base-compiler.4.09.1/lib/coq/user-contrib/Hammer/Tactics/hhlib.cmx</code></li>
-              <li>3 K <code>../ocaml-base-compiler.4.09.1/lib/coq/user-contrib/Hammer/Tactics/lpo.cmi</code></li>
-              <li>3 K <code>../ocaml-base-compiler.4.09.1/lib/coq/user-contrib/Hammer/Tactics/partac.cmi</code></li>
-              <li>3 K <code>../ocaml-base-compiler.4.09.1/lib/coq/user-contrib/Hammer/Tactics/partac.cmx</code></li>
+              <li>4 K <code>../ocaml-base-compiler.4.09.1/lib/coq/user-contrib/Hammer/Tactics/Hints.v</code></li>
+              <li>4 K <code>../ocaml-base-compiler.4.09.1/lib/coq/user-contrib/Hammer/Tactics/Hints.glob</code></li>
             </ul>
             <h2>Uninstall</h2>
             <dl class="dl-horizontal">
