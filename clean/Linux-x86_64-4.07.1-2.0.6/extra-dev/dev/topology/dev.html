@@ -42,7 +42,7 @@
                 <span class="label label-danger">Error</span>
               </small>
             </h1>
-            <p><em><script>document.write(moment("2020-11-15 02:07:39 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2020-11-15 02:07:39 UTC)</em><p>
+            <p><em><script>document.write(moment("2020-12-20 07:58:01 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2020-12-20 07:58:01 UTC)</em><p>
             <h2>Context</h2>
             <pre># Packages matching: installed
 # Name              # Installed # Synopsis
@@ -50,7 +50,7 @@ base-bigarray       base
 base-threads        base
 base-unix           base
 conf-findutils      1           Virtual package relying on findutils
-conf-gmp            2           Virtual package relying on a GMP lib system installation
+conf-gmp            3           Virtual package relying on a GMP lib system installation
 conf-m4             1           Virtual package relying on m4
 conf-perl           1           Virtual package relying on perl
 coq                 dev         Formal proof management system
@@ -62,28 +62,38 @@ ocamlfind           1.8.1       A library manager for OCaml
 zarith              1.11        Implements arithmetic and logical operations over arbitrary-precision integers
 # opam file:
 opam-version: &quot;2.0&quot;
-maintainer: &quot;dev@clarus.me&quot;
-homepage: &quot;https://github.com/coq-contribs/topology&quot;
-license: &quot;LGPL&quot;
-build: [
-  [&quot;coq_makefile&quot; &quot;-f&quot; &quot;Make&quot; &quot;-o&quot; &quot;Makefile&quot;]
-  [make &quot;-j%{jobs}%&quot;]
-  [make &quot;install&quot;]
-]
-remove: [&quot;rm&quot; &quot;-R&quot; &quot;%{lib}%/coq/user-contrib/Topology&quot;]
+maintainer: &quot;palmskog@gmail.com&quot;
+homepage: &quot;https://github.com/coq-community/topology&quot;
+dev-repo: &quot;git+https://github.com/coq-community/topology.git&quot;
+bug-reports: &quot;https://github.com/coq-community/topology/issues&quot;
+license: &quot;LGPL-2.1-or-later&quot;
+synopsis: &quot;General Topology in Coq&quot;
+description: &quot;&quot;&quot;
+This library develops some of the basic concepts
+and results of general topology in Coq.
+&quot;&quot;&quot;
+build: [make &quot;-j%{jobs}%&quot; ]
+install: [make &quot;install&quot;]
 depends: [
-  &quot;ocaml&quot;
-  &quot;coq&quot; {= &quot;dev&quot;}
-  &quot;coq-zorns-lemma&quot; {= &quot;dev&quot;}
+  &quot;coq&quot; {(&gt;= &quot;8.11&quot; &amp; &lt; &quot;8.14~&quot;) | (= &quot;dev&quot;)}
+  &quot;coq-zorns-lemma&quot; {(&gt;= &quot;8.11&quot; &amp; &lt; &quot;8.14~&quot;) | (= &quot;dev&quot;)}
 ]
-tags: [ &quot;keyword:topology&quot; &quot;keyword:filters&quot; &quot;keyword:nets&quot; &quot;keyword:metric spaces&quot; &quot;keyword:real analysis&quot; &quot;keyword:urysohn&#39;s lemma&quot; &quot;keyword:tietze extension theorem&quot; &quot;category:Mathematics/Real Calculus and Topology&quot; ]
-authors: [ &quot;Daniel Schepler &lt;dschepler@gmail.com&gt;&quot; ]
-synopsis: &quot;General Topology.&quot;
-description:
-  &quot;This library develops some of the basic concepts and results of general topology.&quot;
-flags: light-uninstall
+tags: [
+  &quot;category:Mathematics/Real Calculus and Topology&quot;
+  &quot;keyword:topology&quot;
+  &quot;keyword:filters&quot;
+  &quot;keyword:nets&quot;
+  &quot;keyword:metric spaces&quot;
+  &quot;keyword:real analysis&quot;
+  &quot;keyword:Urysohn&#39;s lemma&quot;
+  &quot;keyword:Tietze extension theorem&quot;
+  &quot;logpath:Topology&quot;
+]
+authors: [
+  &quot;Daniel Schepler&quot;
+]
 url {
-  src: &quot;git+https://github.com/coq-contribs/topology.git#master&quot;
+  src: &quot;git+https://github.com/coq-community/topology.git#master&quot;
 }
 </pre>
             <h2>Lint</h2>
@@ -115,7 +125,7 @@ url {
               <dt>Return code</dt>
               <dd>0</dd>
               <dt>Duration</dt>
-              <dd>1 m 20 s</dd>
+              <dd>34 s</dd>
             </dl>
             <h2>Install</h2>
             <dl class="dl-horizontal">
@@ -124,7 +134,7 @@ url {
               <dt>Return code</dt>
               <dd>7936</dd>
               <dt>Duration</dt>
-              <dd>1 m 4 s</dd>
+              <dd>58 s</dd>
               <dt>Output</dt>
               <dd><pre># Packages matching: installed
 # Name              # Installed # Synopsis
@@ -132,11 +142,11 @@ base-bigarray       base
 base-threads        base
 base-unix           base
 conf-findutils      1           Virtual package relying on findutils
-conf-gmp            2           Virtual package relying on a GMP lib system installation
+conf-gmp            3           Virtual package relying on a GMP lib system installation
 conf-m4             1           Virtual package relying on m4
 conf-perl           1           Virtual package relying on perl
 coq                 dev         Formal proof management system
-coq-zorns-lemma     dev         Zorn&#39;s Lemma.
+coq-zorns-lemma     dev         This library develops some basic set theory
 num                 1.4         The legacy Num library for arbitrary-precision integer and rational arithmetic
 ocaml               4.07.1      The OCaml compiler (virtual package)
 ocaml-base-compiler 4.07.1      Official release 4.07.1
@@ -147,7 +157,7 @@ zarith              1.11        Implements arithmetic and logical operations ove
 The following actions will be performed:
   - install coq-topology dev
 &lt;&gt;&lt;&gt; Gathering sources &gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;
-[coq-topology.dev] synchronised from git+https://github.com/coq-contribs/topology.git#master
+[coq-topology.dev] synchronised from git+https://github.com/coq-community/topology.git#master
 &lt;&gt;&lt;&gt; Processing actions &lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;
 [ERROR] The compilation of coq-topology failed at &quot;/home/bench/.opam/opam-init/hooks/sandbox.sh build make -j4&quot;.
 #=== ERROR while compiling coq-topology.dev ===================================#
@@ -155,22 +165,22 @@ The following actions will be performed:
 # path                 ~/.opam/ocaml-base-compiler.4.07.1/.opam-switch/build/coq-topology.dev
 # command              ~/.opam/opam-init/hooks/sandbox.sh build make -j4
 # exit-code            2
-# env-file             ~/.opam/log/coq-topology-28944-0a5907.env
-# output-file          ~/.opam/log/coq-topology-28944-0a5907.out
+# env-file             ~/.opam/log/coq-topology-361-e4db2f.env
+# output-file          ~/.opam/log/coq-topology-361-e4db2f.out
 ### output ###
-# Error: No such goal. Focus next goal with bullet -.
 # [...]
-# make[1]: *** [Makefile:719: RationalsInReals.vo] Error 1
-# make[1]: *** Waiting for unfinished jobs....
-# File &quot;./FiniteIntersectionLemmas.v&quot;, line 144, characters 4-29:
-# Warning: omega is deprecated since 8.12; use “lia” instead.
-# [omega-is-deprecated,deprecated]
-# File &quot;./FiniteIntersectionLemmas.v&quot;, line 212, characters 10-47:
-# Error: The reference Proj1SigInjective.proj1_sig_injective was not found
-# in the current environment.
+# COQC RTopology.v
+# COQC Completion.v
+# COQC RFuncContinuity.v
+# COQC UrysohnsLemma.v
+# COQC TietzeExtension.v
+# File &quot;./TietzeExtension.v&quot;, line 246, characters 4-21:
+# Error: Invalid occurrence number: 0.
 # 
-# make[1]: *** [Makefile:719: FiniteIntersectionLemmas.vo] Error 1
-# make: *** [Makefile:343: all] Error 2
+# make[2]: *** [Makefile.coq:720: TietzeExtension.vo] Error 1
+# make[1]: *** [Makefile.coq:343: all] Error 2
+# make[1]: Leaving directory &#39;/home/bench/.opam/ocaml-base-compiler.4.07.1/.opam-switch/build/coq-topology.dev&#39;
+# make: *** [Makefile:2: all] Error 2
 &lt;&gt;&lt;&gt; Error report &lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;
 +- The following actions failed
 | - build coq-topology dev
