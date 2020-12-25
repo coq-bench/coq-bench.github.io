@@ -42,7 +42,7 @@
                 <span class="label label-info">Not compatible</span>
               </small>
             </h1>
-            <p><em><script>document.write(moment("2020-08-06 16:56:37 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2020-08-06 16:56:37 UTC)</em><p>
+            <p><em><script>document.write(moment("2020-12-25 20:59:35 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2020-12-25 20:59:35 UTC)</em><p>
             <h2>Context</h2>
             <pre># Packages matching: installed
 # Name              # Installed # Synopsis
@@ -50,10 +50,10 @@ base-bigarray       base
 base-num            base        Num library distributed with the OCaml compiler
 base-threads        base
 base-unix           base
-camlp5              7.12        Preprocessor-pretty-printer of OCaml
+camlp5              7.13        Preprocessor-pretty-printer of OCaml
 conf-findutils      1           Virtual package relying on findutils
 conf-m4             1           Virtual package relying on m4
-coq                 8.7.0       Formal proof management system.
+coq                 8.7.0       Formal proof management system
 num                 0           The Num library for arbitrary-precision integer and rational arithmetic
 ocaml               4.04.2      The OCaml compiler (virtual package)
 ocaml-base-compiler 4.04.2      Official 4.04.2 release
@@ -82,6 +82,9 @@ homepage: &quot;http://vst.cs.princeton.edu/&quot;
 dev-repo: &quot;git+https://github.com/PrincetonUniversity/VST.git&quot;
 bug-reports: &quot;https://github.com/PrincetonUniversity/VST/issues&quot;
 license: &quot;https://raw.githubusercontent.com/PrincetonUniversity/VST/master/LICENSE&quot;
+patches: [
+  &quot;makefile.patch&quot;
+]
 build: [
   [make &quot;-j%{jobs}%&quot; &quot;BITSIZE=32&quot;]
 ]
@@ -91,7 +94,7 @@ install: [
 depends: [
   &quot;ocaml&quot;
   &quot;coq&quot; {&gt;= &quot;8.11&quot; &amp; &lt; &quot;8.13&quot;}
-  &quot;coq-compcert&quot; {(= &quot;3.7~coq_platform~open_source&quot;) | (= &quot;3.7~coq_platform&quot;) | (= &quot;3.7+8.12~coq_platform~open_source&quot;) | (= &quot;3.7+8.12~coq_platform&quot;)}
+  &quot;coq-compcert&quot; {(= &quot;3.7~coq-platform~open-source&quot;) | (= &quot;3.7~coq-platform&quot;) | (= &quot;3.7+8.12~coq_platform~open_source&quot;) | (= &quot;3.7+8.12~coq_platform&quot;)}
   &quot;coq-flocq&quot; {&gt;= &quot;3.2.1&quot;}
 ]
 tags: [
@@ -122,7 +125,7 @@ url {
               <dt>Output</dt>
               <dd><pre>[NOTE] Package coq is already installed (current version is 8.7.0).
 The following dependencies couldn&#39;t be met:
-  - coq-vst -&gt; coq-compcert (= 3.7~coq_platform~open_source &amp; = 3.7~coq_platform &amp; = 3.7+8.12~coq_platform~open_source &amp; = 3.7+8.12~coq_platform) -&gt; ocaml &gt;= 4.05.0
+  - coq-vst -&gt; coq &gt;= 8.11 -&gt; ocaml &gt;= 4.05.0
       base of this switch (use `--unlock-base&#39; to force)
 No solution found, exiting
 </pre></dd>
