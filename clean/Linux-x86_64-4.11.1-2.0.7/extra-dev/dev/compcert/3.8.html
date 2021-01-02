@@ -42,7 +42,7 @@
                 <span class="label label-info">Not compatible</span>
               </small>
             </h1>
-            <p><em><script>document.write(moment("2020-12-19 10:10:20 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2020-12-19 10:10:20 UTC)</em><p>
+            <p><em><script>document.write(moment("2021-01-02 22:20:42 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2021-01-02 22:20:42 UTC)</em><p>
             <h2>Context</h2>
             <pre># Packages matching: installed
 # Name              # Installed # Synopsis
@@ -68,13 +68,18 @@ homepage: &quot;http://compcert.inria.fr/&quot;
 dev-repo: &quot;git+https://github.com/AbsInt/CompCert.git&quot;
 bug-reports: &quot;https://github.com/AbsInt/CompCert/issues&quot;
 license: &quot;INRIA Non-Commercial License Agreement&quot;
+patches: [ &quot;0001-Configure-the-correct-archiver-to-build-runtime-libc.patch&quot; ]
 build: [
-  [&quot;./configure&quot; &quot;amd64-linux&quot; {os = &quot;linux&quot;}
+  [&quot;./configure&quot;
+  &quot;amd64-linux&quot; {os = &quot;linux&quot;}
   &quot;amd64-macosx&quot; {os = &quot;macos&quot;}
   &quot;amd64-cygwin&quot; {os = &quot;cygwin&quot;}
+  # This is for building a MinGW CompCert with cygwin host and cygwin target
   &quot;amd64-cygwin&quot; {os = &quot;win32&quot; &amp; os-distribution = &quot;cygwinports&quot;}
-  &quot;-bindir&quot; &quot;%{bin}%&quot;
-  &quot;-libdir&quot; &quot;%{lib}%/compcert&quot;
+  # This is for building a 64 bit CompCert on 32 bit MinGW with cygwin build host
+  &quot;-toolprefix&quot;        {os = &quot;win32&quot; &amp; os-distribution = &quot;cygwinports&quot; &amp; arch = &quot;i686&quot;}
+  &quot;x86_64-pc-cygwin-&quot;  {os = &quot;win32&quot; &amp; os-distribution = &quot;cygwinports&quot; &amp; arch = &quot;i686&quot;}
+  &quot;-prefix&quot; &quot;%{prefix}%&quot;
   &quot;-install-coqdev&quot;
   &quot;-clightgen&quot;
   &quot;-use-external-Flocq&quot;
@@ -100,7 +105,7 @@ tags: [
   &quot;keyword:C&quot;
   &quot;keyword:compiler&quot;
   &quot;logpath:compcert&quot;
-  &quot;date:2020-12-05&quot;
+  &quot;date:2020-12-21&quot;
 ]
 url {
   src: &quot;https://github.com/AbsInt/CompCert/archive/v3.8.tar.gz&quot;
