@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>fourcolor: Error</title>
+    <link rel="shortcut icon" type="image/png" href="../../../../../favicon.png" />
+    <link href="../../../../../bootstrap.min.css" rel="stylesheet">
+    <link href="../../../../../bootstrap-custom.css" rel="stylesheet">
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+    <script src="../../../../../moment.min.js"></script>
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="container">
+      <div class="navbar navbar-default" role="navigation">
+        <div class="container-fluid">
+          <div class="navbar-header">
+            <a class="navbar-brand" href="../../../../.."><i class="fa fa-lg fa-flag-checkered"></i> Coq bench</a>
+          </div>
+          <div id="navbar" class="collapse navbar-collapse">
+            <ul class="nav navbar-nav">
+              <li><a href="../..">clean / extra-dev</a></li>
+              <li class="active"><a href="">dev / fourcolor - 1.2.3</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="article">
+        <div class="row">
+          <div class="col-md-12">
+            <a href="../..">« Up</a>
+            <h1>
+              fourcolor
+              <small>
+                1.2.3
+                <span class="label label-danger">Error</span>
+              </small>
+            </h1>
+            <p><em><script>document.write(moment("2021-01-05 00:05:11 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2021-01-05 00:05:11 UTC)</em><p>
+            <h2>Context</h2>
+            <pre># Packages matching: installed
+# Name              # Installed # Synopsis
+base-bigarray       base
+base-threads        base
+base-unix           base
+conf-findutils      1           Virtual package relying on findutils
+conf-gmp            3           Virtual package relying on a GMP lib system installation
+conf-m4             1           Virtual package relying on m4
+conf-perl           1           Virtual package relying on perl
+coq                 dev         Formal proof management system
+num                 1.4         The legacy Num library for arbitrary-precision integer and rational arithmetic
+ocaml               4.08.1      The OCaml compiler (virtual package)
+ocaml-base-compiler 4.08.1      Official release 4.08.1
+ocaml-config        1           OCaml Switch Configuration
+ocamlfind           1.8.1       A library manager for OCaml
+zarith              1.11        Implements arithmetic and logical operations over arbitrary-precision integers
+# opam file:
+opam-version: &quot;2.0&quot;
+maintainer: &quot;Mathematical Components &lt;mathcomp-dev@sympa.inria.fr&gt;&quot;
+homepage: &quot;https://math-comp.github.io&quot;
+bug-reports: &quot;Mathematical Components &lt;mathcomp-dev@sympa.inria.fr&gt;&quot;
+dev-repo: &quot;git+https://github.com/math-comp/fourcolor&quot;
+license: &quot;CECILL-B&quot;
+build: [ make &quot;-j&quot; &quot;%{jobs}%&quot; ]
+install: [ make &quot;install&quot; ]
+depends: [ &quot;coq-mathcomp-algebra&quot; { &gt;= &quot;1.12.0&quot; &amp; &lt; &quot;1.13&quot; } ]
+tags: [ &quot;keyword:Four color theorem&quot; &quot;keyword:small scale reflection&quot; &quot;keyword:mathematical components&quot; ]
+authors: [ &quot;Georges Gonthier&quot; ]
+synopsis: &quot;Mechanization of the Four Color Theorem&quot;
+description: &quot;&quot;&quot;
+Proof of the Four Color Theorem
+This library contains a formalized proof of the Four Color Theorem, along
+with the theories needed to support stating and then proving the Theorem.
+  This includes an axiomatization of the setoid of classical real numbers,
+basic plane topology definitions, and a theory of combinatorial hypermaps.
+&quot;&quot;&quot;
+url {
+  src: &quot;https://github.com/math-comp/fourcolor/archive/v1.2.3.tar.gz&quot;
+  checksum: &quot;sha256=09e4e03fa5d17306f901d3bfb9805b91032ea70d1cd3ac24e0b897237048c111&quot;
+}
+</pre>
+            <h2>Lint</h2>
+            <dl class="dl-horizontal">
+              <dt>Command</dt>
+              <dd><code>true</code></dd>
+              <dt>Return code</dt>
+              <dd>0</dd>
+            </dl>
+            <h2>Dry install</h2>
+            <p>Dry install with the current Coq version:</p>
+            <dl class="dl-horizontal">
+              <dt>Command</dt>
+              <dd><code>opam install -y --show-action coq-fourcolor.1.2.3 coq.dev</code></dd>
+              <dt>Return code</dt>
+              <dd>0</dd>
+            </dl>
+            <p>Dry install without Coq/switch base, to test if the problem was incompatibility with the current Coq/OCaml version:</p>
+            <dl class="dl-horizontal">
+              <dt>Command</dt>
+              <dd><code>true</code></dd>
+              <dt>Return code</dt>
+              <dd>0</dd>
+            </dl>
+            <h2>Install dependencies</h2>
+            <dl class="dl-horizontal">
+              <dt>Command</dt>
+              <dd><code>opam list; echo; ulimit -Sv 4000000; timeout 2h opam install -y --deps-only coq-fourcolor.1.2.3 coq.dev</code></dd>
+              <dt>Return code</dt>
+              <dd>0</dd>
+              <dt>Duration</dt>
+              <dd>23 m 18 s</dd>
+            </dl>
+            <h2>Install</h2>
+            <dl class="dl-horizontal">
+              <dt>Command</dt>
+              <dd><code>opam list; echo; ulimit -Sv 16000000; timeout 2h opam install -y -v coq-fourcolor.1.2.3 coq.dev</code></dd>
+              <dt>Return code</dt>
+              <dd>31744</dd>
+              <dt>Duration</dt>
+              <dd>2 h 0 m</dd>
+              <dt>Output</dt>
+              <dd><pre># Packages matching: installed
+# Name                 # Installed # Synopsis
+base-bigarray          base
+base-threads           base
+base-unix              base
+conf-findutils         1           Virtual package relying on findutils
+conf-gmp               3           Virtual package relying on a GMP lib system installation
+conf-m4                1           Virtual package relying on m4
+conf-perl              1           Virtual package relying on perl
+coq                    dev         Formal proof management system
+coq-mathcomp-algebra   1.12.0      Mathematical Components Library on Algebra
+coq-mathcomp-fingroup  1.12.0      Mathematical Components Library on finite groups
+coq-mathcomp-ssreflect 1.12.0      Small Scale Reflection
+num                    1.4         The legacy Num library for arbitrary-precision integer and rational arithmetic
+ocaml                  4.08.1      The OCaml compiler (virtual package)
+ocaml-base-compiler    4.08.1      Official release 4.08.1
+ocaml-config           1           OCaml Switch Configuration
+ocamlfind              1.8.1       A library manager for OCaml
+zarith                 1.11        Implements arithmetic and logical operations over arbitrary-precision integers
+[NOTE] Package coq is already installed (current version is dev).
+The following actions will be performed:
+  - install coq-fourcolor 1.2.3
+&lt;&gt;&lt;&gt; Gathering sources &gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;
+Processing  1/1: [coq-fourcolor.1.2.3: http]
+[coq-fourcolor.1.2.3] downloaded from https://github.com/math-comp/fourcolor/archive/v1.2.3.tar.gz
+Processing  1/1:
+&lt;&gt;&lt;&gt; Processing actions &lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;
+Processing  1/2: [coq-fourcolor: make 4]
++ /home/bench/.opam/opam-init/hooks/sandbox.sh &quot;build&quot; &quot;make&quot; &quot;-j&quot; &quot;4&quot; (CWD=/home/bench/.opam/ocaml-base-compiler.4.08.1/.opam-switch/build/coq-fourcolor.1.2.3)
+- coq_makefile -f _CoqProject -o Makefile.coq
+- make --no-print-directory -f Makefile.coq 
+- COQDEP VFILES
+- COQC theories/real.v
+- COQC theories/hypermap.v
+- COQC theories/color.v
+- COQC theories/dyck.v
+- COQC theories/realsyntax.v
+- File &quot;./theories/realsyntax.v&quot;, line 38, characters 0-31:
+- Warning: Declaring a scope implicitly is deprecated; use in advance an
+- explicit &quot;Declare Scope real_scope.&quot;. [undeclared-scope,deprecated]
+- File &quot;./theories/realsyntax.v&quot;, line 39, characters 0-34:
+- Warning: Declaring a scope implicitly is deprecated; use in advance an
+- explicit &quot;Declare Scope realset_scope.&quot;. [undeclared-scope,deprecated]
+- COQC theories/dedekind.v
+- COQC theories/realplane.v
+- COQC theories/realprop.v
+- File &quot;./theories/dedekind.v&quot;, line 4, characters 0-94:
+- Warning:
+- New coercion path [GRing.subring_closedM; GRing.smulr_closedN] : GRing.subring_closed &gt;-&gt; GRing.oppr_closed is ambiguous with existing 
+- [GRing.subring_closedB; GRing.zmod_closedN] : GRing.subring_closed &gt;-&gt; GRing.oppr_closed.
+- [ambiguous-paths,typechecker]
+- File &quot;./theories/dedekind.v&quot;, line 4, characters 0-94:
+- Warning:
+- New coercion path [GRing.subring_closed_semi; GRing.semiring_closedM] : GRing.subring_closed &gt;-&gt; GRing.mulr_closed is ambiguous with existing 
+- [GRing.subring_closedM; GRing.smulr_closedM] : GRing.subring_closed &gt;-&gt; GRing.mulr_closed.
+- New coercion path [GRing.subring_closed_semi; GRing.semiring_closedD] : GRing.subring_closed &gt;-&gt; GRing.addr_closed is ambiguous with existing 
+- [GRing.subring_closedB; GRing.zmod_closedD] : GRing.subring_closed &gt;-&gt; GRing.addr_closed.
+- [ambiguous-paths,typechecker]
+- File &quot;./theories/dedekind.v&quot;, line 4, characters 0-94:
+- Warning:
+- New coercion path [GRing.sdivr_closed_div; GRing.divr_closedM] : GRing.sdivr_closed &gt;-&gt; GRing.mulr_closed is ambiguous with existing 
+- [GRing.sdivr_closedM; GRing.smulr_closedM] : GRing.sdivr_closed &gt;-&gt; GRing.mulr_closed.
+- [ambiguous-paths,typechecker]
+- File &quot;./theories/dedekind.v&quot;, line 4, characters 0-94:
+- Warning:
+- New coercion path [GRing.subalg_closedBM; GRing.subring_closedB] : GRing.subalg_closed &gt;-&gt; GRing.zmod_closed is ambiguous with existing 
+- [GRing.subalg_closedZ; GRing.submod_closedB] : GRing.subalg_closed &gt;-&gt; GRing.zmod_closed.
+- [ambiguous-paths,typechecker]
+- File &quot;./theories/dedekind.v&quot;, line 4, characters 0-94:
+- Warning:
+- New coercion path [GRing.divring_closed_div; GRing.sdivr_closedM] : GRing.divring_closed &gt;-&gt; GRing.smulr_closed is ambiguous with existing 
+- [GRing.divring_closedBM; GRing.subring_closedM] : GRing.divring_closed &gt;-&gt; GRing.smulr_closed.
+- New coercion path [GRing.divring_closed_div; GRing.sdivr_closedM;
+-                    GRing.smulr_closedN] : GRing.divring_closed &gt;-&gt; GRing.oppr_closed is ambiguous with existing 
+- [GRing.divring_closedBM; GRing.subring_closedB; GRing.zmod_closedN] : GRing.divring_closed &gt;-&gt; GRing.oppr_closed.
+- [ambiguous-paths,typechecker]
+- File &quot;./theories/dedekind.v&quot;, line 4, characters 0-94:
+- Warning:
+- New coercion path [GRing.divalg_closedBdiv; GRing.divring_closedBM] : GRing.divalg_closed &gt;-&gt; GRing.subring_closed is ambiguous with existing 
+- [GRing.divalg_closedZ; GRing.subalg_closedBM] : GRing.divalg_closed &gt;-&gt; GRing.subring_closed.
+- New coercion path [GRing.divalg_closedBdiv; GRing.divring_closedBM;
+-                    GRing.subring_closedB] : GRing.divalg_closed &gt;-&gt; GRing.zmod_closed is ambiguous with existing 
+- [GRing.divalg_closedZ; GRing.subalg_closedZ; GRing.submod_closedB] : GRing.divalg_closed &gt;-&gt; GRing.zmod_closed.
+- [ambiguous-paths,typechecker]
+- File &quot;./theories/dedekind.v&quot;, line 4, characters 0-94:
+- Warning:
+- New coercion path [GRing.Pred.subring_smul; GRing.Pred.smul_mul] : GRing.Pred.subring &gt;-&gt; GRing.Pred.mul is ambiguous with existing 
+- [GRing.Pred.subring_semi; GRing.Pred.semiring_mul] : GRing.Pred.subring &gt;-&gt; GRing.Pred.mul.
+- [ambiguous-paths,typechecker]
+- File &quot;./theories/dedekind.v&quot;, line 4, characters 0-94:
+- Warning:
+- New coercion path [GRing.Pred.divring_sdiv; GRing.Pred.sdiv_smul;
+-                    GRing.Pred.smul_mul] : GRing.Pred.divring &gt;-&gt; GRing.Pred.mul is ambiguous with existing 
+- [GRing.Pred.divring_ring; GRing.Pred.subring_semi; GRing.Pred.semiring_mul] : GRing.Pred.divring &gt;-&gt; GRing.Pred.mul.
+- [ambiguous-paths,typechecker]
+- COQC theories/chromogram.v
+- File &quot;./theories/dedekind.v&quot;, line 56, characters 0-33:
+- Warning: Declaring a scope implicitly is deprecated; use in advance an
+- explicit &quot;Declare Scope cut_scope.&quot;. [undeclared-scope,deprecated]
+- File &quot;./theories/dedekind.v&quot;, line 119, characters 0-23:
+- Warning: Adding and removing hints in the core database implicitly is
+- deprecated. Please specify a hint database.
+- [implicit-core-hint-db,deprecated]
+- File &quot;./theories/realprop.v&quot;, line 6, characters 0-62:
+- Warning:
+- New coercion path [GRing.subring_closedM; GRing.smulr_closedN] : GRing.subring_closed &gt;-&gt; GRing.oppr_closed is ambiguous with existing 
+- [GRing.subring_closedB; GRing.zmod_closedN] : GRing.subring_closed &gt;-&gt; GRing.oppr_closed.
+- [ambiguous-paths,typechecker]
+- File &quot;./theories/realprop.v&quot;, line 6, characters 0-62:
+- Warning:
+- New coercion path [GRing.subring_closed_semi; GRing.semiring_closedM] : GRing.subring_closed &gt;-&gt; GRing.mulr_closed is ambiguous with existing 
+- [GRing.subring_closedM; GRing.smulr_closedM] : GRing.subring_closed &gt;-&gt; GRing.mulr_closed.
+- New coercion path [GRing.subring_closed_semi; GRing.semiring_closedD] : GRing.subring_closed &gt;-&gt; GRing.addr_closed is ambiguous with existing 
+- [GRing.subring_closedB; GRing.zmod_closedD] : GRing.subring_closed &gt;-&gt; GRing.addr_closed.
+- [ambiguous-paths,typechecker]
+- File &quot;./theories/realprop.v&quot;, line 6, characters 0-62:
+- Warning:
+- New coercion path [GRing.sdivr_closed_div; GRing.divr_closedM] : GRing.sdivr_closed &gt;-&gt; GRing.mulr_closed is ambiguous with existing 
+- [GRing.sdivr_closedM; GRing.smulr_closedM] : GRing.sdivr_closed &gt;-&gt; GRing.mulr_closed.
+- [ambiguous-paths,typechecker]
+- File &quot;./theories/realprop.v&quot;, line 6, characters 0-62:
+- Warning:
+- New coercion path [GRing.subalg_closedBM; GRing.subring_closedB] : GRing.subalg_closed &gt;-&gt; GRing.zmod_closed is ambiguous with existing 
+- [GRing.subalg_closedZ; GRing.submod_closedB] : GRing.subalg_closed &gt;-&gt; GRing.zmod_closed.
+- [ambiguous-paths,typechecker]
+- File &quot;./theories/realprop.v&quot;, line 6, characters 0-62:
+- Warning:
+- New coercion path [GRing.divring_closed_div; GRing.sdivr_closedM] : GRing.divring_closed &gt;-&gt; GRing.smulr_closed is ambiguous with existing 
+- [GRing.divring_closedBM; GRing.subring_closedM] : GRing.divring_closed &gt;-&gt; GRing.smulr_closed.
+- New coercion path [GRing.divring_closed_div; GRing.sdivr_closedM;
+-                    GRing.smulr_closedN] : GRing.divring_closed &gt;-&gt; GRing.oppr_closed is ambiguous with existing 
+- [GRing.divring_closedBM; GRing.subring_closedB; GRing.zmod_closedN] : GRing.divring_closed &gt;-&gt; GRing.oppr_closed.
+- [ambiguous-paths,typechecker]
+- File &quot;./theories/realprop.v&quot;, line 6, characters 0-62:
+- Warning:
+- New coercion path [GRing.divalg_closedBdiv; GRing.divring_closedBM] : GRing.divalg_closed &gt;-&gt; GRing.subring_closed is ambiguous with existing 
+- [GRing.divalg_closedZ; GRing.subalg_closedBM] : GRing.divalg_closed &gt;-&gt; GRing.subring_closed.
+- New coercion path [GRing.divalg_closedBdiv; GRing.divring_closedBM;
+-                    GRing.subring_closedB] : GRing.divalg_closed &gt;-&gt; GRing.zmod_closed is ambiguous with existing 
+- [GRing.divalg_closedZ; GRing.subalg_closedZ; GRing.submod_closedB] : GRing.divalg_closed &gt;-&gt; GRing.zmod_closed.
+- [ambiguous-paths,typechecker]
+- File &quot;./theories/realprop.v&quot;, line 6, characters 0-62:
+- Warning:
+- New coercion path [GRing.Pred.subring_smul; GRing.Pred.smul_mul] : GRing.Pred.subring &gt;-&gt; GRing.Pred.mul is ambiguous with existing 
+- [GRing.Pred.subring_semi; GRing.Pred.semiring_mul] : GRing.Pred.subring &gt;-&gt; GRing.Pred.mul.
+- [ambiguous-paths,typechecker]
+- File &quot;./theories/realprop.v&quot;, line 6, characters 0-62:
+- Warning:
+- New coercion path [GRing.Pred.divring_sdiv; GRing.Pred.sdiv_smul;
+-                    GRing.Pred.smul_mul] : GRing.Pred.divring &gt;-&gt; G
+[...] truncated
+anar] : scycle_planar_bridgeless_plain_quasicubic_connected &gt;-&gt; planar is ambiguous with existing 
+- [scycle_planar_bridgeless_plain_quasicubic_connected_is_planar] : scycle_planar_bridgeless_plain_quasicubic_connected &gt;-&gt; planar.
+- [ambiguous-paths,typechecker]
+- File &quot;./theories/cfcontract.v&quot;, line 735, characters 2-79:
+- Warning: Duplicate clear of cpc [duplicate-clear,ssr]
+- File &quot;./theories/cfcontract.v&quot;, line 767, characters 0-75:
+- Warning: Duplicate clear of cpc [duplicate-clear,ssr]
+- COQC theories/embed.v
+- File &quot;./theories/embed.v&quot;, line 6, characters 0-94:
+- Warning:
+- New coercion path [scycle_planar_bridgeless_plain_quasicubic_connected_is_scycle;
+-                    scycle_ucycle] : scycle_planar_bridgeless_plain_quasicubic_connected &gt;-&gt; ucycle is ambiguous with existing 
+- [scycle_planar_bridgeless_plain_quasicubic_connected_base;
+-  ucycle_plain_quasicubic_connected_base; ucycle_plain_quasicubic_is_ucycle] : scycle_planar_bridgeless_plain_quasicubic_connected &gt;-&gt; ucycle.
+- [ambiguous-paths,typechecker]
+- File &quot;./theories/embed.v&quot;, line 6, characters 0-94:
+- Warning:
+- New coercion path [scycle_planar_bridgeless_plain_quasicubic_connected_pbpc_base;
+-                    planar_bridgeless_plain_connected_is_connected] : scycle_planar_bridgeless_plain_quasicubic_connected &gt;-&gt; connected is ambiguous with existing 
+- [scycle_planar_bridgeless_plain_quasicubic_connected_base;
+-  ucycle_plain_quasicubic_connected_is_connected] : scycle_planar_bridgeless_plain_quasicubic_connected &gt;-&gt; connected.
+- New coercion path [scycle_planar_bridgeless_plain_quasicubic_connected_pbpc_base;
+-                    planar_bridgeless_plain_connected_base;
+-                    planar_bridgeless_plain_is_plain] : scycle_planar_bridgeless_plain_quasicubic_connected &gt;-&gt; plain is ambiguous with existing 
+- [scycle_planar_bridgeless_plain_quasicubic_connected_base;
+-  ucycle_plain_quasicubic_connected_base; ucycle_plain_quasicubic_base;
+-  plain_quasicubic_is_plain] : scycle_planar_bridgeless_plain_quasicubic_connected &gt;-&gt; plain.
+- New coercion path [scycle_planar_bridgeless_plain_quasicubic_connected_pbpc_base;
+-                    planar_bridgeless_plain_connected_base;
+-                    planar_bridgeless_plain_base;
+-                    planar_bridgeless_is_bridgeless] : scycle_planar_bridgeless_plain_quasicubic_connected &gt;-&gt; bridgeless is ambiguous with existing 
+- [scycle_planar_bridgeless_plain_quasicubic_connected_is_bridgeless] : scycle_planar_bridgeless_plain_quasicubic_connected &gt;-&gt; bridgeless.
+- New coercion path [scycle_planar_bridgeless_plain_quasicubic_connected_pbpc_base;
+-                    planar_bridgeless_plain_connected_base;
+-                    planar_bridgeless_plain_base; planar_bridgeless_is_planar] : scycle_planar_bridgeless_plain_quasicubic_connected &gt;-&gt; planar is ambiguous with existing 
+- [scycle_planar_bridgeless_plain_quasicubic_connected_is_planar] : scycle_planar_bridgeless_plain_quasicubic_connected &gt;-&gt; planar.
+- [ambiguous-paths,typechecker]
+- File &quot;./theories/cfcontract.v&quot;, line 991, characters 2-54:
+- Warning: Duplicate clear of qF&#39;y [duplicate-clear,ssr]
+- File &quot;./theories/cfcontract.v&quot;, line 1020, characters 0-52:
+- Warning: Duplicate clear of qF&#39;y [duplicate-clear,ssr]
+- COQC theories/cfreducible.v
+- File &quot;./theories/cfreducible.v&quot;, line 6, characters 0-81:
+- Warning:
+- New coercion path [scycle_planar_bridgeless_plain_quasicubic_connected_is_scycle;
+-                    scycle_ucycle] : scycle_planar_bridgeless_plain_quasicubic_connected &gt;-&gt; ucycle is ambiguous with existing 
+- [scycle_planar_bridgeless_plain_quasicubic_connected_base;
+-  ucycle_plain_quasicubic_connected_base; ucycle_plain_quasicubic_is_ucycle] : scycle_planar_bridgeless_plain_quasicubic_connected &gt;-&gt; ucycle.
+- [ambiguous-paths,typechecker]
+- File &quot;./theories/cfreducible.v&quot;, line 6, characters 0-81:
+- Warning:
+- New coercion path [scycle_planar_bridgeless_plain_quasicubic_connected_pbpc_base;
+-                    planar_bridgeless_plain_connected_is_connected] : scycle_planar_bridgeless_plain_quasicubic_connected &gt;-&gt; connected is ambiguous with existing 
+- [scycle_planar_bridgeless_plain_quasicubic_connected_base;
+-  ucycle_plain_quasicubic_connected_is_connected] : scycle_planar_bridgeless_plain_quasicubic_connected &gt;-&gt; connected.
+- New coercion path [scycle_planar_bridgeless_plain_quasicubic_connected_pbpc_base;
+-                    planar_bridgeless_plain_connected_base;
+-                    planar_bridgeless_plain_is_plain] : scycle_planar_bridgeless_plain_quasicubic_connected &gt;-&gt; plain is ambiguous with existing 
+- [scycle_planar_bridgeless_plain_quasicubic_connected_base;
+-  ucycle_plain_quasicubic_connected_base; ucycle_plain_quasicubic_base;
+-  plain_quasicubic_is_plain] : scycle_planar_bridgeless_plain_quasicubic_connected &gt;-&gt; plain.
+- New coercion path [scycle_planar_bridgeless_plain_quasicubic_connected_pbpc_base;
+-                    planar_bridgeless_plain_connected_base;
+-                    planar_bridgeless_plain_base;
+-                    planar_bridgeless_is_bridgeless] : scycle_planar_bridgeless_plain_quasicubic_connected &gt;-&gt; bridgeless is ambiguous with existing 
+- [scycle_planar_bridgeless_plain_quasicubic_connected_is_bridgeless] : scycle_planar_bridgeless_plain_quasicubic_connected &gt;-&gt; bridgeless.
+- New coercion path [scycle_planar_bridgeless_plain_quasicubic_connected_pbpc_base;
+-                    planar_bridgeless_plain_connected_base;
+-                    planar_bridgeless_plain_base; planar_bridgeless_is_planar] : scycle_planar_bridgeless_plain_quasicubic_connected &gt;-&gt; planar is ambiguous with existing 
+- [scycle_planar_bridgeless_plain_quasicubic_connected_is_planar] : scycle_planar_bridgeless_plain_quasicubic_connected &gt;-&gt; planar.
+- [ambiguous-paths,typechecker]
+- COQC theories/quiztree.v
+- COQC theories/job001to106.v
+- COQC theories/job107to164.v
+- File &quot;./theories/quiztree.v&quot;, line 8, characters 0-94:
+- Warning:
+- New coercion path [scycle_planar_bridgeless_plain_quasicubic_connected_is_scycle;
+-                    scycle_ucycle] : scycle_planar_bridgeless_plain_quasicubic_connected &gt;-&gt; ucycle is ambiguous with existing 
+- [scycle_planar_bridgeless_plain_quasicubic_connected_base;
+-  ucycle_plain_quasicubic_connected_base; ucycle_plain_quasicubic_is_ucycle] : scycle_planar_bridgeless_plain_quasicubic_connected &gt;-&gt; ucycle.
+- [ambiguous-paths,typechecker]
+- File &quot;./theories/quiztree.v&quot;, line 8, characters 0-94:
+- Warning:
+- New coercion path [scycle_planar_bridgeless_plain_quasicubic_connected_pbpc_base;
+-                    planar_bridgeless_plain_connected_is_connected] : scycle_planar_bridgeless_plain_quasicubic_connected &gt;-&gt; connected is ambiguous with existing 
+- [scycle_planar_bridgeless_plain_quasicubic_connected_base;
+-  ucycle_plain_quasicubic_connected_is_connected] : scycle_planar_bridgeless_plain_quasicubic_connected &gt;-&gt; connected.
+- New coercion path [scycle_planar_bridgeless_plain_quasicubic_connected_pbpc_base;
+-                    planar_bridgeless_plain_connected_base;
+-                    planar_bridgeless_plain_is_plain] : scycle_planar_bridgeless_plain_quasicubic_connected &gt;-&gt; plain is ambiguous with existing 
+- [scycle_planar_bridgeless_plain_quasicubic_connected_base;
+-  ucycle_plain_quasicubic_connected_base; ucycle_plain_quasicubic_base;
+-  plain_quasicubic_is_plain] : scycle_planar_bridgeless_plain_quasicubic_connected &gt;-&gt; plain.
+- New coercion path [scycle_planar_bridgeless_plain_quasicubic_connected_pbpc_base;
+-                    planar_bridgeless_plain_connected_base;
+-                    planar_bridgeless_plain_base;
+-                    planar_bridgeless_is_bridgeless] : scycle_planar_bridgeless_plain_quasicubic_connected &gt;-&gt; bridgeless is ambiguous with existing 
+- [scycle_planar_bridgeless_plain_quasicubic_connected_is_bridgeless] : scycle_planar_bridgeless_plain_quasicubic_connected &gt;-&gt; bridgeless.
+- New coercion path [scycle_planar_bridgeless_plain_quasicubic_connected_pbpc_base;
+-                    planar_bridgeless_plain_connected_base;
+-                    planar_bridgeless_plain_base; planar_bridgeless_is_planar] : scycle_planar_bridgeless_plain_quasicubic_connected &gt;-&gt; planar is ambiguous with existing 
+- [scycle_planar_bridgeless_plain_quasicubic_connected_is_planar] : scycle_planar_bridgeless_plain_quasicubic_connected &gt;-&gt; planar.
+- [ambiguous-paths,typechecker]
+- File &quot;./theories/quiztree.v&quot;, line 299, characters 0-79:
+- Warning: Duplicate clear of qzR [duplicate-clear,ssr]
+- COQC theories/job165to189.v
+- File &quot;./theories/embed.v&quot;, line 1382, characters 0-66:
+- Warning: Duplicate clear of triad_cc [duplicate-clear,ssr]
+- File &quot;./theories/embed.v&quot;, line 1391, characters 0-57:
+- Warning: Duplicate clear of ccAx [duplicate-clear,ssr]
+- COQC theories/job190to206.v
+- COQC theories/job207to214.v
+- COQC theories/job215to218.v
+- COQC theories/job219to222.v
+- COQC theories/job223to226.v
+- COQC theories/job227to230.v
+- COQC theories/job231to234.v
+- COQC theories/job235to238.v
+- COQC theories/job239to253.v
+- COQC theories/job254to270.v
+- COQC theories/job271to278.v
+- COQC theories/job279to282.v
+- COQC theories/job283to286.v
+- COQC theories/job287to290.v
+- COQC theories/job291to294.v
+- COQC theories/job295to298.v
+- COQC theories/job299to302.v
+- COQC theories/job303to306.v
+- COQC theories/job307to310.v
+- COQC theories/job311to314.v
+- COQC theories/job315to318.v
+- COQC theories/job319to322.v
+- COQC theories/job323to383.v
+- COQC theories/job384to398.v
+- COQC theories/job399to438.v
+- COQC theories/job439to465.v
+- COQC theories/job466to485.v
+- COQC theories/job486to489.v
+- COQC theories/job490to494.v
+- COQC theories/job495to498.v
+- COQC theories/job499to502.v
+- COQC theories/job503to506.v
+- COQC theories/job507to510.v
+- COQC theories/job511to516.v
+- COQC theories/job517to530.v
+- COQC theories/job531to534.v
+- COQC theories/job535to541.v
+- COQC theories/job542to545.v
+- COQC theories/job546to549.v
+- COQC theories/job550to553.v
+- COQC theories/job554to562.v
+The middle of the output is truncated (maximum 20000 characters)
+</pre></dd>
+            </dl>
+            <h2>Installation size</h2>
+            <p>No files were installed.</p>
+            <h2>Uninstall</h2>
+            <dl class="dl-horizontal">
+              <dt>Command</dt>
+              <dd><code>true</code></dd>
+              <dt>Return code</dt>
+              <dd>0</dd>
+              <dt>Missing removes</dt>
+              <dd>
+                none
+              </dd>
+              <dt>Wrong removes</dt>
+              <dd>
+                none
+              </dd>
+            </dl>
+          </div>
+        </div>
+      </div>
+      <hr/>
+      <div class="footer">
+        <p class="text-center">
+          <small>Sources are on <a href="https://github.com/coq-bench">GitHub</a>. © Guillaume Claret.</small>
+        </p>
+      </div>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="../../../../../bootstrap.min.js"></script>
+  </body>
+</html>

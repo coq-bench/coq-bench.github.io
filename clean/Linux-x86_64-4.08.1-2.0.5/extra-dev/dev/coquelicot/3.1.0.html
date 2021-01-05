@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>coquelicot: 2 m 40 s</title>
+    <title>coquelicot: Error</title>
     <link rel="shortcut icon" type="image/png" href="../../../../../favicon.png" />
     <link href="../../../../../bootstrap.min.css" rel="stylesheet">
     <link href="../../../../../bootstrap-custom.css" rel="stylesheet">
@@ -39,10 +39,10 @@
               coquelicot
               <small>
                 3.1.0
-                <span class="label label-success">2 m 40 s</span>
+                <span class="label label-danger">Error</span>
               </small>
             </h1>
-            <p><em><script>document.write(moment("2020-09-03 13:40:41 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2020-09-03 13:40:41 UTC)</em><p>
+            <p><em><script>document.write(moment("2021-01-05 00:05:11 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2021-01-05 00:05:11 UTC)</em><p>
             <h2>Context</h2>
             <pre># Packages matching: installed
 # Name              # Installed # Synopsis
@@ -50,16 +50,16 @@ base-bigarray       base
 base-threads        base
 base-unix           base
 conf-findutils      1           Virtual package relying on findutils
-conf-gmp            1           Virtual package relying on a GMP lib system installation
+conf-gmp            3           Virtual package relying on a GMP lib system installation
 conf-m4             1           Virtual package relying on m4
 conf-perl           1           Virtual package relying on perl
 coq                 dev         Formal proof management system
-num                 1.3         The legacy Num library for arbitrary-precision integer and rational arithmetic
+num                 1.4         The legacy Num library for arbitrary-precision integer and rational arithmetic
 ocaml               4.08.1      The OCaml compiler (virtual package)
 ocaml-base-compiler 4.08.1      Official release 4.08.1
 ocaml-config        1           OCaml Switch Configuration
 ocamlfind           1.8.1       A library manager for OCaml
-zarith              1.9.1       Implements arithmetic and logical operations over arbitrary-precision integers
+zarith              1.11        Implements arithmetic and logical operations over arbitrary-precision integers
 # opam file:
 opam-version: &quot;2.0&quot;
 maintainer: &quot;guillaume.melquiond@inria.fr&quot;
@@ -67,6 +67,9 @@ homepage: &quot;http://coquelicot.saclay.inria.fr/&quot;
 dev-repo: &quot;git+https://gitlab.inria.fr/coquelicot/coquelicot.git&quot;
 bug-reports: &quot;https://gitlab.inria.fr/coquelicot/coquelicot/issues&quot;
 license: &quot;LGPL-3.0-or-later&quot;
+patches: [
+  &quot;remake.patch&quot;
+]
 build: [
   [&quot;autoconf&quot;] {dev}
   [&quot;./configure&quot;]
@@ -116,49 +119,388 @@ url {
               <dt>Return code</dt>
               <dd>0</dd>
               <dt>Duration</dt>
-              <dd>1 m 56 s</dd>
+              <dd>1 m 52 s</dd>
             </dl>
             <h2>Install</h2>
             <dl class="dl-horizontal">
               <dt>Command</dt>
               <dd><code>opam list; echo; ulimit -Sv 16000000; timeout 2h opam install -y -v coq-coquelicot.3.1.0 coq.dev</code></dd>
               <dt>Return code</dt>
-              <dd>0</dd>
+              <dd>7936</dd>
               <dt>Duration</dt>
-              <dd>2 m 40 s</dd>
+              <dd>1 m 59 s</dd>
+              <dt>Output</dt>
+              <dd><pre># Packages matching: installed
+# Name                 # Installed # Synopsis
+base-bigarray          base
+base-threads           base
+base-unix              base
+conf-findutils         1           Virtual package relying on findutils
+conf-g++               1.0         Virtual package relying on the g++ compiler (for C++)
+conf-gmp               3           Virtual package relying on a GMP lib system installation
+conf-m4                1           Virtual package relying on m4
+conf-perl              1           Virtual package relying on perl
+coq                    dev         Formal proof management system
+coq-mathcomp-ssreflect dev         Small Scale Reflection
+num                    1.4         The legacy Num library for arbitrary-precision integer and rational arithmetic
+ocaml                  4.08.1      The OCaml compiler (virtual package)
+ocaml-base-compiler    4.08.1      Official release 4.08.1
+ocaml-config           1           OCaml Switch Configuration
+ocamlfind              1.8.1       A library manager for OCaml
+zarith                 1.11        Implements arithmetic and logical operations over arbitrary-precision integers
+[NOTE] Package coq is already installed (current version is dev).
+The following actions will be performed:
+  - install coq-coquelicot 3.1.0
+&lt;&gt;&lt;&gt; Gathering sources &gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;
+Processing  1/1: [coq-coquelicot.3.1.0: http]
+[coq-coquelicot.3.1.0] downloaded from https://gforge.inria.fr/frs/download.php/file/38287/coquelicot-3.1.0.tar.gz
+Processing  1/1:
+&lt;&gt;&lt;&gt; Processing actions &lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;
+Processing  1/2: [coq-coquelicot: patch]
+Processing  1/2: [coq-coquelicot: ./configure]
++ /home/bench/.opam/opam-init/hooks/sandbox.sh &quot;build&quot; &quot;./configure&quot; (CWD=/home/bench/.opam/ocaml-base-compiler.4.08.1/.opam-switch/build/coq-coquelicot.3.1.0)
+- checking for g++... g++
+- checking whether the C++ compiler works... yes
+- checking for C++ compiler default output file name... a.out
+- checking for suffix of executables... 
+- checking whether we are cross compiling... no
+- checking for suffix of object files... o
+- checking whether we are using the GNU C++ compiler... 
+- yes
+- checking whether g++ accepts -g... yes
+- checking for coqc... /home/bench/.opam/ocaml-base-compiler.4.08.1/bin/coqc
+- checking for coqdep... /home/bench/.opam/ocaml-base-compiler.4.08.1/bin/coqdep
+- checking for coqdoc... /home/bench/.opam/ocaml-base-compiler.4.08.1/bin/coqdoc
+- checking for SSReflect... yes
+- configure: building remake...
+- /usr/bin/ld: /tmp/ccQASzBJ.o: in function `main&#39;:
+- remake.cpp:(.text.startup+0xae0): warning: the use of `tempnam&#39; is dangerous, better use `mkstemp&#39;
+- configure: creating ./config.status
+- config.status: creating Remakefile
+Processing  1/2: [coq-coquelicot: ./remake]
++ /home/bench/.opam/opam-init/hooks/sandbox.sh &quot;build&quot; &quot;./remake&quot; &quot;-j4&quot; (CWD=/home/bench/.opam/ocaml-base-compiler.4.08.1/.opam-switch/build/coq-coquelicot.3.1.0)
+- Building theories/AutoDerive.vo
+- Building theories/Compactness.vo
+- Building theories/Complex.vo
+- Building theories/Continuity.vo
+- Building theories/Rcomplements.vo
+- Building theories/Derive.vo
+- Building theories/Hierarchy.vo
+- Building theories/Lim_seq.vo
+- Building theories/Equiv.vo
+- Building theories/Iter.vo
+- Building theories/Lub.vo
+- Building theories/Markov.vo
+- Building theories/Rbar.vo
+- Building theories/Derive_2d.vo
+- Building theories/ElemFct.vo
+- Building theories/PSeries.vo
+- Building theories/RInt.vo
+- Building theories/Seq_fct.vo
+- Building theories/SF_seq.vo
+- Building theories/Series.vo
+- Building theories/RInt_analysis.vo
+- Building theories/Coquelicot.vo
+- Building theories/KHInt.vo
+- Building theories/RInt_gen.vo
+- File &quot;./theories/Rcomplements.v&quot;, line 660, characters 2-37:
+- Warning: Duplicate clear of H [duplicate-clear,ssr]
+- File &quot;./theories/Rcomplements.v&quot;, line 676, characters 2-20:
+- Warning: Duplicate clear of n [duplicate-clear,ssr]
+- File &quot;./theories/Rcomplements.v&quot;, line 1383, characters 2-54:
+- Warning: Duplicate clear of n [duplicate-clear,ssr]
+- File &quot;./theories/Rcomplements.v&quot;, line 1413, characters 2-54:
+- Warning: Duplicate clear of n [duplicate-clear,ssr]
+- File &quot;./theories/Rcomplements.v&quot;, line 1434, characters 2-49:
+- Warning: Duplicate clear of Hl [duplicate-clear,ssr]
+- File &quot;./theories/Rcomplements.v&quot;, line 1439, characters 2-26:
+- Warning: Duplicate clear of Hl [duplicate-clear,ssr]
+- File &quot;./theories/Rcomplements.v&quot;, line 1630, characters 2-460:
+- Warning: Notation RList.nil is deprecated since 8.12. use List.nil instead
+- [deprecated-syntactic-definition,deprecated]
+- File &quot;./theories/Rcomplements.v&quot;, line 1630, characters 2-460:
+- Warning: Notation RList.cons is deprecated since 8.12. use List.cons instead
+- [deprecated-syntactic-definition,deprecated]
+- File &quot;./theories/Rcomplements.v&quot;, line 1630, characters 2-460:
+- Warning: Notation RList.nil is deprecated since 8.12. use List.nil instead
+- [deprecated-syntactic-definition,deprecated]
+- File &quot;./theories/Rcomplements.v&quot;, line 1637, characters 19-28:
+- Warning: Notation RList.nil is deprecated since 8.12. use List.nil instead
+- [deprecated-syntactic-definition,deprecated]
+- File &quot;./theories/Rcomplements.v&quot;, line 1630, characters 2-460:
+- Warning: Notation RList.cons is deprecated since 8.12. use List.cons instead
+- [deprecated-syntactic-definition,deprecated]
+- File &quot;./theories/Rcomplements.v&quot;, line 1638, characters 24-34:
+- Warning: Notation RList.cons is deprecated since 8.12. use List.cons instead
+- [deprecated-syntactic-definition,deprecated]
+- File &quot;./theories/Rcomplements.v&quot;, line 1630, characters 2-460:
+- Warning: Notation RList.nil is deprecated since 8.12. use List.nil instead
+- [deprecated-syntactic-definition,deprecated]
+- File &quot;./theories/Rcomplements.v&quot;, line 1630, characters 2-460:
+- Warning: Notation RList.cons is deprecated since 8.12. use List.cons instead
+- [deprecated-syntactic-definition,deprecated]
+- File &quot;./theories/Rcomplements.v&quot;, line 1630, characters 2-460:
+- Warning: Notation RList.nil is deprecated since 8.12. use List.nil instead
+- [deprecated-syntactic-definition,deprecated]
+- File &quot;./theories/Rcomplements.v&quot;, line 1630, characters 2-460:
+- Warning: Notation RList.cons is deprecated since 8.12. use List.cons instead
+- [deprecated-syntactic-definition,deprecated]
+- File &quot;./theories/Rcomplements.v&quot;, line 1630, characters 2-460:
+- Warning: Notation RList.nil is deprecated since 8.12. use List.nil instead
+- [deprecated-syntactic-definition,deprecated]
+- File &quot;./theories/Rcomplements.v&quot;, line 1637, characters 19-28:
+- Warning: Notation RList.nil is deprecated since 8.12. use List.nil instead
+- [deprecated-syntactic-definition,deprecated]
+- File &quot;./theories/Rcomplements.v&quot;, line 1630, characters 2-460:
+- Warning: Notation RList.cons is deprecated since 8.12. use List.cons instead
+- [deprecated-syntactic-definition,deprecated]
+- File &quot;./theories/Rcomplements.v&quot;, line 1638, characters 24-34:
+- Warning: Notation RList.cons is deprecated since 8.12. use List.cons instead
+- [deprecated-syntactic-definition,deprecated]
+- File &quot;./theories/Rcomplements.v&quot;, line 1630, characters 2-460:
+- Warning: Notation RList.nil is deprecated since 8.12. use List.nil instead
+- [deprecated-syntactic-definition,deprecated]
+- File &quot;./theories/Rcomplements.v&quot;, line 1637, characters 19-28:
+- Warning: Notation RList.nil is deprecated since 8.12. use List.nil instead
+- [deprecated-syntactic-definition,deprecated]
+- File &quot;./theories/Rcomplements.v&quot;, line 1630, characters 2-460:
+- Warning: Notation RList.cons is deprecated since 8.12. use List.cons instead
+- [deprecated-syntactic-definition,deprecated]
+- File &quot;./theories/Rcomplements.v&quot;, line 1638, characters 24-34:
+- Warning: Notation RList.cons is deprecated since 8.12. use List.cons instead
+- [deprecated-syntactic-definition,deprecated]
+- File &quot;./theories/Rcomplements.v&quot;, line 1656, characters 35-48:
+- Warning: Notation RList.Rlength is deprecated since 8.12.
+- use List.length instead [deprecated-syntactic-definition,deprecated]
+- File &quot;./theories/Rcomplements.v&quot;, line 1657, characters 19-29:
+- Warning: Notation RList.cons is deprecated since 8.12. use List.cons instead
+- [deprecated-syntactic-definition,deprecated]
+- File &quot;./theories/Rcomplements.v&quot;, line 1657, characters 34-44:
+- Warning: Notation RList.cons is deprecated since 8.12. use List.cons instead
+- [deprecated-syntactic-definition,deprecated]
+- File &quot;./theories/Rcomplements.v&quot;, line 1658, characters 21-31:
+- Warning: Notation RList.cons is deprecated since 8.12. use List.cons instead
+- [deprecated-syntactic-definition,deprecated]
+- File &quot;./theories/Rcomplements.v&quot;, line 1658, characters 36-46:
+- Warning: Notation RList.cons is deprecated since 8.12. use List.cons instead
+- [deprecated-syntactic-definition,deprecated]
+- File &quot;./theories/Rcomplements.v&quot;, line 1666, characters 35-45:
+- Warning: Notation RList.cons is deprecated since 8.12. use List.cons instead
+- [deprecated-syntactic-definition,deprecated]
+- File &quot;./theories/Rcomplements.v&quot;, line 1666, characters 49-59:
+- Warning: Notation RList.cons is deprecated since 8.12. use List.cons instead
+- [deprecated-syntactic-definition,deprecated]
+- Finished theories/Rcomplements.vo
+- File &quot;./theories/Rbar.v&quot;, line 49, characters 0-27:
+- Warning:
+- New coercion path [real; Finite] : Rbar &gt;-&gt; Rbar is not definitionally an identity function.
+- [ambiguous-paths,typechecker]
+- Finished theories/Iter.vo
+- Finished theories/Markov.vo
+- Finished theories/Compactness.vo
+- Finished theories/Rbar.vo
+- File &quot;./theories/Lub.v&quot;, line 24, characters 0-40:
+- Warning:
+- New coercion path [real; Finite] : Rbar &gt;-&gt; Rbar is not definitionally an identity function.
+- [ambiguous-paths,typechecker]
+- Finished theories/Lub.vo
+- File &quot;./theories/Hierarchy.v&quot;, line 24, characters 0-49:
+- Warning:
+- New coercion path [real; Finite] : Rbar &gt;-&gt; Rbar is not definitionally an identity function.
+- [ambiguous-paths,typechecker]
+- File &quot;./theories
+[...] truncated
+ctic-definition,deprecated]
+- File &quot;./theories/RInt.v&quot;, line 3593, characters 33-43:
+- Warning: Notation RList.cons is deprecated since 8.12. use List.cons instead
+- [deprecated-syntactic-definition,deprecated]
+- File &quot;./theories/RInt.v&quot;, line 3593, characters 49-59:
+- Warning: Notation RList.cons is deprecated since 8.12. use List.cons instead
+- [deprecated-syntactic-definition,deprecated]
+- File &quot;./theories/RInt.v&quot;, line 3593, characters 33-43:
+- Warning: Notation RList.cons is deprecated since 8.12. use List.cons instead
+- [deprecated-syntactic-definition,deprecated]
+- File &quot;./theories/RInt.v&quot;, line 3593, characters 49-59:
+- Warning: Notation RList.cons is deprecated since 8.12. use List.cons instead
+- [deprecated-syntactic-definition,deprecated]
+- File &quot;./theories/RInt.v&quot;, line 3597, characters 33-43:
+- Warning: Notation RList.cons is deprecated since 8.12. use List.cons instead
+- [deprecated-syntactic-definition,deprecated]
+- File &quot;./theories/RInt.v&quot;, line 3597, characters 49-59:
+- Warning: Notation RList.cons is deprecated since 8.12. use List.cons instead
+- [deprecated-syntactic-definition,deprecated]
+- File &quot;./theories/RInt.v&quot;, line 3597, characters 33-43:
+- Warning: Notation RList.cons is deprecated since 8.12. use List.cons instead
+- [deprecated-syntactic-definition,deprecated]
+- File &quot;./theories/RInt.v&quot;, line 3597, characters 49-59:
+- Warning: Notation RList.cons is deprecated since 8.12. use List.cons instead
+- [deprecated-syntactic-definition,deprecated]
+- File &quot;./theories/RInt.v&quot;, line 3618, characters 2-51:
+- Warning: Duplicate clear of Hx [duplicate-clear,ssr]
+- File &quot;./theories/RInt.v&quot;, line 3618, characters 2-51:
+- Warning: Duplicate clear of Hx [duplicate-clear,ssr]
+- File &quot;./theories/RInt.v&quot;, line 3620, characters 34-44:
+- Warning: Notation RList.cons is deprecated since 8.12. use List.cons instead
+- [deprecated-syntactic-definition,deprecated]
+- File &quot;./theories/RInt.v&quot;, line 3620, characters 34-44:
+- Warning: Notation RList.cons is deprecated since 8.12. use List.cons instead
+- [deprecated-syntactic-definition,deprecated]
+- File &quot;./theories/RInt.v&quot;, line 3624, characters 27-37:
+- Warning: Notation RList.cons is deprecated since 8.12. use List.cons instead
+- [deprecated-syntactic-definition,deprecated]
+- File &quot;./theories/RInt.v&quot;, line 3624, characters 27-37:
+- Warning: Notation RList.cons is deprecated since 8.12. use List.cons instead
+- [deprecated-syntactic-definition,deprecated]
+- File &quot;./theories/RInt.v&quot;, line 3624, characters 27-37:
+- Warning: Notation RList.cons is deprecated since 8.12. use List.cons instead
+- [deprecated-syntactic-definition,deprecated]
+- File &quot;./theories/RInt.v&quot;, line 3664, characters 2-55:
+- Warning: Duplicate clear of Hx [duplicate-clear,ssr]
+- File &quot;./theories/RInt.v&quot;, line 3664, characters 2-55:
+- Warning: Duplicate clear of Hx [duplicate-clear,ssr]
+- File &quot;./theories/RInt.v&quot;, line 3666, characters 34-44:
+- Warning: Notation RList.cons is deprecated since 8.12. use List.cons instead
+- [deprecated-syntactic-definition,deprecated]
+- File &quot;./theories/RInt.v&quot;, line 3666, characters 34-44:
+- Warning: Notation RList.cons is deprecated since 8.12. use List.cons instead
+- [deprecated-syntactic-definition,deprecated]
+- File &quot;./theories/RInt.v&quot;, line 3670, characters 27-37:
+- Warning: Notation RList.cons is deprecated since 8.12. use List.cons instead
+- [deprecated-syntactic-definition,deprecated]
+- File &quot;./theories/RInt.v&quot;, line 3670, characters 27-37:
+- Warning: Notation RList.cons is deprecated since 8.12. use List.cons instead
+- [deprecated-syntactic-definition,deprecated]
+- File &quot;./theories/RInt.v&quot;, line 3670, characters 27-37:
+- Warning: Notation RList.cons is deprecated since 8.12. use List.cons instead
+- [deprecated-syntactic-definition,deprecated]
+- File &quot;./theories/RInt.v&quot;, line 3749, characters 2-107:
+- Warning: Duplicate clear of IH [duplicate-clear,ssr]
+- File &quot;./theories/RInt.v&quot;, line 3805, characters 2-148:
+- Warning: Duplicate clear of Hptd [duplicate-clear,ssr]
+- File &quot;./theories/RInt.v&quot;, line 3814, characters 2-159:
+- Warning: Duplicate clear of IH [duplicate-clear,ssr]
+- File &quot;./theories/PSeries.v&quot;, line 2045, characters 4-64:
+- Warning: Duplicate clear of Hn [duplicate-clear,ssr]
+- File &quot;./theories/PSeries.v&quot;, line 2045, characters 4-64:
+- Warning: Duplicate clear of Hn [duplicate-clear,ssr]
+- File &quot;./theories/PSeries.v&quot;, line 2441, characters 4-46:
+- Warning: Duplicate clear of r [duplicate-clear,ssr]
+- File &quot;./theories/PSeries.v&quot;, line 2457, characters 3-82:
+- Warning: Duplicate clear of Hw [duplicate-clear,ssr]
+- Finished theories/PSeries.vo
+- File &quot;./theories/RInt.v&quot;, line 3904, characters 4-50:
+- Warning: Duplicate clear of Hab [duplicate-clear,ssr]
+- File &quot;./theories/RInt.v&quot;, line 3904, characters 4-50:
+- Warning: Duplicate clear of Hab [duplicate-clear,ssr]
+- File &quot;./theories/RInt.v&quot;, line 4023, characters 4-79:
+- Warning: Duplicate clear of Hx [duplicate-clear,ssr]
+- File &quot;./theories/RInt.v&quot;, line 4294, characters 2-23:
+- Warning: Duplicate clear of HIf [duplicate-clear,ssr]
+- File &quot;./theories/RInt.v&quot;, line 4309, characters 2-23:
+- Warning: Duplicate clear of HIf [duplicate-clear,ssr]
+- File &quot;./theories/RInt.v&quot;, line 4332, characters 2-22:
+- Warning: Duplicate clear of HIf [duplicate-clear,ssr]
+- File &quot;./theories/RInt.v&quot;, line 4394, characters 2-23:
+- Warning: Duplicate clear of HIf [duplicate-clear,ssr]
+- File &quot;./theories/RInt.v&quot;, line 4454, characters 6-34:
+- Warning: Duplicate clear of H1 [duplicate-clear,ssr]
+- File &quot;./theories/RInt.v&quot;, line 4454, characters 6-34:
+- Warning: Duplicate clear of H1 [duplicate-clear,ssr]
+- File &quot;./theories/RInt.v&quot;, line 4489, characters 6-34:
+- Warning: Duplicate clear of Ht [duplicate-clear,ssr]
+- File &quot;./theories/RInt.v&quot;, line 4489, characters 6-34:
+- Warning: Duplicate clear of Ht [duplicate-clear,ssr]
+- File &quot;./theories/RInt.v&quot;, line 4503, characters 6-34:
+- Warning: Duplicate clear of H1 [duplicate-clear,ssr]
+- File &quot;./theories/RInt.v&quot;, line 4503, characters 6-34:
+- Warning: Duplicate clear of H1 [duplicate-clear,ssr]
+- File &quot;./theories/RInt.v&quot;, line 4592, characters 2-23:
+- Warning: Duplicate clear of HIf [duplicate-clear,ssr]
+- Finished theories/RInt.vo
+- File &quot;./theories/RInt_analysis.v&quot;, line 27, characters 0-66:
+- Warning:
+- New coercion path [real; Finite] : Rbar &gt;-&gt; Rbar is not definitionally an identity function.
+- [ambiguous-paths,typechecker]
+- File &quot;./theories/RInt_analysis.v&quot;, line 48, characters 4-104:
+- Warning: Duplicate clear of CIf [duplicate-clear,ssr]
+- File &quot;./theories/RInt_analysis.v&quot;, line 113, characters 2-114:
+- Warning: Duplicate clear of CIf [duplicate-clear,ssr]
+- File &quot;./theories/RInt_analysis.v&quot;, line 338, characters 2-59:
+- Warning: Duplicate clear of Hf [duplicate-clear,ssr]
+- File &quot;./theories/RInt_analysis.v&quot;, line 470, characters 2-95:
+- Warning: Duplicate clear of Ha [duplicate-clear,ssr]
+- File &quot;./theories/RInt_analysis.v&quot;, line 474, characters 2-95:
+- Warning: Duplicate clear of Hb [duplicate-clear,ssr]
+- Finished theories/KHInt.vo
+- File &quot;./theories/RInt_analysis.v&quot;, line 692, characters 2-60:
+- Warning: Duplicate clear of Hf [duplicate-clear,ssr]
+- File &quot;./theories/RInt_analysis.v&quot;, line 773, characters 0-57:
+- Warning: Duplicate clear of Ca [duplicate-clear,ssr]
+- File &quot;./theories/RInt_analysis.v&quot;, line 793, characters 0-57:
+- Warning: Duplicate clear of Ca [duplicate-clear,ssr]
+- File &quot;./theories/RInt_analysis.v&quot;, line 794, characters 0-57:
+- Warning: Duplicate clear of Cb [duplicate-clear,ssr]
+- File &quot;./theories/RInt_analysis.v&quot;, line 1283, characters 0-58:
+- Warning: Duplicate clear of Hy [duplicate-clear,ssr]
+- Finished theories/RInt_analysis.vo
+- File &quot;./theories/ElemFct.v&quot;, line 24, characters 0-96:
+- Warning:
+- New coercion path [real; Finite] : Rbar &gt;-&gt; Rbar is not definitionally an identity function.
+- [ambiguous-paths,typechecker]
+- File &quot;./theories/RInt_gen.v&quot;, line 24, characters 0-88:
+- Warning:
+- New coercion path [real; Finite] : Rbar &gt;-&gt; Rbar is not definitionally an identity function.
+- [ambiguous-paths,typechecker]
+- File &quot;./theories/ElemFct.v&quot;, line 556, characters 2-30:
+- Warning: Duplicate clear of Hy [duplicate-clear,ssr]
+- File &quot;./theories/ElemFct.v&quot;, line 570, characters 2-36:
+- Warning: Duplicate clear of n [duplicate-clear,ssr]
+- File &quot;./theories/ElemFct.v&quot;, line 604, characters 2-28:
+- Error: No applicable tactic.
+- 
+- Failed to build theories/ElemFct.vo
+- Failed to build all
+- Failed to build theories/AutoDerive.vo
+- Failed to build theories/Coquelicot.vo
+- Finished theories/RInt_gen.vo
+[ERROR] The compilation of coq-coquelicot failed at &quot;/home/bench/.opam/opam-init/hooks/sandbox.sh build ./remake -j4&quot;.
+#=== ERROR while compiling coq-coquelicot.3.1.0 ===============================#
+# context              2.0.5 | linux/x86_64 | ocaml-base-compiler.4.08.1 | file:///home/bench/run/opam-coq-archive/released
+# path                 ~/.opam/ocaml-base-compiler.4.08.1/.opam-switch/build/coq-coquelicot.3.1.0
+# command              ~/.opam/opam-init/hooks/sandbox.sh build ./remake -j4
+# exit-code            1
+# env-file             ~/.opam/log/coq-coquelicot-15094-d474c2.env
+# output-file          ~/.opam/log/coq-coquelicot-15094-d474c2.out
+### output ###
+# [...]
+# File &quot;./theories/ElemFct.v&quot;, line 556, characters 2-30:
+# Warning: Duplicate clear of Hy [duplicate-clear,ssr]
+# File &quot;./theories/ElemFct.v&quot;, line 570, characters 2-36:
+# Warning: Duplicate clear of n [duplicate-clear,ssr]
+# File &quot;./theories/ElemFct.v&quot;, line 604, characters 2-28:
+# Error: No applicable tactic.
+# 
+# Failed to build theories/ElemFct.vo
+# Failed to build all
+# Failed to build theories/AutoDerive.vo
+# Failed to build theories/Coquelicot.vo
+# Finished theories/RInt_gen.vo
+&lt;&gt;&lt;&gt; Error report &lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;
++- The following actions failed
+| - build coq-coquelicot 3.1.0
++- 
+- No changes have been performed
+# Run eval $(opam env) to update the current shell environment
+&#39;opam install -y -v coq-coquelicot.3.1.0 coq.dev&#39; failed.
+The middle of the output is truncated (maximum 20000 characters)
+</pre></dd>
             </dl>
             <h2>Installation size</h2>
-            <p>Total: 6 M</p>
-            <ul>
-              <li>1 M <code>../ocaml-base-compiler.4.08.1/lib/coq/user-contrib/Coquelicot/RInt.vo</code></li>
-              <li>716 K <code>../ocaml-base-compiler.4.08.1/lib/coq/user-contrib/Coquelicot/Hierarchy.vo</code></li>
-              <li>547 K <code>../ocaml-base-compiler.4.08.1/lib/coq/user-contrib/Coquelicot/SF_seq.vo</code></li>
-              <li>422 K <code>../ocaml-base-compiler.4.08.1/lib/coq/user-contrib/Coquelicot/Derive.vo</code></li>
-              <li>369 K <code>../ocaml-base-compiler.4.08.1/lib/coq/user-contrib/Coquelicot/Lim_seq.vo</code></li>
-              <li>342 K <code>../ocaml-base-compiler.4.08.1/lib/coq/user-contrib/Coquelicot/PSeries.vo</code></li>
-              <li>326 K <code>../ocaml-base-compiler.4.08.1/lib/coq/user-contrib/Coquelicot/AutoDerive.vo</code></li>
-              <li>269 K <code>../ocaml-base-compiler.4.08.1/lib/coq/user-contrib/Coquelicot/Rcomplements.vo</code></li>
-              <li>240 K <code>../ocaml-base-compiler.4.08.1/lib/coq/user-contrib/Coquelicot/Derive_2d.vo</code></li>
-              <li>225 K <code>../ocaml-base-compiler.4.08.1/lib/coq/user-contrib/Coquelicot/RInt_analysis.vo</code></li>
-              <li>209 K <code>../ocaml-base-compiler.4.08.1/lib/coq/user-contrib/Coquelicot/Continuity.vo</code></li>
-              <li>185 K <code>../ocaml-base-compiler.4.08.1/lib/coq/user-contrib/Coquelicot/Series.vo</code></li>
-              <li>174 K <code>../ocaml-base-compiler.4.08.1/lib/coq/user-contrib/Coquelicot/Rbar.vo</code></li>
-              <li>172 K <code>../ocaml-base-compiler.4.08.1/lib/coq/user-contrib/Coquelicot/Seq_fct.vo</code></li>
-              <li>151 K <code>../ocaml-base-compiler.4.08.1/lib/coq/user-contrib/Coquelicot/ElemFct.vo</code></li>
-              <li>139 K <code>../ocaml-base-compiler.4.08.1/lib/coq/user-contrib/Coquelicot/Complex.vo</code></li>
-              <li>126 K <code>../ocaml-base-compiler.4.08.1/lib/coq/user-contrib/Coquelicot/Equiv.vo</code></li>
-              <li>125 K <code>../ocaml-base-compiler.4.08.1/lib/coq/user-contrib/Coquelicot/KHInt.vo</code></li>
-              <li>107 K <code>../ocaml-base-compiler.4.08.1/lib/coq/user-contrib/Coquelicot/Lub.vo</code></li>
-              <li>99 K <code>../ocaml-base-compiler.4.08.1/lib/coq/user-contrib/Coquelicot/Compactness.vo</code></li>
-              <li>93 K <code>../ocaml-base-compiler.4.08.1/lib/coq/user-contrib/Coquelicot/RInt_gen.vo</code></li>
-              <li>80 K <code>../ocaml-base-compiler.4.08.1/lib/coq/user-contrib/Coquelicot/Iter.vo</code></li>
-              <li>68 K <code>../ocaml-base-compiler.4.08.1/lib/coq/user-contrib/Coquelicot/Markov.vo</code></li>
-              <li>52 K <code>../ocaml-base-compiler.4.08.1/lib/coq/user-contrib/Coquelicot/Coquelicot.vo</code></li>
-            </ul>
+            <p>No files were installed.</p>
             <h2>Uninstall</h2>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>opam remove -y coq-coquelicot.3.1.0</code></dd>
+              <dd><code>true</code></dd>
               <dt>Return code</dt>
               <dd>0</dd>
               <dt>Missing removes</dt>
