@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>founify: 18 s</title>
+    <title>founify: Error with dependencies</title>
     <link rel="shortcut icon" type="image/png" href="../../../../../favicon.png" />
     <link href="../../../../../bootstrap.min.css" rel="stylesheet">
     <link href="../../../../../bootstrap-custom.css" rel="stylesheet">
@@ -39,10 +39,10 @@
               founify
               <small>
                 8.5.0
-                <span class="label label-success">18 s</span>
+                <span class="label label-warning">Error with dependencies</span>
               </small>
             </h1>
-            <p><em><script>document.write(moment("2020-11-25 23:44:03 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2020-11-25 23:44:03 UTC)</em><p>
+            <p><em><script>document.write(moment("2021-01-06 23:45:38 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2021-01-06 23:45:38 UTC)</em><p>
             <h2>Context</h2>
             <pre># Packages matching: installed
 # Name              # Installed  # Synopsis
@@ -52,7 +52,7 @@ base-threads        base
 base-unix           base
 camlp4              4.04+1       Camlp4 is a system for writing extensible parsers for programming languages
 conf-findutils      1            Virtual package relying on findutils
-coq                 8.5.2~camlp4 Formal proof management system.
+coq                 8.5.2~camlp4 Formal proof management system
 num                 0            The Num library for arbitrary-precision integer and rational arithmetic
 ocaml               4.04.2       The OCaml compiler (virtual package)
 ocaml-base-compiler 4.04.2       Official 4.04.2 release
@@ -114,42 +114,86 @@ url {
               <dt>Command</dt>
               <dd><code>opam list; echo; ulimit -Sv 4000000; timeout 2h opam install -y --deps-only coq-founify.8.5.0 coq.8.5.2~camlp4</code></dd>
               <dt>Return code</dt>
-              <dd>0</dd>
+              <dd>7936</dd>
               <dt>Duration</dt>
-              <dd>2 m 47 s</dd>
+              <dd>10 s</dd>
+              <dt>Output</dt>
+              <dd><pre># Packages matching: installed
+# Name              # Installed  # Synopsis
+base-bigarray       base
+base-num            base         Num library distributed with the OCaml compiler
+base-threads        base
+base-unix           base
+camlp4              4.04+1       Camlp4 is a system for writing extensible parsers for programming languages
+conf-findutils      1            Virtual package relying on findutils
+coq                 8.5.2~camlp4 Formal proof management system
+num                 0            The Num library for arbitrary-precision integer and rational arithmetic
+ocaml               4.04.2       The OCaml compiler (virtual package)
+ocaml-base-compiler 4.04.2       Official 4.04.2 release
+ocaml-config        1            OCaml Switch Configuration
+ocamlbuild          0.14.0       OCamlbuild is a build system with builtin rules to easily build most OCaml projects.
+The following actions will be performed:
+  - install conf-perl                   1
+  - install conf-perl-string-shellquote 1
+  - install conf-perl-ipc-system-simple 1
+  - install camlp5                      8.00
+===== 4 to install =====
+&lt;&gt;&lt;&gt; Gathering sources &gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;
+[camlp5.8.00] downloaded from cache at https://opam.ocaml.org/cache
+&lt;&gt;&lt;&gt; Processing actions &lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;
+-&gt; installed conf-perl.1
+[ERROR] The compilation of conf-perl-string-shellquote failed at &quot;/home/bench/.opam/opam-init/hooks/sandbox.sh build perl -MString::ShellQuote -e 1&quot;.
+[ERROR] The compilation of conf-perl-ipc-system-simple failed at &quot;/home/bench/.opam/opam-init/hooks/sandbox.sh build perl -MIPC::System::Simple -e 1&quot;.
+#=== ERROR while compiling conf-perl-string-shellquote.1 ======================#
+# context              2.0.5 | linux/x86_64 | ocaml-base-compiler.4.04.2 | https://opam.ocaml.org#1140e2f3
+# path                 ~/.opam/ocaml-base-compiler.4.04.2/.opam-switch/build/conf-perl-string-shellquote.1
+# command              ~/.opam/opam-init/hooks/sandbox.sh build perl -MString::ShellQuote -e 1
+# exit-code            2
+# env-file             ~/.opam/log/conf-perl-string-shellquote-3268-865888.env
+# output-file          ~/.opam/log/conf-perl-string-shellquote-3268-865888.out
+### output ###
+# Can&#39;t locate String/ShellQuote.pm in @INC (you may need to install the String::ShellQuote module) (@INC contains: /etc/perl /usr/local/lib/x86_64-linux-gnu/perl/5.30.0 /usr/local/share/perl/5.30.0 /usr/lib/x86_64-linux-gnu/perl5/5.30 /usr/share/perl5 /usr/lib/x86_64-linux-gnu/perl/5.30 /usr/share/perl/5.30 /usr/local/lib/site_perl /usr/lib/x86_64-linux-gnu/perl-base).
+# BEGIN failed--compilation aborted.
+#=== ERROR while compiling conf-perl-ipc-system-simple.1 ======================#
+# context              2.0.5 | linux/x86_64 | ocaml-base-compiler.4.04.2 | https://opam.ocaml.org#1140e2f3
+# path                 ~/.opam/ocaml-base-compiler.4.04.2/.opam-switch/build/conf-perl-ipc-system-simple.1
+# command              ~/.opam/opam-init/hooks/sandbox.sh build perl -MIPC::System::Simple -e 1
+# exit-code            2
+# env-file             ~/.opam/log/conf-perl-ipc-system-simple-3268-6cc03f.env
+# output-file          ~/.opam/log/conf-perl-ipc-system-simple-3268-6cc03f.out
+### output ###
+# Can&#39;t locate IPC/System/Simple.pm in @INC (you may need to install the IPC::System::Simple module) (@INC contains: /etc/perl /usr/local/lib/x86_64-linux-gnu/perl/5.30.0 /usr/local/share/perl/5.30.0 /usr/lib/x86_64-linux-gnu/perl5/5.30 /usr/share/perl5 /usr/lib/x86_64-linux-gnu/perl/5.30 /usr/share/perl/5.30 /usr/local/lib/site_perl /usr/lib/x86_64-linux-gnu/perl-base).
+# BEGIN failed--compilation aborted.
+&lt;&gt;&lt;&gt; Error report &lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;
++- The following actions failed
+| - build conf-perl-ipc-system-simple 1
+| - build conf-perl-string-shellquote 1
++- 
++- The following changes have been performed (the rest was aborted)
+| - install conf-perl 1
++- 
+The packages you requested declare the following system dependencies. Please make sure they are installed before retrying:
+    libipc-system-simple-perl libstring-shellquote-perl
+# Run eval $(opam env) to update the current shell environment
+The former state can be restored with:
+    opam switch import &quot;/home/bench/.opam/ocaml-base-compiler.4.04.2/.opam-switch/backup/state-20210106073249.export&quot;
+</pre></dd>
             </dl>
             <h2>Install</h2>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>opam list; echo; ulimit -Sv 16000000; timeout 2h opam install -y -v coq-founify.8.5.0 coq.8.5.2~camlp4</code></dd>
+              <dd><code>true</code></dd>
               <dt>Return code</dt>
               <dd>0</dd>
               <dt>Duration</dt>
-              <dd>18 s</dd>
+              <dd>0 s</dd>
             </dl>
             <h2>Installation size</h2>
-            <p>Total: 716 K</p>
-            <ul>
-              <li>190 K <code>../ocaml-base-compiler.4.04.2/lib/coq/user-contrib/FOUnify/term_unif.glob</code></li>
-              <li>148 K <code>../ocaml-base-compiler.4.04.2/lib/coq/user-contrib/FOUnify/term_unif.vo</code></li>
-              <li>77 K <code>../ocaml-base-compiler.4.04.2/lib/coq/user-contrib/FOUnify/term_unif.v</code></li>
-              <li>69 K <code>../ocaml-base-compiler.4.04.2/lib/coq/user-contrib/FOUnify/nat_term_eq_quasiterm.vo</code></li>
-              <li>49 K <code>../ocaml-base-compiler.4.04.2/lib/coq/user-contrib/FOUnify/nat_term_eq_quasiterm.glob</code></li>
-              <li>42 K <code>../ocaml-base-compiler.4.04.2/lib/coq/user-contrib/FOUnify/is_in_quasiterm_term_subst.vo</code></li>
-              <li>35 K <code>../ocaml-base-compiler.4.04.2/lib/coq/user-contrib/FOUnify/listv_is_in_lv.vo</code></li>
-              <li>31 K <code>../ocaml-base-compiler.4.04.2/lib/coq/user-contrib/FOUnify/nat_complements.vo</code></li>
-              <li>17 K <code>../ocaml-base-compiler.4.04.2/lib/coq/user-contrib/FOUnify/is_in_quasiterm_term_subst.glob</code></li>
-              <li>17 K <code>../ocaml-base-compiler.4.04.2/lib/coq/user-contrib/FOUnify/nat_term_eq_quasiterm.v</code></li>
-              <li>11 K <code>../ocaml-base-compiler.4.04.2/lib/coq/user-contrib/FOUnify/nat_complements.glob</code></li>
-              <li>10 K <code>../ocaml-base-compiler.4.04.2/lib/coq/user-contrib/FOUnify/listv_is_in_lv.glob</code></li>
-              <li>8 K <code>../ocaml-base-compiler.4.04.2/lib/coq/user-contrib/FOUnify/is_in_quasiterm_term_subst.v</code></li>
-              <li>7 K <code>../ocaml-base-compiler.4.04.2/lib/coq/user-contrib/FOUnify/nat_complements.v</code></li>
-              <li>6 K <code>../ocaml-base-compiler.4.04.2/lib/coq/user-contrib/FOUnify/listv_is_in_lv.v</code></li>
-            </ul>
+            <p>No files were installed.</p>
             <h2>Uninstall</h2>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>opam remove -y coq-founify.8.5.0</code></dd>
+              <dd><code>true</code></dd>
               <dt>Return code</dt>
               <dd>0</dd>
               <dt>Missing removes</dt>
