@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>infotheo: Error</title>
+    <link rel="shortcut icon" type="image/png" href="../../../../../favicon.png" />
+    <link href="../../../../../bootstrap.min.css" rel="stylesheet">
+    <link href="../../../../../bootstrap-custom.css" rel="stylesheet">
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+    <script src="../../../../../moment.min.js"></script>
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="container">
+      <div class="navbar navbar-default" role="navigation">
+        <div class="container-fluid">
+          <div class="navbar-header">
+            <a class="navbar-brand" href="../../../../.."><i class="fa fa-lg fa-flag-checkered"></i> Coq bench</a>
+          </div>
+          <div id="navbar" class="collapse navbar-collapse">
+            <ul class="nav navbar-nav">
+              <li><a href="../..">clean / extra-dev</a></li>
+              <li class="active"><a href="">dev / infotheo - 0.2.2</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="article">
+        <div class="row">
+          <div class="col-md-12">
+            <a href="../..">« Up</a>
+            <h1>
+              infotheo
+              <small>
+                0.2.2
+                <span class="label label-danger">Error</span>
+              </small>
+            </h1>
+            <p><em><script>document.write(moment("2021-01-19 15:27:27 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2021-01-19 15:27:27 UTC)</em><p>
+            <h2>Context</h2>
+            <pre># Packages matching: installed
+# Name              # Installed # Synopsis
+base-bigarray       base
+base-num            base        Num library distributed with the OCaml compiler
+base-threads        base
+base-unix           base
+conf-findutils      1           Virtual package relying on findutils
+conf-gmp            3           Virtual package relying on a GMP lib system installation
+conf-m4             1           Virtual package relying on m4
+conf-perl           1           Virtual package relying on perl
+coq                 dev         Formal proof management system
+num                 0           The Num library for arbitrary-precision integer and rational arithmetic
+ocaml               4.05.0      The OCaml compiler (virtual package)
+ocaml-base-compiler 4.05.0      Official 4.05.0 release
+ocaml-config        1           OCaml Switch Configuration
+ocamlfind           1.8.1       A library manager for OCaml
+zarith              1.11        Implements arithmetic and logical operations over arbitrary-precision integers
+# opam file:
+opam-version: &quot;2.0&quot;
+maintainer: &quot;Reynald Affeldt &lt;reynald.affeldt@aist.go.jp&gt;&quot;
+homepage: &quot;https://github.com/affeldt-aist/infotheo&quot;
+dev-repo: &quot;git+https://github.com/affeldt-aist/infotheo.git&quot;
+bug-reports: &quot;https://github.com/affeldt-aist/infotheo/issues&quot;
+license: &quot;LGPL-2.1-or-later&quot;
+synopsis: &quot;Discrete probabilities and information theory for Coq&quot;
+description: &quot;&quot;&quot;
+Infotheo is a Coq library for reasoning about discrete probabilities,
+information theory, and linear error-correcting codes.&quot;&quot;&quot;
+build: [
+    [make &quot;-j%{jobs}%&quot; ]
+    [make &quot;-C&quot; &quot;extraction&quot; &quot;tests&quot;] {with-test}
+  ]
+install: [make &quot;install&quot;]
+depends: [
+  &quot;coq&quot; { (&gt;= &quot;8.11&quot; &amp; &lt; &quot;8.13~&quot;) | (= &quot;dev&quot;) }
+  &quot;coq-mathcomp-ssreflect&quot; { (&gt;= &quot;1.12.0&quot; &amp; &lt; &quot;1.13~&quot;) }
+  &quot;coq-mathcomp-fingroup&quot; { (&gt;= &quot;1.12.0&quot; &amp; &lt; &quot;1.13~&quot;) }
+  &quot;coq-mathcomp-algebra&quot; { (&gt;= &quot;1.12.0&quot; &amp; &lt; &quot;1.13~&quot;) }
+  &quot;coq-mathcomp-solvable&quot; { (&gt;= &quot;1.12.0&quot; &amp; &lt; &quot;1.13~&quot;) }
+  &quot;coq-mathcomp-field&quot; { (&gt;= &quot;1.12.0&quot; &amp; &lt; &quot;1.13~&quot;) }
+  &quot;coq-mathcomp-analysis&quot; { (&gt;= &quot;0.3.4&quot;) }
+]
+tags: [
+  &quot;keyword:information theory&quot;
+  &quot;keyword:probability&quot;
+  &quot;keyword:error-correcting codes&quot;
+  &quot;logpath:infotheo&quot;
+]
+authors: [
+  &quot;Reynald Affeldt, AIST&quot;
+  &quot;Manabu Hagiwara, Chiba U. (previously AIST)&quot;
+  &quot;Jonas Senizergues, ENS Cachan (internship at AIST)&quot;
+  &quot;Jacques Garrigue, Nagoya U.&quot;
+  &quot;Kazuhiko Sakaguchi, Tsukuba U.&quot;
+  &quot;Taku Asai, Nagoya U. (M2)&quot;
+  &quot;Takafumi Saikawa, Nagoya U.&quot;
+  &quot;Naruomi Obata, Titech (M2)&quot;
+]
+url {
+  http: &quot;https://github.com/affeldt-aist/infotheo/archive/0.2.2.tar.gz&quot;
+  checksum: &quot;sha512=dc447af837732867e046afaf56feca3d73cdad0e25b6b24abb2fa45a4c9a78b2a67f508150418e122976bdd9828f3058e47f8aa8c7dca65243be527f3da96ec3&quot;
+}
+</pre>
+            <h2>Lint</h2>
+            <dl class="dl-horizontal">
+              <dt>Command</dt>
+              <dd><code>true</code></dd>
+              <dt>Return code</dt>
+              <dd>0</dd>
+            </dl>
+            <h2>Dry install</h2>
+            <p>Dry install with the current Coq version:</p>
+            <dl class="dl-horizontal">
+              <dt>Command</dt>
+              <dd><code>opam install -y --show-action coq-infotheo.0.2.2 coq.dev</code></dd>
+              <dt>Return code</dt>
+              <dd>0</dd>
+            </dl>
+            <p>Dry install without Coq/switch base, to test if the problem was incompatibility with the current Coq/OCaml version:</p>
+            <dl class="dl-horizontal">
+              <dt>Command</dt>
+              <dd><code>true</code></dd>
+              <dt>Return code</dt>
+              <dd>0</dd>
+            </dl>
+            <h2>Install dependencies</h2>
+            <dl class="dl-horizontal">
+              <dt>Command</dt>
+              <dd><code>opam list; echo; ulimit -Sv 4000000; timeout 2h opam install -y --deps-only coq-infotheo.0.2.2 coq.dev</code></dd>
+              <dt>Return code</dt>
+              <dd>0</dd>
+              <dt>Duration</dt>
+              <dd>45 m 23 s</dd>
+            </dl>
+            <h2>Install</h2>
+            <dl class="dl-horizontal">
+              <dt>Command</dt>
+              <dd><code>opam list; echo; ulimit -Sv 16000000; timeout 2h opam install -y -v coq-infotheo.0.2.2 coq.dev</code></dd>
+              <dt>Return code</dt>
+              <dd>7936</dd>
+              <dt>Duration</dt>
+              <dd>4 m 26 s</dd>
+              <dt>Output</dt>
+              <dd><pre># Packages matching: installed
+# Name                   # Installed # Synopsis
+base                     v0.13.2     Full standard library replacement for OCaml
+base-bigarray            base
+base-num                 base        Num library distributed with the OCaml compiler
+base-threads             base
+base-unix                base
+camlp5                   7.14        Preprocessor-pretty-printer of OCaml
+conf-findutils           1           Virtual package relying on findutils
+conf-gmp                 3           Virtual package relying on a GMP lib system installation
+conf-m4                  1           Virtual package relying on m4
+conf-perl                1           Virtual package relying on perl
+coq                      dev         Formal proof management system
+coq-elpi                 dev         Elpi extension language for Coq
+coq-hierarchy-builder    dev         Hierarchy Builder
+coq-mathcomp-algebra     1.12.0      Mathematical Components Library on Algebra
+coq-mathcomp-analysis    dev         An analysis library for mathematical components
+coq-mathcomp-bigenough   dev         A small library to do epsilon - N reasonning
+coq-mathcomp-field       1.12.0      Mathematical Components Library on Fields
+coq-mathcomp-fingroup    1.12.0      Mathematical Components Library on finite groups
+coq-mathcomp-finmap      dev         Finite sets, finite maps, finitely supported functions
+coq-mathcomp-solvable    1.12.0      Mathematical Components Library on finite groups (II)
+coq-mathcomp-ssreflect   1.12.0      Small Scale Reflection
+cppo                     1.6.7       Code preprocessor like cpp for OCaml
+csexp                    1.3.2       Parsing and printing of S-expressions in Canonical form
+dune                     2.8.1       Fast, portable, and opinionated build system
+dune-configurator        2.8.1       Helper library for gathering system configuration
+elpi                     1.12.0      ELPI - Embeddable λProlog Interpreter
+num                      0           The Num library for arbitrary-precision integer and rational arithmetic
+ocaml                    4.05.0      The OCaml compiler (virtual package)
+ocaml-base-compiler      4.05.0      Official 4.05.0 release
+ocaml-compiler-libs      v0.12.3     OCaml compiler libraries repackaged
+ocaml-config             1           OCaml Switch Configuration
+ocaml-migrate-parsetree  1.8.0       Convert OCaml parsetrees between different versions
+ocaml-secondary-compiler 4.08.1-1    OCaml 4.08.1 Secondary Switch Compiler
+ocamlfind                1.8.1       A library manager for OCaml
+ocamlfind-secondary      1.8.1       ocamlfind support for ocaml-secondary-compiler
+ppx_derivers             1.2.1       Shared [@@deriving] plugin registry
+ppx_deriving             4.5         Type-driven code generation for OCaml &gt;=4.02.2
+ppx_tools                5.0+4.05.0  Tools for authors of ppx rewriters and other syntactic tools
+ppxfind                  1.4         Tool combining ocamlfind and ppx
+ppxlib                   0.14.0      Base library and tools for ppx rewriters
+re                       1.9.0       RE is a regular expression library for OCaml
+result                   1.5         Compatibility Result module
+seq                      0.2.2       Compatibility package for OCaml&#39;s standard iterator type starting from 4.07
+sexplib0                 v0.13.0     Library containing the definition of S-expressions and some base converters
+stdio                    v0.13.0     Standard IO library for OCaml
+zarith                   1.11        Implements arithmetic and logical operations over arbitrary-precision integers
+[NOTE] Package coq is already installed (current version is dev).
+The following actions will be performed:
+  - install coq-infotheo 0.2.2
+&lt;&gt;&lt;&gt; Gathering sources &gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;
+Processing  1/1: [coq-infotheo.0.2.2: http]
+[coq-infotheo.0.2.2] downloaded from https://github.com/affeldt-aist/infotheo/archive/0.2.2.tar.gz
+Processing  1/1:
+&lt;&gt;&lt;&gt; Processing actions &lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;
+Processing  1/2: [coq-infotheo: make]
++ /home/bench/.opam/opam-init/hooks/sandbox.sh &quot;build&quot; &quot;make&quot; &quot;-j7&quot; (CWD=/home/bench/.opam/ocaml-base-compiler.4.05.0/.opam-switch/build/coq-infotheo.0.2.2)
+- coq_makefile -f _CoqProject -o Makefile.coq
+- make -f Makefile.coq all
+- make[1]: Entering directory &#39;/home/bench/.opam/ocaml-base-compiler.4.05.0/.opam-switch/build/coq-infotheo.0.2.2&#39;
+- COQDEP VFILES
+- COQC lib/ssrZ.v
+- COQC lib/ssrR.v
+- COQC lib/ssr_ext.v
+- COQC lib/f2.v
+- COQC lib/euclid.v
+- COQC lib/classical_sets_ext.v
+- COQC ecc_modern/max_subset.v
+- File &quot;./lib/ssrR.v&quot;, line 75, characters 0-31:
+- Warning: The default value for hint locality is currently &quot;local&quot; in a
+- section and &quot;global&quot; otherwise, but is scheduled to change in a future
+- release. For the time being, adding hints outside of sections without
+- specifying an explicit locality is therefore deprecated. It is recommended to
+- use &quot;export&quot; whenever possible. [deprecated-hint-without-locality,deprecated]
+- File &quot;./lib/ssrR.v&quot;, line 76, characters 0-28:
+- Warning: The default value for hint locality is currently &quot;local&quot; in a
+- section and &quot;global&quot; otherwise, but is scheduled to change in a future
+- release. For the time being, adding hints outside of sections without
+- specifying an explicit locality is therefore deprecated. It is recommended to
+- use &quot;export&quot; whenever possible. [deprecated-hint-without-locality,deprecated]
+- File &quot;./lib/ssrR.v&quot;, line 77, characters 0-28:
+- Warning: The default value for hint locality is currently &quot;local&quot; in a
+- section and &quot;global&quot; otherwise, but is scheduled to change in a future
+- release. For the time being, adding hints outside of sections without
+- specifying an explicit locality is therefore deprecated. It is recommended to
+- use &quot;export&quot; whenever possible. [deprecated-hint-without-locality,deprecated]
+- COQC lib/Reals_ext.v
+- COQC lib/ssralg_ext.v
+- COQC lib/num_occ.v
+- COQC information_theory/kraft.v
+- COQC ecc_modern/subgraph_partition.v
+- File &quot;./lib/Reals_ext.v&quot;, line 58, characters 0-28:
+- Warning: The default value for hint locality is currently &quot;local&quot; in a
+- section and &quot;global&quot; otherwise, but is scheduled to change in a future
+- release. For the time being, adding hints outside of sections without
+- specifying an explicit locality is therefore deprecated. It is recommended to
+- use &quot;export&quot; whenever possible. [deprecated-hint-without-locality,deprecated]
+- File &quot;./lib/Reals_ext.v&quot;, line 388, characters 0-29:
+- Warning: The default value for hint locality is currently &quot;local&quot; in a
+- section and &quot;global&quot; otherwise, but is scheduled to change in a future
+- release. For the time being, adding hints outside of sections without
+- specifying an explicit locality is therefore deprecated. It is recommended to
+- use &quot;export&quot; whenever possible. [deprecated-hint-without-locality,deprecated]
+- File &quot;./lib/Reals_ext.v&quot;, line 568, characters 0-29:
+- Warning: The default value for hint locality is currently &quot;local&quot; in a
+- section and &quot;global&quot; otherwise, but is scheduled to change in a future
+- release. For the time being, adding hints outside of sections without
+- specifying an explicit locality is therefore deprecated. It is recommended to
+- use &quot;export&quot; whenever possible. [deprecated-hint-without-locality,deprecated]
+- COQC lib/logb.v
+- File &quot;./lib/logb.v&quot;, line 136, characters 0-28:
+- Warning: The default value for hint locality is currently &quot;local&quot; in a
+- section and &quot;global&quot; otherwise, but is scheduled to change in a future
+- release. For the time being, adding hints outside of sections without
+- specifying an explicit locality is therefore deprecated. It is recommended to
+- use &quot;export&quot; whenever possible. [deprecated-hint-without-locality,deprecated]
+- File &quot;./lib/logb.v&quot;, line 266, characters 0-28:
+- Warning: The default value for hint locality is currently &quot;local&quot; in a
+- section and &quot;global&quot; otherwise, but is scheduled to change in a future
+- release. For the time being, adding hints outside of sections without
+- specifying an explicit locality is therefore deprecated. It is recommended to
+- use &quot;export&quot; whenever possible. [deprecated-hint-without-locality,deprecated]
+- File &quot;./lib/logb.v&quot;, line 267, characters 0-28:
+- Warning: The default value for hint locality is currently &quot;local&quot; in a
+- section and &quot;global&quot; otherwise, but is scheduled to change in a future
+- release. For the time being, adding hints outside of sections without
+- specifying an explicit locality is therefore deprecated. It is recommended to
+- use &quot;export&quot; whenever possible. [deprecated-hint-without-locality,deprecated]
+- File &quot;./lib/logb.v&quot;, line 307, characters 0-29:
+- Warning: The default value for hint locality is currently &quot;local&quot; in a
+- section and &quot;global&quot; otherwise, but is scheduled to change in a future
+- release. For the time being, adding hints outside of sections without
+- specifying an explicit locality is therefore deprecated. It is recommended to
+- use &quot;export&quot; whenever possible. [deprecated-hint-without-locality,deprecated]
+- File &quot;./lib/logb.v&quot;, line 308, characters 0-29:
+- Warning: The default value for hint locality is currently &quot;local&quot; in a
+- section and &quot;global&quot; otherwise, but is scheduled to change in a future
+- release. For the time being, adding hints outside of sections without
+- specifying an explicit locality is therefore deprecated. It is recommended to
+- use &quot;export&quot; whenever possible. [deprecated-hint-without-locality,deprecated]
+- File &quot;./lib/logb.v&quot;, line 311, characters 0-30:
+- Warning: The default value for hint locality is currently &quot;local&quot; in a
+- section and &quot;global&quot; otherwise, but is scheduled to change in a future
+- release. For the time being, adding hints outside of sections without
+- specifying an explicit locality is therefore deprecated. It is recommended to
+- use &quot;export&quot; whenever possible. [deprecated-hint-without-locality,deprecated]
+- COQC lib/natbin.v
+- COQC lib/poly_ext.v
+- COQC lib/vandermonde.v
+- COQC lib/Ranalysis_ext.v
+- COQC lib/bigop_ext.v
+- COQC lib/Rbigop.v
+- COQC lib/binary_entropy_function.v
+- COQC lib/hamming.v
+- COQC probability/fdist.v
+- COQC ecc_modern/summary.v
+- COQC ecc_modern/tanner.v
+- File &quot;./probability/fdist.v&quot;, line 90, characters 0-30:
+- Warning: The default value for hint locality is currently &quot;local&quot; in a
+- section and &quot;global&quot; otherwise, but is scheduled to change in a future
+- release. For the time being, adding hints outside of sections without
+- specifying an explicit locality is therefore deprecated. It is recommended to
+- use &quot;export&quot; whenever possible. [deprecated-hint-without-locality,deprecated]
+- File &quot;./probability/fdist.v&quot;, line 91, characters 0-30:
+- Warning: The default value for hint locality is currently &quot;local&quot; in a
+- section and &quot;global&quot; otherwise, but is scheduled to change in a future
+- release. For the time being, adding hints outside of sections without
+- specifying an explicit locality is therefore deprecated. It is recommended to
+- use &quot;export&quot; whenever possible. [deprecated-hint-without-locality,deprecated]
+- COQC ecc_modern/tanner_partition.v
+- COQC probability/proba.v
+- COQC probability/fsdist.v
+- COQC ecc_modern/degree_profile.v
+- File &quot;./probability/fsdist.v&quot;, line 99, characters 0-31:
+- Warning: The default value for hint locality is currently &quot;local&quot; in a
+- section and &quot;global&quot; otherwise, but is scheduled to change in a future
+- release. For the time being, adding hints outside of sections without
+- specifying an explicit locality is therefore deprecated. It is recommended to
+- use &quot;export&quot; whenever possible. [deprecated-hint-without-locality,deprecated]
+- COQC lib/dft.v
+- File &quot;./probability/proba.v&quot;, line 468, characters 0-30:
+- Warning: The default value for hint locality is currently &quot;local&quot; in a
+- section and &quot;global&quot; otherwise, but is scheduled to change in a future
+- release. For the time being, adding hints outside of sections without
+- specifying an explicit locality is therefore deprecated. It is recommended to
+- use &quot;export&quot; whenever possible. [deprecated-hint-without-locality,deprecated]
+- Warning: filter_index_enum is deprecated; use big_enumP instead
+- Warning: filter_index_enum is deprecated; use big_enumP instead
+- Warning: filter_index_enum is deprecated; use big_enumP instead
+- Warning: filter_index_enum is deprecated; use big_enumP instead
+- File &quot;./probability/proba.v&quot;, line 1339, characters 0-28:
+- Warning: The default value for hint locality is currently &quot;local&quot; in a
+- section and &quot;global&quot; otherwise, but is scheduled to change in a future
+- release. For the time being, adding hints outside of sections without
+- specifying an explicit locality is therefore deprecated. It is recommended to
+- use &quot;export&quot; whenever possible. [deprecated-hint-without-locality,deprecated]
+- COQC probability/jfdist.v
+- COQC information_theory/source_code.v
+- COQC toy_examples/expected_value_variance.v
+- COQC toy_examples/expected_value_variance_ordn.v
+- COQC toy_examples/expected_value_variance_tuple.v
+- COQC probability/convex_choice.v
+- COQC probability/graphoid.v
+- COQC probability/jensen.v
+- COQC probability/convex_stone.v
+- COQC probability/ln_facts.v
+- COQC probability/necset.v
+- File &quot;./probability/ln_facts.v&quot;, line 79, characters 0-24:
+- Error: Cannot apply view subR_gt0
+- 
+- make[2]: *** [Makefile.coq:720: probability/ln_facts.vo] Error 1
+- make[2]: *** Waiting for unfinished jobs....
+- make[1]: *** [Makefile.coq:343: all] Error 2
+- make[1]: Leaving directory &#39;/home/bench/.opam/ocaml-base-compiler.4.05.0/.opam-switch/build/coq-infotheo.0.2.2&#39;
+- make: *** [Makefile:2: all] Error 2
+[ERROR] The compilation of coq-infotheo failed at &quot;/home/bench/.opam/opam-init/hooks/sandbox.sh build make -j7&quot;.
+#=== ERROR while compiling coq-infotheo.0.2.2 =================================#
+# context              2.0.1 | linux/x86_64 | ocaml-base-compiler.4.05.0 | file:///home/bench/run/opam-coq-archive/released
+# path                 ~/.opam/ocaml-base-compiler.4.05.0/.opam-switch/build/coq-infotheo.0.2.2
+# command              ~/.opam/opam-init/hooks/sandbox.sh build make -j7
+# exit-code            2
+# env-file             ~/.opam/log/coq-infotheo-15620-335865.env
+# output-file          ~/.opam/log/coq-infotheo-15620-335865.out
+### output ###
+# [...]
+# COQC probability/jensen.v
+# COQC probability/convex_stone.v
+# COQC probability/ln_facts.v
+# COQC probability/necset.v
+# File &quot;./probability/ln_facts.v&quot;, line 79, characters 0-24:
+# Error: Cannot apply view subR_gt0
+# 
+# make[2]: *** [Makefile.coq:720: probability/ln_facts.vo] Error 1
+# make[2]: *** Waiting for unfinished jobs....
+# make[1]: *** [Makefile.coq:343: all] Error 2
+# make[1]: Leaving directory &#39;/home/bench/.opam/ocaml-base-compiler.4.05.0/.opam-switch/build/coq-infotheo.0.2.2&#39;
+# make: *** [Makefile:2: all] Error 2
+&lt;&gt;&lt;&gt; Error report &lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;
++- The following actions failed
+| - build coq-infotheo 0.2.2
++- 
+- No changes have been performed
+# Run eval $(opam env) to update the current shell environment
+&#39;opam install -y -v coq-infotheo.0.2.2 coq.dev&#39; failed.
+</pre></dd>
+            </dl>
+            <h2>Installation size</h2>
+            <p>No files were installed.</p>
+            <h2>Uninstall</h2>
+            <dl class="dl-horizontal">
+              <dt>Command</dt>
+              <dd><code>true</code></dd>
+              <dt>Return code</dt>
+              <dd>0</dd>
+              <dt>Missing removes</dt>
+              <dd>
+                none
+              </dd>
+              <dt>Wrong removes</dt>
+              <dd>
+                none
+              </dd>
+            </dl>
+          </div>
+        </div>
+      </div>
+      <hr/>
+      <div class="footer">
+        <p class="text-center">
+          <small>Sources are on <a href="https://github.com/coq-bench">GitHub</a>. © Guillaume Claret.</small>
+        </p>
+      </div>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="../../../../../bootstrap.min.js"></script>
+  </body>
+</html>

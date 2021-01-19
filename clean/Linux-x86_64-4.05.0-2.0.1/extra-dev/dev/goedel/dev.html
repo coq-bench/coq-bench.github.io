@@ -42,7 +42,7 @@
                 <span class="label label-warning">Error with dependencies</span>
               </small>
             </h1>
-            <p><em><script>document.write(moment("2020-11-30 05:25:13 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2020-11-30 05:25:13 UTC)</em><p>
+            <p><em><script>document.write(moment("2021-01-19 15:27:27 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2021-01-19 15:27:27 UTC)</em><p>
             <h2>Context</h2>
             <pre># Packages matching: installed
 # Name              # Installed # Synopsis
@@ -51,7 +51,7 @@ base-num            base        Num library distributed with the OCaml compiler
 base-threads        base
 base-unix           base
 conf-findutils      1           Virtual package relying on findutils
-conf-gmp            2           Virtual package relying on a GMP lib system installation
+conf-gmp            3           Virtual package relying on a GMP lib system installation
 conf-m4             1           Virtual package relying on m4
 conf-perl           1           Virtual package relying on perl
 coq                 dev         Formal proof management system
@@ -63,29 +63,37 @@ ocamlfind           1.8.1       A library manager for OCaml
 zarith              1.11        Implements arithmetic and logical operations over arbitrary-precision integers
 # opam file:
 opam-version: &quot;2.0&quot;
-maintainer: &quot;dev@clarus.me&quot;
-homepage: &quot;https://github.com/coq-contribs/goedel&quot;
-license: &quot;Proprietary&quot;
-build: [
-  [&quot;coq_makefile&quot; &quot;-f&quot; &quot;Make&quot; &quot;-o&quot; &quot;Makefile&quot;]
-  [make &quot;-j%{jobs}%&quot;]
-  [make &quot;install&quot;]
-]
-remove: [&quot;rm&quot; &quot;-R&quot; &quot;%{lib}%/coq/user-contrib/Goedel&quot;]
+maintainer: &quot;palmskog@gmail.com&quot;
+homepage: &quot;https://github.com/coq-community/goedel&quot;
+dev-repo: &quot;git+https://github.com/coq-community/goedel.git&quot;
+bug-reports: &quot;https://github.com/coq-community/goedel/issues&quot;
+license: &quot;MIT&quot;
+synopsis: &quot;Coq proof of the Gödel-Rosser 1st incompleteness theorem&quot;
+description: &quot;&quot;&quot;
+A proof in Coq of the Gödel-Rosser 1st incompleteness theorem,
+which says that any first order theory extending NN (which is PA
+without induction) that is complete is inconsistent.&quot;&quot;&quot;
+build: [&quot;dune&quot; &quot;build&quot; &quot;-p&quot; name &quot;-j&quot; jobs]
 depends: [
-  &quot;ocaml&quot;
-  &quot;coq&quot; {= &quot;dev&quot;}
+  &quot;dune&quot; {&gt;= &quot;2.5&quot;}
+  &quot;coq&quot; {(&gt;= &quot;8.11&quot; &amp; &lt; &quot;8.14~&quot;) | (= &quot;dev&quot;)}
+  &quot;coq-hydra-battles&quot; {= &quot;dev&quot;}
   &quot;coq-pocklington&quot; {= &quot;dev&quot;}
 ]
-tags: [ &quot;keyword:goedel&quot; &quot;keyword:rosser&quot; &quot;keyword:incompleteness&quot; &quot;keyword:logic&quot; &quot;keyword:hilbert&quot; &quot;category:Mathematics/Logic/Foundations&quot; &quot;date:2007-04-13&quot; ]
-authors: [ &quot;Russell O&#39;Connor &lt;roconnor@alumni.uwaterloo.ca&gt;&quot; ]
-synopsis: &quot;The Gödel-Rosser 1st incompleteness theorem.&quot;
-description: &quot;&quot;&quot;
-A proof that any first order theory extending NN (which is PA
-without induction) that is complete is inconsistent&quot;&quot;&quot;
-flags: light-uninstall
+tags: [
+  &quot;category:Mathematics/Logic/Foundations&quot;
+  &quot;keyword:Goedel&quot;
+  &quot;keyword:Rosser&quot;
+  &quot;keyword:incompleteness&quot;
+  &quot;keyword:logic&quot;
+  &quot;keyword:Hilbert&quot;
+  &quot;logpath:Goedel&quot;
+]
+authors: [
+  &quot;Russell O&#39;Connor&quot;
+]
 url {
-  src: &quot;git+https://github.com/coq-contribs/goedel.git#master&quot;
+  src: &quot;git+https://github.com/coq-community/goedel.git#master&quot;
 }
 </pre>
             <h2>Lint</h2>
@@ -117,7 +125,7 @@ url {
               <dt>Return code</dt>
               <dd>7936</dd>
               <dt>Duration</dt>
-              <dd>30 s</dd>
+              <dd>10 m 15 s</dd>
               <dt>Output</dt>
               <dd><pre># Packages matching: installed
 # Name              # Installed # Synopsis
@@ -126,7 +134,7 @@ base-num            base        Num library distributed with the OCaml compiler
 base-threads        base
 base-unix           base
 conf-findutils      1           Virtual package relying on findutils
-conf-gmp            2           Virtual package relying on a GMP lib system installation
+conf-gmp            3           Virtual package relying on a GMP lib system installation
 conf-m4             1           Virtual package relying on m4
 conf-perl           1           Virtual package relying on perl
 coq                 dev         Formal proof management system
@@ -137,34 +145,60 @@ ocaml-config        1           OCaml Switch Configuration
 ocamlfind           1.8.1       A library manager for OCaml
 zarith              1.11        Implements arithmetic and logical operations over arbitrary-precision integers
 The following actions will be performed:
-  - install coq-pocklington dev
+  - install coq-pocklington          dev
+  - install coq-equations            dev
+  - install ocaml-secondary-compiler 4.08.1-1
+  - install ocamlfind-secondary      1.8.1
+  - install dune                     2.8.1
+  - install coq-hydra-battles        dev
+===== 6 to install =====
 &lt;&gt;&lt;&gt; Gathering sources &gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;
-[coq-pocklington.dev] synchronised from git+https://github.com/coq-contribs/pocklington.git#master
+[coq-pocklington.dev] synchronised from git+https://github.com/coq-community/pocklington.git#master
+[coq-hydra-battles.dev] synchronised from git+https://github.com/coq-community/hydra-battles.git#master
+[dune.2.8.1] downloaded from cache at https://opam.ocaml.org/cache
+[ocaml-secondary-compiler.4.08.1-1] downloaded from cache at https://opam.ocaml.org/cache
+[ocamlfind-secondary.1.8.1] found in cache
+[coq-equations.dev] synchronised from git+https://github.com/mattam82/Coq-Equations#master
 &lt;&gt;&lt;&gt; Processing actions &lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;
-[ERROR] The compilation of coq-pocklington failed at &quot;/home/bench/.opam/opam-init/hooks/sandbox.sh build make -j7&quot;.
-#=== ERROR while compiling coq-pocklington.dev ================================#
+[ERROR] The compilation of coq-equations failed at &quot;/home/bench/.opam/opam-init/hooks/sandbox.sh build make -j7&quot;.
+-&gt; installed coq-pocklington.dev
+-&gt; installed ocaml-secondary-compiler.4.08.1-1
+-&gt; installed ocamlfind-secondary.1.8.1
+-&gt; installed dune.2.8.1
+#=== ERROR while compiling coq-equations.dev ==================================#
 # context              2.0.1 | linux/x86_64 | ocaml-base-compiler.4.05.0 | file:///home/bench/run/opam-coq-archive/extra-dev
-# path                 ~/.opam/ocaml-base-compiler.4.05.0/.opam-switch/build/coq-pocklington.dev
+# path                 ~/.opam/ocaml-base-compiler.4.05.0/.opam-switch/build/coq-equations.dev
 # command              ~/.opam/opam-init/hooks/sandbox.sh build make -j7
 # exit-code            2
-# env-file             ~/.opam/log/coq-pocklington-12809-865888.env
-# output-file          ~/.opam/log/coq-pocklington-12809-865888.out
+# env-file             ~/.opam/log/coq-equations-25274-f33fa5.env
+# output-file          ~/.opam/log/coq-equations-25274-f33fa5.out
 ### output ###
-# COQDEP VFILES
-# COQC lemmas.v
-# COQC dec.v
-# File &quot;./lemmas.v&quot;, line 447, characters 17-20:
-# Error: The reference Zlt was not found in the current environment.
-# 
-# make[1]: *** [Makefile:720: lemmas.vo] Error 1
-# make[1]: *** Waiting for unfinished jobs....
-# make: *** [Makefile:343: all] Error 2
+# [...]
+# File &quot;src/principles_proofs.ml&quot;, line 168, characters 17-29:
+# Warning 3: deprecated: Names.MutInd.equal
+# Use QMutInd.equal
+# File &quot;src/principles_proofs.ml&quot;, line 1006, characters 16-30:
+# Warning 3: deprecated: Names.Constant.equal
+# Use QConstant.equal
+# CAMLOPT -c  src/principles.ml
+# File &quot;src/principles.ml&quot;, line 54, characters 2-27:
+# Error: This function has type string -&gt; Autorewrite.raw_rew_rule list -&gt; unit
+#        It is applied to too many arguments; maybe you forgot a `;&#39;.
+# make[1]: *** [Makefile.coq:668: src/principles.cmx] Error 2
+# make: *** [Makefile.coq:343: all] Error 2
 &lt;&gt;&lt;&gt; Error report &lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;
 +- The following actions failed
-| - build coq-pocklington dev
+| - build coq-equations dev
 +- 
-- No changes have been performed
++- The following changes have been performed (the rest was aborted)
+| - install coq-pocklington          dev
+| - install dune                     2.8.1
+| - install ocaml-secondary-compiler 4.08.1-1
+| - install ocamlfind-secondary      1.8.1
++- 
 # Run eval $(opam env) to update the current shell environment
+The former state can be restored with:
+    opam switch import &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/.opam-switch/backup/state-20210119141241.export&quot;
 </pre></dd>
             </dl>
             <h2>Install</h2>
