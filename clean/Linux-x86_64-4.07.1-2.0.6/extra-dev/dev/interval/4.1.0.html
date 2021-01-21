@@ -42,7 +42,7 @@
                 <span class="label label-danger">Error</span>
               </small>
             </h1>
-            <p><em><script>document.write(moment("2020-12-20 07:58:01 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2020-12-20 07:58:01 UTC)</em><p>
+            <p><em><script>document.write(moment("2021-01-21 02:28:20 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2021-01-21 02:28:20 UTC)</em><p>
             <h2>Context</h2>
             <pre># Packages matching: installed
 # Name              # Installed # Synopsis
@@ -67,6 +67,9 @@ homepage: &quot;http://coq-interval.gforge.inria.fr/&quot;
 dev-repo: &quot;git+https://gitlab.inria.fr/coqinterval/interval.git&quot;
 bug-reports: &quot;https://gitlab.inria.fr/coqinterval/interval/issues&quot;
 license: &quot;CeCILL-C&quot;
+patches: [
+  &quot;remake.patch&quot;
+]
 build: [
   [&quot;autoconf&quot;] {dev}
   [&quot;./configure&quot;]
@@ -85,9 +88,9 @@ depends: [
 tags: [
   &quot;keyword:interval arithmetic&quot;
   &quot;keyword:decision procedure&quot;
-  &quot;keyword:floating point arithmetic&quot;
+  &quot;keyword:floating-point arithmetic&quot;
   &quot;keyword:reflexive tactic&quot;
-  &quot;keyword:taylor models&quot;
+  &quot;keyword:Taylor models&quot;
   &quot;category:Mathematics/Real Calculus and Topology&quot;
   &quot;category:Computer Science/Decision Procedures and Certified Algorithms/Decision procedures&quot;
   &quot;logpath:Interval&quot;
@@ -134,7 +137,7 @@ url {
               <dt>Return code</dt>
               <dd>0</dd>
               <dt>Duration</dt>
-              <dd>14 m 14 s</dd>
+              <dd>9 m 56 s</dd>
             </dl>
             <h2>Install</h2>
             <dl class="dl-horizontal">
@@ -143,7 +146,7 @@ url {
               <dt>Return code</dt>
               <dd>7936</dd>
               <dt>Duration</dt>
-              <dd>5 m 1 s</dd>
+              <dd>3 m 14 s</dd>
               <dt>Output</dt>
               <dd><pre># Packages matching: installed
 # Name                 # Installed # Synopsis
@@ -158,7 +161,7 @@ conf-perl              1           Virtual package relying on perl
 coq                    dev         Formal proof management system
 coq-bignums            dev         Bignums, the Coq library of arbitrary large numbers
 coq-coquelicot         dev         A Coq formalization of real analysis compatible with the standard library.
-coq-flocq              dev         A floating-point formalization for the Coq system.
+coq-flocq              dev         A floating-point formalization for the Coq system
 coq-mathcomp-ssreflect dev         Small Scale Reflection
 num                    1.4         The legacy Num library for arbitrary-precision integer and rational arithmetic
 ocaml                  4.07.1      The OCaml compiler (virtual package)
@@ -174,6 +177,7 @@ Processing  1/1: [coq-interval.4.1.0: http]
 [coq-interval.4.1.0] downloaded from https://gforge.inria.fr/frs/download.php/file/38379/interval-4.1.0.tar.gz
 Processing  1/1:
 &lt;&gt;&lt;&gt; Processing actions &lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;
+Processing  1/2: [coq-interval: patch]
 Processing  1/2: [coq-interval: ./configure]
 + /home/bench/.opam/opam-init/hooks/sandbox.sh &quot;build&quot; &quot;./configure&quot; (CWD=/home/bench/.opam/ocaml-base-compiler.4.07.1/.opam-switch/build/coq-interval.4.1.0)
 - checking for g++... g++
@@ -184,24 +188,22 @@ Processing  1/2: [coq-interval: ./configure]
 - checking whether we are cross compiling... no
 - checking for suffix of object files... o
 - checking whether we are using the GNU C++ compiler... yes
-- checking whether g++ accepts -g... yes
+- checking whether g++ accepts -g... 
+- yes
 - checking for coqc... /home/bench/.opam/ocaml-base-compiler.4.07.1/bin/coqc
-- checking Coq version... 
-- 8.14
+- checking Coq version... 8.14
 - checking for coqdep... /home/bench/.opam/ocaml-base-compiler.4.07.1/bin/coqdep
 - checking for coqdoc... /home/bench/.opam/ocaml-base-compiler.4.07.1/bin/coqdoc
-- checking for Flocq... 
-- yes
+- checking for Flocq... yes
 - checking for primitive floats... 
 - yes
-- checking for Ssreflect... 
-- yes
+- checking for Ssreflect... yes
 - checking for Coquelicot... 
 - yes
 - checking for Bignums... 
 - yes
 - configure: building remake...
-- /usr/bin/ld: /tmp/ccbvAAeH.o: in function `main&#39;:
+- /usr/bin/ld: /tmp/ccsvdE5O.o: in function `main&#39;:
 - remake.cpp:(.text.startup+0xae0): warning: the use of `tempnam&#39; is dangerous, better use `mkstemp&#39;
 - configure: creating ./config.status
 - config.status: creating Remakefile
@@ -244,10 +246,6 @@ Processing  1/2: [coq-interval: ./remake]
 - Building src/Poly/Taylor_model_sharp.vo
 - Building src/Poly/Taylor_poly.vo
 - Building src/Real/Taylor.vo
-- Building src/Real/Xreal.vo
-- Building src/Real/Xreal_derive.vo
-- Building src/Tactic_float.vo
-- Building src/Float/Primitive_ops.vo
 - File &quot;./src/Integral/Priority.v&quot;, line 21, characters 0-62:
 - Warning: Notation &quot;[ rel _ _ | _ ]&quot; was already used in scope fun_scope.
 - [notation-overridden,parsing]
@@ -266,6 +264,10 @@ Processing  1/2: [coq-interval: ./remake]
 - File &quot;./src/Integral/Priority.v&quot;, line 21, characters 0-62:
 - Warning: Notation &quot;[ rel _ _ in _ ]&quot; was already used in scope fun_scope.
 - [notation-overridden,parsing]
+- Building src/Real/Xreal.vo
+- Building src/Real/Xreal_derive.vo
+- Building src/Tactic_float.vo
+- Building src/Float/Primitive_ops.vo
 - File &quot;./src/Missing/MathComp.v&quot;, line 24, characters 0-88:
 - Warning: Notation &quot;[ rel _ _ | _ ]&quot; was already used in scope fun_scope.
 - [notation-overridden,parsing]
@@ -341,16 +343,19 @@ Processing  1/2: [coq-interval: ./remake]
 - Warning: Notation &quot;[ rel _ _ in _ &amp; _ | _ ]&quot; was already used in scope
 - fun_scope. [notation-overridden,parsing]
 - File &quot;./src/Poly/Basic_rec.v&quot;, line 24, characters 0-102:
-- Warning: Notation &quot;[ rel _ _ in _ &amp; _ ]&quot; was already used in scope fun_scope.
-- 
+- Warning: Notation &quot;[ rel _ _ in _ &amp; _ ]&quot; was alr
 [...] truncated
- line 1411, characters 0-21:
-- Warning: omega is deprecated since 8.12; use “lia” instead.
-- [omega-is-deprecated,deprecated]
+ed]
 - File &quot;./src/Float/Specific_ops.v&quot;, line 1420, characters 0-21:
 - Warning: omega is deprecated since 8.12; use “lia” instead.
 - [omega-is-deprecated,deprecated]
 - File &quot;./src/Float/Specific_ops.v&quot;, line 1423, characters 0-21:
+- Warning: omega is deprecated since 8.12; use “lia” instead.
+- [omega-is-deprecated,deprecated]
+- File &quot;./src/Float/Specific_bigint.v&quot;, line 761, characters 2-23:
+- Warning: omega is deprecated since 8.12; use “lia” instead.
+- [omega-is-deprecated,deprecated]
+- File &quot;./src/Float/Specific_bigint.v&quot;, line 763, characters 2-20:
 - Warning: omega is deprecated since 8.12; use “lia” instead.
 - [omega-is-deprecated,deprecated]
 - File &quot;./src/Float/Specific_ops.v&quot;, line 1466, characters 0-27:
@@ -359,24 +364,20 @@ Processing  1/2: [coq-interval: ./remake]
 - File &quot;./src/Float/Specific_ops.v&quot;, line 1477, characters 0-14:
 - Warning: omega is deprecated since 8.12; use “lia” instead.
 - [omega-is-deprecated,deprecated]
-- File &quot;./src/Poly/Taylor_model_sharp.v&quot;, line 2309, characters 4-37:
-- Warning: Duplicate clear of n [duplicate-clear,ssr]
 - File &quot;./src/Float/Specific_ops.v&quot;, line 1620, characters 4-21:
 - Error: Invalid occurrence number: 3.
 - 
 - Failed to build src/Float/Specific_ops.vo
 - Failed to build src/Float/Primitive_ops.vo
 - Failed to build src/Tactic_float.vo
-- File &quot;./src/Poly/Taylor_model_sharp.v&quot;, line 2420, characters 2-189:
-- Warning: Duplicate clear of X [duplicate-clear,ssr]
-- File &quot;./src/Poly/Taylor_model_sharp.v&quot;, line 2423, characters 4-45:
-- Warning: Duplicate clear of X0 [duplicate-clear,ssr]
-- Finished src/Float/Generic_ops.vo
+- File &quot;./src/Float/Specific_bigint.v&quot;, line 830, characters 0-32:
+- Warning: omega is deprecated since 8.12; use “lia” instead.
+- [omega-is-deprecated,deprecated]
+- Finished src/Float/Specific_bigint.vo
 - Failed to build src/Tactic.vo
 - Failed to build all
 - Finished src/Eval/Tree.vo
 - Finished src/Poly/Taylor_model_sharp.vo
-- Finished src/Eval/Prog.vo
 - File &quot;./src/Poly/Taylor_model.v&quot;, line 21, characters 0-88:
 - Warning: Notation &quot;[ rel _ _ | _ ]&quot; was already used in scope fun_scope.
 - [notation-overridden,parsing]
@@ -431,10 +432,15 @@ Processing  1/2: [coq-interval: ./remake]
 - File &quot;./src/Poly/Taylor_model.v&quot;, line 21, characters 0-88:
 - Warning: Notation &quot;_ ^ _&quot; was already used in scope nat_scope.
 - [notation-overridden,parsing]
+- Finished src/Eval/Prog.vo
 - File &quot;./src/Eval/Reify.v&quot;, line 35, characters 0-892:
 - Warning: Not a truly recursive fixpoint. [non-recursive,fixpoints]
 - Finished src/Eval/Reify.vo
 - Finished src/Poly/Taylor_model.vo
+- File &quot;./src/Eval/Eval.v&quot;, line 23, characters 0-42:
+- Warning:
+- New coercion path [real; Finite] : Rbar &gt;-&gt; Rbar is not definitionally an identity function.
+- [ambiguous-paths,typechecker]
 - File &quot;./src/Integral/Integral.v&quot;, line 21, characters 0-42:
 - Warning:
 - New coercion path [real; Finite] : Rbar &gt;-&gt; Rbar is not definitionally an identity function.
@@ -457,10 +463,6 @@ Processing  1/2: [coq-interval: ./remake]
 - File &quot;./src/Integral/Integral.v&quot;, line 22, characters 0-64:
 - Warning: Notation &quot;[ rel _ _ in _ ]&quot; was already used in scope fun_scope.
 - [notation-overridden,parsing]
-- File &quot;./src/Eval/Eval.v&quot;, line 23, characters 0-42:
-- Warning:
-- New coercion path [real; Finite] : Rbar &gt;-&gt; Rbar is not definitionally an identity function.
-- [ambiguous-paths,typechecker]
 - File &quot;./src/Eval/Eval.v&quot;, line 522, characters 0-25:
 - Warning: Duplicate clear of H [duplicate-clear,ssr]
 - File &quot;./src/Integral/Integral.v&quot;, line 583, characters 2-57:
@@ -510,8 +512,8 @@ Processing  1/2: [coq-interval: ./remake]
 # path                 ~/.opam/ocaml-base-compiler.4.07.1/.opam-switch/build/coq-interval.4.1.0
 # command              ~/.opam/opam-init/hooks/sandbox.sh build ./remake -j4
 # exit-code            1
-# env-file             ~/.opam/log/coq-interval-31376-2dea01.env
-# output-file          ~/.opam/log/coq-interval-31376-2dea01.out
+# env-file             ~/.opam/log/coq-interval-17949-d474c2.env
+# output-file          ~/.opam/log/coq-interval-17949-d474c2.out
 ### output ###
 # [...]
 # [omega-is-deprecated,deprecated]
