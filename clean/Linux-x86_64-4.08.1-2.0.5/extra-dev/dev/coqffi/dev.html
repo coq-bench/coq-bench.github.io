@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>coqffi: 40 s</title>
+    <title>coqffi: Error</title>
     <link rel="shortcut icon" type="image/png" href="../../../../../favicon.png" />
     <link href="../../../../../bootstrap.min.css" rel="stylesheet">
     <link href="../../../../../bootstrap-custom.css" rel="stylesheet">
@@ -39,10 +39,10 @@
               coqffi
               <small>
                 dev
-                <span class="label label-success">40 s</span>
+                <span class="label label-danger">Error</span>
               </small>
             </h1>
-            <p><em><script>document.write(moment("2021-01-05 00:05:11 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2021-01-05 00:05:11 UTC)</em><p>
+            <p><em><script>document.write(moment("2021-02-05 23:14:47 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2021-02-05 23:14:47 UTC)</em><p>
             <h2>Context</h2>
             <pre># Packages matching: installed
 # Name              # Installed # Synopsis
@@ -128,45 +128,77 @@ url {
               <dt>Return code</dt>
               <dd>0</dd>
               <dt>Duration</dt>
-              <dd>1 m 44 s</dd>
+              <dd>1 m 23 s</dd>
             </dl>
             <h2>Install</h2>
             <dl class="dl-horizontal">
               <dt>Command</dt>
               <dd><code>opam list; echo; ulimit -Sv 16000000; timeout 2h opam install -y coq-coqffi.dev coq.dev</code></dd>
               <dt>Return code</dt>
-              <dd>0</dd>
+              <dd>7936</dd>
               <dt>Duration</dt>
-              <dd>40 s</dd>
+              <dd>24 s</dd>
+              <dt>Output</dt>
+              <dd><pre># Packages matching: installed
+# Name              # Installed # Synopsis
+base-bigarray       base
+base-threads        base
+base-unix           base
+cmdliner            1.0.4       Declarative definition of command line interfaces for OCaml
+conf-findutils      1           Virtual package relying on findutils
+conf-gmp            3           Virtual package relying on a GMP lib system installation
+conf-m4             1           Virtual package relying on m4
+conf-perl           1           Virtual package relying on perl
+coq                 dev         Formal proof management system
+dune                2.8.2       Fast, portable, and opinionated build system
+num                 1.4         The legacy Num library for arbitrary-precision integer and rational arithmetic
+ocaml               4.08.1      The OCaml compiler (virtual package)
+ocaml-base-compiler 4.08.1      Official release 4.08.1
+ocaml-config        1           OCaml Switch Configuration
+ocamlfind           1.8.1       A library manager for OCaml
+zarith              1.11        Implements arithmetic and logical operations over arbitrary-precision integers
+[NOTE] Package coq is already installed (current version is dev).
+The following actions will be performed:
+  - install coq-coqffi dev
+&lt;&gt;&lt;&gt; Gathering sources &gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;
+[coq-coqffi.dev] synchronised from git+https://github.com/coq-community/coqffi.git#main
+&lt;&gt;&lt;&gt; Processing actions &lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;
+[ERROR] The compilation of coq-coqffi failed at &quot;/home/bench/.opam/opam-init/hooks/sandbox.sh build dune build -p coq-coqffi -j 4&quot;.
+#=== ERROR while compiling coq-coqffi.dev =====================================#
+# context              2.0.5 | linux/x86_64 | ocaml-base-compiler.4.08.1 | file:///home/bench/run/opam-coq-archive/extra-dev
+# path                 ~/.opam/ocaml-base-compiler.4.08.1/.opam-switch/build/coq-coqffi.dev
+# command              ~/.opam/opam-init/hooks/sandbox.sh build dune build -p coq-coqffi -j 4
+# exit-code            1
+# env-file             ~/.opam/log/coq-coqffi-9448-0a5907.env
+# output-file          ~/.opam/log/coq-coqffi-9448-0a5907.out
+### output ###
+# [...]
+# use &quot;export&quot; whenever possible. [deprecated-hint-without-locality,deprecated]
+# File &quot;bin/dune&quot;, line 5, characters 13-20:
+# 5 |   (libraries sexplib compiler-libs.common coqffi cmdliner))
+#                  ^^^^^^^
+# Error: Library &quot;sexplib&quot; not found.
+# Hint: try:
+#   dune external-lib-deps --missing -p coq-coqffi -j 4 @install
+# File &quot;doc/dune&quot;, line 4, characters 7-13:
+# 4 |   (run coqffi --help=groff)))
+#            ^^^^^^
+# Error: Program coqffi not found in the tree or in PATH
+#  (context: default)
+&lt;&gt;&lt;&gt; Error report &lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;
++- The following actions failed
+| - build coq-coqffi dev
++- 
+- No changes have been performed
+# Run eval $(opam env) to update the current shell environment
+</pre></dd>
             </dl>
             <h2>Installation size</h2>
-            <p>Total: 12 M</p>
-            <ul>
-              <li>12 M <code>../ocaml-base-compiler.4.08.1/bin/coqffi</code></li>
-              <li>180 K <code>../ocaml-base-compiler.4.08.1/lib/coq/user-contrib/CoqFFI/Data/String.vo</code></li>
-              <li>44 K <code>../ocaml-base-compiler.4.08.1/lib/coq/user-contrib/CoqFFI/Data/IntFacts.vo</code></li>
-              <li>34 K <code>../ocaml-base-compiler.4.08.1/lib/coq/user-contrib/CoqFFI/Data/Int.vo</code></li>
-              <li>26 K <code>../ocaml-base-compiler.4.08.1/lib/coq/user-contrib/CoqFFI/Data/String.v</code></li>
-              <li>21 K <code>../ocaml-base-compiler.4.08.1/lib/coq/user-contrib/CoqFFI/Extraction.vo</code></li>
-              <li>16 K <code>../ocaml-base-compiler.4.08.1/lib/coq/user-contrib/CoqFFI/Data/Seq.vo</code></li>
-              <li>8 K <code>../ocaml-base-compiler.4.08.1/lib/coq/user-contrib/CoqFFI/Data/IntFacts.v</code></li>
-              <li>5 K <code>../ocaml-base-compiler.4.08.1/man/man1/coqffi.1</code></li>
-              <li>4 K <code>../ocaml-base-compiler.4.08.1/doc/coq-coqffi/README.md</code></li>
-              <li>3 K <code>../ocaml-base-compiler.4.08.1/lib/coq/user-contrib/CoqFFI/Data/Int.v</code></li>
-              <li>3 K <code>../ocaml-base-compiler.4.08.1/lib/coq/user-contrib/CoqFFI/Interface.vo</code></li>
-              <li>3 K <code>../ocaml-base-compiler.4.08.1/lib/coq/user-contrib/CoqFFI/Data/Seq.v</code></li>
-              <li>1 K <code>../ocaml-base-compiler.4.08.1/doc/coq-coqffi/CHANGES.md</code></li>
-              <li>1 K <code>../ocaml-base-compiler.4.08.1/doc/coq-coqffi/LICENSE</code></li>
-              <li>1 K <code>../ocaml-base-compiler.4.08.1/lib/coq-coqffi/opam</code></li>
-              <li>1 K <code>../ocaml-base-compiler.4.08.1/lib/coq/user-contrib/CoqFFI/Extraction.v</code></li>
-              <li>1 K <code>../ocaml-base-compiler.4.08.1/lib/coq/user-contrib/CoqFFI/Interface.v</code></li>
-              <li>1 K <code>../ocaml-base-compiler.4.08.1/lib/coq-coqffi/dune-package</code></li>
-              <li>0 K <code>../ocaml-base-compiler.4.08.1/lib/coq-coqffi/META</code></li>
-            </ul>
+            <p>No files were installed.</p>
             <h2>Uninstall</h2>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>opam remove -y coq-coqffi.dev</code></dd>
+              <dd><code>true</code></dd>
               <dt>Return code</dt>
               <dd>0</dd>
               <dt>Missing removes</dt>
