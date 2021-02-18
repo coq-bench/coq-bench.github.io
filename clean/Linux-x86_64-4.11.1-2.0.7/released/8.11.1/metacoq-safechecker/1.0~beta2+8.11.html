@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>metacoq-safechecker: Error</title>
+    <title>metacoq-safechecker: Not compatible</title>
     <link rel="shortcut icon" type="image/png" href="../../../../../favicon.png" />
     <link href="../../../../../bootstrap.min.css" rel="stylesheet">
     <link href="../../../../../bootstrap-custom.css" rel="stylesheet">
@@ -39,10 +39,10 @@
               metacoq-safechecker
               <small>
                 1.0~beta2+8.11
-                <span class="label label-danger">Error</span>
+                <span class="label label-info">Not compatible</span>
               </small>
             </h1>
-            <p><em><script>document.write(moment("2021-01-31 21:28:02 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2021-01-31 21:28:02 UTC)</em><p>
+            <p><em><script>document.write(moment("2021-02-18 22:32:10 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2021-02-18 22:32:10 UTC)</em><p>
             <h2>Context</h2>
             <pre># Packages matching: installed
 # Name              # Installed # Synopsis
@@ -82,7 +82,7 @@ install: [
   [make &quot;-C&quot; &quot;safechecker&quot; &quot;install&quot;]
 ]
 depends: [
-  &quot;ocaml&quot; {&gt;= &quot;4.07.1&quot;}
+  &quot;ocaml&quot; {&gt;= &quot;4.07.1&quot; &amp; &lt; &quot;4.10~&quot;}
   &quot;coq&quot; {&gt;= &quot;8.11&quot; &amp; &lt; &quot;8.12~&quot;}
   &quot;coq-metacoq-template&quot; {= version}
   &quot;coq-metacoq-pcuic&quot; {= version}
@@ -115,392 +115,39 @@ url {
               <dt>Command</dt>
               <dd><code>opam install -y --show-action coq-metacoq-safechecker.1.0~beta2+8.11 coq.8.11.1</code></dd>
               <dt>Return code</dt>
-              <dd>0</dd>
+              <dd>5120</dd>
+              <dt>Output</dt>
+              <dd><pre>[NOTE] Package coq is already installed (current version is 8.11.1).
+The following dependencies couldn&#39;t be met:
+  - coq-metacoq-safechecker -&gt; ocaml &lt; 4.10~
+      base of this switch (use `--unlock-base&#39; to force)
+No solution found, exiting
+</pre></dd>
             </dl>
             <p>Dry install without Coq/switch base, to test if the problem was incompatibility with the current Coq/OCaml version:</p>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>true</code></dd>
+              <dd><code>opam remove -y coq; opam install -y --show-action --unlock-base coq-metacoq-safechecker.1.0~beta2+8.11</code></dd>
               <dt>Return code</dt>
               <dd>0</dd>
             </dl>
             <h2>Install dependencies</h2>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>opam list; echo; ulimit -Sv 4000000; timeout 2h opam install -y --deps-only coq-metacoq-safechecker.1.0~beta2+8.11 coq.8.11.1</code></dd>
+              <dd><code>true</code></dd>
               <dt>Return code</dt>
               <dd>0</dd>
               <dt>Duration</dt>
-              <dd>38 m 29 s</dd>
+              <dd>0 s</dd>
             </dl>
             <h2>Install</h2>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>opam list; echo; ulimit -Sv 16000000; timeout 2h opam install -y -v coq-metacoq-safechecker.1.0~beta2+8.11 coq.8.11.1</code></dd>
+              <dd><code>true</code></dd>
               <dt>Return code</dt>
-              <dd>7936</dd>
+              <dd>0</dd>
               <dt>Duration</dt>
-              <dd>22 m 44 s</dd>
-              <dt>Output</dt>
-              <dd><pre># Packages matching: installed
-# Name               # Installed    # Synopsis
-base-bigarray        base
-base-threads         base
-base-unix            base
-conf-findutils       1              Virtual package relying on findutils
-conf-m4              1              Virtual package relying on m4
-coq                  8.11.1         Formal proof management system
-coq-equations        1.2.3+8.11     A function definition package for Coq
-coq-metacoq-pcuic    1.0~beta2+8.11 A type system equivalent to Coq&#39;s and its metatheory
-coq-metacoq-template 1.0~beta2+8.11 A quoting and unquoting library for Coq in Coq
-num                  1.4            The legacy Num library for arbitrary-precision integer and rational arithmetic
-ocaml                4.11.1         The OCaml compiler (virtual package)
-ocaml-base-compiler  4.11.1         Official release 4.11.1
-ocaml-config         1              OCaml Switch Configuration
-ocamlfind            1.8.1          A library manager for OCaml
-[NOTE] Package coq is already installed (current version is 8.11.1).
-The following actions will be performed:
-  - install coq-metacoq-safechecker 1.0~beta2+8.11
-&lt;&gt;&lt;&gt; Gathering sources &gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;
-[coq-metacoq-safechecker.1.0~beta2+8.11] found in cache
-Processing  1/1:
-&lt;&gt;&lt;&gt; Processing actions &lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;
-Processing  1/2: [coq-metacoq-safechecker: sh]
-+ /home/bench/.opam/opam-init/hooks/sandbox.sh &quot;build&quot; &quot;sh&quot; &quot;./configure.sh&quot; (CWD=/home/bench/.opam/ocaml-base-compiler.4.11.1/.opam-switch/build/coq-metacoq-safechecker.1.0~beta2+8.11)
-- make -C template-coq mrproper
-- make[1]: Entering directory &#39;/home/bench/.opam/ocaml-base-compiler.4.11.1/.opam-switch/build/coq-metacoq-safechecker.1.0~beta2+8.11/template-coq&#39;
-- rm -f Makefile.coq
-- rm -f Makefile.plugin
-- rm -f Makefile.template
-- make[1]: Leaving directory &#39;/home/bench/.opam/ocaml-base-compiler.4.11.1/.opam-switch/build/coq-metacoq-safechecker.1.0~beta2+8.11/template-coq&#39;
-- make -C pcuic mrproper
-- make[1]: Entering directory &#39;/home/bench/.opam/ocaml-base-compiler.4.11.1/.opam-switch/build/coq-metacoq-safechecker.1.0~beta2+8.11/pcuic&#39;
-- rm -f metacoq-config
-- rm -f Makefile.plugin _PluginProject
-- rm -f Makefile.pcuic _CoqProject
-- make[1]: Leaving directory &#39;/home/bench/.opam/ocaml-base-compiler.4.11.1/.opam-switch/build/coq-metacoq-safechecker.1.0~beta2+8.11/pcuic&#39;
-- make -C safechecker mrproper
-- make[1]: Entering directory &#39;/home/bench/.opam/ocaml-base-compiler.4.11.1/.opam-switch/build/coq-metacoq-safechecker.1.0~beta2+8.11/safechecker&#39;
-- rm -f metacoq-config
-- rm -f Makefile.plugin _PluginProject
-- rm -f Makefile.safechecker _CoqProject
-- make[1]: Leaving directory &#39;/home/bench/.opam/ocaml-base-compiler.4.11.1/.opam-switch/build/coq-metacoq-safechecker.1.0~beta2+8.11/safechecker&#39;
-- make -C erasure mrproper
-- make[1]: Entering directory &#39;/home/bench/.opam/ocaml-base-compiler.4.11.1/.opam-switch/build/coq-metacoq-safechecker.1.0~beta2+8.11/erasure&#39;
-- rm -f Makefile.plugin
-- rm -f Makefile.erasure
-- make[1]: Leaving directory &#39;/home/bench/.opam/ocaml-base-compiler.4.11.1/.opam-switch/build/coq-metacoq-safechecker.1.0~beta2+8.11/erasure&#39;
-- make -C examples mrproper
-- make[1]: Entering directory &#39;/home/bench/.opam/ocaml-base-compiler.4.11.1/.opam-switch/build/coq-metacoq-safechecker.1.0~beta2+8.11/examples&#39;
-- rm -f Makefile.coq
-- make[1]: Leaving directory &#39;/home/bench/.opam/ocaml-base-compiler.4.11.1/.opam-switch/build/coq-metacoq-safechecker.1.0~beta2+8.11/examples&#39;
-- make -C test-suite mrproper
-- make[1]: Entering directory &#39;/home/bench/.opam/ocaml-base-compiler.4.11.1/.opam-switch/build/coq-metacoq-safechecker.1.0~beta2+8.11/test-suite&#39;
-- rm -f Makefile.coq
-- make[1]: Leaving directory &#39;/home/bench/.opam/ocaml-base-compiler.4.11.1/.opam-switch/build/coq-metacoq-safechecker.1.0~beta2+8.11/test-suite&#39;
-- make -C translations mrproper
-- make[1]: Entering directory &#39;/home/bench/.opam/ocaml-base-compiler.4.11.1/.opam-switch/build/coq-metacoq-safechecker.1.0~beta2+8.11/translations&#39;
-- rm -f Makefile.coq
-- make[1]: Leaving directory &#39;/home/bench/.opam/ocaml-base-compiler.4.11.1/.opam-switch/build/coq-metacoq-safechecker.1.0~beta2+8.11/translations&#39;
-- Building MetaCoq globally (default)
-Processing  1/2: [coq-metacoq-safechecker: make safechecker]
-+ /home/bench/.opam/opam-init/hooks/sandbox.sh &quot;build&quot; &quot;make&quot; &quot;-j4&quot; &quot;-C&quot; &quot;safechecker&quot; (CWD=/home/bench/.opam/ocaml-base-compiler.4.11.1/.opam-switch/build/coq-metacoq-safechecker.1.0~beta2+8.11)
-- make: Entering directory &#39;/home/bench/.opam/ocaml-base-compiler.4.11.1/.opam-switch/build/coq-metacoq-safechecker.1.0~beta2+8.11/safechecker&#39;
-- cat metacoq-config &gt; _CoqProject
-- cat metacoq-config &gt; _PluginProject
-- cat _CoqProject.in &gt;&gt; _CoqProject
-- coq_makefile -f _CoqProject -o Makefile.safechecker 
-- make -f Makefile.safechecker
-- cat _PluginProject.in &gt;&gt; _PluginProject
-- make[1]: Entering directory &#39;/home/bench/.opam/ocaml-base-compiler.4.11.1/.opam-switch/build/coq-metacoq-safechecker.1.0~beta2+8.11/safechecker&#39;
-- coq_makefile -f _PluginProject -o Makefile.plugin 
-- `which gsed || which sed` -i -e s/coqdeps/coqdeps.plugin/g Makefile.plugin
-- COQDEP VFILES
-- COQC theories/PCUICErrors.v
-- COQC theories/PCUICWfReduction.v
-- COQC theories/PCUICEqualityDec.v
-- COQC theories/PCUICWfEnv.v
-- COQC theories/PCUICSafeReduce.v
-- COQC theories/PCUICSafeConversion.v
-- COQC theories/PCUICConsistency.v
-- COQC theories/PCUICSafeRetyping.v
-- COQC theories/PCUICTypeChecker.v
-- COQC theories/PCUICSafeChecker.v
-- Axioms:
-- ProofIrrelevance.proof_irrelevance : forall (P : Prop) (p1 p2 : P), p1 = p2
-- normalisation : forall (cf : checker_flags) (Σ : global_env_ext)
--                   (Γ : context) (t : term),
--                 welltyped Σ Γ t -&gt; Acc (cored Σ.1 Γ) t
-- guard_checking : GuardChecker
-- FunctionalExtensionality.functional_extensionality_dep : 
-- forall (A : Type) (B : A -&gt; Type) (f g : forall x : A, B x),
-- (forall x : A, f x = g x) -&gt; f = g
-- fix_guard_context_cumulativity : forall (cf : checker_flags)
--                                    (Σ : PCUICEnvironment.global_env_ext)
--                                    (Γ Γ&#39; : PCUICEnvironment.context)
--                                    (mfix : mfixpoint term),
--                                  cumul_context Σ Γ&#39; Γ -&gt;
--                                  fix_guard Σ Γ mfix -&gt; fix_guard Σ Γ&#39; mfix
-- cofix_guard_context_cumulativity : forall (cf : checker_flags)
--                                      (Σ : PCUICEnvironment.global_env_ext)
--                                      (Γ Γ&#39; : PCUICEnvironment.context)
--                                      (mfix : mfixpoint term),
--                                    cumul_context Σ Γ&#39; Γ -&gt;
--                                    cofix_guard Σ Γ mfix -&gt;
--                                    cofix_guard Σ Γ&#39; mfix
-- COQC theories/SafeTemplateChecker.v
-- COQC theories/Extraction.v
-- echo &quot;Done extracting the safe checker, moving extraction files!&quot;
-- Done extracting the safe checker, moving extraction files!
-- ./clean_extraction.sh
-- Cleaning result of extraction
-- Moving  All_Forall.ml to all_Forall.ml
-- Moving  All_Forall.mli to all_Forall.mli
-- Moving  Ascii.ml to ascii.ml
-- Moving  Ascii.mli to ascii.mli
-- Moving  Ast0.ml to ast0.ml
-- Moving  Ast0.mli to ast0.mli
-- Moving  BasicAst.ml to basicAst.ml
-- Moving  BasicAst.mli to basicAst.mli
-- Moving  Basics.ml to basics.ml
-- Moving  Basics.mli to basics.mli
-- Moving  BinInt.ml to binInt.ml
-- Moving  BinInt.mli to binInt.mli
-- Moving  BinNat.ml to binNat.ml
-- Moving  BinNat.mli to binNat.mli
-- Moving  BinNums.ml to binNums.ml
-- Moving  BinNums.mli to binNums.mli
-- Moving  BinPos.ml to binPos.ml
-- Moving  BinPos.mli to binPos.mli
-- Moving  Bool.ml to bool.ml
-- Moving  Bool.mli to bool.mli
-- Moving  Byte.ml to byte.ml
-- Moving  Byte.mli to byte.mli
-- Moving  Classes0.ml to classes0.ml
-- Moving  Classes0.mli to classes0.mli
-- Moving  Datatypes.ml to datatypes.ml
-- Moving  Datatypes.mli to datatypes.mli
-- Moving  Decimal.ml to decimal.ml
-- Moving  Decimal.mli to decimal.mli
-- Moving  DecimalString.ml to decimalString.ml
-- Moving  DecimalString.mli to decimalString.mli
-- Moving  Environment.ml to environment.ml
-- Moving  Environment.mli to environment.mli
-- Moving  EnvironmentTyping.ml to environmentTyping.ml
-- Moving  EnvironmentTyping.mli to environmentTyping.mli
-- Moving  EqDecInstances.ml to eqDecInstances.ml
-- Moving  EqDecInstances.mli to eqDecInstances.mli
-- Moving  EqdepFacts.ml to eqdepFacts.ml
-- Moving  EqdepFacts.mli to eqdepFacts.mli
-- Moving  Equalities.ml to equalities.ml
-- Moving  Equalities.mli to equalities.mli
-- Moving  FloatOps.ml to floatOps.ml
-- Moving  FloatOps.mli to floatOps.mli
-- Moving  Init0.ml to init0.ml
-- Moving  Init0.mli to init0.mli
-- Moving  Int63.ml to int63.ml
-- Moving  Int63.mli to int63.mli
-- Moving  List0.ml to list0.ml
-- Moving  List0.mli to list0.mli
-- Moving  MCCompare.ml to mCCompare.ml
-- Moving  MCCompare.mli to mCCompare.mli
-- Moving  MCList.ml to mCList.ml
-- Moving  MCList.mli to mCList.mli
-- Moving  MCOption.ml to mCOption.ml
-- Moving  MCOption.mli to mCOption.mli
-- Moving  MCPrelude.ml to mCPrelude.ml
-- Moving  MCPrelude.mli to mCPrelude.mli
-- Moving  MCProd.ml to mCProd.ml
-- Moving  MCProd.mli to mCProd.mli
-- Moving  MCString.ml to mCString.ml
-- Moving  MCString.mli to mCString.mli
-- Moving  MSetDecide.ml to mSetDecide.ml
-- Moving  MSetDecide.mli to mSetDecide.mli
-- Moving  MSetFacts.ml to mSetFacts.ml
-- Moving  MSetFacts.mli to mSetFacts.mli
-- Moving  MSetInterface.ml to mSetInterface.ml
-- Moving  MSetInterface.mli to mSetInterface.mli
-- Moving  MSetList.ml to mSetList.ml
-- Moving  MSetList.mli to mSetList.mli
-- Moving  MSetProperties.ml to mSetProperties.ml
-- Moving  MSetProperties.mli to mSetProperties.mli
-- Moving  MSetWeakList.ml to mSetWeakList.ml
-- Moving  MSetWeakList.mli to mSetWeakList.mli
-- Moving  Nat0.ml to nat0.ml
-- Moving  Nat0.mli to nat0.mli
-- Moving  Orders.ml to orders.ml
-- Moving  Ord
-[...] truncated
-mli
-- Moving  Typing0.ml to typing0.ml
-- Moving  Typing0.mli to typing0.mli
-- Moving  UnivSubst0.ml to univSubst0.ml
-- Moving  UnivSubst0.mli to univSubst0.mli
-- Moving  Universes0.ml to universes0.ml
-- Moving  Universes0.mli to universes0.mli
-- Moving  config0.ml to config0.ml
-- mv: &#39;config0.ml&#39; and &#39;config0.ml&#39; are the same file
-- Moving  config0.mli to config0.mli
-- mv: &#39;config0.mli&#39; and &#39;config0.mli&#39; are the same file
-- Moving  g_metacoq_safechecker.mlg to g_metacoq_safechecker.mlg
-- mv: &#39;g_metacoq_safechecker.mlg&#39; and &#39;g_metacoq_safechecker.mlg&#39; are the same file
-- Moving  metacoq_safechecker_plugin.mlpack to metacoq_safechecker_plugin.mlpack
-- mv: &#39;metacoq_safechecker_plugin.mlpack&#39; and &#39;metacoq_safechecker_plugin.mlpack&#39; are the same file
-- Moving  monad_utils.ml to monad_utils.ml
-- mv: &#39;monad_utils.ml&#39; and &#39;monad_utils.ml&#39; are the same file
-- Moving  monad_utils.mli to monad_utils.mli
-- mv: &#39;monad_utils.mli&#39; and &#39;monad_utils.mli&#39; are the same file
-- Moving  ssrbool.ml to ssrbool.ml
-- mv: &#39;ssrbool.ml&#39; and &#39;ssrbool.ml&#39; are the same file
-- Moving  ssrbool.mli to ssrbool.mli
-- mv: &#39;ssrbool.mli&#39; and &#39;ssrbool.mli&#39; are the same file
-- Moving  uGraph0.ml to uGraph0.ml
-- mv: &#39;uGraph0.ml&#39; and &#39;uGraph0.ml&#39; are the same file
-- Moving  uGraph0.mli to uGraph0.mli
-- mv: &#39;uGraph0.mli&#39; and &#39;uGraph0.mli&#39; are the same file
-- Moving  wGraph.ml to wGraph.ml
-- mv: &#39;wGraph.ml&#39; and &#39;wGraph.ml&#39; are the same file
-- Moving  wGraph.mli to wGraph.mli
-- mv: &#39;wGraph.mli&#39; and &#39;wGraph.mli&#39; are the same file
-- Removing: src/signature.mli src/signature.ml src/classes0.mli src/classes0.ml src/eqDec.mli src/eqDec.ml src/all_Forall.ml src/all_Forall.mli src/ascii.ml src/ascii.mli src/ast0.ml src/ast0.mli src/ast_denoter.ml src/ast_quoter.ml src/astUtils.ml src/astUtils.mli src/basicAst.ml src/basicAst.mli src/basics.ml src/basics.mli src/binInt.ml src/binInt.mli src/binNat.ml src/binNat.mli src/binNums.ml src/binNums.mli src/binPosDef.ml src/binPosDef.mli src/binPos.ml src/binPos.mli src/bool.ml src/bool.mli src/common0.ml src/common0.mli src/compare_dec.ml src/compare_dec.mli src/config0.ml src/config0.mli src/cRelationClasses.ml src/cRelationClasses.mli src/datatypes.ml src/datatypes.mli src/decimal.ml src/decimal.mli src/denoter.ml src/environment.ml src/environment.mli src/equalities.ml src/equalities.mli src/extractable.ml src/extractable.mli src/int63.ml src/int63.mli src/sumbool.mli src/sumbool.ml src/zeven.mli src/zeven.ml src/zArith_dec.mli src/zArith_dec.ml src/zbool.mli src/zbool.ml src/zpower.mli src/zpower.ml src/specFloat.mli src/specFloat.ml src/floatOps.mli src/floatOps.ml src/liftSubst.ml src/liftSubst.mli src/list0.ml src/list0.mli src/logic0.ml src/logic0.mli src/logic1.mli src/logic1.ml src/relation.mli src/relation.ml src/mCPrelude.mli src/mCPrelude.ml src/mCCompare.ml src/mCCompare.mli src/mCList.ml src/mCList.mli src/mCOption.ml src/mCOption.mli src/mCProd.ml src/mCProd.mli src/mCRelations.ml src/mCRelations.mli src/primFloat.mli src/primFloat.ml src/decimalString.mli src/decimalString.ml src/mCString.ml src/mCString.mli src/mCUtils.ml src/mCUtils.mli src/mSetDecide.ml src/mSetDecide.mli src/mSetFacts.ml src/mSetFacts.mli src/mSetInterface.ml src/mSetInterface.mli src/mSetList.ml src/mSetList.mli src/mSetProperties.ml src/mSetProperties.mli src/nat0.ml src/nat0.mli src/orderedType0.ml src/orderedType0.mli src/ordersFacts.ml src/ordersFacts.mli src/ordersLists.ml src/ordersLists.mli src/orders.ml src/orders.mli src/ordersTac.ml src/ordersTac.mli src/peanoNat.ml src/peanoNat.mli src/plugin_core.ml src/plugin_core.mli src/induction.mli src/induction.ml src/eqDecInstances.mli src/eqDecInstances.ml src/reflect.mli src/reflect.ml src/pretty.ml src/pretty.mli src/reification.ml src/quoter.ml src/run_extractable.ml src/run_extractable.mli src/specif.ml src/specif.mli src/string0.ml src/string0.mli src/tm_util.ml src/universes0.ml src/universes0.mli src/univSubst0.ml src/univSubst0.mli
-- make[1]: Leaving directory &#39;/home/bench/.opam/ocaml-base-compiler.4.11.1/.opam-switch/build/coq-metacoq-safechecker.1.0~beta2+8.11/safechecker&#39;
-- make -f Makefile.plugin
-- make[1]: Entering directory &#39;/home/bench/.opam/ocaml-base-compiler.4.11.1/.opam-switch/build/coq-metacoq-safechecker.1.0~beta2+8.11/safechecker&#39;
-- COQDEP VFILES
-- COQPP src/g_metacoq_safechecker.mlg
-- CAMLDEP src/safeTemplateChecker.mli
-- CAMLDEP src/pCUICSafeChecker.mli
-- CAMLDEP src/pCUICTypeChecker.mli
-- CAMLDEP src/pCUICSafeConversion.mli
-- CAMLDEP src/pCUICEqualityDec.mli
-- CAMLDEP src/pCUICSafeReduce.mli
-- CAMLDEP src/pCUICErrors.mli
-- CAMLDEP src/pCUICPretty.mli
-- CAMLDEP src/templateToPCUIC.mli
-- CAMLDEP src/pCUICWfUniverses.mli
-- CAMLDEP src/pCUICNormal.mli
-- CAMLDEP src/pCUICPosition.mli
-- CAMLDEP src/pCUICCumulativity.mli
-- CAMLDEP src/pCUICUnivSubst.mli
-- CAMLDEP src/pCUICTyping.mli
-- CAMLDEP src/pCUICReduction.mli
-- CAMLDEP src/pCUICEquality.mli
-- CAMLDEP src/pCUICReflect.mli
-- CAMLDEP src/pCUICInduction.mli
-- CAMLDEP src/pCUICLiftSubst.mli
-- CAMLDEP src/pCUICAstUtils.mli
-- CAMLDEP src/pCUICAst.mli
-- CAMLDEP src/pCUICPrimitive.mli
-- CAMLDEP src/typing0.mli
-- CAMLDEP src/environmentTyping.mli
-- CAMLDEP src/wGraph.mli
-- CAMLDEP src/uGraph0.mli
-- CAMLDEP src/monad_utils.mli
-- CAMLDEP src/ssrbool.mli
-- CAMLDEP src/eqdepFacts.mli
-- CAMLDEP src/mSetWeakList.mli
-- COQDEP src/metacoq_safechecker_plugin.mlpack
-- CAMLDEP src/safeTemplateChecker.ml
-- CAMLDEP src/pCUICSafeChecker.ml
-- CAMLDEP src/pCUICTypeChecker.ml
-- CAMLDEP src/pCUICSafeConversion.ml
-- CAMLDEP src/pCUICEqualityDec.ml
-- CAMLDEP src/pCUICSafeReduce.ml
-- CAMLDEP src/pCUICErrors.ml
-- CAMLDEP src/pCUICPretty.ml
-- CAMLDEP src/templateToPCUIC.ml
-- CAMLDEP src/pCUICWfUniverses.ml
-- CAMLDEP src/pCUICNormal.ml
-- CAMLDEP src/pCUICPosition.ml
-- CAMLDEP src/pCUICCumulativity.ml
-- CAMLDEP src/pCUICUnivSubst.ml
-- CAMLDEP src/pCUICTyping.ml
-- CAMLDEP src/pCUICReduction.ml
-- CAMLDEP src/pCUICEquality.ml
-- CAMLDEP src/pCUICReflect.ml
-- CAMLDEP src/pCUICInduction.ml
-- CAMLDEP src/pCUICLiftSubst.ml
-- CAMLDEP src/pCUICAstUtils.ml
-- CAMLDEP src/pCUICAst.ml
-- CAMLDEP src/pCUICPrimitive.ml
-- CAMLDEP src/typing0.ml
-- CAMLDEP src/environmentTyping.ml
-- CAMLDEP src/wGraph.ml
-- CAMLDEP src/uGraph0.ml
-- CAMLDEP src/monad_utils.ml
-- CAMLDEP src/ssrbool.ml
-- CAMLDEP src/eqdepFacts.ml
-- CAMLDEP src/mSetWeakList.ml
-- CAMLDEP src/g_metacoq_safechecker.ml
-- CAMLC -c src/monad_utils.mli
-- CAMLC -c src/mSetWeakList.mli
-- CAMLC -c src/eqdepFacts.mli
-- CAMLC -c src/ssrbool.mli
-- CAMLC -c src/environmentTyping.mli
-- CAMLC -c src/typing0.mli
-- CAMLC -c src/pCUICPrimitive.mli
-- CAMLC -c src/pCUICNormal.mli
-- CAMLOPT -c -for-pack Metacoq_safechecker_plugin src/monad_utils.ml
-- CAMLOPT -c -for-pack Metacoq_safechecker_plugin src/mSetWeakList.ml
-- CAMLOPT -c -for-pack Metacoq_safechecker_plugin src/eqdepFacts.ml
-- CAMLOPT -c -for-pack Metacoq_safechecker_plugin src/ssrbool.ml
-- CAMLC -c src/wGraph.mli
-- CAMLOPT -c -for-pack Metacoq_safechecker_plugin src/environmentTyping.ml
-- CAMLOPT -c -for-pack Metacoq_safechecker_plugin src/typing0.ml
-- CAMLOPT -c -for-pack Metacoq_safechecker_plugin src/pCUICPrimitive.ml
-- CAMLC -c src/pCUICAst.mli
-- CAMLOPT -c -for-pack Metacoq_safechecker_plugin src/pCUICNormal.ml
-- CAMLOPT -c -for-pack Metacoq_safechecker_plugin src/wGraph.ml
-- CAMLC -c src/uGraph0.mli
-- CAMLC -c src/pCUICAstUtils.mli
-- File &quot;src/environmentTyping.ml&quot;, line 905, characters 10-11:
-- 905 |  functor (L:sig
--                 ^
-- Error (warning 60): unused module L.
-- CAMLC -c src/pCUICInduction.mli
-- CAMLC -c src/pCUICUnivSubst.mli
-- CAMLC -c src/pCUICLiftSubst.mli
-- CAMLC -c src/pCUICEquality.mli
-- CAMLC -c src/templateToPCUIC.mli
-- CAMLC -c src/pCUICReflect.mli
-- CAMLC -c src/pCUICReduction.mli
-- make[2]: *** [Makefile.plugin:625: src/environmentTyping.cmx] Error 2
-- make[2]: *** Waiting for unfinished jobs....
-- make[1]: *** [Makefile.plugin:327: all] Error 2
-- make[1]: Leaving directory &#39;/home/bench/.opam/ocaml-base-compiler.4.11.1/.opam-switch/build/coq-metacoq-safechecker.1.0~beta2+8.11/safechecker&#39;
-- make: *** [Makefile:26: plugin] Error 2
-- make: Leaving directory &#39;/home/bench/.opam/ocaml-base-compiler.4.11.1/.opam-switch/build/coq-metacoq-safechecker.1.0~beta2+8.11/safechecker&#39;
-[ERROR] The compilation of coq-metacoq-safechecker failed at &quot;/home/bench/.opam/opam-init/hooks/sandbox.sh build make -j4 -C safechecker&quot;.
-#=== ERROR while compiling coq-metacoq-safechecker.1.0~beta2+8.11 =============#
-# context              2.0.7 | linux/x86_64 | ocaml-base-compiler.4.11.1 | file:///home/bench/run/opam-coq-archive/released
-# path                 ~/.opam/ocaml-base-compiler.4.11.1/.opam-switch/build/coq-metacoq-safechecker.1.0~beta2+8.11
-# command              ~/.opam/opam-init/hooks/sandbox.sh build make -j4 -C safechecker
-# exit-code            2
-# env-file             ~/.opam/log/coq-metacoq-safechecker-932-6d07ae.env
-# output-file          ~/.opam/log/coq-metacoq-safechecker-932-6d07ae.out
-### output ###
-# [...]
-# CAMLC -c src/pCUICUnivSubst.mli
-# CAMLC -c src/pCUICLiftSubst.mli
-# CAMLC -c src/pCUICEquality.mli
-# CAMLC -c src/templateToPCUIC.mli
-# CAMLC -c src/pCUICReflect.mli
-# CAMLC -c src/pCUICReduction.mli
-# make[2]: *** [Makefile.plugin:625: src/environmentTyping.cmx] Error 2
-# make[2]: *** Waiting for unfinished jobs....
-# make[1]: *** [Makefile.plugin:327: all] Error 2
-# make[1]: Leaving directory &#39;/home/bench/.opam/ocaml-base-compiler.4.11.1/.opam-switch/build/coq-metacoq-safechecker.1.0~beta2+8.11/safechecker&#39;
-# make: *** [Makefile:26: plugin] Error 2
-# make: Leaving directory &#39;/home/bench/.opam/ocaml-base-compiler.4.11.1/.opam-switch/build/coq-metacoq-safechecker.1.0~beta2+8.11/safechecker&#39;
-&lt;&gt;&lt;&gt; Error report &lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;
-+- The following actions failed
-| - build coq-metacoq-safechecker 1.0~beta2+8.11
-+- 
-- No changes have been performed
-# Run eval $(opam env) to update the current shell environment
-&#39;opam install -y -v coq-metacoq-safechecker.1.0~beta2+8.11 coq.8.11.1&#39; failed.
-The middle of the output is truncated (maximum 20000 characters)
-</pre></dd>
+              <dd>0 s</dd>
             </dl>
             <h2>Installation size</h2>
             <p>No files were installed.</p>
