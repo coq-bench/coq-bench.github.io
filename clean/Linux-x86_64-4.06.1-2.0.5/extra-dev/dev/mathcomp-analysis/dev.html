@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>mathcomp-analysis: Not compatible</title>
+    <title>mathcomp-analysis: Error with dependencies</title>
     <link rel="shortcut icon" type="image/png" href="../../../../../favicon.png" />
     <link href="../../../../../bootstrap.min.css" rel="stylesheet">
     <link href="../../../../../bootstrap-custom.css" rel="stylesheet">
@@ -39,10 +39,10 @@
               mathcomp-analysis
               <small>
                 dev
-                <span class="label label-info">Not compatible</span>
+                <span class="label label-warning">Error with dependencies</span>
               </small>
             </h1>
-            <p><em><script>document.write(moment("2020-11-23 02:24:08 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2020-11-23 02:24:08 UTC)</em><p>
+            <p><em><script>document.write(moment("2021-02-26 02:15:42 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2021-02-26 02:15:42 UTC)</em><p>
             <h2>Context</h2>
             <pre># Packages matching: installed
 # Name              # Installed # Synopsis
@@ -50,7 +50,7 @@ base-bigarray       base
 base-threads        base
 base-unix           base
 conf-findutils      1           Virtual package relying on findutils
-conf-gmp            2           Virtual package relying on a GMP lib system installation
+conf-gmp            3           Virtual package relying on a GMP lib system installation
 conf-m4             1           Virtual package relying on m4
 conf-perl           1           Virtual package relying on perl
 coq                 dev         Formal proof management system
@@ -83,10 +83,14 @@ install: [
 ]
 remove: [&quot;rm&quot; &quot;-R&quot; &quot;%{lib}%/coq/user-contrib/mathcomp/analysis&quot;]
 depends: [
-  &quot;coq&quot;                      {((&gt;= &quot;8.10&quot; &amp; &lt; &quot;8.12~&quot;) | = &quot;dev&quot;)}
-  &quot;coq-mathcomp-field&quot;       {(&gt;= &quot;1.11.0&quot; &amp; &lt; &quot;1.12~&quot;)}
-  &quot;coq-mathcomp-finmap&quot;      {(&gt;= &quot;1.5.0&quot; &amp; &lt; &quot;1.6~&quot;)}
-  &quot;coq-mathcomp-real-closed&quot; {(&gt;= &quot;1.1.1&quot; &amp; &lt; &quot;1.2~&quot;)}
+  &quot;coq&quot; { (&gt;= &quot;8.11&quot; &amp; &lt; &quot;8.14~&quot;) | (= &quot;dev&quot;) }
+  &quot;coq-mathcomp-ssreflect&quot; { (&gt;= &quot;1.12.0&quot; &amp; &lt; &quot;1.13~&quot;) | (= &quot;dev&quot;) }
+  &quot;coq-mathcomp-fingroup&quot;
+  &quot;coq-mathcomp-algebra&quot;
+  &quot;coq-mathcomp-solvable&quot;
+  &quot;coq-mathcomp-field&quot;
+  &quot;coq-mathcomp-finmap&quot; { (&gt;= &quot;1.5.1&quot; &amp; &lt; &quot;1.6~&quot;) | (= &quot;dev&quot;) }
+  &quot;coq-hierarchy-builder&quot; { &gt;= &quot;0.10.0&quot; | (= &quot;dev&quot;) }
 ]
 synopsis: &quot;An analysis library for mathematical components&quot;
 description: &quot;&quot;&quot;
@@ -111,34 +115,184 @@ url {
               <dt>Command</dt>
               <dd><code>opam install -y --show-action coq-mathcomp-analysis.dev coq.dev</code></dd>
               <dt>Return code</dt>
-              <dd>5120</dd>
-              <dt>Output</dt>
-              <dd><pre>[NOTE] Package coq is already installed (current version is dev).
-The following dependencies couldn&#39;t be met:
-  - coq-mathcomp-analysis -&gt; coq-mathcomp-finmap &lt; 1.6~ -&gt; coq-mathcomp-ssreflect &lt; 1.8~ -&gt; coq &lt; 8.10~ -&gt; ocaml &lt; 4.06.0
-      base of this switch (use `--unlock-base&#39; to force)
-  - coq-mathcomp-analysis -&gt; coq-mathcomp-finmap &lt; 1.6~ -&gt; coq &lt; 8.13~ -&gt; ocaml &lt; 4.06.0
-      base of this switch (use `--unlock-base&#39; to force)
-Your request can&#39;t be satisfied:
-  - No available version of coq satisfies the constraints
-No solution found, exiting
-</pre></dd>
+              <dd>0</dd>
             </dl>
             <p>Dry install without Coq/switch base, to test if the problem was incompatibility with the current Coq/OCaml version:</p>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>opam remove -y coq; opam install -y --show-action --unlock-base coq-mathcomp-analysis.dev</code></dd>
+              <dd><code>true</code></dd>
               <dt>Return code</dt>
               <dd>0</dd>
             </dl>
             <h2>Install dependencies</h2>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>true</code></dd>
+              <dd><code>opam list; echo; ulimit -Sv 4000000; timeout 2h opam install -y --deps-only coq-mathcomp-analysis.dev coq.dev</code></dd>
               <dt>Return code</dt>
-              <dd>0</dd>
+              <dd>7936</dd>
               <dt>Duration</dt>
-              <dd>0 s</dd>
+              <dd>33 m 30 s</dd>
+              <dt>Output</dt>
+              <dd><pre># Packages matching: installed
+# Name              # Installed # Synopsis
+base-bigarray       base
+base-threads        base
+base-unix           base
+conf-findutils      1           Virtual package relying on findutils
+conf-gmp            3           Virtual package relying on a GMP lib system installation
+conf-m4             1           Virtual package relying on m4
+conf-perl           1           Virtual package relying on perl
+coq                 dev         Formal proof management system
+num                 1.4         The legacy Num library for arbitrary-precision integer and rational arithmetic
+ocaml               4.06.1      The OCaml compiler (virtual package)
+ocaml-base-compiler 4.06.1      Official 4.06.1 release
+ocaml-config        1           OCaml Switch Configuration
+ocamlfind           1.8.1       A library manager for OCaml
+zarith              1.11        Implements arithmetic and logical operations over arbitrary-precision integers
+The following actions will be performed:
+  - install camlp5                   7.14
+  - install ocaml-secondary-compiler 4.08.1-1
+  - install coq-mathcomp-ssreflect   dev
+  - install ocamlfind-secondary      1.8.1
+  - install coq-mathcomp-fingroup    dev
+  - install coq-mathcomp-bigenough   dev
+  - install dune                     2.8.2
+  - install coq-mathcomp-algebra     dev
+  - install coq-mathcomp-finmap      dev
+  - install sexplib0                 v0.13.0
+  - install seq                      0.2.2
+  - install result                   1.5
+  - install ppx_derivers             1.2.1
+  - install ocaml-compiler-libs      v0.12.3
+  - install cppo                     1.6.7
+  - install coq-mathcomp-solvable    dev
+  - install re                       1.9.0
+  - install csexp                    1.4.0
+  - install ocaml-migrate-parsetree  1.8.0
+  - install coq-mathcomp-field       dev
+  - install dune-configurator        2.8.2
+  - install base                     v0.13.2
+  - install stdio                    v0.13.0
+  - install ppxlib                   0.14.0
+  - install ppx_deriving             5.1
+  - install elpi                     1.13.0
+  - install coq-elpi                 dev
+  - install coq-hierarchy-builder    dev
+===== 28 to install =====
+&lt;&gt;&lt;&gt; Gathering sources &gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;
+[base.v0.13.2] downloaded from cache at https://opam.ocaml.org/cache
+[camlp5.7.14] downloaded from cache at https://opam.ocaml.org/cache
+[coq-elpi.dev] synchronised from git+https://github.com/LPCIC/coq-elpi.git#coq-master
+[coq-hierarchy-builder.dev] synchronised from git+https://github.com/math-comp/hierarchy-builder.git#master
+[coq-mathcomp-bigenough.dev] synchronised from git+https://github.com/math-comp/bigenough.git#master
+[coq-mathcomp-algebra.dev] synchronised from git+https://github.com/math-comp/math-comp.git
+[coq-mathcomp-fingroup.dev] synchronised from git+https://github.com/math-comp/math-comp.git
+[coq-mathcomp-field.dev] synchronised from git+https://github.com/math-comp/math-comp.git
+[coq-mathcomp-solvable.dev] synchronised from git+https://github.com/math-comp/math-comp.git
+[cppo.1.6.7] downloaded from cache at https://opam.ocaml.org/cache
+[csexp.1.4.0] downloaded from cache at https://opam.ocaml.org/cache
+[coq-mathcomp-ssreflect.dev] synchronised from git+https://github.com/math-comp/math-comp.git#master
+[dune.2.8.2] downloaded from cache at https://opam.ocaml.org/cache
+[coq-mathcomp-finmap.dev] synchronised from git+https://github.com/math-comp/finmap.git#master
+[ocaml-compiler-libs.v0.12.3] downloaded from cache at https://opam.ocaml.org/cache
+[dune-configurator.2.8.2] downloaded from cache at https://opam.ocaml.org/cache
+[elpi.1.13.0] downloaded from cache at https://opam.ocaml.org/cache
+[ocaml-migrate-parsetree.1.8.0] downloaded from cache at https://opam.ocaml.org/cache
+[ocamlfind-secondary.1.8.1] found in cache
+[ppx_derivers.1.2.1] downloaded from cache at https://opam.ocaml.org/cache
+[ppx_deriving.5.1] downloaded from cache at https://opam.ocaml.org/cache
+[ppxlib.0.14.0] downloaded from cache at https://opam.ocaml.org/cache
+[ocaml-secondary-compiler.4.08.1-1] downloaded from cache at https://opam.ocaml.org/cache
+[re.1.9.0] downloaded from cache at https://opam.ocaml.org/cache
+[result.1.5] downloaded from cache at https://opam.ocaml.org/cache
+[seq.0.2.2] downloaded from cache at https://opam.ocaml.org/cache
+[sexplib0.v0.13.0] downloaded from cache at https://opam.ocaml.org/cache
+[stdio.v0.13.0] downloaded from cache at https://opam.ocaml.org/cache
+&lt;&gt;&lt;&gt; Processing actions &lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;
+-&gt; installed coq-mathcomp-ssreflect.dev
+-&gt; installed coq-mathcomp-bigenough.dev
+-&gt; installed camlp5.7.14
+-&gt; installed coq-mathcomp-finmap.dev
+-&gt; installed coq-mathcomp-fingroup.dev
+-&gt; installed ocaml-secondary-compiler.4.08.1-1
+-&gt; installed ocamlfind-secondary.1.8.1
+-&gt; installed dune.2.8.2
+-&gt; installed cppo.1.6.7
+-&gt; installed ocaml-compiler-libs.v0.12.3
+-&gt; installed ppx_derivers.1.2.1
+-&gt; installed result.1.5
+-&gt; installed seq.0.2.2
+-&gt; installed csexp.1.4.0
+-&gt; installed re.1.9.0
+-&gt; installed sexplib0.v0.13.0
+-&gt; installed dune-configurator.2.8.2
+-&gt; installed ocaml-migrate-parsetree.1.8.0
+-&gt; installed coq-mathcomp-algebra.dev
+-&gt; installed base.v0.13.2
+-&gt; installed stdio.v0.13.0
+-&gt; installed ppxlib.0.14.0
+-&gt; installed ppx_deriving.5.1
+-&gt; installed elpi.1.13.0
+[ERROR] The compilation of coq-elpi failed at &quot;/home/bench/.opam/opam-init/hooks/sandbox.sh build make COQBIN=/home/bench/.opam/ocaml-base-compiler.4.06.1/bin/ ELPIDIR=/home/bench/.opam/ocaml-base-compiler.4.06.1/lib/elpi&quot;.
+-&gt; installed coq-mathcomp-solvable.dev
+-&gt; installed coq-mathcomp-field.dev
+#=== ERROR while compiling coq-elpi.dev =======================================#
+# context              2.0.5 | linux/x86_64 | ocaml-base-compiler.4.06.1 | file:///home/bench/run/opam-coq-archive/extra-dev
+# path                 ~/.opam/ocaml-base-compiler.4.06.1/.opam-switch/build/coq-elpi.dev
+# command              ~/.opam/opam-init/hooks/sandbox.sh build make COQBIN=/home/bench/.opam/ocaml-base-compiler.4.06.1/bin/ ELPIDIR=/home/bench/.opam/ocaml-base-compiler.4.06.1/lib/elpi
+# exit-code            2
+# env-file             ~/.opam/log/coq-elpi-15585-053767.env
+# output-file          ~/.opam/log/coq-elpi-15585-053767.out
+### output ###
+# if [ &quot;/home/bench/.opam/ocaml-base-compiler.4.06.1/lib/elpi&quot; != &quot;elpi/findlib/elpi&quot; ]; then\
+# [...]
+# fi
+# Using coq found in /home/bench/.opam/ocaml-base-compiler.4.06.1/bin/, from COQBIN or PATH
+# ########################## building plugin ##########################
+# CAMLC -c src/coq_elpi_HOAS.mli
+# CAMLC -c src/coq_elpi_goal_HOAS.mli
+# CAMLC -c src/coq_elpi_vernacular.mli
+# CAMLC -c src/coq_elpi_utils.mli
+# File &quot;src/coq_elpi_utils.mli&quot;, line 27, characters 12-20:
+# Error: Unbound module CDebug
+# make[1]: *** [Makefile.coq:654: src/coq_elpi_utils.cmi] Error 2
+# make: *** [Makefile:30: build] Error 2
+&lt;&gt;&lt;&gt; Error report &lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;
++- The following actions failed
+| - build coq-elpi dev
++- 
++- The following changes have been performed (the rest was aborted)
+| - install base                     v0.13.2
+| - install camlp5                   7.14
+| - install coq-mathcomp-algebra     dev
+| - install coq-mathcomp-bigenough   dev
+| - install coq-mathcomp-field       dev
+| - install coq-mathcomp-fingroup    dev
+| - install coq-mathcomp-finmap      dev
+| - install coq-mathcomp-solvable    dev
+| - install coq-mathcomp-ssreflect   dev
+| - install cppo                     1.6.7
+| - install csexp                    1.4.0
+| - install dune                     2.8.2
+| - install dune-configurator        2.8.2
+| - install elpi                     1.13.0
+| - install ocaml-compiler-libs      v0.12.3
+| - install ocaml-migrate-parsetree  1.8.0
+| - install ocaml-secondary-compiler 4.08.1-1
+| - install ocamlfind-secondary      1.8.1
+| - install ppx_derivers             1.2.1
+| - install ppx_deriving             5.1
+| - install ppxlib                   0.14.0
+| - install re                       1.9.0
+| - install result                   1.5
+| - install seq                      0.2.2
+| - install sexplib0                 v0.13.0
+| - install stdio                    v0.13.0
++- 
+# Run eval $(opam env) to update the current shell environment
+The former state can be restored with:
+    opam switch import &quot;/home/bench/.opam/ocaml-base-compiler.4.06.1/.opam-switch/backup/state-20210225174705.export&quot;
+</pre></dd>
             </dl>
             <h2>Install</h2>
             <dl class="dl-horizontal">

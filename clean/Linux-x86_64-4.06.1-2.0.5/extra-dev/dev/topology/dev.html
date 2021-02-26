@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>topology: Error</title>
+    <title>topology: 1 m 0 s</title>
     <link rel="shortcut icon" type="image/png" href="../../../../../favicon.png" />
     <link href="../../../../../bootstrap.min.css" rel="stylesheet">
     <link href="../../../../../bootstrap-custom.css" rel="stylesheet">
@@ -39,10 +39,10 @@
               topology
               <small>
                 dev
-                <span class="label label-danger">Error</span>
+                <span class="label label-success">1 m 0 s</span>
               </small>
             </h1>
-            <p><em><script>document.write(moment("2020-11-23 02:24:08 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2020-11-23 02:24:08 UTC)</em><p>
+            <p><em><script>document.write(moment("2021-02-26 02:15:42 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2021-02-26 02:15:42 UTC)</em><p>
             <h2>Context</h2>
             <pre># Packages matching: installed
 # Name              # Installed # Synopsis
@@ -50,7 +50,7 @@ base-bigarray       base
 base-threads        base
 base-unix           base
 conf-findutils      1           Virtual package relying on findutils
-conf-gmp            2           Virtual package relying on a GMP lib system installation
+conf-gmp            3           Virtual package relying on a GMP lib system installation
 conf-m4             1           Virtual package relying on m4
 conf-perl           1           Virtual package relying on perl
 coq                 dev         Formal proof management system
@@ -62,28 +62,38 @@ ocamlfind           1.8.1       A library manager for OCaml
 zarith              1.11        Implements arithmetic and logical operations over arbitrary-precision integers
 # opam file:
 opam-version: &quot;2.0&quot;
-maintainer: &quot;dev@clarus.me&quot;
-homepage: &quot;https://github.com/coq-contribs/topology&quot;
-license: &quot;LGPL&quot;
-build: [
-  [&quot;coq_makefile&quot; &quot;-f&quot; &quot;Make&quot; &quot;-o&quot; &quot;Makefile&quot;]
-  [make &quot;-j%{jobs}%&quot;]
-  [make &quot;install&quot;]
-]
-remove: [&quot;rm&quot; &quot;-R&quot; &quot;%{lib}%/coq/user-contrib/Topology&quot;]
+maintainer: &quot;palmskog@gmail.com&quot;
+homepage: &quot;https://github.com/coq-community/topology&quot;
+dev-repo: &quot;git+https://github.com/coq-community/topology.git&quot;
+bug-reports: &quot;https://github.com/coq-community/topology/issues&quot;
+license: &quot;LGPL-2.1-or-later&quot;
+synopsis: &quot;General topology in Coq&quot;
+description: &quot;&quot;&quot;
+This library develops some of the basic concepts
+and results of general topology in Coq.
+&quot;&quot;&quot;
+build: [&quot;dune&quot; &quot;build&quot; &quot;-p&quot; name &quot;-j&quot; jobs]
 depends: [
-  &quot;ocaml&quot;
-  &quot;coq&quot; {= &quot;dev&quot;}
-  &quot;coq-zorns-lemma&quot; {= &quot;dev&quot;}
+  &quot;dune&quot; {&gt;= &quot;2.5&quot;}
+  &quot;coq&quot; {(&gt;= &quot;8.10&quot; &amp; &lt; &quot;8.14~&quot;) | (= &quot;dev&quot;)}
+  &quot;coq-zorns-lemma&quot; {= version}
 ]
-tags: [ &quot;keyword:topology&quot; &quot;keyword:filters&quot; &quot;keyword:nets&quot; &quot;keyword:metric spaces&quot; &quot;keyword:real analysis&quot; &quot;keyword:urysohn&#39;s lemma&quot; &quot;keyword:tietze extension theorem&quot; &quot;category:Mathematics/Real Calculus and Topology&quot; ]
-authors: [ &quot;Daniel Schepler &lt;dschepler@gmail.com&gt;&quot; ]
-synopsis: &quot;General Topology.&quot;
-description:
-  &quot;This library develops some of the basic concepts and results of general topology.&quot;
-flags: light-uninstall
+tags: [
+  &quot;category:Mathematics/Real Calculus and Topology&quot;
+  &quot;keyword:topology&quot;
+  &quot;keyword:filters&quot;
+  &quot;keyword:nets&quot;
+  &quot;keyword:metric spaces&quot;
+  &quot;keyword:real analysis&quot;
+  &quot;keyword:Urysohn&#39;s lemma&quot;
+  &quot;keyword:Tietze extension theorem&quot;
+  &quot;logpath:Topology&quot;
+]
+authors: [
+  &quot;Daniel Schepler&quot;
+]
 url {
-  src: &quot;git+https://github.com/coq-contribs/topology.git#master&quot;
+  src: &quot;git+https://github.com/coq-community/topology.git#master&quot;
 }
 </pre>
             <h2>Lint</h2>
@@ -115,76 +125,96 @@ url {
               <dt>Return code</dt>
               <dd>0</dd>
               <dt>Duration</dt>
-              <dd>39 s</dd>
+              <dd>11 m 15 s</dd>
             </dl>
             <h2>Install</h2>
             <dl class="dl-horizontal">
               <dt>Command</dt>
               <dd><code>opam list; echo; ulimit -Sv 16000000; timeout 2h opam install -y coq-topology.dev coq.dev</code></dd>
               <dt>Return code</dt>
-              <dd>7936</dd>
+              <dd>0</dd>
               <dt>Duration</dt>
-              <dd>30 s</dd>
-              <dt>Output</dt>
-              <dd><pre># Packages matching: installed
-# Name              # Installed # Synopsis
-base-bigarray       base
-base-threads        base
-base-unix           base
-conf-findutils      1           Virtual package relying on findutils
-conf-gmp            2           Virtual package relying on a GMP lib system installation
-conf-m4             1           Virtual package relying on m4
-conf-perl           1           Virtual package relying on perl
-coq                 dev         Formal proof management system
-coq-zorns-lemma     dev         Zorn&#39;s Lemma.
-num                 1.4         The legacy Num library for arbitrary-precision integer and rational arithmetic
-ocaml               4.06.1      The OCaml compiler (virtual package)
-ocaml-base-compiler 4.06.1      Official 4.06.1 release
-ocaml-config        1           OCaml Switch Configuration
-ocamlfind           1.8.1       A library manager for OCaml
-zarith              1.11        Implements arithmetic and logical operations over arbitrary-precision integers
-[NOTE] Package coq is already installed (current version is dev).
-The following actions will be performed:
-  - install coq-topology dev
-&lt;&gt;&lt;&gt; Gathering sources &gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;
-[coq-topology.dev] synchronised from git+https://github.com/coq-contribs/topology.git#master
-&lt;&gt;&lt;&gt; Processing actions &lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;
-[ERROR] The compilation of coq-topology failed at &quot;/home/bench/.opam/opam-init/hooks/sandbox.sh build make -j4&quot;.
-#=== ERROR while compiling coq-topology.dev ===================================#
-# context              2.0.5 | linux/x86_64 | ocaml-base-compiler.4.06.1 | file:///home/bench/run/opam-coq-archive/extra-dev
-# path                 ~/.opam/ocaml-base-compiler.4.06.1/.opam-switch/build/coq-topology.dev
-# command              ~/.opam/opam-init/hooks/sandbox.sh build make -j4
-# exit-code            2
-# env-file             ~/.opam/log/coq-topology-22311-0a5907.env
-# output-file          ~/.opam/log/coq-topology-22311-0a5907.out
-### output ###
-# Error: No such goal. Focus next goal with bullet -.
-# [...]
-# make[1]: *** [Makefile:720: RationalsInReals.vo] Error 1
-# make[1]: *** Waiting for unfinished jobs....
-# File &quot;./FiniteIntersectionLemmas.v&quot;, line 144, characters 4-29:
-# Warning: omega is deprecated since 8.12; use “lia” instead.
-# [omega-is-deprecated,deprecated]
-# File &quot;./FiniteIntersectionLemmas.v&quot;, line 212, characters 10-47:
-# Error: The reference Proj1SigInjective.proj1_sig_injective was not found
-# in the current environment.
-# 
-# make[1]: *** [Makefile:719: FiniteIntersectionLemmas.vo] Error 1
-# make: *** [Makefile:343: all] Error 2
-&lt;&gt;&lt;&gt; Error report &lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;
-+- The following actions failed
-| - build coq-topology dev
-+- 
-- No changes have been performed
-# Run eval $(opam env) to update the current shell environment
-</pre></dd>
+              <dd>1 m 0 s</dd>
             </dl>
             <h2>Installation size</h2>
-            <p>No files were installed.</p>
+            <p>Total: 2 M</p>
+            <ul>
+              <li>218 K <code>../ocaml-base-compiler.4.06.1/lib/coq/user-contrib/Topology/TietzeExtension.vo</code></li>
+              <li>128 K <code>../ocaml-base-compiler.4.06.1/lib/coq/user-contrib/Topology/MetricSpaces.vo</code></li>
+              <li>123 K <code>../ocaml-base-compiler.4.06.1/lib/coq/user-contrib/Topology/UrysohnsLemma.vo</code></li>
+              <li>115 K <code>../ocaml-base-compiler.4.06.1/lib/coq/user-contrib/Topology/RTopology.vo</code></li>
+              <li>101 K <code>../ocaml-base-compiler.4.06.1/lib/coq/user-contrib/Topology/Compactness.vo</code></li>
+              <li>88 K <code>../ocaml-base-compiler.4.06.1/lib/coq/user-contrib/Topology/UniformTopology.vo</code></li>
+              <li>73 K <code>../ocaml-base-compiler.4.06.1/lib/coq/user-contrib/Topology/RFuncContinuity.vo</code></li>
+              <li>73 K <code>../ocaml-base-compiler.4.06.1/lib/coq/user-contrib/Topology/Nets.vo</code></li>
+              <li>63 K <code>../ocaml-base-compiler.4.06.1/lib/coq/user-contrib/Topology/SeparatednessAxioms.vo</code></li>
+              <li>62 K <code>../ocaml-base-compiler.4.06.1/lib/coq/user-contrib/Topology/ProductTopology.vo</code></li>
+              <li>60 K <code>../ocaml-base-compiler.4.06.1/lib/coq/user-contrib/Topology/SumTopology.vo</code></li>
+              <li>56 K <code>../ocaml-base-compiler.4.06.1/lib/coq/user-contrib/Topology/Completion.vo</code></li>
+              <li>55 K <code>../ocaml-base-compiler.4.06.1/lib/coq/user-contrib/Topology/InteriorsClosures.vo</code></li>
+              <li>54 K <code>../ocaml-base-compiler.4.06.1/lib/coq/user-contrib/Topology/FiltersAndNets.vo</code></li>
+              <li>54 K <code>../ocaml-base-compiler.4.06.1/lib/coq/user-contrib/Topology/CountabilityAxioms.vo</code></li>
+              <li>50 K <code>../ocaml-base-compiler.4.06.1/lib/coq/user-contrib/Topology/OpenBases.vo</code></li>
+              <li>49 K <code>../ocaml-base-compiler.4.06.1/lib/coq/user-contrib/Topology/Completeness.vo</code></li>
+              <li>46 K <code>../ocaml-base-compiler.4.06.1/lib/coq/user-contrib/Topology/SupInf.vo</code></li>
+              <li>43 K <code>../ocaml-base-compiler.4.06.1/lib/coq/user-contrib/Topology/WeakTopology.vo</code></li>
+              <li>43 K <code>../ocaml-base-compiler.4.06.1/lib/coq/user-contrib/Topology/NeighborhoodBases.vo</code></li>
+              <li>43 K <code>../ocaml-base-compiler.4.06.1/lib/coq/user-contrib/Topology/Continuity.vo</code></li>
+              <li>41 K <code>../ocaml-base-compiler.4.06.1/lib/coq/user-contrib/Topology/FilterLimits.vo</code></li>
+              <li>41 K <code>../ocaml-base-compiler.4.06.1/lib/coq/user-contrib/Topology/QuotientTopology.vo</code></li>
+              <li>40 K <code>../ocaml-base-compiler.4.06.1/lib/coq/user-contrib/Topology/RationalsInReals.vo</code></li>
+              <li>39 K <code>../ocaml-base-compiler.4.06.1/lib/coq/user-contrib/Topology/Subbases.vo</code></li>
+              <li>39 K <code>../ocaml-base-compiler.4.06.1/lib/coq/user-contrib/Topology/OrderTopology.vo</code></li>
+              <li>39 K <code>../ocaml-base-compiler.4.06.1/lib/coq/user-contrib/Topology/TopologicalSpaces.vo</code></li>
+              <li>38 K <code>../ocaml-base-compiler.4.06.1/lib/coq/user-contrib/Topology/StrongTopology.vo</code></li>
+              <li>36 K <code>../ocaml-base-compiler.4.06.1/lib/coq/user-contrib/Topology/Connectedness.vo</code></li>
+              <li>34 K <code>../ocaml-base-compiler.4.06.1/lib/coq/user-contrib/Topology/Homeomorphisms.vo</code></li>
+              <li>32 K <code>../ocaml-base-compiler.4.06.1/lib/coq/user-contrib/Topology/ContinuousFactorization.vo</code></li>
+              <li>27 K <code>../ocaml-base-compiler.4.06.1/lib/coq/user-contrib/Topology/SubspaceTopology.vo</code></li>
+              <li>26 K <code>../ocaml-base-compiler.4.06.1/doc/coq-topology/LICENSE</code></li>
+              <li>25 K <code>../ocaml-base-compiler.4.06.1/lib/coq/user-contrib/Topology/TietzeExtension.v</code></li>
+              <li>22 K <code>../ocaml-base-compiler.4.06.1/lib/coq/user-contrib/Topology/UrysohnsLemma.v</code></li>
+              <li>21 K <code>../ocaml-base-compiler.4.06.1/lib/coq/user-contrib/Topology/MetricSpaces.v</code></li>
+              <li>21 K <code>../ocaml-base-compiler.4.06.1/lib/coq/user-contrib/Topology/Compactness.v</code></li>
+              <li>20 K <code>../ocaml-base-compiler.4.06.1/lib/coq/user-contrib/Topology/Neighborhoods.vo</code></li>
+              <li>18 K <code>../ocaml-base-compiler.4.06.1/lib/coq/user-contrib/Topology/RTopology.v</code></li>
+              <li>13 K <code>../ocaml-base-compiler.4.06.1/lib/coq/user-contrib/Topology/InteriorsClosures.v</code></li>
+              <li>12 K <code>../ocaml-base-compiler.4.06.1/lib/coq/user-contrib/Topology/RFuncContinuity.v</code></li>
+              <li>12 K <code>../ocaml-base-compiler.4.06.1/lib/coq/user-contrib/Topology/UniformTopology.v</code></li>
+              <li>11 K <code>../ocaml-base-compiler.4.06.1/lib/coq/user-contrib/Topology/ProductTopology.v</code></li>
+              <li>11 K <code>../ocaml-base-compiler.4.06.1/lib/coq/user-contrib/Topology/Nets.v</code></li>
+              <li>7 K <code>../ocaml-base-compiler.4.06.1/lib/coq/user-contrib/Topology/SeparatednessAxioms.v</code></li>
+              <li>7 K <code>../ocaml-base-compiler.4.06.1/lib/coq/user-contrib/Topology/CountabilityAxioms.v</code></li>
+              <li>6 K <code>../ocaml-base-compiler.4.06.1/lib/coq/user-contrib/Topology/FiltersAndNets.v</code></li>
+              <li>6 K <code>../ocaml-base-compiler.4.06.1/lib/coq/user-contrib/Topology/TopologicalSpaces.v</code></li>
+              <li>6 K <code>../ocaml-base-compiler.4.06.1/doc/coq-topology/README.md</code></li>
+              <li>6 K <code>../ocaml-base-compiler.4.06.1/lib/coq/user-contrib/Topology/Continuity.v</code></li>
+              <li>6 K <code>../ocaml-base-compiler.4.06.1/lib/coq/user-contrib/Topology/Completion.v</code></li>
+              <li>5 K <code>../ocaml-base-compiler.4.06.1/lib/coq/user-contrib/Topology/WeakTopology.v</code></li>
+              <li>5 K <code>../ocaml-base-compiler.4.06.1/lib/coq/user-contrib/Topology/FilterLimits.v</code></li>
+              <li>5 K <code>../ocaml-base-compiler.4.06.1/lib/coq/user-contrib/Topology/Completeness.v</code></li>
+              <li>5 K <code>../ocaml-base-compiler.4.06.1/lib/coq/user-contrib/Topology/SumTopology.v</code></li>
+              <li>5 K <code>../ocaml-base-compiler.4.06.1/lib/coq/user-contrib/Topology/OpenBases.v</code></li>
+              <li>4 K <code>../ocaml-base-compiler.4.06.1/lib/coq/user-contrib/Topology/NeighborhoodBases.v</code></li>
+              <li>3 K <code>../ocaml-base-compiler.4.06.1/lib/coq/user-contrib/Topology/OrderTopology.v</code></li>
+              <li>3 K <code>../ocaml-base-compiler.4.06.1/lib/coq/user-contrib/Topology/QuotientTopology.v</code></li>
+              <li>3 K <code>../ocaml-base-compiler.4.06.1/lib/coq/user-contrib/Topology/Connectedness.v</code></li>
+              <li>3 K <code>../ocaml-base-compiler.4.06.1/lib/coq/user-contrib/Topology/Subbases.v</code></li>
+              <li>3 K <code>../ocaml-base-compiler.4.06.1/lib/coq/user-contrib/Topology/SupInf.v</code></li>
+              <li>3 K <code>../ocaml-base-compiler.4.06.1/lib/coq/user-contrib/Topology/RationalsInReals.v</code></li>
+              <li>2 K <code>../ocaml-base-compiler.4.06.1/lib/coq/user-contrib/Topology/Homeomorphisms.v</code></li>
+              <li>2 K <code>../ocaml-base-compiler.4.06.1/lib/coq/user-contrib/Topology/StrongTopology.v</code></li>
+              <li>2 K <code>../ocaml-base-compiler.4.06.1/lib/coq/user-contrib/Topology/ContinuousFactorization.v</code></li>
+              <li>1 K <code>../ocaml-base-compiler.4.06.1/lib/coq/user-contrib/Topology/Neighborhoods.v</code></li>
+              <li>1 K <code>../ocaml-base-compiler.4.06.1/lib/coq-topology/opam</code></li>
+              <li>1 K <code>../ocaml-base-compiler.4.06.1/lib/coq/user-contrib/Topology/SubspaceTopology.v</code></li>
+              <li>1 K <code>../ocaml-base-compiler.4.06.1/lib/coq-topology/dune-package</code></li>
+              <li>0 K <code>../ocaml-base-compiler.4.06.1/lib/coq-topology/META</code></li>
+            </ul>
             <h2>Uninstall</h2>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>true</code></dd>
+              <dd><code>opam remove -y coq-topology.dev</code></dd>
               <dt>Return code</dt>
               <dd>0</dd>
               <dt>Missing removes</dt>
