@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>of-ocaml: 1 m 20 s</title>
+    <title>of-ocaml: Error</title>
     <link rel="shortcut icon" type="image/png" href="../../../../../favicon.png" />
     <link href="../../../../../bootstrap.min.css" rel="stylesheet">
     <link href="../../../../../bootstrap-custom.css" rel="stylesheet">
@@ -39,10 +39,10 @@
               of-ocaml
               <small>
                 dev
-                <span class="label label-success">1 m 20 s</span>
+                <span class="label label-danger">Error</span>
               </small>
             </h1>
-            <p><em><script>document.write(moment("2021-03-04 18:44:02 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2021-03-04 18:44:02 UTC)</em><p>
+            <p><em><script>document.write(moment("2021-03-22 20:40:33 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2021-03-22 20:40:33 UTC)</em><p>
             <h2>Context</h2>
             <pre># Packages matching: installed
 # Name              # Installed # Synopsis
@@ -51,15 +51,13 @@ base-threads        base
 base-unix           base
 conf-findutils      1           Virtual package relying on findutils
 conf-gmp            3           Virtual package relying on a GMP lib system installation
-conf-m4             1           Virtual package relying on m4
-conf-perl           1           Virtual package relying on perl
 coq                 dev         Formal proof management system
 num                 1.4         The legacy Num library for arbitrary-precision integer and rational arithmetic
 ocaml               4.10.1      The OCaml compiler (virtual package)
 ocaml-base-compiler 4.10.1      Official release 4.10.1
 ocaml-config        1           OCaml Switch Configuration
-ocamlfind           1.8.1       A library manager for OCaml
-zarith              1.11        Implements arithmetic and logical operations over arbitrary-precision integers
+ocamlfind           1.9.1       A library manager for OCaml
+zarith              1.12        Implements arithmetic and logical operations over arbitrary-precision integers
 # opam file:
 opam-version: &quot;2.0&quot;
 maintainer: &quot;dev@clarus.me&quot;
@@ -128,47 +126,72 @@ url {
               <dt>Return code</dt>
               <dd>0</dd>
               <dt>Duration</dt>
-              <dd>1 m 44 s</dd>
+              <dd>1 m 30 s</dd>
             </dl>
             <h2>Install</h2>
             <dl class="dl-horizontal">
               <dt>Command</dt>
               <dd><code>opam list; echo; ulimit -Sv 16000000; timeout 2h opam install -y coq-of-ocaml.dev coq.dev</code></dd>
               <dt>Return code</dt>
-              <dd>0</dd>
+              <dd>7936</dd>
               <dt>Duration</dt>
-              <dd>1 m 20 s</dd>
+              <dd>25 s</dd>
+              <dt>Output</dt>
+              <dd><pre># Packages matching: installed
+# Name              # Installed # Synopsis
+base-bigarray       base
+base-threads        base
+base-unix           base
+biniou              1.2.1       Binary data format designed for speed, safety, ease of use and backward compatibility as protocols evolve
+conf-findutils      1           Virtual package relying on findutils
+conf-gmp            3           Virtual package relying on a GMP lib system installation
+coq                 dev         Formal proof management system
+cppo                1.6.7       Code preprocessor like cpp for OCaml
+dune                2.7.1       Fast, portable, and opinionated build system
+easy-format         1.3.2       High-level and functional interface to the Format module of the OCaml standard library
+num                 1.4         The legacy Num library for arbitrary-precision integer and rational arithmetic
+ocaml               4.10.1      The OCaml compiler (virtual package)
+ocaml-base-compiler 4.10.1      Official release 4.10.1
+ocaml-config        1           OCaml Switch Configuration
+ocamlfind           1.9.1       A library manager for OCaml
+smart-print         0.3.0       A pretty-printing library in OCaml
+yojson              1.7.0       Yojson is an optimized parsing and printing library for the JSON format
+zarith              1.12        Implements arithmetic and logical operations over arbitrary-precision integers
+[NOTE] Package coq is already installed (current version is dev).
+The following actions will be performed:
+  - install coq-of-ocaml dev
+&lt;&gt;&lt;&gt; Gathering sources &gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;
+[coq-of-ocaml.dev] synchronised from git+https://github.com/clarus/coq-of-ocaml.git#master
+&lt;&gt;&lt;&gt; Processing actions &lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;
+[ERROR] The compilation of coq-of-ocaml failed at &quot;/home/bench/.opam/opam-init/hooks/sandbox.sh build dune build -p coq-of-ocaml -j 4&quot;.
+#=== ERROR while compiling coq-of-ocaml.dev ===================================#
+# context              2.0.6 | linux/x86_64 | ocaml-base-compiler.4.10.1 | file:///home/bench/run/opam-coq-archive/extra-dev
+# path                 ~/.opam/ocaml-base-compiler.4.10.1/.opam-switch/build/coq-of-ocaml.dev
+# command              ~/.opam/opam-init/hooks/sandbox.sh build dune build -p coq-of-ocaml -j 4
+# exit-code            1
+# env-file             ~/.opam/log/coq-of-ocaml-17431-c743ac.env
+# output-file          ~/.opam/log/coq-of-ocaml-17431-c743ac.out
+### output ###
+# File &quot;merlin/dot-merlin/dot-protocol/dune&quot;, line 4, characters 25-30:
+# 4 |  (libraries merlin_utils csexp result))
+#                              ^^^^^
+# Error: Library &quot;csexp&quot; not found.
+# Hint: try:
+#   dune external-lib-deps --missing -p coq-of-ocaml -j 4 @install
+&lt;&gt;&lt;&gt; Error report &lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;
++- The following actions failed
+| - build coq-of-ocaml dev
++- 
+- No changes have been performed
+# Run eval $(opam env) to update the current shell environment
+</pre></dd>
             </dl>
             <h2>Installation size</h2>
-            <p>Total: 14 M</p>
-            <ul>
-              <li>13 M <code>../ocaml-base-compiler.4.10.1/bin/coq-of-ocaml</code></li>
-              <li>190 K <code>../ocaml-base-compiler.4.10.1/lib/coq/user-contrib/CoqOfOCaml/Basics.glob</code></li>
-              <li>187 K <code>../ocaml-base-compiler.4.10.1/lib/coq/user-contrib/CoqOfOCaml/Basics.vo</code></li>
-              <li>161 K <code>../ocaml-base-compiler.4.10.1/lib/coq/user-contrib/CoqOfOCaml/CoqOfOCaml.vo</code></li>
-              <li>44 K <code>../ocaml-base-compiler.4.10.1/lib/coq/user-contrib/CoqOfOCaml/List.vo</code></li>
-              <li>33 K <code>../ocaml-base-compiler.4.10.1/lib/coq/user-contrib/CoqOfOCaml/Basics.v</code></li>
-              <li>24 K <code>../ocaml-base-compiler.4.10.1/lib/coq/user-contrib/CoqOfOCaml/List.glob</code></li>
-              <li>20 K <code>../ocaml-base-compiler.4.10.1/lib/coq/user-contrib/CoqOfOCaml/Libraries.vo</code></li>
-              <li>14 K <code>../ocaml-base-compiler.4.10.1/lib/coq/user-contrib/CoqOfOCaml/Settings.vo</code></li>
-              <li>8 K <code>../ocaml-base-compiler.4.10.1/doc/coq-of-ocaml/CHANGELOG.md</code></li>
-              <li>4 K <code>../ocaml-base-compiler.4.10.1/lib/coq/user-contrib/CoqOfOCaml/List.v</code></li>
-              <li>3 K <code>../ocaml-base-compiler.4.10.1/doc/coq-of-ocaml/README.md</code></li>
-              <li>1 K <code>../ocaml-base-compiler.4.10.1/doc/coq-of-ocaml/LICENSE</code></li>
-              <li>1 K <code>../ocaml-base-compiler.4.10.1/lib/coq-of-ocaml/opam</code></li>
-              <li>1 K <code>../ocaml-base-compiler.4.10.1/lib/coq/user-contrib/CoqOfOCaml/Libraries.glob</code></li>
-              <li>1 K <code>../ocaml-base-compiler.4.10.1/lib/coq/user-contrib/CoqOfOCaml/Settings.v</code></li>
-              <li>1 K <code>../ocaml-base-compiler.4.10.1/lib/coq/user-contrib/CoqOfOCaml/CoqOfOCaml.glob</code></li>
-              <li>1 K <code>../ocaml-base-compiler.4.10.1/lib/coq/user-contrib/CoqOfOCaml/Libraries.v</code></li>
-              <li>1 K <code>../ocaml-base-compiler.4.10.1/lib/coq/user-contrib/CoqOfOCaml/Settings.glob</code></li>
-              <li>1 K <code>../ocaml-base-compiler.4.10.1/lib/coq/user-contrib/CoqOfOCaml/CoqOfOCaml.v</code></li>
-              <li>1 K <code>../ocaml-base-compiler.4.10.1/lib/coq-of-ocaml/dune-package</code></li>
-              <li>0 K <code>../ocaml-base-compiler.4.10.1/lib/coq-of-ocaml/META</code></li>
-            </ul>
+            <p>No files were installed.</p>
             <h2>Uninstall</h2>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>opam remove -y coq-of-ocaml.dev</code></dd>
+              <dd><code>true</code></dd>
               <dt>Return code</dt>
               <dd>0</dd>
               <dt>Missing removes</dt>
