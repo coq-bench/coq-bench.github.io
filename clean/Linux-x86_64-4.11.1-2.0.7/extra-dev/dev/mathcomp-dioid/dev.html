@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>mathcomp-dioid: Error</title>
+    <title>mathcomp-dioid: Not compatible</title>
     <link rel="shortcut icon" type="image/png" href="../../../../../favicon.png" />
     <link href="../../../../../bootstrap.min.css" rel="stylesheet">
     <link href="../../../../../bootstrap-custom.css" rel="stylesheet">
@@ -39,10 +39,10 @@
               mathcomp-dioid
               <small>
                 dev
-                <span class="label label-danger">Error</span>
+                <span class="label label-info">Not compatible</span>
               </small>
             </h1>
-            <p><em><script>document.write(moment("2021-03-23 16:12:04 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2021-03-23 16:12:04 UTC)</em><p>
+            <p><em><script>document.write(moment("2021-04-03 04:38:32 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2021-04-03 04:38:32 UTC)</em><p>
             <h2>Context</h2>
             <pre># Packages matching: installed
 # Name              # Installed # Synopsis
@@ -72,15 +72,17 @@ build: [
 ]
 install: [make &quot;install&quot;]
 depends: [
-  &quot;coq&quot; { (&gt;= &quot;8.10&quot; &amp; &lt; &quot;8.13~&quot;) | (= &quot;dev&quot;) }
-  &quot;coq-mathcomp-ssreflect&quot; { (&gt;= &quot;1.9&quot; &amp; &lt; &quot;1.12~&quot;) | (= &quot;dev&quot;) }
+  &quot;coq&quot; { &gt;= &quot;8.11&quot; &amp; &lt; &quot;8.14~&quot; }
+  &quot;coq-mathcomp-ssreflect&quot; { &gt;= &quot;1.12&quot; &amp; &lt; &quot;1.13~&quot; }
+  &quot;coq-mathcomp-analysis&quot; { &gt;= &quot;0.3.5&quot; &amp; &lt; &quot;0.4~&quot; }
+  &quot;coq-hierarchy-builder&quot; { &gt;= &quot;1.0&quot; &amp; &lt; &quot;2~&quot; }
 ]
 synopsis: &quot;Dioid&quot;
 description: &quot;&quot;&quot;
 Definitions of the algebraic structure of dioid following the style of
 ssralg in the Mathcomp library.
 The main algebraic structures defined are:
-* semirings: rings without oppositve for the additive law
+* semirings: rings without opposite for the additive law
 * dioids: idempotent semirings (i.e., forall x, x + x = x)
 * complete dioids: dioids whose canonical order (x &lt;= y wen x + y = y)
   yields a complete lattice
@@ -92,7 +94,7 @@ tags: [
   &quot;keyword:semiring&quot;
   &quot;keyword:complete dioid&quot;
   &quot;category:Miscellaneous/Coq Extensions&quot;
-  &quot;logpath:dioid&quot;
+  &quot;logpath:mathcomp.dioid&quot;
 ]
 authors: [
   &quot;Lucien Rakotomalala &lt;lucien.rakotomalala@onera.fr&gt;&quot;
@@ -115,83 +117,41 @@ url {
               <dt>Command</dt>
               <dd><code>opam install -y --show-action coq-mathcomp-dioid.dev coq.dev</code></dd>
               <dt>Return code</dt>
-              <dd>0</dd>
+              <dd>5120</dd>
+              <dt>Output</dt>
+              <dd><pre>[NOTE] Package coq is already installed (current version is dev).
+The following dependencies couldn&#39;t be met:
+  - coq-mathcomp-dioid -&gt; coq &lt; 8.14~ -&gt; ocaml &lt; 4.10
+      base of this switch (use `--unlock-base&#39; to force)
+Your request can&#39;t be satisfied:
+  - No available version of coq satisfies the constraints
+No solution found, exiting
+</pre></dd>
             </dl>
             <p>Dry install without Coq/switch base, to test if the problem was incompatibility with the current Coq/OCaml version:</p>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>true</code></dd>
+              <dd><code>opam remove -y coq; opam install -y --show-action --unlock-base coq-mathcomp-dioid.dev</code></dd>
               <dt>Return code</dt>
               <dd>0</dd>
             </dl>
             <h2>Install dependencies</h2>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>opam list; echo; ulimit -Sv 4000000; timeout 2h opam install -y --deps-only coq-mathcomp-dioid.dev coq.dev</code></dd>
+              <dd><code>true</code></dd>
               <dt>Return code</dt>
               <dd>0</dd>
               <dt>Duration</dt>
-              <dd>1 m 51 s</dd>
+              <dd>0 s</dd>
             </dl>
             <h2>Install</h2>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>opam list; echo; ulimit -Sv 16000000; timeout 2h opam install -y coq-mathcomp-dioid.dev coq.dev</code></dd>
+              <dd><code>true</code></dd>
               <dt>Return code</dt>
-              <dd>7936</dd>
+              <dd>0</dd>
               <dt>Duration</dt>
-              <dd>21 s</dd>
-              <dt>Output</dt>
-              <dd><pre># Packages matching: installed
-# Name                 # Installed # Synopsis
-base-bigarray          base
-base-threads           base
-base-unix              base
-conf-findutils         1           Virtual package relying on findutils
-conf-gmp               3           Virtual package relying on a GMP lib system installation
-coq                    dev         Formal proof management system
-coq-mathcomp-ssreflect dev         Small Scale Reflection
-num                    1.4         The legacy Num library for arbitrary-precision integer and rational arithmetic
-ocaml                  4.11.1      The OCaml compiler (virtual package)
-ocaml-base-compiler    4.11.1      Official release 4.11.1
-ocaml-config           1           OCaml Switch Configuration
-ocamlfind              1.9.1       A library manager for OCaml
-zarith                 1.12        Implements arithmetic and logical operations over arbitrary-precision integers
-[NOTE] Package coq is already installed (current version is dev).
-The following actions will be performed:
-  - install coq-mathcomp-dioid dev
-&lt;&gt;&lt;&gt; Gathering sources &gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;
-[coq-mathcomp-dioid.dev] synchronised from git+https://github.com/math-comp/dioid.git#master
-&lt;&gt;&lt;&gt; Processing actions &lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;
-[ERROR] The compilation of coq-mathcomp-dioid failed at &quot;/home/bench/.opam/opam-init/hooks/sandbox.sh build make -j4&quot;.
-#=== ERROR while compiling coq-mathcomp-dioid.dev =============================#
-# context              2.0.7 | linux/x86_64 | ocaml-base-compiler.4.11.1 | file:///home/bench/run/opam-coq-archive/extra-dev
-# path                 ~/.opam/ocaml-base-compiler.4.11.1/.opam-switch/build/coq-mathcomp-dioid.dev
-# command              ~/.opam/opam-init/hooks/sandbox.sh build make -j4
-# exit-code            2
-# env-file             ~/.opam/log/coq-mathcomp-dioid-4109-e4db2f.env
-# output-file          ~/.opam/log/coq-mathcomp-dioid-4109-e4db2f.out
-### output ###
-# [...]
-# *** Warning: in file complete_lattice.v, library mathcomp.analysis.classical_sets is required and has not been found in the loadpath!
-# *** Warning: in file complete_dioid.v, library HB.structures is required and has not been found in the loadpath!
-# *** Warning: in file complete_dioid.v, library mathcomp.analysis.classical_sets is required and has not been found in the loadpath!
-# COQC HB_wrappers.v
-# File &quot;./HB_wrappers.v&quot;, line 1, characters 23-33:
-# Error: Cannot find a physical path bound to logical path matching suffix
-# &lt;&gt; and prefix HB.
-# 
-# make[2]: *** [Makefile.coq:721: HB_wrappers.vo] Error 1
-# make[1]: *** [Makefile.coq:344: all] Error 2
-# make[1]: Leaving directory &#39;/home/bench/.opam/ocaml-base-compiler.4.11.1/.opam-switch/build/coq-mathcomp-dioid.dev&#39;
-# make: *** [Makefile:15: all] Error 2
-&lt;&gt;&lt;&gt; Error report &lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;
-+- The following actions failed
-| - build coq-mathcomp-dioid dev
-+- 
-- No changes have been performed
-# Run eval $(opam env) to update the current shell environment
-</pre></dd>
+              <dd>0 s</dd>
             </dl>
             <h2>Installation size</h2>
             <p>No files were installed.</p>
