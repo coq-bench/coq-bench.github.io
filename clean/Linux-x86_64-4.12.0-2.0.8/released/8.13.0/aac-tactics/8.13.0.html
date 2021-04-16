@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>aac-tactics: Error</title>
+    <title>aac-tactics: Not compatible</title>
     <link rel="shortcut icon" type="image/png" href="../../../../../favicon.png" />
     <link href="../../../../../bootstrap.min.css" rel="stylesheet">
     <link href="../../../../../bootstrap-custom.css" rel="stylesheet">
@@ -39,10 +39,10 @@
               aac-tactics
               <small>
                 8.13.0
-                <span class="label label-danger">Error</span>
+                <span class="label label-info">Not compatible</span>
               </small>
             </h1>
-            <p><em><script>document.write(moment("2021-04-11 02:06:08 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2021-04-11 02:06:08 UTC)</em><p>
+            <p><em><script>document.write(moment("2021-04-16 02:57:35 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2021-04-16 02:57:35 UTC)</em><p>
             <h2>Context</h2>
             <pre># Packages matching: installed
 # Name                # Installed # Synopsis
@@ -77,7 +77,7 @@ provided with the plugin.&quot;&quot;&quot;
 build: [make &quot;-j%{jobs}%&quot;]
 install: [make &quot;install&quot;]
 depends: [
-  &quot;ocaml&quot; {&gt;= &quot;4.05.0&quot;}
+  &quot;ocaml&quot; {&gt;= &quot;4.05.0&quot; &amp; &lt; &quot;4.12&quot;}
   &quot;coq&quot; {&gt;= &quot;8.13&quot; &amp; &lt; &quot;8.14~&quot;}
 ]
 tags: [
@@ -114,139 +114,39 @@ url {
               <dt>Command</dt>
               <dd><code>opam install -y --show-action coq-aac-tactics.8.13.0 coq.8.13.0</code></dd>
               <dt>Return code</dt>
-              <dd>0</dd>
+              <dd>5120</dd>
+              <dt>Output</dt>
+              <dd><pre>[NOTE] Package coq is already installed (current version is 8.13.0).
+The following dependencies couldn&#39;t be met:
+  - coq-aac-tactics -&gt; ocaml &lt; 4.12
+      base of this switch (use `--unlock-base&#39; to force)
+No solution found, exiting
+</pre></dd>
             </dl>
             <p>Dry install without Coq/switch base, to test if the problem was incompatibility with the current Coq/OCaml version:</p>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>true</code></dd>
+              <dd><code>opam remove -y coq; opam install -y --show-action --unlock-base coq-aac-tactics.8.13.0</code></dd>
               <dt>Return code</dt>
               <dd>0</dd>
             </dl>
             <h2>Install dependencies</h2>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>opam list; echo; ulimit -Sv 4000000; timeout 2h opam install -y --deps-only coq-aac-tactics.8.13.0 coq.8.13.0</code></dd>
+              <dd><code>true</code></dd>
               <dt>Return code</dt>
               <dd>0</dd>
               <dt>Duration</dt>
-              <dd>8 s</dd>
+              <dd>0 s</dd>
             </dl>
             <h2>Install</h2>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>opam list; echo; ulimit -Sv 16000000; timeout 2h opam install -y -v coq-aac-tactics.8.13.0 coq.8.13.0</code></dd>
+              <dd><code>true</code></dd>
               <dt>Return code</dt>
-              <dd>7936</dd>
+              <dd>0</dd>
               <dt>Duration</dt>
-              <dd>12 s</dd>
-              <dt>Output</dt>
-              <dd><pre># Packages matching: installed
-# Name                # Installed # Synopsis
-base-bigarray         base
-base-threads          base
-base-unix             base
-conf-findutils        1           Virtual package relying on findutils
-conf-gmp              3           Virtual package relying on a GMP lib system installation
-coq                   8.13.0      Formal proof management system
-num                   1.4         The legacy Num library for arbitrary-precision integer and rational arithmetic
-ocaml                 4.12.0      The OCaml compiler (virtual package)
-ocaml-base-compiler   4.12.0      Official release 4.12.0
-ocaml-config          2           OCaml Switch Configuration
-ocaml-options-vanilla 1           Ensure that OCaml is compiled with no special options enabled
-ocamlfind             1.9.1       A library manager for OCaml
-zarith                1.12        Implements arithmetic and logical operations over arbitrary-precision integers
-[NOTE] Package coq is already installed (current version is 8.13.0).
-The following actions will be performed:
-  - install coq-aac-tactics 8.13.0
-&lt;&gt;&lt;&gt; Gathering sources &gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;
-Processing  1/1: [coq-aac-tactics.8.13.0: http]
-[coq-aac-tactics.8.13.0] downloaded from https://github.com/coq-community/aac-tactics/archive/v8.13.0.tar.gz
-Processing  1/1:
-&lt;&gt;&lt;&gt; Processing actions &lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;
-Processing  1/2: [coq-aac-tactics: make]
-+ /home/bench/.opam/opam-init/hooks/sandbox.sh &quot;build&quot; &quot;make&quot; &quot;-j4&quot; (CWD=/home/bench/.opam/ocaml-base-compiler.4.12.0/.opam-switch/build/coq-aac-tactics.8.13.0)
-- coq_makefile -f _CoqProject -o Makefile.coq
-- make[1]: Entering directory &#39;/home/bench/.opam/ocaml-base-compiler.4.12.0/.opam-switch/build/coq-aac-tactics.8.13.0&#39;
-- COQDEP VFILES
-- COQPP src/aac.mlg
-- CAMLDEP src/aac_rewrite.mli
-- CAMLDEP src/print.mli
-- CAMLDEP src/theory.mli
-- CAMLDEP src/matcher.mli
-- CAMLDEP src/search_monad.mli
-- CAMLDEP src/helper.mli
-- CAMLDEP src/coq.mli
-- OCAMLLIBDEP src/aac_plugin.mlpack
-- CAMLDEP src/aac_rewrite.ml
-- CAMLDEP src/print.ml
-- CAMLDEP src/theory.ml
-- CAMLDEP src/matcher.ml
-- CAMLDEP src/search_monad.ml
-- CAMLDEP src/helper.ml
-- CAMLDEP src/coq.ml
-- CAMLDEP src/aac.ml
-- COQC theories/Utils.v
-- COQC theories/Constants.v
-- CAMLC -c src/coq.mli
-- CAMLC -c src/helper.mli
-- CAMLC -c src/search_monad.mli
-- CAMLC -c src/aac_rewrite.mli
-- CAMLOPT -c -for-pack Aac_plugin src/coq.ml
-- CAMLOPT -c -for-pack Aac_plugin src/search_monad.ml
-- CAMLC -c src/matcher.mli
-- CAMLOPT -c -for-pack Aac_plugin src/helper.ml
-- File &quot;src/coq.ml&quot;, line 311, characters 16-37:
-- 311 | 	let carrier =  Typing.unsafe_type_of env sigma left in
--                       ^^^^^^^^^^^^^^^^^^^^^
-- Alert deprecated: Typing.unsafe_type_of
-- Use [type_of] or retyping according to your needs.
-- File &quot;src/coq.ml&quot;, line 356, characters 14-35:
-- 356 |   let ctype = Typing.unsafe_type_of env sigma c in
--                     ^^^^^^^^^^^^^^^^^^^^^
-- Alert deprecated: Typing.unsafe_type_of
-- Use [type_of] or retyping according to your needs.
-- File &quot;src/coq.ml&quot;, line 355, characters 29-39:
-- 355 | let get_hypinfo env sigma c ?check_type ~l2r  : hypinfo =
--                                    ^^^^^^^^^^
-- Error (warning 16 [unerasable-optional-argument]): this optional argument cannot be erased.
-- CAMLC -c src/theory.mli
-- CAMLC -c src/print.mli
-- make[2]: *** [Makefile.coq:667: src/coq.cmx] Error 2
-- make[2]: *** Waiting for unfinished jobs....
-- make[1]: *** [Makefile.coq:343: all] Error 2
-- make[1]: Leaving directory &#39;/home/bench/.opam/ocaml-base-compiler.4.12.0/.opam-switch/build/coq-aac-tactics.8.13.0&#39;
-- make: *** [Makefile:2: all] Error 2
-[ERROR] The compilation of coq-aac-tactics failed at &quot;/home/bench/.opam/opam-init/hooks/sandbox.sh build make -j4&quot;.
-#=== ERROR while compiling coq-aac-tactics.8.13.0 =============================#
-# context              2.0.8 | linux/x86_64 | ocaml-base-compiler.4.12.0 | file:///home/bench/run/opam-coq-archive/released
-# path                 ~/.opam/ocaml-base-compiler.4.12.0/.opam-switch/build/coq-aac-tactics.8.13.0
-# command              ~/.opam/opam-init/hooks/sandbox.sh build make -j4
-# exit-code            2
-# env-file             ~/.opam/log/coq-aac-tactics-31484-335865.env
-# output-file          ~/.opam/log/coq-aac-tactics-31484-335865.out
-### output ###
-# [...]
-# Use [type_of] or retyping according to your needs.
-# File &quot;src/coq.ml&quot;, line 355, characters 29-39:
-# 355 | let get_hypinfo env sigma c ?check_type ~l2r  : hypinfo =
-#                                    ^^^^^^^^^^
-# Error (warning 16 [unerasable-optional-argument]): this optional argument cannot be erased.
-# CAMLC -c src/theory.mli
-# CAMLC -c src/print.mli
-# make[2]: *** [Makefile.coq:667: src/coq.cmx] Error 2
-# make[2]: *** Waiting for unfinished jobs....
-# make[1]: *** [Makefile.coq:343: all] Error 2
-# make[1]: Leaving directory &#39;/home/bench/.opam/ocaml-base-compiler.4.12.0/.opam-switch/build/coq-aac-tactics.8.13.0&#39;
-# make: *** [Makefile:2: all] Error 2
-&lt;&gt;&lt;&gt; Error report &lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;
-+- The following actions failed
-| - build coq-aac-tactics 8.13.0
-+- 
-- No changes have been performed
-# Run eval $(opam env) to update the current shell environment
-&#39;opam install -y -v coq-aac-tactics.8.13.0 coq.8.13.0&#39; failed.
-</pre></dd>
+              <dd>0 s</dd>
             </dl>
             <h2>Installation size</h2>
             <p>No files were installed.</p>
