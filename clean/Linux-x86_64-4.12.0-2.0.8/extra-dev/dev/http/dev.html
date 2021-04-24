@@ -42,7 +42,7 @@
                 <span class="label label-warning">Error with dependencies</span>
               </small>
             </h1>
-            <p><em><script>document.write(moment("2021-04-13 14:08:52 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2021-04-13 14:08:52 UTC)</em><p>
+            <p><em><script>document.write(moment("2021-04-24 11:26:00 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2021-04-24 11:26:00 UTC)</em><p>
             <h2>Context</h2>
             <pre># Packages matching: installed
 # Name                # Installed # Synopsis
@@ -77,6 +77,8 @@ depends: [
   &quot;ocamlbuild&quot; 
   &quot;coq-itree-io&quot; 
   &quot;coq-parsec&quot; 
+  &quot;coq-quickchick&quot;
+  &quot;coq-json&quot;
 ]
 tags: [
   &quot;category:Computer Science/Concurrent Systems and Protocols/Correctness of specific protocols&quot;
@@ -122,11 +124,11 @@ url {
             <h2>Install dependencies</h2>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>opam list; echo; ulimit -Sv 4000000; timeout 2h opam install -y --deps-only coq-http.dev coq.dev</code></dd>
+              <dd><code>opam list; echo; ulimit -Sv 4000000; timeout 4h opam install -y --deps-only coq-http.dev coq.dev</code></dd>
               <dt>Return code</dt>
               <dd>7936</dd>
               <dt>Duration</dt>
-              <dd>3 m 17 s</dd>
+              <dd>12 m 8 s</dd>
               <dt>Output</dt>
               <dd><pre># Packages matching: installed
 # Name                # Installed # Synopsis
@@ -144,38 +146,83 @@ ocaml-options-vanilla 1           Ensure that OCaml is compiled with no special 
 ocamlfind             1.9.1       A library manager for OCaml
 zarith                1.12        Implements arithmetic and logical operations over arbitrary-precision integers
 The following actions will be performed:
-  - install coq-paco      dev
-  - install coq-ceres     dev
-  - install coq-ext-lib   dev
-  - install ocamlbuild    0.14.0
-  - install coq-simple-io dev
-  - install coq-parsec    dev
-  - install coq-itree     dev
-  - install coq-itree-io  dev
-===== 8 to install =====
+  - install coq-paco               dev
+  - install coq-mathcomp-ssreflect dev
+  - install coq-ceres              dev
+  - install dune                   2.8.5
+  - install coq-menhirlib          dev
+  - install coq-ext-lib            dev
+  - install ocamlbuild             0.14.0
+  - install menhirSdk              dev
+  - install menhirLib              dev
+  - install coq-simple-io          dev
+  - install coq-parsec             dev
+  - install coq-itree              dev
+  - install menhir                 dev
+  - install coq-quickchick         dev
+  - install coq-itree-io           dev
+  - install coq-json               dev
+===== 16 to install =====
 &lt;&gt;&lt;&gt; Gathering sources &gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;
 [coq-ceres.dev] synchronised from git+https://github.com/Lysxia/coq-ceres#master
 [coq-itree.dev] synchronised from git+https://github.com/DeepSpec/InteractionTrees
 [coq-ext-lib.dev] synchronised from git+https://github.com/coq-community/coq-ext-lib#master
 [coq-itree-io.dev] synchronised from git+https://github.com/Lysxia/coq-itree-io
-[coq-parsec.dev] synchronised from git+https://github.com/liyishuai/coq-parsec
-[ocamlbuild.0.14.0] downloaded from cache at https://opam.ocaml.org/cache
+[coq-json.dev] synchronised from git+https://github.com/liyishuai/coq-json
 [coq-paco.dev] synchronised from git+https://github.com/snu-sf/paco.git#master
+[coq-mathcomp-ssreflect.dev] synchronised from git+https://github.com/math-comp/math-comp.git#master
+[coq-parsec.dev] synchronised from git+https://github.com/liyishuai/coq-parsec
+[coq-quickchick.dev] synchronised from git+https://github.com/QuickChick/QuickChick#master
+[dune.2.8.5] downloaded from cache at https://opam.ocaml.org/cache
 [coq-simple-io.dev] synchronised from git+https://github.com/Lysxia/coq-simple-io#master
+[coq-menhirlib.dev] synchronised from git+https://gitlab.inria.fr/fpottier/menhir.git#master
+[menhirSdk.dev] synchronised from git+https://gitlab.inria.fr/fpottier/menhir.git#master
+[ocamlbuild.0.14.0] downloaded from cache at https://opam.ocaml.org/cache
+[menhir.dev] synchronised from git+https://gitlab.inria.fr/fpottier/menhir.git#master
+[menhirLib.dev] synchronised from git+https://gitlab.inria.fr/fpottier/menhir.git#master
 &lt;&gt;&lt;&gt; Processing actions &lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;
 -&gt; installed coq-ceres.dev
--&gt; installed ocamlbuild.0.14.0
 -&gt; installed coq-ext-lib.dev
--&gt; installed coq-parsec.dev
--&gt; installed coq-simple-io.dev
 [ERROR] The compilation of coq-paco failed at &quot;/home/bench/.opam/opam-init/hooks/sandbox.sh build make -C src all -j4&quot;.
+-&gt; installed coq-menhirlib.dev
+-&gt; installed coq-parsec.dev
+-&gt; installed ocamlbuild.0.14.0
+-&gt; installed dune.2.8.5
+-&gt; installed menhirLib.dev
+-&gt; installed menhirSdk.dev
+-&gt; installed coq-simple-io.dev
+-&gt; installed menhir.dev
+-&gt; installed coq-json.dev
+-&gt; installed coq-mathcomp-ssreflect.dev
+[ERROR] The compilation of coq-quickchick failed at &quot;/home/bench/.opam/opam-init/hooks/sandbox.sh build make -j 4&quot;.
+#=== ERROR while compiling coq-quickchick.dev =================================#
+# context              2.0.8 | linux/x86_64 | ocaml-base-compiler.4.12.0 | file:///home/bench/run/opam-coq-archive/extra-dev
+# path                 ~/.opam/ocaml-base-compiler.4.12.0/.opam-switch/build/coq-quickchick.dev
+# command              ~/.opam/opam-init/hooks/sandbox.sh build make -j 4
+# exit-code            2
+# env-file             ~/.opam/log/coq-quickchick-23652-43ec25.env
+# output-file          ~/.opam/log/coq-quickchick-23652-43ec25.out
+### output ###
+# [...]
+# Error (warning 16 [unerasable-optional-argument]): this optional argument cannot be erased.
+# File &quot;plugin/quickChick.mlg&quot;, line 364, characters 60-63:
+# Error (warning 16 [unerasable-optional-argument]): this optional argument cannot be erased.
+# File &quot;plugin/quickChick.mlg&quot;, line 368, characters 60-63:
+# Error (warning 16 [unerasable-optional-argument]): this optional argument cannot be erased.
+# COQC src/ExtractionQCCompat.v
+# COQC src/Sets.v
+# make[2]: *** [Makefile.coq:669: plugin/quickChick.cmx] Error 2
+# make[2]: *** Waiting for unfinished jobs....
+# make[1]: *** [Makefile.coq:344: all] Error 2
+# make[1]: Leaving directory &#39;/home/bench/.opam/ocaml-base-compiler.4.12.0/.opam-switch/build/coq-quickchick.dev&#39;
+# make: *** [Makefile:24: plugin] Error 2
 #=== ERROR while compiling coq-paco.dev =======================================#
 # context              2.0.8 | linux/x86_64 | ocaml-base-compiler.4.12.0 | file:///home/bench/run/opam-coq-archive/extra-dev
 # path                 ~/.opam/ocaml-base-compiler.4.12.0/.opam-switch/build/coq-paco.dev
 # command              ~/.opam/opam-init/hooks/sandbox.sh build make -C src all -j4
 # exit-code            2
-# env-file             ~/.opam/log/coq-paco-19482-ac853a.env
-# output-file          ~/.opam/log/coq-paco-19482-ac853a.out
+# env-file             ~/.opam/log/coq-paco-23652-b1238c.env
+# output-file          ~/.opam/log/coq-paco-23652-b1238c.out
 ### output ###
 # [...]
 # specifying an explicit locality is therefore deprecated. It is recommended to
@@ -192,18 +239,26 @@ The following actions will be performed:
 # make: Leaving directory &#39;/home/bench/.opam/ocaml-base-compiler.4.12.0/.opam-switch/build/coq-paco.dev/src&#39;
 &lt;&gt;&lt;&gt; Error report &lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;
 +- The following actions failed
-| - build coq-paco dev
+| - build coq-paco       dev
+| - build coq-quickchick dev
 +- 
 +- The following changes have been performed (the rest was aborted)
-| - install coq-ceres     dev
-| - install coq-ext-lib   dev
-| - install coq-parsec    dev
-| - install coq-simple-io dev
-| - install ocamlbuild    0.14.0
+| - install coq-ceres              dev
+| - install coq-ext-lib            dev
+| - install coq-json               dev
+| - install coq-mathcomp-ssreflect dev
+| - install coq-menhirlib          dev
+| - install coq-parsec             dev
+| - install coq-simple-io          dev
+| - install dune                   2.8.5
+| - install menhir                 dev
+| - install menhirLib              dev
+| - install menhirSdk              dev
+| - install ocamlbuild             0.14.0
 +- 
 # Run eval $(opam env) to update the current shell environment
 The former state can be restored with:
-    opam switch import &quot;/home/bench/.opam/ocaml-base-compiler.4.12.0/.opam-switch/backup/state-20210412212246.export&quot;
+    opam switch import &quot;/home/bench/.opam/ocaml-base-compiler.4.12.0/.opam-switch/backup/state-20210424110901.export&quot;
 </pre></dd>
             </dl>
             <h2>Install</h2>
