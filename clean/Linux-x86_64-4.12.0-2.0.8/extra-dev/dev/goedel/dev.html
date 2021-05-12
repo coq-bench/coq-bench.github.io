@@ -42,7 +42,7 @@
                 <span class="label label-warning">Error with dependencies</span>
               </small>
             </h1>
-            <p><em><script>document.write(moment("2021-04-24 11:26:00 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2021-04-24 11:26:00 UTC)</em><p>
+            <p><em><script>document.write(moment("2021-05-12 17:52:05 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2021-05-12 17:52:05 UTC)</em><p>
             <h2>Context</h2>
             <pre># Packages matching: installed
 # Name                # Installed # Synopsis
@@ -52,7 +52,7 @@ base-unix             base
 conf-findutils        1           Virtual package relying on findutils
 conf-gmp              3           Virtual package relying on a GMP lib system installation
 coq                   dev         Formal proof management system
-num                   1.4         The legacy Num library for arbitrary-precision integer and rational arithmetic
+dune                  2.8.5       Fast, portable, and opinionated build system
 ocaml                 4.12.0      The OCaml compiler (virtual package)
 ocaml-base-compiler   4.12.0      Official release 4.12.0
 ocaml-config          2           OCaml Switch Configuration
@@ -123,7 +123,7 @@ url {
               <dt>Return code</dt>
               <dd>7936</dd>
               <dt>Duration</dt>
-              <dd>1 m 52 s</dd>
+              <dd>47 s</dd>
               <dt>Output</dt>
               <dd><pre># Packages matching: installed
 # Name                # Installed # Synopsis
@@ -133,7 +133,7 @@ base-unix             base
 conf-findutils        1           Virtual package relying on findutils
 conf-gmp              3           Virtual package relying on a GMP lib system installation
 coq                   dev         Formal proof management system
-num                   1.4         The legacy Num library for arbitrary-precision integer and rational arithmetic
+dune                  2.8.5       Fast, portable, and opinionated build system
 ocaml                 4.12.0      The OCaml compiler (virtual package)
 ocaml-base-compiler   4.12.0      Official release 4.12.0
 ocaml-config          2           OCaml Switch Configuration
@@ -142,38 +142,35 @@ ocamlfind             1.9.1       A library manager for OCaml
 zarith                1.12        Implements arithmetic and logical operations over arbitrary-precision integers
 The following actions will be performed:
   - install coq-equations     dev
-  - install dune              2.8.5
   - install coq-pocklington   dev
   - install coq-hydra-battles dev
-===== 4 to install =====
+===== 3 to install =====
 &lt;&gt;&lt;&gt; Gathering sources &gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;
 [coq-pocklington.dev] synchronised from git+https://github.com/coq-community/pocklington.git#master
 [coq-hydra-battles.dev] synchronised from git+https://github.com/coq-community/hydra-battles.git#master
 [coq-equations.dev] synchronised from git+https://github.com/mattam82/Coq-Equations#master
-[dune.2.8.5] downloaded from cache at https://opam.ocaml.org/cache
 &lt;&gt;&lt;&gt; Processing actions &lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;
 [ERROR] The compilation of coq-equations failed at &quot;/home/bench/.opam/opam-init/hooks/sandbox.sh build make -j4&quot;.
 -&gt; installed coq-pocklington.dev
--&gt; installed dune.2.8.5
 #=== ERROR while compiling coq-equations.dev ==================================#
 # context              2.0.8 | linux/x86_64 | ocaml-base-compiler.4.12.0 | file:///home/bench/run/opam-coq-archive/extra-dev
 # path                 ~/.opam/ocaml-base-compiler.4.12.0/.opam-switch/build/coq-equations.dev
 # command              ~/.opam/opam-init/hooks/sandbox.sh build make -j4
 # exit-code            2
-# env-file             ~/.opam/log/coq-equations-20617-e80101.env
-# output-file          ~/.opam/log/coq-equations-20617-e80101.out
+# env-file             ~/.opam/log/coq-equations-15044-fbcac7.env
+# output-file          ~/.opam/log/coq-equations-15044-fbcac7.out
 ### output ###
 # [...]
-# File &quot;src/g_equations.mlg&quot;, line 413, characters 15-18:
-# Error (warning 16 [unerasable-optional-argument]): this optional argument cannot be erased.
-# File &quot;src/g_equations.mlg&quot;, line 418, characters 61-64:
-# Error (warning 16 [unerasable-optional-argument]): this optional argument cannot be erased.
-# File &quot;src/g_equations.mlg&quot;, line 533, characters 64-67:
-# Error (warning 16 [unerasable-optional-argument]): this optional argument cannot be erased.
-# File &quot;src/g_equations.mlg&quot;, line 537, characters 12-15:
-# Error (warning 16 [unerasable-optional-argument]): this optional argument cannot be erased.
-# make[2]: *** [Makefile.coq:669: src/g_equations.cmx] Error 2
-# make[1]: *** [Makefile.coq:344: all] Error 2
+# CAMLOPT -c  src/simplify.ml
+# CAMLOPT -c  src/subterm.ml
+# CAMLOPT -c  src/splitting.ml
+# File &quot;src/splitting.ml&quot;, line 1123, characters 45-50:
+# 1123 |   let sigma = Evarutil.nf_evar_map_undefined sigma in
+#                                                     ^^^^^
+# Error: This expression has type Evd.evar_map * Univ.universe_subst
+#        but an expression was expected of type Evd.evar_map
+# make[2]: *** [Makefile.coq:673: src/splitting.cmx] Error 2
+# make[1]: *** [Makefile.coq:348: all] Error 2
 # make[1]: Leaving directory &#39;/home/bench/.opam/ocaml-base-compiler.4.12.0/.opam-switch/build/coq-equations.dev&#39;
 # make: *** [Makefile:6: all] Error 2
 &lt;&gt;&lt;&gt; Error report &lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;
@@ -182,11 +179,10 @@ The following actions will be performed:
 +- 
 +- The following changes have been performed (the rest was aborted)
 | - install coq-pocklington dev
-| - install dune            2.8.5
 +- 
 # Run eval $(opam env) to update the current shell environment
 The former state can be restored with:
-    opam switch import &quot;/home/bench/.opam/ocaml-base-compiler.4.12.0/.opam-switch/backup/state-20210422022309.export&quot;
+    opam switch import &quot;/home/bench/.opam/ocaml-base-compiler.4.12.0/.opam-switch/backup/state-20210508223456.export&quot;
 </pre></dd>
             </dl>
             <h2>Install</h2>
