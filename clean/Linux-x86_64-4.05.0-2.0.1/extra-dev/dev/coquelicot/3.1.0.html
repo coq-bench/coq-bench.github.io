@@ -42,25 +42,25 @@
                 <span class="label label-danger">Error</span>
               </small>
             </h1>
-            <p><em><script>document.write(moment("2021-01-19 15:27:27 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2021-01-19 15:27:27 UTC)</em><p>
+            <p><em><script>document.write(moment("2021-05-13 11:29:47 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2021-05-13 11:29:47 UTC)</em><p>
             <h2>Context</h2>
             <pre># Packages matching: installed
-# Name              # Installed # Synopsis
-base-bigarray       base
-base-num            base        Num library distributed with the OCaml compiler
-base-threads        base
-base-unix           base
-conf-findutils      1           Virtual package relying on findutils
-conf-gmp            3           Virtual package relying on a GMP lib system installation
-conf-m4             1           Virtual package relying on m4
-conf-perl           1           Virtual package relying on perl
-coq                 dev         Formal proof management system
-num                 0           The Num library for arbitrary-precision integer and rational arithmetic
-ocaml               4.05.0      The OCaml compiler (virtual package)
-ocaml-base-compiler 4.05.0      Official 4.05.0 release
-ocaml-config        1           OCaml Switch Configuration
-ocamlfind           1.8.1       A library manager for OCaml
-zarith              1.11        Implements arithmetic and logical operations over arbitrary-precision integers
+# Name                   # Installed # Synopsis
+base-bigarray            base
+base-threads             base
+base-unix                base
+conf-findutils           1           Virtual package relying on findutils
+conf-gmp                 3           Virtual package relying on a GMP lib system installation
+conf-m4                  1           Virtual package relying on m4
+coq                      dev         Formal proof management system
+dune                     2.8.5       Fast, portable, and opinionated build system
+ocaml                    4.05.0      The OCaml compiler (virtual package)
+ocaml-base-compiler      4.05.0      Official 4.05.0 release
+ocaml-config             1           OCaml Switch Configuration
+ocaml-secondary-compiler 4.08.1-1    OCaml 4.08.1 Secondary Switch Compiler
+ocamlfind                1.8.1       A library manager for OCaml
+ocamlfind-secondary      1.8.1       ocamlfind support for ocaml-secondary-compiler
+zarith                   1.12        Implements arithmetic and logical operations over arbitrary-precision integers
 # opam file:
 opam-version: &quot;2.0&quot;
 maintainer: &quot;guillaume.melquiond@inria.fr&quot;
@@ -116,40 +116,40 @@ url {
             <h2>Install dependencies</h2>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>opam list; echo; ulimit -Sv 4000000; timeout 2h opam install -y --deps-only coq-coquelicot.3.1.0 coq.dev</code></dd>
+              <dd><code>opam list; echo; ulimit -Sv 4000000; timeout 4h opam install -y --deps-only coq-coquelicot.3.1.0 coq.dev</code></dd>
               <dt>Return code</dt>
               <dd>0</dd>
               <dt>Duration</dt>
-              <dd>8 m 9 s</dd>
+              <dd>2 m 17 s</dd>
             </dl>
             <h2>Install</h2>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>opam list; echo; ulimit -Sv 16000000; timeout 2h opam install -y -v coq-coquelicot.3.1.0 coq.dev</code></dd>
+              <dd><code>opam list; echo; ulimit -Sv 16000000; timeout 4h opam install -y -v coq-coquelicot.3.1.0 coq.dev</code></dd>
               <dt>Return code</dt>
               <dd>7936</dd>
               <dt>Duration</dt>
-              <dd>8 m 22 s</dd>
+              <dd>2 m 34 s</dd>
               <dt>Output</dt>
               <dd><pre># Packages matching: installed
-# Name                 # Installed # Synopsis
-base-bigarray          base
-base-num               base        Num library distributed with the OCaml compiler
-base-threads           base
-base-unix              base
-conf-findutils         1           Virtual package relying on findutils
-conf-g++               1.0         Virtual package relying on the g++ compiler (for C++)
-conf-gmp               3           Virtual package relying on a GMP lib system installation
-conf-m4                1           Virtual package relying on m4
-conf-perl              1           Virtual package relying on perl
-coq                    dev         Formal proof management system
-coq-mathcomp-ssreflect dev         Small Scale Reflection
-num                    0           The Num library for arbitrary-precision integer and rational arithmetic
-ocaml                  4.05.0      The OCaml compiler (virtual package)
-ocaml-base-compiler    4.05.0      Official 4.05.0 release
-ocaml-config           1           OCaml Switch Configuration
-ocamlfind              1.8.1       A library manager for OCaml
-zarith                 1.11        Implements arithmetic and logical operations over arbitrary-precision integers
+# Name                   # Installed # Synopsis
+base-bigarray            base
+base-threads             base
+base-unix                base
+conf-findutils           1           Virtual package relying on findutils
+conf-g++                 1.0         Virtual package relying on the g++ compiler (for C++)
+conf-gmp                 3           Virtual package relying on a GMP lib system installation
+conf-m4                  1           Virtual package relying on m4
+coq                      dev         Formal proof management system
+coq-mathcomp-ssreflect   dev         Small Scale Reflection
+dune                     2.8.5       Fast, portable, and opinionated build system
+ocaml                    4.05.0      The OCaml compiler (virtual package)
+ocaml-base-compiler      4.05.0      Official 4.05.0 release
+ocaml-config             1           OCaml Switch Configuration
+ocaml-secondary-compiler 4.08.1-1    OCaml 4.08.1 Secondary Switch Compiler
+ocamlfind                1.8.1       A library manager for OCaml
+ocamlfind-secondary      1.8.1       ocamlfind support for ocaml-secondary-compiler
+zarith                   1.12        Implements arithmetic and logical operations over arbitrary-precision integers
 [NOTE] Package coq is already installed (current version is dev).
 The following actions will be performed:
   - install coq-coquelicot 3.1.0
@@ -165,19 +165,17 @@ Processing  1/2: [coq-coquelicot: ./configure]
 - checking whether the C++ compiler works... yes
 - checking for C++ compiler default output file name... a.out
 - checking for suffix of executables... 
-- 
-- checking whether we are cross compiling... 
-- no
+- checking whether we are cross compiling... no
 - checking for suffix of object files... o
-- checking whether we are using the GNU C++ compiler... yes
-- checking whether g++ accepts -g... 
+- checking whether we are using the GNU C++ compiler... 
 - yes
+- checking whether g++ accepts -g... yes
 - checking for coqc... /home/bench/.opam/ocaml-base-compiler.4.05.0/bin/coqc
 - checking for coqdep... /home/bench/.opam/ocaml-base-compiler.4.05.0/bin/coqdep
 - checking for coqdoc... /home/bench/.opam/ocaml-base-compiler.4.05.0/bin/coqdoc
 - checking for SSReflect... yes
 - configure: building remake...
-- /usr/bin/ld: /tmp/cccEOSKa.o: in function `main&#39;:
+- /usr/bin/ld: /tmp/ccvdw6T1.o: in function `main&#39;:
 - remake.cpp:(.text.startup+0xae0): warning: the use of `tempnam&#39; is dangerous, better use `mkstemp&#39;
 - configure: creating ./config.status
 - config.status: creating Remakefile
@@ -192,10 +190,10 @@ Processing  1/2: [coq-coquelicot: ./remake]
 - Building theories/Derive_2d.vo
 - Building theories/ElemFct.vo
 - Building theories/Hierarchy.vo
-- Building theories/Rcomplements.vo
-- Building theories/Lim_seq.vo
 - Building theories/Equiv.vo
+- Building theories/Lim_seq.vo
 - Building theories/Lub.vo
+- Building theories/Rcomplements.vo
 - Building theories/Markov.vo
 - Building theories/PSeries.vo
 - Building theories/Iter.vo
@@ -203,9 +201,9 @@ Processing  1/2: [coq-coquelicot: ./remake]
 - Building theories/RInt.vo
 - Building theories/RInt_analysis.vo
 - Building theories/RInt_gen.vo
+- Building theories/SF_seq.vo
 - Building theories/Seq_fct.vo
 - Building theories/Series.vo
-- Building theories/SF_seq.vo
 - Building theories/KHInt.vo
 - File &quot;./theories/Rcomplements.v&quot;, line 660, characters 2-37:
 - Warning: Duplicate clear of H [duplicate-clear,ssr]
@@ -299,18 +297,14 @@ Processing  1/2: [coq-coquelicot: ./remake]
 - Warning:
 - New coercion path [real; Finite] : Rbar &gt;-&gt; Rbar is not definitionally an identity function.
 - [ambiguous-paths,typechecker]
-- Finished theories/Markov.vo
-- Finished theories/Iter.vo
-- Finished theories/Compactness.vo
-- Finished theories/Rbar.vo
-- File &quot;./theories/Lub.v&quot;, line 24, characters 0-40:
-- Warning:
-- New coercion path [real; Finite] : Rbar &gt;-&gt; Rbar is not definitionally an identity function.
-- [ambiguous-paths,typechecker]
-- Finished theories/Lub.vo
-- File &quot;./theories/Hierarchy.v&quot;, line 24, characters 0-49:
-- Warning:
-- New coercion path [real; Finite] : Rbar &gt;-&gt; Rbar is not defin
+- File &quot;./theories/Iter.v&quot;, line 187, characters 12-20:
+- Warning: Notation iota_add is deprecated since mathcomp 1.13.0.
+- Use iotaD instead. [deprecated-syntactic-definition,deprecated]
+- File &quot;./theories/Iter.v&quot;, line 187, characters 12-20:
+- Warning: Notation iota_add is deprecated since mathcomp 1.13.0.
+- Use iotaD instead. [deprecated-syntactic-definition,deprecated]
+- File &quot;./theories/Iter.v&quot;, line 187, characters 12-20:
+- Warning: Notation iota_add is
 [...] truncated
 ctic-definition,deprecated]
 - File &quot;./theories/RInt.v&quot;, line 3593, characters 33-43:
@@ -377,14 +371,14 @@ ctic-definition,deprecated]
 - [deprecated-syntactic-definition,deprecated]
 - File &quot;./theories/RInt.v&quot;, line 3749, characters 2-107:
 - Warning: Duplicate clear of IH [duplicate-clear,ssr]
+- File &quot;./theories/PSeries.v&quot;, line 2045, characters 4-64:
+- Warning: Duplicate clear of Hn [duplicate-clear,ssr]
+- File &quot;./theories/PSeries.v&quot;, line 2045, characters 4-64:
+- Warning: Duplicate clear of Hn [duplicate-clear,ssr]
 - File &quot;./theories/RInt.v&quot;, line 3805, characters 2-148:
 - Warning: Duplicate clear of Hptd [duplicate-clear,ssr]
 - File &quot;./theories/RInt.v&quot;, line 3814, characters 2-159:
 - Warning: Duplicate clear of IH [duplicate-clear,ssr]
-- File &quot;./theories/PSeries.v&quot;, line 2045, characters 4-64:
-- Warning: Duplicate clear of Hn [duplicate-clear,ssr]
-- File &quot;./theories/PSeries.v&quot;, line 2045, characters 4-64:
-- Warning: Duplicate clear of Hn [duplicate-clear,ssr]
 - File &quot;./theories/PSeries.v&quot;, line 2441, characters 4-46:
 - Warning: Duplicate clear of r [duplicate-clear,ssr]
 - File &quot;./theories/PSeries.v&quot;, line 2457, characters 3-82:
@@ -471,8 +465,8 @@ ctic-definition,deprecated]
 # path                 ~/.opam/ocaml-base-compiler.4.05.0/.opam-switch/build/coq-coquelicot.3.1.0
 # command              ~/.opam/opam-init/hooks/sandbox.sh build ./remake -j7
 # exit-code            1
-# env-file             ~/.opam/log/coq-coquelicot-14323-d474c2.env
-# output-file          ~/.opam/log/coq-coquelicot-14323-d474c2.out
+# env-file             ~/.opam/log/coq-coquelicot-26343-d474c2.env
+# output-file          ~/.opam/log/coq-coquelicot-26343-d474c2.out
 ### output ###
 # [...]
 # Finished theories/RInt_gen.vo

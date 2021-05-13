@@ -42,25 +42,25 @@
                 <span class="label label-danger">Error</span>
               </small>
             </h1>
-            <p><em><script>document.write(moment("2021-01-19 15:27:27 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2021-01-19 15:27:27 UTC)</em><p>
+            <p><em><script>document.write(moment("2021-05-13 11:29:47 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2021-05-13 11:29:47 UTC)</em><p>
             <h2>Context</h2>
             <pre># Packages matching: installed
-# Name              # Installed # Synopsis
-base-bigarray       base
-base-num            base        Num library distributed with the OCaml compiler
-base-threads        base
-base-unix           base
-conf-findutils      1           Virtual package relying on findutils
-conf-gmp            3           Virtual package relying on a GMP lib system installation
-conf-m4             1           Virtual package relying on m4
-conf-perl           1           Virtual package relying on perl
-coq                 dev         Formal proof management system
-num                 0           The Num library for arbitrary-precision integer and rational arithmetic
-ocaml               4.05.0      The OCaml compiler (virtual package)
-ocaml-base-compiler 4.05.0      Official 4.05.0 release
-ocaml-config        1           OCaml Switch Configuration
-ocamlfind           1.8.1       A library manager for OCaml
-zarith              1.11        Implements arithmetic and logical operations over arbitrary-precision integers
+# Name                   # Installed # Synopsis
+base-bigarray            base
+base-threads             base
+base-unix                base
+conf-findutils           1           Virtual package relying on findutils
+conf-gmp                 3           Virtual package relying on a GMP lib system installation
+conf-m4                  1           Virtual package relying on m4
+coq                      dev         Formal proof management system
+dune                     2.8.5       Fast, portable, and opinionated build system
+ocaml                    4.05.0      The OCaml compiler (virtual package)
+ocaml-base-compiler      4.05.0      Official 4.05.0 release
+ocaml-config             1           OCaml Switch Configuration
+ocaml-secondary-compiler 4.08.1-1    OCaml 4.08.1 Secondary Switch Compiler
+ocamlfind                1.8.1       A library manager for OCaml
+ocamlfind-secondary      1.8.1       ocamlfind support for ocaml-secondary-compiler
+zarith                   1.12        Implements arithmetic and logical operations over arbitrary-precision integers
 # opam file:
 opam-version: &quot;2.0&quot;
 maintainer: &quot;FCSL &lt;fcsl@software.imdea.org&gt;&quot;
@@ -124,39 +124,39 @@ url {
             <h2>Install dependencies</h2>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>opam list; echo; ulimit -Sv 4000000; timeout 2h opam install -y --deps-only coq-fcsl-pcm.1.3.0 coq.dev</code></dd>
+              <dd><code>opam list; echo; ulimit -Sv 4000000; timeout 4h opam install -y --deps-only coq-fcsl-pcm.1.3.0 coq.dev</code></dd>
               <dt>Return code</dt>
               <dd>0</dd>
               <dt>Duration</dt>
-              <dd>1 m 55 s</dd>
+              <dd>2 m 5 s</dd>
             </dl>
             <h2>Install</h2>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>opam list; echo; ulimit -Sv 16000000; timeout 2h opam install -y -v coq-fcsl-pcm.1.3.0 coq.dev</code></dd>
+              <dd><code>opam list; echo; ulimit -Sv 16000000; timeout 4h opam install -y -v coq-fcsl-pcm.1.3.0 coq.dev</code></dd>
               <dt>Return code</dt>
               <dd>7936</dd>
               <dt>Duration</dt>
-              <dd>1 m 38 s</dd>
+              <dd>1 m 42 s</dd>
               <dt>Output</dt>
               <dd><pre># Packages matching: installed
-# Name                 # Installed # Synopsis
-base-bigarray          base
-base-num               base        Num library distributed with the OCaml compiler
-base-threads           base
-base-unix              base
-conf-findutils         1           Virtual package relying on findutils
-conf-gmp               3           Virtual package relying on a GMP lib system installation
-conf-m4                1           Virtual package relying on m4
-conf-perl              1           Virtual package relying on perl
-coq                    dev         Formal proof management system
-coq-mathcomp-ssreflect dev         Small Scale Reflection
-num                    0           The Num library for arbitrary-precision integer and rational arithmetic
-ocaml                  4.05.0      The OCaml compiler (virtual package)
-ocaml-base-compiler    4.05.0      Official 4.05.0 release
-ocaml-config           1           OCaml Switch Configuration
-ocamlfind              1.8.1       A library manager for OCaml
-zarith                 1.11        Implements arithmetic and logical operations over arbitrary-precision integers
+# Name                   # Installed # Synopsis
+base-bigarray            base
+base-threads             base
+base-unix                base
+conf-findutils           1           Virtual package relying on findutils
+conf-gmp                 3           Virtual package relying on a GMP lib system installation
+conf-m4                  1           Virtual package relying on m4
+coq                      dev         Formal proof management system
+coq-mathcomp-ssreflect   dev         Small Scale Reflection
+dune                     2.8.5       Fast, portable, and opinionated build system
+ocaml                    4.05.0      The OCaml compiler (virtual package)
+ocaml-base-compiler      4.05.0      Official 4.05.0 release
+ocaml-config             1           OCaml Switch Configuration
+ocaml-secondary-compiler 4.08.1-1    OCaml 4.08.1 Secondary Switch Compiler
+ocamlfind                1.8.1       A library manager for OCaml
+ocamlfind-secondary      1.8.1       ocamlfind support for ocaml-secondary-compiler
+zarith                   1.12        Implements arithmetic and logical operations over arbitrary-precision integers
 [NOTE] Package coq is already installed (current version is dev).
 The following actions will be performed:
   - install coq-fcsl-pcm 1.3.0
@@ -180,111 +180,126 @@ Processing  1/2: [coq-fcsl-pcm: make]
 - specifying an explicit locality is therefore deprecated. It is recommended to
 - use &quot;export&quot; whenever possible. [deprecated-hint-without-locality,deprecated]
 - COQC core/prelude.v
-- Warning: subseq_order_path is deprecated; use subseq_path instead
-- Warning: subseq_order_path is deprecated; use subseq_path instead
-- Warning: eq_sorted_irr is deprecated; use irr_sorted_eq instead
-- Warning: eq_sorted_irr is deprecated; use irr_sorted_eq instead
-- Warning: eq_sorted_irr is deprecated; use irr_sorted_eq instead
-- Warning: eq_sorted_irr is deprecated; use irr_sorted_eq instead
+- File &quot;./core/ordtype.v&quot;, line 132, characters 15-32:
+- Warning: Notation subseq_order_path is deprecated since mathcomp 1.12.0.
+- Use subseq_path instead. [deprecated-syntactic-definition,deprecated]
+- File &quot;./core/ordtype.v&quot;, line 132, characters 15-32:
+- Warning: Notation subseq_order_path is deprecated since mathcomp 1.12.0.
+- Use subseq_path instead. [deprecated-syntactic-definition,deprecated]
+- File &quot;./core/ordtype.v&quot;, line 136, characters 17-30:
+- Warning: Notation eq_sorted_irr is deprecated since mathcomp 1.12.0.
+- Use irr_sorted_eq instead. [deprecated-syntactic-definition,deprecated]
+- File &quot;./core/ordtype.v&quot;, line 136, characters 17-30:
+- Warning: Notation eq_sorted_irr is deprecated since mathcomp 1.12.0.
+- Use irr_sorted_eq instead. [deprecated-syntactic-definition,deprecated]
 - File &quot;./core/ordtype.v&quot;, line 140, characters 0-52:
 - Warning: The default value for hint locality is currently &quot;local&quot; in a
 - section and &quot;global&quot; otherwise, but is scheduled to change in a future
 - release. For the time being, adding hints outside of sections without
 - specifying an explicit locality is therefore deprecated. It is recommended to
 - use &quot;export&quot; whenever possible. [deprecated-hint-without-locality,deprecated]
-- Warning: eq_sorted_irr is deprecated; use irr_sorted_eq instead
-- Warning: eq_sorted_irr is deprecated; use irr_sorted_eq instead
-- Warning: eq_sorted_irr is deprecated; use irr_sorted_eq instead
-- Warning: eq_sorted_irr is deprecated; use irr_sorted_eq instead
-- File &quot;./core/prelude.v&quot;, line 376, characters 0-86:
-- Warning: The default value for hint locality is currently &quot;local&quot; in a
+- File &quot;./core/prelude.v&quot;, line 212, characters 0-84:
+- Warning: The default value for instance locality is currently &quot;local&quot; in a
 - section and &quot;global&quot; otherwise, but is scheduled to change in a future
-- release. For the time being, adding hints outside of sections without
+- release. For the time being, adding instances outside of sections without
 - specifying an explicit locality is therefore deprecated. It is recommended to
-- use &quot;export&quot; whenever possible. [deprecated-hint-without-locality,deprecated]
-- COQC core/pred.v
-- File &quot;./core/pred.v&quot;, line 129, characters 0-122:
-- Warning: grammar entry &quot;ident&quot; permitted &quot;_&quot; in addition to proper
-- identifiers; this use is deprecated and its meaning will change in the
-- future; use &quot;name&quot; instead. [deprecated-ident-entry,deprecated]
-- File &quot;./core/pred.v&quot;, line 131, characters 0-114:
-- Warning: grammar entry &quot;ident&quot; permitted &quot;_&quot; in addition to proper
-- identifiers; this use is deprecated and its meaning will change in the
-- future; use &quot;name&quot; instead. [deprecated-ident-entry,deprecated]
-- File &quot;./core/pred.v&quot;, line 133, characters 0-156:
-- Warning: grammar entry &quot;ident&quot; permitted &quot;_&quot; in addition to proper
-- identifiers; this use is deprecated and its meaning will change in the
-- future; use &quot;name&quot; instead. [deprecated-ident-entry,deprecated]
-- File &quot;./core/pred.v&quot;, line 133, characters 0-156:
-- Warning: grammar entry &quot;ident&quot; permitted &quot;_&quot; in addition to proper
-- identifiers; this use is deprecated and its meaning will change in the
-- future; use &quot;name&quot; instead. [deprecated-ident-entry,deprecated]
-- File &quot;./core/pred.v&quot;, line 135, characters 0-151:
-- Warning: grammar entry &quot;ident&quot; permitted &quot;_&quot; in addition to proper
-- identifiers; this use is deprecated and its meaning will change in the
-- future; use &quot;name&quot; instead. [deprecated-ident-entry,deprecated]
-- File &quot;./core/pred.v&quot;, line 135, characters 0-151:
-- Warning: grammar entry &quot;ident&quot; permitted &quot;_&quot; in addition to proper
-- identifiers; this use is deprecated and its meaning will change in the
-- future; use &quot;name&quot; instead. [deprecated-ident-entry,deprecated]
-- File &quot;./core/pred.v&quot;, line 217, characters 0-120:
-- Warning: grammar entry &quot;ident&quot; permitted &quot;_&quot; in addition to proper
-- identifiers; this use is deprecated and its meaning will change in the
-- future; use &quot;name&quot; instead. [deprecated-ident-entry,deprecated]
-- File &quot;./core/pred.v&quot;, line 219, characters 0-137:
-- Warning: grammar entry &quot;ident&quot; permitted &quot;_&quot; in addition to proper
-- identifiers; this use is deprecated and its meaning will change in the
-- future; use &quot;name&quot; instead. [deprecated-ident-entry,deprecated]
-- File &quot;./core/pred.v&quot;, line 221, characters 0-181:
-- Warning: grammar entry &quot;ident&quot; permitted &quot;_&quot; in addition to proper
-- identifiers; this use is deprecated and its meaning will change in the
-- future; use &quot;name&quot; instead. [deprecated-ident-entry,deprecated]
-- File &quot;./core/pred.v&quot;, line 221, characters 0-181:
-- Warning: grammar entry &quot;ident&quot; permitted &quot;_&quot; in addition to proper
-- identifiers; this use is deprecated and its meaning will change in the
-- future; use &quot;name&quot; instead. [deprecated-ident-entry,deprecated]
-- File &quot;./core/pred.v&quot;, line 225, characters 0-164:
-- Warning: grammar entry &quot;ident&quot; permitted &quot;_&quot; in addition to proper
-- identifiers; this use is deprecated and its meaning will change in the
-- future; use &quot;name&quot; instead. [deprecated-ident-entry,deprecated]
-- File &quot;./core/pred.v&quot;, line 225, characters 0-164:
-- Warning: grammar entry &quot;ident&quot; permitted &quot;_&quot; in addition to proper
-- identifiers; this use is deprecated and its meaning will change in the
-- future; use &quot;name&quot; instead. [deprecated-ident-entry,deprecated]
-- File &quot;./core/pred.v&quot;, line 228, characters 0-153:
-- Warning: grammar entry &quot;ident&quot; permitted &quot;_&quot; in addition to proper
-- identifiers; this use is deprecated and its meaning will change in the
-- future; use &quot;name&quot; instead. [deprecated-ident-entry,deprecated]
-- File &quot;./core/pred.v&quot;, line 228, characters 0-153:
-- Warning: grammar entry &quot;ident&quot; permitted &quot;_&quot; in addition to proper
-- identifiers; this use is deprecated and its meaning will change in the
-- future; use &quot;name&quot; instead. [deprecated-ident-entry,deprecated]
-- File &quot;./core/pred.v&quot;, line 231, characters 0-139:
-- Warning: grammar entry &quot;ident&quot; permitted &quot;_&quot; in addition to proper
-- identifiers; this use is deprecated and its meaning will change in the
-- future; use &quot;name&quot; instead. [deprecated-ident-entry,deprecated]
-- File &quot;./core/pred.v&quot;, line 231, characters 0-139:
-- Warning: grammar entry &quot;ident&quot; permitted &quot;_&quot; in addition to proper
-- identifiers; this use is deprecated and its meaning will change in the
-- future; use &quot;name&quot; instead. [deprecated-ident-entry,deprecated]
-- File &quot;./core/pred.v&quot;, line 285, characters 0-53:
-- Warning: The default value for hint locality is currently &quot;local&quot; in a
+- use &quot;export&quot; whenever possible.
+- [deprecated-instance-without-locality,deprecated]
+- File &quot;./core/prelude.v&quot;, line 213, characters 0-81:
+- Warning: The default value for instance locality is currently &quot;local&quot; in a
 - section and &quot;global&quot; otherwise, but is scheduled to change in a future
-- release. For the time being, adding hints outside of sections without
+- release. For the time being, adding instances outside of sections without
 - specifying an explicit locality is therefore deprecated. It is recommended to
-- use &quot;export&quot; whenever possible. [deprecated-hint-without-locality,deprecated]
-- File &quot;./core/pred.v&quot;, line 434, characters 0-30:
-- Warning: The default value for hint locality is currently &quot;local&quot; in a
+- use &quot;export&quot; whenever possible.
+- [deprecated-instance-without-locality,deprecated]
+- File &quot;./core/prelude.v&quot;, line 215, characters 0-84:
+- Warning: The default value for instance locality is currently &quot;local&quot; in a
 - section and &quot;global&quot; otherwise, but is scheduled to change in a future
-- release. For the time being, adding hints outside of sections without
+- release. For the time being, adding instances outside of sections without
 - specifying an explicit locality is therefore deprecated. It is recommended to
-- use &quot;export&quot; whenever possible. [deprecated-hint-without-locality,deprecated]
-- File &quot;./core/pred.v&quot;, line 529, characters 0-167:
-- Warning: grammar entry &quot;ident&quot; permitted &quot;_&quot; in addition to proper
-- identifiers; this use is deprecated and its meaning will change in the
-- future; use &quot;name&quot; instead. [deprecated-ident-entry,deprecated]
-- File &quot;./core/pred.v&quot;, line 533, characters 0-190:
-- Warning: grammar entry &quot;ident&quot; permitted &quot;_&quot; in addition to proper
+- use &quot;export&quot; whenever possible.
+- [deprecated-instance-without-locality,deprecated]
+- File &quot;./core/prelude.v&quot;, line 216, characters 0-81:
+- Warning: The default value for instance locality is currently &quot;local&quot; in a
+- section and &quot;global&quot; otherwise, but is scheduled to change in a future
+- release. For the time being, adding instances outside of sections without
+- specifying an explicit locality is therefore deprecated. It is recommended to
+- use &quot;export&quot; whenever possible.
+- [deprecated-instance-without-locality,deprecated]
+- File &quot;./core/prelude.v&quot;, line 218, characters 0-84:
+- Warning: The default value for instance locality is currently &quot;local&quot; in a
+- section and &quot;global&quot; otherwise, but is scheduled to change in a future
+- release. For the time being, adding instances outside of sections without
+- specifying an explicit locality is therefore deprecated. It is recommended to
+- use &quot;export&quot; whenever possible.
+- [deprecated-instance-without-locality,deprecated]
+- File &quot;./core/prelude.v&quot;, line 219, characters 0-81:
+- Warning: The default value for instance locality is currently &quot;local&quot; in a
+- section and &quot;global&quot; otherwise, but is scheduled to change in a future
+- release. For the time being, adding instances outside of sections without
+- specifying an explicit locality is therefore deprecated. It is recommended to
+- use &quot;export&quot; whenever possible.
+- [deprecated-instance-without-locality,deprecated]
+- File &quot;./core/prelude.v&quot;, line 221, characters 0-84:
+- Warning: The default value for instance locality is currently &quot;local&quot; in a
+- section and &quot;global&quot; otherwise, but is scheduled to change in a future
+- release. For the time being, adding instances outside of sections without
+- specifying an explicit locality is therefore deprecated. It is recommended to
+- use &quot;export&quot; whenever possible.
+- [deprecated-instance-without-locality,deprecated]
+- File &quot;./core/prelude.v&quot;, line 222, characters 0-81:
+- Warning: The default value for instance locality is currently &quot;local&quot; in a
+- section and &quot;global&quot; otherwise, but is scheduled to change in a future
+- release. For the time being, adding instances outside of sections without
+- specifying an explicit locality is therefore deprecated. It is recommended to
+- use &quot;export&quot; whenever possible.
+- [deprecated-instance-without-locality,deprecated]
+- File &quot;./core/prelude.v&quot;, line 224, characters 0-84:
+- Warning: The default value for instance locality is currently &quot;local&quot; in a
+- section and &quot;global&quot; otherwise, but is scheduled to change in a future
+- release. For the time being, adding instances outside of sections without
+- specifying an explicit locality is therefore deprecated. It is recommended to
+- use &quot;export&quot; whenever possible.
+- [deprecated-instance-without-locality,deprecated]
+- File &quot;./core/ordtype.v&quot;, line 445, characters 7-20:
+- Warning: Notation eq_sorted_irr is deprecated since mathcomp 1.12.0.
+- Use irr_sorted_eq instead. [deprecated-syntactic-definition,deprecated]
+- File &quot;./core/ordtype.v&quot;, line 445, characters 7-20:
+- Warning: Notation eq_sorted_irr is deprecated since mathcomp 1.12.0.
+- Use irr_sorted_eq instead. [deprecated-syntactic-definition,deprecated]
+- File &quot;./core/prelude.v&quot;, line 225, characters 0-81:
+- Warning: The default value for instance locality is currently &quot;local&quot; in a
+- section and &quot;global&quot; otherwise, but is scheduled to change in a future
+- release. For the time being, adding instances outside of sections without
+- specifying an explicit locality is therefore deprecated. It is recommended to
+- use &quot;export&quot; whenever possible.
+- [deprecated-instance-without-locality,deprecated]
+- File &quot;./core/prelude.v&quot;, line 227, characters 0-84:
+- Warning: The default value for instance locality is currently &quot;local&quot; in a
+- section and &quot;global&quot; otherwise, but is scheduled to change in a future
+- release. For the time being, adding instances outside of sections without
+- specifying an explicit locality is therefore deprecated. It is recommended to
+- use &quot;export&quot; whenever possible.
+- [deprecated-instance-without-locality,deprecated]
+- File &quot;./core/prelude.v&quot;, line 228, characters 0-81:
+- Warning: The default value for instance locality is currently &quot;local&quot; in a
+- section and &quot;global&quot; otherwise, but is scheduled to change in a future
+- release. For the time being, adding instances outside of sections without
+- specifying an explicit locality is therefore deprecated. It is recommended to
+- use &quot;export&quot; whenever possible.
+- [deprecated-instance-without-locality,deprecated]
+- File &quot;./core/prelude.v&quot;, line 230, characters 0-84:
+- Warning: The default value for instance locality is currently &quot;local&quot; in a
+- section and &quot;global&quot; otherwise, but is scheduled to change in a future
+- release. For the time being, adding instances outside of sections without
+- specifying an explicit locality is therefore deprecated. It is recommended to
+- use &quot;export&quot; whenever possible.
+- [deprecated-instance-without-locality,deprecated]
+- File &quot;./core/prelude.v&quot;, line 231, characters 0-81:
+- Warning: The default value for instance locality is currently &quot;local&quot; in a
+- sec
+[...] truncated
+d &quot;_&quot; in addition to proper
 - identifiers; this use is deprecated and its meaning will change in the
 - future; use &quot;name&quot; instead. [deprecated-ident-entry,deprecated]
 - File &quot;./core/pred.v&quot;, line 537, characters 0-133:
@@ -294,9 +309,24 @@ Processing  1/2: [coq-fcsl-pcm: make]
 - File &quot;./core/pred.v&quot;, line 540, characters 0-147:
 - Warning: grammar entry &quot;ident&quot; permitted &quot;_&quot; in addition to proper
 - identifiers; this use is deprecated and its meaning will change in the
-- future; use &quot;name&quot; instead. [deprecated-
-[...] truncated
-. For the time being, adding hints outside of sections without
+- future; use &quot;name&quot; instead. [deprecated-ident-entry,deprecated]
+- File &quot;./core/pred.v&quot;, line 739, characters 0-39:
+- Warning: The default value for hint locality is currently &quot;local&quot; in a
+- section and &quot;global&quot; otherwise, but is scheduled to change in a future
+- release. For the time being, adding hints outside of sections without
+- specifying an explicit locality is therefore deprecated. It is recommended to
+- use &quot;export&quot; whenever possible. [deprecated-hint-without-locality,deprecated]
+- File &quot;./core/pred.v&quot;, line 818, characters 0-30:
+- Warning: The default value for hint locality is currently &quot;local&quot; in a
+- section and &quot;global&quot; otherwise, but is scheduled to change in a future
+- release. For the time being, adding hints outside of sections without
+- specifying an explicit locality is therefore deprecated. It is recommended to
+- use &quot;export&quot; whenever possible. [deprecated-hint-without-locality,deprecated]
+- COQC core/seqperm.v
+- File &quot;./core/seqperm.v&quot;, line 183, characters 0-113:
+- Warning: The default value for hint locality is currently &quot;local&quot; in a
+- section and &quot;global&quot; otherwise, but is scheduled to change in a future
+- release. For the time being, adding hints outside of sections without
 - specifying an explicit locality is therefore deprecated. It is recommended to
 - use &quot;export&quot; whenever possible. [deprecated-hint-without-locality,deprecated]
 - COQC core/finmap.v
@@ -315,9 +345,9 @@ Processing  1/2: [coq-fcsl-pcm: make]
 - use &quot;export&quot; whenever possible. [deprecated-hint-without-locality,deprecated]
 - COQC pcm/morphism.v
 - COQC core/rtc.v
+- COQC pcm/invertible.v
 - COQC pcm/unionmap.v
 - COQC pcm/mutex.v
-- COQC pcm/invertible.v
 - COQC pcm/lift.v
 - File &quot;./pcm/unionmap.v&quot;, line 840, characters 0-48:
 - Warning: The default value for hint locality is currently &quot;local&quot; in a
@@ -325,14 +355,12 @@ Processing  1/2: [coq-fcsl-pcm: make]
 - release. For the time being, adding hints outside of sections without
 - specifying an explicit locality is therefore deprecated. It is recommended to
 - use &quot;export&quot; whenever possible. [deprecated-hint-without-locality,deprecated]
-- Warning: eq_sorted_irr is deprecated; use irr_sorted_eq instead
-- Warning: eq_sorted_irr is deprecated; use irr_sorted_eq instead
-- Warning: eq_sorted_irr is deprecated; use irr_sorted_eq instead
-- Warning: eq_sorted_irr is deprecated; use irr_sorted_eq instead
-- Warning: eq_sorted_irr is deprecated; use irr_sorted_eq instead
-- Warning: eq_sorted_irr is deprecated; use irr_sorted_eq instead
-- Warning: eq_sorted_irr is deprecated; use irr_sorted_eq instead
-- Warning: eq_sorted_irr is deprecated; use irr_sorted_eq instead
+- File &quot;./pcm/unionmap.v&quot;, line 849, characters 9-22:
+- Warning: Notation eq_sorted_irr is deprecated since mathcomp 1.12.0.
+- Use irr_sorted_eq instead. [deprecated-syntactic-definition,deprecated]
+- File &quot;./pcm/unionmap.v&quot;, line 849, characters 9-22:
+- Warning: Notation eq_sorted_irr is deprecated since mathcomp 1.12.0.
+- Use irr_sorted_eq instead. [deprecated-syntactic-definition,deprecated]
 - File &quot;./pcm/unionmap.v&quot;, line 1164, characters 0-31:
 - Warning: The default value for hint locality is currently &quot;local&quot; in a
 - section and &quot;global&quot; otherwise, but is scheduled to change in a future
@@ -345,24 +373,18 @@ Processing  1/2: [coq-fcsl-pcm: make]
 - release. For the time being, adding hints outside of sections without
 - specifying an explicit locality is therefore deprecated. It is recommended to
 - use &quot;export&quot; whenever possible. [deprecated-hint-without-locality,deprecated]
-- Warning: eq_sorted_irr is deprecated; use irr_sorted_eq instead
-- Warning: eq_sorted_irr is deprecated; use irr_sorted_eq instead
-- Warning: eq_sorted_irr is deprecated; use irr_sorted_eq instead
-- Warning: eq_sorted_irr is deprecated; use irr_sorted_eq instead
-- Warning: eq_sorted_irr is deprecated; use irr_sorted_eq instead
-- Warning: eq_sorted_irr is deprecated; use irr_sorted_eq instead
-- Warning: eq_sorted_irr is deprecated; use irr_sorted_eq instead
-- Warning: eq_sorted_irr is deprecated; use irr_sorted_eq instead
-- Warning: eq_sorted_irr is deprecated; use irr_sorted_eq instead
-- Warning: eq_sorted_irr is deprecated; use irr_sorted_eq instead
-- Warning: eq_sorted_irr is deprecated; use irr_sorted_eq instead
-- Warning: eq_sorted_irr is deprecated; use irr_sorted_eq instead
-- Warning: eq_sorted_irr is deprecated; use irr_sorted_eq instead
-- Warning: eq_sorted_irr is deprecated; use irr_sorted_eq instead
-- Warning: eq_sorted_irr is deprecated; use irr_sorted_eq instead
-- Warning: eq_sorted_irr is deprecated; use irr_sorted_eq instead
-- Warning: eq_sorted_irr is deprecated; use irr_sorted_eq instead
-- Warning: eq_sorted_irr is deprecated; use irr_sorted_eq instead
+- File &quot;./pcm/unionmap.v&quot;, line 1795, characters 20-33:
+- Warning: Notation eq_sorted_irr is deprecated since mathcomp 1.12.0.
+- Use irr_sorted_eq instead. [deprecated-syntactic-definition,deprecated]
+- File &quot;./pcm/unionmap.v&quot;, line 1795, characters 20-33:
+- Warning: Notation eq_sorted_irr is deprecated since mathcomp 1.12.0.
+- Use irr_sorted_eq instead. [deprecated-syntactic-definition,deprecated]
+- File &quot;./pcm/unionmap.v&quot;, line 1805, characters 20-33:
+- Warning: Notation eq_sorted_irr is deprecated since mathcomp 1.12.0.
+- Use irr_sorted_eq instead. [deprecated-syntactic-definition,deprecated]
+- File &quot;./pcm/unionmap.v&quot;, line 1805, characters 20-33:
+- Warning: Notation eq_sorted_irr is deprecated since mathcomp 1.12.0.
+- Use irr_sorted_eq instead. [deprecated-syntactic-definition,deprecated]
 - File &quot;./pcm/unionmap.v&quot;, line 2059, characters 0-48:
 - Warning: The default value for hint locality is currently &quot;local&quot; in a
 - section and &quot;global&quot; otherwise, but is scheduled to change in a future
@@ -401,30 +423,15 @@ Processing  1/2: [coq-fcsl-pcm: make]
 - Warning: grammar entry &quot;ident&quot; permitted &quot;_&quot; in addition to proper
 - identifiers; this use is deprecated and its meaning will change in the
 - future; use &quot;name&quot; instead. [deprecated-ident-entry,deprecated]
-- Warning: subseq_order_path is deprecated; use subseq_path instead
-- Warning: subseq_order_path is deprecated; use subseq_path instead
-- Warning: subseq_order_path is deprecated; use subseq_path instead
-- Warning: subseq_order_path is deprecated; use subseq_path instead
-- Warning: eq_sorted_irr is deprecated; use irr_sorted_eq instead
-- Warning: eq_sorted_irr is deprecated; use irr_sorted_eq instead
-- Warning: eq_sorted_irr is deprecated; use irr_sorted_eq instead
-- Warning: eq_sorted_irr is deprecated; use irr_sorted_eq instead
-- Warning: eq_sorted_irr is deprecated; use irr_sorted_eq instead
-- Warning: eq_sorted_irr is deprecated; use irr_sorted_eq instead
-- Warning: eq_sorted_irr is deprecated; use irr_sorted_eq instead
-- Warning: eq_sorted_irr is deprecated; use irr_sorted_eq instead
-- Warning: eq_sorted_irr is deprecated; use irr_sorted_eq instead
-- File &quot;./pcm/unionmap.v&quot;, line 3560, characters 0-73:
-- Warning: The default value for hint locality is currently &quot;local&quot; in a
-- section and &quot;global&quot; otherwise, but is scheduled to change in a future
-- release. For the time being, adding hints outside of sections without
-- specifying an explicit locality is therefore deprecated. It is recommended to
-- use &quot;export&quot; whenever possible. [deprecated-hint-without-locality,deprecated]
-- File &quot;./pcm/unionmap.v&quot;, line 3573, characters 23-26:
-- Error: Wrong argument name: leT.
+- File &quot;./pcm/unionmap.v&quot;, line 2942, characters 2-66:
+- Error:
+- No assumption in (exists w0 : V,
+-                     [/\ C k, valid (pts x z \+ omap a f),
+-                         (k, w0) \In pts x w \+ f
+-                       &amp; a (k, w0) = Some v])
 - 
-- make[2]: *** [CoqMakefile:719: pcm/unionmap.vo] Error 1
-- make[1]: *** [CoqMakefile:343: all] Error 2
+- make[2]: *** [CoqMakefile:724: pcm/unionmap.vo] Error 1
+- make[1]: *** [CoqMakefile:348: all] Error 2
 - make: *** [Makefile:13: invoke-coqmakefile] Error 2
 [ERROR] The compilation of coq-fcsl-pcm failed at &quot;/home/bench/.opam/opam-init/hooks/sandbox.sh build make -j7&quot;.
 #=== ERROR while compiling coq-fcsl-pcm.1.3.0 =================================#
@@ -432,21 +439,21 @@ Processing  1/2: [coq-fcsl-pcm: make]
 # path                 ~/.opam/ocaml-base-compiler.4.05.0/.opam-switch/build/coq-fcsl-pcm.1.3.0
 # command              ~/.opam/opam-init/hooks/sandbox.sh build make -j7
 # exit-code            2
-# env-file             ~/.opam/log/coq-fcsl-pcm-17380-335865.env
-# output-file          ~/.opam/log/coq-fcsl-pcm-17380-335865.out
+# env-file             ~/.opam/log/coq-fcsl-pcm-8605-335865.env
+# output-file          ~/.opam/log/coq-fcsl-pcm-8605-335865.out
 ### output ###
 # [...]
-# File &quot;./pcm/unionmap.v&quot;, line 3560, characters 0-73:
-# Warning: The default value for hint locality is currently &quot;local&quot; in a
-# section and &quot;global&quot; otherwise, but is scheduled to change in a future
-# release. For the time being, adding hints outside of sections without
-# specifying an explicit locality is therefore deprecated. It is recommended to
-# use &quot;export&quot; whenever possible. [deprecated-hint-without-locality,deprecated]
-# File &quot;./pcm/unionmap.v&quot;, line 3573, characters 23-26:
-# Error: Wrong argument name: leT.
+# identifiers; this use is deprecated and its meaning will change in the
+# future; use &quot;name&quot; instead. [deprecated-ident-entry,deprecated]
+# File &quot;./pcm/unionmap.v&quot;, line 2942, characters 2-66:
+# Error:
+# No assumption in (exists w0 : V,
+#                     [/\ C k, valid (pts x z \+ omap a f),
+#                         (k, w0) \In pts x w \+ f
+#                       &amp; a (k, w0) = Some v])
 # 
-# make[2]: *** [CoqMakefile:719: pcm/unionmap.vo] Error 1
-# make[1]: *** [CoqMakefile:343: all] Error 2
+# make[2]: *** [CoqMakefile:724: pcm/unionmap.vo] Error 1
+# make[1]: *** [CoqMakefile:348: all] Error 2
 # make: *** [Makefile:13: invoke-coqmakefile] Error 2
 &lt;&gt;&lt;&gt; Error report &lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;
 +- The following actions failed
