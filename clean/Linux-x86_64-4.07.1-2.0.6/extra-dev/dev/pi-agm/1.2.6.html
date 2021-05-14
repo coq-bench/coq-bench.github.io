@@ -42,22 +42,25 @@
                 <span class="label label-warning">Error with dependencies</span>
               </small>
             </h1>
-            <p><em><script>document.write(moment("2021-04-06 15:08:20 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2021-04-06 15:08:20 UTC)</em><p>
+            <p><em><script>document.write(moment("2021-05-13 23:51:05 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2021-05-13 23:51:05 UTC)</em><p>
             <h2>Context</h2>
             <pre># Packages matching: installed
-# Name              # Installed # Synopsis
-base-bigarray       base
-base-threads        base
-base-unix           base
-conf-findutils      1           Virtual package relying on findutils
-conf-gmp            3           Virtual package relying on a GMP lib system installation
-coq                 dev         Formal proof management system
-num                 1.4         The legacy Num library for arbitrary-precision integer and rational arithmetic
-ocaml               4.07.1      The OCaml compiler (virtual package)
-ocaml-base-compiler 4.07.1      Official release 4.07.1
-ocaml-config        1           OCaml Switch Configuration
-ocamlfind           1.9.1       A library manager for OCaml
-zarith              1.12        Implements arithmetic and logical operations over arbitrary-precision integers
+# Name                   # Installed # Synopsis
+base-bigarray            base
+base-threads             base
+base-unix                base
+conf-findutils           1           Virtual package relying on findutils
+conf-gmp                 3           Virtual package relying on a GMP lib system installation
+conf-m4                  1           Virtual package relying on m4
+coq                      dev         Formal proof management system
+dune                     2.8.5       Fast, portable, and opinionated build system
+ocaml                    4.07.1      The OCaml compiler (virtual package)
+ocaml-base-compiler      4.07.1      Official release 4.07.1
+ocaml-config             1           OCaml Switch Configuration
+ocaml-secondary-compiler 4.08.1-1    OCaml 4.08.1 Secondary Switch Compiler
+ocamlfind                1.8.1       A library manager for OCaml
+ocamlfind-secondary      1.8.1       ocamlfind support for ocaml-secondary-compiler
+zarith                   1.12        Implements arithmetic and logical operations over arbitrary-precision integers
 # opam file:
 opam-version: &quot;2.0&quot;
 maintainer: &quot;yves.bertot@inria.fr&quot;
@@ -117,26 +120,29 @@ url {
             <h2>Install dependencies</h2>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>opam list; echo; ulimit -Sv 4000000; timeout 2h opam install -y --deps-only coq-pi-agm.1.2.6 coq.dev</code></dd>
+              <dd><code>opam list; echo; ulimit -Sv 4000000; timeout 4h opam install -y --deps-only coq-pi-agm.1.2.6 coq.dev</code></dd>
               <dt>Return code</dt>
               <dd>7936</dd>
               <dt>Duration</dt>
-              <dd>10 m 36 s</dd>
+              <dd>15 m 11 s</dd>
               <dt>Output</dt>
               <dd><pre># Packages matching: installed
-# Name              # Installed # Synopsis
-base-bigarray       base
-base-threads        base
-base-unix           base
-conf-findutils      1           Virtual package relying on findutils
-conf-gmp            3           Virtual package relying on a GMP lib system installation
-coq                 dev         Formal proof management system
-num                 1.4         The legacy Num library for arbitrary-precision integer and rational arithmetic
-ocaml               4.07.1      The OCaml compiler (virtual package)
-ocaml-base-compiler 4.07.1      Official release 4.07.1
-ocaml-config        1           OCaml Switch Configuration
-ocamlfind           1.9.1       A library manager for OCaml
-zarith              1.12        Implements arithmetic and logical operations over arbitrary-precision integers
+# Name                   # Installed # Synopsis
+base-bigarray            base
+base-threads             base
+base-unix                base
+conf-findutils           1           Virtual package relying on findutils
+conf-gmp                 3           Virtual package relying on a GMP lib system installation
+conf-m4                  1           Virtual package relying on m4
+coq                      dev         Formal proof management system
+dune                     2.8.5       Fast, portable, and opinionated build system
+ocaml                    4.07.1      The OCaml compiler (virtual package)
+ocaml-base-compiler      4.07.1      Official release 4.07.1
+ocaml-config             1           OCaml Switch Configuration
+ocaml-secondary-compiler 4.08.1-1    OCaml 4.08.1 Secondary Switch Compiler
+ocamlfind                1.8.1       A library manager for OCaml
+ocamlfind-secondary      1.8.1       ocamlfind support for ocaml-secondary-compiler
+zarith                   1.12        Implements arithmetic and logical operations over arbitrary-precision integers
 The following actions will be performed:
   - install coq-flocq              dev
   - install coq-mathcomp-ssreflect dev
@@ -157,28 +163,28 @@ The following actions will be performed:
 -&gt; installed coq-mathcomp-ssreflect.dev
 -&gt; installed coq-coquelicot.3.2.0
 -&gt; installed coq-flocq.dev
-[ERROR] The compilation of coq-interval failed at &quot;/home/bench/.opam/opam-init/hooks/sandbox.sh build ./remake -j4&quot;.
+[ERROR] The compilation of coq-interval failed at &quot;/home/bench/.opam/opam-init/hooks/sandbox.sh build ./configure&quot;.
 #=== ERROR while compiling coq-interval.4.2.0 =================================#
 # context              2.0.6 | linux/x86_64 | ocaml-base-compiler.4.07.1 | file:///home/bench/run/opam-coq-archive/released
 # path                 ~/.opam/ocaml-base-compiler.4.07.1/.opam-switch/build/coq-interval.4.2.0
-# command              ~/.opam/opam-init/hooks/sandbox.sh build ./remake -j4
+# command              ~/.opam/opam-init/hooks/sandbox.sh build ./configure
 # exit-code            1
-# env-file             ~/.opam/log/coq-interval-16669-2f17b7.env
-# output-file          ~/.opam/log/coq-interval-16669-2f17b7.out
+# env-file             ~/.opam/log/coq-interval-5339-427793.env
+# output-file          ~/.opam/log/coq-interval-5339-427793.out
 ### output ###
 # [...]
-# [notation-overridden,parsing]
-# File &quot;./src/Poly/Bound_quad.v&quot;, line 25, characters 0-96:
-# Warning: Notation &quot;_ * _&quot; was already used in scope nat_scope.
-# [notation-overridden,parsing]
-# File &quot;./src/Poly/Bound_quad.v&quot;, line 25, characters 0-96:
-# Warning: Notation &quot;_ ^ _&quot; was already used in scope nat_scope.
-# [notation-overridden,parsing]
-# File &quot;./src/Poly/Bound_quad.v&quot;, line 81, characters 0-229:
-# Error: The reference Rplus was not found in the current environment.
-# 
-# Finished src/Eval/Reify.vo
-# Failed to build src/Poly/Bound_quad.vo
+# checking Coq version... 81400
+# checking for coqdep... /home/bench/.opam/ocaml-base-compiler.4.07.1/bin/coqdep
+# checking for coqdoc... /home/bench/.opam/ocaml-base-compiler.4.07.1/bin/coqdoc
+# checking for ocamlfind... /home/bench/.opam/ocaml-base-compiler.4.07.1/bin/ocamlfind
+# checking for Flocq... yes
+# checking for primitive floats... yes
+# checking for Ssreflect... yes
+# checking for Coquelicot... yes
+# checking for Bignums... yes
+# checking for native development files... ocamlfind: Package `coq.engine&#39; not found
+# no
+# configure: error:  *** Failed to compile a native OCaml library 
 &lt;&gt;&lt;&gt; Error report &lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;
 +- The following actions failed
 | - build coq-interval 4.2.0
@@ -192,7 +198,7 @@ The following actions will be performed:
 +- 
 # Run eval $(opam env) to update the current shell environment
 The former state can be restored with:
-    opam switch import &quot;/home/bench/.opam/ocaml-base-compiler.4.07.1/.opam-switch/backup/state-20210404042848.export&quot;
+    opam switch import &quot;/home/bench/.opam/ocaml-base-compiler.4.07.1/.opam-switch/backup/state-20210511125253.export&quot;
 </pre></dd>
             </dl>
             <h2>Install</h2>
