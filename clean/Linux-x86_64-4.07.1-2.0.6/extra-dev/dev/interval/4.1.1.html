@@ -42,22 +42,25 @@
                 <span class="label label-danger">Error</span>
               </small>
             </h1>
-            <p><em><script>document.write(moment("2021-04-06 15:08:20 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2021-04-06 15:08:20 UTC)</em><p>
+            <p><em><script>document.write(moment("2021-05-13 23:51:05 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2021-05-13 23:51:05 UTC)</em><p>
             <h2>Context</h2>
             <pre># Packages matching: installed
-# Name              # Installed # Synopsis
-base-bigarray       base
-base-threads        base
-base-unix           base
-conf-findutils      1           Virtual package relying on findutils
-conf-gmp            3           Virtual package relying on a GMP lib system installation
-coq                 dev         Formal proof management system
-num                 1.4         The legacy Num library for arbitrary-precision integer and rational arithmetic
-ocaml               4.07.1      The OCaml compiler (virtual package)
-ocaml-base-compiler 4.07.1      Official release 4.07.1
-ocaml-config        1           OCaml Switch Configuration
-ocamlfind           1.9.1       A library manager for OCaml
-zarith              1.12        Implements arithmetic and logical operations over arbitrary-precision integers
+# Name                   # Installed # Synopsis
+base-bigarray            base
+base-threads             base
+base-unix                base
+conf-findutils           1           Virtual package relying on findutils
+conf-gmp                 3           Virtual package relying on a GMP lib system installation
+conf-m4                  1           Virtual package relying on m4
+coq                      dev         Formal proof management system
+dune                     2.8.5       Fast, portable, and opinionated build system
+ocaml                    4.07.1      The OCaml compiler (virtual package)
+ocaml-base-compiler      4.07.1      Official release 4.07.1
+ocaml-config             1           OCaml Switch Configuration
+ocaml-secondary-compiler 4.08.1-1    OCaml 4.08.1 Secondary Switch Compiler
+ocamlfind                1.8.1       A library manager for OCaml
+ocamlfind-secondary      1.8.1       ocamlfind support for ocaml-secondary-compiler
+zarith                   1.12        Implements arithmetic and logical operations over arbitrary-precision integers
 # opam file:
 opam-version: &quot;2.0&quot;
 maintainer: &quot;guillaume.melquiond@inria.fr&quot;
@@ -128,40 +131,43 @@ url {
             <h2>Install dependencies</h2>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>opam list; echo; ulimit -Sv 4000000; timeout 2h opam install -y --deps-only coq-interval.4.1.1 coq.dev</code></dd>
+              <dd><code>opam list; echo; ulimit -Sv 4000000; timeout 4h opam install -y --deps-only coq-interval.4.1.1 coq.dev</code></dd>
               <dt>Return code</dt>
               <dd>0</dd>
               <dt>Duration</dt>
-              <dd>10 m 13 s</dd>
+              <dd>11 m 24 s</dd>
             </dl>
             <h2>Install</h2>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>opam list; echo; ulimit -Sv 16000000; timeout 2h opam install -y -v coq-interval.4.1.1 coq.dev</code></dd>
+              <dd><code>opam list; echo; ulimit -Sv 16000000; timeout 4h opam install -y -v coq-interval.4.1.1 coq.dev</code></dd>
               <dt>Return code</dt>
               <dd>7936</dd>
               <dt>Duration</dt>
-              <dd>32 s</dd>
+              <dd>31 s</dd>
               <dt>Output</dt>
               <dd><pre># Packages matching: installed
-# Name                 # Installed # Synopsis
-base-bigarray          base
-base-threads           base
-base-unix              base
-conf-findutils         1           Virtual package relying on findutils
-conf-g++               1.0         Virtual package relying on the g++ compiler (for C++)
-conf-gmp               3           Virtual package relying on a GMP lib system installation
-coq                    dev         Formal proof management system
-coq-bignums            dev         Bignums, the Coq library of arbitrary large numbers
-coq-coquelicot         dev         A Coq formalization of real analysis compatible with the standard library.
-coq-flocq              dev         A floating-point formalization for the Coq system
-coq-mathcomp-ssreflect dev         Small Scale Reflection
-num                    1.4         The legacy Num library for arbitrary-precision integer and rational arithmetic
-ocaml                  4.07.1      The OCaml compiler (virtual package)
-ocaml-base-compiler    4.07.1      Official release 4.07.1
-ocaml-config           1           OCaml Switch Configuration
-ocamlfind              1.9.1       A library manager for OCaml
-zarith                 1.12        Implements arithmetic and logical operations over arbitrary-precision integers
+# Name                   # Installed # Synopsis
+base-bigarray            base
+base-threads             base
+base-unix                base
+conf-findutils           1           Virtual package relying on findutils
+conf-g++                 1.0         Virtual package relying on the g++ compiler (for C++)
+conf-gmp                 3           Virtual package relying on a GMP lib system installation
+conf-m4                  1           Virtual package relying on m4
+coq                      dev         Formal proof management system
+coq-bignums              dev         Bignums, the Coq library of arbitrary large numbers
+coq-coquelicot           dev         A Coq formalization of real analysis compatible with the standard library.
+coq-flocq                dev         A floating-point formalization for the Coq system
+coq-mathcomp-ssreflect   dev         Small Scale Reflection
+dune                     2.8.5       Fast, portable, and opinionated build system
+ocaml                    4.07.1      The OCaml compiler (virtual package)
+ocaml-base-compiler      4.07.1      Official release 4.07.1
+ocaml-config             1           OCaml Switch Configuration
+ocaml-secondary-compiler 4.08.1-1    OCaml 4.08.1 Secondary Switch Compiler
+ocamlfind                1.8.1       A library manager for OCaml
+ocamlfind-secondary      1.8.1       ocamlfind support for ocaml-secondary-compiler
+zarith                   1.12        Implements arithmetic and logical operations over arbitrary-precision integers
 [NOTE] Package coq is already installed (current version is dev).
 The following actions will be performed:
   - install coq-interval 4.1.1
@@ -191,11 +197,10 @@ Processing  1/2: [coq-interval: ./configure]
 - checking for suffix of executables... 
 - checking whether we are cross compiling... no
 - checking for suffix of object files... o
-- checking whether we are using the GNU C++ compiler... 
-- yes
+- checking whether we are using the GNU C++ compiler... yes
 - checking whether g++ accepts -g... yes
 - configure: building remake...
-- /usr/bin/ld: /tmp/ccRrWVMT.o: in function `main&#39;:
+- /usr/bin/ld: /tmp/ccFgCtKd.o: in function `main&#39;:
 - remake.cpp:(.text.startup+0xae0): warning: the use of `tempnam&#39; is dangerous, better use `mkstemp&#39;
 - configure: creating ./config.status
 - config.status: creating Remakefile
@@ -240,8 +245,6 @@ Processing  1/2: [coq-interval: ./remake]
 - Building src/Real/Taylor.vo
 - Building src/Real/Xreal.vo
 - Building src/Real/Xreal_derive.vo
-- Building src/Tactic_float.vo
-- Building src/Float/Primitive_ops.vo
 - File &quot;./src/Integral/Priority.v&quot;, line 21, characters 0-62:
 - Warning: Notation &quot;[ rel _ _ | _ ]&quot; was already used in scope fun_scope.
 - [notation-overridden,parsing]
@@ -260,6 +263,8 @@ Processing  1/2: [coq-interval: ./remake]
 - File &quot;./src/Integral/Priority.v&quot;, line 21, characters 0-62:
 - Warning: Notation &quot;[ rel _ _ in _ ]&quot; was already used in scope fun_scope.
 - [notation-overridden,parsing]
+- Building src/Tactic_float.vo
+- Building src/Float/Primitive_ops.vo
 - File &quot;./src/Missing/MathComp.v&quot;, line 24, characters 0-88:
 - Warning: Notation &quot;[ rel _ _ | _ ]&quot; was already used in scope fun_scope.
 - [notation-overridden,parsing]
@@ -317,47 +322,47 @@ Processing  1/2: [coq-interval: ./remake]
 - File &quot;./src/Integral/Priority.v&quot;, line 527, characters 0-118:
 - Warning: Not a truly recursive fixpoint. [non-recursive,fixpoints]
 - Finished src/Integral/Priority.vo
-- Finished src/Missing/MathComp.vo
 - File &quot;./src/Missing/Stdlib.v&quot;, line 833, characters 8-13:
 - Error: The reference omega was not found in the current environment.
 - 
+- Finished src/Missing/MathComp.vo
 - Failed to build src/Missing/Stdlib.vo
 - Failed to build src/Real/Taylor.vo
-- Failed to build src/Real/Xreal.vo
 - Failed to build src/Real/Xreal_derive.vo
-- Failed to build src/Poly/Taylor_model.vo
-- Failed to build src/Poly/Taylor_model_sharp.vo
-- Failed to build src/Float/Primitive_ops.vo
-- Failed to build src/Poly/Bound_quad.vo
 - Failed to build src/Poly/Datatypes.vo
-- Failed to build src/Tactic_float.vo
-- Failed to build src/Missing/Coquelicot.vo
+- Failed to build src/Poly/Taylor_model_sharp.vo
+- Failed to build src/Poly/Taylor_model.vo
+- Failed to build src/Poly/Bound_quad.vo
 - Failed to build src/Poly/Bound.vo
-- Failed to build src/Poly/Taylor_poly.vo
-- Failed to build src/Interval/Float_full.vo
+- Failed to build src/Missing/Coquelicot.vo
 - Failed to build src/Interval/Transcend.vo
-- Failed to build src/Interval/Univariate_sig.vo
-- Failed to build src/Integral/Refine.vo
+- Failed to build src/Interval/Float_full.vo
 - Failed to build src/Interval/Interval_compl.vo
 - Failed to build src/Interval/Float.vo
+- Failed to build src/Interval/Interval.vo
+- Failed to build src/Interval/Univariate_sig.vo
+- Failed to build src/Integral/Refine.vo
 - Failed to build src/Integral/Bertrand.vo
 - Failed to build src/Integral/Integral.vo
-- Failed to build src/Interval/Interval.vo
-- Failed to build src/Float/Generic_ops.vo
-- Failed to build src/Float/Specific_ops.vo
-- Failed to build src/Float/Sig.vo
-- Failed to build src/Eval/Tree.vo
-- Failed to build src/Float/Generic.vo
 - Failed to build src/Float/Generic_proof.vo
-- Failed to build src/Float/Specific_bigint.vo
 - Failed to build src/Float/Specific_sig.vo
 - Failed to build src/Float/Specific_stdz.vo
+- Failed to build src/Float/Specific_ops.vo
+- Failed to build src/Float/Primitive_ops.vo
+- Failed to build src/Tactic_float.vo
+- Failed to build src/Float/Specific_bigint.vo
+- Failed to build src/Float/Generic_ops.vo
 - Failed to build src/Eval/Eval.vo
-- Failed to build src/Eval/Reify.vo
-- Failed to build src/Float/Basic.vo
-- Failed to build all
+- Failed to build src/Eval/Tree.vo
 - Failed to build src/Tactic.vo
 - Failed to build src/Eval/Prog.vo
+- Failed to build src/Eval/Reify.vo
+- Failed to build all
+- Failed to build src/Poly/Taylor_poly.vo
+- Failed to build src/Real/Xreal.vo
+- Failed to build src/Float/Basic.vo
+- Failed to build src/Float/Generic.vo
+- Failed to build src/Float/Sig.vo
 - File &quot;./src/Poly/Basic_rec.v&quot;, line 24, characters 0-102:
 - Warning: Notation &quot;[ rel _ _ | _ ]&quot; was already used in scope fun_scope.
 - [notation-overridden,parsing]
@@ -412,77 +417,32 @@ Processing  1/2: [coq-interval: ./remake]
 - File &quot;./src/Poly/Basic_rec.v&quot;, line 24, characters 0-102:
 - Warning: Notation &quot;_ ^ _&quot; was already used in scope nat_scope.
 - [notation-overridden,parsing]
-- File &quot;./src/Poly/Basic_rec.v&quot;, line 154, characters 0-10:
-- Warning: omega is deprecated since 8.12; use “lia” instead.
-- [omega-is-deprecated,deprecated]
-- File &quot;./src/Poly/Basic_rec.v&quot;, line 154, characters 0-10:
-- Warning: omega is deprecated since 8.12; use “lia” instead.
-- [omega-is-deprecated,deprecated]
-- File &quot;./src/Poly/Basic_rec.v&quot;, line 164, characters 2-62:
-- Warning: omega is deprecated since 8.12; use “lia” instead.
-- [omega-is-deprecated,deprecated]
-- File &quot;./src/Poly/Basic_rec.v&quot;, line 164, characters 2-62:
-- Warning: omega is deprecated since 8.12; use “lia” instead.
-- [omega-is-deprecated,deprecated]
-- File &quot;./src/Poly/Basic_rec.v&quot;, line 191, characters 2-51:
-- Warning: omega is deprecated since 8.12; use “lia” instead.
-- [omega-is-deprecated,deprecated]
-- File &quot;./src/Poly/Basic_rec.v&quot;, line 191, characters 2-51:
-- Warning: omega is deprecated since 8.12; use “lia” instead.
-- [omega-is-deprecated,deprecated]
-- File &quot;./src/Poly/Basic_rec.v&quot;, line 192, characters 2-51:
-- Warning: omega is deprecated since 8.12; use “lia” instead.
-- [omega-is-deprecated,deprecated]
-- File &quot;./src/Poly/Basic_rec.v&quot;, line 192, characters 2-51:
-- Warning: omega is deprecated since 8.12; use “lia” instead.
-- [omega-is-deprecated,deprecated]
-- File &quot;./src/Poly/Basic_rec.v&quot;, line 490, characters 0-10:
-- Warning: omega is deprecated since 8.12; use “lia” instead.
-- [omega-is-deprecated,deprecated]
-- File &quot;./src/Poly/Basic_rec.v&quot;, line 490, characters 0-10:
-- Warning: omega is deprecated since 8.12; use “lia” instead.
-- [omega-is-deprecated,deprecated]
-- File &quot;./src/Poly/Basic_rec.v&quot;, line 500, characters 2-35:
-- Warning: omega is deprecated since 8.12; use “lia” instead.
-- [omega-is-deprecated,deprecated]
-- File &quot;./src/Poly/Basic_rec.v&quot;, line 500, characters 2-35:
-- Warning: omega is deprecated since 8.12; use “lia” instead.
-- [omega-is-deprecated,deprecated]
-- File &quot;./src/Poly/Basic_rec.v&quot;, line 526, characters 2-54:
-- Warning: omega is deprecated since 8.12; use “lia” instead.
-- [omega-is-deprecated,deprecated]
-- File &quot;./src/Poly/Basic_rec.v&quot;, line 526, characters 2-54:
-- Warning: omega is deprecated since 8.12; use “lia” instead.
-- [omega-is-deprecated,deprecated]
-- File &quot;./src/Poly/Basic_rec.v&quot;, line 527, characters 2-54:
-- Warning: omega is deprecated since 8.12; use “lia” instead.
-- [omega-is-deprecated,deprecated]
-- File &quot;./src/Poly/Basic_rec.v&quot;, line 527, characters 2-54:
-- Warning: omega is deprecated since 8.12; use “lia” instead.
-- [omega-is-deprecated,deprecated]
-- Finished src/Poly/Basic_rec.vo
+- File &quot;./src/Poly/Basic_rec.v&quot;, line 40, characters 33-38:
+- Error: The reference omega was not found in the current environment.
+- 
+- Failed to build src/Poly/Basic_rec.vo
 [ERROR] The compilation of coq-interval failed at &quot;/home/bench/.opam/opam-init/hooks/sandbox.sh build ./remake -j4&quot;.
 #=== ERROR while compiling coq-interval.4.1.1 =================================#
 # context              2.0.6 | linux/x86_64 | ocaml-base-compiler.4.07.1 | file:///home/bench/run/opam-coq-archive/released
 # path                 ~/.opam/ocaml-base-compiler.4.07.1/.opam-switch/build/coq-interval.4.1.1
 # command              ~/.opam/opam-init/hooks/sandbox.sh build ./remake -j4
 # exit-code            1
-# env-file             ~/.opam/log/coq-interval-18009-2dea01.env
-# output-file          ~/.opam/log/coq-interval-18009-2dea01.out
+# env-file             ~/.opam/log/coq-interval-3519-2dea01.env
+# output-file          ~/.opam/log/coq-interval-3519-2dea01.out
 ### output ###
 # [...]
-# Warning: omega is deprecated since 8.12; use “lia” instead.
-# [omega-is-deprecated,deprecated]
-# File &quot;./src/Poly/Basic_rec.v&quot;, line 526, characters 2-54:
-# Warning: omega is deprecated since 8.12; use “lia” instead.
-# [omega-is-deprecated,deprecated]
-# File &quot;./src/Poly/Basic_rec.v&quot;, line 527, characters 2-54:
-# Warning: omega is deprecated since 8.12; use “lia” instead.
-# [omega-is-deprecated,deprecated]
-# File &quot;./src/Poly/Basic_rec.v&quot;, line 527, characters 2-54:
-# Warning: omega is deprecated since 8.12; use “lia” instead.
-# [omega-is-deprecated,deprecated]
-# Finished src/Poly/Basic_rec.vo
+# Warning: Notation &quot;_ &lt; _ &lt; _&quot; was already used in scope nat_scope.
+# [notation-overridden,parsing]
+# File &quot;./src/Poly/Basic_rec.v&quot;, line 24, characters 0-102:
+# Warning: Notation &quot;_ * _&quot; was already used in scope nat_scope.
+# [notation-overridden,parsing]
+# File &quot;./src/Poly/Basic_rec.v&quot;, line 24, characters 0-102:
+# Warning: Notation &quot;_ ^ _&quot; was already used in scope nat_scope.
+# [notation-overridden,parsing]
+# File &quot;./src/Poly/Basic_rec.v&quot;, line 40, characters 33-38:
+# Error: The reference omega was not found in the current environment.
+# 
+# Failed to build src/Poly/Basic_rec.vo
 &lt;&gt;&lt;&gt; Error report &lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;
 +- The following actions failed
 | - build coq-interval 4.1.1
