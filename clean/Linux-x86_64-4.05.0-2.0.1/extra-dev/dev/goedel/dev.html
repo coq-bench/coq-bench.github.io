@@ -42,25 +42,25 @@
                 <span class="label label-warning">Error with dependencies</span>
               </small>
             </h1>
-            <p><em><script>document.write(moment("2021-01-19 15:27:27 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2021-01-19 15:27:27 UTC)</em><p>
+            <p><em><script>document.write(moment("2021-05-13 11:29:47 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2021-05-13 11:29:47 UTC)</em><p>
             <h2>Context</h2>
             <pre># Packages matching: installed
-# Name              # Installed # Synopsis
-base-bigarray       base
-base-num            base        Num library distributed with the OCaml compiler
-base-threads        base
-base-unix           base
-conf-findutils      1           Virtual package relying on findutils
-conf-gmp            3           Virtual package relying on a GMP lib system installation
-conf-m4             1           Virtual package relying on m4
-conf-perl           1           Virtual package relying on perl
-coq                 dev         Formal proof management system
-num                 0           The Num library for arbitrary-precision integer and rational arithmetic
-ocaml               4.05.0      The OCaml compiler (virtual package)
-ocaml-base-compiler 4.05.0      Official 4.05.0 release
-ocaml-config        1           OCaml Switch Configuration
-ocamlfind           1.8.1       A library manager for OCaml
-zarith              1.11        Implements arithmetic and logical operations over arbitrary-precision integers
+# Name                   # Installed # Synopsis
+base-bigarray            base
+base-threads             base
+base-unix                base
+conf-findutils           1           Virtual package relying on findutils
+conf-gmp                 3           Virtual package relying on a GMP lib system installation
+conf-m4                  1           Virtual package relying on m4
+coq                      dev         Formal proof management system
+dune                     2.8.5       Fast, portable, and opinionated build system
+ocaml                    4.05.0      The OCaml compiler (virtual package)
+ocaml-base-compiler      4.05.0      Official 4.05.0 release
+ocaml-config             1           OCaml Switch Configuration
+ocaml-secondary-compiler 4.08.1-1    OCaml 4.08.1 Secondary Switch Compiler
+ocamlfind                1.8.1       A library manager for OCaml
+ocamlfind-secondary      1.8.1       ocamlfind support for ocaml-secondary-compiler
+zarith                   1.12        Implements arithmetic and logical operations over arbitrary-precision integers
 # opam file:
 opam-version: &quot;2.0&quot;
 maintainer: &quot;palmskog@gmail.com&quot;
@@ -121,84 +121,72 @@ url {
             <h2>Install dependencies</h2>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>opam list; echo; ulimit -Sv 4000000; timeout 2h opam install -y --deps-only coq-goedel.dev coq.dev</code></dd>
+              <dd><code>opam list; echo; ulimit -Sv 4000000; timeout 4h opam install -y --deps-only coq-goedel.dev coq.dev</code></dd>
               <dt>Return code</dt>
               <dd>7936</dd>
               <dt>Duration</dt>
-              <dd>10 m 15 s</dd>
+              <dd>52 s</dd>
               <dt>Output</dt>
               <dd><pre># Packages matching: installed
-# Name              # Installed # Synopsis
-base-bigarray       base
-base-num            base        Num library distributed with the OCaml compiler
-base-threads        base
-base-unix           base
-conf-findutils      1           Virtual package relying on findutils
-conf-gmp            3           Virtual package relying on a GMP lib system installation
-conf-m4             1           Virtual package relying on m4
-conf-perl           1           Virtual package relying on perl
-coq                 dev         Formal proof management system
-num                 0           The Num library for arbitrary-precision integer and rational arithmetic
-ocaml               4.05.0      The OCaml compiler (virtual package)
-ocaml-base-compiler 4.05.0      Official 4.05.0 release
-ocaml-config        1           OCaml Switch Configuration
-ocamlfind           1.8.1       A library manager for OCaml
-zarith              1.11        Implements arithmetic and logical operations over arbitrary-precision integers
+# Name                   # Installed # Synopsis
+base-bigarray            base
+base-threads             base
+base-unix                base
+conf-findutils           1           Virtual package relying on findutils
+conf-gmp                 3           Virtual package relying on a GMP lib system installation
+conf-m4                  1           Virtual package relying on m4
+coq                      dev         Formal proof management system
+dune                     2.8.5       Fast, portable, and opinionated build system
+ocaml                    4.05.0      The OCaml compiler (virtual package)
+ocaml-base-compiler      4.05.0      Official 4.05.0 release
+ocaml-config             1           OCaml Switch Configuration
+ocaml-secondary-compiler 4.08.1-1    OCaml 4.08.1 Secondary Switch Compiler
+ocamlfind                1.8.1       A library manager for OCaml
+ocamlfind-secondary      1.8.1       ocamlfind support for ocaml-secondary-compiler
+zarith                   1.12        Implements arithmetic and logical operations over arbitrary-precision integers
 The following actions will be performed:
-  - install coq-pocklington          dev
-  - install coq-equations            dev
-  - install ocaml-secondary-compiler 4.08.1-1
-  - install ocamlfind-secondary      1.8.1
-  - install dune                     2.8.1
-  - install coq-hydra-battles        dev
-===== 6 to install =====
+  - install coq-equations     dev
+  - install coq-pocklington   dev
+  - install coq-hydra-battles dev
+===== 3 to install =====
 &lt;&gt;&lt;&gt; Gathering sources &gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;
 [coq-pocklington.dev] synchronised from git+https://github.com/coq-community/pocklington.git#master
 [coq-hydra-battles.dev] synchronised from git+https://github.com/coq-community/hydra-battles.git#master
-[dune.2.8.1] downloaded from cache at https://opam.ocaml.org/cache
-[ocaml-secondary-compiler.4.08.1-1] downloaded from cache at https://opam.ocaml.org/cache
-[ocamlfind-secondary.1.8.1] found in cache
 [coq-equations.dev] synchronised from git+https://github.com/mattam82/Coq-Equations#master
 &lt;&gt;&lt;&gt; Processing actions &lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;
 [ERROR] The compilation of coq-equations failed at &quot;/home/bench/.opam/opam-init/hooks/sandbox.sh build make -j7&quot;.
 -&gt; installed coq-pocklington.dev
--&gt; installed ocaml-secondary-compiler.4.08.1-1
--&gt; installed ocamlfind-secondary.1.8.1
--&gt; installed dune.2.8.1
 #=== ERROR while compiling coq-equations.dev ==================================#
 # context              2.0.1 | linux/x86_64 | ocaml-base-compiler.4.05.0 | file:///home/bench/run/opam-coq-archive/extra-dev
 # path                 ~/.opam/ocaml-base-compiler.4.05.0/.opam-switch/build/coq-equations.dev
 # command              ~/.opam/opam-init/hooks/sandbox.sh build make -j7
 # exit-code            2
-# env-file             ~/.opam/log/coq-equations-25274-f33fa5.env
-# output-file          ~/.opam/log/coq-equations-25274-f33fa5.out
+# env-file             ~/.opam/log/coq-equations-18965-e0ba4f.env
+# output-file          ~/.opam/log/coq-equations-18965-e0ba4f.out
 ### output ###
 # [...]
-# File &quot;src/principles_proofs.ml&quot;, line 168, characters 17-29:
-# Warning 3: deprecated: Names.MutInd.equal
-# Use QMutInd.equal
-# File &quot;src/principles_proofs.ml&quot;, line 1006, characters 16-30:
-# Warning 3: deprecated: Names.Constant.equal
-# Use QConstant.equal
-# CAMLOPT -c  src/principles.ml
-# File &quot;src/principles.ml&quot;, line 54, characters 2-27:
-# Error: This function has type string -&gt; Autorewrite.raw_rew_rule list -&gt; unit
-#        It is applied to too many arguments; maybe you forgot a `;&#39;.
-# make[1]: *** [Makefile.coq:668: src/principles.cmx] Error 2
-# make: *** [Makefile.coq:343: all] Error 2
+# CAMLOPT -c  src/context_map.ml
+# CAMLOPT -c  src/sigma_types.ml
+# CAMLOPT -c  src/simplify.ml
+# CAMLOPT -c  src/subterm.ml
+# CAMLOPT -c  src/splitting.ml
+# File &quot;src/splitting.ml&quot;, line 1123, characters 45-50:
+# Error: This expression has type Evd.evar_map * Univ.universe_subst
+#        but an expression was expected of type Evd.evar_map
+# make[2]: *** [Makefile.coq:673: src/splitting.cmx] Error 2
+# make[1]: *** [Makefile.coq:348: all] Error 2
+# make[1]: Leaving directory &#39;/home/bench/.opam/ocaml-base-compiler.4.05.0/.opam-switch/build/coq-equations.dev&#39;
+# make: *** [Makefile:6: all] Error 2
 &lt;&gt;&lt;&gt; Error report &lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;
 +- The following actions failed
 | - build coq-equations dev
 +- 
 +- The following changes have been performed (the rest was aborted)
-| - install coq-pocklington          dev
-| - install dune                     2.8.1
-| - install ocaml-secondary-compiler 4.08.1-1
-| - install ocamlfind-secondary      1.8.1
+| - install coq-pocklington dev
 +- 
 # Run eval $(opam env) to update the current shell environment
 The former state can be restored with:
-    opam switch import &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/.opam-switch/backup/state-20210119141241.export&quot;
+    opam switch import &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/.opam-switch/backup/state-20210512033004.export&quot;
 </pre></dd>
             </dl>
             <h2>Install</h2>

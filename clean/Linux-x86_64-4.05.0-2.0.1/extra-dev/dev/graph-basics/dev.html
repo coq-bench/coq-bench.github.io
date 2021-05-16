@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>graph-basics: 32 s</title>
+    <title>graph-basics: Error</title>
     <link rel="shortcut icon" type="image/png" href="../../../../../favicon.png" />
     <link href="../../../../../bootstrap.min.css" rel="stylesheet">
     <link href="../../../../../bootstrap-custom.css" rel="stylesheet">
@@ -39,28 +39,28 @@
               graph-basics
               <small>
                 dev
-                <span class="label label-success">32 s</span>
+                <span class="label label-danger">Error</span>
               </small>
             </h1>
-            <p><em><script>document.write(moment("2021-01-19 15:27:27 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2021-01-19 15:27:27 UTC)</em><p>
+            <p><em><script>document.write(moment("2021-05-13 11:29:47 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2021-05-13 11:29:47 UTC)</em><p>
             <h2>Context</h2>
             <pre># Packages matching: installed
-# Name              # Installed # Synopsis
-base-bigarray       base
-base-num            base        Num library distributed with the OCaml compiler
-base-threads        base
-base-unix           base
-conf-findutils      1           Virtual package relying on findutils
-conf-gmp            3           Virtual package relying on a GMP lib system installation
-conf-m4             1           Virtual package relying on m4
-conf-perl           1           Virtual package relying on perl
-coq                 dev         Formal proof management system
-num                 0           The Num library for arbitrary-precision integer and rational arithmetic
-ocaml               4.05.0      The OCaml compiler (virtual package)
-ocaml-base-compiler 4.05.0      Official 4.05.0 release
-ocaml-config        1           OCaml Switch Configuration
-ocamlfind           1.8.1       A library manager for OCaml
-zarith              1.11        Implements arithmetic and logical operations over arbitrary-precision integers
+# Name                   # Installed # Synopsis
+base-bigarray            base
+base-threads             base
+base-unix                base
+conf-findutils           1           Virtual package relying on findutils
+conf-gmp                 3           Virtual package relying on a GMP lib system installation
+conf-m4                  1           Virtual package relying on m4
+coq                      dev         Formal proof management system
+dune                     2.8.5       Fast, portable, and opinionated build system
+ocaml                    4.05.0      The OCaml compiler (virtual package)
+ocaml-base-compiler      4.05.0      Official 4.05.0 release
+ocaml-config             1           OCaml Switch Configuration
+ocaml-secondary-compiler 4.08.1-1    OCaml 4.08.1 Secondary Switch Compiler
+ocamlfind                1.8.1       A library manager for OCaml
+ocamlfind-secondary      1.8.1       ocamlfind support for ocaml-secondary-compiler
+zarith                   1.12        Implements arithmetic and logical operations over arbitrary-precision integers
 # opam file:
 opam-version: &quot;2.0&quot;
 maintainer: &quot;dev@clarus.me&quot;
@@ -76,9 +76,14 @@ depends: [
   &quot;ocaml&quot;
   &quot;coq&quot; {= &quot;dev&quot;}
 ]
-tags: [ &quot;keyword:graph theory&quot; &quot;keyword:curry howard&#39;s isomorphism&quot; &quot;keyword:inductive&quot; &quot;keyword:definitions&quot; &quot;category:Mathematics/Combinatorics and Graph Theory&quot; &quot;date:2001-04&quot; ]
+tags: [
+  &quot;keyword:graph theory&quot;
+  &quot;keyword:Curry-Howard&#39;s isomorphism&quot;
+  &quot;category:Mathematics/Combinatorics and Graph Theory&quot;
+  &quot;date:2001-04&quot;
+]
 authors: [ &quot;Jean Duprat &lt;&gt;&quot; ]
-synopsis: &quot;a Coq toolkit for graph theory.&quot;
+synopsis: &quot;a Coq toolkit for graph theory&quot;
 description: &quot;&quot;&quot;
 This library offers inductive definitions of basics
 in graph theory. The goal is to offer the possibility to write proofs
@@ -116,68 +121,75 @@ url {
             <h2>Install dependencies</h2>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>opam list; echo; ulimit -Sv 4000000; timeout 2h opam install -y --deps-only coq-graph-basics.dev coq.dev</code></dd>
+              <dd><code>opam list; echo; ulimit -Sv 4000000; timeout 4h opam install -y --deps-only coq-graph-basics.dev coq.dev</code></dd>
               <dt>Return code</dt>
               <dd>0</dd>
               <dt>Duration</dt>
-              <dd>6 s</dd>
+              <dd>57 s</dd>
             </dl>
             <h2>Install</h2>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>opam list; echo; ulimit -Sv 16000000; timeout 2h opam install -y coq-graph-basics.dev coq.dev</code></dd>
+              <dd><code>opam list; echo; ulimit -Sv 16000000; timeout 4h opam install -y coq-graph-basics.dev coq.dev</code></dd>
               <dt>Return code</dt>
-              <dd>0</dd>
+              <dd>7936</dd>
               <dt>Duration</dt>
-              <dd>32 s</dd>
+              <dd>1 m 25 s</dd>
+              <dt>Output</dt>
+              <dd><pre># Packages matching: installed
+# Name                   # Installed # Synopsis
+base-bigarray            base
+base-threads             base
+base-unix                base
+conf-findutils           1           Virtual package relying on findutils
+conf-gmp                 3           Virtual package relying on a GMP lib system installation
+conf-m4                  1           Virtual package relying on m4
+coq                      dev         Formal proof management system
+dune                     2.8.5       Fast, portable, and opinionated build system
+ocaml                    4.05.0      The OCaml compiler (virtual package)
+ocaml-base-compiler      4.05.0      Official 4.05.0 release
+ocaml-config             1           OCaml Switch Configuration
+ocaml-secondary-compiler 4.08.1-1    OCaml 4.08.1 Secondary Switch Compiler
+ocamlfind                1.8.1       A library manager for OCaml
+ocamlfind-secondary      1.8.1       ocamlfind support for ocaml-secondary-compiler
+zarith                   1.12        Implements arithmetic and logical operations over arbitrary-precision integers
+[NOTE] Package coq is already installed (current version is dev).
+The following actions will be performed:
+  - install coq-graph-basics dev
+&lt;&gt;&lt;&gt; Gathering sources &gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;
+[coq-graph-basics.dev] synchronised from git+https://github.com/coq-contribs/graph-basics.git#master
+&lt;&gt;&lt;&gt; Processing actions &lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;
+[ERROR] The compilation of coq-graph-basics failed at &quot;/home/bench/.opam/opam-init/hooks/sandbox.sh build make -j7&quot;.
+#=== ERROR while compiling coq-graph-basics.dev ===============================#
+# context              2.0.1 | linux/x86_64 | ocaml-base-compiler.4.05.0 | file:///home/bench/run/opam-coq-archive/extra-dev
+# path                 ~/.opam/ocaml-base-compiler.4.05.0/.opam-switch/build/coq-graph-basics.dev
+# command              ~/.opam/opam-init/hooks/sandbox.sh build make -j7
+# exit-code            2
+# env-file             ~/.opam/log/coq-graph-basics-15827-865888.env
+# output-file          ~/.opam/log/coq-graph-basics-15827-865888.out
+### output ###
+# COQDEP VFILES
+# *** Warning: in file Sets.v, library Omega is required and has not been found in the loadpath!
+# COQC Sets.v
+# File &quot;./Sets.v&quot;, line 36, characters 15-20:
+# Error: Unable to locate library Omega.
+# 
+# make[1]: *** [Makefile:725: Sets.vo] Error 1
+# make: *** [Makefile:348: all] Error 2
+&lt;&gt;&lt;&gt; Error report &lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;
++- The following actions failed
+| - build coq-graph-basics dev
++- 
+- No changes have been performed
+# Run eval $(opam env) to update the current shell environment
+</pre></dd>
             </dl>
             <h2>Installation size</h2>
-            <p>Total: 1020 K</p>
-            <ul>
-              <li>96 K <code>../ocaml-base-compiler.4.05.0/lib/coq/user-contrib/GraphBasics/Paths.vo</code></li>
-              <li>75 K <code>../ocaml-base-compiler.4.05.0/lib/coq/user-contrib/GraphBasics/Paths.glob</code></li>
-              <li>55 K <code>../ocaml-base-compiler.4.05.0/lib/coq/user-contrib/GraphBasics/Sets.vo</code></li>
-              <li>54 K <code>../ocaml-base-compiler.4.05.0/lib/coq/user-contrib/GraphBasics/Graphs.vo</code></li>
-              <li>49 K <code>../ocaml-base-compiler.4.05.0/lib/coq/user-contrib/GraphBasics/Edges.vo</code></li>
-              <li>49 K <code>../ocaml-base-compiler.4.05.0/lib/coq/user-contrib/GraphBasics/Connected.vo</code></li>
-              <li>47 K <code>../ocaml-base-compiler.4.05.0/lib/coq/user-contrib/GraphBasics/Degrees.vo</code></li>
-              <li>46 K <code>../ocaml-base-compiler.4.05.0/lib/coq/user-contrib/GraphBasics/Connected.glob</code></li>
-              <li>39 K <code>../ocaml-base-compiler.4.05.0/lib/coq/user-contrib/GraphBasics/Arcs.vo</code></li>
-              <li>38 K <code>../ocaml-base-compiler.4.05.0/lib/coq/user-contrib/GraphBasics/Acyclic.vo</code></li>
-              <li>37 K <code>../ocaml-base-compiler.4.05.0/lib/coq/user-contrib/GraphBasics/Graphs.glob</code></li>
-              <li>36 K <code>../ocaml-base-compiler.4.05.0/lib/coq/user-contrib/GraphBasics/Vertices.vo</code></li>
-              <li>35 K <code>../ocaml-base-compiler.4.05.0/lib/coq/user-contrib/GraphBasics/Sets.glob</code></li>
-              <li>33 K <code>../ocaml-base-compiler.4.05.0/lib/coq/user-contrib/GraphBasics/Dipaths.vo</code></li>
-              <li>31 K <code>../ocaml-base-compiler.4.05.0/lib/coq/user-contrib/GraphBasics/Digraphs.vo</code></li>
-              <li>30 K <code>../ocaml-base-compiler.4.05.0/lib/coq/user-contrib/GraphBasics/Trees.vo</code></li>
-              <li>28 K <code>../ocaml-base-compiler.4.05.0/lib/coq/user-contrib/GraphBasics/Edges.glob</code></li>
-              <li>27 K <code>../ocaml-base-compiler.4.05.0/lib/coq/user-contrib/GraphBasics/Degrees.glob</code></li>
-              <li>24 K <code>../ocaml-base-compiler.4.05.0/lib/coq/user-contrib/GraphBasics/Enumerated.vo</code></li>
-              <li>20 K <code>../ocaml-base-compiler.4.05.0/lib/coq/user-contrib/GraphBasics/Paths.v</code></li>
-              <li>19 K <code>../ocaml-base-compiler.4.05.0/lib/coq/user-contrib/GraphBasics/Acyclic.glob</code></li>
-              <li>15 K <code>../ocaml-base-compiler.4.05.0/lib/coq/user-contrib/GraphBasics/Digraphs.glob</code></li>
-              <li>15 K <code>../ocaml-base-compiler.4.05.0/lib/coq/user-contrib/GraphBasics/Connected.v</code></li>
-              <li>13 K <code>../ocaml-base-compiler.4.05.0/lib/coq/user-contrib/GraphBasics/Graphs.v</code></li>
-              <li>12 K <code>../ocaml-base-compiler.4.05.0/lib/coq/user-contrib/GraphBasics/Sets.v</code></li>
-              <li>11 K <code>../ocaml-base-compiler.4.05.0/lib/coq/user-contrib/GraphBasics/Dipaths.glob</code></li>
-              <li>10 K <code>../ocaml-base-compiler.4.05.0/lib/coq/user-contrib/GraphBasics/Degrees.v</code></li>
-              <li>10 K <code>../ocaml-base-compiler.4.05.0/lib/coq/user-contrib/GraphBasics/Arcs.glob</code></li>
-              <li>10 K <code>../ocaml-base-compiler.4.05.0/lib/coq/user-contrib/GraphBasics/Trees.glob</code></li>
-              <li>9 K <code>../ocaml-base-compiler.4.05.0/lib/coq/user-contrib/GraphBasics/Vertices.glob</code></li>
-              <li>8 K <code>../ocaml-base-compiler.4.05.0/lib/coq/user-contrib/GraphBasics/Edges.v</code></li>
-              <li>6 K <code>../ocaml-base-compiler.4.05.0/lib/coq/user-contrib/GraphBasics/Acyclic.v</code></li>
-              <li>6 K <code>../ocaml-base-compiler.4.05.0/lib/coq/user-contrib/GraphBasics/Digraphs.v</code></li>
-              <li>5 K <code>../ocaml-base-compiler.4.05.0/lib/coq/user-contrib/GraphBasics/Arcs.v</code></li>
-              <li>5 K <code>../ocaml-base-compiler.4.05.0/lib/coq/user-contrib/GraphBasics/Enumerated.glob</code></li>
-              <li>5 K <code>../ocaml-base-compiler.4.05.0/lib/coq/user-contrib/GraphBasics/Vertices.v</code></li>
-              <li>4 K <code>../ocaml-base-compiler.4.05.0/lib/coq/user-contrib/GraphBasics/Trees.v</code></li>
-              <li>4 K <code>../ocaml-base-compiler.4.05.0/lib/coq/user-contrib/GraphBasics/Dipaths.v</code></li>
-              <li>3 K <code>../ocaml-base-compiler.4.05.0/lib/coq/user-contrib/GraphBasics/Enumerated.v</code></li>
-            </ul>
+            <p>No files were installed.</p>
             <h2>Uninstall</h2>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>opam remove -y coq-graph-basics.dev</code></dd>
+              <dd><code>true</code></dd>
               <dt>Return code</dt>
               <dd>0</dd>
               <dt>Missing removes</dt>
