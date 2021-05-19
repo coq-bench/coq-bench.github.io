@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>iris: Error</title>
+    <link rel="shortcut icon" type="image/png" href="../../../../../favicon.png" />
+    <link href="../../../../../bootstrap.min.css" rel="stylesheet">
+    <link href="../../../../../bootstrap-custom.css" rel="stylesheet">
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+    <script src="../../../../../moment.min.js"></script>
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="container">
+      <div class="navbar navbar-default" role="navigation">
+        <div class="container-fluid">
+          <div class="navbar-header">
+            <a class="navbar-brand" href="../../../../.."><i class="fa fa-lg fa-flag-checkered"></i> Coq bench</a>
+          </div>
+          <div id="navbar" class="collapse navbar-collapse">
+            <ul class="nav navbar-nav">
+              <li><a href="../..">clean / extra-dev</a></li>
+              <li class="active"><a href="">dev / iris - 3.4.0</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="article">
+        <div class="row">
+          <div class="col-md-12">
+            <a href="../..">« Up</a>
+            <h1>
+              iris
+              <small>
+                3.4.0
+                <span class="label label-danger">Error</span>
+              </small>
+            </h1>
+            <p><em><script>document.write(moment("2021-05-19 21:33:18 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2021-05-19 21:33:18 UTC)</em><p>
+            <h2>Context</h2>
+            <pre># Packages matching: installed
+# Name              # Installed # Synopsis
+base-bigarray       base
+base-threads        base
+base-unix           base
+conf-findutils      1           Virtual package relying on findutils
+conf-gmp            3           Virtual package relying on a GMP lib system installation
+coq                 dev         Formal proof management system
+dune                2.8.5       Fast, portable, and opinionated build system
+ocaml               4.10.2      The OCaml compiler (virtual package)
+ocaml-base-compiler 4.10.2      Official release 4.10.2
+ocaml-config        1           OCaml Switch Configuration
+ocamlfind           1.9.1       A library manager for OCaml
+zarith              1.12        Implements arithmetic and logical operations over arbitrary-precision integers
+# opam file:
+opam-version: &quot;2.0&quot;
+maintainer: &quot;Ralf Jung &lt;jung@mpi-sws.org&gt;&quot;
+authors: &quot;The Iris Team&quot;
+license: &quot;BSD-3-Clause&quot;
+homepage: &quot;https://iris-project.org/&quot;
+bug-reports: &quot;https://gitlab.mpi-sws.org/iris/iris/issues&quot;
+dev-repo: &quot;git+https://gitlab.mpi-sws.org/iris/iris.git&quot;
+synopsis: &quot;Iris is a Higher-Order Concurrent Separation Logic Framework with support for interactive proofs&quot;
+description: &quot;&quot;&quot;
+This package provides the following Coq modules:
+iris.prelude, iris.algebra, iris.si_logic, iris.bi, iris.proofmode, iris.base_logic, iris.program_logic.
+&quot;&quot;&quot;
+tags: [
+  &quot;date:2021-02-16&quot;
+]
+depends: [
+  &quot;coq&quot; { (&gt;= &quot;8.11&quot; &amp; &lt; &quot;8.14~&quot;) | (= &quot;dev&quot;) }
+  &quot;coq-stdpp&quot; { (= &quot;1.5.0&quot;) | (= &quot;dev&quot;) }
+]
+build: [&quot;./make-package&quot; &quot;iris&quot; &quot;-j%{jobs}%&quot;]
+install: [&quot;./make-package&quot; &quot;iris&quot; &quot;install&quot;]
+url {
+  src:
+    &quot;https://gitlab.mpi-sws.org/iris/iris/repository/iris-3.4.0/archive.tar.gz&quot;
+  checksum:
+    &quot;sha512=f227cf2535e76315605c0dce8adeb9c0ef157a6f97e99624915331061d88ab1892dc0342fe5de1591b234fcd767496572d3bfc70bdb11ac49909bd7d403d2af9&quot;
+}
+</pre>
+            <h2>Lint</h2>
+            <dl class="dl-horizontal">
+              <dt>Command</dt>
+              <dd><code>true</code></dd>
+              <dt>Return code</dt>
+              <dd>0</dd>
+            </dl>
+            <h2>Dry install</h2>
+            <p>Dry install with the current Coq version:</p>
+            <dl class="dl-horizontal">
+              <dt>Command</dt>
+              <dd><code>opam install -y --show-action coq-iris.3.4.0 coq.dev</code></dd>
+              <dt>Return code</dt>
+              <dd>0</dd>
+            </dl>
+            <p>Dry install without Coq/switch base, to test if the problem was incompatibility with the current Coq/OCaml version:</p>
+            <dl class="dl-horizontal">
+              <dt>Command</dt>
+              <dd><code>true</code></dd>
+              <dt>Return code</dt>
+              <dd>0</dd>
+            </dl>
+            <h2>Install dependencies</h2>
+            <dl class="dl-horizontal">
+              <dt>Command</dt>
+              <dd><code>opam list; echo; ulimit -Sv 4000000; timeout 4h opam install -y --deps-only coq-iris.3.4.0 coq.dev</code></dd>
+              <dt>Return code</dt>
+              <dd>0</dd>
+              <dt>Duration</dt>
+              <dd>2 m 57 s</dd>
+            </dl>
+            <h2>Install</h2>
+            <dl class="dl-horizontal">
+              <dt>Command</dt>
+              <dd><code>opam list; echo; ulimit -Sv 16000000; timeout 8h opam install -y -v coq-iris.3.4.0 coq.dev</code></dd>
+              <dt>Return code</dt>
+              <dd>7936</dd>
+              <dt>Duration</dt>
+              <dd>6 m 42 s</dd>
+              <dt>Output</dt>
+              <dd><pre># Packages matching: installed
+# Name              # Installed # Synopsis
+base-bigarray       base
+base-threads        base
+base-unix           base
+conf-findutils      1           Virtual package relying on findutils
+conf-gmp            3           Virtual package relying on a GMP lib system installation
+coq                 dev         Formal proof management system
+coq-stdpp           1.5.0       std++ is an extended &quot;Standard Library&quot; for Coq
+dune                2.8.5       Fast, portable, and opinionated build system
+ocaml               4.10.2      The OCaml compiler (virtual package)
+ocaml-base-compiler 4.10.2      Official release 4.10.2
+ocaml-config        1           OCaml Switch Configuration
+ocamlfind           1.9.1       A library manager for OCaml
+zarith              1.12        Implements arithmetic and logical operations over arbitrary-precision integers
+[NOTE] Package coq is already installed (current version is dev).
+The following actions will be performed:
+  - install coq-iris 3.4.0
+&lt;&gt;&lt;&gt; Gathering sources &gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;
+Processing  1/1: [coq-iris.3.4.0: http]
+[coq-iris.3.4.0] downloaded from https://gitlab.mpi-sws.org/iris/iris/repository/iris-3.4.0/archive.tar.gz
+Processing  1/1:
+&lt;&gt;&lt;&gt; Processing actions &lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;
+Processing  1/2: [coq-iris: ./make-package iris]
++ /home/bench/.opam/opam-init/hooks/sandbox.sh &quot;build&quot; &quot;./make-package&quot; &quot;iris&quot; &quot;-j4&quot; (CWD=/home/bench/.opam/ocaml-base-compiler.4.10.2/.opam-switch/build/coq-iris.3.4.0)
+- COQDEP VFILES
+- COQC iris/prelude/options.v
+- COQC iris/prelude/prelude.v
+- COQC iris/bi/notation.v
+- COQC iris/proofmode/ident_name.v
+- COQC iris/algebra/ofe.v
+- COQC iris/proofmode/base.v
+- COQC iris/proofmode/tokens.v
+- File &quot;./iris/algebra/ofe.v&quot;, line 534, characters 0-29:
+- Warning: The default value for instance locality is currently &quot;local&quot; in a
+- section and &quot;global&quot; otherwise, but is scheduled to change in a future
+- release. For the time being, adding instances outside of sections without
+- specifying an explicit locality is therefore deprecated. It is recommended to
+- use &quot;export&quot; whenever possible.
+- [deprecated-instance-without-locality,deprecated]
+- COQC iris/proofmode/sel_patterns.v
+- COQC iris/proofmode/spec_patterns.v
+- File &quot;./iris/algebra/ofe.v&quot;, line 709, characters 0-34:
+- Warning: The default value for instance locality is currently &quot;local&quot; in a
+- section and &quot;global&quot; otherwise, but is scheduled to change in a future
+- release. For the time being, adding instances outside of sections without
+- specifying an explicit locality is therefore deprecated. It is recommended to
+- use &quot;export&quot; whenever possible.
+- [deprecated-instance-without-locality,deprecated]
+- COQC iris/proofmode/intro_patterns.v
+- COQC iris/algebra/monoid.v
+- COQC iris/algebra/cofe_solver.v
+- COQC iris/si_logic/siprop.v
+- COQC iris/bi/interface.v
+- COQC iris/program_logic/language.v
+- File &quot;./iris/algebra/cofe_solver.v&quot;, line 9, characters 0-32:
+- Warning: The default value for instance locality is currently &quot;local&quot; in a
+- section and &quot;global&quot; otherwise, but is scheduled to change in a future
+- release. For the time being, adding instances outside of sections without
+- specifying an explicit locality is therefore deprecated. It is recommended to
+- use &quot;export&quot; whenever possible.
+- [deprecated-instance-without-locality,deprecated]
+- COQC iris/algebra/cmra.v
+- COQC iris/algebra/big_op.v
+- COQC iris/bi/derived_connectives.v
+- File &quot;./iris/bi/derived_connectives.v&quot;, line 35, characters 0-35:
+- Warning: The default value for instance locality is currently &quot;local&quot; in a
+- section and &quot;global&quot; otherwise, but is scheduled to change in a future
+- release. For the time being, adding instances outside of sections without
+- specifying an explicit locality is therefore deprecated. It is recommended to
+- use &quot;export&quot; whenever possible.
+- [deprecated-instance-without-locality,deprecated]
+- COQC iris/program_logic/ectx_language.v
+- COQC iris/bi/derived_laws.v
+- File &quot;./iris/algebra/cmra.v&quot;, line 798, characters 0-48:
+- Warning: The default value for instance locality is currently &quot;local&quot; in a
+- section and &quot;global&quot; otherwise, but is scheduled to change in a future
+- release. For the time being, adding instances outside of sections without
+- specifying an explicit locality is therefore deprecated. It is recommended to
+- use &quot;export&quot; whenever possible.
+- [deprecated-instance-without-locality,deprecated]
+- File &quot;./iris/algebra/cmra.v&quot;, line 798, characters 0-48:
+- Warning: The default value for instance locality is currently &quot;local&quot; in a
+- section and &quot;global&quot; otherwise, but is scheduled to change in a future
+- release. For the time being, adding instances outside of sections without
+- specifying an explicit locality is therefore deprecated. It is recommended to
+- use &quot;export&quot; whenever possible.
+- [deprecated-instance-without-locality,deprecated]
+- File &quot;./iris/algebra/cmra.v&quot;, line 889, characters 0-50:
+- Warning: The default value for instance locality is currently &quot;local&quot; in a
+- section and &quot;global&quot; otherwise, but is scheduled to change in a future
+- release. For the time being, adding instances outside of sections without
+- specifying an explicit locality is therefore deprecated. It is recommended to
+- use &quot;export&quot; whenever possible.
+- [deprecated-instance-without-locality,deprecated]
+- File &quot;./iris/algebra/cmra.v&quot;, line 889, characters 0-50:
+- Warning: The default value for instance locality is currently &quot;local&quot; in a
+- section and &quot;global&quot; otherwise, but is scheduled to change in a future
+- release. For the time being, adding instances outside of sections without
+- specifying an explicit locality is therefore deprecated. It is recommended to
+- use &quot;export&quot; whenever possible.
+- [deprecated-instance-without-locality,deprecated]
+- COQC iris/bi/weakestpre.v
+- COQC iris/program_logic/ectxi_language.v
+- COQC iris/algebra/cmra_big_op.v
+- COQC iris/algebra/updates.v
+- COQC iris/algebra/local_updates.v
+- COQC iris/algebra/proofmode_classes.v
+- File &quot;./iris/algebra/proofmode_classes.v&quot;, line 30, characters 0-31:
+- Warning: The default value for instance locality is currently &quot;local&quot; in a
+- section and &quot;global&quot; otherwise, but is scheduled to change in a future
+- release. For the time being, adding instances outside of sections without
+- specifying an explicit locality is therefore deprecated. It is recommended to
+- use &quot;export&quot; whenever possible.
+- [deprecated-instance-without-locality,deprecated]
+- COQC iris/algebra/agree.v
+- COQC iris/algebra/excl.v
+- COQC iris/algebra/functions.v
+- COQC iris/algebra/ufrac.v
+- COQC iris/bi/derived_laws_later.v
+- COQC iris/base_logic/upred.v
+- COQC iris/algebra/dra.v
+- File &quot;./iris/algebra/dra.v&quot;, line 47, characters 0-69:
+- Warning: The default value for instance locality is currently &quot;local&quot; in a
+- section and &quot;global&quot; otherwise, but is scheduled to change in a future
+- release. For the time being, adding instances outside of sections without
+- specifying an explicit locality is therefore deprecated. It is recommended to
+- use &quot;export&quot; whenever possible.
+- [deprecated-instance-without-locality,deprecated]
+- File &quot;./iris/algebra/dra.v&quot;, line 47, characters 0-69:
+- Warning: The default value for instance locality is currently &quot;local&quot; in a
+- section and &quot;global&quot; otherwise, but is scheduled to change in a future
+- release. For the time being, adding instances outside of sections without
+- specifying an explicit locality is therefore deprecated. It is recommended to
+- use &quot;export&quot; whenever possible.
+- [deprecated-instance-without-locality,deprecated]
+- File &quot;./iris/algebra/dra.v&quot;, line 47, characters 0-69:
+- Warning: The default value for instance locality is currently &quot;local&quot; in a
+- section and &quot;global&quot; otherwise, but is scheduled to change in a future
+- release. For the time being, adding instances outside of sections without
+- specifying an explicit locality is therefore deprecated. It is recommended to
+- use &quot;export&quot; whenever possible.
+- [deprecated-instance-without-locality,deprecated]
+- File &quot;./iris/algebra/dra.v&quot;, line 47, characters 0-69:
+- Warning: The default value for instance locality is currently &quot;local&quot; in a
+- section and &quot;global&quot; otherwise, but is scheduled to change in a future
+- release. For the time being, adding instances outside of sections without
+- specifying an explicit locality is therefore deprecated. It is recommended to
+- use &quot;export&quot; whenever possible.
+- [deprecated-instance-without-locality,deprecated]
+- File &quot;./iris/algebra/dra.v&quot;, line 47, characters 0-69:
+- Warning: The default value for instance locality is currently &quot;local&quot; in a
+- section and &quot;global&quot; otherwise, but is scheduled to change in a future
+- release. For the time being, adding instances outside of sections without
+- specifying an explicit locality is therefore deprecated. It is recommended to
+- use &quot;export&quot; whenever possible.
+- [deprecated-instance-without-locality,deprecated]
+- COQC iris/algebra/numbers.v
+- COQC iris/algebra/frac.v
+- COQC iris/algebra/gmap.v
+- COQC iris/algebra/dfrac.v
+- COQC iris/algebra/csum.v
+- COQC iris/algebra/list.v
+- COQC iris/algebra/gset.v
+- COQC iris/algebra/gmultiset.v
+- COQC iris/algebra/coPset.v
+- COQC iris/algebra/lib/frac_agree.v
+- COQC iris/algebra/sts.v
+- COQC iris/algebra/view.v
+- COQC iris/algebra/vector.v
+- COQC iris/algebra/namespace_map.v
+- COQC iris/bi/big_op.v
+- COQC iris/algebra/auth.v
+- COQC iris/algebra/lib/gmap_view.v
+- COQC iris/algebra/lib/gset_bij.v
+- COQC iris/algebra/lib/excl_auth.v
+- COQC iris/algebra/lib/frac_auth.v
+- COQC iris/algebra/lib/ufrac_auth.v
+- COQC iris/algebra/lib/mono_nat.v
+- COQC iris/bi/internal_eq.v
+- COQC iris/bi/plainly.v
+- COQC iris/bi/updates.v
+- COQC iris/bi/ascii.v
+- COQC iris/bi/embedding.v
+- COQC iris/base_logic/bi.v
+- COQC iris/bi/bi.v
+- COQC iris/si_logic/bi.v
+- COQC iris/bi/monpred.v
+- COQC iris/bi/telescopes.v
+- COQC iris/proofmode/environments.v
+- File &quot;./iris/bi/monpred.v&quot;, line 12, characters 0-73:
+- Warning: The default value for instance locality is currently &quot;local&quot; in a
+- section and &quot;global&quot; otherwise, but is scheduled to change in a future
+- release. For the time being, adding instances outside of sections without
+- specifying an explicit locality is therefore deprecated. It is recommended to
+- use &quot;export&quot; whenever possible.
+- [deprecated-instance-without-locality,deprecated]
+- File &quot;./iris/bi/monpred.v&quot;, line 12, characters 0-73:
+- Warning: The default value for instance locality is currently &quot;local&quot; in a
+- section and &quot;global&quot; otherwise, but is scheduled to change in a future
+- release. For the time being, adding instances outside of sections without
+- specifying an explicit locality is therefore deprecated. It is recommended to
+- use &quot;export&quot; whenever possible.
+- [deprecated-instance-without-locality,deprecated]
+- File &quot;./iris/bi/monpred.v&quot;, line 12, characters 0-73:
+- Warning: The default value for instance locality is currently &quot;local&quot; in a
+- section and &quot;global&quot; otherwise, but is scheduled to change in a future
+- release. For the time being, adding instances outside of sections without
+- specifying an explicit locality is therefore deprecated. It is recommended to
+- use &quot;export&quot; whenever possible.
+- [deprecated-instance-without-locality,deprecated]
+- COQC iris/proofmode/modalities.v
+- COQC iris/base_logic/derived.v
+- COQC iris/proofmode/classes.v
+- COQC iris/base_logic/algebra.v
+- File &quot;./iris/proofmode/classes.v&quot;, line 500, characters 0-37:
+- Warning: The default value for instance locality is currently &quot;local&quot; in a
+- section and &quot;global&quot; otherwise, but is scheduled to change in a future
+- release. For the time being, adding instances outside of sections without
+- specifying an explicit locality is therefore deprecated. It is recommended to
+- use &quot;export&quot; whenever possible.
+- [deprecated-instance-without-locality,deprecated]
+- COQC iris/proofmode/modality_instances.v
+- COQC iris/proofmode/frame_instances.v
+- COQC iris/base_logic/proofmode.v
+- COQC iris/proofmode/class_instances_later.v
+- COQC iris/proofmode/class_instances_embedding.v
+- COQC iris/proofmode/class_instances_plainly.v
+- COQC iris/proofmode/class_instances_internal_eq.v
+- COQC iris/base_logic/base_logic.v
+- COQC iris/proofmode/coq_tactics.v
+- COQC iris/proofmode/reduction.v
+- COQC iris/base_logic/lib/iprop.v
+- File &quot;./iris/base_logic/lib/iprop.v&quot;, line 32, characters 0-43:
+- Warning: The default value for instance locality is currently &quot;local&quot; in a
+- section and &quot;global&quot; otherwise, but is scheduled to change in a future
+- release. For the time being, adding instances outside of sections without
+- specifying an explicit locality is therefore deprecated. It is recommended to
+- use &quot;export&quot; whenever possible.
+- [deprecated-instance-without-locality,deprecated]
+- COQC iris/base_logic/lib/own.v
+- File &quot;./iris/proofmode/coq_tactics.v&quot;, line 543, characters 2-18:
+- Error: Not an inductive product.
+- 
+- make[1]: *** [Makefile.package.iris:754: iris/proofmode/coq_tactics.vo] Error 1
+- make[1]: *** Waiting for unfinished jobs....
+- make: *** [Makefile.package.iris:377: all] Error 2
+[ERROR] The compilation of coq-iris failed at &quot;/home/bench/.opam/opam-init/hooks/sandbox.sh build ./make-package iris -j4&quot;.
+#=== ERROR while compiling coq-iris.3.4.0 =====================================#
+# context              2.0.6 | linux/x86_64 | ocaml-base-compiler.4.10.2 | file:///home/bench/run/opam-coq-archive/released
+# path                 ~/.opam/ocaml-base-compiler.4.10.2/.opam-switch/build/coq-iris.3.4.0
+# command              ~/.opam/opam-init/hooks/sandbox.sh build ./make-package iris -j4
+# exit-code            2
+# env-file             ~/.opam/log/coq-iris-9139-335865.env
+# output-file          ~/.opam/log/coq-iris-9139-335865.out
+### output ###
+# [...]
+# section and &quot;global&quot; otherwise, but is scheduled to change in a future
+# release. For the time being, adding instances outside of sections without
+# specifying an explicit locality is therefore deprecated. It is recommended to
+# use &quot;export&quot; whenever possible.
+# [deprecated-instance-without-locality,deprecated]
+# COQC iris/base_logic/lib/own.v
+# File &quot;./iris/proofmode/coq_tactics.v&quot;, line 543, characters 2-18:
+# Error: Not an inductive product.
+# 
+# make[1]: *** [Makefile.package.iris:754: iris/proofmode/coq_tactics.vo] Error 1
+# make[1]: *** Waiting for unfinished jobs....
+# make: *** [Makefile.package.iris:377: all] Error 2
+&lt;&gt;&lt;&gt; Error report &lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;
++- The following actions failed
+| - build coq-iris 3.4.0
++- 
+- No changes have been performed
+# Run eval $(opam env) to update the current shell environment
+&#39;opam install -y -v coq-iris.3.4.0 coq.dev&#39; failed.
+</pre></dd>
+            </dl>
+            <h2>Installation size</h2>
+            <p>No files were installed.</p>
+            <h2>Uninstall</h2>
+            <dl class="dl-horizontal">
+              <dt>Command</dt>
+              <dd><code>true</code></dd>
+              <dt>Return code</dt>
+              <dd>0</dd>
+              <dt>Missing removes</dt>
+              <dd>
+                none
+              </dd>
+              <dt>Wrong removes</dt>
+              <dd>
+                none
+              </dd>
+            </dl>
+          </div>
+        </div>
+      </div>
+      <hr/>
+      <div class="footer">
+        <p class="text-center">
+          <small>Sources are on <a href="https://github.com/coq-bench">GitHub</a>. © Guillaume Claret.</small>
+        </p>
+      </div>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="../../../../../bootstrap.min.js"></script>
+  </body>
+</html>
