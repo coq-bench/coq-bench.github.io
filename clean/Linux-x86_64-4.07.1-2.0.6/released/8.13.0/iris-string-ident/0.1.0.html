@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>iris-string-ident: Not compatible</title>
+    <title>iris-string-ident: 13 s</title>
     <link rel="shortcut icon" type="image/png" href="../../../../../favicon.png" />
     <link href="../../../../../bootstrap.min.css" rel="stylesheet">
     <link href="../../../../../bootstrap-custom.css" rel="stylesheet">
@@ -39,10 +39,10 @@
               iris-string-ident
               <small>
                 0.1.0
-                <span class="label label-info">Not compatible</span>
+                <span class="label label-success">13 s</span>
               </small>
             </h1>
-            <p><em><script>document.write(moment("2021-03-10 02:26:27 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2021-03-10 02:26:27 UTC)</em><p>
+            <p><em><script>document.write(moment("2021-05-30 10:49:48 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2021-05-30 10:49:48 UTC)</em><p>
             <h2>Context</h2>
             <pre># Packages matching: installed
 # Name              # Installed # Synopsis
@@ -51,13 +51,12 @@ base-threads        base
 base-unix           base
 conf-findutils      1           Virtual package relying on findutils
 conf-gmp            3           Virtual package relying on a GMP lib system installation
-conf-m4             1           Virtual package relying on m4
 coq                 8.13.0      Formal proof management system
 num                 1.4         The legacy Num library for arbitrary-precision integer and rational arithmetic
 ocaml               4.07.1      The OCaml compiler (virtual package)
 ocaml-base-compiler 4.07.1      Official release 4.07.1
 ocaml-config        1           OCaml Switch Configuration
-ocamlfind           1.8.1       A library manager for OCaml
+ocamlfind           1.9.1       A library manager for OCaml
 zarith              1.12        Implements arithmetic and logical operations over arbitrary-precision integers
 # opam file:
 opam-version: &quot;2.0&quot;
@@ -72,8 +71,8 @@ description: &quot;&quot;&quot;
 This package implements string_to_ident in Ltac2, enabling support for Gallina names in Iris intro patterns (within strings).
 &quot;&quot;&quot;
 depends: [
-  &quot;coq&quot; {&gt;= &quot;8.11&quot; &amp; &lt; &quot;8.13~&quot;}
-  &quot;coq-iris&quot; {(&gt;= &quot;3.3.0&quot; &amp; &lt; &quot;4.0&quot;) | = &quot;dev&quot;}
+  &quot;coq&quot; {&gt;= &quot;8.11&quot; &amp; &lt; &quot;8.14~&quot;}
+  &quot;coq-iris&quot; {(&gt;= &quot;3.3.0&quot; &amp; &lt; &quot;3.5.0&quot;)}
 ]
 build: [make &quot;-j%{jobs}%&quot;]
 install: [make &quot;install&quot;]
@@ -102,48 +101,44 @@ url {
               <dt>Command</dt>
               <dd><code>opam install -y --show-action coq-iris-string-ident.0.1.0 coq.8.13.0</code></dd>
               <dt>Return code</dt>
-              <dd>5120</dd>
-              <dt>Output</dt>
-              <dd><pre>[NOTE] Package coq is already installed (current version is 8.13.0).
-The following dependencies couldn&#39;t be met:
-  - coq-iris-string-ident -&gt; coq &lt; 8.13~ -&gt; ocaml &lt; 4.06.0
-      base of this switch (use `--unlock-base&#39; to force)
-Your request can&#39;t be satisfied:
-  - No available version of coq satisfies the constraints
-No solution found, exiting
-</pre></dd>
+              <dd>0</dd>
             </dl>
             <p>Dry install without Coq/switch base, to test if the problem was incompatibility with the current Coq/OCaml version:</p>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>opam remove -y coq; opam install -y --show-action --unlock-base coq-iris-string-ident.0.1.0</code></dd>
+              <dd><code>true</code></dd>
               <dt>Return code</dt>
               <dd>0</dd>
             </dl>
             <h2>Install dependencies</h2>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>true</code></dd>
+              <dd><code>opam list; echo; ulimit -Sv 4000000; timeout 4h opam install -y --deps-only coq-iris-string-ident.0.1.0 coq.8.13.0</code></dd>
               <dt>Return code</dt>
               <dd>0</dd>
               <dt>Duration</dt>
-              <dd>0 s</dd>
+              <dd>13 m 15 s</dd>
             </dl>
             <h2>Install</h2>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>true</code></dd>
+              <dd><code>opam list; echo; ulimit -Sv 16000000; timeout 4h opam install -y -v coq-iris-string-ident.0.1.0 coq.8.13.0</code></dd>
               <dt>Return code</dt>
               <dd>0</dd>
               <dt>Duration</dt>
-              <dd>0 s</dd>
+              <dd>13 s</dd>
             </dl>
             <h2>Installation size</h2>
-            <p>No files were installed.</p>
+            <p>Total: 63 K</p>
+            <ul>
+              <li>45 K <code>../ocaml-base-compiler.4.07.1/lib/coq/user-contrib/iris_string_ident/ltac2_string_ident.vo</code></li>
+              <li>11 K <code>../ocaml-base-compiler.4.07.1/lib/coq/user-contrib/iris_string_ident/ltac2_string_ident.glob</code></li>
+              <li>7 K <code>../ocaml-base-compiler.4.07.1/lib/coq/user-contrib/iris_string_ident/ltac2_string_ident.v</code></li>
+            </ul>
             <h2>Uninstall</h2>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>true</code></dd>
+              <dd><code>opam remove -y coq-iris-string-ident.0.1.0</code></dd>
               <dt>Return code</dt>
               <dd>0</dd>
               <dt>Missing removes</dt>
