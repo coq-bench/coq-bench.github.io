@@ -42,7 +42,7 @@
                 <span class="label label-info">Not compatible</span>
               </small>
             </h1>
-            <p><em><script>document.write(moment("2021-05-06 08:10:41 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2021-05-06 08:10:41 UTC)</em><p>
+            <p><em><script>document.write(moment("2021-06-01 02:29:17 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2021-06-01 02:29:17 UTC)</em><p>
             <h2>Context</h2>
             <pre># Packages matching: installed
 # Name              # Installed # Synopsis
@@ -84,14 +84,18 @@ dev-repo: &quot;git+https://github.com/PrincetonUniversity/VST.git&quot;
 bug-reports: &quot;https://github.com/PrincetonUniversity/VST/issues&quot;
 license: &quot;https://raw.githubusercontent.com/PrincetonUniversity/VST/master/LICENSE&quot;
 build: [
-  [make &quot;-j%{jobs}%&quot; &quot;BITSIZE=64&quot;]
+  [make &quot;-j%{jobs}%&quot; &quot;BITSIZE=64&quot; &quot;IGNORECOQVERSION=true&quot;]
 ]
 install: [
-  [make &quot;install&quot; &quot;BITSIZE=64&quot;]
+  [&quot;mkdir&quot; &quot;-p&quot; &quot;%{lib}%/coq/user-contrib/VST&quot;]
+  [&quot;cp&quot; &quot;-r&quot; &quot;msl&quot; &quot;%{lib}%/coq/user-contrib/VST/&quot;]
+  [&quot;cp&quot; &quot;-r&quot; &quot;veric&quot; &quot;%{lib}%/coq/user-contrib/VST/&quot;]
+  [&quot;cp&quot; &quot;-r&quot; &quot;floyd&quot; &quot;%{lib}%/coq/user-contrib/VST/&quot;]
+  [&quot;cp&quot; &quot;-r&quot; &quot;sepcomp&quot; &quot;%{lib}%/coq/user-contrib/VST/&quot;]
 ]
 depends: [
   &quot;ocaml&quot;
-  &quot;coq&quot; {&gt;= &quot;8.12&quot; &amp; &lt; &quot;8.13.2&quot;}
+  &quot;coq&quot; {&gt;= &quot;8.12&quot; &amp; &lt; &quot;8.14&quot;}
   &quot;coq-compcert&quot; {(= &quot;3.8&quot;) | (= &quot;3.8~open-source&quot;)}
   &quot;coq-flocq&quot; {&gt;= &quot;3.2.1&quot;}
 ]
