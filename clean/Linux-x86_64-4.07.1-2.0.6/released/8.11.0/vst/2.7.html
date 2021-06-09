@@ -42,7 +42,7 @@
                 <span class="label label-info">Not compatible</span>
               </small>
             </h1>
-            <p><em><script>document.write(moment("2021-02-16 10:15:02 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2021-02-16 10:15:02 UTC)</em><p>
+            <p><em><script>document.write(moment("2021-06-09 23:02:22 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2021-06-09 23:02:22 UTC)</em><p>
             <h2>Context</h2>
             <pre># Packages matching: installed
 # Name              # Installed # Synopsis
@@ -50,13 +50,12 @@ base-bigarray       base
 base-threads        base
 base-unix           base
 conf-findutils      1           Virtual package relying on findutils
-conf-m4             1           Virtual package relying on m4
 coq                 8.11.0      Formal proof management system
 num                 1.4         The legacy Num library for arbitrary-precision integer and rational arithmetic
 ocaml               4.07.1      The OCaml compiler (virtual package)
 ocaml-base-compiler 4.07.1      Official release 4.07.1
 ocaml-config        1           OCaml Switch Configuration
-ocamlfind           1.8.1       A library manager for OCaml
+ocamlfind           1.9.1       A library manager for OCaml
 # opam file:
 opam-version: &quot;2.0&quot;
 synopsis: &quot;Verified Software Toolchain&quot;
@@ -81,10 +80,14 @@ dev-repo: &quot;git+https://github.com/PrincetonUniversity/VST.git&quot;
 bug-reports: &quot;https://github.com/PrincetonUniversity/VST/issues&quot;
 license: &quot;https://raw.githubusercontent.com/PrincetonUniversity/VST/master/LICENSE&quot;
 build: [
-  [make &quot;-j%{jobs}%&quot; &quot;BITSIZE=64&quot;]
+  [make &quot;-j%{jobs}%&quot; &quot;BITSIZE=64&quot; &quot;IGNORECOQVERSION=true&quot;]
 ]
 install: [
-  [make &quot;install&quot; &quot;BITSIZE=64&quot;]
+  [&quot;mkdir&quot; &quot;-p&quot; &quot;%{lib}%/coq/user-contrib/VST&quot;]
+  [&quot;cp&quot; &quot;-r&quot; &quot;msl&quot; &quot;%{lib}%/coq/user-contrib/VST/&quot;]
+  [&quot;cp&quot; &quot;-r&quot; &quot;veric&quot; &quot;%{lib}%/coq/user-contrib/VST/&quot;]
+  [&quot;cp&quot; &quot;-r&quot; &quot;floyd&quot; &quot;%{lib}%/coq/user-contrib/VST/&quot;]
+  [&quot;cp&quot; &quot;-r&quot; &quot;sepcomp&quot; &quot;%{lib}%/coq/user-contrib/VST/&quot;]
 ]
 depends: [
   &quot;ocaml&quot;
@@ -99,7 +102,6 @@ tags: [
   &quot;date:2020-12-20&quot;
 ]
 patches: [&quot;makefile.patch&quot;]
-extra-files: [ [&quot;makefile.patch&quot; &quot;md5=a7242f51c9a723a23c9b3d7ffa062d31&quot;] ]
 url {
   src: &quot;https://github.com/PrincetonUniversity/VST/archive/v2.7.tar.gz&quot;
   checksum: &quot;sha256=970be13e71bdb013e2b9de64aecf1dda08228dd8ef3a1f6e4bb23ccd3a0896d3&quot;
