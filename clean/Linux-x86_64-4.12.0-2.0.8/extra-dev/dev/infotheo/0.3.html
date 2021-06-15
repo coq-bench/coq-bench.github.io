@@ -42,7 +42,7 @@
                 <span class="label label-danger">Error</span>
               </small>
             </h1>
-            <p><em><script>document.write(moment("2021-06-04 14:39:38 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2021-06-04 14:39:38 UTC)</em><p>
+            <p><em><script>document.write(moment("2021-06-15 18:51:14 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2021-06-15 18:51:14 UTC)</em><p>
             <h2>Context</h2>
             <pre># Packages matching: installed
 # Name                # Installed # Synopsis
@@ -82,7 +82,7 @@ depends: [
   &quot;coq-mathcomp-algebra&quot; { (&gt;= &quot;1.12.0&quot; &amp; &lt; &quot;1.13~&quot;) }
   &quot;coq-mathcomp-solvable&quot; { (&gt;= &quot;1.12.0&quot; &amp; &lt; &quot;1.13~&quot;) }
   &quot;coq-mathcomp-field&quot; { (&gt;= &quot;1.12.0&quot; &amp; &lt; &quot;1.13~&quot;) }
-  &quot;coq-mathcomp-analysis&quot; { (&gt;= &quot;0.3.4&quot;) }
+  &quot;coq-mathcomp-analysis&quot; { (&gt;= &quot;0.3.4&quot; &amp; &lt; &quot;0.3.8&quot;) }
 ]
 tags: [
   &quot;keyword:information theory&quot;
@@ -103,7 +103,8 @@ authors: [
 url {
   http: &quot;https://github.com/affeldt-aist/infotheo/archive/0.3.tar.gz&quot;
   checksum: &quot;sha512=5f042c45b2e762358942199021baa7b3d54d6635d6bcbc2ac88ad4905a8fc67e7244094e89684677e481066a44a84c12e20952accc23ca61e3880797ebcabc2f&quot;
-}</pre>
+}
+</pre>
             <h2>Lint</h2>
             <dl class="dl-horizontal">
               <dt>Command</dt>
@@ -133,7 +134,7 @@ url {
               <dt>Return code</dt>
               <dd>0</dd>
               <dt>Duration</dt>
-              <dd>36 m 38 s</dd>
+              <dd>31 m 10 s</dd>
             </dl>
             <h2>Install</h2>
             <dl class="dl-horizontal">
@@ -142,7 +143,7 @@ url {
               <dt>Return code</dt>
               <dd>7936</dd>
               <dt>Duration</dt>
-              <dd>4 m 21 s</dd>
+              <dd>4 m 24 s</dd>
               <dt>Output</dt>
               <dd><pre># Packages matching: installed
 # Name                  # Installed # Synopsis
@@ -157,7 +158,7 @@ coq                     dev         Formal proof management system
 coq-elpi                dev         Elpi extension language for Coq
 coq-hierarchy-builder   dev         Hierarchy Builder
 coq-mathcomp-algebra    1.12.0      Mathematical Components Library on Algebra
-coq-mathcomp-analysis   dev         An analysis library for mathematical components
+coq-mathcomp-analysis   0.3.7       An analysis library for mathematical components
 coq-mathcomp-bigenough  dev         A small library to do epsilon - N reasonning
 coq-mathcomp-field      1.12.0      Mathematical Components Library on Fields
 coq-mathcomp-fingroup   1.12.0      Mathematical Components Library on finite groups
@@ -176,7 +177,7 @@ ocaml-options-vanilla   1           Ensure that OCaml is compiled with no specia
 ocamlfind               1.9.1       A library manager for OCaml
 ppx_derivers            1.2.1       Shared [@@deriving] plugin registry
 ppx_deriving            5.2.1       Type-driven code generation for OCaml
-ppxlib                  0.22.0      Standard library for ppx rewriters
+ppxlib                  0.22.1      Standard library for ppx rewriters
 re                      1.9.0       RE is a regular expression library for OCaml
 result                  1.5         Compatibility Result module
 seq                     base        Compatibility package for OCaml&#39;s standard iterator type starting from 4.07.
@@ -218,8 +219,8 @@ Processing  1/2: [coq-infotheo: make]
 - COQC lib/Rbigop.v
 - COQC lib/binary_entropy_function.v
 - COQC ecc_modern/tanner.v
-- COQC lib/hamming.v
 - COQC probability/fdist.v
+- COQC lib/hamming.v
 - COQC ecc_modern/summary.v
 - COQC ecc_modern/tanner_partition.v
 - COQC probability/proba.v
@@ -236,13 +237,14 @@ Processing  1/2: [coq-infotheo: make]
 - COQC toy_examples/expected_value_variance_tuple.v
 - COQC probability/convex.v
 - COQC probability/graphoid.v
-- File &quot;./probability/convex.v&quot;, line 2019, characters 17-23:
-- Error: Illegal application (Non-functional construction): 
-- The expression &quot;a&quot; of type &quot;{convex_set T}&quot;
-- cannot be applied to the term
--  &quot;x&quot; : &quot;?A&quot;
+- COQC probability/fsdist.v
+- COQC probability/convex_stone.v
+- COQC probability/jensen.v
+- COQC probability/ln_facts.v
+- File &quot;./probability/ln_facts.v&quot;, line 81, characters 0-24:
+- Error: Cannot apply view subR_gt0
 - 
-- make[2]: *** [Makefile.coq:762: probability/convex.vo] Error 1
+- make[2]: *** [Makefile.coq:763: probability/ln_facts.vo] Error 1
 - make[2]: *** Waiting for unfinished jobs....
 - make[1]: *** [Makefile.coq:386: all] Error 2
 - make[1]: Leaving directory &#39;/home/bench/.opam/ocaml-base-compiler.4.12.0/.opam-switch/build/coq-infotheo.0.3&#39;
@@ -253,18 +255,18 @@ Processing  1/2: [coq-infotheo: make]
 # path                 ~/.opam/ocaml-base-compiler.4.12.0/.opam-switch/build/coq-infotheo.0.3
 # command              ~/.opam/opam-init/hooks/sandbox.sh build make -j4
 # exit-code            2
-# env-file             ~/.opam/log/coq-infotheo-15250-335865.env
-# output-file          ~/.opam/log/coq-infotheo-15250-335865.out
+# env-file             ~/.opam/log/coq-infotheo-12524-335865.env
+# output-file          ~/.opam/log/coq-infotheo-12524-335865.out
 ### output ###
 # [...]
-# COQC probability/graphoid.v
-# File &quot;./probability/convex.v&quot;, line 2019, characters 17-23:
-# Error: Illegal application (Non-functional construction): 
-# The expression &quot;a&quot; of type &quot;{convex_set T}&quot;
-# cannot be applied to the term
-#  &quot;x&quot; : &quot;?A&quot;
+# COQC probability/fsdist.v
+# COQC probability/convex_stone.v
+# COQC probability/jensen.v
+# COQC probability/ln_facts.v
+# File &quot;./probability/ln_facts.v&quot;, line 81, characters 0-24:
+# Error: Cannot apply view subR_gt0
 # 
-# make[2]: *** [Makefile.coq:762: probability/convex.vo] Error 1
+# make[2]: *** [Makefile.coq:763: probability/ln_facts.vo] Error 1
 # make[2]: *** Waiting for unfinished jobs....
 # make[1]: *** [Makefile.coq:386: all] Error 2
 # make[1]: Leaving directory &#39;/home/bench/.opam/ocaml-base-compiler.4.12.0/.opam-switch/build/coq-infotheo.0.3&#39;
