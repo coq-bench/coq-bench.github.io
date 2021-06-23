@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>lazy-pcf: 46 s</title>
+    <title>lazy-pcf: Error</title>
     <link rel="shortcut icon" type="image/png" href="../../../../../favicon.png" />
     <link href="../../../../../bootstrap.min.css" rel="stylesheet">
     <link href="../../../../../bootstrap-custom.css" rel="stylesheet">
@@ -39,10 +39,10 @@
               lazy-pcf
               <small>
                 dev
-                <span class="label label-success">46 s</span>
+                <span class="label label-danger">Error</span>
               </small>
             </h1>
-            <p><em><script>document.write(moment("2021-05-19 21:33:18 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2021-05-19 21:33:18 UTC)</em><p>
+            <p><em><script>document.write(moment("2021-06-22 20:43:33 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2021-06-22 20:43:33 UTC)</em><p>
             <h2>Context</h2>
             <pre># Packages matching: installed
 # Name              # Installed # Synopsis
@@ -113,70 +113,73 @@ url {
               <dt>Return code</dt>
               <dd>0</dd>
               <dt>Duration</dt>
-              <dd>16 s</dd>
+              <dd>8 s</dd>
             </dl>
             <h2>Install</h2>
             <dl class="dl-horizontal">
               <dt>Command</dt>
               <dd><code>opam list; echo; ulimit -Sv 16000000; timeout 4h opam install -y coq-lazy-pcf.dev coq.dev</code></dd>
               <dt>Return code</dt>
-              <dd>0</dd>
+              <dd>7936</dd>
               <dt>Duration</dt>
-              <dd>46 s</dd>
+              <dd>24 s</dd>
+              <dt>Output</dt>
+              <dd><pre># Packages matching: installed
+# Name              # Installed # Synopsis
+base-bigarray       base
+base-threads        base
+base-unix           base
+conf-findutils      1           Virtual package relying on findutils
+conf-gmp            3           Virtual package relying on a GMP lib system installation
+coq                 dev         Formal proof management system
+dune                2.8.5       Fast, portable, and opinionated build system
+ocaml               4.10.2      The OCaml compiler (virtual package)
+ocaml-base-compiler 4.10.2      Official release 4.10.2
+ocaml-config        1           OCaml Switch Configuration
+ocamlfind           1.9.1       A library manager for OCaml
+zarith              1.12        Implements arithmetic and logical operations over arbitrary-precision integers
+[NOTE] Package coq is already installed (current version is dev).
+The following actions will be performed:
+  - install coq-lazy-pcf dev
+&lt;&gt;&lt;&gt; Gathering sources &gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;
+[coq-lazy-pcf.dev] synchronised from git+https://github.com/coq-contribs/lazy-pcf.git#master
+&lt;&gt;&lt;&gt; Processing actions &lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;
+[ERROR] The compilation of coq-lazy-pcf failed at &quot;/home/bench/.opam/opam-init/hooks/sandbox.sh build make -j4&quot;.
+#=== ERROR while compiling coq-lazy-pcf.dev ===================================#
+# context              2.0.6 | linux/x86_64 | ocaml-base-compiler.4.10.2 | file:///home/bench/run/opam-coq-archive/extra-dev
+# path                 ~/.opam/ocaml-base-compiler.4.10.2/.opam-switch/build/coq-lazy-pcf.dev
+# command              ~/.opam/opam-init/hooks/sandbox.sh build make -j4
+# exit-code            2
+# env-file             ~/.opam/log/coq-lazy-pcf-4756-0a5907.env
+# output-file          ~/.opam/log/coq-lazy-pcf-4756-0a5907.out
+### output ###
+# [...]
+# COQC OpSem/utils.v
+# COQC SubjRed/NF.v
+# File &quot;./OpSem/utils.v&quot;, line 191, characters 32-36:
+# Error: Syntax error: &#39;,&#39; or &#39;)&#39; expected after [term level 200] (in [term]).
+# 
+# make[1]: *** [Makefile:762: OpSem/utils.vo] Error 1
+# make[1]: *** Waiting for unfinished jobs....
+# File &quot;./OpSem/environments.v&quot;, line 78, characters 41-45:
+# Error: Syntax error: &#39;end&#39; expected after [branches] (in [term_match]).
+# 
+# make[1]: *** [Makefile:762: OpSem/environments.vo] Error 1
+# make: *** [Makefile:386: all] Error 2
+&lt;&gt;&lt;&gt; Error report &lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;
++- The following actions failed
+| - build coq-lazy-pcf dev
++- 
+- No changes have been performed
+# Run eval $(opam env) to update the current shell environment
+</pre></dd>
             </dl>
             <h2>Installation size</h2>
-            <p>Total: 760 K</p>
-            <ul>
-              <li>66 K <code>../ocaml-base-compiler.4.10.2/lib/coq/user-contrib/lazyPCF/SubjRed/TypeThms.glob</code></li>
-              <li>59 K <code>../ocaml-base-compiler.4.10.2/lib/coq/user-contrib/lazyPCF/SubjRed/ApTypes.glob</code></li>
-              <li>47 K <code>../ocaml-base-compiler.4.10.2/lib/coq/user-contrib/lazyPCF/SubjRed/ApTypes.vo</code></li>
-              <li>33 K <code>../ocaml-base-compiler.4.10.2/lib/coq/user-contrib/lazyPCF/OpSem/typecheck.glob</code></li>
-              <li>32 K <code>../ocaml-base-compiler.4.10.2/lib/coq/user-contrib/lazyPCF/OpSem/freevars.glob</code></li>
-              <li>32 K <code>../ocaml-base-compiler.4.10.2/lib/coq/user-contrib/lazyPCF/SubjRed/TypeThms.vo</code></li>
-              <li>30 K <code>../ocaml-base-compiler.4.10.2/lib/coq/user-contrib/lazyPCF/SubjRed/subjrnf.vo</code></li>
-              <li>30 K <code>../ocaml-base-compiler.4.10.2/lib/coq/user-contrib/lazyPCF/OpSem/OSrules.glob</code></li>
-              <li>28 K <code>../ocaml-base-compiler.4.10.2/lib/coq/user-contrib/lazyPCF/OpSem/OSrules.vo</code></li>
-              <li>25 K <code>../ocaml-base-compiler.4.10.2/lib/coq/user-contrib/lazyPCF/OpSem/rename.glob</code></li>
-              <li>24 K <code>../ocaml-base-compiler.4.10.2/lib/coq/user-contrib/lazyPCF/OpSem/typecheck.vo</code></li>
-              <li>24 K <code>../ocaml-base-compiler.4.10.2/lib/coq/user-contrib/lazyPCF/OpSem/rename.vo</code></li>
-              <li>22 K <code>../ocaml-base-compiler.4.10.2/lib/coq/user-contrib/lazyPCF/SubjRed/mapsto.vo</code></li>
-              <li>20 K <code>../ocaml-base-compiler.4.10.2/lib/coq/user-contrib/lazyPCF/SubjRed/subjrnf.glob</code></li>
-              <li>19 K <code>../ocaml-base-compiler.4.10.2/lib/coq/user-contrib/lazyPCF/SubjRed/envprops.vo</code></li>
-              <li>18 K <code>../ocaml-base-compiler.4.10.2/lib/coq/user-contrib/lazyPCF/OpSem/freevars.vo</code></li>
-              <li>17 K <code>../ocaml-base-compiler.4.10.2/lib/coq/user-contrib/lazyPCF/SubjRed/ApTypes.v</code></li>
-              <li>17 K <code>../ocaml-base-compiler.4.10.2/lib/coq/user-contrib/lazyPCF/SubjRed/mapsto.glob</code></li>
-              <li>14 K <code>../ocaml-base-compiler.4.10.2/lib/coq/user-contrib/lazyPCF/OpSem/utils.glob</code></li>
-              <li>14 K <code>../ocaml-base-compiler.4.10.2/lib/coq/user-contrib/lazyPCF/OpSem/environments.vo</code></li>
-              <li>14 K <code>../ocaml-base-compiler.4.10.2/lib/coq/user-contrib/lazyPCF/SubjRed/NFprops.vo</code></li>
-              <li>13 K <code>../ocaml-base-compiler.4.10.2/lib/coq/user-contrib/lazyPCF/SubjRed/valid.vo</code></li>
-              <li>12 K <code>../ocaml-base-compiler.4.10.2/lib/coq/user-contrib/lazyPCF/SubjRed/TypeThms.v</code></li>
-              <li>10 K <code>../ocaml-base-compiler.4.10.2/lib/coq/user-contrib/lazyPCF/SubjRed/subjrnf.v</code></li>
-              <li>10 K <code>../ocaml-base-compiler.4.10.2/lib/coq/user-contrib/lazyPCF/OpSem/syntax.vo</code></li>
-              <li>10 K <code>../ocaml-base-compiler.4.10.2/lib/coq/user-contrib/lazyPCF/SubjRed/envprops.glob</code></li>
-              <li>10 K <code>../ocaml-base-compiler.4.10.2/lib/coq/user-contrib/lazyPCF/SubjRed/NFprops.glob</code></li>
-              <li>9 K <code>../ocaml-base-compiler.4.10.2/lib/coq/user-contrib/lazyPCF/OpSem/utils.vo</code></li>
-              <li>9 K <code>../ocaml-base-compiler.4.10.2/lib/coq/user-contrib/lazyPCF/OpSem/freevars.v</code></li>
-              <li>9 K <code>../ocaml-base-compiler.4.10.2/lib/coq/user-contrib/lazyPCF/SubjRed/NF.vo</code></li>
-              <li>7 K <code>../ocaml-base-compiler.4.10.2/lib/coq/user-contrib/lazyPCF/OpSem/typecheck.v</code></li>
-              <li>7 K <code>../ocaml-base-compiler.4.10.2/lib/coq/user-contrib/lazyPCF/SubjRed/mapsto.v</code></li>
-              <li>7 K <code>../ocaml-base-compiler.4.10.2/lib/coq/user-contrib/lazyPCF/OpSem/rename.v</code></li>
-              <li>7 K <code>../ocaml-base-compiler.4.10.2/lib/coq/user-contrib/lazyPCF/OpSem/utils.v</code></li>
-              <li>7 K <code>../ocaml-base-compiler.4.10.2/lib/coq/user-contrib/lazyPCF/SubjRed/NF.glob</code></li>
-              <li>6 K <code>../ocaml-base-compiler.4.10.2/lib/coq/user-contrib/lazyPCF/OpSem/OSrules.v</code></li>
-              <li>6 K <code>../ocaml-base-compiler.4.10.2/lib/coq/user-contrib/lazyPCF/OpSem/environments.glob</code></li>
-              <li>6 K <code>../ocaml-base-compiler.4.10.2/lib/coq/user-contrib/lazyPCF/SubjRed/valid.glob</code></li>
-              <li>5 K <code>../ocaml-base-compiler.4.10.2/lib/coq/user-contrib/lazyPCF/SubjRed/NFprops.v</code></li>
-              <li>5 K <code>../ocaml-base-compiler.4.10.2/lib/coq/user-contrib/lazyPCF/SubjRed/envprops.v</code></li>
-              <li>5 K <code>../ocaml-base-compiler.4.10.2/lib/coq/user-contrib/lazyPCF/OpSem/environments.v</code></li>
-              <li>4 K <code>../ocaml-base-compiler.4.10.2/lib/coq/user-contrib/lazyPCF/SubjRed/NF.v</code></li>
-              <li>3 K <code>../ocaml-base-compiler.4.10.2/lib/coq/user-contrib/lazyPCF/OpSem/syntax.glob</code></li>
-              <li>3 K <code>../ocaml-base-compiler.4.10.2/lib/coq/user-contrib/lazyPCF/SubjRed/valid.v</code></li>
-              <li>2 K <code>../ocaml-base-compiler.4.10.2/lib/coq/user-contrib/lazyPCF/OpSem/syntax.v</code></li>
-            </ul>
+            <p>No files were installed.</p>
             <h2>Uninstall</h2>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>opam remove -y coq-lazy-pcf.dev</code></dd>
+              <dd><code>true</code></dd>
               <dt>Return code</dt>
               <dd>0</dd>
               <dt>Missing removes</dt>
