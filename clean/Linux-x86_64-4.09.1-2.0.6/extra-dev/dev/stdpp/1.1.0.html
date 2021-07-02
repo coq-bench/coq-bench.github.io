@@ -42,7 +42,7 @@
                 <span class="label label-danger">Error</span>
               </small>
             </h1>
-            <p><em><script>document.write(moment("2021-02-23 11:02:07 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2021-02-23 11:02:07 UTC)</em><p>
+            <p><em><script>document.write(moment("2021-07-02 21:10:06 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2021-07-02 21:10:06 UTC)</em><p>
             <h2>Context</h2>
             <pre># Packages matching: installed
 # Name              # Installed # Synopsis
@@ -51,15 +51,13 @@ base-threads        base
 base-unix           base
 conf-findutils      1           Virtual package relying on findutils
 conf-gmp            3           Virtual package relying on a GMP lib system installation
-conf-m4             1           Virtual package relying on m4
-conf-perl           1           Virtual package relying on perl
 coq                 dev         Formal proof management system
-num                 1.4         The legacy Num library for arbitrary-precision integer and rational arithmetic
+dune                2.8.5       Fast, portable, and opinionated build system
 ocaml               4.09.1      The OCaml compiler (virtual package)
 ocaml-base-compiler 4.09.1      Official release 4.09.1
 ocaml-config        1           OCaml Switch Configuration
-ocamlfind           1.8.1       A library manager for OCaml
-zarith              1.11        Implements arithmetic and logical operations over arbitrary-precision integers
+ocamlfind           1.9.1       A library manager for OCaml
+zarith              1.12        Implements arithmetic and logical operations over arbitrary-precision integers
 # opam file:
 opam-version: &quot;2.0&quot;
 name: &quot;coq-stdpp&quot;
@@ -98,7 +96,7 @@ The key features of this library are as follows:
 flags: light-uninstall
 url {
   src:
-    &quot;https://gitlab.mpi-sws.org/robbertkrebbers/coq-stdpp/repository/coq-stdpp-1.1.0/archive.tar.gz&quot;
+    &quot;https://gitlab.mpi-sws.org/iris/stdpp/-/archive/coq-stdpp-1.1.0.tar.gz&quot;
   checksum: &quot;md5=2a24643f073f0975597dfbe6cbbc63e5&quot;
 }
 </pre>
@@ -127,7 +125,7 @@ url {
             <h2>Install dependencies</h2>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>opam list; echo; ulimit -Sv 4000000; timeout 2h opam install -y --deps-only coq-stdpp.1.1.0 coq.dev</code></dd>
+              <dd><code>opam list; echo; ulimit -Sv 4000000; timeout 4h opam install -y --deps-only coq-stdpp.1.1.0 coq.dev</code></dd>
               <dt>Return code</dt>
               <dd>0</dd>
               <dt>Duration</dt>
@@ -136,7 +134,7 @@ url {
             <h2>Install</h2>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>opam list; echo; ulimit -Sv 16000000; timeout 2h opam install -y -v coq-stdpp.1.1.0 coq.dev</code></dd>
+              <dd><code>opam list; echo; ulimit -Sv 16000000; timeout 4h opam install -y -v coq-stdpp.1.1.0 coq.dev</code></dd>
               <dt>Return code</dt>
               <dd>7936</dd>
               <dt>Duration</dt>
@@ -149,21 +147,19 @@ base-threads        base
 base-unix           base
 conf-findutils      1           Virtual package relying on findutils
 conf-gmp            3           Virtual package relying on a GMP lib system installation
-conf-m4             1           Virtual package relying on m4
-conf-perl           1           Virtual package relying on perl
 coq                 dev         Formal proof management system
-num                 1.4         The legacy Num library for arbitrary-precision integer and rational arithmetic
+dune                2.8.5       Fast, portable, and opinionated build system
 ocaml               4.09.1      The OCaml compiler (virtual package)
 ocaml-base-compiler 4.09.1      Official release 4.09.1
 ocaml-config        1           OCaml Switch Configuration
-ocamlfind           1.8.1       A library manager for OCaml
-zarith              1.11        Implements arithmetic and logical operations over arbitrary-precision integers
+ocamlfind           1.9.1       A library manager for OCaml
+zarith              1.12        Implements arithmetic and logical operations over arbitrary-precision integers
 [NOTE] Package coq is already installed (current version is dev).
 The following actions will be performed:
   - install coq-stdpp 1.1.0
 &lt;&gt;&lt;&gt; Gathering sources &gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;
 Processing  1/1: [coq-stdpp.1.1.0: http]
-[coq-stdpp.1.1.0] downloaded from https://gitlab.mpi-sws.org/robbertkrebbers/coq-stdpp/repository/coq-stdpp-1.1.0/archive.tar.gz
+[coq-stdpp.1.1.0] downloaded from https://gitlab.mpi-sws.org/iris/stdpp/-/archive/coq-stdpp-1.1.0.tar.gz
 Processing  1/1:
 &lt;&gt;&lt;&gt; Processing actions &lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;
 Processing  1/2: [coq-stdpp: make]
@@ -171,16 +167,81 @@ Processing  1/2: [coq-stdpp: make]
 - coq_makefile -f _CoqProject -o Makefile.coq
 - mv Makefile.coq Makefile.coq.tmp &amp;&amp; awk -f awk.Makefile Makefile.coq.tmp &gt; Makefile.coq &amp;&amp; rm Makefile.coq.tmp
 - make[1]: Entering directory &#39;/home/bench/.opam/ocaml-base-compiler.4.09.1/.opam-switch/build/coq-stdpp.1.1.0&#39;
-- Makefile.coq:453: warning: overriding recipe for target &#39;quick2vo&#39;
-- Makefile.coq:441: warning: ignoring old recipe for target &#39;quick2vo&#39;
+- Makefile.coq:496: warning: overriding recipe for target &#39;quick2vo&#39;
+- Makefile.coq:484: warning: ignoring old recipe for target &#39;quick2vo&#39;
 - COQDEP VFILES
-- Makefile.coq:453: warning: overriding recipe for target &#39;quick2vo&#39;
-- Makefile.coq:441: warning: ignoring old recipe for target &#39;quick2vo&#39;
-- Makefile.coq:453: warning: overriding recipe for target &#39;quick2vo&#39;
-- Makefile.coq:441: warning: ignoring old recipe for target &#39;quick2vo&#39;
-- Makefile.coq:453: warning: overriding recipe for target &#39;quick2vo&#39;
-- Makefile.coq:441: warning: ignoring old recipe for target &#39;quick2vo&#39;
+- *** Warning: in file theories/tactics.v, library Coq.Omega is required and has not been found in the loadpath!
+- Makefile.coq:496: warning: overriding recipe for target &#39;quick2vo&#39;
+- Makefile.coq:484: warning: ignoring old recipe for target &#39;quick2vo&#39;
+- Makefile.coq:496: warning: overriding recipe for target &#39;quick2vo&#39;
+- Makefile.coq:484: warning: ignoring old recipe for target &#39;quick2vo&#39;
+- Makefile.coq:496: warning: overriding recipe for target &#39;quick2vo&#39;
+- Makefile.coq:484: warning: ignoring old recipe for target &#39;quick2vo&#39;
 - COQC theories/base.v
+- File &quot;./theories/base.v&quot;, line 76, characters 0-29:
+- Warning: The default value for instance locality is currently &quot;local&quot; in a
+- section and &quot;global&quot; otherwise, but is scheduled to change in a future
+- release. For the time being, adding instances outside of sections without
+- specifying an explicit locality attribute is therefore deprecated. It is
+- recommended to use &quot;export&quot; whenever possible. Use the attributes #[local],
+- #[global] and #[export] depending on your choice. For example: &quot;#[export]
+- Instance Foo : Bar := baz.&quot; [deprecated-instance-without-locality,deprecated]
+- File &quot;./theories/base.v&quot;, line 77, characters 0-30:
+- Warning: The default value for instance locality is currently &quot;local&quot; in a
+- section and &quot;global&quot; otherwise, but is scheduled to change in a future
+- release. For the time being, adding instances outside of sections without
+- specifying an explicit locality attribute is therefore deprecated. It is
+- recommended to use &quot;export&quot; whenever possible. Use the attributes #[local],
+- #[global] and #[export] depending on your choice. For example: &quot;#[export]
+- Instance Foo : Bar := baz.&quot; [deprecated-instance-without-locality,deprecated]
+- File &quot;./theories/base.v&quot;, line 81, characters 0-30:
+- Warning: The default value for instance locality is currently &quot;local&quot; in a
+- section and &quot;global&quot; otherwise, but is scheduled to change in a future
+- release. For the time being, adding instances outside of sections without
+- specifying an explicit locality attribute is therefore deprecated. It is
+- recommended to use &quot;export&quot; whenever possible. Use the attributes #[local],
+- #[global] and #[export] depending on your choice. For example: &quot;#[export]
+- Instance Foo : Bar := baz.&quot; [deprecated-instance-without-locality,deprecated]
+- File &quot;./theories/base.v&quot;, line 85, characters 0-31:
+- Warning: The default value for instance locality is currently &quot;local&quot; in a
+- section and &quot;global&quot; otherwise, but is scheduled to change in a future
+- release. For the time being, adding instances outside of sections without
+- specifying an explicit locality attribute is therefore deprecated. It is
+- recommended to use &quot;export&quot; whenever possible. Use the attributes #[local],
+- #[global] and #[export] depending on your choice. For example: &quot;#[export]
+- Instance Foo : Bar := baz.&quot; [deprecated-instance-without-locality,deprecated]
+- File &quot;./theories/base.v&quot;, line 91, characters 0-31:
+- Warning: The default value for instance locality is currently &quot;local&quot; in a
+- section and &quot;global&quot; otherwise, but is scheduled to change in a future
+- release. For the time being, adding instances outside of sections without
+- specifying an explicit locality attribute is therefore deprecated. It is
+- recommended to use &quot;export&quot; whenever possible. Use the attributes #[local],
+- #[global] and #[export] depending on your choice. For example: &quot;#[export]
+- Instance Foo : Bar := baz.&quot; [deprecated-instance-without-locality,deprecated]
+- File &quot;./theories/base.v&quot;, line 92, characters 0-32:
+- Warning: The default value for instance locality is currently &quot;local&quot; in a
+- section and &quot;global&quot; otherwise, but is scheduled to change in a future
+- release. For the time being, adding instances outside of sections without
+- specifying an explicit locality attribute is therefore deprecated. It is
+- recommended to use &quot;export&quot; whenever possible. Use the attributes #[local],
+- #[global] and #[export] depending on your choice. For example: &quot;#[export]
+- Instance Foo : Bar := baz.&quot; [deprecated-instance-without-locality,deprecated]
+- File &quot;./theories/base.v&quot;, line 99, characters 0-32:
+- Warning: The default value for instance locality is currently &quot;local&quot; in a
+- section and &quot;global&quot; otherwise, but is scheduled to change in a future
+- release. For the time being, adding instances outside of sections without
+- specifying an explicit locality attribute is therefore deprecated. It is
+- recommended to use &quot;export&quot; whenever possible. Use the attributes #[local],
+- #[global] and #[export] depending on your choice. For example: &quot;#[export]
+- Instance Foo : Bar := baz.&quot; [deprecated-instance-without-locality,deprecated]
+- File &quot;./theories/base.v&quot;, line 100, characters 0-33:
+- Warning: The default value for instance locality is currently &quot;local&quot; in a
+- section and &quot;global&quot; otherwise, but is scheduled to change in a future
+- release. For the time being, adding instances outside of sections without
+- specifying an explicit locality attribute is therefore deprecated. It is
+- recommended to use &quot;export&quot; whenever possible. Use the attributes #[local],
+- #[global] and #[export] depending on your choice. For example: &quot;#[export]
+- Instance Foo : Bar := baz.&quot; [deprecated-instance-without-locality,deprecated]
 - File &quot;./theories/base.v&quot;, line 104, characters 0-37:
 - Warning: Declaring a scope implicitly is deprecated; use in advance an
 - explicit &quot;Declare Scope stdpp_scope.&quot;. [undeclared-scope,deprecated]
@@ -192,8 +253,10 @@ Processing  1/2: [coq-stdpp: make]
 - Warning: The default value for hint locality is currently &quot;local&quot; in a
 - section and &quot;global&quot; otherwise, but is scheduled to change in a future
 - release. For the time being, adding hints outside of sections without
-- specifying an explicit locality is therefore deprecated. It is recommended to
-- use &quot;export&quot; whenever possible. [deprecated-hint-without-locality,deprecated]
+- specifying an explicit locality attribute is therefore deprecated. It is
+- recommended to use &quot;export&quot; whenever possible. Use the attributes #[local],
+- #[global] and #[export] depending on your choice. For example: &quot;#[export]
+- Hint Unfold foo : bar.&quot; [deprecated-hint-without-locality,deprecated]
 - File &quot;./theories/base.v&quot;, line 124, characters 0-42:
 - Warning: Adding and removing hints in the core database implicitly is
 - deprecated. Please specify a hint database.
@@ -202,13 +265,15 @@ Processing  1/2: [coq-stdpp: make]
 - Warning: The default value for hint locality is currently &quot;local&quot; in a
 - section and &quot;global&quot; otherwise, but is scheduled to change in a future
 - release. For the time being, adding hints outside of sections without
-- specifying an explicit locality is therefore deprecated. It is recommended to
-- use &quot;export&quot; whenever possible. [deprecated-hint-without-locality,deprecated]
+- specifying an explicit locality attribute is therefore deprecated. It is
+- recommended to use &quot;export&quot; whenever possible. Use the attributes #[local],
+- #[global] and #[export] depending on your choice. For example: &quot;#[export]
+- Hint Unfold foo : bar.&quot; [deprecated-hint-without-locality,deprecated]
 - File &quot;./theories/base.v&quot;, line 126, characters 20-21:
 - Error: The reference A was not found in the current environment.
 - 
-- make[2]: *** [Makefile.coq:726: theories/base.vo] Error 1
-- make[1]: *** [Makefile.coq:343: all] Error 2
+- make[2]: *** [Makefile.coq:769: theories/base.vo] Error 1
+- make[1]: *** [Makefile.coq:386: all] Error 2
 - make[1]: Leaving directory &#39;/home/bench/.opam/ocaml-base-compiler.4.09.1/.opam-switch/build/coq-stdpp.1.1.0&#39;
 - make: *** [Makefile:6: all] Error 2
 [ERROR] The compilation of coq-stdpp failed at &quot;/home/bench/.opam/opam-init/hooks/sandbox.sh build make -j4&quot;.
@@ -217,20 +282,20 @@ Processing  1/2: [coq-stdpp: make]
 # path                 ~/.opam/ocaml-base-compiler.4.09.1/.opam-switch/build/coq-stdpp.1.1.0
 # command              ~/.opam/opam-init/hooks/sandbox.sh build make -j4
 # exit-code            2
-# env-file             ~/.opam/log/coq-stdpp-20900-865888.env
-# output-file          ~/.opam/log/coq-stdpp-20900-865888.out
+# env-file             ~/.opam/log/coq-stdpp-3437-865888.env
+# output-file          ~/.opam/log/coq-stdpp-3437-865888.out
 ### output ###
 # [...]
-# Warning: The default value for hint locality is currently &quot;local&quot; in a
-# section and &quot;global&quot; otherwise, but is scheduled to change in a future
 # release. For the time being, adding hints outside of sections without
-# specifying an explicit locality is therefore deprecated. It is recommended to
-# use &quot;export&quot; whenever possible. [deprecated-hint-without-locality,deprecated]
+# specifying an explicit locality attribute is therefore deprecated. It is
+# recommended to use &quot;export&quot; whenever possible. Use the attributes #[local],
+# #[global] and #[export] depending on your choice. For example: &quot;#[export]
+# Hint Unfold foo : bar.&quot; [deprecated-hint-without-locality,deprecated]
 # File &quot;./theories/base.v&quot;, line 126, characters 20-21:
 # Error: The reference A was not found in the current environment.
 # 
-# make[2]: *** [Makefile.coq:726: theories/base.vo] Error 1
-# make[1]: *** [Makefile.coq:343: all] Error 2
+# make[2]: *** [Makefile.coq:769: theories/base.vo] Error 1
+# make[1]: *** [Makefile.coq:386: all] Error 2
 # make[1]: Leaving directory &#39;/home/bench/.opam/ocaml-base-compiler.4.09.1/.opam-switch/build/coq-stdpp.1.1.0&#39;
 # make: *** [Makefile:6: all] Error 2
 &lt;&gt;&lt;&gt; Error report &lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;
