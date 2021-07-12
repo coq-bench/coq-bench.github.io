@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>vst: Error with dependencies</title>
+    <title>vst: Black list</title>
     <link rel="shortcut icon" type="image/png" href="../../../../../favicon.png" />
     <link href="../../../../../bootstrap.min.css" rel="stylesheet">
     <link href="../../../../../bootstrap-custom.css" rel="stylesheet">
@@ -39,10 +39,13 @@
               vst
               <small>
                 dev
-                <span class="label label-warning">Error with dependencies</span>
+                <span class="label label-default">Black list</span>
               </small>
             </h1>
-            <p><em><script>document.write(moment("2021-06-27 21:44:54 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2021-06-27 21:44:54 UTC)</em><p>
+            <p><em><script>document.write(moment("2021-07-10 00:28:00 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2021-07-10 00:28:00 UTC)</em><p>
+            <div class="alert alert-info" role="alert">
+              <p>This result is black-listed as it is considered as too hard to reproduce / to solve. If you find a way to fix this package, please make a pull-request to <a class="alert-link" href="https://github.com/coq/opam-coq-archive">github.com/coq/opam-coq-archive</a>. The list of black-listed packages is in <a class="alert-link" href="https://github.com/coq-bench/make-html/blob/master/black_list.rb">black_list.rb</a>.</p>
+            </div>
             <h2>Context</h2>
             <pre># Packages matching: installed
 # Name                # Installed # Synopsis
@@ -52,7 +55,7 @@ base-unix             base
 conf-findutils        1           Virtual package relying on findutils
 conf-gmp              3           Virtual package relying on a GMP lib system installation
 coq                   dev         Formal proof management system
-dune                  2.8.5       Fast, portable, and opinionated build system
+dune                  2.9.0       Fast, portable, and opinionated build system
 ocaml                 4.12.0      The OCaml compiler (virtual package)
 ocaml-base-compiler   4.12.0      Official release 4.12.0
 ocaml-config          2           OCaml Switch Configuration
@@ -132,9 +135,9 @@ url {
               <dt>Command</dt>
               <dd><code>opam list; echo; ulimit -Sv 4000000; timeout 4h opam install -y --deps-only coq-vst.dev coq.dev</code></dd>
               <dt>Return code</dt>
-              <dd>7936</dd>
+              <dd>10240</dd>
               <dt>Duration</dt>
-              <dd>9 m 45 s</dd>
+              <dd>3 m 7 s</dd>
               <dt>Output</dt>
               <dd><pre># Packages matching: installed
 # Name                # Installed # Synopsis
@@ -144,7 +147,7 @@ base-unix             base
 conf-findutils        1           Virtual package relying on findutils
 conf-gmp              3           Virtual package relying on a GMP lib system installation
 coq                   dev         Formal proof management system
-dune                  2.8.5       Fast, portable, and opinionated build system
+dune                  2.9.0       Fast, portable, and opinionated build system
 ocaml                 4.12.0      The OCaml compiler (virtual package)
 ocaml-base-compiler   4.12.0      Official release 4.12.0
 ocaml-config          2           OCaml Switch Configuration
@@ -152,62 +155,31 @@ ocaml-options-vanilla 1           Ensure that OCaml is compiled with no special 
 ocamlfind             1.9.1       A library manager for OCaml
 zarith                1.12        Implements arithmetic and logical operations over arbitrary-precision integers
 The following actions will be performed:
+  - install coq-flocq     dev
   - install menhirLib     dev
   - install menhirSdk     dev
-  - install coq-flocq     dev
   - install coq-menhirlib dev
   - install menhir        dev
   - install coq-compcert  dev
 ===== 6 to install =====
 &lt;&gt;&lt;&gt; Gathering sources &gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;
-[coq-flocq.dev] synchronised from git+https://gitlab.inria.fr/flocq/flocq.git#master
 [coq-compcert.dev] synchronised from git+https://github.com/AbsInt/CompCert.git
-[coq-menhirlib.dev] synchronised from git+https://gitlab.inria.fr/fpottier/menhir.git#master
-[menhir.dev] synchronised from git+https://gitlab.inria.fr/fpottier/menhir.git#master
-[menhirSdk.dev] synchronised from git+https://gitlab.inria.fr/fpottier/menhir.git#master
-[menhirLib.dev] synchronised from git+https://gitlab.inria.fr/fpottier/menhir.git#master
-&lt;&gt;&lt;&gt; Processing actions &lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;
--&gt; installed menhirLib.dev
--&gt; installed menhirSdk.dev
--&gt; installed coq-menhirlib.dev
--&gt; installed menhir.dev
--&gt; installed coq-flocq.dev
-[ERROR] The compilation of coq-compcert failed at &quot;/home/bench/.opam/opam-init/hooks/sandbox.sh build make -j4&quot;.
-#=== ERROR while compiling coq-compcert.dev ===================================#
-# context              2.0.8 | linux/x86_64 | ocaml-base-compiler.4.12.0 | file:///home/bench/run/opam-coq-archive/extra-dev
-# path                 ~/.opam/ocaml-base-compiler.4.12.0/.opam-switch/build/coq-compcert.dev
-# command              ~/.opam/opam-init/hooks/sandbox.sh build make -j4
-# exit-code            2
-# env-file             ~/.opam/log/coq-compcert-17029-40fffe.env
-# output-file          ~/.opam/log/coq-compcert-17029-40fffe.out
-### output ###
-# [...]
-# #[global] and #[export] depending on your choice. For example: &quot;#[export]
-# Instance Foo : Bar := baz.&quot; [deprecated-instance-without-locality,deprecated]
-# File &quot;./cparser/Parser.v&quot;, line 6445, characters 0-68:
-# Warning: The default value for instance locality is currently &quot;local&quot; in a
-# section and &quot;global&quot; otherwise, but is scheduled to change in a future
-# release. For the time being, adding instances outside of sections without
-# specifying an explicit locality attribute is therefore deprecated. It is
-# recommended to use &quot;export&quot; whenever possible. Use the attributes #[local],
-# #[global] and #[export] depending on your choice. For example: &quot;#[export]
-# Instance Foo : Bar := baz.&quot; [deprecated-instance-without-locality,deprecated]
-# make[1]: Leaving directory &#39;/home/bench/.opam/ocaml-base-compiler.4.12.0/.opam-switch/build/coq-compcert.dev&#39;
-# make: *** [Makefile:173: all] Error 2
-&lt;&gt;&lt;&gt; Error report &lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;
-+- The following actions failed
-| - build coq-compcert dev
-+- 
-+- The following changes have been performed
-| - install coq-flocq     dev
-| - install coq-menhirlib dev
-| - install menhir        dev
-| - install menhirLib     dev
-| - install menhirSdk     dev
-+- 
-# Run eval $(opam env) to update the current shell environment
-The former state can be restored with:
-    opam switch import &quot;/home/bench/.opam/ocaml-base-compiler.4.12.0/.opam-switch/backup/state-20210624113840.export&quot;
+[ERROR] Could not synchronize /home/bench/.opam/ocaml-base-compiler.4.12.0/.opam-switch/sources/coq-menhirlib.dev from &quot;git+https://gitlab.inria.fr/fpottier/menhir.git#master&quot;:
+        &quot;/usr/bin/git fetch -q&quot; exited with code 128
+[ERROR] Could not synchronize /home/bench/.opam/ocaml-base-compiler.4.12.0/.opam-switch/sources/coq-flocq.dev from &quot;git+https://gitlab.inria.fr/flocq/flocq.git#master&quot;:
+        &quot;/usr/bin/git fetch -q&quot; exited with code 128
+[ERROR] Could not synchronize /home/bench/.opam/ocaml-base-compiler.4.12.0/.opam-switch/sources/menhir.dev from &quot;git+https://gitlab.inria.fr/fpottier/menhir.git#master&quot;:
+        &quot;/usr/bin/git fetch -q&quot; exited with code 128
+[ERROR] Could not synchronize /home/bench/.opam/ocaml-base-compiler.4.12.0/.opam-switch/sources/menhirLib.dev from &quot;git+https://gitlab.inria.fr/fpottier/menhir.git#master&quot;:
+        &quot;/usr/bin/git fetch -q&quot; exited with code 128
+[ERROR] Could not synchronize /home/bench/.opam/ocaml-base-compiler.4.12.0/.opam-switch/sources/menhirSdk.dev from &quot;git+https://gitlab.inria.fr/fpottier/menhir.git#master&quot;:
+        &quot;/usr/bin/git fetch -q&quot; exited with code 128
+[ERROR] The sources of the following couldn&#39;t be obtained, aborting:
+          - coq-flocq.dev
+          - coq-menhirlib.dev
+          - menhir.dev
+          - menhirLib.dev
+          - menhirSdk.dev
 </pre></dd>
             </dl>
             <h2>Install</h2>
