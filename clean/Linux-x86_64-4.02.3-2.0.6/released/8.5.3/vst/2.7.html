@@ -42,7 +42,7 @@
                 <span class="label label-info">Not compatible</span>
               </small>
             </h1>
-            <p><em><script>document.write(moment("2021-02-08 20:28:01 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2021-02-08 20:28:01 UTC)</em><p>
+            <p><em><script>document.write(moment("2021-07-15 03:43:45 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2021-07-15 03:43:45 UTC)</em><p>
             <h2>Context</h2>
             <pre># Packages matching: installed
 # Name              # Installed # Synopsis
@@ -83,25 +83,28 @@ dev-repo: &quot;git+https://github.com/PrincetonUniversity/VST.git&quot;
 bug-reports: &quot;https://github.com/PrincetonUniversity/VST/issues&quot;
 license: &quot;https://raw.githubusercontent.com/PrincetonUniversity/VST/master/LICENSE&quot;
 build: [
-  [make &quot;-j%{jobs}%&quot; &quot;BITSIZE=64&quot;]
+  [make &quot;-j%{jobs}%&quot; &quot;BITSIZE=64&quot; &quot;IGNORECOQVERSION=true&quot;]
 ]
 install: [
-  [make &quot;install&quot; &quot;BITSIZE=64&quot;]
+  [&quot;mkdir&quot; &quot;-p&quot; &quot;%{lib}%/coq/user-contrib/VST&quot;]
+  [&quot;cp&quot; &quot;-r&quot; &quot;msl&quot; &quot;%{lib}%/coq/user-contrib/VST/&quot;]
+  [&quot;cp&quot; &quot;-r&quot; &quot;veric&quot; &quot;%{lib}%/coq/user-contrib/VST/&quot;]
+  [&quot;cp&quot; &quot;-r&quot; &quot;floyd&quot; &quot;%{lib}%/coq/user-contrib/VST/&quot;]
+  [&quot;cp&quot; &quot;-r&quot; &quot;sepcomp&quot; &quot;%{lib}%/coq/user-contrib/VST/&quot;]
 ]
 depends: [
   &quot;ocaml&quot;
-  &quot;coq&quot; {&gt;= &quot;8.11&quot; &amp; &lt; &quot;8.14&quot;}
+  &quot;coq&quot; {&gt;= &quot;8.12&quot; &amp; &lt; &quot;8.14&quot;}
   &quot;coq-compcert&quot; {(= &quot;3.8&quot;) | (= &quot;3.8~open-source&quot;)}
   &quot;coq-flocq&quot; {&gt;= &quot;3.2.1&quot;}
 ]
 tags: [
-  &quot;category:CS/Semantics and Compilation/Semantics&quot;
+  &quot;category:Computer Science/Semantics and Compilation/Semantics&quot;
   &quot;keyword:C&quot;
   &quot;logpath:VST&quot;
   &quot;date:2020-12-20&quot;
 ]
 patches: [&quot;makefile.patch&quot;]
-extra-files: [ [&quot;makefile.patch&quot; &quot;md5=a7242f51c9a723a23c9b3d7ffa062d31&quot;] ]
 url {
   src: &quot;https://github.com/PrincetonUniversity/VST/archive/v2.7.tar.gz&quot;
   checksum: &quot;sha256=970be13e71bdb013e2b9de64aecf1dda08228dd8ef3a1f6e4bb23ccd3a0896d3&quot;
