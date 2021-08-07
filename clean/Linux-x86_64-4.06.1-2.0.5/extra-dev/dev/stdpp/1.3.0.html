@@ -42,22 +42,25 @@
                 <span class="label label-danger">Error</span>
               </small>
             </h1>
-            <p><em><script>document.write(moment("2021-03-30 19:17:14 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2021-03-30 19:17:14 UTC)</em><p>
+            <p><em><script>document.write(moment("2021-08-07 14:31:16 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2021-08-07 14:31:16 UTC)</em><p>
             <h2>Context</h2>
             <pre># Packages matching: installed
-# Name              # Installed # Synopsis
-base-bigarray       base
-base-threads        base
-base-unix           base
-conf-findutils      1           Virtual package relying on findutils
-conf-gmp            3           Virtual package relying on a GMP lib system installation
-coq                 dev         Formal proof management system
-num                 1.4         The legacy Num library for arbitrary-precision integer and rational arithmetic
-ocaml               4.06.1      The OCaml compiler (virtual package)
-ocaml-base-compiler 4.06.1      Official 4.06.1 release
-ocaml-config        1           OCaml Switch Configuration
-ocamlfind           1.9.1       A library manager for OCaml
-zarith              1.12        Implements arithmetic and logical operations over arbitrary-precision integers
+# Name                   # Installed # Synopsis
+base-bigarray            base
+base-threads             base
+base-unix                base
+conf-findutils           1           Virtual package relying on findutils
+conf-gmp                 3           Virtual package relying on a GMP lib system installation
+conf-m4                  1           Virtual package relying on m4
+coq                      dev         Formal proof management system
+dune                     2.9.0       Fast, portable, and opinionated build system
+ocaml                    4.06.1      The OCaml compiler (virtual package)
+ocaml-base-compiler      4.06.1      Official 4.06.1 release
+ocaml-config             1           OCaml Switch Configuration
+ocaml-secondary-compiler 4.08.1-1    OCaml 4.08.1 Secondary Switch Compiler
+ocamlfind                1.8.1       A library manager for OCaml
+ocamlfind-secondary      1.8.1       ocamlfind support for ocaml-secondary-compiler
+zarith                   1.12        Implements arithmetic and logical operations over arbitrary-precision integers
 # opam file:
 opam-version: &quot;2.0&quot;
 name: &quot;coq-stdpp&quot;
@@ -98,7 +101,7 @@ build: [make &quot;-j%{jobs}%&quot;]
 install: [make &quot;install&quot;]
 url {
   src:
-    &quot;https://gitlab.mpi-sws.org/iris/stdpp/repository/coq-stdpp-1.3.0/archive.tar.gz&quot;
+    &quot;https://gitlab.mpi-sws.org/iris/stdpp/-/archive/coq-stdpp-1.3.0.tar.gz&quot;
   checksum:
     &quot;sha512=82247189f655c0ad60a81864b6f88a10933cacd79c35405dc812b7e6ca1938b3770c5d5339419f9e8252880acf028c767b2191061bbe1bfcdba3c05a960ed001&quot;
 }
@@ -128,41 +131,44 @@ url {
             <h2>Install dependencies</h2>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>opam list; echo; ulimit -Sv 4000000; timeout 2h opam install -y --deps-only coq-stdpp.1.3.0 coq.dev</code></dd>
+              <dd><code>opam list; echo; ulimit -Sv 4000000; timeout 4h opam install -y --deps-only coq-stdpp.1.3.0 coq.dev</code></dd>
               <dt>Return code</dt>
               <dd>0</dd>
               <dt>Duration</dt>
-              <dd>7 s</dd>
+              <dd>30 s</dd>
             </dl>
             <h2>Install</h2>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>opam list; echo; ulimit -Sv 16000000; timeout 2h opam install -y -v coq-stdpp.1.3.0 coq.dev</code></dd>
+              <dd><code>opam list; echo; ulimit -Sv 16000000; timeout 4h opam install -y -v coq-stdpp.1.3.0 coq.dev</code></dd>
               <dt>Return code</dt>
               <dd>7936</dd>
               <dt>Duration</dt>
-              <dd>10 s</dd>
+              <dd>38 s</dd>
               <dt>Output</dt>
               <dd><pre># Packages matching: installed
-# Name              # Installed # Synopsis
-base-bigarray       base
-base-threads        base
-base-unix           base
-conf-findutils      1           Virtual package relying on findutils
-conf-gmp            3           Virtual package relying on a GMP lib system installation
-coq                 dev         Formal proof management system
-num                 1.4         The legacy Num library for arbitrary-precision integer and rational arithmetic
-ocaml               4.06.1      The OCaml compiler (virtual package)
-ocaml-base-compiler 4.06.1      Official 4.06.1 release
-ocaml-config        1           OCaml Switch Configuration
-ocamlfind           1.9.1       A library manager for OCaml
-zarith              1.12        Implements arithmetic and logical operations over arbitrary-precision integers
+# Name                   # Installed # Synopsis
+base-bigarray            base
+base-threads             base
+base-unix                base
+conf-findutils           1           Virtual package relying on findutils
+conf-gmp                 3           Virtual package relying on a GMP lib system installation
+conf-m4                  1           Virtual package relying on m4
+coq                      dev         Formal proof management system
+dune                     2.9.0       Fast, portable, and opinionated build system
+ocaml                    4.06.1      The OCaml compiler (virtual package)
+ocaml-base-compiler      4.06.1      Official 4.06.1 release
+ocaml-config             1           OCaml Switch Configuration
+ocaml-secondary-compiler 4.08.1-1    OCaml 4.08.1 Secondary Switch Compiler
+ocamlfind                1.8.1       A library manager for OCaml
+ocamlfind-secondary      1.8.1       ocamlfind support for ocaml-secondary-compiler
+zarith                   1.12        Implements arithmetic and logical operations over arbitrary-precision integers
 [NOTE] Package coq is already installed (current version is dev).
 The following actions will be performed:
   - install coq-stdpp 1.3.0
 &lt;&gt;&lt;&gt; Gathering sources &gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;
 Processing  1/1: [coq-stdpp.1.3.0: http]
-[coq-stdpp.1.3.0] downloaded from https://gitlab.mpi-sws.org/iris/stdpp/repository/coq-stdpp-1.3.0/archive.tar.gz
+[coq-stdpp.1.3.0] downloaded from https://gitlab.mpi-sws.org/iris/stdpp/-/archive/coq-stdpp-1.3.0.tar.gz
 Processing  1/1:
 &lt;&gt;&lt;&gt; Processing actions &lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;
 Processing  1/2: [coq-stdpp: make]
@@ -171,144 +177,232 @@ Processing  1/2: [coq-stdpp: make]
 - make[1]: Entering directory &#39;/home/bench/.opam/ocaml-base-compiler.4.06.1/.opam-switch/build/coq-stdpp.1.3.0&#39;
 - COQDEP VFILES
 - COQDEP TESTFILES
+- *** Warning: in file theories/tactics.v, library Coq.Omega is required and has not been found in the loadpath!
 - COQC theories/base.v
 - File &quot;./theories/base.v&quot;, line 62, characters 0-78:
 - Warning: The default value for hint locality is currently &quot;local&quot; in a
 - section and &quot;global&quot; otherwise, but is scheduled to change in a future
 - release. For the time being, adding hints outside of sections without
-- specifying an explicit locality is therefore deprecated. It is recommended to
-- use &quot;export&quot; whenever possible. [deprecated-hint-without-locality,deprecated]
+- specifying an explicit locality attribute is therefore deprecated. It is
+- recommended to use &quot;export&quot; whenever possible. Use the attributes #[local],
+- #[global] and #[export] depending on your choice. For example: &quot;#[export]
+- Hint Unfold foo : bar.&quot; [deprecated-hint-without-locality,deprecated]
 - File &quot;./theories/base.v&quot;, line 74, characters 0-116:
 - Warning: The default value for hint locality is currently &quot;local&quot; in a
 - section and &quot;global&quot; otherwise, but is scheduled to change in a future
 - release. For the time being, adding hints outside of sections without
-- specifying an explicit locality is therefore deprecated. It is recommended to
-- use &quot;export&quot; whenever possible. [deprecated-hint-without-locality,deprecated]
+- specifying an explicit locality attribute is therefore deprecated. It is
+- recommended to use &quot;export&quot; whenever possible. Use the attributes #[local],
+- #[global] and #[export] depending on your choice. For example: &quot;#[export]
+- Hint Unfold foo : bar.&quot; [deprecated-hint-without-locality,deprecated]
+- File &quot;./theories/base.v&quot;, line 105, characters 0-29:
+- Warning: The default value for instance locality is currently &quot;local&quot; in a
+- section and &quot;global&quot; otherwise, but is scheduled to change in a future
+- release. For the time being, adding instances outside of sections without
+- specifying an explicit locality attribute is therefore deprecated. It is
+- recommended to use &quot;export&quot; whenever possible. Use the attributes #[local],
+- #[global] and #[export] depending on your choice. For example: &quot;#[export]
+- Instance Foo : Bar := baz.&quot; [deprecated-instance-without-locality,deprecated]
+- File &quot;./theories/base.v&quot;, line 106, characters 0-30:
+- Warning: The default value for instance locality is currently &quot;local&quot; in a
+- section and &quot;global&quot; otherwise, but is scheduled to change in a future
+- release. For the time being, adding instances outside of sections without
+- specifying an explicit locality attribute is therefore deprecated. It is
+- recommended to use &quot;export&quot; whenever possible. Use the attributes #[local],
+- #[global] and #[export] depending on your choice. For example: &quot;#[export]
+- Instance Foo : Bar := baz.&quot; [deprecated-instance-without-locality,deprecated]
 - File &quot;./theories/base.v&quot;, line 107, characters 0-41:
 - Warning: The default value for hint locality is currently &quot;local&quot; in a
 - section and &quot;global&quot; otherwise, but is scheduled to change in a future
 - release. For the time being, adding hints outside of sections without
-- specifying an explicit locality is therefore deprecated. It is recommended to
-- use &quot;export&quot; whenever possible. [deprecated-hint-without-locality,deprecated]
+- specifying an explicit locality attribute is therefore deprecated. It is
+- recommended to use &quot;export&quot; whenever possible. Use the attributes #[local],
+- #[global] and #[export] depending on your choice. For example: &quot;#[export]
+- Hint Unfold foo : bar.&quot; [deprecated-hint-without-locality,deprecated]
+- File &quot;./theories/base.v&quot;, line 111, characters 0-30:
+- Warning: The default value for instance locality is currently &quot;local&quot; in a
+- section and &quot;global&quot; otherwise, but is scheduled to change in a future
+- release. For the time being, adding instances outside of sections without
+- specifying an explicit locality attribute is therefore deprecated. It is
+- recommended to use &quot;export&quot; whenever possible. Use the attributes #[local],
+- #[global] and #[export] depending on your choice. For example: &quot;#[export]
+- Instance Foo : Bar := baz.&quot; [deprecated-instance-without-locality,deprecated]
 - File &quot;./theories/base.v&quot;, line 112, characters 0-42:
 - Warning: The default value for hint locality is currently &quot;local&quot; in a
 - section and &quot;global&quot; otherwise, but is scheduled to change in a future
 - release. For the time being, adding hints outside of sections without
-- specifying an explicit locality is therefore deprecated. It is recommended to
-- use &quot;export&quot; whenever possible. [deprecated-hint-without-locality,deprecated]
+- specifying an explicit locality attribute is therefore deprecated. It is
+- recommended to use &quot;export&quot; whenever possible. Use the attributes #[local],
+- #[global] and #[export] depending on your choice. For example: &quot;#[export]
+- Hint Unfold foo : bar.&quot; [deprecated-hint-without-locality,deprecated]
+- File &quot;./theories/base.v&quot;, line 116, characters 0-31:
+- Warning: The default value for instance locality is currently &quot;local&quot; in a
+- section and &quot;global&quot; otherwise, but is scheduled to change in a future
+- release. For the time being, adding instances outside of sections without
+- specifying an explicit locality attribute is therefore deprecated. It is
+- recommended to use &quot;export&quot; whenever possible. Use the attributes #[local],
+- #[global] and #[export] depending on your choice. For example: &quot;#[export]
+- Instance Foo : Bar := baz.&quot; [deprecated-instance-without-locality,deprecated]
+- File &quot;./theories/base.v&quot;, line 122, characters 0-31:
+- Warning: The default value for instance locality is currently &quot;local&quot; in a
+- section and &quot;global&quot; otherwise, but is scheduled to change in a future
+- release. For the time being, adding instances outside of sections without
+- specifying an explicit locality attribute is therefore deprecated. It is
+- recommended to use &quot;export&quot; whenever possible. Use the attributes #[local],
+- #[global] and #[export] depending on your choice. For example: &quot;#[export]
+- Instance Foo : Bar := baz.&quot; [deprecated-instance-without-locality,deprecated]
+- File &quot;./theories/base.v&quot;, line 123, characters 0-32:
+- Warning: The default value for instance locality is currently &quot;local&quot; in a
+- section and &quot;global&quot; otherwise, but is scheduled to change in a future
+- release. For the time being, adding instances outside of sections without
+- specifying an explicit locality attribute is therefore deprecated. It is
+- recommended to use &quot;export&quot; whenever possible. Use the attributes #[local],
+- #[global] and #[export] depending on your choice. For example: &quot;#[export]
+- Instance Foo : Bar := baz.&quot; [deprecated-instance-without-locality,deprecated]
 - File &quot;./theories/base.v&quot;, line 124, characters 0-47:
 - Warning: The default value for hint locality is currently &quot;local&quot; in a
 - section and &quot;global&quot; otherwise, but is scheduled to change in a future
 - release. For the time being, adding hints outside of sections without
-- specifying an explicit locality is therefore deprecated. It is recommended to
-- use &quot;export&quot; whenever possible. [deprecated-hint-without-locality,deprecated]
+- specifying an explicit locality attribute is therefore deprecated. It is
+- recommended to use &quot;export&quot; whenever possible. Use the attributes #[local],
+- #[global] and #[export] depending on your choice. For example: &quot;#[export]
+- Hint Unfold foo : bar.&quot; [deprecated-hint-without-locality,deprecated]
+- File &quot;./theories/base.v&quot;, line 134, characters 0-32:
+- Warning: The default value for instance locality is currently &quot;local&quot; in a
+- section and &quot;global&quot; otherwise, but is scheduled to change in a future
+- release. For the time being, adding instances outside of sections without
+- specifying an explicit locality attribute is therefore deprecated. It is
+- recommended to use &quot;export&quot; whenever possible. Use the attributes #[local],
+- #[global] and #[export] depending on your choice. For example: &quot;#[export]
+- Instance Foo : Bar := baz.&quot; [deprecated-instance-without-locality,deprecated]
+- File &quot;./theories/base.v&quot;, line 135, characters 0-33:
+- Warning: The default value for instance locality is currently &quot;local&quot; in a
+- section and &quot;global&quot; otherwise, but is scheduled to change in a future
+- release. For the time being, adding instances outside of sections without
+- specifying an explicit locality attribute is therefore deprecated. It is
+- recommended to use &quot;export&quot; whenever possible. Use the attributes #[local],
+- #[global] and #[export] depending on your choice. For example: &quot;#[export]
+- Instance Foo : Bar := baz.&quot; [deprecated-instance-without-locality,deprecated]
 - File &quot;./theories/base.v&quot;, line 136, characters 0-52:
 - Warning: The default value for hint locality is currently &quot;local&quot; in a
 - section and &quot;global&quot; otherwise, but is scheduled to change in a future
 - release. For the time being, adding hints outside of sections without
-- specifying an explicit locality is therefore deprecated. It is recommended to
-- use &quot;export&quot; whenever possible. [deprecated-hint-without-locality,deprecated]
-- File &quot;./theories/base.v&quot;, line 137, characters 0-52:
-- Warning: The default value for hint locality is currently &quot;local&quot; in a
+- specifying an explicit locality attribute is therefore depr
+[...] truncated
+For the time being, adding instances outside of sections without
+- specifying an explicit locality attribute is therefore deprecated. It is
+- recommended to use &quot;export&quot; whenever possible. Use the attributes #[local],
+- #[global] and #[export] depending on your choice. For example: &quot;#[export]
+- Instance Foo : Bar := baz.&quot; [deprecated-instance-without-locality,deprecated]
+- File &quot;./theories/base.v&quot;, line 264, characters 0-77:
+- Warning: The default value for instance locality is currently &quot;local&quot; in a
 - section and &quot;global&quot; otherwise, but is scheduled to change in a future
-- release. For the time being, adding hints outside of sections without
-- specifying an explicit locality is therefore deprecated. It is recommended to
-- use &quot;export&quot; whenever possible. [deprecated-hint-without-locality,deprecated]
-- File &quot;./theories/base.v&quot;, line 145, characters 0-47:
-- Warning: The default value for hint locality is currently &quot;local&quot; in a
-- section and &quot;global&quot; otherwise, but is scheduled to change in a future
-- release. For the time being, adding hints outside of sections without
-- specifying an explicit locality is therefore deprecated. It is recommended to
-- use &quot;export&quot; whenever possible. [deprecated-hint-without-locality,deprecated]
-- File &quot;./theories/base.v&quot;, line 154, characters 0-43:
-- Warning: The default value for hint locality is currently &quot;local&quot; in a
-- section and &quot;global&quot; otherwise, but is scheduled to change in a future
-- release. For the time being, adding hints outside of sections without
-- specifying an explicit locality is therefore deprecated. It is recommended to
-- use &quot;export&quot; whenever possible. [deprecated-hint-without-locality,deprecated]
-- File &quot;./theories/base.v&quot;, line 160, characters 0-47:
-- Warning: The default value for hint locality is currently &quot;local&quot; in a
-- section and &quot;global&quot; otherwise, but is scheduled to change in a future
-- release. For the time being, adding hints outside of sections without
-- specifying an explicit locality is therefore deprecated. It is recommended to
-- use &quot;export&quot; whenever possible. [deprecated-hint-without-locality,deprecated]
-- File &quot;./theories/base.v&quot;, line 161, characters 0-47:
-- Warning: The default value for hint locality is currently &quot;local&quot; in a
-- section and &quot;global&quot; otherwise, but is scheduled to change in a future
-- release. For the time being, adding hints outside of sections without
-- specifying an explicit locality is therefore deprecated. It is recommended to
-- use &quot;export&quot; whenever possible. [deprecated-hint-without-locality,deprecated]
-- File &quot;./theories/base.v&quot;, line 197, characters 0-44:
-- Warning: The default value for hint locality is currently &quot;local&quot; in a
-- section and &quot;global&quot; otherwise, but is scheduled to change in a future
-- release. For the time being, adding hints outside of sections without
-- specifying an explicit locality is therefore deprecated. It is recommended to
-- use &quot;export&quot; whenever possible. [deprecated-hint-without-locality,deprecated]
-- File &quot;./theories/base.v&quot;, line 198, characters 0-49:
-- Warning: The default value for hint locality is currently &quot;local&quot; in a
-- section and &quot;global&quot; otherwise, but is scheduled to change in a future
-- release. For the time being, adding hints outside of sections without
-- specifying an explicit locality is therefore deprecated. It is recommended to
-- use &quot;export&quot; whenever possible. [deprecated-hint-without-locality,deprecated]
-- File &quot;./theories/base.v&quot;, line 233, characters 0-49:
-- Warning: The default value for hint locality is currently &quot;local&quot; in a
-- section and &quot;global&quot; otherwise, but is scheduled to change in a future
-- release. For the time being, adding hints outside of sections without
-- specifying an explicit locality is therefore deprecated. It is recommended to
-- use &quot;export&quot; whenever possible. [deprecated-hint-without-locality,deprecated]
+- release. For the time being, adding instances outside of sections without
+- specifying an explicit locality attribute is therefore deprecated. It is
+- recommended to use &quot;export&quot; whenever possible. Use the attributes #[local],
+- #[global] and #[export] depending on your choice. For example: &quot;#[export]
+- Instance Foo : Bar := baz.&quot; [deprecated-instance-without-locality,deprecated]
 - File &quot;./theories/base.v&quot;, line 265, characters 0-46:
 - Warning: The default value for hint locality is currently &quot;local&quot; in a
 - section and &quot;global&quot; otherwise, but is scheduled to change in a future
 - release. For the time being, adding hints outside of sections without
-- specifying an explicit locality is therefore deprecated. It is recommended to
-- use &quot;export&quot; whenever possible. [deprecated-hint-without-locality,deprecated]
+- specifying an explicit locality attribute is therefore deprecated. It is
+- recommended to use &quot;export&quot; whenever possible. Use the attributes #[local],
+- #[global] and #[export] depending on your choice. For example: &quot;#[export]
+- Hint Unfold foo : bar.&quot; [deprecated-hint-without-locality,deprecated]
 - File &quot;./theories/base.v&quot;, line 266, characters 0-55:
 - Warning: The default value for hint locality is currently &quot;local&quot; in a
 - section and &quot;global&quot; otherwise, but is scheduled to change in a future
 - release. For the time being, adding hints outside of sections without
-- specifying an explicit locality is therefore deprecated. It is recommended to
-- use &quot;export&quot; whenever possible. [deprecated-hint-without-locality,deprecated]
+- specifying an explicit locality attribute is therefore deprecated. It is
+- recommended to use &quot;export&quot; whenever possible. Use the attributes #[local],
+- #[global] and #[export] depending on your choice. For example: &quot;#[export]
+- Hint Unfold foo : bar.&quot; [deprecated-hint-without-locality,deprecated]
 - File &quot;./theories/base.v&quot;, line 274, characters 0-43:
 - Warning: The default value for hint locality is currently &quot;local&quot; in a
 - section and &quot;global&quot; otherwise, but is scheduled to change in a future
 - release. For the time being, adding hints outside of sections without
-- specifying an explicit locality is therefore deprecated. It is recommended to
-- use &quot;export&quot; whenever possible. [deprecated-hint-without-locality,deprecated]
+- specifying an explicit locality attribute is therefore deprecated. It is
+- recommended to use &quot;export&quot; whenever possible. Use the attributes #[local],
+- #[global] and #[export] depending on your choice. For example: &quot;#[export]
+- Hint Unfold foo : bar.&quot; [deprecated-hint-without-locality,deprecated]
 - File &quot;./theories/base.v&quot;, line 293, characters 0-50:
 - Warning: The default value for hint locality is currently &quot;local&quot; in a
 - section and &quot;global&quot; otherwise, but is scheduled to change in a future
 - release. For the time being, adding hints outside of sections without
-- specifying an explicit locality is therefore deprecated. It is recommended to
-- use &quot;export&quot; whenever possible. [deprecated-hint-without-locality,deprecated]
+- specifying an explicit locality attribute is therefore deprecated. It is
+- recommended to use &quot;export&quot; whenever possible. Use the attributes #[local],
+- #[global] and #[export] depending on your choice. For example: &quot;#[export]
+- Hint Unfold foo : bar.&quot; [deprecated-hint-without-locality,deprecated]
 - File &quot;./theories/base.v&quot;, line 300, characters 0-44:
 - Warning: The default value for hint locality is currently &quot;local&quot; in a
 - section and &quot;global&quot; otherwise, but is scheduled to change in a future
 - release. For the time being, adding hints outside of sections without
-- specifying an explicit locality is therefore deprecated. It is recommended to
-- use &quot;export&quot; whenever possible. [deprecated-hint-without-locality,deprecated]
+- specifying an explicit locality attribute is therefore deprecated. It is
+- recommended to use &quot;export&quot; whenever possible. Use the attributes #[local],
+- #[global] and #[export] depending on your choice. For example: &quot;#[export]
+- Hint Unfold foo : bar.&quot; [deprecated-hint-without-locality,deprecated]
 - File &quot;./theories/base.v&quot;, line 308, characters 0-45:
 - Warning: The default value for hint locality is currently &quot;local&quot; in a
 - section and &quot;global&quot; otherwise, but is scheduled to change in a future
 - release. For the time being, adding hints outside of sections without
-- specifying an explicit locality is therefore deprecated. It is recommended to
-- use &quot;export&quot; whenever possible. [deprecated-hint-without-locality,deprecated]
+- specifying an explicit locality attribute is therefore deprecated. It is
+- recommended to use &quot;export&quot; whenever possible. Use the attributes #[local],
+- #[global] and #[export] depending on your choice. For example: &quot;#[export]
+- Hint Unfold foo : bar.&quot; [deprecated-hint-without-locality,deprecated]
+- File &quot;./theories/base.v&quot;, line 385, characters 48-52:
+- Warning: The default value for instance locality is currently &quot;local&quot; in a
+- section and &quot;global&quot; otherwise, but is scheduled to change in a future
+- release. For the time being, adding instances outside of sections without
+- specifying an explicit locality attribute is therefore deprecated. It is
+- recommended to use &quot;export&quot; whenever possible. Use the attributes #[local],
+- #[global] and #[export] depending on your choice. For example: &quot;#[export]
+- Instance Foo : Bar := baz.&quot; [deprecated-instance-without-locality,deprecated]
+- File &quot;./theories/base.v&quot;, line 387, characters 48-52:
+- Warning: The default value for instance locality is currently &quot;local&quot; in a
+- section and &quot;global&quot; otherwise, but is scheduled to change in a future
+- release. For the time being, adding instances outside of sections without
+- specifying an explicit locality attribute is therefore deprecated. It is
+- recommended to use &quot;export&quot; whenever possible. Use the attributes #[local],
+- #[global] and #[export] depending on your choice. For example: &quot;#[export]
+- Instance Foo : Bar := baz.&quot; [deprecated-instance-without-locality,deprecated]
+- File &quot;./theories/base.v&quot;, line 419, characters 0-35:
+- Warning: The default value for instance locality is currently &quot;local&quot; in a
+- section and &quot;global&quot; otherwise, but is scheduled to change in a future
+- release. For the time being, adding instances outside of sections without
+- specifying an explicit locality attribute is therefore deprecated. It is
+- recommended to use &quot;export&quot; whenever possible. Use the attributes #[local],
+- #[global] and #[export] depending on your choice. For example: &quot;#[export]
+- Instance Foo : Bar := baz.&quot; [deprecated-instance-without-locality,deprecated]
+- File &quot;./theories/base.v&quot;, line 430, characters 0-58:
+- Warning: The default value for instance locality is currently &quot;local&quot; in a
+- section and &quot;global&quot; otherwise, but is scheduled to change in a future
+- release. For the time being, adding instances outside of sections without
+- specifying an explicit locality attribute is therefore deprecated. It is
+- recommended to use &quot;export&quot; whenever possible. Use the attributes #[local],
+- #[global] and #[export] depending on your choice. For example: &quot;#[export]
+- Instance Foo : Bar := baz.&quot; [deprecated-instance-without-locality,deprecated]
 - File &quot;./theories/base.v&quot;, line 444, characters 0-46:
 - Warning: The default value for hint locality is currently &quot;local&quot; in a
 - section and &quot;global&quot; otherwise, but is scheduled to change in a future
 - release. For the time being, adding hints outside of sections without
-- specifying an explicit locality is therefore deprecated. It is recommended to
-- use &quot;export&quot; whenever possible. [deprecated-hint-without-locality,deprecated]
+- specifying an explicit locality attribute is therefore deprecated. It is
+- recommended to use &quot;export&quot; whenever possible. Use the attributes #[local],
+- #[global] and #[export] depending on your choice. For example: &quot;#[export]
+- Hint Unfold foo : bar.&quot; [deprecated-hint-without-locality,deprecated]
 - File &quot;./theories/base.v&quot;, line 445, characters 0-55:
 - Warning: The default value for hint locality is currently &quot;local&quot; in a
 - section and &quot;global&quot; otherwise, but is scheduled to change in a future
 - release. For the time being, adding hints outside of sections without
-- specifying an explicit locality is therefore deprecated. It is recommended to
-- use &quot;export&quot; whenever possible. [deprecated-hint-without-locality,deprecated]
+- specifying an explicit locality attribute is therefore deprecated. It is
+- recommended to use &quot;export&quot; whenever possible. Use the attributes #[local],
+- #[global] and #[export] depending on your choice. For example: &quot;#[export]
+- Hint Unfold foo : bar.&quot; [deprecated-hint-without-locality,deprecated]
 - File &quot;./theories/base.v&quot;, line 464, characters 25-26:
 - Error: The reference A was not found in the current environment.
 - 
-- make[2]: *** [Makefile.coq:721: theories/base.vo] Error 1
-- make[1]: *** [Makefile.coq:344: all] Error 2
+- make[2]: *** [Makefile.coq:763: theories/base.vo] Error 1
+- make[1]: *** [Makefile.coq:386: all] Error 2
 - make[1]: Leaving directory &#39;/home/bench/.opam/ocaml-base-compiler.4.06.1/.opam-switch/build/coq-stdpp.1.3.0&#39;
 - make: *** [Makefile:6: all] Error 2
 [ERROR] The compilation of coq-stdpp failed at &quot;/home/bench/.opam/opam-init/hooks/sandbox.sh build make -j4&quot;.
@@ -317,20 +411,20 @@ Processing  1/2: [coq-stdpp: make]
 # path                 ~/.opam/ocaml-base-compiler.4.06.1/.opam-switch/build/coq-stdpp.1.3.0
 # command              ~/.opam/opam-init/hooks/sandbox.sh build make -j4
 # exit-code            2
-# env-file             ~/.opam/log/coq-stdpp-26238-335865.env
-# output-file          ~/.opam/log/coq-stdpp-26238-335865.out
+# env-file             ~/.opam/log/coq-stdpp-643-335865.env
+# output-file          ~/.opam/log/coq-stdpp-643-335865.out
 ### output ###
 # [...]
-# Warning: The default value for hint locality is currently &quot;local&quot; in a
-# section and &quot;global&quot; otherwise, but is scheduled to change in a future
 # release. For the time being, adding hints outside of sections without
-# specifying an explicit locality is therefore deprecated. It is recommended to
-# use &quot;export&quot; whenever possible. [deprecated-hint-without-locality,deprecated]
+# specifying an explicit locality attribute is therefore deprecated. It is
+# recommended to use &quot;export&quot; whenever possible. Use the attributes #[local],
+# #[global] and #[export] depending on your choice. For example: &quot;#[export]
+# Hint Unfold foo : bar.&quot; [deprecated-hint-without-locality,deprecated]
 # File &quot;./theories/base.v&quot;, line 464, characters 25-26:
 # Error: The reference A was not found in the current environment.
 # 
-# make[2]: *** [Makefile.coq:721: theories/base.vo] Error 1
-# make[1]: *** [Makefile.coq:344: all] Error 2
+# make[2]: *** [Makefile.coq:763: theories/base.vo] Error 1
+# make[1]: *** [Makefile.coq:386: all] Error 2
 # make[1]: Leaving directory &#39;/home/bench/.opam/ocaml-base-compiler.4.06.1/.opam-switch/build/coq-stdpp.1.3.0&#39;
 # make: *** [Makefile:6: all] Error 2
 &lt;&gt;&lt;&gt; Error report &lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;
@@ -340,6 +434,7 @@ Processing  1/2: [coq-stdpp: make]
 - No changes have been performed
 # Run eval $(opam env) to update the current shell environment
 &#39;opam install -y -v coq-stdpp.1.3.0 coq.dev&#39; failed.
+The middle of the output is truncated (maximum 20000 characters)
 </pre></dd>
             </dl>
             <h2>Installation size</h2>
