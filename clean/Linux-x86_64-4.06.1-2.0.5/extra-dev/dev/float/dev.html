@@ -42,22 +42,25 @@
                 <span class="label label-danger">Error</span>
               </small>
             </h1>
-            <p><em><script>document.write(moment("2021-03-30 19:17:14 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2021-03-30 19:17:14 UTC)</em><p>
+            <p><em><script>document.write(moment("2021-08-07 14:31:16 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2021-08-07 14:31:16 UTC)</em><p>
             <h2>Context</h2>
             <pre># Packages matching: installed
-# Name              # Installed # Synopsis
-base-bigarray       base
-base-threads        base
-base-unix           base
-conf-findutils      1           Virtual package relying on findutils
-conf-gmp            3           Virtual package relying on a GMP lib system installation
-coq                 dev         Formal proof management system
-num                 1.4         The legacy Num library for arbitrary-precision integer and rational arithmetic
-ocaml               4.06.1      The OCaml compiler (virtual package)
-ocaml-base-compiler 4.06.1      Official 4.06.1 release
-ocaml-config        1           OCaml Switch Configuration
-ocamlfind           1.9.1       A library manager for OCaml
-zarith              1.12        Implements arithmetic and logical operations over arbitrary-precision integers
+# Name                   # Installed # Synopsis
+base-bigarray            base
+base-threads             base
+base-unix                base
+conf-findutils           1           Virtual package relying on findutils
+conf-gmp                 3           Virtual package relying on a GMP lib system installation
+conf-m4                  1           Virtual package relying on m4
+coq                      dev         Formal proof management system
+dune                     2.9.0       Fast, portable, and opinionated build system
+ocaml                    4.06.1      The OCaml compiler (virtual package)
+ocaml-base-compiler      4.06.1      Official 4.06.1 release
+ocaml-config             1           OCaml Switch Configuration
+ocaml-secondary-compiler 4.08.1-1    OCaml 4.08.1 Secondary Switch Compiler
+ocamlfind                1.8.1       A library manager for OCaml
+ocamlfind-secondary      1.8.1       ocamlfind support for ocaml-secondary-compiler
+zarith                   1.12        Implements arithmetic and logical operations over arbitrary-precision integers
 # opam file:
 opam-version: &quot;2.0&quot;
 maintainer: &quot;dev@clarus.me&quot;
@@ -111,35 +114,38 @@ url {
             <h2>Install dependencies</h2>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>opam list; echo; ulimit -Sv 4000000; timeout 2h opam install -y --deps-only coq-float.dev coq.dev</code></dd>
+              <dd><code>opam list; echo; ulimit -Sv 4000000; timeout 4h opam install -y --deps-only coq-float.dev coq.dev</code></dd>
               <dt>Return code</dt>
               <dd>0</dd>
               <dt>Duration</dt>
-              <dd>17 s</dd>
+              <dd>31 s</dd>
             </dl>
             <h2>Install</h2>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>opam list; echo; ulimit -Sv 16000000; timeout 2h opam install -y coq-float.dev coq.dev</code></dd>
+              <dd><code>opam list; echo; ulimit -Sv 16000000; timeout 4h opam install -y coq-float.dev coq.dev</code></dd>
               <dt>Return code</dt>
               <dd>7936</dd>
               <dt>Duration</dt>
-              <dd>34 s</dd>
+              <dd>57 s</dd>
               <dt>Output</dt>
               <dd><pre># Packages matching: installed
-# Name              # Installed # Synopsis
-base-bigarray       base
-base-threads        base
-base-unix           base
-conf-findutils      1           Virtual package relying on findutils
-conf-gmp            3           Virtual package relying on a GMP lib system installation
-coq                 dev         Formal proof management system
-num                 1.4         The legacy Num library for arbitrary-precision integer and rational arithmetic
-ocaml               4.06.1      The OCaml compiler (virtual package)
-ocaml-base-compiler 4.06.1      Official 4.06.1 release
-ocaml-config        1           OCaml Switch Configuration
-ocamlfind           1.9.1       A library manager for OCaml
-zarith              1.12        Implements arithmetic and logical operations over arbitrary-precision integers
+# Name                   # Installed # Synopsis
+base-bigarray            base
+base-threads             base
+base-unix                base
+conf-findutils           1           Virtual package relying on findutils
+conf-gmp                 3           Virtual package relying on a GMP lib system installation
+conf-m4                  1           Virtual package relying on m4
+coq                      dev         Formal proof management system
+dune                     2.9.0       Fast, portable, and opinionated build system
+ocaml                    4.06.1      The OCaml compiler (virtual package)
+ocaml-base-compiler      4.06.1      Official 4.06.1 release
+ocaml-config             1           OCaml Switch Configuration
+ocaml-secondary-compiler 4.08.1-1    OCaml 4.08.1 Secondary Switch Compiler
+ocamlfind                1.8.1       A library manager for OCaml
+ocamlfind-secondary      1.8.1       ocamlfind support for ocaml-secondary-compiler
+zarith                   1.12        Implements arithmetic and logical operations over arbitrary-precision integers
 [NOTE] Package coq is already installed (current version is dev).
 The following actions will be performed:
   - install coq-float dev
@@ -152,22 +158,22 @@ The following actions will be performed:
 # path                 ~/.opam/ocaml-base-compiler.4.06.1/.opam-switch/build/coq-float.dev
 # command              ~/.opam/opam-init/hooks/sandbox.sh build make -j4
 # exit-code            2
-# env-file             ~/.opam/log/coq-float-16889-0a5907.env
-# output-file          ~/.opam/log/coq-float-16889-0a5907.out
+# env-file             ~/.opam/log/coq-float-860-0a5907.env
+# output-file          ~/.opam/log/coq-float-860-0a5907.out
 ### output ###
 # [...]
-# use &quot;export&quot; whenever possible. [deprecated-hint-without-locality,deprecated]
-# File &quot;./Faux.v&quot;, line 167, characters 0-35:
 # Warning: The default value for hint locality is currently &quot;local&quot; in a
 # section and &quot;global&quot; otherwise, but is scheduled to change in a future
 # release. For the time being, adding hints outside of sections without
-# specifying an explicit locality is therefore deprecated. It is recommended to
-# use &quot;export&quot; whenever possible. [deprecated-hint-without-locality,deprecated]
+# specifying an explicit locality attribute is therefore deprecated. It is
+# recommended to use &quot;export&quot; whenever possible. Use the attributes #[local],
+# #[global] and #[export] depending on your choice. For example: &quot;#[export]
+# Hint Unfold foo : bar.&quot; [deprecated-hint-without-locality,deprecated]
 # File &quot;./Faux.v&quot;, line 218, characters 57-61:
 # Error: The reference Zabs was not found in the current environment.
 # 
-# make[1]: *** [Makefile:721: Faux.vo] Error 1
-# make: *** [Makefile:344: all] Error 2
+# make[1]: *** [Makefile:763: Faux.vo] Error 1
+# make: *** [Makefile:386: all] Error 2
 &lt;&gt;&lt;&gt; Error report &lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;
 +- The following actions failed
 | - build coq-float dev
