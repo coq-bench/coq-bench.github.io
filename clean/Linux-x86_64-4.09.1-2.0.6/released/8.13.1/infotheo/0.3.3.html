@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>infotheo: Error</title>
+    <link rel="shortcut icon" type="image/png" href="../../../../../favicon.png" />
+    <link href="../../../../../bootstrap.min.css" rel="stylesheet">
+    <link href="../../../../../bootstrap-custom.css" rel="stylesheet">
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+    <script src="../../../../../moment.min.js"></script>
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="container">
+      <div class="navbar navbar-default" role="navigation">
+        <div class="container-fluid">
+          <div class="navbar-header">
+            <a class="navbar-brand" href="../../../../.."><i class="fa fa-lg fa-flag-checkered"></i> Coq bench</a>
+          </div>
+          <div id="navbar" class="collapse navbar-collapse">
+            <ul class="nav navbar-nav">
+              <li><a href="../..">clean / released</a></li>
+              <li class="active"><a href="">8.13.1 / infotheo - 0.3.3</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="article">
+        <div class="row">
+          <div class="col-md-12">
+            <a href="../..">« Up</a>
+            <h1>
+              infotheo
+              <small>
+                0.3.3
+                <span class="label label-danger">Error</span>
+              </small>
+            </h1>
+            <p><em><script>document.write(moment("2021-08-18 06:46:33 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2021-08-18 06:46:33 UTC)</em><p>
+            <h2>Context</h2>
+            <pre># Packages matching: installed
+# Name              # Installed # Synopsis
+base-bigarray       base
+base-threads        base
+base-unix           base
+conf-findutils      1           Virtual package relying on findutils
+conf-gmp            3           Virtual package relying on a GMP lib system installation
+coq                 8.13.1      Formal proof management system
+num                 1.4         The legacy Num library for arbitrary-precision integer and rational arithmetic
+ocaml               4.09.1      The OCaml compiler (virtual package)
+ocaml-base-compiler 4.09.1      Official release 4.09.1
+ocaml-config        1           OCaml Switch Configuration
+ocamlfind           1.9.1       A library manager for OCaml
+zarith              1.12        Implements arithmetic and logical operations over arbitrary-precision integers
+# opam file:
+opam-version: &quot;2.0&quot;
+maintainer: &quot;Reynald Affeldt &lt;reynald.affeldt@aist.go.jp&gt;&quot;
+homepage: &quot;https://github.com/affeldt-aist/infotheo&quot;
+dev-repo: &quot;git+https://github.com/affeldt-aist/infotheo.git&quot;
+bug-reports: &quot;https://github.com/affeldt-aist/infotheo/issues&quot;
+license: &quot;LGPL-2.1-or-later&quot;
+synopsis: &quot;Discrete probabilities and information theory for Coq&quot;
+description: &quot;&quot;&quot;
+Infotheo is a Coq library for reasoning about discrete probabilities,
+information theory, and linear error-correcting codes.&quot;&quot;&quot;
+build: [
+  [make &quot;-j%{jobs}%&quot; ]
+  [make &quot;-C&quot; &quot;extraction&quot; &quot;tests&quot;] {with-test}
+]
+install: [make &quot;install&quot;]
+depends: [
+  &quot;coq&quot; { (&gt;= &quot;8.13&quot; &amp; &lt; &quot;8.14~&quot;) | (= &quot;dev&quot;) }
+  &quot;coq-mathcomp-ssreflect&quot; { (&gt;= &quot;1.12.0&quot; &amp; &lt; &quot;1.13~&quot;) }
+  &quot;coq-mathcomp-fingroup&quot; { (&gt;= &quot;1.12.0&quot; &amp; &lt; &quot;1.13~&quot;) }
+  &quot;coq-mathcomp-algebra&quot; { (&gt;= &quot;1.12.0&quot; &amp; &lt; &quot;1.13~&quot;) }
+  &quot;coq-mathcomp-solvable&quot; { (&gt;= &quot;1.12.0&quot; &amp; &lt; &quot;1.13~&quot;) }
+  &quot;coq-mathcomp-field&quot; { (&gt;= &quot;1.12.0&quot; &amp; &lt; &quot;1.13~&quot;) }
+  &quot;coq-mathcomp-analysis&quot; { (&gt;= &quot;0.3.6&quot; &amp; &lt;= &quot;0.3.7&quot;) | (&gt;= &quot;0.3.9&quot; &amp; &lt; &quot;0.4~&quot;) }
+]
+tags: [
+  &quot;keyword:information theory&quot;
+  &quot;keyword:probability&quot;
+  &quot;keyword:error-correcting codes&quot;
+  &quot;keyword:convexity&quot;
+  &quot;logpath:infotheo&quot;
+  &quot;date:2021-06-14&quot;
+]
+authors: [
+  &quot;Reynald Affeldt, AIST&quot;
+  &quot;Manabu Hagiwara, Chiba U. (previously AIST)&quot;
+  &quot;Jonas Senizergues, ENS Cachan (internship at AIST)&quot;
+  &quot;Jacques Garrigue, Nagoya U.&quot;
+  &quot;Kazuhiko Sakaguchi, Tsukuba U.&quot;
+  &quot;Taku Asai, Nagoya U. (M2)&quot;
+  &quot;Takafumi Saikawa, Nagoya U.&quot;
+  &quot;Naruomi Obata, Titech (M2)&quot;
+]
+url {
+  http: &quot;https://github.com/affeldt-aist/infotheo/archive/0.3.3.tar.gz&quot;
+  checksum: &quot;sha512=1147fd67635fa927fd918583f35a5702a5877c82aac55cd07708dacb5ece2a69109136c26a3c09530ac7c6219579392bbe7f5505a55e7a61a40017d1d1c5c27c&quot;
+}
+</pre>
+            <h2>Lint</h2>
+            <dl class="dl-horizontal">
+              <dt>Command</dt>
+              <dd><code>true</code></dd>
+              <dt>Return code</dt>
+              <dd>0</dd>
+            </dl>
+            <h2>Dry install</h2>
+            <p>Dry install with the current Coq version:</p>
+            <dl class="dl-horizontal">
+              <dt>Command</dt>
+              <dd><code>opam install -y --show-action coq-infotheo.0.3.3 coq.8.13.1</code></dd>
+              <dt>Return code</dt>
+              <dd>0</dd>
+            </dl>
+            <p>Dry install without Coq/switch base, to test if the problem was incompatibility with the current Coq/OCaml version:</p>
+            <dl class="dl-horizontal">
+              <dt>Command</dt>
+              <dd><code>true</code></dd>
+              <dt>Return code</dt>
+              <dd>0</dd>
+            </dl>
+            <h2>Install dependencies</h2>
+            <dl class="dl-horizontal">
+              <dt>Command</dt>
+              <dd><code>opam list; echo; ulimit -Sv 4000000; timeout 4h opam install -y --deps-only coq-infotheo.0.3.3 coq.8.13.1</code></dd>
+              <dt>Return code</dt>
+              <dd>0</dd>
+              <dt>Duration</dt>
+              <dd>38 m 16 s</dd>
+            </dl>
+            <h2>Install</h2>
+            <dl class="dl-horizontal">
+              <dt>Command</dt>
+              <dd><code>opam list; echo; ulimit -Sv 16000000; timeout 4h opam install -y -v coq-infotheo.0.3.3 coq.8.13.1</code></dd>
+              <dt>Return code</dt>
+              <dd>7936</dd>
+              <dt>Duration</dt>
+              <dd>38 s</dd>
+              <dt>Output</dt>
+              <dd><pre># Packages matching: installed
+# Name                  # Installed # Synopsis
+base-bigarray           base
+base-threads            base
+base-unix               base
+camlp5                  7.14        Preprocessor-pretty-printer of OCaml
+conf-findutils          1           Virtual package relying on findutils
+conf-gmp                3           Virtual package relying on a GMP lib system installation
+conf-perl               1           Virtual package relying on perl
+coq                     8.13.1      Formal proof management system
+coq-elpi                1.9.7       Elpi extension language for Coq
+coq-hierarchy-builder   1.1.0       High level commands to declare and evolve a hierarchy based on packed classes
+coq-mathcomp-algebra    1.12.0      Mathematical Components Library on Algebra
+coq-mathcomp-analysis   0.3.10      An analysis library for mathematical components
+coq-mathcomp-bigenough  1.0.0       A small library to do epsilon - N reasonning
+coq-mathcomp-field      1.12.0      Mathematical Components Library on Fields
+coq-mathcomp-fingroup   1.12.0      Mathematical Components Library on finite groups
+coq-mathcomp-finmap     1.5.1       Finite sets, finite maps, finitely supported functions
+coq-mathcomp-solvable   1.12.0      Mathematical Components Library on finite groups (II)
+coq-mathcomp-ssreflect  1.12.0      Small Scale Reflection
+cppo                    1.6.7       Code preprocessor like cpp for OCaml
+dune                    2.9.0       Fast, portable, and opinionated build system
+elpi                    1.13.7      ELPI - Embeddable λProlog Interpreter
+num                     1.4         The legacy Num library for arbitrary-precision integer and rational arithmetic
+ocaml                   4.09.1      The OCaml compiler (virtual package)
+ocaml-base-compiler     4.09.1      Official release 4.09.1
+ocaml-compiler-libs     v0.12.3     OCaml compiler libraries repackaged
+ocaml-config            1           OCaml Switch Configuration
+ocaml-migrate-parsetree 2.2.0       Convert OCaml parsetrees between different versions
+ocamlfind               1.9.1       A library manager for OCaml
+ppx_derivers            1.2.1       Shared [@@deriving] plugin registry
+ppx_deriving            5.2.1       Type-driven code generation for OCaml
+ppxlib                  0.22.2      Standard library for ppx rewriters
+re                      1.9.0       RE is a regular expression library for OCaml
+result                  1.5         Compatibility Result module
+seq                     base        Compatibility package for OCaml&#39;s standard iterator type starting from 4.07.
+sexplib0                v0.14.0     Library containing the definition of S-expressions and some base converters
+stdlib-shims            0.3.0       Backport some of the new stdlib features to older compiler
+zarith                  1.12        Implements arithmetic and logical operations over arbitrary-precision integers
+[NOTE] Package coq is already installed (current version is 8.13.1).
+The following actions will be performed:
+  - install coq-infotheo 0.3.3
+&lt;&gt;&lt;&gt; Gathering sources &gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;
+Processing  1/1: [coq-infotheo.0.3.3: http]
+[coq-infotheo.0.3.3] downloaded from https://github.com/affeldt-aist/infotheo/archive/0.3.3.tar.gz
+Processing  1/1:
+&lt;&gt;&lt;&gt; Processing actions &lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;
+Processing  1/2: [coq-infotheo: make]
++ /home/bench/.opam/opam-init/hooks/sandbox.sh &quot;build&quot; &quot;make&quot; &quot;-j4&quot; (CWD=/home/bench/.opam/ocaml-base-compiler.4.09.1/.opam-switch/build/coq-infotheo.0.3.3)
+- coq_makefile -f _CoqProject -o Makefile.coq
+- make -f Makefile.coq all
+- make[1]: Entering directory &#39;/home/bench/.opam/ocaml-base-compiler.4.09.1/.opam-switch/build/coq-infotheo.0.3.3&#39;
+- COQDEP VFILES
+- COQC lib/ssrZ.v
+- COQC lib/ssrR.v
+- COQC lib/ssr_ext.v
+- COQC lib/f2.v
+- COQC lib/euclid.v
+- COQC lib/classical_sets_ext.v
+- File &quot;./lib/classical_sets_ext.v&quot;, line 33, characters 12-19:
+- Error: The reference bigsetU was not found in the current environment.
+- 
+- make[2]: *** [Makefile.coq:719: lib/classical_sets_ext.vo] Error 1
+- make[2]: *** Waiting for unfinished jobs....
+- make[1]: *** [Makefile.coq:343: all] Error 2
+- make[1]: Leaving directory &#39;/home/bench/.opam/ocaml-base-compiler.4.09.1/.opam-switch/build/coq-infotheo.0.3.3&#39;
+- make: *** [Makefile:2: all] Error 2
+[ERROR] The compilation of coq-infotheo failed at &quot;/home/bench/.opam/opam-init/hooks/sandbox.sh build make -j4&quot;.
+#=== ERROR while compiling coq-infotheo.0.3.3 =================================#
+# context              2.0.6 | linux/x86_64 | ocaml-base-compiler.4.09.1 | file:///home/bench/run/opam-coq-archive/released
+# path                 ~/.opam/ocaml-base-compiler.4.09.1/.opam-switch/build/coq-infotheo.0.3.3
+# command              ~/.opam/opam-init/hooks/sandbox.sh build make -j4
+# exit-code            2
+# env-file             ~/.opam/log/coq-infotheo-27442-335865.env
+# output-file          ~/.opam/log/coq-infotheo-27442-335865.out
+### output ###
+# [...]
+# COQC lib/ssr_ext.v
+# COQC lib/f2.v
+# COQC lib/euclid.v
+# COQC lib/classical_sets_ext.v
+# File &quot;./lib/classical_sets_ext.v&quot;, line 33, characters 12-19:
+# Error: The reference bigsetU was not found in the current environment.
+# 
+# make[2]: *** [Makefile.coq:719: lib/classical_sets_ext.vo] Error 1
+# make[2]: *** Waiting for unfinished jobs....
+# make[1]: *** [Makefile.coq:343: all] Error 2
+# make[1]: Leaving directory &#39;/home/bench/.opam/ocaml-base-compiler.4.09.1/.opam-switch/build/coq-infotheo.0.3.3&#39;
+# make: *** [Makefile:2: all] Error 2
+&lt;&gt;&lt;&gt; Error report &lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;
++- The following actions failed
+| - build coq-infotheo 0.3.3
++- 
+- No changes have been performed
+# Run eval $(opam env) to update the current shell environment
+&#39;opam install -y -v coq-infotheo.0.3.3 coq.8.13.1&#39; failed.
+</pre></dd>
+            </dl>
+            <h2>Installation size</h2>
+            <p>No files were installed.</p>
+            <h2>Uninstall</h2>
+            <dl class="dl-horizontal">
+              <dt>Command</dt>
+              <dd><code>true</code></dd>
+              <dt>Return code</dt>
+              <dd>0</dd>
+              <dt>Missing removes</dt>
+              <dd>
+                none
+              </dd>
+              <dt>Wrong removes</dt>
+              <dd>
+                none
+              </dd>
+            </dl>
+          </div>
+        </div>
+      </div>
+      <hr/>
+      <div class="footer">
+        <p class="text-center">
+          <small>Sources are on <a href="https://github.com/coq-bench">GitHub</a>. © Guillaume Claret.</small>
+        </p>
+      </div>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="../../../../../bootstrap.min.js"></script>
+  </body>
+</html>
