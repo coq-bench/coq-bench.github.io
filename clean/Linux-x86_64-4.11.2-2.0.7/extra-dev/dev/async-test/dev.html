@@ -42,7 +42,7 @@
                 <span class="label label-warning">Error with dependencies</span>
               </small>
             </h1>
-            <p><em><script>document.write(moment("2021-09-08 10:51:57 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2021-09-08 10:51:57 UTC)</em><p>
+            <p><em><script>document.write(moment("2021-10-11 03:25:58 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2021-10-11 03:25:58 UTC)</em><p>
             <h2>Context</h2>
             <pre># Packages matching: installed
 # Name              # Installed # Synopsis
@@ -52,7 +52,7 @@ base-unix           base
 conf-findutils      1           Virtual package relying on findutils
 conf-gmp            3           Virtual package relying on a GMP lib system installation
 coq                 dev         Formal proof management system
-dune                2.9.0       Fast, portable, and opinionated build system
+dune                2.9.1       Fast, portable, and opinionated build system
 ocaml               4.11.2      The OCaml compiler (virtual package)
 ocaml-base-compiler 4.11.2      Official release 4.11.2
 ocaml-config        1           OCaml Switch Configuration
@@ -118,7 +118,7 @@ url {
               <dt>Return code</dt>
               <dd>7936</dd>
               <dt>Duration</dt>
-              <dd>16 m 33 s</dd>
+              <dd>15 m 34 s</dd>
               <dt>Output</dt>
               <dd><pre># Packages matching: installed
 # Name              # Installed # Synopsis
@@ -128,7 +128,7 @@ base-unix           base
 conf-findutils      1           Virtual package relying on findutils
 conf-gmp            3           Virtual package relying on a GMP lib system installation
 coq                 dev         Formal proof management system
-dune                2.9.0       Fast, portable, and opinionated build system
+dune                2.9.1       Fast, portable, and opinionated build system
 ocaml               4.11.2      The OCaml compiler (virtual package)
 ocaml-base-compiler 4.11.2      Official release 4.11.2
 ocaml-config        1           OCaml Switch Configuration
@@ -138,11 +138,12 @@ The following actions will be performed:
   - install coq-paco               dev
   - install menhirLib              dev
   - install coq-mathcomp-ssreflect dev
+  - install coq-menhirlib          dev
   - install coq-ceres              dev
   - install menhirSdk              dev
-  - install coq-menhirlib          dev
-  - install coq-ext-lib            dev
+  - install cppo                   1.6.8
   - install ocamlbuild             0.14.0
+  - install coq-ext-lib            dev
   - install menhir                 dev
   - install coq-simple-io          dev
   - install coq-parsec             dev
@@ -150,17 +151,18 @@ The following actions will be performed:
   - install coq-quickchick         dev
   - install coq-json               dev
   - install coq-itree-io           dev
-===== 15 to install =====
+===== 16 to install =====
 &lt;&gt;&lt;&gt; Gathering sources &gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;
 [coq-ceres.dev] synchronised from git+https://github.com/Lysxia/coq-ceres#master
 [coq-itree.dev] synchronised from git+https://github.com/DeepSpec/InteractionTrees
 [coq-ext-lib.dev] synchronised from git+https://github.com/coq-community/coq-ext-lib#master
 [coq-itree-io.dev] synchronised from git+https://github.com/Lysxia/coq-itree-io
 [coq-json.dev] synchronised from git+https://github.com/liyishuai/coq-json
-[coq-mathcomp-ssreflect.dev] synchronised from git+https://github.com/math-comp/math-comp.git#master
 [coq-paco.dev] synchronised from git+https://github.com/snu-sf/paco.git#master
+[coq-mathcomp-ssreflect.dev] synchronised from git+https://github.com/math-comp/math-comp.git#master
 [coq-parsec.dev] synchronised from git+https://github.com/liyishuai/coq-parsec
 [coq-quickchick.dev] synchronised from git+https://github.com/QuickChick/QuickChick#master
+[cppo.1.6.8] downloaded from cache at https://opam.ocaml.org/cache
 [coq-simple-io.dev] synchronised from git+https://github.com/Lysxia/coq-simple-io#master
 [coq-menhirlib.dev] synchronised from git+https://gitlab.inria.fr/fpottier/menhir.git#master
 [menhirSdk.dev] synchronised from git+https://gitlab.inria.fr/fpottier/menhir.git#master
@@ -171,24 +173,46 @@ The following actions will be performed:
 -&gt; installed coq-ceres.dev
 -&gt; installed coq-ext-lib.dev
 -&gt; installed coq-menhirlib.dev
+-&gt; installed cppo.1.6.8
 -&gt; installed coq-parsec.dev
 -&gt; installed menhirLib.dev
 -&gt; installed menhirSdk.dev
--&gt; installed coq-simple-io.dev
 -&gt; installed coq-paco.dev
+-&gt; installed coq-simple-io.dev
 -&gt; installed ocamlbuild.0.14.0
 -&gt; installed menhir.dev
 -&gt; installed coq-json.dev
 -&gt; installed coq-mathcomp-ssreflect.dev
--&gt; installed coq-quickchick.dev
+[ERROR] The compilation of coq-quickchick failed at &quot;/home/bench/.opam/opam-init/hooks/sandbox.sh build make -j 4&quot;.
 [ERROR] The compilation of coq-itree failed at &quot;/home/bench/.opam/opam-init/hooks/sandbox.sh build make -j4&quot;.
+#=== ERROR while compiling coq-quickchick.dev =================================#
+# context              2.0.7 | linux/x86_64 | ocaml-base-compiler.4.11.2 | file:///home/bench/run/opam-coq-archive/extra-dev
+# path                 ~/.opam/ocaml-base-compiler.4.11.2/.opam-switch/build/coq-quickchick.dev
+# command              ~/.opam/opam-init/hooks/sandbox.sh build make -j 4
+# exit-code            2
+# env-file             ~/.opam/log/coq-quickchick-18351-65c165.env
+# output-file          ~/.opam/log/coq-quickchick-18351-65c165.out
+### output ###
+# [...]
+# Instance Foo : Bar := baz.&quot; [deprecated-instance-without-locality,deprecated]
+# File &quot;./src/Sets.v&quot;, line 1087, characters 0-74:
+# Warning: The default value for instance locality is currently &quot;local&quot; in a
+# section and &quot;global&quot; otherwise, but is scheduled to change in a future
+# release. For the time being, adding instances outside of sections without
+# specifying an explicit locality attribute is therefore deprecated. It is
+# recommended to use &quot;export&quot; whenever possible. Use the attributes #[local],
+# #[global] and #[export] depending on your choice. For example: &quot;#[export]
+# Instance Foo : Bar := baz.&quot; [deprecated-instance-without-locality,deprecated]
+# make[1]: *** [Makefile.coq:387: all] Error 2
+# make[1]: Leaving directory &#39;/home/bench/.opam/ocaml-base-compiler.4.11.2/.opam-switch/build/coq-quickchick.dev&#39;
+# make: *** [Makefile:24: plugin] Error 2
 #=== ERROR while compiling coq-itree.dev ======================================#
 # context              2.0.7 | linux/x86_64 | ocaml-base-compiler.4.11.2 | file:///home/bench/run/opam-coq-archive/extra-dev
 # path                 ~/.opam/ocaml-base-compiler.4.11.2/.opam-switch/build/coq-itree.dev
 # command              ~/.opam/opam-init/hooks/sandbox.sh build make -j4
 # exit-code            2
-# env-file             ~/.opam/log/coq-itree-7205-f4f063.env
-# output-file          ~/.opam/log/coq-itree-7205-f4f063.out
+# env-file             ~/.opam/log/coq-itree-18351-87c889.env
+# output-file          ~/.opam/log/coq-itree-18351-87c889.out
 ### output ###
 # [...]
 # is recommended to use &quot;export&quot; whenever possible. Use the attributes
@@ -205,7 +229,8 @@ The following actions will be performed:
 # make: *** [common.mk:6: coq] Error 2
 &lt;&gt;&lt;&gt; Error report &lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;
 +- The following actions failed
-| - build coq-itree dev
+| - build coq-itree      dev
+| - build coq-quickchick dev
 +- 
 +- The following changes have been performed (the rest was aborted)
 | - install coq-ceres              dev
@@ -215,8 +240,8 @@ The following actions will be performed:
 | - install coq-menhirlib          dev
 | - install coq-paco               dev
 | - install coq-parsec             dev
-| - install coq-quickchick         dev
 | - install coq-simple-io          dev
+| - install cppo                   1.6.8
 | - install menhir                 dev
 | - install menhirLib              dev
 | - install menhirSdk              dev
@@ -224,7 +249,7 @@ The following actions will be performed:
 +- 
 # Run eval $(opam env) to update the current shell environment
 The former state can be restored with:
-    opam switch import &quot;/home/bench/.opam/ocaml-base-compiler.4.11.2/.opam-switch/backup/state-20210905160642.export&quot;
+    opam switch import &quot;/home/bench/.opam/ocaml-base-compiler.4.11.2/.opam-switch/backup/state-20211010064458.export&quot;
 </pre></dd>
             </dl>
             <h2>Install</h2>
