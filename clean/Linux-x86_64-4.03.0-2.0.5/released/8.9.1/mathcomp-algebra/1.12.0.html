@@ -42,7 +42,7 @@
                 <span class="label label-info">Not compatible</span>
               </small>
             </h1>
-            <p><em><script>document.write(moment("2021-08-03 05:17:09 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2021-08-03 05:17:09 UTC)</em><p>
+            <p><em><script>document.write(moment("2021-10-19 21:45:45 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2021-10-19 21:45:45 UTC)</em><p>
             <h2>Context</h2>
             <pre># Packages matching: installed
 # Name              # Installed # Synopsis
@@ -66,7 +66,7 @@ homepage: &quot;https://math-comp.github.io/&quot;
 bug-reports: &quot;https://github.com/math-comp/math-comp/issues&quot;
 dev-repo: &quot;git+https://github.com/math-comp/math-comp.git&quot;
 license: &quot;CECILL-B&quot;
-build: [ make &quot;-C&quot; &quot;mathcomp/algebra&quot; &quot;-j&quot; &quot;%{jobs}%&quot; ]
+build: [ make &quot;-C&quot; &quot;mathcomp/algebra&quot; &quot;-j&quot; &quot;%{jobs}%&quot; &quot;COQEXTRAFLAGS+=-native-compiler yes&quot; {coq-native:installed &amp; coq:version &lt; &quot;8.13~&quot; } ]
 install: [ make &quot;-C&quot; &quot;mathcomp/algebra&quot; &quot;install&quot; ]
 depends: [ &quot;coq-mathcomp-fingroup&quot; { = version } ]
 tags: [ &quot;keyword:algebra&quot; &quot;keyword:small scale reflection&quot; &quot;keyword:mathematical components&quot; &quot;keyword:odd order theorem&quot; &quot;logpath:mathcomp.algebra&quot; ]
@@ -100,7 +100,7 @@ checksum: &quot;sha256=a57b79a280e7e8527bf0d8710c1f65cde00032746b52b87be1ab12e62
               <dt>Output</dt>
               <dd><pre>[NOTE] Package coq is already installed (current version is 8.9.1).
 The following dependencies couldn&#39;t be met:
-  - coq-mathcomp-algebra -&gt; coq-mathcomp-fingroup &gt;= 1.12.0 -&gt; coq-mathcomp-ssreflect &gt;= 1.12.0 -&gt; coq &gt;= dev -&gt; ocaml &gt;= 4.05.0
+  - coq-mathcomp-algebra -&gt; coq-mathcomp-fingroup &gt;= 1.12.0 -&gt; coq-mathcomp-ssreflect &gt;= 1.12.0 -&gt; coq &gt;= 8.10 -&gt; ocaml &gt;= 4.05.0
       base of this switch (use `--unlock-base&#39; to force)
 No solution found, exiting
 </pre></dd>
