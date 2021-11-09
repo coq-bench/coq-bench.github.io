@@ -1,0 +1,705 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>jordan-curve-theorem: Error with dependencies</title>
+    <link rel="shortcut icon" type="image/png" href="../../../../../favicon.png" />
+    <link href="../../../../../bootstrap.min.css" rel="stylesheet">
+    <link href="../../../../../bootstrap-custom.css" rel="stylesheet">
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+    <script src="../../../../../moment.min.js"></script>
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="container">
+      <div class="navbar navbar-default" role="navigation">
+        <div class="container-fluid">
+          <div class="navbar-header">
+            <a class="navbar-brand" href="../../../../.."><i class="fa fa-lg fa-flag-checkered"></i> Coq bench</a>
+          </div>
+          <div id="navbar" class="collapse navbar-collapse">
+            <ul class="nav navbar-nav">
+              <li><a href="../..">clean / extra-dev</a></li>
+              <li class="active"><a href="">dev / jordan-curve-theorem - 8.6.0</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="article">
+        <div class="row">
+          <div class="col-md-12">
+            <a href="../..">« Up</a>
+            <h1>
+              jordan-curve-theorem
+              <small>
+                8.6.0
+                <span class="label label-warning">Error with dependencies</span>
+              </small>
+            </h1>
+            <p><em><script>document.write(moment("2021-11-06 06:49:18 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2021-11-06 06:49:18 UTC)</em><p>
+            <h2>Context</h2>
+            <pre># Packages matching: installed
+# Name                # Installed # Synopsis
+base-bigarray         base
+base-threads          base
+base-unix             base
+conf-findutils        1           Virtual package relying on findutils
+conf-gmp              3           Virtual package relying on a GMP lib system installation
+coq                   dev         Formal proof management system
+dune                  2.9.1       Fast, portable, and opinionated build system
+ocaml                 4.13.1      The OCaml compiler (virtual package)
+ocaml-base-compiler   4.13.1      Official release 4.13.1
+ocaml-config          2           OCaml Switch Configuration
+ocaml-options-vanilla 1           Ensure that OCaml is compiled with no special options enabled
+ocamlfind             1.9.1       A library manager for OCaml
+zarith                1.12        Implements arithmetic and logical operations over arbitrary-precision integers
+# opam file:
+opam-version: &quot;2.0&quot;
+maintainer: &quot;Hugo.Herbelin@inria.fr&quot;
+homepage: &quot;https://github.com/coq-contribs/jordan-curve-theorem&quot;
+license: &quot;Unknown&quot;
+build: [make &quot;-j%{jobs}%&quot;]
+install: [make &quot;install&quot;]
+remove: [&quot;rm&quot; &quot;-R&quot; &quot;%{lib}%/coq/user-contrib/JordanCurveTheorem&quot;]
+depends: [
+  &quot;ocaml&quot;
+  &quot;coq&quot; {&gt;= &quot;8.6&quot; &amp; &lt; &quot;8.7~&quot;}
+]
+tags: [ &quot;keyword: combinatorial hypermaps&quot; &quot;keyword: genus&quot; &quot;keyword: planarity&quot; &quot;keyword: Euler formula&quot; &quot;keyword: Discrete Jordan Curve Theorem&quot; &quot;category: Mathematics/Geometry/General&quot; &quot;date: 2008&quot; ]
+authors: [ &quot;Jean-François Dufourd &lt;dufourd@lsiit.u-strasbg.fr&gt; [http://dpt-info.u-strasbg.fr/~jfd/]&quot; ]
+bug-reports: &quot;https://github.com/coq-contribs/jordan-curve-theorem/issues&quot;
+dev-repo: &quot;git+https://github.com/coq-contribs/jordan-curve-theorem.git&quot;
+synopsis: &quot;Hypermaps, planarity and discrete Jordan curve theorem&quot;
+description: &quot;&quot;&quot;
+http://dpt-info.u-strasbg.fr/~jfd/Downloads/JORDAN_Contrib_Coq.tar.gz
+Constructive formalization of the combinatorial hypermaps, characterization of the planarity, genus theorem, Euler formula, ring of faces, discrete Jordan curve theorem&quot;&quot;&quot;
+flags: light-uninstall
+url {
+  src:
+    &quot;https://github.com/coq-contribs/jordan-curve-theorem/archive/v8.6.0.tar.gz&quot;
+  checksum: &quot;md5=42157391127fc6af77f7d0dfa29f7e76&quot;
+}
+</pre>
+            <h2>Lint</h2>
+            <dl class="dl-horizontal">
+              <dt>Command</dt>
+              <dd><code>true</code></dd>
+              <dt>Return code</dt>
+              <dd>0</dd>
+            </dl>
+            <h2>Dry install</h2>
+            <p>Dry install with the current Coq version:</p>
+            <dl class="dl-horizontal">
+              <dt>Command</dt>
+              <dd><code>opam install -y --show-action coq-jordan-curve-theorem.8.6.0 coq.dev</code></dd>
+              <dt>Return code</dt>
+              <dd>5120</dd>
+              <dt>Output</dt>
+              <dd><pre>[NOTE] Package coq is already installed (current version is dev).
+[ERROR] Package conflict!
+Sorry, no solution found: there seems to be a problem with your request.
+No solution found, exiting
+</pre></dd>
+            </dl>
+            <p>Dry install without Coq/switch base, to test if the problem was incompatibility with the current Coq/OCaml version:</p>
+            <dl class="dl-horizontal">
+              <dt>Command</dt>
+              <dd><code>opam remove -y coq; opam install -y --show-action --unlock-base coq-jordan-curve-theorem.8.6.0</code></dd>
+              <dt>Return code</dt>
+              <dd>512</dd>
+              <dt>Output</dt>
+              <dd><pre>The following actions will be performed:
+  - remove coq dev
+&lt;&gt;&lt;&gt; Processing actions &lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;
+While removing coq.dev: these files have been modified since installation:
+  - share/texmf/tex/latex/misc/coqdoc.sty
+  - man/man1/coqwc.1
+  - man/man1/coqtop.opt.1
+  - man/man1/coqtop.byte.1
+  - man/man1/coqtop.1
+  - man/man1/coqnative.1
+  - man/man1/coqdoc.1
+  - man/man1/coqdep.1
+  - man/man1/coqchk.1
+  - man/man1/coqc.1
+  - man/man1/coq_makefile.1
+  - man/man1/coq-tex.1
+  - lib/stublibs/dllcoqrun_stubs.so
+  - lib/coqide-server/protocol/xmlprotocol.mli
+  - lib/coqide-server/protocol/xmlprotocol.ml
+  - lib/coqide-server/protocol/xmlprotocol.cmx
+  - lib/coqide-server/protocol/xmlprotocol.cmti
+  - lib/coqide-server/protocol/xmlprotocol.cmt
+  - lib/coqide-server/protocol/xmlprotocol.cmi
+  - lib/coqide-server/protocol/xml_printer.mli
+  - lib/coqide-server/protocol/xml_printer.ml
+  - lib/coqide-server/protocol/xml_printer.cmx
+  - lib/coqide-server/protocol/xml_printer.cmti
+  - lib/coqide-server/protocol/xml_printer.cmt
+  - lib/coqide-server/protocol/xml_printer.cmi
+  - lib/coqide-server/protocol/xml_parser.mli
+  - lib/coqide-server/protocol/xml_parser.ml
+  - lib/coqide-server/protocol/xml_parser.cmx
+  - lib/coqide-server/protocol/xml_parser.cmti
+  - lib/coqide-server/protocol/xml_parser.cmt
+  - lib/coqide-server/protocol/xml_parser.cmi
+  - lib/coqide-server/protocol/xml_lexer.mli
+  - lib/coqide-server/protocol/xml_lexer.ml
+  - lib/coqide-server/protocol/xml_lexer.cmx
+  - lib/coqide-server/protocol/xml_lexer.cmti
+  - lib/coqide-server/protocol/xml_lexer.cmt
+  - lib/coqide-server/protocol/xml_lexer.cmi
+  - lib/coqide-server/protocol/serialize.mli
+  - lib/coqide-server/protocol/serialize.ml
+  - lib/coqide-server/protocol/serialize.cmx
+  - lib/coqide-server/protocol/serialize.cmti
+  - lib/coqide-server/protocol/serialize.cmt
+  - lib/coqide-server/protocol/serialize.cmi
+  - lib/coqide-server/protocol/richpp.mli
+  - lib/coqide-server/protocol/richpp.ml
+  - lib/coqide-server/protocol/richpp.cmx
+  - lib/coqide-server/protocol/richpp.cmti
+  - lib/coqide-server/protocol/richpp.cmt
+  - lib/coqide-server/protocol/richpp.cmi
+  - lib/coqide-server/protocol/protocol.cmxs
+  - lib/coqide-server/protocol/protocol.cmxa
+  - lib/coqide-server/protocol/protocol.cma
+  - lib/coqide-server/protocol/protocol.a
+  - lib/coqide-server/protocol/interface.ml
+  - lib/coqide-server/protocol/interface.cmx
+  - lib/coqide-server/protocol/interface.cmt
+  - lib/coqide-server/protocol/interface.cmi
+  - lib/coqide-server/opam
+  - lib/coqide-server/dune-package
+  - lib/coqide-server/core/document.mli
+  - lib/coqide-server/core/document.ml
+  - lib/coqide-server/core/document.cmx
+  - lib/coqide-server/core/document.cmti
+  - lib/coqide-server/core/document.cmt
+  - lib/coqide-server/core/document.cmi
+  - lib/coqide-server/core/core.cmxs
+  - lib/coqide-server/core/core.cmxa
+  - lib/coqide-server/core/core.cma
+  - lib/coqide-server/core/core.a
+  - lib/coqide-server/META
+  - lib/coq/user-contrib/Ltac2/String.vos
+  - lib/coq/user-contrib/Ltac2/String.vo
+  - lib/coq/user-contrib/Ltac2/String.v
+  - lib/coq/user-contrib/Ltac2/String.glob
+  - lib/coq/user-contrib/Ltac2/Std.vos
+  - lib/coq/user-contrib/Ltac2/Std.vo
+  - lib/coq/user-contrib/Ltac2/Std.v
+  - lib/coq/user-contrib/Ltac2/Std.glob
+  - lib/coq/user-contrib/Ltac2/Printf.vos
+  - lib/coq/user-contrib/Ltac2/Printf.vo
+  - lib/coq/user-contrib/Ltac2/Printf.v
+  - lib/coq/user-contrib/Ltac2/Printf.glob
+  - lib/coq/user-contrib/Ltac2/Pattern.vos
+  - lib/coq/user-contrib/Ltac2/Pattern.vo
+  - lib/coq/user-contrib/Ltac2/Pattern.v
+  - lib/coq/user-contrib/Ltac2/Pattern.glob
+  - lib/coq/user-contrib/Ltac2/Option.vos
+  - lib/coq/user-contrib/Ltac2/Option.vo
+  - lib/coq/user-contrib/Ltac2/Option.v
+  - lib/coq/user-contrib/Ltac2/Option.glob
+  - lib/coq/user-contrib/Ltac2/Notations.vos
+  - lib/coq/user-contrib/Ltac2/Notations.vo
+  - lib/coq/user-contrib/Ltac2/Notations.v
+  - lib/coq/user-contrib/Ltac2/Notations.glob
+  - lib/coq/user-contrib/Ltac2/Message.vos
+  - lib/coq/user-contrib/Ltac2/Message.vo
+  - lib/coq/user-contrib/Ltac2/Message.v
+  - lib/coq/user-contrib/Ltac2/Message.glob
+  - lib/coq/user-contrib/Ltac2/Ltac2.vos
+  - lib/coq/user-contrib/Ltac2/Ltac2.vo
+  - lib/coq/user-contrib/Ltac2/Ltac2.v
+  - lib/coq/user-contrib/Ltac2/Ltac2.glob
+  - lib/coq/user-contrib/Ltac2/Ltac1.vos
+  - lib/coq/user-contrib/Ltac2/Ltac1.vo
+  - lib/coq/user-contrib/Ltac2/Ltac1.v
+  - lib/coq/user-contrib/Ltac2/Ltac1.glob
+  - lib/coq/user-contrib/Ltac2/List.vos
+  - lib/coq/user-contrib/Ltac2/List.vo
+  - lib/coq/user-contrib/Ltac2/List.v
+  - lib/coq/user-contrib/Ltac2/List.glob
+  - lib/coq/user-contrib/Ltac2/Int.vos
+  - lib/coq/user-contrib/Ltac2/Int.vo
+  - lib/coq/user-contrib/Ltac2/Int.v
+  - lib/coq/user-contrib/Ltac2/Int.glob
+  - lib/coq/user-contrib/Ltac2/Init.vos
+  - lib/coq/user-contrib/Ltac2/Init.vo
+  - lib/coq/user-contrib/Ltac2/Init.v
+  - lib/coq/user-contrib/Ltac2/Init.glob
+  - lib/coq/user-contrib/Ltac2/Ind.vos
+  - lib/coq/user-contrib/Ltac2/Ind.vo
+  - lib/coq/user-contrib/Ltac2/Ind.v
+  - lib/coq/user-contrib/Ltac2/Ind.glob
+  - lib/coq/user-contrib/Ltac2/Ident.vos
+  - lib/coq/user-contrib/Ltac2/Ident.vo
+  - lib/coq/user-contrib/Ltac2/Ident.v
+  - lib/coq/user-contrib/Ltac2/Ident.glob
+  - lib/coq/user-contrib/Ltac2/Fresh.vos
+  - lib/coq/user-contrib/Ltac2/Fresh.vo
+  - lib/coq/user-contrib/Ltac2/Fresh.v
+  - lib/coq/user-contrib/Ltac2/Fresh.glob
+  - lib/coq/user-contrib/Ltac2/Env.vos
+  - lib/coq/user-contrib/Ltac2/Env.vo
+  - lib/coq/user-contrib/Ltac2/Env.v
+  - lib/coq/user-contrib/Ltac2/Env.glob
+  - lib/coq/user-contrib/Ltac2/Control.vos
+  - lib/coq/user-contrib/Ltac2/Control.vo
+  - lib/coq/user-contrib/Ltac2/Control.v
+  - lib/coq/user-contrib/Ltac2/Control.glob
+  - lib/coq/user-contrib/Ltac2/Constr.vos
+  - lib/coq/user-contrib/Ltac2/Constr.vo
+  - lib/coq/user-contrib/Ltac2/Constr.v
+  - lib/coq/user-contrib/Ltac2/Constr.glob
+  - lib/coq/user-contrib/Ltac2/Char.vos
+  - lib/coq/user-contrib/Ltac2/Char.vo
+  - lib/coq/user-contrib/Ltac2/Char.v
+  - lib/coq/user-contrib/Ltac2/Char.glob
+  - lib/coq/user-contrib/Ltac2/Bool.vos
+  - lib/coq/user-contrib/Ltac2/Bool.vo
+  - lib/coq/user-contrib/Ltac2/Bool.v
+  - lib/coq/user-contrib/Ltac2/Bool.glob
+  - lib/coq/user-contrib/Ltac2/Array.vos
+  - lib/coq/user-contrib/Ltac2/Array.vo
+  - lib/coq/user-contrib/Ltac2/Array.v
+  - lib/coq/user-contrib/Ltac2/Array.glob
+  - lib/coq/theories/ssrsearch/ssrsearch.vos
+  - lib/coq/theories/ssrsearch/ssrsearch.vo
+  - lib/coq/theories/ssrsearch/ssrsearch.v
+  - lib/coq/theories/ssrsearch/ssrsearch.glob
+  - lib/coq/theories/ssrmatching/ssrmatching.vos
+  - lib/coq/theories/ssrmatching/ssrmatching.vo
+  - lib/coq/theories/ssrmatching/ssrmatching.v
+  - lib/coq/theories/ssrmatching/ssrmatching.glob
+  - lib/coq/theories/ssr/ssrunder.vos
+  - lib/coq/theories/ssr/ssrunder.vo
+  - lib/coq/theories/ssr/ssrunder.v
+  - lib/coq/theories/ssr/ssrunder.glob
+  - lib/coq/theories/ssr/ssrsetoid.vos
+  - lib/coq/theories/ssr/ssrsetoid.vo
+  - lib/coq/theories/ssr/ssrsetoid.v
+  - lib/coq/theories/ssr/ssrsetoid.glob
+  - lib/coq/theories/ssr/ssrfun.vos
+  - lib/coq/theories/ssr/ssrfun.vo
+  - lib/coq/theories/ssr/ssrfun.v
+  - lib/coq/theories/ssr/ssrfun.glob
+  - lib/coq/theories/ssr/ssreflect.vos
+  - lib/coq/theories/ssr/ssreflect.vo
+  - lib/coq/theories/ssr/ssreflect.v
+  - lib/coq/theories/ssr/ssreflect.glob
+  - lib/coq/theories/ssr/ssrclasses.vos
+  - lib/coq/theories/ssr/ssrclasses.vo
+  - lib/coq/theories/ssr/ssrclasses.v
+  - lib/coq/theories/ssr/ssrclasses.glob
+  - lib/coq/theories/ssr/ssrbool.vos
+  - lib/coq/theories/ssr/ssrbool.vo
+  - lib/coq/theories/ssr/ssrbool.v
+  - lib/coq/theories/ssr/ssrbool.glob
+  - lib/coq/theories/setoid_ring/ZArithRing.vos
+  - lib/coq/theories/setoid_ring/ZArithRing.vo
+  - lib/coq/theories/setoid_ring/ZArithRing.v
+  - lib/coq/theories/setoid_ring/ZArithRing.glob
+  - lib/coq/theories/setoid_ring/Rings_Z.vos
+  - lib/coq/theories/setoid_ring/Rings_Z.vo
+  - lib/coq/theories/setoid_ring/Rings_Z.v
+  - lib/coq/theories/setoid_ring/Rings_Z.glob
+  - lib/coq/theories/setoid_ring/Rings_R.vos
+  - lib/coq/theories/setoid_ring/Rings_R.vo
+  - lib/coq/theories/setoid_ring/Rings_R.v
+  - lib/coq/theories/setoid_ring/Rings_R.glob
+  - lib/coq/theories/setoid_ring/Rings_Q.vos
+  - lib/coq/theories/setoid_ring/Rings_Q.vo
+  - lib/coq/theories/setoid_ring/Rings_Q.v
+  - lib/coq/theories/setoid_ring/Rings_Q.glob
+  - lib/coq/theories/setoid_ring/Ring_theory.vos
+  - lib/coq/theories/setoid_ring/Ring_theory.vo
+  - lib/coq/theories/setoid_ring/Ring_theory.v
+  - lib/coq/theories/setoid_ring/Ring_theory.glob
+  - lib/coq/theories/setoid_ring/Ring_tac.vos
+  - lib/coq/theories/setoid_ring/Ring_tac.vo
+  - lib/coq/theories/setoid_ring/Ring_tac.v
+  - lib/coq/theories/setoid_ring/Ring_tac.glob
+  - lib/coq/theories/setoid_ring/Ring_polynom.vos
+  - lib/coq/theories/setoid_ring/Ring_polynom.vo
+  - lib/coq/theories/setoid_ring/Ring_polynom.v
+  - lib/coq/theories/setoid_ring/Ring_polynom.glob
+  - lib/coq/theories/setoid_ring/Ring_base.vos
+  - lib/coq/theories/setoid_ring/Ring_base.vo
+  - lib/coq/theories/setoid_ring/Ring_base.v
+  - lib/coq/theories/setoid_ring/Ring_base.glob
+  - lib/coq/theories/setoid_ring/Ring.vos
+  - lib/coq/theories/setoid_ring/Ring.vo
+  - lib/coq/theories/setoid_ring/Ring.v
+  - lib/coq/theories/setoid_ring/Ring.glob
+  - lib/coq/theories/setoid_ring/RealField.vos
+  - lib/coq/theories/setoid_ring/RealField.vo
+  - lib/coq/theories/setoid_ring/RealField.v
+  - lib/coq/theories/setoid_ring/RealField.glob
+  - lib/coq/theories/setoid_ring/Ncring_tac.vos
+  - lib/coq/theories/setoid_ring/Ncring_tac.vo
+  - lib/coq/theories/setoid_ring/Ncring_tac.v
+  - lib/coq/theories/setoid_ring/Ncring_tac.glob
+  - lib/coq/theories/setoid_ring/Ncring_polynom.vos
+  - lib/coq/theories/setoid_ring/Ncring_polynom.vo
+  - lib/coq/theories/setoid_ring/Ncring_polynom.v
+  - lib/coq/theories/setoid_ring/Ncring_polynom.glob
+  - lib/coq/theories/setoid_ring/Ncring_initial.vos
+  - lib/coq/theor
+[...] truncated
+predicate.cmt
+  - lib/coq-core/clib/predicate.cmi
+  - lib/coq-core/clib/orderedType.mli
+  - lib/coq-core/clib/orderedType.ml
+  - lib/coq-core/clib/orderedType.cmx
+  - lib/coq-core/clib/orderedType.cmti
+  - lib/coq-core/clib/orderedType.cmt
+  - lib/coq-core/clib/orderedType.cmi
+  - lib/coq-core/clib/option.mli
+  - lib/coq-core/clib/option.ml
+  - lib/coq-core/clib/option.cmx
+  - lib/coq-core/clib/option.cmti
+  - lib/coq-core/clib/option.cmt
+  - lib/coq-core/clib/option.cmi
+  - lib/coq-core/clib/neList.mli
+  - lib/coq-core/clib/neList.ml
+  - lib/coq-core/clib/neList.cmx
+  - lib/coq-core/clib/neList.cmti
+  - lib/coq-core/clib/neList.cmt
+  - lib/coq-core/clib/neList.cmi
+  - lib/coq-core/clib/monad.mli
+  - lib/coq-core/clib/monad.ml
+  - lib/coq-core/clib/monad.cmx
+  - lib/coq-core/clib/monad.cmti
+  - lib/coq-core/clib/monad.cmt
+  - lib/coq-core/clib/monad.cmi
+  - lib/coq-core/clib/minisys.ml
+  - lib/coq-core/clib/minisys.cmx
+  - lib/coq-core/clib/minisys.cmt
+  - lib/coq-core/clib/minisys.cmi
+  - lib/coq-core/clib/int.mli
+  - lib/coq-core/clib/int.ml
+  - lib/coq-core/clib/int.cmx
+  - lib/coq-core/clib/int.cmti
+  - lib/coq-core/clib/int.cmt
+  - lib/coq-core/clib/int.cmi
+  - lib/coq-core/clib/iStream.mli
+  - lib/coq-core/clib/iStream.ml
+  - lib/coq-core/clib/iStream.cmx
+  - lib/coq-core/clib/iStream.cmti
+  - lib/coq-core/clib/iStream.cmt
+  - lib/coq-core/clib/iStream.cmi
+  - lib/coq-core/clib/heap.mli
+  - lib/coq-core/clib/heap.ml
+  - lib/coq-core/clib/heap.cmx
+  - lib/coq-core/clib/heap.cmti
+  - lib/coq-core/clib/heap.cmt
+  - lib/coq-core/clib/heap.cmi
+  - lib/coq-core/clib/hashset.mli
+  - lib/coq-core/clib/hashset.ml
+  - lib/coq-core/clib/hashset.cmx
+  - lib/coq-core/clib/hashset.cmti
+  - lib/coq-core/clib/hashset.cmt
+  - lib/coq-core/clib/hashset.cmi
+  - lib/coq-core/clib/hashcons.mli
+  - lib/coq-core/clib/hashcons.ml
+  - lib/coq-core/clib/hashcons.cmx
+  - lib/coq-core/clib/hashcons.cmti
+  - lib/coq-core/clib/hashcons.cmt
+  - lib/coq-core/clib/hashcons.cmi
+  - lib/coq-core/clib/hMap.mli
+  - lib/coq-core/clib/hMap.ml
+  - lib/coq-core/clib/hMap.cmx
+  - lib/coq-core/clib/hMap.cmti
+  - lib/coq-core/clib/hMap.cmt
+  - lib/coq-core/clib/hMap.cmi
+  - lib/coq-core/clib/exninfo.mli
+  - lib/coq-core/clib/exninfo.ml
+  - lib/coq-core/clib/exninfo.cmx
+  - lib/coq-core/clib/exninfo.cmti
+  - lib/coq-core/clib/exninfo.cmt
+  - lib/coq-core/clib/exninfo.cmi
+  - lib/coq-core/clib/dyn.mli
+  - lib/coq-core/clib/dyn.ml
+  - lib/coq-core/clib/dyn.cmx
+  - lib/coq-core/clib/dyn.cmti
+  - lib/coq-core/clib/dyn.cmt
+  - lib/coq-core/clib/dyn.cmi
+  - lib/coq-core/clib/diff2.mli
+  - lib/coq-core/clib/diff2.ml
+  - lib/coq-core/clib/diff2.cmx
+  - lib/coq-core/clib/diff2.cmti
+  - lib/coq-core/clib/diff2.cmt
+  - lib/coq-core/clib/diff2.cmi
+  - lib/coq-core/clib/clib.cmxs
+  - lib/coq-core/clib/clib.cmxa
+  - lib/coq-core/clib/clib.cma
+  - lib/coq-core/clib/clib.a
+  - lib/coq-core/clib/cUnix.mli
+  - lib/coq-core/clib/cUnix.ml
+  - lib/coq-core/clib/cUnix.cmx
+  - lib/coq-core/clib/cUnix.cmti
+  - lib/coq-core/clib/cUnix.cmt
+  - lib/coq-core/clib/cUnix.cmi
+  - lib/coq-core/clib/cThread.mli
+  - lib/coq-core/clib/cThread.ml
+  - lib/coq-core/clib/cThread.cmx
+  - lib/coq-core/clib/cThread.cmti
+  - lib/coq-core/clib/cThread.cmt
+  - lib/coq-core/clib/cThread.cmi
+  - lib/coq-core/clib/cString.mli
+  - lib/coq-core/clib/cString.ml
+  - lib/coq-core/clib/cString.cmx
+  - lib/coq-core/clib/cString.cmti
+  - lib/coq-core/clib/cString.cmt
+  - lib/coq-core/clib/cString.cmi
+  - lib/coq-core/clib/cSig.mli
+  - lib/coq-core/clib/cSig.cmti
+  - lib/coq-core/clib/cSig.cmi
+  - lib/coq-core/clib/cSet.mli
+  - lib/coq-core/clib/cSet.ml
+  - lib/coq-core/clib/cSet.cmx
+  - lib/coq-core/clib/cSet.cmti
+  - lib/coq-core/clib/cSet.cmt
+  - lib/coq-core/clib/cSet.cmi
+  - lib/coq-core/clib/cObj.mli
+  - lib/coq-core/clib/cObj.ml
+  - lib/coq-core/clib/cObj.cmx
+  - lib/coq-core/clib/cObj.cmti
+  - lib/coq-core/clib/cObj.cmt
+  - lib/coq-core/clib/cObj.cmi
+  - lib/coq-core/clib/cMap.mli
+  - lib/coq-core/clib/cMap.ml
+  - lib/coq-core/clib/cMap.cmx
+  - lib/coq-core/clib/cMap.cmti
+  - lib/coq-core/clib/cMap.cmt
+  - lib/coq-core/clib/cMap.cmi
+  - lib/coq-core/clib/cList.mli
+  - lib/coq-core/clib/cList.ml
+  - lib/coq-core/clib/cList.cmx
+  - lib/coq-core/clib/cList.cmti
+  - lib/coq-core/clib/cList.cmt
+  - lib/coq-core/clib/cList.cmi
+  - lib/coq-core/clib/cEphemeron.mli
+  - lib/coq-core/clib/cEphemeron.ml
+  - lib/coq-core/clib/cEphemeron.cmx
+  - lib/coq-core/clib/cEphemeron.cmti
+  - lib/coq-core/clib/cEphemeron.cmt
+  - lib/coq-core/clib/cEphemeron.cmi
+  - lib/coq-core/clib/cArray.mli
+  - lib/coq-core/clib/cArray.ml
+  - lib/coq-core/clib/cArray.cmx
+  - lib/coq-core/clib/cArray.cmti
+  - lib/coq-core/clib/cArray.cmt
+  - lib/coq-core/clib/cArray.cmi
+  - lib/coq-core/boot/util.ml
+  - lib/coq-core/boot/path.ml
+  - lib/coq-core/boot/env.mli
+  - lib/coq-core/boot/env.ml
+  - lib/coq-core/boot/boot__Util.cmx
+  - lib/coq-core/boot/boot__Util.cmt
+  - lib/coq-core/boot/boot__Util.cmi
+  - lib/coq-core/boot/boot__Path.cmx
+  - lib/coq-core/boot/boot__Path.cmt
+  - lib/coq-core/boot/boot__Path.cmi
+  - lib/coq-core/boot/boot__Env.cmx
+  - lib/coq-core/boot/boot__Env.cmti
+  - lib/coq-core/boot/boot__Env.cmt
+  - lib/coq-core/boot/boot__Env.cmi
+  - lib/coq-core/boot/boot.ml
+  - lib/coq-core/boot/boot.cmxs
+  - lib/coq-core/boot/boot.cmxa
+  - lib/coq-core/boot/boot.cmx
+  - lib/coq-core/boot/boot.cmt
+  - lib/coq-core/boot/boot.cmi
+  - lib/coq-core/boot/boot.cma
+  - lib/coq-core/boot/boot.a
+  - lib/coq-core/META
+  - doc/coqide-server/README.md
+  - doc/coqide-server/LICENSE
+  - doc/coq-core/README.md
+  - doc/coq-core/LICENSE
+  - bin/votour
+  - bin/ocamllibdep
+  - bin/csdpcert
+  - bin/coqworkmgr
+  - bin/coqwc
+  - bin/coqtop.opt
+  - bin/coqtop.byte
+  - bin/coqtop
+  - bin/coqtacticworker.opt
+  - bin/coqqueryworker.opt
+  - bin/coqproofworker.opt
+  - bin/coqpp
+  - bin/coqnative
+  - bin/coqidetop.opt
+  - bin/coqidetop.byte
+  - bin/coqdoc
+  - bin/coqdep
+  - bin/coqchk
+  - bin/coqc.byte
+  - bin/coqc
+  - bin/coq_makefile
+  - bin/coq-tex
+Remove them anyway? [y/N] y
+[NOTE] While removing coq.dev: not removing non-empty directories:
+         - share/texmf/tex/latex/misc
+         - lib/coqide-server/protocol
+         - lib/coqide-server/core
+         - lib/coq/user-contrib/Ltac2
+         - lib/coq/theories/ssrsearch
+         - lib/coq/theories/ssrmatching
+         - lib/coq/theories/setoid_ring
+         - lib/coq/theories/rtauto
+         - lib/coq/theories/omega
+         - lib/coq/theories/nsatz
+         - lib/coq/theories/micromega
+         - lib/coq/theories/funind
+         - lib/coq/theories/extraction
+         - lib/coq/theories/derive
+         - lib/coq/theories/btauto
+         - lib/coq/theories/ZArith
+         - lib/coq/theories/Wellfounded
+         - lib/coq/theories/Vectors
+         - lib/coq/theories/Unicode
+         - lib/coq/theories/Structures
+         - lib/coq/theories/Strings
+         - lib/coq/theories/Sorting
+         - lib/coq/theories/Sets
+         - lib/coq/theories/Setoids
+         - lib/coq/theories/Relations
+         - lib/coq/theories/Reals/Cauchy
+         - lib/coq/theories/Reals/Abstract
+         - lib/coq/theories/QArith
+         - lib/coq/theories/Program
+         - lib/coq/theories/PArith
+         - lib/coq/theories/Numbers/Natural/Peano
+         - lib/coq/theories/Numbers/Natural/Binary
+         - lib/coq/theories/Numbers/Natural/Abstract
+         - lib/coq/theories/Numbers/NatInt
+         - lib/coq/theories/Numbers/Integer/NatPairs
+         - lib/coq/theories/Numbers/Integer/Binary
+         - lib/coq/theories/Numbers/Integer/Abstract
+         - lib/coq/theories/Numbers/Cyclic/ZModulo
+         - lib/coq/theories/Numbers/Cyclic/Int63
+         - lib/coq/theories/Numbers/Cyclic/Int31
+         - lib/coq/theories/Numbers/Cyclic/Abstract
+         - lib/coq/theories/NArith
+         - lib/coq/theories/MSets
+         - lib/coq/theories/Logic
+         - lib/coq/theories/Lists
+         - lib/coq/theories/Init
+         - lib/coq/theories/Floats
+         - lib/coq/theories/FSets
+         - lib/coq/theories/Compat
+         - lib/coq/theories/Classes
+         - lib/coq/theories/Bool
+         - lib/coq/theories/Array
+         - lib/coq/theories/Arith
+         - lib/coq-core/vm
+         - lib/coq-core/vernac
+         - lib/coq-core/toplevel
+         - lib/coq-core/top_printers
+         - lib/coq-core/tools/coqdoc
+         - lib/coq-core/tactics
+         - lib/coq-core/sysinit
+         - lib/coq-core/stm
+         - lib/coq-core/proofs
+         - lib/coq-core/printing
+         - lib/coq-core/pretyping
+         - lib/coq-core/plugins/zify
+         - lib/coq-core/plugins/tutorial/p3
+         - lib/coq-core/plugins/tutorial/p2
+         - lib/coq-core/plugins/tutorial/p1
+         - lib/coq-core/plugins/tutorial/p0
+         - lib/coq-core/plugins/tauto
+         - lib/coq-core/plugins/ssrsearch
+         - lib/coq-core/plugins/ssrmatching
+         - lib/coq-core/plugins/ssreflect
+         - lib/coq-core/plugins/rtauto
+         - lib/coq-core/plugins/ring
+         - lib/coq-core/plugins/number_string_notation
+         - lib/coq-core/plugins/nsatz
+         - lib/coq-core/plugins/micromega
+         - lib/coq-core/plugins/ltac2
+         - lib/coq-core/plugins/funind
+         - lib/coq-core/plugins/firstorder
+         - lib/coq-core/plugins/extraction
+         - lib/coq-core/plugins/derive
+         - lib/coq-core/plugins/cc
+         - lib/coq-core/plugins/btauto
+         - lib/coq-core/parsing
+         - lib/coq-core/library
+         - lib/coq-core/kernel
+         - lib/coq-core/interp
+         - lib/coq-core/gramlib
+         - lib/coq-core/engine
+         - lib/coq-core/config
+         - lib/coq-core/clib
+         - lib/coq-core/boot
+         - doc/coqide-server
+         - doc/coq-core
+-&gt; removed   coq.dev
+Done.
+# Run eval $(opam env) to update the current shell environment
+opam: --unlock-base was removed in version 2.1 of the opam CLI, but version 2.1 has been requested. Use --update-invariant instead or set OPAMCLI environment variable to 2.0.
+The middle of the output is truncated (maximum 20000 characters)
+</pre></dd>
+            </dl>
+            <h2>Install dependencies</h2>
+            <dl class="dl-horizontal">
+              <dt>Command</dt>
+              <dd><code>true</code></dd>
+              <dt>Return code</dt>
+              <dd>0</dd>
+              <dt>Duration</dt>
+              <dd>0 s</dd>
+            </dl>
+            <h2>Install</h2>
+            <dl class="dl-horizontal">
+              <dt>Command</dt>
+              <dd><code>true</code></dd>
+              <dt>Return code</dt>
+              <dd>0</dd>
+              <dt>Duration</dt>
+              <dd>0 s</dd>
+            </dl>
+            <h2>Installation size</h2>
+            <p>No files were installed.</p>
+            <h2>Uninstall</h2>
+            <dl class="dl-horizontal">
+              <dt>Command</dt>
+              <dd><code>true</code></dd>
+              <dt>Return code</dt>
+              <dd>0</dd>
+              <dt>Missing removes</dt>
+              <dd>
+                none
+              </dd>
+              <dt>Wrong removes</dt>
+              <dd>
+                none
+              </dd>
+            </dl>
+          </div>
+        </div>
+      </div>
+      <hr/>
+      <div class="footer">
+        <p class="text-center">
+          <small>Sources are on <a href="https://github.com/coq-bench">GitHub</a>. © Guillaume Claret.</small>
+        </p>
+      </div>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="../../../../../bootstrap.min.js"></script>
+  </body>
+</html>
