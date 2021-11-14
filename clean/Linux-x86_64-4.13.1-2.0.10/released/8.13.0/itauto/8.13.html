@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>itauto: Error 🔥</title>
+    <link rel="shortcut icon" type="image/png" href="../../../../../favicon.png" />
+    <link href="../../../../../bootstrap.min.css" rel="stylesheet">
+    <link href="../../../../../bootstrap-custom.css" rel="stylesheet">
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+    <script src="../../../../../moment.min.js"></script>
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="container">
+      <div class="navbar navbar-default" role="navigation">
+        <div class="container-fluid">
+          <div class="navbar-header">
+            <a class="navbar-brand" href="../../../../.."><i class="fa fa-lg fa-flag-checkered"></i> Coq bench</a>
+          </div>
+          <div id="navbar" class="collapse navbar-collapse">
+            <ul class="nav navbar-nav">
+              <li><a href="../..">clean / released</a></li>
+              <li class="active"><a href="">8.13.0 / itauto - 8.13</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="article">
+        <div class="row">
+          <div class="col-md-12">
+            <a href="../..">« Up</a>
+            <h1>
+              itauto
+              <small>
+                8.13
+                <span class="label label-danger">Error 🔥</span>
+              </small>
+            </h1>
+            <p>📅 <em><script>document.write(moment("2021-11-14 04:17:24 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2021-11-14 04:17:24 UTC)</em><p>
+            <h2>Context</h2>
+            <pre># Packages matching: installed
+# Name                # Installed # Synopsis
+base-bigarray         base
+base-threads          base
+base-unix             base
+conf-findutils        1           Virtual package relying on findutils
+conf-gmp              3           Virtual package relying on a GMP lib system installation
+coq                   8.13.0      Formal proof management system
+num                   1.4         The legacy Num library for arbitrary-precision integer and rational arithmetic
+ocaml                 4.13.1      The OCaml compiler (virtual package)
+ocaml-base-compiler   4.13.1      Official release 4.13.1
+ocaml-config          2           OCaml Switch Configuration
+ocaml-options-vanilla 1           Ensure that OCaml is compiled with no special options enabled
+ocamlfind             1.9.1       A library manager for OCaml
+zarith                1.12        Implements arithmetic and logical operations over arbitrary-precision integers
+# opam file:
+opam-version: &quot;2.0&quot;
+maintainer: &quot;frederic.besson@inria.fr&quot;
+homepage: &quot;https://gitlab.inria.fr/fbesson/itauto&quot;
+dev-repo: &quot;git+https://gitlab.inria.fr/fbesson/itauto.git&quot;
+authors: [&quot;Frédéric Besson&quot;]
+bug-reports: &quot;frederic.besson@inria.fr&quot;
+license: &quot;GPL 3&quot;
+synopsis: &quot;&#39;itauto&#39; is a reflexive SAT solver parameterised by a leaf tactic&quot;
+build: [
+  [make]
+]
+install: [
+  [make &quot;install&quot;]
+]
+depends: [
+  &quot;ocaml&quot; {&gt;= &quot;4.9~&quot;}
+  &quot;coq&quot; {&gt;= &quot;8.13.~&quot; &amp; &lt; &quot;8.14~&quot;}
+  &quot;ocamlbuild&quot; {build }
+]
+depopts: [ &quot;ocamlformat&quot; {build} ]
+url {
+  src: &quot;https://gitlab.inria.fr/fbesson/itauto/-/archive/8.13/itauto-8.13.tar.gz&quot;
+  checksum: &quot;sha256=971ac9da9ff16ba83ad0236a5206ce0b8617e62c026340441fea0f4f80b79ded&quot;
+}
+tags: [
+  &quot;keyword:integers&quot; &quot;keyword:SAT&quot; &quot;keyword:SMT&quot; &quot;keyword:automation&quot;
+  &quot;logpath:Cdcl&quot;
+]
+</pre>
+            <h2>Lint</h2>
+            <dl class="dl-horizontal">
+              <dt>Command</dt>
+              <dd><code>true</code></dd>
+              <dt>Return code</dt>
+              <dd>0</dd>
+            </dl>
+            <h2>Dry install 🏜️</h2>
+            <p>Dry install with the current Coq version:</p>
+            <dl class="dl-horizontal">
+              <dt>Command</dt>
+              <dd><code>opam install -y --show-action coq-itauto.8.13 coq.8.13.0</code></dd>
+              <dt>Return code</dt>
+              <dd>0</dd>
+            </dl>
+            <p>Dry install without Coq/switch base, to test if the problem was incompatibility with the current Coq/OCaml version:</p>
+            <dl class="dl-horizontal">
+              <dt>Command</dt>
+              <dd><code>true</code></dd>
+              <dt>Return code</dt>
+              <dd>0</dd>
+            </dl>
+            <h2>Install dependencies</h2>
+            <dl class="dl-horizontal">
+              <dt>Command</dt>
+              <dd><code>opam list; echo; ulimit -Sv 4000000; timeout 4h opam install -y --deps-only coq-itauto.8.13 coq.8.13.0</code></dd>
+              <dt>Return code</dt>
+              <dd>0</dd>
+              <dt>Duration</dt>
+              <dd>38 s</dd>
+            </dl>
+            <h2>Install 🚀</h2>
+            <dl class="dl-horizontal">
+              <dt>Command</dt>
+              <dd><code>opam list; echo; ulimit -Sv 16000000; timeout 4h opam install -y -v coq-itauto.8.13 coq.8.13.0</code></dd>
+              <dt>Return code</dt>
+              <dd>7936</dd>
+              <dt>Duration</dt>
+              <dd>7 m 46 s</dd>
+              <dt>Output</dt>
+              <dd><pre># Packages matching: installed
+# Name                # Installed # Synopsis
+base-bigarray         base
+base-threads          base
+base-unix             base
+conf-findutils        1           Virtual package relying on findutils
+conf-gmp              3           Virtual package relying on a GMP lib system installation
+coq                   8.13.0      Formal proof management system
+num                   1.4         The legacy Num library for arbitrary-precision integer and rational arithmetic
+ocaml                 4.13.1      The OCaml compiler (virtual package)
+ocaml-base-compiler   4.13.1      Official release 4.13.1
+ocaml-config          2           OCaml Switch Configuration
+ocaml-options-vanilla 1           Ensure that OCaml is compiled with no special options enabled
+ocamlbuild            0.14.0      OCamlbuild is a build system with builtin rules to easily build most OCaml projects.
+ocamlfind             1.9.1       A library manager for OCaml
+zarith                1.12        Implements arithmetic and logical operations over arbitrary-precision integers
+[NOTE] Package coq is already installed (current version is 8.13.0).
+The following actions will be performed:
+  - install coq-itauto 8.13
+&lt;&gt;&lt;&gt; Gathering sources &gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;
+Processing  1/1: [coq-itauto.8.13: http]
+[coq-itauto.8.13] downloaded from https://gitlab.inria.fr/fbesson/itauto/-/archive/8.13/itauto-8.13.tar.gz
+Processing  1/1:
+&lt;&gt;&lt;&gt; Processing actions &lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;
+Processing  1/2: [coq-itauto: make]
++ /home/bench/.opam/opam-init/hooks/sandbox.sh &quot;build&quot; &quot;make&quot; (CWD=/home/bench/.opam/ocaml-base-compiler.4.13.1/.opam-switch/build/coq-itauto.8.13)
+- coq_makefile -f _CoqProject -o CoqMakefile
+- make -f CoqMakefile theories/Prover.vo COQBIN= 
+- make[1]: Entering directory &#39;/home/bench/.opam/ocaml-base-compiler.4.13.1/.opam-switch/build/coq-itauto.8.13&#39;
+- COQDEP VFILES
+- COQC theories/Coqlib.v
+- COQC theories/PatriciaR.v
+- COQC theories/KeyInt.v
+- COQC theories/ReifClasses.v
+- COQC theories/Formula.v
+- File &quot;./theories/Formula.v&quot;, line 189, characters 2-31:
+- Warning: The default value for hint locality is currently &quot;local&quot; in a
+- section and &quot;global&quot; otherwise, but is scheduled to change in a future
+- release. For the time being, adding hints outside of sections without
+- specifying an explicit locality is therefore deprecated. It is recommended to
+- use &quot;export&quot; whenever possible. [deprecated-hint-without-locality,deprecated]
+- File &quot;./theories/Formula.v&quot;, line 201, characters 2-34:
+- Warning: The default value for hint locality is currently &quot;local&quot; in a
+- section and &quot;global&quot; otherwise, but is scheduled to change in a future
+- release. For the time being, adding hints outside of sections without
+- specifying an explicit locality is therefore deprecated. It is recommended to
+- use &quot;export&quot; whenever possible. [deprecated-hint-without-locality,deprecated]
+- File &quot;./theories/Formula.v&quot;, line 1131, characters 2-42:
+- Warning: The default value for hint locality is currently &quot;local&quot; in a
+- section and &quot;global&quot; otherwise, but is scheduled to change in a future
+- release. For the time being, adding hints outside of sections without
+- specifying an explicit locality is therefore deprecated. It is recommended to
+- use &quot;export&quot; whenever possible. [deprecated-hint-without-locality,deprecated]
+- COQC theories/Prover.v
+- File &quot;./theories/Prover.v&quot;, line 25, characters 0-80:
+- Warning: The extraction is currently set to bypass opacity, the following
+- opaque constant bodies have been accessed
+- : PatriciaR.PTrie.eq PatriciaR.PTrie.eqb_dec.
+-  [extraction-opaque-accessed,extraction]
+- make[1]: Leaving directory &#39;/home/bench/.opam/ocaml-base-compiler.4.13.1/.opam-switch/build/coq-itauto.8.13&#39;
+- cd src/patch ; make
+- make[1]: Entering directory &#39;/home/bench/.opam/ocaml-base-compiler.4.13.1/.opam-switch/build/coq-itauto.8.13/src/patch&#39;
+- ocamlbuild main.native  -yaccflag -v -libs str
+- /home/bench/.opam/ocaml-base-compiler.4.13.1/bin/ocamldep.opt -modules main.ml &gt; main.ml.depends
+- /home/bench/.opam/ocaml-base-compiler.4.13.1/bin/ocamllex.opt -q lexer.mll
+- /home/bench/.opam/ocaml-base-compiler.4.13.1/bin/ocamldep.opt -modules lexer.ml &gt; lexer.ml.depends
+- /home/bench/.opam/ocaml-base-compiler.4.13.1/bin/ocamlyacc -v parser.mly
+- /home/bench/.opam/ocaml-base-compiler.4.13.1/bin/ocamldep.opt -modules parser.mli &gt; parser.mli.depends
+- /home/bench/.opam/ocaml-base-compiler.4.13.1/bin/ocamldep.opt -modules patch.ml &gt; patch.ml.depends
+- /home/bench/.opam/ocaml-base-compiler.4.13.1/bin/ocamlc.opt -c -o patch.cmo patch.ml
+- /home/bench/.opam/ocaml-base-compiler.4.13.1/bin/ocamlc.opt -c -o parser.cmi parser.mli
+- /home/bench/.opam/ocaml-base-compiler.4.13.1/bin/ocamlc.opt -c -o lexer.cmo lexer.ml
+- /home/bench/.opam/ocaml-base-compiler.4.13.1/bin/ocamlc.opt -c -o main.cmo main.ml
+- /home/bench/.opam/ocaml-base-compiler.4.13.1/bin/ocamldep.opt -modules parser.ml &gt; parser.ml.depends
+- /home/bench/.opam/ocaml-base-compiler.4.13.1/bin/ocamlopt.opt -c -o patch.cmx patch.ml
+- /home/bench/.opam/ocaml-base-compiler.4.13.1/bin/ocamlopt.opt -c -o parser.cmx parser.ml
+- /home/bench/.opam/ocaml-base-compiler.4.13.1/bin/ocamlopt.opt -c -o lexer.cmx lexer.ml
+- /home/bench/.opam/ocaml-base-compiler.4.13.1/bin/ocamlopt.opt -c -o main.cmx main.ml
+- /home/bench/.opam/ocaml-base-compiler.4.13.1/bin/ocamlopt.opt str.cmxa patch.cmx parser.cmx lexer.cmx main.cmx -o main.native
+- mv main.native mlpatch
+- make[1]: Leaving directory &#39;/home/bench/.opam/ocaml-base-compiler.4.13.1/.opam-switch/build/coq-itauto.8.13/src/patch&#39;
+- ./src/patch/mlpatch -ifile src/prover.ml -pfile src/ppprover.ml &gt; src/proverPatch.in
+- cp src/proverPatch.in src/proverPatch.ml
+- coq_makefile -f _CoqProject_ml -o CoqMakefile_ml
+- make -f CoqMakefile_ml src/cdcl_plugin.cmxs COQBIN= 
+- make[1]: Entering directory &#39;/home/bench/.opam/ocaml-base-compiler.4.13.1/.opam-switch/build/coq-itauto.8.13&#39;
+- COQDEP VFILES
+- COQPP src/g_cdcl.mlg
+- OCAMLLIBDEP src/cdcl_plugin.mlpack
+- CAMLDEP src/cdcl.ml
+- CAMLDEP src/proverPatch.ml
+- CAMLDEP src/g_cdcl.ml
+- CAMLOPT -c -for-pack Cdcl_plugin src/proverPatch.ml
+- File &quot;src/proverPatch.ml&quot;, line 1:
+- Error (warning 70 [missing-mli]): Cannot find interface file.
+- make[1]: *** [CoqMakefile_ml:668: src/proverPatch.cmx] Error 2
+- make[1]: Leaving directory &#39;/home/bench/.opam/ocaml-base-compiler.4.13.1/.opam-switch/build/coq-itauto.8.13&#39;
+- make: *** [Makefile:24: src/cdcl_plugin.cmxs] Error 2
+[ERROR] The compilation of coq-itauto failed at &quot;/home/bench/.opam/opam-init/hooks/sandbox.sh build make&quot;.
+#=== ERROR while compiling coq-itauto.8.13 ====================================#
+# context              2.0.10 | linux/x86_64 | ocaml-base-compiler.4.13.1 | file:///home/bench/run/opam-coq-archive/released
+# path                 ~/.opam/ocaml-base-compiler.4.13.1/.opam-switch/build/coq-itauto.8.13
+# command              ~/.opam/opam-init/hooks/sandbox.sh build make
+# exit-code            2
+# env-file             ~/.opam/log/coq-itauto-10958-335865.env
+# output-file          ~/.opam/log/coq-itauto-10958-335865.out
+### output ###
+# [...]
+# COQDEP VFILES
+# COQPP src/g_cdcl.mlg
+# OCAMLLIBDEP src/cdcl_plugin.mlpack
+# CAMLDEP src/cdcl.ml
+# CAMLDEP src/proverPatch.ml
+# CAMLDEP src/g_cdcl.ml
+# CAMLOPT -c -for-pack Cdcl_plugin src/proverPatch.ml
+# File &quot;src/proverPatch.ml&quot;, line 1:
+# Error (warning 70 [missing-mli]): Cannot find interface file.
+# make[1]: *** [CoqMakefile_ml:668: src/proverPatch.cmx] Error 2
+# make[1]: Leaving directory &#39;/home/bench/.opam/ocaml-base-compiler.4.13.1/.opam-switch/build/coq-itauto.8.13&#39;
+# make: *** [Makefile:24: src/cdcl_plugin.cmxs] Error 2
+&lt;&gt;&lt;&gt; Error report &lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;
++- The following actions failed
+| - build coq-itauto 8.13
++- 
+- No changes have been performed
+# Run eval $(opam env) to update the current shell environment
+&#39;opam install -y -v coq-itauto.8.13 coq.8.13.0&#39; failed.
+</pre></dd>
+            </dl>
+            <h2>Installation size</h2>
+            <p>No files were installed.</p>
+            <h2>Uninstall 🧹</h2>
+            <dl class="dl-horizontal">
+              <dt>Command</dt>
+              <dd><code>true</code></dd>
+              <dt>Return code</dt>
+              <dd>0</dd>
+              <dt>Missing removes</dt>
+              <dd>
+                none
+              </dd>
+              <dt>Wrong removes</dt>
+              <dd>
+                none
+              </dd>
+            </dl>
+          </div>
+        </div>
+      </div>
+      <hr/>
+      <div class="footer">
+        <p class="text-center">
+          Sources are on <a href="https://github.com/coq-bench">GitHub</a> © Guillaume Claret 🐣
+        </p>
+      </div>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="../../../../../bootstrap.min.js"></script>
+  </body>
+</html>
