@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>hydra-battles: Error 🔥</title>
+    <link rel="shortcut icon" type="image/png" href="../../../../../favicon.png" />
+    <link href="../../../../../bootstrap.min.css" rel="stylesheet">
+    <link href="../../../../../bootstrap-custom.css" rel="stylesheet">
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+    <script src="../../../../../moment.min.js"></script>
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="container">
+      <div class="navbar navbar-default" role="navigation">
+        <div class="container-fluid">
+          <div class="navbar-header">
+            <a class="navbar-brand" href="../../../../.."><i class="fa fa-lg fa-flag-checkered"></i> Coq bench</a>
+          </div>
+          <div id="navbar" class="collapse navbar-collapse">
+            <ul class="nav navbar-nav">
+              <li><a href="../..">clean / extra-dev</a></li>
+              <li class="active"><a href="">dev / hydra-battles - 0.4</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="article">
+        <div class="row">
+          <div class="col-md-12">
+            <a href="../..">« Up</a>
+            <h1>
+              hydra-battles
+              <small>
+                0.4
+                <span class="label label-danger">Error 🔥</span>
+              </small>
+            </h1>
+            <p>📅 <em><script>document.write(moment("2021-11-16 20:16:27 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2021-11-16 20:16:27 UTC)</em><p>
+            <h2>Context</h2>
+            <pre># Packages matching: installed
+# Name                # Installed # Synopsis
+base-bigarray         base
+base-threads          base
+base-unix             base
+conf-findutils        1           Virtual package relying on findutils
+conf-gmp              3           Virtual package relying on a GMP lib system installation
+coq                   dev         Formal proof management system
+dune                  2.9.1       Fast, portable, and opinionated build system
+ocaml                 4.13.1      The OCaml compiler (virtual package)
+ocaml-base-compiler   4.13.1      Official release 4.13.1
+ocaml-config          2           OCaml Switch Configuration
+ocaml-options-vanilla 1           Ensure that OCaml is compiled with no special options enabled
+ocamlfind             1.9.1       A library manager for OCaml
+zarith                1.12        Implements arithmetic and logical operations over arbitrary-precision integers
+# opam file:
+opam-version: &quot;2.0&quot;
+maintainer: &quot;palmskog@gmail.com&quot;
+homepage: &quot;https://github.com/coq-community/hydra-battles&quot;
+dev-repo: &quot;git+https://github.com/coq-community/hydra-battles.git&quot;
+bug-reports: &quot;https://github.com/coq-community/hydra-battles/issues&quot;
+license: &quot;MIT&quot;
+synopsis: &quot;Exploration of some properties of Kirby and Paris&#39; hydra battles, with the help of Coq&quot;
+description: &quot;&quot;&quot;
+An exploration of some properties of Kirby and Paris&#39; hydra battles,
+with the help of the Coq Proof assistant. This development includes
+the study of several representations of ordinal numbers, and a part
+of the so-called Ketonen and Solovay machinery (combinatorial
+properties of epsilon0).&quot;&quot;&quot;
+build: [&quot;dune&quot; &quot;build&quot; &quot;-p&quot; name &quot;-j&quot; jobs]
+depends: [
+  &quot;dune&quot; {&gt;= &quot;2.5&quot;}
+  &quot;coq&quot; {(&gt;= &quot;8.11&quot; &amp; &lt; &quot;8.14~&quot;) | (= &quot;dev&quot;)}
+  &quot;coq-equations&quot; {(&gt;= &quot;1.2&quot; &amp; &lt; &quot;1.3~&quot;) | (= &quot;dev&quot;)}
+]
+tags: [
+  &quot;category:Mathematics/Combinatorics and Graph Theory&quot;
+  &quot;category:Mathematics/Logic/Foundations&quot;
+  &quot;keyword:Ketonen-Solovay machinery&quot;
+  &quot;keyword:ordinals&quot;
+  &quot;keyword:primitive recursive functions&quot;
+  &quot;logpath:hydras&quot;
+  &quot;date:2021-05-19&quot;
+]
+authors: [
+  &quot;Pierre Castéran&quot;
+]
+url {
+  src: &quot;https://github.com/coq-community/hydra-battles/archive/v0.4.tar.gz&quot;
+  checksum: &quot;sha256=bba82794e49e03fd82fcee592b2b037ec20669d10e6c47ed8b4f8a7f851756eb&quot;
+}
+</pre>
+            <h2>Lint</h2>
+            <dl class="dl-horizontal">
+              <dt>Command</dt>
+              <dd><code>true</code></dd>
+              <dt>Return code</dt>
+              <dd>0</dd>
+            </dl>
+            <h2>Dry install 🏜️</h2>
+            <p>Dry install with the current Coq version:</p>
+            <dl class="dl-horizontal">
+              <dt>Command</dt>
+              <dd><code>opam install -y --show-action coq-hydra-battles.0.4 coq.dev</code></dd>
+              <dt>Return code</dt>
+              <dd>0</dd>
+            </dl>
+            <p>Dry install without Coq/switch base, to test if the problem was incompatibility with the current Coq/OCaml version:</p>
+            <dl class="dl-horizontal">
+              <dt>Command</dt>
+              <dd><code>true</code></dd>
+              <dt>Return code</dt>
+              <dd>0</dd>
+            </dl>
+            <h2>Install dependencies</h2>
+            <dl class="dl-horizontal">
+              <dt>Command</dt>
+              <dd><code>opam list; echo; ulimit -Sv 4000000; timeout 4h opam install -y --deps-only coq-hydra-battles.0.4 coq.dev</code></dd>
+              <dt>Return code</dt>
+              <dd>0</dd>
+              <dt>Duration</dt>
+              <dd>1 m 29 s</dd>
+            </dl>
+            <h2>Install 🚀</h2>
+            <dl class="dl-horizontal">
+              <dt>Command</dt>
+              <dd><code>opam list; echo; ulimit -Sv 16000000; timeout 4h opam install -y -v coq-hydra-battles.0.4 coq.dev</code></dd>
+              <dt>Return code</dt>
+              <dd>7936</dd>
+              <dt>Duration</dt>
+              <dd>5 m 47 s</dd>
+              <dt>Output</dt>
+              <dd><pre># Packages matching: installed
+# Name                # Installed # Synopsis
+base-bigarray         base
+base-threads          base
+base-unix             base
+conf-findutils        1           Virtual package relying on findutils
+conf-gmp              3           Virtual package relying on a GMP lib system installation
+coq                   dev         Formal proof management system
+coq-equations         dev         A function definition package for Coq
+dune                  2.9.1       Fast, portable, and opinionated build system
+ocaml                 4.13.1      The OCaml compiler (virtual package)
+ocaml-base-compiler   4.13.1      Official release 4.13.1
+ocaml-config          2           OCaml Switch Configuration
+ocaml-options-vanilla 1           Ensure that OCaml is compiled with no special options enabled
+ocamlfind             1.9.1       A library manager for OCaml
+zarith                1.12        Implements arithmetic and logical operations over arbitrary-precision integers
+[NOTE] Package coq is already installed (current version is dev).
+The following actions will be performed:
+  - install coq-hydra-battles 0.4
+&lt;&gt;&lt;&gt; Gathering sources &gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;
+Processing  1/1: [coq-hydra-battles.0.4: http]
+[coq-hydra-battles.0.4] downloaded from https://github.com/coq-community/hydra-battles/archive/v0.4.tar.gz
+Processing  1/1:
+&lt;&gt;&lt;&gt; Processing actions &lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;
+Processing  1/2: [coq-hydra-battles: dune build]
++ /home/bench/.opam/opam-init/hooks/sandbox.sh &quot;build&quot; &quot;dune&quot; &quot;build&quot; &quot;-p&quot; &quot;coq-hydra-battles&quot; &quot;-j&quot; &quot;4&quot; (CWD=/home/bench/.opam/ocaml-base-compiler.4.13.1/.opam-switch/build/coq-hydra-battles.0.4)
+-         coqc theories/ordinals/Prelude/.DecPreOrder.aux,theories/ordinals/Prelude/DecPreOrder.{glob,vo}
+- File &quot;./theories/ordinals/Prelude/DecPreOrder.v&quot;, line 17, characters 0-77:
+- Warning: The default value for instance locality is currently &quot;local&quot; in a
+- section and &quot;global&quot; otherwise, but is scheduled to change in a future
+- release. For the time being, adding instances outside of sections without
+- specifying an explicit locality attribute is therefore deprecated. It is
+- recommended to use &quot;export&quot; whenever possible. Use the attributes #[local],
+- #[global] and #[export] depending on your choice. For example: &quot;#[export]
+- Instance Foo : Bar := baz.&quot; [deprecated-instance-without-locality,deprecated]
+- File &quot;./theories/ordinals/Prelude/DecPreOrder.v&quot;, line 116, characters 0-81:
+- Warning: The default value for instance locality is currently &quot;local&quot; in a
+- section and &quot;global&quot; otherwise, but is scheduled to change in a future
+- release. For the time being, adding instances outside of sections without
+- specifying an explicit locality attribute is therefore deprecated. It is
+- recommended to use &quot;export&quot; whenever possible. Use the attributes #[local],
+- #[global] and #[export] depending on your choice. For example: &quot;#[export]
+- Instance Foo : Bar := baz.&quot; [deprecated-instance-without-locality,deprecated]
+- File &quot;./theories/ordinals/Prelude/DecPreOrder.v&quot;, line 124, characters 0-94:
+- Warning: The default value for instance locality is currently &quot;local&quot; in a
+- section and &quot;global&quot; otherwise, but is scheduled to change in a future
+- release. For the time being, adding instances outside of sections without
+- specifying an explicit locality attribute is therefore deprecated. It is
+- recommended to use &quot;export&quot; whenever possible. Use the attributes #[local],
+- #[global] and #[export] depending on your choice. For example: &quot;#[export]
+- Instance Foo : Bar := baz.&quot; [deprecated-instance-without-locality,deprecated]
+-         coqc theories/ordinals/OmegaOmega/.ListOmega.aux,theories/ordinals/OmegaOmega/ListOmega.{glob,vo}
+- 42
+-      : t
+- omega
+-      : list nat
+- omega
+-      : list nat
+-      = 1 :: 2 :: zero
+-      : list nat
+-      = 3 :: 4 :: 0 :: 0 :: 1 :: 1 :: zero
+-      : list nat
+- File &quot;./theories/ordinals/OmegaOmega/ListOmega.v&quot;, line 794, characters 0-40:
+- Warning: The default value for instance locality is currently &quot;local&quot; in a
+- section and &quot;global&quot; otherwise, but is scheduled to change in a future
+- release. For the time being, adding instances outside of sections without
+- specifying an explicit locality attribute is therefore deprecated. It is
+- recommended to use &quot;export&quot; whenever possible. Use the attributes #[local],
+- #[global] and #[export] depending on your choice. For example: &quot;#[export]
+- Instance Foo : Bar := baz.&quot; [deprecated-instance-without-locality,deprecated]
+-         coqc theories/ordinals/Schutte/.MoreEpsilonIota.aux,theories/ordinals/Schutte/MoreEpsilonIota.{glob,vo}
+- File &quot;./theories/ordinals/Schutte/MoreEpsilonIota.v&quot;, line 93, characters 0-26:
+- Warning: The default value for instance locality is currently &quot;local&quot; in a
+- section and &quot;global&quot; otherwise, but is scheduled to change in a future
+- release. For the time being, adding instances outside of sections without
+- specifying an explicit locality attribute is therefore deprecated. It is
+- recommended to use &quot;export&quot; whenever possible. Use the attributes #[local],
+- #[global] and #[export] depending on your choice. For example: &quot;#[export]
+- Instance Foo : Bar := baz.&quot; [deprecated-instance-without-locality,deprecated]
+-         coqc theories/ordinals/Prelude/.DecPreOrder_Instances.aux,theories/ordinals/Prelude/DecPreOrder_Instances.{glob,vo}
+- File &quot;./theories/ordinals/Prelude/DecPreOrder_Instances.v&quot;, line 6, characters 0-42:
+- Warning: The default value for instance locality is currently &quot;local&quot; in a
+- section and &quot;global&quot; otherwise, but is scheduled to change in a future
+- release. For the time being, adding instances outside of sections without
+- specifying an explicit locality attribute is therefore deprecated. It is
+- recommended to use &quot;export&quot; whenever possible. Use the attributes #[local],
+- #[global] and #[export] depending on your choice. For example: &quot;#[export]
+- Instance Foo : Bar := baz.&quot; [deprecated-instance-without-locality,deprecated]
+- File &quot;./theories/ordinals/Prelude/DecPreOrder_Instances.v&quot;, line 15, characters 0-42:
+- Warning: The default value for instance locality is currently &quot;local&quot; in a
+- section and &quot;global&quot; otherwise, but is scheduled to change in a future
+- release. For the time being, adding instances outside of sections without
+- specifying an explicit locality attribute is therefore deprecated. It is
+- recommended to use &quot;export&quot; whenever possible. Use the attributes #[local],
+- #[global] and #[export] depending on your choice. For example: &quot;#[export]
+- Instance Foo : Bar := baz.&quot; [deprecated-instance-without-locality,deprecated]
+- File &quot;./theories/ordinals/Prelude/DecPreOrder_Instances.v&quot;, line 29, characters 0-149:
+- Warning: The default value for instance locality is currently &quot;local&quot; in a
+- section and &quot;global&quot; otherwise, but is scheduled to change in a future
+- release. For the time being, adding instances outside of sections without
+- specifying an explicit locality attribute is therefore deprecated. It is
+- recommended to use &quot;export&quot; whenever possible. Use the attributes #[local],
+- #[global] and #[export] depending on your choice. For example: &quot;#[export]
+- Instance Foo : Bar := baz.&quot; [deprecated-instance-without-locality,deprecated]
+- File &quot;./theories/ordinals/Prelude/DecPreOrder_Instances.v&quot;, line 39, characters 0-175:
+- Warning: The default value for instance locality is currently &quot;local&quot; in a
+- section and &quot;global&quot; otherwise, but is scheduled to change in a future
+- release. For the time being, adding instances outside of sections without
+- specifying an explicit locality attribute is therefore deprecated. It is
+- recommended to use &quot;export&quot; whenever possible. Use the attributes #[local],
+- #[global] and #[export] depending on your choice. For example: &quot;#[export]
+- Instance Foo : Bar := baz.&quot; [deprecated-instance-without-locality,deprecated]
+- File &quot;./theories/ordinals/Prelude/DecPreOrder_Instances.v&quot;, line 56, characters 0-54:
+- Warning: The default value for instance locality is currently &quot;local&quot; in a
+- section and &quot;global&quot; otherwise, but is scheduled to change in a future
+- release. For the time being, adding instances outside of sections without
+- specifying an explicit locality attribute is therefore deprecated. It is
+- recommended to use &quot;export&quot; whenever possible. Use the attributes #[local],
+- #[global] and #[export] depending on your choice. For example: &quot;#[export]
+- Instance Foo : Bar := baz.&quot; [deprecated-instance-without-locality,deprecated]
+- File &quot;./theories/ordinals/Prelude/DecPreOrder_Instances.v&quot;, line 74, characters 0-112:
+- Warning: The default value for instance locality is currently &quot;local&quot; in a
+- section and &quot;global&quot; otherwise, but is scheduled to change in a future
+- release. For the time being, adding instances outside of sections without
+- specifying an explicit locality attribute is therefore deprecated. It is
+- recommended to use &quot;export&quot; whenever possible. Use the attributes #[local],
+- #[global] and #[export] depending on your choice. For example: &quot;#[export]
+- Instance Foo : Bar := baz.&quot; [deprecated-instance-without-locality,deprecated]
+-         coqc theories/ordinals/solutions_exercises/.omega_iterates.aux,theories/ordinals/solutions_exercises/omega_iterates.{glob,vo}
+- PeanoNat.Nat.lt_le_incl: forall n m : nat, n &lt; m -&gt; n &lt;= m
+- PeanoNat.Nat.lt_ge_cases: forall n m : nat, n &lt; m \/ m &lt;= n
+- PeanoNat.Nat.le_gt_cases: forall n m : nat, n &lt;= m \/ m &lt; n
+- Compare_dec.le_lt_dec: forall n m : nat, {n &lt;= m} + {m &lt; n}
+- Lt.le_not_lt: forall n m : nat, n &lt;= m -&gt; ~ m &lt; n
+- Lt.lt_not_le: forall n m : nat, n &lt; m -&gt; ~ m &lt;= n
+- Lt.lt_n_Sm_le: forall n m : nat, n &lt; S m -&gt; n &lt;= m
+- Lt.lt_le_S: forall n m : nat, n &lt; m -&gt; S n &lt;= m
+- PeanoNat.Nat.lt_pred_le: forall n m : nat, PeanoNat.Nat.pred n &lt; m -&gt; n &lt;= m
+- PeanoNat.Nat.lt_le_pred: forall n m : nat, n &lt; m -&gt; n &lt;= PeanoNat.Nat.pred m
+- Lt.le_lt_n_Sm: forall n m : nat, n &lt;= m -&gt; n &lt; S m
+- PeanoNat.Nat.le_lt_trans: forall n m p :
+[...] truncated
+the attributes #[local],
+- #[global] and #[export] depending on your choice. For example: &quot;#[export]
+- Instance Foo : Bar := baz.&quot; [deprecated-instance-without-locality,deprecated]
+- File &quot;./theories/ordinals/Gamma0/Gamma0.v&quot;, line 3691, characters 0-29:
+- Warning: The default value for instance locality is currently &quot;local&quot; in a
+- section and &quot;global&quot; otherwise, but is scheduled to change in a future
+- release. For the time being, adding instances outside of sections without
+- specifying an explicit locality attribute is therefore deprecated. It is
+- recommended to use &quot;export&quot; whenever possible. Use the attributes #[local],
+- #[global] and #[export] depending on your choice. For example: &quot;#[export]
+- Instance Foo : Bar := baz.&quot; [deprecated-instance-without-locality,deprecated]
+- File &quot;./theories/ordinals/Gamma0/Gamma0.v&quot;, line 3696, characters 0-37:
+- Warning: The default value for instance locality is currently &quot;local&quot; in a
+- section and &quot;global&quot; otherwise, but is scheduled to change in a future
+- release. For the time being, adding instances outside of sections without
+- specifying an explicit locality attribute is therefore deprecated. It is
+- recommended to use &quot;export&quot; whenever possible. Use the attributes #[local],
+- #[global] and #[export] depending on your choice. For example: &quot;#[export]
+- Instance Foo : Bar := baz.&quot; [deprecated-instance-without-locality,deprecated]
+-         coqc theories/ordinals/Schutte/.Correctness_E0.aux,theories/ordinals/Schutte/Correctness_E0.{glob,vo}
+- File &quot;./theories/ordinals/Schutte/Correctness_E0.v&quot;, line 545, characters 0-94:
+- Warning: The default value for instance locality is currently &quot;local&quot; in a
+- section and &quot;global&quot; otherwise, but is scheduled to change in a future
+- release. For the time being, adding instances outside of sections without
+- specifying an explicit locality attribute is therefore deprecated. It is
+- recommended to use &quot;export&quot; whenever possible. Use the attributes #[local],
+- #[global] and #[export] depending on your choice. For example: &quot;#[export]
+- Instance Foo : Bar := baz.&quot; [deprecated-instance-without-locality,deprecated]
+-         coqc theories/ordinals/OrdinalNotations/.ON_Omega.aux,theories/ordinals/OrdinalNotations/ON_Omega.{glob,vo}
+- File &quot;./theories/ordinals/OrdinalNotations/ON_Omega.v&quot;, line 50, characters 0-50:
+- Warning: The default value for instance locality is currently &quot;local&quot; in a
+- section and &quot;global&quot; otherwise, but is scheduled to change in a future
+- release. For the time being, adding instances outside of sections without
+- specifying an explicit locality attribute is therefore deprecated. It is
+- recommended to use &quot;export&quot; whenever possible. Use the attributes #[local],
+- #[global] and #[export] depending on your choice. For example: &quot;#[export]
+- Instance Foo : Bar := baz.&quot; [deprecated-instance-without-locality,deprecated]
+-         coqc theories/ordinals/OrdinalNotations/.Example_3PlusOmega.aux,theories/ordinals/OrdinalNotations/Example_3PlusOmega.{glob,vo}
+- File &quot;./theories/ordinals/OrdinalNotations/Example_3PlusOmega.v&quot;, line 12, characters 0-22:
+- Warning: The default value for instance locality is currently &quot;local&quot; in a
+- section and &quot;global&quot; otherwise, but is scheduled to change in a future
+- release. For the time being, adding instances outside of sections without
+- specifying an explicit locality attribute is therefore deprecated. It is
+- recommended to use &quot;export&quot; whenever possible. Use the attributes #[local],
+- #[global] and #[export] depending on your choice. For example: &quot;#[export]
+- Instance Foo : Bar := baz.&quot; [deprecated-instance-without-locality,deprecated]
+- File &quot;./theories/ordinals/OrdinalNotations/Example_3PlusOmega.v&quot;, line 32, characters 0-42:
+- Warning: The default value for instance locality is currently &quot;local&quot; in a
+- section and &quot;global&quot; otherwise, but is scheduled to change in a future
+- release. For the time being, adding instances outside of sections without
+- specifying an explicit locality attribute is therefore deprecated. It is
+- recommended to use &quot;export&quot; whenever possible. Use the attributes #[local],
+- #[global] and #[export] depending on your choice. For example: &quot;#[export]
+- Instance Foo : Bar := baz.&quot; [deprecated-instance-without-locality,deprecated]
+-         coqc theories/ordinals/OrdinalNotations/.ON_Omega_plus_omega.aux,theories/ordinals/OrdinalNotations/ON_Omega_plus_omega.{glob,vo}
+- File &quot;./theories/ordinals/OrdinalNotations/ON_Omega_plus_omega.v&quot;, line 17, characters 0-35:
+- Warning: The default value for instance locality is currently &quot;local&quot; in a
+- section and &quot;global&quot; otherwise, but is scheduled to change in a future
+- release. For the time being, adding instances outside of sections without
+- specifying an explicit locality attribute is therefore deprecated. It is
+- recommended to use &quot;export&quot; whenever possible. Use the attributes #[local],
+- #[global] and #[export] depending on your choice. For example: &quot;#[export]
+- Instance Foo : Bar := baz.&quot; [deprecated-instance-without-locality,deprecated]
+-      = Gt
+-      : comparison
+-      = Lt
+-      : comparison
+- File &quot;./theories/ordinals/OrdinalNotations/ON_Omega_plus_omega.v&quot;, line 363, characters 0-55:
+- Warning: The default value for instance locality is currently &quot;local&quot; in a
+- section and &quot;global&quot; otherwise, but is scheduled to change in a future
+- release. For the time being, adding instances outside of sections without
+- specifying an explicit locality attribute is therefore deprecated. It is
+- recommended to use &quot;export&quot; whenever possible. Use the attributes #[local],
+- #[global] and #[export] depending on your choice. For example: &quot;#[export]
+- Instance Foo : Bar := baz.&quot; [deprecated-instance-without-locality,deprecated]
+-         coqc theories/ordinals/OrdinalNotations/.ON_Omega2.aux,theories/ordinals/OrdinalNotations/ON_Omega2.{glob,vo}
+- File &quot;./theories/ordinals/OrdinalNotations/ON_Omega2.v&quot;, line 16, characters 0-25:
+- Warning: The default value for instance locality is currently &quot;local&quot; in a
+- section and &quot;global&quot; otherwise, but is scheduled to change in a future
+- release. For the time being, adding instances outside of sections without
+- specifying an explicit locality attribute is therefore deprecated. It is
+- recommended to use &quot;export&quot; whenever possible. Use the attributes #[local],
+- #[global] and #[export] depending on your choice. For example: &quot;#[export]
+- Instance Foo : Bar := baz.&quot; [deprecated-instance-without-locality,deprecated]
+-      = Gt
+-      : comparison
+-      = Lt
+-      : comparison
+-      = omega
+-      : t
+-      = (1, 3)
+-      : t
+-      = (3, 0)
+-      : t
+-      = (18, 0)
+-      : t
+-      = (18, 1)
+-      : t
+-      = omega
+-      : t
+-      = (5, 10)
+-      : t
+-      = (5, 10)
+-      : t
+-      = (0, 12)
+-      : t
+-      = (1, 10)
+-      : t
+-         coqc theories/ordinals/Ackermann/.fol.aux,theories/ordinals/Ackermann/fol.{glob,vo} (exit 1)
+- (cd _build/default &amp;&amp; /home/bench/.opam/ocaml-base-compiler.4.13.1/bin/coqc -q -R theories/ordinals hydras theories/ordinals/Ackermann/fol.v)
+- File &quot;./theories/ordinals/Ackermann/fol.v&quot;, line 185, characters 5-7:
+- Error: No such bound variable P0 (possible names are: P, P and t).
+- 
+-         coqc theories/ordinals/Hydra/.Hydra_Lemmas.aux,theories/ordinals/Hydra/Hydra_Lemmas.{glob,vo} (exit 1)
+- (cd _build/default &amp;&amp; /home/bench/.opam/ocaml-base-compiler.4.13.1/bin/coqc -q -R theories/ordinals hydras theories/ordinals/Hydra/Hydra_Lemmas.v)
+- File &quot;./theories/ordinals/Hydra/Hydra_Lemmas.v&quot;, line 402, characters 1-3:
+- Error: No such bound variable P0 (possible names are: P, P, f, f and f).
+- 
+-         coqc theories/ordinals/MoreAck/.AckNotPR.aux,theories/ordinals/MoreAck/AckNotPR.{glob,vo} (exit 1)
+- (cd _build/default &amp;&amp; /home/bench/.opam/ocaml-base-compiler.4.13.1/bin/coqc -q -R theories/ordinals hydras theories/ordinals/MoreAck/AckNotPR.v)
+- File &quot;./theories/ordinals/MoreAck/AckNotPR.v&quot;, line 195, characters 19-21:
+- Error: No such bound variable P0 (possible names are: P, P, f, f, f, f, f, f,
+- f and n).
+- 
+[ERROR] The compilation of coq-hydra-battles failed at &quot;/home/bench/.opam/opam-init/hooks/sandbox.sh build dune build -p coq-hydra-battles -j 4&quot;.
+#=== ERROR while compiling coq-hydra-battles.0.4 ==============================#
+# context              2.0.10 | linux/x86_64 | ocaml-base-compiler.4.13.1 | file:///home/bench/run/opam-coq-archive/released
+# path                 ~/.opam/ocaml-base-compiler.4.13.1/.opam-switch/build/coq-hydra-battles.0.4
+# command              ~/.opam/opam-init/hooks/sandbox.sh build dune build -p coq-hydra-battles -j 4
+# exit-code            1
+# env-file             ~/.opam/log/coq-hydra-battles-5085-335865.env
+# output-file          ~/.opam/log/coq-hydra-battles-5085-335865.out
+### output ###
+# Error: No such bound variable P0 (possible names are: P, P and t).
+# [...]
+#         coqc theories/ordinals/Hydra/.Hydra_Lemmas.aux,theories/ordinals/Hydra/Hydra_Lemmas.{glob,vo} (exit 1)
+# (cd _build/default &amp;&amp; /home/bench/.opam/ocaml-base-compiler.4.13.1/bin/coqc -q -R theories/ordinals hydras theories/ordinals/Hydra/Hydra_Lemmas.v)
+# File &quot;./theories/ordinals/Hydra/Hydra_Lemmas.v&quot;, line 402, characters 1-3:
+# Error: No such bound variable P0 (possible names are: P, P, f, f and f).
+# 
+#         coqc theories/ordinals/MoreAck/.AckNotPR.aux,theories/ordinals/MoreAck/AckNotPR.{glob,vo} (exit 1)
+# (cd _build/default &amp;&amp; /home/bench/.opam/ocaml-base-compiler.4.13.1/bin/coqc -q -R theories/ordinals hydras theories/ordinals/MoreAck/AckNotPR.v)
+# File &quot;./theories/ordinals/MoreAck/AckNotPR.v&quot;, line 195, characters 19-21:
+# Error: No such bound variable P0 (possible names are: P, P, f, f, f, f, f, f,
+# f and n).
+# 
+&lt;&gt;&lt;&gt; Error report &lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;
++- The following actions failed
+| - build coq-hydra-battles 0.4
++- 
+- No changes have been performed
+# Run eval $(opam env) to update the current shell environment
+&#39;opam install -y -v coq-hydra-battles.0.4 coq.dev&#39; failed.
+The middle of the output is truncated (maximum 20000 characters)
+</pre></dd>
+            </dl>
+            <h2>Installation size</h2>
+            <p>No files were installed.</p>
+            <h2>Uninstall 🧹</h2>
+            <dl class="dl-horizontal">
+              <dt>Command</dt>
+              <dd><code>true</code></dd>
+              <dt>Return code</dt>
+              <dd>0</dd>
+              <dt>Missing removes</dt>
+              <dd>
+                none
+              </dd>
+              <dt>Wrong removes</dt>
+              <dd>
+                none
+              </dd>
+            </dl>
+          </div>
+        </div>
+      </div>
+      <hr/>
+      <div class="footer">
+        <p class="text-center">
+          Sources are on <a href="https://github.com/coq-bench">GitHub</a> © Guillaume Claret 🐣
+        </p>
+      </div>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="../../../../../bootstrap.min.js"></script>
+  </body>
+</html>
