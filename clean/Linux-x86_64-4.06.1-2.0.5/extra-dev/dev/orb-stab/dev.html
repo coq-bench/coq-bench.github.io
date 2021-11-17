@@ -42,7 +42,7 @@
                 <span class="label label-warning">Error with dependencies 🚒</span>
               </small>
             </h1>
-            <p>📅 <em><script>document.write(moment("2021-08-07 14:31:16 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2021-08-07 14:31:16 UTC)</em><p>
+            <p>📅 <em><script>document.write(moment("2021-11-16 07:37:44 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2021-11-16 07:37:44 UTC)</em><p>
             <h2>Context</h2>
             <pre># Packages matching: installed
 # Name                   # Installed # Synopsis
@@ -51,15 +51,14 @@ base-threads             base
 base-unix                base
 conf-findutils           1           Virtual package relying on findutils
 conf-gmp                 3           Virtual package relying on a GMP lib system installation
-conf-m4                  1           Virtual package relying on m4
 coq                      dev         Formal proof management system
-dune                     2.9.0       Fast, portable, and opinionated build system
+dune                     2.9.1       Fast, portable, and opinionated build system
 ocaml                    4.06.1      The OCaml compiler (virtual package)
 ocaml-base-compiler      4.06.1      Official 4.06.1 release
 ocaml-config             1           OCaml Switch Configuration
 ocaml-secondary-compiler 4.08.1-1    OCaml 4.08.1 Secondary Switch Compiler
-ocamlfind                1.8.1       A library manager for OCaml
-ocamlfind-secondary      1.8.1       ocamlfind support for ocaml-secondary-compiler
+ocamlfind                1.9.1       A library manager for OCaml
+ocamlfind-secondary      1.9.1       Adds support for ocaml-secondary-compiler to ocamlfind
 zarith                   1.12        Implements arithmetic and logical operations over arbitrary-precision integers
 # opam file:
 opam-version: &quot;2.0&quot;
@@ -316,22 +315,7 @@ No solution found, exiting
             - lib/coq/theories/setoid_ring/Rings_Z.v
             - lib/coq/theories/setoid_ring/Rings_Z.
 [...] truncated
-core/clib/minisys.cmt
-            - lib/coq-core/clib/minisys.cmi
-            - lib/coq-core/clib/int.mli
-            - lib/coq-core/clib/int.ml
-            - lib/coq-core/clib/int.cmx
-            - lib/coq-core/clib/int.cmti
-            - lib/coq-core/clib/int.cmt
-            - lib/coq-core/clib/int.cmi
-            - lib/coq-core/clib/iStream.mli
-            - lib/coq-core/clib/iStream.ml
-            - lib/coq-core/clib/iStream.cmx
-            - lib/coq-core/clib/iStream.cmti
-            - lib/coq-core/clib/iStream.cmt
-            - lib/coq-core/clib/iStream.cmi
-            - lib/coq-core/clib/heap.mli
-            - lib/coq-core/clib/heap.ml
+ib/heap.ml
             - lib/coq-core/clib/heap.cmx
             - lib/coq-core/clib/heap.cmti
             - lib/coq-core/clib/heap.cmt
@@ -403,12 +387,6 @@ core/clib/minisys.cmt
             - lib/coq-core/clib/cSet.cmti
             - lib/coq-core/clib/cSet.cmt
             - lib/coq-core/clib/cSet.cmi
-            - lib/coq-core/clib/cPath.mli
-            - lib/coq-core/clib/cPath.ml
-            - lib/coq-core/clib/cPath.cmx
-            - lib/coq-core/clib/cPath.cmti
-            - lib/coq-core/clib/cPath.cmt
-            - lib/coq-core/clib/cPath.cmi
             - lib/coq-core/clib/cObj.mli
             - lib/coq-core/clib/cObj.ml
             - lib/coq-core/clib/cObj.cmx
@@ -439,6 +417,28 @@ core/clib/minisys.cmt
             - lib/coq-core/clib/cArray.cmti
             - lib/coq-core/clib/cArray.cmt
             - lib/coq-core/clib/cArray.cmi
+            - lib/coq-core/boot/util.ml
+            - lib/coq-core/boot/path.ml
+            - lib/coq-core/boot/env.mli
+            - lib/coq-core/boot/env.ml
+            - lib/coq-core/boot/boot__Util.cmx
+            - lib/coq-core/boot/boot__Util.cmt
+            - lib/coq-core/boot/boot__Util.cmi
+            - lib/coq-core/boot/boot__Path.cmx
+            - lib/coq-core/boot/boot__Path.cmt
+            - lib/coq-core/boot/boot__Path.cmi
+            - lib/coq-core/boot/boot__Env.cmx
+            - lib/coq-core/boot/boot__Env.cmti
+            - lib/coq-core/boot/boot__Env.cmt
+            - lib/coq-core/boot/boot__Env.cmi
+            - lib/coq-core/boot/boot.ml
+            - lib/coq-core/boot/boot.cmxs
+            - lib/coq-core/boot/boot.cmxa
+            - lib/coq-core/boot/boot.cmx
+            - lib/coq-core/boot/boot.cmt
+            - lib/coq-core/boot/boot.cmi
+            - lib/coq-core/boot/boot.cma
+            - lib/coq-core/boot/boot.a
             - lib/coq-core/META
             - doc/coqide-server/README.md
             - doc/coqide-server/LICENSE
@@ -521,13 +521,13 @@ core/clib/minisys.cmt
          - lib/coq/theories/Array
          - lib/coq/theories/Arith
          - lib/coq-core/vm
-         - lib/coq-core/vernac/.private
-         - lib/coq-core/toplevel/.private
+         - lib/coq-core/vernac
+         - lib/coq-core/toplevel
          - lib/coq-core/top_printers
          - lib/coq-core/tools/coqdoc
-         - lib/coq-core/tactics/.private
+         - lib/coq-core/tactics
          - lib/coq-core/sysinit
-         - lib/coq-core/stm/.private
+         - lib/coq-core/stm
          - lib/coq-core/proofs
          - lib/coq-core/printing
          - lib/coq-core/pretyping
@@ -547,7 +547,6 @@ core/clib/minisys.cmt
          - lib/coq-core/plugins/micromega
          - lib/coq-core/plugins/ltac2
          - lib/coq-core/plugins/funind
-         - lib/coq-core/plugins/float_syntax
          - lib/coq-core/plugins/firstorder
          - lib/coq-core/plugins/extraction
          - lib/coq-core/plugins/derive
@@ -558,9 +557,10 @@ core/clib/minisys.cmt
          - lib/coq-core/kernel
          - lib/coq-core/interp
          - lib/coq-core/gramlib
-         - lib/coq-core/engine/.private
+         - lib/coq-core/engine
          - lib/coq-core/config
          - lib/coq-core/clib
+         - lib/coq-core/boot
          - doc/coqide-server
          - doc/coq-core
 -&gt; removed   coq.dev
