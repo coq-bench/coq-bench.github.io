@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>tactician: 47 s 🏆</title>
+    <title>tactician: 2 m 3 s 🏆</title>
     <link rel="shortcut icon" type="image/png" href="../../../../../favicon.png" />
     <link href="../../../../../bootstrap.min.css" rel="stylesheet">
     <link href="../../../../../bootstrap-custom.css" rel="stylesheet">
@@ -39,10 +39,10 @@
               tactician
               <small>
                 dev
-                <span class="label label-success">47 s 🏆</span>
+                <span class="label label-success">2 m 3 s 🏆</span>
               </small>
             </h1>
-            <p>📅 <em><script>document.write(moment("2021-11-23 11:57:33 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2021-11-23 11:57:33 UTC)</em><p>
+            <p>📅 <em><script>document.write(moment("2021-12-07 08:10:37 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2021-12-07 08:10:37 UTC)</em><p>
             <h2>Context</h2>
             <pre># Packages matching: installed
 # Name                # Installed # Synopsis
@@ -61,43 +61,50 @@ ocamlfind             1.9.1       A library manager for OCaml
 zarith                1.12        Implements arithmetic and logical operations over arbitrary-precision integers
 # opam file:
 opam-version: &quot;2.0&quot;
-name: &quot;coq-tactician&quot;
-synopsis: &quot;Tactician: A Seamless, Interactive Tactic Learner and Prover for Coq&quot;
+synopsis:
+  &quot;Tactician: A Seamless, Interactive Tactic Learner and Prover for Coq&quot;
 description: &quot;&quot;&quot;
-  Tactician is a tactic learner and prover for the Coq Proof Assistant.
-  The system will help users make tactical proof decisions while they retain
-  control over the general proof strategy. To this end, Tactician will learn
-  from previously written tactic scripts, and either gives the user suggestions
-  about the next tactic to be executed or altogether takes over the burden of
-  proof synthesis. Tactician&#39;s goal is to provide the user with a seamless,
-  interactive, and intuitive experience together with strong, adaptive proof
-  automation.
-&quot;&quot;&quot;
+Tactician is a tactic learner and prover for the Coq Proof Assistant.
+The system will help users make tactical proof decisions while they retain
+control over the general proof strategy. To this end, Tactician will learn
+from previously written tactic scripts, and either gives the user suggestions
+about the next tactic to be executed or altogether takes over the burden of
+proof synthesis. Tactician&#39;s goal is to provide the user with a seamless,
+interactive, and intuitive experience together with strong, adaptive proof
+automation.&quot;&quot;&quot;
+maintainer: [&quot;Lasse Blaauwbroek &lt;lasse@blaauwbroek.eu&gt;&quot;]
+authors: [&quot;Lasse Blaauwbroek &lt;lasse@blaauwbroek.eu&gt;&quot;]
 homepage: &quot;https://coq-tactician.github.io&quot;
-dev-repo: &quot;git+https://github.com/coq-tactician/coq-tactician&quot;
 bug-reports: &quot;https://github.com/coq-tactician/coq-tactician/issues&quot;
-maintainer: &quot;Lasse Blaauwbroek &lt;lasse@blaauwbroek.eu&gt;&quot;
-authors: &quot;Lasse Blaauwbroek &lt;lasse@blaauwbroek.eu&quot;
 depends: [
   &quot;ocaml&quot; {&gt;= &quot;4.08&quot;}
   &quot;dune&quot; {&gt;= &quot;2.5&quot;}
   &quot;opam-client&quot; {&gt;= &quot;2.1.0~beta2&quot;}
   &quot;cmdliner&quot;
   &quot;coq&quot; {= &quot;dev&quot;}
-  &quot;coq-tactician-dummy&quot;
+  &quot;conf-git&quot;
+  &quot;coq-tactician-dummy&quot; {= &quot;1.0~beta1&quot; &amp; with-test}
 ]
-depexts: [&quot;git&quot;]
 build: [
-  [&quot;dune&quot; &quot;build&quot; &quot;--release&quot; &quot;-j&quot; jobs]
+  [&quot;dune&quot; &quot;subst&quot;] {pinned}
+  [
+    &quot;dune&quot;
+    &quot;build&quot;
+    &quot;-p&quot;
+    name
+    &quot;-j&quot;
+    jobs
+    &quot;@install&quot;
+    &quot;@runtest&quot; {with-test}
+    &quot;@doc&quot; {with-doc}
+  ]
 ]
+dev-repo: &quot;git+https://github.com/coq-tactician/coq-tactician.git&quot;
 post-messages: [&quot;
 --- Tactician was successfully installed ---
 In order to enable Tactician, you should run
 tactician enable
 &quot; {success}]
-url {
-  src: &quot;git+https://github.com/coq-tactician/coq-tactician.git#coqdev&quot;
-}
 tags: [
   &quot;keyword:tactic-learning&quot;
   &quot;keyword:machine-learning&quot;
@@ -106,6 +113,14 @@ tags: [
   &quot;category:Miscellaneous/Coq Extensions&quot;
   &quot;logpath:Tactician&quot;
 ]
+substs: [
+  &quot;coq-shim/with-tactician&quot;
+  &quot;coq-shim/tactician-patch&quot;
+  &quot;src/tactician.ml&quot;
+]
+url {
+  src: &quot;git+https://github.com/coq-tactician/coq-tactician.git#coqdev&quot;
+}
 </pre>
             <h2>Lint</h2>
             <dl class="dl-horizontal">
@@ -136,7 +151,7 @@ tags: [
               <dt>Return code</dt>
               <dd>0</dd>
               <dt>Duration</dt>
-              <dd>5 m 22 s</dd>
+              <dd>11 m 20 s</dd>
             </dl>
             <h2>Install 🚀</h2>
             <dl class="dl-horizontal">
@@ -145,7 +160,7 @@ tags: [
               <dt>Return code</dt>
               <dd>0</dd>
               <dt>Duration</dt>
-              <dd>47 s</dd>
+              <dd>2 m 3 s</dd>
             </dl>
             <h2>Installation size</h2>
             <p>Total: 28 M</p>
@@ -303,9 +318,9 @@ tags: [
               <li>3 K <code>../ocaml-base-compiler.4.13.1/lib/coq-tactician/tactics-plugin/tactician_ltac1_tactics_plugin.cmt</code></li>
               <li>3 K <code>../ocaml-base-compiler.4.13.1/lib/coq-tactician/record-plugin/tactic_learner.mli</code></li>
               <li>2 K <code>../ocaml-base-compiler.4.13.1/lib/coq-tactician/ssreflect-plugin/known_ssr_witnesses.ml</code></li>
+              <li>2 K <code>../ocaml-base-compiler.4.13.1/lib/coq-tactician/with-tactician</code></li>
               <li>2 K <code>../ocaml-base-compiler.4.13.1/lib/coq-tactician/record-plugin/tactic_substitute.ml</code></li>
               <li>2 K <code>../ocaml-base-compiler.4.13.1/lib/coq-tactician/record-plugin/tactic_normalize.ml</code></li>
-              <li>2 K <code>../ocaml-base-compiler.4.13.1/lib/coq-tactician/with-tactician</code></li>
               <li>2 K <code>../ocaml-base-compiler.4.13.1/lib/coq-tactician/record-plugin/tactician_ltac1_record_plugin__Knn.cmx</code></li>
               <li>2 K <code>../ocaml-base-compiler.4.13.1/lib/coq-tactician/record-plugin/diagonal_iterative_search.ml</code></li>
               <li>2 K <code>../ocaml-base-compiler.4.13.1/lib/coq-tactician/tactics-plugin/g_ltac1_tactics.ml</code></li>
@@ -326,8 +341,8 @@ tags: [
               <li>1 K <code>../ocaml-base-compiler.4.13.1/man/man1/tactician-disable.1</code></li>
               <li>1 K <code>../ocaml-base-compiler.4.13.1/lib/coq/user-contrib/Tactician/Ltac1.vo</code></li>
               <li>1 K <code>../ocaml-base-compiler.4.13.1/lib/coq-tactician/record-plugin/tactic_learner.ml</code></li>
-              <li>1 K <code>../ocaml-base-compiler.4.13.1/lib/coq/user-contrib/Tactician/Ltac1/Tactics.v</code></li>
               <li>1 K <code>../ocaml-base-compiler.4.13.1/lib/coq-tactician/tactician-patch</code></li>
+              <li>1 K <code>../ocaml-base-compiler.4.13.1/lib/coq/user-contrib/Tactician/Ltac1/Tactics.v</code></li>
               <li>1 K <code>../ocaml-base-compiler.4.13.1/doc/coq-tactician/LICENSE.md</code></li>
               <li>1 K <code>../ocaml-base-compiler.4.13.1/lib/coq-tactician/ssreflect-plugin/tactician_ssreflect_plugin.cmi</code></li>
               <li>1 K <code>../ocaml-base-compiler.4.13.1/lib/coq-tactician/record-plugin/search_strategy_internal.ml</code></li>
