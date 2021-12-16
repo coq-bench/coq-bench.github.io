@@ -42,7 +42,7 @@
                 <span class="label label-danger">Error 🔥</span>
               </small>
             </h1>
-            <p>📅 <em><script>document.write(moment("2021-05-13 11:29:47 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2021-05-13 11:29:47 UTC)</em><p>
+            <p>📅 <em><script>document.write(moment("2021-12-16 03:29:46 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2021-12-16 03:29:46 UTC)</em><p>
             <h2>Context</h2>
             <pre># Packages matching: installed
 # Name                   # Installed # Synopsis
@@ -51,15 +51,14 @@ base-threads             base
 base-unix                base
 conf-findutils           1           Virtual package relying on findutils
 conf-gmp                 3           Virtual package relying on a GMP lib system installation
-conf-m4                  1           Virtual package relying on m4
 coq                      dev         Formal proof management system
-dune                     2.8.5       Fast, portable, and opinionated build system
+dune                     2.9.1       Fast, portable, and opinionated build system
 ocaml                    4.05.0      The OCaml compiler (virtual package)
 ocaml-base-compiler      4.05.0      Official 4.05.0 release
 ocaml-config             1           OCaml Switch Configuration
 ocaml-secondary-compiler 4.08.1-1    OCaml 4.08.1 Secondary Switch Compiler
-ocamlfind                1.8.1       A library manager for OCaml
-ocamlfind-secondary      1.8.1       ocamlfind support for ocaml-secondary-compiler
+ocamlfind                1.9.1       A library manager for OCaml
+ocamlfind-secondary      1.9.1       Adds support for ocaml-secondary-compiler to ocamlfind
 zarith                   1.12        Implements arithmetic and logical operations over arbitrary-precision integers
 # opam file:
 opam-version: &quot;2.0&quot;
@@ -84,7 +83,7 @@ tags: [
   &quot;logpath:Equations&quot;
 ]
 build: [
-  [&quot;./configure.sh&quot;]
+  [&quot;./configure.sh&quot; &quot;--enable-hott&quot; {coq-hott:installed} ]
   [make &quot;-j%{jobs}%&quot;]
 ]
 install: [
@@ -95,6 +94,9 @@ run-test: [
 ]
 depends: [
   &quot;coq&quot; {= &quot;dev&quot;}
+]
+depopts: [
+  &quot;coq-hott&quot;
 ]
 url {
   src: &quot;git+https://github.com/mattam82/Coq-Equations#master&quot;
@@ -129,7 +131,7 @@ url {
               <dt>Return code</dt>
               <dd>0</dd>
               <dt>Duration</dt>
-              <dd>14 s</dd>
+              <dd>59 s</dd>
             </dl>
             <h2>Install 🚀</h2>
             <dl class="dl-horizontal">
@@ -138,7 +140,7 @@ url {
               <dt>Return code</dt>
               <dd>7936</dd>
               <dt>Duration</dt>
-              <dd>45 s</dd>
+              <dd>1 m 55 s</dd>
               <dt>Output</dt>
               <dd><pre># Packages matching: installed
 # Name                   # Installed # Synopsis
@@ -147,15 +149,14 @@ base-threads             base
 base-unix                base
 conf-findutils           1           Virtual package relying on findutils
 conf-gmp                 3           Virtual package relying on a GMP lib system installation
-conf-m4                  1           Virtual package relying on m4
 coq                      dev         Formal proof management system
-dune                     2.8.5       Fast, portable, and opinionated build system
+dune                     2.9.1       Fast, portable, and opinionated build system
 ocaml                    4.05.0      The OCaml compiler (virtual package)
 ocaml-base-compiler      4.05.0      Official 4.05.0 release
 ocaml-config             1           OCaml Switch Configuration
 ocaml-secondary-compiler 4.08.1-1    OCaml 4.08.1 Secondary Switch Compiler
-ocamlfind                1.8.1       A library manager for OCaml
-ocamlfind-secondary      1.8.1       ocamlfind support for ocaml-secondary-compiler
+ocamlfind                1.9.1       A library manager for OCaml
+ocamlfind-secondary      1.9.1       Adds support for ocaml-secondary-compiler to ocamlfind
 zarith                   1.12        Implements arithmetic and logical operations over arbitrary-precision integers
 [NOTE] Package coq is already installed (current version is dev).
 The following actions will be performed:
@@ -169,20 +170,20 @@ The following actions will be performed:
 # path                 ~/.opam/ocaml-base-compiler.4.05.0/.opam-switch/build/coq-equations.dev
 # command              ~/.opam/opam-init/hooks/sandbox.sh build make -j7
 # exit-code            2
-# env-file             ~/.opam/log/coq-equations-919-865888.env
-# output-file          ~/.opam/log/coq-equations-919-865888.out
+# env-file             ~/.opam/log/coq-equations-29488-865888.env
+# output-file          ~/.opam/log/coq-equations-29488-865888.out
 ### output ###
 # [...]
-# CAMLOPT -c  src/context_map.ml
-# CAMLOPT -c  src/sigma_types.ml
-# CAMLOPT -c  src/simplify.ml
-# CAMLOPT -c  src/subterm.ml
-# CAMLOPT -c  src/splitting.ml
-# File &quot;src/splitting.ml&quot;, line 1123, characters 45-50:
-# Error: This expression has type Evd.evar_map * Univ.universe_subst
-#        but an expression was expected of type Evd.evar_map
-# make[2]: *** [Makefile.coq:673: src/splitting.cmx] Error 2
-# make[1]: *** [Makefile.coq:348: all] Error 2
+# Use Univ.Level.Set
+# CAMLC -c src/sigma_types.mli
+# CAMLC -c src/simplify.mli
+# CAMLC -c src/splitting.mli
+# File &quot;src/equations_common.ml&quot;, line 557, characters 17-42:
+# Error: This expression has type Pp.t but an expression was expected of type
+#          int
+# make[2]: *** [Makefile.coq:711: src/equations_common.cmx] Error 2
+# make[2]: *** Waiting for unfinished jobs....
+# make[1]: *** [Makefile.coq:387: all] Error 2
 # make[1]: Leaving directory &#39;/home/bench/.opam/ocaml-base-compiler.4.05.0/.opam-switch/build/coq-equations.dev&#39;
 # make: *** [Makefile:6: all] Error 2
 &lt;&gt;&lt;&gt; Error report &lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;
