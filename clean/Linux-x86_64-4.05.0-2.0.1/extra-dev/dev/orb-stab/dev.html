@@ -42,7 +42,7 @@
                 <span class="label label-warning">Error with dependencies 🚒</span>
               </small>
             </h1>
-            <p>📅 <em><script>document.write(moment("2021-05-13 11:29:47 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2021-05-13 11:29:47 UTC)</em><p>
+            <p>📅 <em><script>document.write(moment("2021-12-16 03:29:46 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2021-12-16 03:29:46 UTC)</em><p>
             <h2>Context</h2>
             <pre># Packages matching: installed
 # Name                   # Installed # Synopsis
@@ -51,15 +51,14 @@ base-threads             base
 base-unix                base
 conf-findutils           1           Virtual package relying on findutils
 conf-gmp                 3           Virtual package relying on a GMP lib system installation
-conf-m4                  1           Virtual package relying on m4
 coq                      dev         Formal proof management system
-dune                     2.8.5       Fast, portable, and opinionated build system
+dune                     2.9.1       Fast, portable, and opinionated build system
 ocaml                    4.05.0      The OCaml compiler (virtual package)
 ocaml-base-compiler      4.05.0      Official 4.05.0 release
 ocaml-config             1           OCaml Switch Configuration
 ocaml-secondary-compiler 4.08.1-1    OCaml 4.08.1 Secondary Switch Compiler
-ocamlfind                1.8.1       A library manager for OCaml
-ocamlfind-secondary      1.8.1       ocamlfind support for ocaml-secondary-compiler
+ocamlfind                1.9.1       A library manager for OCaml
+ocamlfind-secondary      1.9.1       Adds support for ocaml-secondary-compiler to ocamlfind
 zarith                   1.12        Implements arithmetic and logical operations over arbitrary-precision integers
 # opam file:
 opam-version: &quot;2.0&quot;
@@ -121,11 +120,12 @@ No solution found, exiting
   - remove coq dev
 &lt;&gt;&lt;&gt; Processing actions &lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;
 [WARNING] While removing coq.dev: not removing files that changed since:
-            - share/coq-core/texmf/tex/latex/misc/coqdoc.sty
+            - share/texmf/tex/latex/misc/coqdoc.sty
             - man/man1/coqwc.1
             - man/man1/coqtop.opt.1
             - man/man1/coqtop.byte.1
             - man/man1/coqtop.1
+            - man/man1/coqnative.1
             - man/man1/coqdoc.1
             - man/man1/coqdep.1
             - man/man1/coqchk.1
@@ -274,10 +274,6 @@ No solution found, exiting
             - lib/coq/user-contrib/Ltac2/Array.vo
             - lib/coq/user-contrib/Ltac2/Array.v
             - lib/coq/user-contrib/Ltac2/Array.glob
-            - lib/coq/theories/ssrsearch/ssrsearch.vos
-            - lib/coq/theories/ssrsearch/ssrsearch.vo
-            - lib/coq/theories/ssrsearch/ssrsearch.v
-            - lib/coq/theories/ssrsearch/ssrsearch.glob
             - lib/coq/theories/ssrmatching/ssrmatching.vos
             - lib/coq/theories/ssrmatching/ssrmatching.vo
             - lib/coq/theories/ssrmatching/ssrmatching.v
@@ -314,22 +310,12 @@ No solution found, exiting
             - lib/coq/theories/setoid_ring/Rings_Z.vo
             - lib/coq/theories/setoid_ring/Rings_Z.v
             - lib/coq/theories/setoid_ring/Rings_Z.glob
-            - lib/coq
+            - lib/coq/theories/setoid_ring/Rings_R.vos
+            - lib/coq/theories/setoid_ring/Rings_R.vo
+            - lib/coq/theories/setoid_ring/Rings_R.v
+            - lib/coq/theories/setoid_ring/Rings_R.
 [...] truncated
- lib/coq-core/clib/minisys.cmt
-            - lib/coq-core/clib/minisys.cmi
-            - lib/coq-core/clib/int.mli
-            - lib/coq-core/clib/int.ml
-            - lib/coq-core/clib/int.cmx
-            - lib/coq-core/clib/int.cmti
-            - lib/coq-core/clib/int.cmt
-            - lib/coq-core/clib/int.cmi
-            - lib/coq-core/clib/iStream.mli
-            - lib/coq-core/clib/iStream.ml
-            - lib/coq-core/clib/iStream.cmx
-            - lib/coq-core/clib/iStream.cmti
-            - lib/coq-core/clib/iStream.cmt
-            - lib/coq-core/clib/iStream.cmi
+tream.cmi
             - lib/coq-core/clib/heap.mli
             - lib/coq-core/clib/heap.ml
             - lib/coq-core/clib/heap.cmx
@@ -403,12 +389,6 @@ No solution found, exiting
             - lib/coq-core/clib/cSet.cmti
             - lib/coq-core/clib/cSet.cmt
             - lib/coq-core/clib/cSet.cmi
-            - lib/coq-core/clib/cPath.mli
-            - lib/coq-core/clib/cPath.ml
-            - lib/coq-core/clib/cPath.cmx
-            - lib/coq-core/clib/cPath.cmti
-            - lib/coq-core/clib/cPath.cmt
-            - lib/coq-core/clib/cPath.cmi
             - lib/coq-core/clib/cObj.mli
             - lib/coq-core/clib/cObj.ml
             - lib/coq-core/clib/cObj.cmx
@@ -439,6 +419,28 @@ No solution found, exiting
             - lib/coq-core/clib/cArray.cmti
             - lib/coq-core/clib/cArray.cmt
             - lib/coq-core/clib/cArray.cmi
+            - lib/coq-core/boot/util.ml
+            - lib/coq-core/boot/path.ml
+            - lib/coq-core/boot/env.mli
+            - lib/coq-core/boot/env.ml
+            - lib/coq-core/boot/boot__Util.cmx
+            - lib/coq-core/boot/boot__Util.cmt
+            - lib/coq-core/boot/boot__Util.cmi
+            - lib/coq-core/boot/boot__Path.cmx
+            - lib/coq-core/boot/boot__Path.cmt
+            - lib/coq-core/boot/boot__Path.cmi
+            - lib/coq-core/boot/boot__Env.cmx
+            - lib/coq-core/boot/boot__Env.cmti
+            - lib/coq-core/boot/boot__Env.cmt
+            - lib/coq-core/boot/boot__Env.cmi
+            - lib/coq-core/boot/boot.ml
+            - lib/coq-core/boot/boot.cmxs
+            - lib/coq-core/boot/boot.cmxa
+            - lib/coq-core/boot/boot.cmx
+            - lib/coq-core/boot/boot.cmt
+            - lib/coq-core/boot/boot.cmi
+            - lib/coq-core/boot/boot.cma
+            - lib/coq-core/boot/boot.a
             - lib/coq-core/META
             - doc/coqide-server/README.md
             - doc/coqide-server/LICENSE
@@ -446,7 +448,6 @@ No solution found, exiting
             - doc/coq-core/LICENSE
             - bin/votour
             - bin/ocamllibdep
-            - bin/fake_ide
             - bin/csdpcert
             - bin/coqworkmgr
             - bin/coqwc
@@ -468,11 +469,10 @@ No solution found, exiting
             - bin/coq_makefile
             - bin/coq-tex
 [NOTE] While removing coq.dev: not removing non-empty directories:
-         - share/coq-core/texmf/tex/latex/misc
+         - share/texmf/tex/latex/misc
          - lib/coqide-server/protocol
          - lib/coqide-server/core
          - lib/coq/user-contrib/Ltac2
-         - lib/coq/theories/ssrsearch
          - lib/coq/theories/ssrmatching
          - lib/coq/theories/setoid_ring
          - lib/coq/theories/rtauto
@@ -538,7 +538,6 @@ No solution found, exiting
          - lib/coq-core/plugins/tutorial/p1
          - lib/coq-core/plugins/tutorial/p0
          - lib/coq-core/plugins/tauto
-         - lib/coq-core/plugins/ssrsearch
          - lib/coq-core/plugins/ssrmatching
          - lib/coq-core/plugins/ssreflect
          - lib/coq-core/plugins/rtauto
@@ -548,7 +547,6 @@ No solution found, exiting
          - lib/coq-core/plugins/micromega
          - lib/coq-core/plugins/ltac2
          - lib/coq-core/plugins/funind
-         - lib/coq-core/plugins/float_syntax
          - lib/coq-core/plugins/firstorder
          - lib/coq-core/plugins/extraction
          - lib/coq-core/plugins/derive
@@ -562,6 +560,7 @@ No solution found, exiting
          - lib/coq-core/engine
          - lib/coq-core/config
          - lib/coq-core/clib
+         - lib/coq-core/boot
          - doc/coqide-server
          - doc/coq-core
 -&gt; removed   coq.dev
