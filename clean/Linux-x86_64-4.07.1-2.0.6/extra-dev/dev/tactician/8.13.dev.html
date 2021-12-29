@@ -42,7 +42,7 @@
                 <span class="label label-info">Not compatible 👼</span>
               </small>
             </h1>
-            <p>📅 <em><script>document.write(moment("2021-08-02 11:36:51 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2021-08-02 11:36:51 UTC)</em><p>
+            <p>📅 <em><script>document.write(moment("2021-12-29 01:31:58 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2021-12-29 01:31:58 UTC)</em><p>
             <h2>Context</h2>
             <pre># Packages matching: installed
 # Name                   # Installed # Synopsis
@@ -51,55 +51,61 @@ base-threads             base
 base-unix                base
 conf-findutils           1           Virtual package relying on findutils
 conf-gmp                 3           Virtual package relying on a GMP lib system installation
-conf-m4                  1           Virtual package relying on m4
 coq                      dev         Formal proof management system
-dune                     2.9.0       Fast, portable, and opinionated build system
+dune                     2.9.1       Fast, portable, and opinionated build system
 ocaml                    4.07.1      The OCaml compiler (virtual package)
 ocaml-base-compiler      4.07.1      Official release 4.07.1
 ocaml-config             1           OCaml Switch Configuration
 ocaml-secondary-compiler 4.08.1-1    OCaml 4.08.1 Secondary Switch Compiler
-ocamlfind                1.8.1       A library manager for OCaml
-ocamlfind-secondary      1.8.1       ocamlfind support for ocaml-secondary-compiler
+ocamlfind                1.9.1       A library manager for OCaml
+ocamlfind-secondary      1.9.1       Adds support for ocaml-secondary-compiler to ocamlfind
 zarith                   1.12        Implements arithmetic and logical operations over arbitrary-precision integers
 # opam file:
 opam-version: &quot;2.0&quot;
-name: &quot;coq-tactician&quot;
-synopsis: &quot;Tactician: A Seamless, Interactive Tactic Learner and Prover for Coq&quot;
+synopsis:
+  &quot;Tactician: A Seamless, Interactive Tactic Learner and Prover for Coq&quot;
 description: &quot;&quot;&quot;
-  Tactician is a tactic learner and prover for the Coq Proof Assistant.
-  The system will help users make tactical proof decisions while they retain
-  control over the general proof strategy. To this end, Tactician will learn
-  from previously written tactic scripts, and either gives the user suggestions
-  about the next tactic to be executed or altogether takes over the burden of
-  proof synthesis. Tactician&#39;s goal is to provide the user with a seamless,
-  interactive, and intuitive experience together with strong, adaptive proof
-  automation.
-&quot;&quot;&quot;
+Tactician is a tactic learner and prover for the Coq Proof Assistant.
+The system will help users make tactical proof decisions while they retain
+control over the general proof strategy. To this end, Tactician will learn
+from previously written tactic scripts, and either gives the user suggestions
+about the next tactic to be executed or altogether takes over the burden of
+proof synthesis. Tactician&#39;s goal is to provide the user with a seamless,
+interactive, and intuitive experience together with strong, adaptive proof
+automation.&quot;&quot;&quot;
+maintainer: [&quot;Lasse Blaauwbroek &lt;lasse@blaauwbroek.eu&gt;&quot;]
+authors: [&quot;Lasse Blaauwbroek &lt;lasse@blaauwbroek.eu&gt;&quot;]
 homepage: &quot;https://coq-tactician.github.io&quot;
-dev-repo: &quot;git+https://github.com/coq-tactician/coq-tactician&quot;
 bug-reports: &quot;https://github.com/coq-tactician/coq-tactician/issues&quot;
-maintainer: &quot;Lasse Blaauwbroek &lt;lasse@blaauwbroek.eu&gt;&quot;
-authors: &quot;Lasse Blaauwbroek &lt;lasse@blaauwbroek.eu&quot;
 depends: [
   &quot;ocaml&quot; {&gt;= &quot;4.08&quot;}
   &quot;dune&quot; {&gt;= &quot;2.5&quot;}
   &quot;opam-client&quot; {&gt;= &quot;2.1.0~beta2&quot;}
   &quot;cmdliner&quot;
   &quot;coq&quot; {&gt;= &quot;8.13&quot; &amp; &lt; &quot;8.14~&quot;}
-  &quot;coq-tactician-dummy&quot;
+  &quot;conf-git&quot;
+  &quot;coq-tactician-dummy&quot; {= &quot;1.0~beta1&quot; &amp; with-test}
 ]
-depexts: [&quot;git&quot;]
 build: [
-  [&quot;dune&quot; &quot;build&quot; &quot;--release&quot; &quot;-j&quot; jobs]
+  [&quot;dune&quot; &quot;subst&quot;] {pinned}
+  [
+    &quot;dune&quot;
+    &quot;build&quot;
+    &quot;-p&quot;
+    name
+    &quot;-j&quot;
+    jobs
+    &quot;@install&quot;
+    &quot;@runtest&quot; {with-test}
+    &quot;@doc&quot; {with-doc}
+  ]
 ]
+dev-repo: &quot;git+https://github.com/coq-tactician/coq-tactician.git&quot;
 post-messages: [&quot;
 --- Tactician was successfully installed ---
 In order to enable Tactician, you should run
 tactician enable
 &quot; {success}]
-url {
-  src: &quot;git+https://github.com/coq-tactician/coq-tactician.git#coq8.13&quot;
-}
 tags: [
   &quot;keyword:tactic-learning&quot;
   &quot;keyword:machine-learning&quot;
@@ -108,6 +114,14 @@ tags: [
   &quot;category:Miscellaneous/Coq Extensions&quot;
   &quot;logpath:Tactician&quot;
 ]
+substs: [
+  &quot;coq-shim/with-tactician&quot;
+  &quot;coq-shim/tactician-patch&quot;
+  &quot;src/tactician.ml&quot;
+]
+url {
+  src: &quot;git+https://github.com/coq-tactician/coq-tactician.git#coq8.13&quot;
+}
 </pre>
             <h2>Lint</h2>
             <dl class="dl-horizontal">
