@@ -42,7 +42,7 @@
                 <span class="label label-danger">Error 🔥</span>
               </small>
             </h1>
-            <p>📅 <em><script>document.write(moment("2021-11-15 01:45:20 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2021-11-15 01:45:20 UTC)</em><p>
+            <p>📅 <em><script>document.write(moment("2021-12-30 18:12:52 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2021-12-30 18:12:52 UTC)</em><p>
             <h2>Context</h2>
             <pre># Packages matching: installed
 # Name                # Installed # Synopsis
@@ -61,43 +61,50 @@ ocamlfind             1.9.1       A library manager for OCaml
 zarith                1.12        Implements arithmetic and logical operations over arbitrary-precision integers
 # opam file:
 opam-version: &quot;2.0&quot;
-name: &quot;coq-tactician&quot;
-synopsis: &quot;Tactician: A Seamless, Interactive Tactic Learner and Prover for Coq&quot;
+synopsis:
+  &quot;Tactician: A Seamless, Interactive Tactic Learner and Prover for Coq&quot;
 description: &quot;&quot;&quot;
-  Tactician is a tactic learner and prover for the Coq Proof Assistant.
-  The system will help users make tactical proof decisions while they retain
-  control over the general proof strategy. To this end, Tactician will learn
-  from previously written tactic scripts, and either gives the user suggestions
-  about the next tactic to be executed or altogether takes over the burden of
-  proof synthesis. Tactician&#39;s goal is to provide the user with a seamless,
-  interactive, and intuitive experience together with strong, adaptive proof
-  automation.
-&quot;&quot;&quot;
+Tactician is a tactic learner and prover for the Coq Proof Assistant.
+The system will help users make tactical proof decisions while they retain
+control over the general proof strategy. To this end, Tactician will learn
+from previously written tactic scripts, and either gives the user suggestions
+about the next tactic to be executed or altogether takes over the burden of
+proof synthesis. Tactician&#39;s goal is to provide the user with a seamless,
+interactive, and intuitive experience together with strong, adaptive proof
+automation.&quot;&quot;&quot;
+maintainer: [&quot;Lasse Blaauwbroek &lt;lasse@blaauwbroek.eu&gt;&quot;]
+authors: [&quot;Lasse Blaauwbroek &lt;lasse@blaauwbroek.eu&gt;&quot;]
 homepage: &quot;https://coq-tactician.github.io&quot;
-dev-repo: &quot;git+https://github.com/coq-tactician/coq-tactician&quot;
 bug-reports: &quot;https://github.com/coq-tactician/coq-tactician/issues&quot;
-maintainer: &quot;Lasse Blaauwbroek &lt;lasse@blaauwbroek.eu&gt;&quot;
-authors: &quot;Lasse Blaauwbroek &lt;lasse@blaauwbroek.eu&quot;
 depends: [
   &quot;ocaml&quot; {&gt;= &quot;4.08&quot;}
   &quot;dune&quot; {&gt;= &quot;2.5&quot;}
   &quot;opam-client&quot; {&gt;= &quot;2.1.0~beta2&quot;}
   &quot;cmdliner&quot;
   &quot;coq&quot; {= &quot;dev&quot;}
-  &quot;coq-tactician-dummy&quot;
+  &quot;conf-git&quot;
+  &quot;coq-tactician-dummy&quot; {= &quot;1.0~beta1&quot; &amp; with-test}
 ]
-depexts: [&quot;git&quot;]
 build: [
-  [&quot;dune&quot; &quot;build&quot; &quot;--release&quot; &quot;-j&quot; jobs]
+  [&quot;dune&quot; &quot;subst&quot;] {pinned}
+  [
+    &quot;dune&quot;
+    &quot;build&quot;
+    &quot;-p&quot;
+    name
+    &quot;-j&quot;
+    jobs
+    &quot;@install&quot;
+    &quot;@runtest&quot; {with-test}
+    &quot;@doc&quot; {with-doc}
+  ]
 ]
+dev-repo: &quot;git+https://github.com/coq-tactician/coq-tactician.git&quot;
 post-messages: [&quot;
 --- Tactician was successfully installed ---
 In order to enable Tactician, you should run
 tactician enable
 &quot; {success}]
-url {
-  src: &quot;git+https://github.com/coq-tactician/coq-tactician.git#coqdev&quot;
-}
 tags: [
   &quot;keyword:tactic-learning&quot;
   &quot;keyword:machine-learning&quot;
@@ -106,6 +113,14 @@ tags: [
   &quot;category:Miscellaneous/Coq Extensions&quot;
   &quot;logpath:Tactician&quot;
 ]
+substs: [
+  &quot;coq-shim/with-tactician&quot;
+  &quot;coq-shim/tactician-patch&quot;
+  &quot;src/tactician.ml&quot;
+]
+url {
+  src: &quot;git+https://github.com/coq-tactician/coq-tactician.git#coqdev&quot;
+}
 </pre>
             <h2>Lint</h2>
             <dl class="dl-horizontal">
@@ -136,7 +151,7 @@ tags: [
               <dt>Return code</dt>
               <dd>0</dd>
               <dt>Duration</dt>
-              <dd>7 m 36 s</dd>
+              <dd>7 m 58 s</dd>
             </dl>
             <h2>Install 🚀</h2>
             <dl class="dl-horizontal">
@@ -145,7 +160,7 @@ tags: [
               <dt>Return code</dt>
               <dd>7936</dd>
               <dt>Duration</dt>
-              <dd>52 s</dd>
+              <dd>1 m 11 s</dd>
               <dt>Output</dt>
               <dd><pre># Packages matching: installed
 # Name                # Installed # Synopsis
@@ -156,9 +171,9 @@ base-unix             base
 cmdliner              1.0.4       Declarative definition of command line interfaces for OCaml
 conf-c++              1.0         Virtual package relying on the c++ compiler
 conf-findutils        1           Virtual package relying on findutils
+conf-git              1.1         Virtual package relying on git
 conf-gmp              3           Virtual package relying on a GMP lib system installation
 coq                   dev         Formal proof management system
-coq-tactician-dummy   dev         A dummy implementation of Tactician
 cppo                  1.6.8       Code preprocessor like cpp for OCaml
 cudf                  0.9-1       CUDF library (part of the Mancoosi tools)
 dose3                 5.0.1-1     Dose library (part of Mancoosi tools)
@@ -172,13 +187,13 @@ ocaml-options-vanilla 1           Ensure that OCaml is compiled with no special 
 ocamlbuild            0.14.0      OCamlbuild is a build system with builtin rules to easily build most OCaml projects.
 ocamlfind             1.9.1       A library manager for OCaml
 ocamlgraph            2.0.0       A generic graph library for OCaml
-opam-client           2.1.0       Client library for opam 2.1
-opam-core             2.1.0       Core library for opam 2.1
+opam-client           2.1.2       Client library for opam 2.1
+opam-core             2.1.2       Core library for opam 2.1
 opam-file-format      2.1.3       Parser and printer for the opam file syntax
-opam-format           2.1.0       Format library for opam 2.1
-opam-repository       2.1.0       Repository library for opam 2.1
-opam-solver           2.1.0       Solver library for opam 2.1
-opam-state            2.1.0       State library for opam 2.1
+opam-format           2.1.2       Format library for opam 2.1
+opam-repository       2.1.2       Repository library for opam 2.1
+opam-solver           2.1.2       Solver library for opam 2.1
+opam-state            2.1.2       State library for opam 2.1
 re                    1.10.3      RE is a regular expression library for OCaml
 seq                   base        Compatibility package for OCaml&#39;s standard iterator type starting from 4.07.
 stdlib-shims          0.3.0       Backport some of the new stdlib features to older compiler
@@ -189,35 +204,33 @@ The following actions will be performed:
 &lt;&gt;&lt;&gt; Gathering sources &gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;
 [coq-tactician.dev] synchronised from git+https://github.com/coq-tactician/coq-tactician.git#coqdev
 &lt;&gt;&lt;&gt; Processing actions &lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;
-[ERROR] The compilation of coq-tactician failed at &quot;/home/bench/.opam/opam-init/hooks/sandbox.sh build dune build --release -j 4&quot;.
+[ERROR] The compilation of coq-tactician failed at &quot;/home/bench/.opam/opam-init/hooks/sandbox.sh build dune build -p coq-tactician -j 4 @install&quot;.
 #=== ERROR while compiling coq-tactician.dev ==================================#
 # context              2.0.8 | linux/x86_64 | ocaml-base-compiler.4.12.1 | file:///home/bench/run/opam-coq-archive/extra-dev
 # path                 ~/.opam/ocaml-base-compiler.4.12.1/.opam-switch/build/coq-tactician.dev
-# command              ~/.opam/opam-init/hooks/sandbox.sh build dune build --release -j 4
+# command              ~/.opam/opam-init/hooks/sandbox.sh build dune build -p coq-tactician -j 4 @install
 # exit-code            1
-# env-file             ~/.opam/log/coq-tactician-29810-e4db2f.env
-# output-file          ~/.opam/log/coq-tactician-29810-e4db2f.out
+# env-file             ~/.opam/log/coq-tactician-23698-e4db2f.env
+# output-file          ~/.opam/log/coq-tactician-23698-e4db2f.out
 ### output ###
-# Error: This variant pattern is expected to have type
 # [...]
-#        The constructor TacShowHyps does not belong to type Ltac_plugin.Tacexpr.gen_tactic_expr_r
-#     ocamlopt src/.tactician_ltac1_record_plugin.objs/native/tactician_ltac1_record_plugin__Map_all_the_things.{cmx,o} (exit 2)
-# (cd _build/default &amp;&amp; /home/bench/.opam/ocaml-base-compiler.4.12.1/bin/ocamlopt.opt -w -40 -rectypes -w -27 -warn-error -A -g -I src/.tactician_ltac1_record_plugin.objs/byte -I src/.tactician_ltac1_record_plugin.objs/native -I /home/bench/.opam/ocaml-base-compiler.4.12.1/lib/coq-core/boot -I /home/bench/.opam/ocaml-base-compiler.4.12.1/lib/coq-core/clib -I /home/bench/.opam/ocaml-base-compile[...]
-# File &quot;src/map_all_the_things.ml&quot;, line 1222, characters 7-18:
-# 1222 |      | TacShowHyps t -&gt;
-#               ^^^^^^^^^^^
-# Error: This variant pattern is expected to have type
-#          &lt; constant : &#39;a; dterm : &#39;b; level : &#39;c; name : Names.Id.t CAst.t;
-#            pattern : &#39;d; reference : &#39;e; tacexpr : &#39;f; term : &#39;b &gt;
-#          Ltac_plugin.Tacexpr.gen_tactic_expr_r
-#        The constructor TacShowHyps does not belong to type Ltac_plugin.Tacexpr.gen_tactic_expr_r
+# *** Warning: in file Ltac1/Record.v, declared ML module extraction_plugin has not been found!
+# *** Warning: in file Ltac1/Record.v, declared ML module funind_plugin has not been found!
+#       ocamlc src/.tactician_ltac1_record_plugin.objs/byte/tactician_ltac1_record_plugin__Tactic_annotate.{cmi,cmo,cmt} (exit 2)
+# (cd _build/default &amp;&amp; /home/bench/.opam/ocaml-base-compiler.4.12.1/bin/ocamlc.opt -w -40 -rectypes -w -27 -warn-error -A -g -bin-annot -I src/.tactician_ltac1_record_plugin.objs/byte -I /home/bench/.opam/ocaml-base-compiler.4.12.1/lib/coq-core/boot -I /home/bench/.opam/ocaml-base-compiler.4.12.1/lib/coq-core/clib -I /home/bench/.opam/ocaml-base-compiler.4.12.1/lib/coq-core/config -I /home/ben[...]
+# File &quot;src/tactic_annotate.ml&quot;, lines 28-30, characters 2-15:
+# 28 | ..declare_object @@ global_object_nodischarge &quot;TacticianDecompositionSetting&quot;
+# 29 |     ~cache:(fun (_,m) -&gt; tac_ast_map_ref := m)
+# 30 |     ~subst:None
+# Error: This expression has type &#39;a * &#39;b TacAstMap.t -&gt; Libobject.obj
+#        but an expression was expected of type tac_ast_map -&gt; Libobject.obj
+#        Type &#39;a * &#39;b TacAstMap.t is not compatible with type
+#          tac_ast_map = tac_decomposition TacAstMap.t 
 &lt;&gt;&lt;&gt; Error report &lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;
 +- The following actions failed
 | - build coq-tactician dev
 +- 
 - No changes have been performed
-The packages you requested declare the following system dependencies. Please make sure they are installed before retrying:
-    git
 # Run eval $(opam env) to update the current shell environment
 </pre></dd>
             </dl>
