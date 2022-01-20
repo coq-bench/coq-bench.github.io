@@ -42,7 +42,7 @@
                 <span class="label label-danger">Error 🔥</span>
               </small>
             </h1>
-            <p>📅 <em><script>document.write(moment("2021-11-21 13:28:25 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2021-11-21 13:28:25 UTC)</em><p>
+            <p>📅 <em><script>document.write(moment("2022-01-20 06:05:22 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2022-01-20 06:05:22 UTC)</em><p>
             <h2>Context</h2>
             <pre># Packages matching: installed
 # Name              # Installed # Synopsis
@@ -93,6 +93,7 @@ tags: [
 depends: [
   &quot;coq&quot; { (&gt;= &quot;8.10.2&quot; &amp; &lt; &quot;8.15~&quot;) | (= &quot;dev&quot;) }
 ]
+patches: [&quot;ocamlrunparam.patch&quot;]
 build: [make &quot;-j%{jobs}%&quot;]
 install: [make &quot;install&quot;]
 url {
@@ -140,7 +141,7 @@ url {
               <dt>Return code</dt>
               <dd>7936</dd>
               <dt>Duration</dt>
-              <dd>39 s</dd>
+              <dd>43 s</dd>
               <dt>Output</dt>
               <dd><pre># Packages matching: installed
 # Name              # Installed # Synopsis
@@ -164,6 +165,7 @@ Processing  1/1: [coq-stdpp.1.6.0: http]
 [coq-stdpp.1.6.0] downloaded from https://gitlab.mpi-sws.org/iris/stdpp/-/archive/coq-stdpp-1.6.0.tar.gz
 Processing  1/1:
 &lt;&gt;&lt;&gt; Processing actions &lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;
+Processing  1/2: [coq-stdpp: patch]
 Processing  1/2: [coq-stdpp: make]
 + /home/bench/.opam/opam-init/hooks/sandbox.sh &quot;build&quot; &quot;make&quot; &quot;-j4&quot; (CWD=/home/bench/.opam/ocaml-base-compiler.4.10.2/.opam-switch/build/coq-stdpp.1.6.0)
 - &quot;coq_makefile&quot; -f _CoqProject -o Makefile.coq 
@@ -215,14 +217,15 @@ Processing  1/2: [coq-stdpp: make]
 - whenever possible. Use the attributes #[local], #[global] and #[export]
 - depending on your choice. For example: &quot;#[export] Typeclasses Transparent
 - foo.&quot; [deprecated-typeclasses-transparency-without-locality,deprecated]
-- COQC theories/proof_irrel.v
 - COQC theories/well_founded.v
+- COQC theories/proof_irrel.v
 - COQC theories/decidable.v
 - COQC theories/tactics.v
 - COQC theories/option.v
 - COQC theories/fin.v
 - COQC theories/orders.v
 - COQC theories/telescopes.v
+- COQC theories/streams.v
 - File &quot;./theories/telescopes.v&quot;, line 191, characters 0-34:
 - Warning: The default value for Typeclasses Opaque and Typeclasses Transparent
 - locality is currently &quot;local&quot; in a section and &quot;global&quot; otherwise, but is
@@ -232,7 +235,6 @@ Processing  1/2: [coq-stdpp: make]
 - whenever possible. Use the attributes #[local], #[global] and #[export]
 - depending on your choice. For example: &quot;#[export] Typeclasses Transparent
 - foo.&quot; [deprecated-typeclasses-transparency-without-locality,deprecated]
-- COQC theories/streams.v
 - COQC theories/functions.v
 - COQC theories/hlist.v
 - File &quot;./theories/option.v&quot;, line 147, characters 0-32:
@@ -248,8 +250,9 @@ Processing  1/2: [coq-stdpp: make]
 - COQC theories/numbers.v
 - COQTEST tests/tactics.v (ref: tests/tactics.ref)
 - --- tests/tactics.ref	2021-11-05 19:19:06.000000000 +0000
-- +++ /tmp/tmp.l7h6tIIeNe	2021-11-18 05:00:33.543567314 +0000
-- @@ -1,6 +1,8 @@
+- +++ /tmp/tmp.WmEb28DZG8	2022-01-19 21:32:59.517988830 +0000
+- @@ -1,6 +1,9 @@
+- +File &quot;/home/bench/.opam/ocaml-base-compiler.4.10.2/.opam-switch/build/coq-stdpp.1.6.0/tests/tactics.v&quot;, line 38, characters 2-29:
 -  The command has indeed failed with message:
 -  Failed to progress.
 - +File &quot;/home/bench/.opam/ocaml-base-compiler.4.10.2/.opam-switch/build/coq-stdpp.1.6.0/tests/tactics.v&quot;, line 39, characters 16-28:
@@ -258,7 +261,7 @@ Processing  1/2: [coq-stdpp: make]
 - +File &quot;/home/bench/.opam/ocaml-base-compiler.4.10.2/.opam-switch/build/coq-stdpp.1.6.0/tests/tactics.v&quot;, line 49, characters 22-35:
 -  The command has indeed failed with message:
 -  Failed to progress.
-- make[2]: *** [Makefile.coq.local:43: tests/tactics.vo] Error 1
+- make[2]: *** [Makefile.coq.local:44: tests/tactics.vo] Error 1
 - make[2]: *** Waiting for unfinished jobs....
 - File &quot;./theories/numbers.v&quot;, line 17, characters 0-22:
 - Warning: The default value for Typeclasses Opaque and Typeclasses Transparent
@@ -350,6 +353,18 @@ Processing  1/2: [coq-stdpp: make]
 - whenever possible. Use the attributes #[local], #[global] and #[export]
 - depending on your choice. For example: &quot;#[export] Typeclasses Transparent
 - foo.&quot; [deprecated-typeclasses-transparency-without-locality,deprecated]
+- File &quot;./theories/numbers.v&quot;, line 1353, characters 13-23:
+- Warning: Notation plus_assoc is deprecated since 8.16.
+- The Arith.Plus file is obsolete. Use Nat.add_assoc instead.
+- [deprecated-syntactic-definition,deprecated]
+- File &quot;./theories/numbers.v&quot;, line 1353, characters 13-23:
+- Warning: Notation plus_assoc is deprecated since 8.16.
+- The Arith.Plus file is obsolete. Use Nat.add_assoc instead.
+- [deprecated-syntactic-definition,deprecated]
+- File &quot;./theories/numbers.v&quot;, line 1353, characters 13-23:
+- Warning: Notation plus_assoc is deprecated since 8.16.
+- The Arith.Plus file is obsolete. Use Nat.add_assoc instead.
+- [deprecated-syntactic-definition,deprecated]
 - make[1]: *** [Makefile.coq:387: all] Error 2
 - make[1]: Leaving directory &#39;/home/bench/.opam/ocaml-base-compiler.4.10.2/.opam-switch/build/coq-stdpp.1.6.0&#39;
 - make: *** [Makefile:3: all] Error 2
@@ -359,19 +374,19 @@ Processing  1/2: [coq-stdpp: make]
 # path                 ~/.opam/ocaml-base-compiler.4.10.2/.opam-switch/build/coq-stdpp.1.6.0
 # command              ~/.opam/opam-init/hooks/sandbox.sh build make -j4
 # exit-code            2
-# env-file             ~/.opam/log/coq-stdpp-9289-335865.env
-# output-file          ~/.opam/log/coq-stdpp-9289-335865.out
+# env-file             ~/.opam/log/coq-stdpp-30808-8b8a2d.env
+# output-file          ~/.opam/log/coq-stdpp-30808-8b8a2d.out
 ### output ###
 # [...]
-# File &quot;./theories/numbers.v&quot;, line 767, characters 0-26:
-# Warning: The default value for Typeclasses Opaque and Typeclasses Transparent
-# locality is currently &quot;local&quot; in a section and &quot;global&quot; otherwise, but is
-# scheduled to change in a future release. For the time being, adding typeclass
-# transparency hints outside of sections without specifying an explicit
-# locality attribute is therefore deprecated. It is recommended to use &quot;export&quot;
-# whenever possible. Use the attributes #[local], #[global] and #[export]
-# depending on your choice. For example: &quot;#[export] Typeclasses Transparent
-# foo.&quot; [deprecated-typeclasses-transparency-without-locality,deprecated]
+# [deprecated-syntactic-definition,deprecated]
+# File &quot;./theories/numbers.v&quot;, line 1353, characters 13-23:
+# Warning: Notation plus_assoc is deprecated since 8.16.
+# The Arith.Plus file is obsolete. Use Nat.add_assoc instead.
+# [deprecated-syntactic-definition,deprecated]
+# File &quot;./theories/numbers.v&quot;, line 1353, characters 13-23:
+# Warning: Notation plus_assoc is deprecated since 8.16.
+# The Arith.Plus file is obsolete. Use Nat.add_assoc instead.
+# [deprecated-syntactic-definition,deprecated]
 # make[1]: *** [Makefile.coq:387: all] Error 2
 # make[1]: Leaving directory &#39;/home/bench/.opam/ocaml-base-compiler.4.10.2/.opam-switch/build/coq-stdpp.1.6.0&#39;
 # make: *** [Makefile:3: all] Error 2
