@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>flocq: Error 🔥</title>
+    <title>flocq: Not compatible 👼</title>
     <link rel="shortcut icon" type="image/png" href="../../../../../favicon.png" />
     <link href="../../../../../bootstrap.min.css" rel="stylesheet">
     <link href="../../../../../bootstrap-custom.css" rel="stylesheet">
@@ -39,10 +39,10 @@
               flocq
               <small>
                 3.4.2
-                <span class="label label-danger">Error 🔥</span>
+                <span class="label label-info">Not compatible 👼</span>
               </small>
             </h1>
-            <p>📅 <em><script>document.write(moment("2022-01-19 05:46:27 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2022-01-19 05:46:27 UTC)</em><p>
+            <p>📅 <em><script>document.write(moment("2022-01-21 23:58:35 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2022-01-21 23:58:35 UTC)</em><p>
             <h2>Context</h2>
             <pre># Packages matching: installed
 # Name                # Installed # Synopsis
@@ -50,7 +50,7 @@ base-bigarray         base
 base-threads          base
 base-unix             base
 conf-findutils        1           Virtual package relying on findutils
-conf-gmp              3           Virtual package relying on a GMP lib system installation
+conf-gmp              4           Virtual package relying on a GMP lib system installation
 coq                   8.15.0      Formal proof management system
 dune                  2.9.1       Fast, portable, and opinionated build system
 ocaml                 4.13.1      The OCaml compiler (virtual package)
@@ -73,7 +73,7 @@ build: [
 ]
 install: [&quot;./remake&quot; &quot;install&quot;]
 depends: [
-  &quot;coq&quot; {&gt;= &quot;8.7&quot;}
+  &quot;coq&quot; {&gt;= &quot;8.7&quot; &amp; &lt; &quot;8.15~&quot;}
   &quot;conf-autoconf&quot; {build &amp; dev}
   (&quot;conf-g++&quot; {build} | &quot;conf-clang&quot; {build})
 ]
@@ -105,282 +105,41 @@ url {
               <dt>Command</dt>
               <dd><code>opam install -y --show-action coq-flocq.3.4.2 coq.8.15.0</code></dd>
               <dt>Return code</dt>
-              <dd>0</dd>
+              <dd>5120</dd>
+              <dt>Output</dt>
+              <dd><pre>[NOTE] Package coq is already installed (current version is 8.15.0).
+The following dependencies couldn&#39;t be met:
+  - coq-flocq -&gt; coq &lt; 8.15~ -&gt; ocaml &lt; 4.12
+      base of this switch (use `--unlock-base&#39; to force)
+Your request can&#39;t be satisfied:
+  - No available version of coq satisfies the constraints
+No solution found, exiting
+</pre></dd>
             </dl>
             <p>Dry install without Coq/switch base, to test if the problem was incompatibility with the current Coq/OCaml version:</p>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>true</code></dd>
+              <dd><code>opam remove -y coq; opam install -y --show-action --unlock-base coq-flocq.3.4.2</code></dd>
               <dt>Return code</dt>
               <dd>0</dd>
             </dl>
             <h2>Install dependencies</h2>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>opam list; echo; ulimit -Sv 4000000; timeout 4h opam install -y --deps-only coq-flocq.3.4.2 coq.8.15.0</code></dd>
+              <dd><code>true</code></dd>
               <dt>Return code</dt>
               <dd>0</dd>
               <dt>Duration</dt>
-              <dd>14 s</dd>
+              <dd>0 s</dd>
             </dl>
             <h2>Install 🚀</h2>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>opam list; echo; ulimit -Sv 16000000; timeout 4h opam install -y -v coq-flocq.3.4.2 coq.8.15.0</code></dd>
+              <dd><code>true</code></dd>
               <dt>Return code</dt>
-              <dd>7936</dd>
+              <dd>0</dd>
               <dt>Duration</dt>
-              <dd>5 m 11 s</dd>
-              <dt>Output</dt>
-              <dd><pre># Packages matching: installed
-# Name                # Installed # Synopsis
-base-bigarray         base
-base-threads          base
-base-unix             base
-conf-findutils        1           Virtual package relying on findutils
-conf-g++              1.0         Virtual package relying on the g++ compiler (for C++)
-conf-gmp              3           Virtual package relying on a GMP lib system installation
-coq                   8.15.0      Formal proof management system
-dune                  2.9.1       Fast, portable, and opinionated build system
-ocaml                 4.13.1      The OCaml compiler (virtual package)
-ocaml-base-compiler   4.13.1      Official release 4.13.1
-ocaml-config          2           OCaml Switch Configuration
-ocaml-options-vanilla 1           Ensure that OCaml is compiled with no special options enabled
-ocamlfind             1.9.1       A library manager for OCaml
-zarith                1.12        Implements arithmetic and logical operations over arbitrary-precision integers
-[NOTE] Package coq is already installed (current version is 8.15.0).
-The following actions will be performed:
-  - install coq-flocq 3.4.2
-&lt;&gt;&lt;&gt; Gathering sources &gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;
-Processing  1/1: [coq-flocq.3.4.2: http]
-[coq-flocq.3.4.2] downloaded from https://flocq.gitlabpages.inria.fr/releases/flocq-3.4.2.tar.gz
-Processing  1/1:
-&lt;&gt;&lt;&gt; Processing actions &lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;
-Processing  1/2: [coq-flocq: ./configure]
-+ /home/bench/.opam/opam-init/hooks/sandbox.sh &quot;build&quot; &quot;./configure&quot; (CWD=/home/bench/.opam/ocaml-base-compiler.4.13.1/.opam-switch/build/coq-flocq.3.4.2)
-- checking for coqc... /home/bench/.opam/ocaml-base-compiler.4.13.1/bin/coqc
-- checking Coq version... 
-- 8.15.0
-- checking for coqdep... /home/bench/.opam/ocaml-base-compiler.4.13.1/bin/coqdep
-- checking for coqdoc... /home/bench/.opam/ocaml-base-compiler.4.13.1/bin/coqdoc
-- checking for g++... g++
-- checking whether the C++ compiler works... yes
-- checking for C++ compiler default output file name... a.out
-- checking for suffix of executables... 
-- checking whether we are cross compiling... 
-- no
-- checking for suffix of object files... o
-- checking whether we are using the GNU C++ compiler... yes
-- checking whether g++ accepts -g... yes
-- configure: building remake...
-- /usr/bin/ld: /opam-tmp/cchWw9np.o: in function `main&#39;:
-- remake.cpp:(.text.startup+0xae0): warning: the use of `tempnam&#39; is dangerous, better use `mkstemp&#39;
-- configure: creating ./config.status
-- config.status: creating Remakefile
-- config.status: creating src/Version.v
-- config.status: creating src/IEEE754/SpecFloatCompat.v
-Processing  1/2: [coq-flocq: ./remake]
-+ /home/bench/.opam/opam-init/hooks/sandbox.sh &quot;build&quot; &quot;./remake&quot; &quot;-j4&quot; (CWD=/home/bench/.opam/ocaml-base-compiler.4.13.1/.opam-switch/build/coq-flocq.3.4.2)
-- Building src/Version.vo
-- Building src/Core/Raux.vo
-- Building src/Core/Zaux.vo
-- Building src/Core/Defs.vo
-- Building src/Core/Digits.vo
-- Building src/Core/Float_prop.vo
-- Building src/IEEE754/SpecFloatCompat.vo
-- Building src/Core/FIX.vo
-- Building src/Core/FLT.vo
-- Building src/Core/FLX.vo
-- Building src/Core/Generic_fmt.vo
-- Building src/Core/Round_NE.vo
-- Building src/Core/Round_pred.vo
-- Finished src/Version.vo
-- Building src/Core/Ulp.vo
-- Building src/Core/FTZ.vo
-- Building src/Core/Core.vo
-- Building src/Calc/Bracket.vo
-- Building src/Calc/Div.vo
-- Building src/Calc/Operations.vo
-- Finished src/IEEE754/SpecFloatCompat.vo
-- Building src/Calc/Round.vo
-- Building src/Calc/Sqrt.vo
-- Building src/Prop/Div_sqrt_error.vo
-- Building src/Prop/Mult_error.vo
-- Building src/Prop/Plus_error.vo
-- Building src/Prop/Relative.vo
-- Building src/Prop/Sterbenz.vo
-- Building src/Prop/Round_odd.vo
-- Building src/Prop/Double_rounding.vo
-- Building src/IEEE754/PrimFloat.vo
-- Building src/IEEE754/BinarySingleNaN.vo
-- Building src/IEEE754/Binary.vo
-- Building src/IEEE754/Bits.vo
-- Building src/Pff/Pff.vo
-- Building src/Pff/Pff2FlocqAux.vo
-- Building src/Pff/Pff2Flocq.vo
-- Finished src/Core/Zaux.vo
-- Finished src/Core/Raux.vo
-- File &quot;./src/Pff/Pff.v&quot;, line 1088, characters 0-30:
-- Warning:
-- New coercion path [Z.of_nat; IZR] : nat &gt;-&gt; R is ambiguous with existing 
-- [INR] : nat &gt;-&gt; R. [ambiguous-paths,typechecker]
-- Finished src/Core/Digits.vo
-- File &quot;./src/Pff/Pff.v&quot;, line 1293, characters 0-16:
-- Warning:
-- New coercion path [Z.of_nat; IZR] : nat &gt;-&gt; R is ambiguous with existing 
-- [INR] : nat &gt;-&gt; R. [ambiguous-paths,typechecker]
-- Finished src/Core/Defs.vo
-- Finished src/Core/Float_prop.vo
-- Finished src/Core/Round_pred.vo
-- Finished src/Calc/Operations.vo
-- Finished src/Calc/Bracket.vo
-- Finished src/Core/Generic_fmt.vo
-- Finished src/Prop/Sterbenz.vo
-- Finished src/Calc/Div.vo
-- Finished src/Calc/Sqrt.vo
-- Finished src/Core/Ulp.vo
-- Finished src/Core/Round_NE.vo
-- Finished src/Core/FIX.vo
-- Finished src/Core/FLX.vo
-- Finished src/Core/FTZ.vo
-- Finished src/Core/FLT.vo
-- Finished src/Core/Core.vo
-- Finished src/Prop/Relative.vo
-- Finished src/Prop/Round_odd.vo
-- Finished src/Prop/Plus_error.vo
-- Finished src/Calc/Round.vo
-- Finished src/Prop/Mult_error.vo
-- Finished src/Prop/Double_rounding.vo
-- Finished src/IEEE754/Binary.vo
-- Finished src/IEEE754/BinarySingleNaN.vo
-- File &quot;./src/IEEE754/Bits.v&quot;, line 183, characters 0-79:
-- Warning:
-- The syntax [at ... with ...] is deprecated. Use [with ... at ...] instead.
-- [conversion_at_with,deprecated]
-- Finished src/Prop/Div_sqrt_error.vo
-- File &quot;./src/IEEE754/PrimFloat.v&quot;, line 257, characters 2-6:
-- Warning: Notation to_Z is deprecated since 8.14. Use Uint63.to_Z instead
-- [deprecated-syntactic-definition,deprecated]
-- File &quot;./src/IEEE754/PrimFloat.v&quot;, line 267, characters 10-15:
-- Warning: Notation ldexp is deprecated since 8.15.0. Use Z.ldexp instead.
-- [deprecated-syntactic-definition,deprecated]
-- File &quot;./src/IEEE754/PrimFloat.v&quot;, line 274, characters 8-18:
-- Warning: Notation ldexp_spec is deprecated since 8.15.0.
-- Use Z_ldexp_spec instead. [deprecated-syntactic-definition,deprecated]
-- File &quot;./src/IEEE754/PrimFloat.v&quot;, line 274, characters 8-18:
-- Warning: Notation ldexp_spec is deprecated since 8.15.0.
-- Use Z_ldexp_spec instead. [deprecated-syntactic-definition,deprecated]
-- File &quot;./src/IEEE754/PrimFloat.v&quot;, line 274, characters 8-18:
-- Warning: Notation ldexp_spec is deprecated since 8.15.0.
-- Use Z_ldexp_spec instead. [deprecated-syntactic-definition,deprecated]
-- File &quot;./src/IEEE754/PrimFloat.v&quot;, line 284, characters 55-59:
-- Warning: Notation to_Z is deprecated since 8.14. Use Uint63.to_Z instead
-- [deprecated-syntactic-definition,deprecated]
-- File &quot;./src/IEEE754/PrimFloat.v&quot;, line 301, characters 16-21:
-- Warning: Notation frexp is deprecated since 8.15.0. Use Z.frexp instead.
-- [deprecated-syntactic-definition,deprecated]
-- File &quot;./src/IEEE754/PrimFloat.v&quot;, line 305, characters 12-22:
-- Warning: Notation frexp_spec is deprecated since 8.15.0.
-- Use Z_frexp_spec instead. [deprecated-syntactic-definition,deprecated]
-- File &quot;./src/IEEE754/PrimFloat.v&quot;, line 305, characters 12-22:
-- Warning: Notation frexp_spec is deprecated since 8.15.0.
-- Use Z_frexp_spec instead. [deprecated-syntactic-definition,deprecated]
-- File &quot;./src/IEEE754/PrimFloat.v&quot;, line 306, characters 9-14:
-- Warning: Notation frexp is deprecated since 8.15.0. Use Z.frexp instead.
-- [deprecated-syntactic-definition,deprecated]
-- File &quot;./src/IEEE754/PrimFloat.v&quot;, line 324, characters 14-18:
-- Warning: Notation to_Z is deprecated since 8.14. Use Uint63.to_Z instead
-- [deprecated-syntactic-definition,deprecated]
-- File &quot;./src/IEEE754/PrimFloat.v&quot;, line 328, characters 0-13:
-- Warning: Notation frexp is deprecated since 8.15.0. Use Z.frexp instead.
-- [deprecated-syntactic-definition,deprecated]
-- File &quot;./src/IEEE754/PrimFloat.v&quot;, line 328, characters 0-13:
-- Warning: Notation frexp is deprecated since 8.15.0. Use Z.frexp instead.
-- [deprecated-syntactic-definition,deprecated]
-- File &quot;./src/IEEE754/PrimFloat.v&quot;, line 360, characters 5-10:
-- Warning: Notation frexp is deprecated since 8.15.0. Use Z.frexp instead.
-- [deprecated-syntactic-definition,deprecated]
-- File &quot;./src/IEEE754/PrimFloat.v&quot;, line 360, characters 5-10:
-- Warning: Notation frexp is deprecated since 8.15.0. Use Z.frexp instead.
-- [deprecated-syntactic-definition,deprecated]
-- File &quot;./src/IEEE754/PrimFloat.v&quot;, line 377, characters 14-24:
-- Warning: Notation frexp_spec is deprecated since 8.15.0.
-- Use Z_frexp_spec instead. [deprecated-syntactic-definition,deprecated]
-- File &quot;./src/IEEE754/PrimFloat.v&quot;, line 377, characters 14-24:
-- Warning: Notation frexp_spec is deprecated since 8.15.0.
-- Use Z_frexp_spec instead. [deprecated-syntactic-definition,deprecated]
-- File &quot;./src/IEEE754/PrimFloat.v&quot;, line 379, characters 7-12:
-- Warning: Notation frexp is deprecated since 8.15.0. Use Z.frexp instead.
-- [deprecated-syntactic-definition,deprecated]
-- File &quot;./src/IEEE754/PrimFloat.v&quot;, line 379, characters 7-12:
-- Warning: Notation frexp is deprecated since 8.15.0. Use Z.frexp instead.
-- [deprecated-syntactic-definition,deprecated]
-- File &quot;./src/IEEE754/PrimFloat.v&quot;, line 385, characters 47-57:
-- Warning: Notation ldexp_spec is deprecated since 8.15.0.
-- Use Z_ldexp_spec instead. [deprecated-syntactic-definition,deprecated]
-- File &quot;./src/IEEE754/PrimFloat.v&quot;, line 385, characters 47-57:
-- Warning: Notation ldexp_spec is deprecated since 8.15.0.
-- Use Z_ldexp_spec instead. [deprecated-syntactic-definition,deprecated]
-- File &quot;./src/IEEE754/PrimFloat.v&quot;, line 385, characters 47-57:
-- Warning: Notation ldexp_spec is deprecated since 8.15.0.
-- Use Z_ldexp_spec instead. [deprecated-syntactic-definition,deprecated]
-- File &quot;./src/IEEE754/PrimFloat.v&quot;, line 509, characters 10-18:
-- Warning: Notation of_int63 is deprecated since 8.14. Use of_uint63 instead.
-- [deprecated-syntactic-definition,deprecated]
-- File &quot;./src/IEEE754/PrimFloat.v&quot;, line 510, characters 51-55:
-- Warning: Notation to_Z is deprecated since 8.14. Use Uint63.to_Z instead
-- [deprecated-syntactic-definition,deprecated]
-- File &quot;./src/IEEE754/PrimFloat.v&quot;, line 515, characters 8-21:
-- Warning: Notation of_int63_spec is deprecated since 8.14.
-- Use of_uint63_spec instead. [deprecated-syntactic-definition,deprecated]
-- File &quot;./src/IEEE754/PrimFloat.v&quot;, line 515, characters 8-21:
-- Warning: Notation of_int63_spec is deprecated since 8.14.
-- Use of_uint63_spec instead. [deprecated-syntactic-definition,deprecated]
-- File &quot;./src/IEEE754/PrimFloat.v&quot;, line 515, characters 8-21:
-- Warning: Notation of_int63_spec is deprecated since 8.14.
-- Use of_uint63_spec instead. [deprecated-syntactic-definition,deprecated]
-- File &quot;./src/IEEE754/PrimFloat.v&quot;, line 521, characters 6-7:
-- Error: Syntax error: [term] expected after &#39;=&#39; (in [term]).
-- 
-- Finished src/IEEE754/Bits.vo
-- Failed to build src/IEEE754/PrimFloat.vo
-- Failed to build all
-- File &quot;./src/Pff/Pff.v&quot;, line 18564, characters 0-62:
-- Error: No such goal.
-- 
-- Failed to build src/Pff/Pff.vo
-- Failed to build src/Pff/Pff2FlocqAux.vo
-- Failed to build src/Pff/Pff2Flocq.vo
-[ERROR] The compilation of coq-flocq failed at &quot;/home/bench/.opam/opam-init/hooks/sandbox.sh build ./remake -j4&quot;.
-#=== ERROR while compiling coq-flocq.3.4.2 ====================================#
-# context              2.0.10 | linux/x86_64 | ocaml-base-compiler.4.13.1 | file:///home/bench/run/opam-coq-archive/released
-# path                 ~/.opam/ocaml-base-compiler.4.13.1/.opam-switch/build/coq-flocq.3.4.2
-# command              ~/.opam/opam-init/hooks/sandbox.sh build ./remake -j4
-# exit-code            1
-# env-file             ~/.opam/log/coq-flocq-17836-2dea01.env
-# output-file          ~/.opam/log/coq-flocq-17836-2dea01.out
-### output ###
-# [...]
-# File &quot;./src/IEEE754/PrimFloat.v&quot;, line 521, characters 6-7:
-# Error: Syntax error: [term] expected after &#39;=&#39; (in [term]).
-# 
-# Finished src/IEEE754/Bits.vo
-# Failed to build src/IEEE754/PrimFloat.vo
-# Failed to build all
-# File &quot;./src/Pff/Pff.v&quot;, line 18564, characters 0-62:
-# Error: No such goal.
-# 
-# Failed to build src/Pff/Pff.vo
-# Failed to build src/Pff/Pff2FlocqAux.vo
-# Failed to build src/Pff/Pff2Flocq.vo
-&lt;&gt;&lt;&gt; Error report &lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;
-+- The following actions failed
-| - build coq-flocq 3.4.2
-+- 
-- No changes have been performed
-# Run eval $(opam env) to update the current shell environment
-&#39;opam install -y -v coq-flocq.3.4.2 coq.8.15.0&#39; failed.
-</pre></dd>
+              <dd>0 s</dd>
             </dl>
             <h2>Installation size</h2>
             <p>No files were installed.</p>
