@@ -42,7 +42,7 @@
                 <span class="label label-danger">Error 🔥</span>
               </small>
             </h1>
-            <p>📅 <em><script>document.write(moment("2021-09-29 04:14:53 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2021-09-29 04:14:53 UTC)</em><p>
+            <p>📅 <em><script>document.write(moment("2022-01-23 14:46:44 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2022-01-23 14:46:44 UTC)</em><p>
             <h2>Context</h2>
             <pre># Packages matching: installed
 # Name              # Installed # Synopsis
@@ -93,6 +93,7 @@ tags: [
 depends: [
   &quot;coq&quot; { (&gt;= &quot;8.10.2&quot; &amp; &lt; &quot;8.14~&quot;) | (= &quot;dev&quot;) }
 ]
+patches: [ &quot;0001-Windows-CI-strip-CR-in-result-comparison.patch&quot; ]
 build: [make &quot;-j%{jobs}%&quot;]
 install: [make &quot;install&quot;]
 url {
@@ -131,7 +132,7 @@ url {
               <dt>Return code</dt>
               <dd>0</dd>
               <dt>Duration</dt>
-              <dd>30 s</dd>
+              <dd>25 s</dd>
             </dl>
             <h2>Install 🚀</h2>
             <dl class="dl-horizontal">
@@ -140,7 +141,7 @@ url {
               <dt>Return code</dt>
               <dd>7936</dd>
               <dt>Duration</dt>
-              <dd>1 m 12 s</dd>
+              <dd>56 s</dd>
               <dt>Output</dt>
               <dd><pre># Packages matching: installed
 # Name              # Installed # Synopsis
@@ -164,6 +165,7 @@ Processing  1/1: [coq-stdpp.1.5.0: http]
 [coq-stdpp.1.5.0] downloaded from https://gitlab.mpi-sws.org/iris/stdpp/-/archive/coq-stdpp-1.5.0.tar.gz
 Processing  1/1:
 &lt;&gt;&lt;&gt; Processing actions &lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;
+Processing  1/2: [coq-stdpp: patch]
 Processing  1/2: [coq-stdpp: make]
 + /home/bench/.opam/opam-init/hooks/sandbox.sh &quot;build&quot; &quot;make&quot; &quot;-j4&quot; (CWD=/home/bench/.opam/ocaml-base-compiler.4.09.1/.opam-switch/build/coq-stdpp.1.5.0)
 - &quot;coq_makefile&quot; -f _CoqProject -o Makefile.coq 
@@ -172,6 +174,15 @@ Processing  1/2: [coq-stdpp: make]
 - COQDEP TESTFILES
 - COQC theories/options.v
 - COQC theories/base.v
+- File &quot;./theories/base.v&quot;, line 94, characters 0-29:
+- Warning: The default value for Typeclasses Opaque and Typeclasses Transparent
+- locality is currently &quot;local&quot; in a section and &quot;global&quot; otherwise, but is
+- scheduled to change in a future release. For the time being, adding typeclass
+- transparency hints outside of sections without specifying an explicit
+- locality attribute is therefore deprecated. It is recommended to use &quot;export&quot;
+- whenever possible. Use the attributes #[local], #[global] and #[export]
+- depending on your choice. For example: &quot;#[export] Typeclasses Transparent
+- foo.&quot; [deprecated-typeclasses-transparency-without-locality,deprecated]
 - File &quot;./theories/base.v&quot;, line 117, characters 0-29:
 - Warning: The default value for instance locality is currently &quot;local&quot; in a
 - section and &quot;global&quot; otherwise, but is scheduled to change in a future
@@ -275,8 +286,13 @@ Processing  1/2: [coq-stdpp: make]
 - specifying an explicit locality attribute is therefore deprecated. It is
 - recommended to use &quot;export&quot; whenever possible. Use the attributes #[local],
 - #[global] and #[export] depending on your choice. For example: &quot;#[export]
+- Instanc
+[...] truncated
+ It is
+- recommended to use &quot;export&quot; whenever possible. Use the attributes #[local],
+- #[global] and #[export] depending on your choice. For example: &quot;#[export]
 - Instance Foo : Bar := baz.&quot; [deprecated-instance-without-locality,deprecated]
-- File &quot;./theories/base.v&quot;, line 280, characters 0-34:
+- File &quot;./theories/base.v&quot;, line 1142, characters 0-33:
 - Warning: The default value for instance locality is currently &quot;local&quot; in a
 - section and &quot;global&quot; otherwise, but is scheduled to change in a future
 - release. For the time being, adding instances outside of sections without
@@ -284,9 +300,9 @@ Processing  1/2: [coq-stdpp: make]
 - recommended to use &quot;export&quot; whenever possible. Use the attributes #[local],
 - #[global] and #[export] depending on your choice. For example: &quot;#[export]
 - Instance Foo : Bar := baz.&quot; [deprecated-instance-without-locality,deprecated]
-- File &quot;./theories/base.v&quot;, line 440, cha
-[...] truncated
-change in a future
+- File &quot;./theories/base.v&quot;, line 1150, characters 0-33:
+- Warning: The default value for instance locality is currently &quot;local&quot; in a
+- section and &quot;global&quot; otherwise, but is scheduled to change in a future
 - release. For the time being, adding instances outside of sections without
 - specifying an explicit locality attribute is therefore deprecated. It is
 - recommended to use &quot;export&quot; whenever possible. Use the attributes #[local],
@@ -357,55 +373,40 @@ change in a future
 - Instance Foo : Bar := baz.&quot; [deprecated-instance-without-locality,deprecated]
 - COQTEST tests/notation.v (ref: tests/notation.ref)
 - COQTEST tests/tactics.v (ref: tests/tactics.ref)
+- File &quot;./theories/telescopes.v&quot;, line 191, characters 0-34:
+- Warning: The default value for Typeclasses Opaque and Typeclasses Transparent
+- locality is currently &quot;local&quot; in a section and &quot;global&quot; otherwise, but is
+- scheduled to change in a future release. For the time being, adding typeclass
+- transparency hints outside of sections without specifying an explicit
+- locality attribute is therefore deprecated. It is recommended to use &quot;export&quot;
+- whenever possible. Use the attributes #[local], #[global] and #[export]
+- depending on your choice. For example: &quot;#[export] Typeclasses Transparent
+- foo.&quot; [deprecated-typeclasses-transparency-without-locality,deprecated]
 - COQC theories/streams.v
+- File &quot;./theories/option.v&quot;, line 152, characters 0-32:
+- Warning: The default value for Typeclasses Opaque and Typeclasses Transparent
+- locality is currently &quot;local&quot; in a section and &quot;global&quot; otherwise, but is
+- scheduled to change in a future release. For the time being, adding typeclass
+- transparency hints outside of sections without specifying an explicit
+- locality attribute is therefore deprecated. It is recommended to use &quot;export&quot;
+- whenever possible. Use the attributes #[local], #[global] and #[export]
+- depending on your choice. For example: &quot;#[export] Typeclasses Transparent
+- foo.&quot; [deprecated-typeclasses-transparency-without-locality,deprecated]
+- --- tests/tactics.ref	2021-02-15 17:58:42.000000000 +0000
+- +++ /tmp/tmp.P9h1MRS9Sp	2022-01-19 14:20:13.867027884 +0000
+- @@ -1,6 +1,9 @@
+- +File &quot;/home/bench/.opam/ocaml-base-compiler.4.09.1/.opam-switch/build/coq-stdpp.1.5.0/tests/tactics.v&quot;, line 38, characters 2-29:
+-  The command has indeed failed with message:
+-  Failed to progress.
+- +File &quot;/home/bench/.opam/ocaml-base-compiler.4.09.1/.opam-switch/build/coq-stdpp.1.5.0/tests/tactics.v&quot;, line 39, characters 16-28:
+-  The command has indeed failed with message:
+-  Failed to progress.
+- +File &quot;/home/bench/.opam/ocaml-base-compiler.4.09.1/.opam-switch/build/coq-stdpp.1.5.0/tests/tactics.v&quot;, line 49, characters 22-35:
+-  The command has indeed failed with message:
+-  Failed to progress.
+- make[2]: *** [Makefile.coq.local:38: tests/tactics.vo] Error 1
+- make[2]: *** Waiting for unfinished jobs....
 - COQC theories/functions.v
-- COQC theories/hlist.v
-- COQTEST tests/telescopes.v (ref: tests/telescopes.ref)
-- COQC theories/numbers.v
-- File &quot;./theories/numbers.v&quot;, line 88, characters 0-30:
-- Warning: The default value for instance locality is currently &quot;local&quot; in a
-- section and &quot;global&quot; otherwise, but is scheduled to change in a future
-- release. For the time being, adding instances outside of sections without
-- specifying an explicit locality attribute is therefore deprecated. It is
-- recommended to use &quot;export&quot; whenever possible. Use the attributes #[local],
-- #[global] and #[export] depending on your choice. For example: &quot;#[export]
-- Instance Foo : Bar := baz.&quot; [deprecated-instance-without-locality,deprecated]
-- File &quot;./theories/numbers.v&quot;, line 306, characters 0-115:
-- Warning: The default value for instance locality is currently &quot;local&quot; in a
-- section and &quot;global&quot; otherwise, but is scheduled to change in a future
-- release. For the time being, adding instances outside of sections without
-- specifying an explicit locality attribute is therefore deprecated. It is
-- recommended to use &quot;export&quot; whenever possible. Use the attributes #[local],
-- #[global] and #[export] depending on your choice. For example: &quot;#[export]
-- Instance Foo : Bar := baz.&quot; [deprecated-instance-without-locality,deprecated]
-- File &quot;./theories/numbers.v&quot;, line 309, characters 0-115:
-- Warning: The default value for instance locality is currently &quot;local&quot; in a
-- section and &quot;global&quot; otherwise, but is scheduled to change in a future
-- release. For the time being, adding instances outside of sections without
-- specifying an explicit locality attribute is therefore deprecated. It is
-- recommended to use &quot;export&quot; whenever possible. Use the attributes #[local],
-- #[global] and #[export] depending on your choice. For example: &quot;#[export]
-- Instance Foo : Bar := baz.&quot; [deprecated-instance-without-locality,deprecated]
-- File &quot;./theories/numbers.v&quot;, line 522, characters 0-102:
-- Warning: The default value for instance locality is currently &quot;local&quot; in a
-- section and &quot;global&quot; otherwise, but is scheduled to change in a future
-- release. For the time being, adding instances outside of sections without
-- specifying an explicit locality attribute is therefore deprecated. It is
-- recommended to use &quot;export&quot; whenever possible. Use the attributes #[local],
-- #[global] and #[export] depending on your choice. For example: &quot;#[export]
-- Instance Foo : Bar := baz.&quot; [deprecated-instance-without-locality,deprecated]
-- File &quot;./theories/numbers.v&quot;, line 526, characters 0-102:
-- Warning: The default value for instance locality is currently &quot;local&quot; in a
-- section and &quot;global&quot; otherwise, but is scheduled to change in a future
-- release. For the time being, adding instances outside of sections without
-- specifying an explicit locality attribute is therefore deprecated. It is
-- recommended to use &quot;export&quot; whenever possible. Use the attributes #[local],
-- #[global] and #[export] depending on your choice. For example: &quot;#[export]
-- Instance Foo : Bar := baz.&quot; [deprecated-instance-without-locality,deprecated]
-- File &quot;./theories/numbers.v&quot;, line 1213, characters 30-49:
-- Error: No applicable tactic.
-- 
-- make[2]: *** [Makefile.coq:763: theories/numbers.vo] Error 1
 - make[1]: *** [Makefile.coq:387: all] Error 2
 - make[1]: Leaving directory &#39;/home/bench/.opam/ocaml-base-compiler.4.09.1/.opam-switch/build/coq-stdpp.1.5.0&#39;
 - make: *** [Makefile:3: all] Error 2
@@ -415,19 +416,19 @@ change in a future
 # path                 ~/.opam/ocaml-base-compiler.4.09.1/.opam-switch/build/coq-stdpp.1.5.0
 # command              ~/.opam/opam-init/hooks/sandbox.sh build make -j4
 # exit-code            2
-# env-file             ~/.opam/log/coq-stdpp-3826-335865.env
-# output-file          ~/.opam/log/coq-stdpp-3826-335865.out
+# env-file             ~/.opam/log/coq-stdpp-16109-8b8a2d.env
+# output-file          ~/.opam/log/coq-stdpp-16109-8b8a2d.out
 ### output ###
 # [...]
-# release. For the time being, adding instances outside of sections without
-# specifying an explicit locality attribute is therefore deprecated. It is
-# recommended to use &quot;export&quot; whenever possible. Use the attributes #[local],
-# #[global] and #[export] depending on your choice. For example: &quot;#[export]
-# Instance Foo : Bar := baz.&quot; [deprecated-instance-without-locality,deprecated]
-# File &quot;./theories/numbers.v&quot;, line 1213, characters 30-49:
-# Error: No applicable tactic.
-# 
-# make[2]: *** [Makefile.coq:763: theories/numbers.vo] Error 1
+# +File &quot;/home/bench/.opam/ocaml-base-compiler.4.09.1/.opam-switch/build/coq-stdpp.1.5.0/tests/tactics.v&quot;, line 39, characters 16-28:
+#  The command has indeed failed with message:
+#  Failed to progress.
+# +File &quot;/home/bench/.opam/ocaml-base-compiler.4.09.1/.opam-switch/build/coq-stdpp.1.5.0/tests/tactics.v&quot;, line 49, characters 22-35:
+#  The command has indeed failed with message:
+#  Failed to progress.
+# make[2]: *** [Makefile.coq.local:38: tests/tactics.vo] Error 1
+# make[2]: *** Waiting for unfinished jobs....
+# COQC theories/functions.v
 # make[1]: *** [Makefile.coq:387: all] Error 2
 # make[1]: Leaving directory &#39;/home/bench/.opam/ocaml-base-compiler.4.09.1/.opam-switch/build/coq-stdpp.1.5.0&#39;
 # make: *** [Makefile:3: all] Error 2
