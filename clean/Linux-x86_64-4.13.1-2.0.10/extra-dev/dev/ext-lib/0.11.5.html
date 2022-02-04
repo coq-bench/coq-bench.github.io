@@ -42,7 +42,7 @@
                 <span class="label label-danger">Error 🔥</span>
               </small>
             </h1>
-            <p>📅 <em><script>document.write(moment("2022-01-28 08:16:10 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2022-01-28 08:16:10 UTC)</em><p>
+            <p>📅 <em><script>document.write(moment("2022-02-04 09:13:35 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2022-02-04 09:13:35 UTC)</em><p>
             <h2>Context</h2>
             <pre># Packages matching: installed
 # Name                # Installed # Synopsis
@@ -52,12 +52,12 @@ base-unix             base
 conf-findutils        1           Virtual package relying on findutils
 conf-gmp              4           Virtual package relying on a GMP lib system installation
 coq                   dev         Formal proof management system
-dune                  2.9.1       Fast, portable, and opinionated build system
+dune                  2.9.2       Fast, portable, and opinionated build system
 ocaml                 4.13.1      The OCaml compiler (virtual package)
 ocaml-base-compiler   4.13.1      Official release 4.13.1
 ocaml-config          2           OCaml Switch Configuration
 ocaml-options-vanilla 1           Ensure that OCaml is compiled with no special options enabled
-ocamlfind             1.9.2       A library manager for OCaml
+ocamlfind             1.9.3       A library manager for OCaml
 zarith                1.12        Implements arithmetic and logical operations over arbitrary-precision integers
 # opam file:
 opam-version: &quot;2.0&quot;
@@ -114,7 +114,7 @@ url {
               <dt>Return code</dt>
               <dd>0</dd>
               <dt>Duration</dt>
-              <dd>37 s</dd>
+              <dd>12 s</dd>
             </dl>
             <h2>Install 🚀</h2>
             <dl class="dl-horizontal">
@@ -123,7 +123,7 @@ url {
               <dt>Return code</dt>
               <dd>7936</dd>
               <dt>Duration</dt>
-              <dd>1 m 36 s</dd>
+              <dd>52 s</dd>
               <dt>Output</dt>
               <dd><pre># Packages matching: installed
 # Name                # Installed # Synopsis
@@ -133,12 +133,12 @@ base-unix             base
 conf-findutils        1           Virtual package relying on findutils
 conf-gmp              4           Virtual package relying on a GMP lib system installation
 coq                   dev         Formal proof management system
-dune                  2.9.1       Fast, portable, and opinionated build system
+dune                  2.9.2       Fast, portable, and opinionated build system
 ocaml                 4.13.1      The OCaml compiler (virtual package)
 ocaml-base-compiler   4.13.1      Official release 4.13.1
 ocaml-config          2           OCaml Switch Configuration
 ocaml-options-vanilla 1           Ensure that OCaml is compiled with no special options enabled
-ocamlfind             1.9.2       A library manager for OCaml
+ocamlfind             1.9.3       A library manager for OCaml
 zarith                1.12        Implements arithmetic and logical operations over arbitrary-precision integers
 [NOTE] Package coq is already installed (current version is dev).
 The following actions will be performed:
@@ -158,6 +158,7 @@ Processing  1/2: [coq-ext-lib: make theories]
 - COQC theories/Tactics/Injection.v
 - COQC theories/Tactics/Forward.v
 - COQC theories/Core/Any.v
+- COQC theories/Core/EquivDec.v
 - File &quot;./theories/Core/Any.v&quot;, line 13, characters 0-66:
 - Warning: The default value for hint locality is currently &quot;local&quot; in a
 - section and &quot;global&quot; otherwise, but is scheduled to change in a future
@@ -166,9 +167,7 @@ Processing  1/2: [coq-ext-lib: make theories]
 - recommended to use &quot;export&quot; whenever possible. Use the attributes #[local],
 - #[global] and #[export] depending on your choice. For example: &quot;#[export]
 - Hint Unfold foo : bar.&quot; [deprecated-hint-without-locality,deprecated]
-- COQC theories/Core/EquivDec.v
 - COQC theories/Core/Decision.v
-- COQC theories/Structures/Functor.v
 - COQC theories/Structures/BinOps.v
 - COQC theories/Structures/CoFunctor.v
 - COQC theories/Structures/CoMonad.v
@@ -297,15 +296,13 @@ Processing  1/2: [coq-ext-lib: make theories]
 - #[global] and #[export] depending on your choice. For example: &quot;#[export]
 - Instance Foo : Bar := baz.&quot; [deprecated-instance-without-locality,deprecated]
 - COQC theories/Programming/With.v
-- COQC theories/Recur/Facts.v
 - File &quot;./theories/Programming/Le.v&quot;, line 11, characters 0-126:
 - Warning: The default value for instance locality is currently &quot;local&quot; in a
 - section and &quot;global&quot; otherwise, but is scheduled to change in a future
-- release. For the time being, adding instanc
+- release. For the time being, adding instances outside of sections without
+- specifying an explicit locality at
 [...] truncated
-rs 0-33:
-- Warning: The default value for rewriting hint locality is currently &quot;local&quot;
-- in a section and &quot;global&quot; otherwise, but is scheduled to change in a future
+e, but is scheduled to change in a future
 - release. For the time being, adding rewriting hints outside of sections
 - without specifying an explicit locality attribute is therefore deprecated. It
 - is recommended to use &quot;export&quot; whenever possible. Use the attributes
@@ -330,11 +327,25 @@ rs 0-33:
 - #[local], #[global] and #[export] depending on your choice. For example:
 - &quot;#[export] Hint Rewrite foo : bar.&quot;
 - [deprecated-hint-rewrite-without-locality,deprecated]
+- COQC theories/Structures/EqDep.v
+- COQC theories/Core/CmpDec.v
+- COQC theories/Structures/Applicative.v
+- COQC theories/Data/Char.v
+- COQC theories/Data/Nat.v
+- COQC theories/Data/Pair.v
 - COQC theories/Data/Sum.v
 - COQC theories/Data/POption.v
+- COQC theories/Tactics/Equality.v
 - File &quot;./theories/Data/Nat.v&quot;, line 12, characters 13-26:
 - Warning: Notation EqNat.beq_nat is deprecated since 8.16.
 - Use Nat.eqb instead. [deprecated-syntactic-definition,deprecated]
+- COQC theories/Tactics/EqDep.v
+- File &quot;./theories/Data/Nat.v&quot;, line 30, characters 28-50:
+- Warning: Notation EqNat.beq_nat_true_iff is deprecated since 8.16.
+- Use Nat.eqb_eq instead. [deprecated-syntactic-definition,deprecated]
+- File &quot;./theories/Data/Nat.v&quot;, line 30, characters 28-50:
+- Warning: Notation EqNat.beq_nat_true_iff is deprecated since 8.16.
+- Use Nat.eqb_eq instead. [deprecated-syntactic-definition,deprecated]
 - File &quot;./theories/Data/POption.v&quot;, line 83, characters 0-34:
 - Warning: The default value for instance locality is currently &quot;local&quot; in a
 - section and &quot;global&quot; otherwise, but is scheduled to change in a future
@@ -351,29 +362,22 @@ rs 0-33:
 - recommended to use &quot;export&quot; whenever possible. Use the attributes #[local],
 - #[global] and #[export] depending on your choice. For example: &quot;#[export]
 - Instance Foo : Bar := baz.&quot; [deprecated-instance-without-locality,deprecated]
-- File &quot;./theories/Data/Nat.v&quot;, line 30, characters 28-50:
-- Warning: Notation EqNat.beq_nat_true_iff is deprecated since 8.16.
-- Use Nat.eqb_eq instead. [deprecated-syntactic-definition,deprecated]
-- File &quot;./theories/Data/Nat.v&quot;, line 30, characters 28-50:
-- Warning: Notation EqNat.beq_nat_true_iff is deprecated since 8.16.
-- Use Nat.eqb_eq instead. [deprecated-syntactic-definition,deprecated]
-- COQC theories/Recur/Relation.v
-- COQC theories/Tactics/Equality.v
-- COQC theories/Tactics/Cases.v
-- COQC theories/Structures/EqDep.v
-- COQC theories/Core/CmpDec.v
 - COQC theories/Data/Fun.v
 - COQC theories/Structures/Monad.v
+- COQC theories/Structures/Traversable.v
 - COQC theories/Data/PList.v
-- COQC theories/Structures/FunctorLaws.v
 - File &quot;./theories/Structures/Monad.v&quot;, line 56, characters 2-39:
 - Warning: Declaring a scope implicitly is deprecated; use in advance an
 - explicit &quot;Declare Scope monad_scope.&quot;. [undeclared-scope,deprecated]
+- COQC theories/Structures/FunctorLaws.v
 - COQC theories/Structures/Reducible.v
 - COQC theories/Structures/MonadCont.v
 - COQC theories/Structures/MonadExc.v
 - COQC theories/Structures/MonadFix.v
 - COQC theories/Structures/MonadZero.v
+- COQC theories/Structures/MonadPlus.v
+- COQC theories/Structures/MonadReader.v
+- COQC theories/Structures/MonadWriter.v
 - File &quot;./theories/Data/PList.v&quot;, line 219, characters 0-32:
 - Warning: The default value for instance locality is currently &quot;local&quot; in a
 - section and &quot;global&quot; otherwise, but is scheduled to change in a future
@@ -382,44 +386,13 @@ rs 0-33:
 - recommended to use &quot;export&quot; whenever possible. Use the attributes #[local],
 - #[global] and #[export] depending on your choice. For example: &quot;#[export]
 - Instance Foo : Bar := baz.&quot; [deprecated-instance-without-locality,deprecated]
-- COQC theories/Structures/MonadPlus.v
-- COQC theories/Structures/MonadReader.v
-- COQC theories/Structures/MonadWriter.v
 - COQC theories/Structures/MonadState.v
 - COQC theories/Structures/MonadTrans.v
+- COQC theories/Data/Fin.v
+- COQC theories/Data/SigT.v
 - COQC theories/Data/Option.v
 - COQC theories/Data/Lazy.v
 - COQC theories/Data/List.v
-- COQC theories/Data/String.v
-- COQC theories/Data/Monads/IdentityMonad.v
-- COQC theories/Data/Monads/ContMonad.v
-- File &quot;./theories/Data/Option.v&quot;, line 183, characters 0-34:
-- Warning: The default value for rewriting hint locality is currently &quot;local&quot;
-- in a section and &quot;global&quot; otherwise, but is scheduled to change in a future
-- release. For the time being, adding rewriting hints outside of sections
-- without specifying an explicit locality attribute is therefore deprecated. It
-- is recommended to use &quot;export&quot; whenever possible. Use the attributes
-- #[local], #[global] and #[export] depending on your choice. For example:
-- &quot;#[export] Hint Rewrite foo : bar.&quot;
-- [deprecated-hint-rewrite-without-locality,deprecated]
-- COQC theories/Tactics/EqDep.v
-- COQC theories/Structures/Maps.v
-- COQC theories/Structures/Monads.v
-- COQC theories/Data/Map/FMapPositive.v
-- COQC theories/Data/Set/SetMap.v
-- File &quot;./theories/Data/String.v&quot;, line 97, characters 11-19:
-- Warning: Notation neq_0_lt is deprecated since 8.16.
-- The Arith.Lt file is obsolete. Use Nat.neq_0_lt_0 instead.
-- [deprecated-syntactic-definition,deprecated]
-- File &quot;./theories/Data/String.v&quot;, line 97, characters 11-19:
-- Warning: Notation neq_0_lt is deprecated since 8.16.
-- The Arith.Lt file is obsolete. Use Nat.neq_0_lt_0 instead.
-- [deprecated-syntactic-definition,deprecated]
-- COQC theories/Tactics.v
-- COQC theories/Structures/MonadLaws.v
-- COQC theories/Data/Fin.v
-- COQC theories/Data/SigT.v
-- COQC theories/Programming/Show.v
 - File &quot;./theories/Data/SigT.v&quot;, line 42, characters 0-32:
 - Warning: The default value for rewriting hint locality is currently &quot;local&quot;
 - in a section and &quot;global&quot; otherwise, but is scheduled to change in a future
@@ -429,11 +402,39 @@ rs 0-33:
 - #[local], #[global] and #[export] depending on your choice. For example:
 - &quot;#[export] Hint Rewrite foo : bar.&quot;
 - [deprecated-hint-rewrite-without-locality,deprecated]
+- COQC theories/Data/String.v
+- COQC theories/Data/Monads/IdentityMonad.v
+- File &quot;./theories/Data/Option.v&quot;, line 183, characters 0-34:
+- Warning: The default value for rewriting hint locality is currently &quot;local&quot;
+- in a section and &quot;global&quot; otherwise, but is scheduled to change in a future
+- release. For the time being, adding rewriting hints outside of sections
+- without specifying an explicit locality attribute is therefore deprecated. It
+- is recommended to use &quot;export&quot; whenever possible. Use the attributes
+- #[local], #[global] and #[export] depending on your choice. For example:
+- &quot;#[export] Hint Rewrite foo : bar.&quot;
+- [deprecated-hint-rewrite-without-locality,deprecated]
+- COQC theories/Data/Monads/ContMonad.v
+- COQC theories/Tactics.v
+- COQC theories/Structures/Maps.v
+- COQC theories/Structures/Monads.v
+- COQC theories/Data/Member.v
+- COQC theories/Data/Map/FMapPositive.v
+- File &quot;./theories/Data/String.v&quot;, line 97, characters 11-19:
+- Warning: Notation neq_0_lt is deprecated since 8.16.
+- The Arith.Lt file is obsolete. Use Nat.neq_0_lt_0 instead.
+- [deprecated-syntactic-definition,deprecated]
+- File &quot;./theories/Data/String.v&quot;, line 97, characters 11-19:
+- Warning: Notation neq_0_lt is deprecated since 8.16.
+- The Arith.Lt file is obsolete. Use Nat.neq_0_lt_0 instead.
+- [deprecated-syntactic-definition,deprecated]
+- COQC theories/Data/Tuple.v
+- COQC theories/Data/Vector.v
+- COQC theories/Programming/Show.v
 - COQC theories/Programming/Extras.v
-- COQC theories/Tactics/MonadTac.v
 - COQC theories/Data/Monads/StateMonad.v
 - COQC theories/Data/Monads/WriterMonad.v
 - COQC theories/Data/Monads/FuelMonad.v
+- COQC theories/Data/Monads/OptionMonad.v
 - File &quot;./theories/Programming/Show.v&quot;, line 64, characters 2-37:
 - Warning: Declaring a scope implicitly is deprecated; use in advance an
 - explicit &quot;Declare Scope show_scope.&quot;. [undeclared-scope,deprecated]
@@ -444,7 +445,7 @@ rs 0-33:
 - File &quot;./theories/Programming/Show.v&quot;, line 180, characters 4-15:
 - Error: No such hypothesis: H
 - 
-- make[2]: *** [Makefile.coq:763: theories/Programming/Show.vo] Error 1
+- make[2]: *** [Makefile.coq:764: theories/Programming/Show.vo] Error 1
 - make[2]: *** Waiting for unfinished jobs....
 - make[1]: *** [Makefile.coq:387: all] Error 2
 - make[1]: Leaving directory &#39;/home/bench/.opam/ocaml-base-compiler.4.13.1/.opam-switch/build/coq-ext-lib.0.11.5&#39;
@@ -455,8 +456,8 @@ rs 0-33:
 # path                 ~/.opam/ocaml-base-compiler.4.13.1/.opam-switch/build/coq-ext-lib.0.11.5
 # command              ~/.opam/opam-init/hooks/sandbox.sh build make -j4 theories
 # exit-code            2
-# env-file             ~/.opam/log/coq-ext-lib-8841-0a5907.env
-# output-file          ~/.opam/log/coq-ext-lib-8841-0a5907.out
+# env-file             ~/.opam/log/coq-ext-lib-5864-0a5907.env
+# output-file          ~/.opam/log/coq-ext-lib-5864-0a5907.out
 ### output ###
 # [...]
 # File &quot;./theories/Programming/Show.v&quot;, line 180, characters 23-33:
@@ -466,7 +467,7 @@ rs 0-33:
 # File &quot;./theories/Programming/Show.v&quot;, line 180, characters 4-15:
 # Error: No such hypothesis: H
 # 
-# make[2]: *** [Makefile.coq:763: theories/Programming/Show.vo] Error 1
+# make[2]: *** [Makefile.coq:764: theories/Programming/Show.vo] Error 1
 # make[2]: *** Waiting for unfinished jobs....
 # make[1]: *** [Makefile.coq:387: all] Error 2
 # make[1]: Leaving directory &#39;/home/bench/.opam/ocaml-base-compiler.4.13.1/.opam-switch/build/coq-ext-lib.0.11.5&#39;
