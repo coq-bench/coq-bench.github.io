@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>itauto: Not compatible 👼</title>
+    <title>itauto: 7 m 4 s 🏆</title>
     <link rel="shortcut icon" type="image/png" href="../../../../../favicon.png" />
     <link href="../../../../../bootstrap.min.css" rel="stylesheet">
     <link href="../../../../../bootstrap-custom.css" rel="stylesheet">
@@ -39,10 +39,10 @@
               itauto
               <small>
                 8.14.0
-                <span class="label label-info">Not compatible 👼</span>
+                <span class="label label-success">7 m 4 s 🏆</span>
               </small>
             </h1>
-            <p>📅 <em><script>document.write(moment("2022-02-03 07:05:53 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2022-02-03 07:05:53 UTC)</em><p>
+            <p>📅 <em><script>document.write(moment("2022-02-17 15:44:09 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2022-02-17 15:44:09 UTC)</em><p>
             <h2>Context</h2>
             <pre># Packages matching: installed
 # Name                # Installed # Synopsis
@@ -75,8 +75,8 @@ install: [
   [make &quot;install&quot;]
 ]
 depends: [
-  &quot;ocaml&quot; {&gt;= &quot;4.9~&quot; &amp; &lt; &quot;4.13~&quot;}
-  &quot;coq&quot; {&gt;= &quot;8.14.~&quot; }
+  &quot;ocaml&quot; {&gt;= &quot;4.9~&quot;}
+  &quot;coq&quot; {&gt;= &quot;8.14&quot; &amp; &lt; &quot;8.15~&quot;}
   &quot;ocamlbuild&quot; {build }
 ]
 depopts: [ &quot;ocamlformat&quot; {build} ]
@@ -106,46 +106,75 @@ url {
               <dt>Command</dt>
               <dd><code>opam install -y --show-action coq-itauto.8.14.0 coq.8.14.1</code></dd>
               <dt>Return code</dt>
-              <dd>5120</dd>
-              <dt>Output</dt>
-              <dd><pre>[NOTE] Package coq is already installed (current version is 8.14.1).
-The following dependencies couldn&#39;t be met:
-  - coq-itauto -&gt; ocaml &lt; 4.13~
-      base of this switch (use `--unlock-base&#39; to force)
-No solution found, exiting
-</pre></dd>
+              <dd>0</dd>
             </dl>
             <p>Dry install without Coq/switch base, to test if the problem was incompatibility with the current Coq/OCaml version:</p>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>opam remove -y coq; opam install -y --show-action --unlock-base coq-itauto.8.14.0</code></dd>
+              <dd><code>true</code></dd>
               <dt>Return code</dt>
               <dd>0</dd>
             </dl>
             <h2>Install dependencies</h2>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>true</code></dd>
+              <dd><code>opam list; echo; ulimit -Sv 4000000; timeout 4h opam install -y --deps-only coq-itauto.8.14.0 coq.8.14.1</code></dd>
               <dt>Return code</dt>
               <dd>0</dd>
               <dt>Duration</dt>
-              <dd>0 s</dd>
+              <dd>31 s</dd>
             </dl>
             <h2>Install 🚀</h2>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>true</code></dd>
+              <dd><code>opam list; echo; ulimit -Sv 16000000; timeout 4h opam install -y -v coq-itauto.8.14.0 coq.8.14.1</code></dd>
               <dt>Return code</dt>
               <dd>0</dd>
               <dt>Duration</dt>
-              <dd>0 s</dd>
+              <dd>7 m 4 s</dd>
             </dl>
             <h2>Installation size</h2>
-            <p>No files were installed.</p>
+            <p>Total: 8 M</p>
+            <ul>
+              <li>3 M <code>../ocaml-base-compiler.4.13.1/lib/coq/user-contrib/Cdcl/PatriciaR.vo</code></li>
+              <li>2 M <code>../ocaml-base-compiler.4.13.1/lib/coq/user-contrib/Cdcl/Formula.vo</code></li>
+              <li>1 M <code>../ocaml-base-compiler.4.13.1/lib/coq/user-contrib/Cdcl/Formula.glob</code></li>
+              <li>577 K <code>../ocaml-base-compiler.4.13.1/lib/coq/user-contrib/Cdcl/PatriciaR.glob</code></li>
+              <li>519 K <code>../ocaml-base-compiler.4.13.1/lib/coq/user-contrib/Cdcl/cdcl_plugin.cmxs</code></li>
+              <li>391 K <code>../ocaml-base-compiler.4.13.1/lib/coq/user-contrib/Cdcl/KeyInt.vo</code></li>
+              <li>325 K <code>../ocaml-base-compiler.4.13.1/lib/coq/user-contrib/Cdcl/Formula.v</code></li>
+              <li>228 K <code>../ocaml-base-compiler.4.13.1/lib/coq/user-contrib/Cdcl/Coqlib.vo</code></li>
+              <li>211 K <code>../ocaml-base-compiler.4.13.1/lib/coq/user-contrib/Cdcl/PatriciaR.v</code></li>
+              <li>161 K <code>../ocaml-base-compiler.4.13.1/lib/coq/user-contrib/Cdcl/KeyInt.glob</code></li>
+              <li>153 K <code>../ocaml-base-compiler.4.13.1/lib/coq/user-contrib/Cdcl/Coqlib.glob</code></li>
+              <li>142 K <code>../ocaml-base-compiler.4.13.1/lib/coq/user-contrib/Cdcl/cdcl_plugin.cmi</code></li>
+              <li>52 K <code>../ocaml-base-compiler.4.13.1/lib/coq/user-contrib/Cdcl/cdcl_plugin.cmx</code></li>
+              <li>38 K <code>../ocaml-base-compiler.4.13.1/lib/coq/user-contrib/Cdcl/Coqlib.v</code></li>
+              <li>35 K <code>../ocaml-base-compiler.4.13.1/lib/coq/user-contrib/Cdcl/NOlra.vo</code></li>
+              <li>29 K <code>../ocaml-base-compiler.4.13.1/lib/coq/user-contrib/Cdcl/Itauto.vo</code></li>
+              <li>27 K <code>../ocaml-base-compiler.4.13.1/lib/coq/user-contrib/Cdcl/KeyInt.v</code></li>
+              <li>25 K <code>../ocaml-base-compiler.4.13.1/lib/coq/user-contrib/Cdcl/NOlia.vo</code></li>
+              <li>25 K <code>../ocaml-base-compiler.4.13.1/lib/coq/user-contrib/Cdcl/ZArithDec.vo</code></li>
+              <li>21 K <code>../ocaml-base-compiler.4.13.1/lib/coq/user-contrib/Cdcl/Prover.vo</code></li>
+              <li>13 K <code>../ocaml-base-compiler.4.13.1/lib/coq/user-contrib/Cdcl/ReifClasses.vo</code></li>
+              <li>7 K <code>../ocaml-base-compiler.4.13.1/lib/coq/user-contrib/Cdcl/cdcl_plugin.cmxa</code></li>
+              <li>5 K <code>../ocaml-base-compiler.4.13.1/lib/coq/user-contrib/Cdcl/ReifClasses.glob</code></li>
+              <li>5 K <code>../ocaml-base-compiler.4.13.1/lib/coq/user-contrib/Cdcl/ZArithDec.glob</code></li>
+              <li>4 K <code>../ocaml-base-compiler.4.13.1/lib/coq/user-contrib/Cdcl/NOlia.glob</code></li>
+              <li>3 K <code>../ocaml-base-compiler.4.13.1/lib/coq/user-contrib/Cdcl/Itauto.v</code></li>
+              <li>3 K <code>../ocaml-base-compiler.4.13.1/lib/coq/user-contrib/Cdcl/NOlra.glob</code></li>
+              <li>2 K <code>../ocaml-base-compiler.4.13.1/lib/coq/user-contrib/Cdcl/ZArithDec.v</code></li>
+              <li>2 K <code>../ocaml-base-compiler.4.13.1/lib/coq/user-contrib/Cdcl/ReifClasses.v</code></li>
+              <li>2 K <code>../ocaml-base-compiler.4.13.1/lib/coq/user-contrib/Cdcl/Itauto.glob</code></li>
+              <li>1 K <code>../ocaml-base-compiler.4.13.1/lib/coq/user-contrib/Cdcl/NOlra.v</code></li>
+              <li>1 K <code>../ocaml-base-compiler.4.13.1/lib/coq/user-contrib/Cdcl/NOlia.v</code></li>
+              <li>1 K <code>../ocaml-base-compiler.4.13.1/lib/coq/user-contrib/Cdcl/Prover.v</code></li>
+              <li>1 K <code>../ocaml-base-compiler.4.13.1/lib/coq/user-contrib/Cdcl/Prover.glob</code></li>
+            </ul>
             <h2>Uninstall 🧹</h2>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>true</code></dd>
+              <dd><code>opam remove -y coq-itauto.8.14.0</code></dd>
               <dt>Return code</dt>
               <dd>0</dd>
               <dt>Missing removes</dt>
