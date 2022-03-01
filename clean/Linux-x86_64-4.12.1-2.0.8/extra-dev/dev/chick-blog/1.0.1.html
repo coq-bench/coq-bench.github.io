@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>chick-blog: Error 🔥</title>
+    <title>chick-blog: Not compatible 👼</title>
     <link rel="shortcut icon" type="image/png" href="../../../../../favicon.png" />
     <link href="../../../../../bootstrap.min.css" rel="stylesheet">
     <link href="../../../../../bootstrap-custom.css" rel="stylesheet">
@@ -39,10 +39,10 @@
               chick-blog
               <small>
                 1.0.1
-                <span class="label label-danger">Error 🔥</span>
+                <span class="label label-info">Not compatible 👼</span>
               </small>
             </h1>
-            <p>📅 <em><script>document.write(moment("2022-01-29 01:58:35 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2022-01-29 01:58:35 UTC)</em><p>
+            <p>📅 <em><script>document.write(moment("2022-02-27 19:27:03 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2022-02-27 19:27:03 UTC)</em><p>
             <h2>Context</h2>
             <pre># Packages matching: installed
 # Name                # Installed # Synopsis
@@ -52,12 +52,12 @@ base-unix             base
 conf-findutils        1           Virtual package relying on findutils
 conf-gmp              4           Virtual package relying on a GMP lib system installation
 coq                   dev         Formal proof management system
-dune                  2.9.1       Fast, portable, and opinionated build system
+dune                  3.0.2       Fast, portable, and opinionated build system
 ocaml                 4.12.1      The OCaml compiler (virtual package)
 ocaml-base-compiler   4.12.1      Official release 4.12.1
 ocaml-config          2           OCaml Switch Configuration
 ocaml-options-vanilla 1           Ensure that OCaml is compiled with no special options enabled
-ocamlfind             1.9.2       A library manager for OCaml
+ocamlfind             1.9.3       A library manager for OCaml
 zarith                1.12        Implements arithmetic and logical operations over arbitrary-precision integers
 # opam file:
 opam-version: &quot;2.0&quot;
@@ -78,7 +78,7 @@ depends: [
   &quot;coq-function-ninjas&quot;
   &quot;coq-list-string&quot;
   &quot;coq-moment&quot;
-  &quot;coq&quot;
+  &quot;coq&quot; {&lt; &quot;8.15~&quot;}
   &quot;lwt&quot;
   &quot;ocaml&quot; {&gt;= &quot;4.03&quot;}
   &quot;ocamlfind&quot; {build}
@@ -108,198 +108,41 @@ url {
               <dt>Command</dt>
               <dd><code>opam install -y --show-action coq-chick-blog.1.0.1 coq.dev</code></dd>
               <dt>Return code</dt>
-              <dd>0</dd>
+              <dd>5120</dd>
+              <dt>Output</dt>
+              <dd><pre>[NOTE] Package coq is already installed (current version is dev).
+The following dependencies couldn&#39;t be met:
+  - coq-chick-blog -&gt; coq &lt; 8.15~ -&gt; ocaml &lt; 4.12
+      base of this switch (use `--unlock-base&#39; to force)
+Your request can&#39;t be satisfied:
+  - No available version of coq satisfies the constraints
+No solution found, exiting
+</pre></dd>
             </dl>
             <p>Dry install without Coq/switch base, to test if the problem was incompatibility with the current Coq/OCaml version:</p>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>true</code></dd>
+              <dd><code>opam remove -y coq; opam install -y --show-action --unlock-base coq-chick-blog.1.0.1</code></dd>
               <dt>Return code</dt>
               <dd>0</dd>
             </dl>
             <h2>Install dependencies</h2>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>opam list; echo; ulimit -Sv 4000000; timeout 4h opam install -y --deps-only coq-chick-blog.1.0.1 coq.dev</code></dd>
+              <dd><code>true</code></dd>
               <dt>Return code</dt>
               <dd>0</dd>
               <dt>Duration</dt>
-              <dd>19 m 33 s</dd>
+              <dd>0 s</dd>
             </dl>
             <h2>Install 🚀</h2>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>opam list; echo; ulimit -Sv 16000000; timeout 4h opam install -y -v coq-chick-blog.1.0.1 coq.dev</code></dd>
+              <dd><code>true</code></dd>
               <dt>Return code</dt>
-              <dd>7936</dd>
+              <dd>0</dd>
               <dt>Duration</dt>
-              <dd>1 m 48 s</dd>
-              <dt>Output</dt>
-              <dd><pre># Packages matching: installed
-# Name                # Installed # Synopsis
-angstrom              0.15.0      Parser combinators built for speed and memory-efficiency
-asn1-combinators      0.2.6       Embed typed ASN.1 grammars in OCaml
-astring               0.8.5       Alternative String module for OCaml
-base                  v0.14.2     Full standard library replacement for OCaml
-base-bigarray         base
-base-bytes            base        Bytes library distributed with the OCaml compiler
-base-threads          base
-base-unix             base
-base64                3.5.0       Base64 encoding for OCaml
-bigarray-compat       1.0.0       Compatibility library to use Stdlib.Bigarray when possible
-bigstringaf           0.8.0       Bigstring intrinsics and fast blits based on memcpy/memmove
-bos                   0.2.1       Basic OS interaction for OCaml
-ca-certs              0.2.2       Detect root CA certificates from the operating system
-cmdliner              1.0.4       Declarative definition of command line interfaces for OCaml
-cohttp                5.0.0       An OCaml library for HTTP clients and servers
-cohttp-lwt            5.0.0       CoHTTP implementation using the Lwt concurrency library
-cohttp-lwt-unix       5.0.0       CoHTTP implementation for Unix and Windows using Lwt
-conduit               5.0.0       A network connection establishment library
-conduit-lwt           5.0.0       A portable network connection establishment library using Lwt
-conduit-lwt-unix      5.0.0       A network connection establishment library for Lwt_unix
-conf-findutils        1           Virtual package relying on findutils
-conf-gmp              4           Virtual package relying on a GMP lib system installation
-conf-gmp-powm-sec     3           Virtual package relying on a GMP lib with constant-time modular exponentiation
-conf-pkg-config       2           Check if pkg-config is installed and create an opam switch local pkgconfig folder
-conf-ruby             1.0.0       Virtual package relying on Ruby
-coq                   dev         Formal proof management system
-coq-cunit             1.0.0       Convenience functions for unit testing in Coq
-coq-error-handlers    1.2.0       Simple and robust error handling functions
-coq-function-ninjas   1.0.0       Simple functional combinators
-coq-list-plus         1.1.0       More functions on lists
-coq-list-string       2.1.2       Strings implemented as lists
-coq-moment            1.2.1       Parse, manipulate and pretty-print times and dates in Coq
-cppo                  1.6.8       Code preprocessor like cpp for OCaml
-csexp                 1.5.1       Parsing and printing of S-expressions in Canonical form
-cstruct               6.0.1       Access C-like structures directly from OCaml
-domain-name           0.4.0       RFC 1035 Internet domain names
-dune                  2.9.1       Fast, portable, and opinionated build system
-dune-configurator     2.9.1       Helper library for gathering system configuration
-duration              0.2.0       Conversions to various time units
-eqaf                  0.8         Constant-time equal function on string
-fmt                   0.9.0       OCaml Format pretty-printer combinators
-fpath                 0.7.3       File system paths for OCaml
-gmap                  0.3.0       Heterogenous maps over a GADT
-ipaddr                5.2.0       A library for manipulation of IP (and MAC) address representations
-ipaddr-sexp           5.2.0       A library for manipulation of IP address representations using sexp
-jsonm                 1.0.1       Non-blocking streaming JSON codec for OCaml
-logs                  0.7.0       Logging infrastructure for OCaml
-lwt                   5.5.0       Promises and event-driven I/O
-macaddr               5.2.0       A library for manipulation of MAC address representations
-magic-mime            1.2.0       Map filenames to common MIME types
-mirage-crypto         0.10.5      Simple symmetric cryptography for the modern age
-mirage-crypto-ec      0.10.5      Elliptic Curve Cryptography with primitives taken from Fiat
-mirage-crypto-pk      0.10.5      Simple public-key cryptography for the modern age
-mirage-crypto-rng     0.10.5      A cryptographically secure PRNG
-mirage-no-solo5       1           Virtual package conflicting with mirage-solo5
-mirage-no-xen         1           Virtual package conflicting with mirage-xen
-mmap                  1.1.0       File mapping functionality
-mtime                 1.3.0       Monotonic wall-clock time for OCaml
-num                   1.4         The legacy Num library for arbitrary-precision integer and rational arithmetic
-ocaml                 4.12.1      The OCaml compiler (virtual package)
-ocaml-base-compiler   4.12.1      Official release 4.12.1
-ocaml-compiler-libs   v0.12.4     OCaml compiler libraries repackaged
-ocaml-config          2           OCaml Switch Configuration
-ocaml-options-vanilla 1           Ensure that OCaml is compiled with no special options enabled
-ocaml-syntax-shims    1.0.0       Backport new syntax to older OCaml versions
-ocamlbuild            0.14.0      OCamlbuild is a build system with builtin rules to easily build most OCaml projects.
-ocamlfind             1.9.2       A library manager for OCaml
-ocplib-endian         1.2         Optimised functions to read and write int16/32/64 from strings and bigarrays
-parsexp               v0.14.2     S-expression parsing library
-pbkdf                 1.2.0       Password based key derivation functions (PBKDF) from PKCS#5
-ppx_derivers          1.2.1       Shared [@@deriving] plugin registry
-ppx_sexp_conv         v0.14.3     [@@deriving] plugin to generate S-expression conversion functions
-ppxlib                0.24.0      Standard library for ppx rewriters
-ptime                 0.8.6       POSIX time for OCaml
-re                    1.10.3      RE is a regular expression library for OCaml
-result                1.5         Compatibility Result module
-rresult               0.7.0       Result value combinators for OCaml
-seq                   base        Compatibility package for OCaml&#39;s standard iterator type starting from 4.07.
-sexplib               v0.14.0     Library for serializing OCaml values to and from S-expressions
-sexplib0              v0.14.0     Library containing the definition of S-expressions and some base converters
-stdlib-shims          0.3.0       Backport some of the new stdlib features to older compiler
-stringext             1.6.0       Extra string functions for OCaml
-topkg                 1.0.4       The transitory OCaml software packager
-uchar                 0.0.2       Compatibility library for OCaml&#39;s Uchar module
-uri                   4.2.0       An RFC3986 URI/URL parsing library
-uri-sexp              4.2.0       An RFC3986 URI/URL parsing library
-uutf                  1.0.2       Non-blocking streaming Unicode codec for OCaml
-x509                  0.15.2      Public Key Infrastructure (RFC 5280, PKCS) purely in OCaml
-zarith                1.12        Implements arithmetic and logical operations over arbitrary-precision integers
-[NOTE] Package coq is already installed (current version is dev).
-The following actions will be performed:
-  - install coq-chick-blog 1.0.1
-&lt;&gt;&lt;&gt; Gathering sources &gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;
-Processing  1/1: [coq-chick-blog.1.0.1: http]
-[coq-chick-blog.1.0.1] downloaded from https://github.com/clarus/coq-chick-blog/archive/1.0.1.tar.gz
-Processing  1/1:
-&lt;&gt;&lt;&gt; Processing actions &lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;
-Processing  1/2: [coq-chick-blog: ./configure.sh]
-+ /home/bench/.opam/opam-init/hooks/sandbox.sh &quot;build&quot; &quot;./configure.sh&quot; (CWD=/home/bench/.opam/ocaml-base-compiler.4.12.1/.opam-switch/build/coq-chick-blog.1.0.1)
-Processing  1/2: [coq-chick-blog: make]
-+ /home/bench/.opam/opam-init/hooks/sandbox.sh &quot;build&quot; &quot;make&quot; &quot;-j4&quot; (CWD=/home/bench/.opam/ocaml-base-compiler.4.12.1/.opam-switch/build/coq-chick-blog.1.0.1)
-- COQDEP VFILES
-- *** Warning: in file src/Extraction.v, library ExtrOcamlBigIntConv is required and has not been found in the loadpath!
-- COQC src/Model.v
-- COQC src/Http.v
-- File &quot;./src/Http.v&quot;, line 43, characters 2-102:
-- Warning: Not a truly recursive fixpoint. [non-recursive,fixpoints]
-- COQC src/Request.v
-- COQC src/Computation.v
-- COQC src/Response.v
-- COQC src/Render.v
-- File &quot;./src/Computation.v&quot;, line 54, characters 4-165:
-- Warning: grammar entry &quot;ident&quot; permitted &quot;_&quot; in addition to proper
-- identifiers; this use is deprecated and its meaning will change in the
-- future; use &quot;name&quot; instead. [deprecated-ident-entry,deprecated]
-- File &quot;./src/Computation.v&quot;, line 59, characters 4-191:
-- Warning: grammar entry &quot;ident&quot; permitted &quot;_&quot; in addition to proper
-- identifiers; this use is deprecated and its meaning will change in the
-- future; use &quot;name&quot; instead. [deprecated-ident-entry,deprecated]
-- File &quot;./src/Computation.v&quot;, line 71, characters 4-132:
-- Warning: grammar entry &quot;ident&quot; permitted &quot;_&quot; in addition to proper
-- identifiers; this use is deprecated and its meaning will change in the
-- future; use &quot;name&quot; instead. [deprecated-ident-entry,deprecated]
-- File &quot;./src/Computation.v&quot;, line 76, characters 4-158:
-- Warning: grammar entry &quot;ident&quot; permitted &quot;_&quot; in addition to proper
-- identifiers; this use is deprecated and its meaning will change in the
-- future; use &quot;name&quot; instead. [deprecated-ident-entry,deprecated]
-- COQC src/Extraction.v
-- File &quot;./src/Extraction.v&quot;, line 5, characters 0-35:
-- Error: Cannot find a physical path bound to logical path ExtrOcamlBigIntConv.
-- 
-- make[1]: *** [Makefile:764: src/Extraction.vo] Error 1
-- make: *** [Makefile:387: all] Error 2
-[ERROR] The compilation of coq-chick-blog failed at &quot;/home/bench/.opam/opam-init/hooks/sandbox.sh build make -j4&quot;.
-#=== ERROR while compiling coq-chick-blog.1.0.1 ===============================#
-# context              2.0.8 | linux/x86_64 | ocaml-base-compiler.4.12.1 | file:///home/bench/run/opam-coq-archive/released
-# path                 ~/.opam/ocaml-base-compiler.4.12.1/.opam-switch/build/coq-chick-blog.1.0.1
-# command              ~/.opam/opam-init/hooks/sandbox.sh build make -j4
-# exit-code            2
-# env-file             ~/.opam/log/coq-chick-blog-26197-2dea01.env
-# output-file          ~/.opam/log/coq-chick-blog-26197-2dea01.out
-### output ###
-# [...]
-# identifiers; this use is deprecated and its meaning will change in the
-# future; use &quot;name&quot; instead. [deprecated-ident-entry,deprecated]
-# File &quot;./src/Computation.v&quot;, line 76, characters 4-158:
-# Warning: grammar entry &quot;ident&quot; permitted &quot;_&quot; in addition to proper
-# identifiers; this use is deprecated and its meaning will change in the
-# future; use &quot;name&quot; instead. [deprecated-ident-entry,deprecated]
-# COQC src/Extraction.v
-# File &quot;./src/Extraction.v&quot;, line 5, characters 0-35:
-# Error: Cannot find a physical path bound to logical path ExtrOcamlBigIntConv.
-# 
-# make[1]: *** [Makefile:764: src/Extraction.vo] Error 1
-# make: *** [Makefile:387: all] Error 2
-&lt;&gt;&lt;&gt; Error report &lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;
-+- The following actions failed
-| - build coq-chick-blog 1.0.1
-+- 
-- No changes have been performed
-# Run eval $(opam env) to update the current shell environment
-&#39;opam install -y -v coq-chick-blog.1.0.1 coq.dev&#39; failed.
-</pre></dd>
+              <dd>0 s</dd>
             </dl>
             <h2>Installation size</h2>
             <p>No files were installed.</p>
