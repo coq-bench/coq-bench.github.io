@@ -42,7 +42,7 @@
                 <span class="label label-danger">Error 🔥</span>
               </small>
             </h1>
-            <p>📅 <em><script>document.write(moment("2022-01-20 06:05:22 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2022-01-20 06:05:22 UTC)</em><p>
+            <p>📅 <em><script>document.write(moment("2022-03-15 00:11:54 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2022-03-15 00:11:54 UTC)</em><p>
             <h2>Context</h2>
             <pre># Packages matching: installed
 # Name              # Installed # Synopsis
@@ -50,13 +50,13 @@ base-bigarray       base
 base-threads        base
 base-unix           base
 conf-findutils      1           Virtual package relying on findutils
-conf-gmp            3           Virtual package relying on a GMP lib system installation
+conf-gmp            4           Virtual package relying on a GMP lib system installation
 coq                 dev         Formal proof management system
-dune                2.9.1       Fast, portable, and opinionated build system
+dune                3.0.3       Fast, portable, and opinionated build system
 ocaml               4.10.2      The OCaml compiler (virtual package)
 ocaml-base-compiler 4.10.2      Official release 4.10.2
 ocaml-config        1           OCaml Switch Configuration
-ocamlfind           1.9.1       A library manager for OCaml
+ocamlfind           1.9.3       A library manager for OCaml
 zarith              1.12        Implements arithmetic and logical operations over arbitrary-precision integers
 # opam file:
 opam-version: &quot;2.0&quot;
@@ -126,7 +126,7 @@ url {
               <dt>Return code</dt>
               <dd>0</dd>
               <dt>Duration</dt>
-              <dd>24 s</dd>
+              <dd>26 s</dd>
             </dl>
             <h2>Install 🚀</h2>
             <dl class="dl-horizontal">
@@ -135,22 +135,22 @@ url {
               <dt>Return code</dt>
               <dd>7936</dd>
               <dt>Duration</dt>
-              <dd>26 s</dd>
+              <dd>20 s</dd>
               <dt>Output</dt>
               <dd><pre># Packages matching: installed
 # Name              # Installed # Synopsis
 base-bigarray       base
 base-threads        base
 base-unix           base
-cmdliner            1.0.4       Declarative definition of command line interfaces for OCaml
+cmdliner            1.1.0       Declarative definition of command line interfaces for OCaml
 conf-findutils      1           Virtual package relying on findutils
-conf-gmp            3           Virtual package relying on a GMP lib system installation
+conf-gmp            4           Virtual package relying on a GMP lib system installation
 coq                 dev         Formal proof management system
-dune                2.9.1       Fast, portable, and opinionated build system
+dune                3.0.3       Fast, portable, and opinionated build system
 ocaml               4.10.2      The OCaml compiler (virtual package)
 ocaml-base-compiler 4.10.2      Official release 4.10.2
 ocaml-config        1           OCaml Switch Configuration
-ocamlfind           1.9.1       A library manager for OCaml
+ocamlfind           1.9.3       A library manager for OCaml
 zarith              1.12        Implements arithmetic and logical operations over arbitrary-precision integers
 [NOTE] Package coq is already installed (current version is dev).
 The following actions will be performed:
@@ -165,7 +165,27 @@ Processing  1/2: [coq-coqffi: ./src-prepare.sh]
 - patching file src/entry.ml
 Processing  1/2: [coq-coqffi: dune build]
 + /home/bench/.opam/opam-init/hooks/sandbox.sh &quot;build&quot; &quot;dune&quot; &quot;build&quot; &quot;-p&quot; &quot;coq-coqffi&quot; &quot;-j&quot; &quot;4&quot; (CWD=/home/bench/.opam/ocaml-base-compiler.4.10.2/.opam-switch/build/coq-coqffi.1.0.0~beta2)
--         coqc theories/Data/.Int.aux,theories/Data/Int.{glob,vo} (exit 1)
+- (cd _build/default &amp;&amp; /home/bench/.opam/ocaml-base-compiler.4.10.2/bin/ocamlc.opt -w -40 -g -bin-annot -I bin/.coqffi.eobjs/byte -I /home/bench/.opam/ocaml-base-compiler.4.10.2/lib/cmdliner -I /home/bench/.opam/ocaml-base-compiler.4.10.2/lib/ocaml/compiler-libs -I src/.coqffi.objs/byte -no-alias-deps -o bin/.coqffi.eobjs/byte/dune__exe__Coqffi.cmo -c -impl bin/coqffi.ml)
+- File &quot;bin/coqffi.ml&quot;, line 128, characters 8-12:
+- 128 |   Term.(info &quot;coqffi&quot; ~exits:default_exits ~doc ~man ~version:&quot;coqffi.1.0.0~beta2&quot;)
+-               ^^^^
+- Alert deprecated: Cmdliner.Term.info
+- Use Cmd.info instead.
+- File &quot;bin/coqffi.ml&quot;, line 128, characters 29-42:
+- 128 |   Term.(info &quot;coqffi&quot; ~exits:default_exits ~doc ~man ~version:&quot;coqffi.1.0.0~beta2&quot;)
+-                                    ^^^^^^^^^^^^^
+- Alert deprecated: Cmdliner.Term.default_exits
+- Use Cmd.Exit.defaults or Cmd.info&#39;s defaults ~exits value instead.
+- File &quot;bin/coqffi.ml&quot;, line 181, characters 8-12:
+- 181 |   Term.(exit @@ eval (coqffi_t, coqffi_info))
+-               ^^^^
+- Alert deprecated: Cmdliner.Term.exit
+- Use Stdlib.exit and Cmd.eval instead.
+- File &quot;bin/coqffi.ml&quot;, line 181, characters 16-20:
+- 181 |   Term.(exit @@ eval (coqffi_t, coqffi_info))
+-                       ^^^^
+- Alert deprecated: Cmdliner.Term.eval
+- Use Cmd.v and one of Cmd.eval* instead.
 - (cd _build/default &amp;&amp; /home/bench/.opam/ocaml-base-compiler.4.10.2/bin/coqc -q -R theories CoqFFI theories/Data/Int.v)
 - File &quot;./theories/Data/Int.v&quot;, line 30, characters 31-35:
 - Warning: Notation of_Z is deprecated since 8.14. Use Uint63.of_Z instead
@@ -179,35 +199,55 @@ Processing  1/2: [coq-coqffi: dune build]
 - File &quot;./theories/Data/Int.v&quot;, line 40, characters 0-7:
 - Error: Syntax error: illegal begin of vernac.
 - 
--         coqc theories/Data/.String.aux,theories/Data/String.{glob,vo} (exit 1)
 - (cd _build/default &amp;&amp; /home/bench/.opam/ocaml-base-compiler.4.10.2/bin/coqc -q -R theories CoqFFI theories/Data/String.v)
 - File &quot;./theories/Data/String.v&quot;, line 6, characters 0-34:
 - Error: Required library Byte matches several files in path (found
 - /home/bench/.opam/ocaml-base-compiler.4.10.2/lib/coq/theories/Strings/Byte.vo and
 - /home/bench/.opam/ocaml-base-compiler.4.10.2/lib/coq/theories/Init/Byte.vo).
 - 
+- (cd _build/default &amp;&amp; /home/bench/.opam/ocaml-base-compiler.4.10.2/bin/ocamlopt.opt -w -40 -g -I bin/.coqffi.eobjs/byte -I bin/.coqffi.eobjs/native -I /home/bench/.opam/ocaml-base-compiler.4.10.2/lib/cmdliner -I /home/bench/.opam/ocaml-base-compiler.4.10.2/lib/ocaml/compiler-libs -I src/.coqffi.objs/byte -I src/.coqffi.objs/native -intf-suffix .ml -no-alias-deps -o bin/.coqffi.eobjs/native/dune__exe__Coqffi.cmx -c -impl bin/coqffi.ml)
+- File &quot;bin/coqffi.ml&quot;, line 128, characters 8-12:
+- 128 |   Term.(info &quot;coqffi&quot; ~exits:default_exits ~doc ~man ~version:&quot;coqffi.1.0.0~beta2&quot;)
+-               ^^^^
+- Alert deprecated: Cmdliner.Term.info
+- Use Cmd.info instead.
+- File &quot;bin/coqffi.ml&quot;, line 128, characters 29-42:
+- 128 |   Term.(info &quot;coqffi&quot; ~exits:default_exits ~doc ~man ~version:&quot;coqffi.1.0.0~beta2&quot;)
+-                                    ^^^^^^^^^^^^^
+- Alert deprecated: Cmdliner.Term.default_exits
+- Use Cmd.Exit.defaults or Cmd.info&#39;s defaults ~exits value instead.
+- File &quot;bin/coqffi.ml&quot;, line 181, characters 8-12:
+- 181 |   Term.(exit @@ eval (coqffi_t, coqffi_info))
+-               ^^^^
+- Alert deprecated: Cmdliner.Term.exit
+- Use Stdlib.exit and Cmd.eval instead.
+- File &quot;bin/coqffi.ml&quot;, line 181, characters 16-20:
+- 181 |   Term.(exit @@ eval (coqffi_t, coqffi_info))
+-                       ^^^^
+- Alert deprecated: Cmdliner.Term.eval
+- Use Cmd.v and one of Cmd.eval* instead.
 [ERROR] The compilation of coq-coqffi failed at &quot;/home/bench/.opam/opam-init/hooks/sandbox.sh build dune build -p coq-coqffi -j 4&quot;.
 #=== ERROR while compiling coq-coqffi.1.0.0~beta2 =============================#
 # context              2.0.6 | linux/x86_64 | ocaml-base-compiler.4.10.2 | file:///home/bench/run/opam-coq-archive/released
 # path                 ~/.opam/ocaml-base-compiler.4.10.2/.opam-switch/build/coq-coqffi.1.0.0~beta2
 # command              ~/.opam/opam-init/hooks/sandbox.sh build dune build -p coq-coqffi -j 4
 # exit-code            1
-# env-file             ~/.opam/log/coq-coqffi-18657-2dea01.env
-# output-file          ~/.opam/log/coq-coqffi-18657-2dea01.out
+# env-file             ~/.opam/log/coq-coqffi-28915-2dea01.env
+# output-file          ~/.opam/log/coq-coqffi-28915-2dea01.out
 ### output ###
 # [...]
-# Warning: Notation to_Z is deprecated since 8.14. Use Uint63.to_Z instead
-# [deprecated-syntactic-definition,deprecated]
-# File &quot;./theories/Data/Int.v&quot;, line 40, characters 0-7:
-# Error: Syntax error: illegal begin of vernac.
-# 
-#         coqc theories/Data/.String.aux,theories/Data/String.{glob,vo} (exit 1)
-# (cd _build/default &amp;&amp; /home/bench/.opam/ocaml-base-compiler.4.10.2/bin/coqc -q -R theories CoqFFI theories/Data/String.v)
-# File &quot;./theories/Data/String.v&quot;, line 6, characters 0-34:
-# Error: Required library Byte matches several files in path (found
-# /home/bench/.opam/ocaml-base-compiler.4.10.2/lib/coq/theories/Strings/Byte.vo and
-# /home/bench/.opam/ocaml-base-compiler.4.10.2/lib/coq/theories/Init/Byte.vo).
-# 
+# Alert deprecated: Cmdliner.Term.default_exits
+# Use Cmd.Exit.defaults or Cmd.info&#39;s defaults ~exits value instead.
+# File &quot;bin/coqffi.ml&quot;, line 181, characters 8-12:
+# 181 |   Term.(exit @@ eval (coqffi_t, coqffi_info))
+#               ^^^^
+# Alert deprecated: Cmdliner.Term.exit
+# Use Stdlib.exit and Cmd.eval instead.
+# File &quot;bin/coqffi.ml&quot;, line 181, characters 16-20:
+# 181 |   Term.(exit @@ eval (coqffi_t, coqffi_info))
+#                       ^^^^
+# Alert deprecated: Cmdliner.Term.eval
+# Use Cmd.v and one of Cmd.eval* instead.
 &lt;&gt;&lt;&gt; Error report &lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;
 +- The following actions failed
 | - build coq-coqffi 1.0.0~beta2

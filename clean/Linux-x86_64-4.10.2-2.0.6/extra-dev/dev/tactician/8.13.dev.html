@@ -42,7 +42,7 @@
                 <span class="label label-info">Not compatible 👼</span>
               </small>
             </h1>
-            <p>📅 <em><script>document.write(moment("2022-01-20 06:05:22 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2022-01-20 06:05:22 UTC)</em><p>
+            <p>📅 <em><script>document.write(moment("2022-03-15 00:11:54 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2022-03-15 00:11:54 UTC)</em><p>
             <h2>Context</h2>
             <pre># Packages matching: installed
 # Name              # Installed # Synopsis
@@ -50,13 +50,13 @@ base-bigarray       base
 base-threads        base
 base-unix           base
 conf-findutils      1           Virtual package relying on findutils
-conf-gmp            3           Virtual package relying on a GMP lib system installation
+conf-gmp            4           Virtual package relying on a GMP lib system installation
 coq                 dev         Formal proof management system
-dune                2.9.1       Fast, portable, and opinionated build system
+dune                3.0.3       Fast, portable, and opinionated build system
 ocaml               4.10.2      The OCaml compiler (virtual package)
 ocaml-base-compiler 4.10.2      Official release 4.10.2
 ocaml-config        1           OCaml Switch Configuration
-ocamlfind           1.9.1       A library manager for OCaml
+ocamlfind           1.9.3       A library manager for OCaml
 zarith              1.12        Implements arithmetic and logical operations over arbitrary-precision integers
 # opam file:
 opam-version: &quot;2.0&quot;
@@ -77,15 +77,18 @@ homepage: &quot;https://coq-tactician.github.io&quot;
 bug-reports: &quot;https://github.com/coq-tactician/coq-tactician/issues&quot;
 depends: [
   &quot;ocaml&quot; {&gt;= &quot;4.08&quot;}
-  &quot;dune&quot; {&gt;= &quot;2.5&quot;}
+  &quot;dune&quot; {&gt;= &quot;2.8&quot;}
+  &quot;dune-site&quot; {&gt;= &quot;2.9.1&quot;}
   &quot;opam-client&quot; {&gt;= &quot;2.1.0~beta2&quot;}
   &quot;cmdliner&quot;
   &quot;coq&quot; {&gt;= &quot;8.13&quot; &amp; &lt; &quot;8.14~&quot;}
   &quot;conf-git&quot;
-  &quot;coq-tactician-dummy&quot; {= &quot;1.0~beta1&quot; &amp; with-test}
+  &quot;bos&quot; {&gt;= &quot;0.2.1&quot;}
+  &quot;coq-tactician-dummy&quot; {= &quot;dev&quot; &amp; with-test}
+  &quot;odoc&quot; {with-doc}
 ]
 build: [
-  [&quot;dune&quot; &quot;subst&quot;] {pinned}
+  [&quot;dune&quot; &quot;subst&quot;] {dev}
   [
     &quot;dune&quot;
     &quot;build&quot;
@@ -113,9 +116,8 @@ tags: [
   &quot;logpath:Tactician&quot;
 ]
 substs: [
-  &quot;coq-shim/with-tactician&quot;
   &quot;coq-shim/tactician-patch&quot;
-  &quot;src/tactician.ml&quot;
+  &quot;coq-shim/tactician.ml&quot;
 ]
 url {
   src: &quot;git+https://github.com/coq-tactician/coq-tactician.git#coq8.13&quot;
