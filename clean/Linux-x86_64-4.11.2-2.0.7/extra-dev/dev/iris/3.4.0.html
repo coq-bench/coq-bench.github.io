@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>iris: Error with dependencies 🚒</title>
+    <title>iris: Error 🔥</title>
     <link rel="shortcut icon" type="image/png" href="../../../../../favicon.png" />
     <link href="../../../../../bootstrap.min.css" rel="stylesheet">
     <link href="../../../../../bootstrap-custom.css" rel="stylesheet">
@@ -39,10 +39,10 @@
               iris
               <small>
                 3.4.0
-                <span class="label label-warning">Error with dependencies 🚒</span>
+                <span class="label label-danger">Error 🔥</span>
               </small>
             </h1>
-            <p>📅 <em><script>document.write(moment("2022-01-19 18:24:42 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2022-01-19 18:24:42 UTC)</em><p>
+            <p>📅 <em><script>document.write(moment("2022-03-29 02:01:24 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2022-03-29 02:01:24 UTC)</em><p>
             <h2>Context</h2>
             <pre># Packages matching: installed
 # Name              # Installed # Synopsis
@@ -50,13 +50,13 @@ base-bigarray       base
 base-threads        base
 base-unix           base
 conf-findutils      1           Virtual package relying on findutils
-conf-gmp            3           Virtual package relying on a GMP lib system installation
+conf-gmp            4           Virtual package relying on a GMP lib system installation
 coq                 dev         Formal proof management system
-dune                2.9.1       Fast, portable, and opinionated build system
+dune                3.0.3       Fast, portable, and opinionated build system
 ocaml               4.11.2      The OCaml compiler (virtual package)
 ocaml-base-compiler 4.11.2      Official release 4.11.2
 ocaml-config        1           OCaml Switch Configuration
-ocamlfind           1.9.1       A library manager for OCaml
+ocamlfind           1.9.3       A library manager for OCaml
 zarith              1.12        Implements arithmetic and logical operations over arbitrary-precision integers
 # opam file:
 opam-version: &quot;2.0&quot;
@@ -114,9 +114,18 @@ url {
               <dt>Command</dt>
               <dd><code>opam list; echo; ulimit -Sv 4000000; timeout 4h opam install -y --deps-only coq-iris.3.4.0 coq.dev</code></dd>
               <dt>Return code</dt>
+              <dd>0</dd>
+              <dt>Duration</dt>
+              <dd>3 m 51 s</dd>
+            </dl>
+            <h2>Install 🚀</h2>
+            <dl class="dl-horizontal">
+              <dt>Command</dt>
+              <dd><code>opam list; echo; ulimit -Sv 16000000; timeout 8h opam install -y -v coq-iris.3.4.0 coq.dev</code></dd>
+              <dt>Return code</dt>
               <dd>7936</dd>
               <dt>Duration</dt>
-              <dd>30 s</dd>
+              <dd>1 m 1 s</dd>
               <dt>Output</dt>
               <dd><pre># Packages matching: installed
 # Name              # Installed # Synopsis
@@ -124,57 +133,172 @@ base-bigarray       base
 base-threads        base
 base-unix           base
 conf-findutils      1           Virtual package relying on findutils
-conf-gmp            3           Virtual package relying on a GMP lib system installation
+conf-gmp            4           Virtual package relying on a GMP lib system installation
 coq                 dev         Formal proof management system
-dune                2.9.1       Fast, portable, and opinionated build system
+coq-stdpp           dev         An extended &quot;Standard Library&quot; for Coq
+dune                3.0.3       Fast, portable, and opinionated build system
 ocaml               4.11.2      The OCaml compiler (virtual package)
 ocaml-base-compiler 4.11.2      Official release 4.11.2
 ocaml-config        1           OCaml Switch Configuration
-ocamlfind           1.9.1       A library manager for OCaml
+ocamlfind           1.9.3       A library manager for OCaml
 zarith              1.12        Implements arithmetic and logical operations over arbitrary-precision integers
+[NOTE] Package coq is already installed (current version is dev).
 The following actions will be performed:
-  - install coq-stdpp 1.5.0
+  - install coq-iris 3.4.0
 &lt;&gt;&lt;&gt; Gathering sources &gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;
-[coq-stdpp.1.5.0] downloaded from https://gitlab.mpi-sws.org/iris/stdpp/-/archive/coq-stdpp-1.5.0.tar.gz
+Processing  1/1: [coq-iris.3.4.0: http]
+[coq-iris.3.4.0] downloaded from https://gitlab.mpi-sws.org/iris/iris/-/archive/iris-3.4.0.tar.gz
+Processing  1/1:
 &lt;&gt;&lt;&gt; Processing actions &lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;
-[ERROR] The compilation of coq-stdpp failed at &quot;/home/bench/.opam/opam-init/hooks/sandbox.sh build make -j4&quot;.
-#=== ERROR while compiling coq-stdpp.1.5.0 ====================================#
+Processing  1/2: [coq-iris: ./make-package iris]
++ /home/bench/.opam/opam-init/hooks/sandbox.sh &quot;build&quot; &quot;./make-package&quot; &quot;iris&quot; &quot;-j4&quot; (CWD=/home/bench/.opam/ocaml-base-compiler.4.11.2/.opam-switch/build/coq-iris.3.4.0)
+- COQDEP VFILES
+- COQC iris/prelude/options.v
+- COQC iris/prelude/prelude.v
+- COQC iris/bi/notation.v
+- COQC iris/proofmode/ident_name.v
+- COQC iris/algebra/ofe.v
+- COQC iris/proofmode/base.v
+- COQC iris/proofmode/tokens.v
+- File &quot;./iris/algebra/ofe.v&quot;, line 534, characters 0-29:
+- Warning: The default value for instance locality is currently &quot;local&quot; in a
+- section and &quot;global&quot; otherwise, but is scheduled to change in a future
+- release. For the time being, adding instances outside of sections without
+- specifying an explicit locality attribute is therefore deprecated. It is
+- recommended to use &quot;export&quot; whenever possible. Use the attributes #[local],
+- #[global] and #[export] depending on your choice. For example: &quot;#[export]
+- Instance Foo : Bar := baz.&quot; [deprecated-instance-without-locality,deprecated]
+- COQC iris/proofmode/sel_patterns.v
+- COQC iris/proofmode/spec_patterns.v
+- File &quot;./iris/algebra/ofe.v&quot;, line 684, characters 0-29:
+- Warning: The default value for Typeclasses Opaque and Typeclasses Transparent
+- locality is currently &quot;local&quot; in a section and &quot;global&quot; otherwise, but is
+- scheduled to change in a future release. For the time being, adding typeclass
+- transparency hints outside of sections without specifying an explicit
+- locality attribute is therefore deprecated. It is recommended to use &quot;export&quot;
+- whenever possible. Use the attributes #[local], #[global] and #[export]
+- depending on your choice. For example: &quot;#[export] Typeclasses Transparent
+- foo.&quot; [deprecated-typeclasses-transparency-without-locality,deprecated]
+- File &quot;./iris/algebra/ofe.v&quot;, line 709, characters 0-34:
+- Warning: The default value for instance locality is currently &quot;local&quot; in a
+- section and &quot;global&quot; otherwise, but is scheduled to change in a future
+- release. For the time being, adding instances outside of sections without
+- specifying an explicit locality attribute is therefore deprecated. It is
+- recommended to use &quot;export&quot; whenever possible. Use the attributes #[local],
+- #[global] and #[export] depending on your choice. For example: &quot;#[export]
+- Instance Foo : Bar := baz.&quot; [deprecated-instance-without-locality,deprecated]
+- COQC iris/proofmode/intro_patterns.v
+- File &quot;./iris/algebra/ofe.v&quot;, line 876, characters 0-28:
+- Warning: The default value for Typeclasses Opaque and Typeclasses Transparent
+- locality is currently &quot;local&quot; in a section and &quot;global&quot; otherwise, but is
+- scheduled to change in a future release. For the time being, adding typeclass
+- transparency hints outside of sections without specifying an explicit
+- locality attribute is therefore deprecated. It is recommended to use &quot;export&quot;
+- whenever possible. Use the attributes #[local], #[global] and #[export]
+- depending on your choice. For example: &quot;#[export] Typeclasses Transparent
+- foo.&quot; [deprecated-typeclasses-transparency-without-locality,deprecated]
+- File &quot;./iris/algebra/ofe.v&quot;, line 1037, characters 0-31:
+- Warning: The default value for Typeclasses Opaque and Typeclasses Transparent
+- locality is currently &quot;local&quot; in a section and &quot;global&quot; otherwise, but is
+- scheduled to change in a future release. For the time being, adding typeclass
+- transparency hints outside of sections without specifying an explicit
+- locality attribute is therefore deprecated. It is recommended to use &quot;export&quot;
+- whenever possible. Use the attributes #[local], #[global] and #[export]
+- depending on your choice. For example: &quot;#[export] Typeclasses Transparent
+- foo.&quot; [deprecated-typeclasses-transparency-without-locality,deprecated]
+- COQC iris/algebra/monoid.v
+- COQC iris/algebra/cofe_solver.v
+- COQC iris/si_logic/siprop.v
+- COQC iris/bi/interface.v
+- File &quot;./iris/algebra/cofe_solver.v&quot;, line 9, characters 0-32:
+- Warning: The default value for instance locality is currently &quot;local&quot; in a
+- section and &quot;global&quot; otherwise, but is scheduled to change in a future
+- release. For the time being, adding instances outside of sections without
+- specifying an explicit locality attribute is therefore deprecated. It is
+- recommended to use &quot;export&quot; whenever possible. Use the attributes #[local],
+- #[global] and #[export] depending on your choice. For example: &quot;#[export]
+- Instance Foo : Bar := baz.&quot; [deprecated-instance-without-locality,deprecated]
+- COQC iris/program_logic/language.v
+- File &quot;./iris/bi/interface.v&quot;, line 262, characters 0-32:
+- Warning: The default value for Typeclasses Opaque and Typeclasses Transparent
+- locality is currently &quot;local&quot; in a section and &quot;global&quot; otherwise, but is
+- scheduled to change in a future release. For the time being, adding typeclass
+- transparency hints outside of sections without specifying an explicit
+- locality attribute is therefore deprecated. It is recommended to use &quot;export&quot;
+- whenever possible. Use the attributes #[local], #[global] and #[export]
+- depending on your choice. For example: &quot;#[export] Typeclasses Transparent
+- foo.&quot; [deprecated-typeclasses-transparency-without-locality,deprecated]
+- COQC iris/algebra/cmra.v
+- COQC iris/algebra/big_op.v
+- File &quot;./iris/program_logic/language.v&quot;, line 201, characters 27-47:
+- Error: Unable to apply lemma of type
+-  &quot;∀ (A : Type) (l l&#39; : list A) (a : A), a :: l ≡ₚ a :: l&#39; → l ≡ₚ l&#39;&quot;
+- on hypothesis of type &quot;t1&#39; ≡ₚ e1 :: tl ++ tr&quot;.
+- 
+- make[1]: *** [Makefile.package.iris:790: iris/program_logic/language.vo] Error 1
+- make[1]: *** Waiting for unfinished jobs....
+- File &quot;./iris/algebra/big_op.v&quot;, line 30, characters 0-27:
+- Warning: The default value for Typeclasses Opaque and Typeclasses Transparent
+- locality is currently &quot;local&quot; in a section and &quot;global&quot; otherwise, but is
+- scheduled to change in a future release. For the time being, adding typeclass
+- transparency hints outside of sections without specifying an explicit
+- locality attribute is therefore deprecated. It is recommended to use &quot;export&quot;
+- whenever possible. Use the attributes #[local], #[global] and #[export]
+- depending on your choice. For example: &quot;#[export] Typeclasses Transparent
+- foo.&quot; [deprecated-typeclasses-transparency-without-locality,deprecated]
+- File &quot;./iris/algebra/big_op.v&quot;, line 39, characters 47-48:
+- Error:
+- In environment
+- M : ofe
+- o : M → M → M
+- H : Monoid o
+- K : Type
+- EqDecision0 : EqDecision K
+- H0 : Countable K
+- A : Type
+- f : K → A → M
+- m : gmap K A
+- n : nat
+- The term &quot;f&quot; has type &quot;K → A → M&quot; while it is expected to have type
+-  &quot;?A0 * ?B → ?C&quot;.
+- 
+- make[1]: *** [Makefile.package.iris:790: iris/algebra/big_op.vo] Error 1
+- File &quot;./iris/algebra/cmra.v&quot;, line 340, characters 25-42:
+- Error: The reference equiv_Some_inv_r&#39; was not found in the current
+- environment.
+- 
+- make[1]: *** [Makefile.package.iris:790: iris/algebra/cmra.vo] Error 1
+- make: *** [Makefile.package.iris:408: all] Error 2
+[ERROR] The compilation of coq-iris failed at &quot;/home/bench/.opam/opam-init/hooks/sandbox.sh build ./make-package iris -j4&quot;.
+#=== ERROR while compiling coq-iris.3.4.0 =====================================#
 # context              2.0.7 | linux/x86_64 | ocaml-base-compiler.4.11.2 | file:///home/bench/run/opam-coq-archive/released
-# path                 ~/.opam/ocaml-base-compiler.4.11.2/.opam-switch/build/coq-stdpp.1.5.0
-# command              ~/.opam/opam-init/hooks/sandbox.sh build make -j4
+# path                 ~/.opam/ocaml-base-compiler.4.11.2/.opam-switch/build/coq-iris.3.4.0
+# command              ~/.opam/opam-init/hooks/sandbox.sh build ./make-package iris -j4
 # exit-code            2
-# env-file             ~/.opam/log/coq-stdpp-5689-8b8a2d.env
-# output-file          ~/.opam/log/coq-stdpp-5689-8b8a2d.out
+# env-file             ~/.opam/log/coq-iris-23377-335865.env
+# output-file          ~/.opam/log/coq-iris-23377-335865.out
 ### output ###
-# +File &quot;/home/bench/.opam/ocaml-base-compiler.4.11.2/.opam-switch/build/coq-stdpp.1.5.0/tests/tactics.v&quot;, line 38, characters 2-29:
 # [...]
-# +File &quot;/home/bench/.opam/ocaml-base-compiler.4.11.2/.opam-switch/build/coq-stdpp.1.5.0/tests/tactics.v&quot;, line 39, characters 16-28:
-#  The command has indeed failed with message:
-#  Failed to progress.
-# +File &quot;/home/bench/.opam/ocaml-base-compiler.4.11.2/.opam-switch/build/coq-stdpp.1.5.0/tests/tactics.v&quot;, line 49, characters 22-35:
-#  The command has indeed failed with message:
-#  Failed to progress.
-# make[2]: *** [Makefile.coq.local:38: tests/tactics.vo] Error 1
-# make[2]: *** Waiting for unfinished jobs....
-# make[1]: *** [Makefile.coq:387: all] Error 2
-# make[1]: Leaving directory &#39;/home/bench/.opam/ocaml-base-compiler.4.11.2/.opam-switch/build/coq-stdpp.1.5.0&#39;
-# make: *** [Makefile:3: all] Error 2
+# m : gmap K A
+# n : nat
+# The term &quot;f&quot; has type &quot;K → A → M&quot; while it is expected to have type
+#  &quot;?A0 * ?B → ?C&quot;.
+# 
+# make[1]: *** [Makefile.package.iris:790: iris/algebra/big_op.vo] Error 1
+# File &quot;./iris/algebra/cmra.v&quot;, line 340, characters 25-42:
+# Error: The reference equiv_Some_inv_r&#39; was not found in the current
+# environment.
+# 
+# make[1]: *** [Makefile.package.iris:790: iris/algebra/cmra.vo] Error 1
+# make: *** [Makefile.package.iris:408: all] Error 2
 &lt;&gt;&lt;&gt; Error report &lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;
 +- The following actions failed
-| - build coq-stdpp 1.5.0
+| - build coq-iris 3.4.0
 +- 
 - No changes have been performed
 # Run eval $(opam env) to update the current shell environment
+&#39;opam install -y -v coq-iris.3.4.0 coq.dev&#39; failed.
 </pre></dd>
-            </dl>
-            <h2>Install 🚀</h2>
-            <dl class="dl-horizontal">
-              <dt>Command</dt>
-              <dd><code>true</code></dd>
-              <dt>Return code</dt>
-              <dd>0</dd>
-              <dt>Duration</dt>
-              <dd>0 s</dd>
             </dl>
             <h2>Installation size</h2>
             <p>No files were installed.</p>
