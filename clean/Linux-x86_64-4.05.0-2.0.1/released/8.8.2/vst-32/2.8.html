@@ -42,7 +42,7 @@
                 <span class="label label-info">Not compatible 👼</span>
               </small>
             </h1>
-            <p>📅 <em><script>document.write(moment("2021-10-08 18:05:21 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2021-10-08 18:05:21 UTC)</em><p>
+            <p>📅 <em><script>document.write(moment("2022-03-27 03:48:43 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2022-03-27 03:48:43 UTC)</em><p>
             <h2>Context</h2>
             <pre># Packages matching: installed
 # Name              # Installed # Synopsis
@@ -52,13 +52,13 @@ base-threads        base
 base-unix           base
 camlp5              7.14        Preprocessor-pretty-printer of OCaml
 conf-findutils      1           Virtual package relying on findutils
-conf-perl           1           Virtual package relying on perl
+conf-perl           2           Virtual package relying on perl
 coq                 8.8.2       Formal proof management system
 num                 0           The Num library for arbitrary-precision integer and rational arithmetic
 ocaml               4.05.0      The OCaml compiler (virtual package)
 ocaml-base-compiler 4.05.0      Official 4.05.0 release
 ocaml-config        1           OCaml Switch Configuration
-ocamlfind           1.9.1       A library manager for OCaml
+ocamlfind           1.9.3       A library manager for OCaml
 # opam file:
 opam-version: &quot;2.0&quot;
 synopsis: &quot;Verified Software Toolchain&quot;
@@ -82,16 +82,17 @@ homepage: &quot;http://vst.cs.princeton.edu/&quot;
 dev-repo: &quot;git+https://github.com/PrincetonUniversity/VST.git&quot;
 bug-reports: &quot;https://github.com/PrincetonUniversity/VST/issues&quot;
 license: &quot;https://raw.githubusercontent.com/PrincetonUniversity/VST/master/LICENSE&quot;
+patches: [ &quot;0001-Fix-issue-485-make-install-with-IGNORECOQVERSION.patch&quot; &quot;0002-Fix-Coq-8.14.0.patch&quot; ]
 build: [
-  [make &quot;-j%{jobs}%&quot; &quot;BITSIZE=32&quot;]
+  [make &quot;-j%{jobs}%&quot; &quot;IGNORECOQVERSION=true&quot; &quot;BITSIZE=32&quot;]
 ]
 install: [
-  [make &quot;install&quot; &quot;BITSIZE=32&quot;]
+  [make &quot;install&quot; &quot;IGNORECOQVERSION=true&quot; &quot;BITSIZE=32&quot;]
 ]
 depends: [
   &quot;ocaml&quot;
-  &quot;coq&quot; {&gt;= &quot;8.12&quot; &amp; &lt; &quot;8.14&quot;}
-  &quot;coq-compcert-32&quot; {(= &quot;3.9&quot;) | (= &quot;3.9~open-source&quot;)}
+  &quot;coq&quot; {&gt;= &quot;8.12&quot; &amp; &lt; &quot;8.15~&quot;}
+  &quot;coq-compcert-32&quot; {= &quot;3.9&quot;}
   &quot;coq-flocq&quot; {&gt;= &quot;3.2.1&quot;}
 ]
 tags: [
