@@ -42,7 +42,7 @@
                 <span class="label label-warning">Error with dependencies 🚒</span>
               </small>
             </h1>
-            <p>📅 <em><script>document.write(moment("2022-02-27 19:27:03 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2022-02-27 19:27:03 UTC)</em><p>
+            <p>📅 <em><script>document.write(moment("2022-04-02 06:12:17 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2022-04-02 06:12:17 UTC)</em><p>
             <h2>Context</h2>
             <pre># Packages matching: installed
 # Name                # Installed # Synopsis
@@ -52,7 +52,7 @@ base-unix             base
 conf-findutils        1           Virtual package relying on findutils
 conf-gmp              4           Virtual package relying on a GMP lib system installation
 coq                   dev         Formal proof management system
-dune                  3.0.2       Fast, portable, and opinionated build system
+dune                  3.0.3       Fast, portable, and opinionated build system
 ocaml                 4.12.1      The OCaml compiler (virtual package)
 ocaml-base-compiler   4.12.1      Official release 4.12.1
 ocaml-config          2           OCaml Switch Configuration
@@ -73,11 +73,11 @@ This development bridges the different notions.&quot;&quot;&quot;
 build: [&quot;dune&quot; &quot;build&quot; &quot;-p&quot; name &quot;-j&quot; jobs]
 depends: [
   &quot;dune&quot; {&gt;= &quot;2.5&quot;}
-  &quot;coq&quot; {(&gt;= &quot;8.13&quot; &amp; &lt; &quot;8.15~&quot;) | (= &quot;dev&quot;)}
-  &quot;coq-hydra-battles&quot; {&gt;= &quot;0.4&quot;}
-  &quot;coq-mathcomp-ssreflect&quot; {(&gt;= &quot;1.12.0&quot; &amp; &lt; &quot;1.13~&quot;) | (= &quot;dev&quot;)}
+  &quot;coq&quot; {&gt;= &quot;8.13&quot;}
+  &quot;coq-hydra-battles&quot; {= version}
+  &quot;coq-mathcomp-ssreflect&quot; {&gt;= &quot;1.12.0&quot;}
   &quot;coq-mathcomp-zify&quot;
-  &quot;coq-gaia&quot; {(&gt;= &quot;1.12&quot; &amp; &lt; &quot;1.13~&quot;) | (= &quot;dev&quot;)}
+  &quot;coq-gaia-schutte&quot; {&gt;= &quot;1.14&quot;}
 ]
 tags: [
   &quot;category:Mathematics/Logic/Foundations&quot;
@@ -120,7 +120,7 @@ url {
               <dt>Return code</dt>
               <dd>7936</dd>
               <dt>Duration</dt>
-              <dd>29 m 8 s</dd>
+              <dd>9 m 44 s</dd>
               <dt>Output</dt>
               <dd><pre># Packages matching: installed
 # Name                # Installed # Synopsis
@@ -130,7 +130,7 @@ base-unix             base
 conf-findutils        1           Virtual package relying on findutils
 conf-gmp              4           Virtual package relying on a GMP lib system installation
 coq                   dev         Formal proof management system
-dune                  3.0.2       Fast, portable, and opinionated build system
+dune                  3.0.3       Fast, portable, and opinionated build system
 ocaml                 4.12.1      The OCaml compiler (virtual package)
 ocaml-base-compiler   4.12.1      Official release 4.12.1
 ocaml-config          2           OCaml Switch Configuration
@@ -140,56 +140,58 @@ zarith                1.12        Implements arithmetic and logical operations o
 The following actions will be performed:
   - install coq-equations          dev
   - install coq-mathcomp-ssreflect dev
-  - install coq-hydra-battles      dev
+  - install coq-libhyps            dev
   - install coq-mathcomp-fingroup  dev
+  - install coq-gaia-schutte       dev
+  - install coq-hydra-battles      dev
   - install coq-mathcomp-algebra   dev
   - install coq-mathcomp-zify      dev
-  - install coq-gaia               dev
-===== 7 to install =====
+===== 8 to install =====
 &lt;&gt;&lt;&gt; Gathering sources &gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;
-[coq-gaia.dev] synchronised from git+https://github.com/coq-community/gaia.git#master
+[coq-gaia-schutte.dev] synchronised from git+https://github.com/coq-community/gaia.git#master
 [coq-hydra-battles.dev] synchronised from git+https://github.com/coq-community/hydra-battles.git#master
-[coq-mathcomp-fingroup.dev] synchronised from git+https://github.com/math-comp/math-comp.git
+[coq-equations.dev] synchronised from git+https://github.com/mattam82/Coq-Equations#master
+[coq-libhyps.dev] synchronised from git+https://github.com/Matafou/LibHyps#master
 [coq-mathcomp-algebra.dev] synchronised from git+https://github.com/math-comp/math-comp.git
 [coq-mathcomp-ssreflect.dev] synchronised from git+https://github.com/math-comp/math-comp.git#master
-[coq-equations.dev] synchronised from git+https://github.com/mattam82/Coq-Equations#master
+[coq-mathcomp-fingroup.dev] synchronised from git+https://github.com/math-comp/math-comp.git
 [coq-mathcomp-zify.dev] synchronised from git+https://github.com/math-comp/mczify.git#master
 &lt;&gt;&lt;&gt; Processing actions &lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;
--&gt; installed coq-equations.dev
+[ERROR] The compilation of coq-equations failed at &quot;/home/bench/.opam/opam-init/hooks/sandbox.sh build make -j4&quot;.
+-&gt; installed coq-libhyps.dev
 -&gt; installed coq-mathcomp-ssreflect.dev
-[ERROR] The compilation of coq-hydra-battles failed at &quot;/home/bench/.opam/opam-init/hooks/sandbox.sh build dune build -p coq-hydra-battles -j 4&quot;.
+-&gt; installed coq-gaia-schutte.dev
 -&gt; installed coq-mathcomp-fingroup.dev
 -&gt; installed coq-mathcomp-algebra.dev
 -&gt; installed coq-mathcomp-zify.dev
--&gt; installed coq-gaia.dev
-#=== ERROR while compiling coq-hydra-battles.dev ==============================#
+#=== ERROR while compiling coq-equations.dev ==================================#
 # context              2.0.8 | linux/x86_64 | ocaml-base-compiler.4.12.1 | file:///home/bench/run/opam-coq-archive/extra-dev
-# path                 ~/.opam/ocaml-base-compiler.4.12.1/.opam-switch/build/coq-hydra-battles.dev
-# command              ~/.opam/opam-init/hooks/sandbox.sh build dune build -p coq-hydra-battles -j 4
-# exit-code            1
-# env-file             ~/.opam/log/coq-hydra-battles-11071-9ace5e.env
-# output-file          ~/.opam/log/coq-hydra-battles-11071-9ace5e.out
+# path                 ~/.opam/ocaml-base-compiler.4.12.1/.opam-switch/build/coq-equations.dev
+# command              ~/.opam/opam-init/hooks/sandbox.sh build make -j4
+# exit-code            2
+# env-file             ~/.opam/log/coq-equations-8748-eec089.env
+# output-file          ~/.opam/log/coq-equations-8748-eec089.out
 ### output ###
-# R23:
 # [...]
-#               (first_toggle
-#                  (fun i : nat =&gt;
-#                   compare (standard_gnaw (S n) alpha i) beta &lt;&gt; Datatypes.Lt)
-#                  (P_dec alpha beta n) 0 (proj1_sig (Rem2 n Halpha Hpos))
-#                  (Rem06 Halpha Hpos Hpa) (Rem04 Halpha Hpa)
-#                  (Rem05 n Halpha Hpos))))) beta}
-# (cd _build/default &amp;&amp; /home/bench/.opam/ocaml-base-compiler.4.12.1/bin/coqc -w -deprecated-hint-rewrite-without-locality -w -unknown-option -w -deprecated-option -R theories/ordinals hydras theories/ordinals/Schutte/Critical.v)
-# Cr_pos_iff alpha_pos
-#      : forall x : Ord,
-#        Cr alpha x &lt;-&gt;
-#        (forall beta : Ord, beta &lt; alpha -&gt; In (A_ beta) x /\ phi beta x = x)
+# CAMLOPT -c  src/eqdec.ml
+# CAMLOPT -c  src/extra_tactics.ml
+# CAMLOPT -c  src/context_map.ml
+# CAMLOPT -c  src/sigma_types.ml
+# File &quot;src/sigma_types.ml&quot;, line 139, characters 14-37:
+# 139 |               UGraph.enforce_leq_sort ts l cstr
+#                     ^^^^^^^^^^^^^^^^^^^^^^^
+# Error: Unbound value UGraph.enforce_leq_sort
+# make[2]: *** [Makefile.coq:739: src/sigma_types.cmx] Error 2
+# make[1]: *** [Makefile.coq:408: all] Error 2
+# make[1]: Leaving directory &#39;/home/bench/.opam/ocaml-base-compiler.4.12.1/.opam-switch/build/coq-equations.dev&#39;
+# make: *** [Makefile:6: all] Error 2
 &lt;&gt;&lt;&gt; Error report &lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;
 +- The following actions failed
-| - build coq-hydra-battles dev
+| - build coq-equations dev
 +- 
-+- The following changes have been performed
-| - install coq-equations          dev
-| - install coq-gaia               dev
++- The following changes have been performed (the rest was aborted)
+| - install coq-gaia-schutte       dev
+| - install coq-libhyps            dev
 | - install coq-mathcomp-algebra   dev
 | - install coq-mathcomp-fingroup  dev
 | - install coq-mathcomp-ssreflect dev
@@ -197,7 +199,7 @@ The following actions will be performed:
 +- 
 # Run eval $(opam env) to update the current shell environment
 The former state can be restored with:
-    opam switch import &quot;/home/bench/.opam/ocaml-base-compiler.4.12.1/.opam-switch/backup/state-20220223154806.export&quot;
+    opam switch import &quot;/home/bench/.opam/ocaml-base-compiler.4.12.1/.opam-switch/backup/state-20220401215156.export&quot;
 </pre></dd>
             </dl>
             <h2>Install 🚀</h2>
