@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>hierarchy-builder: 52 s 🏆</title>
+    <title>hierarchy-builder: Error with dependencies 🚒</title>
     <link rel="shortcut icon" type="image/png" href="../../../../../favicon.png" />
     <link href="../../../../../bootstrap.min.css" rel="stylesheet">
     <link href="../../../../../bootstrap-custom.css" rel="stylesheet">
@@ -39,10 +39,10 @@
               hierarchy-builder
               <small>
                 dev
-                <span class="label label-success">52 s 🏆</span>
+                <span class="label label-warning">Error with dependencies 🚒</span>
               </small>
             </h1>
-            <p>📅 <em><script>document.write(moment("2021-12-29 01:31:58 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2021-12-29 01:31:58 UTC)</em><p>
+            <p>📅 <em><script>document.write(moment("2022-04-28 01:17:57 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2022-04-28 01:17:57 UTC)</em><p>
             <h2>Context</h2>
             <pre># Packages matching: installed
 # Name                   # Installed # Synopsis
@@ -50,9 +50,9 @@ base-bigarray            base
 base-threads             base
 base-unix                base
 conf-findutils           1           Virtual package relying on findutils
-conf-gmp                 3           Virtual package relying on a GMP lib system installation
+conf-gmp                 4           Virtual package relying on a GMP lib system installation
 coq                      dev         Formal proof management system
-dune                     2.9.1       Fast, portable, and opinionated build system
+dune                     3.1.1       Fast, portable, and opinionated build system
 ocaml                    4.07.1      The OCaml compiler (virtual package)
 ocaml-base-compiler      4.07.1      Official release 4.07.1
 ocaml-config             1           OCaml Switch Configuration
@@ -68,13 +68,20 @@ license: &quot;MIT&quot;
 homepage: &quot;https://github.com/math-comp/hierarchy-builder&quot;
 bug-reports: &quot;https://github.com/math-comp/hierarchy-builder/issues&quot;
 dev-repo: &quot;git+https://github.com/math-comp/hierarchy-builder&quot;
-build: [ make &quot;build&quot;]
-install: [ make &quot;install&quot;]
-depends: [ &quot;coq-elpi&quot; {= &quot;dev&quot;} ]
-synopsis: &quot;Hierarchy Builder&quot;
+build: [ [ make &quot;build&quot;]
+         [ make &quot;test-suite&quot; ] {with-test}
+       ]
+install: [ make &quot;install&quot; ]
+depends: [ &quot;coq-elpi&quot; {&gt;= &quot;1.11.0&quot;} ]
+conflicts: [ &quot;coq-hierarchy-builder-shim&quot; ]
+synopsis: &quot;High level commands to declare and evolve a hierarchy based on packed classes&quot;
 description: &quot;&quot;&quot;
-High level commands to declare and evolve a hierarchy based on packed classes.
+Hierarchy Builder is a high level language to build hierarchies of algebraic structures and make these
+hierarchies evolve without breaking user code. The key concepts are the ones of factory, builder
+and abbreviation that let the hierarchy developer describe an actual interface for their library.
+Behind that interface the developer can provide appropriate code to ensure retro compatibility.
 &quot;&quot;&quot;
+tags: [ &quot;logpath:HB&quot; ]
 url {
   src: &quot;git+https://github.com/math-comp/hierarchy-builder.git#coq-master&quot;
 }
@@ -106,31 +113,140 @@ url {
               <dt>Command</dt>
               <dd><code>opam list; echo; ulimit -Sv 4000000; timeout 4h opam install -y --deps-only coq-hierarchy-builder.dev coq.dev</code></dd>
               <dt>Return code</dt>
-              <dd>0</dd>
+              <dd>7936</dd>
               <dt>Duration</dt>
-              <dd>13 m 33 s</dd>
+              <dd>16 m 18 s</dd>
+              <dt>Output</dt>
+              <dd><pre># Packages matching: installed
+# Name                   # Installed # Synopsis
+base-bigarray            base
+base-threads             base
+base-unix                base
+conf-findutils           1           Virtual package relying on findutils
+conf-gmp                 4           Virtual package relying on a GMP lib system installation
+coq                      dev         Formal proof management system
+dune                     3.1.1       Fast, portable, and opinionated build system
+ocaml                    4.07.1      The OCaml compiler (virtual package)
+ocaml-base-compiler      4.07.1      Official release 4.07.1
+ocaml-config             1           OCaml Switch Configuration
+ocaml-secondary-compiler 4.08.1-1    OCaml 4.08.1 Secondary Switch Compiler
+ocamlfind                1.9.1       A library manager for OCaml
+ocamlfind-secondary      1.9.1       Adds support for ocaml-secondary-compiler to ocamlfind
+zarith                   1.12        Implements arithmetic and logical operations over arbitrary-precision integers
+The following actions will be performed:
+  - install conf-perl                   2
+  - install ppx_derivers                1.2.1
+  - install seq                         base
+  - install sexplib0                    v0.15.0
+  - install cppo                        1.6.8
+  - install camlp-streams               5.0
+  - install result                      1.5
+  - install ocaml-compiler-libs         v0.12.4
+  - install stdlib-shims                0.3.0
+  - install conf-perl-string-shellquote 3
+  - install conf-perl-ipc-system-simple 3
+  - install re                          1.10.3
+  - install ppxlib                      0.26.0
+  - install camlp5                      8.00.03
+  - install ppx_deriving                5.2.1
+  - install elpi                        1.14.3
+  - install coq-elpi                    dev
+===== 17 to install =====
+&lt;&gt;&lt;&gt; Gathering sources &gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;
+[camlp-streams.5.0] downloaded from cache at https://opam.ocaml.org/cache
+[camlp5.8.00.03] downloaded from cache at https://opam.ocaml.org/cache
+[cppo.1.6.8] downloaded from cache at https://opam.ocaml.org/cache
+[elpi.1.14.3] downloaded from cache at https://opam.ocaml.org/cache
+[ocaml-compiler-libs.v0.12.4] downloaded from cache at https://opam.ocaml.org/cache
+[ppx_derivers.1.2.1] downloaded from cache at https://opam.ocaml.org/cache
+[ppx_deriving.5.2.1] downloaded from cache at https://opam.ocaml.org/cache
+[ppxlib.0.26.0] downloaded from cache at https://opam.ocaml.org/cache
+[re.1.10.3] downloaded from cache at https://opam.ocaml.org/cache
+[result.1.5] downloaded from cache at https://opam.ocaml.org/cache
+[sexplib0.v0.15.0] downloaded from cache at https://opam.ocaml.org/cache
+[stdlib-shims.0.3.0] downloaded from cache at https://opam.ocaml.org/cache
+[coq-elpi.dev] synchronised from git+https://github.com/LPCIC/coq-elpi.git#coq-master
+&lt;&gt;&lt;&gt; Processing actions &lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;
+-&gt; installed camlp-streams.5.0
+-&gt; installed conf-perl.2
+-&gt; installed cppo.1.6.8
+-&gt; installed ocaml-compiler-libs.v0.12.4
+-&gt; installed ppx_derivers.1.2.1
+-&gt; installed result.1.5
+-&gt; installed seq.base
+-&gt; installed sexplib0.v0.15.0
+-&gt; installed stdlib-shims.0.3.0
+-&gt; installed re.1.10.3
+-&gt; installed conf-perl-ipc-system-simple.3
+-&gt; installed conf-perl-string-shellquote.3
+-&gt; installed ppxlib.0.26.0
+-&gt; installed ppx_deriving.5.2.1
+-&gt; installed camlp5.8.00.03
+-&gt; installed elpi.1.14.3
+[ERROR] The compilation of coq-elpi failed at &quot;/home/bench/.opam/opam-init/hooks/sandbox.sh build make COQBIN=/home/bench/.opam/ocaml-base-compiler.4.07.1/bin/ ELPIDIR=/home/bench/.opam/ocaml-base-compiler.4.07.1/lib/elpi OCAMLWARN=&quot;.
+#=== ERROR while compiling coq-elpi.dev =======================================#
+# context              2.0.6 | linux/x86_64 | ocaml-base-compiler.4.07.1 | file:///home/bench/run/opam-coq-archive/extra-dev
+# path                 ~/.opam/ocaml-base-compiler.4.07.1/.opam-switch/build/coq-elpi.dev
+# command              ~/.opam/opam-init/hooks/sandbox.sh build make COQBIN=/home/bench/.opam/ocaml-base-compiler.4.07.1/bin/ ELPIDIR=/home/bench/.opam/ocaml-base-compiler.4.07.1/lib/elpi OCAMLWARN=
+# exit-code            2
+# env-file             ~/.opam/log/coq-elpi-10550-a197b1.env
+# output-file          ~/.opam/log/coq-elpi-10550-a197b1.out
+### output ###
+# [...]
+# make build-core
+# make[1]: Entering directory &#39;/home/bench/.opam/ocaml-base-compiler.4.07.1/.opam-switch/build/coq-elpi.dev&#39;
+# Using coq found in /home/bench/.opam/ocaml-base-compiler.4.07.1/bin/, from COQBIN or PATH
+# ########################## building plugin ##########################
+# CAMLC -c src/coq_elpi_utils.mli
+# CAMLC -c src/coq_elpi_HOAS.mli
+# File &quot;src/coq_elpi_HOAS.mli&quot;, line 100, characters 62-86:
+# Error: Unbound module ComInductive.Mind_decl
+# make[2]: *** [Makefile.coq:725: src/coq_elpi_HOAS.cmi] Error 2
+# make[1]: *** [Makefile:50: build-core] Error 2
+# make[1]: Leaving directory &#39;/home/bench/.opam/ocaml-base-compiler.4.07.1/.opam-switch/build/coq-elpi.dev&#39;
+# make: *** [Makefile:42: all] Error 2
+&lt;&gt;&lt;&gt; Error report &lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;
++- The following actions failed
+| - build coq-elpi dev
++- 
++- The following changes have been performed
+| - install camlp-streams               5.0
+| - install camlp5                      8.00.03
+| - install conf-perl                   2
+| - install conf-perl-ipc-system-simple 3
+| - install conf-perl-string-shellquote 3
+| - install cppo                        1.6.8
+| - install elpi                        1.14.3
+| - install ocaml-compiler-libs         v0.12.4
+| - install ppx_derivers                1.2.1
+| - install ppx_deriving                5.2.1
+| - install ppxlib                      0.26.0
+| - install re                          1.10.3
+| - install result                      1.5
+| - install seq                         base
+| - install sexplib0                    v0.15.0
+| - install stdlib-shims                0.3.0
++- 
+# Run eval $(opam env) to update the current shell environment
+The former state can be restored with:
+    opam switch import &quot;/home/bench/.opam/ocaml-base-compiler.4.07.1/.opam-switch/backup/state-20220428002107.export&quot;
+</pre></dd>
             </dl>
             <h2>Install 🚀</h2>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>opam list; echo; ulimit -Sv 16000000; timeout 4h opam install -y coq-hierarchy-builder.dev coq.dev</code></dd>
+              <dd><code>true</code></dd>
               <dt>Return code</dt>
               <dd>0</dd>
               <dt>Duration</dt>
-              <dd>52 s</dd>
+              <dd>0 s</dd>
             </dl>
             <h2>Installation size</h2>
-            <p>Total: 2 M</p>
-            <ul>
-              <li>2 M <code>../ocaml-base-compiler.4.07.1/bin/coq.hb</code></li>
-              <li>528 K <code>../ocaml-base-compiler.4.07.1/lib/coq/user-contrib/HB/structures.vo</code></li>
-              <li>34 K <code>../ocaml-base-compiler.4.07.1/lib/coq/user-contrib/HB/structures.v</code></li>
-              <li>5 K <code>../ocaml-base-compiler.4.07.1/lib/coq/user-contrib/HB/structures.glob</code></li>
-            </ul>
+            <p>No files were installed.</p>
             <h2>Uninstall 🧹</h2>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>opam remove -y coq-hierarchy-builder.dev</code></dd>
+              <dd><code>true</code></dd>
               <dt>Return code</dt>
               <dd>0</dd>
               <dt>Missing removes</dt>
