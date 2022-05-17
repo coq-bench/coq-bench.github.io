@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>interval: Error with dependencies 🚒</title>
+    <title>interval: Error 🔥</title>
     <link rel="shortcut icon" type="image/png" href="../../../../../favicon.png" />
     <link href="../../../../../bootstrap.min.css" rel="stylesheet">
     <link href="../../../../../bootstrap-custom.css" rel="stylesheet">
@@ -39,10 +39,10 @@
               interval
               <small>
                 dev
-                <span class="label label-warning">Error with dependencies 🚒</span>
+                <span class="label label-danger">Error 🔥</span>
               </small>
             </h1>
-            <p>📅 <em><script>document.write(moment("2022-04-02 06:12:17 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2022-04-02 06:12:17 UTC)</em><p>
+            <p>📅 <em><script>document.write(moment("2022-05-14 08:21:45 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2022-05-14 08:21:45 UTC)</em><p>
             <h2>Context</h2>
             <pre># Packages matching: installed
 # Name                # Installed # Synopsis
@@ -52,7 +52,7 @@ base-unix             base
 conf-findutils        1           Virtual package relying on findutils
 conf-gmp              4           Virtual package relying on a GMP lib system installation
 coq                   dev         Formal proof management system
-dune                  3.0.3       Fast, portable, and opinionated build system
+dune                  3.1.1       Fast, portable, and opinionated build system
 ocaml                 4.12.1      The OCaml compiler (virtual package)
 ocaml-base-compiler   4.12.1      Official release 4.12.1
 ocaml-config          2           OCaml Switch Configuration
@@ -129,93 +129,76 @@ url {
               <dt>Command</dt>
               <dd><code>opam list; echo; ulimit -Sv 4000000; timeout 4h opam install -y --deps-only coq-interval.dev coq.dev</code></dd>
               <dt>Return code</dt>
-              <dd>7936</dd>
+              <dd>0</dd>
               <dt>Duration</dt>
-              <dd>9 m 9 s</dd>
-              <dt>Output</dt>
-              <dd><pre># Packages matching: installed
-# Name                # Installed # Synopsis
-base-bigarray         base
-base-threads          base
-base-unix             base
-conf-findutils        1           Virtual package relying on findutils
-conf-gmp              4           Virtual package relying on a GMP lib system installation
-coq                   dev         Formal proof management system
-dune                  3.0.3       Fast, portable, and opinionated build system
-ocaml                 4.12.1      The OCaml compiler (virtual package)
-ocaml-base-compiler   4.12.1      Official release 4.12.1
-ocaml-config          2           OCaml Switch Configuration
-ocaml-options-vanilla 1           Ensure that OCaml is compiled with no special options enabled
-ocamlfind             1.9.3       A library manager for OCaml
-zarith                1.12        Implements arithmetic and logical operations over arbitrary-precision integers
-The following actions will be performed:
-  - install coq-bignums            dev
-  - install coq-mathcomp-ssreflect dev
-  - install conf-which             1
-  - install conf-g++               1.0
-  - install coq-flocq              dev
-  - install coq-coquelicot         dev
-  - install conf-autoconf          0.1
-===== 7 to install =====
-&lt;&gt;&lt;&gt; Gathering sources &gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;
-[coq-flocq.dev] synchronised from git+https://gitlab.inria.fr/flocq/flocq.git#master
-[coq-bignums.dev] synchronised from git+https://github.com/coq/bignums.git#master
-[coq-coquelicot.dev] synchronised from git+https://gitlab.inria.fr/coquelicot/coquelicot.git
-[coq-mathcomp-ssreflect.dev] synchronised from git+https://github.com/math-comp/math-comp.git#master
-&lt;&gt;&lt;&gt; Processing actions &lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;
--&gt; installed conf-g++.1.0
--&gt; installed conf-which.1
--&gt; installed conf-autoconf.0.1
--&gt; installed coq-bignums.dev
-[ERROR] The compilation of coq-flocq failed at &quot;/home/bench/.opam/opam-init/hooks/sandbox.sh build ./remake -j4&quot;.
--&gt; installed coq-mathcomp-ssreflect.dev
--&gt; installed coq-coquelicot.dev
-#=== ERROR while compiling coq-flocq.dev ======================================#
-# context              2.0.8 | linux/x86_64 | ocaml-base-compiler.4.12.1 | file:///home/bench/run/opam-coq-archive/extra-dev
-# path                 ~/.opam/ocaml-base-compiler.4.12.1/.opam-switch/build/coq-flocq.dev
-# command              ~/.opam/opam-init/hooks/sandbox.sh build ./remake -j4
-# exit-code            1
-# env-file             ~/.opam/log/coq-flocq-32501-be72be.env
-# output-file          ~/.opam/log/coq-flocq-32501-be72be.out
-### output ###
-# [...]
-# File &quot;./src/IEEE754/PrimFloat.v&quot;, line 518, characters 8-21:
-# Warning: Notation of_int63_spec is deprecated since 8.14.
-# Use of_uint63_spec instead. [deprecated-syntactic-definition,deprecated]
-# File &quot;./src/IEEE754/PrimFloat.v&quot;, line 518, characters 8-21:
-# Warning: Notation of_int63_spec is deprecated since 8.14.
-# Use of_uint63_spec instead. [deprecated-syntactic-definition,deprecated]
-# File &quot;./src/IEEE754/PrimFloat.v&quot;, line 518, characters 8-21:
-# Warning: Notation of_int63_spec is deprecated since 8.14.
-# Use of_uint63_spec instead. [deprecated-syntactic-definition,deprecated]
-# Finished src/IEEE754/PrimFloat.vo
-# Finished src/IEEE754/Binary.vo
-# Finished src/IEEE754/Bits.vo
-&lt;&gt;&lt;&gt; Error report &lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;
-+- The following actions failed
-| - build coq-flocq dev
-+- 
-+- The following changes have been performed
-| - install conf-autoconf          0.1
-| - install conf-g++               1.0
-| - install conf-which             1
-| - install coq-bignums            dev
-| - install coq-coquelicot         dev
-| - install coq-mathcomp-ssreflect dev
-+- 
-# Run eval $(opam env) to update the current shell environment
-The former state can be restored with:
-    opam switch import &quot;/home/bench/.opam/ocaml-base-compiler.4.12.1/.opam-switch/backup/state-20220329042105.export&quot;
-</pre></dd>
+              <dd>12 m 27 s</dd>
             </dl>
             <h2>Install 🚀</h2>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>true</code></dd>
+              <dd><code>opam list; echo; ulimit -Sv 16000000; timeout 4h opam install -y coq-interval.dev coq.dev</code></dd>
               <dt>Return code</dt>
-              <dd>0</dd>
+              <dd>7936</dd>
               <dt>Duration</dt>
-              <dd>0 s</dd>
+              <dd>4 m 38 s</dd>
+              <dt>Output</dt>
+              <dd><pre># Packages matching: installed
+# Name                 # Installed # Synopsis
+base-bigarray          base
+base-threads           base
+base-unix              base
+conf-autoconf          0.1         Virtual package relying on autoconf installation
+conf-findutils         1           Virtual package relying on findutils
+conf-g++               1.0         Virtual package relying on the g++ compiler (for C++)
+conf-gmp               4           Virtual package relying on a GMP lib system installation
+conf-which             1           Virtual package relying on which
+coq                    dev         Formal proof management system
+coq-bignums            dev         Bignums, the Coq library of arbitrary large numbers
+coq-coquelicot         dev         A Coq formalization of real analysis compatible with the standard library.
+coq-flocq              dev         A floating-point formalization for the Coq system
+coq-mathcomp-ssreflect dev         Small Scale Reflection
+dune                   3.1.1       Fast, portable, and opinionated build system
+ocaml                  4.12.1      The OCaml compiler (virtual package)
+ocaml-base-compiler    4.12.1      Official release 4.12.1
+ocaml-config           2           OCaml Switch Configuration
+ocaml-options-vanilla  1           Ensure that OCaml is compiled with no special options enabled
+ocamlfind              1.9.3       A library manager for OCaml
+zarith                 1.12        Implements arithmetic and logical operations over arbitrary-precision integers
+[NOTE] Package coq is already installed (current version is dev).
+The following actions will be performed:
+  - install coq-interval dev
+&lt;&gt;&lt;&gt; Gathering sources &gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;
+[coq-interval.dev] synchronised from git+https://gitlab.inria.fr//coqinterval/interval.git/#master
+&lt;&gt;&lt;&gt; Processing actions &lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;
+[ERROR] The compilation of coq-interval failed at &quot;/home/bench/.opam/opam-init/hooks/sandbox.sh build ./remake -j4&quot;.
+#=== ERROR while compiling coq-interval.dev ===================================#
+# context              2.0.8 | linux/x86_64 | ocaml-base-compiler.4.12.1 | file:///home/bench/run/opam-coq-archive/extra-dev
+# path                 ~/.opam/ocaml-base-compiler.4.12.1/.opam-switch/build/coq-interval.dev
+# command              ~/.opam/opam-init/hooks/sandbox.sh build ./remake -j4
+# exit-code            1
+# env-file             ~/.opam/log/coq-interval-3304-c743ac.env
+# output-file          ~/.opam/log/coq-interval-3304-c743ac.out
+### output ###
+# [...]
+# The Arith.Plus file is obsolete. Use Nat.add_assoc instead.
+# [deprecated-syntactic-definition,deprecated]
+# File &quot;./src/Interval/Transcend.v&quot;, line 2072, characters 14-24:
+# Warning: Notation plus_assoc is deprecated since 8.16.
+# The Arith.Plus file is obsolete. Use Nat.add_assoc instead.
+# [deprecated-syntactic-definition,deprecated]
+# File &quot;./src/Interval/Transcend.v&quot;, line 2072, characters 14-24:
+# Warning: Notation plus_assoc is deprecated since 8.16.
+# The Arith.Plus file is obsolete. Use Nat.add_assoc instead.
+# [deprecated-syntactic-definition,deprecated]
+# Finished src/Interval/Transcend.vo
+# Finished src/Interval/Float_full.vo
+&lt;&gt;&lt;&gt; Error report &lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;
++- The following actions failed
+| - build coq-interval dev
++- 
+- No changes have been performed
+# Run eval $(opam env) to update the current shell environment
+</pre></dd>
             </dl>
             <h2>Installation size</h2>
             <p>No files were installed.</p>

@@ -42,7 +42,7 @@
                 <span class="label label-warning">Error with dependencies 🚒</span>
               </small>
             </h1>
-            <p>📅 <em><script>document.write(moment("2022-04-02 06:12:17 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2022-04-02 06:12:17 UTC)</em><p>
+            <p>📅 <em><script>document.write(moment("2022-05-14 08:21:45 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2022-05-14 08:21:45 UTC)</em><p>
             <h2>Context</h2>
             <pre># Packages matching: installed
 # Name                # Installed # Synopsis
@@ -52,7 +52,7 @@ base-unix             base
 conf-findutils        1           Virtual package relying on findutils
 conf-gmp              4           Virtual package relying on a GMP lib system installation
 coq                   dev         Formal proof management system
-dune                  3.0.3       Fast, portable, and opinionated build system
+dune                  3.1.1       Fast, portable, and opinionated build system
 ocaml                 4.12.1      The OCaml compiler (virtual package)
 ocaml-base-compiler   4.12.1      Official release 4.12.1
 ocaml-config          2           OCaml Switch Configuration
@@ -73,9 +73,9 @@ homepage: &quot;https://github.com/mit-plv/fiat-crypto&quot;
 bug-reports: &quot;https://github.com/mit-plv/fiat-crypto/issues&quot;
 license: &quot;MIT OR Apache-2.0 OR BSD-1-Clause&quot;
 build: [
-  [make &quot;-j%{jobs}%&quot; &quot;EXTERNAL_REWRITER=1&quot; &quot;EXTERNAL_COQPRIME=1&quot; &quot;coq&quot; &quot;standalone-ocaml&quot;]
+  [make &quot;-j%{jobs}%&quot; &quot;EXTERNAL_REWRITER=1&quot; &quot;EXTERNAL_COQPRIME=1&quot; &quot;EXTERNAL_COQUTIL=1&quot; &quot;coq&quot; &quot;standalone-ocaml&quot;]
 ]
-install: [make &quot;EXTERNAL_REWRITER=1&quot; &quot;EXTERNAL_COQPRIME=1&quot; &quot;BINDIR=%{bin}%&quot; &quot;install&quot; &quot;install-standalone-ocaml&quot;]
+install: [make &quot;EXTERNAL_REWRITER=1&quot; &quot;EXTERNAL_COQPRIME=1&quot; &quot;EXTERNAL_COQUTIL=1&quot; &quot;BINDIR=%{bin}%&quot; &quot;install&quot; &quot;install-standalone-ocaml&quot;]
 depends: [
   &quot;ocaml&quot; {build}
   &quot;ocamlfind&quot; {build}
@@ -83,12 +83,18 @@ depends: [
   &quot;coq&quot; {&gt;= &quot;8.11~&quot;}
   &quot;coq-coqprime&quot;
   &quot;coq-rewriter&quot;
+  &quot;coq-coqutil&quot;
 ]
 conflict-class: [
   &quot;coq-fiat-crypto&quot;
 ]
 dev-repo: &quot;git+https://github.com/mit-plv/fiat-crypto.git&quot;
 synopsis: &quot;Cryptographic Primitive Code Generation by Fiat.&quot;
+description: &quot;&quot;&quot;
+Coq code and proofs for a command-line binary that can synthesize proven-correct
+big-integer modular field arithmetic operations for cryptography.
+Target languages include C, Rust, Zig, Go, and bedrock2.
+&quot;&quot;&quot;
 tags: [&quot;logpath:Crypto&quot;]
 url {
   src: &quot;git+https://github.com/mit-plv/fiat-crypto.git#master&quot;
@@ -123,7 +129,7 @@ url {
               <dt>Return code</dt>
               <dd>7936</dd>
               <dt>Duration</dt>
-              <dd>54 m 56 s</dd>
+              <dd>29 m 18 s</dd>
               <dt>Output</dt>
               <dd><pre># Packages matching: installed
 # Name                # Installed # Synopsis
@@ -133,7 +139,7 @@ base-unix             base
 conf-findutils        1           Virtual package relying on findutils
 conf-gmp              4           Virtual package relying on a GMP lib system installation
 coq                   dev         Formal proof management system
-dune                  3.0.3       Fast, portable, and opinionated build system
+dune                  3.1.1       Fast, portable, and opinionated build system
 ocaml                 4.12.1      The OCaml compiler (virtual package)
 ocaml-base-compiler   4.12.1      Official release 4.12.1
 ocaml-config          2           OCaml Switch Configuration
@@ -142,26 +148,29 @@ ocamlfind             1.9.3       A library manager for OCaml
 zarith                1.12        Implements arithmetic and logical operations over arbitrary-precision integers
 The following actions will be performed:
   - install coq-bignums  dev
+  - install coq-coqutil  dev
   - install coq-rewriter dev
   - install conf-jq      1
   - install coq-coqprime dev
-===== 4 to install =====
+===== 5 to install =====
 &lt;&gt;&lt;&gt; Gathering sources &gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;
+[coq-coqutil.dev] synchronised from git+https://github.com/mit-plv/coqutil.git#tested
 [coq-bignums.dev] synchronised from git+https://github.com/coq/bignums.git#master
 [coq-coqprime.dev] synchronised from git+https://github.com/thery/coqprime.git#master
 [coq-rewriter.dev] synchronised from git+https://github.com/mit-plv/rewriter.git#master
 &lt;&gt;&lt;&gt; Processing actions &lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;
 [ERROR] The compilation of conf-jq failed at &quot;/home/bench/.opam/opam-init/hooks/sandbox.sh build jq --version&quot;.
 -&gt; installed coq-bignums.dev
+-&gt; installed coq-coqutil.dev
 -&gt; installed coq-coqprime.dev
 -&gt; installed coq-rewriter.dev
 #=== ERROR while compiling conf-jq.1 ==========================================#
-# context              2.0.8 | linux/x86_64 | ocaml-base-compiler.4.12.1 | https://opam.ocaml.org#10fcb225
+# context              2.0.8 | linux/x86_64 | ocaml-base-compiler.4.12.1 | https://opam.ocaml.org#4bb7cf79
 # path                 ~/.opam/ocaml-base-compiler.4.12.1/.opam-switch/build/conf-jq.1
 # command              ~/.opam/opam-init/hooks/sandbox.sh build jq --version
 # exit-code            1
-# env-file             ~/.opam/log/conf-jq-17413-562576.env
-# output-file          ~/.opam/log/conf-jq-17413-562576.out
+# env-file             ~/.opam/log/conf-jq-29546-b36dbe.env
+# output-file          ~/.opam/log/conf-jq-29546-b36dbe.out
 ### output ###
 # bwrap: execvp jq: No such file or directory
 &lt;&gt;&lt;&gt; Error report &lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;
@@ -171,13 +180,14 @@ The following actions will be performed:
 +- The following changes have been performed
 | - install coq-bignums  dev
 | - install coq-coqprime dev
+| - install coq-coqutil  dev
 | - install coq-rewriter dev
 +- 
 The packages you requested declare the following system dependencies. Please make sure they are installed before retrying:
     jq
 # Run eval $(opam env) to update the current shell environment
 The former state can be restored with:
-    opam switch import &quot;/home/bench/.opam/ocaml-base-compiler.4.12.1/.opam-switch/backup/state-20220329183331.export&quot;
+    opam switch import &quot;/home/bench/.opam/ocaml-base-compiler.4.12.1/.opam-switch/backup/state-20220509170406.export&quot;
 </pre></dd>
             </dl>
             <h2>Install 🚀</h2>
