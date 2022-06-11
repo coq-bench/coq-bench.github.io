@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>iris-heap-lang: 5 m 23 s 🏆</title>
+    <title>iris-heap-lang: Error with dependencies 🚒</title>
     <link rel="shortcut icon" type="image/png" href="../../../../../favicon.png" />
     <link href="../../../../../bootstrap.min.css" rel="stylesheet">
     <link href="../../../../../bootstrap-custom.css" rel="stylesheet">
@@ -39,10 +39,10 @@
               iris-heap-lang
               <small>
                 3.6.0
-                <span class="label label-success">5 m 23 s 🏆</span>
+                <span class="label label-warning">Error with dependencies 🚒</span>
               </small>
             </h1>
-            <p>📅 <em><script>document.write(moment("2022-05-03 00:44:53 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2022-05-03 00:44:53 UTC)</em><p>
+            <p>📅 <em><script>document.write(moment("2022-06-09 02:07:39 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2022-06-09 02:07:39 UTC)</em><p>
             <h2>Context</h2>
             <pre># Packages matching: installed
 # Name                # Installed # Synopsis
@@ -52,7 +52,7 @@ base-unix             base
 conf-findutils        1           Virtual package relying on findutils
 conf-gmp              4           Virtual package relying on a GMP lib system installation
 coq                   dev         Formal proof management system
-dune                  3.1.1       Fast, portable, and opinionated build system
+dune                  3.2.0       Fast, portable, and opinionated build system
 ocaml                 4.14.0      The OCaml compiler (virtual package)
 ocaml-base-compiler   4.14.0      Official release 4.14.0
 ocaml-config          2           OCaml Switch Configuration
@@ -115,111 +115,83 @@ url {
               <dt>Command</dt>
               <dd><code>opam list; echo; ulimit -Sv 4000000; timeout 4h opam install -y --deps-only coq-iris-heap-lang.3.6.0 coq.dev</code></dd>
               <dt>Return code</dt>
-              <dd>0</dd>
+              <dd>7936</dd>
               <dt>Duration</dt>
-              <dd>18 m 46 s</dd>
+              <dd>5 m 21 s</dd>
+              <dt>Output</dt>
+              <dd><pre># Packages matching: installed
+# Name                # Installed # Synopsis
+base-bigarray         base
+base-threads          base
+base-unix             base
+conf-findutils        1           Virtual package relying on findutils
+conf-gmp              4           Virtual package relying on a GMP lib system installation
+coq                   dev         Formal proof management system
+dune                  3.2.0       Fast, portable, and opinionated build system
+ocaml                 4.14.0      The OCaml compiler (virtual package)
+ocaml-base-compiler   4.14.0      Official release 4.14.0
+ocaml-config          2           OCaml Switch Configuration
+ocaml-options-vanilla 1           Ensure that OCaml is compiled with no special options enabled
+ocamlfind             1.9.3       A library manager for OCaml
+zarith                1.12        Implements arithmetic and logical operations over arbitrary-precision integers
+The following actions will be performed:
+  - install coq-stdpp dev
+  - install coq-iris  3.6.0
+===== 2 to install =====
+&lt;&gt;&lt;&gt; Gathering sources &gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;
+[coq-iris.3.6.0] downloaded from https://gitlab.mpi-sws.org/iris/iris/-/archive/iris-3.6.0.tar.gz
+[coq-stdpp.dev] synchronised from git+https://gitlab.mpi-sws.org/iris/stdpp.git
+&lt;&gt;&lt;&gt; Processing actions &lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;
+-&gt; installed coq-stdpp.dev
+[ERROR] The compilation of coq-iris failed at &quot;/home/bench/.opam/opam-init/hooks/sandbox.sh build ./make-package iris -j4&quot;.
+#=== ERROR while compiling coq-iris.3.6.0 =====================================#
+# context              2.0.10 | linux/x86_64 | ocaml-base-compiler.4.14.0 | file:///home/bench/run/opam-coq-archive/released
+# path                 ~/.opam/ocaml-base-compiler.4.14.0/.opam-switch/build/coq-iris.3.6.0
+# command              ~/.opam/opam-init/hooks/sandbox.sh build ./make-package iris -j4
+# exit-code            2
+# env-file             ~/.opam/log/coq-iris-23690-8c0dd3.env
+# output-file          ~/.opam/log/coq-iris-23690-8c0dd3.out
+### output ###
+# ?Dom : &quot;Dom ?M (gmap K A → gset K)&quot;
+# [...]
+# make[1]: *** [Makefile.package.iris:792: iris/algebra/big_op.vo] Error 1
+# make[1]: *** Waiting for unfinished jobs....
+# File &quot;./iris/algebra/cmra.v&quot;, line 809, characters 0-170:
+# Warning:
+# A coercion will be introduced in future versions when using &#39;:&gt;&#39; in &#39;Class&#39; declarations. Use &#39;#[global] Existing Instance field.&#39; instead if you don&#39;t want the coercion.
+# [future-coercion-class-field,records]
+# File &quot;./iris/algebra/cmra.v&quot;, line 901, characters 0-174:
+# Warning:
+# A coercion will be introduced in future versions when using &#39;:&gt;&#39; in &#39;Class&#39; declarations. Use &#39;#[global] Existing Instance field.&#39; instead if you don&#39;t want the coercion.
+# [future-coercion-class-field,records]
+# make: *** [Makefile.package.iris:409: all] Error 2
+&lt;&gt;&lt;&gt; Error report &lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;
++- The following actions failed
+| - build coq-iris 3.6.0
++- 
++- The following changes have been performed
+| - install coq-stdpp dev
++- 
+# Run eval $(opam env) to update the current shell environment
+The former state can be restored with:
+    opam switch import &quot;/home/bench/.opam/ocaml-base-compiler.4.14.0/.opam-switch/backup/state-20220604194058.export&quot;
+</pre></dd>
             </dl>
             <h2>Install 🚀</h2>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>opam list; echo; ulimit -Sv 16000000; timeout 4h opam install -y -v coq-iris-heap-lang.3.6.0 coq.dev</code></dd>
+              <dd><code>true</code></dd>
               <dt>Return code</dt>
               <dd>0</dd>
               <dt>Duration</dt>
-              <dd>5 m 23 s</dd>
+              <dd>0 s</dd>
             </dl>
             <h2>Installation size</h2>
-            <p>Total: 7 M</p>
-            <ul>
-              <li>1 M <code>../ocaml-base-compiler.4.14.0/lib/coq/user-contrib/iris/heap_lang/proph_erasure.vo</code></li>
-              <li>1 M <code>../ocaml-base-compiler.4.14.0/lib/coq/user-contrib/iris/heap_lang/lang.vo</code></li>
-              <li>529 K <code>../ocaml-base-compiler.4.14.0/lib/coq/user-contrib/iris/heap_lang/primitive_laws.vo</code></li>
-              <li>419 K <code>../ocaml-base-compiler.4.14.0/lib/coq/user-contrib/iris/heap_lang/class_instances.vo</code></li>
-              <li>259 K <code>../ocaml-base-compiler.4.14.0/lib/coq/user-contrib/iris/heap_lang/primitive_laws.glob</code></li>
-              <li>241 K <code>../ocaml-base-compiler.4.14.0/lib/coq/user-contrib/iris/heap_lang/derived_laws.glob</code></li>
-              <li>216 K <code>../ocaml-base-compiler.4.14.0/lib/coq/user-contrib/iris/heap_lang/proph_erasure.glob</code></li>
-              <li>206 K <code>../ocaml-base-compiler.4.14.0/lib/coq/user-contrib/iris/heap_lang/lang.glob</code></li>
-              <li>199 K <code>../ocaml-base-compiler.4.14.0/lib/coq/user-contrib/iris/heap_lang/proofmode.vo</code></li>
-              <li>190 K <code>../ocaml-base-compiler.4.14.0/lib/coq/user-contrib/iris/heap_lang/derived_laws.vo</code></li>
-              <li>185 K <code>../ocaml-base-compiler.4.14.0/lib/coq/user-contrib/iris/heap_lang/lib/ticket_lock.vo</code></li>
-              <li>184 K <code>../ocaml-base-compiler.4.14.0/lib/coq/user-contrib/iris/heap_lang/lib/array.vo</code></li>
-              <li>161 K <code>../ocaml-base-compiler.4.14.0/lib/coq/user-contrib/iris/heap_lang/proofmode.glob</code></li>
-              <li>158 K <code>../ocaml-base-compiler.4.14.0/lib/coq/user-contrib/iris/heap_lang/metatheory.vo</code></li>
-              <li>150 K <code>../ocaml-base-compiler.4.14.0/lib/coq/user-contrib/iris/heap_lang/lib/increment.vo</code></li>
-              <li>141 K <code>../ocaml-base-compiler.4.14.0/lib/coq/user-contrib/iris/heap_lang/lib/counter.vo</code></li>
-              <li>118 K <code>../ocaml-base-compiler.4.14.0/lib/coq/user-contrib/iris/heap_lang/lib/atomic_heap.vo</code></li>
-              <li>95 K <code>../ocaml-base-compiler.4.14.0/lib/coq/user-contrib/iris/heap_lang/lib/spin_lock.vo</code></li>
-              <li>84 K <code>../ocaml-base-compiler.4.14.0/lib/coq/user-contrib/iris/heap_lang/lib/spawn.vo</code></li>
-              <li>84 K <code>../ocaml-base-compiler.4.14.0/lib/coq/user-contrib/iris/heap_lang/lib/clairvoyant_coin.vo</code></li>
-              <li>81 K <code>../ocaml-base-compiler.4.14.0/lib/coq/user-contrib/iris/heap_lang/lib/array.glob</code></li>
-              <li>77 K <code>../ocaml-base-compiler.4.14.0/lib/coq/user-contrib/iris/heap_lang/lib/lazy_coin.vo</code></li>
-              <li>75 K <code>../ocaml-base-compiler.4.14.0/lib/coq/user-contrib/iris/heap_lang/metatheory.glob</code></li>
-              <li>58 K <code>../ocaml-base-compiler.4.14.0/lib/coq/user-contrib/iris/heap_lang/lib/par.vo</code></li>
-              <li>55 K <code>../ocaml-base-compiler.4.14.0/lib/coq/user-contrib/iris/heap_lang/lib/nondet_bool.vo</code></li>
-              <li>53 K <code>../ocaml-base-compiler.4.14.0/lib/coq/user-contrib/iris/heap_lang/lib/lock.vo</code></li>
-              <li>53 K <code>../ocaml-base-compiler.4.14.0/lib/coq/user-contrib/iris/heap_lang/adequacy.vo</code></li>
-              <li>50 K <code>../ocaml-base-compiler.4.14.0/lib/coq/user-contrib/iris/heap_lang/lib/arith.vo</code></li>
-              <li>47 K <code>../ocaml-base-compiler.4.14.0/lib/coq/user-contrib/iris/heap_lang/lib/assert.vo</code></li>
-              <li>47 K <code>../ocaml-base-compiler.4.14.0/lib/coq/user-contrib/iris/heap_lang/total_adequacy.vo</code></li>
-              <li>39 K <code>../ocaml-base-compiler.4.14.0/lib/coq/user-contrib/iris/heap_lang/lib/diverge.vo</code></li>
-              <li>39 K <code>../ocaml-base-compiler.4.14.0/lib/coq/user-contrib/iris/heap_lang/lib/ticket_lock.glob</code></li>
-              <li>38 K <code>../ocaml-base-compiler.4.14.0/lib/coq/user-contrib/iris/heap_lang/tactics.vo</code></li>
-              <li>38 K <code>../ocaml-base-compiler.4.14.0/lib/coq/user-contrib/iris/heap_lang/notation.vo</code></li>
-              <li>37 K <code>../ocaml-base-compiler.4.14.0/lib/coq/user-contrib/iris/heap_lang/lib/counter.glob</code></li>
-              <li>37 K <code>../ocaml-base-compiler.4.14.0/lib/coq/user-contrib/iris/heap_lang/locations.vo</code></li>
-              <li>36 K <code>../ocaml-base-compiler.4.14.0/lib/coq/user-contrib/iris/heap_lang/lib/atomic_heap.glob</code></li>
-              <li>34 K <code>../ocaml-base-compiler.4.14.0/lib/coq/user-contrib/iris/heap_lang/proph_erasure.v</code></li>
-              <li>34 K <code>../ocaml-base-compiler.4.14.0/lib/coq/user-contrib/iris/heap_lang/proofmode.v</code></li>
-              <li>33 K <code>../ocaml-base-compiler.4.14.0/lib/coq/user-contrib/iris/heap_lang/lang.v</code></li>
-              <li>32 K <code>../ocaml-base-compiler.4.14.0/lib/coq/user-contrib/iris/heap_lang/pretty.vo</code></li>
-              <li>29 K <code>../ocaml-base-compiler.4.14.0/lib/coq/user-contrib/iris/heap_lang/class_instances.glob</code></li>
-              <li>25 K <code>../ocaml-base-compiler.4.14.0/lib/coq/user-contrib/iris/heap_lang/lib/increment.glob</code></li>
-              <li>22 K <code>../ocaml-base-compiler.4.14.0/lib/coq/user-contrib/iris/heap_lang/lib/spin_lock.glob</code></li>
-              <li>21 K <code>../ocaml-base-compiler.4.14.0/lib/coq/user-contrib/iris/heap_lang/primitive_laws.v</code></li>
-              <li>16 K <code>../ocaml-base-compiler.4.14.0/lib/coq/user-contrib/iris/heap_lang/lib/clairvoyant_coin.glob</code></li>
-              <li>16 K <code>../ocaml-base-compiler.4.14.0/lib/coq/user-contrib/iris/heap_lang/derived_laws.v</code></li>
-              <li>15 K <code>../ocaml-base-compiler.4.14.0/lib/coq/user-contrib/iris/heap_lang/lib/spawn.glob</code></li>
-              <li>13 K <code>../ocaml-base-compiler.4.14.0/lib/coq/user-contrib/iris/heap_lang/lib/lazy_coin.glob</code></li>
-              <li>11 K <code>../ocaml-base-compiler.4.14.0/lib/coq/user-contrib/iris/heap_lang/lib/par.glob</code></li>
-              <li>11 K <code>../ocaml-base-compiler.4.14.0/lib/coq/user-contrib/iris/heap_lang/lib/array.v</code></li>
-              <li>10 K <code>../ocaml-base-compiler.4.14.0/lib/coq/user-contrib/iris/heap_lang/metatheory.v</code></li>
-              <li>9 K <code>../ocaml-base-compiler.4.14.0/lib/coq/user-contrib/iris/heap_lang/lib/arith.glob</code></li>
-              <li>9 K <code>../ocaml-base-compiler.4.14.0/lib/coq/user-contrib/iris/heap_lang/locations.glob</code></li>
-              <li>9 K <code>../ocaml-base-compiler.4.14.0/lib/coq/user-contrib/iris/heap_lang/notation.glob</code></li>
-              <li>9 K <code>../ocaml-base-compiler.4.14.0/lib/coq/user-contrib/iris/heap_lang/tactics.glob</code></li>
-              <li>9 K <code>../ocaml-base-compiler.4.14.0/lib/coq/user-contrib/iris/heap_lang/lib/lock.glob</code></li>
-              <li>8 K <code>../ocaml-base-compiler.4.14.0/lib/coq/user-contrib/iris/heap_lang/adequacy.glob</code></li>
-              <li>7 K <code>../ocaml-base-compiler.4.14.0/lib/coq/user-contrib/iris/heap_lang/notation.v</code></li>
-              <li>7 K <code>../ocaml-base-compiler.4.14.0/lib/coq/user-contrib/iris/heap_lang/class_instances.v</code></li>
-              <li>7 K <code>../ocaml-base-compiler.4.14.0/lib/coq/user-contrib/iris/heap_lang/lib/ticket_lock.v</code></li>
-              <li>7 K <code>../ocaml-base-compiler.4.14.0/lib/coq/user-contrib/iris/heap_lang/lib/increment.v</code></li>
-              <li>7 K <code>../ocaml-base-compiler.4.14.0/lib/coq/user-contrib/iris/heap_lang/lib/counter.v</code></li>
-              <li>7 K <code>../ocaml-base-compiler.4.14.0/lib/coq/user-contrib/iris/heap_lang/lib/assert.glob</code></li>
-              <li>6 K <code>../ocaml-base-compiler.4.14.0/lib/coq/user-contrib/iris/heap_lang/lib/atomic_heap.v</code></li>
-              <li>5 K <code>../ocaml-base-compiler.4.14.0/lib/coq/user-contrib/iris/heap_lang/total_adequacy.glob</code></li>
-              <li>5 K <code>../ocaml-base-compiler.4.14.0/lib/coq/user-contrib/iris/heap_lang/pretty.glob</code></li>
-              <li>5 K <code>../ocaml-base-compiler.4.14.0/lib/coq/user-contrib/iris/heap_lang/tactics.v</code></li>
-              <li>4 K <code>../ocaml-base-compiler.4.14.0/lib/coq/user-contrib/iris/heap_lang/lib/spin_lock.v</code></li>
-              <li>4 K <code>../ocaml-base-compiler.4.14.0/lib/coq/user-contrib/iris/heap_lang/lib/nondet_bool.glob</code></li>
-              <li>3 K <code>../ocaml-base-compiler.4.14.0/lib/coq/user-contrib/iris/heap_lang/lib/spawn.v</code></li>
-              <li>3 K <code>../ocaml-base-compiler.4.14.0/lib/coq/user-contrib/iris/heap_lang/lib/clairvoyant_coin.v</code></li>
-              <li>2 K <code>../ocaml-base-compiler.4.14.0/lib/coq/user-contrib/iris/heap_lang/lib/lazy_coin.v</code></li>
-              <li>2 K <code>../ocaml-base-compiler.4.14.0/lib/coq/user-contrib/iris/heap_lang/lib/diverge.glob</code></li>
-              <li>2 K <code>../ocaml-base-compiler.4.14.0/lib/coq/user-contrib/iris/heap_lang/pretty.v</code></li>
-              <li>2 K <code>../ocaml-base-compiler.4.14.0/lib/coq/user-contrib/iris/heap_lang/lib/par.v</code></li>
-              <li>2 K <code>../ocaml-base-compiler.4.14.0/lib/coq/user-contrib/iris/heap_lang/lib/lock.v</code></li>
-              <li>2 K <code>../ocaml-base-compiler.4.14.0/lib/coq/user-contrib/iris/heap_lang/locations.v</code></li>
-              <li>2 K <code>../ocaml-base-compiler.4.14.0/lib/coq/user-contrib/iris/heap_lang/lib/arith.v</code></li>
-              <li>1 K <code>../ocaml-base-compiler.4.14.0/lib/coq/user-contrib/iris/heap_lang/adequacy.v</code></li>
-              <li>1 K <code>../ocaml-base-compiler.4.14.0/lib/coq/user-contrib/iris/heap_lang/lib/diverge.v</code></li>
-              <li>1 K <code>../ocaml-base-compiler.4.14.0/lib/coq/user-contrib/iris/heap_lang/lib/assert.v</code></li>
-              <li>1 K <code>../ocaml-base-compiler.4.14.0/lib/coq/user-contrib/iris/heap_lang/lib/nondet_bool.v</code></li>
-              <li>1 K <code>../ocaml-base-compiler.4.14.0/lib/coq/user-contrib/iris/heap_lang/total_adequacy.v</code></li>
-            </ul>
+            <p>No files were installed.</p>
             <h2>Uninstall 🧹</h2>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>opam remove -y coq-iris-heap-lang.3.6.0</code></dd>
+              <dd><code>true</code></dd>
               <dt>Return code</dt>
               <dd>0</dd>
               <dt>Missing removes</dt>
