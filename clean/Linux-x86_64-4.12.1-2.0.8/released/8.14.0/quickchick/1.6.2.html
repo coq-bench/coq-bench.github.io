@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>quickchick: 2 m 36 s 🏆</title>
+    <title>quickchick: Error with dependencies 🚒</title>
     <link rel="shortcut icon" type="image/png" href="../../../../../favicon.png" />
     <link href="../../../../../bootstrap.min.css" rel="stylesheet">
     <link href="../../../../../bootstrap-custom.css" rel="stylesheet">
@@ -39,10 +39,10 @@
               quickchick
               <small>
                 1.6.2
-                <span class="label label-success">2 m 36 s 🏆</span>
+                <span class="label label-warning">Error with dependencies 🚒</span>
               </small>
             </h1>
-            <p>📅 <em><script>document.write(moment("2022-06-07 09:12:20 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2022-06-07 09:12:20 UTC)</em><p>
+            <p>📅 <em><script>document.write(moment("2022-09-14 11:14:17 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2022-09-14 11:14:17 UTC)</em><p>
             <h2>Context</h2>
             <pre># Packages matching: installed
 # Name                # Installed # Synopsis
@@ -52,12 +52,12 @@ base-unix             base
 conf-findutils        1           Virtual package relying on findutils
 conf-gmp              4           Virtual package relying on a GMP lib system installation
 coq                   8.14.0      Formal proof management system
-dune                  3.2.0       Fast, portable, and opinionated build system
+dune                  3.4.1       Fast, portable, and opinionated build system
 ocaml                 4.12.1      The OCaml compiler (virtual package)
 ocaml-base-compiler   4.12.1      Official release 4.12.1
 ocaml-config          2           OCaml Switch Configuration
 ocaml-options-vanilla 1           Ensure that OCaml is compiled with no special options enabled
-ocamlfind             1.9.3       A library manager for OCaml
+ocamlfind             1.9.5       A library manager for OCaml
 zarith                1.12        Implements arithmetic and logical operations over arbitrary-precision integers
 # opam file:
 opam-version: &quot;2.0&quot;
@@ -132,113 +132,128 @@ url {
               <dt>Command</dt>
               <dd><code>opam list; echo; ulimit -Sv 4000000; timeout 4h opam install -y --deps-only coq-quickchick.1.6.2 coq.8.14.0</code></dd>
               <dt>Return code</dt>
-              <dd>0</dd>
+              <dd>7936</dd>
               <dt>Duration</dt>
-              <dd>5 m 36 s</dd>
+              <dd>5 m 15 s</dd>
+              <dt>Output</dt>
+              <dd><pre># Packages matching: installed
+# Name                # Installed # Synopsis
+base-bigarray         base
+base-threads          base
+base-unix             base
+conf-findutils        1           Virtual package relying on findutils
+conf-gmp              4           Virtual package relying on a GMP lib system installation
+coq                   8.14.0      Formal proof management system
+dune                  3.4.1       Fast, portable, and opinionated build system
+ocaml                 4.12.1      The OCaml compiler (virtual package)
+ocaml-base-compiler   4.12.1      Official release 4.12.1
+ocaml-config          2           OCaml Switch Configuration
+ocaml-options-vanilla 1           Ensure that OCaml is compiled with no special options enabled
+ocamlfind             1.9.5       A library manager for OCaml
+zarith                1.12        Implements arithmetic and logical operations over arbitrary-precision integers
+The following actions will be performed:
+  - install cppo                   1.6.9
+  - install menhirSdk              20220210
+  - install coq-mathcomp-ssreflect 1.15.0
+  - install ocamlbuild             0.14.1
+  - install menhirLib              20220210
+  - install coq-ext-lib            0.11.7
+  - install menhir                 20220210
+  - install coq-simple-io          1.7.0
+===== 8 to install =====
+&lt;&gt;&lt;&gt; Gathering sources &gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;
+[coq-ext-lib.0.11.7] downloaded from https://github.com/coq-community/coq-ext-lib/archive/v0.11.7.tar.gz
+[coq-simple-io.1.7.0] downloaded from https://github.com/Lysxia/coq-simple-io/archive/1.7.0.tar.gz
+[coq-mathcomp-ssreflect.1.15.0] downloaded from https://github.com/math-comp/math-comp/archive/mathcomp-1.15.0.tar.gz
+[cppo.1.6.9] downloaded from cache at https://opam.ocaml.org/cache
+[menhir.20220210] downloaded from cache at https://opam.ocaml.org/cache
+[ocamlbuild.0.14.1] downloaded from cache at https://opam.ocaml.org/cache
+[menhirLib.20220210] downloaded from cache at https://opam.ocaml.org/cache
+[menhirSdk.20220210] downloaded from cache at https://opam.ocaml.org/cache
+&lt;&gt;&lt;&gt; Processing actions &lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;
+-&gt; installed cppo.1.6.9
+-&gt; installed menhirLib.20220210
+-&gt; installed menhirSdk.20220210
+[ERROR] The compilation of ocamlbuild failed at &quot;/home/bench/.opam/opam-init/hooks/sandbox.sh build make check-if-preinstalled all opam-install&quot;.
+[ERROR] The compilation of menhir failed at &quot;/home/bench/.opam/opam-init/hooks/sandbox.sh build dune build -p menhir -j 4&quot;.
+-&gt; installed coq-ext-lib.0.11.7
+-&gt; installed coq-simple-io.1.7.0
+-&gt; installed coq-mathcomp-ssreflect.1.15.0
+#=== ERROR while compiling ocamlbuild.0.14.1 ==================================#
+# context              2.0.8 | linux/x86_64 | ocaml-base-compiler.4.12.1 | https://opam.ocaml.org#0ccb63ef
+# path                 ~/.opam/ocaml-base-compiler.4.12.1/.opam-switch/build/ocamlbuild.0.14.1
+# command              ~/.opam/opam-init/hooks/sandbox.sh build make check-if-preinstalled all opam-install
+# exit-code            2
+# env-file             ~/.opam/log/ocamlbuild-11977-2f8173.env
+# output-file          ~/.opam/log/ocamlbuild-11977-2f8173.out
+### output ###
+# [...]
+# ocamlc.opt -w +L -w +R -w +Z -I src -I +unix -safe-string -bin-annot -strict-sequence -c src/configuration.mli
+# ocamlc.opt -w +L -w +R -w +Z -I src -I +unix -safe-string -bin-annot -strict-sequence -c src/configuration.ml
+# ocamlc.opt -w +L -w +R -w +Z -I src -I +unix -safe-string -bin-annot -strict-sequence -c src/flags.mli
+# ocamlc.opt -w +L -w +R -w +Z -I src -I +unix -safe-string -bin-annot -strict-sequence -c src/flags.ml
+# ocamlc.opt -w +L -w +R -w +Z -I src -I +unix -safe-string -bin-annot -strict-sequence -c src/hygiene.mli
+# ocamlc.opt -w +L -w +R -w +Z -I src -I +unix -safe-string -bin-annot -strict-sequence -c src/hygiene.ml
+# ocamlc.opt -w +L -w +R -w +Z -I src -I +unix -safe-string -bin-annot -strict-sequence -c src/digest_cache.mli
+# ocamlc.opt -w +L -w +R -w +Z -I src -I +unix -safe-string -bin-annot -strict-sequence -c src/digest_cache.ml
+# ocamlc.opt -w +L -w +R -w +Z -I src -I +unix -safe-string -bin-annot -strict-sequence -c src/resource.mli
+# File &quot;src/resource.mli&quot;, line 1:
+# Error: I/O error: No space left on device
+# make: *** [Makefile:425: src/resource.cmi] Error 2
+#=== ERROR while compiling menhir.20220210 ====================================#
+# context              2.0.8 | linux/x86_64 | ocaml-base-compiler.4.12.1 | https://opam.ocaml.org#0ccb63ef
+# path                 ~/.opam/ocaml-base-compiler.4.12.1/.opam-switch/build/menhir.20220210
+# command              ~/.opam/opam-init/hooks/sandbox.sh build dune build -p menhir -j 4
+# exit-code            1
+# env-file             ~/.opam/log/menhir-11977-c0ceac.env
+# output-file          ~/.opam/log/menhir-11977-c0ceac.out
+### output ###
+# [...]
+# -&gt; required by (&quot;&lt;unnamed&gt;&quot;, ())
+# -&gt; required by (&quot;build-alias&quot;, { dir = &quot;default&quot;; name = &quot;install&quot; })
+# -&gt; required by (&quot;toplevel&quot;, ())
+# 
+# I must not crash.  Uncertainty is the mind-killer. Exceptions are the
+# little-death that brings total obliteration.  I will fully express my cases. 
+# Execution will pass over me and through me.  And when it has gone past, I
+# will unwind the stack along its path.  Where the cases are handled there will
+# be nothing.  Only I will remain.
+# File &quot;src/stage2/.main.eobjs/_unknown_&quot;, line 1, characters 0-0:
+# (cd _build/default &amp;&amp; /home/bench/.opam/ocaml-base-compiler.4.12.1/bin/ocamldep.opt -modules -intf src/stage2/option.mli) &gt; _build/default/src/stage2/.main.eobjs/option.mli.d
+# Command exited with code 2.
+&lt;&gt;&lt;&gt; Error report &lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;
++- The following actions failed
+| - build menhir     20220210
+| - build ocamlbuild 0.14.1
++- 
++- The following changes have been performed
+| - install coq-ext-lib            0.11.7
+| - install coq-mathcomp-ssreflect 1.15.0
+| - install coq-simple-io          1.7.0
+| - install cppo                   1.6.9
+| - install menhirLib              20220210
+| - install menhirSdk              20220210
++- 
+# Run eval $(opam env) to update the current shell environment
+The former state can be restored with:
+    opam switch import &quot;/home/bench/.opam/ocaml-base-compiler.4.12.1/.opam-switch/backup/state-20220914075725.export&quot;
+</pre></dd>
             </dl>
             <h2>Install 🚀</h2>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>opam list; echo; ulimit -Sv 16000000; timeout 4h opam install -y -v coq-quickchick.1.6.2 coq.8.14.0</code></dd>
+              <dd><code>true</code></dd>
               <dt>Return code</dt>
               <dd>0</dd>
               <dt>Duration</dt>
-              <dd>2 m 36 s</dd>
+              <dd>0 s</dd>
             </dl>
             <h2>Installation size</h2>
-            <p>Total: 7 M</p>
-            <ul>
-              <li>918 K <code>../ocaml-base-compiler.4.12.1/lib/coq/user-contrib/QuickChick/quickchick_plugin.cmxs</code></li>
-              <li>769 K <code>../ocaml-base-compiler.4.12.1/lib/coq/user-contrib/QuickChick/State.vo</code></li>
-              <li>660 K <code>../ocaml-base-compiler.4.12.1/lib/coq/user-contrib/QuickChick/GenHighImpl.vo</code></li>
-              <li>363 K <code>../ocaml-base-compiler.4.12.1/lib/coq/user-contrib/QuickChick/GenHighImpl.glob</code></li>
-              <li>331 K <code>../ocaml-base-compiler.4.12.1/bin/quickChick</code></li>
-              <li>198 K <code>../ocaml-base-compiler.4.12.1/lib/coq/user-contrib/QuickChick/Sets.vo</code></li>
-              <li>169 K <code>../ocaml-base-compiler.4.12.1/lib/coq/user-contrib/QuickChick/SemChecker.vo</code></li>
-              <li>165 K <code>../ocaml-base-compiler.4.12.1/lib/coq/user-contrib/QuickChick/GenLow.vo</code></li>
-              <li>163 K <code>../ocaml-base-compiler.4.12.1/lib/coq/user-contrib/QuickChick/Sets.glob</code></li>
-              <li>155 K <code>../ocaml-base-compiler.4.12.1/lib/coq/user-contrib/QuickChick/Instances.vo</code></li>
-              <li>146 K <code>../ocaml-base-compiler.4.12.1/lib/coq/user-contrib/QuickChick/ShowFacts.vo</code></li>
-              <li>140 K <code>../ocaml-base-compiler.4.12.1/lib/coq/user-contrib/QuickChick/RandomQC.vo</code></li>
-              <li>135 K <code>../ocaml-base-compiler.4.12.1/lib/coq/user-contrib/QuickChick/quickchick_plugin.cmi</code></li>
-              <li>127 K <code>../ocaml-base-compiler.4.12.1/lib/coq/user-contrib/QuickChick/CoArbitrary.vo</code></li>
-              <li>125 K <code>../ocaml-base-compiler.4.12.1/lib/coq/user-contrib/QuickChick/GenHighInterface.glob</code></li>
-              <li>114 K <code>../ocaml-base-compiler.4.12.1/lib/coq/user-contrib/QuickChick/SemChecker.glob</code></li>
-              <li>113 K <code>../ocaml-base-compiler.4.12.1/lib/coq/user-contrib/QuickChick/GenLow.glob</code></li>
-              <li>106 K <code>../ocaml-base-compiler.4.12.1/lib/coq/user-contrib/QuickChick/GenHighInterface.vo</code></li>
-              <li>101 K <code>../ocaml-base-compiler.4.12.1/lib/coq/user-contrib/QuickChick/Decidability.vo</code></li>
-              <li>99 K <code>../ocaml-base-compiler.4.12.1/lib/coq/user-contrib/QuickChick/GenHigh.vo</code></li>
-              <li>87 K <code>../ocaml-base-compiler.4.12.1/lib/coq/user-contrib/QuickChick/Checker.vo</code></li>
-              <li>78 K <code>../ocaml-base-compiler.4.12.1/lib/coq/user-contrib/QuickChick/RandomQC.glob</code></li>
-              <li>75 K <code>../ocaml-base-compiler.4.12.1/lib/coq/user-contrib/QuickChick/GenLowInterface.glob</code></li>
-              <li>73 K <code>../ocaml-base-compiler.4.12.1/lib/coq/user-contrib/QuickChick/GenLowInterface.vo</code></li>
-              <li>72 K <code>../ocaml-base-compiler.4.12.1/lib/coq/user-contrib/QuickChick/Test.vo</code></li>
-              <li>61 K <code>../ocaml-base-compiler.4.12.1/lib/coq/user-contrib/QuickChick/CoArbitrary.glob</code></li>
-              <li>60 K <code>../ocaml-base-compiler.4.12.1/lib/coq/user-contrib/QuickChick/GenHighImpl.v</code></li>
-              <li>59 K <code>../ocaml-base-compiler.4.12.1/lib/coq/user-contrib/QuickChick/DependentClasses.vo</code></li>
-              <li>58 K <code>../ocaml-base-compiler.4.12.1/lib/coq/user-contrib/QuickChick/Classes.vo</code></li>
-              <li>55 K <code>../ocaml-base-compiler.4.12.1/lib/coq/user-contrib/QuickChick/Show.vo</code></li>
-              <li>54 K <code>../ocaml-base-compiler.4.12.1/lib/coq/user-contrib/QuickChick/quickchick_plugin.cmx</code></li>
-              <li>50 K <code>../ocaml-base-compiler.4.12.1/lib/coq/user-contrib/QuickChick/Instances.glob</code></li>
-              <li>49 K <code>../ocaml-base-compiler.4.12.1/lib/coq/user-contrib/QuickChick/Checker.glob</code></li>
-              <li>44 K <code>../ocaml-base-compiler.4.12.1/lib/coq/user-contrib/QuickChick/StringOT.vo</code></li>
-              <li>43 K <code>../ocaml-base-compiler.4.12.1/lib/coq/user-contrib/QuickChick/Typeclasses.vo</code></li>
-              <li>43 K <code>../ocaml-base-compiler.4.12.1/lib/coq/user-contrib/QuickChick/Test.glob</code></li>
-              <li>37 K <code>../ocaml-base-compiler.4.12.1/lib/coq/user-contrib/QuickChick/MutateCheck.vo</code></li>
-              <li>30 K <code>../ocaml-base-compiler.4.12.1/lib/coq/user-contrib/QuickChick/ExtractionQC.vo</code></li>
-              <li>30 K <code>../ocaml-base-compiler.4.12.1/lib/coq/user-contrib/QuickChick/Show.glob</code></li>
-              <li>30 K <code>../ocaml-base-compiler.4.12.1/lib/coq/user-contrib/QuickChick/GenHigh.glob</code></li>
-              <li>28 K <code>../ocaml-base-compiler.4.12.1/lib/coq/user-contrib/QuickChick/SemChecker.v</code></li>
-              <li>28 K <code>../ocaml-base-compiler.4.12.1/lib/coq/user-contrib/QuickChick/Nat_util.vo</code></li>
-              <li>28 K <code>../ocaml-base-compiler.4.12.1/lib/coq/user-contrib/QuickChick/Sets.v</code></li>
-              <li>27 K <code>../ocaml-base-compiler.4.12.1/lib/coq/user-contrib/QuickChick/QuickChick.vo</code></li>
-              <li>25 K <code>../ocaml-base-compiler.4.12.1/lib/coq/user-contrib/QuickChick/Mutation.vo</code></li>
-              <li>25 K <code>../ocaml-base-compiler.4.12.1/lib/coq/user-contrib/QuickChick/Tactics.vo</code></li>
-              <li>25 K <code>../ocaml-base-compiler.4.12.1/lib/coq/user-contrib/QuickChick/DependentClasses.glob</code></li>
-              <li>24 K <code>../ocaml-base-compiler.4.12.1/lib/coq/user-contrib/QuickChick/RandomQC.v</code></li>
-              <li>24 K <code>../ocaml-base-compiler.4.12.1/lib/coq/user-contrib/QuickChick/Classes.glob</code></li>
-              <li>22 K <code>../ocaml-base-compiler.4.12.1/lib/coq/user-contrib/QuickChick/GenLow.v</code></li>
-              <li>17 K <code>../ocaml-base-compiler.4.12.1/lib/coq/user-contrib/QuickChick/CoArbitrary.v</code></li>
-              <li>17 K <code>../ocaml-base-compiler.4.12.1/lib/coq/user-contrib/QuickChick/GenHighInterface.v</code></li>
-              <li>16 K <code>../ocaml-base-compiler.4.12.1/lib/coq/user-contrib/QuickChick/Decidability.glob</code></li>
-              <li>16 K <code>../ocaml-base-compiler.4.12.1/lib/coq/user-contrib/QuickChick/RoseTrees.vo</code></li>
-              <li>14 K <code>../ocaml-base-compiler.4.12.1/lib/coq/user-contrib/QuickChick/StringOT.glob</code></li>
-              <li>14 K <code>../ocaml-base-compiler.4.12.1/lib/coq/user-contrib/QuickChick/ShowFacts.glob</code></li>
-              <li>14 K <code>../ocaml-base-compiler.4.12.1/lib/coq/user-contrib/QuickChick/Checker.v</code></li>
-              <li>14 K <code>../ocaml-base-compiler.4.12.1/lib/coq/user-contrib/QuickChick/GenLowInterface.v</code></li>
-              <li>13 K <code>../ocaml-base-compiler.4.12.1/lib/coq/user-contrib/QuickChick/Test.v</code></li>
-              <li>11 K <code>../ocaml-base-compiler.4.12.1/lib/coq/user-contrib/QuickChick/Instances.v</code></li>
-              <li>10 K <code>../ocaml-base-compiler.4.12.1/lib/coq/user-contrib/QuickChick/MutateCheck.glob</code></li>
-              <li>10 K <code>../ocaml-base-compiler.4.12.1/lib/coq/user-contrib/QuickChick/Typeclasses.glob</code></li>
-              <li>9 K <code>../ocaml-base-compiler.4.12.1/lib/coq/user-contrib/QuickChick/DependentClasses.v</code></li>
-              <li>8 K <code>../ocaml-base-compiler.4.12.1/lib/coq/user-contrib/QuickChick/quickchick_plugin.cmxa</code></li>
-              <li>8 K <code>../ocaml-base-compiler.4.12.1/lib/coq/user-contrib/QuickChick/Show.v</code></li>
-              <li>7 K <code>../ocaml-base-compiler.4.12.1/lib/coq/user-contrib/QuickChick/Typeclasses.v</code></li>
-              <li>7 K <code>../ocaml-base-compiler.4.12.1/lib/coq/user-contrib/QuickChick/Nat_util.glob</code></li>
-              <li>7 K <code>../ocaml-base-compiler.4.12.1/lib/coq/user-contrib/QuickChick/Classes.v</code></li>
-              <li>6 K <code>../ocaml-base-compiler.4.12.1/lib/coq/user-contrib/QuickChick/Decidability.v</code></li>
-              <li>5 K <code>../ocaml-base-compiler.4.12.1/lib/coq/user-contrib/QuickChick/StringOT.v</code></li>
-              <li>5 K <code>../ocaml-base-compiler.4.12.1/lib/coq/user-contrib/QuickChick/Mutation.v</code></li>
-              <li>5 K <code>../ocaml-base-compiler.4.12.1/lib/coq/user-contrib/QuickChick/ExtractionQC.v</code></li>
-              <li>4 K <code>../ocaml-base-compiler.4.12.1/lib/coq/user-contrib/QuickChick/ShowFacts.v</code></li>
-              <li>4 K <code>../ocaml-base-compiler.4.12.1/lib/coq/user-contrib/QuickChick/Mutation.glob</code></li>
-              <li>4 K <code>../ocaml-base-compiler.4.12.1/lib/coq/user-contrib/QuickChick/GenHigh.v</code></li>
-              <li>4 K <code>../ocaml-base-compiler.4.12.1/lib/coq/user-contrib/QuickChick/RoseTrees.glob</code></li>
-              <li>3 K <code>../ocaml-base-compiler.4.12.1/lib/coq/user-contrib/QuickChick/Tactics.glob</code></li>
-              <li>2 K <code>../ocaml-base-compiler.4.12.1/lib/coq/user-contrib/QuickChick/State.glob</code></li>
-              <li>2 K <code>../ocaml-base-compiler.4.12.1/lib/coq/user-contrib/QuickChick/RoseTrees.v</code></li>
-              <li>2 K <code>../ocaml-base-compiler.4.12.1/lib/coq/user-contrib/QuickChick/MutateCheck.v</code></li>
-              <li>2 K <code>../ocaml-base-compiler.4.12.1/lib/coq/user-contrib/QuickChick/Nat_util.v</code></li>
-              <li>2 K <code>../ocaml-base-compiler.4.12.1/lib/coq/user-contrib/QuickChick/QuickChick.v</code></li>
-              <li>1 K <code>../ocaml-base-compiler.4.12.1/lib/coq/user-contrib/QuickChick/Tactics.v</code></li>
-              <li>1 K <code>../ocaml-base-compiler.4.12.1/lib/coq/user-contrib/QuickChick/ExtractionQC.glob</code></li>
-              <li>1 K <code>../ocaml-base-compiler.4.12.1/lib/coq/user-contrib/QuickChick/QuickChick.glob</code></li>
-              <li>1 K <code>../ocaml-base-compiler.4.12.1/lib/coq/user-contrib/QuickChick/State.v</code></li>
-            </ul>
+            <p>No files were installed.</p>
             <h2>Uninstall 🧹</h2>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>opam remove -y coq-quickchick.1.6.2</code></dd>
+              <dd><code>true</code></dd>
               <dt>Return code</dt>
               <dd>0</dd>
               <dt>Missing removes</dt>
