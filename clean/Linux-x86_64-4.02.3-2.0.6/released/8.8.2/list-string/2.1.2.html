@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>list-string: 21 s 🏆</title>
+    <title>list-string: Error with dependencies 🚒</title>
     <link rel="shortcut icon" type="image/png" href="../../../../../favicon.png" />
     <link href="../../../../../bootstrap.min.css" rel="stylesheet">
     <link href="../../../../../bootstrap-custom.css" rel="stylesheet">
@@ -39,10 +39,10 @@
               list-string
               <small>
                 2.1.2
-                <span class="label label-success">21 s 🏆</span>
+                <span class="label label-warning">Error with dependencies 🚒</span>
               </small>
             </h1>
-            <p>📅 <em><script>document.write(moment("2022-07-13 09:06:49 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2022-07-13 09:06:49 UTC)</em><p>
+            <p>📅 <em><script>document.write(moment("2022-09-22 01:18:02 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2022-09-22 01:18:02 UTC)</em><p>
             <h2>Context</h2>
             <pre># Packages matching: installed
 # Name              # Installed # Synopsis
@@ -115,57 +115,91 @@ url {
               <dt>Command</dt>
               <dd><code>opam list; echo; ulimit -Sv 4000000; timeout 4h opam install -y --deps-only coq-list-string.2.1.2 coq.8.8.2</code></dd>
               <dt>Return code</dt>
-              <dd>0</dd>
+              <dd>7936</dd>
               <dt>Duration</dt>
-              <dd>20 s</dd>
+              <dd>14 s</dd>
+              <dt>Output</dt>
+              <dd><pre># Packages matching: installed
+# Name              # Installed # Synopsis
+base-bigarray       base
+base-num            base        Num library distributed with the OCaml compiler
+base-ocamlbuild     base        OCamlbuild binary and libraries distributed with the OCaml compiler
+base-threads        base
+base-unix           base
+camlp5              7.14        Preprocessor-pretty-printer of OCaml
+conf-findutils      1           Virtual package relying on findutils
+conf-perl           2           Virtual package relying on perl
+coq                 8.8.2       Formal proof management system
+num                 0           The Num library for arbitrary-precision integer and rational arithmetic
+ocaml               4.02.3      The OCaml compiler (virtual package)
+ocaml-base-compiler 4.02.3      Official 4.02.3 release
+ocaml-config        1           OCaml Switch Configuration
+ocamlfind           1.9.5       A library manager for OCaml
+The following actions will be performed:
+  - install coq-list-plus      1.1.0
+  - install coq-cunit          1.0.0
+  - install coq-error-handlers 1.2.0
+===== 3 to install =====
+&lt;&gt;&lt;&gt; Gathering sources &gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;
+[coq-error-handlers.1.2.0] downloaded from https://github.com/clarus/coq-error-handlers/archive/1.2.0.tar.gz
+[coq-cunit.1.0.0] downloaded from https://github.com/clarus/coq-cunit/archive/1.0.0.tar.gz
+[coq-list-plus.1.1.0] downloaded from https://github.com/clarus/coq-list-plus/archive/1.1.0.tar.gz
+&lt;&gt;&lt;&gt; Processing actions &lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;
+[ERROR] The compilation of coq-error-handlers failed at &quot;/home/bench/.opam/opam-init/hooks/sandbox.sh build ./configure.sh&quot;.
+[ERROR] The compilation of coq-cunit failed at &quot;/home/bench/.opam/opam-init/hooks/sandbox.sh build ./configure.sh&quot;.
+[ERROR] The compilation of coq-list-plus failed at &quot;/home/bench/.opam/opam-init/hooks/sandbox.sh build ./configure.sh&quot;.
+#=== ERROR while compiling coq-list-plus.1.1.0 ================================#
+# context              2.0.6 | linux/x86_64 | ocaml-base-compiler.4.02.3 | file:///home/bench/run/opam-coq-archive/released
+# path                 ~/.opam/ocaml-base-compiler.4.02.3/.opam-switch/build/coq-list-plus.1.1.0
+# command              ~/.opam/opam-init/hooks/sandbox.sh build ./configure.sh
+# exit-code            2
+# env-file             ~/.opam/log/coq-list-plus-16216-a4abd5.env
+# output-file          ~/.opam/log/coq-list-plus-16216-a4abd5.out
+### output ###
+# Fatal error: exception Sys_error(&quot;/home/bench/.opam/ocaml-base-compiler.4.02.3/lib/coq/tools/CoqMakefile.in: No such file or directory&quot;)
+#=== ERROR while compiling coq-error-handlers.1.2.0 ===========================#
+# context              2.0.6 | linux/x86_64 | ocaml-base-compiler.4.02.3 | file:///home/bench/run/opam-coq-archive/released
+# path                 ~/.opam/ocaml-base-compiler.4.02.3/.opam-switch/build/coq-error-handlers.1.2.0
+# command              ~/.opam/opam-init/hooks/sandbox.sh build ./configure.sh
+# exit-code            2
+# env-file             ~/.opam/log/coq-error-handlers-16216-e0ba4f.env
+# output-file          ~/.opam/log/coq-error-handlers-16216-e0ba4f.out
+### output ###
+# Fatal error: exception Sys_error(&quot;/home/bench/.opam/ocaml-base-compiler.4.02.3/lib/coq/tools/CoqMakefile.in: No such file or directory&quot;)
+#=== ERROR while compiling coq-cunit.1.0.0 ====================================#
+# context              2.0.6 | linux/x86_64 | ocaml-base-compiler.4.02.3 | file:///home/bench/run/opam-coq-archive/released
+# path                 ~/.opam/ocaml-base-compiler.4.02.3/.opam-switch/build/coq-cunit.1.0.0
+# command              ~/.opam/opam-init/hooks/sandbox.sh build ./configure.sh
+# exit-code            2
+# env-file             ~/.opam/log/coq-cunit-16216-0f1b61.env
+# output-file          ~/.opam/log/coq-cunit-16216-0f1b61.out
+### output ###
+# Fatal error: exception Sys_error(&quot;/home/bench/.opam/ocaml-base-compiler.4.02.3/lib/coq/tools/CoqMakefile.in: No such file or directory&quot;)
+&lt;&gt;&lt;&gt; Error report &lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;
++- The following actions failed
+| - build coq-cunit          1.0.0
+| - build coq-error-handlers 1.2.0
+| - build coq-list-plus      1.1.0
++- 
+- No changes have been performed
+# Run eval $(opam env) to update the current shell environment
+</pre></dd>
             </dl>
             <h2>Install 🚀</h2>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>opam list; echo; ulimit -Sv 16000000; timeout 4h opam install -y -v coq-list-string.2.1.2 coq.8.8.2</code></dd>
+              <dd><code>true</code></dd>
               <dt>Return code</dt>
               <dd>0</dd>
               <dt>Duration</dt>
-              <dd>21 s</dd>
+              <dd>0 s</dd>
             </dl>
             <h2>Installation size</h2>
-            <p>Total: 679 K</p>
-            <ul>
-              <li>165 K <code>../ocaml-base-compiler.4.02.3/lib/coq/user-contrib/ListString/All.vo</code></li>
-              <li>118 K <code>../ocaml-base-compiler.4.02.3/lib/coq/user-contrib/ListString/UnitTests.glob</code></li>
-              <li>96 K <code>../ocaml-base-compiler.4.02.3/lib/coq/user-contrib/ListString/UnitTests.vo</code></li>
-              <li>43 K <code>../ocaml-base-compiler.4.02.3/lib/coq/user-contrib/ListString/Etc.vo</code></li>
-              <li>42 K <code>../ocaml-base-compiler.4.02.3/lib/coq/user-contrib/ListString/Char.vo</code></li>
-              <li>38 K <code>../ocaml-base-compiler.4.02.3/lib/coq/user-contrib/ListString/Conversion.vo</code></li>
-              <li>36 K <code>../ocaml-base-compiler.4.02.3/lib/coq/user-contrib/ListString/Comparison.vo</code></li>
-              <li>36 K <code>../ocaml-base-compiler.4.02.3/lib/coq/user-contrib/ListString/Trim.vo</code></li>
-              <li>30 K <code>../ocaml-base-compiler.4.02.3/lib/coq/user-contrib/ListString/Case.vo</code></li>
-              <li>17 K <code>../ocaml-base-compiler.4.02.3/lib/coq/user-contrib/ListString/LString.vo</code></li>
-              <li>10 K <code>../ocaml-base-compiler.4.02.3/lib/coq/user-contrib/ListString/Etc.glob</code></li>
-              <li>10 K <code>../ocaml-base-compiler.4.02.3/lib/coq/user-contrib/ListString/UnitTests.v</code></li>
-              <li>7 K <code>../ocaml-base-compiler.4.02.3/lib/coq/user-contrib/ListString/Char.glob</code></li>
-              <li>6 K <code>../ocaml-base-compiler.4.02.3/lib/coq/user-contrib/ListString/Conversion.glob</code></li>
-              <li>5 K <code>../ocaml-base-compiler.4.02.3/lib/coq/user-contrib/ListString/Comparison.glob</code></li>
-              <li>4 K <code>../ocaml-base-compiler.4.02.3/lib/coq/user-contrib/ListString/Bool.vo</code></li>
-              <li>3 K <code>../ocaml-base-compiler.4.02.3/lib/coq/user-contrib/ListString/Char.v</code></li>
-              <li>3 K <code>../ocaml-base-compiler.4.02.3/lib/coq/user-contrib/ListString/Trim.glob</code></li>
-              <li>2 K <code>../ocaml-base-compiler.4.02.3/lib/coq/user-contrib/ListString/Etc.v</code></li>
-              <li>2 K <code>../ocaml-base-compiler.4.02.3/lib/coq/user-contrib/ListString/Conversion.v</code></li>
-              <li>2 K <code>../ocaml-base-compiler.4.02.3/lib/coq/user-contrib/ListString/Comparison.v</code></li>
-              <li>1 K <code>../ocaml-base-compiler.4.02.3/lib/coq/user-contrib/ListString/Bool.glob</code></li>
-              <li>1 K <code>../ocaml-base-compiler.4.02.3/lib/coq/user-contrib/ListString/Trim.v</code></li>
-              <li>1 K <code>../ocaml-base-compiler.4.02.3/lib/coq/user-contrib/ListString/Case.glob</code></li>
-              <li>1 K <code>../ocaml-base-compiler.4.02.3/lib/coq/user-contrib/ListString/All.glob</code></li>
-              <li>1 K <code>../ocaml-base-compiler.4.02.3/lib/coq/user-contrib/ListString/Case.v</code></li>
-              <li>1 K <code>../ocaml-base-compiler.4.02.3/lib/coq/user-contrib/ListString/Bool.v</code></li>
-              <li>1 K <code>../ocaml-base-compiler.4.02.3/lib/coq/user-contrib/ListString/All.v</code></li>
-              <li>1 K <code>../ocaml-base-compiler.4.02.3/lib/coq/user-contrib/ListString/LString.glob</code></li>
-              <li>1 K <code>../ocaml-base-compiler.4.02.3/lib/coq/user-contrib/ListString/LString.v</code></li>
-            </ul>
+            <p>No files were installed.</p>
             <h2>Uninstall 🧹</h2>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>opam remove -y coq-list-string.2.1.2</code></dd>
+              <dd><code>true</code></dd>
               <dt>Return code</dt>
               <dd>0</dd>
               <dt>Missing removes</dt>
