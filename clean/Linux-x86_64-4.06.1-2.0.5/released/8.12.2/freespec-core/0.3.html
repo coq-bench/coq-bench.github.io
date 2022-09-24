@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>freespec-core: 32 s 🏆</title>
+    <title>freespec-core: Error with dependencies 🚒</title>
     <link rel="shortcut icon" type="image/png" href="../../../../../favicon.png" />
     <link href="../../../../../bootstrap.min.css" rel="stylesheet">
     <link href="../../../../../bootstrap-custom.css" rel="stylesheet">
@@ -39,10 +39,10 @@
               freespec-core
               <small>
                 0.3
-                <span class="label label-success">32 s 🏆</span>
+                <span class="label label-warning">Error with dependencies 🚒</span>
               </small>
             </h1>
-            <p>📅 <em><script>document.write(moment("2022-04-09 12:28:22 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2022-04-09 12:28:22 UTC)</em><p>
+            <p>📅 <em><script>document.write(moment("2022-09-24 11:57:39 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2022-09-24 11:57:39 UTC)</em><p>
             <h2>Context</h2>
             <pre># Packages matching: installed
 # Name              # Installed # Synopsis
@@ -55,7 +55,7 @@ num                 1.4         The legacy Num library for arbitrary-precision i
 ocaml               4.06.1      The OCaml compiler (virtual package)
 ocaml-base-compiler 4.06.1      Official 4.06.1 release
 ocaml-config        1           OCaml Switch Configuration
-ocamlfind           1.9.3       A library manager for OCaml
+ocamlfind           1.9.5       A library manager for OCaml
 # opam file:
 opam-version: &quot;2.0&quot;
 maintainer: &quot;Thomas Letan &lt;lthms@soap.coffee&gt;&quot;
@@ -126,67 +126,153 @@ url {
               <dt>Command</dt>
               <dd><code>opam list; echo; ulimit -Sv 4000000; timeout 4h opam install -y --deps-only coq-freespec-core.0.3 coq.8.12.2</code></dd>
               <dt>Return code</dt>
-              <dd>0</dd>
+              <dd>7936</dd>
               <dt>Duration</dt>
-              <dd>14 m 13 s</dd>
+              <dd>10 m 26 s</dd>
+              <dt>Output</dt>
+              <dd><pre># Packages matching: installed
+# Name              # Installed # Synopsis
+base-bigarray       base
+base-threads        base
+base-unix           base
+conf-findutils      1           Virtual package relying on findutils
+coq                 8.12.2      Formal proof management system
+num                 1.4         The legacy Num library for arbitrary-precision integer and rational arithmetic
+ocaml               4.06.1      The OCaml compiler (virtual package)
+ocaml-base-compiler 4.06.1      Official 4.06.1 release
+ocaml-config        1           OCaml Switch Configuration
+ocamlfind           1.9.5       A library manager for OCaml
+The following actions will be performed:
+  - downgrade ocamlfind                1.9.5 to 1.9.1
+  - install   coq-ext-lib              0.11.7
+  - install   ocaml-secondary-compiler 4.08.1-1
+  - install   ocamlfind-secondary      1.9.1
+  - install   dune                     3.4.1
+===== 4 to install | 1 to downgrade =====
+&lt;&gt;&lt;&gt; Gathering sources &gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;
+[coq-ext-lib.0.11.7] downloaded from https://github.com/coq-community/coq-ext-lib/archive/v0.11.7.tar.gz
+[ocaml-secondary-compiler.4.08.1-1] downloaded from cache at https://opam.ocaml.org/cache
+[dune.3.4.1] downloaded from cache at https://opam.ocaml.org/cache
+[ocamlfind.1.9.1] downloaded from cache at https://opam.ocaml.org/cache
+[ocamlfind-secondary.1.9.1] found in cache
+[ocaml-secondary-compiler.4.08.1-1/alt-signal-stack.patch] downloaded from https://opam.ocaml.org/cache
+&lt;&gt;&lt;&gt; Processing actions &lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;
+[WARNING] While removing ocamlfind.1.9.5: not removing files that changed since:
+            - man/man5/site-lib.5
+            - man/man5/findlib.conf.5
+            - man/man5/META.5
+            - man/man1/ocamlfind.1
+            - lib/unix/META
+            - lib/toplevel/topfind
+            - lib/threads/META
+            - lib/str/META
+            - lib/stdlib/META
+            - lib/raw_spacetime/META
+            - lib/ocamldoc/META
+            - lib/ocaml/topfind
+            - lib/graphics/META
+            - lib/findlib/topfind.mli
+            - lib/findlib/topfind.cmi
+            - lib/findlib/ocaml_args.cmi
+            - lib/findlib/fl_topo.cmi
+            - lib/findlib/fl_split.cmi
+            - lib/findlib/fl_package_base.mli
+            - lib/findlib/fl_package_base.cmi
+            - lib/findlib/fl_metatoken.cmi
+            - lib/findlib/fl_metascanner.mli
+            - lib/findlib/fl_metascanner.cmi
+            - lib/findlib/fl_meta.cmi
+            - lib/findlib/fl_lint.cmi
+            - lib/findlib/fl_dynload.mli
+            - lib/findlib/fl_dynload.cmi
+            - lib/findlib/fl_args.cmi
+            - lib/findlib/findlib_top.cmxs
+            - lib/findlib/findlib_top.cmxa
+            - lib/findlib/findlib_top.cma
+            - lib/findlib/findlib_top.a
+            - lib/findlib/findlib_dynload.cmxs
+            - lib/findlib/findlib_dynload.cmxa
+            - lib/findlib/findlib_dynload.cma
+            - lib/findlib/findlib_dynload.a
+            - lib/findlib/findlib_config.ml
+            - lib/findlib/findlib_config.cmi
+            - lib/findlib/findlib.mli
+            - lib/findlib/findlib.cmxs
+            - lib/findlib/findlib.cmxa
+            - lib/findlib/findlib.cmi
+            - lib/findlib/findlib.cma
+            - lib/findlib/findlib.a
+            - lib/findlib/Makefile.packages
+            - lib/findlib/Makefile.config
+            - lib/findlib/META
+            - lib/findlib.conf
+            - lib/dynlink/META
+            - lib/compiler-libs/META
+            - lib/bytes/META
+            - lib/bigarray/META
+[NOTE] While removing ocamlfind.1.9.5: not removing non-empty directories:
+         - lib/unix
+         - lib/threads
+         - lib/str
+         - lib/stdlib
+         - lib/raw_spacetime
+         - lib/ocamldoc
+         - lib/graphics
+         - lib/findlib
+         - lib/dynlink
+         - lib/compiler-libs
+         - lib/bytes
+         - lib/bigarray
+-&gt; removed   ocamlfind.1.9.5
+-&gt; installed ocamlfind.1.9.1
+-&gt; installed coq-ext-lib.0.11.7
+-&gt; installed ocaml-secondary-compiler.4.08.1-1
+-&gt; installed ocamlfind-secondary.1.9.1
+[ERROR] The compilation of dune failed at &quot;/home/bench/.opam/opam-init/hooks/sandbox.sh build ocaml bootstrap.ml -j 4&quot;.
+#=== ERROR while compiling dune.3.4.1 =========================================#
+# context              2.0.5 | linux/x86_64 | ocaml-base-compiler.4.06.1 | https://opam.ocaml.org#3da0e294
+# path                 ~/.opam/ocaml-base-compiler.4.06.1/.opam-switch/build/dune.3.4.1
+# command              ~/.opam/opam-init/hooks/sandbox.sh build ocaml bootstrap.ml -j 4
+# exit-code            2
+# env-file             ~/.opam/log/dune-7143-8989cf.env
+# output-file          ~/.opam/log/dune-7143-8989cf.out
+### output ###
+# ocamlfind -toolchain secondary ocamlc 2&gt;.duneboot.ocamlfind-output
+# 
+# ocamlfind -toolchain secondary ocamlc -custom -w -24 -g -o .duneboot.exe -I boot unix.cma boot/libs.ml boot/duneboot.ml
+# ./.duneboot.exe --secondary -j 4
+# cd _boot &amp;&amp; /home/bench/.opam/ocaml-base-compiler.4.06.1/share/ocaml-secondary-compiler/bin/ocamlopt.opt -c -g -no-alias-deps -w -49-6 -alert -unstable -I +threads cmdliner_msg.mli
+# 
+&lt;&gt;&lt;&gt; Error report &lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;
++- The following actions failed
+| - build dune 3.4.1
++- 
++- The following changes have been performed
+| - downgrade ocamlfind                1.9.5 to 1.9.1
+| - install   coq-ext-lib              0.11.7
+| - install   ocaml-secondary-compiler 4.08.1-1
+| - install   ocamlfind-secondary      1.9.1
++- 
+# Run eval $(opam env) to update the current shell environment
+The former state can be restored with:
+    opam switch import &quot;/home/bench/.opam/ocaml-base-compiler.4.06.1/.opam-switch/backup/state-20220923102032.export&quot;
+</pre></dd>
             </dl>
             <h2>Install 🚀</h2>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>opam list; echo; ulimit -Sv 16000000; timeout 4h opam install -y -v coq-freespec-core.0.3 coq.8.12.2</code></dd>
+              <dd><code>true</code></dd>
               <dt>Return code</dt>
               <dd>0</dd>
               <dt>Duration</dt>
-              <dd>32 s</dd>
+              <dd>0 s</dd>
             </dl>
             <h2>Installation size</h2>
-            <p>Total: 946 K</p>
-            <ul>
-              <li>92 K <code>../ocaml-base-compiler.4.06.1/lib/coq/user-contrib/FreeSpec/Core/SemanticsFacts.vo</code></li>
-              <li>87 K <code>../ocaml-base-compiler.4.06.1/lib/coq/user-contrib/FreeSpec/Core/Interface.vo</code></li>
-              <li>67 K <code>../ocaml-base-compiler.4.06.1/lib/coq/user-contrib/FreeSpec/Core/HoareFacts.vo</code></li>
-              <li>62 K <code>../ocaml-base-compiler.4.06.1/lib/coq/user-contrib/FreeSpec/Core/ImpureFacts.vo</code></li>
-              <li>52 K <code>../ocaml-base-compiler.4.06.1/lib/coq/user-contrib/FreeSpec/Core/Contract.vo</code></li>
-              <li>51 K <code>../ocaml-base-compiler.4.06.1/lib/coq/user-contrib/FreeSpec/Core/Tactics.vo</code></li>
-              <li>49 K <code>../ocaml-base-compiler.4.06.1/lib/coq/user-contrib/FreeSpec/Core/InstrumentFacts.vo</code></li>
-              <li>45 K <code>../ocaml-base-compiler.4.06.1/lib/coq/user-contrib/FreeSpec/Core/ComponentFacts.vo</code></li>
-              <li>45 K <code>../ocaml-base-compiler.4.06.1/lib/coq/user-contrib/FreeSpec/Core/Semantics.vo</code></li>
-              <li>44 K <code>../ocaml-base-compiler.4.06.1/lib/coq/user-contrib/FreeSpec/Core/Impure.vo</code></li>
-              <li>43 K <code>../ocaml-base-compiler.4.06.1/lib/coq/user-contrib/FreeSpec/Core/Hoare.vo</code></li>
-              <li>38 K <code>../ocaml-base-compiler.4.06.1/lib/coq/user-contrib/FreeSpec/Core/Instrument.vo</code></li>
-              <li>38 K <code>../ocaml-base-compiler.4.06.1/lib/coq/user-contrib/FreeSpec/Core/Component.vo</code></li>
-              <li>33 K <code>../ocaml-base-compiler.4.06.1/lib/coq/user-contrib/FreeSpec/Core/CoreFacts.vo</code></li>
-              <li>32 K <code>../ocaml-base-compiler.4.06.1/lib/coq/user-contrib/FreeSpec/Core/Extraction.vo</code></li>
-              <li>32 K <code>../ocaml-base-compiler.4.06.1/lib/coq/user-contrib/FreeSpec/Core/Core.vo</code></li>
-              <li>31 K <code>../ocaml-base-compiler.4.06.1/lib/coq/user-contrib/FreeSpec/Core/Init.vo</code></li>
-              <li>16 K <code>../ocaml-base-compiler.4.06.1/doc/coq-freespec-core/LICENSE</code></li>
-              <li>14 K <code>../ocaml-base-compiler.4.06.1/lib/coq/user-contrib/FreeSpec/Core/Interface.v</code></li>
-              <li>12 K <code>../ocaml-base-compiler.4.06.1/lib/coq/user-contrib/FreeSpec/Core/SemanticsFacts.v</code></li>
-              <li>8 K <code>../ocaml-base-compiler.4.06.1/lib/coq/user-contrib/FreeSpec/Core/Contract.v</code></li>
-              <li>6 K <code>../ocaml-base-compiler.4.06.1/lib/coq/user-contrib/FreeSpec/Core/Tactics.v</code></li>
-              <li>6 K <code>../ocaml-base-compiler.4.06.1/lib/coq/user-contrib/FreeSpec/Core/Semantics.v</code></li>
-              <li>5 K <code>../ocaml-base-compiler.4.06.1/lib/coq/user-contrib/FreeSpec/Core/ComponentFacts.v</code></li>
-              <li>5 K <code>../ocaml-base-compiler.4.06.1/lib/coq/user-contrib/FreeSpec/Core/ImpureFacts.v</code></li>
-              <li>5 K <code>../ocaml-base-compiler.4.06.1/lib/coq/user-contrib/FreeSpec/Core/Impure.v</code></li>
-              <li>5 K <code>../ocaml-base-compiler.4.06.1/lib/coq/user-contrib/FreeSpec/Core/HoareFacts.v</code></li>
-              <li>4 K <code>../ocaml-base-compiler.4.06.1/lib/coq/user-contrib/FreeSpec/Core/InstrumentFacts.v</code></li>
-              <li>3 K <code>../ocaml-base-compiler.4.06.1/lib/coq/user-contrib/FreeSpec/Core/Component.v</code></li>
-              <li>3 K <code>../ocaml-base-compiler.4.06.1/lib/coq/user-contrib/FreeSpec/Core/Hoare.v</code></li>
-              <li>2 K <code>../ocaml-base-compiler.4.06.1/lib/coq-freespec-core/dune-package</code></li>
-              <li>2 K <code>../ocaml-base-compiler.4.06.1/lib/coq/user-contrib/FreeSpec/Core/Extraction.v</code></li>
-              <li>2 K <code>../ocaml-base-compiler.4.06.1/doc/coq-freespec-core/README.md</code></li>
-              <li>1 K <code>../ocaml-base-compiler.4.06.1/lib/coq/user-contrib/FreeSpec/Core/Init.v</code></li>
-              <li>1 K <code>../ocaml-base-compiler.4.06.1/doc/coq-freespec-core/CHANGES.md</code></li>
-              <li>1 K <code>../ocaml-base-compiler.4.06.1/lib/coq-freespec-core/opam</code></li>
-              <li>1 K <code>../ocaml-base-compiler.4.06.1/lib/coq/user-contrib/FreeSpec/Core/Instrument.v</code></li>
-              <li>1 K <code>../ocaml-base-compiler.4.06.1/lib/coq/user-contrib/FreeSpec/Core/CoreFacts.v</code></li>
-              <li>1 K <code>../ocaml-base-compiler.4.06.1/lib/coq/user-contrib/FreeSpec/Core/Core.v</code></li>
-              <li>0 K <code>../ocaml-base-compiler.4.06.1/lib/coq-freespec-core/META</code></li>
-            </ul>
+            <p>No files were installed.</p>
             <h2>Uninstall 🧹</h2>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>opam remove -y coq-freespec-core.0.3</code></dd>
+              <dd><code>true</code></dd>
               <dt>Return code</dt>
               <dd>0</dd>
               <dt>Missing removes</dt>
