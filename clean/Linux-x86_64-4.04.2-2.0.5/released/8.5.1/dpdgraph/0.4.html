@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>dpdgraph: 21 s 🏆</title>
+    <title>dpdgraph: Error with dependencies 🚒</title>
     <link rel="shortcut icon" type="image/png" href="../../../../../favicon.png" />
     <link href="../../../../../bootstrap.min.css" rel="stylesheet">
     <link href="../../../../../bootstrap-custom.css" rel="stylesheet">
@@ -39,10 +39,10 @@
               dpdgraph
               <small>
                 0.4
-                <span class="label label-success">21 s 🏆</span>
+                <span class="label label-warning">Error with dependencies 🚒</span>
               </small>
             </h1>
-            <p>📅 <em><script>document.write(moment("2022-08-11 07:51:22 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2022-08-11 07:51:22 UTC)</em><p>
+            <p>📅 <em><script>document.write(moment("2022-09-25 04:50:55 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2022-09-25 04:50:55 UTC)</em><p>
             <h2>Context</h2>
             <pre># Packages matching: installed
 # Name              # Installed # Synopsis
@@ -112,35 +112,82 @@ url {
               <dt>Command</dt>
               <dd><code>opam list; echo; ulimit -Sv 4000000; timeout 4h opam install -y --deps-only coq-dpdgraph.0.4 coq.8.5.1</code></dd>
               <dt>Return code</dt>
-              <dd>0</dd>
+              <dd>7936</dd>
               <dt>Duration</dt>
-              <dd>42 s</dd>
+              <dd>36 s</dd>
+              <dt>Output</dt>
+              <dd><pre># Packages matching: installed
+# Name              # Installed # Synopsis
+base-bigarray       base
+base-num            base        Num library distributed with the OCaml compiler
+base-threads        base
+base-unix           base
+camlp5              7.14        Preprocessor-pretty-printer of OCaml
+conf-findutils      1           Virtual package relying on findutils
+conf-perl           2           Virtual package relying on perl
+coq                 8.5.1       Formal proof management system
+num                 0           The Num library for arbitrary-precision integer and rational arithmetic
+ocaml               4.04.2      The OCaml compiler (virtual package)
+ocaml-base-compiler 4.04.2      Official 4.04.2 release
+ocaml-config        1           OCaml Switch Configuration
+The following actions will be performed:
+  - install ocamlfind  1.9.5
+  - install ocamlgraph 1.8.8
+===== 2 to install =====
+&lt;&gt;&lt;&gt; Gathering sources &gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;
+[ocamlfind.1.9.5] downloaded from cache at https://opam.ocaml.org/cache
+[ocamlgraph.1.8.8] downloaded from cache at https://opam.ocaml.org/cache
+&lt;&gt;&lt;&gt; Processing actions &lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;
+-&gt; installed ocamlfind.1.9.5
+[ERROR] The compilation of ocamlgraph failed at &quot;/home/bench/.opam/opam-init/hooks/sandbox.sh build make&quot;.
+#=== ERROR while compiling ocamlgraph.1.8.8 ===================================#
+# context              2.0.5 | linux/x86_64 | ocaml-base-compiler.4.04.2 | https://opam.ocaml.org#d56f92fd
+# path                 ~/.opam/ocaml-base-compiler.4.04.2/.opam-switch/build/ocamlgraph.1.8.8
+# command              ~/.opam/opam-init/hooks/sandbox.sh build make
+# exit-code            2
+# env-file             ~/.opam/log/ocamlgraph-14937-a4abd5.env
+# output-file          ~/.opam/log/ocamlgraph-14937-a4abd5.out
+### output ###
+# [...]
+# ocamlopt.opt -c -I src -I lib -for-pack Graph src/blocks.ml
+# ocamlopt.opt -c -I src -I lib -for-pack Graph src/persistent.ml
+# ocamlopt.opt -c -I src -I lib -for-pack Graph src/imperative.ml
+# ocamlopt.opt -c -I src -I lib -for-pack Graph src/delaunay.ml
+# ocamlopt.opt -c -I src -I lib -for-pack Graph src/builder.ml
+# ocamlopt.opt -c -I src -I lib -for-pack Graph src/classic.ml
+# ocamlopt.opt -c -I src -I lib -for-pack Graph src/rand.ml
+# ocamlopt.opt -c -I src -I lib -for-pack Graph src/oper.ml
+# ocamlopt.opt -c -I src -I lib -for-pack Graph src/components.ml
+# File &quot;src/components.ml&quot;, line 1:
+# Error: I/O error: No space left on device
+# make: *** [Makefile:581: src/components.cmx] Error 2
+&lt;&gt;&lt;&gt; Error report &lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;
++- The following actions failed
+| - build ocamlgraph 1.8.8
++- 
++- The following changes have been performed
+| - install ocamlfind 1.9.5
++- 
+# Run eval $(opam env) to update the current shell environment
+The former state can be restored with:
+    opam switch import &quot;/home/bench/.opam/ocaml-base-compiler.4.04.2/.opam-switch/backup/state-20220925011900.export&quot;
+</pre></dd>
             </dl>
             <h2>Install 🚀</h2>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>opam list; echo; ulimit -Sv 16000000; timeout 4h opam install -y -v coq-dpdgraph.0.4 coq.8.5.1</code></dd>
+              <dd><code>true</code></dd>
               <dt>Return code</dt>
               <dd>0</dd>
               <dt>Duration</dt>
-              <dd>21 s</dd>
+              <dd>0 s</dd>
             </dl>
             <h2>Installation size</h2>
-            <p>Total: 5 M</p>
-            <ul>
-              <li>5 M <code>../ocaml-base-compiler.4.04.2/bin/dpd2dot</code></li>
-              <li>106 K <code>../ocaml-base-compiler.4.04.2/lib/coq/user-contrib/dpdgraph/dpdgraph.cmxs</code></li>
-              <li>24 K <code>../ocaml-base-compiler.4.04.2/lib/coq/user-contrib/dpdgraph/dpdgraph.cma</code></li>
-              <li>10 K <code>../ocaml-base-compiler.4.04.2/lib/coq/user-contrib/dpdgraph/graphdepend.cmi</code></li>
-              <li>5 K <code>../ocaml-base-compiler.4.04.2/lib/coq/user-contrib/dpdgraph/searchdepend.cmi</code></li>
-              <li>1 K <code>../ocaml-base-compiler.4.04.2/lib/coq/user-contrib/dpdgraph/dpdgraph.vo</code></li>
-              <li>1 K <code>../ocaml-base-compiler.4.04.2/lib/coq/user-contrib/dpdgraph/dpdgraph.glob</code></li>
-              <li>1 K <code>../ocaml-base-compiler.4.04.2/lib/coq/user-contrib/dpdgraph/dpdgraph.v</code></li>
-            </ul>
+            <p>No files were installed.</p>
             <h2>Uninstall 🧹</h2>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>opam remove -y coq-dpdgraph.0.4</code></dd>
+              <dd><code>true</code></dd>
               <dt>Return code</dt>
               <dd>0</dd>
               <dt>Missing removes</dt>

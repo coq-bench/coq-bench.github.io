@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>io-system-ocaml: 14 s 🏆</title>
+    <title>io-system-ocaml: Error with dependencies 🚒</title>
     <link rel="shortcut icon" type="image/png" href="../../../../../favicon.png" />
     <link href="../../../../../bootstrap.min.css" rel="stylesheet">
     <link href="../../../../../bootstrap-custom.css" rel="stylesheet">
@@ -39,10 +39,10 @@
               io-system-ocaml
               <small>
                 2.0.0
-                <span class="label label-success">14 s 🏆</span>
+                <span class="label label-warning">Error with dependencies 🚒</span>
               </small>
             </h1>
-            <p>📅 <em><script>document.write(moment("2022-08-11 07:51:22 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2022-08-11 07:51:22 UTC)</em><p>
+            <p>📅 <em><script>document.write(moment("2022-09-25 04:50:55 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2022-09-25 04:50:55 UTC)</em><p>
             <h2>Context</h2>
             <pre># Packages matching: installed
 # Name              # Installed # Synopsis
@@ -119,34 +119,83 @@ url {
               <dt>Command</dt>
               <dd><code>opam list; echo; ulimit -Sv 4000000; timeout 4h opam install -y --deps-only coq-io-system-ocaml.2.0.0 coq.8.5.1</code></dd>
               <dt>Return code</dt>
-              <dd>0</dd>
+              <dd>7936</dd>
               <dt>Duration</dt>
-              <dd>1 m 43 s</dd>
+              <dd>58 s</dd>
+              <dt>Output</dt>
+              <dd><pre># Packages matching: installed
+# Name              # Installed # Synopsis
+base-bigarray       base
+base-num            base        Num library distributed with the OCaml compiler
+base-threads        base
+base-unix           base
+camlp5              7.14        Preprocessor-pretty-printer of OCaml
+conf-findutils      1           Virtual package relying on findutils
+conf-perl           2           Virtual package relying on perl
+coq                 8.5.1       Formal proof management system
+num                 0           The Num library for arbitrary-precision integer and rational arithmetic
+ocaml               4.04.2      The OCaml compiler (virtual package)
+ocaml-base-compiler 4.04.2      Official 4.04.2 release
+ocaml-config        1           OCaml Switch Configuration
+The following actions will be performed:
+  - install jbuilder   1.0+beta20.2
+  - install ocamlfind  1.9.5
+  - install ocamlbuild 0.14.1
+  - install result     1.3
+  - install cppo       1.6.5
+  - install lwt        4.1.0         For the PPX, please install package lwt_ppx
+                                     For Lwt_log and Lwt_daemon, please install package lwt_log
+===== 6 to install =====
+&lt;&gt;&lt;&gt; Gathering sources &gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;
+[cppo.1.6.5] downloaded from cache at https://opam.ocaml.org/cache
+[jbuilder.1.0+beta20.2] downloaded from cache at https://opam.ocaml.org/cache
+[lwt.4.1.0] downloaded from cache at https://opam.ocaml.org/cache
+[ocamlbuild.0.14.1] downloaded from cache at https://opam.ocaml.org/cache
+[result.1.3] downloaded from cache at https://opam.ocaml.org/cache
+[ocamlfind.1.9.5] downloaded from cache at https://opam.ocaml.org/cache
+&lt;&gt;&lt;&gt; Processing actions &lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;
+-&gt; installed ocamlfind.1.9.5
+-&gt; installed ocamlbuild.0.14.1
+-&gt; installed jbuilder.1.0+beta20.2
+-&gt; installed result.1.3
+-&gt; installed cppo.1.6.5
+#=== ERROR while compiling lwt.4.1.0 ==========================================#
+# path                 ~/run
+# command              /usr/bin/cp -PRp /home/bench/.opam/ocaml-base-compiler.4.04.2/.opam-switch/sources/lwt.4.1.0 /home/bench/.opam/ocaml-base-compiler.4.04.2/.opam-switch/build/lwt.4.1.0
+# exit-code            1
+# env-file             ~/.opam/log/log-19914-616e65.env
+# output-file          ~/.opam/log/log-19914-616e65.out
+&lt;&gt;&lt;&gt; Error report &lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;
++- The following actions failed
+| - build lwt 4.1.0
++- 
++- The following changes have been performed
+| - install cppo       1.6.5
+| - install jbuilder   1.0+beta20.2
+| - install ocamlbuild 0.14.1
+| - install ocamlfind  1.9.5
+| - install result     1.3
++- 
+# Run eval $(opam env) to update the current shell environment
+The former state can be restored with:
+    opam switch import &quot;/home/bench/.opam/ocaml-base-compiler.4.04.2/.opam-switch/backup/state-20220923222016.export&quot;
+</pre></dd>
             </dl>
             <h2>Install 🚀</h2>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>opam list; echo; ulimit -Sv 16000000; timeout 4h opam install -y -v coq-io-system-ocaml.2.0.0 coq.8.5.1</code></dd>
+              <dd><code>true</code></dd>
               <dt>Return code</dt>
               <dd>0</dd>
               <dt>Duration</dt>
-              <dd>14 s</dd>
+              <dd>0 s</dd>
             </dl>
             <h2>Installation size</h2>
-            <p>Total: 25 K</p>
-            <ul>
-              <li>18 K <code>../ocaml-base-compiler.4.04.2/lib/io-system/ioSystem.a</code></li>
-              <li>3 K <code>../ocaml-base-compiler.4.04.2/lib/io-system/ioSystem.cma</code></li>
-              <li>2 K <code>../ocaml-base-compiler.4.04.2/lib/io-system/ioSystem.cmi</code></li>
-              <li>1 K <code>../ocaml-base-compiler.4.04.2/lib/io-system/ioSystem.cmx</code></li>
-              <li>1 K <code>../ocaml-base-compiler.4.04.2/lib/io-system/ioSystem.cmxa</code></li>
-              <li>1 K <code>../ocaml-base-compiler.4.04.2/lib/io-system/META</code></li>
-              <li>1 K <code>../ocaml-base-compiler.4.04.2/lib/io-system/ioSystem.mllib</code></li>
-            </ul>
+            <p>No files were installed.</p>
             <h2>Uninstall 🧹</h2>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>opam remove -y coq-io-system-ocaml.2.0.0</code></dd>
+              <dd><code>true</code></dd>
               <dt>Return code</dt>
               <dd>0</dd>
               <dt>Missing removes</dt>
