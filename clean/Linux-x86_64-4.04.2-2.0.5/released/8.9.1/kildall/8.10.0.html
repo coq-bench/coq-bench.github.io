@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>kildall: Error with dependencies 🚒</title>
+    <title>kildall: Not compatible 👼</title>
     <link rel="shortcut icon" type="image/png" href="../../../../../favicon.png" />
     <link href="../../../../../bootstrap.min.css" rel="stylesheet">
     <link href="../../../../../bootstrap-custom.css" rel="stylesheet">
@@ -39,27 +39,26 @@
               kildall
               <small>
                 8.10.0
-                <span class="label label-warning">Error with dependencies 🚒</span>
+                <span class="label label-info">Not compatible 👼</span>
               </small>
             </h1>
-            <p>📅 <em><script>document.write(moment("2022-09-23 00:36:32 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2022-09-23 00:36:32 UTC)</em><p>
+            <p>📅 <em><script>document.write(moment("2022-10-05 13:07:18 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2022-10-05 13:07:18 UTC)</em><p>
             <h2>Context</h2>
             <pre># Packages matching: installed
-# Name                # Installed # Synopsis
-base-bigarray         base
-base-num              base        Num library distributed with the OCaml compiler
-base-threads          base
-base-unix             base
-camlp5                7.14        Preprocessor-pretty-printer of OCaml
-conf-findutils        1           Virtual package relying on findutils
-conf-perl             2           Virtual package relying on perl
-coq                   8.9.1       Formal proof management system
-coq-railroad-crossing 8.9.0       The Railroad Crossing Example
-num                   0           The Num library for arbitrary-precision integer and rational arithmetic
-ocaml                 4.04.2      The OCaml compiler (virtual package)
-ocaml-base-compiler   4.04.2      Official 4.04.2 release
-ocaml-config          1           OCaml Switch Configuration
-ocamlfind             1.9.5       A library manager for OCaml
+# Name              # Installed # Synopsis
+base-bigarray       base
+base-num            base        Num library distributed with the OCaml compiler
+base-threads        base
+base-unix           base
+camlp5              7.14        Preprocessor-pretty-printer of OCaml
+conf-findutils      1           Virtual package relying on findutils
+conf-perl           2           Virtual package relying on perl
+coq                 8.9.1       Formal proof management system
+num                 0           The Num library for arbitrary-precision integer and rational arithmetic
+ocaml               4.04.2      The OCaml compiler (virtual package)
+ocaml-base-compiler 4.04.2      Official 4.04.2 release
+ocaml-config        1           OCaml Switch Configuration
+ocamlfind           1.9.5       A library manager for OCaml
 # opam file:
 opam-version: &quot;2.0&quot;
 maintainer: &quot;Hugo.Herbelin@inria.fr&quot;
@@ -111,10 +110,13 @@ url {
               <dt>Command</dt>
               <dd><code>opam install -y --show-action coq-kildall.8.10.0 coq.8.9.1</code></dd>
               <dt>Return code</dt>
-              <dd>25344</dd>
+              <dd>5120</dd>
               <dt>Output</dt>
-              <dd><pre>Fatal error:
-opam: &quot;mkdir&quot; failed on /home/bench/.opam/ocaml-base-compiler.4.04.2/.opam-switch/packages/coq-railroad-crossing.8.9.0: No space left on device
+              <dd><pre>[NOTE] Package coq is already installed (current version is 8.9.1).
+The following dependencies couldn&#39;t be met:
+  - coq-kildall -&gt; coq &gt;= 8.10 -&gt; ocaml &gt;= 4.05.0
+      base of this switch (use `--unlock-base&#39; to force)
+No solution found, exiting
 </pre></dd>
             </dl>
             <p>Dry install without Coq/switch base, to test if the problem was incompatibility with the current Coq/OCaml version:</p>
@@ -122,13 +124,7 @@ opam: &quot;mkdir&quot; failed on /home/bench/.opam/ocaml-base-compiler.4.04.2/.
               <dt>Command</dt>
               <dd><code>opam remove -y coq; opam install -y --show-action --unlock-base coq-kildall.8.10.0</code></dd>
               <dt>Return code</dt>
-              <dd>25344</dd>
-              <dt>Output</dt>
-              <dd><pre>Fatal error:
-opam: &quot;mkdir&quot; failed on /home/bench/.opam/ocaml-base-compiler.4.04.2/.opam-switch/packages/coq-railroad-crossing.8.9.0: No space left on device
-Fatal error:
-opam: &quot;mkdir&quot; failed on /home/bench/.opam/ocaml-base-compiler.4.04.2/.opam-switch/packages/coq-railroad-crossing.8.9.0: No space left on device
-</pre></dd>
+              <dd>0</dd>
             </dl>
             <h2>Install dependencies</h2>
             <dl class="dl-horizontal">
