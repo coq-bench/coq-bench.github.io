@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>bedrock2-compiler: Not compatible 👼</title>
+    <link rel="shortcut icon" type="image/png" href="../../../../../favicon.png" />
+    <link href="../../../../../bootstrap.min.css" rel="stylesheet">
+    <link href="../../../../../bootstrap-custom.css" rel="stylesheet">
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+    <script src="../../../../../moment.min.js"></script>
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="container">
+      <div class="navbar navbar-default" role="navigation">
+        <div class="container-fluid">
+          <div class="navbar-header">
+            <a class="navbar-brand" href="../../../../.."><i class="fa fa-lg fa-flag-checkered"></i> Coq bench</a>
+          </div>
+          <div id="navbar" class="collapse navbar-collapse">
+            <ul class="nav navbar-nav">
+              <li><a href="../..">clean / released</a></li>
+              <li class="active"><a href="">8.12.2 / bedrock2-compiler - 0.0.2</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="article">
+        <div class="row">
+          <div class="col-md-12">
+            <a href="../..">« Up</a>
+            <h1>
+              bedrock2-compiler
+              <small>
+                0.0.2
+                <span class="label label-info">Not compatible 👼</span>
+              </small>
+            </h1>
+            <p>📅 <em><script>document.write(moment("2022-10-23 21:58:20 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2022-10-23 21:58:20 UTC)</em><p>
+            <h2>Context</h2>
+            <pre># Packages matching: installed
+# Name              # Installed # Synopsis
+base-bigarray       base
+base-num            base        Num library distributed with the OCaml compiler
+base-threads        base
+base-unix           base
+conf-findutils      1           Virtual package relying on findutils
+coq                 8.12.2      Formal proof management system
+num                 0           The Num library for arbitrary-precision integer and rational arithmetic
+ocaml               4.05.0      The OCaml compiler (virtual package)
+ocaml-base-compiler 4.05.0      Official 4.05.0 release
+ocaml-config        1           OCaml Switch Configuration
+ocamlfind           1.9.5       A library manager for OCaml
+# opam file:
+opam-version: &quot;2.0&quot;
+authors: [
+  &quot;Massachusetts Institute of Technology&quot;
+  &quot;Kevix&quot;
+  &quot;SiFive&quot;
+]
+maintainer: &quot;Jason Gross &lt;jgross@mit.edu&gt;&quot;
+homepage: &quot;https://github.com/mit-plv/bedrock2&quot;
+bug-reports: &quot;https://github.com/mit-plv/bedrock2/issues&quot;
+license: &quot;MIT&quot;
+build: [
+  # No reason to build compiler_ex since there&#39;s no install_compiler_ex target; the install_compiler target installs only compiler_noex
+  [make &quot;-j%{jobs}%&quot; &quot;EXTERNAL_DEPENDENCIES=1&quot; &quot;compiler_noex&quot;]
+]
+install: [make &quot;EXTERNAL_DEPENDENCIES=1&quot; &quot;install_compiler&quot;]
+depends: [
+  &quot;conf-findutils&quot; {build}
+  &quot;coq&quot; {&gt;= &quot;8.15~&quot;}
+  &quot;coq-bedrock2&quot; {= &quot;0.0.2&quot;}
+  &quot;coq-riscv&quot; {= &quot;0.0.2&quot;}
+  &quot;zarith&quot; {&gt;= &quot;1.11&quot;}
+]
+dev-repo: &quot;git+https://github.com/mit-plv/bedrock2.git&quot;
+synopsis: &quot;A work-in-progress language and compiler for verified low-level programming (compiler part)&quot;
+description: &quot;&quot;&quot;
+bedrock2 is a low-level systems programming language. This language is
+equipped with a simple program logic for proving correctness of the
+programs.  This package includes a verified compiler targeting RISC-V
+from this language.
+The project has similar goals as bedrock, but uses a different design.
+No code is shared between bedrock and bedrock2.
+The source language is a C-like language called ExprImp. It is an
+imperative language with expressions. Currently, the only data type
+is word (32-bit or 64-bit), and the memory is a partial map from words
+to bytes. Records are supported as a notation for memory access with an offset.
+&quot;&quot;&quot;
+tags: [&quot;logpath:bedrock2&quot;]
+url {
+  src: &quot;https://github.com/mit-plv/bedrock2/archive/refs/tags/v0.0.2.tar.gz&quot;
+  checksum: &quot;sha512=4f2b2975eb3ed26158b4cf2eb6f8b2eb27fc381e57da5b0be4eb275c3306d71542938cdf614108975bf24d985b6991b95cb1f681406b9f0759f214d4eb33b337&quot;
+}
+</pre>
+            <h2>Lint</h2>
+            <dl class="dl-horizontal">
+              <dt>Command</dt>
+              <dd><code>true</code></dd>
+              <dt>Return code</dt>
+              <dd>0</dd>
+            </dl>
+            <h2>Dry install 🏜️</h2>
+            <p>Dry install with the current Coq version:</p>
+            <dl class="dl-horizontal">
+              <dt>Command</dt>
+              <dd><code>opam install -y --show-action coq-bedrock2-compiler.0.0.2 coq.8.12.2</code></dd>
+              <dt>Return code</dt>
+              <dd>5120</dd>
+              <dt>Output</dt>
+              <dd><pre>[NOTE] Package coq is already installed (current version is 8.12.2).
+The following dependencies couldn&#39;t be met:
+  - coq-bedrock2-compiler -&gt; coq &gt;= 8.15~ -&gt; ocaml &gt;= 4.09.0
+      base of this switch (use `--unlock-base&#39; to force)
+Your request can&#39;t be satisfied:
+  - No available version of coq satisfies the constraints
+No solution found, exiting
+</pre></dd>
+            </dl>
+            <p>Dry install without Coq/switch base, to test if the problem was incompatibility with the current Coq/OCaml version:</p>
+            <dl class="dl-horizontal">
+              <dt>Command</dt>
+              <dd><code>opam remove -y coq; opam install -y --show-action --unlock-base coq-bedrock2-compiler.0.0.2</code></dd>
+              <dt>Return code</dt>
+              <dd>0</dd>
+            </dl>
+            <h2>Install dependencies</h2>
+            <dl class="dl-horizontal">
+              <dt>Command</dt>
+              <dd><code>true</code></dd>
+              <dt>Return code</dt>
+              <dd>0</dd>
+              <dt>Duration</dt>
+              <dd>0 s</dd>
+            </dl>
+            <h2>Install 🚀</h2>
+            <dl class="dl-horizontal">
+              <dt>Command</dt>
+              <dd><code>true</code></dd>
+              <dt>Return code</dt>
+              <dd>0</dd>
+              <dt>Duration</dt>
+              <dd>0 s</dd>
+            </dl>
+            <h2>Installation size</h2>
+            <p>No files were installed.</p>
+            <h2>Uninstall 🧹</h2>
+            <dl class="dl-horizontal">
+              <dt>Command</dt>
+              <dd><code>true</code></dd>
+              <dt>Return code</dt>
+              <dd>0</dd>
+              <dt>Missing removes</dt>
+              <dd>
+                none
+              </dd>
+              <dt>Wrong removes</dt>
+              <dd>
+                none
+              </dd>
+            </dl>
+          </div>
+        </div>
+      </div>
+      <hr/>
+      <div class="footer">
+        <p class="text-center">
+          Sources are on <a href="https://github.com/coq-bench">GitHub</a> © Guillaume Claret 🐣
+        </p>
+      </div>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="../../../../../bootstrap.min.js"></script>
+  </body>
+</html>
