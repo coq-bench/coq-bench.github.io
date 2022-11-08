@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>dep-map: Error with dependencies 🚒</title>
+    <title>dep-map: Not compatible 👼</title>
     <link rel="shortcut icon" type="image/png" href="../../../../../favicon.png" />
     <link href="../../../../../bootstrap.min.css" rel="stylesheet">
     <link href="../../../../../bootstrap-custom.css" rel="stylesheet">
@@ -39,12 +39,26 @@
               dep-map
               <small>
                 8.9.0
-                <span class="label label-warning">Error with dependencies 🚒</span>
+                <span class="label label-info">Not compatible 👼</span>
               </small>
             </h1>
-            <p>📅 <em><script>document.write(moment("2022-09-20 22:04:39 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2022-09-20 22:04:39 UTC)</em><p>
+            <p>📅 <em><script>document.write(moment("2022-11-08 00:01:27 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2022-11-08 00:01:27 UTC)</em><p>
             <h2>Context</h2>
             <pre># Packages matching: installed
+# Name              # Installed  # Synopsis
+base-bigarray       base
+base-num            base         Num library distributed with the OCaml compiler
+base-threads        base
+base-unix           base
+camlp4              4.03+1       Camlp4 is a system for writing extensible parsers for programming languages
+conf-findutils      1            Virtual package relying on findutils
+conf-which          1            Virtual package relying on which
+coq                 8.5.2~camlp4 Formal proof management system
+num                 0            The Num library for arbitrary-precision integer and rational arithmetic
+ocaml               4.03.0       The OCaml compiler (virtual package)
+ocaml-base-compiler 4.03.0       Official 4.03.0 release
+ocaml-config        1            OCaml Switch Configuration
+ocamlbuild          0.14.2       OCamlbuild is a build system with builtin rules to easily build most OCaml projects
 # opam file:
 opam-version: &quot;2.0&quot;
 maintainer: &quot;Hugo.Herbelin@inria.fr&quot;
@@ -87,13 +101,17 @@ url {
             <p>Dry install with the current Coq version:</p>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>opam install -y --show-action coq-dep-map.8.9.0 coq.</code></dd>
+              <dd><code>opam install -y --show-action coq-dep-map.8.9.0 coq.8.5.2~camlp4</code></dd>
               <dt>Return code</dt>
-              <dd>512</dd>
+              <dd>5120</dd>
               <dt>Output</dt>
-              <dd><pre>opam: PACKAGES... arguments: Invalid character in package name &quot;coq.&quot;
-Usage: opam install [OPTION]... [PACKAGES]...
-Try `opam install --help&#39; or `opam --help&#39; for more information.
+              <dd><pre>[NOTE] Package coq is already installed (current version is 8.5.2~camlp4).
+The following dependencies couldn&#39;t be met:
+  - coq-dep-map -&gt; coq &gt;= 8.9 -&gt; ocaml &gt;= 4.05.0
+      base of this switch (use `--unlock-base&#39; to force)
+Your request can&#39;t be satisfied:
+  - No available version of coq satisfies the constraints
+No solution found, exiting
 </pre></dd>
             </dl>
             <p>Dry install without Coq/switch base, to test if the problem was incompatibility with the current Coq/OCaml version:</p>
@@ -101,17 +119,7 @@ Try `opam install --help&#39; or `opam --help&#39; for more information.
               <dt>Command</dt>
               <dd><code>opam remove -y coq; opam install -y --show-action --unlock-base coq-dep-map.8.9.0</code></dd>
               <dt>Return code</dt>
-              <dd>25344</dd>
-              <dt>Output</dt>
-              <dd><pre>[ERROR] In /home/bench/.opam/ocaml-base-compiler.4.03.0/.opam-switch/switch-state:
-        unsupported or missing file format version [skipped]
-Fatal error:
-Sys_error(&quot;No space left on device&quot;)
-[ERROR] In /home/bench/.opam/ocaml-base-compiler.4.03.0/.opam-switch/switch-state:
-        unsupported or missing file format version [skipped]
-Fatal error:
-Sys_error(&quot;No space left on device&quot;)
-</pre></dd>
+              <dd>0</dd>
             </dl>
             <h2>Install dependencies</h2>
             <dl class="dl-horizontal">
