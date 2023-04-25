@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>metacoq-safechecker: 8 m 28 s 🏆</title>
+    <title>metacoq-safechecker: Error with dependencies 🚒</title>
     <link rel="shortcut icon" type="image/png" href="../../../../../favicon.png" />
     <link href="../../../../../bootstrap.min.css" rel="stylesheet">
     <link href="../../../../../bootstrap-custom.css" rel="stylesheet">
@@ -39,10 +39,10 @@
               metacoq-safechecker
               <small>
                 1.0~alpha2+8.10
-                <span class="label label-success">8 m 28 s 🏆</span>
+                <span class="label label-warning">Error with dependencies 🚒</span>
               </small>
             </h1>
-            <p>📅 <em><script>document.write(moment("2022-06-30 02:36:08 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2022-06-30 02:36:08 UTC)</em><p>
+            <p>📅 <em><script>document.write(moment("2023-04-25 06:26:22 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2023-04-25 06:26:22 UTC)</em><p>
             <h2>Context</h2>
             <pre># Packages matching: installed
 # Name              # Installed # Synopsis
@@ -56,7 +56,7 @@ num                 0           The Num library for arbitrary-precision integer 
 ocaml               4.05.0      The OCaml compiler (virtual package)
 ocaml-base-compiler 4.05.0      Official 4.05.0 release
 ocaml-config        1           OCaml Switch Configuration
-ocamlfind           1.9.5       A library manager for OCaml
+ocamlfind           1.9.6       A library manager for OCaml
 # opam file:
 opam-version: &quot;2.0&quot;
 maintainer: &quot;matthieu.sozeau@inria.fr&quot;
@@ -130,52 +130,85 @@ url {
               <dt>Command</dt>
               <dd><code>opam list; echo; ulimit -Sv 4000000; timeout 4h opam install -y --deps-only coq-metacoq-safechecker.1.0~alpha2+8.10 coq.8.10.2</code></dd>
               <dt>Return code</dt>
-              <dd>0</dd>
+              <dd>7936</dd>
               <dt>Duration</dt>
-              <dd>30 m 46 s</dd>
+              <dd>5 m 33 s</dd>
+              <dt>Output</dt>
+              <dd><pre># Packages matching: installed
+# Name              # Installed # Synopsis
+base-bigarray       base
+base-num            base        Num library distributed with the OCaml compiler
+base-threads        base
+base-unix           base
+conf-findutils      1           Virtual package relying on findutils
+coq                 8.10.2      Formal proof management system
+num                 0           The Num library for arbitrary-precision integer and rational arithmetic
+ocaml               4.05.0      The OCaml compiler (virtual package)
+ocaml-base-compiler 4.05.0      Official 4.05.0 release
+ocaml-config        1           OCaml Switch Configuration
+ocamlfind           1.9.6       A library manager for OCaml
+The following actions will be performed:
+  - install coq-equations        1.2.1+8.10
+  - install coq-metacoq-template 1.0~alpha2+8.10
+  - install coq-metacoq-checker  1.0~alpha2+8.10
+  - install coq-metacoq-pcuic    1.0~alpha2+8.10
+===== 4 to install =====
+&lt;&gt;&lt;&gt; Gathering sources &gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;
+[coq-equations.1.2.1+8.10] downloaded from https://github.com/mattam82/Coq-Equations/archive/v1.2.1-8.10-2.tar.gz
+[coq-metacoq-checker.1.0~alpha2+8.10] downloaded from https://github.com/MetaCoq/metacoq/archive/v1.0-alpha2-8.10.tar.gz
+[coq-metacoq-pcuic.1.0~alpha2+8.10] downloaded from https://github.com/MetaCoq/metacoq/archive/v1.0-alpha2-8.10.tar.gz
+[coq-metacoq-template.1.0~alpha2+8.10] found in cache
+&lt;&gt;&lt;&gt; Processing actions &lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;
+-&gt; installed coq-equations.1.2.1+8.10
+[ERROR] The compilation of coq-metacoq-template failed at &quot;/home/bench/.opam/opam-init/hooks/sandbox.sh build make -j7 template-coq&quot;.
+#=== ERROR while compiling coq-metacoq-template.1.0~alpha2+8.10 ===============#
+# context              2.0.1 | linux/x86_64 | ocaml-base-compiler.4.05.0 | file:///home/bench/run/opam-coq-archive/released
+# path                 ~/.opam/ocaml-base-compiler.4.05.0/.opam-switch/build/coq-metacoq-template.1.0~alpha2+8.10
+# command              ~/.opam/opam-init/hooks/sandbox.sh build make -j7 template-coq
+# exit-code            2
+# env-file             ~/.opam/log/coq-metacoq-template-18462-b36dbe.env
+# output-file          ~/.opam/log/coq-metacoq-template-18462-b36dbe.out
+### output ###
+# [...]
+# CAMLOPT -c -for-pack Metacoq_template_plugin gen-src/pretty.ml
+# CAMLOPT -c -for-pack Metacoq_template_plugin gen-src/run_extractable.ml
+# CAMLOPT -pack -o gen-src/metacoq_template_plugin.cmx
+# File &quot;gen-src/metacoq_template_plugin.cmx&quot;, line 1:
+# Error: Files gen-src/quoter.cmx and gen-src/tm_util.cmx
+#        make inconsistent assumptions over interface Tm_util
+# make[3]: *** [Makefile.plugin:643: gen-src/metacoq_template_plugin.cmx] Error 2
+# make[2]: *** [Makefile.plugin:321: all] Error 2
+# make[2]: Leaving directory &#39;/home/bench/.opam/ocaml-base-compiler.4.05.0/.opam-switch/build/coq-metacoq-template.1.0~alpha2+8.10/template-coq&#39;
+# make[1]: *** [Makefile:20: plugin] Error 2
+# make[1]: Leaving directory &#39;/home/bench/.opam/ocaml-base-compiler.4.05.0/.opam-switch/build/coq-metacoq-template.1.0~alpha2+8.10/template-coq&#39;
+# make: *** [Makefile:51: template-coq] Error 2
+&lt;&gt;&lt;&gt; Error report &lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;
++- The following actions failed
+| - build coq-metacoq-template 1.0~alpha2+8.10
++- 
++- The following changes have been performed (the rest was aborted)
+| - install coq-equations 1.2.1+8.10
++- 
+# Run eval $(opam env) to update the current shell environment
+The former state can be restored with:
+    opam switch import &quot;/home/bench/.opam/ocaml-base-compiler.4.05.0/.opam-switch/backup/state-20230421041258.export&quot;
+</pre></dd>
             </dl>
             <h2>Install 🚀</h2>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>opam list; echo; ulimit -Sv 16000000; timeout 4h opam install -y -v coq-metacoq-safechecker.1.0~alpha2+8.10 coq.8.10.2</code></dd>
+              <dd><code>true</code></dd>
               <dt>Return code</dt>
               <dd>0</dd>
               <dt>Duration</dt>
-              <dd>8 m 28 s</dd>
+              <dd>0 s</dd>
             </dl>
             <h2>Installation size</h2>
-            <p>Total: 27 M</p>
-            <ul>
-              <li>12 M <code>../ocaml-base-compiler.4.05.0/lib/coq/user-contrib/MetaCoq/SafeChecker/PCUICSafeConversion.vo</code></li>
-              <li>7 M <code>../ocaml-base-compiler.4.05.0/lib/coq/user-contrib/MetaCoq/SafeChecker/PCUICSafeReduce.vo</code></li>
-              <li>3 M <code>../ocaml-base-compiler.4.05.0/lib/coq/user-contrib/MetaCoq/SafeChecker/PCUICSafeChecker.vo</code></li>
-              <li>1 M <code>../ocaml-base-compiler.4.05.0/lib/coq/user-contrib/MetaCoq/SafeChecker/PCUICSafeRetyping.vo</code></li>
-              <li>922 K <code>../ocaml-base-compiler.4.05.0/lib/coq/user-contrib/MetaCoq/SafeChecker/metacoq_safechecker_plugin.cmxs</code></li>
-              <li>786 K <code>../ocaml-base-compiler.4.05.0/lib/coq/user-contrib/MetaCoq/SafeChecker/SafeTemplateChecker.vo</code></li>
-              <li>764 K <code>../ocaml-base-compiler.4.05.0/lib/coq/user-contrib/MetaCoq/SafeChecker/Extraction.vo</code></li>
-              <li>547 K <code>../ocaml-base-compiler.4.05.0/lib/coq/user-contrib/MetaCoq/SafeChecker/PCUICSafeConversion.glob</code></li>
-              <li>280 K <code>../ocaml-base-compiler.4.05.0/lib/coq/user-contrib/MetaCoq/SafeChecker/PCUICSafeChecker.glob</code></li>
-              <li>166 K <code>../ocaml-base-compiler.4.05.0/lib/coq/user-contrib/MetaCoq/SafeChecker/metacoq_safechecker_plugin.cmi</code></li>
-              <li>153 K <code>../ocaml-base-compiler.4.05.0/lib/coq/user-contrib/MetaCoq/SafeChecker/PCUICSafeReduce.glob</code></li>
-              <li>134 K <code>../ocaml-base-compiler.4.05.0/lib/coq/user-contrib/MetaCoq/SafeChecker/PCUICSafeConversion.v</code></li>
-              <li>93 K <code>../ocaml-base-compiler.4.05.0/lib/coq/user-contrib/MetaCoq/SafeChecker/Loader.vo</code></li>
-              <li>67 K <code>../ocaml-base-compiler.4.05.0/lib/coq/user-contrib/MetaCoq/SafeChecker/metacoq_safechecker_plugin.cmx</code></li>
-              <li>63 K <code>../ocaml-base-compiler.4.05.0/lib/coq/user-contrib/MetaCoq/SafeChecker/PCUICSafeChecker.v</code></li>
-              <li>52 K <code>../ocaml-base-compiler.4.05.0/lib/coq/user-contrib/MetaCoq/SafeChecker/PCUICSafeRetyping.glob</code></li>
-              <li>51 K <code>../ocaml-base-compiler.4.05.0/lib/coq/user-contrib/MetaCoq/SafeChecker/PCUICSafeReduce.v</code></li>
-              <li>18 K <code>../ocaml-base-compiler.4.05.0/lib/coq/user-contrib/MetaCoq/SafeChecker/SafeTemplateChecker.glob</code></li>
-              <li>11 K <code>../ocaml-base-compiler.4.05.0/lib/coq/user-contrib/MetaCoq/SafeChecker/PCUICSafeRetyping.v</code></li>
-              <li>7 K <code>../ocaml-base-compiler.4.05.0/lib/coq/user-contrib/MetaCoq/SafeChecker/metacoq_safechecker_plugin.cmxa</code></li>
-              <li>6 K <code>../ocaml-base-compiler.4.05.0/lib/coq/user-contrib/MetaCoq/SafeChecker/SafeTemplateChecker.v</code></li>
-              <li>2 K <code>../ocaml-base-compiler.4.05.0/lib/coq/user-contrib/MetaCoq/SafeChecker/Extraction.v</code></li>
-              <li>1 K <code>../ocaml-base-compiler.4.05.0/lib/coq/user-contrib/MetaCoq/SafeChecker/Extraction.glob</code></li>
-              <li>1 K <code>../ocaml-base-compiler.4.05.0/lib/coq/user-contrib/MetaCoq/SafeChecker/Loader.glob</code></li>
-              <li>1 K <code>../ocaml-base-compiler.4.05.0/lib/coq/user-contrib/MetaCoq/SafeChecker/Loader.v</code></li>
-            </ul>
+            <p>No files were installed.</p>
             <h2>Uninstall 🧹</h2>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>opam remove -y coq-metacoq-safechecker.1.0~alpha2+8.10</code></dd>
+              <dd><code>true</code></dd>
               <dt>Return code</dt>
               <dd>0</dd>
               <dt>Missing removes</dt>
