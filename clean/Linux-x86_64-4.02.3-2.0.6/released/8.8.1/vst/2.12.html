@@ -42,7 +42,7 @@
                 <span class="label label-info">Not compatible 👼</span>
               </small>
             </h1>
-            <p>📅 <em><script>document.write(moment("2023-06-27 17:15:00 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2023-06-27 17:15:00 UTC)</em><p>
+            <p>📅 <em><script>document.write(moment("2023-09-25 20:15:55 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2023-09-25 20:15:55 UTC)</em><p>
             <h2>Context</h2>
             <pre># Packages matching: installed
 # Name              # Installed # Synopsis
@@ -84,14 +84,17 @@ homepage: &quot;http://vst.cs.princeton.edu/&quot;
 dev-repo: &quot;git+https://github.com/PrincetonUniversity/VST.git&quot;
 bug-reports: &quot;https://github.com/PrincetonUniversity/VST/issues&quot;
 license: &quot;BSD-2-Clause&quot;
+patches: [
+  &quot;0001-coq-native-fix.patch&quot;
+]
 build: [
-  [make &quot;-j%{jobs}%&quot; &quot;vst&quot; &quot;IGNORECOQVERSION=true&quot; &quot;ZLIST=platform&quot; &quot;BITSIZE=64&quot;]
+  [make &quot;-j%{jobs}%&quot; &quot;vst&quot; &quot;IGNORECOQVERSION=true&quot; &quot;ZLIST=platform&quot; &quot;BITSIZE=64&quot; &quot;COQEXTRAFLAGS=-native-compiler ondemand&quot; {coq-native:installed}]
 ]
 install: [
-  [make &quot;install&quot; &quot;IGNORECOQVERSION=true&quot; &quot;ZLIST=platform&quot; &quot;BITSIZE=64&quot;]
+  [make &quot;install&quot; &quot;IGNORECOQVERSION=true&quot; &quot;ZLIST=platform&quot; &quot;BITSIZE=64&quot; &quot;COQEXTRAFLAGS=-native-compiler ondemand&quot; {coq-native:installed}]
 ]
 run-test: [
-  [make &quot;-j%{jobs}%&quot; &quot;test&quot; &quot;IGNORECOQVERSION=true&quot; &quot;ZLIST=platform&quot; &quot;BITSIZE=64&quot;]
+  [make &quot;-j%{jobs}%&quot; &quot;test&quot; &quot;IGNORECOQVERSION=true&quot; &quot;ZLIST=platform&quot; &quot;BITSIZE=64&quot; &quot;COQEXTRAFLAGS=-native-compiler ondemand&quot; {coq-native:installed}]
 ]
 depends: [
   &quot;ocaml&quot;
@@ -128,7 +131,7 @@ url {
               <dt>Output</dt>
               <dd><pre>[NOTE] Package coq is already installed (current version is 8.8.1).
 The following dependencies couldn&#39;t be met:
-  - coq-vst -&gt; coq-compcert &gt;= 3.12 -&gt; ocaml &gt;= 4.05.0
+  - coq-vst -&gt; coq-compcert = 3.12 -&gt; ocaml &gt;= 4.05.0
       base of this switch (use `--unlock-base&#39; to force)
 No solution found, exiting
 </pre></dd>
