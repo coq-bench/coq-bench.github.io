@@ -42,7 +42,7 @@
                 <span class="label label-info">Not compatible 👼</span>
               </small>
             </h1>
-            <p>📅 <em><script>document.write(moment("2023-07-22 17:06:49 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2023-07-22 17:06:49 UTC)</em><p>
+            <p>📅 <em><script>document.write(moment("2023-10-15 00:41:04 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2023-10-15 00:41:04 UTC)</em><p>
             <h2>Context</h2>
             <pre># Packages matching: installed
 # Name              # Installed # Synopsis
@@ -74,13 +74,13 @@ dev-repo: &quot;git+https://github.com/PrincetonUniversity/VST&quot;
 bug-reports: &quot;https://github.com/PrincetonUniversity/VST/issues&quot;
 license: &quot;BSD-2-Clause&quot;
 build: [
-  [ make &quot;-C&quot; &quot;lib&quot; &quot;-j%{jobs}%&quot; &quot;proof-only&quot;]
+  [ make &quot;-C&quot; &quot;lib&quot; &quot;-j%{jobs}%&quot; &quot;proof-only&quot; &quot;COQEXTRAFLAGS=-native-compiler ondemand&quot; {coq-native:installed &amp; coq-compcert:version &lt; &quot;3.13~&quot;}]
 ]
 install: [
-  [ make &quot;-C&quot; &quot;lib&quot; &quot;install&quot; &quot;INSTALLDIR=%{lib}%/coq/user-contrib/VSTlib&quot;]
+  [ make &quot;-C&quot; &quot;lib&quot; &quot;install&quot; &quot;INSTALLDIR=%{lib}%/coq/user-contrib/VSTlib&quot; &quot;COQEXTRAFLAGS=-native-compiler ondemand&quot; {coq-native:installed &amp; coq-compcert:version &lt; &quot;3.13~&quot;}]
 ]
 run-test: [
-  [ make &quot;-C&quot; &quot;lib&quot; &quot;-j%{jobs}%&quot; &quot;test-only&quot;]
+  [ make &quot;-C&quot; &quot;lib&quot; &quot;-j%{jobs}%&quot; &quot;test-only&quot; &quot;COQEXTRAFLAGS=-native-compiler ondemand&quot; {coq-native:installed &amp; coq-compcert:version &lt; &quot;3.13~&quot;}]
 ]
 depends: [
   &quot;coq&quot; {&gt;= &quot;8.16&quot; &amp; &lt; &quot;8.18~&quot;}
