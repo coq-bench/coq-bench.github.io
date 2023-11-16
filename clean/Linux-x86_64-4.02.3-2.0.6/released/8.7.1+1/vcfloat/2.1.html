@@ -42,7 +42,7 @@
                 <span class="label label-info">Not compatible 👼</span>
               </small>
             </h1>
-            <p>📅 <em><script>document.write(moment("2023-08-10 07:27:50 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2023-08-10 07:27:50 UTC)</em><p>
+            <p>📅 <em><script>document.write(moment("2023-11-16 16:40:06 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2023-11-16 16:40:06 UTC)</em><p>
             <h2>Context</h2>
             <pre># Packages matching: installed
 # Name              # Installed # Synopsis
@@ -77,14 +77,17 @@ maintainer: &quot;Andrew W. Appel &lt;appel@princeton.edu&gt;&quot;
 dev-repo: &quot;git+https://github.com/VeriNum/vcfloat&quot;
 bug-reports: &quot;https://github.com/VeriNum/vcfloat/issues&quot;
 license: &quot;LGPL-3.0-or-later&quot;
+patches: [
+  &quot;0001-coq-native-compat.patch&quot;
+]
 build: [
-  [ make &quot;-C&quot; &quot;vcfloat&quot; &quot;-j%{jobs}%&quot; &quot;vcfloat2&quot;]
+  [ make &quot;-C&quot; &quot;vcfloat&quot; &quot;-j%{jobs}%&quot; &quot;vcfloat2&quot; &quot;COQEXTRAFLAGS=-native-compiler ondemand&quot; {coq-native:installed &amp; coq-compcert:version &lt; &quot;3.13~&quot;}]
 ]
 install: [
-  [make &quot;-C&quot; &quot;vcfloat&quot; &quot;-j%{jobs}%&quot; &quot;install&quot; &quot;INSTALLDIR=%{lib}%/coq/user-contrib/vcfloat&quot;]
+  [make &quot;-C&quot; &quot;vcfloat&quot; &quot;-j%{jobs}%&quot; &quot;install&quot; &quot;INSTALLDIR=%{lib}%/coq/user-contrib/vcfloat&quot; &quot;COQEXTRAFLAGS=-native-compiler ondemand&quot; {coq-native:installed &amp; coq-compcert:version &lt; &quot;3.13~&quot;}]
 ]
 run-test: [
-  [make &quot;-C&quot; &quot;vcfloat&quot; &quot;-j%{jobs}%&quot; &quot;tests&quot;]
+  [make &quot;-C&quot; &quot;vcfloat&quot; &quot;-j%{jobs}%&quot; &quot;tests&quot; &quot;COQEXTRAFLAGS=-native-compiler ondemand&quot; {coq-native:installed &amp; coq-compcert:version &lt; &quot;3.13~&quot;}]
 ]
 depends: [
   &quot;coq&quot; {&gt;= &quot;8.16&quot; &amp; &lt; &quot;8.18~&quot;}
@@ -122,7 +125,9 @@ tags: [
               <dt>Output</dt>
               <dd><pre>[NOTE] Package coq is already installed (current version is 8.7.1+1).
 The following dependencies couldn&#39;t be met:
-  - coq-vcfloat -&gt; coq-compcert &gt;= 3.11 -&gt; ocaml &gt;= 4.05.0
+  - coq-vcfloat -&gt; coq &gt;= 8.16 -&gt; ocaml &gt;= 4.09.0
+      base of this switch (use `--unlock-base&#39; to force)
+  - coq-vcfloat -&gt; coq &gt;= 8.16 -&gt; coq-core -&gt; ocaml &gt;= 4.09.0
       base of this switch (use `--unlock-base&#39; to force)
 No solution found, exiting
 </pre></dd>
