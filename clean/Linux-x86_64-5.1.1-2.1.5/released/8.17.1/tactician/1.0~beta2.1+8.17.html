@@ -1,0 +1,658 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>tactician: Error with dependencies 🚒</title>
+    <link rel="shortcut icon" type="image/png" href="../../../../../favicon.png" />
+    <link href="../../../../../bootstrap.min.css" rel="stylesheet">
+    <link href="../../../../../bootstrap-custom.css" rel="stylesheet">
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+    <script src="../../../../../moment.min.js"></script>
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="container">
+      <div class="navbar navbar-default" role="navigation">
+        <div class="container-fluid">
+          <div class="navbar-header">
+            <a class="navbar-brand" href="../../../../.."><i class="fa fa-lg fa-flag-checkered"></i> Coq bench</a>
+          </div>
+          <div id="navbar" class="collapse navbar-collapse">
+            <ul class="nav navbar-nav">
+              <li><a href="../..">clean / released</a></li>
+              <li class="active"><a href="">8.17.1 / tactician - 1.0~beta2.1+8.17</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="article">
+        <div class="row">
+          <div class="col-md-12">
+            <a href="../..">« Up</a>
+            <h1>
+              tactician
+              <small>
+                1.0~beta2.1+8.17
+                <span class="label label-warning">Error with dependencies 🚒</span>
+              </small>
+            </h1>
+            <p>📅 <em><script>document.write(moment("2023-12-21 21:39:31 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2023-12-21 21:39:31 UTC)</em><p>
+            <h2>Context</h2>
+            <pre># Packages matching: installed
+# Name                # Installed # Synopsis
+base-bigarray         base
+base-domains          base
+base-nnp              base        Naked pointers prohibited in the OCaml heap
+base-threads          base
+base-unix             base
+conf-gmp              4           Virtual package relying on a GMP lib system installation
+coq                   8.17.1      The Coq Proof Assistant
+coq-core              8.17.1      The Coq Proof Assistant -- Core Binaries and Tools
+coq-stdlib            8.17.1      The Coq Proof Assistant -- Standard Library
+coqide-server         8.17.1      The Coq Proof Assistant, XML protocol server
+dune                  3.12.1      Fast, portable, and opinionated build system
+ocaml                 5.1.1       The OCaml compiler (virtual package)
+ocaml-base-compiler   5.1.1       Official release 5.1.1
+ocaml-config          3           OCaml Switch Configuration
+ocaml-options-vanilla 1           Ensure that OCaml is compiled with no special options enabled
+ocamlfind             1.9.6       A library manager for OCaml
+zarith                1.13        Implements arithmetic and logical operations over arbitrary-precision integers
+# opam file:
+opam-version: &quot;2.0&quot;
+synopsis:
+  &quot;Tactician: A Seamless, Interactive Tactic Learner and Prover for Coq&quot;
+description: &quot;&quot;&quot;
+Tactician is a tactic learner and prover for the Coq Proof Assistant.
+The system will help users make tactical proof decisions while they retain
+control over the general proof strategy. To this end, Tactician will learn
+from previously written tactic scripts, and either gives the user suggestions
+about the next tactic to be executed or altogether takes over the burden of
+proof synthesis. Tactician&#39;s goal is to provide the user with a seamless,
+interactive, and intuitive experience together with strong, adaptive proof
+automation.&quot;&quot;&quot;
+maintainer: [&quot;Lasse Blaauwbroek &lt;lasse@blaauwbroek.eu&gt;&quot;]
+authors: [&quot;Lasse Blaauwbroek &lt;lasse@blaauwbroek.eu&gt;&quot;]
+license: &quot;MIT&quot;
+homepage: &quot;https://coq-tactician.github.io&quot;
+bug-reports: &quot;https://github.com/coq-tactician/coq-tactician/issues&quot;
+depends: [
+  &quot;ocaml&quot; {&gt;= &quot;4.08&quot;}
+  &quot;dune&quot; {&gt;= &quot;3.5&quot; &amp; &lt; &quot;3.8~&quot;}
+  &quot;dune-site&quot; {&gt;= &quot;2.9.1&quot;}
+  &quot;opam-client&quot; {&gt;= &quot;2.1.0&quot;}
+  &quot;cmdliner&quot; {&gt;= &quot;1.1.0&quot;}
+  &quot;coq-core&quot; {&gt;= &quot;8.17&quot; &amp; &lt; &quot;8.18~&quot;}
+  &quot;coq-stdlib&quot; {with-test}
+  &quot;conf-git&quot;
+  &quot;bos&quot; {&gt;= &quot;0.2.1&quot;}
+  &quot;coq-tactician-dummy&quot; {= &quot;1.0~beta2+8.17&quot; &amp; with-test}
+  &quot;odoc&quot; {with-doc}
+]
+build: [
+  [&quot;dune&quot; &quot;subst&quot;] {dev}
+  [
+    &quot;dune&quot;
+    &quot;build&quot;
+    &quot;-p&quot;
+    name
+    &quot;-j&quot;
+    jobs
+    &quot;--promote-install-files=false&quot;
+    &quot;@install&quot;
+    &quot;@runtest&quot; {with-test}
+    &quot;@doc&quot; {with-doc}
+  ]
+  [&quot;dune&quot; &quot;install&quot; &quot;-p&quot; name &quot;--create-install-files&quot; name]
+]
+dev-repo: &quot;git+https://github.com/coq-tactician/coq-tactician.git&quot;
+post-messages: [&quot;
+--- Tactician was successfully installed ---
+In order to enable Tactician, you should run
+tactician enable
+&quot; {success}]
+tags: [
+  &quot;keyword:tactic-learning&quot;
+  &quot;keyword:machine-learning&quot;
+  &quot;keyword:automation&quot;
+  &quot;keyword:proof-synthesis&quot;
+  &quot;category:Miscellaneous/Coq Extensions&quot;
+  &quot;logpath:Tactician&quot;
+]
+substs: [
+  &quot;coq-shim/tactician-patch&quot;
+  &quot;coq-shim/tactician.ml&quot;
+]
+url {
+  src: &quot;https://github.com/coq-tactician/coq-tactician/archive/1.0-beta2.1-8.17.tar.gz&quot;
+  checksum: &quot;sha512=9f0dc305e0ad61acce0fa00ade66f3da7ac82d4ff8a1f455b79e588e62618b766133d7f4e2f67e6d1857b0c2ba68449425b2642b49199e8e8269cdbf8e8446c5&quot;
+}
+</pre>
+            <h2>Lint</h2>
+            <dl class="dl-horizontal">
+              <dt>Command</dt>
+              <dd><code>true</code></dd>
+              <dt>Return code</dt>
+              <dd>0</dd>
+            </dl>
+            <h2>Dry install 🏜️</h2>
+            <p>Dry install with the current Coq version:</p>
+            <dl class="dl-horizontal">
+              <dt>Command</dt>
+              <dd><code>opam install -y --show-action coq-tactician.1.0~beta2.1+8.17 coq.8.17.1</code></dd>
+              <dt>Return code</dt>
+              <dd>0</dd>
+            </dl>
+            <p>Dry install without Coq/switch base, to test if the problem was incompatibility with the current Coq/OCaml version:</p>
+            <dl class="dl-horizontal">
+              <dt>Command</dt>
+              <dd><code>true</code></dd>
+              <dt>Return code</dt>
+              <dd>0</dd>
+            </dl>
+            <h2>Install dependencies</h2>
+            <dl class="dl-horizontal">
+              <dt>Command</dt>
+              <dd><code>opam list; echo; ulimit -Sv 4000000; timeout 4h opam install -y --deps-only coq-tactician.1.0~beta2.1+8.17 coq.8.17.1</code></dd>
+              <dt>Return code</dt>
+              <dd>7936</dd>
+              <dt>Duration</dt>
+              <dd>13 m 3 s</dd>
+              <dt>Output</dt>
+              <dd><pre># Packages matching: installed
+# Name                # Installed # Synopsis
+base-bigarray         base
+base-domains          base
+base-nnp              base        Naked pointers prohibited in the OCaml heap
+base-threads          base
+base-unix             base
+conf-gmp              4           Virtual package relying on a GMP lib system installation
+coq                   8.17.1      The Coq Proof Assistant
+coq-core              8.17.1      The Coq Proof Assistant -- Core Binaries and Tools
+coq-stdlib            8.17.1      The Coq Proof Assistant -- Standard Library
+coqide-server         8.17.1      The Coq Proof Assistant, XML protocol server
+dune                  3.12.1      Fast, portable, and opinionated build system
+ocaml                 5.1.1       The OCaml compiler (virtual package)
+ocaml-base-compiler   5.1.1       Official release 5.1.1
+ocaml-config          3           OCaml Switch Configuration
+ocaml-options-vanilla 1           Ensure that OCaml is compiled with no special options enabled
+ocamlfind             1.9.6       A library manager for OCaml
+zarith                1.13        Implements arithmetic and logical operations over arbitrary-precision integers
+The following actions will be performed:
+  - install   cmdliner          1.2.0
+  - downgrade dune              3.12.1 to 3.7.1
+  - install   seq               base
+  - install   ocamlbuild        0.14.2
+  - install   conf-git          1.1
+  - install   stdlib-shims      0.3.0
+  - install   pp                1.2.0
+  - install   ordering          3.12.1
+  - install   opam-file-format  2.1.6
+  - install   csexp             1.5.2
+  - install   cppo              1.6.9
+  - install   base64            3.5.1
+  - recompile coq-core          8.17.1          [uses dune]
+  - install   re                1.11.0
+  - install   topkg             1.0.7
+  - install   ocamlgraph        2.1.0
+  - install   dyn               3.12.1
+  - install   extlib            1.7.9
+  - recompile coqide-server     8.17.1          [uses dune]
+  - recompile coq-stdlib        8.17.1          [uses dune]
+  - install   rresult           0.7.0
+  - install   fmt               0.9.0
+  - install   astring           0.8.5
+  - install   opam-core         2.1.5
+  - install   stdune            3.12.1
+  - install   cudf              0.10
+  - install   logs              0.7.0
+  - install   fpath             0.7.3
+  - install   opam-format       2.1.5
+  - install   dune-private-libs 3.12.1
+  - install   mccs              1.1+16
+  - install   dose3             7.0.0
+  - install   bos               0.2.1
+  - install   opam-repository   2.1.5
+  - install   dune-site         3.12.1
+  - install   opam-solver       2.1.5
+  - install   opam-state        2.1.5
+  - install   opam-client       2.1.5
+===== 34 to install | 3 to recompile | 1 to downgrade =====
+&lt;&gt;&lt;&gt; Processing actions &lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;
+-&gt; retrieved astring.0.8.5  (https://opam.ocaml.org/cache)
+-&gt; retrieved bos.0.2.1  (https://opam.ocaml.org/cache)
+-&gt; retrieved base64.3.5.1  (https://opam.ocaml.org/cache)
+-&gt; retrieved coq-core.8.17.1  (cached)
+-&gt; installed conf-git.1.1
+-&gt; retrieved coq-stdlib.8.17.1  (cached)
+-&gt; retrieved cmdliner.1.2.0  (https://opam.ocaml.org/cache)
+-&gt; retrieved coqide-server.8.17.1  (cached)
+-&gt; retrieved cppo.1.6.9  (https://opam.ocaml.org/cache)
+-&gt; retrieved csexp.1.5.2  (https://opam.ocaml.org/cache)
+-&gt; retrieved cudf.0.10  (https://opam.ocaml.org/cache)
+-&gt; retrieved dose3.7.0.0  (https://opam.ocaml.org/cache)
+-&gt; retrieved dune-site.3.12.1  (cached)
+-&gt; retrieved dune-private-libs.3.12.1  (cached)
+-&gt; retrieved dune.3.7.1  (https://opam.ocaml.org/cache)
+-&gt; retrieved dyn.3.12.1  (cached)
+-&gt; retrieved extlib.1.7.9  (https://opam.ocaml.org/cache)
+-&gt; retrieved fmt.0.9.0  (https://opam.ocaml.org/cache)
+-&gt; retrieved fpath.0.7.3  (https://opam.ocaml.org/cache)
+-&gt; retrieved logs.0.7.0  (https://opam.ocaml.org/cache)
+-&gt; retrieved mccs.1.1+16  (https://opam.ocaml.org/cache)
+-&gt; retrieved ocamlbuild.0.14.2  (https://opam.ocaml.org/cache)
+-&gt; installed cmdliner.1.2.0
+-&gt; retrieved opam-client.2.1.5  (https://opam.ocaml.org/cache)
+-&gt; retrieved ocamlgraph.2.1.0  (https://opam.ocaml.org/cache)
+-&gt; retrieved opam-format.2.1.5  (cached)
+-&gt; retrieved opam-core.2.1.5  (https://opam.ocaml.org/cache)
+-&gt; retrieved opam-file-format.2.1.6  (https://opam.ocaml.org/cache)
+-&gt; retrieved opam-repository.2.1.5  (cached)
+-&gt; retrieved opam-solver.2.1.5  (cached)
+-&gt; retrieved opam-state.2.1.5  (cached)
+-&gt; retrieved pp.1.2.0  (https://opam.ocaml.org/cache)
+-&gt; retrieved re.1.11.0  (https://opam.ocaml.org/cache)
+-&gt; installed seq.base
+-&gt; retrieved rresult.0.7.0  (https://opam.ocaml.org/cache)
+-&gt; retrieved stdlib-shims.0.3.0  (https://opam.ocaml.org/cache)
+-&gt; retrieved topkg.1.0.7  (https://opam.ocaml.org/cache)
+-&gt; retrieved ordering.3.12.1  (cached)
+-&gt; retrieved stdune.3.12.1  (cached)
+-&gt; installed ocamlbuild.0.14.2
+-&gt; installed topkg.1.0.7
+While removing coq-stdlib.8.17.1: these files have been modified since installation:
+  - lib/coq/user-contrib/Ltac2/Uint63.vos
+  - lib/coq/user-contrib/Ltac2/Uint63.vo
+  - lib/coq/user-contrib/Ltac2/Uint63.v
+  - lib/coq/user-contrib/Ltac2/Uint63.glob
+  - lib/coq/user-contrib/Ltac2/String.vos
+  - lib/coq/user-contrib/Ltac2/String.vo
+  - lib/coq/user-contrib/Ltac2/String.v
+  - lib/coq/user-contrib/Ltac2/String.glob
+  - lib/coq/user-contrib/Ltac2/Std.vos
+  - lib/coq/user-contrib/Ltac2/Std.vo
+  - lib/coq/user-contrib/Ltac2/Std.v
+  - lib/coq/user-contrib/Ltac2/Std.glob
+  - lib/coq/user-contrib/Ltac2/Proj.vos
+  - lib/coq/user-contrib/Ltac2/Proj.vo
+  - lib/coq/user-contrib/Ltac2/Proj.v
+  - lib/coq/user-contrib/Ltac2/Proj.glob
+  - lib/coq/user-contrib/Ltac2/Printf.vos
+  - lib/coq/user-contrib/Ltac2/Printf.vo
+  - lib/coq/user-contrib/Ltac2/Printf.v
+  - lib/coq/user-contrib/Ltac2/Printf.glob
+  - lib/coq/user-contrib/Ltac2/Pattern.vos
+  - lib/coq/user-contrib/Ltac2/Pattern.vo
+  - lib/coq/user-contrib/Ltac2/Pattern.v
+  - lib/coq/user-contrib/Ltac2/Pattern.glob
+  - lib/coq/user-contrib/Ltac2/Option.vos
+  - lib/coq/user-contrib/Ltac2/Option.vo
+  - lib/coq/user-contrib/Ltac2/Option.v
+  - lib/coq/user-contrib/Ltac2/Option.glob
+  - lib/coq/user-contrib/Ltac2/Notations.vos
+  - lib/coq/user-contrib/Ltac2/Notations.vo
+  - lib/coq/user-contrib/Ltac2/Notations.v
+  - lib/coq/user-contrib/Ltac2/Notations.glob
+  - lib/coq/user-contrib/Ltac2/Meta.vos
+  - lib/coq/user-contrib/Ltac2/Meta.vo
+  - lib/coq/user-contrib/Ltac2/Meta.v
+  - lib/coq/user-contrib/Ltac2/Meta.glob
+  - lib/coq/user-contrib/Ltac2/Message.vos
+  - lib/coq/user-contrib/Ltac2/Message.vo
+  - lib/coq/user-contrib/Ltac2/Message.v
+  - lib/coq/user-contrib/Ltac2/Message.glob
+  - lib/coq/user-contrib/Ltac2/Ltac2.vos
+  - lib/coq/user-contrib/Ltac2/Ltac2.vo
+  - lib/coq/user-contrib/Ltac2/Ltac2.v
+  - lib/coq/user-contrib/Ltac2/Ltac2.glob
+  - lib/coq/user-contrib/Ltac2/Ltac1.vos
+  - lib/coq/user-contrib/Ltac2/Ltac1.vo
+  - lib/coq/user-contrib/Ltac2/Ltac1.v
+  - lib/coq/user-contrib/Ltac2/Ltac1.glob
+  - lib/coq/user-contrib/Ltac2/List.vos
+  - lib/coq/user-contrib/Ltac2/List.vo
+  - lib/coq/user-contrib/Ltac2/List.v
+  - lib/coq/user-contrib/Ltac2/List.glob
+  - lib/coq/user-contrib/Ltac2/Int.vos
+  - lib/coq/user-contrib/Ltac2/Int.vo
+  - lib/coq/user-contrib/Ltac2/Int.v
+  - lib/coq/user-contrib/Ltac2/Int.glob
+  - lib/coq/user-contrib/Ltac2/Init.vos
+  - lib/coq/user-contrib/Ltac2/Init.vo
+  - lib/coq/user-contrib/Ltac2/Init.v
+  - lib/coq/user-contrib/Ltac2/Init.glob
+  - lib/coq/user-contrib/Ltac2/Ind.vos
+  - lib/coq/user-contrib/Ltac2/Ind.vo
+  - lib/coq/user-contrib/Ltac2/Ind.v
+  - lib/coq/user-contrib/Ltac2/Ind.glob
+  - lib/coq/user-contrib/Ltac2/Ident.vos
+  - lib/coq/user-contrib/Ltac2/Ident.vo
+  - lib/coq/user-contrib/Ltac2/Ident.v
+  - lib/coq/user-contrib/Ltac2/Ident.glob
+  - lib/coq/user-contrib/Ltac2/Fresh.vos
+  - lib/coq/user-contrib/Ltac2/Fresh.vo
+  - lib/coq/user-contrib/Ltac2/Fresh.v
+  - lib/coq/user-contrib/Ltac2/Fresh.glob
+  - lib/coq/user-contrib/Ltac2/Float.vos
+  - lib/coq/user-contrib/Ltac2/Float.vo
+  - lib/coq/user-contrib/Ltac2/Float.v
+  - lib/coq/user-contrib/Ltac2/Float.glob
+  - lib/coq/user-contrib/Ltac2/Evar.vos
+  - lib/coq/user-contrib/Ltac2/Evar.vo
+  - lib/coq/user-contrib/Ltac2/Evar.v
+  - lib/coq/user-contrib/Ltac2/Evar.glob
+  - lib/coq/user-contrib/Ltac2/Env.vos
+  - lib/coq/user-contrib/Ltac2/Env.vo
+  - lib/coq/user-contrib/Ltac2/Env.v
+  - lib/coq/user-contrib/Ltac2/Env.glob
+  - lib/coq/user-contrib/Ltac2/Control.vos
+  - lib/coq/user-contrib/Ltac2/Control.vo
+  - lib/coq/user-contrib/Ltac2/Control.v
+  - lib/coq/user-contrib/Ltac2/Control.glob
+  - lib/coq/user-contrib/Ltac2/Constructor.vos
+  - lib/coq/user-contrib/Ltac2/Constructor.vo
+  - lib/coq/user-contrib/Ltac2/Constructor.v
+  - lib/coq/user-contrib/Ltac2/Constructor.glob
+  - lib/coq/user-contrib/Ltac2/Constr.vos
+  - lib/coq/user-contrib/Ltac2/Constr.vo
+  - lib/coq/user-contrib/Ltac2/Constr.v
+  - lib/coq/user-contrib/Ltac2/Constr.glob
+  - lib/coq/user-contrib/Ltac2/Constant.vos
+  - lib/coq/user-contrib/Ltac2/Constant.vo
+  - lib/coq/user-contrib/Ltac2/Constant.v
+  - lib/coq/user-contrib/Ltac2/Constant.glob
+  - lib/coq/user-contrib/Ltac2/Char.vos
+  - lib/coq/user-contrib/Ltac2/Char.vo
+  - lib/coq/user-contrib/Ltac2/Char.v
+  - lib/coq/user-contrib/Ltac2/Char.glob
+  - lib/coq/user-contrib/Ltac2/Bool.vos
+  - lib/coq/user-contrib/Ltac2/Bool.vo
+  - lib/coq/user-contrib/Ltac2/Bool.v
+  - lib/coq/user-contrib/Ltac2/Bool.glob
+  - lib/coq/user-contrib/Ltac2/Array.vos
+  - lib/coq/user-contrib/Ltac2/Array.vo
+  - lib/coq/user-contrib/Ltac2/Array.v
+  - lib/coq/user-contrib/Ltac2/Array.glob
+  - lib/coq/theories/ssrmatching/ssrmatching.vos
+  - lib/coq/theories/ssrmatching/ssrmatching.vo
+  - lib/coq/theories/ssrmatching/ssrmatching.v
+  - lib/coq/theories/ssrmatching/ssrmatching.glob
+  - lib/coq/theories/ssr/ssrunder.vos
+  - lib/coq/theories/ssr/ssrunder.vo
+  - lib/coq/theories/ssr/ssrunder.v
+  - lib/coq/theories/ssr/ssrunder.glob
+  - lib/coq/theories/ssr/ssrsetoid.vos
+  - lib/coq/theories/ssr/ssrsetoid.vo
+[...] truncated
+v
+  - lib/coq/theories/Bool/DecBool.glob
+  - lib/coq/theories/Bool/Bvector.vos
+  - lib/coq/theories/Bool/Bvector.vo
+  - lib/coq/theories/Bool/Bvector.v
+  - lib/coq/theories/Bool/Bvector.glob
+  - lib/coq/theories/Bool/BoolOrder.vos
+  - lib/coq/theories/Bool/BoolOrder.vo
+  - lib/coq/theories/Bool/BoolOrder.v
+  - lib/coq/theories/Bool/BoolOrder.glob
+  - lib/coq/theories/Bool/BoolEq.vos
+  - lib/coq/theories/Bool/BoolEq.vo
+  - lib/coq/theories/Bool/BoolEq.v
+  - lib/coq/theories/Bool/BoolEq.glob
+  - lib/coq/theories/Bool/Bool.vos
+  - lib/coq/theories/Bool/Bool.vo
+  - lib/coq/theories/Bool/Bool.v
+  - lib/coq/theories/Bool/Bool.glob
+  - lib/coq/theories/Array/PArray.vos
+  - lib/coq/theories/Array/PArray.vo
+  - lib/coq/theories/Array/PArray.v
+  - lib/coq/theories/Array/PArray.glob
+  - lib/coq/theories/Arith/Wf_nat.vos
+  - lib/coq/theories/Arith/Wf_nat.vo
+  - lib/coq/theories/Arith/Wf_nat.v
+  - lib/coq/theories/Arith/Wf_nat.glob
+  - lib/coq/theories/Arith/Plus.vos
+  - lib/coq/theories/Arith/Plus.vo
+  - lib/coq/theories/Arith/Plus.v
+  - lib/coq/theories/Arith/Plus.glob
+  - lib/coq/theories/Arith/Peano_dec.vos
+  - lib/coq/theories/Arith/Peano_dec.vo
+  - lib/coq/theories/Arith/Peano_dec.v
+  - lib/coq/theories/Arith/Peano_dec.glob
+  - lib/coq/theories/Arith/PeanoNat.vos
+  - lib/coq/theories/Arith/PeanoNat.vo
+  - lib/coq/theories/Arith/PeanoNat.v
+  - lib/coq/theories/Arith/PeanoNat.glob
+  - lib/coq/theories/Arith/Mult.vos
+  - lib/coq/theories/Arith/Mult.vo
+  - lib/coq/theories/Arith/Mult.v
+  - lib/coq/theories/Arith/Mult.glob
+  - lib/coq/theories/Arith/Minus.vos
+  - lib/coq/theories/Arith/Minus.vo
+  - lib/coq/theories/Arith/Minus.v
+  - lib/coq/theories/Arith/Minus.glob
+  - lib/coq/theories/Arith/Min.vos
+  - lib/coq/theories/Arith/Min.vo
+  - lib/coq/theories/Arith/Min.v
+  - lib/coq/theories/Arith/Min.glob
+  - lib/coq/theories/Arith/Max.vos
+  - lib/coq/theories/Arith/Max.vo
+  - lib/coq/theories/Arith/Max.v
+  - lib/coq/theories/Arith/Max.glob
+  - lib/coq/theories/Arith/Lt.vos
+  - lib/coq/theories/Arith/Lt.vo
+  - lib/coq/theories/Arith/Lt.v
+  - lib/coq/theories/Arith/Lt.glob
+  - lib/coq/theories/Arith/Le.vos
+  - lib/coq/theories/Arith/Le.vo
+  - lib/coq/theories/Arith/Le.v
+  - lib/coq/theories/Arith/Le.glob
+  - lib/coq/theories/Arith/Gt.vos
+  - lib/coq/theories/Arith/Gt.vo
+  - lib/coq/theories/Arith/Gt.v
+  - lib/coq/theories/Arith/Gt.glob
+  - lib/coq/theories/Arith/Factorial.vos
+  - lib/coq/theories/Arith/Factorial.vo
+  - lib/coq/theories/Arith/Factorial.v
+  - lib/coq/theories/Arith/Factorial.glob
+  - lib/coq/theories/Arith/Even.vos
+  - lib/coq/theories/Arith/Even.vo
+  - lib/coq/theories/Arith/Even.v
+  - lib/coq/theories/Arith/Even.glob
+  - lib/coq/theories/Arith/Euclid.vos
+  - lib/coq/theories/Arith/Euclid.vo
+  - lib/coq/theories/Arith/Euclid.v
+  - lib/coq/theories/Arith/Euclid.glob
+  - lib/coq/theories/Arith/EqNat.vos
+  - lib/coq/theories/Arith/EqNat.vo
+  - lib/coq/theories/Arith/EqNat.v
+  - lib/coq/theories/Arith/EqNat.glob
+  - lib/coq/theories/Arith/Div2.vos
+  - lib/coq/theories/Arith/Div2.vo
+  - lib/coq/theories/Arith/Div2.v
+  - lib/coq/theories/Arith/Div2.glob
+  - lib/coq/theories/Arith/Compare_dec.vos
+  - lib/coq/theories/Arith/Compare_dec.vo
+  - lib/coq/theories/Arith/Compare_dec.v
+  - lib/coq/theories/Arith/Compare_dec.glob
+  - lib/coq/theories/Arith/Compare.vos
+  - lib/coq/theories/Arith/Compare.vo
+  - lib/coq/theories/Arith/Compare.v
+  - lib/coq/theories/Arith/Compare.glob
+  - lib/coq/theories/Arith/Cantor.vos
+  - lib/coq/theories/Arith/Cantor.vo
+  - lib/coq/theories/Arith/Cantor.v
+  - lib/coq/theories/Arith/Cantor.glob
+  - lib/coq/theories/Arith/Bool_nat.vos
+  - lib/coq/theories/Arith/Bool_nat.vo
+  - lib/coq/theories/Arith/Bool_nat.v
+  - lib/coq/theories/Arith/Bool_nat.glob
+  - lib/coq/theories/Arith/Between.vos
+  - lib/coq/theories/Arith/Between.vo
+  - lib/coq/theories/Arith/Between.v
+  - lib/coq/theories/Arith/Between.glob
+  - lib/coq/theories/Arith/Arith_prebase.vos
+  - lib/coq/theories/Arith/Arith_prebase.vo
+  - lib/coq/theories/Arith/Arith_prebase.v
+  - lib/coq/theories/Arith/Arith_prebase.glob
+  - lib/coq/theories/Arith/Arith_base.vos
+  - lib/coq/theories/Arith/Arith_base.vo
+  - lib/coq/theories/Arith/Arith_base.v
+  - lib/coq/theories/Arith/Arith_base.glob
+  - lib/coq/theories/Arith/Arith.vos
+  - lib/coq/theories/Arith/Arith.vo
+  - lib/coq/theories/Arith/Arith.v
+  - lib/coq/theories/Arith/Arith.glob
+Remove them anyway? [y/N] y
+-&gt; removed   coq-stdlib.8.17.1
+-&gt; removed   coqide-server.8.17.1
+-&gt; removed   coq-core.8.17.1
+-&gt; removed   dune.3.12.1
+-&gt; installed dune.3.7.1
+-&gt; installed fmt.0.9.0
+-&gt; installed astring.0.8.5
+-&gt; installed rresult.0.7.0
+-&gt; installed base64.3.5.1
+-&gt; installed csexp.1.5.2
+-&gt; installed fpath.0.7.3
+-&gt; installed cppo.1.6.9
+-&gt; installed logs.0.7.0
+-&gt; installed opam-file-format.2.1.6
+-&gt; installed ordering.3.12.1
+-&gt; installed extlib.1.7.9
+-&gt; installed pp.1.2.0
+-&gt; installed re.1.11.0
+-&gt; installed cudf.0.10
+-&gt; installed bos.0.2.1
+-&gt; installed stdlib-shims.0.3.0
+-&gt; installed dyn.3.12.1
+-&gt; installed ocamlgraph.2.1.0
+-&gt; installed dose3.7.0.0
+-&gt; installed stdune.3.12.1
+-&gt; installed dune-private-libs.3.12.1
+-&gt; installed mccs.1.1+16
+-&gt; installed dune-site.3.12.1
+-&gt; installed opam-core.2.1.5
+-&gt; installed opam-format.2.1.5
+-&gt; installed opam-repository.2.1.5
+-&gt; installed opam-solver.2.1.5
+-&gt; installed opam-state.2.1.5
+-&gt; installed opam-client.2.1.5
+-&gt; installed coq-core.8.17.1
+-&gt; installed coqide-server.8.17.1
+[ERROR] The compilation of coq-stdlib.8.17.1 failed at &quot;dune build -p coq-stdlib -j 4 @install&quot;.
+#=== ERROR while compiling coq-stdlib.8.17.1 ==================================#
+# context              2.1.5 | linux/x86_64 | ocaml-base-compiler.5.1.1 | https://opam.ocaml.org#a4b48f40
+# path                 ~/.opam/ocaml-base-compiler.5.1.1/.opam-switch/build/coq-stdlib.8.17.1
+# command              ~/.opam/opam-init/hooks/sandbox.sh build dune build -p coq-stdlib -j 4 @install
+# exit-code            1
+# env-file             ~/.opam/log/coq-stdlib-8771-4d9564.env
+# output-file          ~/.opam/log/coq-stdlib-8771-4d9564.out
+### output ###
+# [...]
+# 3015 |   (targets Notations.glob Notations.vos Notations.vo)
+# 3016 |   (deps )
+# 3017 |   (action (run coqc -noinit -boot -R ../. Coq -I /home/bench/.opam/ocaml-base-compiler.5.1.1/lib/coq-core/plugins/number_string_notation -I /home/bench/.opam/ocaml-base-compiler.5.1.1/lib/coq-core/plugins/zify -I /home/bench/.opam/ocaml-base-compiler.5.1.1/lib/coq-core/plugins/tauto -I /home/bench/.opam/ocaml-base-compiler.5.1.1/lib/coq-core/plugins/ssreflect -I /home/bench/.opam/ocaml[...]
+# (cd _build/default/theories/Init &amp;&amp; /home/bench/.opam/ocaml-base-compiler.5.1.1/bin/coqc -noinit -boot -R ../. Coq -I /home/bench/.opam/ocaml-base-compiler.5.1.1/lib/coq-core/plugins/number_string_notation -I /home/bench/.opam/ocaml-base-compiler.5.1.1/lib/coq-core/plugins/zify -I /home/bench/.opam/ocaml-base-compiler.5.1.1/lib/coq-core/plugins/tauto -I /home/bench/.opam/ocaml-base-compiler.5[...]
+# Fatal error: Not enough heap memory to reserve minor heaps
+# File &quot;theories/dune&quot;, line 2999, characters 1-1575:
+# 2999 |  (rule
+# 3000 |   (targets Ltac.glob Ltac.vos Ltac.vo)
+# 3001 |   (deps /home/bench/.opam/ocaml-base-compiler.5.1.1/lib/coq-core/plugins/ltac/ltac_plugin.cmxs)
+# 3002 |   (action (run coqc -noinit -boot -R ../. Coq -I /home/bench/.opam/ocaml-base-compiler.5.1.1/lib/coq-core/plugins/number_string_notation -I /home/bench/.opam/ocaml-base-compiler.5.1.1/lib/coq-core/plugins/zify -I /home/bench/.opam/ocaml-base-compiler.5.1.1/lib/coq-core/plugins/tauto -I /home/bench/.opam/ocaml-base-compiler.5.1.1/lib/coq-core/plugins/ssreflect -I /home/bench/.opam/ocaml[...]
+# (cd _build/default/theories/Init &amp;&amp; /home/bench/.opam/ocaml-base-compiler.5.1.1/bin/coqc -noinit -boot -R ../. Coq -I /home/bench/.opam/ocaml-base-compiler.5.1.1/lib/coq-core/plugins/number_string_notation -I /home/bench/.opam/ocaml-base-compiler.5.1.1/lib/coq-core/plugins/zify -I /home/bench/.opam/ocaml-base-compiler.5.1.1/lib/coq-core/plugins/tauto -I /home/bench/.opam/ocaml-base-compiler.5[...]
+# Fatal error: Not enough heap memory to reserve minor heaps
+&lt;&gt;&lt;&gt; Error report &lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;
++- The following actions failed
+| - build coq-stdlib 8.17.1
++- 
++- The following changes have been performed
+| - remove    coq-stdlib        8.17.1
+| - downgrade dune              3.12.1 to 3.7.1
+| - recompile coq-core          8.17.1
+| - recompile coqide-server     8.17.1
+| - install   astring           0.8.5
+| - install   base64            3.5.1
+| - install   bos               0.2.1
+| - install   cmdliner          1.2.0
+| - install   conf-git          1.1
+| - install   cppo              1.6.9
+| - install   csexp             1.5.2
+| - install   cudf              0.10
+| - install   dose3             7.0.0
+| - install   dune-private-libs 3.12.1
+| - install   dune-site         3.12.1
+| - install   dyn               3.12.1
+| - install   extlib            1.7.9
+| - install   fmt               0.9.0
+| - install   fpath             0.7.3
+| - install   logs              0.7.0
+| - install   mccs              1.1+16
+| - install   ocamlbuild        0.14.2
+| - install   ocamlgraph        2.1.0
+| - install   opam-client       2.1.5
+| - install   opam-core         2.1.5
+| - install   opam-file-format  2.1.6
+| - install   opam-format       2.1.5
+| - install   opam-repository   2.1.5
+| - install   opam-solver       2.1.5
+| - install   opam-state        2.1.5
+| - install   ordering          3.12.1
+| - install   pp                1.2.0
+| - install   re                1.11.0
+| - install   rresult           0.7.0
+| - install   seq               base
+| - install   stdlib-shims      0.3.0
+| - install   stdune            3.12.1
+| - install   topkg             1.0.7
++- 
+# Run eval $(opam env) to update the current shell environment
+The former state can be restored with:
+    /usr/local/bin/opam switch import &quot;/home/bench/.opam/ocaml-base-compiler.5.1.1/.opam-switch/backup/state-20231220132227.export&quot;
+The middle of the output is truncated (maximum 20000 characters)
+</pre></dd>
+            </dl>
+            <h2>Install 🚀</h2>
+            <dl class="dl-horizontal">
+              <dt>Command</dt>
+              <dd><code>true</code></dd>
+              <dt>Return code</dt>
+              <dd>0</dd>
+              <dt>Duration</dt>
+              <dd>0 s</dd>
+            </dl>
+            <h2>Installation size</h2>
+            <p>No files were installed.</p>
+            <h2>Uninstall 🧹</h2>
+            <dl class="dl-horizontal">
+              <dt>Command</dt>
+              <dd><code>true</code></dd>
+              <dt>Return code</dt>
+              <dd>0</dd>
+              <dt>Missing removes</dt>
+              <dd>
+                none
+              </dd>
+              <dt>Wrong removes</dt>
+              <dd>
+                none
+              </dd>
+            </dl>
+          </div>
+        </div>
+      </div>
+      <hr/>
+      <div class="footer">
+        <p class="text-center">
+          Sources are on <a href="https://github.com/coq-bench">GitHub</a> © Guillaume Claret 🐣
+        </p>
+      </div>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="../../../../../bootstrap.min.js"></script>
+  </body>
+</html>
