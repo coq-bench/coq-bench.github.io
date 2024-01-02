@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>iris: Error 🔥</title>
+    <title>iris: Error with dependencies 🚒</title>
     <link rel="shortcut icon" type="image/png" href="../../../../../favicon.png" />
     <link href="../../../../../bootstrap.min.css" rel="stylesheet">
     <link href="../../../../../bootstrap-custom.css" rel="stylesheet">
@@ -39,26 +39,28 @@
               iris
               <small>
                 3.6.0
-                <span class="label label-danger">Error 🔥</span>
+                <span class="label label-warning">Error with dependencies 🚒</span>
               </small>
             </h1>
-            <p>📅 <em><script>document.write(moment("2022-06-09 02:07:39 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2022-06-09 02:07:39 UTC)</em><p>
+            <p>📅 <em><script>document.write(moment("2024-01-02 11:52:40 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2024-01-02 11:52:40 UTC)</em><p>
             <h2>Context</h2>
             <pre># Packages matching: installed
 # Name                # Installed # Synopsis
 base-bigarray         base
 base-threads          base
 base-unix             base
-conf-findutils        1           Virtual package relying on findutils
 conf-gmp              4           Virtual package relying on a GMP lib system installation
-coq                   dev         Formal proof management system
-dune                  3.2.0       Fast, portable, and opinionated build system
+coq                   dev         The Coq Proof Assistant
+coq-core              dev         The Coq Proof Assistant -- Core Binaries and Tools
+coq-stdlib            dev         The Coq Proof Assistant -- Standard Library
+coqide-server         dev         The Coq Proof Assistant, XML protocol server
+dune                  3.12.1      Fast, portable, and opinionated build system
 ocaml                 4.14.0      The OCaml compiler (virtual package)
 ocaml-base-compiler   4.14.0      Official release 4.14.0
 ocaml-config          2           OCaml Switch Configuration
 ocaml-options-vanilla 1           Ensure that OCaml is compiled with no special options enabled
-ocamlfind             1.9.3       A library manager for OCaml
-zarith                1.12        Implements arithmetic and logical operations over arbitrary-precision integers
+ocamlfind             1.9.6       A library manager for OCaml
+zarith                1.13        Implements arithmetic and logical operations over arbitrary-precision integers
 # opam file:
 opam-version: &quot;2.0&quot;
 maintainer: &quot;Ralf Jung &lt;jung@mpi-sws.org&gt;&quot;
@@ -87,7 +89,7 @@ tags: [
   &quot;logpath:iris.program_logic&quot;
 ]
 depends: [
-  &quot;coq&quot; { (&gt;= &quot;8.13&quot; &amp; &lt; &quot;8.16~&quot;) | (= &quot;dev&quot;) }
+  &quot;coq&quot; { (&gt;= &quot;8.13&quot; &amp; &lt; &quot;8.17~&quot;) | (= &quot;dev&quot;) }
   &quot;coq-stdpp&quot; { (= &quot;1.7.0&quot;) | (= &quot;dev&quot;) }
 ]
 build: [&quot;./make-package&quot; &quot;iris&quot; &quot;-j%{jobs}%&quot;]
@@ -126,145 +128,70 @@ url {
               <dt>Command</dt>
               <dd><code>opam list; echo; ulimit -Sv 4000000; timeout 4h opam install -y --deps-only coq-iris.3.6.0 coq.dev</code></dd>
               <dt>Return code</dt>
-              <dd>0</dd>
-              <dt>Duration</dt>
-              <dd>3 m 58 s</dd>
-            </dl>
-            <h2>Install 🚀</h2>
-            <dl class="dl-horizontal">
-              <dt>Command</dt>
-              <dd><code>opam list; echo; ulimit -Sv 16000000; timeout 8h opam install -y -v coq-iris.3.6.0 coq.dev</code></dd>
-              <dt>Return code</dt>
               <dd>7936</dd>
               <dt>Duration</dt>
-              <dd>1 m 43 s</dd>
+              <dd>9 s</dd>
               <dt>Output</dt>
               <dd><pre># Packages matching: installed
 # Name                # Installed # Synopsis
 base-bigarray         base
 base-threads          base
 base-unix             base
-conf-findutils        1           Virtual package relying on findutils
 conf-gmp              4           Virtual package relying on a GMP lib system installation
-coq                   dev         Formal proof management system
-coq-stdpp             dev         An extended &quot;Standard Library&quot; for Coq
-dune                  3.2.0       Fast, portable, and opinionated build system
+coq                   dev         The Coq Proof Assistant
+coq-core              dev         The Coq Proof Assistant -- Core Binaries and Tools
+coq-stdlib            dev         The Coq Proof Assistant -- Standard Library
+coqide-server         dev         The Coq Proof Assistant, XML protocol server
+dune                  3.12.1      Fast, portable, and opinionated build system
 ocaml                 4.14.0      The OCaml compiler (virtual package)
 ocaml-base-compiler   4.14.0      Official release 4.14.0
 ocaml-config          2           OCaml Switch Configuration
 ocaml-options-vanilla 1           Ensure that OCaml is compiled with no special options enabled
-ocamlfind             1.9.3       A library manager for OCaml
-zarith                1.12        Implements arithmetic and logical operations over arbitrary-precision integers
-[NOTE] Package coq is already installed (current version is dev).
+ocamlfind             1.9.6       A library manager for OCaml
+zarith                1.13        Implements arithmetic and logical operations over arbitrary-precision integers
 The following actions will be performed:
-  - install coq-iris 3.6.0
+  - install coq-stdpp 1.7.0
 &lt;&gt;&lt;&gt; Gathering sources &gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;
-Processing  1/1: [coq-iris.3.6.0: http]
-[coq-iris.3.6.0] downloaded from https://gitlab.mpi-sws.org/iris/iris/-/archive/iris-3.6.0.tar.gz
-Processing  1/1:
+[coq-stdpp.1.7.0] downloaded from https://gitlab.mpi-sws.org/iris/stdpp/-/archive/coq-stdpp-1.7.0.tar.gz
 &lt;&gt;&lt;&gt; Processing actions &lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;
-Processing  1/2: [coq-iris: ./make-package iris]
-+ /home/bench/.opam/opam-init/hooks/sandbox.sh &quot;build&quot; &quot;./make-package&quot; &quot;iris&quot; &quot;-j4&quot; (CWD=/home/bench/.opam/ocaml-base-compiler.4.14.0/.opam-switch/build/coq-iris.3.6.0)
-- COQDEP VFILES
-- COQC iris/prelude/options.v
-- COQC iris/prelude/prelude.v
-- COQC iris/bi/notation.v
-- COQC iris/proofmode/ident_name.v
-- COQC iris/proofmode/string_ident.v
-- COQC iris/algebra/ofe.v
-- COQC iris/proofmode/base.v
-- File &quot;./iris/algebra/ofe.v&quot;, line 117, characters 0-75:
-- Warning:
-- A coercion will be introduced in future versions when using &#39;:&gt;&#39; in &#39;Class&#39; declarations. Use &#39;#[global] Existing Instance field.&#39; instead if you don&#39;t want the coercion.
-- [future-coercion-class-field,records]
-- COQC iris/proofmode/tokens.v
-- COQC iris/proofmode/sel_patterns.v
-- COQC iris/proofmode/spec_patterns.v
-- File &quot;./iris/algebra/ofe.v&quot;, line 762, characters 0-170:
-- Warning:
-- A coercion will be introduced in future versions when using &#39;:&gt;&#39; in &#39;Class&#39; declarations. Use &#39;#[global] Existing Instance field.&#39; instead if you don&#39;t want the coercion.
-- [future-coercion-class-field,records]
-- COQC iris/proofmode/intro_patterns.v
-- COQC iris/algebra/monoid.v
-- COQC iris/algebra/cofe_solver.v
-- COQC iris/si_logic/siprop.v
-- COQC iris/bi/interface.v
-- File &quot;./iris/algebra/monoid.v&quot;, line 46, characters 0-289:
-- Warning:
-- A coercion will be introduced in future versions when using &#39;:&gt;&#39; in &#39;Class&#39; declarations. Use &#39;#[global] Existing Instance field.&#39; instead if you don&#39;t want the coercion.
-- [future-coercion-class-field,records]
-- COQC iris/algebra/cmra.v
-- COQC iris/algebra/big_op.v
-- COQC iris/bi/derived_connectives.v
-- File &quot;./iris/algebra/cmra.v&quot;, line 241, characters 0-135:
-- Warning:
-- A coercion will be introduced in future versions when using &#39;:&gt;&#39; in &#39;Class&#39; declarations. Use &#39;#[global] Existing Instance field.&#39; instead if you don&#39;t want the coercion.
-- [future-coercion-class-field,records]
-- File &quot;./iris/algebra/cmra.v&quot;, line 248, characters 0-255:
-- Warning:
-- A coercion will be introduced in future versions when using &#39;:&gt;&#39; in &#39;Class&#39; declarations. Use &#39;#[global] Existing Instance field.&#39; instead if you don&#39;t want the coercion.
-- [future-coercion-class-field,records]
-- COQC iris/bi/extensions.v
-- COQC iris/bi/weakestpre.v
-- COQC iris/bi/derived_laws.v
-- File &quot;./iris/algebra/big_op.v&quot;, line 604, characters 0-132:
-- Error:
-- Unable to satisfy the following constraints:
-- In environment:
-- M : ofe
-- o : M → M → M
-- H : Monoid o
-- K : Type
-- EqDecision0 : EqDecision K
-- H0 : Countable K
-- A : Type
-- f : K → M
-- m : gmap K A
-- 
-- ?Dom : &quot;Dom ?M (gmap K A → gset K)&quot;
-- 
-- 
-- make[1]: *** [Makefile.package.iris:793: iris/algebra/big_op.vo] Error 1
-- make[1]: *** Waiting for unfinished jobs....
-- File &quot;./iris/algebra/cmra.v&quot;, line 809, characters 0-170:
-- Warning:
-- A coercion will be introduced in future versions when using &#39;:&gt;&#39; in &#39;Class&#39; declarations. Use &#39;#[global] Existing Instance field.&#39; instead if you don&#39;t want the coercion.
-- [future-coercion-class-field,records]
-- File &quot;./iris/algebra/cmra.v&quot;, line 901, characters 0-174:
-- Warning:
-- A coercion will be introduced in future versions when using &#39;:&gt;&#39; in &#39;Class&#39; declarations. Use &#39;#[global] Existing Instance field.&#39; instead if you don&#39;t want the coercion.
-- [future-coercion-class-field,records]
-- make: *** [Makefile.package.iris:409: all] Error 2
-[ERROR] The compilation of coq-iris failed at &quot;/home/bench/.opam/opam-init/hooks/sandbox.sh build ./make-package iris -j4&quot;.
-#=== ERROR while compiling coq-iris.3.6.0 =====================================#
+[ERROR] The compilation of coq-stdpp failed at &quot;/home/bench/.opam/opam-init/hooks/sandbox.sh build make -j4&quot;.
+#=== ERROR while compiling coq-stdpp.1.7.0 ====================================#
 # context              2.0.10 | linux/x86_64 | ocaml-base-compiler.4.14.0 | file:///home/bench/run/opam-coq-archive/released
-# path                 ~/.opam/ocaml-base-compiler.4.14.0/.opam-switch/build/coq-iris.3.6.0
-# command              ~/.opam/opam-init/hooks/sandbox.sh build ./make-package iris -j4
+# path                 ~/.opam/ocaml-base-compiler.4.14.0/.opam-switch/build/coq-stdpp.1.7.0
+# command              ~/.opam/opam-init/hooks/sandbox.sh build make -j4
 # exit-code            2
-# env-file             ~/.opam/log/coq-iris-24546-335865.env
-# output-file          ~/.opam/log/coq-iris-24546-335865.out
+# env-file             ~/.opam/log/coq-stdpp-28144-335865.env
+# output-file          ~/.opam/log/coq-stdpp-28144-335865.out
 ### output ###
-# ?Dom : &quot;Dom ?M (gmap K A → gset K)&quot;
 # [...]
-# make[1]: *** [Makefile.package.iris:793: iris/algebra/big_op.vo] Error 1
-# make[1]: *** Waiting for unfinished jobs....
-# File &quot;./iris/algebra/cmra.v&quot;, line 809, characters 0-170:
-# Warning:
-# A coercion will be introduced in future versions when using &#39;:&gt;&#39; in &#39;Class&#39; declarations. Use &#39;#[global] Existing Instance field.&#39; instead if you don&#39;t want the coercion.
-# [future-coercion-class-field,records]
-# File &quot;./iris/algebra/cmra.v&quot;, line 901, characters 0-174:
-# Warning:
-# A coercion will be introduced in future versions when using &#39;:&gt;&#39; in &#39;Class&#39; declarations. Use &#39;#[global] Existing Instance field.&#39; instead if you don&#39;t want the coercion.
-# [future-coercion-class-field,records]
-# make: *** [Makefile.package.iris:409: all] Error 2
+# #[global] for &#39;:&gt;&#39; currently. Add an explicit #[global] attribute to the
+# field if you need to keep the current behavior. For example: &quot;Class foo := {
+# #[global] field :: bar }.&quot;
+# [future-coercion-class-field,deprecated-since-8.17,deprecated,default]
+# File &quot;./theories/base.v&quot;, line 697, characters 18-30:
+# Error: The reference prod_uncurry was not found in the current environment.
+# 
+# make[2]: *** [Makefile.coq:847: theories/base.vo] Error 1
+# make[2]: *** [theories/base.vo] Deleting file &#39;theories/base.glob&#39;
+# make[1]: *** [Makefile.coq:417: all] Error 2
+# make[1]: Leaving directory &#39;/home/bench/.opam/ocaml-base-compiler.4.14.0/.opam-switch/build/coq-stdpp.1.7.0&#39;
+# make: *** [Makefile:3: all] Error 2
 &lt;&gt;&lt;&gt; Error report &lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;
 +- The following actions failed
-| - build coq-iris 3.6.0
+| - build coq-stdpp 1.7.0
 +- 
 - No changes have been performed
 # Run eval $(opam env) to update the current shell environment
-&#39;opam install -y -v coq-iris.3.6.0 coq.dev&#39; failed.
 </pre></dd>
+            </dl>
+            <h2>Install 🚀</h2>
+            <dl class="dl-horizontal">
+              <dt>Command</dt>
+              <dd><code>true</code></dd>
+              <dt>Return code</dt>
+              <dd>0</dd>
+              <dt>Duration</dt>
+              <dd>0 s</dd>
             </dl>
             <h2>Installation size</h2>
             <p>No files were installed.</p>

@@ -42,23 +42,25 @@
                 <span class="label label-danger">Error 🔥</span>
               </small>
             </h1>
-            <p>📅 <em><script>document.write(moment("2022-06-09 02:07:39 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2022-06-09 02:07:39 UTC)</em><p>
+            <p>📅 <em><script>document.write(moment("2024-01-02 11:52:40 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2024-01-02 11:52:40 UTC)</em><p>
             <h2>Context</h2>
             <pre># Packages matching: installed
 # Name                # Installed # Synopsis
 base-bigarray         base
 base-threads          base
 base-unix             base
-conf-findutils        1           Virtual package relying on findutils
 conf-gmp              4           Virtual package relying on a GMP lib system installation
-coq                   dev         Formal proof management system
-dune                  3.2.0       Fast, portable, and opinionated build system
+coq                   dev         The Coq Proof Assistant
+coq-core              dev         The Coq Proof Assistant -- Core Binaries and Tools
+coq-stdlib            dev         The Coq Proof Assistant -- Standard Library
+coqide-server         dev         The Coq Proof Assistant, XML protocol server
+dune                  3.12.1      Fast, portable, and opinionated build system
 ocaml                 4.14.0      The OCaml compiler (virtual package)
 ocaml-base-compiler   4.14.0      Official release 4.14.0
 ocaml-config          2           OCaml Switch Configuration
 ocaml-options-vanilla 1           Ensure that OCaml is compiled with no special options enabled
-ocamlfind             1.9.3       A library manager for OCaml
-zarith                1.12        Implements arithmetic and logical operations over arbitrary-precision integers
+ocamlfind             1.9.6       A library manager for OCaml
+zarith                1.13        Implements arithmetic and logical operations over arbitrary-precision integers
 # opam file:
 opam-version: &quot;2.0&quot;
 name: &quot;coq-stdpp&quot;
@@ -133,7 +135,7 @@ url {
               <dt>Return code</dt>
               <dd>0</dd>
               <dt>Duration</dt>
-              <dd>11 s</dd>
+              <dd>6 s</dd>
             </dl>
             <h2>Install 🚀</h2>
             <dl class="dl-horizontal">
@@ -142,23 +144,25 @@ url {
               <dt>Return code</dt>
               <dd>7936</dd>
               <dt>Duration</dt>
-              <dd>13 s</dd>
+              <dd>11 s</dd>
               <dt>Output</dt>
               <dd><pre># Packages matching: installed
 # Name                # Installed # Synopsis
 base-bigarray         base
 base-threads          base
 base-unix             base
-conf-findutils        1           Virtual package relying on findutils
 conf-gmp              4           Virtual package relying on a GMP lib system installation
-coq                   dev         Formal proof management system
-dune                  3.2.0       Fast, portable, and opinionated build system
+coq                   dev         The Coq Proof Assistant
+coq-core              dev         The Coq Proof Assistant -- Core Binaries and Tools
+coq-stdlib            dev         The Coq Proof Assistant -- Standard Library
+coqide-server         dev         The Coq Proof Assistant, XML protocol server
+dune                  3.12.1      Fast, portable, and opinionated build system
 ocaml                 4.14.0      The OCaml compiler (virtual package)
 ocaml-base-compiler   4.14.0      Official release 4.14.0
 ocaml-config          2           OCaml Switch Configuration
 ocaml-options-vanilla 1           Ensure that OCaml is compiled with no special options enabled
-ocamlfind             1.9.3       A library manager for OCaml
-zarith                1.12        Implements arithmetic and logical operations over arbitrary-precision integers
+ocamlfind             1.9.6       A library manager for OCaml
+zarith                1.13        Implements arithmetic and logical operations over arbitrary-precision integers
 [NOTE] Package coq is already installed (current version is dev).
 The following actions will be performed:
   - install coq-stdpp 1.3.0
@@ -173,7 +177,12 @@ Processing  1/2: [coq-stdpp: make]
 - make[1]: Entering directory &#39;/home/bench/.opam/ocaml-base-compiler.4.14.0/.opam-switch/build/coq-stdpp.1.3.0&#39;
 - COQDEP VFILES
 - COQDEP TESTFILES
-- *** Warning: in file theories/tactics.v, library Omega is required from root Coq and has not been found in the loadpath!
+- Warning: in file theories/tactics.v, library Omega is required
+-          from root Coq and has not been found in the loadpath!
+-          [module-not-found,filesystem,default]
+- Warning: in file theories/numbers.v, library NPeano is required
+-          from root Coq and has not been found in the loadpath!
+-          [module-not-found,filesystem,default]
 - COQC theories/base.v
 - File &quot;./theories/base.v&quot;, line 35, characters 0-27:
 - Warning: The default and global localities for this command outside sections
@@ -184,23 +193,8 @@ Processing  1/2: [coq-stdpp: make]
 - To preserve the current meaning in a forward compatible way, use the
 - attribute &quot;#[global,export]&quot; and repeat the command with just &quot;#[export]&quot; in
 - any surrounding modules. If you are fine with the change of semantics,
-- disable this warning. [deprecated-tacopt-without-locality,deprecated]
-- File &quot;./theories/base.v&quot;, line 62, characters 0-78:
-- Warning: The default value for hint locality is currently &quot;local&quot; in a
-- section and &quot;global&quot; otherwise, but is scheduled to change in a future
-- release. For the time being, adding hints outside of sections without
-- specifying an explicit locality attribute is therefore deprecated. It is
-- recommended to use &quot;export&quot; whenever possible. Use the attributes #[local],
-- #[global] and #[export] depending on your choice. For example: &quot;#[export]
-- Hint Unfold foo : bar.&quot; [deprecated-hint-without-locality,deprecated]
-- File &quot;./theories/base.v&quot;, line 74, characters 0-116:
-- Warning: The default value for hint locality is currently &quot;local&quot; in a
-- section and &quot;global&quot; otherwise, but is scheduled to change in a future
-- release. For the time being, adding hints outside of sections without
-- specifying an explicit locality attribute is therefore deprecated. It is
-- recommended to use &quot;export&quot; whenever possible. Use the attributes #[local],
-- #[global] and #[export] depending on your choice. For example: &quot;#[export]
-- Hint Unfold foo : bar.&quot; [deprecated-hint-without-locality,deprecated]
+- disable this warning.
+- [deprecated-tacopt-without-locality,deprecated-since-8.17,deprecated,default]
 - File &quot;./theories/base.v&quot;, line 82, characters 0-29:
 - Warning: The default value for Typeclasses Opaque and Typeclasses Transparent
 - locality is currently &quot;local&quot; in a section and &quot;global&quot; otherwise, but is
@@ -209,200 +203,40 @@ Processing  1/2: [coq-stdpp: make]
 - locality attribute is therefore deprecated. It is recommended to use &quot;export&quot;
 - whenever possible. Use the attributes #[local], #[global] and #[export]
 - depending on your choice. For example: &quot;#[export] Typeclasses Transparent
-- foo.&quot; [deprecated-typeclasses-transparency-without-locality,deprecated]
-- File &quot;./theories/base.v&quot;, line 105, characters 0-29:
-- Warning: The default value for instance locality is currently &quot;local&quot; in a
-- section and &quot;global&quot; otherwise, but is scheduled to change in a future
-- release. For the time being, adding instances outside of sections without
-- specifying an explicit locality attribute is therefore deprecated. It is
-- recommended to use &quot;export&quot; whenever possible. Use the attributes #[local],
-- #[global] and #[export] depending on your choice. For example: &quot;#[export]
-- Instance Foo : Bar := baz.&quot; [deprecated-instance-without-locality,deprecated]
-- File &quot;./theories/base.v&quot;, line 106, characters 0-30:
-- Warning: The default value for instance locality is currently &quot;local&quot; in a
-- section and &quot;global&quot; otherwise, but is scheduled to change in a future
-- release. For the time being, adding instances outside of sections without
-- specifying an explicit locality attribute is therefore deprecated. It is
-- recommended to use &quot;export&quot; whenever possible. Use the attributes #[local],
-- #[global] and #[export] depending on your choice. For example: &quot;#[export]
-- Instance Foo : Bar := baz.&quot; [deprecated-instance-without-locality,deprecated]
-- File &quot;./theories/base.v&quot;, line 107, characters 0-41:
-- Warning: The default value for hint locality is currently &quot;local&quot; in a
-- section and &quot;global&quot; otherwise, but is scheduled to change in a future
-- release. For the time being, adding hints outside of sections without
-- specifying an explicit locality attribute is therefore deprecated. It is
-- recommended to use &quot;export&quot; whenever possible. Use the attributes #[local],
-- #[global] and #[export] depending on your choice. For example: &quot;#[export]
-- Hint Unfold foo : bar.&quot; [deprecated-hint-without-locality,deprecated]
-- File &quot;./theories/base.v&quot;, line 111, characters 0-30:
-- Warning: The default value for instance locality is currently &quot;local&quot; in a
-- section and &quot;global&quot; otherwise, but is scheduled to change in a future
-- release. For the time being, adding instances outside of sections without
-- specifying an explicit locality attribute is therefore deprecated. It is
-- recommended to use &quot;export&quot; whenever possible. Use the attributes #[local],
-- #[global] and #[export] depending on your choice. For example: &quot;#[export]
-- Instance Foo : Bar := baz.&quot; [deprecated-instance-without-locality,deprecated]
-- File &quot;./theories/base.v&quot;, line 112, characters 0-42:
-- Warning: The default value for hint locality is currently &quot;local&quot; in a
-- section and &quot;global&quot; otherwise, but is scheduled to change in a future
-- release. For the time being, adding hints outside of sections without
-- specifying an explicit locality attribute is therefore deprecated. It is
-- recommended to use &quot;export&quot; whenever possible. Use the attributes #[local],
-- #[global] and #[export] depending on your choice. For example: &quot;#[export]
-- Hint Unfold foo : bar.&quot; [deprecated-hint-without-locality,deprecated]
-- File &quot;./theories/base.v&quot;, line 116, characters 0-31:
-- Warning: The default value for instance locality is currently &quot;local&quot; in a
-- section and &quot;global&quot; otherwise, but is scheduled to change in a future
-- release. For the time being, adding instances outside of sections without
-- specifying an explicit locality attribute is therefore deprecated. It is
-- recommended to use &quot;export&quot; whenever possible. Use the attributes #[local],
-- #[global] and #[export] depending on your choice. For example: &quot;#[export]
-- Instance Foo : Bar := baz.&quot; [deprecated-instance-without-locality,deprecated]
-- File &quot;./theories/base.v&quot;, line 122, characters 0-31:
-- Warning: The default value for instance locality is currently &quot;local&quot; in a
-- section and &quot;global&quot; otherwise, but is scheduled to change in a future
-- release. For the time being, adding instances outside of sections without
-- specifying an explicit locality attribute is therefore deprecated. It is
-- recommended to use &quot;export&quot; whenever possible. Use the attributes #[local],
-- #[global] and #[export] depending on your choice. For example: &quot;#[export]
-- Instance Foo : Bar := baz.&quot; [deprecated-instance-without-locality,deprecated]
-- File &quot;./theories/base.v&quot;, line 123, characters 0-32:
-- Warning: The default value for instance locality is currently &quot;local&quot; in a
-- section and &quot;global&quot; otherwise, but is scheduled to change in a future
-- release. For the time being, adding instances outside of sections without
-- specifying an explicit locality attribute is therefore deprecated. It is
-- recommended to use &quot;export&quot; whenever possible. Use the attributes #[local],
-- #[global] and #[export] depending on your choice. For example: &quot;#[export]
-- Instance Foo : Bar := baz.&quot; [deprecated-instance-without-locality,deprecated]
-- File &quot;./theories/base.v&quot;, line 124, characters 0-47:
-- Warning: The default value for hint locality is currently &quot;local&quot; in a
-- section and &quot;global&quot; otherwise, but is scheduled to change in a future
-- release. For the time being, adding hints outside of sections without
-- specifying an explicit locality attribute is therefore deprecated. It is
-- recommended to use &quot;export&quot; whenever possible. Use the attributes #[local],
-- #[global] and #[export] depending on your choice. For example: &quot;#[export]
-- Hint Unfold foo : bar.&quot; [deprecated-hint-without-locality,deprecated]
-- File &quot;./theories/base.v&quot;, line 134, characters 0-32:
-- Warning: The default value for instance locality is currently &quot;local&quot; in a
-- section and &quot;global&quot; otherwise, but is scheduled to change in a future
-- release. For the time being, adding instances outside of sections without
-- specifying an e
-[...] truncated
-For example: &quot;#[export]
-- Hint Unfold foo : bar.&quot; [deprecated-hint-without-locality,deprecated]
-- File &quot;./theories/base.v&quot;, line 266, characters 0-55:
-- Warning: The default value for hint locality is currently &quot;local&quot; in a
-- section and &quot;global&quot; otherwise, but is scheduled to change in a future
-- release. For the time being, adding hints outside of sections without
-- specifying an explicit locality attribute is therefore deprecated. It is
-- recommended to use &quot;export&quot; whenever possible. Use the attributes #[local],
-- #[global] and #[export] depending on your choice. For example: &quot;#[export]
-- Hint Unfold foo : bar.&quot; [deprecated-hint-without-locality,deprecated]
-- File &quot;./theories/base.v&quot;, line 274, characters 0-43:
-- Warning: The default value for hint locality is currently &quot;local&quot; in a
-- section and &quot;global&quot; otherwise, but is scheduled to change in a future
-- release. For the time being, adding hints outside of sections without
-- specifying an explicit locality attribute is therefore deprecated. It is
-- recommended to use &quot;export&quot; whenever possible. Use the attributes #[local],
-- #[global] and #[export] depending on your choice. For example: &quot;#[export]
-- Hint Unfold foo : bar.&quot; [deprecated-hint-without-locality,deprecated]
+- foo.&quot;. This is supported since Coq 8.15.
+- [deprecated-typeclasses-transparency-without-locality,deprecated-since-8.15,deprecated,default]
 - File &quot;./theories/base.v&quot;, line 291, characters 0-87:
-- Warning:
-- A coercion will be introduced in future versions when using &#39;:&gt;&#39; in &#39;Class&#39; declarations. Use &#39;#[global] Existing Instance field.&#39; instead if you don&#39;t want the coercion.
-- [future-coercion-class-field,records]
-- File &quot;./theories/base.v&quot;, line 293, characters 0-50:
-- Warning: The default value for hint locality is currently &quot;local&quot; in a
-- section and &quot;global&quot; otherwise, but is scheduled to change in a future
-- release. For the time being, adding hints outside of sections without
-- specifying an explicit locality attribute is therefore deprecated. It is
-- recommended to use &quot;export&quot; whenever possible. Use the attributes #[local],
-- #[global] and #[export] depending on your choice. For example: &quot;#[export]
-- Hint Unfold foo : bar.&quot; [deprecated-hint-without-locality,deprecated]
-- File &quot;./theories/base.v&quot;, line 300, characters 0-44:
-- Warning: The default value for hint locality is currently &quot;local&quot; in a
-- section and &quot;global&quot; otherwise, but is scheduled to change in a future
-- release. For the time being, adding hints outside of sections without
-- specifying an explicit locality attribute is therefore deprecated. It is
-- recommended to use &quot;export&quot; whenever possible. Use the attributes #[local],
-- #[global] and #[export] depending on your choice. For example: &quot;#[export]
-- Hint Unfold foo : bar.&quot; [deprecated-hint-without-locality,deprecated]
-- File &quot;./theories/base.v&quot;, line 308, characters 0-45:
-- Warning: The default value for hint locality is currently &quot;local&quot; in a
-- section and &quot;global&quot; otherwise, but is scheduled to change in a future
-- release. For the time being, adding hints outside of sections without
-- specifying an explicit locality attribute is therefore deprecated. It is
-- recommended to use &quot;export&quot; whenever possible. Use the attributes #[local],
-- #[global] and #[export] depending on your choice. For example: &quot;#[export]
-- Hint Unfold foo : bar.&quot; [deprecated-hint-without-locality,deprecated]
-- File &quot;./theories/base.v&quot;, line 384, characters 0-73:
-- Warning: The default value for instance locality is currently &quot;local&quot; in a
-- section and &quot;global&quot; otherwise, but is scheduled to change in a future
-- release. For the time being, adding instances outside of sections without
-- specifying an explicit locality attribute is therefore deprecated. It is
-- recommended to use &quot;export&quot; whenever possible. Use the attributes #[local],
-- #[global] and #[export] depending on your choice. For example: &quot;#[export]
-- Instance Foo : Bar := baz.&quot; [deprecated-instance-without-locality,deprecated]
-- File &quot;./theories/base.v&quot;, line 386, characters 0-65:
-- Warning: The default value for instance locality is currently &quot;local&quot; in a
-- section and &quot;global&quot; otherwise, but is scheduled to change in a future
-- release. For the time being, adding instances outside of sections without
-- specifying an explicit locality attribute is therefore deprecated. It is
-- recommended to use &quot;export&quot; whenever possible. Use the attributes #[local],
-- #[global] and #[export] depending on your choice. For example: &quot;#[export]
-- Instance Foo : Bar := baz.&quot; [deprecated-instance-without-locality,deprecated]
-- File &quot;./theories/base.v&quot;, line 419, characters 0-35:
-- Warning: The default value for instance locality is currently &quot;local&quot; in a
-- section and &quot;global&quot; otherwise, but is scheduled to change in a future
-- release. For the time being, adding instances outside of sections without
-- specifying an explicit locality attribute is therefore deprecated. It is
-- recommended to use &quot;export&quot; whenever possible. Use the attributes #[local],
-- #[global] and #[export] depending on your choice. For example: &quot;#[export]
-- Instance Foo : Bar := baz.&quot; [deprecated-instance-without-locality,deprecated]
+- Warning: A coercion will be introduced instead of an instance in future
+- versions when using &#39;:&gt;&#39; in &#39;Class&#39; declarations. Replace &#39;:&gt;&#39; with &#39;::&#39; (or
+- use &#39;#[global] Existing Instance field.&#39; for compatibility with Coq &lt; 8.18).
+- Beware that the default locality for &#39;::&#39; is #[export], as opposed to
+- #[global] for &#39;:&gt;&#39; currently. Add an explicit #[global] attribute if you need
+- to keep the current behavior. For example: &quot;Class foo := #[global] baz ::
+- bar.&quot; [future-coercion-class-field,deprecated-since-8.17,deprecated,default]
 - File &quot;./theories/base.v&quot;, line 420, characters 0-133:
-- Warning:
-- A coercion will be introduced in future versions when using &#39;:&gt;&#39; in &#39;Class&#39; declarations. Use &#39;#[global] Existing Instance field.&#39; instead if you don&#39;t want the coercion.
-- [future-coercion-class-field,records]
+- Warning: A coercion will be introduced instead of an instance in future
+- versions when using &#39;:&gt;&#39; in &#39;Class&#39; declarations. Replace &#39;:&gt;&#39; with &#39;::&#39; (or
+- use &#39;#[global] Existing Instance field.&#39; for compatibility with Coq &lt; 8.18).
+- Beware that the default locality for &#39;::&#39; is #[export], as opposed to
+- #[global] for &#39;:&gt;&#39; currently. Add an explicit #[global] attribute to the
+- field if you need to keep the current behavior. For example: &quot;Class foo := {
+- #[global] field :: bar }.&quot;
+- [future-coercion-class-field,deprecated-since-8.17,deprecated,default]
 - File &quot;./theories/base.v&quot;, line 424, characters 0-143:
-- Warning:
-- A coercion will be introduced in future versions when using &#39;:&gt;&#39; in &#39;Class&#39; declarations. Use &#39;#[global] Existing Instance field.&#39; instead if you don&#39;t want the coercion.
-- [future-coercion-class-field,records]
-- File &quot;./theories/base.v&quot;, line 430, characters 0-58:
-- Warning: The default value for instance locality is currently &quot;local&quot; in a
-- section and &quot;global&quot; otherwise, but is scheduled to change in a future
-- release. For the time being, adding instances outside of sections without
-- specifying an explicit locality attribute is therefore deprecated. It is
-- recommended to use &quot;export&quot; whenever possible. Use the attributes #[local],
-- #[global] and #[export] depending on your choice. For example: &quot;#[export]
-- Instance Foo : Bar := baz.&quot; [deprecated-instance-without-locality,deprecated]
-- File &quot;./theories/base.v&quot;, line 444, characters 0-46:
-- Warning: The default value for hint locality is currently &quot;local&quot; in a
-- section and &quot;global&quot; otherwise, but is scheduled to change in a future
-- release. For the time being, adding hints outside of sections without
-- specifying an explicit locality attribute is therefore deprecated. It is
-- recommended to use &quot;export&quot; whenever possible. Use the attributes #[local],
-- #[global] and #[export] depending on your choice. For example: &quot;#[export]
-- Hint Unfold foo : bar.&quot; [deprecated-hint-without-locality,deprecated]
-- File &quot;./theories/base.v&quot;, line 445, characters 0-55:
-- Warning: The default value for hint locality is currently &quot;local&quot; in a
-- section and &quot;global&quot; otherwise, but is scheduled to change in a future
-- release. For the time being, adding hints outside of sections without
-- specifying an explicit locality attribute is therefore deprecated. It is
-- recommended to use &quot;export&quot; whenever possible. Use the attributes #[local],
-- #[global] and #[export] depending on your choice. For example: &quot;#[export]
-- Hint Unfold foo : bar.&quot; [deprecated-hint-without-locality,deprecated]
-- File &quot;./theories/base.v&quot;, line 464, characters 0-29:
-- Warning: The default value for instance locality is currently &quot;local&quot; in a
-- section and &quot;global&quot; otherwise, but is scheduled to change in a future
-- release. For the time being, adding instances outside of sections without
-- specifying an explicit locality attribute is therefore deprecated. It is
-- recommended to use &quot;export&quot; whenever possible. Use the attributes #[local],
-- #[global] and #[export] depending on your choice. For example: &quot;#[export]
-- Instance Foo : Bar := baz.&quot; [deprecated-instance-without-locality,deprecated]
+- Warning: A coercion will be introduced instead of an instance in future
+- versions when using &#39;:&gt;&#39; in &#39;Class&#39; declarations. Replace &#39;:&gt;&#39; with &#39;::&#39; (or
+- use &#39;#[global] Existing Instance field.&#39; for compatibility with Coq &lt; 8.18).
+- Beware that the default locality for &#39;::&#39; is #[export], as opposed to
+- #[global] for &#39;:&gt;&#39; currently. Add an explicit #[global] attribute to the
+- field if you need to keep the current behavior. For example: &quot;Class foo := {
+- #[global] field :: bar }.&quot;
+- [future-coercion-class-field,deprecated-since-8.17,deprecated,default]
 - File &quot;./theories/base.v&quot;, line 464, characters 25-26:
 - Error: The reference A was not found in the current environment.
 - 
-- make[2]: *** [Makefile.coq:793: theories/base.vo] Error 1
-- make[1]: *** [Makefile.coq:409: all] Error 2
+- make[2]: *** [Makefile.coq:847: theories/base.vo] Error 1
+- make[2]: *** [theories/base.vo] Deleting file &#39;theories/base.glob&#39;
+- make[1]: *** [Makefile.coq:417: all] Error 2
 - make[1]: Leaving directory &#39;/home/bench/.opam/ocaml-base-compiler.4.14.0/.opam-switch/build/coq-stdpp.1.3.0&#39;
 - make: *** [Makefile:6: all] Error 2
 [ERROR] The compilation of coq-stdpp failed at &quot;/home/bench/.opam/opam-init/hooks/sandbox.sh build make -j4&quot;.
@@ -411,20 +245,20 @@ For example: &quot;#[export]
 # path                 ~/.opam/ocaml-base-compiler.4.14.0/.opam-switch/build/coq-stdpp.1.3.0
 # command              ~/.opam/opam-init/hooks/sandbox.sh build make -j4
 # exit-code            2
-# env-file             ~/.opam/log/coq-stdpp-9037-335865.env
-# output-file          ~/.opam/log/coq-stdpp-9037-335865.out
+# env-file             ~/.opam/log/coq-stdpp-26182-335865.env
+# output-file          ~/.opam/log/coq-stdpp-26182-335865.out
 ### output ###
 # [...]
-# release. For the time being, adding instances outside of sections without
-# specifying an explicit locality attribute is therefore deprecated. It is
-# recommended to use &quot;export&quot; whenever possible. Use the attributes #[local],
-# #[global] and #[export] depending on your choice. For example: &quot;#[export]
-# Instance Foo : Bar := baz.&quot; [deprecated-instance-without-locality,deprecated]
+# #[global] for &#39;:&gt;&#39; currently. Add an explicit #[global] attribute to the
+# field if you need to keep the current behavior. For example: &quot;Class foo := {
+# #[global] field :: bar }.&quot;
+# [future-coercion-class-field,deprecated-since-8.17,deprecated,default]
 # File &quot;./theories/base.v&quot;, line 464, characters 25-26:
 # Error: The reference A was not found in the current environment.
 # 
-# make[2]: *** [Makefile.coq:793: theories/base.vo] Error 1
-# make[1]: *** [Makefile.coq:409: all] Error 2
+# make[2]: *** [Makefile.coq:847: theories/base.vo] Error 1
+# make[2]: *** [theories/base.vo] Deleting file &#39;theories/base.glob&#39;
+# make[1]: *** [Makefile.coq:417: all] Error 2
 # make[1]: Leaving directory &#39;/home/bench/.opam/ocaml-base-compiler.4.14.0/.opam-switch/build/coq-stdpp.1.3.0&#39;
 # make: *** [Makefile:6: all] Error 2
 &lt;&gt;&lt;&gt; Error report &lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;
@@ -434,7 +268,6 @@ For example: &quot;#[export]
 - No changes have been performed
 # Run eval $(opam env) to update the current shell environment
 &#39;opam install -y -v coq-stdpp.1.3.0 coq.dev&#39; failed.
-The middle of the output is truncated (maximum 20000 characters)
 </pre></dd>
             </dl>
             <h2>Installation size</h2>

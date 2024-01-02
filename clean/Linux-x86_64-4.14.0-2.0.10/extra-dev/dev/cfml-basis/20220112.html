@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>cfml-basis: 1 m 27 s 🏆</title>
+    <title>cfml-basis: Error with dependencies 🚒</title>
     <link rel="shortcut icon" type="image/png" href="../../../../../favicon.png" />
     <link href="../../../../../bootstrap.min.css" rel="stylesheet">
     <link href="../../../../../bootstrap-custom.css" rel="stylesheet">
@@ -39,26 +39,28 @@
               cfml-basis
               <small>
                 20220112
-                <span class="label label-success">1 m 27 s 🏆</span>
+                <span class="label label-warning">Error with dependencies 🚒</span>
               </small>
             </h1>
-            <p>📅 <em><script>document.write(moment("2022-06-09 02:07:39 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2022-06-09 02:07:39 UTC)</em><p>
+            <p>📅 <em><script>document.write(moment("2024-01-02 11:52:40 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2024-01-02 11:52:40 UTC)</em><p>
             <h2>Context</h2>
             <pre># Packages matching: installed
 # Name                # Installed # Synopsis
 base-bigarray         base
 base-threads          base
 base-unix             base
-conf-findutils        1           Virtual package relying on findutils
 conf-gmp              4           Virtual package relying on a GMP lib system installation
-coq                   dev         Formal proof management system
-dune                  3.2.0       Fast, portable, and opinionated build system
+coq                   dev         The Coq Proof Assistant
+coq-core              dev         The Coq Proof Assistant -- Core Binaries and Tools
+coq-stdlib            dev         The Coq Proof Assistant -- Standard Library
+coqide-server         dev         The Coq Proof Assistant, XML protocol server
+dune                  3.12.1      Fast, portable, and opinionated build system
 ocaml                 4.14.0      The OCaml compiler (virtual package)
 ocaml-base-compiler   4.14.0      Official release 4.14.0
 ocaml-config          2           OCaml Switch Configuration
 ocaml-options-vanilla 1           Ensure that OCaml is compiled with no special options enabled
-ocamlfind             1.9.3       A library manager for OCaml
-zarith                1.12        Implements arithmetic and logical operations over arbitrary-precision integers
+ocamlfind             1.9.6       A library manager for OCaml
+zarith                1.13        Implements arithmetic and logical operations over arbitrary-precision integers
 # opam file:
 opam-version: &quot;2.0&quot;
 maintainer: &quot;arthur.chargueraud@inria.fr&quot;
@@ -127,90 +129,77 @@ url {
               <dt>Command</dt>
               <dd><code>opam list; echo; ulimit -Sv 4000000; timeout 4h opam install -y --deps-only coq-cfml-basis.20220112 coq.dev</code></dd>
               <dt>Return code</dt>
-              <dd>0</dd>
+              <dd>7936</dd>
               <dt>Duration</dt>
-              <dd>2 m 26 s</dd>
+              <dd>13 s</dd>
+              <dt>Output</dt>
+              <dd><pre># Packages matching: installed
+# Name                # Installed # Synopsis
+base-bigarray         base
+base-threads          base
+base-unix             base
+conf-gmp              4           Virtual package relying on a GMP lib system installation
+coq                   dev         The Coq Proof Assistant
+coq-core              dev         The Coq Proof Assistant -- Core Binaries and Tools
+coq-stdlib            dev         The Coq Proof Assistant -- Standard Library
+coqide-server         dev         The Coq Proof Assistant, XML protocol server
+dune                  3.12.1      Fast, portable, and opinionated build system
+ocaml                 4.14.0      The OCaml compiler (virtual package)
+ocaml-base-compiler   4.14.0      Official release 4.14.0
+ocaml-config          2           OCaml Switch Configuration
+ocaml-options-vanilla 1           Ensure that OCaml is compiled with no special options enabled
+ocamlfind             1.9.6       A library manager for OCaml
+zarith                1.13        Implements arithmetic and logical operations over arbitrary-precision integers
+The following actions will be performed:
+  - install coq-tlc 20211215
+&lt;&gt;&lt;&gt; Gathering sources &gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;
+[coq-tlc.20211215] downloaded from https://github.com/charguer/tlc/archive/20211215.tar.gz
+&lt;&gt;&lt;&gt; Processing actions &lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;
+[ERROR] The compilation of coq-tlc failed at &quot;/home/bench/.opam/opam-init/hooks/sandbox.sh build make -j4&quot;.
+#=== ERROR while compiling coq-tlc.20211215 ===================================#
+# context              2.0.10 | linux/x86_64 | ocaml-base-compiler.4.14.0 | file:///home/bench/run/opam-coq-archive/released
+# path                 ~/.opam/ocaml-base-compiler.4.14.0/.opam-switch/build/coq-tlc.20211215
+# command              ~/.opam/opam-init/hooks/sandbox.sh build make -j4
+# exit-code            2
+# env-file             ~/.opam/log/coq-tlc-26739-0a5907.env
+# output-file          ~/.opam/log/coq-tlc-26739-0a5907.out
+### output ###
+# [...]
+# COQDEP VFILES
+# make[1]: warning: jobserver unavailable: using -j1.  Add &#39;+&#39; to parent make rule.
+# COQC LibAxioms.v
+# COQC LibTactics.v
+# File &quot;./LibTactics.v&quot;, line 1527, characters 45-56:
+# Error: The reference instantiate was not found in the current environment.
+# 
+# make[2]: *** [Makefile.generated:847: LibTactics.vo] Error 1
+# make[2]: *** [LibTactics.vo] Deleting file &#39;LibTactics.glob&#39;
+# make[1]: *** [Makefile.generated:417: all] Error 2
+# make[1]: Leaving directory &#39;/home/bench/.opam/ocaml-base-compiler.4.14.0/.opam-switch/build/coq-tlc.20211215/src&#39;
+# make: *** [Makefile:3: all] Error 2
+&lt;&gt;&lt;&gt; Error report &lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;
++- The following actions failed
+| - build coq-tlc 20211215
++- 
+- No changes have been performed
+# Run eval $(opam env) to update the current shell environment
+</pre></dd>
             </dl>
             <h2>Install 🚀</h2>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>opam list; echo; ulimit -Sv 16000000; timeout 4h opam install -y -v coq-cfml-basis.20220112 coq.dev</code></dd>
+              <dd><code>true</code></dd>
               <dt>Return code</dt>
               <dd>0</dd>
               <dt>Duration</dt>
-              <dd>1 m 27 s</dd>
+              <dd>0 s</dd>
             </dl>
             <h2>Installation size</h2>
-            <p>Total: 5 M</p>
-            <ul>
-              <li>368 K <code>../ocaml-base-compiler.4.14.0/lib/coq/user-contrib/CFML/LibSepFunctor.vo</code></li>
-              <li>365 K <code>../ocaml-base-compiler.4.14.0/lib/coq/user-contrib/CFML/LibSepSimpl.glob</code></li>
-              <li>338 K <code>../ocaml-base-compiler.4.14.0/lib/coq/user-contrib/CFML/LibSepSimpl.vo</code></li>
-              <li>296 K <code>../ocaml-base-compiler.4.14.0/lib/coq/user-contrib/CFML/SepBase.vo</code></li>
-              <li>286 K <code>../ocaml-base-compiler.4.14.0/lib/coq/user-contrib/CFML/LibSepFunctor.glob</code></li>
-              <li>259 K <code>../ocaml-base-compiler.4.14.0/lib/coq/user-contrib/CFML/Semantics.vo</code></li>
-              <li>221 K <code>../ocaml-base-compiler.4.14.0/lib/coq/user-contrib/CFML/WPTactics.vo</code></li>
-              <li>203 K <code>../ocaml-base-compiler.4.14.0/lib/coq/user-contrib/CFML/WPLifted.vo</code></li>
-              <li>191 K <code>../ocaml-base-compiler.4.14.0/lib/coq/user-contrib/CFML/WPRecord.vo</code></li>
-              <li>187 K <code>../ocaml-base-compiler.4.14.0/lib/coq/user-contrib/CFML/WPLifted.glob</code></li>
-              <li>174 K <code>../ocaml-base-compiler.4.14.0/lib/coq/user-contrib/CFML/SepLifted.vo</code></li>
-              <li>168 K <code>../ocaml-base-compiler.4.14.0/lib/coq/user-contrib/CFML/SepBase.glob</code></li>
-              <li>163 K <code>../ocaml-base-compiler.4.14.0/lib/coq/user-contrib/CFML/Semantics.glob</code></li>
-              <li>159 K <code>../ocaml-base-compiler.4.14.0/lib/coq/user-contrib/CFML/LibSepFmap.vo</code></li>
-              <li>137 K <code>../ocaml-base-compiler.4.14.0/lib/coq/user-contrib/CFML/SepLifted.glob</code></li>
-              <li>127 K <code>../ocaml-base-compiler.4.14.0/lib/coq/user-contrib/CFML/WPBase.vo</code></li>
-              <li>107 K <code>../ocaml-base-compiler.4.14.0/lib/coq/user-contrib/CFML/WPRecord.glob</code></li>
-              <li>107 K <code>../ocaml-base-compiler.4.14.0/lib/coq/user-contrib/CFML/LibSepFmap.glob</code></li>
-              <li>101 K <code>../ocaml-base-compiler.4.14.0/lib/coq/user-contrib/CFML/LibSepGroup.vo</code></li>
-              <li>98 K <code>../ocaml-base-compiler.4.14.0/lib/coq/user-contrib/CFML/LibSepVar.vo</code></li>
-              <li>98 K <code>../ocaml-base-compiler.4.14.0/lib/coq/user-contrib/CFML/WPTactics.glob</code></li>
-              <li>97 K <code>../ocaml-base-compiler.4.14.0/lib/coq/user-contrib/CFML/LibSepBind.vo</code></li>
-              <li>94 K <code>../ocaml-base-compiler.4.14.0/lib/coq/user-contrib/CFML/WPBase.glob</code></li>
-              <li>94 K <code>../ocaml-base-compiler.4.14.0/lib/coq/user-contrib/CFML/WPTactics.v</code></li>
-              <li>84 K <code>../ocaml-base-compiler.4.14.0/lib/coq/user-contrib/CFML/LibSepSimpl.v</code></li>
-              <li>73 K <code>../ocaml-base-compiler.4.14.0/lib/coq/user-contrib/CFML/LibSepFunctor.v</code></li>
-              <li>63 K <code>../ocaml-base-compiler.4.14.0/lib/coq/user-contrib/CFML/WPLifted.v</code></li>
-              <li>49 K <code>../ocaml-base-compiler.4.14.0/lib/coq/user-contrib/CFML/Semantics.v</code></li>
-              <li>49 K <code>../ocaml-base-compiler.4.14.0/lib/coq/user-contrib/CFML/WPArrayNonlifted.vo</code></li>
-              <li>48 K <code>../ocaml-base-compiler.4.14.0/lib/coq/user-contrib/CFML/WPLibCommon.vo</code></li>
-              <li>42 K <code>../ocaml-base-compiler.4.14.0/lib/coq/user-contrib/CFML/SepBase.v</code></li>
-              <li>39 K <code>../ocaml-base-compiler.4.14.0/lib/coq/user-contrib/CFML/LibSepGroup.glob</code></li>
-              <li>37 K <code>../ocaml-base-compiler.4.14.0/lib/coq/user-contrib/CFML/WPHeader.vo</code></li>
-              <li>36 K <code>../ocaml-base-compiler.4.14.0/lib/coq/user-contrib/CFML/WPRecord.v</code></li>
-              <li>34 K <code>../ocaml-base-compiler.4.14.0/lib/coq/user-contrib/CFML/WPArray.vo</code></li>
-              <li>34 K <code>../ocaml-base-compiler.4.14.0/lib/coq/user-contrib/CFML/SepLifted.v</code></li>
-              <li>32 K <code>../ocaml-base-compiler.4.14.0/lib/coq/user-contrib/CFML/WPBuiltin.vo</code></li>
-              <li>31 K <code>../ocaml-base-compiler.4.14.0/lib/coq/user-contrib/CFML/LibSepFmap.v</code></li>
-              <li>30 K <code>../ocaml-base-compiler.4.14.0/lib/coq/user-contrib/CFML/LibSepBind.glob</code></li>
-              <li>26 K <code>../ocaml-base-compiler.4.14.0/lib/coq/user-contrib/CFML/WPBase.v</code></li>
-              <li>26 K <code>../ocaml-base-compiler.4.14.0/lib/coq/user-contrib/CFML/WPLib.vo</code></li>
-              <li>24 K <code>../ocaml-base-compiler.4.14.0/lib/coq/user-contrib/CFML/LibSepTLCbuffer.vo</code></li>
-              <li>22 K <code>../ocaml-base-compiler.4.14.0/lib/coq/user-contrib/CFML/WPLibCredits.vo</code></li>
-              <li>20 K <code>../ocaml-base-compiler.4.14.0/lib/coq/user-contrib/CFML/LibSepVar.glob</code></li>
-              <li>13 K <code>../ocaml-base-compiler.4.14.0/lib/coq/user-contrib/CFML/WPLibCommon.v</code></li>
-              <li>12 K <code>../ocaml-base-compiler.4.14.0/lib/coq/user-contrib/CFML/WPArrayNonlifted.glob</code></li>
-              <li>11 K <code>../ocaml-base-compiler.4.14.0/lib/coq/user-contrib/CFML/LibSepVar.v</code></li>
-              <li>10 K <code>../ocaml-base-compiler.4.14.0/lib/coq/user-contrib/CFML/LibSepBind.v</code></li>
-              <li>9 K <code>../ocaml-base-compiler.4.14.0/lib/coq/user-contrib/CFML/WPBuiltin.glob</code></li>
-              <li>7 K <code>../ocaml-base-compiler.4.14.0/lib/coq/user-contrib/CFML/LibSepGroup.v</code></li>
-              <li>7 K <code>../ocaml-base-compiler.4.14.0/lib/coq/user-contrib/CFML/WPArrayNonlifted.v</code></li>
-              <li>7 K <code>../ocaml-base-compiler.4.14.0/lib/coq/user-contrib/CFML/WPHeader.glob</code></li>
-              <li>6 K <code>../ocaml-base-compiler.4.14.0/lib/coq/user-contrib/CFML/WPBuiltin.v</code></li>
-              <li>6 K <code>../ocaml-base-compiler.4.14.0/lib/coq/user-contrib/CFML/WPArray.v</code></li>
-              <li>5 K <code>../ocaml-base-compiler.4.14.0/lib/coq/user-contrib/CFML/WPLibCommon.glob</code></li>
-              <li>5 K <code>../ocaml-base-compiler.4.14.0/lib/coq/user-contrib/CFML/WPArray.glob</code></li>
-              <li>4 K <code>../ocaml-base-compiler.4.14.0/lib/coq/user-contrib/CFML/WPHeader.v</code></li>
-              <li>2 K <code>../ocaml-base-compiler.4.14.0/lib/coq/user-contrib/CFML/LibSepTLCbuffer.v</code></li>
-              <li>1 K <code>../ocaml-base-compiler.4.14.0/lib/coq/user-contrib/CFML/LibSepTLCbuffer.glob</code></li>
-              <li>1 K <code>../ocaml-base-compiler.4.14.0/lib/coq/user-contrib/CFML/WPLib.glob</code></li>
-              <li>1 K <code>../ocaml-base-compiler.4.14.0/lib/coq/user-contrib/CFML/WPLib.v</code></li>
-              <li>1 K <code>../ocaml-base-compiler.4.14.0/lib/coq/user-contrib/CFML/WPLibCredits.glob</code></li>
-              <li>1 K <code>../ocaml-base-compiler.4.14.0/lib/coq/user-contrib/CFML/WPLibCredits.v</code></li>
-            </ul>
+            <p>No files were installed.</p>
             <h2>Uninstall 🧹</h2>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>opam remove -y coq-cfml-basis.20220112</code></dd>
+              <dd><code>true</code></dd>
               <dt>Return code</dt>
               <dd>0</dd>
               <dt>Missing removes</dt>

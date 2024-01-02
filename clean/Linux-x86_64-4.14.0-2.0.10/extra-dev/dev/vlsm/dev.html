@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>vlsm: Error 🔥</title>
+    <title>vlsm: Error with dependencies 🚒</title>
     <link rel="shortcut icon" type="image/png" href="../../../../../favicon.png" />
     <link href="../../../../../bootstrap.min.css" rel="stylesheet">
     <link href="../../../../../bootstrap-custom.css" rel="stylesheet">
@@ -39,26 +39,28 @@
               vlsm
               <small>
                 dev
-                <span class="label label-danger">Error 🔥</span>
+                <span class="label label-warning">Error with dependencies 🚒</span>
               </small>
             </h1>
-            <p>📅 <em><script>document.write(moment("2022-06-09 02:07:39 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2022-06-09 02:07:39 UTC)</em><p>
+            <p>📅 <em><script>document.write(moment("2024-01-02 11:52:40 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2024-01-02 11:52:40 UTC)</em><p>
             <h2>Context</h2>
             <pre># Packages matching: installed
 # Name                # Installed # Synopsis
 base-bigarray         base
 base-threads          base
 base-unix             base
-conf-findutils        1           Virtual package relying on findutils
 conf-gmp              4           Virtual package relying on a GMP lib system installation
-coq                   dev         Formal proof management system
-dune                  3.2.0       Fast, portable, and opinionated build system
+coq                   dev         The Coq Proof Assistant
+coq-core              dev         The Coq Proof Assistant -- Core Binaries and Tools
+coq-stdlib            dev         The Coq Proof Assistant -- Standard Library
+coqide-server         dev         The Coq Proof Assistant, XML protocol server
+dune                  3.12.1      Fast, portable, and opinionated build system
 ocaml                 4.14.0      The OCaml compiler (virtual package)
 ocaml-base-compiler   4.14.0      Official release 4.14.0
 ocaml-config          2           OCaml Switch Configuration
 ocaml-options-vanilla 1           Ensure that OCaml is compiled with no special options enabled
-ocamlfind             1.9.3       A library manager for OCaml
-zarith                1.12        Implements arithmetic and logical operations over arbitrary-precision integers
+ocamlfind             1.9.6       A library manager for OCaml
+zarith                1.13        Implements arithmetic and logical operations over arbitrary-precision integers
 # opam file:
 opam-version: &quot;2.0&quot;
 maintainer: &quot;palmskog@gmail.com&quot;
@@ -73,12 +75,15 @@ A validating labelled state transition and message production system
 contains a formalization of VLSMs and their theory in the Coq proof assistant.&quot;&quot;&quot;
 build: [&quot;dune&quot; &quot;build&quot; &quot;-p&quot; name &quot;-j&quot; jobs]
 depends: [
-  &quot;dune&quot; {&gt;= &quot;2.5&quot;}
-  &quot;coq&quot; {&gt;= &quot;8.13&quot;}
-  &quot;coq-stdpp&quot; {&gt;= &quot;1.6.0&quot;}
+  &quot;dune&quot; {&gt;= &quot;3.5&quot;}
+  &quot;coq&quot; {&gt;= &quot;8.16&quot;}
+  &quot;coq-stdpp&quot; {&gt;= &quot;1.9.0&quot;}
+  &quot;coq-itauto&quot;
+  &quot;coq-equations&quot;
 ]
 tags: [
   &quot;category:Computer Science/Concurrent Systems and Protocols/Theory of concurrent systems&quot;
+  &quot;keyword:consensus&quot;
   &quot;keyword:fault tolerance&quot;
   &quot;keyword:distributed algorithms&quot;
   &quot;logpath:VLSM&quot;
@@ -93,6 +98,8 @@ authors: [
   &quot;Lucas Peña&quot;
   &quot;Grigore Roșu&quot;
   &quot;Traian Șerbănuță&quot;
+  &quot;Ioan Teodorescu&quot;
+  &quot;Dafina Trufaș&quot;
   &quot;Jan Tušil&quot;
   &quot;Vlad Zamfir&quot;
 ]
@@ -127,70 +134,82 @@ url {
               <dt>Command</dt>
               <dd><code>opam list; echo; ulimit -Sv 4000000; timeout 4h opam install -y --deps-only coq-vlsm.dev coq.dev</code></dd>
               <dt>Return code</dt>
-              <dd>0</dd>
-              <dt>Duration</dt>
-              <dd>4 m 4 s</dd>
-            </dl>
-            <h2>Install 🚀</h2>
-            <dl class="dl-horizontal">
-              <dt>Command</dt>
-              <dd><code>opam list; echo; ulimit -Sv 16000000; timeout 4h opam install -y coq-vlsm.dev coq.dev</code></dd>
-              <dt>Return code</dt>
               <dd>7936</dd>
               <dt>Duration</dt>
-              <dd>38 s</dd>
+              <dd>3 m 17 s</dd>
               <dt>Output</dt>
               <dd><pre># Packages matching: installed
 # Name                # Installed # Synopsis
 base-bigarray         base
 base-threads          base
 base-unix             base
-conf-findutils        1           Virtual package relying on findutils
 conf-gmp              4           Virtual package relying on a GMP lib system installation
-coq                   dev         Formal proof management system
-coq-stdpp             dev         An extended &quot;Standard Library&quot; for Coq
-dune                  3.2.0       Fast, portable, and opinionated build system
+coq                   dev         The Coq Proof Assistant
+coq-core              dev         The Coq Proof Assistant -- Core Binaries and Tools
+coq-stdlib            dev         The Coq Proof Assistant -- Standard Library
+coqide-server         dev         The Coq Proof Assistant, XML protocol server
+dune                  3.12.1      Fast, portable, and opinionated build system
 ocaml                 4.14.0      The OCaml compiler (virtual package)
 ocaml-base-compiler   4.14.0      Official release 4.14.0
 ocaml-config          2           OCaml Switch Configuration
 ocaml-options-vanilla 1           Ensure that OCaml is compiled with no special options enabled
-ocamlfind             1.9.3       A library manager for OCaml
-zarith                1.12        Implements arithmetic and logical operations over arbitrary-precision integers
-[NOTE] Package coq is already installed (current version is dev).
+ocamlfind             1.9.6       A library manager for OCaml
+zarith                1.13        Implements arithmetic and logical operations over arbitrary-precision integers
 The following actions will be performed:
-  - install coq-vlsm dev
+  - install coq-equations dev
+  - install coq-itauto    dev
+  - install coq-stdpp     1.9.0
+===== 3 to install =====
 &lt;&gt;&lt;&gt; Gathering sources &gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;
-[coq-vlsm.dev] synchronised from git+https://github.com/runtimeverification/vlsm.git#master
+[coq-stdpp.1.9.0] downloaded from https://gitlab.mpi-sws.org/iris/stdpp/-/archive/coq-stdpp-1.9.0.tar.gz
+[coq-itauto.dev] synchronised from git+https://gitlab.inria.fr/fbesson/itauto.git#master
+[coq-equations.dev] synchronised from git+https://github.com/mattam82/Coq-Equations#main
 &lt;&gt;&lt;&gt; Processing actions &lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;
-[ERROR] The compilation of coq-vlsm failed at &quot;/home/bench/.opam/opam-init/hooks/sandbox.sh build dune build -p coq-vlsm -j 4&quot;.
-#=== ERROR while compiling coq-vlsm.dev =======================================#
-# context              2.0.10 | linux/x86_64 | ocaml-base-compiler.4.14.0 | file:///home/bench/run/opam-coq-archive/extra-dev
-# path                 ~/.opam/ocaml-base-compiler.4.14.0/.opam-switch/build/coq-vlsm.dev
-# command              ~/.opam/opam-init/hooks/sandbox.sh build dune build -p coq-vlsm -j 4
-# exit-code            1
-# env-file             ~/.opam/log/coq-vlsm-14721-e4db2f.env
-# output-file          ~/.opam/log/coq-vlsm-14721-e4db2f.out
+[ERROR] The compilation of coq-stdpp failed at &quot;/home/bench/.opam/opam-init/hooks/sandbox.sh build ./make-package stdpp -j4&quot;.
+-&gt; installed coq-equations.dev
+-&gt; installed coq-itauto.dev
+#=== ERROR while compiling coq-stdpp.1.9.0 ====================================#
+# context              2.0.10 | linux/x86_64 | ocaml-base-compiler.4.14.0 | file:///home/bench/run/opam-coq-archive/released
+# path                 ~/.opam/ocaml-base-compiler.4.14.0/.opam-switch/build/coq-stdpp.1.9.0
+# command              ~/.opam/opam-init/hooks/sandbox.sh build ./make-package stdpp -j4
+# exit-code            2
+# env-file             ~/.opam/log/coq-stdpp-9708-90b366.env
+# output-file          ~/.opam/log/coq-stdpp-9708-90b366.out
 ### output ###
 # [...]
-# A coercion will be introduced in future versions when using &#39;:&gt;&#39; in &#39;Class&#39; declarations. Use &#39;#[global] Existing Instance field.&#39; instead if you don&#39;t want the coercion.
-# [future-coercion-class-field,records]
-# (cd _build/default &amp;&amp; /home/bench/.opam/ocaml-base-compiler.4.14.0/bin/coqc -q -w -deprecated-instance-without-locality -R theories/VLSM VLSM theories/VLSM/Lib/FinSetExtras.v)
-# File &quot;./theories/VLSM/Lib/FinSetExtras.v&quot;, line 1, characters 0-32:
+# [argument-scope-delimiter,deprecated-since-8.19,deprecated,default]
+# COQC stdpp/hlist.v
+# COQC stdpp/telescopes.v
+# COQC stdpp/numbers.v
+# File &quot;./stdpp/numbers.v&quot;, line 24, characters 0-63:
 # Error: Cannot find a physical path bound to logical path
-# Itauto with prefix Cdcl.
+# NPeano with prefix Coq.
 # 
-# (cd _build/default &amp;&amp; /home/bench/.opam/ocaml-base-compiler.4.14.0/bin/coqc -q -w -deprecated-instance-without-locality -R theories/VLSM VLSM theories/VLSM/Lib/ListExtras.v)
-# File &quot;./theories/VLSM/Lib/ListExtras.v&quot;, line 1, characters 0-32:
-# Error: Cannot find a physical path bound to logical path
-# Itauto with prefix Cdcl.
-# 
+# make[1]: *** [Makefile.package.stdpp:847: stdpp/numbers.vo] Error 1
+# make[1]: *** [stdpp/numbers.vo] Deleting file &#39;stdpp/numbers.glob&#39;
+# make[1]: *** Waiting for unfinished jobs....
+# make: *** [Makefile.package.stdpp:417: all] Error 2
 &lt;&gt;&lt;&gt; Error report &lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;
 +- The following actions failed
-| - build coq-vlsm dev
+| - build coq-stdpp 1.9.0
 +- 
-- No changes have been performed
++- The following changes have been performed
+| - install coq-equations dev
+| - install coq-itauto    dev
++- 
 # Run eval $(opam env) to update the current shell environment
+The former state can be restored with:
+    opam switch import &quot;/home/bench/.opam/ocaml-base-compiler.4.14.0/.opam-switch/backup/state-20231231154444.export&quot;
 </pre></dd>
+            </dl>
+            <h2>Install 🚀</h2>
+            <dl class="dl-horizontal">
+              <dt>Command</dt>
+              <dd><code>true</code></dd>
+              <dt>Return code</dt>
+              <dd>0</dd>
+              <dt>Duration</dt>
+              <dd>0 s</dd>
             </dl>
             <h2>Installation size</h2>
             <p>No files were installed.</p>

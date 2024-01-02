@@ -42,23 +42,25 @@
                 <span class="label label-danger">Error 🔥</span>
               </small>
             </h1>
-            <p>📅 <em><script>document.write(moment("2022-06-09 02:07:39 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2022-06-09 02:07:39 UTC)</em><p>
+            <p>📅 <em><script>document.write(moment("2024-01-02 11:52:40 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2024-01-02 11:52:40 UTC)</em><p>
             <h2>Context</h2>
             <pre># Packages matching: installed
 # Name                # Installed # Synopsis
 base-bigarray         base
 base-threads          base
 base-unix             base
-conf-findutils        1           Virtual package relying on findutils
 conf-gmp              4           Virtual package relying on a GMP lib system installation
-coq                   dev         Formal proof management system
-dune                  3.2.0       Fast, portable, and opinionated build system
+coq                   dev         The Coq Proof Assistant
+coq-core              dev         The Coq Proof Assistant -- Core Binaries and Tools
+coq-stdlib            dev         The Coq Proof Assistant -- Standard Library
+coqide-server         dev         The Coq Proof Assistant, XML protocol server
+dune                  3.12.1      Fast, portable, and opinionated build system
 ocaml                 4.14.0      The OCaml compiler (virtual package)
 ocaml-base-compiler   4.14.0      Official release 4.14.0
 ocaml-config          2           OCaml Switch Configuration
 ocaml-options-vanilla 1           Ensure that OCaml is compiled with no special options enabled
-ocamlfind             1.9.3       A library manager for OCaml
-zarith                1.12        Implements arithmetic and logical operations over arbitrary-precision integers
+ocamlfind             1.9.6       A library manager for OCaml
+zarith                1.13        Implements arithmetic and logical operations over arbitrary-precision integers
 # opam file:
 opam-version: &quot;2.0&quot;
 synopsis: &quot;A Coq plugin to add reduction side effects to some Coq reduction strategies&quot;
@@ -111,7 +113,7 @@ tags: [
               <dt>Return code</dt>
               <dd>0</dd>
               <dt>Duration</dt>
-              <dd>31 s</dd>
+              <dd>7 s</dd>
             </dl>
             <h2>Install 🚀</h2>
             <dl class="dl-horizontal">
@@ -120,23 +122,25 @@ tags: [
               <dt>Return code</dt>
               <dd>7936</dd>
               <dt>Duration</dt>
-              <dd>36 s</dd>
+              <dd>9 s</dd>
               <dt>Output</dt>
               <dd><pre># Packages matching: installed
 # Name                # Installed # Synopsis
 base-bigarray         base
 base-threads          base
 base-unix             base
-conf-findutils        1           Virtual package relying on findutils
 conf-gmp              4           Virtual package relying on a GMP lib system installation
-coq                   dev         Formal proof management system
-dune                  3.2.0       Fast, portable, and opinionated build system
+coq                   dev         The Coq Proof Assistant
+coq-core              dev         The Coq Proof Assistant -- Core Binaries and Tools
+coq-stdlib            dev         The Coq Proof Assistant -- Standard Library
+coqide-server         dev         The Coq Proof Assistant, XML protocol server
+dune                  3.12.1      Fast, portable, and opinionated build system
 ocaml                 4.14.0      The OCaml compiler (virtual package)
 ocaml-base-compiler   4.14.0      Official release 4.14.0
 ocaml-config          2           OCaml Switch Configuration
 ocaml-options-vanilla 1           Ensure that OCaml is compiled with no special options enabled
-ocamlfind             1.9.3       A library manager for OCaml
-zarith                1.12        Implements arithmetic and logical operations over arbitrary-precision integers
+ocamlfind             1.9.6       A library manager for OCaml
+zarith                1.13        Implements arithmetic and logical operations over arbitrary-precision integers
 [NOTE] Package coq is already installed (current version is dev).
 The following actions will be performed:
   - install coq-reduction-effects 0.1.2
@@ -156,31 +160,39 @@ Processing  1/2: [coq-reduction-effects: make]
 - COQPP redeffect.mlg
 - OCAMLLIBDEP redeffect_plugin.mlpack
 - CAMLDEP redeffect.ml
-- *** Error: in file PrintingEffect.v, redeffect_plugin is not a valid plugin name anymore.Plugins should be loaded using their public name according to findlib,
--            for example package-name.foo and not foo_plugin.
--            If you are building with dune &lt; 2.9.4 you must specify both
--            the legacy and the findlib plugin name as in:
--            Declare ML Module &quot;foo_plugin:package-name.foo&quot;.
+- *** Error: in file &quot;PrintingEffect.v&quot;. The name &quot;redeffect_plugin&quot; is no
+-            longer a valid plugin name. Plugins should be loaded using their
+-            public name according to findlib, for example
+-            &quot;package-name.foo&quot; and not &quot;foo_plugin&quot;. If you are using a build
+-            system that does not yet support the new loading method (such as
+-            Dune) you must specify both the legacy and the findlib plugin name
+-            as in:       Declare ML Module &quot;foo_plugin:package-name.foo&quot;.
 - COQDEP VFILES
-- *** Error: in file PrintingEffect.v, redeffect_plugin is not a valid plugin name anymore.Plugins should be loaded using their public name according to findlib,
--            for example package-name.foo and not foo_plugin.
--            If you are building with dune &lt; 2.9.4 you must specify both
--            the legacy and the findlib plugin name as in:
--            Declare ML Module &quot;foo_plugin:package-name.foo&quot;.
+- *** Error: in file &quot;PrintingEffect.v&quot;. The name &quot;redeffect_plugin&quot; is no
+-            longer a valid plugin name. Plugins should be loaded using their
+-            public name according to findlib, for example
+-            &quot;package-name.foo&quot; and not &quot;foo_plugin&quot;. If you are using a build
+-            system that does not yet support the new loading method (such as
+-            Dune) you must specify both the legacy and the findlib plugin name
+-            as in:       Declare ML Module &quot;foo_plugin:package-name.foo&quot;.
 - COQDEP VFILES
-- *** Error: in file PrintingEffect.v, redeffect_plugin is not a valid plugin name anymore.Plugins should be loaded using their public name according to findlib,
--            for example package-name.foo and not foo_plugin.
--            If you are building with dune &lt; 2.9.4 you must specify both
--            the legacy and the findlib plugin name as in:
--            Declare ML Module &quot;foo_plugin:package-name.foo&quot;.
+- *** Error: in file &quot;PrintingEffect.v&quot;. The name &quot;redeffect_plugin&quot; is no
+-            longer a valid plugin name. Plugins should be loaded using their
+-            public name according to findlib, for example
+-            &quot;package-name.foo&quot; and not &quot;foo_plugin&quot;. If you are using a build
+-            system that does not yet support the new loading method (such as
+-            Dune) you must specify both the legacy and the findlib plugin name
+-            as in:       Declare ML Module &quot;foo_plugin:package-name.foo&quot;.
 - COQDEP VFILES
-- *** Error: in file PrintingEffect.v, redeffect_plugin is not a valid plugin name anymore.Plugins should be loaded using their public name according to findlib,
--            for example package-name.foo and not foo_plugin.
--            If you are building with dune &lt; 2.9.4 you must specify both
--            the legacy and the findlib plugin name as in:
--            Declare ML Module &quot;foo_plugin:package-name.foo&quot;.
+- *** Error: in file &quot;PrintingEffect.v&quot;. The name &quot;redeffect_plugin&quot; is no
+-            longer a valid plugin name. Plugins should be loaded using their
+-            public name according to findlib, for example
+-            &quot;package-name.foo&quot; and not &quot;foo_plugin&quot;. If you are using a build
+-            system that does not yet support the new loading method (such as
+-            Dune) you must specify both the legacy and the findlib plugin name
+-            as in:       Declare ML Module &quot;foo_plugin:package-name.foo&quot;.
 - make[2]: *** No rule to make target &#39;.Makefile.coq.d&#39;, needed by &#39;PrintingEffect.vo&#39;.  Stop.
-- make[1]: *** [Makefile.coq:409: all] Error 2
+- make[1]: *** [Makefile.coq:417: all] Error 2
 - make[1]: Leaving directory &#39;/home/bench/.opam/ocaml-base-compiler.4.14.0/.opam-switch/build/coq-reduction-effects.0.1.2&#39;
 - make: *** [Makefile:2: all] Error 2
 [ERROR] The compilation of coq-reduction-effects failed at &quot;/home/bench/.opam/opam-init/hooks/sandbox.sh build make -j4&quot;.
@@ -189,20 +201,20 @@ Processing  1/2: [coq-reduction-effects: make]
 # path                 ~/.opam/ocaml-base-compiler.4.14.0/.opam-switch/build/coq-reduction-effects.0.1.2
 # command              ~/.opam/opam-init/hooks/sandbox.sh build make -j4
 # exit-code            2
-# env-file             ~/.opam/log/coq-reduction-effects-29307-865888.env
-# output-file          ~/.opam/log/coq-reduction-effects-29307-865888.out
+# env-file             ~/.opam/log/coq-reduction-effects-25293-865888.env
+# output-file          ~/.opam/log/coq-reduction-effects-25293-865888.out
 ### output ###
-# *** Error: in file PrintingEffect.v, redeffect_plugin is not a valid plugin name anymore.Plugins should be loaded using their public name according to findlib,
 # [...]
-#            Declare ML Module &quot;foo_plugin:package-name.foo&quot;.
 # COQDEP VFILES
-# *** Error: in file PrintingEffect.v, redeffect_plugin is not a valid plugin name anymore.Plugins should be loaded using their public name according to findlib,
-#            for example package-name.foo and not foo_plugin.
-#            If you are building with dune &lt; 2.9.4 you must specify both
-#            the legacy and the findlib plugin name as in:
-#            Declare ML Module &quot;foo_plugin:package-name.foo&quot;.
+# *** Error: in file &quot;PrintingEffect.v&quot;. The name &quot;redeffect_plugin&quot; is no
+#            longer a valid plugin name. Plugins should be loaded using their
+#            public name according to findlib, for example
+#            &quot;package-name.foo&quot; and not &quot;foo_plugin&quot;. If you are using a build
+#            system that does not yet support the new loading method (such as
+#            Dune) you must specify both the legacy and the findlib plugin name
+#            as in:       Declare ML Module &quot;foo_plugin:package-name.foo&quot;.
 # make[2]: *** No rule to make target &#39;.Makefile.coq.d&#39;, needed by &#39;PrintingEffect.vo&#39;.  Stop.
-# make[1]: *** [Makefile.coq:409: all] Error 2
+# make[1]: *** [Makefile.coq:417: all] Error 2
 # make[1]: Leaving directory &#39;/home/bench/.opam/ocaml-base-compiler.4.14.0/.opam-switch/build/coq-reduction-effects.0.1.2&#39;
 # make: *** [Makefile:2: all] Error 2
 &lt;&gt;&lt;&gt; Error report &lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;
