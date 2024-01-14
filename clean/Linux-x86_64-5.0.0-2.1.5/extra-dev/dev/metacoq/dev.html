@@ -42,7 +42,7 @@
                 <span class="label label-warning">Error with dependencies 🚒</span>
               </small>
             </h1>
-            <p>📅 <em><script>document.write(moment("2024-01-07 06:12:10 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2024-01-07 06:12:10 UTC)</em><p>
+            <p>📅 <em><script>document.write(moment("2024-01-14 21:26:23 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2024-01-14 21:26:23 UTC)</em><p>
             <h2>Context</h2>
             <pre># Packages matching: installed
 # Name                # Installed # Synopsis
@@ -133,11 +133,11 @@ url {
             <h2>Install dependencies</h2>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>opam list; echo; ulimit -Sv 4000000; timeout 4h opam install -y --deps-only coq-metacoq.dev coq.dev</code></dd>
+              <dd><code>opam list; echo; timeout 4h opam install -y --deps-only coq-metacoq.dev coq.dev</code></dd>
               <dt>Return code</dt>
               <dd>7936</dd>
               <dt>Duration</dt>
-              <dd>1 m 9 s</dd>
+              <dd>56 m 43 s</dd>
               <dt>Output</dt>
               <dd><pre># Packages matching: installed
 # Name                # Installed # Synopsis
@@ -177,49 +177,90 @@ The following actions will be performed:
 -&gt; retrieved coq-equations.dev  (git+https://github.com/mattam82/Coq-Equations#main)
 -&gt; retrieved coq-metacoq-common.dev  (git+https:///github.com/metacoq/metacoq.git#main)
 -&gt; retrieved coq-metacoq-pcuic.dev  (git+https:///github.com/metacoq/metacoq.git#main)
--&gt; retrieved coq-metacoq-erasure.dev  (git+https:///github.com/metacoq/metacoq.git#main)
--&gt; retrieved coq-metacoq-safechecker.dev  (git+https:///github.com/metacoq/metacoq.git#main)
 -&gt; retrieved coq-metacoq-quotation.dev  (git+https:///github.com/metacoq/metacoq.git#main)
+-&gt; retrieved coq-metacoq-safechecker.dev  (git+https:///github.com/metacoq/metacoq.git#main)
 -&gt; retrieved coq-metacoq-erasure-plugin.dev  (git+https:///github.com/metacoq/metacoq.git#main)
 -&gt; retrieved coq-metacoq-safechecker-plugin.dev  (git+https:///github.com/metacoq/metacoq.git#main)
 -&gt; retrieved coq-metacoq-template.dev  (git+https:///github.com/metacoq/metacoq.git#main)
 -&gt; retrieved coq-metacoq-template-pcuic.dev  (git+https:///github.com/metacoq/metacoq.git#main)
+-&gt; retrieved coq-metacoq-erasure.dev  (git+https:///github.com/metacoq/metacoq.git#main)
 -&gt; retrieved stdlib-shims.0.3.0  (https://opam.ocaml.org/cache)
-[ERROR] The compilation of coq-equations.dev failed at &quot;make -j4&quot;.
+-&gt; retrieved coq-metacoq-translations.dev  (git+https:///github.com/metacoq/metacoq.git#main)
 -&gt; retrieved coq-metacoq-utils.dev  (git+https:///github.com/metacoq/metacoq.git#main)
 -&gt; installed stdlib-shims.0.3.0
--&gt; retrieved coq-metacoq-translations.dev  (git+https:///github.com/metacoq/metacoq.git#main)
-#=== ERROR while compiling coq-equations.dev ==================================#
+-&gt; installed coq-equations.dev
+-&gt; installed coq-metacoq-utils.dev
+-&gt; installed coq-metacoq-common.dev
+-&gt; installed coq-metacoq-template.dev
+[ERROR] The compilation of coq-metacoq-translations.dev failed at &quot;make -j 4 -C translations&quot;.
+-&gt; installed coq-metacoq-pcuic.dev
+-&gt; installed coq-metacoq-template-pcuic.dev
+-&gt; installed coq-metacoq-quotation.dev
+-&gt; installed coq-metacoq-safechecker.dev
+-&gt; installed coq-metacoq-safechecker-plugin.dev
+[ERROR] The compilation of coq-metacoq-erasure.dev failed at &quot;make -j 4 -C erasure&quot;.
+#=== ERROR while compiling coq-metacoq-translations.dev =======================#
 # context              2.1.5 | linux/x86_64 | ocaml-base-compiler.5.0.0 | file:///home/bench/run/opam-coq-archive/extra-dev
-# path                 ~/.opam/ocaml-base-compiler.5.0.0/.opam-switch/build/coq-equations.dev
-# command              ~/.opam/opam-init/hooks/sandbox.sh build make -j4
+# path                 ~/.opam/ocaml-base-compiler.5.0.0/.opam-switch/build/coq-metacoq-translations.dev
+# command              ~/.opam/opam-init/hooks/sandbox.sh build make -j 4 -C translations
 # exit-code            2
-# env-file             ~/.opam/log/coq-equations-11654-36a65e.env
-# output-file          ~/.opam/log/coq-equations-11654-36a65e.out
+# env-file             ~/.opam/log/coq-metacoq-translations-1429-02a30f.env
+# output-file          ~/.opam/log/coq-metacoq-translations-1429-02a30f.out
 ### output ###
 # [...]
-# CAMLOPT -c  src/principles.ml
-# CAMLOPT -c  src/equations.ml
-# CAMLOPT -c  src/g_equations.ml
-# CAMLOPT -a -o src/equations_plugin.cmxa
-# CAMLOPT -shared -o src/equations_plugin.cmxs
-# COQC theories/Init.v
-# Fatal error: Not enough heap memory to reserve minor heaps
-# Aborted (core dumped)
-# make[2]: *** [Makefile.coq:847: theories/Init.vo] Error 134
+# &quot;MetaCoq.Translations.MiniHoTT.Equiv has been translated.&quot;
+# &quot;Translating MetaCoq.Translations.times_bool_fun.wUnivalence&quot;
+# &quot;wUnivalence has been translated as wUnivalenceᵗ&quot;
+# &quot;equiv has been translated as equivᵗ&quot;
+# &quot;isequiv_idmap has been translated as isequiv_idmapᵗ&quot;
+# &quot;equiv_idmap has been translated as equiv_idmapᵗ&quot;
+# &quot;UA has been translated as UAᵗ&quot;
+# &quot;notUA has been translated as notUAᵗ&quot;
 # make[1]: *** [Makefile.coq:417: all] Error 2
-# make[1]: Leaving directory &#39;/home/bench/.opam/ocaml-base-compiler.5.0.0/.opam-switch/build/coq-equations.dev&#39;
-# make: *** [Makefile:6: all] Error 2
+# make[1]: Leaving directory &#39;/home/bench/.opam/ocaml-base-compiler.5.0.0/.opam-switch/build/coq-metacoq-translations.dev/translations&#39;
+# make: *** [Makefile:2: all] Error 2
+# make: Leaving directory &#39;/home/bench/.opam/ocaml-base-compiler.5.0.0/.opam-switch/build/coq-metacoq-translations.dev/translations&#39;
+#=== ERROR while compiling coq-metacoq-erasure.dev ============================#
+# context              2.1.5 | linux/x86_64 | ocaml-base-compiler.5.0.0 | file:///home/bench/run/opam-coq-archive/extra-dev
+# path                 ~/.opam/ocaml-base-compiler.5.0.0/.opam-switch/build/coq-metacoq-erasure.dev
+# command              ~/.opam/opam-init/hooks/sandbox.sh build make -j 4 -C erasure
+# exit-code            2
+# env-file             ~/.opam/log/coq-metacoq-erasure-1429-405ac3.env
+# output-file          ~/.opam/log/coq-metacoq-erasure-1429-405ac3.out
+### output ###
+# [...]
+# Error: Required library config matches several files in path (found
+# /home/bench/.opam/ocaml-base-compiler.5.0.0/lib/coq/user-contrib/MetaCoq/Common/config.vo,
+# /home/bench/.opam/ocaml-base-compiler.5.0.0/lib/coq/user-contrib/MetaCoq/Quotation/ToPCUIC/Common/config.vo and
+# /home/bench/.opam/ocaml-base-compiler.5.0.0/lib/coq/user-contrib/MetaCoq/Quotation/ToTemplate/Common/config.vo).
+# 
+# make[2]: *** [Makefile.erasure:847: theories/EWcbvEvalNamed.vo] Error 1
+# make[2]: *** [theories/EWcbvEvalNamed.vo] Deleting file &#39;theories/EWcbvEvalNamed.glob&#39;
+# make[2]: *** Waiting for unfinished jobs....
+# make[1]: *** [Makefile.erasure:417: all] Error 2
+# make[1]: Leaving directory &#39;/home/bench/.opam/ocaml-base-compiler.5.0.0/.opam-switch/build/coq-metacoq-erasure.dev/erasure&#39;
+# make: *** [Makefile:11: theory] Error 2
+# make: Leaving directory &#39;/home/bench/.opam/ocaml-base-compiler.5.0.0/.opam-switch/build/coq-metacoq-erasure.dev/erasure&#39;
 &lt;&gt;&lt;&gt; Error report &lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;
 +- The following actions failed
-| - build coq-equations dev
+| - build coq-metacoq-erasure      dev
+| - build coq-metacoq-translations dev
 +- 
 +- The following changes have been performed (the rest was aborted)
-| - install stdlib-shims 0.3.0
+| - install coq-equations                  dev
+| - install coq-metacoq-common             dev
+| - install coq-metacoq-pcuic              dev
+| - install coq-metacoq-quotation          dev
+| - install coq-metacoq-safechecker        dev
+| - install coq-metacoq-safechecker-plugin dev
+| - install coq-metacoq-template           dev
+| - install coq-metacoq-template-pcuic     dev
+| - install coq-metacoq-utils              dev
+| - install stdlib-shims                   0.3.0
 +- 
 # Run eval $(opam env) to update the current shell environment
 The former state can be restored with:
-    /usr/local/bin/opam switch import &quot;/home/bench/.opam/ocaml-base-compiler.5.0.0/.opam-switch/backup/state-20240105184428.export&quot;
+    /usr/local/bin/opam switch import &quot;/home/bench/.opam/ocaml-base-compiler.5.0.0/.opam-switch/backup/state-20240109211048.export&quot;
 </pre></dd>
             </dl>
             <h2>Install 🚀</h2>
