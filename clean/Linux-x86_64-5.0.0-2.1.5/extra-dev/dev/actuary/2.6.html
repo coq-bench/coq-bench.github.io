@@ -42,7 +42,7 @@
                 <span class="label label-warning">Error with dependencies 🚒</span>
               </small>
             </h1>
-            <p>📅 <em><script>document.write(moment("2024-01-14 21:26:23 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2024-01-14 21:26:23 UTC)</em><p>
+            <p>📅 <em><script>document.write(moment("2024-01-16 02:04:22 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2024-01-16 02:04:22 UTC)</em><p>
             <h2>Context</h2>
             <pre># Packages matching: installed
 # Name                # Installed # Synopsis
@@ -56,7 +56,7 @@ coq                   dev         The Coq Proof Assistant
 coq-core              dev         The Coq Proof Assistant -- Core Binaries and Tools
 coq-stdlib            dev         The Coq Proof Assistant -- Standard Library
 coqide-server         dev         The Coq Proof Assistant, XML protocol server
-dune                  3.12.1      Fast, portable, and opinionated build system
+dune                  3.12.2      Fast, portable, and opinionated build system
 ocaml                 5.0.0       The OCaml compiler (virtual package)
 ocaml-base-compiler   5.0.0       Official release 5.0.0
 ocaml-config          3           OCaml Switch Configuration
@@ -125,11 +125,11 @@ url {
             <h2>Install dependencies</h2>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>opam list; echo; timeout 4h opam install -y --deps-only coq-actuary.2.6 coq.dev</code></dd>
+              <dd><code>opam list; echo; ulimit -Sv 4000000; timeout 4h opam install -y --deps-only coq-actuary.2.6 coq.dev</code></dd>
               <dt>Return code</dt>
               <dd>7936</dd>
               <dt>Duration</dt>
-              <dd>3 m 7 s</dd>
+              <dd>35 s</dd>
               <dt>Output</dt>
               <dd><pre># Packages matching: installed
 # Name                # Installed # Synopsis
@@ -143,7 +143,7 @@ coq                   dev         The Coq Proof Assistant
 coq-core              dev         The Coq Proof Assistant -- Core Binaries and Tools
 coq-stdlib            dev         The Coq Proof Assistant -- Standard Library
 coqide-server         dev         The Coq Proof Assistant, XML protocol server
-dune                  3.12.1      Fast, portable, and opinionated build system
+dune                  3.12.2      Fast, portable, and opinionated build system
 ocaml                 5.0.0       The OCaml compiler (virtual package)
 ocaml-base-compiler   5.0.0       Official release 5.0.0
 ocaml-config          3           OCaml Switch Configuration
@@ -159,40 +159,38 @@ The following actions will be performed:
 -&gt; retrieved coq-coquelicot.3.4.0  (https://coquelicot.gitlabpages.inria.fr/releases/coquelicot-3.4.0.tar.gz)
 -&gt; installed conf-g++.1.0
 -&gt; retrieved coq-mathcomp-ssreflect.1.dev  (git+https://github.com/math-comp/math-comp.git#mathcomp-1)
--&gt; installed coq-mathcomp-ssreflect.1.dev
-[ERROR] The compilation of coq-coquelicot.3.4.0 failed at &quot;./remake -j4&quot;.
-#=== ERROR while compiling coq-coquelicot.3.4.0 ===============================#
-# context              2.1.5 | linux/x86_64 | ocaml-base-compiler.5.0.0 | file:///home/bench/run/opam-coq-archive/released
-# path                 ~/.opam/ocaml-base-compiler.5.0.0/.opam-switch/build/coq-coquelicot.3.4.0
-# command              ~/.opam/opam-init/hooks/sandbox.sh build ./remake -j4
-# exit-code            1
-# env-file             ~/.opam/log/coq-coquelicot-11419-3a38e5.env
-# output-file          ~/.opam/log/coq-coquelicot-11419-3a38e5.out
+[ERROR] The compilation of coq-mathcomp-ssreflect.1.dev failed at &quot;make -C mathcomp/ssreflect -j 4&quot;.
+#=== ERROR while compiling coq-mathcomp-ssreflect.1.dev =======================#
+# context              2.1.5 | linux/x86_64 | ocaml-base-compiler.5.0.0 | file:///home/bench/run/opam-coq-archive/extra-dev
+# path                 ~/.opam/ocaml-base-compiler.5.0.0/.opam-switch/build/coq-mathcomp-ssreflect.1.dev
+# command              ~/.opam/opam-init/hooks/sandbox.sh build make -C mathcomp/ssreflect -j 4
+# exit-code            2
+# env-file             ~/.opam/log/coq-mathcomp-ssreflect-25124-72af02.env
+# output-file          ~/.opam/log/coq-mathcomp-ssreflect-25124-72af02.out
 ### output ###
 # [...]
-# Failed to build theories/Lub.vo
-# Failed to build theories/Derive.vo
-# Failed to build theories/Derive_2d.vo
-# Failed to build theories/Hierarchy.vo
-# Failed to build theories/AutoDerive.vo
-# Failed to build theories/Complex.vo
-# Failed to build theories/Compactness.vo
-# Failed to build theories/Continuity.vo
-# Failed to build all
-# Failed to build theories/Lim_seq.vo
-# Failed to build theories/RInt_analysis.vo
-# Failed to build theories/Rbar.vo
+# Not enough heap memory to reserve minor heaps
+# Fatal error: Not enough heap memory to reserve minor heaps
+# Aborted (core dumped)
+# make[2]: *** [Makefile.coq:847: ssreflect.vo] Error 134
+# make[2]: *** Waiting for unfinished jobs....
+# Aborted
+# make[2]: *** [Makefile.coq:847: ssrmatching.vo] Error 134
+# Aborted (core dumped)
+# make[2]: *** [Makefile.coq:847: ssrnotations.vo] Error 134
+# make[1]: *** [Makefile.coq:417: all] Error 2
+# make: *** [../Makefile.common:99: this-build] Error 2
+# make: Leaving directory &#39;/home/bench/.opam/ocaml-base-compiler.5.0.0/.opam-switch/build/coq-mathcomp-ssreflect.1.dev/mathcomp/ssreflect&#39;
 &lt;&gt;&lt;&gt; Error report &lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;
 +- The following actions failed
-| - build coq-coquelicot 3.4.0
+| - build coq-mathcomp-ssreflect 1.dev
 +- 
-+- The following changes have been performed
-| - install conf-g++               1.0
-| - install coq-mathcomp-ssreflect 1.dev
++- The following changes have been performed (the rest was aborted)
+| - install conf-g++ 1.0
 +- 
 # Run eval $(opam env) to update the current shell environment
 The former state can be restored with:
-    /usr/local/bin/opam switch import &quot;/home/bench/.opam/ocaml-base-compiler.5.0.0/.opam-switch/backup/state-20240109023516.export&quot;
+    /usr/local/bin/opam switch import &quot;/home/bench/.opam/ocaml-base-compiler.5.0.0/.opam-switch/backup/state-20240115021159.export&quot;
 </pre></dd>
             </dl>
             <h2>Install 🚀</h2>

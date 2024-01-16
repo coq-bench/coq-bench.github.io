@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>hydra-battles: Error 🔥</title>
+    <title>hydra-battles: Error with dependencies 🚒</title>
     <link rel="shortcut icon" type="image/png" href="../../../../../favicon.png" />
     <link href="../../../../../bootstrap.min.css" rel="stylesheet">
     <link href="../../../../../bootstrap-custom.css" rel="stylesheet">
@@ -39,10 +39,10 @@
               hydra-battles
               <small>
                 0.4
-                <span class="label label-danger">Error 🔥</span>
+                <span class="label label-warning">Error with dependencies 🚒</span>
               </small>
             </h1>
-            <p>📅 <em><script>document.write(moment("2024-01-14 21:26:23 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2024-01-14 21:26:23 UTC)</em><p>
+            <p>📅 <em><script>document.write(moment("2024-01-16 02:04:22 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2024-01-16 02:04:22 UTC)</em><p>
             <h2>Context</h2>
             <pre># Packages matching: installed
 # Name                # Installed # Synopsis
@@ -56,7 +56,7 @@ coq                   dev         The Coq Proof Assistant
 coq-core              dev         The Coq Proof Assistant -- Core Binaries and Tools
 coq-stdlib            dev         The Coq Proof Assistant -- Standard Library
 coqide-server         dev         The Coq Proof Assistant, XML protocol server
-dune                  3.12.1      Fast, portable, and opinionated build system
+dune                  3.12.2      Fast, portable, and opinionated build system
 ocaml                 5.0.0       The OCaml compiler (virtual package)
 ocaml-base-compiler   5.0.0       Official release 5.0.0
 ocaml-config          3           OCaml Switch Configuration
@@ -125,20 +125,11 @@ url {
             <h2>Install dependencies</h2>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>opam list; echo; timeout 4h opam install -y --deps-only coq-hydra-battles.0.4 coq.dev</code></dd>
-              <dt>Return code</dt>
-              <dd>0</dd>
-              <dt>Duration</dt>
-              <dd>31 s</dd>
-            </dl>
-            <h2>Install 🚀</h2>
-            <dl class="dl-horizontal">
-              <dt>Command</dt>
-              <dd><code>opam list; echo; timeout 4h opam install -y -v coq-hydra-battles.0.4 coq.dev</code></dd>
+              <dd><code>opam list; echo; ulimit -Sv 4000000; timeout 4h opam install -y --deps-only coq-hydra-battles.0.4 coq.dev</code></dd>
               <dt>Return code</dt>
               <dd>7936</dd>
               <dt>Duration</dt>
-              <dd>15 s</dd>
+              <dd>23 s</dd>
               <dt>Output</dt>
               <dd><pre># Packages matching: installed
 # Name                # Installed # Synopsis
@@ -150,123 +141,57 @@ base-unix             base
 conf-gmp              4           Virtual package relying on a GMP lib system installation
 coq                   dev         The Coq Proof Assistant
 coq-core              dev         The Coq Proof Assistant -- Core Binaries and Tools
-coq-equations         dev         A function definition package for Coq
 coq-stdlib            dev         The Coq Proof Assistant -- Standard Library
 coqide-server         dev         The Coq Proof Assistant, XML protocol server
-dune                  3.12.1      Fast, portable, and opinionated build system
+dune                  3.12.2      Fast, portable, and opinionated build system
 ocaml                 5.0.0       The OCaml compiler (virtual package)
 ocaml-base-compiler   5.0.0       Official release 5.0.0
 ocaml-config          3           OCaml Switch Configuration
 ocaml-options-vanilla 1           Ensure that OCaml is compiled with no special options enabled
 ocamlfind             1.9.6       A library manager for OCaml
 zarith                1.13        Implements arithmetic and logical operations over arbitrary-precision integers
-[NOTE] Package coq is already installed (current version is dev).
 The following actions will be performed:
-  - install coq-hydra-battles 0.4
+  - install coq-equations dev
 &lt;&gt;&lt;&gt; Processing actions &lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;
-Processing  1/3: [coq-hydra-battles.0.4: http]
-Processing  1/3:
--&gt; retrieved coq-hydra-battles.0.4  (https://github.com/coq-community/hydra-battles/archive/v0.4.tar.gz)
-Processing  2/3: [coq-hydra-battles: dune build]
-+ /home/bench/.opam/opam-init/hooks/sandbox.sh &quot;build&quot; &quot;dune&quot; &quot;build&quot; &quot;-p&quot; &quot;coq-hydra-battles&quot; &quot;-j&quot; &quot;4&quot; (CWD=/home/bench/.opam/ocaml-base-compiler.5.0.0/.opam-switch/build/coq-hydra-battles.0.4)
-- Warning: Coq Language Versions lower than 0.8 have been deprecated in Dune
-- 3.8 and will be removed in an upcoming Dune version.
-- (cd _build/default/theories/ordinals &amp;&amp; /home/bench/.opam/ocaml-base-compiler.5.0.0/bin/coqdep -I /home/bench/.opam/ocaml-base-compiler.5.0.0/lib/coq/../coq-core/plugins/btauto -I /home/bench/.opam/ocaml-base-compiler.5.0.0/lib/coq/../coq-core/plugins/cc -I /home/bench/.opam/ocaml-base-compiler.5.0.0/lib/coq/../coq-core/plugins/derive -I /home/bench/.opam/ocaml-base-compiler.5.0.0/lib/coq/../coq-core/plugins/extraction -I /home/bench/.opam/ocaml-base-compiler.5.0.0/lib/coq/../coq-core/plugins/firstorder -I /home/bench/.opam/ocaml-base-compiler.5.0.0/lib/coq/../coq-core/plugins/funind -I /home/bench/.opam/ocaml-base-compiler.5.0.0/lib/coq/../coq-core/plugins/ltac -I /home/bench/.opam/ocaml-base-compiler.5.0.0/lib/coq/../coq-core/plugins/ltac2 -I /home/bench/.opam/ocaml-base-compiler.5.0.0/lib/coq/../coq-core/plugins/micromega -I /home/bench/.opam/ocaml-base-compiler.5.0.0/lib/coq/../coq-core/plugins/micromega_core -I /home/bench/.opam/ocaml-base-compiler.5.0.0/lib/coq/../coq-core/plugins/nsatz -I /home/bench/.opam/ocaml-base-compiler.5.0.0/lib/coq/../coq-core/plugins/number_string_notation -I /home/bench/.opam/ocaml-base-compiler.5.0.0/lib/coq/../coq-core/plugins/ring -I /home/bench/.opam/ocaml-base-compiler.5.0.0/lib/coq/../coq-core/plugins/rtauto -I /home/bench/.opam/ocaml-base-compiler.5.0.0/lib/coq/../coq-core/plugins/ssreflect -I /home/bench/.opam/ocaml-base-compiler.5.0.0/lib/coq/../coq-core/plugins/ssrmatching -I /home/bench/.opam/ocaml-base-compiler.5.0.0/lib/coq/../coq-core/plugins/tauto -I /home/bench/.opam/ocaml-base-compiler.5.0.0/lib/coq/../coq-core/plugins/tutorial/p0 -I /home/bench/.opam/ocaml-base-compiler.5.0.0/lib/coq/../coq-core/plugins/tutorial/p1 -I /home/bench/.opam/ocaml-base-compiler.5.0.0/lib/coq/../coq-core/plugins/tutorial/p2 -I /home/bench/.opam/ocaml-base-compiler.5.0.0/lib/coq/../coq-core/plugins/tutorial/p3 -I /home/bench/.opam/ocaml-base-compiler.5.0.0/lib/coq/../coq-core/plugins/zify -R /home/bench/.opam/ocaml-base-compiler.5.0.0/lib/coq/theories Coq -R . hydras -dyndep opt -vos solutions_exercises/schutte_cnf_counter_example.v solutions_exercises/predSuccUnicity.v solutions_exercises/omega_iterates.v solutions_exercises/lt_succ_le.v solutions_exercises/isqrt.v solutions_exercises/is_F_monotonous.v solutions_exercises/ge_omega_iff.v solutions_exercises/T1_ltNotWf.v solutions_exercises/MorePRExamples.v solutions_exercises/MinPR2.v solutions_exercises/MinPR.v solutions_exercises/Limit_Infinity.v solutions_exercises/Ge_omega_plus.v solutions_exercises/FibonacciPR.v solutions_exercises/F_3.v rpo/term.v rpo/rpo.v rpo/more_list.v rpo/list_set.v rpo/list_permut.v rpo/dickson.v rpo/decidable_set.v rpo/closure.v Schutte/Well_Orders.v Schutte/Schutte_basics.v Schutte/Schutte.v Schutte/PartialFun.v Schutte/Ordering_Functions.v Schutte/MoreEpsilonIota.v Schutte/Lub.v Schutte/GRelations.v Schutte/Critical.v Schutte/Countable.v Schutte/Correctness_E0.v Schutte/CNF.v Schutte/Addition.v Schutte/AP.v Prelude/WfVariant.v Prelude/Sort_spec.v Prelude/Simple_LexProd.v Prelude/Restriction.v Prelude/OrdNotations.v Prelude/More_Arith.v Prelude/MoreVectors.v Prelude/MoreOrders.v Prelude/MoreLists.v Prelude/Merge_Sort.v Prelude/Iterates.v Prelude/Fuel.v Prelude/First_toggle.v Prelude/Exp2.v Prelude/DecPreOrder_Instances.v Prelude/DecPreOrder.v OrdinalNotations/ON_plus.v OrdinalNotations/ON_mult.v OrdinalNotations/ON_Omega_plus_omega.v OrdinalNotations/ON_Omega2.v OrdinalNotations/ON_Omega.v OrdinalNotations/ON_O.v OrdinalNotations/ON_Generic.v OrdinalNotations/ON_Finite.v OrdinalNotations/Example_3PlusOmega.v OmegaOmega/OO.v OmegaOmega/ListOmega.v OmegaOmega/Examples.v MoreAck/PrimRecExamples.v MoreAck/Iterate_compat.v MoreAck/AckNotPR.v MoreAck/Ack.v Hydra/Omega_Small.v Hydra/Omega2_Small.v Hydra/O2H.v Hydra/KP_example.v Hydra/Hydra_Theorems.v Hydra/Hydra_Termination.v Hydra/Hydra_Lemmas.v Hydra/Hydra_Extraction.v Hydra/Hydra_Examples.v Hydra/Hydra_Definitions.v Hydra/Epsilon0_Needed_Std.v Hydra/Epsilon0_Needed_Generic.v Hydra/Epsilon0_Needed_Free.v Hydra/BigBattle.v Hydra/Battle_length.v Gamma0/T2.v Gamma0/Gamma0.v Epsilon0/T1.v Epsilon0/Paths.v Epsilon0/Large_Sets_Examples.v Epsilon0/Large_Sets.v Epsilon0/L_alpha.v Epsilon0/Hprime.v Epsilon0/Hessenberg.v Epsilon0/F_omega.v Epsilon0/F_alpha.v Epsilon0/Epsilon0rpo.v Epsilon0/Epsilon0.v Epsilon0/E0.v Epsilon0/Canon.v Ackermann/wellFormed.v Ackermann/wConsistent.v Ackermann/subProp.v Ackermann/subAll.v Ackermann/primRecbuggy.v Ackermann/primRec.v Ackermann/prLogic.v Ackermann/model.v Ackermann/misc.v Ackermann/folReplace.v Ackermann/folProp.v Ackermann/folProof.v Ackermann/folLogic3.v Ackermann/folLogic2.v Ackermann/folLogic.v Ackermann/fol.v Ackermann/extEqualNat.v Ackermann/expressible.v Ackermann/codeSubTerm.v Ackermann/codeSubFormula.v Ackermann/codePA.v Ackermann/codeNatToTerm.v Ackermann/codeList.v Ackermann/codeFreeVar.v Ackermann/code.v Ackermann/checkPrf.v Ackermann/cPair.v Ackermann/PAtheory.v Ackermann/PAconsistent.v Ackermann/PA.v Ackermann/NNtheory.v Ackermann/NN2PA.v Ackermann/NN.v Ackermann/ListExt.v Ackermann/Languages.v Ackermann/LNT.v Ackermann/LNN2LNT.v Ackermann/LNN.v Ackermann/Deduction.v) &gt; _build/default/theories/ordinals/.hydras.theory.d
-- Warning: in file solutions_exercises/omega_iterates.v, library
--          Max is required and has not been found in the loadpath!
--          [module-not-found,filesystem,default]
-- Warning: in file solutions_exercises/isqrt.v, library Min is required
--          from root Coq and has not been found in the loadpath!
--          [module-not-found,filesystem,default]
-- Warning: in file solutions_exercises/is_F_monotonous.v, library
--          Max is required and has not been found in the loadpath!
--          [module-not-found,filesystem,default]
-- Warning: in file solutions_exercises/is_F_monotonous.v, library
--          Mult is required and has not been found in the loadpath!
--          [module-not-found,filesystem,default]
-- Warning: in file solutions_exercises/MinPR2.v, library Min is required
--          from root Coq and has not been found in the loadpath!
--          [module-not-found,filesystem,default]
-- Warning: in file solutions_exercises/MinPR.v, library Min is required
--          from root Coq and has not been found in the loadpath!
--          [module-not-found,filesystem,default]
-- Warning: in file solutions_exercises/F_3.v, library
--          Max is required and has not been found in the loadpath!
--          [module-not-found,filesystem,default]
-- Warning: in file solutions_exercises/F_3.v, library
--          Mult is required and has not been found in the loadpath!
--          [module-not-found,filesystem,default]
-- Warning: in file Schutte/GRelations.v, library Le is required
--          from root Coq and has not been found in the loadpath!
--          [module-not-found,filesystem,default]
-- Warning: in file Schutte/Countable.v, library Even is required
--          from root Coq and has not been found in the loadpath!
--          [module-not-found,filesystem,default]
-- Warning: in file Schutte/Countable.v, library Div2 is required
--          from root Coq and has not been found in the loadpath!
--          [module-not-found,filesystem,default]
-- Warning: in file Prelude/More_Arith.v, library Div2 is required
--          from root Coq and has not been found in the loadpath!
--          [module-not-found,filesystem,default]
-- Warning: in file Prelude/More_Arith.v, library Even is required
--          from root Coq and has not been found in the loadpath!
--          [module-not-found,filesystem,default]
-- Warning: in file Prelude/More_Arith.v, library Max is required
--          from root Coq and has not been found in the loadpath!
--          [module-not-found,filesystem,default]
-- Warning: in file Prelude/MoreVectors.v, library
--          Max is required and has not been found in the loadpath!
--          [module-not-found,filesystem,default]
-- Warning: in file Prelude/Merge_Sort.v, library Div2 is require
-[...] truncated
-ch/.opam/ocaml-base-compiler.5.0.0/lib/coq/../coq-core/plugins/rtauto -I /home/bench/.opam/ocaml-base-compiler.5.0.0/lib/coq/../coq-core/plugins/ssreflect -I /home/bench/.opam/ocaml-base-compiler.5.0.0/lib/coq/../coq-core/plugins/ssrmatching -I /home/bench/.opam/ocaml-base-compiler.5.0.0/lib/coq/../coq-core/plugins/tauto -I /home/bench/.opam/ocaml-base-compiler.5.0.0/lib/coq/../coq-core/plugins/tutorial/p0 -I /home/bench/.opam/ocaml-base-compiler.5.0.0/lib/coq/../coq-core/plugins/tutorial/p1 -I /home/bench/.opam/ocaml-base-compiler.5.0.0/lib/coq/../coq-core/plugins/tutorial/p2 -I /home/bench/.opam/ocaml-base-compiler.5.0.0/lib/coq/../coq-core/plugins/tutorial/p3 -I /home/bench/.opam/ocaml-base-compiler.5.0.0/lib/coq/../coq-core/plugins/zify -R /home/bench/.opam/ocaml-base-compiler.5.0.0/lib/coq/theories Coq -R theories/ordinals hydras theories/ordinals/Prelude/Iterates.v)
-- File &quot;./theories/ordinals/Prelude/Iterates.v&quot;, line 8, characters 0-64:
-- Error: Cannot find a physical path bound to logical path Max with prefix Coq.
-- 
-- (cd _build/default &amp;&amp; /home/bench/.opam/ocaml-base-compiler.5.0.0/bin/coqc -q -I /home/bench/.opam/ocaml-base-compiler.5.0.0/lib/coq/../coq-core/plugins/btauto -I /home/bench/.opam/ocaml-base-compiler.5.0.0/lib/coq/../coq-core/plugins/cc -I /home/bench/.opam/ocaml-base-compiler.5.0.0/lib/coq/../coq-core/plugins/derive -I /home/bench/.opam/ocaml-base-compiler.5.0.0/lib/coq/../coq-core/plugins/extraction -I /home/bench/.opam/ocaml-base-compiler.5.0.0/lib/coq/../coq-core/plugins/firstorder -I /home/bench/.opam/ocaml-base-compiler.5.0.0/lib/coq/../coq-core/plugins/funind -I /home/bench/.opam/ocaml-base-compiler.5.0.0/lib/coq/../coq-core/plugins/ltac -I /home/bench/.opam/ocaml-base-compiler.5.0.0/lib/coq/../coq-core/plugins/ltac2 -I /home/bench/.opam/ocaml-base-compiler.5.0.0/lib/coq/../coq-core/plugins/micromega -I /home/bench/.opam/ocaml-base-compiler.5.0.0/lib/coq/../coq-core/plugins/micromega_core -I /home/bench/.opam/ocaml-base-compiler.5.0.0/lib/coq/../coq-core/plugins/nsatz -I /home/bench/.opam/ocaml-base-compiler.5.0.0/lib/coq/../coq-core/plugins/number_string_notation -I /home/bench/.opam/ocaml-base-compiler.5.0.0/lib/coq/../coq-core/plugins/ring -I /home/bench/.opam/ocaml-base-compiler.5.0.0/lib/coq/../coq-core/plugins/rtauto -I /home/bench/.opam/ocaml-base-compiler.5.0.0/lib/coq/../coq-core/plugins/ssreflect -I /home/bench/.opam/ocaml-base-compiler.5.0.0/lib/coq/../coq-core/plugins/ssrmatching -I /home/bench/.opam/ocaml-base-compiler.5.0.0/lib/coq/../coq-core/plugins/tauto -I /home/bench/.opam/ocaml-base-compiler.5.0.0/lib/coq/../coq-core/plugins/tutorial/p0 -I /home/bench/.opam/ocaml-base-compiler.5.0.0/lib/coq/../coq-core/plugins/tutorial/p1 -I /home/bench/.opam/ocaml-base-compiler.5.0.0/lib/coq/../coq-core/plugins/tutorial/p2 -I /home/bench/.opam/ocaml-base-compiler.5.0.0/lib/coq/../coq-core/plugins/tutorial/p3 -I /home/bench/.opam/ocaml-base-compiler.5.0.0/lib/coq/../coq-core/plugins/zify -R /home/bench/.opam/ocaml-base-compiler.5.0.0/lib/coq/theories Coq -R theories/ordinals hydras theories/ordinals/Ackermann/primRecbuggy.v)
-- File &quot;./theories/ordinals/Ackermann/primRecbuggy.v&quot;, line 15, characters 0-43:
-- Error: Cannot find a physical path bound to logical path Even.
-- 
-- (cd _build/default &amp;&amp; /home/bench/.opam/ocaml-base-compiler.5.0.0/bin/coqc -q -I /home/bench/.opam/ocaml-base-compiler.5.0.0/lib/coq/../coq-core/plugins/btauto -I /home/bench/.opam/ocaml-base-compiler.5.0.0/lib/coq/../coq-core/plugins/cc -I /home/bench/.opam/ocaml-base-compiler.5.0.0/lib/coq/../coq-core/plugins/derive -I /home/bench/.opam/ocaml-base-compiler.5.0.0/lib/coq/../coq-core/plugins/extraction -I /home/bench/.opam/ocaml-base-compiler.5.0.0/lib/coq/../coq-core/plugins/firstorder -I /home/bench/.opam/ocaml-base-compiler.5.0.0/lib/coq/../coq-core/plugins/funind -I /home/bench/.opam/ocaml-base-compiler.5.0.0/lib/coq/../coq-core/plugins/ltac -I /home/bench/.opam/ocaml-base-compiler.5.0.0/lib/coq/../coq-core/plugins/ltac2 -I /home/bench/.opam/ocaml-base-compiler.5.0.0/lib/coq/../coq-core/plugins/micromega -I /home/bench/.opam/ocaml-base-compiler.5.0.0/lib/coq/../coq-core/plugins/micromega_core -I /home/bench/.opam/ocaml-base-compiler.5.0.0/lib/coq/../coq-core/plugins/nsatz -I /home/bench/.opam/ocaml-base-compiler.5.0.0/lib/coq/../coq-core/plugins/number_string_notation -I /home/bench/.opam/ocaml-base-compiler.5.0.0/lib/coq/../coq-core/plugins/ring -I /home/bench/.opam/ocaml-base-compiler.5.0.0/lib/coq/../coq-core/plugins/rtauto -I /home/bench/.opam/ocaml-base-compiler.5.0.0/lib/coq/../coq-core/plugins/ssreflect -I /home/bench/.opam/ocaml-base-compiler.5.0.0/lib/coq/../coq-core/plugins/ssrmatching -I /home/bench/.opam/ocaml-base-compiler.5.0.0/lib/coq/../coq-core/plugins/tauto -I /home/bench/.opam/ocaml-base-compiler.5.0.0/lib/coq/../coq-core/plugins/tutorial/p0 -I /home/bench/.opam/ocaml-base-compiler.5.0.0/lib/coq/../coq-core/plugins/tutorial/p1 -I /home/bench/.opam/ocaml-base-compiler.5.0.0/lib/coq/../coq-core/plugins/tutorial/p2 -I /home/bench/.opam/ocaml-base-compiler.5.0.0/lib/coq/../coq-core/plugins/tutorial/p3 -I /home/bench/.opam/ocaml-base-compiler.5.0.0/lib/coq/../coq-core/plugins/zify -R /home/bench/.opam/ocaml-base-compiler.5.0.0/lib/coq/theories Coq -R theories/ordinals hydras theories/ordinals/Schutte/GRelations.v)
-- File &quot;./theories/ordinals/Schutte/GRelations.v&quot;, line 7, characters 0-53:
-- Error: Cannot find a physical path bound to logical path Le with prefix Coq.
-- 
-- (cd _build/default &amp;&amp; /home/bench/.opam/ocaml-base-compiler.5.0.0/bin/coqc -q -I /home/bench/.opam/ocaml-base-compiler.5.0.0/lib/coq/../coq-core/plugins/btauto -I /home/bench/.opam/ocaml-base-compiler.5.0.0/lib/coq/../coq-core/plugins/cc -I /home/bench/.opam/ocaml-base-compiler.5.0.0/lib/coq/../coq-core/plugins/derive -I /home/bench/.opam/ocaml-base-compiler.5.0.0/lib/coq/../coq-core/plugins/extraction -I /home/bench/.opam/ocaml-base-compiler.5.0.0/lib/coq/../coq-core/plugins/firstorder -I /home/bench/.opam/ocaml-base-compiler.5.0.0/lib/coq/../coq-core/plugins/funind -I /home/bench/.opam/ocaml-base-compiler.5.0.0/lib/coq/../coq-core/plugins/ltac -I /home/bench/.opam/ocaml-base-compiler.5.0.0/lib/coq/../coq-core/plugins/ltac2 -I /home/bench/.opam/ocaml-base-compiler.5.0.0/lib/coq/../coq-core/plugins/micromega -I /home/bench/.opam/ocaml-base-compiler.5.0.0/lib/coq/../coq-core/plugins/micromega_core -I /home/bench/.opam/ocaml-base-compiler.5.0.0/lib/coq/../coq-core/plugins/nsatz -I /home/bench/.opam/ocaml-base-compiler.5.0.0/lib/coq/../coq-core/plugins/number_string_notation -I /home/bench/.opam/ocaml-base-compiler.5.0.0/lib/coq/../coq-core/plugins/ring -I /home/bench/.opam/ocaml-base-compiler.5.0.0/lib/coq/../coq-core/plugins/rtauto -I /home/bench/.opam/ocaml-base-compiler.5.0.0/lib/coq/../coq-core/plugins/ssreflect -I /home/bench/.opam/ocaml-base-compiler.5.0.0/lib/coq/../coq-core/plugins/ssrmatching -I /home/bench/.opam/ocaml-base-compiler.5.0.0/lib/coq/../coq-core/plugins/tauto -I /home/bench/.opam/ocaml-base-compiler.5.0.0/lib/coq/../coq-core/plugins/tutorial/p0 -I /home/bench/.opam/ocaml-base-compiler.5.0.0/lib/coq/../coq-core/plugins/tutorial/p1 -I /home/bench/.opam/ocaml-base-compiler.5.0.0/lib/coq/../coq-core/plugins/tutorial/p2 -I /home/bench/.opam/ocaml-base-compiler.5.0.0/lib/coq/../coq-core/plugins/tutorial/p3 -I /home/bench/.opam/ocaml-base-compiler.5.0.0/lib/coq/../coq-core/plugins/zify -R /home/bench/.opam/ocaml-base-compiler.5.0.0/lib/coq/theories Coq -R theories/ordinals hydras theories/ordinals/Prelude/Merge_Sort.v)
-- File &quot;./theories/ordinals/Prelude/Merge_Sort.v&quot;, line 6, characters 0-144:
-- Error: Cannot find a physical path bound to logical path
-- Div2 with prefix Coq.
-- 
-[ERROR] The compilation of coq-hydra-battles.0.4 failed at &quot;dune build -p coq-hydra-battles -j 4&quot;.
-#=== ERROR while compiling coq-hydra-battles.0.4 ==============================#
-# context              2.1.5 | linux/x86_64 | ocaml-base-compiler.5.0.0 | file:///home/bench/run/opam-coq-archive/released
-# path                 ~/.opam/ocaml-base-compiler.5.0.0/.opam-switch/build/coq-hydra-battles.0.4
-# command              ~/.opam/opam-init/hooks/sandbox.sh build dune build -p coq-hydra-battles -j 4
-# exit-code            1
-# env-file             ~/.opam/log/coq-hydra-battles-19066-33eafa.env
-# output-file          ~/.opam/log/coq-hydra-battles-19066-33eafa.out
+-&gt; retrieved coq-equations.dev  (git+https://github.com/mattam82/Coq-Equations#main)
+[ERROR] The compilation of coq-equations.dev failed at &quot;make -j4&quot;.
+#=== ERROR while compiling coq-equations.dev ==================================#
+# context              2.1.5 | linux/x86_64 | ocaml-base-compiler.5.0.0 | file:///home/bench/run/opam-coq-archive/extra-dev
+# path                 ~/.opam/ocaml-base-compiler.5.0.0/.opam-switch/build/coq-equations.dev
+# command              ~/.opam/opam-init/hooks/sandbox.sh build make -j4
+# exit-code            2
+# env-file             ~/.opam/log/coq-equations-7851-9fad61.env
+# output-file          ~/.opam/log/coq-equations-7851-9fad61.out
 ### output ###
 # [...]
-# File &quot;./theories/ordinals/Ackermann/primRecbuggy.v&quot;, line 15, characters 0-43:
-# Error: Cannot find a physical path bound to logical path Even.
-# 
-# (cd _build/default &amp;&amp; /home/bench/.opam/ocaml-base-compiler.5.0.0/bin/coqc -q -I /home/bench/.opam/ocaml-base-compiler.5.0.0/lib/coq/../coq-core/plugins/btauto -I /home/bench/.opam/ocaml-base-compiler.5.0.0/lib/coq/../coq-core/plugins/cc -I /home/bench/.opam/ocaml-base-compiler.5.0.0/lib/coq/../coq-core/plugins/derive -I /home/bench/.opam/ocaml-base-compiler.5.0.0/lib/coq/../coq-core/plugins/[...]
-# File &quot;./theories/ordinals/Schutte/GRelations.v&quot;, line 7, characters 0-53:
-# Error: Cannot find a physical path bound to logical path Le with prefix Coq.
-# 
-# (cd _build/default &amp;&amp; /home/bench/.opam/ocaml-base-compiler.5.0.0/bin/coqc -q -I /home/bench/.opam/ocaml-base-compiler.5.0.0/lib/coq/../coq-core/plugins/btauto -I /home/bench/.opam/ocaml-base-compiler.5.0.0/lib/coq/../coq-core/plugins/cc -I /home/bench/.opam/ocaml-base-compiler.5.0.0/lib/coq/../coq-core/plugins/derive -I /home/bench/.opam/ocaml-base-compiler.5.0.0/lib/coq/../coq-core/plugins/[...]
-# File &quot;./theories/ordinals/Prelude/Merge_Sort.v&quot;, line 6, characters 0-144:
-# Error: Cannot find a physical path bound to logical path
-# Div2 with prefix Coq.
-# 
+# CAMLOPT -c  src/principles.ml
+# CAMLOPT -c  src/equations.ml
+# CAMLOPT -c  src/g_equations.ml
+# CAMLOPT -a -o src/equations_plugin.cmxa
+# CAMLOPT -shared -o src/equations_plugin.cmxs
+# COQC theories/Init.v
+# Fatal error: Not enough heap memory to reserve minor heaps
+# Aborted (core dumped)
+# make[2]: *** [Makefile.coq:847: theories/Init.vo] Error 134
+# make[1]: *** [Makefile.coq:417: all] Error 2
+# make[1]: Leaving directory &#39;/home/bench/.opam/ocaml-base-compiler.5.0.0/.opam-switch/build/coq-equations.dev&#39;
+# make: *** [Makefile:6: all] Error 2
 &lt;&gt;&lt;&gt; Error report &lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;
 +- The following actions failed
-| - build coq-hydra-battles 0.4
+| - build coq-equations dev
 +- 
 - No changes have been performed
 # Run eval $(opam env) to update the current shell environment
-&#39;opam install -y -v coq-hydra-battles.0.4 coq.dev&#39; failed.
-The middle of the output is truncated (maximum 20000 characters)
 </pre></dd>
+            </dl>
+            <h2>Install 🚀</h2>
+            <dl class="dl-horizontal">
+              <dt>Command</dt>
+              <dd><code>true</code></dd>
+              <dt>Return code</dt>
+              <dd>0</dd>
+              <dt>Duration</dt>
+              <dd>0 s</dd>
             </dl>
             <h2>Installation size</h2>
             <p>No files were installed.</p>

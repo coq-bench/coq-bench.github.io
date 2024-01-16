@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>itree-extra: Error 🔥</title>
+    <title>itree-extra: Error with dependencies 🚒</title>
     <link rel="shortcut icon" type="image/png" href="../../../../../favicon.png" />
     <link href="../../../../../bootstrap.min.css" rel="stylesheet">
     <link href="../../../../../bootstrap-custom.css" rel="stylesheet">
@@ -39,10 +39,10 @@
               itree-extra
               <small>
                 5.1.0
-                <span class="label label-danger">Error 🔥</span>
+                <span class="label label-warning">Error with dependencies 🚒</span>
               </small>
             </h1>
-            <p>📅 <em><script>document.write(moment("2024-01-14 21:26:23 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2024-01-14 21:26:23 UTC)</em><p>
+            <p>📅 <em><script>document.write(moment("2024-01-16 02:04:22 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2024-01-16 02:04:22 UTC)</em><p>
             <h2>Context</h2>
             <pre># Packages matching: installed
 # Name                # Installed # Synopsis
@@ -56,7 +56,7 @@ coq                   dev         The Coq Proof Assistant
 coq-core              dev         The Coq Proof Assistant -- Core Binaries and Tools
 coq-stdlib            dev         The Coq Proof Assistant -- Standard Library
 coqide-server         dev         The Coq Proof Assistant, XML protocol server
-dune                  3.12.1      Fast, portable, and opinionated build system
+dune                  3.12.2      Fast, portable, and opinionated build system
 ocaml                 5.0.0       The OCaml compiler (virtual package)
 ocaml-base-compiler   5.0.0       Official release 5.0.0
 ocaml-config          3           OCaml Switch Configuration
@@ -121,20 +121,11 @@ url {
             <h2>Install dependencies</h2>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>opam list; echo; timeout 4h opam install -y --deps-only coq-itree-extra.5.1.0 coq.dev</code></dd>
-              <dt>Return code</dt>
-              <dd>0</dd>
-              <dt>Duration</dt>
-              <dd>3 m 16 s</dd>
-            </dl>
-            <h2>Install 🚀</h2>
-            <dl class="dl-horizontal">
-              <dt>Command</dt>
-              <dd><code>opam list; echo; timeout 4h opam install -y -v coq-itree-extra.5.1.0 coq.dev</code></dd>
+              <dd><code>opam list; echo; ulimit -Sv 4000000; timeout 4h opam install -y --deps-only coq-itree-extra.5.1.0 coq.dev</code></dd>
               <dt>Return code</dt>
               <dd>7936</dd>
               <dt>Duration</dt>
-              <dd>2 m 11 s</dd>
+              <dd>23 s</dd>
               <dt>Output</dt>
               <dd><pre># Packages matching: installed
 # Name                # Installed # Synopsis
@@ -146,150 +137,85 @@ base-unix             base
 conf-gmp              4           Virtual package relying on a GMP lib system installation
 coq                   dev         The Coq Proof Assistant
 coq-core              dev         The Coq Proof Assistant -- Core Binaries and Tools
-coq-ext-lib           dev         a library of Coq definitions, theorems, and tactics
-coq-itree             dev         A Library for Representing Recursive and Impure Programs in Coq
-coq-paco              dev         Coq library implementing parameterized coinduction
 coq-stdlib            dev         The Coq Proof Assistant -- Standard Library
 coqide-server         dev         The Coq Proof Assistant, XML protocol server
-dune                  3.12.1      Fast, portable, and opinionated build system
+dune                  3.12.2      Fast, portable, and opinionated build system
 ocaml                 5.0.0       The OCaml compiler (virtual package)
 ocaml-base-compiler   5.0.0       Official release 5.0.0
 ocaml-config          3           OCaml Switch Configuration
 ocaml-options-vanilla 1           Ensure that OCaml is compiled with no special options enabled
 ocamlfind             1.9.6       A library manager for OCaml
 zarith                1.13        Implements arithmetic and logical operations over arbitrary-precision integers
-[NOTE] Package coq is already installed (current version is dev).
 The following actions will be performed:
-  - install coq-itree-extra 5.1.0
+  - install coq-paco    dev
+  - install coq-ext-lib dev
+  - install coq-itree   dev
+===== 3 to install =====
 &lt;&gt;&lt;&gt; Processing actions &lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;
-Processing  1/3: [coq-itree-extra.5.1.0: http]
-Processing  1/3:
--&gt; retrieved coq-itree-extra.5.1.0  (https://github.com/DeepSpec/InteractionTrees/archive/5.1.0.tar.gz)
-Processing  2/3: [coq-itree-extra: ./fixup.sh]
-+ /home/bench/.opam/opam-init/hooks/sandbox.sh &quot;build&quot; &quot;./fixup.sh&quot; (CWD=/home/bench/.opam/ocaml-base-compiler.5.0.0/.opam-switch/build/coq-itree-extra.5.1.0)
-Processing  2/3: [coq-itree-extra: dune build]
-+ /home/bench/.opam/opam-init/hooks/sandbox.sh &quot;build&quot; &quot;dune&quot; &quot;build&quot; &quot;-p&quot; &quot;coq-itree-extra&quot; &quot;-j&quot; &quot;4&quot; &quot;@install&quot; (CWD=/home/bench/.opam/ocaml-base-compiler.5.0.0/.opam-switch/build/coq-itree-extra.5.1.0)
-- Warning: Coq Language Versions lower than 0.8 have been deprecated in Dune
-- 3.8 and will be removed in an upcoming Dune version.
-- (cd _build/default &amp;&amp; /home/bench/.opam/ocaml-base-compiler.5.0.0/bin/coqc -q -I /home/bench/.opam/ocaml-base-compiler.5.0.0/lib/coq/../coq-core/plugins/btauto -I /home/bench/.opam/ocaml-base-compiler.5.0.0/lib/coq/../coq-core/plugins/cc -I /home/bench/.opam/ocaml-base-compiler.5.0.0/lib/coq/../coq-core/plugins/derive -I /home/bench/.opam/ocaml-base-compiler.5.0.0/lib/coq/../coq-core/plugins/extraction -I /home/bench/.opam/ocaml-base-compiler.5.0.0/lib/coq/../coq-core/plugins/firstorder -I /home/bench/.opam/ocaml-base-compiler.5.0.0/lib/coq/../coq-core/plugins/funind -I /home/bench/.opam/ocaml-base-compiler.5.0.0/lib/coq/../coq-core/plugins/ltac -I /home/bench/.opam/ocaml-base-compiler.5.0.0/lib/coq/../coq-core/plugins/ltac2 -I /home/bench/.opam/ocaml-base-compiler.5.0.0/lib/coq/../coq-core/plugins/micromega -I /home/bench/.opam/ocaml-base-compiler.5.0.0/lib/coq/../coq-core/plugins/micromega_core -I /home/bench/.opam/ocaml-base-compiler.5.0.0/lib/coq/../coq-core/plugins/nsatz -I /home/bench/.opam/ocaml-base-compiler.5.0.0/lib/coq/../coq-core/plugins/number_string_notation -I /home/bench/.opam/ocaml-base-compiler.5.0.0/lib/coq/../coq-core/plugins/ring -I /home/bench/.opam/ocaml-base-compiler.5.0.0/lib/coq/../coq-core/plugins/rtauto -I /home/bench/.opam/ocaml-base-compiler.5.0.0/lib/coq/../coq-core/plugins/ssreflect -I /home/bench/.opam/ocaml-base-compiler.5.0.0/lib/coq/../coq-core/plugins/ssrmatching -I /home/bench/.opam/ocaml-base-compiler.5.0.0/lib/coq/../coq-core/plugins/tauto -I /home/bench/.opam/ocaml-base-compiler.5.0.0/lib/coq/../coq-core/plugins/tutorial/p0 -I /home/bench/.opam/ocaml-base-compiler.5.0.0/lib/coq/../coq-core/plugins/tutorial/p1 -I /home/bench/.opam/ocaml-base-compiler.5.0.0/lib/coq/../coq-core/plugins/tutorial/p2 -I /home/bench/.opam/ocaml-base-compiler.5.0.0/lib/coq/../coq-core/plugins/tutorial/p3 -I /home/bench/.opam/ocaml-base-compiler.5.0.0/lib/coq/../coq-core/plugins/zify -R /home/bench/.opam/ocaml-base-compiler.5.0.0/lib/coq/theories Coq -R extra ITree.Extra extra/ITrace/ITraceFacts.v)
-- File &quot;./extra/ITrace/ITraceFacts.v&quot;, line 417, characters 6-29:
-- Warning:
-- &quot;auto with *&quot; was used through the default &quot;intuition_solver&quot; tactic.
-- This will be replaced by just &quot;auto&quot; in the future.
-- [intuition-auto-with-star,deprecated-since-8.17,deprecated,default]
-- File &quot;./extra/ITrace/ITraceFacts.v&quot;, line 695, characters 61-71:
-- Warning:
-- &quot;auto with *&quot; was used through the default &quot;intuition_solver&quot; tactic.
-- This will be replaced by just &quot;auto&quot; in the future.
-- [intuition-auto-with-star,deprecated-since-8.17,deprecated,default]
-- (cd _build/default &amp;&amp; /home/bench/.opam/ocaml-base-compiler.5.0.0/bin/coqc -q -I /home/bench/.opam/ocaml-base-compiler.5.0.0/lib/coq/../coq-core/plugins/btauto -I /home/bench/.opam/ocaml-base-compiler.5.0.0/lib/coq/../coq-core/plugins/cc -I /home/bench/.opam/ocaml-base-compiler.5.0.0/lib/coq/../coq-core/plugins/derive -I /home/bench/.opam/ocaml-base-compiler.5.0.0/lib/coq/../coq-core/plugins/extraction -I /home/bench/.opam/ocaml-base-compiler.5.0.0/lib/coq/../coq-core/plugins/firstorder -I /home/bench/.opam/ocaml-base-compiler.5.0.0/lib/coq/../coq-core/plugins/funind -I /home/bench/.opam/ocaml-base-compiler.5.0.0/lib/coq/../coq-core/plugins/ltac -I /home/bench/.opam/ocaml-base-compiler.5.0.0/lib/coq/../coq-core/plugins/ltac2 -I /home/bench/.opam/ocaml-base-compiler.5.0.0/lib/coq/../coq-core/plugins/micromega -I /home/bench/.opam/ocaml-base-compiler.5.0.0/lib/coq/../coq-core/plugins/micromega_core -I /home/bench/.opam/ocaml-base-compiler.5.0.0/lib/coq/../coq-core/plugins/nsatz -I /home/bench/.opam/ocaml-base-compiler.5.0.0/lib/coq/../coq-core/plugins/number_string_notation -I /home/bench/.opam/ocaml-base-compiler.5.0.0/lib/coq/../coq-core/plugins/ring -I /home/bench/.opam/ocaml-base-compiler.5.0.0/lib/coq/../coq-core/plugins/rtauto -I /home/bench/.opam/ocaml-base-compiler.5.0.0/lib/coq/../coq-core/plugins/ssreflect -I /home/bench/.opam/ocaml-base-compiler.5.0.0/lib/coq/../coq-core/plugins/ssrmatching -I /home/bench/.opam/ocaml-base-compiler.5.0.0/lib/coq/../coq-core/plugins/tauto -I /home/bench/.opam/ocaml-base-compiler.5.0.0/lib/coq/../coq-core/plugins/tutorial/p0 -I /home/bench/.opam/ocaml-base-compiler.5.0.0/lib/coq/../coq-core/plugins/tutorial/p1 -I /home/bench/.opam/ocaml-base-compiler.5.0.0/lib/coq/../coq-core/plugins/tutorial/p2 -I /home/bench/.opam/ocaml-base-compiler.5.0.0/lib/coq/../coq-core/plugins/tutorial/p3 -I /home/bench/.opam/ocaml-base-compiler.5.0.0/lib/coq/../coq-core/plugins/zify -R /home/bench/.opam/ocaml-base-compiler.5.0.0/lib/coq/theories Coq -R extra ITree.Extra extra/Dijkstra/ITreeDijkstra.v)
-- File &quot;./extra/Dijkstra/ITreeDijkstra.v&quot;, line 253, characters 50-60:
-- Warning:
-- &quot;auto with *&quot; was used through the default &quot;intuition_solver&quot; tactic.
-- This will be replaced by just &quot;auto&quot; in the future.
-- [intuition-auto-with-star,deprecated-since-8.17,deprecated,default]
-- File &quot;./extra/Dijkstra/ITreeDijkstra.v&quot;, line 263, characters 37-60:
-- Warning:
-- &quot;auto with *&quot; was used through the default &quot;intuition_solver&quot; tactic.
-- This will be replaced by just &quot;auto&quot; in the future.
-- [intuition-auto-with-star,deprecated-since-8.17,deprecated,default]
-- File &quot;./extra/Dijkstra/ITreeDijkstra.v&quot;, line 545, characters 6-51:
-- Warning:
-- &quot;auto with *&quot; was used through the default &quot;intuition_solver&quot; tactic.
-- This will be replaced by just &quot;auto&quot; in the future.
-- [intuition-auto-with-star,deprecated-since-8.17,deprecated,default]
-- (cd _build/default &amp;&amp; /home/bench/.opam/ocaml-base-compiler.5.0.0/bin/coqc -q -I /home/bench/.opam/ocaml-base-compiler.5.0.0/lib/coq/../coq-core/plugins/btauto -I /home/bench/.opam/ocaml-base-compiler.5.0.0/lib/coq/../coq-core/plugins/cc -I /home/bench/.opam/ocaml-base-compiler.5.0.0/lib/coq/../coq-core/plugins/derive -I /home/bench/.opam/ocaml-base-compiler.5.0.0/lib/coq/../coq-core/plugins/extraction -I /home/bench/.opam/ocaml-base-compiler.5.0.0/lib/coq/../coq-core/plugins/firstorder -I /home/bench/.opam/ocaml-base-compiler.5.0.0/lib/coq/../coq-core/plugins/funind -I /home/bench/.opam/ocaml-base-compiler.5.0.0/lib/coq/../coq-core/plugins/ltac -I /home/bench/.opam/ocaml-base-compiler.5.0.0/lib/coq/../coq-core/plugins/ltac2 -I /home/bench/.opam/ocaml-base-compiler.5.0.0/lib/coq/../coq-core/plugins/micromega -I /home/bench/.opam/ocaml-base-compiler.5.0.0/lib/coq/../coq-core/plugins/micromega_core -I /home/bench/.opam/ocaml-base-compiler.5.0.0/lib/coq/../coq-core/plugins/nsatz -I /home/bench/.opam/ocaml-base-compiler.5.0.0/lib/coq/../coq-core/plugins/number_string_notation -I /home/bench/.opam/ocaml-base-compiler.5.0.0/lib/coq/../coq-core/plugins/ring -I /home/bench/.opam/ocaml-base-compiler.5.0.0/lib/coq/../coq-core/plugins/rtauto -I /home/bench/.opam/ocaml-base-compiler.5.0.0/lib/coq/../coq-core/plugins/ssreflect -I /home/bench/.opam/ocaml-base-compiler.5.0.0/lib/coq/../coq-core/plugins/ssrmatching -I /home/bench/.opam/ocaml-base-compiler.5.0.0/lib/coq/../coq-core/plugins/tauto -I /home/bench/.opam/ocaml-base-compiler.5.0.0/lib/coq/../coq-core/plugins/tutorial/p0 -I /home/bench/.opam/ocaml-base-compiler.5.0.0/lib/coq/../coq-core/plugins/tutorial/p1 -I /home/bench/.opam/ocaml-base-compiler.5.0.0/lib/coq/../coq-core/plugins/tutorial/p2 -I /home/bench/.opam/ocaml-base-compiler.5.0.0/lib/coq/../coq-core/plugins/tutorial/p3 -I /home/bench/.opam/ocaml-base-compiler.5.0.0/lib/coq/../coq-core/plugins/zify -R /home/bench/.opam/ocaml-base-compiler.5.0.0/lib/coq/theories Coq -R extra ITree.Extra extra/ITrace/ITracePrefix.v)
-- File &quot;./extra/ITrace/ITracePrefix.v&quot;, line 246, characters 61-71:
-- Warning:
-- &quot;auto with *&quot; was used through the default &quot;intuition_solver&quot; tactic.
-- This will be replaced by just &quot;auto&quot; in the future.
-- [intuition-auto-with-star,deprecated-since-8.17,deprecated,default]
-- (cd _build/default &amp;&amp; /home/bench/.opam/ocaml-base-compiler.5.0.0/bin/coqc -q -I /home/bench/.opam/ocaml-base-compiler.5.0.0/lib/coq/../coq-core/plugins/btauto -I /home/bench/.opam/ocaml-base-compiler.5.0.0/lib/coq/../coq-core/plugins/cc -I /home/bench/.opam/ocaml-base-compiler.5.0.0/lib/coq/../coq-core/plugins/derive -I /home/bench/.opam/ocaml-base-compiler.5.0.0/lib/coq/../coq-core/plugins/extraction -I /home/bench/.opam/ocaml-base-compiler.5.0.0/lib/coq/../coq-core/plugins/firstorder -I /home/bench/.opam/ocaml-base-compiler.5.0.0/lib/coq/../coq-core/plugins/funind -I /home/bench/.opam/ocaml-base-compiler.5.0.0/lib/coq/../coq-core/plugins/ltac -I /home/bench/.opam/ocaml-base-compiler.5.0.0/lib/coq/../coq-core/plugins/ltac2 -I /home/bench/.opam/ocaml-base-compiler.5.0.0/lib/coq/../coq-core/plugins/micromega -I /home/bench/.opam/ocaml-base-compiler.5.0.0/lib/coq/../coq-core/plugins/micromega_core -I /home/bench/.opam/ocaml-base-compiler.5.0.0/lib/coq/../coq-core/plugins/nsatz -I /home/bench/.opam/ocaml-base-compiler.5.0.0/lib/coq/../coq-core/plugins/number_string_notation -I /home/bench/.opam/ocaml-base-compiler.5.0.0/lib/coq/../coq-core/plugins/ring -I /home/bench/.opam/ocaml-base-compiler.5.0.0/lib/coq/../coq-core/plugins/rtauto -I /home/bench/.opam/ocaml-base-compiler.5.0.0/lib/coq/../coq-core/plugins/ssreflect -I /home/bench/.opam/ocaml-base-compiler.5.0.0/lib/coq/../coq-core/plugins/ssrmatching -I /home/bench/.opam/ocaml-base-compiler.5.0.0/lib/coq/../coq-core/plugins/tauto -I /home/bench/.opam/ocaml-base-compiler.5.0.0/lib/coq/../coq-core/plugins/tutorial/p0 -I /home/bench/.opam/ocaml-base-compiler.5.0.0/lib/coq/../coq-core/plugins/tutorial/p1 -I /home/bench/.opam/ocaml-base-compiler.5.0.0/lib/coq/../coq-core/plugins/tutorial/p2 -I /home/bench/.opam/ocaml-base-compiler.5.0.0/lib/coq/../coq-core/plugins/tutorial/p3 -I /home/bench/.opam/ocaml-base-compiler.5.0.0/lib/coq/../coq-core/plugins/zify -R /home/bench/.opam/ocaml-base-compiler.5.0.0/lib/coq/theories Coq -R extra ITree.Extra extra/ITrace/ITraceBind.v)
-- File &quot;./extra/ITrace/ITraceBind.v&quot;, line 278, characters 12-57:
-- Warning:
-- &quot;auto with *&quot; was used through the default &quot;intuition_solver&quot; tactic.
-- This will be replaced by just &quot;auto&quot; in the future.
-- [intuition-auto-with-star,deprecated-since-8.17,deprecated,default]
-- File &quot;./extra/ITrace/ITraceBind.v&quot;, line 292, characters 35-80:
-- Warning:
-- &quot;auto with *&quot; was used through the default &quot;intuition_solver&quot; tactic.
-- This will be replaced by just &quot;auto&quot; in the future.
-- [intuition-auto-with-star,deprecated-since-8.17,deprecated,default]
-- File &quot;./extra/ITrace/ITraceBind.v&quot;, line 523, characters 10-55:
-- Warning:
-- &quot;auto with *&quot; was used through the default &quot;intuition_solver&quot; tactic.
-- This will be replaced by just &quot;auto&quot; in the future.
-- [intuition-auto-with-star,deprecated-since-8.17,deprecated,default]
-- File &quot;./extra/ITrace/ITraceBind.v&quot;, line 525, characters 10-55:
-- Warning:
-- &quot;auto with *&quot; was used through the default &quot;intuition_solver&quot; tactic.
-- This will be replaced by just &quot;auto&quot; in the future.
-- [intuition-auto-with-star,deprecated-since-8.17,deprecated,default]
-- File &quot;./extra/ITrace/ITraceBind.v&quot;, line 537, characters 21-56:
-- Warning:
-- &quot;auto with *&quot; was used through the default &quot;intuition_solver&quot; tactic.
-- This will be replaced by just &quot;auto&quot; in the future.
-- [intuition-auto-with-star,deprecated-since-8.17,deprecated,default]
-- File &quot;./extra/ITrace/ITraceBind.v&quot;, line 538, characters 29-64:
-- Warning:
-- &quot;auto with *&quot; was used through the default &quot;intuition_solver&quot; tactic.
-- This will be replaced by just &quot;auto&quot; in the future.
-- [intuition-auto-with-star,deprecated-since-8.17,deprecated,default]
-- File &quot;./extra/ITrace/ITraceBind.v&quot;, line 576, characters 36-71:
-- Warning:
-- &quot;auto with *&quot; was used through the default &quot;intuition_solver&quot; tactic.
-- This will be replaced by just &quot;auto&quot; in the future.
-- [intuition-auto-with-star,deprecated-since-8.17,deprecated,default]
-- File &quot;./extra/ITrace/ITraceBind.v&quot;, line 578, characters 38-73:
-- Warning:
-- &quot;auto with *&quot; was used through the default &quot;intuition_solver&quot; tactic.
-- This will be replaced by just &quot;auto&quot; in the future.
-- [intuition-auto-with-star,deprecated-since-8.17,deprecated,default]
-- File &quot;./extra/ITrace/ITraceBind.v&quot;, line 660, characters 27-72:
-- Warning:
-- &quot;auto with *&quot; was used through the default &quot;intuition_solver&quot; tactic.
-- This will be replaced by just &quot;auto&quot; in the future.
-- [intuition-auto-with-star,deprecated-since-8.17,deprecated,default]
-- File &quot;./extra/ITrace/ITraceBind.v&quot;, line 670, characters 27-72:
-- Warning:
-- &quot;auto with *&quot; was used through the default &quot;intuition_solver&quot; tactic.
-- This will be replaced by just &quot;auto&quot; in the future.
-- [intuition-auto-with-star,deprecated-since-8.17,deprecated,default]
-- (cd _build/default &amp;&amp; /home/bench/.opam/ocaml-base-compiler.5.0.0/bin/coqc -q -I /home/bench/.opam/ocaml-base-compiler.5.0.0/lib/coq/../coq-core/plugins/btauto -I /home/bench/.opam/ocaml-base-compiler.5.0.0/lib/coq/../coq-core/plugins/cc -I /home/bench/.opam/ocaml-base-compiler.5.0.0/lib/coq/../coq-core/plugins/derive -I /home/bench/.opam/ocaml-base-compiler.5.0.0/lib/coq/../coq-core/plugins/extraction -I /home/bench/.opam/ocaml-base-compiler.5.0.0/lib/coq/../coq-core/plugins/firstorder -I /home/bench/.opam/ocaml-base-compiler.5.0.0/lib/coq/../coq-core/plugins/funind -I /home/bench/.opam/ocaml-base-compiler.5.0.0/lib/coq/../coq-core/plugins/ltac -I /home/bench/.opam/ocaml-base-compiler.5.0.0/lib/coq/../coq-core/plugins/ltac2 -I /home/bench/.opam/ocaml-base-compiler.5.0.0/lib/coq/../coq-core/plugins/micromega -I /home/bench/.opam/ocaml-base-compiler.5.0.0/lib/coq/../coq-core/plugins/micromega_core -I /home/bench/.opam/ocaml-base-compiler.5.0.0/lib/coq/../coq-core/plugins/nsatz -I /home/bench/.opam/ocaml-base-compiler.5.0.0/lib/coq/../coq-core/plugins/number_string_notation -I /home/bench/.opam/ocaml-base-compiler.5.0.0/lib/coq/../coq-core/plugins/ring -I /home/bench/.opam/ocaml-base-compiler.5.0.0/lib/coq/../coq-core/plugins/rtauto -I /home/bench/.opam/ocaml-base-compiler.5.0.0/lib/coq/../coq-core/plugins/ssreflect -I /home/bench/.opam/ocaml-base-compiler.5.0.0/lib/coq/../coq-core/plugins/ssrmatching -I /home/bench/.opam/ocaml-base-compiler.5.0.0/lib/coq/../coq-core/plugins/tauto -I /home/bench/.opam/ocaml-base-compiler.5.0.0/lib/coq/../coq-core/plugins/tutorial/p0 -I /home/bench/.opam/ocaml-base-compiler.5.0.0/lib/coq/../coq-core/plugins/tutorial/p1 -I /home/bench/.opam/ocaml-base-compiler.5.0.0/lib/coq/../coq-core/plugins/tutorial/p2 -I /home/bench/.opam/ocaml-base-compiler.5.0.0/lib/coq/../coq-core/plugins/tutorial/p3 -I /home/bench/.opam/ocaml-base-compiler.5.0.0/lib/coq/../coq-core/plugins/zify -R /home/bench/.opam/ocaml-base-compiler.5.0.0/lib/coq/theories Coq -R extra ITree.Extra extra/Dijkstra/StateIOTrace.v)
-- File &quot;./extra/Dijkstra/StateIOTrace.v&quot;, line 44, characters 55-71:
-- Error: The variable string_dec_sound was not found in the current
-- environment.
-- 
-[ERROR] The compilation of coq-itree-extra.5.1.0 failed at &quot;dune build -p coq-itree-extra -j 4 @install&quot;.
-#=== ERROR while compiling coq-itree-extra.5.1.0 ==============================#
-# context              2.1.5 | linux/x86_64 | ocaml-base-compiler.5.0.0 | file:///home/bench/run/opam-coq-archive/released
-# path                 ~/.opam/ocaml-base-compiler.5.0.0/.opam-switch/build/coq-itree-extra.5.1.0
-# command              ~/.opam/opam-init/hooks/sandbox.sh build dune build -p coq-itree-extra -j 4 @install
-# exit-code            1
-# env-file             ~/.opam/log/coq-itree-extra-3642-b3dfd3.env
-# output-file          ~/.opam/log/coq-itree-extra-3642-b3dfd3.out
+-&gt; retrieved coq-itree.dev  (git+https://github.com/DeepSpec/InteractionTrees)
+-&gt; retrieved coq-paco.dev  (git+https://github.com/snu-sf/paco.git#master)
+[ERROR] The compilation of coq-paco.dev failed at &quot;make -C src all -j4&quot;.
+-&gt; retrieved coq-ext-lib.dev  (git+https://github.com/coq-community/coq-ext-lib#master)
+[ERROR] The compilation of coq-ext-lib.dev failed at &quot;make -j4 theories&quot;.
+#=== ERROR while compiling coq-paco.dev =======================================#
+# context              2.1.5 | linux/x86_64 | ocaml-base-compiler.5.0.0 | file:///home/bench/run/opam-coq-archive/extra-dev
+# path                 ~/.opam/ocaml-base-compiler.5.0.0/.opam-switch/build/coq-paco.dev
+# command              ~/.opam/opam-init/hooks/sandbox.sh build make -C src all -j4
+# exit-code            2
+# env-file             ~/.opam/log/coq-paco-10807-398fc9.env
+# output-file          ~/.opam/log/coq-paco-10807-398fc9.out
 ### output ###
 # [...]
-# This will be replaced by just &quot;auto&quot; in the future.
-# [intuition-auto-with-star,deprecated-since-8.17,deprecated,default]
-# File &quot;./extra/ITrace/ITraceBind.v&quot;, line 670, characters 27-72:
-# Warning:
-# &quot;auto with *&quot; was used through the default &quot;intuition_solver&quot; tactic.
-# This will be replaced by just &quot;auto&quot; in the future.
-# [intuition-auto-with-star,deprecated-since-8.17,deprecated,default]
-# (cd _build/default &amp;&amp; /home/bench/.opam/ocaml-base-compiler.5.0.0/bin/coqc -q -I /home/bench/.opam/ocaml-base-compiler.5.0.0/lib/coq/../coq-core/plugins/btauto -I /home/bench/.opam/ocaml-base-compiler.5.0.0/lib/coq/../coq-core/plugins/cc -I /home/bench/.opam/ocaml-base-compiler.5.0.0/lib/coq/../coq-core/plugins/derive -I /home/bench/.opam/ocaml-base-compiler.5.0.0/lib/coq/../coq-core/plugins/[...]
-# File &quot;./extra/Dijkstra/StateIOTrace.v&quot;, line 44, characters 55-71:
-# Error: The variable string_dec_sound was not found in the current
-# environment.
-# 
+# W: This Makefile was generated by Coq 8.20+alpha
+# W: while the current Coq version is 
+# Fatal error: Not enough heap memory to reserve minor heaps
+# Aborted (core dumped)
+# COQC paconotation.v
+# Fatal error: Not enough heap memory to reserve minor heaps
+# Aborted (core dumped)
+# make[2]: *** [Makefile.coq:847: paconotation.vo] Error 134
+# make[1]: *** [Makefile.coq:417: all] Error 2
+# make[1]: Leaving directory &#39;/home/bench/.opam/ocaml-base-compiler.5.0.0/.opam-switch/build/coq-paco.dev/src&#39;
+# make: *** [Makefile:8: all] Error 2
+# make: Leaving directory &#39;/home/bench/.opam/ocaml-base-compiler.5.0.0/.opam-switch/build/coq-paco.dev/src&#39;
+#=== ERROR while compiling coq-ext-lib.dev ====================================#
+# context              2.1.5 | linux/x86_64 | ocaml-base-compiler.5.0.0 | file:///home/bench/run/opam-coq-archive/extra-dev
+# path                 ~/.opam/ocaml-base-compiler.5.0.0/.opam-switch/build/coq-ext-lib.dev
+# command              ~/.opam/opam-init/hooks/sandbox.sh build make -j4 theories
+# exit-code            2
+# env-file             ~/.opam/log/coq-ext-lib-10807-7866f6.env
+# output-file          ~/.opam/log/coq-ext-lib-10807-7866f6.out
+### output ###
+# [...]
+# Aborted
+# make[2]: *** [Makefile.coq:847: theories/Tactics/Injection.vo] Error 134
+# make[2]: *** Waiting for unfinished jobs....
+# Aborted (core dumped)
+# make[2]: *** [Makefile.coq:847: theories/Core/RelDec.vo] Error 134
+# Aborted (core dumped)
+# make[2]: *** [Makefile.coq:847: theories/Core/Any.vo] Error 134
+# Aborted
+# make[2]: *** [Makefile.coq:847: theories/Tactics/Forward.vo] Error 134
+# make[1]: *** [Makefile.coq:417: all] Error 2
+# make[1]: Leaving directory &#39;/home/bench/.opam/ocaml-base-compiler.5.0.0/.opam-switch/build/coq-ext-lib.dev&#39;
+# make: *** [Makefile:8: theories] Error 2
 &lt;&gt;&lt;&gt; Error report &lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;
 +- The following actions failed
-| - build coq-itree-extra 5.1.0
+| - build coq-ext-lib dev
+| - build coq-paco    dev
 +- 
 - No changes have been performed
 # Run eval $(opam env) to update the current shell environment
-&#39;opam install -y -v coq-itree-extra.5.1.0 coq.dev&#39; failed.
 </pre></dd>
+            </dl>
+            <h2>Install 🚀</h2>
+            <dl class="dl-horizontal">
+              <dt>Command</dt>
+              <dd><code>true</code></dd>
+              <dt>Return code</dt>
+              <dd>0</dd>
+              <dt>Duration</dt>
+              <dd>0 s</dd>
             </dl>
             <h2>Installation size</h2>
             <p>No files were installed.</p>

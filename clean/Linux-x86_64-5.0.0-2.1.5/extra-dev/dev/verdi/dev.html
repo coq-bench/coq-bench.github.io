@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>verdi: 2 m 2 s 🏆</title>
+    <title>verdi: Error with dependencies 🚒</title>
     <link rel="shortcut icon" type="image/png" href="../../../../../favicon.png" />
     <link href="../../../../../bootstrap.min.css" rel="stylesheet">
     <link href="../../../../../bootstrap-custom.css" rel="stylesheet">
@@ -39,10 +39,10 @@
               verdi
               <small>
                 dev
-                <span class="label label-success">2 m 2 s 🏆</span>
+                <span class="label label-warning">Error with dependencies 🚒</span>
               </small>
             </h1>
-            <p>📅 <em><script>document.write(moment("2024-01-14 21:26:23 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2024-01-14 21:26:23 UTC)</em><p>
+            <p>📅 <em><script>document.write(moment("2024-01-16 02:04:22 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2024-01-16 02:04:22 UTC)</em><p>
             <h2>Context</h2>
             <pre># Packages matching: installed
 # Name                # Installed # Synopsis
@@ -56,7 +56,7 @@ coq                   dev         The Coq Proof Assistant
 coq-core              dev         The Coq Proof Assistant -- Core Binaries and Tools
 coq-stdlib            dev         The Coq Proof Assistant -- Standard Library
 coqide-server         dev         The Coq Proof Assistant, XML protocol server
-dune                  3.12.1      Fast, portable, and opinionated build system
+dune                  3.12.2      Fast, portable, and opinionated build system
 ocaml                 5.0.0       The OCaml compiler (virtual package)
 ocaml-base-compiler   5.0.0       Official release 5.0.0
 ocaml-config          3           OCaml Switch Configuration
@@ -131,149 +131,108 @@ url {
             <h2>Install dependencies</h2>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>opam list; echo; timeout 4h opam install -y --deps-only coq-verdi.dev coq.dev</code></dd>
+              <dd><code>opam list; echo; ulimit -Sv 4000000; timeout 4h opam install -y --deps-only coq-verdi.dev coq.dev</code></dd>
               <dt>Return code</dt>
-              <dd>0</dd>
+              <dd>7936</dd>
               <dt>Duration</dt>
-              <dd>1 m 11 s</dd>
+              <dd>19 s</dd>
+              <dt>Output</dt>
+              <dd><pre># Packages matching: installed
+# Name                # Installed # Synopsis
+base-bigarray         base
+base-domains          base
+base-nnp              base        Naked pointers prohibited in the OCaml heap
+base-threads          base
+base-unix             base
+conf-gmp              4           Virtual package relying on a GMP lib system installation
+coq                   dev         The Coq Proof Assistant
+coq-core              dev         The Coq Proof Assistant -- Core Binaries and Tools
+coq-stdlib            dev         The Coq Proof Assistant -- Standard Library
+coqide-server         dev         The Coq Proof Assistant, XML protocol server
+dune                  3.12.2      Fast, portable, and opinionated build system
+ocaml                 5.0.0       The OCaml compiler (virtual package)
+ocaml-base-compiler   5.0.0       Official release 5.0.0
+ocaml-config          3           OCaml Switch Configuration
+ocaml-options-vanilla 1           Ensure that OCaml is compiled with no special options enabled
+ocamlfind             1.9.6       A library manager for OCaml
+zarith                1.13        Implements arithmetic and logical operations over arbitrary-precision integers
+The following actions will be performed:
+  - install coq-struct-tact dev
+  - install coq-inf-seq-ext dev
+  - install coq-cheerios    dev
+===== 3 to install =====
+&lt;&gt;&lt;&gt; Processing actions &lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;
+-&gt; retrieved coq-struct-tact.dev  (git+https://github.com/uwplse/StructTact.git#master)
+-&gt; retrieved coq-inf-seq-ext.dev  (git+https://github.com/DistributedComponents/InfSeqExt.git#master)
+-&gt; retrieved coq-cheerios.dev  (git+https://github.com/uwplse/cheerios.git#master)
+[ERROR] The compilation of coq-struct-tact.dev failed at &quot;make -j4&quot;.
+[ERROR] The compilation of coq-inf-seq-ext.dev failed at &quot;make -j4&quot;.
+#=== ERROR while compiling coq-struct-tact.dev ================================#
+# context              2.1.5 | linux/x86_64 | ocaml-base-compiler.5.0.0 | file:///home/bench/run/opam-coq-archive/extra-dev
+# path                 ~/.opam/ocaml-base-compiler.5.0.0/.opam-switch/build/coq-struct-tact.dev
+# command              ~/.opam/opam-init/hooks/sandbox.sh build make -j4
+# exit-code            2
+# env-file             ~/.opam/log/coq-struct-tact-26331-796fd1.env
+# output-file          ~/.opam/log/coq-struct-tact-26331-796fd1.out
+### output ###
+# [...]
+# Aborted (core dumped)
+# W: This Makefile was generated by Coq 8.20+alpha
+# W: while the current Coq version is 
+# Fatal error: Not enough heap memory to reserve minor heaps
+# Aborted (core dumped)
+# COQC theories/StructTactics.v
+# Fatal error: Not enough heap memory to reserve minor heaps
+# Aborted (core dumped)
+# make[2]: *** [Makefile.coq:847: theories/StructTactics.vo] Error 134
+# make[1]: *** [Makefile.coq:417: all] Error 2
+# make[1]: Leaving directory &#39;/home/bench/.opam/ocaml-base-compiler.5.0.0/.opam-switch/build/coq-struct-tact.dev&#39;
+# make: *** [Makefile:2: all] Error 2
+#=== ERROR while compiling coq-inf-seq-ext.dev ================================#
+# context              2.1.5 | linux/x86_64 | ocaml-base-compiler.5.0.0 | file:///home/bench/run/opam-coq-archive/extra-dev
+# path                 ~/.opam/ocaml-base-compiler.5.0.0/.opam-switch/build/coq-inf-seq-ext.dev
+# command              ~/.opam/opam-init/hooks/sandbox.sh build make -j4
+# exit-code            2
+# env-file             ~/.opam/log/coq-inf-seq-ext-26331-00957f.env
+# output-file          ~/.opam/log/coq-inf-seq-ext-26331-00957f.out
+### output ###
+# [...]
+# Aborted (core dumped)
+# W: This Makefile was generated by Coq 8.20+alpha
+# W: while the current Coq version is 
+# Fatal error: Not enough heap memory to reserve minor heaps
+# Aborted (core dumped)
+# COQC theories/infseq.v
+# Fatal error: Not enough heap memory to reserve minor heaps
+# Aborted (core dumped)
+# make[2]: *** [Makefile.coq:847: theories/infseq.vo] Error 134
+# make[1]: *** [Makefile.coq:417: all] Error 2
+# make[1]: Leaving directory &#39;/home/bench/.opam/ocaml-base-compiler.5.0.0/.opam-switch/build/coq-inf-seq-ext.dev&#39;
+# make: *** [Makefile:2: all] Error 2
+&lt;&gt;&lt;&gt; Error report &lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;
++- The following actions failed
+| - build coq-inf-seq-ext dev
+| - build coq-struct-tact dev
++- 
+- No changes have been performed
+# Run eval $(opam env) to update the current shell environment
+</pre></dd>
             </dl>
             <h2>Install 🚀</h2>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>opam list; echo; timeout 4h opam install -y coq-verdi.dev coq.dev</code></dd>
+              <dd><code>true</code></dd>
               <dt>Return code</dt>
               <dd>0</dd>
               <dt>Duration</dt>
-              <dd>2 m 2 s</dd>
+              <dd>0 s</dd>
             </dl>
             <h2>Installation size</h2>
-            <p>Total: 10 M</p>
-            <ul>
-              <li>1 M <code>../ocaml-base-compiler.5.0.0/lib/coq/user-contrib/Verdi/Systems/LiveLockServ.vo</code></li>
-              <li>907 K <code>../ocaml-base-compiler.5.0.0/lib/coq/user-contrib/Verdi/Systems/PrimaryBackup.vo</code></li>
-              <li>651 K <code>../ocaml-base-compiler.5.0.0/lib/coq/user-contrib/Verdi/Core/PartialMapExecutionSimulations.vo</code></li>
-              <li>642 K <code>../ocaml-base-compiler.5.0.0/lib/coq/user-contrib/Verdi/Systems/LockServ.vo</code></li>
-              <li>519 K <code>../ocaml-base-compiler.5.0.0/lib/coq/user-contrib/Verdi/Core/TotalMapSimulations.vo</code></li>
-              <li>467 K <code>../ocaml-base-compiler.5.0.0/lib/coq/user-contrib/Verdi/Lib/FMapVeryWeak.vo</code></li>
-              <li>389 K <code>../ocaml-base-compiler.5.0.0/lib/coq/user-contrib/Verdi/Core/PartialMapSimulations.vo</code></li>
-              <li>299 K <code>../ocaml-base-compiler.5.0.0/lib/coq/user-contrib/Verdi/Systems/LiveLockServ.glob</code></li>
-              <li>277 K <code>../ocaml-base-compiler.5.0.0/lib/coq/user-contrib/Verdi/Core/TotalMapExecutionSimulations.vo</code></li>
-              <li>274 K <code>../ocaml-base-compiler.5.0.0/lib/coq/user-contrib/Verdi/Systems/SeqNumCorrect.vo</code></li>
-              <li>265 K <code>../ocaml-base-compiler.5.0.0/lib/coq/user-contrib/Verdi/Core/PartialExtendedMapSimulations.vo</code></li>
-              <li>221 K <code>../ocaml-base-compiler.5.0.0/lib/coq/user-contrib/Verdi/Core/TotalMapSimulations.glob</code></li>
-              <li>210 K <code>../ocaml-base-compiler.5.0.0/lib/coq/user-contrib/Verdi/Core/PartialMapSimulations.glob</code></li>
-              <li>201 K <code>../ocaml-base-compiler.5.0.0/lib/coq/user-contrib/Verdi/Core/LabeledNet.vo</code></li>
-              <li>195 K <code>../ocaml-base-compiler.5.0.0/lib/coq/user-contrib/Verdi/Systems/PrimaryBackup.glob</code></li>
-              <li>190 K <code>../ocaml-base-compiler.5.0.0/lib/coq/user-contrib/Verdi/Systems/VarD.vo</code></li>
-              <li>180 K <code>../ocaml-base-compiler.5.0.0/lib/coq/user-contrib/Verdi/Systems/LogCorrect.vo</code></li>
-              <li>176 K <code>../ocaml-base-compiler.5.0.0/lib/coq/user-contrib/Verdi/Systems/LockServ.glob</code></li>
-              <li>174 K <code>../ocaml-base-compiler.5.0.0/lib/coq/user-contrib/Verdi/Core/Net.vo</code></li>
-              <li>161 K <code>../ocaml-base-compiler.5.0.0/lib/coq/user-contrib/Verdi/Core/PartialMapExecutionSimulations.glob</code></li>
-              <li>158 K <code>../ocaml-base-compiler.5.0.0/lib/coq/user-contrib/Verdi/Core/Net.glob</code></li>
-              <li>137 K <code>../ocaml-base-compiler.5.0.0/lib/coq/user-contrib/Verdi/Systems/SerializedMsgParamsCorrect.vo</code></li>
-              <li>132 K <code>../ocaml-base-compiler.5.0.0/lib/coq/user-contrib/Verdi/Core/PartialExtendedMapSimulations.glob</code></li>
-              <li>131 K <code>../ocaml-base-compiler.5.0.0/lib/coq/user-contrib/Verdi/Systems/Counter.vo</code></li>
-              <li>120 K <code>../ocaml-base-compiler.5.0.0/lib/coq/user-contrib/Verdi/Core/LabeledNet.glob</code></li>
-              <li>118 K <code>../ocaml-base-compiler.5.0.0/lib/coq/user-contrib/Verdi/Core/GhostSimulations.vo</code></li>
-              <li>114 K <code>../ocaml-base-compiler.5.0.0/lib/coq/user-contrib/Verdi/Core/SingleSimulations.vo</code></li>
-              <li>109 K <code>../ocaml-base-compiler.5.0.0/lib/coq/user-contrib/Verdi/Systems/SerializedMsgParamsCorrect.glob</code></li>
-              <li>97 K <code>../ocaml-base-compiler.5.0.0/lib/coq/user-contrib/Verdi/Core/TotalMapExecutionSimulations.glob</code></li>
-              <li>90 K <code>../ocaml-base-compiler.5.0.0/lib/coq/user-contrib/Verdi/Core/StatePacketPacketDecomposition.vo</code></li>
-              <li>86 K <code>../ocaml-base-compiler.5.0.0/lib/coq/user-contrib/Verdi/Core/DynamicNetLemmas.vo</code></li>
-              <li>77 K <code>../ocaml-base-compiler.5.0.0/lib/coq/user-contrib/Verdi/Systems/LiveLockServ.v</code></li>
-              <li>77 K <code>../ocaml-base-compiler.5.0.0/lib/coq/user-contrib/Verdi/Core/GhostSimulations.glob</code></li>
-              <li>77 K <code>../ocaml-base-compiler.5.0.0/lib/coq/user-contrib/Verdi/Systems/SeqNumCorrect.glob</code></li>
-              <li>64 K <code>../ocaml-base-compiler.5.0.0/lib/coq/user-contrib/Verdi/Systems/VarDPrimaryBackup.vo</code></li>
-              <li>58 K <code>../ocaml-base-compiler.5.0.0/lib/coq/user-contrib/Verdi/Core/TotalMapSimulations.v</code></li>
-              <li>53 K <code>../ocaml-base-compiler.5.0.0/lib/coq/user-contrib/Verdi/Core/PartialMapSimulations.v</code></li>
-              <li>51 K <code>../ocaml-base-compiler.5.0.0/lib/coq/user-contrib/Verdi/Systems/Counter.glob</code></li>
-              <li>49 K <code>../ocaml-base-compiler.5.0.0/lib/coq/user-contrib/Verdi/Core/DupDropReordering.vo</code></li>
-              <li>47 K <code>../ocaml-base-compiler.5.0.0/lib/coq/user-contrib/Verdi/Systems/Log.vo</code></li>
-              <li>46 K <code>../ocaml-base-compiler.5.0.0/lib/coq/user-contrib/Verdi/Core/StatePacketPacketDecomposition.glob</code></li>
-              <li>45 K <code>../ocaml-base-compiler.5.0.0/lib/coq/user-contrib/Verdi/Systems/LogCorrect.glob</code></li>
-              <li>44 K <code>../ocaml-base-compiler.5.0.0/lib/coq/user-contrib/Verdi/Systems/VarD.glob</code></li>
-              <li>44 K <code>../ocaml-base-compiler.5.0.0/lib/coq/user-contrib/Verdi/Core/NameOverlay.vo</code></li>
-              <li>43 K <code>../ocaml-base-compiler.5.0.0/lib/coq/user-contrib/Verdi/Core/PartialMapExecutionSimulations.v</code></li>
-              <li>42 K <code>../ocaml-base-compiler.5.0.0/lib/coq/user-contrib/Verdi/Systems/SeqNum.vo</code></li>
-              <li>41 K <code>../ocaml-base-compiler.5.0.0/lib/coq/user-contrib/Verdi/Systems/PrimaryBackup.v</code></li>
-              <li>40 K <code>../ocaml-base-compiler.5.0.0/lib/coq/user-contrib/Verdi/Systems/LockServ.v</code></li>
-              <li>38 K <code>../ocaml-base-compiler.5.0.0/lib/coq/user-contrib/Verdi/Core/SingleSimulations.glob</code></li>
-              <li>32 K <code>../ocaml-base-compiler.5.0.0/lib/coq/user-contrib/Verdi/Core/TraceRelations.vo</code></li>
-              <li>32 K <code>../ocaml-base-compiler.5.0.0/lib/coq/user-contrib/Verdi/Systems/SerializedMsgParams.vo</code></li>
-              <li>32 K <code>../ocaml-base-compiler.5.0.0/lib/coq/user-contrib/Verdi/Core/PartialExtendedMapSimulations.v</code></li>
-              <li>32 K <code>../ocaml-base-compiler.5.0.0/lib/coq/user-contrib/Verdi/Core/InverseTraceRelations.vo</code></li>
-              <li>29 K <code>../ocaml-base-compiler.5.0.0/lib/coq/user-contrib/Verdi/Systems/SerializedMsgParamsCorrect.v</code></li>
-              <li>28 K <code>../ocaml-base-compiler.5.0.0/lib/coq/user-contrib/Verdi/Core/Net.v</code></li>
-              <li>26 K <code>../ocaml-base-compiler.5.0.0/lib/coq/user-contrib/Verdi/Systems/LockServSeqNum.vo</code></li>
-              <li>26 K <code>../ocaml-base-compiler.5.0.0/lib/coq/user-contrib/Verdi/Systems/SeqNumCorrect.v</code></li>
-              <li>22 K <code>../ocaml-base-compiler.5.0.0/lib/coq/user-contrib/Verdi/Core/LabeledNet.v</code></li>
-              <li>22 K <code>../ocaml-base-compiler.5.0.0/lib/coq/user-contrib/Verdi/Lib/FMapVeryWeak.glob</code></li>
-              <li>22 K <code>../ocaml-base-compiler.5.0.0/lib/coq/user-contrib/Verdi/Core/HandlerMonad.vo</code></li>
-              <li>22 K <code>../ocaml-base-compiler.5.0.0/lib/coq/user-contrib/Verdi/Core/TotalMapExecutionSimulations.v</code></li>
-              <li>22 K <code>../ocaml-base-compiler.5.0.0/lib/coq/user-contrib/Verdi/Core/Verdi.vo</code></li>
-              <li>22 K <code>../ocaml-base-compiler.5.0.0/lib/coq/user-contrib/Verdi/Extraction/ExtrOcamlDiskOp.vo</code></li>
-              <li>22 K <code>../ocaml-base-compiler.5.0.0/lib/coq/user-contrib/Verdi/Core/DupDropReordering.glob</code></li>
-              <li>21 K <code>../ocaml-base-compiler.5.0.0/lib/coq/user-contrib/Verdi/Core/VerdiHints.vo</code></li>
-              <li>20 K <code>../ocaml-base-compiler.5.0.0/lib/coq/user-contrib/Verdi/Extraction/ExtrOcamlFinInt.vo</code></li>
-              <li>18 K <code>../ocaml-base-compiler.5.0.0/lib/coq/user-contrib/Verdi/Core/GhostSimulations.v</code></li>
-              <li>17 K <code>../ocaml-base-compiler.5.0.0/lib/coq/user-contrib/Verdi/Systems/Log.glob</code></li>
-              <li>17 K <code>../ocaml-base-compiler.5.0.0/lib/coq/user-contrib/Verdi/Core/NameOverlay.glob</code></li>
-              <li>17 K <code>../ocaml-base-compiler.5.0.0/lib/coq/user-contrib/Verdi/Core/DynamicNetLemmas.glob</code></li>
-              <li>16 K <code>../ocaml-base-compiler.5.0.0/lib/coq/user-contrib/Verdi/Core/HandlerMonad.glob</code></li>
-              <li>14 K <code>../ocaml-base-compiler.5.0.0/lib/coq/user-contrib/Verdi/Core/StateMachineHandlerMonad.vo</code></li>
-              <li>13 K <code>../ocaml-base-compiler.5.0.0/lib/coq/user-contrib/Verdi/Systems/LogCorrect.v</code></li>
-              <li>12 K <code>../ocaml-base-compiler.5.0.0/lib/coq/user-contrib/Verdi/Systems/Counter.v</code></li>
-              <li>11 K <code>../ocaml-base-compiler.5.0.0/lib/coq/user-contrib/Verdi/Systems/SeqNum.glob</code></li>
-              <li>10 K <code>../ocaml-base-compiler.5.0.0/lib/coq/user-contrib/Verdi/Systems/VarD.v</code></li>
-              <li>9 K <code>../ocaml-base-compiler.5.0.0/lib/coq/user-contrib/Verdi/Extraction/ExtrOcamlNatIntExt.vo</code></li>
-              <li>9 K <code>../ocaml-base-compiler.5.0.0/lib/coq/user-contrib/Verdi/Systems/SerializedMsgParams.glob</code></li>
-              <li>9 K <code>../ocaml-base-compiler.5.0.0/lib/coq/user-contrib/Verdi/Extraction/ExtrOcamlList.vo</code></li>
-              <li>9 K <code>../ocaml-base-compiler.5.0.0/lib/coq/user-contrib/Verdi/Core/SingleSimulations.v</code></li>
-              <li>8 K <code>../ocaml-base-compiler.5.0.0/lib/coq/user-contrib/Verdi/Core/StateMachineHandlerMonad.glob</code></li>
-              <li>8 K <code>../ocaml-base-compiler.5.0.0/lib/coq/user-contrib/Verdi/Core/StatePacketPacketDecomposition.v</code></li>
-              <li>7 K <code>../ocaml-base-compiler.5.0.0/lib/coq/user-contrib/Verdi/Core/DynamicNetLemmas.v</code></li>
-              <li>7 K <code>../ocaml-base-compiler.5.0.0/lib/coq/user-contrib/Verdi/Systems/VarDPrimaryBackup.glob</code></li>
-              <li>6 K <code>../ocaml-base-compiler.5.0.0/lib/coq/user-contrib/Verdi/Core/DupDropReordering.v</code></li>
-              <li>5 K <code>../ocaml-base-compiler.5.0.0/lib/coq/user-contrib/Verdi/Core/TraceRelations.glob</code></li>
-              <li>5 K <code>../ocaml-base-compiler.5.0.0/lib/coq/user-contrib/Verdi/Lib/FMapVeryWeak.v</code></li>
-              <li>5 K <code>../ocaml-base-compiler.5.0.0/lib/coq/user-contrib/Verdi/Core/InverseTraceRelations.glob</code></li>
-              <li>4 K <code>../ocaml-base-compiler.5.0.0/lib/coq/user-contrib/Verdi/Core/NameOverlay.v</code></li>
-              <li>4 K <code>../ocaml-base-compiler.5.0.0/lib/coq/user-contrib/Verdi/Systems/Log.v</code></li>
-              <li>3 K <code>../ocaml-base-compiler.5.0.0/lib/coq/user-contrib/Verdi/Systems/LockServSeqNum.glob</code></li>
-              <li>3 K <code>../ocaml-base-compiler.5.0.0/lib/coq/user-contrib/Verdi/Systems/SerializedMsgParams.v</code></li>
-              <li>3 K <code>../ocaml-base-compiler.5.0.0/lib/coq/user-contrib/Verdi/Systems/VarDPrimaryBackup.v</code></li>
-              <li>3 K <code>../ocaml-base-compiler.5.0.0/lib/coq/user-contrib/Verdi/Systems/SeqNum.v</code></li>
-              <li>2 K <code>../ocaml-base-compiler.5.0.0/lib/coq/user-contrib/Verdi/Lib/Ssrexport.vo</code></li>
-              <li>2 K <code>../ocaml-base-compiler.5.0.0/lib/coq/user-contrib/Verdi/Extraction/ExtrOcamlBool.vo</code></li>
-              <li>2 K <code>../ocaml-base-compiler.5.0.0/lib/coq/user-contrib/Verdi/Core/HandlerMonad.v</code></li>
-              <li>2 K <code>../ocaml-base-compiler.5.0.0/lib/coq/user-contrib/Verdi/Extraction/ExtrOcamlBasicExt.vo</code></li>
-              <li>2 K <code>../ocaml-base-compiler.5.0.0/lib/coq/user-contrib/Verdi/Core/StateMachineHandlerMonad.v</code></li>
-              <li>1 K <code>../ocaml-base-compiler.5.0.0/lib/coq/user-contrib/Verdi/Core/TraceRelations.v</code></li>
-              <li>1 K <code>../ocaml-base-compiler.5.0.0/lib/coq/user-contrib/Verdi/Core/InverseTraceRelations.v</code></li>
-              <li>1 K <code>../ocaml-base-compiler.5.0.0/lib/coq/user-contrib/Verdi/Systems/LockServSeqNum.v</code></li>
-              <li>1 K <code>../ocaml-base-compiler.5.0.0/lib/coq/user-contrib/Verdi/Extraction/ExtrOcamlList.v</code></li>
-              <li>1 K <code>../ocaml-base-compiler.5.0.0/lib/coq/user-contrib/Verdi/Extraction/ExtrOcamlFinInt.v</code></li>
-              <li>1 K <code>../ocaml-base-compiler.5.0.0/lib/coq/user-contrib/Verdi/Core/Verdi.glob</code></li>
-              <li>1 K <code>../ocaml-base-compiler.5.0.0/lib/coq/user-contrib/Verdi/Extraction/ExtrOcamlNatIntExt.v</code></li>
-              <li>1 K <code>../ocaml-base-compiler.5.0.0/lib/coq/user-contrib/Verdi/Core/Verdi.v</code></li>
-              <li>1 K <code>../ocaml-base-compiler.5.0.0/lib/coq/user-contrib/Verdi/Extraction/ExtrOcamlNatIntExt.glob</code></li>
-              <li>1 K <code>../ocaml-base-compiler.5.0.0/lib/coq/user-contrib/Verdi/Extraction/ExtrOcamlBool.v</code></li>
-              <li>1 K <code>../ocaml-base-compiler.5.0.0/lib/coq/user-contrib/Verdi/Extraction/ExtrOcamlDiskOp.glob</code></li>
-              <li>1 K <code>../ocaml-base-compiler.5.0.0/lib/coq/user-contrib/Verdi/Extraction/ExtrOcamlDiskOp.v</code></li>
-              <li>1 K <code>../ocaml-base-compiler.5.0.0/lib/coq/user-contrib/Verdi/Extraction/ExtrOcamlFinInt.glob</code></li>
-              <li>1 K <code>../ocaml-base-compiler.5.0.0/lib/coq/user-contrib/Verdi/Lib/Ssrexport.v</code></li>
-              <li>1 K <code>../ocaml-base-compiler.5.0.0/lib/coq/user-contrib/Verdi/Extraction/ExtrOcamlList.glob</code></li>
-              <li>1 K <code>../ocaml-base-compiler.5.0.0/lib/coq/user-contrib/Verdi/Extraction/ExtrOcamlBool.glob</code></li>
-              <li>1 K <code>../ocaml-base-compiler.5.0.0/lib/coq/user-contrib/Verdi/Core/VerdiHints.v</code></li>
-              <li>1 K <code>../ocaml-base-compiler.5.0.0/lib/coq/user-contrib/Verdi/Extraction/ExtrOcamlBasicExt.glob</code></li>
-              <li>1 K <code>../ocaml-base-compiler.5.0.0/lib/coq/user-contrib/Verdi/Extraction/ExtrOcamlBasicExt.v</code></li>
-              <li>1 K <code>../ocaml-base-compiler.5.0.0/lib/coq/user-contrib/Verdi/Lib/Ssrexport.glob</code></li>
-              <li>1 K <code>../ocaml-base-compiler.5.0.0/lib/coq/user-contrib/Verdi/Core/VerdiHints.glob</code></li>
-            </ul>
+            <p>No files were installed.</p>
             <h2>Uninstall 🧹</h2>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>opam remove -y coq-verdi.dev</code></dd>
+              <dd><code>true</code></dd>
               <dt>Return code</dt>
               <dd>0</dd>
               <dt>Missing removes</dt>

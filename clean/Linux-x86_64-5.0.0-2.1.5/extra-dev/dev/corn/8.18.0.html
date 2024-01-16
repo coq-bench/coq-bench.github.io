@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>corn: Error 🔥</title>
+    <title>corn: Error with dependencies 🚒</title>
     <link rel="shortcut icon" type="image/png" href="../../../../../favicon.png" />
     <link href="../../../../../bootstrap.min.css" rel="stylesheet">
     <link href="../../../../../bootstrap-custom.css" rel="stylesheet">
@@ -39,10 +39,10 @@
               corn
               <small>
                 8.18.0
-                <span class="label label-danger">Error 🔥</span>
+                <span class="label label-warning">Error with dependencies 🚒</span>
               </small>
             </h1>
-            <p>📅 <em><script>document.write(moment("2024-01-14 21:26:23 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2024-01-14 21:26:23 UTC)</em><p>
+            <p>📅 <em><script>document.write(moment("2024-01-16 02:04:22 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2024-01-16 02:04:22 UTC)</em><p>
             <h2>Context</h2>
             <pre># Packages matching: installed
 # Name                # Installed # Synopsis
@@ -56,7 +56,7 @@ coq                   dev         The Coq Proof Assistant
 coq-core              dev         The Coq Proof Assistant -- Core Binaries and Tools
 coq-stdlib            dev         The Coq Proof Assistant -- Standard Library
 coqide-server         dev         The Coq Proof Assistant, XML protocol server
-dune                  3.12.1      Fast, portable, and opinionated build system
+dune                  3.12.2      Fast, portable, and opinionated build system
 ocaml                 5.0.0       The OCaml compiler (virtual package)
 ocaml-base-compiler   5.0.0       Official release 5.0.0
 ocaml-config          3           OCaml Switch Configuration
@@ -171,20 +171,11 @@ url {
             <h2>Install dependencies</h2>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>opam list; echo; timeout 4h opam install -y --deps-only coq-corn.8.18.0 coq.dev</code></dd>
-              <dt>Return code</dt>
-              <dd>0</dd>
-              <dt>Duration</dt>
-              <dd>3 m 43 s</dd>
-            </dl>
-            <h2>Install 🚀</h2>
-            <dl class="dl-horizontal">
-              <dt>Command</dt>
-              <dd><code>opam list; echo; timeout 8h opam install -y -v coq-corn.8.18.0 coq.dev</code></dd>
+              <dd><code>opam list; echo; ulimit -Sv 4000000; timeout 4h opam install -y --deps-only coq-corn.8.18.0 coq.dev</code></dd>
               <dt>Return code</dt>
               <dd>7936</dd>
               <dt>Duration</dt>
-              <dd>29 s</dd>
+              <dd>17 s</dd>
               <dt>Output</dt>
               <dd><pre># Packages matching: installed
 # Name                # Installed # Synopsis
@@ -195,202 +186,61 @@ base-threads          base
 base-unix             base
 conf-gmp              4           Virtual package relying on a GMP lib system installation
 coq                   dev         The Coq Proof Assistant
-coq-bignums           dev         Bignums, the Coq library of arbitrary large numbers
 coq-core              dev         The Coq Proof Assistant -- Core Binaries and Tools
-coq-math-classes      dev         A library of abstract interfaces for mathematical structures in Coq.
 coq-stdlib            dev         The Coq Proof Assistant -- Standard Library
 coqide-server         dev         The Coq Proof Assistant, XML protocol server
-dune                  3.12.1      Fast, portable, and opinionated build system
+dune                  3.12.2      Fast, portable, and opinionated build system
 ocaml                 5.0.0       The OCaml compiler (virtual package)
 ocaml-base-compiler   5.0.0       Official release 5.0.0
 ocaml-config          3           OCaml Switch Configuration
 ocaml-options-vanilla 1           Ensure that OCaml is compiled with no special options enabled
 ocamlfind             1.9.6       A library manager for OCaml
 zarith                1.13        Implements arithmetic and logical operations over arbitrary-precision integers
-[NOTE] Package coq is already installed (current version is dev).
 The following actions will be performed:
-  - install coq-corn 8.18.0
+  - install coq-bignums      dev
+  - install coq-math-classes dev
+===== 2 to install =====
 &lt;&gt;&lt;&gt; Processing actions &lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;
-Processing  1/3: [coq-corn.8.18.0: http]
-Processing  1/3:
--&gt; retrieved coq-corn.8.18.0  (https://github.com/coq-community/corn/archive/8.18.0.tar.gz)
-Processing  2/3: [coq-corn: ./configure.sh]
-+ /home/bench/.opam/opam-init/hooks/sandbox.sh &quot;build&quot; &quot;./configure.sh&quot; (CWD=/home/bench/.opam/ocaml-base-compiler.5.0.0/.opam-switch/build/coq-corn.8.18.0)
-Processing  2/3: [coq-corn: make]
-+ /home/bench/.opam/opam-init/hooks/sandbox.sh &quot;build&quot; &quot;make&quot; &quot;-j4&quot; (CWD=/home/bench/.opam/ocaml-base-compiler.5.0.0/.opam-switch/build/coq-corn.8.18.0)
-- COQDEP VFILES
-- Warning: in file logic/CLogic.v, library
--          Coq.Arith.Div2 is required and has not been found in the loadpath!
--          [module-not-found,filesystem,default]
-- Warning: in file logic/CornBasics.v, library
--          Coq.Arith.Even is required and has not been found in the loadpath!
--          [module-not-found,filesystem,default]
-- Warning: in file logic/CornBasics.v, library
--          Coq.Arith.Max is required and has not been found in the loadpath!
--          [module-not-found,filesystem,default]
-- Warning: in file logic/CornBasics.v, library
--          Coq.Arith.Min is required and has not been found in the loadpath!
--          [module-not-found,filesystem,default]
-- Warning: in file metric2/Compact.v, library
--          Coq.Arith.Div2 is required and has not been found in the loadpath!
--          [module-not-found,filesystem,default]
-- Warning: in file stdlib_omissions/Z.v, library
--          Coq.Numbers.Natural.Peano.NPeano is required and has not been found in the loadpath!
--          [module-not-found,filesystem,default]
-- Warning: in file util/Qsums.v, library
--          Coq.Numbers.Natural.Peano.NPeano is required and has not been found in the loadpath!
--          [module-not-found,filesystem,default]
-- Warning: in file ode/SimpleIntegration.v, library
--          Coq.Numbers.Natural.Peano.NPeano is required and has not been found in the loadpath!
--          [module-not-found,filesystem,default]
-- COQC tactics/CornTac.v
-- COQC stdlib_omissions/Pair.v
-- COQC tactics/Step.v
-- COQC algebra/RSetoid.v
-- COQC stdlib_omissions/P.v
-- COQC util/Container.v
-- File &quot;./algebra/RSetoid.v&quot;, line 28, characters 0-55:
-- Warning: Notation &quot;_ = _&quot; was already used in scope type_scope.
-- [notation-overridden,parsing,default]
-- File &quot;./algebra/RSetoid.v&quot;, line 28, characters 0-55:
-- Warning: Notation &quot;_ ≠ _&quot; was already used in scope type_scope.
-- [notation-overridden,parsing,default]
-- File &quot;./algebra/RSetoid.v&quot;, line 83, characters 0-88:
-- Warning: Declaring a scope implicitly is deprecated; use in advance an
-- explicit &quot;Declare Scope setoid_scope.&quot;.
-- [undeclared-scope,deprecated-since-8.10,deprecated,default]
-- COQC algebra/OperationClasses.v
-- File &quot;./util/Container.v&quot;, line 1, characters 0-54:
-- Warning: Notation &quot;_ = _&quot; was already used in scope type_scope.
-- [notation-overridden,parsing,default]
-- File &quot;./util/Container.v&quot;, line 1, characters 0-54:
-- Warning: Notation &quot;_ ≠ _&quot; was already used in scope type_scope.
-- [notation-overridden,parsing,default]
-- File &quot;./util/Container.v&quot;, line 4, characters 0-25:
-- Warning: Adding and removing hints in the core database implicitly is
-- deprecated. Please specify a hint database.
-- [implicit-core-hint-db,deprecated-since-8.10,deprecated,default]
-- COQC tactics/DiffTactics1.v
-- COQC logic/PropDecid.v
-- File &quot;./stdlib_omissions/P.v&quot;, line 37, characters 0-42:
-- Warning: Adding and removing hints in the core database implicitly is
-- deprecated. Please specify a hint database.
-- [implicit-core-hint-db,deprecated-since-8.10,deprecated,default]
-- COQC reals/fast/LazyNat.v
-- COQC reals/stdlib/ConstructiveDiagonal.v
-- COQC reals/stdlib/Markov.v
-- COQC stdlib_omissions/List.v
-- COQC order/PartialOrder.v
-- File &quot;./order/PartialOrder.v&quot;, line 55, characters 0-76:
-- Warning: Declaring a scope implicitly is deprecated; use in advance an
-- explicit &quot;Declare Scope po_scope.&quot;.
-- [undeclared-scope,deprecated-since-8.10,deprecated,default]
-- File &quot;./stdlib_omissions/List.v&quot;, line 30, characters 0-30:
-- Warning: Adding and removing hints in the core database implicitly is
-- deprecated. Please specify a hint database.
-- [implicit-core-hint-db,deprecated-since-8.10,deprecated,default]
-- File &quot;./stdlib_omissions/List.v&quot;, line 73, characters 2-12:
-- Warning:
-- &quot;auto with *&quot; was used through the default &quot;intuition_solver&quot; tactic.
-- This will be replaced by just &quot;auto&quot; in the future.
-- [intuition-auto-with-star,deprecated-since-8.17,deprecated,default]
-- File &quot;./stdlib_omissions/List.v&quot;, line 75, characters 1-11:
-- Warning:
-- &quot;auto with *&quot; was used through the default &quot;intuition_solver&quot; tactic.
-- This will be replaced by just &quot;auto&quot; in the future.
-- [intuition-auto-with-star,deprecated-since-8.17,deprecated,default]
-- File &quot;./stdlib_omissions/List.v&quot;, line 152, characters 0-31:
-- Warning: Adding and removing hints in the core database implicitly is
-- deprecated. Please specify a hint database.
-- [implicit-core-hint-db,deprecated-since-8.10,deprecated,default]
-- File &quot;./stdlib_omissions/List.v&quot;, line 154, characters 0-31:
-- Warning: Adding and removing hints in the core database implicitly is
-- deprecated. Please specify a hint database.
-- [implicit-core-hint-db,deprecated-since-8.10,deprecated,default]
-- COQC metric2/Metric.v
-- File &quot;./reals/stdlib/ConstructiveDiagonal.v&quot;, line 288, characters 12-27:
-- Warning: Notation Nat.div_le_mono is deprecated since 8.17.
-- Use Div0.div_le_mono instead.
-- [deprecated-syntactic-definition-since-8.17,deprecated-since-8.17,deprecated-syntactic-definition,deprecated,default]
-- File &quot;./reals/stdlib/ConstructiveDiagonal.v&quot;, line 288, characters 12-27:
-- Warning: Notation Nat.div_le_mono is deprecated since 8.17.
-- Use Div0.div_le_mono instead.
-- [deprecated-syntactic-definition-since-8.17,deprecated-since-8.17,deprecated-syntactic-definition,deprecated,default]
-- COQC stdlib_omissions/Z.v
-- File &quot;./reals/stdlib/ConstructiveDiagonal.v&quot;, line 301, characters 12-27:
-- Warning: Notation Nat.div_le_mono is deprecated since 8.17.
-- Use Div0.div_le_mono instead.
-- [deprecated-syntactic-definition-since-8.17,deprecated-since-8.17,deprecated-syntactic-definition,deprecated,default]
-- File &quot;./reals/stdlib/ConstructiveDiagonal.v&quot;, line 301, characters 12-27:
-- Warning: Notation Nat.div_le_mono is deprecated since 8.17.
-- Use Div0.div_le_mono instead.
-- [deprecated-syntactic-definition-since-8.17,deprecated-since-8.17,deprecated-syntactic-definition,deprecated,default]
-- File &quot;./reals/stdlib/ConstructiveDiagonal.v&quot;, line 436, characters 8-23:
-- Warning: Notation Nat.div_le_mono is deprecated since 8.17.
-- Use Div0.div_le_mono instead.
-- [deprecated-syntactic-definition-since-8.17,deprecated-since-8.17,deprecated-syntactic-definition,deprecated,default]
-- File &quot;./reals/stdlib/ConstructiveDiagonal.v&quot;, line 436, characters 8-23:
-- Warning: Notation Nat.div_le_mono is deprecated since 8.17.
-- Use Div0.div_le_mono instead.
-- [deprecated-syntactic-definition-since-8.17,deprecated-since-8.17,deprecated-syntactic-definition,deprecated,default]
-- File &quot;./stdlib_omissions/Z.v&quot;, line 2, characters 0-90:
-- Error: Cannot find a physical path bound to logical path
-- Coq.Numbers.Natural.Peano.NPeano.
-- 
-- make[1]: *** [Makefile:847: stdlib_omissions/Z.vo] Error 1
-- make[1]: *** [stdlib_omissions/Z.vo] Deleting file &#39;stdlib_omissions/Z.glob&#39;
-- make[1]: *** Waiting for unfinished jobs....
-- File &quot;./metric2/Metric.v&quot;, line 25, characters 0-54:
-- Warning: Notation &quot;_ = _&quot; was already used in scope type_scope.
-- [notation-overridden,parsing,default]
-- File &quot;./metric2/Metric.v&quot;, line 25, characters 0-54:
-- Warning: Notation &quot;_ ≠ _&quot; was already used in scope type_scope.
-- [notation-overridden,parsing,default]
-- File &quot;./metric2/Metric.v&quot;, line 26, characters 0-55:
-- Warning: Notation &quot;_ ≠ _&quot; was already used in scope type_scope.
-- [notation-overridden,parsing,default]
-- File &quot;./metric2/Metric.v&quot;, line 26, characters 0-55:
-- Warning: Notation &quot;_ ≠ _&quot; was already used in scope type_scope.
-- [notation-overridden,parsing,default]
-- File &quot;./reals/stdlib/ConstructiveDiagonal.v&quot;, line 561, characters 43-58:
-- Warning: Notation Nat.div_le_mono is deprecated since 8.17.
-- Use Div0.div_le_mono instead.
-- [deprecated-syntactic-definition-since-8.17,deprecated-since-8.17,deprecated-syntactic-definition,deprecated,default]
-- File &quot;./reals/stdlib/ConstructiveDiagonal.v&quot;, line 561, characters 43-58:
-- Warning: Notation Nat.div_le_mono is deprecated since 8.17.
-- Use Div0.div_le_mono instead.
-- [deprecated-syntactic-definition-since-8.17,deprecated-since-8.17,deprecated-syntactic-definition,deprecated,default]
-- make: *** [Makefile:417: all] Error 2
-[ERROR] The compilation of coq-corn.8.18.0 failed at &quot;make -j4&quot;.
-#=== ERROR while compiling coq-corn.8.18.0 ====================================#
-# context              2.1.5 | linux/x86_64 | ocaml-base-compiler.5.0.0 | file:///home/bench/run/opam-coq-archive/released
-# path                 ~/.opam/ocaml-base-compiler.5.0.0/.opam-switch/build/coq-corn.8.18.0
+-&gt; retrieved coq-bignums.dev  (git+https://github.com/coq/bignums.git#master)
+-&gt; retrieved coq-math-classes.dev  (git+https://github.com/math-classes/math-classes.git#master)
+[ERROR] The compilation of coq-bignums.dev failed at &quot;make -j4&quot;.
+#=== ERROR while compiling coq-bignums.dev ====================================#
+# context              2.1.5 | linux/x86_64 | ocaml-base-compiler.5.0.0 | file:///home/bench/run/opam-coq-archive/extra-dev
+# path                 ~/.opam/ocaml-base-compiler.5.0.0/.opam-switch/build/coq-bignums.dev
 # command              ~/.opam/opam-init/hooks/sandbox.sh build make -j4
 # exit-code            2
-# env-file             ~/.opam/log/coq-corn-20356-0ac8f5.env
-# output-file          ~/.opam/log/coq-corn-20356-0ac8f5.out
+# env-file             ~/.opam/log/coq-bignums-26672-e60713.env
+# output-file          ~/.opam/log/coq-bignums-26672-e60713.out
 ### output ###
 # [...]
-# File &quot;./metric2/Metric.v&quot;, line 26, characters 0-55:
-# Warning: Notation &quot;_ ≠ _&quot; was already used in scope type_scope.
-# [notation-overridden,parsing,default]
-# File &quot;./reals/stdlib/ConstructiveDiagonal.v&quot;, line 561, characters 43-58:
-# Warning: Notation Nat.div_le_mono is deprecated since 8.17.
-# Use Div0.div_le_mono instead.
-# [deprecated-syntactic-definition-since-8.17,deprecated-since-8.17,deprecated-syntactic-definition,deprecated,default]
-# File &quot;./reals/stdlib/ConstructiveDiagonal.v&quot;, line 561, characters 43-58:
-# Warning: Notation Nat.div_le_mono is deprecated since 8.17.
-# Use Div0.div_le_mono instead.
-# [deprecated-syntactic-definition-since-8.17,deprecated-since-8.17,deprecated-syntactic-definition,deprecated,default]
-# make: *** [Makefile:417: all] Error 2
+# CAMLOPT -a -o plugin/bignums_syntax_plugin.cmxa
+# CAMLOPT -shared -o plugin/bignums_syntax_plugin.cmxs
+# COQC BigNumPrelude.v
+# Fatal error: Not enough heap memory to reserve minor heaps
+# Aborted (core dumped)
+# make[2]: *** [Makefile.coq:847: BigNumPrelude.vo] Error 134
+# make[2]: *** Waiting for unfinished jobs....
+# Aborted
+# make[2]: *** [Makefile.coq:847: SpecViaQ/QSig.vo] Error 134
+# make[1]: *** [Makefile.coq:417: all] Error 2
+# make[1]: Leaving directory &#39;/home/bench/.opam/ocaml-base-compiler.5.0.0/.opam-switch/build/coq-bignums.dev&#39;
+# make: *** [Makefile:2: all] Error 2
 &lt;&gt;&lt;&gt; Error report &lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;
 +- The following actions failed
-| - build coq-corn 8.18.0
+| - build coq-bignums dev
 +- 
 - No changes have been performed
 # Run eval $(opam env) to update the current shell environment
-&#39;opam install -y -v coq-corn.8.18.0 coq.dev&#39; failed.
 </pre></dd>
+            </dl>
+            <h2>Install 🚀</h2>
+            <dl class="dl-horizontal">
+              <dt>Command</dt>
+              <dd><code>true</code></dd>
+              <dt>Return code</dt>
+              <dd>0</dd>
+              <dt>Duration</dt>
+              <dd>0 s</dd>
             </dl>
             <h2>Installation size</h2>
             <p>No files were installed.</p>

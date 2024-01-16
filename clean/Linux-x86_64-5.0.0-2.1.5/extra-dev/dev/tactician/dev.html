@@ -42,7 +42,7 @@
                 <span class="label label-warning">Error with dependencies 🚒</span>
               </small>
             </h1>
-            <p>📅 <em><script>document.write(moment("2024-01-14 21:26:23 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2024-01-14 21:26:23 UTC)</em><p>
+            <p>📅 <em><script>document.write(moment("2024-01-16 02:04:22 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2024-01-16 02:04:22 UTC)</em><p>
             <h2>Context</h2>
             <pre># Packages matching: installed
 # Name                # Installed # Synopsis
@@ -56,7 +56,7 @@ coq                   dev         The Coq Proof Assistant
 coq-core              dev         The Coq Proof Assistant -- Core Binaries and Tools
 coq-stdlib            dev         The Coq Proof Assistant -- Standard Library
 coqide-server         dev         The Coq Proof Assistant, XML protocol server
-dune                  3.12.1      Fast, portable, and opinionated build system
+dune                  3.12.2      Fast, portable, and opinionated build system
 ocaml                 5.0.0       The OCaml compiler (virtual package)
 ocaml-base-compiler   5.0.0       Official release 5.0.0
 ocaml-config          3           OCaml Switch Configuration
@@ -157,11 +157,11 @@ url {
             <h2>Install dependencies</h2>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>opam list; echo; timeout 4h opam install -y --deps-only coq-tactician.dev coq.dev</code></dd>
+              <dd><code>opam list; echo; ulimit -Sv 4000000; timeout 4h opam install -y --deps-only coq-tactician.dev coq.dev</code></dd>
               <dt>Return code</dt>
-              <dd>10240</dd>
+              <dd>7936</dd>
               <dt>Duration</dt>
-              <dd>4 m 51 s</dd>
+              <dd>2 m 37 s</dd>
               <dt>Output</dt>
               <dd><pre># Packages matching: installed
 # Name                # Installed # Synopsis
@@ -175,7 +175,7 @@ coq                   dev         The Coq Proof Assistant
 coq-core              dev         The Coq Proof Assistant -- Core Binaries and Tools
 coq-stdlib            dev         The Coq Proof Assistant -- Standard Library
 coqide-server         dev         The Coq Proof Assistant, XML protocol server
-dune                  3.12.1      Fast, portable, and opinionated build system
+dune                  3.12.2      Fast, portable, and opinionated build system
 ocaml                 5.0.0       The OCaml compiler (virtual package)
 ocaml-base-compiler   5.0.0       Official release 5.0.0
 ocaml-config          3           OCaml Switch Configuration
@@ -183,70 +183,68 @@ ocaml-options-vanilla 1           Ensure that OCaml is compiled with no special 
 ocamlfind             1.9.6       A library manager for OCaml
 zarith                1.13        Implements arithmetic and logical operations over arbitrary-precision integers
 The following actions will be performed:
+  - downgrade dune              3.12.2 to 3.7.1
   - install   ocamlbuild        0.14.3
   - install   cmdliner          1.2.0
   - install   seq               base
   - install   conf-git          1.1
-  - downgrade dune              3.12.1 to 3.7.1
-  - install   topkg             1.0.7
   - install   stdlib-shims      0.3.0
-  - install   re                1.11.0
   - install   pp                1.2.0
-  - install   ordering          3.12.1
+  - install   ordering          3.12.2
   - install   opam-file-format  2.1.6
   - install   csexp             1.5.2
   - install   cppo              1.6.9
   - install   base64            3.5.1
   - recompile coq-core          dev             [uses dune]
-  - install   rresult           0.7.0
-  - install   fmt               0.9.0
-  - install   astring           0.8.5
+  - install   topkg             1.0.7
+  - install   re                1.11.0
   - install   ocamlgraph        2.1.0
-  - install   dyn               3.12.1
+  - install   dyn               3.12.2
   - install   extlib            1.7.9
   - recompile coqide-server     dev             [uses dune]
   - recompile coq-stdlib        dev             [uses dune]
+  - install   rresult           0.7.0
+  - install   fmt               0.9.0
+  - install   astring           0.8.5
+  - install   opam-core         2.1.5
+  - install   stdune            3.12.2
+  - install   cudf              0.10
   - install   logs              0.7.0
   - install   fpath             0.7.3
-  - install   opam-core         2.1.5
-  - install   stdune            3.12.1
-  - install   cudf              0.10
-  - install   bos               0.2.1
   - install   opam-format       2.1.5
-  - install   dune-private-libs 3.12.1
+  - install   dune-private-libs 3.12.2
   - install   mccs              1.1+17
   - install   dose3             7.0.0
+  - install   bos               0.2.1
   - install   opam-repository   2.1.5
-  - install   dune-site         3.12.1
+  - install   dune-site         3.12.2
   - install   opam-solver       2.1.5
   - install   opam-state        2.1.5
   - install   opam-client       2.1.5
 ===== 34 to install | 3 to recompile | 1 to downgrade =====
 &lt;&gt;&lt;&gt; Processing actions &lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;
 -&gt; retrieved base64.3.5.1  (https://opam.ocaml.org/cache)
--&gt; retrieved astring.0.8.5  (https://opam.ocaml.org/cache)
 -&gt; retrieved bos.0.2.1  (https://opam.ocaml.org/cache)
+-&gt; retrieved astring.0.8.5  (https://opam.ocaml.org/cache)
 -&gt; retrieved cmdliner.1.2.0  (https://opam.ocaml.org/cache)
 -&gt; installed conf-git.1.1
--&gt; retrieved coq-stdlib.dev  (git+https://github.com/coq/coq.git#master)
-[ERROR] Could not synchronize /home/bench/.opam/ocaml-base-compiler.5.0.0/.opam-switch/sources/coq-core.dev from &quot;git+https://github.com/coq/coq.git#master&quot;:
-        &quot;/usr/bin/git fetch -q&quot; exited with code 128
-[ERROR] Failed to get sources of coq-core.dev: git+https://github.com/coq/coq.git#master
--&gt; retrieved coqide-server.dev  (git+https://github.com/coq/coq.git#master)
+-&gt; retrieved coq-core.dev  (git+https://github.com/coq/coq.git#master)
 -&gt; retrieved cppo.1.6.9  (https://opam.ocaml.org/cache)
 -&gt; retrieved csexp.1.5.2  (https://opam.ocaml.org/cache)
 -&gt; retrieved cudf.0.10  (https://opam.ocaml.org/cache)
 -&gt; retrieved dose3.7.0.0  (https://opam.ocaml.org/cache)
--&gt; retrieved dune-site.3.12.1  (cached)
--&gt; retrieved dune-private-libs.3.12.1  (cached)
 -&gt; retrieved dune.3.7.1  (https://opam.ocaml.org/cache)
--&gt; retrieved dyn.3.12.1  (cached)
+-&gt; retrieved dune-private-libs.3.12.2  (cached)
+-&gt; retrieved coqide-server.dev  (git+https://github.com/coq/coq.git#master)
+-&gt; retrieved coq-stdlib.dev  (git+https://github.com/coq/coq.git#master)
 -&gt; retrieved extlib.1.7.9  (https://opam.ocaml.org/cache)
 -&gt; retrieved fmt.0.9.0  (https://opam.ocaml.org/cache)
 -&gt; retrieved fpath.0.7.3  (https://opam.ocaml.org/cache)
+-&gt; retrieved dune-site.3.12.2  (cached)
+-&gt; retrieved dyn.3.12.2  (cached)
 -&gt; retrieved logs.0.7.0  (https://opam.ocaml.org/cache)
--&gt; installed cmdliner.1.2.0
 -&gt; retrieved mccs.1.1+17  (https://opam.ocaml.org/cache)
+-&gt; installed cmdliner.1.2.0
 -&gt; retrieved ocamlbuild.0.14.3  (https://opam.ocaml.org/cache)
 -&gt; retrieved ocamlgraph.2.1.0  (https://opam.ocaml.org/cache)
 -&gt; retrieved opam-client.2.1.5  (https://opam.ocaml.org/cache)
@@ -257,20 +255,16 @@ The following actions will be performed:
 -&gt; retrieved opam-state.2.1.5  (cached)
 -&gt; retrieved opam-core.2.1.5  (https://opam.ocaml.org/cache)
 -&gt; retrieved pp.1.2.0  (https://opam.ocaml.org/cache)
--&gt; retrieved rresult.0.7.0  (https://opam.ocaml.org/cache)
--&gt; installed seq.base
 -&gt; retrieved re.1.11.0  (https://opam.ocaml.org/cache)
--&gt; retrieved ordering.3.12.1  (cached)
--&gt; retrieved stdune.3.12.1  (cached)
+-&gt; installed seq.base
+-&gt; retrieved rresult.0.7.0  (https://opam.ocaml.org/cache)
 -&gt; retrieved stdlib-shims.0.3.0  (https://opam.ocaml.org/cache)
 -&gt; retrieved topkg.1.0.7  (https://opam.ocaml.org/cache)
+-&gt; retrieved ordering.3.12.2  (cached)
+-&gt; retrieved stdune.3.12.2  (cached)
 -&gt; installed ocamlbuild.0.14.3
 -&gt; installed topkg.1.0.7
 -&gt; installed rresult.0.7.0
--&gt; installed fmt.0.9.0
--&gt; installed astring.0.8.5
--&gt; installed fpath.0.7.3
--&gt; installed logs.0.7.0
 While removing coq-stdlib.dev: these files have been modified since installation:
   - lib/coq/user-contrib/Ltac2/Unification.vos
   - lib/coq/user-contrib/Ltac2/Unification.vo
@@ -382,71 +376,17 @@ While removing coq-stdlib.dev: these files have been modified since installation
   - lib/coq/user-contrib/Ltac2/Evar.glob
   - lib/coq/user-contrib/Ltac2/Env.vos
   - lib/coq/user-contrib/Ltac2/Env.vo
-  - lib/coq/user-contrib/Ltac
+  - lib/coq/user-contrib/Ltac2/Env.v
+  - lib/coq/user-contrib/Ltac2/Env.glob
+  - lib/coq/user-contrib/Ltac2/Control.vos
+  - lib/coq/user-contrib/Ltac2/Control.vo
+  - lib/coq/user-contrib/Ltac2/Control.v
+  - lib/coq/user-contrib/Ltac2/Control.glob
+  - lib/coq/user-contrib/Ltac2/Constructor.vos
+  - lib/coq/user-contrib/Ltac2/Constructor.vo
+  - lib/coq/user-
 [...] truncated
-MapAVL.vos
-  - lib/coq/theories/FSets/FMapAVL.vo
-  - lib/coq/theories/FSets/FMapAVL.v
-  - lib/coq/theories/FSets/FMapAVL.glob
-  - lib/coq/theories/Compat/Coq820.vos
-  - lib/coq/theories/Compat/Coq820.vo
-  - lib/coq/theories/Compat/Coq820.v
-  - lib/coq/theories/Compat/Coq820.glob
-  - lib/coq/theories/Compat/Coq819.vos
-  - lib/coq/theories/Compat/Coq819.vo
-  - lib/coq/theories/Compat/Coq819.v
-  - lib/coq/theories/Compat/Coq819.glob
-  - lib/coq/theories/Compat/Coq818.vos
-  - lib/coq/theories/Compat/Coq818.vo
-  - lib/coq/theories/Compat/Coq818.v
-  - lib/coq/theories/Compat/Coq818.glob
-  - lib/coq/theories/Compat/Coq817.vos
-  - lib/coq/theories/Compat/Coq817.vo
-  - lib/coq/theories/Compat/Coq817.v
-  - lib/coq/theories/Compat/Coq817.glob
-  - lib/coq/theories/Compat/AdmitAxiom.vos
-  - lib/coq/theories/Compat/AdmitAxiom.vo
-  - lib/coq/theories/Compat/AdmitAxiom.v
-  - lib/coq/theories/Compat/AdmitAxiom.glob
-  - lib/coq/theories/Classes/SetoidTactics.vos
-  - lib/coq/theories/Classes/SetoidTactics.vo
-  - lib/coq/theories/Classes/SetoidTactics.v
-  - lib/coq/theories/Classes/SetoidTactics.glob
-  - lib/coq/theories/Classes/SetoidDec.vos
-  - lib/coq/theories/Classes/SetoidDec.vo
-  - lib/coq/theories/Classes/SetoidDec.v
-  - lib/coq/theories/Classes/SetoidDec.glob
-  - lib/coq/theories/Classes/SetoidClass.vos
-  - lib/coq/theories/Classes/SetoidClass.vo
-  - lib/coq/theories/Classes/SetoidClass.v
-  - lib/coq/theories/Classes/SetoidClass.glob
-  - lib/coq/theories/Classes/RelationPairs.vos
-  - lib/coq/theories/Classes/RelationPairs.vo
-  - lib/coq/theories/Classes/RelationPairs.v
-  - lib/coq/theories/Classes/RelationPairs.glob
-  - lib/coq/theories/Classes/RelationClasses.vos
-  - lib/coq/theories/Classes/RelationClasses.vo
-  - lib/coq/theories/Classes/RelationClasses.v
-  - lib/coq/theories/Classes/RelationClasses.glob
-  - lib/coq/theories/Classes/Morphisms_Relations.vos
-  - lib/coq/theories/Classes/Morphisms_Relations.vo
-  - lib/coq/theories/Classes/Morphisms_Relations.v
-  - lib/coq/theories/Classes/Morphisms_Relations.glob
-  - lib/coq/theories/Classes/Morphisms_Prop.vos
-  - lib/coq/theories/Classes/Morphisms_Prop.vo
-  - lib/coq/theories/Classes/Morphisms_Prop.v
-  - lib/coq/theories/Classes/Morphisms_Prop.glob
-  - lib/coq/theories/Classes/Morphisms.vos
-  - lib/coq/theories/Classes/Morphisms.vo
-  - lib/coq/theories/Classes/Morphisms.v
-  - lib/coq/theories/Classes/Morphisms.glob
-  - lib/coq/theories/Classes/Init.vos
-  - lib/coq/theories/Classes/Init.vo
-  - lib/coq/theories/Classes/Init.v
-  - lib/coq/theories/Classes/Init.glob
-  - lib/coq/theories/Classes/Equivalence.vos
-  - lib/coq/theories/Classes/Equivalence.vo
-  - lib/coq/theories/Classes/Equivalence.v
+sses/Equivalence.v
   - lib/coq/theories/Classes/Equivalence.glob
   - lib/coq/theories/Classes/EquivDec.vos
   - lib/coq/theories/Classes/EquivDec.vo
@@ -560,45 +500,69 @@ Remove them anyway? [y/N] y
 -&gt; removed   coq-stdlib.dev
 -&gt; removed   coqide-server.dev
 -&gt; removed   coq-core.dev
--&gt; removed   dune.3.12.1
+-&gt; removed   dune.3.12.2
 -&gt; installed dune.3.7.1
--&gt; installed csexp.1.5.2
+-&gt; installed astring.0.8.5
+-&gt; installed fmt.0.9.0
 -&gt; installed base64.3.5.1
--&gt; installed opam-file-format.2.1.6
+-&gt; installed csexp.1.5.2
 -&gt; installed cppo.1.6.9
--&gt; installed bos.0.2.1
--&gt; installed pp.1.2.0
--&gt; installed stdlib-shims.0.3.0
--&gt; installed ordering.3.12.1
--&gt; installed re.1.11.0
+-&gt; installed fpath.0.7.3
+-&gt; installed logs.0.7.0
+-&gt; installed opam-file-format.2.1.6
 -&gt; installed extlib.1.7.9
+-&gt; installed pp.1.2.0
 -&gt; installed cudf.0.10
--&gt; installed dyn.3.12.1
+-&gt; installed bos.0.2.1
+-&gt; installed ordering.3.12.2
+-&gt; installed stdlib-shims.0.3.0
+-&gt; installed re.1.11.0
+-&gt; installed dyn.3.12.2
 -&gt; installed ocamlgraph.2.1.0
 -&gt; installed dose3.7.0.0
--&gt; installed stdune.3.12.1
--&gt; installed opam-core.2.1.5
 -&gt; installed mccs.1.1+17
--&gt; installed dune-private-libs.3.12.1
--&gt; installed dune-site.3.12.1
+-&gt; installed stdune.3.12.2
+-&gt; installed dune-private-libs.3.12.2
+-&gt; installed dune-site.3.12.2
+-&gt; installed opam-core.2.1.5
 -&gt; installed opam-format.2.1.5
 -&gt; installed opam-repository.2.1.5
 -&gt; installed opam-solver.2.1.5
 -&gt; installed opam-state.2.1.5
 -&gt; installed opam-client.2.1.5
-#=== ERROR while fetching sources for coq-core.dev ============================#
-OpamSolution.Fetch_fail(&quot;git+https://github.com/coq/coq.git#master&quot;)
-[WARNING] The sources of the following couldn&#39;t be obtained, they may be uncleanly removed:
-            - coq-core.dev
+-&gt; installed coq-core.dev
+[ERROR] The compilation of coq-stdlib.dev failed at &quot;dune build -p coq-stdlib -j 4 --promote-install-files=false @install&quot;.
+-&gt; installed coqide-server.dev
+#=== ERROR while compiling coq-stdlib.dev =====================================#
+# context              2.1.5 | linux/x86_64 | ocaml-base-compiler.5.0.0 | file:///home/bench/run/opam-coq-archive/core-dev
+# path                 ~/.opam/ocaml-base-compiler.5.0.0/.opam-switch/build/coq-stdlib.dev
+# command              ~/.opam/opam-init/hooks/sandbox.sh build dune build -p coq-stdlib -j 4 --promote-install-files=false @install
+# exit-code            1
+# env-file             ~/.opam/log/coq-stdlib-23476-24e13a.env
+# output-file          ~/.opam/log/coq-stdlib-23476-24e13a.out
+### output ###
+# [...]
+# 3482 |   (targets Notations.timing Notations.glob Notations.vos Notations.vo)
+# 3483 |   (deps )
+# 3484 |   (action (chdir ../../. (run coqc -noinit -boot -R theories Coq -I /home/bench/.opam/ocaml-base-compiler.5.0.0/lib/coq-core/plugins/number_string_notation -I /home/bench/.opam/ocaml-base-compiler.5.0.0/lib/coq-core/plugins/zify -I /home/bench/.opam/ocaml-base-compiler.5.0.0/lib/coq-core/plugins/tauto -I /home/bench/.opam/ocaml-base-compiler.5.0.0/lib/coq-core/plugins/ssreflect -I /hom[...]
+# (cd _build/default &amp;&amp; /home/bench/.opam/ocaml-base-compiler.5.0.0/bin/coqc -noinit -boot -R theories Coq -I /home/bench/.opam/ocaml-base-compiler.5.0.0/lib/coq-core/plugins/number_string_notation -I /home/bench/.opam/ocaml-base-compiler.5.0.0/lib/coq-core/plugins/zify -I /home/bench/.opam/ocaml-base-compiler.5.0.0/lib/coq-core/plugins/tauto -I /home/bench/.opam/ocaml-base-compiler.5.0.0/lib/c[...]
+# Fatal error: Not enough heap memory to reserve minor heaps
+# File &quot;theories/dune&quot;, line 3465, characters 1-1727:
+# 3465 |  (rule
+# 3466 |   (targets Ltac.timing Ltac.glob Ltac.vos Ltac.vo)
+# 3467 |   (deps /home/bench/.opam/ocaml-base-compiler.5.0.0/lib/coq-core/plugins/ltac/ltac_plugin.cmxs)
+# 3468 |   (action (chdir ../../. (run coqc -noinit -boot -R theories Coq -I /home/bench/.opam/ocaml-base-compiler.5.0.0/lib/coq-core/plugins/number_string_notation -I /home/bench/.opam/ocaml-base-compiler.5.0.0/lib/coq-core/plugins/zify -I /home/bench/.opam/ocaml-base-compiler.5.0.0/lib/coq-core/plugins/tauto -I /home/bench/.opam/ocaml-base-compiler.5.0.0/lib/coq-core/plugins/ssreflect -I /hom[...]
+# (cd _build/default &amp;&amp; /home/bench/.opam/ocaml-base-compiler.5.0.0/bin/coqc -noinit -boot -R theories Coq -I /home/bench/.opam/ocaml-base-compiler.5.0.0/lib/coq-core/plugins/number_string_notation -I /home/bench/.opam/ocaml-base-compiler.5.0.0/lib/coq-core/plugins/zify -I /home/bench/.opam/ocaml-base-compiler.5.0.0/lib/coq-core/plugins/tauto -I /home/bench/.opam/ocaml-base-compiler.5.0.0/lib/c[...]
+# Fatal error: Not enough heap memory to reserve minor heaps
 &lt;&gt;&lt;&gt; Error report &lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;
 +- The following actions failed
-| - fetch coq-core dev
+| - build coq-stdlib dev
 +- 
-+- The following changes have been performed (the rest was aborted)
-| - remove    coq-core          dev
++- The following changes have been performed
 | - remove    coq-stdlib        dev
-| - remove    coqide-server     dev
-| - downgrade dune              3.12.1 to 3.7.1
+| - downgrade dune              3.12.2 to 3.7.1
+| - recompile coq-core          dev
+| - recompile coqide-server     dev
 | - install   astring           0.8.5
 | - install   base64            3.5.1
 | - install   bos               0.2.1
@@ -608,9 +572,9 @@ OpamSolution.Fetch_fail(&quot;git+https://github.com/coq/coq.git#master&quot;)
 | - install   csexp             1.5.2
 | - install   cudf              0.10
 | - install   dose3             7.0.0
-| - install   dune-private-libs 3.12.1
-| - install   dune-site         3.12.1
-| - install   dyn               3.12.1
+| - install   dune-private-libs 3.12.2
+| - install   dune-site         3.12.2
+| - install   dyn               3.12.2
 | - install   extlib            1.7.9
 | - install   fmt               0.9.0
 | - install   fpath             0.7.3
@@ -625,18 +589,18 @@ OpamSolution.Fetch_fail(&quot;git+https://github.com/coq/coq.git#master&quot;)
 | - install   opam-repository   2.1.5
 | - install   opam-solver       2.1.5
 | - install   opam-state        2.1.5
-| - install   ordering          3.12.1
+| - install   ordering          3.12.2
 | - install   pp                1.2.0
 | - install   re                1.11.0
 | - install   rresult           0.7.0
 | - install   seq               base
 | - install   stdlib-shims      0.3.0
-| - install   stdune            3.12.1
+| - install   stdune            3.12.2
 | - install   topkg             1.0.7
 +- 
 # Run eval $(opam env) to update the current shell environment
 The former state can be restored with:
-    /usr/local/bin/opam switch import &quot;/home/bench/.opam/ocaml-base-compiler.5.0.0/.opam-switch/backup/state-20240109132740.export&quot;
+    /usr/local/bin/opam switch import &quot;/home/bench/.opam/ocaml-base-compiler.5.0.0/.opam-switch/backup/state-20240115211201.export&quot;
 The middle of the output is truncated (maximum 20000 characters)
 </pre></dd>
             </dl>

@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>gappa: Error 🔥</title>
+    <title>gappa: Error with dependencies 🚒</title>
     <link rel="shortcut icon" type="image/png" href="../../../../../favicon.png" />
     <link href="../../../../../bootstrap.min.css" rel="stylesheet">
     <link href="../../../../../bootstrap-custom.css" rel="stylesheet">
@@ -39,10 +39,10 @@
               gappa
               <small>
                 dev
-                <span class="label label-danger">Error 🔥</span>
+                <span class="label label-warning">Error with dependencies 🚒</span>
               </small>
             </h1>
-            <p>📅 <em><script>document.write(moment("2024-01-14 21:26:23 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2024-01-14 21:26:23 UTC)</em><p>
+            <p>📅 <em><script>document.write(moment("2024-01-16 02:04:22 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2024-01-16 02:04:22 UTC)</em><p>
             <h2>Context</h2>
             <pre># Packages matching: installed
 # Name                # Installed # Synopsis
@@ -56,7 +56,7 @@ coq                   dev         The Coq Proof Assistant
 coq-core              dev         The Coq Proof Assistant -- Core Binaries and Tools
 coq-stdlib            dev         The Coq Proof Assistant -- Standard Library
 coqide-server         dev         The Coq Proof Assistant, XML protocol server
-dune                  3.12.1      Fast, portable, and opinionated build system
+dune                  3.12.2      Fast, portable, and opinionated build system
 ocaml                 5.0.0       The OCaml compiler (virtual package)
 ocaml-base-compiler   5.0.0       Official release 5.0.0
 ocaml-config          3           OCaml Switch Configuration
@@ -122,20 +122,11 @@ url {
             <h2>Install dependencies</h2>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>opam list; echo; timeout 4h opam install -y --deps-only coq-gappa.dev coq.dev</code></dd>
-              <dt>Return code</dt>
-              <dd>0</dd>
-              <dt>Duration</dt>
-              <dd>3 m 48 s</dd>
-            </dl>
-            <h2>Install 🚀</h2>
-            <dl class="dl-horizontal">
-              <dt>Command</dt>
-              <dd><code>opam list; echo; timeout 4h opam install -y coq-gappa.dev coq.dev</code></dd>
+              <dd><code>opam list; echo; ulimit -Sv 4000000; timeout 4h opam install -y --deps-only coq-gappa.dev coq.dev</code></dd>
               <dt>Return code</dt>
               <dd>7936</dd>
               <dt>Duration</dt>
-              <dd>52 s</dd>
+              <dd>28 s</dd>
               <dt>Output</dt>
               <dd><pre># Packages matching: installed
 # Name                # Installed # Synopsis
@@ -144,56 +135,63 @@ base-domains          base
 base-nnp              base        Naked pointers prohibited in the OCaml heap
 base-threads          base
 base-unix             base
-conf-autoconf         0.1         Virtual package relying on autoconf installation
-conf-g++              1.0         Virtual package relying on the g++ compiler (for C++)
 conf-gmp              4           Virtual package relying on a GMP lib system installation
-conf-which            1           Virtual package relying on which
 coq                   dev         The Coq Proof Assistant
 coq-core              dev         The Coq Proof Assistant -- Core Binaries and Tools
-coq-flocq             dev         A floating-point formalization for the Coq system
 coq-stdlib            dev         The Coq Proof Assistant -- Standard Library
 coqide-server         dev         The Coq Proof Assistant, XML protocol server
-dune                  3.12.1      Fast, portable, and opinionated build system
+dune                  3.12.2      Fast, portable, and opinionated build system
 ocaml                 5.0.0       The OCaml compiler (virtual package)
 ocaml-base-compiler   5.0.0       Official release 5.0.0
 ocaml-config          3           OCaml Switch Configuration
 ocaml-options-vanilla 1           Ensure that OCaml is compiled with no special options enabled
 ocamlfind             1.9.6       A library manager for OCaml
 zarith                1.13        Implements arithmetic and logical operations over arbitrary-precision integers
-[NOTE] Package coq is already installed (current version is dev).
 The following actions will be performed:
-  - install coq-gappa dev
+  - install coq-flocq     dev
+  - install conf-which    1
+  - install conf-g++      1.0
+  - install conf-autoconf 0.1
+===== 4 to install =====
 &lt;&gt;&lt;&gt; Processing actions &lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;
--&gt; retrieved coq-gappa.dev  (git+https://gitlab.inria.fr/gappa/coq.git/#master)
-[ERROR] The compilation of coq-gappa.dev failed at &quot;./remake -j4&quot;.
-#=== ERROR while compiling coq-gappa.dev ======================================#
+-&gt; installed conf-which.1
+-&gt; installed conf-g++.1.0
+-&gt; installed conf-autoconf.0.1
+-&gt; retrieved coq-flocq.dev  (git+https://gitlab.inria.fr/flocq/flocq.git#master)
+[ERROR] The compilation of coq-flocq.dev failed at &quot;./configure&quot;.
+#=== ERROR while compiling coq-flocq.dev ======================================#
 # context              2.1.5 | linux/x86_64 | ocaml-base-compiler.5.0.0 | file:///home/bench/run/opam-coq-archive/extra-dev
-# path                 ~/.opam/ocaml-base-compiler.5.0.0/.opam-switch/build/coq-gappa.dev
-# command              ~/.opam/opam-init/hooks/sandbox.sh build ./remake -j4
+# path                 ~/.opam/ocaml-base-compiler.5.0.0/.opam-switch/build/coq-flocq.dev
+# command              ~/.opam/opam-init/hooks/sandbox.sh build ./configure
 # exit-code            1
-# env-file             ~/.opam/log/coq-gappa-5289-b86bf0.env
-# output-file          ~/.opam/log/coq-gappa-5289-b86bf0.out
+# env-file             ~/.opam/log/coq-flocq-23293-6f5047.env
+# output-file          ~/.opam/log/coq-flocq-23293-6f5047.out
 ### output ###
-# [...]
-# File &quot;./src/Gappa_float.v&quot;, line 352, characters 16-23:
-# Warning: Notation IZR_neq is deprecated since 8.19.
-# Use eq_IZR_contrapositive.
-# [deprecated-syntactic-definition-since-8.19,deprecated-since-8.19,deprecated-syntactic-definition,deprecated,default]
-# File &quot;./src/Gappa_float.v&quot;, line 352, characters 16-23:
-# Warning: Notation IZR_neq is deprecated since 8.19.
-# Use eq_IZR_contrapositive.
-# [deprecated-syntactic-definition-since-8.19,deprecated-since-8.19,deprecated-syntactic-definition,deprecated,default]
-# Finished src/Gappa_pred_rel.vo
-# Finished src/Gappa_fixed.vo
-# Finished src/Gappa_float.vo
-# Finished src/Gappa_library.vo
+# checking for coqc... /home/bench/.opam/ocaml-base-compiler.5.0.0/bin/coqc
+# checking Coq version... Fatal error: Not enough heap memory to reserve minor heaps
+# configure: error: must be at least 8.12 (you have version ).
 &lt;&gt;&lt;&gt; Error report &lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;
 +- The following actions failed
-| - build coq-gappa dev
+| - build coq-flocq dev
 +- 
-- No changes have been performed
++- The following changes have been performed
+| - install conf-autoconf 0.1
+| - install conf-g++      1.0
+| - install conf-which    1
++- 
 # Run eval $(opam env) to update the current shell environment
+The former state can be restored with:
+    /usr/local/bin/opam switch import &quot;/home/bench/.opam/ocaml-base-compiler.5.0.0/.opam-switch/backup/state-20240116012203.export&quot;
 </pre></dd>
+            </dl>
+            <h2>Install 🚀</h2>
+            <dl class="dl-horizontal">
+              <dt>Command</dt>
+              <dd><code>true</code></dd>
+              <dt>Return code</dt>
+              <dd>0</dd>
+              <dt>Duration</dt>
+              <dd>0 s</dd>
             </dl>
             <h2>Installation size</h2>
             <p>No files were installed.</p>

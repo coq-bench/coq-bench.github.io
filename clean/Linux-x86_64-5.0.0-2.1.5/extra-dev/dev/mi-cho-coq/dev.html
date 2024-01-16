@@ -42,7 +42,7 @@
                 <span class="label label-warning">Error with dependencies 🚒</span>
               </small>
             </h1>
-            <p>📅 <em><script>document.write(moment("2024-01-14 21:26:23 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2024-01-14 21:26:23 UTC)</em><p>
+            <p>📅 <em><script>document.write(moment("2024-01-16 02:04:22 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2024-01-16 02:04:22 UTC)</em><p>
             <h2>Context</h2>
             <pre># Packages matching: installed
 # Name                # Installed # Synopsis
@@ -56,7 +56,7 @@ coq                   dev         The Coq Proof Assistant
 coq-core              dev         The Coq Proof Assistant -- Core Binaries and Tools
 coq-stdlib            dev         The Coq Proof Assistant -- Standard Library
 coqide-server         dev         The Coq Proof Assistant, XML protocol server
-dune                  3.12.1      Fast, portable, and opinionated build system
+dune                  3.12.2      Fast, portable, and opinionated build system
 ocaml                 5.0.0       The OCaml compiler (virtual package)
 ocaml-base-compiler   5.0.0       Official release 5.0.0
 ocaml-config          3           OCaml Switch Configuration
@@ -133,11 +133,11 @@ url {
             <h2>Install dependencies</h2>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>opam list; echo; timeout 4h opam install -y --deps-only coq-mi-cho-coq.dev coq.dev</code></dd>
+              <dd><code>opam list; echo; ulimit -Sv 4000000; timeout 4h opam install -y --deps-only coq-mi-cho-coq.dev coq.dev</code></dd>
               <dt>Return code</dt>
               <dd>7936</dd>
               <dt>Duration</dt>
-              <dd>2 m 35 s</dd>
+              <dd>2 m 4 s</dd>
               <dt>Output</dt>
               <dd><pre># Packages matching: installed
 # Name                # Installed # Synopsis
@@ -151,7 +151,7 @@ coq                   dev         The Coq Proof Assistant
 coq-core              dev         The Coq Proof Assistant -- Core Binaries and Tools
 coq-stdlib            dev         The Coq Proof Assistant -- Standard Library
 coqide-server         dev         The Coq Proof Assistant, XML protocol server
-dune                  3.12.1      Fast, portable, and opinionated build system
+dune                  3.12.2      Fast, portable, and opinionated build system
 ocaml                 5.0.0       The OCaml compiler (virtual package)
 ocaml-base-compiler   5.0.0       Official release 5.0.0
 ocaml-config          3           OCaml Switch Configuration
@@ -173,19 +173,19 @@ The following actions will be performed:
 -&gt; retrieved coq-ott.dev  (git+https://github.com/ott-lang/ott.git#master)
 [ERROR] The compilation of coq-ott.dev failed at &quot;make -j4 -C coq&quot;.
 -&gt; retrieved menhir.dev  (git+https://gitlab.inria.fr/fpottier/menhir.git#master)
--&gt; retrieved menhirLib.dev  (git+https://gitlab.inria.fr/fpottier/menhir.git#master)
--&gt; retrieved ocamlbuild.0.14.3  (https://opam.ocaml.org/cache)
 -&gt; retrieved coq-menhirlib.dev  (git+https://gitlab.inria.fr/fpottier/menhir.git#master)
--&gt; installed menhirLib.dev
+-&gt; retrieved ocamlbuild.0.14.3  (https://opam.ocaml.org/cache)
 -&gt; retrieved ocamlgraph.2.1.0  (https://opam.ocaml.org/cache)
 -&gt; retrieved ott.0.33  (https://opam.ocaml.org/cache)
 -&gt; retrieved stdlib-shims.0.3.0  (https://opam.ocaml.org/cache)
--&gt; retrieved menhirSdk.dev  (git+https://gitlab.inria.fr/fpottier/menhir.git#master)
 -&gt; installed stdlib-shims.0.3.0
--&gt; installed coq-menhirlib.dev
--&gt; installed menhirSdk.dev
--&gt; installed ocamlbuild.0.14.3
+[ERROR] The compilation of coq-menhirlib.dev failed at &quot;make -C coq-menhirlib -j4&quot;.
+-&gt; retrieved menhirLib.dev  (git+https://gitlab.inria.fr/fpottier/menhir.git#master)
+-&gt; retrieved menhirSdk.dev  (git+https://gitlab.inria.fr/fpottier/menhir.git#master)
 -&gt; installed ocamlgraph.2.1.0
+-&gt; installed menhirLib.dev
+-&gt; installed ocamlbuild.0.14.3
+-&gt; installed menhirSdk.dev
 -&gt; installed ott.0.33
 -&gt; installed menhir.dev
 #=== ERROR while compiling coq-ott.dev ========================================#
@@ -193,39 +193,60 @@ The following actions will be performed:
 # path                 ~/.opam/ocaml-base-compiler.5.0.0/.opam-switch/build/coq-ott.dev
 # command              ~/.opam/opam-init/hooks/sandbox.sh build make -j4 -C coq
 # exit-code            2
-# env-file             ~/.opam/log/coq-ott-4966-3ad88d.env
-# output-file          ~/.opam/log/coq-ott-4966-3ad88d.out
+# env-file             ~/.opam/log/coq-ott-4510-41b45c.env
+# output-file          ~/.opam/log/coq-ott-4510-41b45c.out
 ### output ###
 # [...]
 # COQC ott_list_eq_dec.v
-# COQC ott_list_core.v
-# COQC ott_list_base.v
-# File &quot;./ott_list_base.v&quot;, line 63, characters 57-66:
-# Error: The variable plus_comm was not found in the current environment.
-# 
-# make[2]: *** [Makefile.coq:847: ott_list_base.vo] Error 1
-# make[2]: *** [ott_list_base.vo] Deleting file &#39;ott_list_base.glob&#39;
+# Fatal error: Not enough heap memory to reserve minor heaps
+# Fatal error: Not enough heap memory to reserve minor heaps
+# Aborted (core dumped)
+# make[2]: *** [Makefile.coq:847: ott_list_support.vo] Error 134
+# make[2]: *** Waiting for unfinished jobs....
+# Aborted
+# make[2]: *** [Makefile.coq:847: ott_list_eq_dec.vo] Error 134
 # make[1]: *** [Makefile.coq:417: all] Error 2
 # make[1]: Leaving directory &#39;/home/bench/.opam/ocaml-base-compiler.5.0.0/.opam-switch/build/coq-ott.dev/coq&#39;
 # make: *** [Makefile:2: default] Error 2
 # make: Leaving directory &#39;/home/bench/.opam/ocaml-base-compiler.5.0.0/.opam-switch/build/coq-ott.dev/coq&#39;
+#=== ERROR while compiling coq-menhirlib.dev ==================================#
+# context              2.1.5 | linux/x86_64 | ocaml-base-compiler.5.0.0 | file:///home/bench/run/opam-coq-archive/extra-dev
+# path                 ~/.opam/ocaml-base-compiler.5.0.0/.opam-switch/build/coq-menhirlib.dev
+# command              ~/.opam/opam-init/hooks/sandbox.sh build make -C coq-menhirlib -j4
+# exit-code            2
+# env-file             ~/.opam/log/coq-menhirlib-4510-f1ee53.env
+# output-file          ~/.opam/log/coq-menhirlib-4510-f1ee53.out
+### output ###
+# [...]
+# COQC Version.v
+# Fatal error: Not enough heap memory to reserve minor heaps
+# Fatal error: Not enough heap memory to reserve minor heaps
+# Aborted (core dumped)
+# make[3]: *** [CoqMakefile:847: Version.vo] Error 134
+# make[3]: *** Waiting for unfinished jobs....
+# Aborted
+# make[3]: *** [CoqMakefile:847: Alphabet.vo] Error 134
+# make[2]: *** [CoqMakefile:417: all] Error 2
+# make[1]: *** [Makefile:18: invoke-coqmakefile] Error 2
+# make: *** [Makefile:6: all] Error 2
+# make: Leaving directory &#39;/home/bench/.opam/ocaml-base-compiler.5.0.0/.opam-switch/build/coq-menhirlib.dev/coq-menhirlib&#39;
 &lt;&gt;&lt;&gt; Error report &lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;
 +- The following actions failed
-| - build coq-ott dev
+| - build coq-menhirlib dev
+| - build coq-ott       dev
 +- 
 +- The following changes have been performed
-| - install coq-menhirlib dev
-| - install menhir        dev
-| - install menhirLib     dev
-| - install menhirSdk     dev
-| - install ocamlbuild    0.14.3
-| - install ocamlgraph    2.1.0
-| - install ott           0.33
-| - install stdlib-shims  0.3.0
+| - install menhir       dev
+| - install menhirLib    dev
+| - install menhirSdk    dev
+| - install ocamlbuild   0.14.3
+| - install ocamlgraph   2.1.0
+| - install ott          0.33
+| - install stdlib-shims 0.3.0
 +- 
 # Run eval $(opam env) to update the current shell environment
 The former state can be restored with:
-    /usr/local/bin/opam switch import &quot;/home/bench/.opam/ocaml-base-compiler.5.0.0/.opam-switch/backup/state-20240113225355.export&quot;
+    /usr/local/bin/opam switch import &quot;/home/bench/.opam/ocaml-base-compiler.5.0.0/.opam-switch/backup/state-20240115160717.export&quot;
 </pre></dd>
             </dl>
             <h2>Install 🚀</h2>
