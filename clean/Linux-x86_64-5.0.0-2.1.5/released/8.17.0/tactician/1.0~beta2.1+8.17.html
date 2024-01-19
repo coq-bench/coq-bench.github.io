@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>tactician: Uninstallation error 🌪️</title>
+    <title>tactician: Error with dependencies 🚒</title>
     <link rel="shortcut icon" type="image/png" href="../../../../../favicon.png" />
     <link href="../../../../../bootstrap.min.css" rel="stylesheet">
     <link href="../../../../../bootstrap-custom.css" rel="stylesheet">
@@ -39,10 +39,10 @@
               tactician
               <small>
                 1.0~beta2.1+8.17
-                <span class="label label-danger">Uninstallation error 🌪️</span>
+                <span class="label label-warning">Error with dependencies 🚒</span>
               </small>
             </h1>
-            <p>📅 <em><script>document.write(moment("2024-01-18 00:23:51 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2024-01-18 00:23:51 UTC)</em><p>
+            <p>📅 <em><script>document.write(moment("2024-01-19 12:30:36 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2024-01-19 12:30:36 UTC)</em><p>
             <h2>Context</h2>
             <pre># Packages matching: installed
 # Name                # Installed # Synopsis
@@ -158,248 +158,484 @@ url {
             <h2>Install dependencies</h2>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>opam list; echo; timeout 4h opam install -y --deps-only coq-tactician.1.0~beta2.1+8.17 coq.8.17.0</code></dd>
+              <dd><code>opam list; echo; ulimit -Sv 4000000; timeout 4h opam install -y --deps-only coq-tactician.1.0~beta2.1+8.17 coq.8.17.0</code></dd>
               <dt>Return code</dt>
-              <dd>0</dd>
+              <dd>7936</dd>
               <dt>Duration</dt>
-              <dd>5 m 44 s</dd>
+              <dd>2 m 45 s</dd>
+              <dt>Output</dt>
+              <dd><pre># Packages matching: installed
+# Name                # Installed # Synopsis
+base-bigarray         base
+base-domains          base
+base-nnp              base        Naked pointers prohibited in the OCaml heap
+base-threads          base
+base-unix             base
+conf-gmp              4           Virtual package relying on a GMP lib system installation
+coq                   8.17.0      The Coq Proof Assistant
+coq-core              8.17.0      The Coq Proof Assistant -- Core Binaries and Tools
+coq-stdlib            8.17.0      The Coq Proof Assistant -- Standard Library
+coqide-server         8.17.0      The Coq Proof Assistant, XML protocol server
+dune                  3.12.2      Fast, portable, and opinionated build system
+ocaml                 5.0.0       The OCaml compiler (virtual package)
+ocaml-base-compiler   5.0.0       Official release 5.0.0
+ocaml-config          3           OCaml Switch Configuration
+ocaml-options-vanilla 1           Ensure that OCaml is compiled with no special options enabled
+ocamlfind             1.9.6       A library manager for OCaml
+zarith                1.13        Implements arithmetic and logical operations over arbitrary-precision integers
+The following actions will be performed:
+  - downgrade dune              3.12.2 to 3.7.1
+  - install   ocamlbuild        0.14.3
+  - install   cmdliner          1.2.0
+  - install   seq               base
+  - install   conf-git          1.1
+  - install   stdlib-shims      0.3.0
+  - install   pp                1.2.0
+  - install   ordering          3.12.2
+  - install   opam-file-format  2.1.6
+  - install   csexp             1.5.2
+  - install   cppo              1.6.9
+  - install   base64            3.5.1
+  - recompile coq-core          8.17.0          [uses dune]
+  - install   topkg             1.0.7
+  - install   re                1.11.0
+  - install   ocamlgraph        2.1.0
+  - install   dyn               3.12.2
+  - install   extlib            1.7.9
+  - recompile coqide-server     8.17.0          [uses dune]
+  - recompile coq-stdlib        8.17.0          [uses dune]
+  - install   rresult           0.7.0
+  - install   fmt               0.9.0
+  - install   astring           0.8.5
+  - install   opam-core         2.1.5
+  - install   stdune            3.12.2
+  - install   cudf              0.10
+  - install   logs              0.7.0
+  - install   fpath             0.7.3
+  - install   opam-format       2.1.5
+  - install   dune-private-libs 3.12.2
+  - install   mccs              1.1+17
+  - install   dose3             7.0.0
+  - install   bos               0.2.1
+  - install   opam-repository   2.1.5
+  - install   dune-site         3.12.2
+  - install   opam-solver       2.1.5
+  - install   opam-state        2.1.5
+  - install   opam-client       2.1.5
+===== 34 to install | 3 to recompile | 1 to downgrade =====
+&lt;&gt;&lt;&gt; Processing actions &lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;
+-&gt; retrieved base64.3.5.1  (https://opam.ocaml.org/cache)
+-&gt; retrieved astring.0.8.5  (https://opam.ocaml.org/cache)
+-&gt; retrieved bos.0.2.1  (https://opam.ocaml.org/cache)
+-&gt; retrieved coq-core.8.17.0  (cached)
+-&gt; installed conf-git.1.1
+-&gt; retrieved coq-stdlib.8.17.0  (cached)
+-&gt; retrieved cmdliner.1.2.0  (https://opam.ocaml.org/cache)
+-&gt; retrieved coqide-server.8.17.0  (cached)
+-&gt; retrieved cppo.1.6.9  (https://opam.ocaml.org/cache)
+-&gt; retrieved csexp.1.5.2  (https://opam.ocaml.org/cache)
+-&gt; retrieved cudf.0.10  (https://opam.ocaml.org/cache)
+-&gt; retrieved dose3.7.0.0  (https://opam.ocaml.org/cache)
+-&gt; retrieved dune.3.7.1  (https://opam.ocaml.org/cache)
+-&gt; retrieved dune-private-libs.3.12.2  (cached)
+-&gt; retrieved dune-site.3.12.2  (cached)
+-&gt; retrieved dyn.3.12.2  (cached)
+-&gt; retrieved extlib.1.7.9  (https://opam.ocaml.org/cache)
+-&gt; retrieved fmt.0.9.0  (https://opam.ocaml.org/cache)
+-&gt; retrieved fpath.0.7.3  (https://opam.ocaml.org/cache)
+-&gt; installed cmdliner.1.2.0
+-&gt; retrieved logs.0.7.0  (https://opam.ocaml.org/cache)
+-&gt; retrieved mccs.1.1+17  (https://opam.ocaml.org/cache)
+-&gt; retrieved ocamlbuild.0.14.3  (https://opam.ocaml.org/cache)
+-&gt; retrieved ocamlgraph.2.1.0  (https://opam.ocaml.org/cache)
+-&gt; retrieved opam-client.2.1.5  (https://opam.ocaml.org/cache)
+-&gt; retrieved opam-format.2.1.5  (cached)
+-&gt; retrieved opam-repository.2.1.5  (cached)
+-&gt; retrieved opam-file-format.2.1.6  (https://opam.ocaml.org/cache)
+-&gt; retrieved opam-solver.2.1.5  (cached)
+-&gt; retrieved opam-state.2.1.5  (cached)
+-&gt; retrieved pp.1.2.0  (https://opam.ocaml.org/cache)
+-&gt; retrieved re.1.11.0  (https://opam.ocaml.org/cache)
+-&gt; retrieved rresult.0.7.0  (https://opam.ocaml.org/cache)
+-&gt; installed seq.base
+-&gt; retrieved opam-core.2.1.5  (https://opam.ocaml.org/cache)
+-&gt; retrieved stdlib-shims.0.3.0  (https://opam.ocaml.org/cache)
+-&gt; retrieved ordering.3.12.2  (cached)
+-&gt; retrieved stdune.3.12.2  (cached)
+-&gt; retrieved topkg.1.0.7  (https://opam.ocaml.org/cache)
+-&gt; installed ocamlbuild.0.14.3
+While removing coq-stdlib.8.17.0: these files have been modified since installation:
+  - lib/coq/user-contrib/Ltac2/Uint63.vos
+  - lib/coq/user-contrib/Ltac2/Uint63.vo
+  - lib/coq/user-contrib/Ltac2/Uint63.v
+  - lib/coq/user-contrib/Ltac2/Uint63.glob
+  - lib/coq/user-contrib/Ltac2/String.vos
+  - lib/coq/user-contrib/Ltac2/String.vo
+  - lib/coq/user-contrib/Ltac2/String.v
+  - lib/coq/user-contrib/Ltac2/String.glob
+  - lib/coq/user-contrib/Ltac2/Std.vos
+  - lib/coq/user-contrib/Ltac2/Std.vo
+  - lib/coq/user-contrib/Ltac2/Std.v
+  - lib/coq/user-contrib/Ltac2/Std.glob
+  - lib/coq/user-contrib/Ltac2/Proj.vos
+  - lib/coq/user-contrib/Ltac2/Proj.vo
+  - lib/coq/user-contrib/Ltac2/Proj.v
+  - lib/coq/user-contrib/Ltac2/Proj.glob
+  - lib/coq/user-contrib/Ltac2/Printf.vos
+  - lib/coq/user-contrib/Ltac2/Printf.vo
+  - lib/coq/user-contrib/Ltac2/Printf.v
+  - lib/coq/user-contrib/Ltac2/Printf.glob
+  - lib/coq/user-contrib/Ltac2/Pattern.vos
+  - lib/coq/user-contrib/Ltac2/Pattern.vo
+  - lib/coq/user-contrib/Ltac2/Pattern.v
+  - lib/coq/user-contrib/Ltac2/Pattern.glob
+  - lib/coq/user-contrib/Ltac2/Option.vos
+  - lib/coq/user-contrib/Ltac2/Option.vo
+  - lib/coq/user-contrib/Ltac2/Option.v
+  - lib/coq/user-contrib/Ltac2/Option.glob
+  - lib/coq/user-contrib/Ltac2/Notations.vos
+  - lib/coq/user-contrib/Ltac2/Notations.vo
+  - lib/coq/user-contrib/Ltac2/Notations.v
+  - lib/coq/user-contrib/Ltac2/Notations.glob
+  - lib/coq/user-contrib/Ltac2/Meta.vos
+  - lib/coq/user-contrib/Ltac2/Meta.vo
+  - lib/coq/user-contrib/Ltac2/Meta.v
+  - lib/coq/user-contrib/Ltac2/Meta.glob
+  - lib/coq/user-contrib/Ltac2/Message.vos
+  - lib/coq/user-contrib/Ltac2/Message.vo
+  - lib/coq/user-contrib/Ltac2/Message.v
+  - lib/coq/user-contrib/Ltac2/Message.glob
+  - lib/coq/user-contrib/Ltac2/Ltac2.vos
+  - lib/coq/user-contrib/Ltac2/Ltac2.vo
+  - lib/coq/user-contrib/Ltac2/Ltac2.v
+  - lib/coq/user-contrib/Ltac2/Ltac2.glob
+  - lib/coq/user-contrib/Ltac2/Ltac1.vos
+  - lib/coq/user-contrib/Ltac2/Ltac1.vo
+  - lib/coq/user-contrib/Ltac2/Ltac1.v
+  - lib/coq/user-contrib/Ltac2/Ltac1.glob
+  - lib/coq/user-contrib/Ltac2/List.vos
+  - lib/coq/user-contrib/Ltac2/List.vo
+  - lib/coq/user-contrib/Ltac2/List.v
+  - lib/coq/user-contrib/Ltac2/List.glob
+  - lib/coq/user-contrib/Ltac2/Int.vos
+  - lib/coq/user-contrib/Ltac2/Int.vo
+  - lib/coq/user-contrib/Ltac2/Int.v
+  - lib/coq/user-contrib/Ltac2/Int.glob
+  - lib/coq/user-contrib/Ltac2/Init.vos
+  - lib/coq/user-contrib/Ltac2/Init.vo
+  - lib/coq/user-contrib/Ltac2/Init.v
+  - lib/coq/user-contrib/Ltac2/Init.glob
+  - lib/coq/user-contrib/Ltac2/Ind.vos
+  - lib/coq/user-contrib/Ltac2/Ind.vo
+  - lib/coq/user-contrib/Ltac2/Ind.v
+  - lib/coq/user-contrib/Ltac2/Ind.glob
+  - lib/coq/user-contrib/Ltac2/Ident.vos
+  - lib/coq/user-contrib/Ltac2/Ident.vo
+  - lib/coq/user-contrib/Ltac2/Ident.v
+  - lib/coq/user-contrib/Ltac2/Ident.glob
+  - lib/coq/user-contrib/Ltac2/Fresh.vos
+  - lib/coq/user-contrib/Ltac2/Fresh.vo
+  - lib/coq/user-contrib/Ltac2/Fresh.v
+  - lib/coq/user-contrib/Ltac2/Fresh.glob
+  - lib/coq/user-contrib/Ltac2/Float.vos
+  - lib/coq/user-contrib/Ltac2/Float.vo
+  - lib/coq/user-contrib/Ltac2/Float.v
+  - lib/coq/user-contrib/Ltac2/Float.glob
+  - lib/coq/user-contrib/Ltac2/Evar.vos
+  - lib/coq/user-contrib/Ltac2/Evar.vo
+  - lib/coq/user-contrib/Ltac2/Evar.v
+  - lib/coq/user-contrib/Ltac2/Evar.glob
+  - lib/coq/user-contrib/Ltac2/Env.vos
+  - lib/coq/user-contrib/Ltac2/Env.vo
+  - lib/coq/user-contrib/Ltac2/Env.v
+  - lib/coq/user-contrib/Ltac2/Env.glob
+  - lib/coq/user-contrib/Ltac2/Control.vos
+  - lib/coq/user-contrib/Ltac2/Control.vo
+  - lib/coq/user-contrib/Ltac2/Control.v
+  - lib/coq/user-contrib/Ltac2/Control.glob
+  - lib/coq/user-contrib/Ltac2/Constructor.vos
+  - lib/coq/user-contrib/Ltac2/Constructor.vo
+  - lib/coq/user-contrib/Ltac2/Constructor.v
+  - lib/coq/user-contrib/Ltac2/Constructor.glob
+  - lib/coq/user-contrib/Ltac2/Constr.vos
+  - lib/coq/user-contrib/Ltac2/Constr.vo
+  - lib/coq/user-contrib/Ltac2/Constr.v
+  - lib/coq/user-contrib/Ltac2/Constr.glob
+  - lib/coq/user-contrib/Ltac2/Constant.vos
+  - lib/coq/user-contrib/Ltac2/Constant.vo
+  - lib/coq/user-contrib/Ltac2/Constant.v
+  - lib/coq/user-contrib/Ltac2/Constant.glob
+  - lib/coq/user-contrib/Ltac2/Char.vos
+  - lib/coq/user-contrib/Ltac2/Char.vo
+  - lib/coq/user-contrib/Ltac2/Char.v
+  - lib/coq/user-contrib/Ltac2/Char.glob
+  - lib/coq/user-contrib/Ltac2/Bool.vos
+  - lib/coq/user-contrib/Ltac2/Bool.vo
+  - lib/coq/user-contrib/Ltac2/Bool.v
+  - lib/coq/user-contrib/Ltac2/Bool.glob
+  - lib/coq/user-contrib/Ltac2/Array.vos
+  - lib/coq/user-contrib/Ltac2/Array.vo
+  - lib/coq/user-contrib/Ltac2/Array.v
+  - lib/coq/user-contrib/Ltac2/Array.glob
+  - lib/coq/theories/ssrmatching/ssrmatching.vos
+  - lib/coq/theories/ssrmatching/ssrmatching.vo
+  - lib/coq/theories/ssrmatching/ssrmatching.v
+  - lib/coq/theories/ssrmatching/ssrmatching.glob
+  - lib/coq/theories/ssr/ssrunder.vos
+  - lib/coq/theories/ssr/ssrunder.vo
+  - lib/coq/theories/ssr/ssrunder.v
+  - lib/coq/theories/ssr/ssrunder.glob
+  - lib/coq/theories/ssr/ssrsetoid.vos
+  - lib/coq/theories/ssr/ssrsetoid.vo
+  - lib/coq/theories/ssr
+[...] truncated
+ol/DecBool.glob
+  - lib/coq/theories/Bool/Bvector.vos
+  - lib/coq/theories/Bool/Bvector.vo
+  - lib/coq/theories/Bool/Bvector.v
+  - lib/coq/theories/Bool/Bvector.glob
+  - lib/coq/theories/Bool/BoolOrder.vos
+  - lib/coq/theories/Bool/BoolOrder.vo
+  - lib/coq/theories/Bool/BoolOrder.v
+  - lib/coq/theories/Bool/BoolOrder.glob
+  - lib/coq/theories/Bool/BoolEq.vos
+  - lib/coq/theories/Bool/BoolEq.vo
+  - lib/coq/theories/Bool/BoolEq.v
+  - lib/coq/theories/Bool/BoolEq.glob
+  - lib/coq/theories/Bool/Bool.vos
+  - lib/coq/theories/Bool/Bool.vo
+  - lib/coq/theories/Bool/Bool.v
+  - lib/coq/theories/Bool/Bool.glob
+  - lib/coq/theories/Array/PArray.vos
+  - lib/coq/theories/Array/PArray.vo
+  - lib/coq/theories/Array/PArray.v
+  - lib/coq/theories/Array/PArray.glob
+  - lib/coq/theories/Arith/Wf_nat.vos
+  - lib/coq/theories/Arith/Wf_nat.vo
+  - lib/coq/theories/Arith/Wf_nat.v
+  - lib/coq/theories/Arith/Wf_nat.glob
+  - lib/coq/theories/Arith/Plus.vos
+  - lib/coq/theories/Arith/Plus.vo
+  - lib/coq/theories/Arith/Plus.v
+  - lib/coq/theories/Arith/Plus.glob
+  - lib/coq/theories/Arith/Peano_dec.vos
+  - lib/coq/theories/Arith/Peano_dec.vo
+  - lib/coq/theories/Arith/Peano_dec.v
+  - lib/coq/theories/Arith/Peano_dec.glob
+  - lib/coq/theories/Arith/PeanoNat.vos
+  - lib/coq/theories/Arith/PeanoNat.vo
+  - lib/coq/theories/Arith/PeanoNat.v
+  - lib/coq/theories/Arith/PeanoNat.glob
+  - lib/coq/theories/Arith/Mult.vos
+  - lib/coq/theories/Arith/Mult.vo
+  - lib/coq/theories/Arith/Mult.v
+  - lib/coq/theories/Arith/Mult.glob
+  - lib/coq/theories/Arith/Minus.vos
+  - lib/coq/theories/Arith/Minus.vo
+  - lib/coq/theories/Arith/Minus.v
+  - lib/coq/theories/Arith/Minus.glob
+  - lib/coq/theories/Arith/Min.vos
+  - lib/coq/theories/Arith/Min.vo
+  - lib/coq/theories/Arith/Min.v
+  - lib/coq/theories/Arith/Min.glob
+  - lib/coq/theories/Arith/Max.vos
+  - lib/coq/theories/Arith/Max.vo
+  - lib/coq/theories/Arith/Max.v
+  - lib/coq/theories/Arith/Max.glob
+  - lib/coq/theories/Arith/Lt.vos
+  - lib/coq/theories/Arith/Lt.vo
+  - lib/coq/theories/Arith/Lt.v
+  - lib/coq/theories/Arith/Lt.glob
+  - lib/coq/theories/Arith/Le.vos
+  - lib/coq/theories/Arith/Le.vo
+  - lib/coq/theories/Arith/Le.v
+  - lib/coq/theories/Arith/Le.glob
+  - lib/coq/theories/Arith/Gt.vos
+  - lib/coq/theories/Arith/Gt.vo
+  - lib/coq/theories/Arith/Gt.v
+  - lib/coq/theories/Arith/Gt.glob
+  - lib/coq/theories/Arith/Factorial.vos
+  - lib/coq/theories/Arith/Factorial.vo
+  - lib/coq/theories/Arith/Factorial.v
+  - lib/coq/theories/Arith/Factorial.glob
+  - lib/coq/theories/Arith/Even.vos
+  - lib/coq/theories/Arith/Even.vo
+  - lib/coq/theories/Arith/Even.v
+  - lib/coq/theories/Arith/Even.glob
+  - lib/coq/theories/Arith/Euclid.vos
+  - lib/coq/theories/Arith/Euclid.vo
+  - lib/coq/theories/Arith/Euclid.v
+  - lib/coq/theories/Arith/Euclid.glob
+  - lib/coq/theories/Arith/EqNat.vos
+  - lib/coq/theories/Arith/EqNat.vo
+  - lib/coq/theories/Arith/EqNat.v
+  - lib/coq/theories/Arith/EqNat.glob
+  - lib/coq/theories/Arith/Div2.vos
+  - lib/coq/theories/Arith/Div2.vo
+  - lib/coq/theories/Arith/Div2.v
+  - lib/coq/theories/Arith/Div2.glob
+  - lib/coq/theories/Arith/Compare_dec.vos
+  - lib/coq/theories/Arith/Compare_dec.vo
+  - lib/coq/theories/Arith/Compare_dec.v
+  - lib/coq/theories/Arith/Compare_dec.glob
+  - lib/coq/theories/Arith/Compare.vos
+  - lib/coq/theories/Arith/Compare.vo
+  - lib/coq/theories/Arith/Compare.v
+  - lib/coq/theories/Arith/Compare.glob
+  - lib/coq/theories/Arith/Cantor.vos
+  - lib/coq/theories/Arith/Cantor.vo
+  - lib/coq/theories/Arith/Cantor.v
+  - lib/coq/theories/Arith/Cantor.glob
+  - lib/coq/theories/Arith/Bool_nat.vos
+  - lib/coq/theories/Arith/Bool_nat.vo
+  - lib/coq/theories/Arith/Bool_nat.v
+  - lib/coq/theories/Arith/Bool_nat.glob
+  - lib/coq/theories/Arith/Between.vos
+  - lib/coq/theories/Arith/Between.vo
+  - lib/coq/theories/Arith/Between.v
+  - lib/coq/theories/Arith/Between.glob
+  - lib/coq/theories/Arith/Arith_prebase.vos
+  - lib/coq/theories/Arith/Arith_prebase.vo
+  - lib/coq/theories/Arith/Arith_prebase.v
+  - lib/coq/theories/Arith/Arith_prebase.glob
+  - lib/coq/theories/Arith/Arith_base.vos
+  - lib/coq/theories/Arith/Arith_base.vo
+  - lib/coq/theories/Arith/Arith_base.v
+  - lib/coq/theories/Arith/Arith_base.glob
+  - lib/coq/theories/Arith/Arith.vos
+  - lib/coq/theories/Arith/Arith.vo
+  - lib/coq/theories/Arith/Arith.v
+  - lib/coq/theories/Arith/Arith.glob
+Remove them anyway? [y/N] y
+-&gt; removed   coq-stdlib.8.17.0
+-&gt; removed   coqide-server.8.17.0
+-&gt; removed   coq-core.8.17.0
+-&gt; removed   dune.3.12.2
+-&gt; installed dune.3.7.1
+-&gt; installed topkg.1.0.7
+-&gt; installed base64.3.5.1
+-&gt; installed cppo.1.6.9
+-&gt; installed csexp.1.5.2
+-&gt; installed astring.0.8.5
+-&gt; installed fmt.0.9.0
+-&gt; installed extlib.1.7.9
+-&gt; installed opam-file-format.2.1.6
+-&gt; installed fpath.0.7.3
+-&gt; installed cudf.0.10
+-&gt; installed logs.0.7.0
+-&gt; installed pp.1.2.0
+-&gt; installed ordering.3.12.2
+-&gt; installed re.1.11.0
+-&gt; installed rresult.0.7.0
+-&gt; installed stdlib-shims.0.3.0
+-&gt; installed dyn.3.12.2
+-&gt; installed mccs.1.1+17
+-&gt; installed bos.0.2.1
+-&gt; installed ocamlgraph.2.1.0
+-&gt; installed dose3.7.0.0
+-&gt; installed stdune.3.12.2
+-&gt; installed dune-private-libs.3.12.2
+-&gt; installed opam-core.2.1.5
+-&gt; installed dune-site.3.12.2
+-&gt; installed opam-format.2.1.5
+-&gt; installed opam-repository.2.1.5
+-&gt; installed opam-solver.2.1.5
+-&gt; installed coq-core.8.17.0
+-&gt; installed coqide-server.8.17.0
+-&gt; installed opam-state.2.1.5
+[ERROR] The compilation of coq-stdlib.8.17.0 failed at &quot;dune build -p coq-stdlib -j 4 @install&quot;.
+-&gt; installed opam-client.2.1.5
+#=== ERROR while compiling coq-stdlib.8.17.0 ==================================#
+# context              2.1.5 | linux/x86_64 | ocaml-base-compiler.5.0.0 | https://opam.ocaml.org#28c3ca4d
+# path                 ~/.opam/ocaml-base-compiler.5.0.0/.opam-switch/build/coq-stdlib.8.17.0
+# command              ~/.opam/opam-init/hooks/sandbox.sh build dune build -p coq-stdlib -j 4 @install
+# exit-code            1
+# env-file             ~/.opam/log/coq-stdlib-6091-4bea04.env
+# output-file          ~/.opam/log/coq-stdlib-6091-4bea04.out
+### output ###
+# [...]
+# 3000 |   (targets Ltac.glob Ltac.vos Ltac.vo)
+# 3001 |   (deps /home/bench/.opam/ocaml-base-compiler.5.0.0/lib/coq-core/plugins/ltac/ltac_plugin.cmxs)
+# 3002 |   (action (run coqc -noinit -boot -R ../. Coq -I /home/bench/.opam/ocaml-base-compiler.5.0.0/lib/coq-core/plugins/number_string_notation -I /home/bench/.opam/ocaml-base-compiler.5.0.0/lib/coq-core/plugins/zify -I /home/bench/.opam/ocaml-base-compiler.5.0.0/lib/coq-core/plugins/tauto -I /home/bench/.opam/ocaml-base-compiler.5.0.0/lib/coq-core/plugins/ssreflect -I /home/bench/.opam/ocaml[...]
+# (cd _build/default/theories/Init &amp;&amp; /home/bench/.opam/ocaml-base-compiler.5.0.0/bin/coqc -noinit -boot -R ../. Coq -I /home/bench/.opam/ocaml-base-compiler.5.0.0/lib/coq-core/plugins/number_string_notation -I /home/bench/.opam/ocaml-base-compiler.5.0.0/lib/coq-core/plugins/zify -I /home/bench/.opam/ocaml-base-compiler.5.0.0/lib/coq-core/plugins/tauto -I /home/bench/.opam/ocaml-base-compiler.5[...]
+# Fatal error: Not enough heap memory to reserve minor heaps
+# File &quot;theories/dune&quot;, line 3014, characters 1-1509:
+# 3014 |  (rule
+# 3015 |   (targets Notations.glob Notations.vos Notations.vo)
+# 3016 |   (deps )
+# 3017 |   (action (run coqc -noinit -boot -R ../. Coq -I /home/bench/.opam/ocaml-base-compiler.5.0.0/lib/coq-core/plugins/number_string_notation -I /home/bench/.opam/ocaml-base-compiler.5.0.0/lib/coq-core/plugins/zify -I /home/bench/.opam/ocaml-base-compiler.5.0.0/lib/coq-core/plugins/tauto -I /home/bench/.opam/ocaml-base-compiler.5.0.0/lib/coq-core/plugins/ssreflect -I /home/bench/.opam/ocaml[...]
+# (cd _build/default/theories/Init &amp;&amp; /home/bench/.opam/ocaml-base-compiler.5.0.0/bin/coqc -noinit -boot -R ../. Coq -I /home/bench/.opam/ocaml-base-compiler.5.0.0/lib/coq-core/plugins/number_string_notation -I /home/bench/.opam/ocaml-base-compiler.5.0.0/lib/coq-core/plugins/zify -I /home/bench/.opam/ocaml-base-compiler.5.0.0/lib/coq-core/plugins/tauto -I /home/bench/.opam/ocaml-base-compiler.5[...]
+# Fatal error: Not enough heap memory to reserve minor heaps
+&lt;&gt;&lt;&gt; Error report &lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;
++- The following actions failed
+| - build coq-stdlib 8.17.0
++- 
++- The following changes have been performed
+| - remove    coq-stdlib        8.17.0
+| - downgrade dune              3.12.2 to 3.7.1
+| - recompile coq-core          8.17.0
+| - recompile coqide-server     8.17.0
+| - install   astring           0.8.5
+| - install   base64            3.5.1
+| - install   bos               0.2.1
+| - install   cmdliner          1.2.0
+| - install   conf-git          1.1
+| - install   cppo              1.6.9
+| - install   csexp             1.5.2
+| - install   cudf              0.10
+| - install   dose3             7.0.0
+| - install   dune-private-libs 3.12.2
+| - install   dune-site         3.12.2
+| - install   dyn               3.12.2
+| - install   extlib            1.7.9
+| - install   fmt               0.9.0
+| - install   fpath             0.7.3
+| - install   logs              0.7.0
+| - install   mccs              1.1+17
+| - install   ocamlbuild        0.14.3
+| - install   ocamlgraph        2.1.0
+| - install   opam-client       2.1.5
+| - install   opam-core         2.1.5
+| - install   opam-file-format  2.1.6
+| - install   opam-format       2.1.5
+| - install   opam-repository   2.1.5
+| - install   opam-solver       2.1.5
+| - install   opam-state        2.1.5
+| - install   ordering          3.12.2
+| - install   pp                1.2.0
+| - install   re                1.11.0
+| - install   rresult           0.7.0
+| - install   seq               base
+| - install   stdlib-shims      0.3.0
+| - install   stdune            3.12.2
+| - install   topkg             1.0.7
++- 
+# Run eval $(opam env) to update the current shell environment
+The former state can be restored with:
+    /usr/local/bin/opam switch import &quot;/home/bench/.opam/ocaml-base-compiler.5.0.0/.opam-switch/backup/state-20240117215215.export&quot;
+The middle of the output is truncated (maximum 20000 characters)
+</pre></dd>
             </dl>
             <h2>Install 🚀</h2>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>opam list; echo; timeout 4h opam install -y -v coq-tactician.1.0~beta2.1+8.17 coq.8.17.0</code></dd>
+              <dd><code>true</code></dd>
               <dt>Return code</dt>
               <dd>0</dd>
               <dt>Duration</dt>
-              <dd>19 s</dd>
+              <dd>0 s</dd>
             </dl>
             <h2>Installation size</h2>
-            <p>Total: 36 M</p>
-            <ul>
-              <li>20 M <code>../ocaml-base-compiler.5.0.0/bin/tactician</code></li>
-              <li>2 M <code>../ocaml-base-compiler.5.0.0/lib/coq-tactician/record-plugin/tactician_ltac1_record_plugin.cma</code></li>
-              <li>2 M <code>../ocaml-base-compiler.5.0.0/lib/coq-tactician/record-plugin/tactician_ltac1_record_plugin.a</code></li>
-              <li>2 M <code>../ocaml-base-compiler.5.0.0/lib/coq-tactician/record-plugin/tactician_ltac1_record_plugin.cmxs</code></li>
-              <li>2 M <code>../ocaml-base-compiler.5.0.0/lib/coq/user-contrib/Tactician/tactician_ltac1_record_plugin.cmxs</code></li>
-              <li>1 M <code>../ocaml-base-compiler.5.0.0/lib/coq-tactician/ssreflect-plugin/tactician_ssreflect_plugin__Map_ssr_witnesses.cmt</code></li>
-              <li>807 K <code>../ocaml-base-compiler.5.0.0/lib/coq-tactician/record-plugin/tactician_ltac1_record_plugin__Map_all_the_things.cmt</code></li>
-              <li>538 K <code>../ocaml-base-compiler.5.0.0/lib/coq-tactician/record-plugin/tactician_ltac1_record_plugin__Ltacrecord.cmt</code></li>
-              <li>508 K <code>../ocaml-base-compiler.5.0.0/lib/coq-tactician/ssreflect-plugin/tactician_ssreflect_plugin.cma</code></li>
-              <li>298 K <code>../ocaml-base-compiler.5.0.0/lib/coq-tactician/record-plugin/tactician_ltac1_record_plugin__Monad_util.cmt</code></li>
-              <li>291 K <code>../ocaml-base-compiler.5.0.0/lib/coq-tactician/record-plugin/tactician_ltac1_record_plugin__Map_all_the_witnesses.cmt</code></li>
-              <li>264 K <code>../ocaml-base-compiler.5.0.0/lib/coq-tactician/record-plugin/tactician_ltac1_record_plugin__Features.cmt</code></li>
-              <li>197 K <code>../ocaml-base-compiler.5.0.0/lib/coq-tactician/record-plugin/tactician_ltac1_record_plugin__Tactic_sexpr.cmt</code></li>
-              <li>197 K <code>../ocaml-base-compiler.5.0.0/lib/coq-tactician/record-plugin/tactician_ltac1_record_plugin__Tactic_one_variable.cmt</code></li>
-              <li>180 K <code>../ocaml-base-compiler.5.0.0/lib/coq-tactician/record-plugin/tactician_ltac1_record_plugin__Tactic_annotate.cmt</code></li>
-              <li>178 K <code>../ocaml-base-compiler.5.0.0/lib/coq-tactician/record-plugin/tactician_ltac1_record_plugin__G_ltac1_record.cmt</code></li>
-              <li>176 K <code>../ocaml-base-compiler.5.0.0/lib/coq-tactician/record-plugin/tactician_ltac1_record_plugin.cmxa</code></li>
-              <li>152 K <code>../ocaml-base-compiler.5.0.0/lib/coq-tactician/ssreflect-plugin/tactician_ssreflect_plugin.cmxs</code></li>
-              <li>152 K <code>../ocaml-base-compiler.5.0.0/lib/coq/user-contrib/Tactician/tactician_ssreflect_plugin.cmxs</code></li>
-              <li>151 K <code>../ocaml-base-compiler.5.0.0/lib/coq-tactician/ssreflect-plugin/tactician_ssreflect_plugin.a</code></li>
-              <li>124 K <code>../ocaml-base-compiler.5.0.0/lib/coq-tactician/record-plugin/tactician_ltac1_record_plugin__Tactic_learner_internal.cmt</code></li>
-              <li>124 K <code>../ocaml-base-compiler.5.0.0/lib/coq-tactician/record-plugin/tactician_ltac1_record_plugin__Naiveknn_subst_learner.cmt</code></li>
-              <li>123 K <code>../ocaml-base-compiler.5.0.0/lib/coq-tactician/record-plugin/tactician_ltac1_record_plugin__Lshf_learner.cmt</code></li>
-              <li>105 K <code>../ocaml-base-compiler.5.0.0/lib/coq-tactician/record-plugin/tactician_ltac1_record_plugin__Tactic_substitute.cmt</code></li>
-              <li>104 K <code>../ocaml-base-compiler.5.0.0/lib/coq-tactician/record-plugin/tactician_ltac1_record_plugin__Tactic_abstract.cmt</code></li>
-              <li>103 K <code>../ocaml-base-compiler.5.0.0/lib/coq-tactician/record-plugin/tactician_ltac1_record_plugin__Offline_evaluation_simulator_learner.cmt</code></li>
-              <li>99 K <code>../ocaml-base-compiler.5.0.0/lib/coq-tactician/record-plugin/tactician_ltac1_record_plugin__Naiveknn_learner.cmt</code></li>
-              <li>92 K <code>../ocaml-base-compiler.5.0.0/lib/coq-tactician/record-plugin/tactician_ltac1_record_plugin__Inline_private_constants.cmt</code></li>
-              <li>86 K <code>../ocaml-base-compiler.5.0.0/lib/coq-tactician/record-plugin/tactician_ltac1_record_plugin__Learner_helper.cmt</code></li>
-              <li>83 K <code>../ocaml-base-compiler.5.0.0/lib/coq-tactician/record-plugin/tactician_ltac1_record_plugin__Sexpr.cmt</code></li>
-              <li>83 K <code>../ocaml-base-compiler.5.0.0/lib/coq-tactician/record-plugin/tactician_ltac1_record_plugin__Map_all_the_things.cmti</code></li>
-              <li>77 K <code>../ocaml-base-compiler.5.0.0/lib/coq-tactician/record-plugin/tactician_ltac1_record_plugin__Tactic_normalize.cmt</code></li>
-              <li>76 K <code>../ocaml-base-compiler.5.0.0/lib/coq-tactician/record-plugin/tactician_ltac1_record_plugin__Tactician_util.cmt</code></li>
-              <li>72 K <code>../ocaml-base-compiler.5.0.0/lib/coq-tactician/record-plugin/tactician_ltac1_record_plugin__Cook_tacexpr.cmt</code></li>
-              <li>71 K <code>../ocaml-base-compiler.5.0.0/lib/coq-tactician/record-plugin/tactician_ltac1_record_plugin__Find_tactic_syntax.cmt</code></li>
-              <li>58 K <code>../ocaml-base-compiler.5.0.0/lib/coq-tactician/record-plugin/tactician_ltac1_record_plugin__Tactic_substitution_check_learner.cmt</code></li>
-              <li>58 K <code>../ocaml-base-compiler.5.0.0/lib/coq-tactician/record-plugin/tactician_ltac1_record_plugin__Extreme_tactic_normalize.cmt</code></li>
-              <li>57 K <code>../ocaml-base-compiler.5.0.0/lib/coq-tactician/record-plugin/tactician_ltac1_record_plugin__Trivial_learners.cmt</code></li>
-              <li>52 K <code>../ocaml-base-compiler.5.0.0/lib/coq-tactician/record-plugin/tactician_ltac1_record_plugin__Tactic_learner.cmti</code></li>
-              <li>50 K <code>../ocaml-base-compiler.5.0.0/lib/coq-tactician/record-plugin/map_all_the_things.ml</code></li>
-              <li>49 K <code>../ocaml-base-compiler.5.0.0/lib/coq-tactician/record-plugin/tactician_ltac1_record_plugin__Benchmark.cmt</code></li>
-              <li>49 K <code>../ocaml-base-compiler.5.0.0/lib/coq-tactician/tactics-plugin/tactician_ltac1_tactics_plugin__G_ltac1_tactics.cmt</code></li>
-              <li>47 K <code>../ocaml-base-compiler.5.0.0/lib/coq-tactician/record-plugin/tactician_ltac1_record_plugin__Diagonal_iterative_search.cmt</code></li>
-              <li>46 K <code>../ocaml-base-compiler.5.0.0/lib/coq-tactician/record-plugin/ltacrecord.ml</code></li>
-              <li>43 K <code>../ocaml-base-compiler.5.0.0/lib/coq-tactician/tactics-plugin/tactician_ltac1_tactics_plugin.cmxs</code></li>
-              <li>43 K <code>../ocaml-base-compiler.5.0.0/lib/coq/user-contrib/Tactician/tactician_ltac1_tactics_plugin.cmxs</code></li>
-              <li>40 K <code>../ocaml-base-compiler.5.0.0/lib/coq-tactician/record-plugin/g_ltac1_record.ml</code></li>
-              <li>37 K <code>../ocaml-base-compiler.5.0.0/lib/coq-tactician/record-plugin/tactician_ltac1_record_plugin__Monad_util.cmi</code></li>
-              <li>36 K <code>../ocaml-base-compiler.5.0.0/lib/coq-tactician/record-plugin/tactician_ltac1_record_plugin__Dijkstra_iterative_search.cmt</code></li>
-              <li>33 K <code>../ocaml-base-compiler.5.0.0/lib/coq-tactician/record-plugin/tactician_ltac1_record_plugin__Tactic_one_variable.cmi</code></li>
-              <li>28 K <code>../ocaml-base-compiler.5.0.0/lib/coq/user-contrib/Tactician/Ltac1/Record.vo</code></li>
-              <li>27 K <code>../ocaml-base-compiler.5.0.0/lib/coq-tactician/record-plugin/tactician_ltac1_record_plugin__Ltacrecord.cmi</code></li>
-              <li>25 K <code>../ocaml-base-compiler.5.0.0/lib/coq-tactician/record-plugin/tactician_ltac1_record_plugin__Tactic_abstract.cmi</code></li>
-              <li>25 K <code>../ocaml-base-compiler.5.0.0/lib/coq-tactician/record-plugin/tactician_ltac1_record_plugin__Tactic_learner_internal.cmi</code></li>
-              <li>24 K <code>../ocaml-base-compiler.5.0.0/lib/coq-tactician/record-plugin/tactician_ltac1_record_plugin__Tactic_substitute.cmi</code></li>
-              <li>23 K <code>../ocaml-base-compiler.5.0.0/lib/coq-tactician/record-plugin/features.ml</code></li>
-              <li>23 K <code>../ocaml-base-compiler.5.0.0/lib/coq-tactician/tactics-plugin/tactician_ltac1_tactics_plugin.cma</code></li>
-              <li>23 K <code>../ocaml-base-compiler.5.0.0/lib/coq-tactician/record-plugin/tactician_ltac1_record_plugin.cmt</code></li>
-              <li>22 K <code>../ocaml-base-compiler.5.0.0/lib/coq-tactician/dune-package</code></li>
-              <li>22 K <code>../ocaml-base-compiler.5.0.0/lib/coq-tactician/record-plugin/tactician_ltac1_record_plugin__Map_all_the_things.cmi</code></li>
-              <li>21 K <code>../ocaml-base-compiler.5.0.0/lib/coq-tactician/tactics-plugin/tactician_ltac1_tactics_plugin.a</code></li>
-              <li>20 K <code>../ocaml-base-compiler.5.0.0/lib/coq-tactician/record-plugin/tactician_ltac1_record_plugin__Ltacrecord.cmx</code></li>
-              <li>20 K <code>../ocaml-base-compiler.5.0.0/lib/coq-tactician/record-plugin/tactician_ltac1_record_plugin__Tactic_learner.cmt</code></li>
-              <li>19 K <code>../ocaml-base-compiler.5.0.0/lib/coq-tactician/record-plugin/tactician_ltac1_record_plugin__Mapping_helpers.cmt</code></li>
-              <li>19 K <code>../ocaml-base-compiler.5.0.0/lib/coq-tactician/record-plugin/tactician_ltac1_record_plugin__Tactic_sexpr.cmi</code></li>
-              <li>19 K <code>../ocaml-base-compiler.5.0.0/lib/coq-tactician/record-plugin/tactician_ltac1_record_plugin__Learner_helper.cmi</code></li>
-              <li>19 K <code>../ocaml-base-compiler.5.0.0/lib/coq-tactician/record-plugin/tactician_ltac1_record_plugin__Tactic_one_variable.cmx</code></li>
-              <li>18 K <code>../ocaml-base-compiler.5.0.0/lib/coq-tactician/ssreflect-plugin/map_ssr_witnesses.ml</code></li>
-              <li>17 K <code>../ocaml-base-compiler.5.0.0/lib/coq-tactician/record-plugin/tactician_ltac1_record_plugin__Search_strategy_internal.cmt</code></li>
-              <li>17 K <code>../ocaml-base-compiler.5.0.0/lib/coq-tactician/record-plugin/tactician_ltac1_record_plugin__Tactic_learner.cmi</code></li>
-              <li>17 K <code>../ocaml-base-compiler.5.0.0/lib/coq-tactician/record-plugin/tactician_ltac1_record_plugin__Inline_private_constants.cmi</code></li>
-              <li>16 K <code>../ocaml-base-compiler.5.0.0/lib/coq-tactician/record-plugin/tactician_ltac1_record_plugin__Cook_tacexpr.cmi</code></li>
-              <li>16 K <code>../ocaml-base-compiler.5.0.0/lib/coq-tactician/record-plugin/tactician_ltac1_record_plugin__Find_tactic_syntax.cmi</code></li>
-              <li>16 K <code>../ocaml-base-compiler.5.0.0/lib/coq-tactician/record-plugin/tactician_ltac1_record_plugin__Tactic_normalize.cmi</code></li>
-              <li>16 K <code>../ocaml-base-compiler.5.0.0/lib/coq-tactician/ssreflect-plugin/tactician_ssreflect_plugin__Map_ssr_witnesses.cmi</code></li>
-              <li>16 K <code>../ocaml-base-compiler.5.0.0/lib/coq-tactician/record-plugin/tactician_ltac1_record_plugin__Features.cmi</code></li>
-              <li>15 K <code>../ocaml-base-compiler.5.0.0/lib/coq-tactician/record-plugin/tactician_ltac1_record_plugin__Timeouttac.cmt</code></li>
-              <li>15 K <code>../ocaml-base-compiler.5.0.0/lib/coq-tactician/record-plugin/tactician_ltac1_record_plugin__Tactic_learner_internal.cmx</code></li>
-              <li>15 K <code>../ocaml-base-compiler.5.0.0/lib/coq-tactician/record-plugin/tactician_ltac1_record_plugin__Tactic_substitute.cmx</code></li>
-              <li>15 K <code>../ocaml-base-compiler.5.0.0/lib/coq-tactician/record-plugin/tactician_ltac1_record_plugin__Tactic_abstract.cmx</code></li>
-              <li>14 K <code>../ocaml-base-compiler.5.0.0/lib/coq-tactician/record-plugin/tactician_ltac1_record_plugin__Tactic_annotate.cmi</code></li>
-              <li>14 K <code>../ocaml-base-compiler.5.0.0/lib/coq-tactician/record-plugin/tactician_ltac1_record_plugin__Extreme_tactic_normalize.cmi</code></li>
-              <li>14 K <code>../ocaml-base-compiler.5.0.0/lib/coq-tactician/record-plugin/tactician_ltac1_record_plugin__Tactic_sexpr.cmx</code></li>
-              <li>14 K <code>../ocaml-base-compiler.5.0.0/lib/coq-tactician/record-plugin/tactician_ltac1_record_plugin__Tactic_normalize.cmx</code></li>
-              <li>14 K <code>../ocaml-base-compiler.5.0.0/lib/coq-tactician/record-plugin/tactician_ltac1_record_plugin__Inline_private_constants.cmx</code></li>
-              <li>13 K <code>../ocaml-base-compiler.5.0.0/lib/coq-tactician/record-plugin/tactician_ltac1_record_plugin__Search_strategy.cmti</code></li>
-              <li>13 K <code>../ocaml-base-compiler.5.0.0/lib/coq-tactician/record-plugin/tactician_ltac1_record_plugin__Map_all_the_things.cmx</code></li>
-              <li>12 K <code>../ocaml-base-compiler.5.0.0/lib/coq-tactician/record-plugin/tactic_annotate.ml</code></li>
-              <li>12 K <code>../ocaml-base-compiler.5.0.0/lib/coq-tactician/record-plugin/map_all_the_witnesses.ml</code></li>
-              <li>12 K <code>../ocaml-base-compiler.5.0.0/lib/coq-tactician/record-plugin/tactician_ltac1_record_plugin__Monad_util.cmx</code></li>
-              <li>12 K <code>../ocaml-base-compiler.5.0.0/lib/coq-tactician/record-plugin/tactician_ltac1_record_plugin__Extreme_tactic_normalize.cmx</code></li>
-              <li>12 K <code>../ocaml-base-compiler.5.0.0/lib/coq-tactician/record-plugin/tactician_ltac1_record_plugin__Cook_tacexpr.cmx</code></li>
-              <li>12 K <code>../ocaml-base-compiler.5.0.0/lib/coq-tactician/record-plugin/tactician_ltac1_record_plugin__Find_tactic_syntax.cmx</code></li>
-              <li>10 K <code>../ocaml-base-compiler.5.0.0/lib/coq-tactician/record-plugin/tactician_ltac1_record_plugin__Offline_evaluation_simulator_learner.cmx</code></li>
-              <li>10 K <code>../ocaml-base-compiler.5.0.0/lib/coq-tactician/record-plugin/tactician_ltac1_record_plugin__Lshf_learner.cmi</code></li>
-              <li>10 K <code>../ocaml-base-compiler.5.0.0/lib/coq-tactician/record-plugin/tactician_ltac1_record_plugin__G_ltac1_record.cmx</code></li>
-              <li>10 K <code>../ocaml-base-compiler.5.0.0/lib/coq-tactician/ssreflect-plugin/tactician_ssreflect_plugin__Map_ssr_witnesses.cmx</code></li>
-              <li>10 K <code>../ocaml-base-compiler.5.0.0/lib/coq-tactician/record-plugin/tactician_ltac1_record_plugin__Naiveknn_learner.cmx</code></li>
-              <li>10 K <code>../ocaml-base-compiler.5.0.0/lib/coq-tactician/record-plugin/tactician_ltac1_record_plugin__Features.cmx</code></li>
-              <li>10 K <code>../ocaml-base-compiler.5.0.0/lib/coq-tactician/record-plugin/tactician_ltac1_record_plugin__Search_strategy.cmt</code></li>
-              <li>10 K <code>../ocaml-base-compiler.5.0.0/lib/coq-tactician/record-plugin/tactician_ltac1_record_plugin__G_ltac1_record.cmi</code></li>
-              <li>9 K <code>../ocaml-base-compiler.5.0.0/lib/coq-tactician/record-plugin/monad_util.ml</code></li>
-              <li>9 K <code>../ocaml-base-compiler.5.0.0/lib/coq-tactician/record-plugin/tactician_ltac1_record_plugin__Naiveknn_subst_learner.cmx</code></li>
-              <li>9 K <code>../ocaml-base-compiler.5.0.0/lib/coq-tactician/record-plugin/tactician_ltac1_record_plugin__Learner_helper.cmx</code></li>
-              <li>9 K <code>../ocaml-base-compiler.5.0.0/lib/coq-tactician/record-plugin/tactician_ltac1_record_plugin__Naiveknn_learner.cmi</code></li>
-              <li>9 K <code>../ocaml-base-compiler.5.0.0/lib/coq-tactician/record-plugin/tactician_ltac1_record_plugin__Lshf_learner.cmx</code></li>
-              <li>9 K <code>../ocaml-base-compiler.5.0.0/lib/coq-tactician/record-plugin/tactician_ltac1_record_plugin__Naiveknn_subst_learner.cmi</code></li>
-              <li>9 K <code>../ocaml-base-compiler.5.0.0/lib/coq-tactician/tactics-plugin/tactician_ltac1_tactics_plugin.cmxa</code></li>
-              <li>9 K <code>../ocaml-base-compiler.5.0.0/lib/coq-tactician/record-plugin/tactician_ltac1_record_plugin__Trivial_learners.cmx</code></li>
-              <li>9 K <code>../ocaml-base-compiler.5.0.0/lib/coq-tactician/record-plugin/tactician_ltac1_record_plugin__Offline_evaluation_simulator_learner.cmi</code></li>
-              <li>9 K <code>../ocaml-base-compiler.5.0.0/lib/coq-tactician/tactics-plugin/tactician_ltac1_tactics_plugin__G_ltac1_tactics.cmx</code></li>
-              <li>9 K <code>../ocaml-base-compiler.5.0.0/lib/coq-tactician/record-plugin/tactician_ltac1_record_plugin__Map_all_the_witnesses.cmx</code></li>
-              <li>9 K <code>../ocaml-base-compiler.5.0.0/lib/coq-tactician/record-plugin/tactician_ltac1_record_plugin__Tactic_learner.cmx</code></li>
-              <li>8 K <code>../ocaml-base-compiler.5.0.0/lib/coq-tactician/tactics-plugin/tactician_ltac1_tactics_plugin__G_ltac1_tactics.cmi</code></li>
-              <li>8 K <code>../ocaml-base-compiler.5.0.0/lib/coq-tactician/record-plugin/tactician_ltac1_record_plugin__Benchmark.cmi</code></li>
-              <li>8 K <code>../ocaml-base-compiler.5.0.0/lib/coq-tactician/record-plugin/tactic_sexpr.ml</code></li>
-              <li>8 K <code>../ocaml-base-compiler.5.0.0/lib/coq-tactician/record-plugin/tactician_ltac1_record_plugin__Tactic_annotate.cmx</code></li>
-              <li>8 K <code>../ocaml-base-compiler.5.0.0/lib/coq-tactician/record-plugin/tactician_ltac1_record_plugin__Benchmark.cmx</code></li>
-              <li>8 K <code>../ocaml-base-compiler.5.0.0/lib/coq-tactician/record-plugin/tactician_ltac1_record_plugin__Map_all_the_witnesses.cmi</code></li>
-              <li>7 K <code>../ocaml-base-compiler.5.0.0/lib/coq-tactician/record-plugin/tactic_learner_internal.ml</code></li>
-              <li>7 K <code>../ocaml-base-compiler.5.0.0/lib/coq-tactician/record-plugin/tactician_ltac1_record_plugin__Tactician_util.cmi</code></li>
-              <li>7 K <code>../ocaml-base-compiler.5.0.0/lib/coq-tactician/record-plugin/tactician_ltac1_record_plugin__Tactic_substitution_check_learner.cmx</code></li>
-              <li>7 K <code>../ocaml-base-compiler.5.0.0/lib/coq-tactician/record-plugin/offline_evaluation_simulator_learner.ml</code></li>
-              <li>7 K <code>../ocaml-base-compiler.5.0.0/lib/coq-tactician/record-plugin/tactic_one_variable.ml</code></li>
-              <li>7 K <code>../ocaml-base-compiler.5.0.0/lib/coq-tactician/record-plugin/tactician_ltac1_record_plugin__Sexpr.cmx</code></li>
-              <li>7 K <code>../ocaml-base-compiler.5.0.0/lib/coq-tactician/record-plugin/tactician_ltac1_record_plugin__Tactician_util.cmx</code></li>
-              <li>7 K <code>../ocaml-base-compiler.5.0.0/lib/coq-tactician/record-plugin/tactician_ltac1_record_plugin__Tactic_substitution_check_learner.cmi</code></li>
-              <li>6 K <code>../ocaml-base-compiler.5.0.0/lib/coq-tactician/record-plugin/naiveknn_subst_learner.ml</code></li>
-              <li>6 K <code>../ocaml-base-compiler.5.0.0/lib/coq-tactician/record-plugin/map_all_the_things.mli</code></li>
-              <li>6 K <code>../ocaml-base-compiler.5.0.0/lib/coq-tactician/ssreflect-plugin/tactician_ssreflect_plugin.cmxa</code></li>
-              <li>6 K <code>../ocaml-base-compiler.5.0.0/lib/coq-tactician/record-plugin/tactician_ltac1_record_plugin__Diagonal_iterative_search.cmi</code></li>
-              <li>6 K <code>../ocaml-base-compiler.5.0.0/lib/coq-tactician/record-plugin/lshf_learner.ml</code></li>
-              <li>6 K <code>../ocaml-base-compiler.5.0.0/lib/coq-tactician/record-plugin/tactician_ltac1_record_plugin__Dijkstra_iterative_search.cmi</code></li>
-              <li>6 K <code>../ocaml-base-compiler.5.0.0/lib/coq-tactician/record-plugin/tactician_ltac1_record_plugin.cmi</code></li>
-              <li>5 K <code>../ocaml-base-compiler.5.0.0/lib/coq-tactician/record-plugin/tactician_ltac1_record_plugin__Sexpr.cmi</code></li>
-              <li>5 K <code>../ocaml-base-compiler.5.0.0/lib/coq-tactician/record-plugin/tactician_ltac1_record_plugin__Diagonal_iterative_search.cmx</code></li>
-              <li>5 K <code>../ocaml-base-compiler.5.0.0/lib/coq-tactician/record-plugin/tactician_ltac1_record_plugin__Dijkstra_iterative_search.cmx</code></li>
-              <li>5 K <code>../ocaml-base-compiler.5.0.0/lib/coq-tactician/record-plugin/tactician_ltac1_record_plugin__Trivial_learners.cmi</code></li>
-              <li>5 K <code>../ocaml-base-compiler.5.0.0/lib/coq-tactician/record-plugin/sexpr.ml</code></li>
-              <li>5 K <code>../ocaml-base-compiler.5.0.0/lib/coq-tactician/record-plugin/tactician_ltac1_record_plugin__Mapping_helpers.cmi</code></li>
-              <li>5 K <code>../ocaml-base-compiler.5.0.0/doc/coq-tactician/README.md</code></li>
-              <li>5 K <code>../ocaml-base-compiler.5.0.0/lib/coq-tactician/record-plugin/tactician_ltac1_record_plugin.ml</code></li>
-              <li>5 K <code>../ocaml-base-compiler.5.0.0/lib/coq-tactician/record-plugin/tactician_util.ml</code></li>
-              <li>4 K <code>../ocaml-base-compiler.5.0.0/lib/coq-tactician/record-plugin/tactician_ltac1_record_plugin__Mapping_helpers.cmx</code></li>
-              <li>4 K <code>../ocaml-base-compiler.5.0.0/lib/coq-tactician/tactics-plugin/g_ltac1_tactics.ml</code></li>
-              <li>4 K <code>../ocaml-base-compiler.5.0.0/lib/coq-tactician/record-plugin/inline_private_constants.ml</code></li>
-              <li>4 K <code>../ocaml-base-compiler.5.0.0/lib/coq-tactician/record-plugin/tactician_ltac1_record_plugin__Search_strategy_internal.cmi</code></li>
-              <li>4 K <code>../ocaml-base-compiler.5.0.0/lib/coq-tactician/record-plugin/tactician_ltac1_record_plugin__Search_strategy_internal.cmx</code></li>
-              <li>4 K <code>../ocaml-base-compiler.5.0.0/lib/coq-tactician/record-plugin/naiveknn_learner.ml</code></li>
-              <li>4 K <code>../ocaml-base-compiler.5.0.0/lib/coq-tactician/record-plugin/tactic_substitution_check_learner.ml</code></li>
-              <li>4 K <code>../ocaml-base-compiler.5.0.0/lib/coq-tactician/record-plugin/tactician_ltac1_record_plugin__Search_strategy.cmi</code></li>
-              <li>4 K <code>../ocaml-base-compiler.5.0.0/lib/coq-tactician/record-plugin/benchmark.ml</code></li>
-              <li>4 K <code>../ocaml-base-compiler.5.0.0/lib/coq-tactician/record-plugin/tactician_ltac1_record_plugin__Search_strategy.cmx</code></li>
-              <li>3 K <code>../ocaml-base-compiler.5.0.0/lib/coq-tactician/record-plugin/learner_helper.ml</code></li>
-              <li>3 K <code>../ocaml-base-compiler.5.0.0/lib/coq-tactician/record-plugin/trivial_learners.ml</code></li>
-              <li>3 K <code>../ocaml-base-compiler.5.0.0/lib/coq-tactician/record-plugin/diagonal_iterative_search.ml</code></li>
-              <li>3 K <code>../ocaml-base-compiler.5.0.0/lib/coq/user-contrib/Tactician/Ltac1/Record.v</code></li>
-              <li>3 K <code>../ocaml-base-compiler.5.0.0/lib/coq-tactician/record-plugin/tactic_learner.mli</code></li>
-              <li>3 K <code>../ocaml-base-compiler.5.0.0/lib/coq-tactician/tactics-plugin/tactician_ltac1_tactics_plugin.cmt</code></li>
-              <li>3 K <code>../ocaml-base-compiler.5.0.0/lib/coq-tactician/ssreflect-plugin/tactician_ssreflect_plugin.cmt</code></li>
-              <li>2 K <code>../ocaml-base-compiler.5.0.0/lib/coq-tactician/record-plugin/dijkstra_iterative_search.ml</code></li>
-              <li>2 K <code>../ocaml-base-compiler.5.0.0/lib/coq/user-contrib/Tactician/Ltac1/Tactics.vo</code></li>
-              <li>2 K <code>../ocaml-base-compiler.5.0.0/lib/coq-tactician/record-plugin/tactic_normalize.ml</code></li>
-              <li>2 K <code>../ocaml-base-compiler.5.0.0/man/man1/tactician.1</code></li>
-              <li>2 K <code>../ocaml-base-compiler.5.0.0/lib/coq-tactician/opam</code></li>
-              <li>2 K <code>../ocaml-base-compiler.5.0.0/man/man1/tactician-enable.1</code></li>
-              <li>2 K <code>../ocaml-base-compiler.5.0.0/lib/coq-tactician/record-plugin/tactician_ltac1_record_plugin.cmx</code></li>
-              <li>2 K <code>../ocaml-base-compiler.5.0.0/lib/coq-tactician/record-plugin/cook_tacexpr.ml</code></li>
-              <li>2 K <code>../ocaml-base-compiler.5.0.0/lib/coq-tactician/record-plugin/tactic_abstract.ml</code></li>
-              <li>2 K <code>../ocaml-base-compiler.5.0.0/lib/coq-tactician/record-plugin/find_tactic_syntax.ml</code></li>
-              <li>1 K <code>../ocaml-base-compiler.5.0.0/lib/coq-tactician/record-plugin/tactic_substitute.ml</code></li>
-              <li>1 K <code>../ocaml-base-compiler.5.0.0/man/man1/tactician-eject.1</code></li>
-              <li>1 K <code>../ocaml-base-compiler.5.0.0/man/man1/tactician-inject.1</code></li>
-              <li>1 K <code>../ocaml-base-compiler.5.0.0/lib/coq-tactician/META</code></li>
-              <li>1 K <code>../ocaml-base-compiler.5.0.0/man/man1/tactician-disable.1</code></li>
-              <li>1 K <code>../ocaml-base-compiler.5.0.0/man/man1/tactician-recompile.1</code></li>
-              <li>1 K <code>../ocaml-base-compiler.5.0.0/doc/coq-tactician/LICENSE.md</code></li>
-              <li>1 K <code>../ocaml-base-compiler.5.0.0/lib/coq/user-contrib/Tactician/Ltac1/Tactics.v</code></li>
-              <li>1 K <code>../ocaml-base-compiler.5.0.0/lib/coq-tactician/record-plugin/timeouttac.ml</code></li>
-              <li>1 K <code>../ocaml-base-compiler.5.0.0/lib/coq-tactician/record-plugin/extreme_tactic_normalize.ml</code></li>
-              <li>1 K <code>../ocaml-base-compiler.5.0.0/lib/coq-tactician/record-plugin/tactic_learner.ml</code></li>
-              <li>1 K <code>../ocaml-base-compiler.5.0.0/lib/coq-tactician/record-plugin/tactician_ltac1_record_plugin__Timeouttac.cmi</code></li>
-              <li>1 K <code>../ocaml-base-compiler.5.0.0/lib/coq-tactician/record-plugin/tactician_ltac1_record_plugin__Timeouttac.cmx</code></li>
-              <li>1 K <code>../ocaml-base-compiler.5.0.0/share/coq-tactician/coq-hott.patch</code></li>
-              <li>1 K <code>../ocaml-base-compiler.5.0.0/share/coq-tactician/coq-hott.8.15.patch</code></li>
-              <li>1 K <code>../ocaml-base-compiler.5.0.0/share/coq-tactician/coq-hott.8.14.patch</code></li>
-              <li>1 K <code>../ocaml-base-compiler.5.0.0/share/coq-tactician/coq-stdlib.patch</code></li>
-              <li>1 K <code>../ocaml-base-compiler.5.0.0/share/coq-tactician/coq-hott.8.13.patch</code></li>
-              <li>1 K <code>../ocaml-base-compiler.5.0.0/share/coq-tactician/coq-hott.8.12.patch</code></li>
-              <li>1 K <code>../ocaml-base-compiler.5.0.0/share/coq-tactician/coq-hott.8.11.patch</code></li>
-              <li>1 K <code>../ocaml-base-compiler.5.0.0/share/coq-tactician/coq-hott.8.10.patch</code></li>
-              <li>1 K <code>../ocaml-base-compiler.5.0.0/lib/coq/user-contrib/Tactician/Ltac1.vo</code></li>
-              <li>1 K <code>../ocaml-base-compiler.5.0.0/lib/coq-tactician/tactician-patch</code></li>
-              <li>1 K <code>../ocaml-base-compiler.5.0.0/lib/coq-tactician/record-plugin/search_strategy_internal.ml</code></li>
-              <li>1 K <code>../ocaml-base-compiler.5.0.0/lib/coq-tactician/record-plugin/search_strategy.ml</code></li>
-              <li>1 K <code>../ocaml-base-compiler.5.0.0/lib/coq-tactician/record-plugin/search_strategy.mli</code></li>
-              <li>1 K <code>../ocaml-base-compiler.5.0.0/lib/coq-tactician/record-plugin/mapping_helpers.ml</code></li>
-              <li>1 K <code>../ocaml-base-compiler.5.0.0/lib/coq-tactician/tactics-plugin/tactician_ltac1_tactics_plugin.cmi</code></li>
-              <li>1 K <code>../ocaml-base-compiler.5.0.0/lib/coq-tactician/ssreflect-plugin/tactician_ssreflect_plugin.cmi</code></li>
-              <li>1 K <code>../ocaml-base-compiler.5.0.0/lib/coq-tactician/tactics-plugin/tactician_ltac1_tactics_plugin.cmx</code></li>
-              <li>1 K <code>../ocaml-base-compiler.5.0.0/lib/coq-tactician/ssreflect-plugin/tactician_ssreflect_plugin.cmx</code></li>
-              <li>1 K <code>../ocaml-base-compiler.5.0.0/lib/coq-tactician/tactics-plugin/tactician_ltac1_tactics_plugin.ml</code></li>
-              <li>1 K <code>../ocaml-base-compiler.5.0.0/lib/coq-tactician/ssreflect-plugin/tactician_ssreflect_plugin.ml</code></li>
-              <li>1 K <code>../ocaml-base-compiler.5.0.0/lib/coq/user-contrib/Tactician/Ltac1.v</code></li>
-              <li>0 K <code>../ocaml-base-compiler.5.0.0/share/coq-tactician/plugins/coq-tactician/injection-flags</code></li>
-              <li>0 K <code>../ocaml-base-compiler.5.0.0/lib/coq-tactician/coqtop.real</code></li>
-              <li>0 K <code>../ocaml-base-compiler.5.0.0/lib/coq-tactician/coqidetop.real</code></li>
-              <li>0 K <code>../ocaml-base-compiler.5.0.0/lib/coq-tactician/coqide.real</code></li>
-              <li>0 K <code>../ocaml-base-compiler.5.0.0/lib/coq-tactician/coqc.real</code></li>
-              <li>0 K <code>../ocaml-base-compiler.5.0.0/etc/coq-tactician/injection-flags</code></li>
-            </ul>
+            <p>No files were installed.</p>
             <h2>Uninstall 🧹</h2>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>opam remove -y coq-tactician.1.0~beta2.1+8.17</code></dd>
+              <dd><code>true</code></dd>
               <dt>Return code</dt>
               <dd>0</dd>
               <dt>Missing removes</dt>
               <dd>
-                <ul>
-                  <li><code>/home/bench/.opam/ocaml-base-compiler.5.0.0/etc</code></li>
-                  <li><code>/home/bench/.opam/ocaml-base-compiler.5.0.0/lib/coq/user-contrib/Tactician</code></li>
-                  <li><code>/home/bench/.opam/ocaml-base-compiler.5.0.0/lib/coq/user-contrib/Tactician/Ltac1</code></li>
-                </ul>
+                none
               </dd>
               <dt>Wrong removes</dt>
               <dd>

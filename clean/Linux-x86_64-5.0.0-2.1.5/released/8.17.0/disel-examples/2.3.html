@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>disel-examples: Uninstallation error 🌪️</title>
+    <title>disel-examples: Error with dependencies 🚒</title>
     <link rel="shortcut icon" type="image/png" href="../../../../../favicon.png" />
     <link href="../../../../../bootstrap.min.css" rel="stylesheet">
     <link href="../../../../../bootstrap-custom.css" rel="stylesheet">
@@ -39,10 +39,10 @@
               disel-examples
               <small>
                 2.3
-                <span class="label label-danger">Uninstallation error 🌪️</span>
+                <span class="label label-warning">Error with dependencies 🚒</span>
               </small>
             </h1>
-            <p>📅 <em><script>document.write(moment("2024-01-18 00:23:51 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2024-01-18 00:23:51 UTC)</em><p>
+            <p>📅 <em><script>document.write(moment("2024-01-19 12:30:36 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2024-01-19 12:30:36 UTC)</em><p>
             <h2>Context</h2>
             <pre># Packages matching: installed
 # Name                # Installed # Synopsis
@@ -121,88 +121,96 @@ url {
             <h2>Install dependencies</h2>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>opam list; echo; timeout 4h opam install -y --deps-only coq-disel-examples.2.3 coq.8.17.0</code></dd>
+              <dd><code>opam list; echo; ulimit -Sv 4000000; timeout 4h opam install -y --deps-only coq-disel-examples.2.3 coq.8.17.0</code></dd>
               <dt>Return code</dt>
-              <dd>0</dd>
+              <dd>7936</dd>
               <dt>Duration</dt>
-              <dd>3 m 16 s</dd>
+              <dd>18 s</dd>
+              <dt>Output</dt>
+              <dd><pre># Packages matching: installed
+# Name                # Installed # Synopsis
+base-bigarray         base
+base-domains          base
+base-nnp              base        Naked pointers prohibited in the OCaml heap
+base-threads          base
+base-unix             base
+conf-gmp              4           Virtual package relying on a GMP lib system installation
+coq                   8.17.0      The Coq Proof Assistant
+coq-core              8.17.0      The Coq Proof Assistant -- Core Binaries and Tools
+coq-stdlib            8.17.0      The Coq Proof Assistant -- Standard Library
+coqide-server         8.17.0      The Coq Proof Assistant, XML protocol server
+dune                  3.12.2      Fast, portable, and opinionated build system
+ocaml                 5.0.0       The OCaml compiler (virtual package)
+ocaml-base-compiler   5.0.0       Official release 5.0.0
+ocaml-config          3           OCaml Switch Configuration
+ocaml-options-vanilla 1           Ensure that OCaml is compiled with no special options enabled
+ocamlfind             1.9.6       A library manager for OCaml
+zarith                1.13        Implements arithmetic and logical operations over arbitrary-precision integers
+The following actions will be performed:
+  - install coq-mathcomp-ssreflect 1.18.0
+  - install coq-mathcomp-fingroup  1.18.0
+  - install coq-mathcomp-algebra   1.18.0
+  - install coq-fcsl-pcm           1.8.0
+  - install coq-htt                1.3.0
+  - install coq-disel              2.3
+===== 6 to install =====
+&lt;&gt;&lt;&gt; Processing actions &lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;
+-&gt; retrieved coq-fcsl-pcm.1.8.0  (https://github.com/imdea-software/fcsl-pcm/archive/v1.8.0.tar.gz)
+-&gt; retrieved coq-disel.2.3  (https://github.com/DistributedComponents/disel/archive/v2.3.tar.gz)
+-&gt; retrieved coq-htt.1.3.0  (https://github.com/imdea-software/htt/archive/v1.3.0.tar.gz)
+-&gt; retrieved coq-mathcomp-algebra.1.18.0  (https://github.com/math-comp/math-comp/archive/mathcomp-1.18.0.tar.gz)
+-&gt; retrieved coq-mathcomp-fingroup.1.18.0  (https://github.com/math-comp/math-comp/archive/mathcomp-1.18.0.tar.gz)
+-&gt; retrieved coq-mathcomp-ssreflect.1.18.0  (https://github.com/math-comp/math-comp/archive/mathcomp-1.18.0.tar.gz)
+[ERROR] The compilation of coq-mathcomp-ssreflect.1.18.0 failed at &quot;make -C mathcomp/ssreflect -j 4&quot;.
+#=== ERROR while compiling coq-mathcomp-ssreflect.1.18.0 ======================#
+# context              2.1.5 | linux/x86_64 | ocaml-base-compiler.5.0.0 | file:///home/bench/run/opam-coq-archive/released
+# path                 ~/.opam/ocaml-base-compiler.5.0.0/.opam-switch/build/coq-mathcomp-ssreflect.1.18.0
+# command              ~/.opam/opam-init/hooks/sandbox.sh build make -C mathcomp/ssreflect -j 4
+# exit-code            2
+# env-file             ~/.opam/log/coq-mathcomp-ssreflect-7393-d5ffe4.env
+# output-file          ~/.opam/log/coq-mathcomp-ssreflect-7393-d5ffe4.out
+### output ###
+# [...]
+# Fatal error: Not enough heap memory to reserve minor heaps
+# Fatal error: Not enough heap memory to reserve minor heaps
+# Aborted (core dumped)
+# make[2]: *** [Makefile.coq:830: ssrnotations.vo] Error 134
+# make[2]: *** Waiting for unfinished jobs....
+# Aborted
+# make[2]: *** [Makefile.coq:830: ssrmatching.vo] Error 134
+# Aborted (core dumped)
+# make[2]: *** [Makefile.coq:830: ssreflect.vo] Error 134
+# make[1]: *** [Makefile.coq:409: all] Error 2
+# make: *** [../Makefile.common:99: this-build] Error 2
+# make: Leaving directory &#39;/home/bench/.opam/ocaml-base-compiler.5.0.0/.opam-switch/build/coq-mathcomp-ssreflect.1.18.0/mathcomp/ssreflect&#39;
+&lt;&gt;&lt;&gt; Error report &lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;
++- The following actions failed
+| - build coq-mathcomp-ssreflect 1.18.0
++- 
+- No changes have been performed
+# Run eval $(opam env) to update the current shell environment
+</pre></dd>
             </dl>
             <h2>Install 🚀</h2>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>opam list; echo; timeout 4h opam install -y -v coq-disel-examples.2.3 coq.8.17.0</code></dd>
+              <dd><code>true</code></dd>
               <dt>Return code</dt>
               <dd>0</dd>
               <dt>Duration</dt>
-              <dd>35 s</dd>
+              <dd>0 s</dd>
             </dl>
             <h2>Installation size</h2>
-            <p>Total: 4 M</p>
-            <ul>
-              <li>654 K <code>../ocaml-base-compiler.5.0.0/lib/coq/user-contrib/DiSeL/Examples/TwoPhaseCommit/TwoPhaseInductiveInv.vo</code></li>
-              <li>577 K <code>../ocaml-base-compiler.5.0.0/lib/coq/user-contrib/DiSeL/Examples/Querying/QueryHooked.vo</code></li>
-              <li>480 K <code>../ocaml-base-compiler.5.0.0/lib/coq/user-contrib/DiSeL/Examples/TwoPhaseCommit/TwoPhaseCoordinator.vo</code></li>
-              <li>389 K <code>../ocaml-base-compiler.5.0.0/lib/coq/user-contrib/DiSeL/Examples/TwoPhaseCommit/TwoPhaseInductiveProof.vo</code></li>
-              <li>254 K <code>../ocaml-base-compiler.5.0.0/lib/coq/user-contrib/DiSeL/Examples/TwoPhaseCommit/TwoPhaseParticipant.vo</code></li>
-              <li>219 K <code>../ocaml-base-compiler.5.0.0/lib/coq/user-contrib/DiSeL/Examples/TwoPhaseCommit/TwoPhaseProtocol.vo</code></li>
-              <li>167 K <code>../ocaml-base-compiler.5.0.0/lib/coq/user-contrib/DiSeL/Examples/Calculator/SimpleCalculatorServers.vo</code></li>
-              <li>144 K <code>../ocaml-base-compiler.5.0.0/lib/coq/user-contrib/DiSeL/Examples/Calculator/CalculatorClientLib.vo</code></li>
-              <li>138 K <code>../ocaml-base-compiler.5.0.0/lib/coq/user-contrib/DiSeL/Examples/Greeter/Greeter.vo</code></li>
-              <li>134 K <code>../ocaml-base-compiler.5.0.0/lib/coq/user-contrib/DiSeL/Examples/LockResource/LockProtocol.vo</code></li>
-              <li>130 K <code>../ocaml-base-compiler.5.0.0/lib/coq/user-contrib/DiSeL/Examples/LockResource/ResourceProtocol.vo</code></li>
-              <li>117 K <code>../ocaml-base-compiler.5.0.0/lib/coq/user-contrib/DiSeL/Examples/Calculator/CalculatorProtocol.vo</code></li>
-              <li>109 K <code>../ocaml-base-compiler.5.0.0/lib/coq/user-contrib/DiSeL/Examples/Querying/QueryProtocol.vo</code></li>
-              <li>105 K <code>../ocaml-base-compiler.5.0.0/lib/coq/user-contrib/DiSeL/Examples/Querying/QueryPlusTPC.vo</code></li>
-              <li>102 K <code>../ocaml-base-compiler.5.0.0/lib/coq/user-contrib/DiSeL/Examples/Calculator/DelegatingCalculatorServer.vo</code></li>
-              <li>96 K <code>../ocaml-base-compiler.5.0.0/lib/coq/user-contrib/DiSeL/Examples/Calculator/SimpleCalculatorApp.vo</code></li>
-              <li>93 K <code>../ocaml-base-compiler.5.0.0/lib/coq/user-contrib/DiSeL/Examples/Calculator/CalculatorServerLib.vo</code></li>
-              <li>88 K <code>../ocaml-base-compiler.5.0.0/lib/coq/user-contrib/DiSeL/Examples/TwoPhaseCommit/SimpleTPCApp.vo</code></li>
-              <li>67 K <code>../ocaml-base-compiler.5.0.0/lib/coq/user-contrib/DiSeL/Examples/TwoPhaseCommit/TwoPhaseInductiveInv.v</code></li>
-              <li>63 K <code>../ocaml-base-compiler.5.0.0/lib/coq/user-contrib/DiSeL/Examples/Calculator/CalculatorInvariant.vo</code></li>
-              <li>52 K <code>../ocaml-base-compiler.5.0.0/lib/coq/user-contrib/DiSeL/Examples/Querying/QueryHooked.v</code></li>
-              <li>45 K <code>../ocaml-base-compiler.5.0.0/lib/coq/user-contrib/DiSeL/Examples/TwoPhaseCommit/TwoPhaseInductiveProof.v</code></li>
-              <li>37 K <code>../ocaml-base-compiler.5.0.0/lib/coq/user-contrib/DiSeL/Examples/TwoPhaseCommit/TwoPhaseCoordinator.v</code></li>
-              <li>30 K <code>../ocaml-base-compiler.5.0.0/lib/coq/user-contrib/DiSeL/Examples/TwoPhaseCommit/TwoPhaseProtocol.v</code></li>
-              <li>28 K <code>../ocaml-base-compiler.5.0.0/lib/coq/user-contrib/DiSeL/Examples/SeqLib.vo</code></li>
-              <li>24 K <code>../ocaml-base-compiler.5.0.0/lib/coq/user-contrib/DiSeL/Examples/TwoPhaseCommit/TwoPhaseClient.vo</code></li>
-              <li>20 K <code>../ocaml-base-compiler.5.0.0/lib/coq/user-contrib/DiSeL/Examples/TwoPhaseCommit/TwoPhaseParticipant.v</code></li>
-              <li>17 K <code>../ocaml-base-compiler.5.0.0/lib/coq/user-contrib/DiSeL/Examples/LockResource/LockProtocol.v</code></li>
-              <li>17 K <code>../ocaml-base-compiler.5.0.0/lib/coq/user-contrib/DiSeL/Examples/LockResource/ResourceProtocol.v</code></li>
-              <li>14 K <code>../ocaml-base-compiler.5.0.0/lib/coq/user-contrib/DiSeL/Examples/Calculator/CalculatorProtocol.v</code></li>
-              <li>13 K <code>../ocaml-base-compiler.5.0.0/lib/coq/user-contrib/DiSeL/Examples/Calculator/SimpleCalculatorServers.v</code></li>
-              <li>13 K <code>../ocaml-base-compiler.5.0.0/lib/coq/user-contrib/DiSeL/Examples/Greeter/Greeter.v</code></li>
-              <li>13 K <code>../ocaml-base-compiler.5.0.0/lib/coq/user-contrib/DiSeL/Examples/Querying/QueryProtocol.v</code></li>
-              <li>12 K <code>../ocaml-base-compiler.5.0.0/doc/coq-disel-examples/README.md</code></li>
-              <li>11 K <code>../ocaml-base-compiler.5.0.0/lib/coq/user-contrib/DiSeL/Examples/Calculator/SimpleCalculatorApp.v</code></li>
-              <li>10 K <code>../ocaml-base-compiler.5.0.0/lib/coq/user-contrib/DiSeL/Examples/Calculator/CalculatorClientLib.v</code></li>
-              <li>9 K <code>../ocaml-base-compiler.5.0.0/lib/coq/user-contrib/DiSeL/Examples/Querying/QueryPlusTPC.v</code></li>
-              <li>7 K <code>../ocaml-base-compiler.5.0.0/lib/coq/user-contrib/DiSeL/Examples/TwoPhaseCommit/SimpleTPCApp.v</code></li>
-              <li>6 K <code>../ocaml-base-compiler.5.0.0/lib/coq/user-contrib/DiSeL/Examples/Calculator/CalculatorServerLib.v</code></li>
-              <li>6 K <code>../ocaml-base-compiler.5.0.0/lib/coq/user-contrib/DiSeL/Examples/Calculator/DelegatingCalculatorServer.v</code></li>
-              <li>5 K <code>../ocaml-base-compiler.5.0.0/lib/coq/user-contrib/DiSeL/Examples/Calculator/CalculatorInvariant.v</code></li>
-              <li>3 K <code>../ocaml-base-compiler.5.0.0/lib/coq/user-contrib/DiSeL/Examples/TwoPhaseCommit/TwoPhaseClient.v</code></li>
-              <li>3 K <code>../ocaml-base-compiler.5.0.0/lib/coq-disel-examples/dune-package</code></li>
-              <li>1 K <code>../ocaml-base-compiler.5.0.0/lib/coq/user-contrib/DiSeL/Examples/SeqLib.v</code></li>
-              <li>1 K <code>../ocaml-base-compiler.5.0.0/doc/coq-disel-examples/LICENSE</code></li>
-              <li>1 K <code>../ocaml-base-compiler.5.0.0/lib/coq-disel-examples/opam</code></li>
-              <li>0 K <code>../ocaml-base-compiler.5.0.0/lib/coq-disel-examples/META</code></li>
-            </ul>
+            <p>No files were installed.</p>
             <h2>Uninstall 🧹</h2>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>opam remove -y coq-disel-examples.2.3</code></dd>
+              <dd><code>true</code></dd>
               <dt>Return code</dt>
               <dd>0</dd>
               <dt>Missing removes</dt>
               <dd>
-                <ul>
-                  <li><code>/home/bench/.opam/ocaml-base-compiler.5.0.0/lib/coq/user-contrib/DiSeL/Examples</code></li>
-                  <li><code>/home/bench/.opam/ocaml-base-compiler.5.0.0/lib/coq/user-contrib/DiSeL/Examples/Calculator</code></li>
-                  <li><code>/home/bench/.opam/ocaml-base-compiler.5.0.0/lib/coq/user-contrib/DiSeL/Examples/Greeter</code></li>
-                  <li><code>/home/bench/.opam/ocaml-base-compiler.5.0.0/lib/coq/user-contrib/DiSeL/Examples/LockResource</code></li>
-                  <li><code>/home/bench/.opam/ocaml-base-compiler.5.0.0/lib/coq/user-contrib/DiSeL/Examples/Querying</code></li>
-                  <li><code>/home/bench/.opam/ocaml-base-compiler.5.0.0/lib/coq/user-contrib/DiSeL/Examples/TwoPhaseCommit</code></li>
-                </ul>
+                none
               </dd>
               <dt>Wrong removes</dt>
               <dd>

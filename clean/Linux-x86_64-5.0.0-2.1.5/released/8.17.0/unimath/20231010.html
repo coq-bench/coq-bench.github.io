@@ -42,7 +42,7 @@
                 <span class="label label-danger">Error 🔥</span>
               </small>
             </h1>
-            <p>📅 <em><script>document.write(moment("2024-01-18 00:23:51 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2024-01-18 00:23:51 UTC)</em><p>
+            <p>📅 <em><script>document.write(moment("2024-01-19 12:30:36 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2024-01-19 12:30:36 UTC)</em><p>
             <h2>Context</h2>
             <pre># Packages matching: installed
 # Name                # Installed # Synopsis
@@ -108,11 +108,11 @@ url {
             <h2>Install dependencies</h2>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>opam list; echo; timeout 4h opam install -y --deps-only coq-unimath.20231010 coq.8.17.0</code></dd>
+              <dd><code>opam list; echo; ulimit -Sv 4000000; timeout 4h opam install -y --deps-only coq-unimath.20231010 coq.8.17.0</code></dd>
               <dt>Return code</dt>
               <dd>0</dd>
               <dt>Duration</dt>
-              <dd>8 s</dd>
+              <dd>9 s</dd>
             </dl>
             <h2>Install 🚀</h2>
             <dl class="dl-horizontal">
@@ -121,7 +121,7 @@ url {
               <dt>Return code</dt>
               <dd>7936</dd>
               <dt>Duration</dt>
-              <dd>1 h 25 m</dd>
+              <dd>1 h 27 m</dd>
               <dt>Output</dt>
               <dd><pre># Packages matching: installed
 # Name                # Installed # Synopsis
@@ -176,8 +176,8 @@ Processing  2/3: [coq-unimath: make]
 - --- making UniMath/Induction/All.v
 - --- making UniMath/AlgebraicTheories/All.v
 - --- making UniMath/Semantics/All.v
-- --- making UniMath/All.v
 - sed -e &quot;s/@LOCAL@ /;;/&quot; &lt;UniMath/.dir-locals.el.in &gt;UniMath/.dir-locals.el
+- --- making UniMath/All.v
 - ulimit -v unlimited ; make -f build/CoqMakefile.make all
 - make[1]: Entering directory &#39;/home/bench/.opam/ocaml-base-compiler.5.0.0/.opam-switch/build/coq-unimath.20231010&#39;
 - COQDEP VFILES
@@ -226,9 +226,9 @@ Processing  2/3: [coq-unimath: make]
 - COQC UniMath/MoreFoundations/NullHomotopies.v
 - COQC UniMath/MoreFoundations/Equivalences.v
 - COQC UniMath/MoreFoundations/StructureIdentity.v
-- COQC UniMath/Combinatorics/StandardFiniteSets.v
 - COQC UniMath/Paradoxes/All.v
 - COQC UniMath/MoreFoundations/Interval.v
+- COQC UniMath/Combinatorics/StandardFiniteSets.v
 - COQC UniMath/MoreFoundations/PathsOver.v
 - COQC UniMath/MoreFoundations/Nat.v
 - COQC UniMath/MoreFoundations/Propositions.v
@@ -241,7 +241,6 @@ Processing  2/3: [coq-unimath: make]
 - COQC UniMath/MoreFoundations/Sets.v
 - COQC UniMath/MoreFoundations/MoreEquivalences.v
 - COQC UniMath/MoreFoundations/Subtypes.v
-- COQC UniMath/MoreFoundations/AxiomOfChoice.v
 - COQC UniMath/MoreFoundations/NoInjectivePairing.v
 - COQC UniMath/Combinatorics/Graph.v
 - COQC UniMath/Combinatorics/WellFoundedRelations.v
@@ -250,6 +249,7 @@ Processing  2/3: [coq-unimath: make]
 - COQC UniMath/CategoryTheory/Core/Isos.v
 - COQC UniMath/Folds/from_precats_to_folds_and_back.v
 - COQC UniMath/MoreFoundations/Orders.v
+- COQC UniMath/MoreFoundations/AxiomOfChoice.v
 - COQC UniMath/Combinatorics/Vectors.v
 - COQC UniMath/Combinatorics/FiniteSets.v
 - COQC UniMath/Combinatorics/CGraph.v
@@ -259,23 +259,23 @@ Processing  2/3: [coq-unimath: make]
 - COQC UniMath/MoreFoundations/All.v
 - COQC UniMath/Combinatorics/VectorsTests.v
 - COQC UniMath/Combinatorics/Lists.v
+- COQC UniMath/Combinatorics/KFiniteTypes.v
 -      = f p (f q (f r b))
 -      : B
 -      = f p (f q (f r t))
 -      : A
 -      = a,, b,, c,, d,, e,, tt
 -      : vec A (3 + 2)
-- COQC UniMath/Combinatorics/KFiniteTypes.v
 - COQC UniMath/Combinatorics/OrderedSets.v
 - COQC UniMath/Algebra/Monoids.v
 - COQC UniMath/Algebra/Apartness.v
 - COQC UniMath/Algebra/Universal/HVectors.v
-- COQC UniMath/OrderTheory/Posets/Basics.v
 - File &quot;./UniMath/Combinatorics/OrderedSets.v&quot;, line 309, characters 0-62:
 - Warning:
 - New coercion path [underlyingFiniteSet; FiniteSet_to_hSet] : FiniteOrderedSet &gt;-&gt; hSet is ambiguous with existing 
 - [underlyingOrderedSet; underlyingPoset; carrierofposet] : FiniteOrderedSet &gt;-&gt; hSet.
 - [ambiguous-paths,typechecker]
+- COQC UniMath/OrderTheory/Posets/Basics.v
 - COQC UniMath/CategoryTheory/Core/TwoCategories.v
 - COQC UniMath/CategoryTheory/Core/Functors.v
 - COQC UniMath/CategoryTheory/categories/setwith2binops.v
@@ -294,47 +294,34 @@ Processing  2/3: [coq-unimath: make]
 - COQC UniMath/Algebra/Universal/Signatures.v
 - COQC UniMath/Tactics/Monoids_Tactics.v
 - COQC UniMath/OrderTheory/Posets/MonotoneFunctions.v
-- COQC UniMath/CategoryTheory/Core/NaturalTransformations.v
-- COQC UniMath/CategoryTheory/Core/Setcategories.v
-- COQC UniMath/CategoryTheory/Subcategory/Core.v
-- COQC UniMath/CategoryTheory/limits/cones.v
-- COQC UniMath/CategoryTheory/RezkCompletion.v
-- COQC UniMath/CategoryTheory/category_binops.v
-- COQC UniMath/CategoryTheory/LocalizingClass.v
-- COQC UniMath/CategoryTheory/UnderCategories.v
+- COQC UniMath/OrderTheory/DCPOs/AlternativeDefinitions/FixedPointTheorems.v
 - COQC UniMath/CategoryTheory/categories/abmonoids.v
-- COQC UniMath/CategoryTheory/categories/grs.v
 - COQC UniMath/CategoryTheory/categories/Graph.v
 - COQC UniMath/CategoryTheory/Monoidal/AlternativeDefinitions/MonoidalCategoriesCurried.v
-- COQC UniMath/CategoryTheory/IndexedCategories/IndexedCategory.v
-- COQC UniMath/CategoryTheory/DaggerCategories/Unitary.v
-- COQC UniMath/CategoryTheory/DaggerCategories/Functors.v
-- COQC UniMath/Bicategories/MonoidalCategories/UnivalenceMonCat/CurriedMonoidalCategories.v
-- COQC UniMath/Topology/Prelim.v
-- COQC UniMath/Combinatorics/Equivalence_Relations.v
-- COQC UniMath/Combinatorics/ZFstructures.v
-- COQC UniMath/Combinatorics/Tests.v
-- COQC UniMath/Algebra/GroupAction.v
-- COQC UniMath/Algebra/RigsAndRings.v
-- COQC UniMath/Algebra/Universal/Algebras.v
-- COQC UniMath/Algebra/Universal/Terms.v
-- COQC UniMath/Tactics/Abmonoids_Tactics.v
-- COQC UniMath/Tactics/Groups_Tactics.v
-- COQC UniMath/Tactics/Nat_Tactics.v
-- COQC UniMath/OrderTheory/Posets/PosetSum.v
-- COQC UniMath/OrderTheory/Posets/PointedPosets.v
-- COQC UniMath/OrderTheory/Lattice/Lattice.v
-- COQC UniMath/OrderTheory/DCPOs/Core/DirectedSets.v
-- COQC UniMath/OrderTheory/DCPOs/AlternativeDefinitions/FixedPointTheorems.v
 - File &quot;./UniMath/OrderTheory/DCPOs/AlternativeDefinitions/FixedPointTheorems.v&quot;, line 637, characters 2-10:
 - Warning:
-- New coercion path [Chain_of_Chain_hsubtype; chain_fam
+- New coercion path [Chain_of_Chain_hsubtype; chain_family] : Chain_hsubtype &gt;-&gt; Funclass is ambiguous with existing 
+- [pr1_Chain_hsubtype; id_hsubtype] : Chain_hsubtype &gt;-&gt; Funclass (reversible).
+- [ambiguous-paths,typechecker]
+- COQC UniMath/CategoryTheory/DaggerCategories/Unitary.v
+- File &quot;./UniMath/OrderTheory/DCPOs/AlternativeDefinitions/FixedPointTheorems.v&quot;, line 655, characters 0-11:
+- Warning:
+- New coercion path [Chain_of_Chain_hsubtype; chain_family] : Chain_hsubtype &gt;-&gt; Funclass is ambiguous with existing 
+- [pr1_Chain_hsubtype; id_hsubtype] : Chain_hsubtype &gt;-&gt; Funclass (reversible).
+- [ambiguous-paths,typechecker]
+- File &quot;./UniMath/OrderTheory/DCPOs/AlternativeDefinitions/FixedPointTheorems.v&quot;, line 708, characters 2-10:
+- Warning:
+- New coercion path [Directed_of_Directed_hsubtype; directed_family] : Directed_hsubtype &gt;-&gt; Funclass is ambiguous with existing 
+- [pr1_Directed_hsubtype; id_hsubtype] : Directed_hsubtype &gt;-&gt; Funclass (reversible).
+- [ambiguous-paths,typechecker]
+- File &quot;./UniMath/OrderTheory/DCPOs/AlternativeDefinitions/FixedPointTheorems.v&quot;, line 732, characters 0-13:
+- Warning:
+- New coercion path [Directed_of_Directed_hsubtype; directed_family] : Directed_hsubtype &gt;-&gt; Funclass is ambiguous with existing 
+- [pr1_Directed_hsubtype; id_hsubtype] : Directed_hsubtype &gt;-&gt; Funclass (reversible).
+- [ambiguous-paths,typechecker]
+- COQC UniMath/CategoryTheory/DaggerCa
 [...] truncated
-noidAlongRetraction.v
-- COQC UniMath/CategoryTheory/Actegories/Examples/SelfActionInCATElementary.v
-- COQC UniMath/CategoryTheory/EnrichedCats/Examples/StructureEnriched.v
-- COQC UniMath/CategoryTheory/EnrichedCats/EnrichedRezkCompletion.v
-- COQC UniMath/Bicategories/MonoidalCategories/ActionOfEndomorphismsInBicatWhiskered.v
+s.v
 - COQC UniMath/Bicategories/DoubleCategories/InvertiblesAndEquivalences.v
 - COQC UniMath/Bicategories/DoubleCategories/Examples/UnitDoubleCat.v
 - COQC UniMath/Bicategories/DoubleCategories/Examples/ProductDoubleCat.v
@@ -354,21 +341,21 @@ noidAlongRetraction.v
 - COQC UniMath/Bicategories/Morphisms/Eso.v
 - COQC UniMath/Bicategories/Morphisms/Properties/ClosedUnderPullback.v
 - COQC UniMath/Bicategories/Colimits/Examples/OpCellBicatColimits.v
-- COQC UniMath/Bicategories/Logic/DisplayMapBicat.v
-- COQC UniMath/SubstitutionSystems/EquivalenceSignaturesWithActegoryMorphisms.v
-- COQC UniMath/SubstitutionSystems/BindingSigToMonad_actegorical.v
+- COQC UniMath/Bicategories/PseudoFunctors/Examples/LiftingActegories.v
+- COQC UniMath/Bicategories/OtherStructure/Cores.v
+- COQC UniMath/SubstitutionSystems/ActionScenarioForGenMendlerIteration_alt.v
+- COQC UniMath/SubstitutionSystems/EquivalenceLaxLineatorsHomogeneousCase.v
+- COQC UniMath/SubstitutionSystems/SigmaMonoids.v
 - COQC UniMath/SubstitutionSystems/ContinuitySignature/InstantiateHSET.v
 - COQC UniMath/Semantics/LinearLogic/LinearCategoryEilenbergMooreAdjunction.v
 - COQC UniMath/CategoryTheory/Monoidal/Examples/PosetsMonoidal.v
 - COQC UniMath/CategoryTheory/Monoidal/Comonoids/Monoidal.v
 - COQC UniMath/CategoryTheory/Monoidal/Comonoids/MonoidalCartesianBuilder.v
 - COQC UniMath/CategoryTheory/Monoidal/Examples/LiftPoset.v
+- COQC UniMath/CategoryTheory/Actegories/Examples/SelfActionInCATElementary.v
 - COQC UniMath/CategoryTheory/EnrichedCats/Examples/PosetEnriched.v
 - COQC UniMath/CategoryTheory/EnrichedCats/Examples/SmashStructureEnriched.v
-- COQC UniMath/CategoryTheory/EnrichedCats/Limits/Examples/PosetEnrichedLimits.v
-- COQC UniMath/CategoryTheory/EnrichedCats/Limits/Examples/StructureEnrichedLimits.v
-- COQC UniMath/CategoryTheory/EnrichedCats/Colimits/Examples/PosetEnrichedColimits.v
-- COQC UniMath/CategoryTheory/EnrichedCats/Colimits/Examples/StructureEnrichedColimits.v
+- COQC UniMath/Bicategories/MonoidalCategories/ActionOfEndomorphismsInBicatWhiskered.v
 - COQC UniMath/Bicategories/DoubleCategories/Examples/StructuredCospansDoubleFunctor.v
 - COQC UniMath/Bicategories/Limits/Examples/LimitsStructuredCategories.v
 - COQC UniMath/Bicategories/Morphisms/Properties/EsoProperties.v
@@ -376,29 +363,26 @@ noidAlongRetraction.v
 - COQC UniMath/Bicategories/Morphisms/Examples/EsosInBicatOfUnivCats.v
 - COQC UniMath/Bicategories/Morphisms/Examples/MorphismsInSliceBicat.v
 - COQC UniMath/Bicategories/Colimits/Examples/OneTypesColimits.v
-- COQC UniMath/Bicategories/DisplayedBicats/Examples/DisplayMapBicatToDispBicat.v
-- COQC UniMath/Bicategories/DisplayedBicats/Examples/DisplayMapBicatSlice.v
-- COQC UniMath/Bicategories/OtherStructure/Cores.v
-- COQC UniMath/SubstitutionSystems/MultiSorted_actegorical.v
+- COQC UniMath/Bicategories/Logic/DisplayMapBicat.v
+- COQC UniMath/SubstitutionSystems/EquivalenceSignaturesWithActegoryMorphisms.v
+- COQC UniMath/SubstitutionSystems/ConstructionOfGHSS.v
 - COQC UniMath/Semantics/LinearLogic/LinearToLinearNonLinear.v
 - COQC UniMath/Semantics/LinearLogic/LiftingModel.v
 - COQC UniMath/CategoryTheory/Monoidal/Comonoids/Symmetric.v
+- COQC UniMath/CategoryTheory/EnrichedCats/Limits/Examples/PosetEnrichedLimits.v
+- COQC UniMath/CategoryTheory/EnrichedCats/Colimits/Examples/PosetEnrichedColimits.v
+- COQC UniMath/Bicategories/DisplayedBicats/Examples/DisplayMapBicatToDispBicat.v
+- COQC UniMath/Bicategories/DisplayedBicats/Examples/DisplayMapBicatSlice.v
+- COQC UniMath/SubstitutionSystems/BindingSigToMonad_actegorical.v
+- COQC UniMath/CategoryTheory/Monoidal/Comonoids/CommComonoidsCartesian.v
+- COQC UniMath/CategoryTheory/Monoidal/Comonoids/CartesianAsComonoids.v
 - COQC UniMath/Bicategories/PseudoFunctors/Examples/PullbackFunctor.v
 - COQC UniMath/Bicategories/Limits/Examples/DisplayMapSliceLimits.v
 - COQC UniMath/Bicategories/Colimits/Examples/DisplayMapSliceColimits.v
 - COQC UniMath/Bicategories/Logic/Examples/FunctorsIntoCatComprehensionBicat.v
 - COQC UniMath/Bicategories/OtherStructure/ClassifyingDiscreteOpfib.v
-- COQC UniMath/SubstitutionSystems/MultiSortedMonadConstruction_actegorical.v
-- COQC UniMath/SubstitutionSystems/MultiSortedMonadConstruction_coind_actegorical.v
-- COQC UniMath/CategoryTheory/Monoidal/Comonoids/CommComonoidsCartesian.v
-- COQC UniMath/CategoryTheory/Monoidal/Comonoids/CartesianAsComonoids.v
-- COQC UniMath/Bicategories/DisplayedBicats/ExamplesOfCleavings/DisplayMapBicatCleaving.v
-- COQC UniMath/Bicategories/PseudoFunctors/Examples/CompositionPseudoFunctor.v
-- COQC UniMath/Bicategories/PseudoFunctors/Preservation/PullbackPreservation.v
-- COQC UniMath/Bicategories/DisplayedBicats/FiberBicategory/DisplayMapFiber.v
-- COQC UniMath/Bicategories/Logic/Examples/DisplayMapComprehensionBicat.v
 - COQC UniMath/Bicategories/OtherStructure/Exponentials.v
-- COQC UniMath/SubstitutionSystems/MultiSortedEmbeddingIndCoindHSET.v
+- COQC UniMath/SubstitutionSystems/MultiSorted_actegorical.v
 - COQC UniMath/Semantics/LinearLogic/LafontCategory.v
 - COQC UniMath/CategoryTheory/All.v
 - File &quot;./UniMath/CategoryTheory/All.v&quot;, line 208, characters 0-65:
@@ -406,11 +390,19 @@ noidAlongRetraction.v
 - New coercion path [adjunction_of_right_adjoint_over_id_data; left_adj_over_id] : right_adjoint_over_id_data &gt;-&gt; disp_functor is ambiguous with existing 
 - [functor_of_right_adjoint_over_id] : right_adjoint_over_id_data &gt;-&gt; disp_functor.
 - [ambiguous-paths,typechecker]
+- COQC UniMath/Bicategories/DisplayedBicats/ExamplesOfCleavings/DisplayMapBicatCleaving.v
+- COQC UniMath/Bicategories/PseudoFunctors/Examples/CompositionPseudoFunctor.v
+- COQC UniMath/Bicategories/PseudoFunctors/Preservation/PullbackPreservation.v
+- COQC UniMath/Bicategories/DisplayedBicats/FiberBicategory/DisplayMapFiber.v
+- COQC UniMath/Bicategories/Logic/Examples/DisplayMapComprehensionBicat.v
 - COQC UniMath/Bicategories/OtherStructure/Examples/StructureBicatOfUnivCats.v
 - COQC UniMath/Bicategories/OtherStructure/Examples/StructureOneTypes.v
-- COQC UniMath/SubstitutionSystems/All.v
+- COQC UniMath/SubstitutionSystems/MultiSortedMonadConstruction_actegorical.v
+- COQC UniMath/SubstitutionSystems/MultiSortedMonadConstruction_coind_actegorical.v
 - COQC UniMath/Semantics/LinearLogic/RelationalModel.v
+- COQC UniMath/SubstitutionSystems/MultiSortedEmbeddingIndCoindHSET.v
 - COQC UniMath/Semantics/All.v
+- COQC UniMath/SubstitutionSystems/All.v
 - COQC UniMath/Bicategories/All.v
 - COQC UniMath/All.v
 - File &quot;./UniMath/All.v&quot;, line 4, characters 0-41:
@@ -457,8 +449,8 @@ Processing  3/3: [coq-unimath: make install]
 # path                 ~/.opam/ocaml-base-compiler.5.0.0/.opam-switch/build/coq-unimath.20231010
 # command              ~/.opam/opam-init/hooks/sandbox.sh install make BUILD_COQ=no install
 # exit-code            2
-# env-file             ~/.opam/log/coq-unimath-1437-349234.env
-# output-file          ~/.opam/log/coq-unimath-1437-349234.out
+# env-file             ~/.opam/log/coq-unimath-8512-f469ca.env
+# output-file          ~/.opam/log/coq-unimath-8512-f469ca.out
 ### output ###
 # ulimit -v unlimited ; make -f build/CoqMakefile.make all
 # make[1]: Entering directory &#39;/home/bench/.opam/ocaml-base-compiler.5.0.0/.opam-switch/build/coq-unimath.20231010&#39;

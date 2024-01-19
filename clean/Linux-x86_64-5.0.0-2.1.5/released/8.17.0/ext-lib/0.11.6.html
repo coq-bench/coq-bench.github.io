@@ -42,7 +42,7 @@
                 <span class="label label-danger">Error 🔥</span>
               </small>
             </h1>
-            <p>📅 <em><script>document.write(moment("2024-01-18 00:23:51 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2024-01-18 00:23:51 UTC)</em><p>
+            <p>📅 <em><script>document.write(moment("2024-01-19 12:30:36 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2024-01-19 12:30:36 UTC)</em><p>
             <h2>Context</h2>
             <pre># Packages matching: installed
 # Name                # Installed # Synopsis
@@ -114,11 +114,11 @@ url {
             <h2>Install dependencies</h2>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>opam list; echo; timeout 4h opam install -y --deps-only coq-ext-lib.0.11.6 coq.8.17.0</code></dd>
+              <dd><code>opam list; echo; ulimit -Sv 4000000; timeout 4h opam install -y --deps-only coq-ext-lib.0.11.6 coq.8.17.0</code></dd>
               <dt>Return code</dt>
               <dd>0</dd>
               <dt>Duration</dt>
-              <dd>8 s</dd>
+              <dd>9 s</dd>
             </dl>
             <h2>Install 🚀</h2>
             <dl class="dl-horizontal">
@@ -127,7 +127,7 @@ url {
               <dt>Return code</dt>
               <dd>7936</dd>
               <dt>Duration</dt>
-              <dd>12 s</dd>
+              <dd>18 s</dd>
               <dt>Output</dt>
               <dd><pre># Packages matching: installed
 # Name                # Installed # Synopsis
@@ -165,6 +165,7 @@ Processing  2/3: [coq-ext-lib: make theories]
 - COQC theories/Tactics/Injection.v
 - COQC theories/Tactics/Forward.v
 - COQC theories/Core/Any.v
+- COQC theories/Core/EquivDec.v
 - File &quot;./theories/Core/Any.v&quot;, line 13, characters 0-66:
 - Error: The default value for hint locality is currently &quot;global&quot; outside
 - sections, but is scheduled to change to &quot;export&quot; in the next release (Coq
@@ -175,11 +176,10 @@ Processing  2/3: [coq-ext-lib: make theories]
 - #[export] depending on your choice. For example: &quot;#[export] Hint Unfold foo :
 - bar.&quot; [deprecated-hint-without-locality,deprecated]
 - 
-- COQC theories/Core/EquivDec.v
-- COQC theories/Core/Decision.v
 - make[2]: *** [Makefile.coq:830: theories/Core/Any.vo] Error 1
 - make[2]: *** [theories/Core/Any.vo] Deleting file &#39;theories/Core/Any.glob&#39;
 - make[2]: *** Waiting for unfinished jobs....
+- COQC theories/Core/Decision.v
 - make[1]: *** [Makefile.coq:409: all] Error 2
 - make[1]: Leaving directory &#39;/home/bench/.opam/ocaml-base-compiler.5.0.0/.opam-switch/build/coq-ext-lib.0.11.6&#39;
 - make: *** [Makefile:7: theories] Error 2
@@ -189,19 +189,19 @@ Processing  2/3: [coq-ext-lib: make theories]
 # path                 ~/.opam/ocaml-base-compiler.5.0.0/.opam-switch/build/coq-ext-lib.0.11.6
 # command              ~/.opam/opam-init/hooks/sandbox.sh build make -j4 theories
 # exit-code            2
-# env-file             ~/.opam/log/coq-ext-lib-16720-335a80.env
-# output-file          ~/.opam/log/coq-ext-lib-16720-335a80.out
+# env-file             ~/.opam/log/coq-ext-lib-11191-050609.env
+# output-file          ~/.opam/log/coq-ext-lib-11191-050609.out
 ### output ###
 # [...]
+# before the upcoming change in the default value. It is recommended to use
 # &quot;export&quot; whenever possible. Use the attributes #[local], #[global] and
 # #[export] depending on your choice. For example: &quot;#[export] Hint Unfold foo :
 # bar.&quot; [deprecated-hint-without-locality,deprecated]
 # 
-# COQC theories/Core/EquivDec.v
-# COQC theories/Core/Decision.v
 # make[2]: *** [Makefile.coq:830: theories/Core/Any.vo] Error 1
 # make[2]: *** [theories/Core/Any.vo] Deleting file &#39;theories/Core/Any.glob&#39;
 # make[2]: *** Waiting for unfinished jobs....
+# COQC theories/Core/Decision.v
 # make[1]: *** [Makefile.coq:409: all] Error 2
 # make[1]: Leaving directory &#39;/home/bench/.opam/ocaml-base-compiler.5.0.0/.opam-switch/build/coq-ext-lib.0.11.6&#39;
 # make: *** [Makefile:7: theories] Error 2

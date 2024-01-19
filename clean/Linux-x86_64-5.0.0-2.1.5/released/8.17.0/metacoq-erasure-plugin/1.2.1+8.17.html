@@ -42,7 +42,7 @@
                 <span class="label label-warning">Error with dependencies 🚒</span>
               </small>
             </h1>
-            <p>📅 <em><script>document.write(moment("2024-01-18 00:23:51 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2024-01-18 00:23:51 UTC)</em><p>
+            <p>📅 <em><script>document.write(moment("2024-01-19 12:30:36 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2024-01-19 12:30:36 UTC)</em><p>
             <h2>Context</h2>
             <pre># Packages matching: installed
 # Name                # Installed # Synopsis
@@ -136,11 +136,11 @@ url {
             <h2>Install dependencies</h2>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>opam list; echo; timeout 4h opam install -y --deps-only coq-metacoq-erasure-plugin.1.2.1+8.17 coq.8.17.0</code></dd>
+              <dd><code>opam list; echo; ulimit -Sv 4000000; timeout 4h opam install -y --deps-only coq-metacoq-erasure-plugin.1.2.1+8.17 coq.8.17.0</code></dd>
               <dt>Return code</dt>
               <dd>7936</dd>
               <dt>Duration</dt>
-              <dd>49 m 26 s</dd>
+              <dd>29 s</dd>
               <dt>Output</dt>
               <dd><pre># Packages matching: installed
 # Name                # Installed # Synopsis
@@ -174,61 +174,47 @@ The following actions will be performed:
 ===== 9 to install =====
 &lt;&gt;&lt;&gt; Processing actions &lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;
 -&gt; retrieved coq-equations.1.3+8.17  (https://github.com/mattam82/Coq-Equations/archive/refs/tags/v1.3-8.17.tar.gz)
--&gt; retrieved coq-metacoq-common.1.2.1+8.17  (https://github.com/MetaCoq/metacoq/archive/v1.2.1-8.17.tar.gz)
 -&gt; retrieved coq-metacoq-erasure.1.2.1+8.17  (https://github.com/MetaCoq/metacoq/archive/v1.2.1-8.17.tar.gz)
+-&gt; retrieved coq-metacoq-common.1.2.1+8.17  (https://github.com/MetaCoq/metacoq/archive/v1.2.1-8.17.tar.gz)
 -&gt; retrieved coq-metacoq-safechecker.1.2.1+8.17  (cached)
 -&gt; retrieved coq-metacoq-template.1.2.1+8.17  (cached)
 -&gt; retrieved coq-metacoq-template-pcuic.1.2.1+8.17  (cached)
 -&gt; retrieved coq-metacoq-utils.1.2.1+8.17  (cached)
--&gt; retrieved stdlib-shims.0.3.0  (https://opam.ocaml.org/cache)
 -&gt; retrieved coq-metacoq-pcuic.1.2.1+8.17  (https://github.com/MetaCoq/metacoq/archive/v1.2.1-8.17.tar.gz)
+-&gt; retrieved stdlib-shims.0.3.0  (https://opam.ocaml.org/cache)
 -&gt; installed stdlib-shims.0.3.0
--&gt; installed coq-equations.1.3+8.17
--&gt; installed coq-metacoq-utils.1.2.1+8.17
--&gt; installed coq-metacoq-common.1.2.1+8.17
--&gt; installed coq-metacoq-template.1.2.1+8.17
--&gt; installed coq-metacoq-pcuic.1.2.1+8.17
--&gt; installed coq-metacoq-template-pcuic.1.2.1+8.17
--&gt; installed coq-metacoq-safechecker.1.2.1+8.17
-[ERROR] The compilation of coq-metacoq-erasure.1.2.1+8.17 failed at &quot;make -j 4 -C erasure&quot;.
-#=== ERROR while compiling coq-metacoq-erasure.1.2.1+8.17 =====================#
+[ERROR] The compilation of coq-equations.1.3+8.17 failed at &quot;make -j4&quot;.
+#=== ERROR while compiling coq-equations.1.3+8.17 =============================#
 # context              2.1.5 | linux/x86_64 | ocaml-base-compiler.5.0.0 | file:///home/bench/run/opam-coq-archive/released
-# path                 ~/.opam/ocaml-base-compiler.5.0.0/.opam-switch/build/coq-metacoq-erasure.1.2.1+8.17
-# command              ~/.opam/opam-init/hooks/sandbox.sh build make -j 4 -C erasure
+# path                 ~/.opam/ocaml-base-compiler.5.0.0/.opam-switch/build/coq-equations.1.3+8.17
+# command              ~/.opam/opam-init/hooks/sandbox.sh build make -j4
 # exit-code            2
-# env-file             ~/.opam/log/coq-metacoq-erasure-14334-eedf94.env
-# output-file          ~/.opam/log/coq-metacoq-erasure-14334-eedf94.out
+# env-file             ~/.opam/log/coq-equations-12175-6f6107.env
+# output-file          ~/.opam/log/coq-equations-12175-6f6107.out
 ### output ###
-# Error: Out of memory.
 # [...]
-# make[2]: *** [Makefile.erasure:830: theories/EWcbvEvalCstrsAsBlocksFixLambdaInd.vo] Error 1
-# make[2]: *** [theories/EWcbvEvalCstrsAsBlocksFixLambdaInd.vo] Deleting file &#39;theories/EWcbvEvalCstrsAsBlocksFixLambdaInd.glob&#39;
-# make[2]: *** Waiting for unfinished jobs....
-# make[2]: *** [Makefile.erasure:830: theories/EWcbvEvalEtaInd.vo] Error 1
-# make[2]: *** [theories/EWcbvEvalEtaInd.vo] Deleting file &#39;theories/EWcbvEvalEtaInd.glob&#39;
-# make[2]: *** [Makefile.erasure:830: theories/EWcbvEvalCstrsAsBlocksInd.vo] Error 1
-# make[2]: *** [theories/EWcbvEvalCstrsAsBlocksInd.vo] Deleting file &#39;theories/EWcbvEvalCstrsAsBlocksInd.glob&#39;
-# make[1]: *** [Makefile.erasure:409: all] Error 2
-# make[1]: Leaving directory &#39;/home/bench/.opam/ocaml-base-compiler.5.0.0/.opam-switch/build/coq-metacoq-erasure.1.2.1+8.17/erasure&#39;
-# make: *** [Makefile:11: theory] Error 2
-# make: Leaving directory &#39;/home/bench/.opam/ocaml-base-compiler.5.0.0/.opam-switch/build/coq-metacoq-erasure.1.2.1+8.17/erasure&#39;
+# CAMLOPT -c  src/principles.ml
+# CAMLOPT -c  src/equations.ml
+# CAMLOPT -c  src/g_equations.ml
+# CAMLOPT -a -o src/equations_plugin.cmxa
+# CAMLOPT -shared -o src/equations_plugin.cmxs
+# COQC theories/Init.v
+# Fatal error: Not enough heap memory to reserve minor heaps
+# Aborted (core dumped)
+# make[2]: *** [Makefile.coq:830: theories/Init.vo] Error 134
+# make[1]: *** [Makefile.coq:409: all] Error 2
+# make[1]: Leaving directory &#39;/home/bench/.opam/ocaml-base-compiler.5.0.0/.opam-switch/build/coq-equations.1.3+8.17&#39;
+# make: *** [Makefile:6: all] Error 2
 &lt;&gt;&lt;&gt; Error report &lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;
 +- The following actions failed
-| - build coq-metacoq-erasure 1.2.1+8.17
+| - build coq-equations 1.3+8.17
 +- 
-+- The following changes have been performed
-| - install coq-equations              1.3+8.17
-| - install coq-metacoq-common         1.2.1+8.17
-| - install coq-metacoq-pcuic          1.2.1+8.17
-| - install coq-metacoq-safechecker    1.2.1+8.17
-| - install coq-metacoq-template       1.2.1+8.17
-| - install coq-metacoq-template-pcuic 1.2.1+8.17
-| - install coq-metacoq-utils          1.2.1+8.17
-| - install stdlib-shims               0.3.0
++- The following changes have been performed (the rest was aborted)
+| - install stdlib-shims 0.3.0
 +- 
 # Run eval $(opam env) to update the current shell environment
 The former state can be restored with:
-    /usr/local/bin/opam switch import &quot;/home/bench/.opam/ocaml-base-compiler.5.0.0/.opam-switch/backup/state-20240115084942.export&quot;
+    /usr/local/bin/opam switch import &quot;/home/bench/.opam/ocaml-base-compiler.5.0.0/.opam-switch/backup/state-20240118225550.export&quot;
 </pre></dd>
             </dl>
             <h2>Install 🚀</h2>

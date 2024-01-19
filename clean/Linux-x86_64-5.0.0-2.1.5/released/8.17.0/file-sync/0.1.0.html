@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>file-sync: 25 s 🏆</title>
+    <title>file-sync: Error with dependencies 🚒</title>
     <link rel="shortcut icon" type="image/png" href="../../../../../favicon.png" />
     <link href="../../../../../bootstrap.min.css" rel="stylesheet">
     <link href="../../../../../bootstrap-custom.css" rel="stylesheet">
@@ -39,10 +39,10 @@
               file-sync
               <small>
                 0.1.0
-                <span class="label label-success">25 s 🏆</span>
+                <span class="label label-warning">Error with dependencies 🚒</span>
               </small>
             </h1>
-            <p>📅 <em><script>document.write(moment("2024-01-18 00:23:51 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2024-01-18 00:23:51 UTC)</em><p>
+            <p>📅 <em><script>document.write(moment("2024-01-19 12:30:36 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2024-01-19 12:30:36 UTC)</em><p>
             <h2>Context</h2>
             <pre># Packages matching: installed
 # Name                # Installed # Synopsis
@@ -118,57 +118,226 @@ url {
             <h2>Install dependencies</h2>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>opam list; echo; timeout 4h opam install -y --deps-only coq-file-sync.0.1.0 coq.8.17.0</code></dd>
+              <dd><code>opam list; echo; ulimit -Sv 4000000; timeout 4h opam install -y --deps-only coq-file-sync.0.1.0 coq.8.17.0</code></dd>
               <dt>Return code</dt>
-              <dd>0</dd>
+              <dd>7936</dd>
               <dt>Duration</dt>
-              <dd>2 m 16 s</dd>
+              <dd>52 s</dd>
+              <dt>Output</dt>
+              <dd><pre># Packages matching: installed
+# Name                # Installed # Synopsis
+base-bigarray         base
+base-domains          base
+base-nnp              base        Naked pointers prohibited in the OCaml heap
+base-threads          base
+base-unix             base
+conf-gmp              4           Virtual package relying on a GMP lib system installation
+coq                   8.17.0      The Coq Proof Assistant
+coq-core              8.17.0      The Coq Proof Assistant -- Core Binaries and Tools
+coq-stdlib            8.17.0      The Coq Proof Assistant -- Standard Library
+coqide-server         8.17.0      The Coq Proof Assistant, XML protocol server
+dune                  3.12.2      Fast, portable, and opinionated build system
+ocaml                 5.0.0       The OCaml compiler (virtual package)
+ocaml-base-compiler   5.0.0       Official release 5.0.0
+ocaml-config          3           OCaml Switch Configuration
+ocaml-options-vanilla 1           Ensure that OCaml is compiled with no special options enabled
+ocamlfind             1.9.6       A library manager for OCaml
+zarith                1.13        Implements arithmetic and logical operations over arbitrary-precision integers
+The following actions will be performed:
+  - install cppo                   1.6.9
+  - install ocamlbuild             0.14.3
+  - install menhirCST              20231231
+  - install coq-mathcomp-ssreflect 1.19.0
+  - install coq-ext-lib            0.12.0
+  - install menhirSdk              20231231
+  - install coq-menhirlib          20231231
+  - install coq-paco               4.2.0
+  - install menhirLib              20231231
+  - install seq                    base
+  - install coq-ceres              0.4.1
+  - install stdlib-shims           0.3.0
+  - install coq-simple-io          1.8.0
+  - install coq-itree              5.1.2
+  - install menhir                 20231231
+  - install coq-parsec             0.1.2
+  - install fileutils              0.6.4
+  - install coq-itree-io           0.1.1
+  - install coq-quickchick         2.0.2
+  - install coq-json               0.1.2
+  - install coq-async-test         0.1.0
+===== 21 to install =====
+&lt;&gt;&lt;&gt; Processing actions &lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;
+-&gt; retrieved coq-ceres.0.4.1  (https://github.com/Lysxia/coq-ceres/archive/0.4.1.tar.gz)
+-&gt; retrieved coq-async-test.0.1.0  (https://github.com/liyishuai/coq-async-test/archive/v0.1.0.tar.gz)
+-&gt; retrieved coq-ext-lib.0.12.0  (https://github.com/coq-community/coq-ext-lib/archive/refs/tags/v0.12.0.tar.gz)
+[ERROR] The compilation of coq-ceres.0.4.1 failed at &quot;dune build -p coq-ceres -j 4 @install&quot;.
+-&gt; retrieved coq-itree.5.1.2  (https://github.com/DeepSpec/InteractionTrees/archive/5.1.2.tar.gz)
+-&gt; retrieved coq-itree-io.0.1.1  (https://github.com/Lysxia/coq-itree-io/archive/refs/tags/v0.1.1.tar.gz)
+-&gt; retrieved coq-json.0.1.2  (https://github.com/liyishuai/coq-json/archive/v0.1.2.tar.gz)
+-&gt; retrieved coq-menhirlib.20231231  (https://gitlab.inria.fr/fpottier/menhir/-/archive/20231231/archive.tar.gz)
+-&gt; retrieved coq-paco.4.2.0  (https://github.com/snu-sf/paco/archive/v4.2.0.tar.gz)
+-&gt; retrieved coq-mathcomp-ssreflect.1.19.0  (https://github.com/math-comp/math-comp/archive/mathcomp-1.19.0.tar.gz)
+-&gt; retrieved coq-parsec.0.1.2  (https://github.com/liyishuai/coq-parsec/archive/v0.1.2.tar.gz)
+-&gt; retrieved cppo.1.6.9  (https://opam.ocaml.org/cache)
+-&gt; retrieved fileutils.0.6.4  (https://opam.ocaml.org/cache)
+-&gt; retrieved menhir.20231231  (cached)
+-&gt; retrieved coq-quickchick.2.0.2  (https://github.com/QuickChick/QuickChick/archive/refs/tags/v2.0.2.tar.gz)
+-&gt; retrieved menhirCST.20231231  (cached)
+-&gt; retrieved menhirLib.20231231  (cached)
+-&gt; retrieved coq-simple-io.1.8.0  (https://github.com/Lysxia/coq-simple-io/archive/1.8.0.tar.gz)
+-&gt; retrieved menhirSdk.20231231  (cached)
+-&gt; retrieved stdlib-shims.0.3.0  (https://opam.ocaml.org/cache)
+-&gt; retrieved ocamlbuild.0.14.3  (https://opam.ocaml.org/cache)
+[ERROR] The compilation of coq-ext-lib.0.12.0 failed at &quot;make -j4 theories&quot;.
+[ERROR] The compilation of coq-menhirlib.20231231 failed at &quot;make -C coq-menhirlib -j4&quot;.
+[ERROR] The compilation of coq-paco.4.2.0 failed at &quot;make -C src all -j4&quot;.
+[ERROR] The compilation of coq-mathcomp-ssreflect.1.19.0 failed at &quot;make -C mathcomp/ssreflect -j 4&quot;.
+-&gt; installed menhirCST.20231231
+-&gt; installed menhirLib.20231231
+-&gt; installed seq.base
+-&gt; installed cppo.1.6.9
+-&gt; installed menhirSdk.20231231
+-&gt; installed stdlib-shims.0.3.0
+-&gt; installed ocamlbuild.0.14.3
+-&gt; installed fileutils.0.6.4
+-&gt; installed menhir.20231231
+#=== ERROR while compiling coq-paco.4.2.0 =====================================#
+# context              2.1.5 | linux/x86_64 | ocaml-base-compiler.5.0.0 | file:///home/bench/run/opam-coq-archive/released
+# path                 ~/.opam/ocaml-base-compiler.5.0.0/.opam-switch/build/coq-paco.4.2.0
+# command              ~/.opam/opam-init/hooks/sandbox.sh build make -C src all -j4
+# exit-code            2
+# env-file             ~/.opam/log/coq-paco-13488-26bf5e.env
+# output-file          ~/.opam/log/coq-paco-13488-26bf5e.out
+### output ###
+# [...]
+# W: This Makefile was generated by Coq 8.17.0
+# W: while the current Coq version is 
+# Fatal error: Not enough heap memory to reserve minor heaps
+# Aborted (core dumped)
+# COQC paconotation.v
+# Fatal error: Not enough heap memory to reserve minor heaps
+# Aborted (core dumped)
+# make[2]: *** [Makefile.coq:830: paconotation.vo] Error 134
+# make[1]: *** [Makefile.coq:409: all] Error 2
+# make[1]: Leaving directory &#39;/home/bench/.opam/ocaml-base-compiler.5.0.0/.opam-switch/build/coq-paco.4.2.0/src&#39;
+# make: *** [Makefile:8: all] Error 2
+# make: Leaving directory &#39;/home/bench/.opam/ocaml-base-compiler.5.0.0/.opam-switch/build/coq-paco.4.2.0/src&#39;
+#=== ERROR while compiling coq-menhirlib.20231231 =============================#
+# context              2.1.5 | linux/x86_64 | ocaml-base-compiler.5.0.0 | file:///home/bench/run/opam-coq-archive/released
+# path                 ~/.opam/ocaml-base-compiler.5.0.0/.opam-switch/build/coq-menhirlib.20231231
+# command              ~/.opam/opam-init/hooks/sandbox.sh build make -C coq-menhirlib -j4
+# exit-code            2
+# env-file             ~/.opam/log/coq-menhirlib-13488-2af2f4.env
+# output-file          ~/.opam/log/coq-menhirlib-13488-2af2f4.out
+### output ###
+# [...]
+# COQC Version.v
+# Fatal error: Not enough heap memory to reserve minor heaps
+# Fatal error: Not enough heap memory to reserve minor heaps
+# Aborted (core dumped)
+# make[3]: *** [CoqMakefile:830: Version.vo] Error 134
+# make[3]: *** Waiting for unfinished jobs....
+# Aborted
+# make[3]: *** [CoqMakefile:830: Alphabet.vo] Error 134
+# make[2]: *** [CoqMakefile:409: all] Error 2
+# make[1]: *** [Makefile:18: invoke-coqmakefile] Error 2
+# make: *** [Makefile:6: all] Error 2
+# make: Leaving directory &#39;/home/bench/.opam/ocaml-base-compiler.5.0.0/.opam-switch/build/coq-menhirlib.20231231/coq-menhirlib&#39;
+#=== ERROR while compiling coq-mathcomp-ssreflect.1.19.0 ======================#
+# context              2.1.5 | linux/x86_64 | ocaml-base-compiler.5.0.0 | file:///home/bench/run/opam-coq-archive/released
+# path                 ~/.opam/ocaml-base-compiler.5.0.0/.opam-switch/build/coq-mathcomp-ssreflect.1.19.0
+# command              ~/.opam/opam-init/hooks/sandbox.sh build make -C mathcomp/ssreflect -j 4
+# exit-code            2
+# env-file             ~/.opam/log/coq-mathcomp-ssreflect-13488-00b738.env
+# output-file          ~/.opam/log/coq-mathcomp-ssreflect-13488-00b738.out
+### output ###
+# [...]
+# Fatal error: Not enough heap memory to reserve minor heaps
+# Fatal error: Not enough heap memory to reserve minor heaps
+# Aborted (core dumped)
+# make[2]: *** [Makefile.coq:830: ssrmatching.vo] Error 134
+# make[2]: *** Waiting for unfinished jobs....
+# Aborted
+# make[2]: *** [Makefile.coq:830: ssreflect.vo] Error 134
+# Aborted (core dumped)
+# make[2]: *** [Makefile.coq:830: ssrnotations.vo] Error 134
+# make[1]: *** [Makefile.coq:409: all] Error 2
+# make: *** [../Makefile.common:99: this-build] Error 2
+# make: Leaving directory &#39;/home/bench/.opam/ocaml-base-compiler.5.0.0/.opam-switch/build/coq-mathcomp-ssreflect.1.19.0/mathcomp/ssreflect&#39;
+#=== ERROR while compiling coq-ext-lib.0.12.0 =================================#
+# context              2.1.5 | linux/x86_64 | ocaml-base-compiler.5.0.0 | file:///home/bench/run/opam-coq-archive/released
+# path                 ~/.opam/ocaml-base-compiler.5.0.0/.opam-switch/build/coq-ext-lib.0.12.0
+# command              ~/.opam/opam-init/hooks/sandbox.sh build make -j4 theories
+# exit-code            2
+# env-file             ~/.opam/log/coq-ext-lib-13488-96ae46.env
+# output-file          ~/.opam/log/coq-ext-lib-13488-96ae46.out
+### output ###
+# [...]
+# Aborted (core dumped)
+# make[2]: *** [Makefile.coq:830: theories/Core/Any.vo] Error 134
+# make[2]: *** Waiting for unfinished jobs....
+# Aborted (core dumped)
+# make[2]: *** [Makefile.coq:830: theories/Tactics/Injection.vo] Error 134
+# Aborted
+# make[2]: *** [Makefile.coq:830: theories/Core/RelDec.vo] Error 134
+# Aborted (core dumped)
+# make[2]: *** [Makefile.coq:830: theories/Tactics/Forward.vo] Error 134
+# make[1]: *** [Makefile.coq:409: all] Error 2
+# make[1]: Leaving directory &#39;/home/bench/.opam/ocaml-base-compiler.5.0.0/.opam-switch/build/coq-ext-lib.0.12.0&#39;
+# make: *** [Makefile:8: theories] Error 2
+#=== ERROR while compiling coq-ceres.0.4.1 ====================================#
+# context              2.1.5 | linux/x86_64 | ocaml-base-compiler.5.0.0 | file:///home/bench/run/opam-coq-archive/released
+# path                 ~/.opam/ocaml-base-compiler.5.0.0/.opam-switch/build/coq-ceres.0.4.1
+# command              ~/.opam/opam-init/hooks/sandbox.sh build dune build -p coq-ceres -j 4 @install
+# exit-code            1
+# env-file             ~/.opam/log/coq-ceres-13488-0913c5.env
+# output-file          ~/.opam/log/coq-ceres-13488-0913c5.out
+### output ###
+# Warning: Coq Language Versions lower than 0.8 have been deprecated in Dune
+# 3.8 and will be removed in an upcoming Dune version.
+# /home/bench/.opam/ocaml-base-compiler.5.0.0/bin/coqc --print-version -boot &gt; /opam-tmp/dune_8fe892_output
+# Fatal error: Not enough heap memory to reserve minor heaps
+# /home/bench/.opam/ocaml-base-compiler.5.0.0/bin/coqc --config &gt; /opam-tmp/dune_8ae2cc_output
+# Fatal error: Not enough heap memory to reserve minor heaps
+&lt;&gt;&lt;&gt; Error report &lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;
++- The following actions failed
+| - build coq-ceres              0.4.1
+| - build coq-ext-lib            0.12.0
+| - build coq-mathcomp-ssreflect 1.19.0
+| - build coq-menhirlib          20231231
+| - build coq-paco               4.2.0
++- 
++- The following changes have been performed (the rest was aborted)
+| - install cppo         1.6.9
+| - install fileutils    0.6.4
+| - install menhir       20231231
+| - install menhirCST    20231231
+| - install menhirLib    20231231
+| - install menhirSdk    20231231
+| - install ocamlbuild   0.14.3
+| - install seq          base
+| - install stdlib-shims 0.3.0
++- 
+# Run eval $(opam env) to update the current shell environment
+The former state can be restored with:
+    /usr/local/bin/opam switch import &quot;/home/bench/.opam/ocaml-base-compiler.5.0.0/.opam-switch/backup/state-20240119121938.export&quot;
+</pre></dd>
             </dl>
             <h2>Install 🚀</h2>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>opam list; echo; timeout 4h opam install -y -v coq-file-sync.0.1.0 coq.8.17.0</code></dd>
+              <dd><code>true</code></dd>
               <dt>Return code</dt>
               <dd>0</dd>
               <dt>Duration</dt>
-              <dd>25 s</dd>
+              <dd>0 s</dd>
             </dl>
             <h2>Installation size</h2>
-            <p>Total: 5 M</p>
-            <ul>
-              <li>4 M <code>../ocaml-base-compiler.5.0.0/bin/FileTest.native</code></li>
-              <li>193 K <code>../ocaml-base-compiler.5.0.0/lib/coq/user-contrib/FileSync/Execute.vo</code></li>
-              <li>90 K <code>../ocaml-base-compiler.5.0.0/lib/coq/user-contrib/FileSync/Syntax.vo</code></li>
-              <li>70 K <code>../ocaml-base-compiler.5.0.0/lib/coq/user-contrib/FileSync/Sync.vo</code></li>
-              <li>67 K <code>../ocaml-base-compiler.5.0.0/lib/coq/user-contrib/FileSync/AsyncTest.vo</code></li>
-              <li>58 K <code>../ocaml-base-compiler.5.0.0/lib/coq/user-contrib/FileSync/Server.vo</code></li>
-              <li>43 K <code>../ocaml-base-compiler.5.0.0/lib/coq/user-contrib/FileSync/Semantics.vo</code></li>
-              <li>42 K <code>../ocaml-base-compiler.5.0.0/lib/coq/user-contrib/FileSync/Execute.glob</code></li>
-              <li>42 K <code>../ocaml-base-compiler.5.0.0/lib/coq/user-contrib/FileSync/File.vo</code></li>
-              <li>36 K <code>../ocaml-base-compiler.5.0.0/lib/coq/user-contrib/FileSync/Trace.vo</code></li>
-              <li>32 K <code>../ocaml-base-compiler.5.0.0/lib/coq/user-contrib/FileSync/Gen.vo</code></li>
-              <li>25 K <code>../ocaml-base-compiler.5.0.0/lib/coq/user-contrib/FileSync/Sync.glob</code></li>
-              <li>24 K <code>../ocaml-base-compiler.5.0.0/lib/coq/user-contrib/FileSync/AsyncTest.glob</code></li>
-              <li>24 K <code>../ocaml-base-compiler.5.0.0/lib/coq/user-contrib/FileSync/File.glob</code></li>
-              <li>16 K <code>../ocaml-base-compiler.5.0.0/lib/coq/user-contrib/FileSync/Syntax.glob</code></li>
-              <li>15 K <code>../ocaml-base-compiler.5.0.0/lib/coq/user-contrib/FileSync/Semantics.glob</code></li>
-              <li>12 K <code>../ocaml-base-compiler.5.0.0/lib/coq/user-contrib/FileSync/Server.glob</code></li>
-              <li>9 K <code>../ocaml-base-compiler.5.0.0/lib/coq/user-contrib/FileSync/Execute.v</code></li>
-              <li>7 K <code>../ocaml-base-compiler.5.0.0/lib/coq/user-contrib/FileSync/Trace.glob</code></li>
-              <li>7 K <code>../ocaml-base-compiler.5.0.0/lib/coq/user-contrib/FileSync/Gen.glob</code></li>
-              <li>5 K <code>../ocaml-base-compiler.5.0.0/lib/coq/user-contrib/FileSync/AsyncTest.v</code></li>
-              <li>5 K <code>../ocaml-base-compiler.5.0.0/lib/coq/user-contrib/FileSync/File.v</code></li>
-              <li>4 K <code>../ocaml-base-compiler.5.0.0/lib/coq/user-contrib/FileSync/Sync.v</code></li>
-              <li>3 K <code>../ocaml-base-compiler.5.0.0/lib/coq/user-contrib/FileSync/Syntax.v</code></li>
-              <li>2 K <code>../ocaml-base-compiler.5.0.0/lib/coq/user-contrib/FileSync/Server.v</code></li>
-              <li>2 K <code>../ocaml-base-compiler.5.0.0/lib/coq/user-contrib/FileSync/Semantics.v</code></li>
-              <li>1 K <code>../ocaml-base-compiler.5.0.0/lib/coq/user-contrib/FileSync/Gen.v</code></li>
-              <li>1 K <code>../ocaml-base-compiler.5.0.0/lib/coq/user-contrib/FileSync/Trace.v</code></li>
-            </ul>
+            <p>No files were installed.</p>
             <h2>Uninstall 🧹</h2>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>opam remove -y coq-file-sync.0.1.0</code></dd>
+              <dd><code>true</code></dd>
               <dt>Return code</dt>
               <dd>0</dd>
               <dt>Missing removes</dt>
