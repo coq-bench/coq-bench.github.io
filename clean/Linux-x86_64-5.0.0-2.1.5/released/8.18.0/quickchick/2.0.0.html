@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>quickchick: Not compatible 👼</title>
+    <title>quickchick: Error with dependencies 🚒</title>
     <link rel="shortcut icon" type="image/png" href="../../../../../favicon.png" />
     <link href="../../../../../bootstrap.min.css" rel="stylesheet">
     <link href="../../../../../bootstrap-custom.css" rel="stylesheet">
@@ -39,10 +39,10 @@
               quickchick
               <small>
                 2.0.0
-                <span class="label label-info">Not compatible 👼</span>
+                <span class="label label-warning">Error with dependencies 🚒</span>
               </small>
             </h1>
-            <p>📅 <em><script>document.write(moment("2024-01-17 19:43:46 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2024-01-17 19:43:46 UTC)</em><p>
+            <p>📅 <em><script>document.write(moment("2024-01-21 01:36:50 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2024-01-21 01:36:50 UTC)</em><p>
             <h2>Context</h2>
             <pre># Packages matching: installed
 # Name                # Installed # Synopsis
@@ -136,15 +136,9 @@ url {
     - (invariant) -&gt; ocaml-base-compiler = 5.0.0 -&gt; ocaml = 5.0.0
     - coq-quickchick = 2.0.0 -&gt; coq &lt; 8.18 -&gt; ocaml &lt; 4.02.0
     You can temporarily relax the switch invariant with `--update-invariant&#39;
-  * No agreement on the version of ocaml-base-compiler:
-    - (invariant) -&gt; ocaml-base-compiler = 5.0.0
-    - coq-quickchick = 2.0.0 -&gt; coq &lt; 8.18 -&gt; ocaml &lt; 4.02.0 -&gt; ocaml-base-compiler = 3.07+1
   * Incompatible packages:
     - (invariant) -&gt; ocaml-base-compiler = 5.0.0 -&gt; base-nnp
     - coq-quickchick = 2.0.0 -&gt; coq &lt; 8.18
-  * Missing dependency:
-    - coq-quickchick = 2.0.0 -&gt; coq &lt; 8.18 -&gt; ocaml &lt; 4.02.0 -&gt; ocaml-variants -&gt; ocaml-beta
-    unmet availability conditions: &#39;enable-ocaml-beta-repository&#39;
 No solution found, exiting
 </pre></dd>
             </dl>
@@ -153,7 +147,12 @@ No solution found, exiting
               <dt>Command</dt>
               <dd><code>opam remove -y coq; opam install -y --show-action --unlock-base coq-quickchick.2.0.0</code></dd>
               <dt>Return code</dt>
-              <dd>0</dd>
+              <dd>134</dd>
+              <dt>Output</dt>
+              <dd><pre>Fatal error: allocation failure during minor GC
+bash: line 1: 18100 Aborted                 (core dumped) opam remove -y coq
+Fatal error: allocation failure during minor GC
+</pre></dd>
             </dl>
             <h2>Install dependencies</h2>
             <dl class="dl-horizontal">
