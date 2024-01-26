@@ -42,7 +42,6 @@
                 <span class="label label-danger">Error 🔥</span>
               </small>
             </h1>
-            <p>📅 <em><script>document.write(moment("2024-01-21 01:36:50 +0000", "YYYY-MM-DD HH:mm:ss Z").fromNow());</script> (2024-01-21 01:36:50 UTC)</em><p>
             <h2>Context</h2>
             <pre># Packages matching: installed
 # Name                # Installed # Synopsis
@@ -56,7 +55,7 @@ coq                   8.18.0      The Coq Proof Assistant
 coq-core              8.18.0      The Coq Proof Assistant -- Core Binaries and Tools
 coq-stdlib            8.18.0      The Coq Proof Assistant -- Standard Library
 coqide-server         8.18.0      The Coq Proof Assistant, XML protocol server
-dune                  3.12.2      Fast, portable, and opinionated build system
+dune                  3.13.0      Fast, portable, and opinionated build system
 ocaml                 5.0.0       The OCaml compiler (virtual package)
 ocaml-base-compiler   5.0.0       Official release 5.0.0
 ocaml-config          3           OCaml Switch Configuration
@@ -89,6 +88,7 @@ depends: [
   &quot;coq-mathcomp-multinomials&quot; {&gt;= &quot;2.0&quot;}
   &quot;coq-mathcomp-real-closed&quot; {&gt;= &quot;2.0&quot;}
 ]
+conflicts: [ &quot;coq-hierarchy-builder&quot; {&gt;= &quot;1.7.0&quot;} ]
 tags: [
   &quot;category:Computer Science/Decision Procedures and Certified Algorithms/Correctness proofs of algorithms&quot;
   &quot;keyword:effective algebra&quot;
@@ -144,7 +144,7 @@ url {
               <dt>Return code</dt>
               <dd>0</dd>
               <dt>Duration</dt>
-              <dd>19 m 40 s</dd>
+              <dd>35 m 0 s</dd>
             </dl>
             <h2>Install 🚀</h2>
             <dl class="dl-horizontal">
@@ -153,7 +153,7 @@ url {
               <dt>Return code</dt>
               <dd>7936</dd>
               <dt>Duration</dt>
-              <dd>1 m 3 s</dd>
+              <dd>2 m 0 s</dd>
               <dt>Output</dt>
               <dd><pre># Packages matching: installed
 # Name                    # Installed   # Synopsis
@@ -173,24 +173,24 @@ conf-gmp                  4             Virtual package relying on a GMP lib sys
 coq                       8.18.0        The Coq Proof Assistant
 coq-bignums               9.0.0+coq8.18 Bignums, the Coq library of arbitrarily large numbers
 coq-core                  8.18.0        The Coq Proof Assistant -- Core Binaries and Tools
-coq-elpi                  2.0.0         Elpi extension language for Coq
-coq-hierarchy-builder     1.7.0         High level commands to declare and evolve a hierarchy based on packed classes
-coq-mathcomp-algebra      2.1.0         Mathematical Components Library on Algebra
+coq-elpi                  1.19.3        Elpi extension language for Coq
+coq-hierarchy-builder     1.6.0         High level commands to declare and evolve a hierarchy based on packed classes
+coq-mathcomp-algebra      2.2.0         Mathematical Components Library on Algebra
 coq-mathcomp-bigenough    1.0.1         A small library to do epsilon - N reasoning
-coq-mathcomp-field        2.1.0         Mathematical Components Library on Fields
-coq-mathcomp-fingroup     2.1.0         Mathematical Components Library on finite groups
-coq-mathcomp-finmap       2.0.0         Finite sets, finite maps, finitely supported functions
-coq-mathcomp-multinomials 2.1.0         A Multivariate polynomial Library for the Mathematical Components Library
+coq-mathcomp-field        2.2.0         Mathematical Components Library on Fields
+coq-mathcomp-fingroup     2.2.0         Mathematical Components Library on finite groups
+coq-mathcomp-finmap       2.1.0         Finite sets, finite maps, finitely supported functions
+coq-mathcomp-multinomials 2.2.0         A Multivariate polynomial Library for the Mathematical Components Library
 coq-mathcomp-real-closed  2.0.0         Mathematical Components Library on real closed fields
-coq-mathcomp-solvable     2.1.0         Mathematical Components Library on finite groups (II)
-coq-mathcomp-ssreflect    2.1.0         Small Scale Reflection
+coq-mathcomp-solvable     2.2.0         Mathematical Components Library on finite groups (II)
+coq-mathcomp-ssreflect    2.2.0         Small Scale Reflection
 coq-paramcoq              1.1.3+coq8.18 Plugin for generating parametricity statements to perform refinement proofs
 coq-stdlib                8.18.0        The Coq Proof Assistant -- Standard Library
 coqide-server             8.18.0        The Coq Proof Assistant, XML protocol server
 cppo                      1.6.9         Code preprocessor like cpp for OCaml
-dune                      3.12.2        Fast, portable, and opinionated build system
+dune                      3.13.0        Fast, portable, and opinionated build system
 easy-format               1.3.4         High-level and functional interface to the Format module of the OCaml standard library
-elpi                      1.18.1        ELPI - Embeddable λProlog Interpreter
+elpi                      1.17.4        ELPI - Embeddable λProlog Interpreter
 menhir                    20231231      An LR(1) parser generator
 menhirCST                 20231231      Runtime support library for parsers generated by Menhir
 menhirLib                 20231231      Runtime support library for parsers generated by Menhir
@@ -231,83 +231,74 @@ Processing  2/3: [coq-coqeal: make]
 - COQC theory/karatsuba.v
 - COQC theory/ssralg_ring_tac.v
 - COQC theory/toomcook.v
-- File &quot;./theory/ssralg_ring_tac.v&quot;, line 2, characters 0-87:
-- Warning: Hiding binding of key N to N_scope
-- [hiding-delimiting-key,parsing,default]
 - COQC refinements/hrel.v
 - COQC refinements/param.v
 - COQC refinements/poly_op.v
 - COQC theory/stronglydiscrete.v
-- COQC theory/binetcauchy.v
 - File &quot;./refinements/param.v&quot;, line 68, characters 0-23:
 - Warning: Notation sub is deprecated since mathcomp 2.0.0. Use Sub instead.
 - [deprecated-syntactic-definition-since-mathcomp-2.0.0,deprecated-since-mathcomp-2.0.0,deprecated-syntactic-definition,deprecated,default]
 - &#39;leq_R&#39; is now a registered translation.
 - &#39;nilp_R&#39; is now a registered translation.
+- COQC theory/binetcauchy.v
 - COQC theory/closed_poly.v
 - COQC theory/rank.v
 - COQC theory/strassen.v
-- File &quot;./theory/strassen.v&quot;, line 4, characters 0-87:
-- Warning: Hiding binding of key N to N_scope
-- [hiding-delimiting-key,parsing,default]
 - COQC refinements/refinements.v
 - COQC theory/dvdring.v
 - COQC refinements/pos.v
 - COQC refinements/poly_div.v
 - COQC refinements/trivial_seq.v
-- File &quot;./refinements/pos.v&quot;, line 5, characters 0-82:
-- Warning: Hiding binding of key N to N_scope
-- [hiding-delimiting-key,parsing,default]
-- File &quot;./refinements/trivial_seq.v&quot;, line 3, characters 0-82:
-- Warning: Hiding binding of key N to N_scope
-- [hiding-delimiting-key,parsing,default]
-- File &quot;./refinements/pos.v&quot;, line 6, characters 0-89:
-- Warning: Hiding binding of key Z to Z_scope
-- [hiding-delimiting-key,parsing,default]
-- File &quot;./refinements/trivial_seq.v&quot;, line 4, characters 0-89:
-- Warning: Hiding binding of key Z to Z_scope
-- [hiding-delimiting-key,parsing,default]
 - COQC refinements/boolF2.v
 - COQC refinements/binnat.v
-- File &quot;./refinements/binnat.v&quot;, line 5, characters 0-82:
-- Warning: Hiding binding of key N to N_scope
-- [hiding-delimiting-key,parsing,default]
-- File &quot;./refinements/binnat.v&quot;, line 6, characters 0-89:
-- Warning: Hiding binding of key Z to Z_scope
-- [hiding-delimiting-key,parsing,default]
 - COQC refinements/binint.v
 - COQC refinements/binord.v
-- File &quot;./refinements/binord.v&quot;, line 3, characters 0-82:
-- Warning: Hiding binding of key N to N_scope
-- [hiding-delimiting-key,parsing,default]
-- File &quot;./refinements/binord.v&quot;, line 4, characters 0-89:
-- Warning: Hiding binding of key Z to Z_scope
-- [hiding-delimiting-key,parsing,default]
 - COQC refinements/seqpoly.v
-- COQC refinements/rational.v
 - COQC refinements/hpoly.v
+- COQC refinements/rational.v
 - &#39;exp_seqpoly_R&#39; is now a registered translation.
+- File &quot;./refinements/seqpoly.v&quot;, line 463, characters 16-26:
+- Error:
+- In environment
+- R : ringType
+- C : Type
+- rAC : R -&gt; C -&gt; Type
+- N : Type
+- rN : nat -&gt; N -&gt; Type
+- H : zero_of C
+- H0 : one_of C
+- H1 : opp_of C
+- H2 : add_of C
+- H3 : mul_of C
+- H4 : eq_of C
+- H5 : implem_of R C
+- H6 : spec_of C R
+- H7 : zero_of N
+- H8 : one_of N
+- H9 : add_of N
+- H10 : eq_of N
+- H11 : spec_of N nat
+- refines0 : refines rAC 0 0%C
+- refines1 : refines rAC 1 1%C
+- refines2 : refines (rAC ==&gt; rAC) -%R -%C
+- refines3 : refines (rAC ==&gt; rAC ==&gt; rAC) +%R +%C
+- refines4 : refines (rAC ==&gt; rAC ==&gt; rAC)  *%R *%C
+- refines5 : refines (rAC ==&gt; rAC ==&gt; bool_R) eqtype.eq_op eq_op
+- refines6 : refines (rAC ==&gt; eq) spec_id spec
+- refines7 : refines rN 0%N 0%C
+- refines8 : refines rN 1%N 1%C
+- refines9 : refines (rN ==&gt; rN ==&gt; rN) addn +%C
+- refines10 : refines (rN ==&gt; rN ==&gt; bool_R) eqtype.eq_op eq_op
+- refines11 : refines (rN ==&gt; nat_R) spec_id spec
+- The term &quot;list_R rAC&quot; has type &quot;seq R -&gt; seq C -&gt; Type&quot;
+- while it is expected to have type &quot;seq R -&gt; {poly R}&quot;
+- (cannot unify &quot;seq C -&gt; Type&quot; and &quot;{poly R}&quot;).
+- 
+- make[2]: *** [Makefile.coq:838: refinements/seqpoly.vo] Error 1
+- make[2]: *** [refinements/seqpoly.vo] Deleting file &#39;refinements/seqpoly.glob&#39;
+- make[2]: *** Waiting for unfinished jobs....
 - &#39;exp_hpoly_R&#39; is now a registered translation.
 - &#39;expQnat_R&#39; is now a registered translation.
-- COQC refinements/binrat.v
-- File &quot;./refinements/binrat.v&quot;, line 5, characters 0-74:
-- Warning: Hiding binding of key N to N_scope
-- [hiding-delimiting-key,parsing,default]
-- COQC refinements/karatsuba.v
-- COQC refinements/seqmx.v
-- File &quot;./refinements/binrat.v&quot;, line 6, characters 0-65:
-- Warning: Hiding binding of key Z to Z_scope
-- [hiding-delimiting-key,parsing,default]
-- File &quot;./refinements/binrat.v&quot;, line 6, characters 0-65:
-- Warning: Hiding binding of key Q to Q_scope
-- [hiding-delimiting-key,parsing,default]
-- File &quot;./refinements/seqmx.v&quot;, line 235, characters 0-26:
-- Error: Anomaly &quot;Uncaught exception Not_found.&quot;
-- Please report at http://coq.inria.fr/bugs/.
-- 
-- make[2]: *** [Makefile.coq:838: refinements/seqmx.vo] Error 129
-- make[2]: *** [refinements/seqmx.vo] Deleting file &#39;refinements/seqmx.glob&#39;
-- make[2]: *** Waiting for unfinished jobs....
 - make[1]: *** [Makefile.coq:409: all] Error 2
 - make[1]: Leaving directory &#39;/home/bench/.opam/ocaml-base-compiler.5.0.0/.opam-switch/build/coq-coqeal.2.0.0&#39;
 - make: *** [Makefile:2: all] Error 2
@@ -317,19 +308,19 @@ Processing  2/3: [coq-coqeal: make]
 # path                 ~/.opam/ocaml-base-compiler.5.0.0/.opam-switch/build/coq-coqeal.2.0.0
 # command              ~/.opam/opam-init/hooks/sandbox.sh build make -j4
 # exit-code            2
-# env-file             ~/.opam/log/coq-coqeal-7328-2b0b46.env
-# output-file          ~/.opam/log/coq-coqeal-7328-2b0b46.out
+# env-file             ~/.opam/log/coq-coqeal-22466-42a76e.env
+# output-file          ~/.opam/log/coq-coqeal-22466-42a76e.out
 ### output ###
 # [...]
-# Warning: Hiding binding of key Q to Q_scope
-# [hiding-delimiting-key,parsing,default]
-# File &quot;./refinements/seqmx.v&quot;, line 235, characters 0-26:
-# Error: Anomaly &quot;Uncaught exception Not_found.&quot;
-# Please report at http://coq.inria.fr/bugs/.
+# The term &quot;list_R rAC&quot; has type &quot;seq R -&gt; seq C -&gt; Type&quot;
+# while it is expected to have type &quot;seq R -&gt; {poly R}&quot;
+# (cannot unify &quot;seq C -&gt; Type&quot; and &quot;{poly R}&quot;).
 # 
-# make[2]: *** [Makefile.coq:838: refinements/seqmx.vo] Error 129
-# make[2]: *** [refinements/seqmx.vo] Deleting file &#39;refinements/seqmx.glob&#39;
+# make[2]: *** [Makefile.coq:838: refinements/seqpoly.vo] Error 1
+# make[2]: *** [refinements/seqpoly.vo] Deleting file &#39;refinements/seqpoly.glob&#39;
 # make[2]: *** Waiting for unfinished jobs....
+# &#39;exp_hpoly_R&#39; is now a registered translation.
+# &#39;expQnat_R&#39; is now a registered translation.
 # make[1]: *** [Makefile.coq:409: all] Error 2
 # make[1]: Leaving directory &#39;/home/bench/.opam/ocaml-base-compiler.5.0.0/.opam-switch/build/coq-coqeal.2.0.0&#39;
 # make: *** [Makefile:2: all] Error 2
