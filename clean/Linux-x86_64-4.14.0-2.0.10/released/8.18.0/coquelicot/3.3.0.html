@@ -53,7 +53,7 @@ coq                   8.18.0      The Coq Proof Assistant
 coq-core              8.18.0      The Coq Proof Assistant -- Core Binaries and Tools
 coq-stdlib            8.18.0      The Coq Proof Assistant -- Standard Library
 coqide-server         8.18.0      The Coq Proof Assistant, XML protocol server
-dune                  3.12.1      Fast, portable, and opinionated build system
+dune                  3.13.0      Fast, portable, and opinionated build system
 ocaml                 4.14.0      The OCaml compiler (virtual package)
 ocaml-base-compiler   4.14.0      Official release 4.14.0
 ocaml-config          2           OCaml Switch Configuration
@@ -74,7 +74,7 @@ build: [
 ]
 install: [&quot;./remake&quot; &quot;install&quot;]
 depends: [
-  &quot;coq&quot; {&gt;= &quot;8.12&quot;}
+  &quot;coq&quot; {&gt;= &quot;8.12&quot; &amp; &lt; &quot;8.19~&quot;}
   &quot;coq-mathcomp-ssreflect&quot; {&gt;= &quot;1.6&quot; &amp; &lt; &quot;1.17~&quot;}
   &quot;conf-autoconf&quot; {build &amp; dev}
   (&quot;conf-g++&quot; {build} | &quot;conf-clang&quot; {build})
@@ -124,16 +124,16 @@ url {
             <h2>Install dependencies</h2>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>opam list; echo; ulimit -Sv 4000000; timeout 4h opam install -y --deps-only coq-coquelicot.3.3.0 coq.8.18.0</code></dd>
+              <dd><code>opam list; echo; timeout 4h opam install -y --deps-only coq-coquelicot.3.3.0 coq.8.18.0</code></dd>
               <dt>Return code</dt>
               <dd>0</dd>
               <dt>Duration</dt>
-              <dd>1 m 0 s</dd>
+              <dd>2 m 0 s</dd>
             </dl>
             <h2>Install 🚀</h2>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>opam list; echo; ulimit -Sv 16000000; timeout 4h opam install -y -v coq-coquelicot.3.3.0 coq.8.18.0</code></dd>
+              <dd><code>opam list; echo; timeout 4h opam install -y -v coq-coquelicot.3.3.0 coq.8.18.0</code></dd>
               <dt>Return code</dt>
               <dd>7936</dd>
               <dt>Duration</dt>
@@ -151,7 +151,7 @@ coq-core               8.18.0      The Coq Proof Assistant -- Core Binaries and 
 coq-mathcomp-ssreflect 1.16.0      Small Scale Reflection
 coq-stdlib             8.18.0      The Coq Proof Assistant -- Standard Library
 coqide-server          8.18.0      The Coq Proof Assistant, XML protocol server
-dune                   3.12.1      Fast, portable, and opinionated build system
+dune                   3.13.0      Fast, portable, and opinionated build system
 ocaml                  4.14.0      The OCaml compiler (virtual package)
 ocaml-base-compiler    4.14.0      Official release 4.14.0
 ocaml-config           2           OCaml Switch Configuration
@@ -180,10 +180,9 @@ Processing  1/2: [coq-coquelicot: ./configure]
 - checking for suffix of object files... o
 - checking whether the compiler supports GNU C++... yes
 - checking whether g++ accepts -g... yes
-- checking for g++ option to enable C++11 features... 
-- none needed
+- checking for g++ option to enable C++11 features... none needed
 - configure: building remake...
-- /usr/bin/ld: /opam-tmp/ccChgTKJ.o: in function `main&#39;:
+- /usr/bin/ld: /opam-tmp/cceP8YRh.o: in function `main&#39;:
 - remake.cpp:(.text.startup+0xbb3): warning: the use of `tempnam&#39; is dangerous, better use `mkstemp&#39;
 - configure: creating ./config.status
 - config.status: creating Remakefile
@@ -194,22 +193,18 @@ Processing  1/2: [coq-coquelicot: ./remake]
 - Building theories/Complex.vo
 - Building theories/Continuity.vo
 - Building theories/Rcomplements.vo
-- Building theories/Hierarchy.vo
 - Building theories/Derive.vo
-- Building theories/Rbar.vo
+- Building theories/Hierarchy.vo
+- Building theories/Lim_seq.vo
 - Building theories/Equiv.vo
 - Building theories/Iter.vo
 - Building theories/Lub.vo
 - Building theories/Markov.vo
-- Building theories/Lim_seq.vo
+- Building theories/Rbar.vo
 - Building theories/Derive_2d.vo
 - Building theories/ElemFct.vo
 - Building theories/RInt.vo
 - Building theories/RInt_analysis.vo
-- Building theories/PSeries.vo
-- Building theories/SF_seq.vo
-- Building theories/Seq_fct.vo
-- Building theories/Series.vo
 - File &quot;./theories/Rcomplements.v&quot;, line 49, characters 30-40:
 - Warning: Notation minus_Sn_m is deprecated since 8.16.
 - The Arith.Minus file is obsolete. Use Nat.sub_succ_l (and symmetry of equality) instead.
@@ -222,7 +217,6 @@ Processing  1/2: [coq-coquelicot: ./remake]
 - Warning: Notation minus_Sn_m is deprecated since 8.16.
 - The Arith.Minus file is obsolete. Use Nat.sub_succ_l (and symmetry of equality) instead.
 - [deprecated-syntactic-definition-since-8.16,deprecated-since-8.16,deprecated-syntactic-definition,deprecated,default]
-- Building theories/Coquelicot.vo
 - File &quot;./theories/Rcomplements.v&quot;, line 61, characters 7-21:
 - Warning: Notation not_le_minus_0 is deprecated since 8.16.
 - The Arith.Minus file is obsolete. Use Nat.sub_0_le (together with Nat.lt_nge and Nat.lt_le_incl) instead.
@@ -231,7 +225,6 @@ Processing  1/2: [coq-coquelicot: ./remake]
 - Warning: Notation not_le_minus_0 is deprecated since 8.16.
 - The Arith.Minus file is obsolete. Use Nat.sub_0_le (together with Nat.lt_nge and Nat.lt_le_incl) instead.
 - [deprecated-syntactic-definition-since-8.16,deprecated-since-8.16,deprecated-syntactic-definition,deprecated,default]
-- Building theories/KHInt.vo
 - File &quot;./theories/Rcomplements.v&quot;, line 71, characters 11-21:
 - Warning: Notation minus_Sn_m is deprecated since 8.16.
 - The Arith.Minus file is obsolete. Use Nat.sub_succ_l (and symmetry of equality) instead.
@@ -260,6 +253,12 @@ Processing  1/2: [coq-coquelicot: ./remake]
 - Warning: Notation le_plus_minus_r is deprecated since 8.16.
 - The Arith.Minus file is obsolete. Use Nat.sub_add (together with Nat.add_comm) instead.
 - [deprecated-syntactic-definition-since-8.16,deprecated-since-8.16,deprecated-syntactic-definition,deprecated,default]
+- Building theories/PSeries.vo
+- Building theories/SF_seq.vo
+- Building theories/Seq_fct.vo
+- Building theories/Coquelicot.vo
+- Building theories/Series.vo
+- Building theories/KHInt.vo
 - Building theories/RInt_gen.vo
 - File &quot;./theories/Rcomplements.v&quot;, line 582, characters 8-14:
 - Warning: Notation lt_S_n is deprecated since 8.16.
@@ -287,9 +286,9 @@ Processing  1/2: [coq-coquelicot: ./remake]
 - [deprecated-syntactic-definition-since-8.16,deprecated-since-8.16,deprecated-syntactic-definition,deprecated,default]
 - File &quot;./theories/Rcomplements.v&quot;, line 620, characters 31-57:
 - Warning: Notation minus_plus_simpl_l_reverse is deprecated since 8.16.
-- The Arit
+- The Arith.M
 [...] truncated
- Warning: Notation even_double is deprecated since 8.16.
+arning: Notation even_double is deprecated since 8.16.
 - The Arith.Div2 file is obsolete. Use Nat.Even_double (together with Nat.Even_alt_Even) instead.
 - [deprecated-syntactic-definition-since-8.16,deprecated-since-8.16,deprecated-syntactic-definition,deprecated,default]
 - File &quot;./theories/PSeries.v&quot;, line 1431, characters 13-24:
@@ -402,8 +401,8 @@ Processing  1/2: [coq-coquelicot: ./remake]
 # path                 ~/.opam/ocaml-base-compiler.4.14.0/.opam-switch/build/coq-coquelicot.3.3.0
 # command              ~/.opam/opam-init/hooks/sandbox.sh build ./remake -j4
 # exit-code            1
-# env-file             ~/.opam/log/coq-coquelicot-4060-2dea01.env
-# output-file          ~/.opam/log/coq-coquelicot-4060-2dea01.out
+# env-file             ~/.opam/log/coq-coquelicot-10455-2dea01.env
+# output-file          ~/.opam/log/coq-coquelicot-10455-2dea01.out
 ### output ###
 # [...]
 # [deprecated-syntactic-definition-since-8.19,deprecated-since-8.19,deprecated-syntactic-definition,deprecated,default]
