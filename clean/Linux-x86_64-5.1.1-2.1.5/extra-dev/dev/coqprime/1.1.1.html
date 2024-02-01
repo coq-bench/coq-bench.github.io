@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>coqprime: Error with dependencies 🚒</title>
+    <title>coqprime: Error 🔥</title>
     <link rel="shortcut icon" type="image/png" href="../../../../../favicon.png" />
     <link href="../../../../../bootstrap.min.css" rel="stylesheet">
     <link href="../../../../../bootstrap-custom.css" rel="stylesheet">
@@ -39,7 +39,7 @@
               coqprime
               <small>
                 1.1.1
-                <span class="label label-warning">Error with dependencies 🚒</span>
+                <span class="label label-danger">Error 🔥</span>
               </small>
             </h1>
             <h2>Context</h2>
@@ -55,7 +55,7 @@ coq                   dev         The Coq Proof Assistant
 coq-core              dev         The Coq Proof Assistant -- Core Binaries and Tools
 coq-stdlib            dev         The Coq Proof Assistant -- Standard Library
 coqide-server         dev         The Coq Proof Assistant, XML protocol server
-dune                  3.12.1      Fast, portable, and opinionated build system
+dune                  3.13.0      Fast, portable, and opinionated build system
 ocaml                 5.1.1       The OCaml compiler (virtual package)
 ocaml-base-compiler   5.1.1       Official release 5.1.1
 ocaml-config          3           OCaml Switch Configuration
@@ -112,7 +112,16 @@ url {
             <h2>Install dependencies</h2>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>opam list; echo; ulimit -Sv 4000000; timeout 4h opam install -y --deps-only coq-coqprime.1.1.1 coq.dev</code></dd>
+              <dd><code>opam list; echo; timeout 4h opam install -y --deps-only coq-coqprime.1.1.1 coq.dev</code></dd>
+              <dt>Return code</dt>
+              <dd>0</dd>
+              <dt>Duration</dt>
+              <dd>2 m 0 s</dd>
+            </dl>
+            <h2>Install 🚀</h2>
+            <dl class="dl-horizontal">
+              <dt>Command</dt>
+              <dd><code>opam list; echo; timeout 4h opam install -y -v coq-coqprime.1.1.1 coq.dev</code></dd>
               <dt>Return code</dt>
               <dd>7936</dd>
               <dt>Duration</dt>
@@ -127,58 +136,107 @@ base-threads          base
 base-unix             base
 conf-gmp              4           Virtual package relying on a GMP lib system installation
 coq                   dev         The Coq Proof Assistant
+coq-bignums           dev         Bignums, the Coq library of arbitrary large numbers
 coq-core              dev         The Coq Proof Assistant -- Core Binaries and Tools
 coq-stdlib            dev         The Coq Proof Assistant -- Standard Library
 coqide-server         dev         The Coq Proof Assistant, XML protocol server
-dune                  3.12.1      Fast, portable, and opinionated build system
+dune                  3.13.0      Fast, portable, and opinionated build system
 ocaml                 5.1.1       The OCaml compiler (virtual package)
 ocaml-base-compiler   5.1.1       Official release 5.1.1
 ocaml-config          3           OCaml Switch Configuration
 ocaml-options-vanilla 1           Ensure that OCaml is compiled with no special options enabled
 ocamlfind             1.9.6       A library manager for OCaml
 zarith                1.13        Implements arithmetic and logical operations over arbitrary-precision integers
+[NOTE] Package coq is already installed (current version is dev).
 The following actions will be performed:
-  - install coq-bignums dev
+  - install coq-coqprime 1.1.1
 &lt;&gt;&lt;&gt; Processing actions &lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;
--&gt; retrieved coq-bignums.dev  (git+https://github.com/coq/bignums.git#master)
-[ERROR] The compilation of coq-bignums.dev failed at &quot;make -j4&quot;.
-#=== ERROR while compiling coq-bignums.dev ====================================#
-# context              2.1.5 | linux/x86_64 | ocaml-base-compiler.5.1.1 | file:///home/bench/run/opam-coq-archive/extra-dev
-# path                 ~/.opam/ocaml-base-compiler.5.1.1/.opam-switch/build/coq-bignums.dev
+Processing  1/3: [coq-coqprime.1.1.1: http]
+Processing  1/3:
+-&gt; retrieved coq-coqprime.1.1.1  (https://github.com/thery/coqprime/archive/v8.14.1.tar.gz)
+Processing  2/3: [coq-coqprime: make]
++ /home/bench/.opam/opam-init/hooks/sandbox.sh &quot;build&quot; &quot;make&quot; &quot;-j4&quot; (CWD=/home/bench/.opam/ocaml-base-compiler.5.1.1/.opam-switch/build/coq-coqprime.1.1.1)
+- /home/bench/.opam/ocaml-base-compiler.5.1.1/bin//coq_makefile -f _CoqProject -o Makefile.coq
+- COQDEP VFILES
+- Warning: in file src/Coqprime/num/Lucas.v, library
+-          Int63 is required and has not been found in the loadpath!
+-          [module-not-found,filesystem,default]
+- Warning: in file src/Coqprime/num/NEll.v, library
+-          Int63 is required and has not been found in the loadpath!
+-          [module-not-found,filesystem,default]
+- Warning: in file src/Coqprime/num/MEll.v, library
+-          Int31 is required and has not been found in the loadpath!
+-          [module-not-found,filesystem,default]
+- Warning: in file src/Coqprime/num/Mod_op.v, library
+-          Cyclic31 is required and has not been found in the loadpath!
+-          [module-not-found,filesystem,default]
+- Warning: in file src/Coqprime/num/Pock.v, library
+-          Int63 is required and has not been found in the loadpath!
+-          [module-not-found,filesystem,default]
+- Warning: in file src/Coqprime/num/montgomery.v, library
+-          Int31 is required and has not been found in the loadpath!
+-          [module-not-found,filesystem,default]
+- Warning: in file src/Coqprime/num/montgomery.v, library
+-          Cyclic31 is required and has not been found in the loadpath!
+-          [module-not-found,filesystem,default]
+- Warning: in file src/Coqprime/num/W.v, library
+-          Int63 is required and has not been found in the loadpath!
+-          [module-not-found,filesystem,default]
+- COQC src/Coqprime/Tactic/Tactic.v
+- COQC src/Coqprime/N/NatAux.v
+- COQC src/Coqprime/Z/ZCmisc.v
+- COQC src/Coqprime/Z/Zmod.v
+- COQC src/Coqprime/Z/Ppow.v
+- File &quot;./src/Coqprime/N/NatAux.v&quot;, line 34, characters 18-26:
+- Error: The variable plus_0_r was not found in the current environment.
+- 
+- make[1]: *** [Makefile.coq:848: src/Coqprime/N/NatAux.vo] Error 1
+- make[1]: *** [src/Coqprime/N/NatAux.vo] Deleting file &#39;src/Coqprime/N/NatAux.glob&#39;
+- make[1]: *** Waiting for unfinished jobs....
+- File &quot;./src/Coqprime/Z/Zmod.v&quot;, line 91, characters 25-37:
+- Error: The variable Z_div_mod_eq was not found in the current environment.
+- 
+- make[1]: *** [Makefile.coq:848: src/Coqprime/Z/Zmod.vo] Error 1
+- make[1]: *** [src/Coqprime/Z/Zmod.vo] Deleting file &#39;src/Coqprime/Z/Zmod.glob&#39;
+- File &quot;./src/Coqprime/Z/ZCmisc.v&quot;, line 57, characters 6-11:
+- Warning: Unused variable IsNeq might be a misspelled constructor. Use _ or
+- _IsNeq to silence this warning. [unused-pattern-matching-variable,default]
+- File &quot;./src/Coqprime/Z/ZCmisc.v&quot;, line 78, characters 1-9:
+- Error: The reference elimtype was not found in the current environment.
+- 
+- make[1]: *** [Makefile.coq:848: src/Coqprime/Z/ZCmisc.vo] Error 1
+- make[1]: *** [src/Coqprime/Z/ZCmisc.vo] Deleting file &#39;src/Coqprime/Z/ZCmisc.glob&#39;
+- make: *** [Makefile.coq:417: all] Error 2
+[ERROR] The compilation of coq-coqprime.1.1.1 failed at &quot;make -j4&quot;.
+#=== ERROR while compiling coq-coqprime.1.1.1 =================================#
+# context              2.1.5 | linux/x86_64 | ocaml-base-compiler.5.1.1 | file:///home/bench/run/opam-coq-archive/released
+# path                 ~/.opam/ocaml-base-compiler.5.1.1/.opam-switch/build/coq-coqprime.1.1.1
 # command              ~/.opam/opam-init/hooks/sandbox.sh build make -j4
 # exit-code            2
-# env-file             ~/.opam/log/coq-bignums-26154-f3dcfb.env
-# output-file          ~/.opam/log/coq-bignums-26154-f3dcfb.out
+# env-file             ~/.opam/log/coq-coqprime-32494-6a79fb.env
+# output-file          ~/.opam/log/coq-coqprime-32494-6a79fb.out
 ### output ###
+# Error: The variable Z_div_mod_eq was not found in the current environment.
 # [...]
-# CAMLOPT -a -o plugin/bignums_syntax_plugin.cmxa
-# CAMLOPT -shared -o plugin/bignums_syntax_plugin.cmxs
-# COQC BigNumPrelude.v
-# Fatal error: Not enough heap memory to reserve minor heaps
-# Aborted (core dumped)
-# make[2]: *** [Makefile.coq:847: BigNumPrelude.vo] Error 134
-# make[2]: *** Waiting for unfinished jobs....
-# Aborted
-# make[2]: *** [Makefile.coq:847: SpecViaQ/QSig.vo] Error 134
-# make[1]: *** [Makefile.coq:417: all] Error 2
-# make[1]: Leaving directory &#39;/home/bench/.opam/ocaml-base-compiler.5.1.1/.opam-switch/build/coq-bignums.dev&#39;
-# make: *** [Makefile:2: all] Error 2
+# make[1]: *** [Makefile.coq:848: src/Coqprime/Z/Zmod.vo] Error 1
+# make[1]: *** [src/Coqprime/Z/Zmod.vo] Deleting file &#39;src/Coqprime/Z/Zmod.glob&#39;
+# File &quot;./src/Coqprime/Z/ZCmisc.v&quot;, line 57, characters 6-11:
+# Warning: Unused variable IsNeq might be a misspelled constructor. Use _ or
+# _IsNeq to silence this warning. [unused-pattern-matching-variable,default]
+# File &quot;./src/Coqprime/Z/ZCmisc.v&quot;, line 78, characters 1-9:
+# Error: The reference elimtype was not found in the current environment.
+# 
+# make[1]: *** [Makefile.coq:848: src/Coqprime/Z/ZCmisc.vo] Error 1
+# make[1]: *** [src/Coqprime/Z/ZCmisc.vo] Deleting file &#39;src/Coqprime/Z/ZCmisc.glob&#39;
+# make: *** [Makefile.coq:417: all] Error 2
 &lt;&gt;&lt;&gt; Error report &lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;
 +- The following actions failed
-| - build coq-bignums dev
+| - build coq-coqprime 1.1.1
 +- 
 - No changes have been performed
 # Run eval $(opam env) to update the current shell environment
+&#39;opam install -y -v coq-coqprime.1.1.1 coq.dev&#39; failed.
 </pre></dd>
-            </dl>
-            <h2>Install 🚀</h2>
-            <dl class="dl-horizontal">
-              <dt>Command</dt>
-              <dd><code>true</code></dd>
-              <dt>Return code</dt>
-              <dd>0</dd>
-              <dt>Duration</dt>
-              <dd>0 s</dd>
             </dl>
             <h2>Installation size</h2>
             <p>No files were installed.</p>

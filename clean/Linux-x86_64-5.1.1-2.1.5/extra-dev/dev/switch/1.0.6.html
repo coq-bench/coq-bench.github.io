@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>switch: Error with dependencies 🚒</title>
+    <title>switch: Error 🔥</title>
     <link rel="shortcut icon" type="image/png" href="../../../../../favicon.png" />
     <link href="../../../../../bootstrap.min.css" rel="stylesheet">
     <link href="../../../../../bootstrap-custom.css" rel="stylesheet">
@@ -39,7 +39,7 @@
               switch
               <small>
                 1.0.6
-                <span class="label label-warning">Error with dependencies 🚒</span>
+                <span class="label label-danger">Error 🔥</span>
               </small>
             </h1>
             <h2>Context</h2>
@@ -55,7 +55,7 @@ coq                   dev         The Coq Proof Assistant
 coq-core              dev         The Coq Proof Assistant -- Core Binaries and Tools
 coq-stdlib            dev         The Coq Proof Assistant -- Standard Library
 coqide-server         dev         The Coq Proof Assistant, XML protocol server
-dune                  3.12.1      Fast, portable, and opinionated build system
+dune                  3.13.0      Fast, portable, and opinionated build system
 ocaml                 5.1.1       The OCaml compiler (virtual package)
 ocaml-base-compiler   5.1.1       Official release 5.1.1
 ocaml-config          3           OCaml Switch Configuration
@@ -121,7 +121,16 @@ url {
             <h2>Install dependencies</h2>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>opam list; echo; ulimit -Sv 4000000; timeout 4h opam install -y --deps-only coq-switch.1.0.6 coq.dev</code></dd>
+              <dd><code>opam list; echo; timeout 4h opam install -y --deps-only coq-switch.1.0.6 coq.dev</code></dd>
+              <dt>Return code</dt>
+              <dd>0</dd>
+              <dt>Duration</dt>
+              <dd>9 m 0 s</dd>
+            </dl>
+            <h2>Install 🚀</h2>
+            <dl class="dl-horizontal">
+              <dt>Command</dt>
+              <dd><code>opam list; echo; timeout 4h opam install -y -v coq-switch.1.0.6 coq.dev</code></dd>
               <dt>Return code</dt>
               <dd>7936</dd>
               <dt>Duration</dt>
@@ -137,71 +146,72 @@ base-unix             base
 conf-gmp              4           Virtual package relying on a GMP lib system installation
 coq                   dev         The Coq Proof Assistant
 coq-core              dev         The Coq Proof Assistant -- Core Binaries and Tools
+coq-equations         dev         A function definition package for Coq
+coq-metacoq-common    dev         The common library of Template Coq and PCUIC
+coq-metacoq-template  dev         A quoting and unquoting library for Coq in Coq
+coq-metacoq-utils     dev         The utility library of Template Coq and PCUIC
 coq-stdlib            dev         The Coq Proof Assistant -- Standard Library
 coqide-server         dev         The Coq Proof Assistant, XML protocol server
-dune                  3.12.1      Fast, portable, and opinionated build system
+dune                  3.13.0      Fast, portable, and opinionated build system
 ocaml                 5.1.1       The OCaml compiler (virtual package)
 ocaml-base-compiler   5.1.1       Official release 5.1.1
 ocaml-config          3           OCaml Switch Configuration
 ocaml-options-vanilla 1           Ensure that OCaml is compiled with no special options enabled
 ocamlfind             1.9.6       A library manager for OCaml
+stdlib-shims          0.3.0       Backport some of the new stdlib features to older compiler
 zarith                1.13        Implements arithmetic and logical operations over arbitrary-precision integers
+[NOTE] Package coq is already installed (current version is dev).
 The following actions will be performed:
-  - install coq-equations        dev
-  - install stdlib-shims         0.3.0
-  - install coq-metacoq-utils    dev
-  - install coq-metacoq-common   dev
-  - install coq-metacoq-template dev
-===== 5 to install =====
+  - install coq-switch 1.0.6
 &lt;&gt;&lt;&gt; Processing actions &lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;
--&gt; retrieved coq-equations.dev  (git+https://github.com/mattam82/Coq-Equations#main)
--&gt; retrieved coq-metacoq-common.dev  (git+https:///github.com/metacoq/metacoq.git#main)
--&gt; retrieved stdlib-shims.0.3.0  (https://opam.ocaml.org/cache)
--&gt; retrieved coq-metacoq-template.dev  (git+https:///github.com/metacoq/metacoq.git#main)
--&gt; installed stdlib-shims.0.3.0
--&gt; retrieved coq-metacoq-utils.dev  (git+https:///github.com/metacoq/metacoq.git#main)
-[ERROR] The compilation of coq-equations.dev failed at &quot;make -j4&quot;.
-#=== ERROR while compiling coq-equations.dev ==================================#
-# context              2.1.5 | linux/x86_64 | ocaml-base-compiler.5.1.1 | file:///home/bench/run/opam-coq-archive/extra-dev
-# path                 ~/.opam/ocaml-base-compiler.5.1.1/.opam-switch/build/coq-equations.dev
+Processing  1/3: [coq-switch.1.0.6: http]
+Processing  1/3:
+-&gt; retrieved coq-switch.1.0.6  (https://github.com/vzaliva/coq-switch/archive/v1.0.6.tar.gz)
+Processing  2/3: [coq-switch: make]
++ /home/bench/.opam/opam-init/hooks/sandbox.sh &quot;build&quot; &quot;make&quot; &quot;-j4&quot; (CWD=/home/bench/.opam/ocaml-base-compiler.5.1.1/.opam-switch/build/coq-switch.1.0.6)
+- coq_makefile -f _CoqProject -o Makefile.coq
+- make -f Makefile.coq
+- make[1]: Entering directory &#39;/home/bench/.opam/ocaml-base-compiler.5.1.1/.opam-switch/build/coq-switch.1.0.6&#39;
+- COQDEP VFILES
+- COQC theories/Switch.v
+- File &quot;./theories/Switch.v&quot;, line 54, characters 36-50:
+- Error: The reference Universe.type0 was not found in the current environment.
+- 
+- make[2]: *** [Makefile.coq:848: theories/Switch.vo] Error 1
+- make[2]: *** [theories/Switch.vo] Deleting file &#39;theories/Switch.glob&#39;
+- make[1]: *** [Makefile.coq:417: all] Error 2
+- make[1]: Leaving directory &#39;/home/bench/.opam/ocaml-base-compiler.5.1.1/.opam-switch/build/coq-switch.1.0.6&#39;
+- make: *** [Makefile:2: all] Error 2
+[ERROR] The compilation of coq-switch.1.0.6 failed at &quot;make -j4&quot;.
+#=== ERROR while compiling coq-switch.1.0.6 ===================================#
+# context              2.1.5 | linux/x86_64 | ocaml-base-compiler.5.1.1 | file:///home/bench/run/opam-coq-archive/released
+# path                 ~/.opam/ocaml-base-compiler.5.1.1/.opam-switch/build/coq-switch.1.0.6
 # command              ~/.opam/opam-init/hooks/sandbox.sh build make -j4
 # exit-code            2
-# env-file             ~/.opam/log/coq-equations-4005-57443a.env
-# output-file          ~/.opam/log/coq-equations-4005-57443a.out
+# env-file             ~/.opam/log/coq-switch-12892-1f0a9e.env
+# output-file          ~/.opam/log/coq-switch-12892-1f0a9e.out
 ### output ###
 # [...]
-# CAMLOPT -c  src/principles.ml
-# CAMLOPT -c  src/equations.ml
-# CAMLOPT -c  src/g_equations.ml
-# CAMLOPT -a -o src/equations_plugin.cmxa
-# CAMLOPT -shared -o src/equations_plugin.cmxs
-# COQC theories/Init.v
-# Fatal error: Not enough heap memory to reserve minor heaps
-# Aborted (core dumped)
-# make[2]: *** [Makefile.coq:847: theories/Init.vo] Error 134
+# make -f Makefile.coq
+# make[1]: Entering directory &#39;/home/bench/.opam/ocaml-base-compiler.5.1.1/.opam-switch/build/coq-switch.1.0.6&#39;
+# COQDEP VFILES
+# COQC theories/Switch.v
+# File &quot;./theories/Switch.v&quot;, line 54, characters 36-50:
+# Error: The reference Universe.type0 was not found in the current environment.
+# 
+# make[2]: *** [Makefile.coq:848: theories/Switch.vo] Error 1
+# make[2]: *** [theories/Switch.vo] Deleting file &#39;theories/Switch.glob&#39;
 # make[1]: *** [Makefile.coq:417: all] Error 2
-# make[1]: Leaving directory &#39;/home/bench/.opam/ocaml-base-compiler.5.1.1/.opam-switch/build/coq-equations.dev&#39;
-# make: *** [Makefile:6: all] Error 2
+# make[1]: Leaving directory &#39;/home/bench/.opam/ocaml-base-compiler.5.1.1/.opam-switch/build/coq-switch.1.0.6&#39;
+# make: *** [Makefile:2: all] Error 2
 &lt;&gt;&lt;&gt; Error report &lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;
 +- The following actions failed
-| - build coq-equations dev
+| - build coq-switch 1.0.6
 +- 
-+- The following changes have been performed (the rest was aborted)
-| - install stdlib-shims 0.3.0
-+- 
+- No changes have been performed
 # Run eval $(opam env) to update the current shell environment
-The former state can be restored with:
-    /usr/local/bin/opam switch import &quot;/home/bench/.opam/ocaml-base-compiler.5.1.1/.opam-switch/backup/state-20231223181904.export&quot;
+&#39;opam install -y -v coq-switch.1.0.6 coq.dev&#39; failed.
 </pre></dd>
-            </dl>
-            <h2>Install 🚀</h2>
-            <dl class="dl-horizontal">
-              <dt>Command</dt>
-              <dd><code>true</code></dd>
-              <dt>Return code</dt>
-              <dd>0</dd>
-              <dt>Duration</dt>
-              <dd>0 s</dd>
             </dl>
             <h2>Installation size</h2>
             <p>No files were installed.</p>

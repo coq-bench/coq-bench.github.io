@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>fiat-crypto-legacy-extra: Error with dependencies 🚒</title>
+    <title>fiat-crypto-legacy-extra: Error 🔥</title>
     <link rel="shortcut icon" type="image/png" href="../../../../../favicon.png" />
     <link href="../../../../../bootstrap.min.css" rel="stylesheet">
     <link href="../../../../../bootstrap-custom.css" rel="stylesheet">
@@ -39,7 +39,7 @@
               fiat-crypto-legacy-extra
               <small>
                 dev
-                <span class="label label-warning">Error with dependencies 🚒</span>
+                <span class="label label-danger">Error 🔥</span>
               </small>
             </h1>
             <h2>Context</h2>
@@ -55,7 +55,7 @@ coq                   dev         The Coq Proof Assistant
 coq-core              dev         The Coq Proof Assistant -- Core Binaries and Tools
 coq-stdlib            dev         The Coq Proof Assistant -- Standard Library
 coqide-server         dev         The Coq Proof Assistant, XML protocol server
-dune                  3.12.1      Fast, portable, and opinionated build system
+dune                  3.13.0      Fast, portable, and opinionated build system
 ocaml                 5.1.1       The OCaml compiler (virtual package)
 ocaml-base-compiler   5.1.1       Official release 5.1.1
 ocaml-config          3           OCaml Switch Configuration
@@ -124,11 +124,20 @@ url {
             <h2>Install dependencies</h2>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>opam list; echo; ulimit -Sv 4000000; timeout 4h opam install -y --deps-only coq-fiat-crypto-legacy-extra.dev coq.dev</code></dd>
+              <dd><code>opam list; echo; timeout 4h opam install -y --deps-only coq-fiat-crypto-legacy-extra.dev coq.dev</code></dd>
+              <dt>Return code</dt>
+              <dd>0</dd>
+              <dt>Duration</dt>
+              <dd>2 m 0 s</dd>
+            </dl>
+            <h2>Install 🚀</h2>
+            <dl class="dl-horizontal">
+              <dt>Command</dt>
+              <dd><code>opam list; echo; timeout 4h opam install -y coq-fiat-crypto-legacy-extra.dev coq.dev</code></dd>
               <dt>Return code</dt>
               <dd>7936</dd>
               <dt>Duration</dt>
-              <dd>1 m 0 s</dd>
+              <dd>46 m 0 s</dd>
               <dt>Output</dt>
               <dd><pre># Packages matching: installed
 # Name                # Installed # Synopsis
@@ -139,58 +148,51 @@ base-threads          base
 base-unix             base
 conf-gmp              4           Virtual package relying on a GMP lib system installation
 coq                   dev         The Coq Proof Assistant
+coq-bignums           dev         Bignums, the Coq library of arbitrary large numbers
 coq-core              dev         The Coq Proof Assistant -- Core Binaries and Tools
 coq-stdlib            dev         The Coq Proof Assistant -- Standard Library
 coqide-server         dev         The Coq Proof Assistant, XML protocol server
-dune                  3.12.1      Fast, portable, and opinionated build system
+dune                  3.13.0      Fast, portable, and opinionated build system
 ocaml                 5.1.1       The OCaml compiler (virtual package)
 ocaml-base-compiler   5.1.1       Official release 5.1.1
 ocaml-config          3           OCaml Switch Configuration
 ocaml-options-vanilla 1           Ensure that OCaml is compiled with no special options enabled
 ocamlfind             1.9.6       A library manager for OCaml
 zarith                1.13        Implements arithmetic and logical operations over arbitrary-precision integers
+[NOTE] Package coq is already installed (current version is dev).
 The following actions will be performed:
-  - install coq-bignums dev
+  - install coq-fiat-crypto-legacy-extra dev
 &lt;&gt;&lt;&gt; Processing actions &lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;
--&gt; retrieved coq-bignums.dev  (git+https://github.com/coq/bignums.git#master)
-[ERROR] The compilation of coq-bignums.dev failed at &quot;make -j4&quot;.
-#=== ERROR while compiling coq-bignums.dev ====================================#
+-&gt; retrieved coq-fiat-crypto-legacy-extra.dev  (git+https://github.com/mit-plv/fiat-crypto.git#sp2019latest)
+[ERROR] The compilation of coq-fiat-crypto-legacy-extra.dev failed at &quot;make -j4 coq selected-specific-display coqprime-all&quot;.
+#=== ERROR while compiling coq-fiat-crypto-legacy-extra.dev ===================#
 # context              2.1.5 | linux/x86_64 | ocaml-base-compiler.5.1.1 | file:///home/bench/run/opam-coq-archive/extra-dev
-# path                 ~/.opam/ocaml-base-compiler.5.1.1/.opam-switch/build/coq-bignums.dev
-# command              ~/.opam/opam-init/hooks/sandbox.sh build make -j4
+# path                 ~/.opam/ocaml-base-compiler.5.1.1/.opam-switch/build/coq-fiat-crypto-legacy-extra.dev
+# command              ~/.opam/opam-init/hooks/sandbox.sh build make -j4 coq selected-specific-display coqprime-all
 # exit-code            2
-# env-file             ~/.opam/log/coq-bignums-22687-001d57.env
-# output-file          ~/.opam/log/coq-bignums-22687-001d57.out
+# env-file             ~/.opam/log/coq-fiat-crypto-legacy-extra-26984-225ec0.env
+# output-file          ~/.opam/log/coq-fiat-crypto-legacy-extra-26984-225ec0.out
 ### output ###
+# └Pipeline.refine_reflectively_gen ------   0.0%  98.9%       1   51.205s
 # [...]
-# W: while the current Coq version is 
-# Fatal error: Not enough heap memory to reserve minor heaps
-# Aborted (core dumped)
-# CAMLOPT -c -for-pack Bignums_syntax_plugin plugin/bignums_syntax.ml
-# COQC SpecViaQ/QSig.v
-# Fatal error: Not enough heap memory to reserve minor heaps
-# Aborted (core dumped)
-# make[2]: *** [Makefile.coq:847: SpecViaQ/QSig.vo] Error 134
-# make[2]: *** Waiting for unfinished jobs....
-# make[1]: *** [Makefile.coq:417: all] Error 2
-# make[1]: Leaving directory &#39;/home/bench/.opam/ocaml-base-compiler.5.1.1/.opam-switch/build/coq-bignums.dev&#39;
-# make: *** [Makefile:2: all] Error 2
+#  │   │└Compilers.Reify.reify_context_var   0.0%   7.0%       0    1.329s
+#  │   │└unique_reify_context_variable ---   0.1%   7.0%      10    1.329s
+#  │   │└do_reifyf_goal ------------------   0.0%   6.9%     113    1.318s
+#  │   │└reifyf --------------------------   0.1%   6.8%       0    1.295s
+#  │   │└reify_rec -----------------------   6.7%   6.7%       0    1.284s
+#  │   └─UnfoldArg.unfold_second_arg -----   1.0%   3.6%       2    1.841s
+#  │    └ChangeInAll.change_with_compute_i   0.0%   2.6%     433    0.014s
+#  │    └change c with c&#39; in * -----------   2.6%   2.6%     433    0.014s
+#  └─Glue.refine_to_reflective_glue&#39; -----   0.0%   2.9%       1    1.508s
+#   └Glue.zrange_to_reflective -----------   0.0%   2.3%       1    1.198s
+# 
 &lt;&gt;&lt;&gt; Error report &lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;
 +- The following actions failed
-| - build coq-bignums dev
+| - build coq-fiat-crypto-legacy-extra dev
 +- 
 - No changes have been performed
 # Run eval $(opam env) to update the current shell environment
 </pre></dd>
-            </dl>
-            <h2>Install 🚀</h2>
-            <dl class="dl-horizontal">
-              <dt>Command</dt>
-              <dd><code>true</code></dd>
-              <dt>Return code</dt>
-              <dd>0</dd>
-              <dt>Duration</dt>
-              <dd>0 s</dd>
             </dl>
             <h2>Installation size</h2>
             <p>No files were installed.</p>

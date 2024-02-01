@@ -55,7 +55,7 @@ coq                   dev         The Coq Proof Assistant
 coq-core              dev         The Coq Proof Assistant -- Core Binaries and Tools
 coq-stdlib            dev         The Coq Proof Assistant -- Standard Library
 coqide-server         dev         The Coq Proof Assistant, XML protocol server
-dune                  3.12.1      Fast, portable, and opinionated build system
+dune                  3.13.0      Fast, portable, and opinionated build system
 ocaml                 5.1.1       The OCaml compiler (virtual package)
 ocaml-base-compiler   5.1.1       Official release 5.1.1
 ocaml-config          3           OCaml Switch Configuration
@@ -116,7 +116,7 @@ url {
             <h2>Install dependencies</h2>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>opam list; echo; ulimit -Sv 4000000; timeout 4h opam install -y --deps-only coq-paramcoq.1.1.0 coq.dev</code></dd>
+              <dd><code>opam list; echo; timeout 4h opam install -y --deps-only coq-paramcoq.1.1.0 coq.dev</code></dd>
               <dt>Return code</dt>
               <dd>0</dd>
               <dt>Duration</dt>
@@ -125,7 +125,7 @@ url {
             <h2>Install 🚀</h2>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>opam list; echo; ulimit -Sv 16000000; timeout 4h opam install -y -v coq-paramcoq.1.1.0 coq.dev</code></dd>
+              <dd><code>opam list; echo; timeout 4h opam install -y -v coq-paramcoq.1.1.0 coq.dev</code></dd>
               <dt>Return code</dt>
               <dd>7936</dd>
               <dt>Duration</dt>
@@ -143,7 +143,7 @@ coq                   dev         The Coq Proof Assistant
 coq-core              dev         The Coq Proof Assistant -- Core Binaries and Tools
 coq-stdlib            dev         The Coq Proof Assistant -- Standard Library
 coqide-server         dev         The Coq Proof Assistant, XML protocol server
-dune                  3.12.1      Fast, portable, and opinionated build system
+dune                  3.13.0      Fast, portable, and opinionated build system
 ocaml                 5.1.1       The OCaml compiler (virtual package)
 ocaml-base-compiler   5.1.1       Official release 5.1.1
 ocaml-config          3           OCaml Switch Configuration
@@ -159,15 +159,22 @@ Processing  1/3:
 -&gt; retrieved coq-paramcoq.1.1.0  (https://github.com/aa755/paramcoq/archive/v1.1.0.tar.gz)
 Processing  2/3: [coq-paramcoq: make]
 + /home/bench/.opam/opam-init/hooks/sandbox.sh &quot;build&quot; &quot;make&quot; &quot;-j4&quot; (CWD=/home/bench/.opam/ocaml-base-compiler.5.1.1/.opam-switch/build/coq-paramcoq.1.1.0)
-- Fatal error: Not enough heap memory to reserve minor heaps
-- Aborted (core dumped)
-- Fatal error: Not enough heap memory to reserve minor heaps
-- Aborted (core dumped)
-- Fatal error: Not enough heap memory to reserve minor heaps
-- Aborted (core dumped)
-- Fatal error: Not enough heap memory to reserve minor heaps
-- Aborted (core dumped)
-- make: *** No rule to make target &#39;src./paramcoq.mlpack&#39;, needed by &#39;src./paramcoq_mod.ml&#39;.  Stop.
+- make: Circular src.The &lt;- src.The dependency dropped.
+- make: Circular Coq &lt;- src.The dependency dropped.
+- make: Circular Coq &lt;- Coq dependency dropped.
+- make: Circular Proof &lt;- src.The dependency dropped.
+- make: Circular Proof &lt;- Coq dependency dropped.
+- make: Circular Proof &lt;- Proof dependency dropped.
+- make: Circular Assistant, &lt;- src.The dependency dropped.
+- make: Circular Assistant, &lt;- Coq dependency dropped.
+- make: Circular Assistant, &lt;- Proof dependency dropped.
+- make: Circular Assistant, &lt;- Assistant, dependency dropped.
+- make: Circular version &lt;- src.The dependency dropped.
+- make: Circular version &lt;- Coq dependency dropped.
+- make: Circular version &lt;- Proof dependency dropped.
+- make: Circular version &lt;- Assistant, dependency dropped.
+- make: Circular version &lt;- version dependency dropped.
+- make: *** No rule to make target &#39;8.20+alpha/paramcoq.mlpack&#39;, needed by &#39;version&#39;.  Stop.
 - make: *** Waiting for unfinished jobs....
 [ERROR] The compilation of coq-paramcoq.1.1.0 failed at &quot;make -j4&quot;.
 #=== ERROR while compiling coq-paramcoq.1.1.0 =================================#
@@ -175,18 +182,21 @@ Processing  2/3: [coq-paramcoq: make]
 # path                 ~/.opam/ocaml-base-compiler.5.1.1/.opam-switch/build/coq-paramcoq.1.1.0
 # command              ~/.opam/opam-init/hooks/sandbox.sh build make -j4
 # exit-code            2
-# env-file             ~/.opam/log/coq-paramcoq-3698-97bc4b.env
-# output-file          ~/.opam/log/coq-paramcoq-3698-97bc4b.out
+# env-file             ~/.opam/log/coq-paramcoq-32758-d7d7fe.env
+# output-file          ~/.opam/log/coq-paramcoq-32758-d7d7fe.out
 ### output ###
-# Fatal error: Not enough heap memory to reserve minor heaps
-# Aborted (core dumped)
-# Fatal error: Not enough heap memory to reserve minor heaps
-# Aborted (core dumped)
-# Fatal error: Not enough heap memory to reserve minor heaps
-# Aborted (core dumped)
-# Fatal error: Not enough heap memory to reserve minor heaps
-# Aborted (core dumped)
-# make: *** No rule to make target &#39;src./paramcoq.mlpack&#39;, needed by &#39;src./paramcoq_mod.ml&#39;.  Stop.
+# [...]
+# make: Circular Proof &lt;- Proof dependency dropped.
+# make: Circular Assistant, &lt;- src.The dependency dropped.
+# make: Circular Assistant, &lt;- Coq dependency dropped.
+# make: Circular Assistant, &lt;- Proof dependency dropped.
+# make: Circular Assistant, &lt;- Assistant, dependency dropped.
+# make: Circular version &lt;- src.The dependency dropped.
+# make: Circular version &lt;- Coq dependency dropped.
+# make: Circular version &lt;- Proof dependency dropped.
+# make: Circular version &lt;- Assistant, dependency dropped.
+# make: Circular version &lt;- version dependency dropped.
+# make: *** No rule to make target &#39;8.20+alpha/paramcoq.mlpack&#39;, needed by &#39;version&#39;.  Stop.
 # make: *** Waiting for unfinished jobs....
 &lt;&gt;&lt;&gt; Error report &lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;
 +- The following actions failed

@@ -55,7 +55,7 @@ coq                   dev         The Coq Proof Assistant
 coq-core              dev         The Coq Proof Assistant -- Core Binaries and Tools
 coq-stdlib            dev         The Coq Proof Assistant -- Standard Library
 coqide-server         dev         The Coq Proof Assistant, XML protocol server
-dune                  3.12.1      Fast, portable, and opinionated build system
+dune                  3.13.0      Fast, portable, and opinionated build system
 ocaml                 5.1.1       The OCaml compiler (virtual package)
 ocaml-base-compiler   5.1.1       Official release 5.1.1
 ocaml-config          3           OCaml Switch Configuration
@@ -113,7 +113,7 @@ url {
             <h2>Install dependencies</h2>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>opam list; echo; ulimit -Sv 4000000; timeout 4h opam install -y --deps-only coq-reduction-effects.0.1.4 coq.dev</code></dd>
+              <dd><code>opam list; echo; timeout 4h opam install -y --deps-only coq-reduction-effects.0.1.4 coq.dev</code></dd>
               <dt>Return code</dt>
               <dd>0</dd>
               <dt>Duration</dt>
@@ -122,7 +122,7 @@ url {
             <h2>Install 🚀</h2>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>opam list; echo; ulimit -Sv 16000000; timeout 4h opam install -y -v coq-reduction-effects.0.1.4 coq.dev</code></dd>
+              <dd><code>opam list; echo; timeout 4h opam install -y -v coq-reduction-effects.0.1.4 coq.dev</code></dd>
               <dt>Return code</dt>
               <dd>7936</dd>
               <dt>Duration</dt>
@@ -141,7 +141,7 @@ coq-core              dev         The Coq Proof Assistant -- Core Binaries and T
 coq-stdlib            dev         The Coq Proof Assistant -- Standard Library
 coqide-server         dev         The Coq Proof Assistant, XML protocol server
 cppo                  1.6.9       Code preprocessor like cpp for OCaml
-dune                  3.12.1      Fast, portable, and opinionated build system
+dune                  3.13.0      Fast, portable, and opinionated build system
 ocaml                 5.1.1       The OCaml compiler (virtual package)
 ocaml-base-compiler   5.1.1       Official release 5.1.1
 ocaml-config          3           OCaml Switch Configuration
@@ -157,25 +157,48 @@ Processing  1/3:
 -&gt; retrieved coq-reduction-effects.0.1.4  (https://github.com/coq-community/reduction-effects/archive/v0.1.4.tar.gz)
 Processing  2/3: [coq-reduction-effects: make]
 + /home/bench/.opam/opam-init/hooks/sandbox.sh &quot;build&quot; &quot;make&quot; &quot;-j4&quot; (CWD=/home/bench/.opam/ocaml-base-compiler.5.1.1/.opam-switch/build/coq-reduction-effects.0.1.4)
-- Fatal error: Not enough heap memory to reserve minor heaps
-- cppo -V COQ: -n -o _CoqProject _CoqProject.cppo
-- Error: Invalid version specification: &quot;COQ:&quot;
-- Fatal error: Not enough heap memory to reserve minor heaps
-- make: *** [Makefile:26: _CoqProject] Error 1
+- cppo -V COQ:8.20+alpha -n -o _CoqProject _CoqProject.cppo
+- cppo -V COQ:8.20+alpha -n -o PrintingEffect.v PrintingEffect.v.cppo
+- coq_makefile -f _CoqProject -o Makefile.coq
+- make -f Makefile.coq all
+- make[1]: Entering directory &#39;/home/bench/.opam/ocaml-base-compiler.5.1.1/.opam-switch/build/coq-reduction-effects.0.1.4&#39;
+- COQDEP VFILES
+- COQPP redeffect.mlg
+- OCAMLLIBDEP redeffect_plugin.mlpack
+- CAMLDEP redeffect.ml
+- CAMLOPT -c -for-pack Redeffect_plugin redeffect.ml
+- File &quot;redeffect.mlg&quot;, line 24, characters 16-26:
+- Alert deprecated: Reductionops.splay_prod
+- Use [whd_decompose_prod] instead.
+- 
+- File &quot;redeffect.mlg&quot;, line 50, characters 14-38:
+- Error: Unbound value Constr.decompose_appvect
+- make[2]: *** [Makefile.coq:765: redeffect.cmx] Error 2
+- make[1]: *** [Makefile.coq:417: all] Error 2
+- make[1]: Leaving directory &#39;/home/bench/.opam/ocaml-base-compiler.5.1.1/.opam-switch/build/coq-reduction-effects.0.1.4&#39;
+- make: *** [Makefile:6: all] Error 2
 [ERROR] The compilation of coq-reduction-effects.0.1.4 failed at &quot;make -j4&quot;.
 #=== ERROR while compiling coq-reduction-effects.0.1.4 ========================#
 # context              2.1.5 | linux/x86_64 | ocaml-base-compiler.5.1.1 | file:///home/bench/run/opam-coq-archive/released
 # path                 ~/.opam/ocaml-base-compiler.5.1.1/.opam-switch/build/coq-reduction-effects.0.1.4
 # command              ~/.opam/opam-init/hooks/sandbox.sh build make -j4
 # exit-code            2
-# env-file             ~/.opam/log/coq-reduction-effects-22308-1ea10b.env
-# output-file          ~/.opam/log/coq-reduction-effects-22308-1ea10b.out
+# env-file             ~/.opam/log/coq-reduction-effects-11324-38fed2.env
+# output-file          ~/.opam/log/coq-reduction-effects-11324-38fed2.out
 ### output ###
-# Fatal error: Not enough heap memory to reserve minor heaps
-# cppo -V COQ: -n -o _CoqProject _CoqProject.cppo
-# Error: Invalid version specification: &quot;COQ:&quot;
-# Fatal error: Not enough heap memory to reserve minor heaps
-# make: *** [Makefile:26: _CoqProject] Error 1
+# [...]
+# CAMLDEP redeffect.ml
+# CAMLOPT -c -for-pack Redeffect_plugin redeffect.ml
+# File &quot;redeffect.mlg&quot;, line 24, characters 16-26:
+# Alert deprecated: Reductionops.splay_prod
+# Use [whd_decompose_prod] instead.
+# 
+# File &quot;redeffect.mlg&quot;, line 50, characters 14-38:
+# Error: Unbound value Constr.decompose_appvect
+# make[2]: *** [Makefile.coq:765: redeffect.cmx] Error 2
+# make[1]: *** [Makefile.coq:417: all] Error 2
+# make[1]: Leaving directory &#39;/home/bench/.opam/ocaml-base-compiler.5.1.1/.opam-switch/build/coq-reduction-effects.0.1.4&#39;
+# make: *** [Makefile:6: all] Error 2
 &lt;&gt;&lt;&gt; Error report &lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;
 +- The following actions failed
 | - build coq-reduction-effects 0.1.4
