@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>bedrock2-compiler: Error with dependencies 🚒</title>
+    <title>bedrock2-compiler: 12 m 0 s 🏆</title>
     <link rel="shortcut icon" type="image/png" href="../../../../../favicon.png" />
     <link href="../../../../../bootstrap.min.css" rel="stylesheet">
     <link href="../../../../../bootstrap-custom.css" rel="stylesheet">
@@ -39,7 +39,7 @@
               bedrock2-compiler
               <small>
                 0.0.6
-                <span class="label label-warning">Error with dependencies 🚒</span>
+                <span class="label label-success">12 m 0 s 🏆</span>
               </small>
             </h1>
             <h2>Context</h2>
@@ -55,7 +55,7 @@ coq                   8.17.0      The Coq Proof Assistant
 coq-core              8.17.0      The Coq Proof Assistant -- Core Binaries and Tools
 coq-stdlib            8.17.0      The Coq Proof Assistant -- Standard Library
 coqide-server         8.17.0      The Coq Proof Assistant, XML protocol server
-dune                  3.12.2      Fast, portable, and opinionated build system
+dune                  3.13.0      Fast, portable, and opinionated build system
 ocaml                 5.0.0       The OCaml compiler (virtual package)
 ocaml-base-compiler   5.0.0       Official release 5.0.0
 ocaml-config          3           OCaml Switch Configuration
@@ -126,116 +126,179 @@ url {
             <h2>Install dependencies</h2>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>opam list; echo; ulimit -Sv 4000000; timeout 4h opam install -y --deps-only coq-bedrock2-compiler.0.0.6 coq.8.17.0</code></dd>
+              <dd><code>opam list; echo; timeout 4h opam install -y --deps-only coq-bedrock2-compiler.0.0.6 coq.8.17.0</code></dd>
               <dt>Return code</dt>
-              <dd>7936</dd>
+              <dd>0</dd>
               <dt>Duration</dt>
-              <dd>1 m 0 s</dd>
-              <dt>Output</dt>
-              <dd><pre># Packages matching: installed
-# Name                # Installed # Synopsis
-base-bigarray         base
-base-domains          base
-base-nnp              base        Naked pointers prohibited in the OCaml heap
-base-threads          base
-base-unix             base
-conf-gmp              4           Virtual package relying on a GMP lib system installation
-coq                   8.17.0      The Coq Proof Assistant
-coq-core              8.17.0      The Coq Proof Assistant -- Core Binaries and Tools
-coq-stdlib            8.17.0      The Coq Proof Assistant -- Standard Library
-coqide-server         8.17.0      The Coq Proof Assistant, XML protocol server
-dune                  3.12.2      Fast, portable, and opinionated build system
-ocaml                 5.0.0       The OCaml compiler (virtual package)
-ocaml-base-compiler   5.0.0       Official release 5.0.0
-ocaml-config          3           OCaml Switch Configuration
-ocaml-options-vanilla 1           Ensure that OCaml is compiled with no special options enabled
-ocamlfind             1.9.6       A library manager for OCaml
-zarith                1.13        Implements arithmetic and logical operations over arbitrary-precision integers
-The following actions will be performed:
-  - install coq-record-update 0.3.3
-  - install conf-findutils    1
-  - install coq-coqutil       0.0.4
-  - install coq-riscv         0.0.4
-  - install coq-bedrock2      0.0.6
-===== 5 to install =====
-&lt;&gt;&lt;&gt; Processing actions &lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;
--&gt; retrieved coq-bedrock2.0.0.6  (https://github.com/mit-plv/bedrock2/archive/refs/tags/v0.0.6.tar.gz)
--&gt; retrieved coq-coqutil.0.0.4  (https://github.com/mit-plv/coqutil/archive/refs/tags/v0.0.4.tar.gz)
--&gt; retrieved coq-record-update.0.3.3  (https://github.com/tchajed/coq-record-update/archive/v0.3.3.tar.gz)
--&gt; installed conf-findutils.1
--&gt; retrieved coq-riscv.0.0.4  (https://github.com/mit-plv/riscv-coq/archive/refs/tags/v0.0.4.tar.gz)
-[ERROR] The compilation of coq-record-update.0.3.3 failed at &quot;make -j4 NO_TEST=1&quot;.
-[ERROR] The compilation of coq-coqutil.0.0.4 failed at &quot;make -j4&quot;.
-#=== ERROR while compiling coq-record-update.0.3.3 ============================#
-# context              2.1.5 | linux/x86_64 | ocaml-base-compiler.5.0.0 | file:///home/bench/run/opam-coq-archive/released
-# path                 ~/.opam/ocaml-base-compiler.5.0.0/.opam-switch/build/coq-record-update.0.3.3
-# command              ~/.opam/opam-init/hooks/sandbox.sh build make -j4 NO_TEST=1
-# exit-code            2
-# env-file             ~/.opam/log/coq-record-update-4583-dd5cb6.env
-# output-file          ~/.opam/log/coq-record-update-4583-dd5cb6.out
-### output ###
-# [...]
-# Aborted (core dumped)
-# W: This Makefile was generated by Coq 8.17.0
-# W: while the current Coq version is 
-# Fatal error: Not enough heap memory to reserve minor heaps
-# Aborted (core dumped)
-# COQC src/RecordSet.v
-# Fatal error: Not enough heap memory to reserve minor heaps
-# Aborted (core dumped)
-# make[2]: *** [Makefile.coq:830: src/RecordSet.vo] Error 134
-# make[1]: *** [Makefile.coq:409: all] Error 2
-# make[1]: Leaving directory &#39;/home/bench/.opam/ocaml-base-compiler.5.0.0/.opam-switch/build/coq-record-update.0.3.3&#39;
-# make: *** [Makefile:9: all] Error 2
-#=== ERROR while compiling coq-coqutil.0.0.4 ==================================#
-# context              2.1.5 | linux/x86_64 | ocaml-base-compiler.5.0.0 | file:///home/bench/run/opam-coq-archive/released
-# path                 ~/.opam/ocaml-base-compiler.5.0.0/.opam-switch/build/coq-coqutil.0.0.4
-# command              ~/.opam/opam-init/hooks/sandbox.sh build make -j4
-# exit-code            2
-# env-file             ~/.opam/log/coq-coqutil-4583-7ff2e5.env
-# output-file          ~/.opam/log/coq-coqutil-4583-7ff2e5.out
-### output ###
-# [...]
-# Aborted (core dumped)
-# make[2]: *** [Makefile.coq.test:830: /home/bench/.opam/ocaml-base-compiler.5.0.0/.opam-switch/build/coq-coqutil.0.0.4/src/coqutil/Tactics/forward.vo] Error 134
-# make[2]: *** Waiting for unfinished jobs....
-# Aborted
-# make[2]: *** [Makefile.coq.test:830: /home/bench/.opam/ocaml-base-compiler.5.0.0/.opam-switch/build/coq-coqutil.0.0.4/src/coqutil/Tactics/autoforward.vo] Error 134
-# Aborted (core dumped)
-# make[2]: *** [Makefile.coq.test:830: /home/bench/.opam/ocaml-base-compiler.5.0.0/.opam-switch/build/coq-coqutil.0.0.4/src/coqutil/sanity.vo] Error 134
-# Aborted (core dumped)
-# make[2]: *** [Makefile.coq.test:830: /home/bench/.opam/ocaml-base-compiler.5.0.0/.opam-switch/build/coq-coqutil.0.0.4/src/coqutil/Z/Lia.vo] Error 134
-# make[1]: *** [Makefile.coq.test:409: all] Error 2
-# make[1]: Leaving directory &#39;/home/bench/.opam/ocaml-base-compiler.5.0.0/.opam-switch/build/coq-coqutil.0.0.4&#39;
-# make: *** [Makefile:26: test] Error 2
-&lt;&gt;&lt;&gt; Error report &lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;
-+- The following actions failed
-| - build coq-coqutil       0.0.4
-| - build coq-record-update 0.3.3
-+- 
-+- The following changes have been performed (the rest was aborted)
-| - install conf-findutils 1
-+- 
-# Run eval $(opam env) to update the current shell environment
-The former state can be restored with:
-    /usr/local/bin/opam switch import &quot;/home/bench/.opam/ocaml-base-compiler.5.0.0/.opam-switch/backup/state-20240119044635.export&quot;
-</pre></dd>
+              <dd>18 m 0 s</dd>
             </dl>
             <h2>Install 🚀</h2>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>true</code></dd>
+              <dd><code>opam list; echo; timeout 4h opam install -y -v coq-bedrock2-compiler.0.0.6 coq.8.17.0</code></dd>
               <dt>Return code</dt>
               <dd>0</dd>
               <dt>Duration</dt>
-              <dd>0 s</dd>
+              <dd>12 m 0 s</dd>
             </dl>
             <h2>Installation size</h2>
-            <p>No files were installed.</p>
+            <p>Total: 16 M</p>
+            <ul>
+              <li>3 M <code>../ocaml-base-compiler.5.0.0/lib/coq/user-contrib/compiler/FlatToRiscvFunctions.vo</code></li>
+              <li>2 M <code>../ocaml-base-compiler.5.0.0/lib/coq/user-contrib/compiler/FlattenExpr.vo</code></li>
+              <li>894 K <code>../ocaml-base-compiler.5.0.0/lib/coq/user-contrib/compiler/Spilling.vo</code></li>
+              <li>889 K <code>../ocaml-base-compiler.5.0.0/lib/coq/user-contrib/compiler/FlatToRiscvMetric.vo</code></li>
+              <li>718 K <code>../ocaml-base-compiler.5.0.0/lib/coq/user-contrib/compiler/RegAlloc.vo</code></li>
+              <li>612 K <code>../ocaml-base-compiler.5.0.0/lib/coq/user-contrib/compiler/SpillingMapGoals.vo</code></li>
+              <li>450 K <code>../ocaml-base-compiler.5.0.0/lib/coq/user-contrib/compiler/MMIO.vo</code></li>
+              <li>399 K <code>../ocaml-base-compiler.5.0.0/lib/coq/user-contrib/compiler/ToplevelLoop.vo</code></li>
+              <li>391 K <code>../ocaml-base-compiler.5.0.0/lib/coq/user-contrib/compiler/FlatImp.vo</code></li>
+              <li>386 K <code>../ocaml-base-compiler.5.0.0/lib/coq/user-contrib/compiler/FlattenExpr.glob</code></li>
+              <li>313 K <code>../ocaml-base-compiler.5.0.0/lib/coq/user-contrib/compiler/LowerPipeline.vo</code></li>
+              <li>291 K <code>../ocaml-base-compiler.5.0.0/lib/coq/user-contrib/compiler/FlatToRiscvCommon.vo</code></li>
+              <li>282 K <code>../ocaml-base-compiler.5.0.0/lib/coq/user-contrib/compiler/RunInstruction.vo</code></li>
+              <li>274 K <code>../ocaml-base-compiler.5.0.0/lib/coq/user-contrib/compiler/UseImmediate.vo</code></li>
+              <li>263 K <code>../ocaml-base-compiler.5.0.0/lib/coq/user-contrib/compiler/ExprImp.vo</code></li>
+              <li>263 K <code>../ocaml-base-compiler.5.0.0/lib/coq/user-contrib/compiler/Spilling.glob</code></li>
+              <li>241 K <code>../ocaml-base-compiler.5.0.0/lib/coq/user-contrib/compiler/FlatToRiscvLiterals.vo</code></li>
+              <li>231 K <code>../ocaml-base-compiler.5.0.0/lib/coq/user-contrib/compiler/FlatToRiscvFunctions.glob</code></li>
+              <li>209 K <code>../ocaml-base-compiler.5.0.0/lib/coq/user-contrib/compiler/Pipeline.vo</code></li>
+              <li>195 K <code>../ocaml-base-compiler.5.0.0/lib/coq/user-contrib/compiler/RegAlloc.glob</code></li>
+              <li>192 K <code>../ocaml-base-compiler.5.0.0/lib/coq/user-contrib/compiler/SeparationLogic.vo</code></li>
+              <li>175 K <code>../ocaml-base-compiler.5.0.0/lib/coq/user-contrib/compiler/GoFlatToRiscv.vo</code></li>
+              <li>159 K <code>../ocaml-base-compiler.5.0.0/lib/coq/user-contrib/compiler/load_save_regs_correct.vo</code></li>
+              <li>150 K <code>../ocaml-base-compiler.5.0.0/lib/coq/user-contrib/compiler/FlatToRiscvCommon.glob</code></li>
+              <li>148 K <code>../ocaml-base-compiler.5.0.0/lib/coq/user-contrib/compiler/Registers.vo</code></li>
+              <li>125 K <code>../ocaml-base-compiler.5.0.0/lib/coq/user-contrib/compiler/GoFlatToRiscv.glob</code></li>
+              <li>123 K <code>../ocaml-base-compiler.5.0.0/lib/coq/user-contrib/compiler/FitsStack.vo</code></li>
+              <li>121 K <code>../ocaml-base-compiler.5.0.0/lib/coq/user-contrib/compiler/FlatImp.glob</code></li>
+              <li>109 K <code>../ocaml-base-compiler.5.0.0/lib/coq/user-contrib/compiler/CompilerInvariant.vo</code></li>
+              <li>99 K <code>../ocaml-base-compiler.5.0.0/lib/coq/user-contrib/compiler/LowerPipeline.glob</code></li>
+              <li>94 K <code>../ocaml-base-compiler.5.0.0/lib/coq/user-contrib/compiler/SeparationLogic.glob</code></li>
+              <li>85 K <code>../ocaml-base-compiler.5.0.0/lib/coq/user-contrib/compiler/ExprImp.glob</code></li>
+              <li>84 K <code>../ocaml-base-compiler.5.0.0/lib/coq/user-contrib/compiler/Pipeline.glob</code></li>
+              <li>81 K <code>../ocaml-base-compiler.5.0.0/lib/coq/user-contrib/compiler/FlatToRiscvFunctions.v</code></li>
+              <li>74 K <code>../ocaml-base-compiler.5.0.0/lib/coq/user-contrib/compiler/Spilling.v</code></li>
+              <li>69 K <code>../ocaml-base-compiler.5.0.0/lib/coq/user-contrib/compiler/ToplevelLoop.glob</code></li>
+              <li>67 K <code>../ocaml-base-compiler.5.0.0/lib/coq/user-contrib/compiler/RiscvEventLoop.vo</code></li>
+              <li>63 K <code>../ocaml-base-compiler.5.0.0/lib/coq/user-contrib/compiler/RunInstruction.glob</code></li>
+              <li>63 K <code>../ocaml-base-compiler.5.0.0/lib/coq/user-contrib/compiler/UniqueSepLog.vo</code></li>
+              <li>62 K <code>../ocaml-base-compiler.5.0.0/lib/coq/user-contrib/compiler/FlatToRiscvDef.vo</code></li>
+              <li>61 K <code>../ocaml-base-compiler.5.0.0/lib/coq/user-contrib/compiler/FlatImpUniqueSepLog.vo</code></li>
+              <li>56 K <code>../ocaml-base-compiler.5.0.0/lib/coq/user-contrib/compiler/StringNameGen.vo</code></li>
+              <li>56 K <code>../ocaml-base-compiler.5.0.0/lib/coq/user-contrib/compiler/FlatToRiscvDef.glob</code></li>
+              <li>55 K <code>../ocaml-base-compiler.5.0.0/lib/coq/user-contrib/compiler/FlattenExprDef.vo</code></li>
+              <li>50 K <code>../ocaml-base-compiler.5.0.0/lib/coq/user-contrib/compiler/MMIO.glob</code></li>
+              <li>48 K <code>../ocaml-base-compiler.5.0.0/lib/coq/user-contrib/compiler/ForeverSafe.vo</code></li>
+              <li>47 K <code>../ocaml-base-compiler.5.0.0/lib/coq/user-contrib/compiler/RegAlloc.v</code></li>
+              <li>46 K <code>../ocaml-base-compiler.5.0.0/lib/coq/user-contrib/compiler/ZLemmas.vo</code></li>
+              <li>45 K <code>../ocaml-base-compiler.5.0.0/lib/coq/user-contrib/compiler/FitsStack.glob</code></li>
+              <li>43 K <code>../ocaml-base-compiler.5.0.0/lib/coq/user-contrib/compiler/ExprImpEventLoopSpec.vo</code></li>
+              <li>43 K <code>../ocaml-base-compiler.5.0.0/lib/coq/user-contrib/compiler/FlatToRiscvMetric.glob</code></li>
+              <li>43 K <code>../ocaml-base-compiler.5.0.0/lib/coq/user-contrib/compiler/FlatImpUniqueSepLog.glob</code></li>
+              <li>39 K <code>../ocaml-base-compiler.5.0.0/lib/coq/user-contrib/compiler/FlattenExpr.v</code></li>
+              <li>39 K <code>../ocaml-base-compiler.5.0.0/lib/coq/user-contrib/compiler/FlatToRiscvCommon.v</code></li>
+              <li>38 K <code>../ocaml-base-compiler.5.0.0/lib/coq/user-contrib/compiler/DivisibleBy4.vo</code></li>
+              <li>36 K <code>../ocaml-base-compiler.5.0.0/lib/coq/user-contrib/compiler/UseImmediateDef.vo</code></li>
+              <li>35 K <code>../ocaml-base-compiler.5.0.0/lib/coq/user-contrib/compiler/MemoryLayout.vo</code></li>
+              <li>34 K <code>../ocaml-base-compiler.5.0.0/lib/coq/user-contrib/compiler/GoFlatToRiscv.v</code></li>
+              <li>33 K <code>../ocaml-base-compiler.5.0.0/lib/coq/user-contrib/compiler/FlatToRiscvLiterals.glob</code></li>
+              <li>33 K <code>../ocaml-base-compiler.5.0.0/lib/coq/user-contrib/compiler/UniqueSepLog.glob</code></li>
+              <li>33 K <code>../ocaml-base-compiler.5.0.0/lib/coq/user-contrib/compiler/CompilerInvariant.glob</code></li>
+              <li>33 K <code>../ocaml-base-compiler.5.0.0/lib/coq/user-contrib/compiler/FlattenExprDef.glob</code></li>
+              <li>32 K <code>../ocaml-base-compiler.5.0.0/lib/coq/user-contrib/compiler/RiscvWordProperties.vo</code></li>
+              <li>32 K <code>../ocaml-base-compiler.5.0.0/lib/coq/user-contrib/compiler/NaiveRiscvWordProperties.vo</code></li>
+              <li>31 K <code>../ocaml-base-compiler.5.0.0/lib/coq/user-contrib/compiler/mod4_0.vo</code></li>
+              <li>31 K <code>../ocaml-base-compiler.5.0.0/lib/coq/user-contrib/compiler/LowerPipeline.v</code></li>
+              <li>29 K <code>../ocaml-base-compiler.5.0.0/lib/coq/user-contrib/compiler/ZNameGen.vo</code></li>
+              <li>28 K <code>../ocaml-base-compiler.5.0.0/lib/coq/user-contrib/compiler/regs_initialized.vo</code></li>
+              <li>27 K <code>../ocaml-base-compiler.5.0.0/lib/coq/user-contrib/compiler/FlatImpConstraints.vo</code></li>
+              <li>26 K <code>../ocaml-base-compiler.5.0.0/lib/coq/user-contrib/compiler/FlatImp.v</code></li>
+              <li>26 K <code>../ocaml-base-compiler.5.0.0/lib/coq/user-contrib/compiler/load_save_regs_correct.glob</code></li>
+              <li>26 K <code>../ocaml-base-compiler.5.0.0/lib/coq/user-contrib/compiler/Pipeline.v</code></li>
+              <li>25 K <code>../ocaml-base-compiler.5.0.0/lib/coq/user-contrib/compiler/NameGen.vo</code></li>
+              <li>25 K <code>../ocaml-base-compiler.5.0.0/lib/coq/user-contrib/compiler/Symbols.vo</code></li>
+              <li>24 K <code>../ocaml-base-compiler.5.0.0/lib/coq/user-contrib/compiler/ToplevelLoop.v</code></li>
+              <li>23 K <code>../ocaml-base-compiler.5.0.0/lib/coq/user-contrib/compiler/SeparationLogic.v</code></li>
+              <li>23 K <code>../ocaml-base-compiler.5.0.0/lib/coq/user-contrib/compiler/util/Common.vo</code></li>
+              <li>23 K <code>../ocaml-base-compiler.5.0.0/lib/coq/user-contrib/compiler/NaiveRiscvWordProperties.glob</code></li>
+              <li>21 K <code>../ocaml-base-compiler.5.0.0/lib/coq/user-contrib/compiler/ExprImp.v</code></li>
+              <li>20 K <code>../ocaml-base-compiler.5.0.0/lib/coq/user-contrib/compiler/MetricsToRiscv.vo</code></li>
+              <li>19 K <code>../ocaml-base-compiler.5.0.0/lib/coq/user-contrib/compiler/MMIO.v</code></li>
+              <li>17 K <code>../ocaml-base-compiler.5.0.0/lib/coq/user-contrib/compiler/UseImmediate.glob</code></li>
+              <li>16 K <code>../ocaml-base-compiler.5.0.0/lib/coq/user-contrib/compiler/RunInstruction.v</code></li>
+              <li>16 K <code>../ocaml-base-compiler.5.0.0/lib/coq/user-contrib/compiler/StringNameGen.glob</code></li>
+              <li>15 K <code>../ocaml-base-compiler.5.0.0/lib/coq/user-contrib/compiler/RiscvEventLoop.glob</code></li>
+              <li>15 K <code>../ocaml-base-compiler.5.0.0/lib/coq/user-contrib/compiler/FlatToRiscvMetric.v</code></li>
+              <li>15 K <code>../ocaml-base-compiler.5.0.0/lib/coq/user-contrib/compiler/ZLemmas.glob</code></li>
+              <li>14 K <code>../ocaml-base-compiler.5.0.0/lib/coq/user-contrib/compiler/FlatToRiscvDef.v</code></li>
+              <li>14 K <code>../ocaml-base-compiler.5.0.0/lib/coq/user-contrib/compiler/SpillingMapGoals.glob</code></li>
+              <li>13 K <code>../ocaml-base-compiler.5.0.0/lib/coq/user-contrib/compiler/ForeverSafe.glob</code></li>
+              <li>13 K <code>../ocaml-base-compiler.5.0.0/lib/coq/user-contrib/compiler/UniqueSepLog.v</code></li>
+              <li>12 K <code>../ocaml-base-compiler.5.0.0/lib/coq/user-contrib/compiler/DivisibleBy4.glob</code></li>
+              <li>12 K <code>../ocaml-base-compiler.5.0.0/lib/coq/user-contrib/compiler/Registers.glob</code></li>
+              <li>10 K <code>../ocaml-base-compiler.5.0.0/lib/coq/user-contrib/compiler/mod4_0.glob</code></li>
+              <li>10 K <code>../ocaml-base-compiler.5.0.0/lib/coq/user-contrib/compiler/CompilerInvariant.v</code></li>
+              <li>10 K <code>../ocaml-base-compiler.5.0.0/lib/coq/user-contrib/compiler/UseImmediateDef.glob</code></li>
+              <li>9 K <code>../ocaml-base-compiler.5.0.0/lib/coq/user-contrib/compiler/RiscvWordProperties.glob</code></li>
+              <li>9 K <code>../ocaml-base-compiler.5.0.0/lib/coq/user-contrib/compiler/FitsStack.v</code></li>
+              <li>9 K <code>../ocaml-base-compiler.5.0.0/lib/coq/user-contrib/compiler/load_save_regs_correct.v</code></li>
+              <li>8 K <code>../ocaml-base-compiler.5.0.0/lib/coq/user-contrib/compiler/FlatToRiscvLiterals.v</code></li>
+              <li>8 K <code>../ocaml-base-compiler.5.0.0/lib/coq/user-contrib/compiler/FlattenExprDef.v</code></li>
+              <li>7 K <code>../ocaml-base-compiler.5.0.0/lib/coq/user-contrib/compiler/ExprImpEventLoopSpec.glob</code></li>
+              <li>7 K <code>../ocaml-base-compiler.5.0.0/lib/coq/user-contrib/compiler/FlatImpUniqueSepLog.v</code></li>
+              <li>6 K <code>../ocaml-base-compiler.5.0.0/lib/coq/user-contrib/compiler/util/Misc.vo</code></li>
+              <li>6 K <code>../ocaml-base-compiler.5.0.0/lib/coq/user-contrib/compiler/util/Learning.vo</code></li>
+              <li>6 K <code>../ocaml-base-compiler.5.0.0/lib/coq/user-contrib/compiler/RiscvEventLoop.v</code></li>
+              <li>6 K <code>../ocaml-base-compiler.5.0.0/lib/coq/user-contrib/compiler/GenericForeverSafe.glob</code></li>
+              <li>5 K <code>../ocaml-base-compiler.5.0.0/lib/coq/user-contrib/compiler/GenericForeverSafe.vo</code></li>
+              <li>5 K <code>../ocaml-base-compiler.5.0.0/lib/coq/user-contrib/compiler/StringNameGen.v</code></li>
+              <li>5 K <code>../ocaml-base-compiler.5.0.0/lib/coq/user-contrib/compiler/ForeverSafe.v</code></li>
+              <li>5 K <code>../ocaml-base-compiler.5.0.0/lib/coq/user-contrib/compiler/regs_initialized.glob</code></li>
+              <li>5 K <code>../ocaml-base-compiler.5.0.0/lib/coq/user-contrib/compiler/ZNameGen.glob</code></li>
+              <li>4 K <code>../ocaml-base-compiler.5.0.0/lib/coq/user-contrib/compiler/DivisibleBy4.v</code></li>
+              <li>4 K <code>../ocaml-base-compiler.5.0.0/lib/coq/user-contrib/compiler/Registers.v</code></li>
+              <li>4 K <code>../ocaml-base-compiler.5.0.0/lib/coq/user-contrib/compiler/util/Misc.glob</code></li>
+              <li>4 K <code>../ocaml-base-compiler.5.0.0/lib/coq/user-contrib/compiler/MemoryLayout.glob</code></li>
+              <li>4 K <code>../ocaml-base-compiler.5.0.0/lib/coq/user-contrib/compiler/NaiveRiscvWordProperties.v</code></li>
+              <li>4 K <code>../ocaml-base-compiler.5.0.0/lib/coq/user-contrib/compiler/on_hyp_containing.vo</code></li>
+              <li>4 K <code>../ocaml-base-compiler.5.0.0/lib/coq/user-contrib/compiler/SpillingMapGoals.v</code></li>
+              <li>4 K <code>../ocaml-base-compiler.5.0.0/lib/coq/user-contrib/compiler/Symbols.glob</code></li>
+              <li>3 K <code>../ocaml-base-compiler.5.0.0/lib/coq/user-contrib/compiler/UseImmediate.v</code></li>
+              <li>3 K <code>../ocaml-base-compiler.5.0.0/lib/coq/user-contrib/compiler/ZLemmas.v</code></li>
+              <li>3 K <code>../ocaml-base-compiler.5.0.0/lib/coq/user-contrib/compiler/eqexact.vo</code></li>
+              <li>3 K <code>../ocaml-base-compiler.5.0.0/lib/coq/user-contrib/compiler/NameGen.glob</code></li>
+              <li>3 K <code>../ocaml-base-compiler.5.0.0/lib/coq/user-contrib/compiler/UseImmediateDef.v</code></li>
+              <li>3 K <code>../ocaml-base-compiler.5.0.0/lib/coq/user-contrib/compiler/FlatImpConstraints.glob</code></li>
+              <li>2 K <code>../ocaml-base-compiler.5.0.0/lib/coq/user-contrib/compiler/mod4_0.v</code></li>
+              <li>2 K <code>../ocaml-base-compiler.5.0.0/lib/coq/user-contrib/compiler/util/LogGoal.vo</code></li>
+              <li>2 K <code>../ocaml-base-compiler.5.0.0/lib/coq/user-contrib/compiler/ExprImpEventLoopSpec.v</code></li>
+              <li>2 K <code>../ocaml-base-compiler.5.0.0/lib/coq/user-contrib/compiler/MetricsToRiscv.glob</code></li>
+              <li>2 K <code>../ocaml-base-compiler.5.0.0/lib/coq/user-contrib/compiler/RiscvWordProperties.v</code></li>
+              <li>2 K <code>../ocaml-base-compiler.5.0.0/lib/coq/user-contrib/compiler/regs_initialized.v</code></li>
+              <li>2 K <code>../ocaml-base-compiler.5.0.0/lib/coq/user-contrib/compiler/GenericForeverSafe.v</code></li>
+              <li>2 K <code>../ocaml-base-compiler.5.0.0/lib/coq/user-contrib/compiler/util/Learning.glob</code></li>
+              <li>1 K <code>../ocaml-base-compiler.5.0.0/lib/coq/user-contrib/compiler/ZNameGen.v</code></li>
+              <li>1 K <code>../ocaml-base-compiler.5.0.0/lib/coq/user-contrib/compiler/MemoryLayout.v</code></li>
+              <li>1 K <code>../ocaml-base-compiler.5.0.0/lib/coq/user-contrib/compiler/util/Learning.v</code></li>
+              <li>1 K <code>../ocaml-base-compiler.5.0.0/lib/coq/user-contrib/compiler/MetricsToRiscv.v</code></li>
+              <li>1 K <code>../ocaml-base-compiler.5.0.0/lib/coq/user-contrib/compiler/Symbols.v</code></li>
+              <li>1 K <code>../ocaml-base-compiler.5.0.0/lib/coq/user-contrib/compiler/NameGen.v</code></li>
+              <li>1 K <code>../ocaml-base-compiler.5.0.0/lib/coq/user-contrib/compiler/eqexact.v</code></li>
+              <li>1 K <code>../ocaml-base-compiler.5.0.0/lib/coq/user-contrib/compiler/on_hyp_containing.v</code></li>
+              <li>1 K <code>../ocaml-base-compiler.5.0.0/lib/coq/user-contrib/compiler/FlatImpConstraints.v</code></li>
+              <li>1 K <code>../ocaml-base-compiler.5.0.0/lib/coq/user-contrib/compiler/util/Misc.v</code></li>
+              <li>1 K <code>../ocaml-base-compiler.5.0.0/lib/coq/user-contrib/compiler/util/Common.glob</code></li>
+              <li>1 K <code>../ocaml-base-compiler.5.0.0/lib/coq/user-contrib/compiler/util/Common.v</code></li>
+              <li>1 K <code>../ocaml-base-compiler.5.0.0/lib/coq/user-contrib/compiler/util/LogGoal.v</code></li>
+              <li>1 K <code>../ocaml-base-compiler.5.0.0/lib/coq/user-contrib/compiler/on_hyp_containing.glob</code></li>
+              <li>1 K <code>../ocaml-base-compiler.5.0.0/lib/coq/user-contrib/compiler/util/LogGoal.glob</code></li>
+              <li>1 K <code>../ocaml-base-compiler.5.0.0/lib/coq/user-contrib/compiler/eqexact.glob</code></li>
+            </ul>
             <h2>Uninstall 🧹</h2>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>true</code></dd>
+              <dd><code>opam remove -y coq-bedrock2-compiler.0.0.6</code></dd>
               <dt>Return code</dt>
               <dd>0</dd>
               <dt>Missing removes</dt>
