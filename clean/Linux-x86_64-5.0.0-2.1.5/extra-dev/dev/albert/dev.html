@@ -55,7 +55,7 @@ coq                   dev         The Coq Proof Assistant
 coq-core              dev         The Coq Proof Assistant -- Core Binaries and Tools
 coq-stdlib            dev         The Coq Proof Assistant -- Standard Library
 coqide-server         dev         The Coq Proof Assistant, XML protocol server
-dune                  3.12.2      Fast, portable, and opinionated build system
+dune                  3.13.0      Fast, portable, and opinionated build system
 ocaml                 5.0.0       The OCaml compiler (virtual package)
 ocaml-base-compiler   5.0.0       Official release 5.0.0
 ocaml-config          3           OCaml Switch Configuration
@@ -136,11 +136,11 @@ url {
             <h2>Install dependencies</h2>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>opam list; echo; ulimit -Sv 4000000; timeout 4h opam install -y --deps-only coq-albert.dev coq.dev</code></dd>
+              <dd><code>opam list; echo; timeout 4h opam install -y --deps-only coq-albert.dev coq.dev</code></dd>
               <dt>Return code</dt>
               <dd>7936</dd>
               <dt>Duration</dt>
-              <dd>3 m 0 s</dd>
+              <dd>10 m 0 s</dd>
               <dt>Output</dt>
               <dd><pre># Packages matching: installed
 # Name                # Installed # Synopsis
@@ -154,7 +154,7 @@ coq                   dev         The Coq Proof Assistant
 coq-core              dev         The Coq Proof Assistant -- Core Binaries and Tools
 coq-stdlib            dev         The Coq Proof Assistant -- Standard Library
 coqide-server         dev         The Coq Proof Assistant, XML protocol server
-dune                  3.12.2      Fast, portable, and opinionated build system
+dune                  3.13.0      Fast, portable, and opinionated build system
 ocaml                 5.0.0       The OCaml compiler (virtual package)
 ocaml-base-compiler   5.0.0       Official release 5.0.0
 ocaml-config          3           OCaml Switch Configuration
@@ -188,177 +188,76 @@ The following actions will be performed:
 -&gt; retrieved coq-list-plus.1.1.0  (https://github.com/clarus/coq-list-plus/archive/1.1.0.tar.gz)
 -&gt; retrieved coq-list-string.2.1.2  (https://github.com/clarus/coq-list-string/archive/2.1.2.tar.gz)
 -&gt; retrieved coq-moment.1.2.1  (https://github.com/clarus/coq-moment/archive/refs/tags/1.21.tar.gz)
-[ERROR] The compilation of coq-cunit.1.0.0 failed at &quot;make -j4&quot;.
-[ERROR] The compilation of coq-error-handlers.1.2.0 failed at &quot;make -j4&quot;.
-[ERROR] The compilation of coq-function-ninjas.1.0.0 failed at &quot;make -j4&quot;.
-[ERROR] The compilation of coq-list-plus.1.1.0 failed at &quot;make -j4&quot;.
+-&gt; installed coq-cunit.1.0.0
+-&gt; installed coq-error-handlers.1.2.0
+-&gt; installed coq-function-ninjas.1.0.0
+-&gt; installed coq-list-plus.1.1.0
 -&gt; retrieved coq-mi-cho-coq.dev  (git+https://gitlab.com/nomadic-labs/mi-cho-coq.git#master)
+-&gt; installed coq-list-string.2.1.2
 -&gt; retrieved coq-ott.dev  (git+https://github.com/ott-lang/ott.git#master)
 [ERROR] The compilation of coq-ott.dev failed at &quot;make -j4 -C coq&quot;.
+-&gt; installed coq-moment.1.2.1
 -&gt; retrieved coq-menhirlib.dev  (git+https://gitlab.inria.fr/fpottier/menhir.git#master)
-[ERROR] The compilation of coq-menhirlib.dev failed at &quot;make -C coq-menhirlib -j4&quot;.
+-&gt; retrieved menhir.dev  (git+https://gitlab.inria.fr/fpottier/menhir.git#master)
 -&gt; retrieved menhirLib.dev  (git+https://gitlab.inria.fr/fpottier/menhir.git#master)
 -&gt; retrieved ocamlbuild.0.14.3  (https://opam.ocaml.org/cache)
 -&gt; retrieved ocamlgraph.2.1.0  (https://opam.ocaml.org/cache)
--&gt; retrieved ott.0.33  (https://opam.ocaml.org/cache)
 -&gt; retrieved stdlib-shims.0.3.0  (https://opam.ocaml.org/cache)
+-&gt; retrieved ott.0.33  (https://opam.ocaml.org/cache)
 -&gt; installed stdlib-shims.0.3.0
--&gt; installed menhirLib.dev
--&gt; retrieved menhirSdk.dev  (git+https://gitlab.inria.fr/fpottier/menhir.git#master)
 -&gt; installed ocamlgraph.2.1.0
--&gt; installed menhirSdk.dev
--&gt; retrieved menhir.dev  (git+https://gitlab.inria.fr/fpottier/menhir.git#master)
--&gt; installed ott.0.33
+-&gt; retrieved menhirSdk.dev  (git+https://gitlab.inria.fr/fpottier/menhir.git#master)
+-&gt; installed coq-menhirlib.dev
 -&gt; installed ocamlbuild.0.14.3
+-&gt; installed ott.0.33
+-&gt; installed menhirLib.dev
+-&gt; installed menhirSdk.dev
 -&gt; installed menhir.dev
 #=== ERROR while compiling coq-ott.dev ========================================#
 # context              2.1.5 | linux/x86_64 | ocaml-base-compiler.5.0.0 | file:///home/bench/run/opam-coq-archive/extra-dev
 # path                 ~/.opam/ocaml-base-compiler.5.0.0/.opam-switch/build/coq-ott.dev
 # command              ~/.opam/opam-init/hooks/sandbox.sh build make -j4 -C coq
 # exit-code            2
-# env-file             ~/.opam/log/coq-ott-9260-e8409e.env
-# output-file          ~/.opam/log/coq-ott-9260-e8409e.out
+# env-file             ~/.opam/log/coq-ott-21288-8fdf4a.env
+# output-file          ~/.opam/log/coq-ott-21288-8fdf4a.out
 ### output ###
 # [...]
 # COQC ott_list_eq_dec.v
-# Fatal error: Not enough heap memory to reserve minor heaps
-# Fatal error: Not enough heap memory to reserve minor heaps
-# Aborted (core dumped)
-# make[2]: *** [Makefile.coq:847: ott_list_eq_dec.vo] Error 134
-# make[2]: *** Waiting for unfinished jobs....
-# Aborted
-# make[2]: *** [Makefile.coq:847: ott_list_support.vo] Error 134
+# COQC ott_list_core.v
+# COQC ott_list_base.v
+# File &quot;./ott_list_base.v&quot;, line 63, characters 57-66:
+# Error: The variable plus_comm was not found in the current environment.
+# 
+# make[2]: *** [Makefile.coq:848: ott_list_base.vo] Error 1
+# make[2]: *** [ott_list_base.vo] Deleting file &#39;ott_list_base.glob&#39;
 # make[1]: *** [Makefile.coq:417: all] Error 2
 # make[1]: Leaving directory &#39;/home/bench/.opam/ocaml-base-compiler.5.0.0/.opam-switch/build/coq-ott.dev/coq&#39;
 # make: *** [Makefile:2: default] Error 2
 # make: Leaving directory &#39;/home/bench/.opam/ocaml-base-compiler.5.0.0/.opam-switch/build/coq-ott.dev/coq&#39;
-#=== ERROR while compiling coq-menhirlib.dev ==================================#
-# context              2.1.5 | linux/x86_64 | ocaml-base-compiler.5.0.0 | file:///home/bench/run/opam-coq-archive/extra-dev
-# path                 ~/.opam/ocaml-base-compiler.5.0.0/.opam-switch/build/coq-menhirlib.dev
-# command              ~/.opam/opam-init/hooks/sandbox.sh build make -C coq-menhirlib -j4
-# exit-code            2
-# env-file             ~/.opam/log/coq-menhirlib-9260-04607f.env
-# output-file          ~/.opam/log/coq-menhirlib-9260-04607f.out
-### output ###
-# [...]
-# COQC Version.v
-# Fatal error: Not enough heap memory to reserve minor heaps
-# Fatal error: Not enough heap memory to reserve minor heaps
-# Aborted (core dumped)
-# make[3]: *** [CoqMakefile:847: Version.vo] Error 134
-# make[3]: *** Waiting for unfinished jobs....
-# Aborted
-# make[3]: *** [CoqMakefile:847: Alphabet.vo] Error 134
-# make[2]: *** [CoqMakefile:417: all] Error 2
-# make[1]: *** [Makefile:18: invoke-coqmakefile] Error 2
-# make: *** [Makefile:6: all] Error 2
-# make: Leaving directory &#39;/home/bench/.opam/ocaml-base-compiler.5.0.0/.opam-switch/build/coq-menhirlib.dev/coq-menhirlib&#39;
-#=== ERROR while compiling coq-list-plus.1.1.0 ================================#
-# context              2.1.5 | linux/x86_64 | ocaml-base-compiler.5.0.0 | file:///home/bench/run/opam-coq-archive/released
-# path                 ~/.opam/ocaml-base-compiler.5.0.0/.opam-switch/build/coq-list-plus.1.1.0
-# command              ~/.opam/opam-init/hooks/sandbox.sh build make -j4
-# exit-code            2
-# env-file             ~/.opam/log/coq-list-plus-9260-c54a80.env
-# output-file          ~/.opam/log/coq-list-plus-9260-c54a80.out
-### output ###
-# [...]
-# Fatal error: Not enough heap memory to reserve minor heaps
-# Aborted (core dumped)
-# COQC src/List.v
-# COQC src/Sort.v
-# Fatal error: Not enough heap memory to reserve minor heaps
-# Fatal error: Not enough heap memory to reserve minor heaps
-# Aborted (core dumped)
-# make[1]: *** [Makefile:847: src/Sort.vo] Error 134
-# make[1]: *** Waiting for unfinished jobs....
-# Aborted
-# make[1]: *** [Makefile:847: src/List.vo] Error 134
-# make: *** [Makefile:417: all] Error 2
-#=== ERROR while compiling coq-function-ninjas.1.0.0 ==========================#
-# context              2.1.5 | linux/x86_64 | ocaml-base-compiler.5.0.0 | file:///home/bench/run/opam-coq-archive/released
-# path                 ~/.opam/ocaml-base-compiler.5.0.0/.opam-switch/build/coq-function-ninjas.1.0.0
-# command              ~/.opam/opam-init/hooks/sandbox.sh build make -j4
-# exit-code            2
-# env-file             ~/.opam/log/coq-function-ninjas-9260-9c34ca.env
-# output-file          ~/.opam/log/coq-function-ninjas-9260-9c34ca.out
-### output ###
-# [...]
-# Aborted (core dumped)
-# Fatal error: Not enough heap memory to reserve minor heaps
-# Aborted (core dumped)
-# W: This Makefile was generated by Coq 8.20+alpha
-# W: while the current Coq version is 
-# Fatal error: Not enough heap memory to reserve minor heaps
-# Aborted (core dumped)
-# COQC All.v
-# Fatal error: Not enough heap memory to reserve minor heaps
-# Aborted (core dumped)
-# make[1]: *** [Makefile:847: All.vo] Error 134
-# make: *** [Makefile:417: all] Error 2
-#=== ERROR while compiling coq-error-handlers.1.2.0 ===========================#
-# context              2.1.5 | linux/x86_64 | ocaml-base-compiler.5.0.0 | file:///home/bench/run/opam-coq-archive/released
-# path                 ~/.opam/ocaml-base-compiler.5.0.0/.opam-switch/build/coq-error-handlers.1.2.0
-# command              ~/.opam/opam-init/hooks/sandbox.sh build make -j4
-# exit-code            2
-# env-file             ~/.opam/log/coq-error-handlers-9260-a4089b.env
-# output-file          ~/.opam/log/coq-error-handlers-9260-a4089b.out
-### output ###
-# [...]
-# Aborted (core dumped)
-# Fatal error: Not enough heap memory to reserve minor heaps
-# Aborted (core dumped)
-# W: This Makefile was generated by Coq 8.20+alpha
-# W: while the current Coq version is 
-# Fatal error: Not enough heap memory to reserve minor heaps
-# Aborted (core dumped)
-# COQC src/All.v
-# Fatal error: Not enough heap memory to reserve minor heaps
-# Aborted (core dumped)
-# make[1]: *** [Makefile:847: src/All.vo] Error 134
-# make: *** [Makefile:417: all] Error 2
-#=== ERROR while compiling coq-cunit.1.0.0 ====================================#
-# context              2.1.5 | linux/x86_64 | ocaml-base-compiler.5.0.0 | file:///home/bench/run/opam-coq-archive/released
-# path                 ~/.opam/ocaml-base-compiler.5.0.0/.opam-switch/build/coq-cunit.1.0.0
-# command              ~/.opam/opam-init/hooks/sandbox.sh build make -j4
-# exit-code            2
-# env-file             ~/.opam/log/coq-cunit-9260-372fd4.env
-# output-file          ~/.opam/log/coq-cunit-9260-372fd4.out
-### output ###
-# [...]
-# Aborted (core dumped)
-# Fatal error: Not enough heap memory to reserve minor heaps
-# Aborted (core dumped)
-# W: This Makefile was generated by Coq 8.20+alpha
-# W: while the current Coq version is 
-# Fatal error: Not enough heap memory to reserve minor heaps
-# Aborted (core dumped)
-# COQC src/All.v
-# Fatal error: Not enough heap memory to reserve minor heaps
-# Aborted (core dumped)
-# make[1]: *** [Makefile:847: src/All.vo] Error 134
-# make: *** [Makefile:417: all] Error 2
 &lt;&gt;&lt;&gt; Error report &lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;
 +- The following actions failed
-| - build coq-cunit           1.0.0
-| - build coq-error-handlers  1.2.0
-| - build coq-function-ninjas 1.0.0
-| - build coq-list-plus       1.1.0
-| - build coq-menhirlib       dev
-| - build coq-ott             dev
+| - build coq-ott dev
 +- 
 +- The following changes have been performed (the rest was aborted)
-| - install conf-ruby    1.0.0
-| - install menhir       dev
-| - install menhirLib    dev
-| - install menhirSdk    dev
-| - install ocamlbuild   0.14.3
-| - install ocamlgraph   2.1.0
-| - install ott          0.33
-| - install stdlib-shims 0.3.0
+| - install conf-ruby           1.0.0
+| - install coq-cunit           1.0.0
+| - install coq-error-handlers  1.2.0
+| - install coq-function-ninjas 1.0.0
+| - install coq-list-plus       1.1.0
+| - install coq-list-string     2.1.2
+| - install coq-menhirlib       dev
+| - install coq-moment          1.2.1
+| - install menhir              dev
+| - install menhirLib           dev
+| - install menhirSdk           dev
+| - install ocamlbuild          0.14.3
+| - install ocamlgraph          2.1.0
+| - install ott                 0.33
+| - install stdlib-shims        0.3.0
 +- 
 # Run eval $(opam env) to update the current shell environment
 The former state can be restored with:
-    /usr/local/bin/opam switch import &quot;/home/bench/.opam/ocaml-base-compiler.5.0.0/.opam-switch/backup/state-20240113181314.export&quot;
+    /usr/local/bin/opam switch import &quot;/home/bench/.opam/ocaml-base-compiler.5.0.0/.opam-switch/backup/state-20240209104530.export&quot;
 </pre></dd>
             </dl>
             <h2>Install 🚀</h2>

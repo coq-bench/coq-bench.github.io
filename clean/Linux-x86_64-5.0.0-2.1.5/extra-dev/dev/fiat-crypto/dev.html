@@ -55,7 +55,7 @@ coq                   dev         The Coq Proof Assistant
 coq-core              dev         The Coq Proof Assistant -- Core Binaries and Tools
 coq-stdlib            dev         The Coq Proof Assistant -- Standard Library
 coqide-server         dev         The Coq Proof Assistant, XML protocol server
-dune                  3.12.2      Fast, portable, and opinionated build system
+dune                  3.13.0      Fast, portable, and opinionated build system
 ocaml                 5.0.0       The OCaml compiler (virtual package)
 ocaml-base-compiler   5.0.0       Official release 5.0.0
 ocaml-config          3           OCaml Switch Configuration
@@ -132,11 +132,11 @@ url {
             <h2>Install dependencies</h2>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>opam list; echo; ulimit -Sv 4000000; timeout 4h opam install -y --deps-only coq-fiat-crypto.dev coq.dev</code></dd>
+              <dd><code>opam list; echo; timeout 4h opam install -y --deps-only coq-fiat-crypto.dev coq.dev</code></dd>
               <dt>Return code</dt>
               <dd>7936</dd>
               <dt>Duration</dt>
-              <dd>2 m 0 s</dd>
+              <dd>4 m 0 s</dd>
               <dt>Output</dt>
               <dd><pre># Packages matching: installed
 # Name                # Installed # Synopsis
@@ -150,7 +150,7 @@ coq                   dev         The Coq Proof Assistant
 coq-core              dev         The Coq Proof Assistant -- Core Binaries and Tools
 coq-stdlib            dev         The Coq Proof Assistant -- Standard Library
 coqide-server         dev         The Coq Proof Assistant, XML protocol server
-dune                  3.12.2      Fast, portable, and opinionated build system
+dune                  3.13.0      Fast, portable, and opinionated build system
 ocaml                 5.0.0       The OCaml compiler (virtual package)
 ocaml-base-compiler   5.0.0       Official release 5.0.0
 ocaml-config          3           OCaml Switch Configuration
@@ -166,85 +166,48 @@ The following actions will be performed:
 ===== 5 to install =====
 &lt;&gt;&lt;&gt; Processing actions &lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;
 -&gt; installed conf-findutils.1
--&gt; retrieved coq-coqutil.dev  (git+https://github.com/mit-plv/coqutil.git#tested)
 -&gt; retrieved coq-bignums.dev  (git+https://github.com/coq/bignums.git#master)
-[ERROR] The compilation of coq-coqutil.dev failed at &quot;make -j4&quot;.
-[ERROR] The compilation of coq-bignums.dev failed at &quot;make -j4&quot;.
+-&gt; retrieved coq-coqutil.dev  (git+https://github.com/mit-plv/coqutil.git#tested)
 -&gt; retrieved coq-coqprime.dev  (git+https://github.com/thery/coqprime.git#master)
 -&gt; retrieved coq-rewriter.dev  (git+https://github.com/mit-plv/rewriter.git#master)
 [ERROR] The compilation of coq-rewriter.dev failed at &quot;make -j4&quot;.
+-&gt; installed coq-bignums.dev
+-&gt; installed coq-coqutil.dev
+-&gt; installed coq-coqprime.dev
 #=== ERROR while compiling coq-rewriter.dev ===================================#
 # context              2.1.5 | linux/x86_64 | ocaml-base-compiler.5.0.0 | file:///home/bench/run/opam-coq-archive/extra-dev
 # path                 ~/.opam/ocaml-base-compiler.5.0.0/.opam-switch/build/coq-rewriter.dev
 # command              ~/.opam/opam-init/hooks/sandbox.sh build make -j4
 # exit-code            2
-# env-file             ~/.opam/log/coq-rewriter-8627-84f9a5.env
-# output-file          ~/.opam/log/coq-rewriter-8627-84f9a5.out
+# env-file             ~/.opam/log/coq-rewriter-27111-413367.env
+# output-file          ~/.opam/log/coq-rewriter-27111-413367.out
 ### output ###
-# sed &#39;s?@META@?src/Rewriter/Util/plugins/META.coq-rewriter?g&#39; _CoqProject.in &gt; _CoqProject
-# Error: Invalid empty COQ_EXTENDED_VERSION:
-# coqc --version || true
-# Fatal error: Not enough heap memory to reserve minor heaps
-# Aborted (core dumped)
-# coqtop &lt;/dev/null || true
-# Fatal error: Not enough heap memory to reserve minor heaps
-# Aborted (core dumped)
-# Makefile:27: Makefile.coq: No such file or directory
-# make: *** [Makefile:47: .coq-version] Error 1
-#=== ERROR while compiling coq-coqutil.dev ====================================#
-# context              2.1.5 | linux/x86_64 | ocaml-base-compiler.5.0.0 | file:///home/bench/run/opam-coq-archive/extra-dev
-# path                 ~/.opam/ocaml-base-compiler.5.0.0/.opam-switch/build/coq-coqutil.dev
-# command              ~/.opam/opam-init/hooks/sandbox.sh build make -j4
-# exit-code            2
-# env-file             ~/.opam/log/coq-coqutil-8627-d25aa8.env
-# output-file          ~/.opam/log/coq-coqutil-8627-d25aa8.out
-### output ###
+# 3 | open Tac2val
 # [...]
-# Aborted (core dumped)
-# make[2]: *** [Makefile.coq.test:847: src/coqutil/Word/Interface.vo] Error 134
-# make[2]: *** Waiting for unfinished jobs....
-# Aborted
-# make[2]: *** [Makefile.coq.test:847: src/coqutil/Byte.vo] Error 134
-# Aborted (core dumped)
-# make[2]: *** [Makefile.coq.test:847: src/coqutil/sanity.vo] Error 134
-# Aborted (core dumped)
-# make[2]: *** [Makefile.coq.test:847: src/coqutil/Datatypes/PrimitivePair.vo] Error 134
-# make[1]: *** [Makefile.coq.test:417: all] Error 2
-# make[1]: Leaving directory &#39;/home/bench/.opam/ocaml-base-compiler.5.0.0/.opam-switch/build/coq-coqutil.dev&#39;
-# make: *** [Makefile:44: test] Error 2
-#=== ERROR while compiling coq-bignums.dev ====================================#
-# context              2.1.5 | linux/x86_64 | ocaml-base-compiler.5.0.0 | file:///home/bench/run/opam-coq-archive/extra-dev
-# path                 ~/.opam/ocaml-base-compiler.5.0.0/.opam-switch/build/coq-bignums.dev
-# command              ~/.opam/opam-init/hooks/sandbox.sh build make -j4
-# exit-code            2
-# env-file             ~/.opam/log/coq-bignums-8627-6d39f6.env
-# output-file          ~/.opam/log/coq-bignums-8627-6d39f6.out
-### output ###
-# [...]
-# CAMLOPT -a -o plugin/bignums_syntax_plugin.cmxa
-# CAMLOPT -shared -o plugin/bignums_syntax_plugin.cmxs
-# COQC BigNumPrelude.v
-# Fatal error: Not enough heap memory to reserve minor heaps
-# Aborted (core dumped)
-# make[2]: *** [Makefile.coq:847: BigNumPrelude.vo] Error 134
-# make[2]: *** Waiting for unfinished jobs....
-# Aborted
-# make[2]: *** [Makefile.coq:847: SpecViaQ/QSig.vo] Error 134
-# make[1]: *** [Makefile.coq:417: all] Error 2
-# make[1]: Leaving directory &#39;/home/bench/.opam/ocaml-base-compiler.5.0.0/.opam-switch/build/coq-bignums.dev&#39;
-# make: *** [Makefile:2: all] Error 2
+# Error: Unbound module Tac2val
+# Hint: Did you mean Tac2bt, Tac2dyn, Tac2env or Tac2ffi?
+# make[1]: *** [Makefile.coq:765: src/Rewriter/Util/plugins/ltac2_extra.cmx] Error 2
+# make[1]: *** Waiting for unfinished jobs....
+# While loading initial state:
+# Warning: Native compiler is disabled, -native-compiler ondemand option
+# ignored. [native-compiler-disabled,native-compiler,default]
+# While loading initial state:
+# Warning: Native compiler is disabled, -native-compiler ondemand option
+# ignored. [native-compiler-disabled,native-compiler,default]
+# make: *** [Makefile.coq:417: all] Error 2
 &lt;&gt;&lt;&gt; Error report &lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;
 +- The following actions failed
-| - build coq-bignums  dev
-| - build coq-coqutil  dev
 | - build coq-rewriter dev
 +- 
-+- The following changes have been performed (the rest was aborted)
++- The following changes have been performed
 | - install conf-findutils 1
+| - install coq-bignums    dev
+| - install coq-coqprime   dev
+| - install coq-coqutil    dev
 +- 
 # Run eval $(opam env) to update the current shell environment
 The former state can be restored with:
-    /usr/local/bin/opam switch import &quot;/home/bench/.opam/ocaml-base-compiler.5.0.0/.opam-switch/backup/state-20240113181057.export&quot;
+    /usr/local/bin/opam switch import &quot;/home/bench/.opam/ocaml-base-compiler.5.0.0/.opam-switch/backup/state-20240210052556.export&quot;
 </pre></dd>
             </dl>
             <h2>Install 🚀</h2>

@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>coquelicot: Error with dependencies 🚒</title>
+    <title>coquelicot: Not compatible 👼</title>
     <link rel="shortcut icon" type="image/png" href="../../../../../favicon.png" />
     <link href="../../../../../bootstrap.min.css" rel="stylesheet">
     <link href="../../../../../bootstrap-custom.css" rel="stylesheet">
@@ -39,7 +39,7 @@
               coquelicot
               <small>
                 3.3.0
-                <span class="label label-warning">Error with dependencies 🚒</span>
+                <span class="label label-info">Not compatible 👼</span>
               </small>
             </h1>
             <h2>Context</h2>
@@ -55,7 +55,7 @@ coq                   dev         The Coq Proof Assistant
 coq-core              dev         The Coq Proof Assistant -- Core Binaries and Tools
 coq-stdlib            dev         The Coq Proof Assistant -- Standard Library
 coqide-server         dev         The Coq Proof Assistant, XML protocol server
-dune                  3.12.2      Fast, portable, and opinionated build system
+dune                  3.13.0      Fast, portable, and opinionated build system
 ocaml                 5.0.0       The OCaml compiler (virtual package)
 ocaml-base-compiler   5.0.0       Official release 5.0.0
 ocaml-config          3           OCaml Switch Configuration
@@ -76,7 +76,7 @@ build: [
 ]
 install: [&quot;./remake&quot; &quot;install&quot;]
 depends: [
-  &quot;coq&quot; {&gt;= &quot;8.12&quot;}
+  &quot;coq&quot; {&gt;= &quot;8.12&quot; &amp; &lt; &quot;8.19~&quot;}
   &quot;coq-mathcomp-ssreflect&quot; {&gt;= &quot;1.6&quot; &amp; &lt; &quot;1.17~&quot;}
   &quot;conf-autoconf&quot; {build &amp; dev}
   (&quot;conf-g++&quot; {build} | &quot;conf-clang&quot; {build})
@@ -114,83 +114,44 @@ url {
               <dt>Command</dt>
               <dd><code>opam install -y --show-action coq-coquelicot.3.3.0 coq.dev</code></dd>
               <dt>Return code</dt>
-              <dd>0</dd>
+              <dd>5120</dd>
+              <dt>Output</dt>
+              <dd><pre>[NOTE] Package coq is already installed (current version is dev).
+[ERROR] Package conflict!
+  * No agreement on the version of coq:
+    - coq &gt;= dev
+    - coq-coquelicot = 3.3.0 -&gt; coq &lt; 8.19~
+  * No agreement on the version of ocaml:
+    - (invariant) -&gt; ocaml-base-compiler = 5.0.0 -&gt; ocaml = 5.0.0
+    - coq-coquelicot = 3.3.0 -&gt; coq &lt; 8.19~ -&gt; ocaml &lt; 4.05.0
+    You can temporarily relax the switch invariant with `--update-invariant&#39;
+  * No agreement on the version of ocaml-base-compiler:
+    - (invariant) -&gt; ocaml-base-compiler = 5.0.0
+    - coq-coquelicot = 3.3.0 -&gt; coq &lt; 8.19~ -&gt; ocaml &lt; 4.05.0 -&gt; ocaml-base-compiler = 3.07+1
+  * Incompatible packages:
+    - (invariant) -&gt; ocaml-base-compiler = 5.0.0 -&gt; base-nnp
+    - coq-coquelicot = 3.3.0 -&gt; coq &lt; 8.19~
+  * Missing dependency:
+    - coq-coquelicot = 3.3.0 -&gt; coq &lt; 8.19~ -&gt; ocaml &lt; 4.05.0 -&gt; ocaml-variants -&gt; ocaml-beta
+    unmet availability conditions: &#39;enable-ocaml-beta-repository&#39;
+No solution found, exiting
+</pre></dd>
             </dl>
             <p>Dry install without Coq/switch base, to test if the problem was incompatibility with the current Coq/OCaml version:</p>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>true</code></dd>
+              <dd><code>opam remove -y coq; opam install -y --show-action --unlock-base coq-coquelicot.3.3.0</code></dd>
               <dt>Return code</dt>
               <dd>0</dd>
             </dl>
             <h2>Install dependencies</h2>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>opam list; echo; ulimit -Sv 4000000; timeout 4h opam install -y --deps-only coq-coquelicot.3.3.0 coq.dev</code></dd>
+              <dd><code>true</code></dd>
               <dt>Return code</dt>
-              <dd>7936</dd>
+              <dd>0</dd>
               <dt>Duration</dt>
-              <dd>1 m 0 s</dd>
-              <dt>Output</dt>
-              <dd><pre># Packages matching: installed
-# Name                # Installed # Synopsis
-base-bigarray         base
-base-domains          base
-base-nnp              base        Naked pointers prohibited in the OCaml heap
-base-threads          base
-base-unix             base
-conf-gmp              4           Virtual package relying on a GMP lib system installation
-coq                   dev         The Coq Proof Assistant
-coq-core              dev         The Coq Proof Assistant -- Core Binaries and Tools
-coq-stdlib            dev         The Coq Proof Assistant -- Standard Library
-coqide-server         dev         The Coq Proof Assistant, XML protocol server
-dune                  3.12.2      Fast, portable, and opinionated build system
-ocaml                 5.0.0       The OCaml compiler (virtual package)
-ocaml-base-compiler   5.0.0       Official release 5.0.0
-ocaml-config          3           OCaml Switch Configuration
-ocaml-options-vanilla 1           Ensure that OCaml is compiled with no special options enabled
-ocamlfind             1.9.6       A library manager for OCaml
-zarith                1.13        Implements arithmetic and logical operations over arbitrary-precision integers
-The following actions will be performed:
-  - install conf-g++               1.0
-  - install coq-mathcomp-ssreflect 1.11+beta1
-===== 2 to install =====
-&lt;&gt;&lt;&gt; Processing actions &lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;
--&gt; retrieved coq-mathcomp-ssreflect.1.11+beta1  (https://github.com/math-comp/math-comp/archive/mathcomp-1.11+beta1.tar.gz)
--&gt; installed conf-g++.1.0
-[ERROR] The compilation of coq-mathcomp-ssreflect.1.11+beta1 failed at &quot;make -C mathcomp/ssreflect -j 4&quot;.
-#=== ERROR while compiling coq-mathcomp-ssreflect.1.11+beta1 ==================#
-# context              2.1.5 | linux/x86_64 | ocaml-base-compiler.5.0.0 | file:///home/bench/run/opam-coq-archive/extra-dev
-# path                 ~/.opam/ocaml-base-compiler.5.0.0/.opam-switch/build/coq-mathcomp-ssreflect.1.11+beta1
-# command              ~/.opam/opam-init/hooks/sandbox.sh build make -C mathcomp/ssreflect -j 4
-# exit-code            2
-# env-file             ~/.opam/log/coq-mathcomp-ssreflect-23471-334745.env
-# output-file          ~/.opam/log/coq-mathcomp-ssreflect-23471-334745.out
-### output ###
-# [...]
-# Fatal error: Not enough heap memory to reserve minor heaps
-# Fatal error: Not enough heap memory to reserve minor heaps
-# Aborted (core dumped)
-# make[2]: *** [Makefile.coq:847: ssrmatching.vo] Error 134
-# make[2]: *** Waiting for unfinished jobs....
-# Aborted (core dumped)
-# make[2]: *** [Makefile.coq:847: ssreflect.vo] Error 134
-# Aborted
-# make[2]: *** [Makefile.coq:847: ssrnotations.vo] Error 134
-# make[1]: *** [Makefile.coq:417: all] Error 2
-# make: *** [../Makefile.common:85: this-build] Error 2
-# make: Leaving directory &#39;/home/bench/.opam/ocaml-base-compiler.5.0.0/.opam-switch/build/coq-mathcomp-ssreflect.1.11+beta1/mathcomp/ssreflect&#39;
-&lt;&gt;&lt;&gt; Error report &lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;
-+- The following actions failed
-| - build coq-mathcomp-ssreflect 1.11+beta1
-+- 
-+- The following changes have been performed
-| - install conf-g++ 1.0
-+- 
-# Run eval $(opam env) to update the current shell environment
-The former state can be restored with:
-    /usr/local/bin/opam switch import &quot;/home/bench/.opam/ocaml-base-compiler.5.0.0/.opam-switch/backup/state-20240115171159.export&quot;
-</pre></dd>
+              <dd>0 s</dd>
             </dl>
             <h2>Install 🚀</h2>
             <dl class="dl-horizontal">

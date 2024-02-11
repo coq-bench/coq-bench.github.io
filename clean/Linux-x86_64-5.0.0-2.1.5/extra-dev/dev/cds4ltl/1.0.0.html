@@ -55,7 +55,7 @@ coq                   dev         The Coq Proof Assistant
 coq-core              dev         The Coq Proof Assistant -- Core Binaries and Tools
 coq-stdlib            dev         The Coq Proof Assistant -- Standard Library
 coqide-server         dev         The Coq Proof Assistant, XML protocol server
-dune                  3.12.2      Fast, portable, and opinionated build system
+dune                  3.13.0      Fast, portable, and opinionated build system
 ocaml                 5.0.0       The OCaml compiler (virtual package)
 ocaml-base-compiler   5.0.0       Official release 5.0.0
 ocaml-config          3           OCaml Switch Configuration
@@ -118,7 +118,7 @@ authors: [
             <h2>Install dependencies</h2>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>opam list; echo; ulimit -Sv 4000000; timeout 4h opam install -y --deps-only coq-cds4ltl.1.0.0 coq.dev</code></dd>
+              <dd><code>opam list; echo; timeout 4h opam install -y --deps-only coq-cds4ltl.1.0.0 coq.dev</code></dd>
               <dt>Return code</dt>
               <dd>0</dd>
               <dt>Duration</dt>
@@ -145,7 +145,7 @@ coq                   dev         The Coq Proof Assistant
 coq-core              dev         The Coq Proof Assistant -- Core Binaries and Tools
 coq-stdlib            dev         The Coq Proof Assistant -- Standard Library
 coqide-server         dev         The Coq Proof Assistant, XML protocol server
-dune                  3.12.2      Fast, portable, and opinionated build system
+dune                  3.13.0      Fast, portable, and opinionated build system
 ocaml                 5.0.0       The OCaml compiler (virtual package)
 ocaml-base-compiler   5.0.0       Official release 5.0.0
 ocaml-config          3           OCaml Switch Configuration
@@ -172,6 +172,11 @@ Processing  2/3: [coq-cds4ltl: make]
 - COQC src/LTL.v
 - COQC src/Model.v
 - COQC src/Denote.v
+- File &quot;./src/Denote.v&quot;, line 93, characters 2-55:
+- Warning:
+- &quot;auto with *&quot; was used through the default &quot;intuition_solver&quot; tactic.
+- This will be replaced by just &quot;auto&quot; in the future.
+- [intuition-auto-with-star,deprecated-since-8.17,deprecated,default]
 - File &quot;./src/Model.v&quot;, line 216, characters 4-12:
 - Error: The reference elimtype was not found in the current environment.
 - 
@@ -180,12 +185,7 @@ Processing  2/3: [coq-cds4ltl: make]
 - &quot;auto with *&quot; was used through the default &quot;intuition_solver&quot; tactic.
 - This will be replaced by just &quot;auto&quot; in the future.
 - [intuition-auto-with-star,deprecated-since-8.17,deprecated,default]
-- File &quot;./src/Denote.v&quot;, line 93, characters 2-55:
-- Warning:
-- &quot;auto with *&quot; was used through the default &quot;intuition_solver&quot; tactic.
-- This will be replaced by just &quot;auto&quot; in the future.
-- [intuition-auto-with-star,deprecated-since-8.17,deprecated,default]
-- make[2]: *** [Makefile.coq:847: src/Model.vo] Error 1
+- make[2]: *** [Makefile.coq:848: src/Model.vo] Error 1
 - make[2]: *** [src/Model.vo] Deleting file &#39;src/Model.glob&#39;
 - make[2]: *** Waiting for unfinished jobs....
 - make[1]: *** [Makefile.coq:417: all] Error 2
@@ -197,17 +197,17 @@ Processing  2/3: [coq-cds4ltl: make]
 # path                 ~/.opam/ocaml-base-compiler.5.0.0/.opam-switch/build/coq-cds4ltl.1.0.0
 # command              ~/.opam/opam-init/hooks/sandbox.sh build make -j4
 # exit-code            2
-# env-file             ~/.opam/log/coq-cds4ltl-18291-592fb5.env
-# output-file          ~/.opam/log/coq-cds4ltl-18291-592fb5.out
+# env-file             ~/.opam/log/coq-cds4ltl-27309-246077.env
+# output-file          ~/.opam/log/coq-cds4ltl-27309-246077.out
 ### output ###
+# Error: The reference elimtype was not found in the current environment.
 # [...]
-# [intuition-auto-with-star,deprecated-since-8.17,deprecated,default]
 # File &quot;./src/Denote.v&quot;, line 93, characters 2-55:
 # Warning:
 # &quot;auto with *&quot; was used through the default &quot;intuition_solver&quot; tactic.
 # This will be replaced by just &quot;auto&quot; in the future.
 # [intuition-auto-with-star,deprecated-since-8.17,deprecated,default]
-# make[2]: *** [Makefile.coq:847: src/Model.vo] Error 1
+# make[2]: *** [Makefile.coq:848: src/Model.vo] Error 1
 # make[2]: *** [src/Model.vo] Deleting file &#39;src/Model.glob&#39;
 # make[2]: *** Waiting for unfinished jobs....
 # make[1]: *** [Makefile.coq:417: all] Error 2

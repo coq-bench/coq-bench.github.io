@@ -55,7 +55,7 @@ coq                   dev         The Coq Proof Assistant
 coq-core              dev         The Coq Proof Assistant -- Core Binaries and Tools
 coq-stdlib            dev         The Coq Proof Assistant -- Standard Library
 coqide-server         dev         The Coq Proof Assistant, XML protocol server
-dune                  3.12.2      Fast, portable, and opinionated build system
+dune                  3.13.0      Fast, portable, and opinionated build system
 ocaml                 5.0.0       The OCaml compiler (virtual package)
 ocaml-base-compiler   5.0.0       Official release 5.0.0
 ocaml-config          3           OCaml Switch Configuration
@@ -88,6 +88,7 @@ depends: [
   &quot;coq-mathcomp-multinomials&quot; {&gt;= &quot;2.0&quot;}
   &quot;coq-mathcomp-real-closed&quot; {&gt;= &quot;2.0&quot;}
 ]
+conflicts: [ &quot;coq-hierarchy-builder&quot; {&gt;= &quot;1.7.0&quot;} ]
 tags: [
   &quot;category:Computer Science/Decision Procedures and Certified Algorithms/Correctness proofs of algorithms&quot;
   &quot;keyword:effective algebra&quot;
@@ -139,11 +140,11 @@ url {
             <h2>Install dependencies</h2>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>opam list; echo; ulimit -Sv 4000000; timeout 4h opam install -y --deps-only coq-coqeal.2.0.0 coq.dev</code></dd>
+              <dd><code>opam list; echo; timeout 4h opam install -y --deps-only coq-coqeal.2.0.0 coq.dev</code></dd>
               <dt>Return code</dt>
               <dd>7936</dd>
               <dt>Duration</dt>
-              <dd>4 m 0 s</dd>
+              <dd>10 m 0 s</dd>
               <dt>Output</dt>
               <dd><pre># Packages matching: installed
 # Name                # Installed # Synopsis
@@ -157,7 +158,7 @@ coq                   dev         The Coq Proof Assistant
 coq-core              dev         The Coq Proof Assistant -- Core Binaries and Tools
 coq-stdlib            dev         The Coq Proof Assistant -- Standard Library
 coqide-server         dev         The Coq Proof Assistant, XML protocol server
-dune                  3.12.2      Fast, portable, and opinionated build system
+dune                  3.13.0      Fast, portable, and opinionated build system
 ocaml                 5.0.0       The OCaml compiler (virtual package)
 ocaml-base-compiler   5.0.0       Official release 5.0.0
 ocaml-config          3           OCaml Switch Configuration
@@ -191,7 +192,7 @@ The following actions will be performed:
   - install atdgen                    2.15.0
   - install elpi                      1.18.1
   - install coq-elpi                  dev
-  - install coq-hierarchy-builder     dev
+  - install coq-hierarchy-builder     1.6.0
   - install coq-mathcomp-ssreflect    dev
   - install coq-mathcomp-finmap       dev
   - install coq-mathcomp-fingroup     dev
@@ -205,133 +206,89 @@ The following actions will be performed:
 &lt;&gt;&lt;&gt; Processing actions &lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;
 -&gt; retrieved atd.2.15.0  (https://opam.ocaml.org/cache)
 -&gt; retrieved atdts.2.15.0  (cached)
+-&gt; retrieved atdgen.2.15.0  (https://opam.ocaml.org/cache)
 -&gt; retrieved biniou.1.2.2  (https://opam.ocaml.org/cache)
 -&gt; retrieved camlp-streams.5.0.1  (https://opam.ocaml.org/cache)
 -&gt; retrieved cmdliner.1.2.0  (https://opam.ocaml.org/cache)
--&gt; installed camlp-streams.5.0.1
--&gt; retrieved atdgen.2.15.0  (https://opam.ocaml.org/cache)
 -&gt; retrieved atdgen-runtime.2.15.0  (https://opam.ocaml.org/cache)
+-&gt; installed camlp-streams.5.0.1
+-&gt; retrieved coq-hierarchy-builder.1.6.0  (https://github.com/math-comp/hierarchy-builder/releases/download/v1.6.0/hierarchy-builder-1.6.0.tar.gz)
 -&gt; installed cmdliner.1.2.0
--&gt; retrieved coq-hierarchy-builder.dev  (git+https://github.com/math-comp/hierarchy-builder.git#master)
--&gt; retrieved coq-elpi.dev  (git+https://github.com/LPCIC/coq-elpi.git#coq-master)
 -&gt; retrieved coq-bignums.dev  (git+https://github.com/coq/bignums.git#master)
-[ERROR] The compilation of coq-bignums.dev failed at &quot;make -j4&quot;.
--&gt; retrieved coq-mathcomp-bigenough.dev  (git+https://github.com/math-comp/bigenough.git#master)
+-&gt; retrieved coq-elpi.dev  (git+https://github.com/LPCIC/coq-elpi.git#coq-master)
 -&gt; retrieved coq-mathcomp-algebra.dev  (git+https://github.com/math-comp/math-comp.git)
--&gt; retrieved coq-mathcomp-field.dev  (git+https://github.com/math-comp/math-comp.git)
+-&gt; retrieved coq-mathcomp-bigenough.dev  (git+https://github.com/math-comp/bigenough.git#master)
 -&gt; retrieved coq-mathcomp-fingroup.dev  (git+https://github.com/math-comp/math-comp.git)
--&gt; retrieved coq-mathcomp-real-closed.dev  (git+https://github.com/math-comp/real-closed.git)
+-&gt; retrieved coq-mathcomp-field.dev  (git+https://github.com/math-comp/math-comp.git)
 -&gt; retrieved coq-mathcomp-finmap.dev  (git+https://github.com/math-comp/finmap.git#master)
 -&gt; retrieved coq-mathcomp-multinomials.dev  (git+https://github.com/math-comp/multinomials.git#master)
 -&gt; retrieved coq-mathcomp-solvable.dev  (git+https://github.com/math-comp/math-comp.git)
+-&gt; retrieved coq-mathcomp-real-closed.dev  (git+https://github.com/math-comp/real-closed.git)
+-&gt; retrieved cppo.1.6.9  (https://opam.ocaml.org/cache)
 -&gt; retrieved coq-mathcomp-ssreflect.dev  (git+https://github.com/math-comp/math-comp.git#master)
 -&gt; retrieved easy-format.1.3.4  (https://opam.ocaml.org/cache)
--&gt; retrieved cppo.1.6.9  (https://opam.ocaml.org/cache)
 -&gt; installed easy-format.1.3.4
 -&gt; installed cppo.1.6.9
 -&gt; installed biniou.1.2.2
 -&gt; retrieved elpi.1.18.1  (https://opam.ocaml.org/cache)
 -&gt; retrieved coq-paramcoq.dev  (git+https://github.com/coq-community/paramcoq.git)
-[ERROR] The compilation of coq-paramcoq.dev failed at &quot;make -j4&quot;.
+-&gt; installed coq-paramcoq.dev
+-&gt; installed coq-bignums.dev
 -&gt; retrieved menhir.dev  (git+https://gitlab.inria.fr/fpottier/menhir.git#master)
+-&gt; retrieved menhirLib.dev  (git+https://gitlab.inria.fr/fpottier/menhir.git#master)
+-&gt; retrieved menhirSdk.dev  (git+https://gitlab.inria.fr/fpottier/menhir.git#master)
 -&gt; retrieved ocaml-compiler-libs.v0.12.4  (https://opam.ocaml.org/cache)
 -&gt; retrieved ppx_derivers.1.2.1  (https://opam.ocaml.org/cache)
 -&gt; retrieved ppx_deriving.5.2.1  (https://opam.ocaml.org/cache)
--&gt; installed ppx_derivers.1.2.1
--&gt; retrieved ppxlib.0.31.0  (https://opam.ocaml.org/cache)
 -&gt; retrieved re.1.11.0  (https://opam.ocaml.org/cache)
 -&gt; retrieved result.1.5  (https://opam.ocaml.org/cache)
--&gt; installed seq.base
--&gt; installed ocaml-compiler-libs.v0.12.4
--&gt; installed result.1.5
--&gt; retrieved menhirLib.dev  (git+https://gitlab.inria.fr/fpottier/menhir.git#master)
+-&gt; retrieved ppxlib.0.31.0  (https://opam.ocaml.org/cache)
 -&gt; retrieved sexplib0.v0.16.0  (https://opam.ocaml.org/cache)
 -&gt; retrieved stdlib-shims.0.3.0  (https://opam.ocaml.org/cache)
 -&gt; retrieved yojson.2.1.2  (https://opam.ocaml.org/cache)
+-&gt; installed ppx_derivers.1.2.1
+-&gt; installed result.1.5
+-&gt; installed seq.base
+-&gt; installed ocaml-compiler-libs.v0.12.4
+-&gt; installed sexplib0.v0.16.0
 -&gt; installed stdlib-shims.0.3.0
 -&gt; installed re.1.11.0
--&gt; installed sexplib0.v0.16.0
--&gt; installed menhirLib.dev
--&gt; retrieved menhirSdk.dev  (git+https://gitlab.inria.fr/fpottier/menhir.git#master)
 -&gt; installed yojson.2.1.2
 -&gt; installed atdgen-runtime.2.15.0
--&gt; installed menhirSdk.dev
 -&gt; installed ppxlib.0.31.0
 -&gt; installed ppx_deriving.5.2.1
+-&gt; installed menhirLib.dev
+-&gt; installed menhirSdk.dev
 -&gt; installed menhir.dev
 -&gt; installed atd.2.15.0
--&gt; installed atdgen.2.15.0
 -&gt; installed atdts.2.15.0
+-&gt; installed atdgen.2.15.0
 -&gt; installed elpi.1.18.1
 [ERROR] The compilation of coq-elpi.dev failed at &quot;make build COQBIN=/home/bench/.opam/ocaml-base-compiler.5.0.0/bin/ ELPIDIR=/home/bench/.opam/ocaml-base-compiler.5.0.0/lib/elpi OCAMLWARN=&quot;.
-#=== ERROR while compiling coq-paramcoq.dev ===================================#
-# context              2.1.5 | linux/x86_64 | ocaml-base-compiler.5.0.0 | file:///home/bench/run/opam-coq-archive/extra-dev
-# path                 ~/.opam/ocaml-base-compiler.5.0.0/.opam-switch/build/coq-paramcoq.dev
-# command              ~/.opam/opam-init/hooks/sandbox.sh build make -j4
-# exit-code            2
-# env-file             ~/.opam/log/coq-paramcoq-21431-6fff72.env
-# output-file          ~/.opam/log/coq-paramcoq-21431-6fff72.out
-### output ###
-# [...]
-# CAMLOPT -c -for-pack Paramcoq src/declare_translation.ml
-# CAMLOPT -c -for-pack Paramcoq src/abstraction.ml
-# CAMLOPT -pack -o src/paramcoq.cmx
-# CAMLOPT -a -o src/paramcoq.cmxa
-# CAMLOPT -shared -o src/paramcoq.cmxs
-# COQC theories/Param.v
-# Fatal error: Not enough heap memory to reserve minor heaps
-# Aborted (core dumped)
-# make[2]: *** [Makefile.coq:847: theories/Param.vo] Error 134
-# make[1]: *** [Makefile.coq:417: all] Error 2
-# make[1]: Leaving directory &#39;/home/bench/.opam/ocaml-base-compiler.5.0.0/.opam-switch/build/coq-paramcoq.dev&#39;
-# make: *** [Makefile:2: all] Error 2
 #=== ERROR while compiling coq-elpi.dev =======================================#
 # context              2.1.5 | linux/x86_64 | ocaml-base-compiler.5.0.0 | file:///home/bench/run/opam-coq-archive/extra-dev
 # path                 ~/.opam/ocaml-base-compiler.5.0.0/.opam-switch/build/coq-elpi.dev
 # command              ~/.opam/opam-init/hooks/sandbox.sh build make build COQBIN=/home/bench/.opam/ocaml-base-compiler.5.0.0/bin/ ELPIDIR=/home/bench/.opam/ocaml-base-compiler.5.0.0/lib/elpi OCAMLWARN=
 # exit-code            2
-# env-file             ~/.opam/log/coq-elpi-21431-075edc.env
-# output-file          ~/.opam/log/coq-elpi-21431-075edc.out
+# env-file             ~/.opam/log/coq-elpi-22523-450474.env
+# output-file          ~/.opam/log/coq-elpi-22523-450474.out
 ### output ###
 # [...]
-# CAMLOPT -c -for-pack Elpi_plugin src/coq_elpi_vernacular.ml
-# CAMLOPT -c -for-pack Elpi_plugin src/coq_elpi_vernacular_syntax.ml
-# CAMLOPT -pack -o src/elpi_plugin.cmx
-# CAMLOPT -a -o src/elpi_plugin.cmxa
-# CAMLOPT -shared -o src/elpi_plugin.cmxs
-# COQC theories/elpi.v
-# Fatal error: Not enough heap memory to reserve minor heaps
-# Aborted (core dumped)
-# make[3]: *** [Makefile.coq:847: theories/elpi.vo] Error 134
-# make[2]: *** [Makefile.coq:417: all] Error 2
-# make[1]: *** [Makefile.coq:937: opt] Error 2
-# make: *** [Makefile:51: build-core] Error 2
-#=== ERROR while compiling coq-bignums.dev ====================================#
-# context              2.1.5 | linux/x86_64 | ocaml-base-compiler.5.0.0 | file:///home/bench/run/opam-coq-archive/extra-dev
-# path                 ~/.opam/ocaml-base-compiler.5.0.0/.opam-switch/build/coq-bignums.dev
-# command              ~/.opam/opam-init/hooks/sandbox.sh build make -j4
-# exit-code            2
-# env-file             ~/.opam/log/coq-bignums-21431-9b7e24.env
-# output-file          ~/.opam/log/coq-bignums-21431-9b7e24.out
-### output ###
-# [...]
-# CAMLOPT -a -o plugin/bignums_syntax_plugin.cmxa
-# CAMLOPT -shared -o plugin/bignums_syntax_plugin.cmxs
-# COQC BigNumPrelude.v
-# Fatal error: Not enough heap memory to reserve minor heaps
-# Aborted (core dumped)
-# make[2]: *** [Makefile.coq:847: BigNumPrelude.vo] Error 134
-# make[2]: *** Waiting for unfinished jobs....
-# Aborted
-# make[2]: *** [Makefile.coq:847: SpecViaQ/QSig.vo] Error 134
-# make[1]: *** [Makefile.coq:417: all] Error 2
-# make[1]: Leaving directory &#39;/home/bench/.opam/ocaml-base-compiler.5.0.0/.opam-switch/build/coq-bignums.dev&#39;
-# make: *** [Makefile:2: all] Error 2
+# fi
+# Using coq found in /home/bench/.opam/ocaml-base-compiler.5.0.0/bin/, from COQBIN or PATH
+# ########################## building plugin ##########################
+# CAMLC -c src/coq_elpi_utils.mli
+# CAMLC -c src/coq_elpi_programs.mli
+# CAMLC -c src/coq_elpi_HOAS.mli
+# File &quot;src/coq_elpi_HOAS.mli&quot;, line 36, characters 15-25:
+# 36 |   user_warns : UserWarn.t option;
+#                     ^^^^^^^^^^
+# Error: Unbound module UserWarn
+# make[1]: *** [Makefile.coq:751: src/coq_elpi_HOAS.cmi] Error 2
+# make: *** [Makefile:50: build-core] Error 2
 &lt;&gt;&lt;&gt; Error report &lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;
 +- The following actions failed
-| - build coq-bignums  dev
-| - build coq-elpi     dev
-| - build coq-paramcoq dev
+| - build coq-elpi dev
 +- 
 +- The following changes have been performed (the rest was aborted)
 | - install atd                 2.15.0
@@ -341,6 +298,8 @@ The following actions will be performed:
 | - install biniou              1.2.2
 | - install camlp-streams       5.0.1
 | - install cmdliner            1.2.0
+| - install coq-bignums         dev
+| - install coq-paramcoq        dev
 | - install cppo                1.6.9
 | - install easy-format         1.3.4
 | - install elpi                1.18.1
@@ -360,7 +319,7 @@ The following actions will be performed:
 +- 
 # Run eval $(opam env) to update the current shell environment
 The former state can be restored with:
-    /usr/local/bin/opam switch import &quot;/home/bench/.opam/ocaml-base-compiler.5.0.0/.opam-switch/backup/state-20240115181016.export&quot;
+    /usr/local/bin/opam switch import &quot;/home/bench/.opam/ocaml-base-compiler.5.0.0/.opam-switch/backup/state-20240211122211.export&quot;
 </pre></dd>
             </dl>
             <h2>Install 🚀</h2>

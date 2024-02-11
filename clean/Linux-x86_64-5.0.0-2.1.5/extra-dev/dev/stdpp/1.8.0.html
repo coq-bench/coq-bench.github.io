@@ -55,7 +55,7 @@ coq                   dev         The Coq Proof Assistant
 coq-core              dev         The Coq Proof Assistant -- Core Binaries and Tools
 coq-stdlib            dev         The Coq Proof Assistant -- Standard Library
 coqide-server         dev         The Coq Proof Assistant, XML protocol server
-dune                  3.12.2      Fast, portable, and opinionated build system
+dune                  3.13.0      Fast, portable, and opinionated build system
 ocaml                 5.0.0       The OCaml compiler (virtual package)
 ocaml-base-compiler   5.0.0       Official release 5.0.0
 ocaml-config          3           OCaml Switch Configuration
@@ -132,7 +132,7 @@ url {
             <h2>Install dependencies</h2>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>opam list; echo; ulimit -Sv 4000000; timeout 4h opam install -y --deps-only coq-stdpp.1.8.0 coq.dev</code></dd>
+              <dd><code>opam list; echo; timeout 4h opam install -y --deps-only coq-stdpp.1.8.0 coq.dev</code></dd>
               <dt>Return code</dt>
               <dd>0</dd>
               <dt>Duration</dt>
@@ -159,7 +159,7 @@ coq                   dev         The Coq Proof Assistant
 coq-core              dev         The Coq Proof Assistant -- Core Binaries and Tools
 coq-stdlib            dev         The Coq Proof Assistant -- Standard Library
 coqide-server         dev         The Coq Proof Assistant, XML protocol server
-dune                  3.12.2      Fast, portable, and opinionated build system
+dune                  3.13.0      Fast, portable, and opinionated build system
 ocaml                 5.0.0       The OCaml compiler (virtual package)
 ocaml-base-compiler   5.0.0       Official release 5.0.0
 ocaml-config          3           OCaml Switch Configuration
@@ -281,6 +281,7 @@ Processing  2/3: [coq-stdpp: ./make-package stdpp]
 - COQC stdpp/orders.v
 - COQC stdpp/fin.v
 - COQC stdpp/streams.v
+- COQC stdpp/functions.v
 - File &quot;./stdpp/fin.v&quot;, line 20, characters 0-41:
 - Warning: The &#39;%&#39; scope delimiter in &#39;Arguments&#39; commands is deprecated, use
 - &#39;%_&#39; instead (available since 8.19). The &#39;%&#39; syntax will be reused in a
@@ -296,7 +297,6 @@ Processing  2/3: [coq-stdpp: ./make-package stdpp]
 - Warning: Tactic Notation revert dependent (hyp) is deprecated since 8.18.
 - Use &quot;generalize dependent&quot; instead (&quot;revert dependent&quot; is currently an alias)
 - [deprecated-tactic-notation-since-8.18,deprecated-since-8.18,deprecated-tactic-notation,deprecated,default]
-- COQC stdpp/functions.v
 - COQC stdpp/hlist.v
 - COQC stdpp/telescopes.v
 - COQC stdpp/numbers.v
@@ -304,9 +304,8 @@ Processing  2/3: [coq-stdpp: ./make-package stdpp]
 - Error: Cannot find a physical path bound to logical path
 - NPeano with prefix Coq.
 - 
-- make[1]: *** [Makefile.package.stdpp:847: stdpp/numbers.vo] Error 1
+- make[1]: *** [Makefile.package.stdpp:848: stdpp/numbers.vo] Error 1
 - make[1]: *** [stdpp/numbers.vo] Deleting file &#39;stdpp/numbers.glob&#39;
-- make[1]: *** Waiting for unfinished jobs....
 - make: *** [Makefile.package.stdpp:417: all] Error 2
 [ERROR] The compilation of coq-stdpp.1.8.0 failed at &quot;./make-package stdpp -j4&quot;.
 #=== ERROR while compiling coq-stdpp.1.8.0 ====================================#
@@ -314,11 +313,12 @@ Processing  2/3: [coq-stdpp: ./make-package stdpp]
 # path                 ~/.opam/ocaml-base-compiler.5.0.0/.opam-switch/build/coq-stdpp.1.8.0
 # command              ~/.opam/opam-init/hooks/sandbox.sh build ./make-package stdpp -j4
 # exit-code            2
-# env-file             ~/.opam/log/coq-stdpp-27447-b376cb.env
-# output-file          ~/.opam/log/coq-stdpp-27447-b376cb.out
+# env-file             ~/.opam/log/coq-stdpp-29337-a79756.env
+# output-file          ~/.opam/log/coq-stdpp-29337-a79756.out
 ### output ###
 # [...]
-# COQC stdpp/functions.v
+# Use &quot;generalize dependent&quot; instead (&quot;revert dependent&quot; is currently an alias)
+# [deprecated-tactic-notation-since-8.18,deprecated-since-8.18,deprecated-tactic-notation,deprecated,default]
 # COQC stdpp/hlist.v
 # COQC stdpp/telescopes.v
 # COQC stdpp/numbers.v
@@ -326,9 +326,8 @@ Processing  2/3: [coq-stdpp: ./make-package stdpp]
 # Error: Cannot find a physical path bound to logical path
 # NPeano with prefix Coq.
 # 
-# make[1]: *** [Makefile.package.stdpp:847: stdpp/numbers.vo] Error 1
+# make[1]: *** [Makefile.package.stdpp:848: stdpp/numbers.vo] Error 1
 # make[1]: *** [stdpp/numbers.vo] Deleting file &#39;stdpp/numbers.glob&#39;
-# make[1]: *** Waiting for unfinished jobs....
 # make: *** [Makefile.package.stdpp:417: all] Error 2
 &lt;&gt;&lt;&gt; Error report &lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;
 +- The following actions failed

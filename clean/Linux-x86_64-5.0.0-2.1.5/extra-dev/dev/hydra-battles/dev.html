@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>hydra-battles: Error with dependencies 🚒</title>
+    <title>hydra-battles: Error 🔥</title>
     <link rel="shortcut icon" type="image/png" href="../../../../../favicon.png" />
     <link href="../../../../../bootstrap.min.css" rel="stylesheet">
     <link href="../../../../../bootstrap-custom.css" rel="stylesheet">
@@ -39,7 +39,7 @@
               hydra-battles
               <small>
                 dev
-                <span class="label label-warning">Error with dependencies 🚒</span>
+                <span class="label label-danger">Error 🔥</span>
               </small>
             </h1>
             <h2>Context</h2>
@@ -55,7 +55,7 @@ coq                   dev         The Coq Proof Assistant
 coq-core              dev         The Coq Proof Assistant -- Core Binaries and Tools
 coq-stdlib            dev         The Coq Proof Assistant -- Standard Library
 coqide-server         dev         The Coq Proof Assistant, XML protocol server
-dune                  3.12.2      Fast, portable, and opinionated build system
+dune                  3.13.0      Fast, portable, and opinionated build system
 ocaml                 5.0.0       The OCaml compiler (virtual package)
 ocaml-base-compiler   5.0.0       Official release 5.0.0
 ocaml-config          3           OCaml Switch Configuration
@@ -129,11 +129,20 @@ url {
             <h2>Install dependencies</h2>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>opam list; echo; ulimit -Sv 4000000; timeout 4h opam install -y --deps-only coq-hydra-battles.dev coq.dev</code></dd>
+              <dd><code>opam list; echo; timeout 4h opam install -y --deps-only coq-hydra-battles.dev coq.dev</code></dd>
+              <dt>Return code</dt>
+              <dd>0</dd>
+              <dt>Duration</dt>
+              <dd>1 m 0 s</dd>
+            </dl>
+            <h2>Install 🚀</h2>
+            <dl class="dl-horizontal">
+              <dt>Command</dt>
+              <dd><code>opam list; echo; timeout 4h opam install -y coq-hydra-battles.dev coq.dev</code></dd>
               <dt>Return code</dt>
               <dd>7936</dd>
               <dt>Duration</dt>
-              <dd>1 m 0 s</dd>
+              <dd>2 m 0 s</dd>
               <dt>Output</dt>
               <dd><pre># Packages matching: installed
 # Name                # Installed # Synopsis
@@ -145,83 +154,51 @@ base-unix             base
 conf-gmp              4           Virtual package relying on a GMP lib system installation
 coq                   dev         The Coq Proof Assistant
 coq-core              dev         The Coq Proof Assistant -- Core Binaries and Tools
+coq-equations         dev         A function definition package for Coq
+coq-libhyps           dev         Hypotheses manipulation library
 coq-stdlib            dev         The Coq Proof Assistant -- Standard Library
 coqide-server         dev         The Coq Proof Assistant, XML protocol server
-dune                  3.12.2      Fast, portable, and opinionated build system
+dune                  3.13.0      Fast, portable, and opinionated build system
 ocaml                 5.0.0       The OCaml compiler (virtual package)
 ocaml-base-compiler   5.0.0       Official release 5.0.0
 ocaml-config          3           OCaml Switch Configuration
 ocaml-options-vanilla 1           Ensure that OCaml is compiled with no special options enabled
 ocamlfind             1.9.6       A library manager for OCaml
 zarith                1.13        Implements arithmetic and logical operations over arbitrary-precision integers
+[NOTE] Package coq is already installed (current version is dev).
 The following actions will be performed:
-  - install coq-libhyps   dev
-  - install coq-equations dev
-===== 2 to install =====
+  - install coq-hydra-battles dev
 &lt;&gt;&lt;&gt; Processing actions &lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;
--&gt; retrieved coq-libhyps.dev  (git+https://github.com/Matafou/LibHyps#master)
-[ERROR] The compilation of coq-libhyps.dev failed at &quot;make -j4&quot;.
--&gt; retrieved coq-equations.dev  (git+https://github.com/mattam82/Coq-Equations#main)
-[ERROR] The compilation of coq-equations.dev failed at &quot;make -j4&quot;.
-#=== ERROR while compiling coq-libhyps.dev ====================================#
+-&gt; retrieved coq-hydra-battles.dev  (git+https://github.com/coq-community/hydra-battles.git#master)
+[ERROR] The compilation of coq-hydra-battles.dev failed at &quot;dune build -p coq-hydra-battles -j 4&quot;.
+#=== ERROR while compiling coq-hydra-battles.dev ==============================#
 # context              2.1.5 | linux/x86_64 | ocaml-base-compiler.5.0.0 | file:///home/bench/run/opam-coq-archive/extra-dev
-# path                 ~/.opam/ocaml-base-compiler.5.0.0/.opam-switch/build/coq-libhyps.dev
-# command              ~/.opam/opam-init/hooks/sandbox.sh build make -j4
-# exit-code            2
-# env-file             ~/.opam/log/coq-libhyps-3413-18b8c6.env
-# output-file          ~/.opam/log/coq-libhyps-3413-18b8c6.out
+# path                 ~/.opam/ocaml-base-compiler.5.0.0/.opam-switch/build/coq-hydra-battles.dev
+# command              ~/.opam/opam-init/hooks/sandbox.sh build dune build -p coq-hydra-battles -j 4
+# exit-code            1
+# env-file             ~/.opam/log/coq-hydra-battles-21202-079013.env
+# output-file          ~/.opam/log/coq-hydra-battles-21202-079013.out
 ### output ###
 # [...]
-# Fatal error: Not enough heap memory to reserve minor heaps
-# Aborted (core dumped)
-# COQC LibHyps/LibDecomp.v
-# COQC LibHyps/TacNewHyps.v
-# Fatal error: Not enough heap memory to reserve minor heaps
-# Fatal error: Not enough heap memory to reserve minor heaps
-# Aborted (core dumped)
-# make[1]: *** [Makefile:847: LibHyps/TacNewHyps.vo] Error 134
-# make[1]: *** Waiting for unfinished jobs....
-# Aborted
-# make[1]: *** [Makefile:847: LibHyps/LibDecomp.vo] Error 134
-# make: *** [Makefile:417: all] Error 2
-#=== ERROR while compiling coq-equations.dev ==================================#
-# context              2.1.5 | linux/x86_64 | ocaml-base-compiler.5.0.0 | file:///home/bench/run/opam-coq-archive/extra-dev
-# path                 ~/.opam/ocaml-base-compiler.5.0.0/.opam-switch/build/coq-equations.dev
-# command              ~/.opam/opam-init/hooks/sandbox.sh build make -j4
-# exit-code            2
-# env-file             ~/.opam/log/coq-equations-3413-fb0944.env
-# output-file          ~/.opam/log/coq-equations-3413-fb0944.out
-### output ###
-# [...]
-# CAMLOPT -c  src/principles.ml
-# CAMLOPT -c  src/equations.ml
-# CAMLOPT -c  src/g_equations.ml
-# CAMLOPT -a -o src/equations_plugin.cmxa
-# CAMLOPT -shared -o src/equations_plugin.cmxs
-# COQC theories/Init.v
-# Fatal error: Not enough heap memory to reserve minor heaps
-# Aborted (core dumped)
-# make[2]: *** [Makefile.coq:847: theories/Init.vo] Error 134
-# make[1]: *** [Makefile.coq:417: all] Error 2
-# make[1]: Leaving directory &#39;/home/bench/.opam/ocaml-base-compiler.5.0.0/.opam-switch/build/coq-equations.dev&#39;
-# make: *** [Makefile:6: all] Error 2
+# [intuition-auto-with-star,deprecated-since-8.17,deprecated,default]
+# File &quot;./theories/ordinals/MoreAck/FolExamples.v&quot;, line 419, characters 2-30:
+# Warning:
+# &quot;auto with *&quot; was used through the default &quot;intuition_solver&quot; tactic.
+# This will be replaced by just &quot;auto&quot; in the future.
+# [intuition-auto-with-star,deprecated-since-8.17,deprecated,default]
+# (cd _build/default &amp;&amp; /home/bench/.opam/ocaml-base-compiler.5.0.0/bin/coqc -w -deprecated-hint-rewrite-without-locality -w -unknown-option -w -deprecated-option -I /home/bench/.opam/ocaml-base-compiler.5.0.0/lib/coq/../coq-core/plugins/btauto -I /home/bench/.opam/ocaml-base-compiler.5.0.0/lib/coq/../coq-core/plugins/cc -I /home/bench/.opam/ocaml-base-compiler.5.0.0/lib/coq/../coq-core/plugins[...]
+#      = exH&#39; 2 (f v#2 &lt;&gt; f v#2)
+#      : Formula L
+# File &quot;./theories/ordinals/MoreAck/BadSubst.v&quot;, line 4, characters 0-20:
+# Warning: Notation &quot;_ = _&quot; was already used in scope fol_scope.
+# [notation-overridden,parsing,default]
 &lt;&gt;&lt;&gt; Error report &lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;
 +- The following actions failed
-| - build coq-equations dev
-| - build coq-libhyps   dev
+| - build coq-hydra-battles dev
 +- 
 - No changes have been performed
 # Run eval $(opam env) to update the current shell environment
 </pre></dd>
-            </dl>
-            <h2>Install 🚀</h2>
-            <dl class="dl-horizontal">
-              <dt>Command</dt>
-              <dd><code>true</code></dd>
-              <dt>Return code</dt>
-              <dd>0</dd>
-              <dt>Duration</dt>
-              <dd>0 s</dd>
             </dl>
             <h2>Installation size</h2>
             <p>No files were installed.</p>

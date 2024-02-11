@@ -55,7 +55,7 @@ coq                   dev         The Coq Proof Assistant
 coq-core              dev         The Coq Proof Assistant -- Core Binaries and Tools
 coq-stdlib            dev         The Coq Proof Assistant -- Standard Library
 coqide-server         dev         The Coq Proof Assistant, XML protocol server
-dune                  3.12.2      Fast, portable, and opinionated build system
+dune                  3.13.0      Fast, portable, and opinionated build system
 ocaml                 5.0.0       The OCaml compiler (virtual package)
 ocaml-base-compiler   5.0.0       Official release 5.0.0
 ocaml-config          3           OCaml Switch Configuration
@@ -113,11 +113,11 @@ url {
             <h2>Install dependencies</h2>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>opam list; echo; ulimit -Sv 4000000; timeout 4h opam install -y --deps-only coq-rewriter-perf-Medium.dev coq.dev</code></dd>
+              <dd><code>opam list; echo; timeout 4h opam install -y --deps-only coq-rewriter-perf-Medium.dev coq.dev</code></dd>
               <dt>Return code</dt>
               <dd>7936</dd>
               <dt>Duration</dt>
-              <dd>1 m 0 s</dd>
+              <dd>2 m 0 s</dd>
               <dt>Output</dt>
               <dd><pre># Packages matching: installed
 # Name                # Installed # Synopsis
@@ -131,7 +131,7 @@ coq                   dev         The Coq Proof Assistant
 coq-core              dev         The Coq Proof Assistant -- Core Binaries and Tools
 coq-stdlib            dev         The Coq Proof Assistant -- Standard Library
 coqide-server         dev         The Coq Proof Assistant, XML protocol server
-dune                  3.12.2      Fast, portable, and opinionated build system
+dune                  3.13.0      Fast, portable, and opinionated build system
 ocaml                 5.0.0       The OCaml compiler (virtual package)
 ocaml-base-compiler   5.0.0       Official release 5.0.0
 ocaml-config          3           OCaml Switch Configuration
@@ -153,19 +153,22 @@ The following actions will be performed:
 # path                 ~/.opam/ocaml-base-compiler.5.0.0/.opam-switch/build/coq-rewriter.dev
 # command              ~/.opam/opam-init/hooks/sandbox.sh build make -j4
 # exit-code            2
-# env-file             ~/.opam/log/coq-rewriter-17177-c3ecff.env
-# output-file          ~/.opam/log/coq-rewriter-17177-c3ecff.out
+# env-file             ~/.opam/log/coq-rewriter-13167-25b06d.env
+# output-file          ~/.opam/log/coq-rewriter-13167-25b06d.out
 ### output ###
-# sed &#39;s?@META@?src/Rewriter/Util/plugins/META.coq-rewriter?g&#39; _CoqProject.in &gt; _CoqProject
-# Error: Invalid empty COQ_EXTENDED_VERSION:
-# coqc --version || true
-# Fatal error: Not enough heap memory to reserve minor heaps
-# Aborted (core dumped)
-# coqtop &lt;/dev/null || true
-# Fatal error: Not enough heap memory to reserve minor heaps
-# Aborted (core dumped)
-# Makefile:27: Makefile.coq: No such file or directory
-# make: *** [Makefile:47: .coq-version] Error 1
+# [...]
+# CAMLOPT -c  src/Rewriter/Util/plugins/ltac2_extra.ml
+# File &quot;src/Rewriter/Util/plugins/ltac2_extra.ml&quot;, line 3, characters 5-12:
+# 3 | open Tac2val
+#          ^^^^^^^
+# Error: Unbound module Tac2val
+# Hint: Did you mean Tac2bt, Tac2dyn, Tac2env or Tac2ffi?
+# make[1]: *** [Makefile.coq:765: src/Rewriter/Util/plugins/ltac2_extra.cmx] Error 2
+# make[1]: *** Waiting for unfinished jobs....
+# While loading initial state:
+# Warning: Native compiler is disabled, -native-compiler ondemand option
+# ignored. [native-compiler-disabled,native-compiler,default]
+# make: *** [Makefile.coq:417: all] Error 2
 &lt;&gt;&lt;&gt; Error report &lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;
 +- The following actions failed
 | - build coq-rewriter dev
@@ -176,7 +179,7 @@ The following actions will be performed:
 +- 
 # Run eval $(opam env) to update the current shell environment
 The former state can be restored with:
-    /usr/local/bin/opam switch import &quot;/home/bench/.opam/ocaml-base-compiler.5.0.0/.opam-switch/backup/state-20240115201718.export&quot;
+    /usr/local/bin/opam switch import &quot;/home/bench/.opam/ocaml-base-compiler.5.0.0/.opam-switch/backup/state-20240209125307.export&quot;
 </pre></dd>
             </dl>
             <h2>Install 🚀</h2>
