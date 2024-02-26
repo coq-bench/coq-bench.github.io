@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>mathcomp-character: Error with dependencies 🚒</title>
+    <title>mathcomp-character: Not compatible 👼</title>
     <link rel="shortcut icon" type="image/png" href="../../../../../favicon.png" />
     <link href="../../../../../bootstrap.min.css" rel="stylesheet">
     <link href="../../../../../bootstrap-custom.css" rel="stylesheet">
@@ -39,11 +39,29 @@
               mathcomp-character
               <small>
                 1.8.0
-                <span class="label label-warning">Error with dependencies 🚒</span>
+                <span class="label label-info">Not compatible 👼</span>
               </small>
             </h1>
             <h2>Context</h2>
-            <pre>
+            <pre># Packages matching: installed
+# Name                # Installed # Synopsis
+base-bigarray         base
+base-domains          base
+base-nnp              base        Naked pointers prohibited in the OCaml heap
+base-threads          base
+base-unix             base
+conf-gmp              4           Virtual package relying on a GMP lib system installation
+coq                   8.17.0      The Coq Proof Assistant
+coq-core              8.17.0      The Coq Proof Assistant -- Core Binaries and Tools
+coq-stdlib            8.17.0      The Coq Proof Assistant -- Standard Library
+coqide-server         8.17.0      The Coq Proof Assistant, XML protocol server
+dune                  3.14.0      Fast, portable, and opinionated build system
+ocaml                 5.0.0       The OCaml compiler (virtual package)
+ocaml-base-compiler   5.0.0       Official release 5.0.0
+ocaml-config          3           OCaml Switch Configuration
+ocaml-options-vanilla 1           Ensure that OCaml is compiled with no special options enabled
+ocamlfind             1.9.6       A library manager for OCaml
+zarith                1.13        Implements arithmetic and logical operations over arbitrary-precision integers
 # opam file:
 opam-version: &quot;2.0&quot;
 name: &quot;coq-mathcomp-character&quot;
@@ -80,13 +98,23 @@ checksum: &quot;sha256=dcb3b29041d61084d21451cd38c0aeb61ef61dd136efaec96055a1cee
             <p>Dry install with the current Coq version:</p>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>opam install -y --show-action coq-mathcomp-character.1.8.0 coq.</code></dd>
+              <dd><code>opam install -y --show-action coq-mathcomp-character.1.8.0 coq.8.17.0</code></dd>
               <dt>Return code</dt>
-              <dd>512</dd>
+              <dd>5120</dd>
               <dt>Output</dt>
-              <dd><pre>opam: PACKAGES... arguments: Invalid character in package name &quot;coq.&quot;
-Usage: opam install [OPTION]... [PACKAGES]...
-Try `opam install --help&#39; or `opam --help&#39; for more information.
+              <dd><pre>[NOTE] Package coq is already installed (current version is 8.17.0).
+[ERROR] Package conflict!
+  * No agreement on the version of ocaml:
+    - (invariant) -&gt; ocaml-base-compiler = 5.0.0 -&gt; ocaml = 5.0.0
+    - coq-mathcomp-character = 1.8.0 -&gt; coq-mathcomp-field = 1.8.0 -&gt; coq-mathcomp-solvable = 1.8.0 -&gt; coq-mathcomp-algebra = 1.8.0 -&gt; coq-mathcomp-fingroup = 1.8.0 -&gt; coq-mathcomp-ssreflect = 1.8.0 -&gt; coq &lt; 8.10~ -&gt; ocaml &lt; 4.02.0
+    You can temporarily relax the switch invariant with `--update-invariant&#39;
+  * No agreement on the version of ocaml-base-compiler:
+    - (invariant) -&gt; ocaml-base-compiler = 5.0.0
+    - coq-mathcomp-character = 1.8.0 -&gt; coq-mathcomp-field = 1.8.0 -&gt; coq-mathcomp-solvable = 1.8.0 -&gt; coq-mathcomp-algebra = 1.8.0 -&gt; coq-mathcomp-fingroup = 1.8.0 -&gt; coq-mathcomp-ssreflect = 1.8.0 -&gt; coq &lt; 8.10~ -&gt; ocaml &lt; 4.02.0 -&gt; ocaml-base-compiler = 3.07+1
+  * Missing dependency:
+    - coq-mathcomp-character = 1.8.0 -&gt; coq-mathcomp-field = 1.8.0 -&gt; coq-mathcomp-solvable = 1.8.0 -&gt; coq-mathcomp-algebra = 1.8.0 -&gt; coq-mathcomp-fingroup = 1.8.0 -&gt; coq-mathcomp-ssreflect = 1.8.0 -&gt; coq &lt; 8.10~ -&gt; ocaml &lt; 4.02.0 -&gt; ocaml-variants &gt;= 3.09.2 -&gt; ocaml-beta
+    unmet availability conditions: &#39;enable-ocaml-beta-repository&#39;
+No solution found, exiting
 </pre></dd>
             </dl>
             <p>Dry install without Coq/switch base, to test if the problem was incompatibility with the current Coq/OCaml version:</p>
@@ -94,13 +122,7 @@ Try `opam install --help&#39; or `opam --help&#39; for more information.
               <dt>Command</dt>
               <dd><code>opam remove -y coq; opam install -y --show-action --unlock-base coq-mathcomp-character.1.8.0</code></dd>
               <dt>Return code</dt>
-              <dd>25344</dd>
-              <dt>Output</dt>
-              <dd><pre>Fatal error:
-Out of memory
-Fatal error:
-Out of memory
-</pre></dd>
+              <dd>0</dd>
             </dl>
             <h2>Install dependencies</h2>
             <dl class="dl-horizontal">

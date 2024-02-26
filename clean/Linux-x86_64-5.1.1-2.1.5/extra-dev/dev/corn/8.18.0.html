@@ -55,7 +55,7 @@ coq                   dev         The Coq Proof Assistant
 coq-core              dev         The Coq Proof Assistant -- Core Binaries and Tools
 coq-stdlib            dev         The Coq Proof Assistant -- Standard Library
 coqide-server         dev         The Coq Proof Assistant, XML protocol server
-dune                  3.13.0      Fast, portable, and opinionated build system
+dune                  3.14.0      Fast, portable, and opinionated build system
 ocaml                 5.1.1       The OCaml compiler (virtual package)
 ocaml-base-compiler   5.1.1       Official release 5.1.1
 ocaml-config          3           OCaml Switch Configuration
@@ -199,7 +199,7 @@ coq-core              dev         The Coq Proof Assistant -- Core Binaries and T
 coq-math-classes      dev         A library of abstract interfaces for mathematical structures in Coq.
 coq-stdlib            dev         The Coq Proof Assistant -- Standard Library
 coqide-server         dev         The Coq Proof Assistant, XML protocol server
-dune                  3.13.0      Fast, portable, and opinionated build system
+dune                  3.14.0      Fast, portable, and opinionated build system
 ocaml                 5.1.1       The OCaml compiler (virtual package)
 ocaml-base-compiler   5.1.1       Official release 5.1.1
 ocaml-config          3           OCaml Switch Configuration
@@ -258,6 +258,7 @@ Processing  2/3: [coq-corn: make]
 - Warning: Declaring a scope implicitly is deprecated; use in advance an
 - explicit &quot;Declare Scope setoid_scope.&quot;.
 - [undeclared-scope,deprecated-since-8.10,deprecated,default]
+- COQC algebra/OperationClasses.v
 - File &quot;./util/Container.v&quot;, line 1, characters 0-54:
 - Warning: Notation &quot;_ = _&quot; was already used in scope type_scope.
 - [notation-overridden,parsing,default]
@@ -268,7 +269,6 @@ Processing  2/3: [coq-corn: make]
 - Warning: Adding and removing hints in the core database implicitly is
 - deprecated. Please specify a hint database.
 - [implicit-core-hint-db,deprecated-since-8.10,deprecated,default]
-- COQC algebra/OperationClasses.v
 - COQC tactics/DiffTactics1.v
 - COQC logic/PropDecid.v
 - COQC reals/fast/LazyNat.v
@@ -280,14 +280,14 @@ Processing  2/3: [coq-corn: make]
 - COQC reals/stdlib/Markov.v
 - COQC stdlib_omissions/List.v
 - COQC order/PartialOrder.v
-- File &quot;./order/PartialOrder.v&quot;, line 55, characters 0-76:
-- Warning: Declaring a scope implicitly is deprecated; use in advance an
-- explicit &quot;Declare Scope po_scope.&quot;.
-- [undeclared-scope,deprecated-since-8.10,deprecated,default]
 - File &quot;./stdlib_omissions/List.v&quot;, line 30, characters 0-30:
 - Warning: Adding and removing hints in the core database implicitly is
 - deprecated. Please specify a hint database.
 - [implicit-core-hint-db,deprecated-since-8.10,deprecated,default]
+- File &quot;./order/PartialOrder.v&quot;, line 55, characters 0-76:
+- Warning: Declaring a scope implicitly is deprecated; use in advance an
+- explicit &quot;Declare Scope po_scope.&quot;.
+- [undeclared-scope,deprecated-since-8.10,deprecated,default]
 - File &quot;./stdlib_omissions/List.v&quot;, line 73, characters 2-12:
 - Warning:
 - &quot;auto with *&quot; was used through the default &quot;intuition_solver&quot; tactic.
@@ -323,7 +323,6 @@ Processing  2/3: [coq-corn: make]
 - Warning: Notation Nat.div_le_mono is deprecated since 8.17.
 - Use Div0.div_le_mono instead.
 - [deprecated-syntactic-definition-since-8.17,deprecated-since-8.17,deprecated-syntactic-definition,deprecated,default]
-- COQC stdlib_omissions/Z.v
 - File &quot;./reals/stdlib/ConstructiveDiagonal.v&quot;, line 436, characters 8-23:
 - Warning: Notation Nat.div_le_mono is deprecated since 8.17.
 - Use Div0.div_le_mono instead.
@@ -332,13 +331,6 @@ Processing  2/3: [coq-corn: make]
 - Warning: Notation Nat.div_le_mono is deprecated since 8.17.
 - Use Div0.div_le_mono instead.
 - [deprecated-syntactic-definition-since-8.17,deprecated-since-8.17,deprecated-syntactic-definition,deprecated,default]
-- File &quot;./stdlib_omissions/Z.v&quot;, line 2, characters 0-90:
-- Error: Cannot find a physical path bound to logical path
-- Coq.Numbers.Natural.Peano.NPeano.
-- 
-- make[1]: *** [Makefile:848: stdlib_omissions/Z.vo] Error 1
-- make[1]: *** [stdlib_omissions/Z.vo] Deleting file &#39;stdlib_omissions/Z.glob&#39;
-- make[1]: *** Waiting for unfinished jobs....
 - File &quot;./metric2/Metric.v&quot;, line 25, characters 0-54:
 - Warning: Notation &quot;_ = _&quot; was already used in scope type_scope.
 - [notation-overridden,parsing,default]
@@ -351,6 +343,20 @@ Processing  2/3: [coq-corn: make]
 - File &quot;./metric2/Metric.v&quot;, line 26, characters 0-55:
 - Warning: Notation &quot;_ ≠ _&quot; was already used in scope type_scope.
 - [notation-overridden,parsing,default]
+- COQC stdlib_omissions/Z.v
+- File &quot;./order/PartialOrder.v&quot;, line 82, characters 2-10:
+- Error:
+-  The relation (st_eq (r:=p)) is not a declared symmetric relation. Maybe you need to require the Coq.Classes.RelationClasses library
+- 
+- make[1]: *** [Makefile:848: order/PartialOrder.vo] Error 1
+- make[1]: *** [order/PartialOrder.vo] Deleting file &#39;order/PartialOrder.glob&#39;
+- make[1]: *** Waiting for unfinished jobs....
+- File &quot;./stdlib_omissions/Z.v&quot;, line 2, characters 0-90:
+- Error: Cannot find a physical path bound to logical path
+- Coq.Numbers.Natural.Peano.NPeano.
+- 
+- make[1]: *** [Makefile:848: stdlib_omissions/Z.vo] Error 1
+- make[1]: *** [stdlib_omissions/Z.vo] Deleting file &#39;stdlib_omissions/Z.glob&#39;
 - File &quot;./reals/stdlib/ConstructiveDiagonal.v&quot;, line 561, characters 43-58:
 - Warning: Notation Nat.div_le_mono is deprecated since 8.17.
 - Use Div0.div_le_mono instead.
@@ -366,13 +372,13 @@ Processing  2/3: [coq-corn: make]
 # path                 ~/.opam/ocaml-base-compiler.5.1.1/.opam-switch/build/coq-corn.8.18.0
 # command              ~/.opam/opam-init/hooks/sandbox.sh build make -j4
 # exit-code            2
-# env-file             ~/.opam/log/coq-corn-26581-8194ec.env
-# output-file          ~/.opam/log/coq-corn-26581-8194ec.out
+# env-file             ~/.opam/log/coq-corn-24561-0e2372.env
+# output-file          ~/.opam/log/coq-corn-24561-0e2372.out
 ### output ###
+# Coq.Numbers.Natural.Peano.NPeano.
 # [...]
-# File &quot;./metric2/Metric.v&quot;, line 26, characters 0-55:
-# Warning: Notation &quot;_ ≠ _&quot; was already used in scope type_scope.
-# [notation-overridden,parsing,default]
+# make[1]: *** [Makefile:848: stdlib_omissions/Z.vo] Error 1
+# make[1]: *** [stdlib_omissions/Z.vo] Deleting file &#39;stdlib_omissions/Z.glob&#39;
 # File &quot;./reals/stdlib/ConstructiveDiagonal.v&quot;, line 561, characters 43-58:
 # Warning: Notation Nat.div_le_mono is deprecated since 8.17.
 # Use Div0.div_le_mono instead.

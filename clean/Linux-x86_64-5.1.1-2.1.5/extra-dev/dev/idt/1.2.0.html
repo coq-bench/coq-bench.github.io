@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>idt: Error 🔥</title>
+    <title>idt: Error with dependencies 🚒</title>
     <link rel="shortcut icon" type="image/png" href="../../../../../favicon.png" />
     <link href="../../../../../bootstrap.min.css" rel="stylesheet">
     <link href="../../../../../bootstrap-custom.css" rel="stylesheet">
@@ -39,7 +39,7 @@
               idt
               <small>
                 1.2.0
-                <span class="label label-danger">Error 🔥</span>
+                <span class="label label-warning">Error with dependencies 🚒</span>
               </small>
             </h1>
             <h2>Context</h2>
@@ -55,7 +55,7 @@ coq                   dev         The Coq Proof Assistant
 coq-core              dev         The Coq Proof Assistant -- Core Binaries and Tools
 coq-stdlib            dev         The Coq Proof Assistant -- Standard Library
 coqide-server         dev         The Coq Proof Assistant, XML protocol server
-dune                  3.13.0      Fast, portable, and opinionated build system
+dune                  3.14.0      Fast, portable, and opinionated build system
 ocaml                 5.1.1       The OCaml compiler (virtual package)
 ocaml-base-compiler   5.1.1       Official release 5.1.1
 ocaml-config          3           OCaml Switch Configuration
@@ -124,18 +124,9 @@ url {
               <dt>Command</dt>
               <dd><code>opam list; echo; timeout 4h opam install -y --deps-only coq-idt.1.2.0 coq.dev</code></dd>
               <dt>Return code</dt>
-              <dd>0</dd>
-              <dt>Duration</dt>
-              <dd>8 m 0 s</dd>
-            </dl>
-            <h2>Install 🚀</h2>
-            <dl class="dl-horizontal">
-              <dt>Command</dt>
-              <dd><code>opam list; echo; timeout 4h opam install -y -v coq-idt.1.2.0 coq.dev</code></dd>
-              <dt>Return code</dt>
               <dd>7936</dd>
               <dt>Duration</dt>
-              <dd>1 m 0 s</dd>
+              <dd>10 m 0 s</dd>
               <dt>Output</dt>
               <dd><pre># Packages matching: installed
 # Name                # Installed # Synopsis
@@ -147,72 +138,77 @@ base-unix             base
 conf-gmp              4           Virtual package relying on a GMP lib system installation
 coq                   dev         The Coq Proof Assistant
 coq-core              dev         The Coq Proof Assistant -- Core Binaries and Tools
-coq-equations         dev         A function definition package for Coq
-coq-metacoq-common    dev         The common library of Template Coq and PCUIC
-coq-metacoq-template  dev         A quoting and unquoting library for Coq in Coq
-coq-metacoq-utils     dev         The utility library of Template Coq and PCUIC
 coq-stdlib            dev         The Coq Proof Assistant -- Standard Library
 coqide-server         dev         The Coq Proof Assistant, XML protocol server
-dune                  3.13.0      Fast, portable, and opinionated build system
+dune                  3.14.0      Fast, portable, and opinionated build system
 ocaml                 5.1.1       The OCaml compiler (virtual package)
 ocaml-base-compiler   5.1.1       Official release 5.1.1
 ocaml-config          3           OCaml Switch Configuration
 ocaml-options-vanilla 1           Ensure that OCaml is compiled with no special options enabled
 ocamlfind             1.9.6       A library manager for OCaml
-stdlib-shims          0.3.0       Backport some of the new stdlib features to older compiler
 zarith                1.13        Implements arithmetic and logical operations over arbitrary-precision integers
-[NOTE] Package coq is already installed (current version is dev).
 The following actions will be performed:
-  - install coq-idt 1.2.0
+  - install stdlib-shims         0.3.0
+  - install coq-equations        dev
+  - install coq-metacoq-utils    dev
+  - install coq-metacoq-common   dev
+  - install coq-metacoq-template dev
+===== 5 to install =====
 &lt;&gt;&lt;&gt; Processing actions &lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;
-Processing  1/3: [coq-idt.1.2.0: http]
-Processing  1/3:
--&gt; retrieved coq-idt.1.2.0  (https://github.com/ccyip/coq-idt/archive/refs/tags/v1.2.0.tar.gz)
-Processing  2/3: [coq-idt: make]
-+ /home/bench/.opam/opam-init/hooks/sandbox.sh &quot;build&quot; &quot;make&quot; &quot;-j4&quot; (CWD=/home/bench/.opam/ocaml-base-compiler.5.1.1/.opam-switch/build/coq-idt.1.2.0)
-- make[1]: Entering directory &#39;/home/bench/.opam/ocaml-base-compiler.5.1.1/.opam-switch/build/coq-idt.1.2.0&#39;
-- COQDEP VFILES
-- COQC theories/idt.v
-- COQC theories/utils.v
-- File &quot;./theories/idt.v&quot;, line 222, characters 21-39:
-- Error: The reference Universe.of_levels was not found in the current
-- environment.
-- 
-- make[2]: *** [Makefile.coq:848: theories/idt.vo] Error 1
-- make[2]: *** [theories/idt.vo] Deleting file &#39;theories/idt.glob&#39;
-- make[1]: *** [Makefile.coq:417: all] Error 2
-- make[1]: Leaving directory &#39;/home/bench/.opam/ocaml-base-compiler.5.1.1/.opam-switch/build/coq-idt.1.2.0&#39;
-- make: *** [Makefile:7: all] Error 2
-[ERROR] The compilation of coq-idt.1.2.0 failed at &quot;make -j4&quot;.
-#=== ERROR while compiling coq-idt.1.2.0 ======================================#
-# context              2.1.5 | linux/x86_64 | ocaml-base-compiler.5.1.1 | file:///home/bench/run/opam-coq-archive/released
-# path                 ~/.opam/ocaml-base-compiler.5.1.1/.opam-switch/build/coq-idt.1.2.0
-# command              ~/.opam/opam-init/hooks/sandbox.sh build make -j4
+-&gt; retrieved coq-equations.dev  (git+https://github.com/mattam82/Coq-Equations#main)
+-&gt; retrieved coq-metacoq-common.dev  (git+https:///github.com/metacoq/metacoq.git#main)
+-&gt; retrieved stdlib-shims.0.3.0  (https://opam.ocaml.org/cache)
+-&gt; retrieved coq-metacoq-template.dev  (git+https:///github.com/metacoq/metacoq.git#main)
+-&gt; installed stdlib-shims.0.3.0
+-&gt; retrieved coq-metacoq-utils.dev  (git+https:///github.com/metacoq/metacoq.git#main)
+-&gt; installed coq-equations.dev
+-&gt; installed coq-metacoq-utils.dev
+-&gt; installed coq-metacoq-common.dev
+[ERROR] The compilation of coq-metacoq-template.dev failed at &quot;make -j 4 template-coq&quot;.
+#=== ERROR while compiling coq-metacoq-template.dev ===========================#
+# context              2.1.5 | linux/x86_64 | ocaml-base-compiler.5.1.1 | file:///home/bench/run/opam-coq-archive/extra-dev
+# path                 ~/.opam/ocaml-base-compiler.5.1.1/.opam-switch/build/coq-metacoq-template.dev
+# command              ~/.opam/opam-init/hooks/sandbox.sh build make -j 4 template-coq
 # exit-code            2
-# env-file             ~/.opam/log/coq-idt-27542-80fe1a.env
-# output-file          ~/.opam/log/coq-idt-27542-80fe1a.out
+# env-file             ~/.opam/log/coq-metacoq-template-11271-b434cd.env
+# output-file          ~/.opam/log/coq-metacoq-template-11271-b434cd.out
 ### output ###
 # [...]
-# COQDEP VFILES
-# COQC theories/idt.v
-# COQC theories/utils.v
-# File &quot;./theories/idt.v&quot;, line 222, characters 21-39:
-# Error: The reference Universe.of_levels was not found in the current
-# environment.
-# 
-# make[2]: *** [Makefile.coq:848: theories/idt.vo] Error 1
-# make[2]: *** [theories/idt.vo] Deleting file &#39;theories/idt.glob&#39;
-# make[1]: *** [Makefile.coq:417: all] Error 2
-# make[1]: Leaving directory &#39;/home/bench/.opam/ocaml-base-compiler.5.1.1/.opam-switch/build/coq-idt.1.2.0&#39;
-# make: *** [Makefile:7: all] Error 2
+# 359 |       Declare.declare_variable ~typing_flags:None ~name ~kind (SectionLocalAssum { typ; impl=Glob_term.Explicit; univs=empty_mono_univ_entry });
+#                                                                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+# Error: The function applied to this argument has type
+#          typ:Constr.types -&gt;
+#          impl:Glob_term.binding_kind -&gt;
+#          univs:UState.named_universes_entry -&gt; unit
+# This argument cannot be applied without label
+# make[2]: *** [Makefile.template:765: src/run_template_monad.cmx] Error 2
+# make[2]: Leaving directory &#39;/home/bench/.opam/ocaml-base-compiler.5.1.1/.opam-switch/build/coq-metacoq-template.dev/template-coq&#39;
+# make[1]: *** [Makefile:38: template-coq] Error 2
+# make[1]: Leaving directory &#39;/home/bench/.opam/ocaml-base-compiler.5.1.1/.opam-switch/build/coq-metacoq-template.dev/template-coq&#39;
+# make: *** [Makefile:145: template-coq] Error 2
 &lt;&gt;&lt;&gt; Error report &lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;
 +- The following actions failed
-| - build coq-idt 1.2.0
+| - build coq-metacoq-template dev
 +- 
-- No changes have been performed
++- The following changes have been performed
+| - install coq-equations      dev
+| - install coq-metacoq-common dev
+| - install coq-metacoq-utils  dev
+| - install stdlib-shims       0.3.0
++- 
 # Run eval $(opam env) to update the current shell environment
-&#39;opam install -y -v coq-idt.1.2.0 coq.dev&#39; failed.
+The former state can be restored with:
+    /usr/local/bin/opam switch import &quot;/home/bench/.opam/ocaml-base-compiler.5.1.1/.opam-switch/backup/state-20240220231826.export&quot;
 </pre></dd>
+            </dl>
+            <h2>Install 🚀</h2>
+            <dl class="dl-horizontal">
+              <dt>Command</dt>
+              <dd><code>true</code></dd>
+              <dt>Return code</dt>
+              <dd>0</dd>
+              <dt>Duration</dt>
+              <dd>0 s</dd>
             </dl>
             <h2>Installation size</h2>
             <p>No files were installed.</p>

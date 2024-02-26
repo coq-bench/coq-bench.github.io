@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>json: 1 m 0 s 🏆</title>
+    <title>json: Error with dependencies 🚒</title>
     <link rel="shortcut icon" type="image/png" href="../../../../../favicon.png" />
     <link href="../../../../../bootstrap.min.css" rel="stylesheet">
     <link href="../../../../../bootstrap-custom.css" rel="stylesheet">
@@ -39,7 +39,7 @@
               json
               <small>
                 0.1.1
-                <span class="label label-success">1 m 0 s 🏆</span>
+                <span class="label label-warning">Error with dependencies 🚒</span>
               </small>
             </h1>
             <h2>Context</h2>
@@ -55,7 +55,7 @@ coq                   8.17.0      The Coq Proof Assistant
 coq-core              8.17.0      The Coq Proof Assistant -- Core Binaries and Tools
 coq-stdlib            8.17.0      The Coq Proof Assistant -- Standard Library
 coqide-server         8.17.0      The Coq Proof Assistant, XML protocol server
-dune                  3.13.0      Fast, portable, and opinionated build system
+dune                  3.14.0      Fast, portable, and opinionated build system
 ocaml                 5.0.0       The OCaml compiler (virtual package)
 ocaml-base-compiler   5.0.0       Official release 5.0.0
 ocaml-config          3           OCaml Switch Configuration
@@ -122,54 +122,88 @@ url {
               <dt>Command</dt>
               <dd><code>opam list; echo; timeout 4h opam install -y --deps-only coq-json.0.1.1 coq.8.17.0</code></dd>
               <dt>Return code</dt>
-              <dd>0</dd>
+              <dd>10240</dd>
               <dt>Duration</dt>
               <dd>2 m 0 s</dd>
+              <dt>Output</dt>
+              <dd><pre># Packages matching: installed
+# Name                # Installed # Synopsis
+base-bigarray         base
+base-domains          base
+base-nnp              base        Naked pointers prohibited in the OCaml heap
+base-threads          base
+base-unix             base
+conf-gmp              4           Virtual package relying on a GMP lib system installation
+coq                   8.17.0      The Coq Proof Assistant
+coq-core              8.17.0      The Coq Proof Assistant -- Core Binaries and Tools
+coq-stdlib            8.17.0      The Coq Proof Assistant -- Standard Library
+coqide-server         8.17.0      The Coq Proof Assistant, XML protocol server
+dune                  3.14.0      Fast, portable, and opinionated build system
+ocaml                 5.0.0       The OCaml compiler (virtual package)
+ocaml-base-compiler   5.0.0       Official release 5.0.0
+ocaml-config          3           OCaml Switch Configuration
+ocaml-options-vanilla 1           Ensure that OCaml is compiled with no special options enabled
+ocamlfind             1.9.6       A library manager for OCaml
+zarith                1.13        Implements arithmetic and logical operations over arbitrary-precision integers
+The following actions will be performed:
+  - install menhirLib     20231231
+  - install coq-ceres     0.4.1
+  - install menhirCST     20231231
+  - install coq-ext-lib   1.2.1
+  - install menhirSdk     20231231
+  - install coq-menhirlib 20231231
+  - install coq-parsec    0.1.2
+  - install menhir        20231231
+===== 8 to install =====
+&lt;&gt;&lt;&gt; Processing actions &lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;
+-&gt; retrieved coq-menhirlib.20231231  (https://gitlab.inria.fr/fpottier/menhir/-/archive/20231231/archive.tar.gz)
+[ERROR] Failed to get sources of coq-ext-lib.1.2.1: curl error code 404
+-&gt; retrieved coq-ceres.0.4.1  (https://github.com/Lysxia/coq-ceres/archive/0.4.1.tar.gz)
+-&gt; retrieved menhir.20231231  (cached)
+-&gt; retrieved menhirCST.20231231  (cached)
+-&gt; retrieved menhirLib.20231231  (cached)
+-&gt; retrieved menhirSdk.20231231  (cached)
+-&gt; retrieved coq-parsec.0.1.2  (https://github.com/liyishuai/coq-parsec/archive/v0.1.2.tar.gz)
+-&gt; installed menhirCST.20231231
+-&gt; installed menhirSdk.20231231
+-&gt; installed menhirLib.20231231
+-&gt; installed coq-ceres.0.4.1
+-&gt; installed coq-menhirlib.20231231
+-&gt; installed menhir.20231231
+#=== ERROR while fetching sources for coq-ext-lib.1.2.1 =======================#
+OpamSolution.Fetch_fail(&quot;https://github.com/coq-community/coq-ext-lib/archive/refs/tags/v1.2.1.tar.gz (curl: code 404 while downloading https://github.com/coq-community/coq-ext-lib/archive/refs/tags/v1.2.1.tar.gz)&quot;)
+&lt;&gt;&lt;&gt; Error report &lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;
++- The following actions failed
+| - fetch coq-ext-lib 1.2.1
++- 
++- The following changes have been performed (the rest was aborted)
+| - install coq-ceres     0.4.1
+| - install coq-menhirlib 20231231
+| - install menhir        20231231
+| - install menhirCST     20231231
+| - install menhirLib     20231231
+| - install menhirSdk     20231231
++- 
+# Run eval $(opam env) to update the current shell environment
+The former state can be restored with:
+    /usr/local/bin/opam switch import &quot;/home/bench/.opam/ocaml-base-compiler.5.0.0/.opam-switch/backup/state-20240225101301.export&quot;
+</pre></dd>
             </dl>
             <h2>Install 🚀</h2>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>opam list; echo; timeout 4h opam install -y -v coq-json.0.1.1 coq.8.17.0</code></dd>
+              <dd><code>true</code></dd>
               <dt>Return code</dt>
               <dd>0</dd>
               <dt>Duration</dt>
-              <dd>1 m 0 s</dd>
+              <dd>0 s</dd>
             </dl>
             <h2>Installation size</h2>
-            <p>Total: 2 M</p>
-            <ul>
-              <li>2 M <code>../ocaml-base-compiler.5.0.0/lib/coq/user-contrib/JSON/Parser.vo</code></li>
-              <li>136 K <code>../ocaml-base-compiler.5.0.0/lib/coq/user-contrib/JSON/Parser.glob</code></li>
-              <li>54 K <code>../ocaml-base-compiler.5.0.0/lib/coq/user-contrib/JSON/Operator.vo</code></li>
-              <li>48 K <code>../ocaml-base-compiler.5.0.0/lib/coq/user-contrib/JSON/Lexer.vo</code></li>
-              <li>41 K <code>../ocaml-base-compiler.5.0.0/lib/coq/user-contrib/JSON/Decode.vo</code></li>
-              <li>36 K <code>../ocaml-base-compiler.5.0.0/lib/coq/user-contrib/JSON/Parser.v</code></li>
-              <li>32 K <code>../ocaml-base-compiler.5.0.0/lib/coq/user-contrib/JSON/JSON.vo</code></li>
-              <li>30 K <code>../ocaml-base-compiler.5.0.0/lib/coq/user-contrib/JSON/Encode.vo</code></li>
-              <li>29 K <code>../ocaml-base-compiler.5.0.0/lib/coq/user-contrib/JSON/Jpath.vo</code></li>
-              <li>26 K <code>../ocaml-base-compiler.5.0.0/lib/coq/user-contrib/JSON/Instances.vo</code></li>
-              <li>26 K <code>../ocaml-base-compiler.5.0.0/lib/coq/user-contrib/JSON/Printer.vo</code></li>
-              <li>14 K <code>../ocaml-base-compiler.5.0.0/lib/coq/user-contrib/JSON/Operator.glob</code></li>
-              <li>12 K <code>../ocaml-base-compiler.5.0.0/lib/coq/user-contrib/JSON/Lexer.glob</code></li>
-              <li>10 K <code>../ocaml-base-compiler.5.0.0/lib/coq/user-contrib/JSON/Decode.glob</code></li>
-              <li>9 K <code>../ocaml-base-compiler.5.0.0/lib/coq/user-contrib/JSON/JSON.glob</code></li>
-              <li>6 K <code>../ocaml-base-compiler.5.0.0/lib/coq/user-contrib/JSON/Encode.glob</code></li>
-              <li>4 K <code>../ocaml-base-compiler.5.0.0/lib/coq/user-contrib/JSON/Operator.v</code></li>
-              <li>3 K <code>../ocaml-base-compiler.5.0.0/lib/coq/user-contrib/JSON/Jpath.glob</code></li>
-              <li>2 K <code>../ocaml-base-compiler.5.0.0/lib/coq/user-contrib/JSON/Lexer.v</code></li>
-              <li>2 K <code>../ocaml-base-compiler.5.0.0/lib/coq/user-contrib/JSON/Printer.glob</code></li>
-              <li>2 K <code>../ocaml-base-compiler.5.0.0/lib/coq/user-contrib/JSON/Decode.v</code></li>
-              <li>2 K <code>../ocaml-base-compiler.5.0.0/lib/coq/user-contrib/JSON/Instances.glob</code></li>
-              <li>2 K <code>../ocaml-base-compiler.5.0.0/lib/coq/user-contrib/JSON/JSON.v</code></li>
-              <li>1 K <code>../ocaml-base-compiler.5.0.0/lib/coq/user-contrib/JSON/Encode.v</code></li>
-              <li>1 K <code>../ocaml-base-compiler.5.0.0/lib/coq/user-contrib/JSON/Jpath.v</code></li>
-              <li>1 K <code>../ocaml-base-compiler.5.0.0/lib/coq/user-contrib/JSON/Printer.v</code></li>
-              <li>1 K <code>../ocaml-base-compiler.5.0.0/lib/coq/user-contrib/JSON/Instances.v</code></li>
-            </ul>
+            <p>No files were installed.</p>
             <h2>Uninstall 🧹</h2>
             <dl class="dl-horizontal">
               <dt>Command</dt>
-              <dd><code>opam remove -y coq-json.0.1.1</code></dd>
+              <dd><code>true</code></dd>
               <dt>Return code</dt>
               <dd>0</dd>
               <dt>Missing removes</dt>

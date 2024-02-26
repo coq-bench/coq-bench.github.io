@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>cfml-basis: Error with dependencies 🚒</title>
+    <title>cfml-basis: Error 🔥</title>
     <link rel="shortcut icon" type="image/png" href="../../../../../favicon.png" />
     <link href="../../../../../bootstrap.min.css" rel="stylesheet">
     <link href="../../../../../bootstrap-custom.css" rel="stylesheet">
@@ -39,7 +39,7 @@
               cfml-basis
               <small>
                 20220112
-                <span class="label label-warning">Error with dependencies 🚒</span>
+                <span class="label label-danger">Error 🔥</span>
               </small>
             </h1>
             <h2>Context</h2>
@@ -55,7 +55,7 @@ coq                   8.17.0      The Coq Proof Assistant
 coq-core              8.17.0      The Coq Proof Assistant -- Core Binaries and Tools
 coq-stdlib            8.17.0      The Coq Proof Assistant -- Standard Library
 coqide-server         8.17.0      The Coq Proof Assistant, XML protocol server
-dune                  3.13.0      Fast, portable, and opinionated build system
+dune                  3.14.0      Fast, portable, and opinionated build system
 ocaml                 5.0.0       The OCaml compiler (virtual package)
 ocaml-base-compiler   5.0.0       Official release 5.0.0
 ocaml-config          3           OCaml Switch Configuration
@@ -130,6 +130,15 @@ url {
               <dt>Command</dt>
               <dd><code>opam list; echo; timeout 4h opam install -y --deps-only coq-cfml-basis.20220112 coq.8.17.0</code></dd>
               <dt>Return code</dt>
+              <dd>0</dd>
+              <dt>Duration</dt>
+              <dd>2 m 0 s</dd>
+            </dl>
+            <h2>Install 🚀</h2>
+            <dl class="dl-horizontal">
+              <dt>Command</dt>
+              <dd><code>opam list; echo; timeout 4h opam install -y -v coq-cfml-basis.20220112 coq.8.17.0</code></dd>
+              <dt>Return code</dt>
               <dd>7936</dd>
               <dt>Duration</dt>
               <dd>1 m 0 s</dd>
@@ -145,28 +154,68 @@ conf-gmp              4           Virtual package relying on a GMP lib system in
 coq                   8.17.0      The Coq Proof Assistant
 coq-core              8.17.0      The Coq Proof Assistant -- Core Binaries and Tools
 coq-stdlib            8.17.0      The Coq Proof Assistant -- Standard Library
+coq-tlc               20240209    TLC: A Library for Classical Coq
 coqide-server         8.17.0      The Coq Proof Assistant, XML protocol server
-dune                  3.13.0      Fast, portable, and opinionated build system
+dune                  3.14.0      Fast, portable, and opinionated build system
 ocaml                 5.0.0       The OCaml compiler (virtual package)
 ocaml-base-compiler   5.0.0       Official release 5.0.0
 ocaml-config          3           OCaml Switch Configuration
 ocaml-options-vanilla 1           Ensure that OCaml is compiled with no special options enabled
 ocamlfind             1.9.6       A library manager for OCaml
 zarith                1.13        Implements arithmetic and logical operations over arbitrary-precision integers
+[NOTE] Package coq is already installed (current version is 8.17.0).
 The following actions will be performed:
-  - install coq-tlc 20211215
+  - install coq-cfml-basis 20220112
 &lt;&gt;&lt;&gt; Processing actions &lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;
--&gt; retrieved coq-tlc.20211215  (https://github.com/charguer/tlc/archive/20211215.tar.gz)
-[ERROR] The compilation of coq-tlc.20211215 failed at &quot;make -j4&quot;.
-#=== ERROR while compiling coq-tlc.20211215 ===================================#
+Processing  1/3: [coq-cfml-basis.20220112: http]
+Processing  1/3:
+-&gt; retrieved coq-cfml-basis.20220112  (https://gitlab.inria.fr/charguer/cfml2/-/archive/20220112/archive.tar.gz)
+Processing  2/3: [coq-cfml-basis: make]
++ /home/bench/.opam/opam-init/hooks/sandbox.sh &quot;build&quot; &quot;make&quot; &quot;-C&quot; &quot;lib/coq&quot; &quot;-j4&quot; (CWD=/home/bench/.opam/ocaml-base-compiler.5.0.0/.opam-switch/build/coq-cfml-basis.20220112)
+- make: Entering directory &#39;/home/bench/.opam/ocaml-base-compiler.5.0.0/.opam-switch/build/coq-cfml-basis.20220112/lib/coq&#39;
+- COQDEP VFILES
+- COQC LibSepFmap.v
+- COQC LibSepTLCbuffer.v
+- File &quot;./LibSepTLCbuffer.v&quot;, line 39, characters 0-62:
+- Error: The default value for rewriting hint locality is currently &quot;global&quot;
+- outside sections, but is scheduled to change to &quot;export&quot; in the next release
+- (Coq 8.18). In Coq 8.17, not providing an explicit locality outside sections
+- triggers a fatal warning, to ensure that hint localities are made explicit
+- before the upcoming change in the default value. It is recommended to use
+- &quot;export&quot; whenever possible. Use the attributes #[local], #[global] and
+- #[export] depending on your choice. For example: &quot;#[export] Hint Rewrite foo
+- : bar.&quot; This is supported since Coq 8.14.
+- [deprecated-hint-rewrite-without-locality,deprecated]
+- 
+- make[1]: *** [Makefile.generated:830: LibSepTLCbuffer.vo] Error 1
+- make[1]: *** [LibSepTLCbuffer.vo] Deleting file &#39;LibSepTLCbuffer.glob&#39;
+- make[1]: *** Waiting for unfinished jobs....
+- File &quot;./LibSepFmap.v&quot;, line 806, characters 0-92:
+- Error: The default value for rewriting hint locality is currently &quot;global&quot;
+- outside sections, but is scheduled to change to &quot;export&quot; in the next release
+- (Coq 8.18). In Coq 8.17, not providing an explicit locality outside sections
+- triggers a fatal warning, to ensure that hint localities are made explicit
+- before the upcoming change in the default value. It is recommended to use
+- &quot;export&quot; whenever possible. Use the attributes #[local], #[global] and
+- #[export] depending on your choice. For example: &quot;#[export] Hint Rewrite foo
+- : bar.&quot; This is supported since Coq 8.14.
+- [deprecated-hint-rewrite-without-locality,deprecated]
+- 
+- make[1]: *** [Makefile.generated:830: LibSepFmap.vo] Error 1
+- make[1]: *** [LibSepFmap.vo] Deleting file &#39;LibSepFmap.glob&#39;
+- make: *** [Makefile.generated:409: all] Error 2
+- make: Leaving directory &#39;/home/bench/.opam/ocaml-base-compiler.5.0.0/.opam-switch/build/coq-cfml-basis.20220112/lib/coq&#39;
+[ERROR] The compilation of coq-cfml-basis.20220112 failed at &quot;make -C lib/coq -j4&quot;.
+#=== ERROR while compiling coq-cfml-basis.20220112 ============================#
 # context              2.1.5 | linux/x86_64 | ocaml-base-compiler.5.0.0 | file:///home/bench/run/opam-coq-archive/released
-# path                 ~/.opam/ocaml-base-compiler.5.0.0/.opam-switch/build/coq-tlc.20211215
-# command              ~/.opam/opam-init/hooks/sandbox.sh build make -j4
+# path                 ~/.opam/ocaml-base-compiler.5.0.0/.opam-switch/build/coq-cfml-basis.20220112
+# command              ~/.opam/opam-init/hooks/sandbox.sh build make -C lib/coq -j4
 # exit-code            2
-# env-file             ~/.opam/log/coq-tlc-15964-12f105.env
-# output-file          ~/.opam/log/coq-tlc-15964-12f105.out
+# env-file             ~/.opam/log/coq-cfml-basis-836-8d3d54.env
+# output-file          ~/.opam/log/coq-cfml-basis-836-8d3d54.out
 ### output ###
 # [...]
+# (Coq 8.18). In Coq 8.17, not providing an explicit locality outside sections
 # triggers a fatal warning, to ensure that hint localities are made explicit
 # before the upcoming change in the default value. It is recommended to use
 # &quot;export&quot; whenever possible. Use the attributes #[local], #[global] and
@@ -174,27 +223,18 @@ The following actions will be performed:
 # : bar.&quot; This is supported since Coq 8.14.
 # [deprecated-hint-rewrite-without-locality,deprecated]
 # 
-# make[2]: *** [Makefile.generated:830: LibEqual.vo] Error 1
-# make[2]: *** [LibEqual.vo] Deleting file &#39;LibEqual.glob&#39;
-# make[1]: *** [Makefile.generated:409: all] Error 2
-# make[1]: Leaving directory &#39;/home/bench/.opam/ocaml-base-compiler.5.0.0/.opam-switch/build/coq-tlc.20211215/src&#39;
-# make: *** [Makefile:3: all] Error 2
+# make[1]: *** [Makefile.generated:830: LibSepFmap.vo] Error 1
+# make[1]: *** [LibSepFmap.vo] Deleting file &#39;LibSepFmap.glob&#39;
+# make: *** [Makefile.generated:409: all] Error 2
+# make: Leaving directory &#39;/home/bench/.opam/ocaml-base-compiler.5.0.0/.opam-switch/build/coq-cfml-basis.20220112/lib/coq&#39;
 &lt;&gt;&lt;&gt; Error report &lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;
 +- The following actions failed
-| - build coq-tlc 20211215
+| - build coq-cfml-basis 20220112
 +- 
 - No changes have been performed
 # Run eval $(opam env) to update the current shell environment
+&#39;opam install -y -v coq-cfml-basis.20220112 coq.8.17.0&#39; failed.
 </pre></dd>
-            </dl>
-            <h2>Install 🚀</h2>
-            <dl class="dl-horizontal">
-              <dt>Command</dt>
-              <dd><code>true</code></dd>
-              <dt>Return code</dt>
-              <dd>0</dd>
-              <dt>Duration</dt>
-              <dd>0 s</dd>
             </dl>
             <h2>Installation size</h2>
             <p>No files were installed.</p>
