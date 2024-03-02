@@ -55,7 +55,7 @@ coq                   8.17.1      The Coq Proof Assistant
 coq-core              8.17.1      The Coq Proof Assistant -- Core Binaries and Tools
 coq-stdlib            8.17.1      The Coq Proof Assistant -- Standard Library
 coqide-server         8.17.1      The Coq Proof Assistant, XML protocol server
-dune                  3.13.0      Fast, portable, and opinionated build system
+dune                  3.14.0      Fast, portable, and opinionated build system
 ocaml                 5.0.0       The OCaml compiler (virtual package)
 ocaml-base-compiler   5.0.0       Official release 5.0.0
 ocaml-config          3           OCaml Switch Configuration
@@ -134,7 +134,7 @@ url {
               <dt>Return code</dt>
               <dd>0</dd>
               <dt>Duration</dt>
-              <dd>34 m 0 s</dd>
+              <dd>40 m 0 s</dd>
             </dl>
             <h2>Install 🚀</h2>
             <dl class="dl-horizontal">
@@ -143,7 +143,7 @@ url {
               <dt>Return code</dt>
               <dd>7936</dd>
               <dt>Duration</dt>
-              <dd>44 m 0 s</dd>
+              <dd>55 m 0 s</dd>
               <dt>Output</dt>
               <dd><pre># Packages matching: installed
 # Name                # Installed   # Synopsis
@@ -167,7 +167,7 @@ coq-riscv             0.0.4         RISC-V Specification in Coq, somewhat experi
 coq-rupicola          0.0.7         Gallina to imperative code compilation, currently in design phase
 coq-stdlib            8.17.1        The Coq Proof Assistant -- Standard Library
 coqide-server         8.17.1        The Coq Proof Assistant, XML protocol server
-dune                  3.13.0        Fast, portable, and opinionated build system
+dune                  3.14.0        Fast, portable, and opinionated build system
 ocaml                 5.0.0         The OCaml compiler (virtual package)
 ocaml-base-compiler   5.0.0         Official release 5.0.0
 ocaml-config          3             OCaml Switch Configuration
@@ -213,9 +213,6 @@ Processing  2/3: [coq-fiat-crypto: make coq]
 - COQC src/Util/HProp.v
 - COQC src/Util/GlobalSettings.v
 - COQC src/Util/Tactics/Test.v
-- COQC src/Util/Tactics/ConstrFail.v
-- COQC src/Util/Tactics/Contains.v
-- COQC src/Util/Comparison.v
 - File &quot;./src/Util/NatUtil.v&quot;, line 14, characters 0-57:
 - Warning: Notation plus_le_compat is deprecated since 8.16.
 - The Arith.Plus file is obsolete. Use Nat.add_le_mono instead.
@@ -247,9 +244,6 @@ Processing  2/3: [coq-fiat-crypto: make coq]
 - Warning: Notation Min.min_case_strong is deprecated since 8.16.
 - The Arith.Min file is obsolete. Use Nat.min_case_strong instead.
 - [deprecated-syntactic-definition,deprecated]
-- COQC src/Util/Tactics/GetGoal.v
-- COQC src/Util/ListUtil/NthExt.v
-- COQC src/Util/Tactics/DebugPrint.v
 - File &quot;./src/Util/NatUtil.v&quot;, line 156, characters 43-50:
 - Warning: Notation mod_add is deprecated since 8.17. Use Div0.mod_add instead.
 - [deprecated-syntactic-definition,deprecated]
@@ -268,6 +262,7 @@ Processing  2/3: [coq-fiat-crypto: make coq]
 - Warning: Notation mult_succ_r is deprecated since 8.16.
 - The Arith.Mult file is obsolete. Use Nat.mul_succ_r instead.
 - [deprecated-syntactic-definition,deprecated]
+- COQC src/Util/Tactics/ConstrFail.v
 - File &quot;./src/Util/NatUtil.v&quot;, line 185, characters 12-23:
 - Warning: Notation mod_add is deprecated since 8.17. Use Div0.mod_add instead.
 - [deprecated-syntactic-definition,deprecated]
@@ -277,6 +272,8 @@ Processing  2/3: [coq-fiat-crypto: make coq]
 - File &quot;./src/Util/NatUtil.v&quot;, line 185, characters 12-23:
 - Warning: Notation mod_add is deprecated since 8.17. Use Div0.mod_add instead.
 - [deprecated-syntactic-definition,deprecated]
+- COQC src/Util/Tactics/Contains.v
+- COQC src/Util/Comparison.v
 - File &quot;./src/Util/NatUtil.v&quot;, line 229, characters 8-21:
 - Warning: Notation beq_nat is deprecated since 8.16. Use Nat.eqb instead.
 - [deprecated-syntactic-definition,deprecated]
@@ -298,6 +295,7 @@ Processing  2/3: [coq-fiat-crypto: make coq]
 - File &quot;./src/Util/NatUtil.v&quot;, line 233, characters 23-40:
 - Warning: Notation beq_nat_false_iff is deprecated since 8.16.
 - Use Nat.eqb_neq instead. [deprecated-syntactic-definition,deprecated]
+- COQC src/Util/Tactics/GetGoal.v
 - File &quot;./src/Util/NatUtil.v&quot;, line 252, characters 28-36:
 - Warning: Notation mod_same is deprecated since 8.17.
 - Use Div0.mod_same instead. [deprecated-syntactic-definition,deprecated]
@@ -306,53 +304,57 @@ Processing  2/3: [coq-fiat-crypto: make coq]
 - Use Div0.mod_same instead. [deprecated-syntactic-definition,deprecated]
 - File &quot;./src/Util/NatUtil.v&quot;, line 272, characters 10-17:
 - Warning: Notation add_mod is deprecated since 8.17. Use Div0.add_mod instead.
-- [deprecated-syn
+- [deprecated-syntactic-definition,deprecated]
+- File &quot;./src/Util/NatUtil.v&quot;, line 272, 
 [...] truncated
-on-reserved-identifier,extraction]
+tion]
+- File &quot;./src/ExtractionOCaml/word_by_word_montgomery.v&quot;, line 3, characters 0-87:
+- Warning: The identifier __ contains __ which is reserved for the extraction
+- [extraction-reserved-identifier,extraction]
+- File &quot;./src/ExtractionOCaml/word_by_word_montgomery.v&quot;, line 3, characters 0-87:
+- Warning: The identifier __ contains __ which is reserved for the extraction
+- [extraction-reserved-identifier,extraction]
+- File &quot;./src/ExtractionOCaml/dettman_multiplication.v&quot;, line 3, characters 0-87:
+- Warning: The identifier __ contains __ which is reserved for the extraction
+- [extraction-reserved-identifier,extraction]
+- File &quot;./src/ExtractionOCaml/dettman_multiplication.v&quot;, line 3, characters 0-87:
+- Warning: The identifier __ contains __ which is reserved for the extraction
+- [extraction-reserved-identifier,extraction]
 - File &quot;./src/ExtractionOCaml/dettman_multiplication.v&quot;, line 3, characters 0-87:
 - Warning: The identifier __ contains __ which is reserved for the extraction
 - [extraction-reserved-identifier,extraction]
 - File &quot;./src/ExtractionOCaml/base_conversion.v&quot;, line 3, characters 0-73:
 - Warning: The identifier __ contains __ which is reserved for the extraction
 - [extraction-reserved-identifier,extraction]
-- Finished transaction in 32.816 secs (24.697u,0.373s) (successful)
 - File &quot;./src/ExtractionOCaml/base_conversion.v&quot;, line 3, characters 0-73:
 - Warning: The identifier __ contains __ which is reserved for the extraction
 - [extraction-reserved-identifier,extraction]
 - File &quot;./src/ExtractionOCaml/base_conversion.v&quot;, line 3, characters 0-73:
 - Warning: The identifier __ contains __ which is reserved for the extraction
 - [extraction-reserved-identifier,extraction]
+- Finished transaction in 34.547 secs (25.532u,0.379s) (successful)
 - COQC src/ExtractionOCaml/solinas_reduction.v
 - File &quot;./src/ExtractionOCaml/word_by_word_montgomery.v&quot;, line 3, characters 0-87:
 - Warning: The identifier __ contains __ which is reserved for the extraction
 - [extraction-reserved-identifier,extraction]
-- File &quot;./src/ExtractionOCaml/word_by_word_montgomery.v&quot;, line 3, characters 0-87:
-- Warning: The identifier __ contains __ which is reserved for the extraction
-- [extraction-reserved-identifier,extraction]
-- File &quot;./src/ExtractionOCaml/word_by_word_montgomery.v&quot;, line 3, characters 0-87:
-- Warning: The identifier __ contains __ which is reserved for the extraction
-- [extraction-reserved-identifier,extraction]
 - COQC src/Rewriter/PerfTesting/StandaloneOCamlMain.v
-- File &quot;./src/ExtractionOCaml/base_conversion.v&quot;, line 3, characters 0-73:
+- File &quot;./src/ExtractionOCaml/word_by_word_montgomery.v&quot;, line 3, characters 0-87:
 - Warning: The identifier __ contains __ which is reserved for the extraction
 - [extraction-reserved-identifier,extraction]
-- File &quot;./src/ExtractionOCaml/base_conversion.v&quot;, line 3, characters 0-73:
-- Warning: The identifier __ contains __ which is reserved for the extraction
-- [extraction-reserved-identifier,extraction]
-- File &quot;./src/ExtractionOCaml/base_conversion.v&quot;, line 3, characters 0-73:
-- Warning: The identifier __ contains __ which is reserved for the extraction
-- [extraction-reserved-identifier,extraction]
-- File &quot;./src/ExtractionOCaml/solinas_reduction.v&quot;, line 3, characters 0-77:
-- Warning: The identifier __ contains __ which is reserved for the extraction
-- [extraction-reserved-identifier,extraction]
-- File &quot;./src/ExtractionOCaml/solinas_reduction.v&quot;, line 3, characters 0-77:
-- Warning: The identifier __ contains __ which is reserved for the extraction
-- [extraction-reserved-identifier,extraction]
-- File &quot;./src/ExtractionOCaml/solinas_reduction.v&quot;, line 3, characters 0-77:
+- File &quot;./src/ExtractionOCaml/word_by_word_montgomery.v&quot;, line 3, characters 0-87:
 - Warning: The identifier __ contains __ which is reserved for the extraction
 - [extraction-reserved-identifier,extraction]
 - COQC src/StandaloneDebuggingExamples.v
 - COQC src/Bedrock/Field/Translation/Proofs/EquivalenceProperties.v
+- File &quot;./src/ExtractionOCaml/solinas_reduction.v&quot;, line 3, characters 0-77:
+- Warning: The identifier __ contains __ which is reserved for the extraction
+- [extraction-reserved-identifier,extraction]
+- File &quot;./src/ExtractionOCaml/solinas_reduction.v&quot;, line 3, characters 0-77:
+- Warning: The identifier __ contains __ which is reserved for the extraction
+- [extraction-reserved-identifier,extraction]
+- File &quot;./src/ExtractionOCaml/solinas_reduction.v&quot;, line 3, characters 0-77:
+- Warning: The identifier __ contains __ which is reserved for the extraction
+- [extraction-reserved-identifier,extraction]
 - OCAMLOPT src/ExtractionOCaml/unsaturated_solinas.mli
 - Warning: Stack size (8192) may be too small.
 - Warning: To avoid stack overflows in OCaml compilation, setting stack size to the recommended minimum of 65536 kbytes
@@ -362,41 +364,39 @@ on-reserved-identifier,extraction]
 - OCAMLOPT src/ExtractionOCaml/dettman_multiplication.mli
 - Warning: Stack size (8192) may be too small.
 - Warning: To avoid stack overflows in OCaml compilation, setting stack size to the recommended minimum of 65536 kbytes
-- OCAMLOPT src/ExtractionOCaml/word_by_word_montgomery.mli
-- Warning: Stack size (8192) may be too small.
-- Warning: To avoid stack overflows in OCaml compilation, setting stack size to the recommended minimum of 65536 kbytes
 - OCAMLOPT src/ExtractionOCaml/base_conversion.mli
 - Warning: Stack size (8192) may be too small.
 - Warning: To avoid stack overflows in OCaml compilation, setting stack size to the recommended minimum of 65536 kbytes
 - COQC src/ExtractionOCaml/perf_unsaturated_solinas.v
-- File &quot;./src/ExtractionOCaml/solinas_reduction.v&quot;, line 3, characters 0-77:
-- Warning: The identifier __ contains __ which is reserved for the extraction
-- [extraction-reserved-identifier,extraction]
-- File &quot;./src/ExtractionOCaml/solinas_reduction.v&quot;, line 3, characters 0-77:
-- Warning: The identifier __ contains __ which is reserved for the extraction
-- [extraction-reserved-identifier,extraction]
-- File &quot;./src/ExtractionOCaml/solinas_reduction.v&quot;, line 3, characters 0-77:
-- Warning: The identifier __ contains __ which is reserved for the extraction
-- [extraction-reserved-identifier,extraction]
 - COQC src/ExtractionOCaml/perf_word_by_word_montgomery.v
+- File &quot;./src/ExtractionOCaml/solinas_reduction.v&quot;, line 3, characters 0-77:
+- Warning: The identifier __ contains __ which is reserved for the extraction
+- [extraction-reserved-identifier,extraction]
+- File &quot;./src/ExtractionOCaml/solinas_reduction.v&quot;, line 3, characters 0-77:
+- Warning: The identifier __ contains __ which is reserved for the extraction
+- [extraction-reserved-identifier,extraction]
+- File &quot;./src/ExtractionOCaml/solinas_reduction.v&quot;, line 3, characters 0-77:
+- Warning: The identifier __ contains __ which is reserved for the extraction
+- [extraction-reserved-identifier,extraction]
+- COQC src/Everything.v
 - COQC src/Bedrock/Field/Translation/Proofs/Flatten.v
-- File &quot;./src/Bedrock/Field/Translation/Proofs/Flatten.v&quot;, line 58, characters 10-29:
-- Warning: Notation Min.min_case_strong is deprecated since 8.16.
-- The Arith.Min file is obsolete. Use Nat.min_case_strong instead.
-- [deprecated-syntactic-definition,deprecated]
-- File &quot;./src/Bedrock/Field/Translation/Proofs/Flatten.v&quot;, line 58, characters 10-29:
-- Warning: Notation Min.min_case_strong is deprecated since 8.16.
-- The Arith.Min file is obsolete. Use Nat.min_case_strong instead.
-- [deprecated-syntactic-definition,deprecated]
-- File &quot;./src/Bedrock/Field/Translation/Proofs/Flatten.v&quot;, line 83, characters 10-29:
-- Warning: Notation Min.min_case_strong is deprecated since 8.16.
-- The Arith.Min file is obsolete. Use Nat.min_case_strong instead.
-- [deprecated-syntactic-definition,deprecated]
-- File &quot;./src/Bedrock/Field/Translation/Proofs/Flatten.v&quot;, line 83, characters 10-29:
-- Warning: Notation Min.min_case_strong is deprecated since 8.16.
-- The Arith.Min file is obsolete. Use Nat.min_case_strong instead.
-- [deprecated-syntactic-definition,deprecated]
 - COQC src/Bedrock/Field/Translation/Proofs/Expr.v
+- File &quot;./src/Bedrock/Field/Translation/Proofs/Flatten.v&quot;, line 58, characters 10-29:
+- Warning: Notation Min.min_case_strong is deprecated since 8.16.
+- The Arith.Min file is obsolete. Use Nat.min_case_strong instead.
+- [deprecated-syntactic-definition,deprecated]
+- File &quot;./src/Bedrock/Field/Translation/Proofs/Flatten.v&quot;, line 58, characters 10-29:
+- Warning: Notation Min.min_case_strong is deprecated since 8.16.
+- The Arith.Min file is obsolete. Use Nat.min_case_strong instead.
+- [deprecated-syntactic-definition,deprecated]
+- File &quot;./src/Bedrock/Field/Translation/Proofs/Flatten.v&quot;, line 83, characters 10-29:
+- Warning: Notation Min.min_case_strong is deprecated since 8.16.
+- The Arith.Min file is obsolete. Use Nat.min_case_strong instead.
+- [deprecated-syntactic-definition,deprecated]
+- File &quot;./src/Bedrock/Field/Translation/Proofs/Flatten.v&quot;, line 83, characters 10-29:
+- Warning: Notation Min.min_case_strong is deprecated since 8.16.
+- The Arith.Min file is obsolete. Use Nat.min_case_strong instead.
+- [deprecated-syntactic-definition,deprecated]
 - OCAMLOPT src/ExtractionOCaml/unsaturated_solinas.ml -o src/ExtractionOCaml/unsaturated_solinas
 - Warning: Stack size (8192) may be too small.
 - Warning: To avoid stack overflows in OCaml compilation, setting stack size to the recommended minimum of 65536 kbytes
@@ -414,17 +414,17 @@ on-reserved-identifier,extraction]
 - OCAMLOPT src/ExtractionOCaml/dettman_multiplication.ml -o src/ExtractionOCaml/dettman_multiplication
 - Warning: Stack size (8192) may be too small.
 - Warning: To avoid stack overflows in OCaml compilation, setting stack size to the recommended minimum of 65536 kbytes
-- File &quot;src/ExtractionOCaml/unsaturated_solinas.ml&quot;, line 733737, characters 10-25:
-- 733737 | | S x&#39; -&gt; Pervasives.succ (int_of_nat x&#39;)
--                    ^^^^^^^^^^^^^^^
-- Error: Unbound module Pervasives
-- make: *** [Makefile.standalone:40: src/ExtractionOCaml/unsaturated_solinas] Error 2
-- make: *** Waiting for unfinished jobs....
 - File &quot;src/ExtractionOCaml/saturated_solinas.ml&quot;, line 659833, characters 10-25:
 - 659833 | | S x&#39; -&gt; Pervasives.succ (int_of_nat x&#39;)
 -                    ^^^^^^^^^^^^^^^
 - Error: Unbound module Pervasives
 - make: *** [Makefile.standalone:40: src/ExtractionOCaml/saturated_solinas] Error 2
+- make: *** Waiting for unfinished jobs....
+- File &quot;src/ExtractionOCaml/unsaturated_solinas.ml&quot;, line 733737, characters 10-25:
+- 733737 | | S x&#39; -&gt; Pervasives.succ (int_of_nat x&#39;)
+-                    ^^^^^^^^^^^^^^^
+- Error: Unbound module Pervasives
+- make: *** [Makefile.standalone:40: src/ExtractionOCaml/unsaturated_solinas] Error 2
 - File &quot;src/ExtractionOCaml/dettman_multiplication.ml&quot;, line 668629, characters 10-25:
 - 668629 | | S x&#39; -&gt; Pervasives.succ (int_of_nat x&#39;)
 -                    ^^^^^^^^^^^^^^^
@@ -436,17 +436,17 @@ on-reserved-identifier,extraction]
 # path                 ~/.opam/ocaml-base-compiler.5.0.0/.opam-switch/build/coq-fiat-crypto.0.0.20
 # command              ~/.opam/opam-init/hooks/sandbox.sh build make -j4 EXTERNAL_DEPENDENCIES=1 SKIP_COQSCRIPTS_INCLUDE=1 coq standalone-ocaml
 # exit-code            2
-# env-file             ~/.opam/log/coq-fiat-crypto-28812-0f4452.env
-# output-file          ~/.opam/log/coq-fiat-crypto-28812-0f4452.out
+# env-file             ~/.opam/log/coq-fiat-crypto-18536-beb386.env
+# output-file          ~/.opam/log/coq-fiat-crypto-18536-beb386.out
 ### output ###
 # [...]
-# make: *** [Makefile.standalone:40: src/ExtractionOCaml/unsaturated_solinas] Error 2
+# make: *** [Makefile.standalone:40: src/ExtractionOCaml/saturated_solinas] Error 2
 # make: *** Waiting for unfinished jobs....
-# File &quot;src/ExtractionOCaml/saturated_solinas.ml&quot;, line 659833, characters 10-25:
-# 659833 | | S x&#39; -&gt; Pervasives.succ (int_of_nat x&#39;)
+# File &quot;src/ExtractionOCaml/unsaturated_solinas.ml&quot;, line 733737, characters 10-25:
+# 733737 | | S x&#39; -&gt; Pervasives.succ (int_of_nat x&#39;)
 #                    ^^^^^^^^^^^^^^^
 # Error: Unbound module Pervasives
-# make: *** [Makefile.standalone:40: src/ExtractionOCaml/saturated_solinas] Error 2
+# make: *** [Makefile.standalone:40: src/ExtractionOCaml/unsaturated_solinas] Error 2
 # File &quot;src/ExtractionOCaml/dettman_multiplication.ml&quot;, line 668629, characters 10-25:
 # 668629 | | S x&#39; -&gt; Pervasives.succ (int_of_nat x&#39;)
 #                    ^^^^^^^^^^^^^^^
