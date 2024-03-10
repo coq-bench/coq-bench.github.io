@@ -55,7 +55,7 @@ coq                   8.17.1      The Coq Proof Assistant
 coq-core              8.17.1      The Coq Proof Assistant -- Core Binaries and Tools
 coq-stdlib            8.17.1      The Coq Proof Assistant -- Standard Library
 coqide-server         8.17.1      The Coq Proof Assistant, XML protocol server
-dune                  3.13.0      Fast, portable, and opinionated build system
+dune                  3.14.0      Fast, portable, and opinionated build system
 ocaml                 5.1.1       The OCaml compiler (virtual package)
 ocaml-base-compiler   5.1.1       Official release 5.1.1
 ocaml-config          3           OCaml Switch Configuration
@@ -129,7 +129,7 @@ url {
               <dt>Return code</dt>
               <dd>7936</dd>
               <dt>Duration</dt>
-              <dd>1 m 0 s</dd>
+              <dd>3 m 0 s</dd>
               <dt>Output</dt>
               <dd><pre># Packages matching: installed
 # Name                # Installed # Synopsis
@@ -143,7 +143,7 @@ coq                   8.17.1      The Coq Proof Assistant
 coq-core              8.17.1      The Coq Proof Assistant -- Core Binaries and Tools
 coq-stdlib            8.17.1      The Coq Proof Assistant -- Standard Library
 coqide-server         8.17.1      The Coq Proof Assistant, XML protocol server
-dune                  3.13.0      Fast, portable, and opinionated build system
+dune                  3.14.0      Fast, portable, and opinionated build system
 ocaml                 5.1.1       The OCaml compiler (virtual package)
 ocaml-base-compiler   5.1.1       Official release 5.1.1
 ocaml-config          3           OCaml Switch Configuration
@@ -154,7 +154,7 @@ The following actions will be performed:
   - install menhirLib      20231231
   - install pprint         20230830
   - install menhirCST      20231231
-  - install coq-tlc        20211215
+  - install coq-tlc        20240209
   - install menhirSdk      20231231
   - install coq-cfml-basis 20220102
   - install menhir         20231231
@@ -162,29 +162,31 @@ The following actions will be performed:
 ===== 8 to install =====
 &lt;&gt;&lt;&gt; Processing actions &lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;
 -&gt; retrieved cfml.20220102  (https://opam.ocaml.org/cache)
--&gt; retrieved coq-tlc.20211215  (https://github.com/charguer/tlc/archive/20211215.tar.gz)
 -&gt; retrieved menhir.20231231  (https://opam.ocaml.org/cache)
+-&gt; retrieved menhirCST.20231231  (cached)
 -&gt; retrieved menhirLib.20231231  (cached)
--&gt; retrieved menhirSdk.20231231  (cached)
--&gt; retrieved coq-cfml-basis.20220102  (https://gitlab.inria.fr/charguer/cfml2/-/archive/20220102/archive.tar.gz)
--&gt; retrieved menhirCST.20231231  (https://opam.ocaml.org/cache)
--&gt; retrieved pprint.20230830  (https://opam.ocaml.org/cache)
-[ERROR] The compilation of coq-tlc.20211215 failed at &quot;make -j4&quot;.
--&gt; installed menhirSdk.20231231
+-&gt; retrieved coq-tlc.20240209  (https://github.com/charguer/tlc/archive/20240209.tar.gz)
 -&gt; installed menhirCST.20231231
+-&gt; retrieved menhirSdk.20231231  (cached)
 -&gt; installed menhirLib.20231231
+-&gt; retrieved coq-cfml-basis.20220102  (https://gitlab.inria.fr/charguer/cfml2/-/archive/20220102/archive.tar.gz)
+-&gt; retrieved pprint.20230830  (https://opam.ocaml.org/cache)
 -&gt; installed pprint.20230830
+-&gt; installed menhirSdk.20231231
 -&gt; installed menhir.20231231
 -&gt; installed cfml.20220102
-#=== ERROR while compiling coq-tlc.20211215 ===================================#
+-&gt; installed coq-tlc.20240209
+[ERROR] The compilation of coq-cfml-basis.20220102 failed at &quot;make -C lib/coq -j4&quot;.
+#=== ERROR while compiling coq-cfml-basis.20220102 ============================#
 # context              2.1.5 | linux/x86_64 | ocaml-base-compiler.5.1.1 | file:///home/bench/run/opam-coq-archive/released
-# path                 ~/.opam/ocaml-base-compiler.5.1.1/.opam-switch/build/coq-tlc.20211215
-# command              ~/.opam/opam-init/hooks/sandbox.sh build make -j4
+# path                 ~/.opam/ocaml-base-compiler.5.1.1/.opam-switch/build/coq-cfml-basis.20220102
+# command              ~/.opam/opam-init/hooks/sandbox.sh build make -C lib/coq -j4
 # exit-code            2
-# env-file             ~/.opam/log/coq-tlc-664-9c9de5.env
-# output-file          ~/.opam/log/coq-tlc-664-9c9de5.out
+# env-file             ~/.opam/log/coq-cfml-basis-23635-2c2dfa.env
+# output-file          ~/.opam/log/coq-cfml-basis-23635-2c2dfa.out
 ### output ###
 # [...]
+# (Coq 8.18). In Coq 8.17, not providing an explicit locality outside sections
 # triggers a fatal warning, to ensure that hint localities are made explicit
 # before the upcoming change in the default value. It is recommended to use
 # &quot;export&quot; whenever possible. Use the attributes #[local], #[global] and
@@ -192,17 +194,17 @@ The following actions will be performed:
 # : bar.&quot; This is supported since Coq 8.14.
 # [deprecated-hint-rewrite-without-locality,deprecated]
 # 
-# make[2]: *** [Makefile.generated:830: LibEqual.vo] Error 1
-# make[2]: *** [LibEqual.vo] Deleting file &#39;LibEqual.glob&#39;
-# make[1]: *** [Makefile.generated:409: all] Error 2
-# make[1]: Leaving directory &#39;/home/bench/.opam/ocaml-base-compiler.5.1.1/.opam-switch/build/coq-tlc.20211215/src&#39;
-# make: *** [Makefile:3: all] Error 2
+# make[1]: *** [Makefile.generated:830: LibSepFmap.vo] Error 1
+# make[1]: *** [LibSepFmap.vo] Deleting file &#39;LibSepFmap.glob&#39;
+# make: *** [Makefile.generated:409: all] Error 2
+# make: Leaving directory &#39;/home/bench/.opam/ocaml-base-compiler.5.1.1/.opam-switch/build/coq-cfml-basis.20220102/lib/coq&#39;
 &lt;&gt;&lt;&gt; Error report &lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;
 +- The following actions failed
-| - build coq-tlc 20211215
+| - build coq-cfml-basis 20220102
 +- 
-+- The following changes have been performed (the rest was aborted)
++- The following changes have been performed
 | - install cfml      20220102
+| - install coq-tlc   20240209
 | - install menhir    20231231
 | - install menhirCST 20231231
 | - install menhirLib 20231231
@@ -211,7 +213,7 @@ The following actions will be performed:
 +- 
 # Run eval $(opam env) to update the current shell environment
 The former state can be restored with:
-    /usr/local/bin/opam switch import &quot;/home/bench/.opam/ocaml-base-compiler.5.1.1/.opam-switch/backup/state-20240206100547.export&quot;
+    /usr/local/bin/opam switch import &quot;/home/bench/.opam/ocaml-base-compiler.5.1.1/.opam-switch/backup/state-20240301111240.export&quot;
 </pre></dd>
             </dl>
             <h2>Install 🚀</h2>

@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>gaia-hydras: Error with dependencies 🚒</title>
+    <title>gaia-hydras: Not compatible 👼</title>
     <link rel="shortcut icon" type="image/png" href="../../../../../favicon.png" />
     <link href="../../../../../bootstrap.min.css" rel="stylesheet">
     <link href="../../../../../bootstrap-custom.css" rel="stylesheet">
@@ -39,7 +39,7 @@
               gaia-hydras
               <small>
                 0.9
-                <span class="label label-warning">Error with dependencies 🚒</span>
+                <span class="label label-info">Not compatible 👼</span>
               </small>
             </h1>
             <h2>Context</h2>
@@ -55,7 +55,7 @@ coq                   8.17.1      The Coq Proof Assistant
 coq-core              8.17.1      The Coq Proof Assistant -- Core Binaries and Tools
 coq-stdlib            8.17.1      The Coq Proof Assistant -- Standard Library
 coqide-server         8.17.1      The Coq Proof Assistant, XML protocol server
-dune                  3.13.0      Fast, portable, and opinionated build system
+dune                  3.14.0      Fast, portable, and opinionated build system
 ocaml                 5.1.1       The OCaml compiler (virtual package)
 ocaml-base-compiler   5.1.1       Official release 5.1.1
 ocaml-config          3           OCaml Switch Configuration
@@ -110,10 +110,24 @@ url {
               <dt>Command</dt>
               <dd><code>opam install -y --show-action coq-gaia-hydras.0.9 coq.8.17.1</code></dd>
               <dt>Return code</dt>
-              <dd>134</dd>
+              <dd>5120</dd>
               <dt>Output</dt>
               <dd><pre>[NOTE] Package coq is already installed (current version is 8.17.1).
-Fatal error: allocation failure during minor GC
+[ERROR] Package conflict!
+  * No agreement on the version of ocaml:
+    - (invariant) -&gt; ocaml-base-compiler = 5.1.1 -&gt; ocaml = 5.1.1
+    - coq-gaia-hydras &gt;= 0.9 -&gt; coq &lt; 8.16~ -&gt; ocaml &lt; 4.02.0
+    You can temporarily relax the switch invariant with `--update-invariant&#39;
+  * No agreement on the version of ocaml-base-compiler:
+    - (invariant) -&gt; ocaml-base-compiler = 5.1.1
+    - coq-gaia-hydras &gt;= 0.9 -&gt; coq &lt; 8.16~ -&gt; ocaml &lt; 4.02.0 -&gt; ocaml-base-compiler &lt; 3.07+1
+  * Incompatible packages:
+    - (invariant) -&gt; ocaml-base-compiler = 5.1.1 -&gt; base-nnp
+    - coq-gaia-hydras &gt;= 0.9 -&gt; coq &lt; 8.16~
+  * Missing dependency:
+    - coq-gaia-hydras &gt;= 0.9 -&gt; coq &lt; 8.16~ -&gt; ocaml &lt; 4.02.0 -&gt; ocaml-variants -&gt; ocaml-beta
+    unmet availability conditions: &#39;enable-ocaml-beta-repository&#39;
+No solution found, exiting
 </pre></dd>
             </dl>
             <p>Dry install without Coq/switch base, to test if the problem was incompatibility with the current Coq/OCaml version:</p>
@@ -121,12 +135,7 @@ Fatal error: allocation failure during minor GC
               <dt>Command</dt>
               <dd><code>opam remove -y coq; opam install -y --show-action --unlock-base coq-gaia-hydras.0.9</code></dd>
               <dt>Return code</dt>
-              <dd>134</dd>
-              <dt>Output</dt>
-              <dd><pre>Fatal error: allocation failure during minor GC
-bash: line 1:  2648 Aborted                 (core dumped) opam remove -y coq
-Fatal error: allocation failure during minor GC
-</pre></dd>
+              <dd>0</dd>
             </dl>
             <h2>Install dependencies</h2>
             <dl class="dl-horizontal">

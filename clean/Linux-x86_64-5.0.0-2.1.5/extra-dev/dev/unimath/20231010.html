@@ -55,7 +55,7 @@ coq                   dev         The Coq Proof Assistant
 coq-core              dev         The Coq Proof Assistant -- Core Binaries and Tools
 coq-stdlib            dev         The Coq Proof Assistant -- Standard Library
 coqide-server         dev         The Coq Proof Assistant, XML protocol server
-dune                  3.13.0      Fast, portable, and opinionated build system
+dune                  3.14.0      Fast, portable, and opinionated build system
 ocaml                 5.0.0       The OCaml compiler (virtual package)
 ocaml-base-compiler   5.0.0       Official release 5.0.0
 ocaml-config          3           OCaml Switch Configuration
@@ -74,7 +74,7 @@ build: [make &quot;BUILD_COQ=no&quot; &quot;-j%{jobs}%&quot;]
 install: [make &quot;BUILD_COQ=no&quot; &quot;install&quot;]
 depends: [
   &quot;ocaml&quot;
-  &quot;coq&quot; {&gt;= &quot;8.16.1&quot;}
+  &quot;coq&quot; {(&gt;= &quot;8.16.1&quot; &amp; &lt; &quot;8.17~&quot;) | &gt;= &quot;8.18&quot;}
 ]
 synopsis: &quot;Library of Univalent Mathematics&quot;
 url {
@@ -120,7 +120,7 @@ url {
               <dt>Return code</dt>
               <dd>7936</dd>
               <dt>Duration</dt>
-              <dd>38 m 0 s</dd>
+              <dd>5 m 0 s</dd>
               <dt>Output</dt>
               <dd><pre># Packages matching: installed
 # Name                # Installed # Synopsis
@@ -134,7 +134,7 @@ coq                   dev         The Coq Proof Assistant
 coq-core              dev         The Coq Proof Assistant -- Core Binaries and Tools
 coq-stdlib            dev         The Coq Proof Assistant -- Standard Library
 coqide-server         dev         The Coq Proof Assistant, XML protocol server
-dune                  3.13.0      Fast, portable, and opinionated build system
+dune                  3.14.0      Fast, portable, and opinionated build system
 ocaml                 5.0.0       The OCaml compiler (virtual package)
 ocaml-base-compiler   5.0.0       Official release 5.0.0
 ocaml-config          3           OCaml Switch Configuration
@@ -201,15 +201,15 @@ Processing  2/3: [coq-unimath: make]
 - File &quot;./UniMath/Foundations/PartA.v&quot;, line 376, characters 0-47:
 - Warning: Declaring arbitrary terms as hints is fragile; it is recommended to
 - declare a toplevel constant instead [fragile-hint-constr,automation,default]
-- COQC UniMath/Foundations/PartB.v
 - COQC UniMath/MoreFoundations/WeakEquivalences.v
-- COQC UniMath/Foundations/UnivalenceAxiom.v
+- COQC UniMath/Foundations/PartB.v
 - COQC UniMath/Combinatorics/DecSet.v
+- COQC UniMath/Foundations/UnivalenceAxiom.v
 - COQC UniMath/Foundations/PartC.v
-- COQC UniMath/Foundations/PartD.v
 - COQC UniMath/Combinatorics/Maybe.v
-- COQC UniMath/Foundations/UnivalenceAxiom2.v
+- COQC UniMath/Foundations/PartD.v
 - COQC UniMath/Foundations/Propositions.v
+- COQC UniMath/Foundations/UnivalenceAxiom2.v
 - COQC UniMath/Foundations/Sets.v
 - COQC UniMath/Foundations/HLevels.v
 - COQC UniMath/Folds/UnicodeNotations.v
@@ -220,8 +220,8 @@ Processing  2/3: [coq-unimath: make]
 - COQC UniMath/Folds/folds_precat.v
 - COQC UniMath/Folds/folds_pre_2_cat.v
 - COQC UniMath/MoreFoundations/Test.v
-- COQC UniMath/Foundations/All.v
 - COQC UniMath/NumberSystems/NaturalNumbers_le_Inductive.v
+- COQC UniMath/Foundations/All.v
 - COQC UniMath/MoreFoundations/Tactics.v
 - COQC UniMath/MoreFoundations/Notations.v
 - COQC UniMath/MoreFoundations/DoubleNegation.v
@@ -236,205 +236,219 @@ Processing  2/3: [coq-unimath: make]
 - COQC UniMath/MoreFoundations/NullHomotopies.v
 - COQC UniMath/MoreFoundations/Equivalences.v
 - COQC UniMath/MoreFoundations/StructureIdentity.v
+- COQC UniMath/MoreFoundations/Univalence.v
+- COQC UniMath/Combinatorics/StandardFiniteSets.v
+- COQC UniMath/SyntheticHomotopyTheory/Coproduct.v
+- COQC UniMath/CategoryTheory/Core/Categories.v
 - COQC UniMath/Paradoxes/All.v
+- File &quot;./UniMath/CategoryTheory/Core/Categories.v&quot;, line 40, characters 0-27:
+- Warning: Overwriting previous delimiting key cat in scope cat
+- [overwriting-delimiting-key,parsing,default]
 - COQC UniMath/MoreFoundations/PathsOver.v
 - COQC UniMath/MoreFoundations/Nat.v
 - COQC UniMath/MoreFoundations/Propositions.v
 - COQC UniMath/MoreFoundations/Interval.v
-- COQC UniMath/MoreFoundations/QuotientSet.v
-- COQC UniMath/MoreFoundations/Univalence.v
-- COQC UniMath/Combinatorics/StandardFiniteSets.v
-- COQC UniMath/Combinatorics/MetricTree.v
-- COQC UniMath/Algebra/BinaryOperations.v
-- COQC UniMath/SyntheticHomotopyTheory/Coproduct.v
-- COQC UniMath/SyntheticHomotopyTheory/Halfline.v
-- COQC UniMath/CategoryTheory/Core/Categories.v
-- COQC UniMath/MoreFoundations/Sets.v
-- File &quot;./UniMath/CategoryTheory/Core/Categories.v&quot;, line 40, characters 0-27:
-- Warning: Overwriting previous delimiting key cat in scope cat
-- [overwriting-delimiting-key,parsing,default]
 - COQC UniMath/MoreFoundations/MoreEquivalences.v
-- COQC UniMath/MoreFoundations/Subtypes.v
-- COQC UniMath/MoreFoundations/AxiomOfChoice.v
+- COQC UniMath/MoreFoundations/QuotientSet.v
 - COQC UniMath/MoreFoundations/NoInjectivePairing.v
 - COQC UniMath/Combinatorics/Graph.v
 - COQC UniMath/Combinatorics/WellFoundedRelations.v
 - COQC UniMath/Combinatorics/BoundedSearch.v
-- COQC UniMath/Algebra/Apartness.v
+- COQC UniMath/Combinatorics/MetricTree.v
+- COQC UniMath/Algebra/BinaryOperations.v
+- COQC UniMath/SyntheticHomotopyTheory/Halfline.v
 - COQC UniMath/CategoryTheory/Core/Isos.v
 - COQC UniMath/Folds/from_precats_to_folds_and_back.v
 - File &quot;./UniMath/CategoryTheory/Core/Isos.v&quot;, line 21, characters 0-54:
 - Warning: Overwriting previous delimiting key cat in scope cat
 - [overwriting-delimiting-key,parsing,default]
-- COQC UniMath/MoreFoundations/Orders.v
-- COQC UniMath/Combinatorics/Vectors.v
 - File &quot;./UniMath/Folds/from_precats_to_folds_and_back.v&quot;, line 23, characters 0-54:
 - Warning: Overwriting previous delimiting key cat in scope cat
 - [overwriting-delimiting-key,parsing,default]
-- COQC UniMath/Combinatorics/FiniteSets.v
+- COQC UniMath/MoreFoundations/Sets.v
+- COQC UniMath/MoreFoundations/Subtypes.v
+- COQC UniMath/Combinatorics/Vectors.v
 - COQC UniMath/Combinatorics/CGraph.v
-- COQC UniMath/Algebra/Monoids.v
+- COQC UniMath/Algebra/Apartness.v
 - COQC UniMath/Algebra/Universal/HVectors.v
-- COQC UniMath/CategoryTheory/Core/Univalence.v
-- COQC UniMath/CategoryTheory/Core/TransportMorphisms.v
-- File &quot;./UniMath/CategoryTheory/Core/Univalence.v&quot;, line 19, characters 0-54:
-- Warning: Overwriting previous delimiting key cat in scope cat
-- [overwriting-delimiting-key,parsing,default]
-- COQC UniMath/Folds/folds_isomorphism.v
-- COQC UniMath/MoreFoundations/All.v
-- File &quot;./UniMath/CategoryTheory/Core/TransportMorphisms.v&quot;, line 7, characters 0-54:
-- Warning: Overwriting previous delimiting key cat in scope cat
-- [overwriting-delimiting-key,parsing,default]
-- File &quot;./UniMath/Folds/folds_isomorphism.v&quot;, line 32, characters 0-54:
-- Warning: Overwriting previous delimiting key cat in scope cat
-- [overwriting-delimiting-key,parsing,default]
+- COQC UniMath/MoreFoundations/Orders.v
+- COQC UniMath/MoreFoundations/AxiomOfChoice.v
 - COQC UniMath/Combinatorics/VectorsTests.v
+- COQC UniMath/Combinatorics/Lists.v
+- COQC UniMath/Combinatorics/FiniteSets.v
+- COQC UniMath/Algebra/Monoids.v
 -      = f p (f q (f r b))
 -      : B
 -      = f p (f q (f r t))
 -      : A
 -      = a,, b,, c,, d,, e,, tt
 -      : vec A (3 + 2)
-- COQC UniMath/Combinatorics/Lists.v
+- COQC UniMath/CategoryTheory/Core/Univalence.v
+- COQC UniMath/CategoryTheory/Core/TransportMorphisms.v
+- COQC UniMath/Folds/folds_isomorphism.v
+- File &quot;./UniMath/CategoryTheory/Core/Univalence.v&quot;, line 19, characters 0-54:
+- Warning: Overwriting previous delimiting key cat in scope cat
+- [overwriting-delimiting-key,parsing,default]
+- File &quot;./UniMath/CategoryTheory/Core/TransportMorphisms.v&quot;, line 7, characters 0-54:
+- Warning: Overwriting previous delimiting key cat in scope cat
+- [overwriting-delimiting-key,parsing,default]
+- File &quot;./UniMath/Folds/folds_isomorphism.v&quot;, line 32, characters 0-54:
+- Warning: Overwriting previous delimiting key cat in scope cat
+- [overwriting-delimiting-key,parsing,default]
+- COQC UniMath/MoreFoundations/All.v
 - COQC UniMath/Combinatorics/KFiniteTypes.v
+- COQC UniMath/Combinatorics/GraphPaths.v
 - COQC UniMath/Combinatorics/OrderedSets.v
-- COQC UniMath/Algebra/Groups.v
-- COQC UniMath/Tactics/Monoids_Tactics.v
-- COQC UniMath/OrderTheory/Posets/Basics.v
-- COQC UniMath/CategoryTheory/Core/TwoCategories.v
+- COQC UniMath/Combinatorics/FiniteSequences.v
+- COQC UniMath/Combinatorics/MoreLists.v
 - File &quot;./UniMath/Combinatorics/OrderedSets.v&quot;, line 309, characters 0-62:
 - Warning:
 - New coercion path [underlyingFiniteSet; FiniteSet_to_hSet] : FiniteOrderedSet &gt;-&gt; hSet is ambiguous with existing 
 - [underlyingOrderedSet; underlyingPoset; carrierofposet] : FiniteOrderedSet &gt;-&gt; hSet.
 - [ambiguous-paths,coercions,default]
-- File &quot;./UniMath/CategoryTheory/Core/TwoCategories.v&quot;, line 7, characters 0-54:
-- Warning: Overwriting previous delimiting key cat in scope cat
-- [overwriting-delimiting-key,parsing,default]
+- COQC UniMath/OrderTheory/Posets/Basics.v
+- COQC UniMath/CategoryTheory/Core/TwoCategories.v
 - COQC UniMath/CategoryTheory/Core/Functors.v
-- COQC UniMath/CategoryTheory/categories/setwith2binops.v
 - File &quot;./UniMath/CategoryTheory/Core/Functors.v&quot;, line 31, characters 0-54:
 - Warning: Overwriting previous delimiting key cat in scope cat
 - [overwriting-delimiting-key,parsing,default]
-- File &quot;./UniMath/CategoryTheory/categories/setwith2binops.v&quot;, line 14, characters 0-54:
-- Warning: Overwriting previous delimiting k
+- File &quot;./UniMath/CategoryTheory/Core/TwoCategories.v&quot;, line 7, characters 0-54:
+- Warning: Overwriting previous delimiting key cat in scope cat
+- [overwriting-delimiting-key,parsing,default]
+- COQC UniMath/CategoryTheory/categories/setwith2binops.v
+- File &quot;./UniMath/CategoryTheory/categories/setwith2binops.v&quot;, line 14, char
 [...] truncated
-4, characters 0-54:
+exedCategories/CoreIndexedCategory.v
+- File &quot;./UniMath/CategoryTheory/IndexedCategories/CoreIndexedCategory.v&quot;, line 17, characters 0-54:
 - Warning: Overwriting previous delimiting key cat in scope cat
 - [overwriting-delimiting-key,parsing,default]
-- COQC UniMath/Bicategories/Core/Discreteness.v
-- File &quot;./UniMath/Bicategories/Core/Discreteness.v&quot;, line 7, characters 0-54:
+- COQC UniMath/Bicategories/Core/Bicat.v
+- File &quot;./UniMath/Bicategories/Core/Bicat.v&quot;, line 10, characters 0-54:
 - Warning: Overwriting previous delimiting key cat in scope cat
 - [overwriting-delimiting-key,parsing,default]
-- COQC UniMath/Bicategories/Morphisms/InternalStreetOpFibration.v
-- File &quot;./UniMath/Bicategories/Morphisms/InternalStreetOpFibration.v&quot;, line 19, characters 0-54:
+- COQC UniMath/Topology/CategoryTop.v
+- File &quot;./UniMath/Topology/CategoryTop.v&quot;, line 12, characters 0-54:
 - Warning: Overwriting previous delimiting key cat in scope cat
 - [overwriting-delimiting-key,parsing,default]
-- COQC UniMath/Bicategories/Morphisms/Properties/ClosedUnderInvertibles.v
-- File &quot;./UniMath/Bicategories/Morphisms/Properties/ClosedUnderInvertibles.v&quot;, line 17, characters 0-54:
+- COQC UniMath/AlgebraicGeometry/Topology.v
+- COQC UniMath/AlgebraicTheories/AlgebraicTheories.v
+- COQC UniMath/Algebra/GaussianElimination/Elimination.v
+- File &quot;./UniMath/AlgebraicTheories/AlgebraicTheories.v&quot;, line 11, characters 0-54:
 - Warning: Overwriting previous delimiting key cat in scope cat
 - [overwriting-delimiting-key,parsing,default]
-- COQC UniMath/Bicategories/Core/Examples/DiscreteBicat.v
-- COQC UniMath/Bicategories/Core/Examples/FibSlice.v
-- File &quot;./UniMath/Bicategories/Core/Examples/DiscreteBicat.v&quot;, line 18, characters 0-54:
+- COQC UniMath/NumberSystems/NaturalNumbersAlgebra.v
+- COQC UniMath/OrderTheory/Lattice/Examples/Bool.v
+- COQC UniMath/OrderTheory/Lattice/Examples/Subsets.v
+- COQC UniMath/OrderTheory/DCPOs/Core/IntrinsicApartness.v
+- COQC UniMath/CategoryTheory/DisplayedCats/NaturalTransformations.v
+- File &quot;./UniMath/CategoryTheory/DisplayedCats/NaturalTransformations.v&quot;, line 5, characters 0-54:
 - Warning: Overwriting previous delimiting key cat in scope cat
 - [overwriting-delimiting-key,parsing,default]
-- File &quot;./UniMath/Bicategories/Core/Examples/FibSlice.v&quot;, line 26, characters 0-54:
+- COQC UniMath/CategoryTheory/Monads/RelativeMonads.v
+- File &quot;./UniMath/CategoryTheory/Monads/RelativeMonads.v&quot;, line 25, characters 0-54:
 - Warning: Overwriting previous delimiting key cat in scope cat
 - [overwriting-delimiting-key,parsing,default]
-- File &quot;./UniMath/Bicategories/Core/Examples/FibSlice.v&quot;, line 39, characters 0-65:
-- Warning:
-- New coercion path [adjunction_of_right_adjoint_over_id_data; left_adj_over_id] : right_adjoint_over_id_data &gt;-&gt; disp_functor is ambiguous with existing 
-- [functor_of_right_adjoint_over_id] : right_adjoint_over_id_data &gt;-&gt; disp_functor.
-- [ambiguous-paths,coercions,default]
-- COQC UniMath/Bicategories/Core/Examples/OpFibSlice.v
-- File &quot;./UniMath/Bicategories/Core/Examples/OpFibSlice.v&quot;, line 26, characters 0-54:
+- COQC UniMath/CategoryTheory/Equivalences/Core.v
+- File &quot;./UniMath/CategoryTheory/Equivalences/Core.v&quot;, line 23, characters 0-54:
 - Warning: Overwriting previous delimiting key cat in scope cat
 - [overwriting-delimiting-key,parsing,default]
-- File &quot;./UniMath/Bicategories/Core/Examples/OpFibSlice.v&quot;, line 39, characters 0-65:
-- Warning:
-- New coercion path [adjunction_of_right_adjoint_over_id_data; left_adj_over_id] : right_adjoint_over_id_data &gt;-&gt; disp_functor is ambiguous with existing 
-- [functor_of_right_adjoint_over_id] : right_adjoint_over_id_data &gt;-&gt; disp_functor.
-- [ambiguous-paths,coercions,default]
-- COQC UniMath/Bicategories/Morphisms/Examples/FibrationsInBicatOfUnivCats.v
-- File &quot;./UniMath/Bicategories/Morphisms/Examples/FibrationsInBicatOfUnivCats.v&quot;, line 10, characters 0-54:
+- COQC UniMath/CategoryTheory/categories/HSET/MonoEpiIso.v
+- File &quot;./UniMath/CategoryTheory/categories/HSET/MonoEpiIso.v&quot;, line 16, characters 0-54:
 - Warning: Overwriting previous delimiting key cat in scope cat
 - [overwriting-delimiting-key,parsing,default]
-- COQC UniMath/Bicategories/Morphisms/Examples/FibrationsInStrictCats.v
-- File &quot;./UniMath/Bicategories/Morphisms/Examples/FibrationsInStrictCats.v&quot;, line 11, characters 0-54:
+- COQC UniMath/CategoryTheory/PrecategoriesWithAbgrops.v
+- File &quot;./UniMath/CategoryTheory/DisplayedCats/NaturalTransformations.v&quot;, line 784, characters 0-69:
+- Warning: disp_nat_z_iso_to_trans does not respect the uniform inheritance
+- condition. [uniform-inheritance,coercions,default]
+- File &quot;./UniMath/CategoryTheory/PrecategoriesWithAbgrops.v&quot;, line 9, characters 0-54:
 - Warning: Overwriting previous delimiting key cat in scope cat
 - [overwriting-delimiting-key,parsing,default]
-- COQC UniMath/Bicategories/DisplayedBicats/FiberCategory.v
-- COQC UniMath/Bicategories/DisplayedBicats/Examples/Sigma.v
-- File &quot;./UniMath/Bicategories/DisplayedBicats/FiberCategory.v&quot;, line 9, characters 0-54:
+- COQC UniMath/CategoryTheory/limits/graphs/colimits.v
+- File &quot;./UniMath/CategoryTheory/limits/graphs/colimits.v&quot;, line 23, characters 0-54:
 - Warning: Overwriting previous delimiting key cat in scope cat
 - [overwriting-delimiting-key,parsing,default]
-- File &quot;./UniMath/Bicategories/DisplayedBicats/Examples/Sigma.v&quot;, line 11, characters 0-54:
+- COQC UniMath/CategoryTheory/categories/Type/MonoEpiIso.v
+- File &quot;./UniMath/CategoryTheory/categories/Type/MonoEpiIso.v&quot;, line 13, characters 0-54:
 - Warning: Overwriting previous delimiting key cat in scope cat
 - [overwriting-delimiting-key,parsing,default]
-- COQC UniMath/Bicategories/DisplayedBicats/Examples/DisplayedCatToBicat.v
-- File &quot;./UniMath/Bicategories/DisplayedBicats/Examples/DisplayedCatToBicat.v&quot;, line 10, characters 0-54:
+- COQC UniMath/CategoryTheory/yoneda.v
+- File &quot;./UniMath/CategoryTheory/yoneda.v&quot;, line 29, characters 0-54:
 - Warning: Overwriting previous delimiting key cat in scope cat
 - [overwriting-delimiting-key,parsing,default]
-- COQC UniMath/Bicategories/DisplayedBicats/Examples/Prod.v
-- File &quot;./UniMath/Bicategories/DisplayedBicats/Examples/Prod.v&quot;, line 14, characters 0-54:
+- COQC UniMath/CategoryTheory/PointedFunctorsComposition.v
+- File &quot;./UniMath/CategoryTheory/PointedFunctorsComposition.v&quot;, line 26, characters 0-54:
 - Warning: Overwriting previous delimiting key cat in scope cat
 - [overwriting-delimiting-key,parsing,default]
-- COQC UniMath/Bicategories/DisplayedBicats/Examples/Trivial.v
-- File &quot;./UniMath/Bicategories/DisplayedBicats/Examples/Trivial.v&quot;, line 9, characters 0-54:
+- COQC UniMath/CategoryTheory/Adjunctions/Restriction.v
+- File &quot;./UniMath/CategoryTheory/Adjunctions/Restriction.v&quot;, line 10, characters 0-54:
 - Warning: Overwriting previous delimiting key cat in scope cat
 - [overwriting-delimiting-key,parsing,default]
-- COQC UniMath/Bicategories/MonoidalCategories/ActionBasedStrongFunctorsMonoidal.v
-- File &quot;./UniMath/Bicategories/MonoidalCategories/ActionBasedStrongFunctorsMonoidal.v&quot;, line 17, characters 0-54:
+- COQC UniMath/CategoryTheory/Subcategory/Reflective.v
+- File &quot;./UniMath/CategoryTheory/Subcategory/Reflective.v&quot;, line 9, characters 0-54:
 - Warning: Overwriting previous delimiting key cat in scope cat
 - [overwriting-delimiting-key,parsing,default]
-- COQC UniMath/Bicategories/MonoidalCategories/ActionBasedStrongFunctorCategory.v
-- File &quot;./UniMath/Bicategories/MonoidalCategories/ActionBasedStrongFunctorCategory.v&quot;, line 8, characters 0-54:
+- COQC UniMath/CategoryTheory/categories/monoids.v
+- COQC UniMath/CategoryTheory/categories/Type/Univalence.v
+- File &quot;./UniMath/CategoryTheory/categories/Type/Univalence.v&quot;, line 11, characters 0-54:
 - Warning: Overwriting previous delimiting key cat in scope cat
 - [overwriting-delimiting-key,parsing,default]
-- COQC UniMath/Bicategories/MonoidalCategories/UnivalenceMonCat/TensorLayer.v
-- File &quot;./UniMath/Bicategories/MonoidalCategories/UnivalenceMonCat/TensorLayer.v&quot;, line 12, characters 0-54:
+- COQC UniMath/CategoryTheory/OppositeCategory/OppositeAdjunction.v
+- File &quot;./UniMath/CategoryTheory/categories/monoids.v&quot;, line 22, characters 0-54:
 - Warning: Overwriting previous delimiting key cat in scope cat
 - [overwriting-delimiting-key,parsing,default]
-- COQC UniMath/Bicategories/PseudoFunctors/Display/Map2Cells.v
-- File &quot;./UniMath/Bicategories/PseudoFunctors/Display/Map2Cells.v&quot;, line 6, characters 0-54:
+- File &quot;./UniMath/CategoryTheory/OppositeCategory/OppositeAdjunction.v&quot;, line 4, characters 0-54:
 - Warning: Overwriting previous delimiting key cat in scope cat
 - [overwriting-delimiting-key,parsing,default]
-- COQC UniMath/Bicategories/PseudoFunctors/Display/Identitor.v
-- File &quot;./UniMath/Bicategories/PseudoFunctors/Display/Identitor.v&quot;, line 6, characters 0-54:
+- COQC UniMath/CategoryTheory/OppositeCategory/OppositeOfFunctorCategory.v
+- COQC UniMath/CategoryTheory/Monoidal/AlternativeDefinitions/MonoidalFunctorsTensored.v
+- File &quot;./UniMath/CategoryTheory/OppositeCategory/OppositeOfFunctorCategory.v&quot;, line 4, characters 0-54:
 - Warning: Overwriting previous delimiting key cat in scope cat
 - [overwriting-delimiting-key,parsing,default]
-- COQC UniMath/Bicategories/PseudoFunctors/Display/Compositor.v
-- File &quot;./UniMath/Bicategories/PseudoFunctors/Display/Compositor.v&quot;, line 6, characters 0-54:
+- File &quot;./UniMath/CategoryTheory/Monoidal/AlternativeDefinitions/MonoidalFunctorsTensored.v&quot;, line 7, characters 0-54:
 - Warning: Overwriting previous delimiting key cat in scope cat
 - [overwriting-delimiting-key,parsing,default]
-- COQC UniMath/Bicategories/PseudoFunctors/Display/StrictIdentitor.v
-- File &quot;./UniMath/Bicategories/PseudoFunctors/Display/StrictIdentitor.v&quot;, line 6, characters 0-54:
+- COQC UniMath/CategoryTheory/Monoidal/AlternativeDefinitions/CategoriesOfMonoids.v
+- File &quot;./UniMath/CategoryTheory/Monoidal/AlternativeDefinitions/CategoriesOfMonoids.v&quot;, line 9, characters 0-54:
 - Warning: Overwriting previous delimiting key cat in scope cat
 - [overwriting-delimiting-key,parsing,default]
-- COQC UniMath/Bicategories/PseudoFunctors/Display/StrictCompositor.v
-- File &quot;./UniMath/Bicategories/PseudoFunctors/Display/StrictCompositor.v&quot;, line 6, characters 0-54:
+- COQC UniMath/CategoryTheory/Monoidal/AlternativeDefinitions/BraidedMonoidalCategories.v
+- File &quot;./UniMath/CategoryTheory/Monoidal/AlternativeDefinitions/BraidedMonoidalCategories.v&quot;, line 18, characters 0-54:
 - Warning: Overwriting previous delimiting key cat in scope cat
 - [overwriting-delimiting-key,parsing,default]
-- COQC UniMath/Bicategories/DisplayedBicats/Examples/Cofunctormap.v
-- File &quot;./UniMath/Bicategories/DisplayedBicats/Examples/Cofunctormap.v&quot;, line 13, characters 0-51:
+- COQC UniMath/CategoryTheory/SkewMonoidal/CategoriesOfMonoids.v
+- File &quot;./UniMath/CategoryTheory/SkewMonoidal/CategoriesOfMonoids.v&quot;, line 7, characters 0-54:
 - Warning: Overwriting previous delimiting key cat in scope cat
 - [overwriting-delimiting-key,parsing,default]
-- COQC UniMath/Bicategories/DisplayedBicats/Examples/FunctorsIntoCat.v
-- File &quot;./UniMath/Bicategories/DisplayedBicats/Examples/FunctorsIntoCat.v&quot;, line 16, characters 0-54:
+- COQC UniMath/CategoryTheory/TwoSidedDisplayedCats/Isos.v
+- File &quot;./UniMath/CategoryTheory/TwoSidedDisplayedCats/Isos.v&quot;, line 18, characters 0-54:
 - Warning: Overwriting previous delimiting key cat in scope cat
 - [overwriting-delimiting-key,parsing,default]
-- COQC UniMath/Bicategories/DisplayedBicats/Examples/Codomain.v
-- File &quot;./UniMath/Bicategories/DisplayedBicats/Examples/Codomain.v&quot;, line 13, characters 0-51:
+- COQC UniMath/CategoryTheory/RepresentableFunctors/Precategories.v
+- COQC UniMath/Topology/All.v
+- File &quot;./UniMath/CategoryTheory/RepresentableFunctors/Precategories.v&quot;, line 3, characters 0-54:
 - Warning: Overwriting previous delimiting key cat in scope cat
 - [overwriting-delimiting-key,parsing,default]
-- File &quot;./UniMath/Bicategories/DisplayedBicats/Examples/Codomain.v&quot;, line 665, characters 11-56:
+- COQC UniMath/AlgebraicGeometry/SheavesOfRings.v
+- File &quot;./UniMath/AlgebraicGeometry/SheavesOfRings.v&quot;, line 4, characters 0-54:
+- Warning: Overwriting previous delimiting key cat in scope cat
+- [overwriting-delimiting-key,parsing,default]
+- COQC UniMath/AlgebraicTheories/AlgebraicTheoryMorphisms2.v
+- COQC UniMath/AlgebraicTheories/AlgebraicTheoryAlgebras.v
+- COQC UniMath/Algebra/GaussianElimination/Corollaries.v
+- COQC UniMath/Algebra/GaussianElimination/Tests.v
+- COQC UniMath/NumberSystems/Integers.v
+- COQC UniMath/OrderTheory/DCPOs/Core/ScottContinuous.v
+- File &quot;./UniMath/OrderTheory/DCPOs/Core/ScottContinuous.v&quot;, line 362, characters 44-45:
 - Error:
-- Found no subterm matching &quot;pr1
--                              (transportf (λ x : ?A, ∑ b : ?B x, ?P x b) 
--                                 ?M33 ?M34)&quot; in p.
+- In environment
+- X : dcpo
+- Y : dcpo
+- f : X → Y
+- The term &quot;X&quot; has type &quot;dcpo&quot; while it is expected to have type
+-  &quot;dcpo_struct ?X&quot;.
 - 
-- make[2]: *** [build/CoqMakefile.make:848: UniMath/Bicategories/DisplayedBicats/Examples/Codomain.vo] Error 1
-- make[2]: *** [UniMath/Bicategories/DisplayedBicats/Examples/Codomain.vo] Deleting file &#39;UniMath/Bicategories/DisplayedBicats/Examples/Codomain.glob&#39;
+- make[2]: *** [build/CoqMakefile.make:848: UniMath/OrderTheory/DCPOs/Core/ScottContinuous.vo] Error 1
+- make[2]: *** [UniMath/OrderTheory/DCPOs/Core/ScottContinuous.vo] Deleting file &#39;UniMath/OrderTheory/DCPOs/Core/ScottContinuous.glob&#39;
 - make[2]: *** Waiting for unfinished jobs....
 - make[1]: *** [build/CoqMakefile.make:417: all] Error 2
 - make[1]: Leaving directory &#39;/home/bench/.opam/ocaml-base-compiler.5.0.0/.opam-switch/build/coq-unimath.20231010&#39;
@@ -445,18 +459,18 @@ Processing  2/3: [coq-unimath: make]
 # path                 ~/.opam/ocaml-base-compiler.5.0.0/.opam-switch/build/coq-unimath.20231010
 # command              ~/.opam/opam-init/hooks/sandbox.sh build make BUILD_COQ=no -j4
 # exit-code            2
-# env-file             ~/.opam/log/coq-unimath-8119-4f72d9.env
-# output-file          ~/.opam/log/coq-unimath-8119-4f72d9.out
+# env-file             ~/.opam/log/coq-unimath-9670-7827e5.env
+# output-file          ~/.opam/log/coq-unimath-9670-7827e5.out
 ### output ###
 # [...]
-# File &quot;./UniMath/Bicategories/DisplayedBicats/Examples/Codomain.v&quot;, line 665, characters 11-56:
-# Error:
-# Found no subterm matching &quot;pr1
-#                              (transportf (λ x : ?A, ∑ b : ?B x, ?P x b) 
-#                                 ?M33 ?M34)&quot; in p.
+# X : dcpo
+# Y : dcpo
+# f : X → Y
+# The term &quot;X&quot; has type &quot;dcpo&quot; while it is expected to have type
+#  &quot;dcpo_struct ?X&quot;.
 # 
-# make[2]: *** [build/CoqMakefile.make:848: UniMath/Bicategories/DisplayedBicats/Examples/Codomain.vo] Error 1
-# make[2]: *** [UniMath/Bicategories/DisplayedBicats/Examples/Codomain.vo] Deleting file &#39;UniMath/Bicategories/DisplayedBicats/Examples/Codomain.glob&#39;
+# make[2]: *** [build/CoqMakefile.make:848: UniMath/OrderTheory/DCPOs/Core/ScottContinuous.vo] Error 1
+# make[2]: *** [UniMath/OrderTheory/DCPOs/Core/ScottContinuous.vo] Deleting file &#39;UniMath/OrderTheory/DCPOs/Core/ScottContinuous.glob&#39;
 # make[2]: *** Waiting for unfinished jobs....
 # make[1]: *** [build/CoqMakefile.make:417: all] Error 2
 # make[1]: Leaving directory &#39;/home/bench/.opam/ocaml-base-compiler.5.0.0/.opam-switch/build/coq-unimath.20231010&#39;

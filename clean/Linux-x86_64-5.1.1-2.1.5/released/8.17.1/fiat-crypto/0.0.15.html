@@ -55,7 +55,7 @@ coq                   8.17.1      The Coq Proof Assistant
 coq-core              8.17.1      The Coq Proof Assistant -- Core Binaries and Tools
 coq-stdlib            8.17.1      The Coq Proof Assistant -- Standard Library
 coqide-server         8.17.1      The Coq Proof Assistant, XML protocol server
-dune                  3.13.0      Fast, portable, and opinionated build system
+dune                  3.14.0      Fast, portable, and opinionated build system
 ocaml                 5.1.1       The OCaml compiler (virtual package)
 ocaml-base-compiler   5.1.1       Official release 5.1.1
 ocaml-config          3           OCaml Switch Configuration
@@ -167,7 +167,7 @@ coq-riscv             0.0.2         RISC-V Specification in Coq, somewhat experi
 coq-rupicola          0.0.5         Gallina to imperative code compilation, currently in design phase
 coq-stdlib            8.17.1        The Coq Proof Assistant -- Standard Library
 coqide-server         8.17.1        The Coq Proof Assistant, XML protocol server
-dune                  3.13.0        Fast, portable, and opinionated build system
+dune                  3.14.0        Fast, portable, and opinionated build system
 ocaml                 5.1.1         The OCaml compiler (virtual package)
 ocaml-base-compiler   5.1.1         Official release 5.1.1
 ocaml-config          3             OCaml Switch Configuration
@@ -212,6 +212,11 @@ Processing  2/3: [coq-fiat-crypto: make coq]
 - COQC src/Util/HProp.v
 - COQC src/Util/GlobalSettings.v
 - COQC src/Util/Tactics/Test.v
+- COQC src/Util/Tactics/ConstrFail.v
+- COQC src/Util/ZUtil/Tactics/ReplaceNegWithPos.v
+- COQC src/Util/Tactics/GetGoal.v
+- COQC src/Util/Strings/Decimal.v
+- COQC src/Util/Tactics/Contains.v
 - File &quot;./src/Util/NatUtil.v&quot;, line 14, characters 0-57:
 - Warning: Notation plus_le_compat is deprecated since 8.16.
 - The Arith.Plus file is obsolete. Use Nat.add_le_mono instead.
@@ -227,7 +232,6 @@ Processing  2/3: [coq-fiat-crypto: make coq]
 - Warning: Notation Min.min_case_strong is deprecated since 8.16.
 - The Arith.Min file is obsolete. Use Nat.min_case_strong instead.
 - [deprecated-syntactic-definition,deprecated]
-- COQC src/Util/Tactics/ConstrFail.v
 - File &quot;./src/Util/NatUtil.v&quot;, line 36, characters 13-32:
 - Warning: Notation Max.max_case_strong is deprecated since 8.16.
 - The Arith.Max file is obsolete. Use Nat.max_case_strong instead.
@@ -244,8 +248,6 @@ Processing  2/3: [coq-fiat-crypto: make coq]
 - Warning: Notation Min.min_case_strong is deprecated since 8.16.
 - The Arith.Min file is obsolete. Use Nat.min_case_strong instead.
 - [deprecated-syntactic-definition,deprecated]
-- COQC src/Util/ZUtil/Tactics/ReplaceNegWithPos.v
-- COQC src/Util/Tactics/GetGoal.v
 - File &quot;./src/Util/NatUtil.v&quot;, line 156, characters 43-50:
 - Warning: Notation mod_add is deprecated since 8.17. Use Div0.mod_add instead.
 - [deprecated-syntactic-definition,deprecated]
@@ -273,8 +275,7 @@ Processing  2/3: [coq-fiat-crypto: make coq]
 - File &quot;./src/Util/NatUtil.v&quot;, line 185, characters 12-23:
 - Warning: Notation mod_add is deprecated since 8.17. Use Div0.mod_add instead.
 - [deprecated-syntactic-definition,deprecated]
-- COQC src/Util/Strings/Decimal.v
-- COQC src/Util/Tactics/Contains.v
+- COQC src/Util/Comparison.v
 - File &quot;./src/Util/NatUtil.v&quot;, line 229, characters 8-21:
 - Warning: Notation beq_nat is deprecated since 8.16. Use Nat.eqb instead.
 - [deprecated-syntactic-definition,deprecated]
@@ -296,6 +297,7 @@ Processing  2/3: [coq-fiat-crypto: make coq]
 - File &quot;./src/Util/NatUtil.v&quot;, line 233, characters 23-40:
 - Warning: Notation beq_nat_false_iff is deprecated since 8.16.
 - Use Nat.eqb_neq instead. [deprecated-syntactic-definition,deprecated]
+- COQC src/Util/ZUtil/Tactics/SplitMinMax.v
 - File &quot;./src/Util/NatUtil.v&quot;, line 252, characters 28-36:
 - Warning: Notation mod_same is deprecated since 8.17.
 - Use Div0.mod_same instead. [deprecated-syntactic-definition,deprecated]
@@ -303,12 +305,9 @@ Processing  2/3: [coq-fiat-crypto: make coq]
 - Warning: Notation mod_same is deprecated since 8.17.
 - Use Div0.mod_same instead. [deprecated-syntactic-definition,deprecated]
 - File &quot;./src/Util/NatUtil.v&quot;, line 272, characters 10-17:
-- Warning: Notation add_mod is deprecated since 8.17. Use Div0.add_mod instead.
-- [deprecated-syntactic-definition,deprecated]
-- File &quot;./s
+- Warning: Notation add_mod is deprecated since 8.17. Use Div0.ad
 [...] truncated
-[deprecated-syntactic-definition,deprecated]
-- File &quot;./src/Util/ListUtil.v&quot;, line 268, characters 38-47:
+il.v&quot;, line 268, characters 38-47:
 - Warning: Notation le_n_0_eq is deprecated since 8.16.
 - The Arith.Le file is obsolete. Use the bidirectional version Nat.le_0_r (with symmetry of equality) instead.
 - [deprecated-syntactic-definition,deprecated]
@@ -341,7 +340,7 @@ Processing  2/3: [coq-fiat-crypto: make coq]
 - The Arith.Minus file is obsolete. Use Nat.sub_diag (and symmetry of equality) instead.
 - [deprecated-syntactic-definition,deprecated]
 - COQC src/Util/ZUtil/AddGetCarry.v
-- COQC src/Util/Strings/ParseArithmetic.v
+- COQC src/Util/Structures/Orders/Option.v
 - File &quot;./src/Util/ListUtil.v&quot;, line 1485, characters 48-59:
 - Warning: Tactic instantiate is deprecated since 8.16.
 - [deprecated-tactic,deprecated]
@@ -374,7 +373,6 @@ Processing  2/3: [coq-fiat-crypto: make coq]
 - Warning: Notation Min.min_l is deprecated since 8.16.
 - The Arith.Min file is obsolete. Use Nat.min_l instead.
 - [deprecated-syntactic-definition,deprecated]
-- COQC src/Util/ListUtil/SetoidListFlatMap.v
 - COQC src/Algebra/Group.v
 - File &quot;./src/Algebra/Group.v&quot;, line 98, characters 2-316:
 - Warning: A coercion will be introduced instead of an instance in future
@@ -385,7 +383,7 @@ Processing  2/3: [coq-fiat-crypto: make coq]
 - field if you need to keep the current behavior. For example: &quot;Class foo := {
 - #[global] field :: bar }.&quot; [future-coercion-class-field,records]
 - COQC src/Util/ZUtil/ModInv.v
-- COQC src/Util/Wf2.v
+- COQC src/Bedrock/Group/Loops.v
 - File &quot;./src/Algebra/Group.v&quot;, line 145, characters 2-400:
 - Warning: A coercion will be introduced instead of an instance in future
 - versions when using &#39;:&gt;&#39; in &#39;Class&#39; declarations. Replace &#39;:&gt;&#39; with &#39;::&#39; (or
@@ -394,21 +392,25 @@ Processing  2/3: [coq-fiat-crypto: make coq]
 - #[global] for &#39;:&gt;&#39; currently. Add an explicit #[global] attribute to the
 - field if you need to keep the current behavior. For example: &quot;Class foo := {
 - #[global] field :: bar }.&quot; [future-coercion-class-field,records]
+- COQC src/Util/Wf2.v
 - COQC src/Util/FSets/FMapEmpty.v
+- COQC src/Util/MSets/MSetPositive/Facts.v
 - COQC src/Util/SideConditions/ModInvPackage.v
 - COQC src/Util/ZUtil/Pow.v
 - COQC src/Util/Bool/Reflect.v
 - COQC src/Util/Tuple.v
 - COQC src/MiscCompilerPasses.v
-- COQC src/Util/Structures/Orders/Sum.v
 - File &quot;./src/Util/Tuple.v&quot;, line 261, characters 116-134:
 - Warning: Notation Min.min_idempotent is deprecated since 8.16.
 - The Arith.Min file is obsolete. Use Nat.min_id instead.
 - [deprecated-syntactic-definition,deprecated]
+- COQC src/Util/Structures/Orders/Sum.v
 - COQC src/Util/MSets/MSetIso.v
 - COQC src/MiscCompilerPassesProofs.v
 - COQC src/Util/ZUtil/Div.v
 - COQC src/Assembly/Syntax.v
+- COQC src/Util/Strings/ParseArithmetic.v
+- COQC src/Util/Structures/OrdersEx.v
 - File &quot;./src/Util/ZUtil/Div.v&quot;, line 312, characters 13-25:
 - Warning: Notation Z_div_mod_eq is deprecated since 8.14.
 - Use Z_div_mod_eq_full instead [deprecated-syntactic-definition,deprecated]
@@ -421,7 +423,6 @@ Processing  2/3: [coq-fiat-crypto: make coq]
 - File &quot;./src/Util/ZUtil/Div.v&quot;, line 376, characters 6-17:
 - Warning: Tactic instantiate is deprecated since 8.16.
 - [deprecated-tactic,deprecated]
-- COQC src/Util/Structures/OrdersEx.v
 - COQC src/Util/FSets/FMapUnit.v
 - COQC src/Util/FSets/FMapIso.v
 - COQC src/Util/FSets/FMapFlip.v
@@ -437,27 +438,27 @@ Processing  2/3: [coq-fiat-crypto: make coq]
 - COQC src/Algebra/Ring.v
 - COQC src/Util/IdfunWithAlt.v
 - COQC src/Assembly/WithBedrock/Semantics.v
-- COQC src/Bedrock/Group/Loops.v
 - COQC src/Fancy/Spec.v
 - COQC src/Util/AdditionChainExponentiation.v
 - COQC src/Util/HList.v
 - COQC src/Util/Decidable/Decidable2Bool.v
 - COQC src/Util/FSets/FMapBool.v
-- File &quot;./src/Util/Decidable/Decidable2Bool.v&quot;, line 39, characters 10-22:
-- Warning: Notation beq_nat_true is deprecated since 8.16.
-- Use the bidirectional version Nat.eqb_eq instead.
-- [deprecated-syntactic-definition,deprecated]
-- File &quot;./src/Util/Decidable/Decidable2Bool.v&quot;, line 39, characters 10-22:
-- Warning: Notation beq_nat_true is deprecated since 8.16.
-- Use the bidirectional version Nat.eqb_eq instead.
-- [deprecated-syntactic-definition,deprecated]
 - COQC src/Util/SideConditions/Autosolve.v
+- File &quot;./src/Util/Decidable/Decidable2Bool.v&quot;, line 39, characters 10-22:
+- Warning: Notation beq_nat_true is deprecated since 8.16.
+- Use the bidirectional version Nat.eqb_eq instead.
+- [deprecated-syntactic-definition,deprecated]
+- File &quot;./src/Util/Decidable/Decidable2Bool.v&quot;, line 39, characters 10-22:
+- Warning: Notation beq_nat_true is deprecated since 8.16.
+- Use the bidirectional version Nat.eqb_eq instead.
+- [deprecated-syntactic-definition,deprecated]
 - COQC src/Util/ZUtil/Log2.v
 - COQC src/Util/Level.v
 - COQC src/Util/ZRange.v
 - COQC src/Util/MSets/MSetSum.v
 - COQC src/Util/Listable.v
 - COQC src/Util/ZUtil/Tactics/ZeroBounds.v
+- COQC src/Util/ZUtil/Divide.v
 - File &quot;./src/Util/MSets/MSetSum.v&quot;, line 227, characters 4-11:
 - Error: Cannot infer an instance of type &quot;relation Prop&quot; for the variable RA.
 - 
@@ -470,16 +471,16 @@ Processing  2/3: [coq-fiat-crypto: make coq]
 # path                 ~/.opam/ocaml-base-compiler.5.1.1/.opam-switch/build/coq-fiat-crypto.0.0.15
 # command              ~/.opam/opam-init/hooks/sandbox.sh build make -j4 EXTERNAL_DEPENDENCIES=1 SKIP_COQSCRIPTS_INCLUDE=1 coq standalone-ocaml
 # exit-code            2
-# env-file             ~/.opam/log/coq-fiat-crypto-14150-3c9433.env
-# output-file          ~/.opam/log/coq-fiat-crypto-14150-3c9433.out
+# env-file             ~/.opam/log/coq-fiat-crypto-713-68d997.env
+# output-file          ~/.opam/log/coq-fiat-crypto-713-68d997.out
 ### output ###
 # [...]
-# COQC src/Util/ZUtil/Log2.v
 # COQC src/Util/Level.v
 # COQC src/Util/ZRange.v
 # COQC src/Util/MSets/MSetSum.v
 # COQC src/Util/Listable.v
 # COQC src/Util/ZUtil/Tactics/ZeroBounds.v
+# COQC src/Util/ZUtil/Divide.v
 # File &quot;./src/Util/MSets/MSetSum.v&quot;, line 227, characters 4-11:
 # Error: Cannot infer an instance of type &quot;relation Prop&quot; for the variable RA.
 # 
